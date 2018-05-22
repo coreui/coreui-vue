@@ -1,0 +1,40 @@
+# Dependency directories
+node_modules/
+
+# Coverage directory
+coverage/
+
+# Generated code
+dist/
+
+### Node ###
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Integrity files
+.package-lock.json
+.yarn-integrity
+
+
+# Optional npm cache directory
+.npm
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Misc
+.DS_Store
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variables file
+.env
