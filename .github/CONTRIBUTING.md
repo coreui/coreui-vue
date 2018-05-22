@@ -30,5 +30,5 @@ npm run lint:fix
 - Add tests in the src/components/\_\_tests\_\_ folder
 - Register this component in src/index.js
 - Run lint and tests before commiting anything
-- Commit using [Commit Convention](.github/COMMIT_CONVENTION.md) 
+- Commit using [Commit Convention](./COMMIT_CONVENTION.md) 
 - PR on github
