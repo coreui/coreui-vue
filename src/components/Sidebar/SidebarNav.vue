@@ -77,7 +77,7 @@ export default {
     return {
       psSettings: {
         maxScrollbarLength: 200,
-        minScrollbarLength: 20,
+        minScrollbarLength: 40,
         suppressScrollX: true,
         wheelPropagation: false,
         interceptRailY: styles => ({ ...styles, height: 0 })
@@ -94,7 +94,7 @@ export default {
 
 <style scoped lang="css">
   .scroll-area {
-    position: relative;
+    position: absolute;
     height: 100%;
     margin: auto;
   }
