@@ -1,15 +1,14 @@
 <template>
   <b-nav-item-dropdown :right="right" :no-caret="noCaret">
     <template slot="button-content">
-      <slot name="button-content">
-        <img
-          src="static/img/avatars/6.jpg"
-          class="img-avatar"
-          alt="admin@bootstrapmaster.com" />
+      <slot name="header">
+        &#10068;
       </slot>
     </template>
-    <slot>
-      <div :style="{ right: 'auto', height: '400px' }">dropdown</div>
+    <slot name="dropdown">
+      <div :style="{ right: 'auto', height: '200px' }">
+        <span class="text-center">dropdown</span>
+      </div>
     </slot>
   </b-nav-item-dropdown>
 </template>
@@ -25,9 +24,6 @@ export default {
       type: Boolean,
       default: false
     }
-  },
-  data: () => {
-    return { itemsCount: 42 }
   }
 }
 </script>
