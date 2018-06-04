@@ -5,8 +5,6 @@
 </template>
 
 <script>
-// import { asideMenuCssClasses, validBreakpoints, checkBreakpoint } from '../../shared/classes'
-
 export default {
   name: 'AppAside',
   props: {
@@ -26,7 +24,6 @@ export default {
   mounted: function () {
     this.isFixed(this.fixed)
     this.isOffCanvas(this.offCanvas)
-    // this.displayBreakpoint(this.display)
   },
   methods: {
     isFixed (fixed) {
@@ -36,13 +33,6 @@ export default {
     isOffCanvas (offCanvas) {
       offCanvas ? document.body.classList.add('aside-menu-off-canvas') : document.body.classList.remove('aside-menu-off-canvas')
     }
-    // displayBreakpoint (display) {
-    //   let cssClass = asideMenuCssClasses[0]
-    //   if (display && checkBreakpoint(display, validBreakpoints)) {
-    //     cssClass = `aside-menu-${display}-show`
-    //   }
-    //   document.body.classList.add(cssClass)
-    // }
   }
 }
 </script>
