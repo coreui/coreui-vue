@@ -16,35 +16,34 @@ import toggleClasses from '../../shared/toggle-classes'
 export default {
   name: 'AsideToggler',
   props: {
-    mobile: {
+    defaultOpen: {
       type: Boolean,
       default: false
     },
     display: {
       type: String,
       default: ''
-    }
+    },
+    mobile: {
+      type: Boolean,
+      default: false
+    },
   },
   computed: {
     classList () {
       return [
         'navbar-toggler'
-        // 'd-none',
-        // 'd-lg-inline-block'
       ]
     }
   },
-  mounted: function () {
-    // this.toggle()
-  },
   methods: {
-    toggle () {
+    toggle (force) {
       const [display, mobile] = [this.display, this.mobile]
       let cssClass = asideMenuCssClasses[0]
       if (!mobile && display && checkBreakpoint(display, validBreakpoints)) {
         cssClass = `aside-menu-${display}-show`
       }
-      toggleClasses(cssClass, asideMenuCssClasses)
+      toggleClasses(cssClass, asideMenuCssClasses, force)
     },
     asideToggle (e) {
       e.preventDefault()
