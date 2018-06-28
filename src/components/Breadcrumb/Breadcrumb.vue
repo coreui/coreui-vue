@@ -1,8 +1,8 @@
 <template>
   <ol class="breadcrumb">
-    <li class="breadcrumb-item" :key="index" v-for="(item, index) in list">
-      <span class="active" v-if="isLast(index)">{{ showName(item) }}</span>
-      <router-link :to="item" v-else>{{ showName(item) }}</router-link>
+    <li class="breadcrumb-item" :key="index" v-for="(routeObject, index) in routeRecords">
+      <span class="active" v-if="isLast(index)">{{ getName(routeObject) }}</span>
+      <router-link :to="routeObject" v-else>{{ getName(routeObject) }}</router-link>
     </li>
   </ol>
 </template>
@@ -17,17 +17,16 @@ export default {
     }
   },
   methods: {
+    getName (item) {
+      return item.meta && item.meta.label ? item.meta.label : item.name || null
+    },
     isLast (index) {
       return index === this.list.length - 1
-    },
-    showName (item) {
-      if (item.meta && item.meta.label) {
-        item = item.meta && item.meta.label
-      }
-      if (item.name) {
-        item = item.name
-      }
-      return item
+    }
+  },
+  computed: {
+    routeRecords: function () {
+      return this.list.filter((route) => route.name || route.meta.label)
     }
   }
 }
