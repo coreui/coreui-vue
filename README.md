@@ -1,11 +1,13 @@
 # @coreui/vue 
 
 [![Npm badge](https://img.shields.io/npm/v/@coreui/vue.svg)][npm]
-![Rollup badge](https://img.shields.io/badge/Rollup-^0.53.3-ff69b4.svg)
-![Jest](https://img.shields.io/badge/Jest-^22.0.4-blue.svg)
-![Vue](https://img.shields.io/badge/Vue-^2.5.13-brightgreen.svg)
+[![NPM downloads][npm-download]][npm]
+![Rollup badge](https://img.shields.io/badge/Rollup-^0.59.4-ff69b4.svg)
+![Jest](https://img.shields.io/badge/Jest-^22.4.4-blue.svg)
+![Vue](https://img.shields.io/badge/Vue-^2.5.16-brightgreen.svg)
 
 [npm]: https://www.npmjs.com/package/@coreui/vue
+[npm-download]: https://img.shields.io/npm/dm/@coreui/vue.svg?style=flat-square
 
 > A [@coreui/vue](https://coreui.io/vue) `v2` library project
 
