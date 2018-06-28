@@ -1,7 +1,7 @@
 {
   "name": "@coreui/vue",
   "description": "CoreUI Vue Bootstrap 4 layout components",
-  "version": "2.0.0-beta.2",
+  "version": "2.0.0-rc.0",
   "license": "MIT",
   "main": "dist/coreui-vue.common.js",
   "module": "dist/coreui-vue.esm.js",
@@ -100,7 +100,9 @@
     "vue": "^2.5.16",
     "vue-jest": "^2.6.0",
     "vue-loader": "^14.2.2",
-    "vue-template-compiler": "^2.5.16"
+    "vue-server-renderer": "^2.5.16",
+    "vue-template-compiler": "^2.5.16",
+    "vue-test-utils": "^1.0.0-beta.11"
   },
   "lint-staged": {
     "*.{js,vue}": [
