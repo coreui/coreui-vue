@@ -1,11 +1,16 @@
-/* eslint-disable */
 <template>
-  <div></div>
-  <!-- <div class="sidebar-form"></div> -->
+  <div v-if="hasSlotDefault" class="sidebar-form">
+    <slot></slot>
+  </div>
 </template>
 <script>
 
 export default {
-  name: 'sidebar-form'
+  name: 'sidebar-form',
+  computed: {
+    hasSlotDefault() {
+      return !!this.$slots.default;
+    }
+  }
 }
 </script>
