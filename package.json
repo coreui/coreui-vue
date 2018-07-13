@@ -59,7 +59,7 @@
     "lint:fix": "eslint --ext .js,.vue . --fix"
   },
   "dependencies": {
-    "vue-perfect-scrollbar": "^0.1.0"
+    "vue-perfect-scrollbar": "git://github.com/Degfy/vue-perfect-scrollbar.git#1.x"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
