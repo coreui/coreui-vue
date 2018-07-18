@@ -1,11 +1,15 @@
 <template>
-  <div class="sidebar">
+  <div class="sidebar" v-on-clickaway="hideMobile">
     <slot>Sidebar</slot>
   </div>
 </template>
 <script>
+import { mixin as clickaway } from 'vue-clickaway'
+import { hideMobile } from '../../mixins/hideMobile'
+
 export default {
   name: 'sidebar',
+  mixins: [ clickaway, hideMobile ],
   props: {
     fixed: {
       type: Boolean,

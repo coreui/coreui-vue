@@ -50,6 +50,7 @@ export default {
     },
     sidebarToggle (e) {
       e.preventDefault()
+      e.stopPropagation()
       this.toggle()
     }
   }
