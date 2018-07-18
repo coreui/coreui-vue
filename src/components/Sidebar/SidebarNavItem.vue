@@ -5,9 +5,12 @@
 </template>
 
 <script>
+import { hideMobile } from '../../mixins/hideMobile'
+
 export default {
   name: 'sidebar-nav-item',
-  props: {
+    mixins: [ hideMobile ],
+    props: {
     classes: {
       type: String,
       default: ''
@@ -22,13 +25,6 @@ export default {
     },
     itemClasses () {
       return this.classes ? this.classes.split(' ') : ''
-    }
-  },
-  methods: {
-    hideMobile () {
-      if (document.body.classList.contains('sidebar-show')) {
-        document.body.classList.toggle('sidebar-show')
-      }
     }
   }
 }
