@@ -59,6 +59,7 @@
     "lint:fix": "eslint --ext .js,.vue . --fix"
   },
   "dependencies": {
+    "vue-clickaway": "^2.2.2",
     "vue-perfect-scrollbar": "^0.1.0"
   },
   "devDependencies": {
