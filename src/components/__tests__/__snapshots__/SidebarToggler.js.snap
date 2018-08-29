@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SidebarToggler.vue renders correctly 1`] = `
+<button
+  class="navbar-toggler"
+  display="lg"
+  type="button"
+>
+  <span
+    class="navbar-toggler-icon"
+  />
+</button>
+`;
