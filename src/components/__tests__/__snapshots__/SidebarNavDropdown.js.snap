@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SidebarNavDropdown.vue renders correctly 1`] = `
+<li
+  class="nav-item nav-dropdown router-link-exact-active router-link-active"
+  disabled="disabled"
+>
+  <div
+    class="nav-link nav-dropdown-toggle"
+  >
+    <i
+      class="nav-icon"
+    />
+     
+  </div>
+   
+  <ul
+    class="nav-dropdown-items"
+  />
+</li>
+`;

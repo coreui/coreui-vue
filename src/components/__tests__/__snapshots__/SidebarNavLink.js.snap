@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SidebarNavLink.vue renders correctly 1`] = `
+<div>
+  <a
+    class="router-link-exact-active router-link-active nav-link"
+    href="#/"
+  >
+    <i
+      class="nav-icon"
+    />
+     
+    
+    <!---->
+  </a>
+</div>
+`;

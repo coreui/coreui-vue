@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderDropdown.vue renders correctly 1`] = `
+<b-nav-item-dropdown>
+  <template>
+    
+      ❔
+    
+  </template>
+   
+  <div
+    style="height: 200px;"
+  >
+    <span
+      class="text-center"
+    >
+      dropdown
+    </span>
+  </div>
+</b-nav-item-dropdown>
+`;
