@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer.vue renders correctly 1`] = `
+<footer
+  class="app-footer"
+>
+  Footer
+</footer>
+`;
