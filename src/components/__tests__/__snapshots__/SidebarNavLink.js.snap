@@ -2,9 +2,11 @@
 
 exports[`SidebarNavLink.vue renders correctly 1`] = `
 <div>
-  <a
-    class="router-link-exact-active router-link-active nav-link"
-    href="#/"
+  <router-link-stub
+    class="nav-link"
+    event="click"
+    tag="a"
+    to=""
   >
     <i
       class="nav-icon"
@@ -12,6 +14,6 @@ exports[`SidebarNavLink.vue renders correctly 1`] = `
      
     
     <!---->
-  </a>
+  </router-link-stub>
 </div>
 `;

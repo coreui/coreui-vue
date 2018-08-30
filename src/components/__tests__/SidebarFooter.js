@@ -1,4 +1,4 @@
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 import SidebarFooter from "../Sidebar/SidebarFooter";
 
 describe("SidebarFooter.vue", () => {

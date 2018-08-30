@@ -1,9 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SidebarNavDropdown.vue renders correctly 1`] = `
-<li
-  class="nav-item nav-dropdown router-link-exact-active router-link-active"
-  disabled="disabled"
+<router-link-stub
+  class="nav-item nav-dropdown"
+  disabled=""
+  event="click"
+  tag="li"
+  to=""
 >
   <div
     class="nav-link nav-dropdown-toggle"
@@ -17,5 +20,5 @@ exports[`SidebarNavDropdown.vue renders correctly 1`] = `
   <ul
     class="nav-dropdown-items"
   />
-</li>
+</router-link-stub>
 `;

@@ -1,4 +1,4 @@
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 import SidebarNavDivider from "../Sidebar/SidebarNavDivider";
 
 describe("SidebarNavDivider.vue", () => {

@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from 'vue-test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
 import VueRouter from 'vue-router'
 import SidebarNavLink from "../Sidebar/SidebarNavLink";
 
@@ -9,7 +9,9 @@ const router = new VueRouter()
 describe("SidebarNavLink.vue", () => {
   // Inspect the raw component options
   test("should have default props", () => {
-    const wrapper = mount(SidebarNavLink, {
+    const wrapper = shallowMount(SidebarNavLink, {
+      localVue,
+      router,
       propsData: {
         name: 'test',
         url: '',
@@ -31,7 +33,7 @@ describe("SidebarNavLink.vue", () => {
     expect(typeof SidebarNavLink.computed.isExternalLink).toBe('function')
   })
   it('renders correctly', () => {
-    const wrapper = mount(SidebarNavLink, { localVue, router })
+    const wrapper = shallowMount(SidebarNavLink, { localVue, router })
     expect(wrapper.element).toMatchSnapshot()
     expect(wrapper.is('div')).toBe(true)
   })

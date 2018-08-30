@@ -1,4 +1,4 @@
-import { mount } from "vue-test-utils";
+import { mount } from "@vue/test-utils";
 import Footer from "../Footer/Footer";
 
 describe("Footer.vue", () => {
