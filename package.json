@@ -63,6 +63,7 @@
     "vue-perfect-scrollbar": "^0.1.0"
   },
   "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.24",
     "babel-core": "^6.26.3",
     "babel-eslint": "^9.0.0",
     "babel-jest": "^23.4.2",
@@ -103,8 +104,7 @@
     "vue-loader": "^15.4.1",
     "vue-router": "^3.0.1",
     "vue-server-renderer": "^2.5.17",
-    "vue-template-compiler": "^2.5.17",
-    "vue-test-utils": "^1.0.0-beta.11"
+    "vue-template-compiler": "^2.5.17"
   },
   "lint-staged": {
     "*.{js,vue}": [

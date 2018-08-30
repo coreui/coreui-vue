@@ -7,7 +7,7 @@ exports[`Switch.vue renders correctly 1`] = `
   <input
     class="switch-input form-check-input"
     false-value="uncheckedValue"
-    id="switch-id-1"
+    id="switch-id-3"
     true-value="value"
     type="checkbox"
     value="true"

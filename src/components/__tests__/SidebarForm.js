@@ -1,4 +1,4 @@
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 import SidebarForm from "../Sidebar/SidebarForm";
 
 describe("SidebarForm.vue", () => {

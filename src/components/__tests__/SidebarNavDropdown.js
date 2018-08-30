@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from 'vue-test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
 import VueRouter from 'vue-router'
 import SidebarNavDropdown from "../Sidebar/SidebarNavDropdown";
 
@@ -9,7 +9,9 @@ const router = new VueRouter()
 describe("SidebarNavDropdown.vue", () => {
   // Inspect the raw component options
   it("should have default props", () => {
-    const wrapper = mount(SidebarNavDropdown, {
+    const wrapper = shallowMount(SidebarNavDropdown, {
+      localVue,
+      router,
       propsData: {
         name: 'test',
         url: '',
@@ -27,8 +29,8 @@ describe("SidebarNavDropdown.vue", () => {
     expect(typeof SidebarNavDropdown.methods.handleClick).toBe('function')
   })
   it('renders correctly', () => {
-    const wrapper = mount(SidebarNavDropdown, { localVue, router })
+    const wrapper = shallowMount(SidebarNavDropdown, { localVue, router })
     expect(wrapper.element).toMatchSnapshot()
-    expect(wrapper.is('li')).toBe(true)
+    expect(wrapper.is('router-link-stub')).toBe(true)
   })
 });

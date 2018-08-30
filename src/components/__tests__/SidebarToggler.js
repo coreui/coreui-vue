@@ -1,4 +1,4 @@
-import { mount } from "vue-test-utils";
+import { mount } from "@vue/test-utils";
 import SidebarToggler from "../Sidebar/SidebarToggler";
 
 describe("SidebarToggler.vue", () => {

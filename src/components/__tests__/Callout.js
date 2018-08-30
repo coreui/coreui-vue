@@ -1,4 +1,4 @@
-import { mount } from "vue-test-utils";
+import { mount } from "@vue/test-utils";
 import Callout from "../Callout/Callout";
 
 describe("Callout.vue", () => {

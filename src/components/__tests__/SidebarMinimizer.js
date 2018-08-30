@@ -1,4 +1,4 @@
-import { mount } from "vue-test-utils";
+import { mount } from "@vue/test-utils";
 import SidebarMinimizer from "../Sidebar/SidebarMinimizer";
 
 describe("SidebarMinimizer.vue", () => {
