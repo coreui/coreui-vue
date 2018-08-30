@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SidebarNavLabel.vue renders correctly 1`] = `
+<li
+  class="nav-item hidden-cn"
+>
+  <a
+    class="nav-label"
+    href="#"
+  >
+    <i
+      class="fa fa-circle text-info "
+    />
+     
+  </a>
+</li>
+`;

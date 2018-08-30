@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Aside.vue renders correctly 1`] = `
+<aside
+  class="aside-menu"
+>
+  Aside
+</aside>
+`;
