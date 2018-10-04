@@ -3,7 +3,7 @@
 exports[`AsideToggler.vue renders correctly 1`] = `
 <button
   class="navbar-toggler"
-  display=""
+  display="lg"
   type="button"
 >
   <span

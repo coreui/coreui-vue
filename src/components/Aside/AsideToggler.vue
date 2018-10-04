@@ -22,7 +22,7 @@ export default {
     },
     display: {
       type: String,
-      default: ''
+      default: 'lg'
     },
     mobile: {
       type: Boolean,
@@ -35,6 +35,9 @@ export default {
         'navbar-toggler'
       ]
     }
+  },
+  mounted: function() {
+    this.toggle(this.defaultOpen)
   },
   methods: {
     toggle (force) {
