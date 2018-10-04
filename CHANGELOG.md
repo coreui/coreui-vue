@@ -1,5 +1,10 @@
 ### [@coreui/vue](https://coreui.io/) changelog
 
+##### v2.0.2
+- fix(AsideToggler): add missing `display { default:'lg' }` prop value
+- fix(AsideToggler): add missing `defaultOpen` prop value handling
+- refactor(shared): add missing `index.js`
+
 ##### v2.0.1
 - fix(SidebarNav): dirty fix for `rtl` ps scrolling issue
 - refactor(SidebarMinimizer): extract `togglePs` mixin
