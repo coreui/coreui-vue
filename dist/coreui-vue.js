@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('vue-clickaway'), require('vue-perfect-scrollbar')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'vue-clickaway', 'vue-perfect-scrollbar'], factory) :
-  (factory((global['coreui-vue'] = {}),global.vueClickaway,global.vuePerfectScrollbar));
-}(this, (function (exports,vueClickaway,VuePerfectScrollbar) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('vue-clickaway'), require('vue-perfect-scrollbar'), require('vue-chartjs'), require('@coreui/coreui-plugin-chartjs-custom-tooltips'), require('@/mixins/charts/chartMixins')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'vue-clickaway', 'vue-perfect-scrollbar', 'vue-chartjs', '@coreui/coreui-plugin-chartjs-custom-tooltips', '@/mixins/charts/chartMixins'], factory) :
+  (factory((global['coreui-vue'] = {}),global.vueClickaway,global.vuePerfectScrollbar,null,null,null));
+}(this, (function (exports,vueClickaway,VuePerfectScrollbar,vueChartjs,coreuiPluginChartjsCustomTooltips,chartMixins) { 'use strict';
 
   VuePerfectScrollbar = VuePerfectScrollbar && VuePerfectScrollbar.hasOwnProperty('default') ? VuePerfectScrollbar['default'] : VuePerfectScrollbar;
 
@@ -2852,6 +2852,1088 @@
 
   var SidebarToggler = __vue_normalize__$k({ render: __vue_render__$k, staticRenderFns: __vue_staticRenderFns__$k }, __vue_inject_styles__$k, __vue_script__$k, __vue_scope_id__$k, __vue_is_functional_template__$k, __vue_module_identifier__$k, undefined, undefined);
 
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+
+  var script$l = {
+    name: 'CuiWidget01',
+    data: function data() {
+      return {
+        backgroundColor: '',
+        styleClasses: ''
+      };
+    },
+    created: function created() {
+      if (this.variant.includes('background')) {
+        this.backgroundColor = this.variant.replace('background-', '');
+        this.styleClasses = 'text-white bg-' + this.backgroundColor;
+      }
+    },
+
+    props: {
+      header: {
+        type: String,
+        default: 'header:string'
+      },
+      text: {
+        type: String,
+        default: 'text:string'
+      },
+      variant: {
+        type: String,
+        default: ''
+      },
+      footer: {
+        type: String,
+        default: 'footer:string'
+      },
+      value: {
+        type: Number,
+        default: 25
+      }
+    }
+  };
+
+  /* script */
+  var __vue_script__$l = script$l;
+
+  /* template */
+  var __vue_render__$l = function __vue_render__() {
+    var _vm = this;
+    var _h = _vm.$createElement;
+    var _c = _vm._self._c || _h;
+    return _c("b-card", { class: _vm.styleClasses }, [_c("div", { staticClass: "h4 m-0" }, [_vm._v(_vm._s(_vm.header))]), _vm._v(" "), _c("div", [_vm._v(_vm._s(_vm.text))]), _vm._v(" "), _c("b-progress", {
+      class: [_vm.backgroundColor ? "progress-white" : "", "progress-xs my-3 mb-0"],
+      attrs: { height: "{}", variant: _vm.variant, value: _vm.value }
+    }), _vm._v(" "), _c("small", { staticClass: "text-muted" }, [_vm._v(_vm._s(_vm.footer))])], 1);
+  };
+  var __vue_staticRenderFns__$l = [];
+  __vue_render__$l._withStripped = true;
+
+  /* style */
+  var __vue_inject_styles__$l = undefined;
+  /* scoped */
+  var __vue_scope_id__$l = undefined;
+  /* module identifier */
+  var __vue_module_identifier__$l = undefined;
+  /* functional template */
+  var __vue_is_functional_template__$l = false;
+  /* component normalizer */
+  function __vue_normalize__$l(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+    var component = (typeof script === 'function' ? script.options : script) || {};
+
+    // For security concerns, we use only base name in production mode.
+    component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CuiWidget01.vue";
+
+    if (!component.render) {
+      component.render = template.render;
+      component.staticRenderFns = template.staticRenderFns;
+      component._compiled = true;
+
+      if (functional) component.functional = true;
+    }
+
+    component._scopeId = scope;
+
+    return component;
+  }
+  /* style inject */
+
+  /* style inject SSR */
+
+  var CuiWidget01 = __vue_normalize__$l({ render: __vue_render__$l, staticRenderFns: __vue_staticRenderFns__$l }, __vue_inject_styles__$l, __vue_script__$l, __vue_scope_id__$l, __vue_is_functional_template__$l, __vue_module_identifier__$l, undefined, undefined);
+
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+
+  var script$m = {
+    name: 'CuiWidget02',
+    props: {
+      iconClasses: {
+        type: String,
+        default: 'fa fa-cogs bg-primary'
+      },
+      header: {
+        type: String,
+        default: 'header:string'
+      },
+      text: {
+        type: String,
+        default: 'text:string'
+      },
+      showLink: {
+        type: Boolean,
+        default: false
+      },
+      link: {
+        type: String,
+        default: '#'
+      }
+    }
+  };
+
+  /* script */
+  var __vue_script__$m = script$m;
+
+  /* template */
+  var __vue_render__$m = function __vue_render__() {
+    var _vm = this;
+    var _h = _vm.$createElement;
+    var _c = _vm._self._c || _h;
+    return _c("b-card", { attrs: { "no-body": true, "footer-class": "px-3 py-2" } }, [_c("b-card-body", { staticClass: "p-3 clearfix" }, [_c("i", {
+      staticClass: "fa fa-cogs bg-primary p-3 font-2xl mr-3 float-left",
+      class: _vm.iconClasses
+    }), _vm._v(" "), _c("div", { staticClass: "h5 text-primary mb-0 mt-2" }, [_vm._v(_vm._s(_vm.header))]), _vm._v(" "), _c("div", { staticClass: "text-muted text-uppercase font-weight-bold font-xs" }, [_vm._v(_vm._s(_vm.text))])]), _vm._v(" "), _vm.showLink ? _c("div", { attrs: { slot: "footer" }, slot: "footer" }, [_c("b-link", {
+      staticClass: "font-weight-bold font-xs btn-block text-muted",
+      attrs: { href: _vm.link }
+    }, [_vm._v("View More "), _c("i", {
+      staticClass: "fa fa-angle-right float-right font-lg"
+    })])], 1) : _vm._e()], 1);
+  };
+  var __vue_staticRenderFns__$m = [];
+  __vue_render__$m._withStripped = true;
+
+  /* style */
+  var __vue_inject_styles__$m = undefined;
+  /* scoped */
+  var __vue_scope_id__$m = undefined;
+  /* module identifier */
+  var __vue_module_identifier__$m = undefined;
+  /* functional template */
+  var __vue_is_functional_template__$m = false;
+  /* component normalizer */
+  function __vue_normalize__$m(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+    var component = (typeof script === 'function' ? script.options : script) || {};
+
+    // For security concerns, we use only base name in production mode.
+    component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CuiWidget02.vue";
+
+    if (!component.render) {
+      component.render = template.render;
+      component.staticRenderFns = template.staticRenderFns;
+      component._compiled = true;
+
+      if (functional) component.functional = true;
+    }
+
+    component._scopeId = scope;
+
+    return component;
+  }
+  /* style inject */
+
+  /* style inject SSR */
+
+  var CuiWidget02 = __vue_normalize__$m({ render: __vue_render__$m, staticRenderFns: __vue_staticRenderFns__$m }, __vue_inject_styles__$m, __vue_script__$m, __vue_scope_id__$m, __vue_is_functional_template__$m, __vue_module_identifier__$m, undefined, undefined);
+
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+
+  var script$n = {
+    name: 'CuiWidget03',
+    props: {
+      iconClasses: {
+        type: String,
+        default: 'fa fa-cogs bg-primary'
+      },
+      header: {
+        type: String,
+        default: 'header:string'
+      },
+      text: {
+        type: String,
+        default: 'text:string'
+      }
+    }
+  };
+
+  /* script */
+  var __vue_script__$n = script$n;
+
+  /* template */
+  var __vue_render__$n = function __vue_render__() {
+    var _vm = this;
+    var _h = _vm.$createElement;
+    var _c = _vm._self._c || _h;
+    return _c("b-card", { attrs: { "no-body": true } }, [_c("b-card-body", { staticClass: "p-0 clearfix" }, [_c("i", {
+      staticClass: "p-4 font-2xl mr-3 float-left",
+      class: _vm.iconClasses
+    }), _vm._v(" "), _c("div", { staticClass: "h5 text-primary mb-0 pt-3" }, [_vm._v(_vm._s(_vm.header))]), _vm._v(" "), _c("div", { staticClass: "text-muted text-uppercase font-weight-bold font-xs" }, [_vm._v(_vm._s(_vm.text))])])], 1);
+  };
+  var __vue_staticRenderFns__$n = [];
+  __vue_render__$n._withStripped = true;
+
+  /* style */
+  var __vue_inject_styles__$n = undefined;
+  /* scoped */
+  var __vue_scope_id__$n = undefined;
+  /* module identifier */
+  var __vue_module_identifier__$n = undefined;
+  /* functional template */
+  var __vue_is_functional_template__$n = false;
+  /* component normalizer */
+  function __vue_normalize__$n(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+    var component = (typeof script === 'function' ? script.options : script) || {};
+
+    // For security concerns, we use only base name in production mode.
+    component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CuiWidget03.vue";
+
+    if (!component.render) {
+      component.render = template.render;
+      component.staticRenderFns = template.staticRenderFns;
+      component._compiled = true;
+
+      if (functional) component.functional = true;
+    }
+
+    component._scopeId = scope;
+
+    return component;
+  }
+  /* style inject */
+
+  /* style inject SSR */
+
+  var CuiWidget03 = __vue_normalize__$n({ render: __vue_render__$n, staticRenderFns: __vue_staticRenderFns__$n }, __vue_inject_styles__$n, __vue_script__$n, __vue_scope_id__$n, __vue_is_functional_template__$n, __vue_module_identifier__$n, undefined, undefined);
+
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+
+  var script$o = {
+    name: 'CuiWidget04',
+    props: {
+      type: {
+        type: String,
+        default: 'facebook'
+      },
+      rightHeader: {
+        type: String,
+        default: 'rightHeader:string'
+      },
+      rightFooter: {
+        type: String,
+        default: 'rightFooter:string'
+      },
+      leftHeader: {
+        type: String,
+        default: 'leftHeader:string'
+      },
+      leftFooter: {
+        type: String,
+        default: 'leftFooter:string'
+      }
+    }
+  };
+
+  /* script */
+  var __vue_script__$o = script$o;
+
+  /* template */
+  var __vue_render__$o = function __vue_render__() {
+    var _vm = this;
+    var _h = _vm.$createElement;
+    var _c = _vm._self._c || _h;
+    return _c("div", { staticClass: "brand-card" }, [_c("div", { staticClass: "brand-card-header", class: "bg-" + _vm.type }, [_c("i", { staticClass: "fa", class: "fa-" + _vm.type }), _vm._v(" "), _c("div", { staticClass: "chart-wrapper" }, [_vm._t("default")], 2)]), _vm._v(" "), _c("div", { staticClass: "brand-card-body" }, [_c("div", [_c("div", { staticClass: "text-value" }, [_vm._v(_vm._s(_vm.rightHeader))]), _vm._v(" "), _c("div", { staticClass: "text-uppercase text-muted small" }, [_vm._v(_vm._s(_vm.rightFooter))])]), _vm._v(" "), _c("div", [_c("div", { staticClass: "text-value" }, [_vm._v(_vm._s(_vm.leftHeader))]), _vm._v(" "), _c("div", { staticClass: "text-uppercase text-muted small" }, [_vm._v(_vm._s(_vm.leftFooter))])])])]);
+  };
+  var __vue_staticRenderFns__$o = [];
+  __vue_render__$o._withStripped = true;
+
+  /* style */
+  var __vue_inject_styles__$o = undefined;
+  /* scoped */
+  var __vue_scope_id__$o = undefined;
+  /* module identifier */
+  var __vue_module_identifier__$o = undefined;
+  /* functional template */
+  var __vue_is_functional_template__$o = false;
+  /* component normalizer */
+  function __vue_normalize__$o(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+    var component = (typeof script === 'function' ? script.options : script) || {};
+
+    // For security concerns, we use only base name in production mode.
+    component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CuiWidget04.vue";
+
+    if (!component.render) {
+      component.render = template.render;
+      component.staticRenderFns = template.staticRenderFns;
+      component._compiled = true;
+
+      if (functional) component.functional = true;
+    }
+
+    component._scopeId = scope;
+
+    return component;
+  }
+  /* style inject */
+
+  /* style inject SSR */
+
+  var CuiWidget04 = __vue_normalize__$o({ render: __vue_render__$o, staticRenderFns: __vue_staticRenderFns__$o }, __vue_inject_styles__$o, __vue_script__$o, __vue_scope_id__$o, __vue_is_functional_template__$o, __vue_module_identifier__$o, undefined, undefined);
+
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+
+  var script$p = {
+    name: 'CuiWidget05',
+    data: function data() {
+      return {
+        backgroundColor: '',
+        styleClasses: ''
+      };
+    },
+    created: function created() {
+      if (this.variant.includes('background')) {
+        this.backgroundColor = this.variant.replace('background-', '');
+        this.styleClasses = 'text-white bg-' + this.backgroundColor;
+      }
+    },
+
+    props: {
+      iconClasses: {
+        type: String,
+        default: 'icon-people'
+      },
+      header: {
+        type: String,
+        default: 'header:string'
+      },
+      text: {
+        type: String,
+        default: 'text:string'
+      },
+      variant: {
+        type: String,
+        default: ''
+      },
+      value: {
+        type: Number,
+        default: 25
+      }
+    }
+  };
+
+  /* script */
+  var __vue_script__$p = script$p;
+
+  /* template */
+  var __vue_render__$p = function __vue_render__() {
+    var _vm = this;
+    var _h = _vm.$createElement;
+    var _c = _vm._self._c || _h;
+    return _c("b-card", { class: _vm.styleClasses }, [_c("div", { staticClass: "h1 text-muted text-right mb-4" }, [_c("i", { class: _vm.iconClasses })]), _vm._v(" "), _c("div", { staticClass: "h4 mb-0" }, [_vm._v(_vm._s(_vm.header))]), _vm._v(" "), _c("small", { staticClass: "text-muted text-uppercase font-weight-bold" }, [_vm._v(_vm._s(_vm.text))]), _vm._v(" "), _c("b-progress", {
+      class: [_vm.backgroundColor ? "progress-white" : "", "progress-xs my-3 mb-0"],
+      attrs: { height: "{}", variant: _vm.variant, value: _vm.value }
+    })], 1);
+  };
+  var __vue_staticRenderFns__$p = [];
+  __vue_render__$p._withStripped = true;
+
+  /* style */
+  var __vue_inject_styles__$p = undefined;
+  /* scoped */
+  var __vue_scope_id__$p = undefined;
+  /* module identifier */
+  var __vue_module_identifier__$p = undefined;
+  /* functional template */
+  var __vue_is_functional_template__$p = false;
+  /* component normalizer */
+  function __vue_normalize__$p(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+    var component = (typeof script === 'function' ? script.options : script) || {};
+
+    // For security concerns, we use only base name in production mode.
+    component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CuiWidget05.vue";
+
+    if (!component.render) {
+      component.render = template.render;
+      component.staticRenderFns = template.staticRenderFns;
+      component._compiled = true;
+
+      if (functional) component.functional = true;
+    }
+
+    component._scopeId = scope;
+
+    return component;
+  }
+  /* style inject */
+
+  /* style inject SSR */
+
+  var CuiWidget05 = __vue_normalize__$p({ render: __vue_render__$p, staticRenderFns: __vue_staticRenderFns__$p }, __vue_inject_styles__$p, __vue_script__$p, __vue_scope_id__$p, __vue_is_functional_template__$p, __vue_module_identifier__$p, undefined, undefined);
+
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+
+  var script$q = {
+    name: 'CuiWidget06',
+    data: function data() {
+      return {
+        backgroundColor: ''
+      };
+    },
+    created: function created() {},
+
+    props: {
+      cardClasses: {
+        type: String,
+        default: ''
+      },
+      header: {
+        type: String,
+        default: 'header:string'
+      },
+      text: {
+        type: String,
+        default: 'text:string'
+      }
+    }
+  };
+
+  /* script */
+  var __vue_script__$q = script$q;
+
+  /* template */
+  var __vue_render__$q = function __vue_render__() {
+    var _vm = this;
+    var _h = _vm.$createElement;
+    var _c = _vm._self._c || _h;
+    return _c("b-card", { class: _vm.cardClasses, attrs: { "no-body": "" } }, [_c("b-card-body", { staticClass: "pb-0" }, [_vm._t("dropdown"), _vm._v(" "), _c("h4", { staticClass: "mb-0" }, [_vm._v(_vm._s(_vm.header))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.text))])], 2), _vm._v(" "), _c("div", { staticClass: "chart-wrapper" }, [_vm._t("chart")], 2)], 1);
+  };
+  var __vue_staticRenderFns__$q = [];
+  __vue_render__$q._withStripped = true;
+
+  /* style */
+  var __vue_inject_styles__$q = undefined;
+  /* scoped */
+  var __vue_scope_id__$q = undefined;
+  /* module identifier */
+  var __vue_module_identifier__$q = undefined;
+  /* functional template */
+  var __vue_is_functional_template__$q = false;
+  /* component normalizer */
+  function __vue_normalize__$q(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+    var component = (typeof script === 'function' ? script.options : script) || {};
+
+    // For security concerns, we use only base name in production mode.
+    component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CuiWidget06.vue";
+
+    if (!component.render) {
+      component.render = template.render;
+      component.staticRenderFns = template.staticRenderFns;
+      component._compiled = true;
+
+      if (functional) component.functional = true;
+    }
+
+    component._scopeId = scope;
+
+    return component;
+  }
+  /* style inject */
+
+  /* style inject SSR */
+
+  var CuiWidget06 = __vue_normalize__$q({ render: __vue_render__$q, staticRenderFns: __vue_staticRenderFns__$q }, __vue_inject_styles__$q, __vue_script__$q, __vue_scope_id__$q, __vue_is_functional_template__$q, __vue_module_identifier__$q, undefined, undefined);
+
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+
+  var script$r = {
+    name: 'CuiWidget07',
+    props: {
+      cardClasses: {
+        type: String,
+        default: 'bg-primary'
+      },
+      rightHeader: {
+        type: String,
+        default: 'rightHeader:string'
+      },
+      rightFooter: {
+        type: String,
+        default: 'rightFooter:string'
+      },
+      leftHeader: {
+        type: String,
+        default: 'leftHeader:string'
+      },
+      leftFooter: {
+        type: String,
+        default: 'leftFooter:string'
+      }
+    }
+  };
+
+  /* script */
+  var __vue_script__$r = script$r;
+
+  /* template */
+  var __vue_render__$r = function __vue_render__() {
+    var _vm = this;
+    var _h = _vm.$createElement;
+    var _c = _vm._self._c || _h;
+    return _c("div", { staticClass: "card" }, [_c("div", { staticClass: "card-header", class: _vm.cardClasses }, [_c("div", { staticClass: "font-weight-bold" }, [_c("span", [_vm._v(_vm._s(_vm.rightHeader))]), _vm._v(" "), _c("span", { staticClass: "float-right" }, [_vm._v(_vm._s(_vm.leftHeader))])]), _vm._v(" "), _c("div", [_c("span", [_c("small", [_vm._v(_vm._s(_vm.rightFooter))])]), _vm._v(" "), _c("span", { staticClass: "float-right" }, [_c("small", [_vm._v(_vm._s(_vm.leftFooter))])])]), _vm._v(" "), _c("div", { staticClass: "chart-wrapper" }, [_vm._t("default")], 2)])]);
+  };
+  var __vue_staticRenderFns__$r = [];
+  __vue_render__$r._withStripped = true;
+
+  /* style */
+  var __vue_inject_styles__$r = undefined;
+  /* scoped */
+  var __vue_scope_id__$r = undefined;
+  /* module identifier */
+  var __vue_module_identifier__$r = undefined;
+  /* functional template */
+  var __vue_is_functional_template__$r = false;
+  /* component normalizer */
+  function __vue_normalize__$r(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+    var component = (typeof script === 'function' ? script.options : script) || {};
+
+    // For security concerns, we use only base name in production mode.
+    component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CuiWidget07.vue";
+
+    if (!component.render) {
+      component.render = template.render;
+      component.staticRenderFns = template.staticRenderFns;
+      component._compiled = true;
+
+      if (functional) component.functional = true;
+    }
+
+    component._scopeId = scope;
+
+    return component;
+  }
+  /* style inject */
+
+  /* style inject SSR */
+
+  var CuiWidget07 = __vue_normalize__$r({ render: __vue_render__$r, staticRenderFns: __vue_staticRenderFns__$r }, __vue_inject_styles__$r, __vue_script__$r, __vue_scope_id__$r, __vue_is_functional_template__$r, __vue_module_identifier__$r, undefined, undefined);
+
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+
+  var script$s = {
+    name: 'CuiWidget08',
+    props: {
+      cardClasses: {
+        type: String,
+        default: 'bg-primary'
+      },
+      header: {
+        type: String,
+        default: 'header:string'
+      },
+      text: {
+        type: String,
+        default: 'text:string'
+      }
+    }
+  };
+
+  /* script */
+  var __vue_script__$s = script$s;
+
+  /* template */
+  var __vue_render__$s = function __vue_render__() {
+    var _vm = this;
+    var _h = _vm.$createElement;
+    var _c = _vm._self._c || _h;
+    return _c("div", { staticClass: "card" }, [_c("div", { staticClass: "card-body text-center" }, [_c("div", { staticClass: "text-muted small text-uppercase font-weight-bold" }, [_vm._v(_vm._s(_vm.header))]), _vm._v(" "), _c("div", { staticClass: "h2 py-3" }, [_vm._v(_vm._s(_vm.text))]), _vm._v(" "), _c("div", { staticClass: "chart-wrapper" }, [_vm._t("default")], 2)])]);
+  };
+  var __vue_staticRenderFns__$s = [];
+  __vue_render__$s._withStripped = true;
+
+  /* style */
+  var __vue_inject_styles__$s = undefined;
+  /* scoped */
+  var __vue_scope_id__$s = undefined;
+  /* module identifier */
+  var __vue_module_identifier__$s = undefined;
+  /* functional template */
+  var __vue_is_functional_template__$s = false;
+  /* component normalizer */
+  function __vue_normalize__$s(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+    var component = (typeof script === 'function' ? script.options : script) || {};
+
+    // For security concerns, we use only base name in production mode.
+    component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CuiWidget08.vue";
+
+    if (!component.render) {
+      component.render = template.render;
+      component.staticRenderFns = template.staticRenderFns;
+      component._compiled = true;
+
+      if (functional) component.functional = true;
+    }
+
+    component._scopeId = scope;
+
+    return component;
+  }
+  /* style inject */
+
+  /* style inject SSR */
+
+  var CuiWidget08 = __vue_normalize__$s({ render: __vue_render__$s, staticRenderFns: __vue_staticRenderFns__$s }, __vue_inject_styles__$s, __vue_script__$s, __vue_scope_id__$s, __vue_is_functional_template__$s, __vue_module_identifier__$s, undefined, undefined);
+
+  var script$t = {
+    name: 'CuiSimpleBarChart',
+    extends: vueChartjs.Bar,
+    mixins: [chartMixins.generatedLabels, chartMixins.generatedBackgroundColor, chartMixins.generatedBorderColor, chartMixins.generatedOptions],
+    props: {
+      data: {
+        type: Array,
+        default: function _default() {
+          return [0, 22, 34, 46, 58, 70, 46, 23, 45, 78, 34, 12];
+        }
+      },
+      height: {
+        type: Number,
+        default: 40
+      },
+      label: {
+        type: String,
+        default: 'label|string'
+      },
+      borderColor: {
+        type: String,
+        default: 'rgba(255,255,255,.55)'
+      },
+      backgroundColor: {
+        type: String,
+        default: 'rgba(0,0,0,.2)'
+      },
+      labels: Array,
+      options: Object,
+      finalOptions: {
+        type: Object,
+        default: function _default() {
+          return {
+            tooltips: {
+              enabled: false,
+              custom: coreuiPluginChartjsCustomTooltips.CustomTooltips
+            },
+            maintainAspectRatio: false,
+            legend: {
+              display: false
+            },
+            scales: {
+              xAxes: [{
+                display: false,
+                categoryPercentage: 1,
+                barPercentage: 0.5
+              }],
+              yAxes: [{
+                display: false
+              }]
+            }
+          };
+        }
+      }
+    },
+    mounted: function mounted() {
+      var dataset = [{
+        label: this.label,
+        backgroundColor: this.generatedBackgroundColor,
+        borderColor: this.generatedBorderColor,
+        data: this.data
+      }];
+      this.renderChart({
+        labels: this.generatedLabels,
+        datasets: dataset
+      }, this.generatedOptions);
+    }
+  };
+
+  /* script */
+  var __vue_script__$t = script$t;
+
+  /* template */
+
+  /* style */
+  var __vue_inject_styles__$t = undefined;
+  /* scoped */
+  var __vue_scope_id__$t = undefined;
+  /* module identifier */
+  var __vue_module_identifier__$t = undefined;
+  /* functional template */
+  var __vue_is_functional_template__$t = undefined;
+  /* component normalizer */
+  function __vue_normalize__$t(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+    var component = (typeof script === 'function' ? script.options : script) || {};
+
+    // For security concerns, we use only base name in production mode.
+    component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Charts\\CuiSimpleBarChart.vue";
+
+    if (!component.render) {
+      component.render = template.render;
+      component.staticRenderFns = template.staticRenderFns;
+      component._compiled = true;
+
+      if (functional) component.functional = true;
+    }
+
+    component._scopeId = scope;
+
+    return component;
+  }
+  /* style inject */
+
+  /* style inject SSR */
+
+  var CuiSimpleBarChart = __vue_normalize__$t({}, __vue_inject_styles__$t, __vue_script__$t, __vue_scope_id__$t, __vue_is_functional_template__$t, __vue_module_identifier__$t, undefined, undefined);
+
+  var script$u = {
+    name: 'CuiSimpleLineChart',
+    extends: vueChartjs.Line,
+    mixins: [chartMixins.generatedLabels, chartMixins.generatedBackgroundColor, chartMixins.generatedBorderColor, chartMixins.generatedPointHoverBackgroundColor, chartMixins.generatedOptions],
+    props: {
+      data: {
+        type: Array,
+        default: function _default() {
+          return [0, 22, 34, 46, 58, 70, 46, 23, 45, 78, 34, 12];
+        }
+      },
+      height: {
+        type: Number,
+        default: 40
+      },
+      label: {
+        type: String,
+        default: 'label|string'
+      },
+      borderColor: {
+        type: String,
+        default: 'rgba(255,255,255,.55)'
+      },
+      labels: Array,
+      backgroundColor: {
+        type: String,
+        default: 'transparent'
+      },
+      pointHoverBackgroundColor: {
+        type: String,
+        default: 'transparent'
+      },
+      options: Object,
+      finalOptions: {
+        type: Object,
+        default: function _default() {
+          return {
+            tooltips: {
+              enabled: false,
+              custom: coreuiPluginChartjsCustomTooltips.CustomTooltips
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+              display: false
+            },
+            scales: {
+              xAxes: [{
+                display: false
+              }],
+              yAxes: [{
+                display: false
+              }]
+            },
+            elements: {
+              line: {
+                borderWidth: 2
+              },
+              point: {
+                radius: 0,
+                hitRadius: 10,
+                hoverRadius: 4
+              }
+            }
+          };
+        }
+      }
+    },
+    mounted: function mounted() {
+      var datasets = [{
+        label: this.label,
+        borderColor: this.generatedBorderColor,
+        backgroundColor: this.generatedBackgroundColor,
+        pointHoverBackgroundColor: this.generatedPointHoverBackgroundColor,
+        data: this.data
+      }];
+      this.renderChart({
+        labels: this.generatedLabels,
+        datasets: datasets
+      }, this.generatedOptions);
+    }
+  };
+
+  /* script */
+  var __vue_script__$u = script$u;
+
+  /* template */
+
+  /* style */
+  var __vue_inject_styles__$u = undefined;
+  /* scoped */
+  var __vue_scope_id__$u = undefined;
+  /* module identifier */
+  var __vue_module_identifier__$u = undefined;
+  /* functional template */
+  var __vue_is_functional_template__$u = undefined;
+  /* component normalizer */
+  function __vue_normalize__$u(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+    var component = (typeof script === 'function' ? script.options : script) || {};
+
+    // For security concerns, we use only base name in production mode.
+    component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Charts\\CuiSimpleLineChart.vue";
+
+    if (!component.render) {
+      component.render = template.render;
+      component.staticRenderFns = template.staticRenderFns;
+      component._compiled = true;
+
+      if (functional) component.functional = true;
+    }
+
+    component._scopeId = scope;
+
+    return component;
+  }
+  /* style inject */
+
+  /* style inject SSR */
+
+  var CuiSimpleLineChart = __vue_normalize__$u({}, __vue_inject_styles__$u, __vue_script__$u, __vue_scope_id__$u, __vue_is_functional_template__$u, __vue_module_identifier__$u, undefined, undefined);
+
+  var script$v = {
+    name: 'CuiSimplePointedChart',
+    extends: vueChartjs.Line,
+    mixins: [chartMixins.generatedLabels, chartMixins.generatedBackgroundColor, chartMixins.generatedBorderColor, chartMixins.generatedPointHoverBackgroundColor, chartMixins.generatedOptions],
+    props: {
+      data: {
+        type: Array,
+        default: function _default() {
+          return [0, 22, 34, 46, 58, 70, 46, 23, 45, 78, 34, 12];
+        }
+      },
+      height: {
+        type: Number,
+        default: 40
+      },
+      label: {
+        type: String,
+        default: 'label|string'
+      },
+      borderColor: {
+        type: String,
+        default: 'rgba(255,255,255,.55)'
+      },
+      labels: Array,
+      backgroundColor: {
+        type: String,
+        default: 'transparent'
+      },
+      pointHoverBackgroundColor: {
+        type: String,
+        default: 'transparent'
+      },
+      options: Object
+    },
+    computed: {
+      finalOptions: function finalOptions() {
+        return {
+          tooltips: {
+            enabled: false,
+            custom: coreuiPluginChartjsCustomTooltips.CustomTooltips
+          },
+          maintainAspectRatio: false,
+          legend: {
+            display: false
+          },
+          scales: {
+            xAxes: [{
+              gridLines: {
+                color: 'transparent',
+                zeroLineColor: 'transparent'
+              },
+              ticks: {
+                fontSize: 2,
+                fontColor: 'transparent'
+              }
+            }],
+            yAxes: [{
+              display: false,
+              ticks: {
+                display: false,
+                min: Math.min.apply(Math, this.data) - 5,
+                max: Math.max.apply(Math, this.data) + 5
+              }
+            }]
+          },
+          elements: {
+            line: {
+              borderWidth: 1
+            },
+            point: {
+              radius: 4,
+              hitRadius: 10,
+              hoverRadius: 4
+            }
+          }
+        };
+      }
+    },
+    mounted: function mounted() {
+      var datasets1 = [{
+        label: this.label,
+        borderColor: this.generatedBorderColor,
+        backgroundColor: this.generatedBackgroundColor,
+        pointHoverBackgroundColor: this.generatedPointHoverBackgroundColor,
+        data: this.data
+      }];
+      this.renderChart({
+        labels: this.generatedLabels,
+        datasets: datasets1
+      }, this.generatedOptions);
+    }
+  };
+
+  /* script */
+  var __vue_script__$v = script$v;
+
+  /* template */
+
+  /* style */
+  var __vue_inject_styles__$v = undefined;
+  /* scoped */
+  var __vue_scope_id__$v = undefined;
+  /* module identifier */
+  var __vue_module_identifier__$v = undefined;
+  /* functional template */
+  var __vue_is_functional_template__$v = undefined;
+  /* component normalizer */
+  function __vue_normalize__$v(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+    var component = (typeof script === 'function' ? script.options : script) || {};
+
+    // For security concerns, we use only base name in production mode.
+    component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Charts\\CuiSimplePointedChart.vue";
+
+    if (!component.render) {
+      component.render = template.render;
+      component.staticRenderFns = template.staticRenderFns;
+      component._compiled = true;
+
+      if (functional) component.functional = true;
+    }
+
+    component._scopeId = scope;
+
+    return component;
+  }
+  /* style inject */
+
+  /* style inject SSR */
+
+  var CuiSimplePointedChart = __vue_normalize__$v({}, __vue_inject_styles__$v, __vue_script__$v, __vue_scope_id__$v, __vue_is_functional_template__$v, __vue_module_identifier__$v, undefined, undefined);
+
   var LibraryModule = {
     Aside: Aside,
     AsideToggler: AsideToggler,
@@ -2874,6 +3956,17 @@
     SidebarNavTitle: SidebarNavTitle,
     SidebarToggler: SidebarToggler,
     Switch: Switch,
+    CuiWidget01: CuiWidget01,
+    CuiWidget02: CuiWidget02,
+    CuiWidget03: CuiWidget03,
+    CuiWidget04: CuiWidget04,
+    CuiWidget05: CuiWidget05,
+    CuiWidget06: CuiWidget06,
+    CuiWidget07: CuiWidget07,
+    CuiWidget08: CuiWidget08,
+    CuiSimpleBarChart: CuiSimpleBarChart,
+    CuiSimpleLineChart: CuiSimpleLineChart,
+    CuiSimplePointedChart: CuiSimplePointedChart,
 
     install: function install(Vue) {
       // Register components with vue
@@ -2898,6 +3991,17 @@
       Vue.component("SidebarNavTitle", SidebarNavTitle);
       Vue.component("SidebarToggler", SidebarToggler);
       Vue.component("Switch", Switch);
+      Vue.component("CuiWidget01", CuiWidget01);
+      Vue.component("CuiWidget02", CuiWidget02);
+      Vue.component("CuiWidget03", CuiWidget03);
+      Vue.component("CuiWidget04", CuiWidget04);
+      Vue.component("CuiWidget05", CuiWidget05);
+      Vue.component("CuiWidget06", CuiWidget06);
+      Vue.component("CuiWidget07", CuiWidget07);
+      Vue.component("CuiWidget08", CuiWidget08);
+      Vue.component("CuiSimpleLineChart", CuiSimpleLineChart);
+      Vue.component("CuiSimpleBarChart", CuiSimpleBarChart);
+      Vue.component("CuiSimplePointedChart", CuiSimplePointedChart);
     }
   };
 
@@ -2923,7 +4027,18 @@
     SidebarNavLink: SidebarNavLink,
     SidebarNavTitle: SidebarNavTitle,
     SidebarToggler: SidebarToggler,
-    Switch: Switch
+    Switch: Switch,
+    CuiWidget01: CuiWidget01,
+    CuiWidget02: CuiWidget02,
+    CuiWidget03: CuiWidget03,
+    CuiWidget04: CuiWidget04,
+    CuiWidget05: CuiWidget05,
+    CuiWidget06: CuiWidget06,
+    CuiWidget07: CuiWidget07,
+    CuiWidget08: CuiWidget08,
+    CuiSimpleBarChart: CuiSimpleBarChart,
+    CuiSimpleLineChart: CuiSimpleLineChart,
+    CuiSimplePointedChart: CuiSimplePointedChart
   });
 
   // Automatically register components if Vue is available globally
