@@ -4,8 +4,7 @@ node_modules/
 # Coverage directory
 coverage/
 
-# Generated code
-dist/
+
 
 ### Node ###
 # Logs
