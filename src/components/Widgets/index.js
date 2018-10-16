@@ -1,12 +1,12 @@
-import CuiWidget01 from './CuiWidget01'
-import CuiWidget02 from './CuiWidget02'
-import CuiWidget03 from './CuiWidget03'
-import CuiWidget04 from './CuiWidget04'
-import CuiWidget05 from './CuiWidget05'
-import CuiWidget06 from './CuiWidget06'
-import CuiWidget07 from './CuiWidget07'
-import CuiWidget08 from './CuiWidget08'
+import CWidget01 from './CWidget01'
+import CWidget02 from './CWidget02'
+import CWidget03 from './CWidget03'
+import CWidget04 from './CWidget04'
+import CWidget05 from './CWidget05'
+import CWidget06 from './CWidget06'
+import CWidget07 from './CWidget07'
+import CWidget08 from './CWidget08'
 
 export {
-  CuiWidget01, CuiWidget02, CuiWidget03, CuiWidget04, CuiWidget05, CuiWidget06, CuiWidget07, CuiWidget08
+  CWidget01, CWidget02, CWidget03, CWidget04, CWidget05, CWidget06, CWidget07, CWidget08
 }

@@ -1,7 +1,7 @@
-import CuiSimpleBarChart from './CuiSimpleBarChart'
-import CuiSimpleLineChart from './CuiSimpleLineChart'
-import CuiSimplePointedChart from './CuiSimplePointedChart'
+import CSimpleBarChart from './CSimpleBarChart'
+import CSimpleLineChart from './CSimpleLineChart'
+import CSimplePointedChart from './CSimplePointedChart'
 
 export {
-  CuiSimpleBarChart, CuiSimpleLineChart, CuiSimplePointedChart
+  CSimpleBarChart, CSimpleLineChart, CSimplePointedChart
 }

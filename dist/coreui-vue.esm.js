@@ -2,7 +2,6 @@ import { mixin } from 'vue-clickaway';
 import VuePerfectScrollbar from 'vue-perfect-scrollbar';
 import { Bar, Line } from 'vue-chartjs';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
-import { generatedLabels, generatedBackgroundColor, generatedBorderColor, generatedOptions, generatedPointHoverBackgroundColor } from '@/mixins/charts/chartMixins';
 
 //
 //
@@ -96,8 +95,94 @@ var Breadcrumb = __vue_normalize__({ render: __vue_render__, staticRenderFns: __
 //
 //
 //
+//
+//
+//
 
 var script$1 = {
+  name: 'CBreadcrumb',
+  props: {
+    list: {
+      type: Array,
+      required: true,
+      default: function _default() {
+        return [];
+      }
+    }
+  },
+  methods: {
+    getName: function getName(item) {
+      return item.meta && item.meta.label ? item.meta.label : item.name || null;
+    },
+    isLast: function isLast(index) {
+      return index === this.list.length - 1;
+    }
+  },
+  computed: {
+    routeRecords: function routeRecords() {
+      return this.list.filter(function (route) {
+        return route.name || route.meta.label;
+      });
+    }
+  }
+};
+
+/* script */
+var __vue_script__$1 = script$1;
+
+/* template */
+var __vue_render__$1 = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("ol", { staticClass: "breadcrumb" }, _vm._l(_vm.routeRecords, function (routeObject, index) {
+    return _c("li", { key: index, staticClass: "breadcrumb-item" }, [_vm.isLast(index) ? _c("span", { staticClass: "active" }, [_vm._v(_vm._s(_vm.getName(routeObject)))]) : _c("router-link", { attrs: { to: routeObject } }, [_vm._v(_vm._s(_vm.getName(routeObject)))])], 1);
+  }));
+};
+var __vue_staticRenderFns__$1 = [];
+__vue_render__$1._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$1 = undefined;
+/* scoped */
+var __vue_scope_id__$1 = undefined;
+/* module identifier */
+var __vue_module_identifier__$1 = undefined;
+/* functional template */
+var __vue_is_functional_template__$1 = false;
+/* component normalizer */
+function __vue_normalize__$1(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Breadcrumb\\CBreadcrumb.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  return component;
+}
+/* style inject */
+
+/* style inject SSR */
+
+var CBreadcrumb = __vue_normalize__$1({ render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 }, __vue_inject_styles__$1, __vue_script__$1, __vue_scope_id__$1, __vue_is_functional_template__$1, __vue_module_identifier__$1, undefined, undefined);
+
+//
+//
+//
+//
+//
+//
+
+var script$2 = {
   name: 'Callout',
   props: {
     variant: {
@@ -116,28 +201,28 @@ var script$1 = {
 };
 
 /* script */
-var __vue_script__$1 = script$1;
+var __vue_script__$2 = script$2;
 
 /* template */
-var __vue_render__$1 = function __vue_render__() {
+var __vue_render__$2 = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _c("div", { class: _vm.classList }, [_vm._t("default", [_vm._v("Callout")])], 2);
 };
-var __vue_staticRenderFns__$1 = [];
-__vue_render__$1._withStripped = true;
+var __vue_staticRenderFns__$2 = [];
+__vue_render__$2._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$1 = undefined;
+var __vue_inject_styles__$2 = undefined;
 /* scoped */
-var __vue_scope_id__$1 = undefined;
+var __vue_scope_id__$2 = undefined;
 /* module identifier */
-var __vue_module_identifier__$1 = undefined;
+var __vue_module_identifier__$2 = undefined;
 /* functional template */
-var __vue_is_functional_template__$1 = false;
+var __vue_is_functional_template__$2 = false;
 /* component normalizer */
-function __vue_normalize__$1(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$2(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -159,7 +244,7 @@ function __vue_normalize__$1(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var Callout = __vue_normalize__$1({ render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 }, __vue_inject_styles__$1, __vue_script__$1, __vue_scope_id__$1, __vue_is_functional_template__$1, __vue_module_identifier__$1, undefined, undefined);
+var Callout = __vue_normalize__$2({ render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 }, __vue_inject_styles__$2, __vue_script__$2, __vue_scope_id__$2, __vue_is_functional_template__$2, __vue_module_identifier__$2, undefined, undefined);
 
 //
 //
@@ -168,7 +253,78 @@ var Callout = __vue_normalize__$1({ render: __vue_render__$1, staticRenderFns: _
 //
 //
 
-var script$2 = {
+var script$3 = {
+  name: 'CCallout',
+  props: {
+    variant: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    classList: function classList() {
+      return ['callout', this.calloutVariant];
+    },
+    calloutVariant: function calloutVariant() {
+      return this.variant ? 'callout-' + this.variant : '';
+    }
+  }
+};
+
+/* script */
+var __vue_script__$3 = script$3;
+
+/* template */
+var __vue_render__$3 = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("div", { class: _vm.classList }, [_vm._t("default", [_vm._v("Callout")])], 2);
+};
+var __vue_staticRenderFns__$3 = [];
+__vue_render__$3._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$3 = undefined;
+/* scoped */
+var __vue_scope_id__$3 = undefined;
+/* module identifier */
+var __vue_module_identifier__$3 = undefined;
+/* functional template */
+var __vue_is_functional_template__$3 = false;
+/* component normalizer */
+function __vue_normalize__$3(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Callout\\CCallout.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  return component;
+}
+/* style inject */
+
+/* style inject SSR */
+
+var CCallout = __vue_normalize__$3({ render: __vue_render__$3, staticRenderFns: __vue_staticRenderFns__$3 }, __vue_inject_styles__$3, __vue_script__$3, __vue_scope_id__$3, __vue_is_functional_template__$3, __vue_module_identifier__$3, undefined, undefined);
+
+//
+//
+//
+//
+//
+//
+
+var script$4 = {
   name: 'Footer',
   props: {
     fixed: {
@@ -192,28 +348,28 @@ var script$2 = {
 };
 
 /* script */
-var __vue_script__$2 = script$2;
+var __vue_script__$4 = script$4;
 
 /* template */
-var __vue_render__$2 = function __vue_render__() {
+var __vue_render__$4 = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _c("footer", { class: _vm.classList }, [_vm._t("default", [_vm._v("Footer")])], 2);
 };
-var __vue_staticRenderFns__$2 = [];
-__vue_render__$2._withStripped = true;
+var __vue_staticRenderFns__$4 = [];
+__vue_render__$4._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$2 = undefined;
+var __vue_inject_styles__$4 = undefined;
 /* scoped */
-var __vue_scope_id__$2 = undefined;
+var __vue_scope_id__$4 = undefined;
 /* module identifier */
-var __vue_module_identifier__$2 = undefined;
+var __vue_module_identifier__$4 = undefined;
 /* functional template */
-var __vue_is_functional_template__$2 = false;
+var __vue_is_functional_template__$4 = false;
 /* component normalizer */
-function __vue_normalize__$2(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$4(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -235,7 +391,83 @@ function __vue_normalize__$2(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var Footer = __vue_normalize__$2({ render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 }, __vue_inject_styles__$2, __vue_script__$2, __vue_scope_id__$2, __vue_is_functional_template__$2, __vue_module_identifier__$2, undefined, undefined);
+var Footer = __vue_normalize__$4({ render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 }, __vue_inject_styles__$4, __vue_script__$4, __vue_scope_id__$4, __vue_is_functional_template__$4, __vue_module_identifier__$4, undefined, undefined);
+
+//
+//
+//
+//
+//
+//
+
+var script$5 = {
+  name: 'CFooter',
+  props: {
+    fixed: {
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted: function mounted() {
+    this.isFixed();
+  },
+  computed: {
+    classList: function classList() {
+      return ['app-footer'];
+    }
+  },
+  methods: {
+    isFixed: function isFixed() {
+      this.fixed ? document.body.classList.add('footer-fixed') : document.body.classList.remove('footer-fixed');
+    }
+  }
+};
+
+/* script */
+var __vue_script__$5 = script$5;
+
+/* template */
+var __vue_render__$5 = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("footer", { class: _vm.classList }, [_vm._t("default", [_vm._v("Footer")])], 2);
+};
+var __vue_staticRenderFns__$5 = [];
+__vue_render__$5._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$5 = undefined;
+/* scoped */
+var __vue_scope_id__$5 = undefined;
+/* module identifier */
+var __vue_module_identifier__$5 = undefined;
+/* functional template */
+var __vue_is_functional_template__$5 = false;
+/* component normalizer */
+function __vue_normalize__$5(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Footer\\CFooter.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  return component;
+}
+/* style inject */
+
+/* style inject SSR */
+
+var CFooter = __vue_normalize__$5({ render: __vue_render__$5, staticRenderFns: __vue_staticRenderFns__$5 }, __vue_inject_styles__$5, __vue_script__$5, __vue_scope_id__$5, __vue_is_functional_template__$5, __vue_module_identifier__$5, undefined, undefined);
 
 //
 //
@@ -266,7 +498,7 @@ var Footer = __vue_normalize__$2({ render: __vue_render__$2, staticRenderFns: __
 //
 //
 
-var script$3 = {
+var script$6 = {
   name: 'Switch',
   model: {
     prop: 'modelChecked',
@@ -380,10 +612,10 @@ var script$3 = {
 };
 
 /* script */
-var __vue_script__$3 = script$3;
+var __vue_script__$6 = script$6;
 
 /* template */
-var __vue_render__$3 = function __vue_render__() {
+var __vue_render__$6 = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -408,19 +640,19 @@ var __vue_render__$3 = function __vue_render__() {
     }
   })] : [_c("span", { staticClass: "switch-slider" })]], 2);
 };
-var __vue_staticRenderFns__$3 = [];
-__vue_render__$3._withStripped = true;
+var __vue_staticRenderFns__$6 = [];
+__vue_render__$6._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$3 = undefined;
+var __vue_inject_styles__$6 = undefined;
 /* scoped */
-var __vue_scope_id__$3 = undefined;
+var __vue_scope_id__$6 = undefined;
 /* module identifier */
-var __vue_module_identifier__$3 = undefined;
+var __vue_module_identifier__$6 = undefined;
 /* functional template */
-var __vue_is_functional_template__$3 = false;
+var __vue_is_functional_template__$6 = false;
 /* component normalizer */
-function __vue_normalize__$3(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$6(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -442,7 +674,214 @@ function __vue_normalize__$3(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var Switch = __vue_normalize__$3({ render: __vue_render__$3, staticRenderFns: __vue_staticRenderFns__$3 }, __vue_inject_styles__$3, __vue_script__$3, __vue_scope_id__$3, __vue_is_functional_template__$3, __vue_module_identifier__$3, undefined, undefined);
+var Switch = __vue_normalize__$6({ render: __vue_render__$6, staticRenderFns: __vue_staticRenderFns__$6 }, __vue_inject_styles__$6, __vue_script__$6, __vue_scope_id__$6, __vue_is_functional_template__$6, __vue_module_identifier__$6, undefined, undefined);
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var script$7 = {
+  name: 'CSwitch',
+  model: {
+    prop: 'modelChecked',
+    event: 'change'
+  },
+  data: function data() {
+    return {
+      checkedData: this.isChecked ? this.value : this.uncheckedValue
+    };
+  },
+  props: {
+    id: {
+      type: String,
+      default: function _default() {
+        return 'switch-id-' + this._uid;
+      }
+    },
+    color: {
+      type: String,
+      default: 'secondary'
+    },
+    label: {
+      type: Boolean,
+      default: null
+    },
+    outline: {
+      type: [Boolean, String],
+      default: null,
+      validator: function validator(value) {
+        return [false, true, '', 'alt'].indexOf(value) !== -1;
+      }
+    },
+    size: {
+      type: String,
+      default: null,
+      validator: function validator(value) {
+        return ['', 'lg', 'sm'].indexOf(value) !== -1;
+      }
+    },
+    checked: {
+      type: Boolean,
+      default: false
+    },
+    defaultChecked: {
+      type: Boolean,
+      default: false
+    },
+    modelChecked: {
+      default: undefined
+    },
+    value: {
+      default: true
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    name: {
+      type: String,
+      default: null
+    },
+    required: {
+      type: Boolean,
+      default: false
+    },
+    onChange: {
+      type: Function
+    },
+    uncheckedValue: {
+      default: false
+    },
+    variant: {
+      type: String,
+      default: null,
+      validator: function validator(value) {
+        return [null, '3d', 'pill'].indexOf(value) !== -1;
+      }
+    },
+    dataOn: {
+      type: String,
+      default: 'On'
+    },
+    dataOff: {
+      type: String,
+      default: 'Off'
+    }
+  },
+  computed: {
+    classList: function classList() {
+      return ['switch', this.label ? 'switch-label' : '', this.size ? 'switch-' + this.size : '', this.variant ? 'switch-' + this.variant : '', 'switch' + (this.outline ? '-outline' : '') + '-' + this.color + (this.outline === 'alt' ? '-alt' : ''), 'form-check-label'];
+    },
+    isChecked: function isChecked() {
+      if (this.modelChecked === undefined) {
+        return this.checkedData === this.value;
+      }
+      return this.modelChecked === this.value;
+    }
+  },
+  methods: {
+    handleChange: function handleChange(event) {
+      this.toggle(event.target.checked);
+    },
+    toggle: function toggle(checked) {
+      this.checkedData = checked ? this.value : this.uncheckedValue;
+      this.$emit('change', this.checkedData);
+    }
+  },
+  mounted: function mounted() {
+    this.toggle(this.defaultChecked || this.checked || this.isChecked);
+  }
+};
+
+/* script */
+var __vue_script__$7 = script$7;
+
+/* template */
+var __vue_render__$7 = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("label", { class: _vm.classList }, [_c("input", {
+    staticClass: "switch-input form-check-input",
+    attrs: {
+      id: _vm.id,
+      disabled: _vm.disabled,
+      required: _vm.required,
+      name: _vm.name,
+      type: "checkbox",
+      "true-value": "value",
+      "false-value": "uncheckedValue"
+    },
+    domProps: { checked: _vm.isChecked, value: _vm.value },
+    on: { change: _vm.handleChange }
+  }), _vm._v(" "), _vm.label ? [_c("span", {
+    staticClass: "switch-slider",
+    attrs: {
+      "data-checked": _vm.dataOn,
+      "data-unchecked": _vm.dataOff
+    }
+  })] : [_c("span", { staticClass: "switch-slider" })]], 2);
+};
+var __vue_staticRenderFns__$7 = [];
+__vue_render__$7._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$7 = undefined;
+/* scoped */
+var __vue_scope_id__$7 = undefined;
+/* module identifier */
+var __vue_module_identifier__$7 = undefined;
+/* functional template */
+var __vue_is_functional_template__$7 = false;
+/* component normalizer */
+function __vue_normalize__$7(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Switch\\CSwitch.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  return component;
+}
+/* style inject */
+
+/* style inject SSR */
+
+var CSwitch = __vue_normalize__$7({ render: __vue_render__$7, staticRenderFns: __vue_staticRenderFns__$7 }, __vue_inject_styles__$7, __vue_script__$7, __vue_scope_id__$7, __vue_is_functional_template__$7, __vue_module_identifier__$7, undefined, undefined);
 
 //
 //
@@ -451,7 +890,7 @@ var Switch = __vue_normalize__$3({ render: __vue_render__$3, staticRenderFns: __
 //
 //
 
-var script$4 = {
+var script$8 = {
   name: 'AppAside',
   props: {
     fixed: {
@@ -483,28 +922,28 @@ var script$4 = {
 };
 
 /* script */
-var __vue_script__$4 = script$4;
+var __vue_script__$8 = script$8;
 
 /* template */
-var __vue_render__$4 = function __vue_render__() {
+var __vue_render__$8 = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _c("aside", { staticClass: "aside-menu" }, [_vm._t("default", [_vm._v("Aside")])], 2);
 };
-var __vue_staticRenderFns__$4 = [];
-__vue_render__$4._withStripped = true;
+var __vue_staticRenderFns__$8 = [];
+__vue_render__$8._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$4 = undefined;
+var __vue_inject_styles__$8 = undefined;
 /* scoped */
-var __vue_scope_id__$4 = undefined;
+var __vue_scope_id__$8 = undefined;
 /* module identifier */
-var __vue_module_identifier__$4 = undefined;
+var __vue_module_identifier__$8 = undefined;
 /* functional template */
-var __vue_is_functional_template__$4 = false;
+var __vue_is_functional_template__$8 = false;
 /* component normalizer */
-function __vue_normalize__$4(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$8(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -526,7 +965,7 @@ function __vue_normalize__$4(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var Aside = __vue_normalize__$4({ render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 }, __vue_inject_styles__$4, __vue_script__$4, __vue_scope_id__$4, __vue_is_functional_template__$4, __vue_module_identifier__$4, undefined, undefined);
+var Aside = __vue_normalize__$8({ render: __vue_render__$8, staticRenderFns: __vue_staticRenderFns__$8 }, __vue_inject_styles__$8, __vue_script__$8, __vue_scope_id__$8, __vue_is_functional_template__$8, __vue_module_identifier__$8, undefined, undefined);
 
 var sidebarCssClasses = ['sidebar-show', 'sidebar-sm-show', 'sidebar-md-show', 'sidebar-lg-show', 'sidebar-xl-show'];
 
@@ -549,7 +988,7 @@ function toggleClasses(toggleClass, classList, force) {
 
 //
 
-var script$5 = {
+var script$9 = {
   name: 'AsideToggler',
   props: {
     defaultOpen: {
@@ -593,10 +1032,10 @@ var script$5 = {
 };
 
 /* script */
-var __vue_script__$5 = script$5;
+var __vue_script__$9 = script$9;
 
 /* template */
-var __vue_render__$5 = function __vue_render__() {
+var __vue_render__$9 = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -606,19 +1045,19 @@ var __vue_render__$5 = function __vue_render__() {
     on: { click: _vm.asideToggle }
   }, [_c("span", { staticClass: "navbar-toggler-icon" })]);
 };
-var __vue_staticRenderFns__$5 = [];
-__vue_render__$5._withStripped = true;
+var __vue_staticRenderFns__$9 = [];
+__vue_render__$9._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$5 = undefined;
+var __vue_inject_styles__$9 = undefined;
 /* scoped */
-var __vue_scope_id__$5 = undefined;
+var __vue_scope_id__$9 = undefined;
 /* module identifier */
-var __vue_module_identifier__$5 = undefined;
+var __vue_module_identifier__$9 = undefined;
 /* functional template */
-var __vue_is_functional_template__$5 = false;
+var __vue_is_functional_template__$9 = false;
 /* component normalizer */
-function __vue_normalize__$5(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$9(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -640,7 +1079,186 @@ function __vue_normalize__$5(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var AsideToggler = __vue_normalize__$5({ render: __vue_render__$5, staticRenderFns: __vue_staticRenderFns__$5 }, __vue_inject_styles__$5, __vue_script__$5, __vue_scope_id__$5, __vue_is_functional_template__$5, __vue_module_identifier__$5, undefined, undefined);
+var AsideToggler = __vue_normalize__$9({ render: __vue_render__$9, staticRenderFns: __vue_staticRenderFns__$9 }, __vue_inject_styles__$9, __vue_script__$9, __vue_scope_id__$9, __vue_is_functional_template__$9, __vue_module_identifier__$9, undefined, undefined);
+
+//
+//
+//
+//
+//
+//
+
+var script$a = {
+  name: 'CAside',
+  props: {
+    fixed: {
+      type: Boolean,
+      default: false
+    },
+    display: {
+      type: String,
+      default: ''
+    },
+    offCanvas: {
+      type: Boolean,
+      default: true
+    }
+  },
+  mounted: function mounted() {
+    this.isFixed(this.fixed);
+    this.isOffCanvas(this.offCanvas);
+  },
+  methods: {
+    isFixed: function isFixed(fixed) {
+      fixed ? document.body.classList.add('aside-menu-fixed') : document.body.classList.remove('aside-menu-fixed');
+      return fixed;
+    },
+    isOffCanvas: function isOffCanvas(offCanvas) {
+      offCanvas ? document.body.classList.add('aside-menu-off-canvas') : document.body.classList.remove('aside-menu-off-canvas');
+    }
+  }
+};
+
+/* script */
+var __vue_script__$a = script$a;
+
+/* template */
+var __vue_render__$a = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("aside", { staticClass: "aside-menu" }, [_vm._t("default", [_vm._v("Aside")])], 2);
+};
+var __vue_staticRenderFns__$a = [];
+__vue_render__$a._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$a = undefined;
+/* scoped */
+var __vue_scope_id__$a = undefined;
+/* module identifier */
+var __vue_module_identifier__$a = undefined;
+/* functional template */
+var __vue_is_functional_template__$a = false;
+/* component normalizer */
+function __vue_normalize__$a(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Aside\\CAside.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  return component;
+}
+/* style inject */
+
+/* style inject SSR */
+
+var CAside = __vue_normalize__$a({ render: __vue_render__$a, staticRenderFns: __vue_staticRenderFns__$a }, __vue_inject_styles__$a, __vue_script__$a, __vue_scope_id__$a, __vue_is_functional_template__$a, __vue_module_identifier__$a, undefined, undefined);
+
+//
+
+var script$b = {
+  name: 'CAsideToggler',
+  props: {
+    defaultOpen: {
+      type: Boolean,
+      default: false
+    },
+    display: {
+      type: String,
+      default: 'lg'
+    },
+    mobile: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    classList: function classList() {
+      return ['navbar-toggler'];
+    }
+  },
+  mounted: function mounted() {
+    this.toggle(this.defaultOpen);
+  },
+  methods: {
+    toggle: function toggle(force) {
+      var _ref = [this.display, this.mobile],
+          display = _ref[0],
+          mobile = _ref[1];
+
+      var cssClass = asideMenuCssClasses[0];
+      if (!mobile && display && checkBreakpoint(display, validBreakpoints)) {
+        cssClass = 'aside-menu-' + display + '-show';
+      }
+      toggleClasses(cssClass, asideMenuCssClasses, force);
+    },
+    asideToggle: function asideToggle(e) {
+      e.preventDefault();
+      this.toggle();
+    }
+  }
+};
+
+/* script */
+var __vue_script__$b = script$b;
+
+/* template */
+var __vue_render__$b = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("button", {
+    class: _vm.classList,
+    attrs: { display: _vm.display, mobile: _vm.mobile, type: "button" },
+    on: { click: _vm.asideToggle }
+  }, [_c("span", { staticClass: "navbar-toggler-icon" })]);
+};
+var __vue_staticRenderFns__$b = [];
+__vue_render__$b._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$b = undefined;
+/* scoped */
+var __vue_scope_id__$b = undefined;
+/* module identifier */
+var __vue_module_identifier__$b = undefined;
+/* functional template */
+var __vue_is_functional_template__$b = false;
+/* component normalizer */
+function __vue_normalize__$b(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Aside\\CAsideToggler.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  return component;
+}
+/* style inject */
+
+/* style inject SSR */
+
+var CAsideToggler = __vue_normalize__$b({ render: __vue_render__$b, staticRenderFns: __vue_staticRenderFns__$b }, __vue_inject_styles__$b, __vue_script__$b, __vue_scope_id__$b, __vue_is_functional_template__$b, __vue_module_identifier__$b, undefined, undefined);
 
 //
 //
@@ -650,7 +1268,7 @@ var AsideToggler = __vue_normalize__$5({ render: __vue_render__$5, staticRenderF
 //
 //
 
-var script$6 = {
+var script$c = {
   name: 'AppHeader',
   props: {
     fixed: {
@@ -675,28 +1293,28 @@ var script$6 = {
 };
 
 /* script */
-var __vue_script__$6 = script$6;
+var __vue_script__$c = script$c;
 
 /* template */
-var __vue_render__$6 = function __vue_render__() {
+var __vue_render__$c = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _c("header", { class: _vm.classList }, [_vm._t("default", [_vm._v("Header")])], 2);
 };
-var __vue_staticRenderFns__$6 = [];
-__vue_render__$6._withStripped = true;
+var __vue_staticRenderFns__$c = [];
+__vue_render__$c._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$6 = undefined;
+var __vue_inject_styles__$c = undefined;
 /* scoped */
-var __vue_scope_id__$6 = undefined;
+var __vue_scope_id__$c = undefined;
 /* module identifier */
-var __vue_module_identifier__$6 = undefined;
+var __vue_module_identifier__$c = undefined;
 /* functional template */
-var __vue_is_functional_template__$6 = false;
+var __vue_is_functional_template__$c = false;
 /* component normalizer */
-function __vue_normalize__$6(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$c(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -718,7 +1336,7 @@ function __vue_normalize__$6(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var Header = __vue_normalize__$6({ render: __vue_render__$6, staticRenderFns: __vue_staticRenderFns__$6 }, __vue_inject_styles__$6, __vue_script__$6, __vue_scope_id__$6, __vue_is_functional_template__$6, __vue_module_identifier__$6, undefined, undefined);
+var Header = __vue_normalize__$c({ render: __vue_render__$c, staticRenderFns: __vue_staticRenderFns__$c }, __vue_inject_styles__$c, __vue_script__$c, __vue_scope_id__$c, __vue_is_functional_template__$c, __vue_module_identifier__$c, undefined, undefined);
 
 //
 //
@@ -735,7 +1353,7 @@ var Header = __vue_normalize__$6({ render: __vue_render__$6, staticRenderFns: __
 //
 //
 
-var script$7 = {
+var script$d = {
   name: 'HeaderDropdown',
   props: {
     right: {
@@ -750,28 +1368,28 @@ var script$7 = {
 };
 
 /* script */
-var __vue_script__$7 = script$7;
+var __vue_script__$d = script$d;
 
 /* template */
-var __vue_render__$7 = function __vue_render__() {
+var __vue_render__$d = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _c("b-nav-item-dropdown", { attrs: { right: _vm.right, "no-caret": _vm.noCaret } }, [_c("template", { slot: "button-content" }, [_vm._t("header", [_vm._v("\n      ❔\n    ")])], 2), _vm._v(" "), _vm._t("dropdown", [_c("div", { style: { right: "auto", height: "200px" } }, [_c("span", { staticClass: "text-center" }, [_vm._v("dropdown")])])])], 2);
 };
-var __vue_staticRenderFns__$7 = [];
-__vue_render__$7._withStripped = true;
+var __vue_staticRenderFns__$d = [];
+__vue_render__$d._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$7 = undefined;
+var __vue_inject_styles__$d = undefined;
 /* scoped */
-var __vue_scope_id__$7 = undefined;
+var __vue_scope_id__$d = undefined;
 /* module identifier */
-var __vue_module_identifier__$7 = undefined;
+var __vue_module_identifier__$d = undefined;
 /* functional template */
-var __vue_is_functional_template__$7 = false;
+var __vue_is_functional_template__$d = false;
 /* component normalizer */
-function __vue_normalize__$7(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$d(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -793,7 +1411,160 @@ function __vue_normalize__$7(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var HeaderDropdown = __vue_normalize__$7({ render: __vue_render__$7, staticRenderFns: __vue_staticRenderFns__$7 }, __vue_inject_styles__$7, __vue_script__$7, __vue_scope_id__$7, __vue_is_functional_template__$7, __vue_module_identifier__$7, undefined, undefined);
+var HeaderDropdown = __vue_normalize__$d({ render: __vue_render__$d, staticRenderFns: __vue_staticRenderFns__$d }, __vue_inject_styles__$d, __vue_script__$d, __vue_scope_id__$d, __vue_is_functional_template__$d, __vue_module_identifier__$d, undefined, undefined);
+
+//
+//
+//
+//
+//
+//
+//
+
+var script$e = {
+  name: 'CHeader',
+  props: {
+    fixed: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    classList: function classList() {
+      return ['app-header', 'navbar'];
+    }
+  },
+  mounted: function mounted() {
+    this.isFixed(this.fixed);
+  },
+  methods: {
+    isFixed: function isFixed(fixed) {
+      fixed ? document.body.classList.add('header-fixed') : document.body.classList.remove('header-fixed');
+      return fixed;
+    }
+  }
+};
+
+/* script */
+var __vue_script__$e = script$e;
+
+/* template */
+var __vue_render__$e = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("header", { class: _vm.classList }, [_vm._t("default", [_vm._v("Header")])], 2);
+};
+var __vue_staticRenderFns__$e = [];
+__vue_render__$e._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$e = undefined;
+/* scoped */
+var __vue_scope_id__$e = undefined;
+/* module identifier */
+var __vue_module_identifier__$e = undefined;
+/* functional template */
+var __vue_is_functional_template__$e = false;
+/* component normalizer */
+function __vue_normalize__$e(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Header\\CHeader.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  return component;
+}
+/* style inject */
+
+/* style inject SSR */
+
+var CHeader = __vue_normalize__$e({ render: __vue_render__$e, staticRenderFns: __vue_staticRenderFns__$e }, __vue_inject_styles__$e, __vue_script__$e, __vue_scope_id__$e, __vue_is_functional_template__$e, __vue_module_identifier__$e, undefined, undefined);
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var script$f = {
+  name: 'CHeaderDropdown',
+  props: {
+    right: {
+      type: Boolean,
+      default: false
+    },
+    noCaret: {
+      type: Boolean,
+      default: false
+    }
+  }
+};
+
+/* script */
+var __vue_script__$f = script$f;
+
+/* template */
+var __vue_render__$f = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("b-nav-item-dropdown", { attrs: { right: _vm.right, "no-caret": _vm.noCaret } }, [_c("template", { slot: "button-content" }, [_vm._t("header", [_vm._v("\n      ❔\n    ")])], 2), _vm._v(" "), _vm._t("dropdown", [_c("div", { style: { right: "auto", height: "200px" } }, [_c("span", { staticClass: "text-center" }, [_vm._v("dropdown")])])])], 2);
+};
+var __vue_staticRenderFns__$f = [];
+__vue_render__$f._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$f = undefined;
+/* scoped */
+var __vue_scope_id__$f = undefined;
+/* module identifier */
+var __vue_module_identifier__$f = undefined;
+/* functional template */
+var __vue_is_functional_template__$f = false;
+/* component normalizer */
+function __vue_normalize__$f(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Header\\CHeaderDropdown.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  return component;
+}
+/* style inject */
+
+/* style inject SSR */
+
+var CHeaderDropdown = __vue_normalize__$f({ render: __vue_render__$f, staticRenderFns: __vue_staticRenderFns__$f }, __vue_inject_styles__$f, __vue_script__$f, __vue_scope_id__$f, __vue_is_functional_template__$f, __vue_module_identifier__$f, undefined, undefined);
 
 var hideMobile = {
   methods: {
@@ -807,7 +1578,7 @@ var hideMobile = {
 
 //
 
-var script$8 = {
+var script$g = {
   name: 'sidebar',
   mixins: [mixin, hideMobile],
   props: {
@@ -828,10 +1599,10 @@ var script$8 = {
 };
 
 /* script */
-var __vue_script__$8 = script$8;
+var __vue_script__$g = script$g;
 
 /* template */
-var __vue_render__$8 = function __vue_render__() {
+var __vue_render__$g = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -845,19 +1616,19 @@ var __vue_render__$8 = function __vue_render__() {
     staticClass: "sidebar"
   }, [_vm._t("default", [_vm._v("Sidebar")])], 2);
 };
-var __vue_staticRenderFns__$8 = [];
-__vue_render__$8._withStripped = true;
+var __vue_staticRenderFns__$g = [];
+__vue_render__$g._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$8 = undefined;
+var __vue_inject_styles__$g = undefined;
 /* scoped */
-var __vue_scope_id__$8 = undefined;
+var __vue_scope_id__$g = undefined;
 /* module identifier */
-var __vue_module_identifier__$8 = undefined;
+var __vue_module_identifier__$g = undefined;
 /* functional template */
-var __vue_is_functional_template__$8 = false;
+var __vue_is_functional_template__$g = false;
 /* component normalizer */
-function __vue_normalize__$8(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$g(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -879,7 +1650,7 @@ function __vue_normalize__$8(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var Sidebar = __vue_normalize__$8({ render: __vue_render__$8, staticRenderFns: __vue_staticRenderFns__$8 }, __vue_inject_styles__$8, __vue_script__$8, __vue_scope_id__$8, __vue_is_functional_template__$8, __vue_module_identifier__$8, undefined, undefined);
+var Sidebar = __vue_normalize__$g({ render: __vue_render__$g, staticRenderFns: __vue_staticRenderFns__$g }, __vue_inject_styles__$g, __vue_script__$g, __vue_scope_id__$g, __vue_is_functional_template__$g, __vue_module_identifier__$g, undefined, undefined);
 
 //
 //
@@ -888,7 +1659,7 @@ var Sidebar = __vue_normalize__$8({ render: __vue_render__$8, staticRenderFns: _
 //
 //
 
-var script$9 = {
+var script$h = {
   name: 'sidebar-footer',
   computed: {
     hasSlotDefault: function hasSlotDefault() {
@@ -898,28 +1669,28 @@ var script$9 = {
 };
 
 /* script */
-var __vue_script__$9 = script$9;
+var __vue_script__$h = script$h;
 
 /* template */
-var __vue_render__$9 = function __vue_render__() {
+var __vue_render__$h = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _vm.hasSlotDefault ? _c("div", { staticClass: "sidebar-footer" }, [_vm._t("default")], 2) : _vm._e();
 };
-var __vue_staticRenderFns__$9 = [];
-__vue_render__$9._withStripped = true;
+var __vue_staticRenderFns__$h = [];
+__vue_render__$h._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$9 = undefined;
+var __vue_inject_styles__$h = undefined;
 /* scoped */
-var __vue_scope_id__$9 = undefined;
+var __vue_scope_id__$h = undefined;
 /* module identifier */
-var __vue_module_identifier__$9 = undefined;
+var __vue_module_identifier__$h = undefined;
 /* functional template */
-var __vue_is_functional_template__$9 = false;
+var __vue_is_functional_template__$h = false;
 /* component normalizer */
-function __vue_normalize__$9(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$h(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -941,7 +1712,7 @@ function __vue_normalize__$9(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var SidebarFooter = __vue_normalize__$9({ render: __vue_render__$9, staticRenderFns: __vue_staticRenderFns__$9 }, __vue_inject_styles__$9, __vue_script__$9, __vue_scope_id__$9, __vue_is_functional_template__$9, __vue_module_identifier__$9, undefined, undefined);
+var SidebarFooter = __vue_normalize__$h({ render: __vue_render__$h, staticRenderFns: __vue_staticRenderFns__$h }, __vue_inject_styles__$h, __vue_script__$h, __vue_scope_id__$h, __vue_is_functional_template__$h, __vue_module_identifier__$h, undefined, undefined);
 
 //
 //
@@ -950,7 +1721,7 @@ var SidebarFooter = __vue_normalize__$9({ render: __vue_render__$9, staticRender
 //
 
 
-var script$a = {
+var script$i = {
   name: 'sidebar-form',
   computed: {
     hasSlotDefault: function hasSlotDefault() {
@@ -960,28 +1731,28 @@ var script$a = {
 };
 
 /* script */
-var __vue_script__$a = script$a;
+var __vue_script__$i = script$i;
 
 /* template */
-var __vue_render__$a = function __vue_render__() {
+var __vue_render__$i = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _vm.hasSlotDefault ? _c("div", { staticClass: "sidebar-form" }, [_vm._t("default")], 2) : _vm._e();
 };
-var __vue_staticRenderFns__$a = [];
-__vue_render__$a._withStripped = true;
+var __vue_staticRenderFns__$i = [];
+__vue_render__$i._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$a = undefined;
+var __vue_inject_styles__$i = undefined;
 /* scoped */
-var __vue_scope_id__$a = undefined;
+var __vue_scope_id__$i = undefined;
 /* module identifier */
-var __vue_module_identifier__$a = undefined;
+var __vue_module_identifier__$i = undefined;
 /* functional template */
-var __vue_is_functional_template__$a = false;
+var __vue_is_functional_template__$i = false;
 /* component normalizer */
-function __vue_normalize__$a(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$i(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -1003,7 +1774,7 @@ function __vue_normalize__$a(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var SidebarForm = __vue_normalize__$a({ render: __vue_render__$a, staticRenderFns: __vue_staticRenderFns__$a }, __vue_inject_styles__$a, __vue_script__$a, __vue_scope_id__$a, __vue_is_functional_template__$a, __vue_module_identifier__$a, undefined, undefined);
+var SidebarForm = __vue_normalize__$i({ render: __vue_render__$i, staticRenderFns: __vue_staticRenderFns__$i }, __vue_inject_styles__$i, __vue_script__$i, __vue_scope_id__$i, __vue_is_functional_template__$i, __vue_module_identifier__$i, undefined, undefined);
 
 //
 //
@@ -1012,7 +1783,7 @@ var SidebarForm = __vue_normalize__$a({ render: __vue_render__$a, staticRenderFn
 //
 
 
-var script$b = {
+var script$j = {
   name: 'sidebar-header',
   computed: {
     hasSlotDefault: function hasSlotDefault() {
@@ -1022,28 +1793,28 @@ var script$b = {
 };
 
 /* script */
-var __vue_script__$b = script$b;
+var __vue_script__$j = script$j;
 
 /* template */
-var __vue_render__$b = function __vue_render__() {
+var __vue_render__$j = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _vm.hasSlotDefault ? _c("div", { staticClass: "sidebar-header" }, [_vm._t("default")], 2) : _vm._e();
 };
-var __vue_staticRenderFns__$b = [];
-__vue_render__$b._withStripped = true;
+var __vue_staticRenderFns__$j = [];
+__vue_render__$j._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$b = undefined;
+var __vue_inject_styles__$j = undefined;
 /* scoped */
-var __vue_scope_id__$b = undefined;
+var __vue_scope_id__$j = undefined;
 /* module identifier */
-var __vue_module_identifier__$b = undefined;
+var __vue_module_identifier__$j = undefined;
 /* functional template */
-var __vue_is_functional_template__$b = false;
+var __vue_is_functional_template__$j = false;
 /* component normalizer */
-function __vue_normalize__$b(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$j(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -1065,7 +1836,7 @@ function __vue_normalize__$b(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var SidebarHeader = __vue_normalize__$b({ render: __vue_render__$b, staticRenderFns: __vue_staticRenderFns__$b }, __vue_inject_styles__$b, __vue_script__$b, __vue_scope_id__$b, __vue_is_functional_template__$b, __vue_module_identifier__$b, undefined, undefined);
+var SidebarHeader = __vue_normalize__$j({ render: __vue_render__$j, staticRenderFns: __vue_staticRenderFns__$j }, __vue_inject_styles__$j, __vue_script__$j, __vue_scope_id__$j, __vue_is_functional_template__$j, __vue_module_identifier__$j, undefined, undefined);
 
 var togglePs = {
   methods: {
@@ -1087,7 +1858,7 @@ var togglePs = {
 
 //
 
-var script$c = {
+var script$k = {
   name: 'sidebar-minimizer',
   mixins: [togglePs],
   mounted: function mounted() {
@@ -1111,10 +1882,10 @@ var script$c = {
 };
 
 /* script */
-var __vue_script__$c = script$c;
+var __vue_script__$k = script$k;
 
 /* template */
-var __vue_render__$c = function __vue_render__() {
+var __vue_render__$k = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -1128,19 +1899,19 @@ var __vue_render__$c = function __vue_render__() {
     }
   });
 };
-var __vue_staticRenderFns__$c = [];
-__vue_render__$c._withStripped = true;
+var __vue_staticRenderFns__$k = [];
+__vue_render__$k._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$c = undefined;
+var __vue_inject_styles__$k = undefined;
 /* scoped */
-var __vue_scope_id__$c = undefined;
+var __vue_scope_id__$k = undefined;
 /* module identifier */
-var __vue_module_identifier__$c = undefined;
+var __vue_module_identifier__$k = undefined;
 /* functional template */
-var __vue_is_functional_template__$c = false;
+var __vue_is_functional_template__$k = false;
 /* component normalizer */
-function __vue_normalize__$c(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$k(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -1162,10 +1933,10 @@ function __vue_normalize__$c(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var SidebarMinimizer = __vue_normalize__$c({ render: __vue_render__$c, staticRenderFns: __vue_staticRenderFns__$c }, __vue_inject_styles__$c, __vue_script__$c, __vue_scope_id__$c, __vue_is_functional_template__$c, __vue_module_identifier__$c, undefined, undefined);
+var SidebarMinimizer = __vue_normalize__$k({ render: __vue_render__$k, staticRenderFns: __vue_staticRenderFns__$k }, __vue_inject_styles__$k, __vue_script__$k, __vue_scope_id__$k, __vue_is_functional_template__$k, __vue_module_identifier__$k, undefined, undefined);
 
 function unwrapExports (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x.default : x;
 }
 
 function createCommonjsModule(fn, module) {
@@ -1927,7 +2698,7 @@ var _toConsumableArray = unwrapExports(toConsumableArray);
 //
 //
 
-var script$d = {
+var script$l = {
   name: 'sidebar-nav-divider',
   props: {
     classes: {
@@ -1946,28 +2717,28 @@ var script$d = {
 };
 
 /* script */
-var __vue_script__$d = script$d;
+var __vue_script__$l = script$l;
 
 /* template */
-var __vue_render__$d = function __vue_render__() {
+var __vue_render__$l = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _c("li", { class: _vm.classList });
 };
-var __vue_staticRenderFns__$d = [];
-__vue_render__$d._withStripped = true;
+var __vue_staticRenderFns__$l = [];
+__vue_render__$l._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$d = undefined;
+var __vue_inject_styles__$l = undefined;
 /* scoped */
-var __vue_scope_id__$d = undefined;
+var __vue_scope_id__$l = undefined;
 /* module identifier */
-var __vue_module_identifier__$d = undefined;
+var __vue_module_identifier__$l = undefined;
 /* functional template */
-var __vue_is_functional_template__$d = false;
+var __vue_is_functional_template__$l = false;
 /* component normalizer */
-function __vue_normalize__$d(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$l(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -1989,7 +2760,7 @@ function __vue_normalize__$d(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var SidebarNavDivider = __vue_normalize__$d({ render: __vue_render__$d, staticRenderFns: __vue_staticRenderFns__$d }, __vue_inject_styles__$d, __vue_script__$d, __vue_scope_id__$d, __vue_is_functional_template__$d, __vue_module_identifier__$d, undefined, undefined);
+var SidebarNavDivider = __vue_normalize__$l({ render: __vue_render__$l, staticRenderFns: __vue_staticRenderFns__$l }, __vue_inject_styles__$l, __vue_script__$l, __vue_scope_id__$l, __vue_is_functional_template__$l, __vue_module_identifier__$l, undefined, undefined);
 
 //
 //
@@ -2001,7 +2772,7 @@ var SidebarNavDivider = __vue_normalize__$d({ render: __vue_render__$d, staticRe
 //
 //
 
-var script$e = {
+var script$m = {
   props: {
     name: {
       type: String,
@@ -2029,10 +2800,10 @@ var script$e = {
   }
 };
 
-var __vue_script__$e = script$e;
+var __vue_script__$m = script$m;
 
 /* template */
-var __vue_render__$e = function __vue_render__() {
+var __vue_render__$m = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -2044,22 +2815,22 @@ var __vue_render__$e = function __vue_render__() {
     on: { click: _vm.handleClick }
   }, [_c("i", { class: _vm.classIcon }), _vm._v(" " + _vm._s(_vm.name))]), _vm._v(" "), _c("ul", { staticClass: "nav-dropdown-items" }, [_vm._t("default")], 2)]);
 };
-var __vue_staticRenderFns__$e = [];
-__vue_render__$e._withStripped = true;
+var __vue_staticRenderFns__$m = [];
+__vue_render__$m._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$e = function __vue_inject_styles__(inject) {
+var __vue_inject_styles__$m = function __vue_inject_styles__(inject) {
   if (!inject) return;
   inject("data-v-01a16de4_0", { source: "\n.nav-link[data-v-01a16de4] {\n  cursor:pointer;\n}\n", map: { "version": 3, "sources": ["C:\\xampp\\htdocs\\coreui-vue/C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Sidebar\\SidebarNavDropdown.vue"], "names": [], "mappings": ";AA2CA;EACA,eAAA;CACA", "file": "SidebarNavDropdown.vue", "sourcesContent": ["<template>\r\n  <router-link tag=\"li\" class=\"nav-item nav-dropdown\" :to=\"url\" disabled>\r\n    <div class=\"nav-link nav-dropdown-toggle\" @click=\"handleClick\"><i :class=\"classIcon\"></i> {{name}}</div>\r\n    <ul class=\"nav-dropdown-items\">\r\n      <slot></slot>\r\n    </ul>\r\n  </router-link>\r\n</template>\r\n\r\n<script>\r\nexport default {\r\n  props: {\r\n    name: {\r\n      type: String,\r\n      default: ''\r\n    },\r\n    url: {\r\n      type: String,\r\n      default: ''\r\n    },\r\n    icon: {\r\n      type: String,\r\n      default: ''\r\n    }\r\n  },\r\n  computed: {\r\n    classIcon () {\r\n      return [\r\n        'nav-icon',\r\n        this.icon\r\n      ]\r\n    }\r\n  },\r\n  methods: {\r\n    handleClick (e) {\r\n      e.preventDefault()\r\n      e.target.parentElement.classList.toggle('open')\r\n    }\r\n  }\r\n}\r\n</script>\r\n\r\n<style scoped lang=\"css\">\r\n  .nav-link {\r\n    cursor:pointer;\r\n  }\r\n</style>\r\n"] }, media: undefined });
 };
 /* scoped */
-var __vue_scope_id__$e = "data-v-01a16de4";
+var __vue_scope_id__$m = "data-v-01a16de4";
 /* module identifier */
-var __vue_module_identifier__$e = undefined;
+var __vue_module_identifier__$m = undefined;
 /* functional template */
-var __vue_is_functional_template__$e = false;
+var __vue_is_functional_template__$m = false;
 /* component normalizer */
-function __vue_normalize__$e(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$m(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -2155,7 +2926,7 @@ function __vue_create_injector__() {
 }
 /* style inject SSR */
 
-var SidebarNavDropdown = __vue_normalize__$e({ render: __vue_render__$e, staticRenderFns: __vue_staticRenderFns__$e }, __vue_inject_styles__$e, __vue_script__$e, __vue_scope_id__$e, __vue_is_functional_template__$e, __vue_module_identifier__$e, __vue_create_injector__, undefined);
+var SidebarNavDropdown = __vue_normalize__$m({ render: __vue_render__$m, staticRenderFns: __vue_staticRenderFns__$m }, __vue_inject_styles__$m, __vue_script__$m, __vue_scope_id__$m, __vue_is_functional_template__$m, __vue_module_identifier__$m, __vue_create_injector__, undefined);
 
 //
 //
@@ -2173,7 +2944,7 @@ var SidebarNavDropdown = __vue_normalize__$e({ render: __vue_render__$e, staticR
 //
 //
 
-var script$f = {
+var script$n = {
   name: 'sidebar-nav-link',
   props: {
     name: {
@@ -2225,28 +2996,28 @@ var script$f = {
 };
 
 /* script */
-var __vue_script__$f = script$f;
+var __vue_script__$n = script$n;
 
 /* template */
-var __vue_render__$f = function __vue_render__() {
+var __vue_render__$n = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _vm.isExternalLink ? _c("div", [_c("a", { class: _vm.classList, attrs: { href: _vm.url } }, [_c("i", { class: _vm.classIcon }), _vm._v(" " + _vm._s(_vm.name) + "\n    "), _vm.badge && _vm.badge.text ? _c("b-badge", { attrs: { variant: _vm.badge.variant } }, [_vm._v(_vm._s(_vm.badge.text))]) : _vm._e()], 1)]) : _c("div", [_c("router-link", { class: _vm.classList, attrs: { to: _vm.url } }, [_c("i", { class: _vm.classIcon }), _vm._v(" " + _vm._s(_vm.name) + "\n    "), _vm.badge && _vm.badge.text ? _c("b-badge", { attrs: { variant: _vm.badge.variant } }, [_vm._v(_vm._s(_vm.badge.text))]) : _vm._e()], 1)], 1);
 };
-var __vue_staticRenderFns__$f = [];
-__vue_render__$f._withStripped = true;
+var __vue_staticRenderFns__$n = [];
+__vue_render__$n._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$f = undefined;
+var __vue_inject_styles__$n = undefined;
 /* scoped */
-var __vue_scope_id__$f = undefined;
+var __vue_scope_id__$n = undefined;
 /* module identifier */
-var __vue_module_identifier__$f = undefined;
+var __vue_module_identifier__$n = undefined;
 /* functional template */
-var __vue_is_functional_template__$f = false;
+var __vue_is_functional_template__$n = false;
 /* component normalizer */
-function __vue_normalize__$f(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$n(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -2268,7 +3039,7 @@ function __vue_normalize__$f(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var SidebarNavLink = __vue_normalize__$f({ render: __vue_render__$f, staticRenderFns: __vue_staticRenderFns__$f }, __vue_inject_styles__$f, __vue_script__$f, __vue_scope_id__$f, __vue_is_functional_template__$f, __vue_module_identifier__$f, undefined, undefined);
+var SidebarNavLink = __vue_normalize__$n({ render: __vue_render__$n, staticRenderFns: __vue_staticRenderFns__$n }, __vue_inject_styles__$n, __vue_script__$n, __vue_scope_id__$n, __vue_is_functional_template__$n, __vue_module_identifier__$n, undefined, undefined);
 
 //
 //
@@ -2284,7 +3055,7 @@ var SidebarNavLink = __vue_normalize__$f({ render: __vue_render__$f, staticRende
 //
 //
 
-var script$g = {
+var script$o = {
   props: {
     name: {
       type: String,
@@ -2310,28 +3081,28 @@ var script$g = {
 };
 
 /* script */
-var __vue_script__$g = script$g;
+var __vue_script__$o = script$o;
 
 /* template */
-var __vue_render__$g = function __vue_render__() {
+var __vue_render__$o = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _c("li", { class: _vm.classList }, [_vm.wrapper && _vm.wrapper.element ? [_c(_vm.wrapper.element, _vm._b({ tag: "component" }, "component", _vm.wrapper.attributes, false), [_vm._v("\n      " + _vm._s(_vm.name) + "\n    ")])] : [_vm._v("\n    " + _vm._s(_vm.name) + "\n  ")]], 2);
 };
-var __vue_staticRenderFns__$g = [];
-__vue_render__$g._withStripped = true;
+var __vue_staticRenderFns__$o = [];
+__vue_render__$o._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$g = undefined;
+var __vue_inject_styles__$o = undefined;
 /* scoped */
-var __vue_scope_id__$g = undefined;
+var __vue_scope_id__$o = undefined;
 /* module identifier */
-var __vue_module_identifier__$g = undefined;
+var __vue_module_identifier__$o = undefined;
 /* functional template */
-var __vue_is_functional_template__$g = false;
+var __vue_is_functional_template__$o = false;
 /* component normalizer */
-function __vue_normalize__$g(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$o(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -2353,9 +3124,9 @@ function __vue_normalize__$g(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var SidebarNavTitle = __vue_normalize__$g({ render: __vue_render__$g, staticRenderFns: __vue_staticRenderFns__$g }, __vue_inject_styles__$g, __vue_script__$g, __vue_scope_id__$g, __vue_is_functional_template__$g, __vue_module_identifier__$g, undefined, undefined);
+var SidebarNavTitle = __vue_normalize__$o({ render: __vue_render__$o, staticRenderFns: __vue_staticRenderFns__$o }, __vue_inject_styles__$o, __vue_script__$o, __vue_scope_id__$o, __vue_is_functional_template__$o, __vue_module_identifier__$o, undefined, undefined);
 
-var script$h = {
+var script$p = {
   name: 'sidebar-nav-item',
   mixins: [hideMobile],
   props: {
@@ -2375,28 +3146,28 @@ var script$h = {
 };
 
 /* script */
-var __vue_script__$h = script$h;
+var __vue_script__$p = script$p;
 
 /* template */
-var __vue_render__$h = function __vue_render__() {
+var __vue_render__$p = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _c("li", { class: _vm.classList, on: { click: _vm.hideMobile } }, [_vm._t("default")], 2);
 };
-var __vue_staticRenderFns__$h = [];
-__vue_render__$h._withStripped = true;
+var __vue_staticRenderFns__$p = [];
+__vue_render__$p._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$h = undefined;
+var __vue_inject_styles__$p = undefined;
 /* scoped */
-var __vue_scope_id__$h = undefined;
+var __vue_scope_id__$p = undefined;
 /* module identifier */
-var __vue_module_identifier__$h = undefined;
+var __vue_module_identifier__$p = undefined;
 /* functional template */
-var __vue_is_functional_template__$h = false;
+var __vue_is_functional_template__$p = false;
 /* component normalizer */
-function __vue_normalize__$h(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$p(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -2418,9 +3189,9 @@ function __vue_normalize__$h(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var SidebarNavItem = __vue_normalize__$h({ render: __vue_render__$h, staticRenderFns: __vue_staticRenderFns__$h }, __vue_inject_styles__$h, __vue_script__$h, __vue_scope_id__$h, __vue_is_functional_template__$h, __vue_module_identifier__$h, undefined, undefined);
+var SidebarNavItem = __vue_normalize__$p({ render: __vue_render__$p, staticRenderFns: __vue_staticRenderFns__$p }, __vue_inject_styles__$p, __vue_script__$p, __vue_scope_id__$p, __vue_is_functional_template__$p, __vue_module_identifier__$p, undefined, undefined);
 
-var script$i = {
+var script$q = {
   name: 'sidebar-nav-label',
   components: {
     SidebarNavItem: SidebarNavItem,
@@ -2467,28 +3238,28 @@ var script$i = {
 };
 
 /* script */
-var __vue_script__$i = script$i;
+var __vue_script__$q = script$q;
 
 /* template */
-var __vue_render__$i = function __vue_render__() {
+var __vue_render__$q = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _c("SidebarNavItem", { attrs: { classes: _vm.classList.navItem } }, [_c("a", { class: _vm.classList.navLink, attrs: { href: _vm.url } }, [_c("i", { class: _vm.classList.icon }), _vm._v(" " + _vm._s(_vm.name))])]);
 };
-var __vue_staticRenderFns__$i = [];
-__vue_render__$i._withStripped = true;
+var __vue_staticRenderFns__$q = [];
+__vue_render__$q._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$i = undefined;
+var __vue_inject_styles__$q = undefined;
 /* scoped */
-var __vue_scope_id__$i = undefined;
+var __vue_scope_id__$q = undefined;
 /* module identifier */
-var __vue_module_identifier__$i = undefined;
+var __vue_module_identifier__$q = undefined;
 /* functional template */
-var __vue_is_functional_template__$i = false;
+var __vue_is_functional_template__$q = false;
 /* component normalizer */
-function __vue_normalize__$i(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$q(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -2510,9 +3281,9 @@ function __vue_normalize__$i(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var SidebarNavLabel = __vue_normalize__$i({ render: __vue_render__$i, staticRenderFns: __vue_staticRenderFns__$i }, __vue_inject_styles__$i, __vue_script__$i, __vue_scope_id__$i, __vue_is_functional_template__$i, __vue_module_identifier__$i, undefined, undefined);
+var SidebarNavLabel = __vue_normalize__$q({ render: __vue_render__$q, staticRenderFns: __vue_staticRenderFns__$q }, __vue_inject_styles__$q, __vue_script__$q, __vue_scope_id__$q, __vue_is_functional_template__$q, __vue_module_identifier__$q, undefined, undefined);
 
-var script$j = {
+var script$r = {
   name: 'SidebarNav',
   props: {
     navItems: {
@@ -2557,10 +3328,10 @@ var script$j = {
   }
 };
 
-var __vue_script__$j = script$j;
+var __vue_script__$r = script$r;
 
 /* template */
-var __vue_render__$j = function __vue_render__() {
+var __vue_render__$r = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -2644,22 +3415,22 @@ var __vue_render__$j = function __vue_render__() {
     })], 1)]]];
   })], 2), _vm._v(" "), _vm._t("default")], 2)], 1);
 };
-var __vue_staticRenderFns__$j = [];
-__vue_render__$j._withStripped = true;
+var __vue_staticRenderFns__$r = [];
+__vue_render__$r._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$j = function __vue_inject_styles__(inject) {
+var __vue_inject_styles__$r = function __vue_inject_styles__(inject) {
   if (!inject) return;
   inject("data-v-132b24bc_0", { source: "\n.scroll-area[data-v-132b24bc] {\n  position: absolute;\n  height: 100%;\n  margin: auto;\n}\n", map: { "version": 3, "sources": ["C:\\xampp\\htdocs\\coreui-vue/C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Sidebar\\SidebarNav.vue"], "names": [], "mappings": ";AAmGA;EACA,mBAAA;EACA,aAAA;EACA,aAAA;CACA", "file": "SidebarNav.vue", "sourcesContent": ["<template>\r\n  <nav class=\"sidebar-nav\">\r\n    <VuePerfectScrollbar class=\"scroll-area\" :settings=\"psSettings\" @ps-scroll-y=\"scrollHandle\">\r\n      <ul class=\"nav\">\r\n        <template v-for=\"(item, index) in navItems\">\r\n          <template v-if=\"item.title\">\r\n            <SidebarNavTitle :key=\"index\" :name=\"item.name\" :classes=\"item.class\" :wrapper=\"item.wrapper\"/>\r\n          </template>\r\n          <template v-else-if=\"item.divider\">\r\n            <SidebarNavDivider :key=\"index\" :classes=\"item.class\"/>\r\n          </template>\r\n          <template v-else-if=\"item.label\">\r\n            <SidebarNavLabel :key=\"index\" :name=\"item.name\" :url=\"item.url\" :icon=\"item.icon\" :label=\"item.label\" :classes=\"item.class\"/>\r\n          </template>\r\n          <template v-else>\r\n            <template v-if=\"item.children\">\r\n              <!-- First level dropdown -->\r\n              <SidebarNavDropdown :key=\"index\" :name=\"item.name\" :url=\"item.url\" :icon=\"item.icon\">\r\n                <template v-for=\"(childL1, index1) in item.children\">\r\n                  <template v-if=\"childL1.children\">\r\n                    <!-- Second level dropdown -->\r\n                    <SidebarNavDropdown :key=\"index1\" :name=\"childL1.name\" :url=\"childL1.url\" :icon=\"childL1.icon\">\r\n                      <li :key=\"index2\" class=\"nav-item\" v-for=\"(childL2, index2) in childL1.children\">\r\n                        <SidebarNavLink :name=\"childL2.name\" :url=\"childL2.url\" :icon=\"childL2.icon\" :badge=\"childL2.badge\" :variant=\"item.variant\"/>\r\n                      </li>\r\n                    </SidebarNavDropdown>\r\n                  </template>\r\n                  <template v-else>\r\n                    <SidebarNavItem :key=\"index1\" :classes=\"item.class\">\r\n                      <SidebarNavLink :name=\"childL1.name\" :url=\"childL1.url\" :icon=\"childL1.icon\" :badge=\"childL1.badge\" :variant=\"item.variant\"/>\r\n                    </SidebarNavItem>\r\n                  </template>\r\n                </template>\r\n              </SidebarNavDropdown>\r\n            </template>\r\n            <template v-else>\r\n              <SidebarNavItem :key=\"index\" :classes=\"item.class\">\r\n                <SidebarNavLink :name=\"item.name\" :url=\"item.url\" :icon=\"item.icon\" :badge=\"item.badge\" :variant=\"item.variant\"/>\r\n              </SidebarNavItem>\r\n            </template>\r\n          </template>\r\n        </template>\r\n      </ul>\r\n      <slot></slot>\r\n    </VuePerfectScrollbar>\r\n  </nav>\r\n</template>\r\n\r\n<script>\r\nimport SidebarNavDivider from './SidebarNavDivider'\r\nimport SidebarNavDropdown from './SidebarNavDropdown'\r\nimport SidebarNavLink from './SidebarNavLink'\r\nimport SidebarNavTitle from './SidebarNavTitle'\r\nimport SidebarNavItem from './SidebarNavItem'\r\nimport SidebarNavLabel from './SidebarNavLabel'\r\nimport VuePerfectScrollbar from 'vue-perfect-scrollbar'\r\n\r\nexport default {\r\n  name: 'SidebarNav',\r\n  props: {\r\n    navItems: {\r\n      type: Array,\r\n      required: true,\r\n      default: () => []\r\n    }\r\n  },\r\n  components: {\r\n    SidebarNavDivider,\r\n    SidebarNavDropdown,\r\n    SidebarNavLink,\r\n    SidebarNavTitle,\r\n    SidebarNavItem,\r\n    SidebarNavLabel,\r\n    VuePerfectScrollbar\r\n  },\r\n  data () {\r\n    return {}\r\n  },\r\n  computed: {\r\n    psSettings: () => {\r\n      // ToDo: find better rtl fix\r\n      return {\r\n        maxScrollbarLength: 200,\r\n        minScrollbarLength: 40,\r\n        suppressScrollX: getComputedStyle(document.querySelector('html')).direction !== 'rtl',\r\n        wheelPropagation: false,\r\n        interceptRailY: styles => ({ ...styles, height: 0 })\r\n      }\r\n    }\r\n  },\r\n  methods: {\r\n    scrollHandle (evt) {\r\n      // console.log(evt)\r\n    }\r\n  }\r\n}\r\n</script>\r\n\r\n<style scoped lang=\"css\">\r\n  .scroll-area {\r\n    position: absolute;\r\n    height: 100%;\r\n    margin: auto;\r\n  }\r\n</style>\r\n"] }, media: undefined });
 };
 /* scoped */
-var __vue_scope_id__$j = "data-v-132b24bc";
+var __vue_scope_id__$r = "data-v-132b24bc";
 /* module identifier */
-var __vue_module_identifier__$j = undefined;
+var __vue_module_identifier__$r = undefined;
 /* functional template */
-var __vue_is_functional_template__$j = false;
+var __vue_is_functional_template__$r = false;
 /* component normalizer */
-function __vue_normalize__$j(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$r(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -2755,11 +3526,11 @@ function __vue_create_injector__$1() {
 }
 /* style inject SSR */
 
-var SidebarNav = __vue_normalize__$j({ render: __vue_render__$j, staticRenderFns: __vue_staticRenderFns__$j }, __vue_inject_styles__$j, __vue_script__$j, __vue_scope_id__$j, __vue_is_functional_template__$j, __vue_module_identifier__$j, __vue_create_injector__$1, undefined);
+var SidebarNav = __vue_normalize__$r({ render: __vue_render__$r, staticRenderFns: __vue_staticRenderFns__$r }, __vue_inject_styles__$r, __vue_script__$r, __vue_scope_id__$r, __vue_is_functional_template__$r, __vue_module_identifier__$r, __vue_create_injector__$1, undefined);
 
 //
 
-var script$k = {
+var script$s = {
   name: 'SidebarToggler',
   props: {
     defaultOpen: {
@@ -2804,10 +3575,10 @@ var script$k = {
 };
 
 /* script */
-var __vue_script__$k = script$k;
+var __vue_script__$s = script$s;
 
 /* template */
-var __vue_render__$k = function __vue_render__() {
+var __vue_render__$s = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -2817,19 +3588,19 @@ var __vue_render__$k = function __vue_render__() {
     on: { click: _vm.sidebarToggle }
   }, [_c("span", { staticClass: "navbar-toggler-icon" })]);
 };
-var __vue_staticRenderFns__$k = [];
-__vue_render__$k._withStripped = true;
+var __vue_staticRenderFns__$s = [];
+__vue_render__$s._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$k = undefined;
+var __vue_inject_styles__$s = undefined;
 /* scoped */
-var __vue_scope_id__$k = undefined;
+var __vue_scope_id__$s = undefined;
 /* module identifier */
-var __vue_module_identifier__$k = undefined;
+var __vue_module_identifier__$s = undefined;
 /* functional template */
-var __vue_is_functional_template__$k = false;
+var __vue_is_functional_template__$s = false;
 /* component normalizer */
-function __vue_normalize__$k(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$s(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
@@ -2851,7 +3622,1280 @@ function __vue_normalize__$k(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var SidebarToggler = __vue_normalize__$k({ render: __vue_render__$k, staticRenderFns: __vue_staticRenderFns__$k }, __vue_inject_styles__$k, __vue_script__$k, __vue_scope_id__$k, __vue_is_functional_template__$k, __vue_module_identifier__$k, undefined, undefined);
+var SidebarToggler = __vue_normalize__$s({ render: __vue_render__$s, staticRenderFns: __vue_staticRenderFns__$s }, __vue_inject_styles__$s, __vue_script__$s, __vue_scope_id__$s, __vue_is_functional_template__$s, __vue_module_identifier__$s, undefined, undefined);
+
+//
+
+var script$t = {
+  name: 'CSidebar',
+  mixins: [mixin, hideMobile],
+  props: {
+    fixed: {
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted: function mounted() {
+    this.isFixed();
+  },
+  methods: {
+    isFixed: function isFixed() {
+      this.fixed ? document.body.classList.add('sidebar-fixed') : document.body.classList.remove('sidebar-fixed');
+      return this.fixed;
+    }
+  }
+};
+
+/* script */
+var __vue_script__$t = script$t;
+
+/* template */
+var __vue_render__$t = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("div", {
+    directives: [{
+      name: "on-clickaway",
+      rawName: "v-on-clickaway",
+      value: _vm.hideMobile,
+      expression: "hideMobile"
+    }],
+    staticClass: "sidebar"
+  }, [_vm._t("default", [_vm._v("Sidebar")])], 2);
+};
+var __vue_staticRenderFns__$t = [];
+__vue_render__$t._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$t = undefined;
+/* scoped */
+var __vue_scope_id__$t = undefined;
+/* module identifier */
+var __vue_module_identifier__$t = undefined;
+/* functional template */
+var __vue_is_functional_template__$t = false;
+/* component normalizer */
+function __vue_normalize__$t(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Sidebar\\CSidebar.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  return component;
+}
+/* style inject */
+
+/* style inject SSR */
+
+var CSidebar = __vue_normalize__$t({ render: __vue_render__$t, staticRenderFns: __vue_staticRenderFns__$t }, __vue_inject_styles__$t, __vue_script__$t, __vue_scope_id__$t, __vue_is_functional_template__$t, __vue_module_identifier__$t, undefined, undefined);
+
+//
+//
+//
+//
+//
+//
+
+var script$u = {
+  name: 'CSidebarFooter',
+  computed: {
+    hasSlotDefault: function hasSlotDefault() {
+      return !!this.$slots.default;
+    }
+  }
+};
+
+/* script */
+var __vue_script__$u = script$u;
+
+/* template */
+var __vue_render__$u = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _vm.hasSlotDefault ? _c("div", { staticClass: "sidebar-footer" }, [_vm._t("default")], 2) : _vm._e();
+};
+var __vue_staticRenderFns__$u = [];
+__vue_render__$u._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$u = undefined;
+/* scoped */
+var __vue_scope_id__$u = undefined;
+/* module identifier */
+var __vue_module_identifier__$u = undefined;
+/* functional template */
+var __vue_is_functional_template__$u = false;
+/* component normalizer */
+function __vue_normalize__$u(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Sidebar\\CSidebarFooter.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  return component;
+}
+/* style inject */
+
+/* style inject SSR */
+
+var CSidebarFooter = __vue_normalize__$u({ render: __vue_render__$u, staticRenderFns: __vue_staticRenderFns__$u }, __vue_inject_styles__$u, __vue_script__$u, __vue_scope_id__$u, __vue_is_functional_template__$u, __vue_module_identifier__$u, undefined, undefined);
+
+//
+//
+//
+//
+//
+
+
+var script$v = {
+  name: 'CSidebarForm',
+  computed: {
+    hasSlotDefault: function hasSlotDefault() {
+      return !!this.$slots.default;
+    }
+  }
+};
+
+/* script */
+var __vue_script__$v = script$v;
+
+/* template */
+var __vue_render__$v = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _vm.hasSlotDefault ? _c("div", { staticClass: "sidebar-form" }, [_vm._t("default")], 2) : _vm._e();
+};
+var __vue_staticRenderFns__$v = [];
+__vue_render__$v._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$v = undefined;
+/* scoped */
+var __vue_scope_id__$v = undefined;
+/* module identifier */
+var __vue_module_identifier__$v = undefined;
+/* functional template */
+var __vue_is_functional_template__$v = false;
+/* component normalizer */
+function __vue_normalize__$v(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Sidebar\\CSidebarForm.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  return component;
+}
+/* style inject */
+
+/* style inject SSR */
+
+var CSidebarForm = __vue_normalize__$v({ render: __vue_render__$v, staticRenderFns: __vue_staticRenderFns__$v }, __vue_inject_styles__$v, __vue_script__$v, __vue_scope_id__$v, __vue_is_functional_template__$v, __vue_module_identifier__$v, undefined, undefined);
+
+//
+//
+//
+//
+//
+
+
+var script$w = {
+  name: 'CSidebarHeader',
+  computed: {
+    hasSlotDefault: function hasSlotDefault() {
+      return !!this.$slots.default;
+    }
+  }
+};
+
+/* script */
+var __vue_script__$w = script$w;
+
+/* template */
+var __vue_render__$w = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _vm.hasSlotDefault ? _c("div", { staticClass: "sidebar-header" }, [_vm._t("default")], 2) : _vm._e();
+};
+var __vue_staticRenderFns__$w = [];
+__vue_render__$w._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$w = undefined;
+/* scoped */
+var __vue_scope_id__$w = undefined;
+/* module identifier */
+var __vue_module_identifier__$w = undefined;
+/* functional template */
+var __vue_is_functional_template__$w = false;
+/* component normalizer */
+function __vue_normalize__$w(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Sidebar\\CSidebarHeader.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  return component;
+}
+/* style inject */
+
+/* style inject SSR */
+
+var CSidebarHeader = __vue_normalize__$w({ render: __vue_render__$w, staticRenderFns: __vue_staticRenderFns__$w }, __vue_inject_styles__$w, __vue_script__$w, __vue_scope_id__$w, __vue_is_functional_template__$w, __vue_module_identifier__$w, undefined, undefined);
+
+//
+
+var script$x = {
+  name: 'CSidebarMinimizer',
+  mixins: [togglePs],
+  mounted: function mounted() {
+    var isMinimized = document.body.classList.contains('sidebar-minimized');
+    this.togglePs(!isMinimized);
+  },
+  methods: {
+    onClick: function onClick() {
+      this.sidebarMinimize();
+      this.brandMinimize();
+    },
+    sidebarMinimize: function sidebarMinimize() {
+      var isMinimized = document.body.classList.toggle('sidebar-minimized');
+      this.$emit('cui-sidebar-minimize', isMinimized);
+      this.togglePs(!isMinimized);
+    },
+    brandMinimize: function brandMinimize() {
+      document.body.classList.toggle('brand-minimized');
+    }
+  }
+};
+
+/* script */
+var __vue_script__$x = script$x;
+
+/* template */
+var __vue_render__$x = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("button", {
+    staticClass: "sidebar-minimizer",
+    attrs: { type: "button" },
+    on: {
+      click: function click($event) {
+        _vm.onClick();
+      }
+    }
+  });
+};
+var __vue_staticRenderFns__$x = [];
+__vue_render__$x._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$x = undefined;
+/* scoped */
+var __vue_scope_id__$x = undefined;
+/* module identifier */
+var __vue_module_identifier__$x = undefined;
+/* functional template */
+var __vue_is_functional_template__$x = false;
+/* component normalizer */
+function __vue_normalize__$x(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Sidebar\\CSidebarMinimizer.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  return component;
+}
+/* style inject */
+
+/* style inject SSR */
+
+var CSidebarMinimizer = __vue_normalize__$x({ render: __vue_render__$x, staticRenderFns: __vue_staticRenderFns__$x }, __vue_inject_styles__$x, __vue_script__$x, __vue_scope_id__$x, __vue_is_functional_template__$x, __vue_module_identifier__$x, undefined, undefined);
+
+//
+//
+//
+//
+
+var script$y = {
+  name: 'CSidebarNavDivider',
+  props: {
+    classes: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    classList: function classList() {
+      return ['divider'].concat(_toConsumableArray(this.itemClasses));
+    },
+    itemClasses: function itemClasses() {
+      return this.classes ? this.classes.split(' ') : '';
+    }
+  }
+};
+
+/* script */
+var __vue_script__$y = script$y;
+
+/* template */
+var __vue_render__$y = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("li", { class: _vm.classList });
+};
+var __vue_staticRenderFns__$y = [];
+__vue_render__$y._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$y = undefined;
+/* scoped */
+var __vue_scope_id__$y = undefined;
+/* module identifier */
+var __vue_module_identifier__$y = undefined;
+/* functional template */
+var __vue_is_functional_template__$y = false;
+/* component normalizer */
+function __vue_normalize__$y(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Sidebar\\CSidebarNavDivider.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  return component;
+}
+/* style inject */
+
+/* style inject SSR */
+
+var CSidebarNavDivider = __vue_normalize__$y({ render: __vue_render__$y, staticRenderFns: __vue_staticRenderFns__$y }, __vue_inject_styles__$y, __vue_script__$y, __vue_scope_id__$y, __vue_is_functional_template__$y, __vue_module_identifier__$y, undefined, undefined);
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var script$z = {
+  name: 'CSidebarNavDropdown',
+  props: {
+    name: {
+      type: String,
+      default: ''
+    },
+    url: {
+      type: String,
+      default: ''
+    },
+    icon: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    classIcon: function classIcon() {
+      return ['nav-icon', this.icon];
+    }
+  },
+  methods: {
+    handleClick: function handleClick(e) {
+      e.preventDefault();
+      e.target.parentElement.classList.toggle('open');
+    }
+  }
+};
+
+var __vue_script__$z = script$z;
+
+/* template */
+var __vue_render__$z = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("router-link", {
+    staticClass: "nav-item nav-dropdown",
+    attrs: { tag: "li", to: _vm.url, disabled: "" }
+  }, [_c("div", {
+    staticClass: "nav-link nav-dropdown-toggle",
+    on: { click: _vm.handleClick }
+  }, [_c("i", { class: _vm.classIcon }), _vm._v(" " + _vm._s(_vm.name))]), _vm._v(" "), _c("ul", { staticClass: "nav-dropdown-items" }, [_vm._t("default")], 2)]);
+};
+var __vue_staticRenderFns__$z = [];
+__vue_render__$z._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$z = function __vue_inject_styles__(inject) {
+  if (!inject) return;
+  inject("data-v-37e66802_0", { source: "\n.nav-link[data-v-37e66802] {\n  cursor:pointer;\n}\n", map: { "version": 3, "sources": ["C:\\xampp\\htdocs\\coreui-vue/C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Sidebar\\CSidebarNavDropdown.vue"], "names": [], "mappings": ";AA4CA;EACA,eAAA;CACA", "file": "CSidebarNavDropdown.vue", "sourcesContent": ["<template>\r\n  <router-link tag=\"li\" class=\"nav-item nav-dropdown\" :to=\"url\" disabled>\r\n    <div class=\"nav-link nav-dropdown-toggle\" @click=\"handleClick\"><i :class=\"classIcon\"></i> {{name}}</div>\r\n    <ul class=\"nav-dropdown-items\">\r\n      <slot></slot>\r\n    </ul>\r\n  </router-link>\r\n</template>\r\n\r\n<script>\r\nexport default {\r\n  name:'CSidebarNavDropdown',\r\n  props: {\r\n    name: {\r\n      type: String,\r\n      default: ''\r\n    },\r\n    url: {\r\n      type: String,\r\n      default: ''\r\n    },\r\n    icon: {\r\n      type: String,\r\n      default: ''\r\n    }\r\n  },\r\n  computed: {\r\n    classIcon () {\r\n      return [\r\n        'nav-icon',\r\n        this.icon\r\n      ]\r\n    }\r\n  },\r\n  methods: {\r\n    handleClick (e) {\r\n      e.preventDefault()\r\n      e.target.parentElement.classList.toggle('open')\r\n    }\r\n  }\r\n}\r\n</script>\r\n\r\n<style scoped lang=\"css\">\r\n  .nav-link {\r\n    cursor:pointer;\r\n  }\r\n</style>\r\n"] }, media: undefined });
+};
+/* scoped */
+var __vue_scope_id__$z = "data-v-37e66802";
+/* module identifier */
+var __vue_module_identifier__$z = undefined;
+/* functional template */
+var __vue_is_functional_template__$z = false;
+/* component normalizer */
+function __vue_normalize__$z(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Sidebar\\CSidebarNavDropdown.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  {
+    var hook = void 0;
+    if (style) {
+      hook = function hook(context) {
+        style.call(this, createInjector(context));
+      };
+    }
+
+    if (hook !== undefined) {
+      if (component.functional) {
+        // register for functional component in vue file
+        var originalRender = component.render;
+        component.render = function renderWithStyleInjection(h, context) {
+          hook.call(context);
+          return originalRender(h, context);
+        };
+      } else {
+        // inject component registration as beforeCreate hook
+        var existing = component.beforeCreate;
+        component.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+      }
+    }
+  }
+
+  return component;
+}
+/* style inject */
+function __vue_create_injector__$2() {
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var styles = __vue_create_injector__$2.styles || (__vue_create_injector__$2.styles = {});
+  var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
+
+  return function addStyle(id, css) {
+    if (document.querySelector('style[data-vue-ssr-id~="' + id + '"]')) return; // SSR styles are present.
+
+    var group = isOldIE ? css.media || 'default' : id;
+    var style = styles[group] || (styles[group] = { ids: [], parts: [], element: undefined });
+
+    if (!style.ids.includes(id)) {
+      var code = css.source;
+      var index = style.ids.length;
+
+      style.ids.push(id);
+
+      if (isOldIE) {
+        style.element = style.element || document.querySelector('style[data-group=' + group + ']');
+      }
+
+      if (!style.element) {
+        var el = style.element = document.createElement('style');
+        el.type = 'text/css';
+
+        if (css.media) el.setAttribute('media', css.media);
+        if (isOldIE) {
+          el.setAttribute('data-group', group);
+          el.setAttribute('data-next-index', '0');
+        }
+
+        head.appendChild(el);
+      }
+
+      if (isOldIE) {
+        index = parseInt(style.element.getAttribute('data-next-index'));
+        style.element.setAttribute('data-next-index', index + 1);
+      }
+
+      if (style.element.styleSheet) {
+        style.parts.push(code);
+        style.element.styleSheet.cssText = style.parts.filter(Boolean).join('\n');
+      } else {
+        var textNode = document.createTextNode(code);
+        var nodes = style.element.childNodes;
+        if (nodes[index]) style.element.removeChild(nodes[index]);
+        if (nodes.length) style.element.insertBefore(textNode, nodes[index]);else style.element.appendChild(textNode);
+      }
+    }
+  };
+}
+/* style inject SSR */
+
+var CSidebarNavDropdown = __vue_normalize__$z({ render: __vue_render__$z, staticRenderFns: __vue_staticRenderFns__$z }, __vue_inject_styles__$z, __vue_script__$z, __vue_scope_id__$z, __vue_is_functional_template__$z, __vue_module_identifier__$z, __vue_create_injector__$2, undefined);
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var script$A = {
+  name: 'CSidebarNavLink',
+  props: {
+    name: {
+      type: String,
+      default: ''
+    },
+    url: {
+      type: String,
+      default: ''
+    },
+    icon: {
+      type: String,
+      default: ''
+    },
+    badge: {
+      type: Object,
+      default: function _default() {}
+    },
+    variant: {
+      type: String,
+      default: ''
+    },
+    classes: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    classList: function classList() {
+      return ['nav-link', this.linkVariant].concat(_toConsumableArray(this.itemClasses));
+    },
+    classIcon: function classIcon() {
+      return ['nav-icon', this.icon];
+    },
+    linkVariant: function linkVariant() {
+      return this.variant ? 'nav-link-' + this.variant : '';
+    },
+    itemClasses: function itemClasses() {
+      return this.classes ? this.classes.split(' ') : [];
+    },
+    isExternalLink: function isExternalLink() {
+      if (this.url.substring(0, 4) === 'http') {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+};
+
+/* script */
+var __vue_script__$A = script$A;
+
+/* template */
+var __vue_render__$A = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _vm.isExternalLink ? _c("div", [_c("a", { class: _vm.classList, attrs: { href: _vm.url } }, [_c("i", { class: _vm.classIcon }), _vm._v(" " + _vm._s(_vm.name) + "\n    "), _vm.badge && _vm.badge.text ? _c("b-badge", { attrs: { variant: _vm.badge.variant } }, [_vm._v(_vm._s(_vm.badge.text))]) : _vm._e()], 1)]) : _c("div", [_c("router-link", { class: _vm.classList, attrs: { to: _vm.url } }, [_c("i", { class: _vm.classIcon }), _vm._v(" " + _vm._s(_vm.name) + "\n    "), _vm.badge && _vm.badge.text ? _c("b-badge", { attrs: { variant: _vm.badge.variant } }, [_vm._v(_vm._s(_vm.badge.text))]) : _vm._e()], 1)], 1);
+};
+var __vue_staticRenderFns__$A = [];
+__vue_render__$A._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$A = undefined;
+/* scoped */
+var __vue_scope_id__$A = undefined;
+/* module identifier */
+var __vue_module_identifier__$A = undefined;
+/* functional template */
+var __vue_is_functional_template__$A = false;
+/* component normalizer */
+function __vue_normalize__$A(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Sidebar\\CSidebarNavLink.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  return component;
+}
+/* style inject */
+
+/* style inject SSR */
+
+var CSidebarNavLink = __vue_normalize__$A({ render: __vue_render__$A, staticRenderFns: __vue_staticRenderFns__$A }, __vue_inject_styles__$A, __vue_script__$A, __vue_scope_id__$A, __vue_is_functional_template__$A, __vue_module_identifier__$A, undefined, undefined);
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var script$B = {
+  name: 'CSidebarNavTitle',
+  props: {
+    name: {
+      type: String,
+      default: ''
+    },
+    classes: {
+      type: String,
+      default: ''
+    },
+    wrapper: {
+      type: Object,
+      default: function _default() {}
+    }
+  },
+  computed: {
+    classList: function classList() {
+      return ['nav-title'].concat(_toConsumableArray(this.itemClasses));
+    },
+    itemClasses: function itemClasses() {
+      return this.classes ? this.classes.split(' ') : '';
+    }
+  }
+};
+
+/* script */
+var __vue_script__$B = script$B;
+
+/* template */
+var __vue_render__$B = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("li", { class: _vm.classList }, [_vm.wrapper && _vm.wrapper.element ? [_c(_vm.wrapper.element, _vm._b({ tag: "component" }, "component", _vm.wrapper.attributes, false), [_vm._v("\n      " + _vm._s(_vm.name) + "\n    ")])] : [_vm._v("\n    " + _vm._s(_vm.name) + "\n  ")]], 2);
+};
+var __vue_staticRenderFns__$B = [];
+__vue_render__$B._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$B = undefined;
+/* scoped */
+var __vue_scope_id__$B = undefined;
+/* module identifier */
+var __vue_module_identifier__$B = undefined;
+/* functional template */
+var __vue_is_functional_template__$B = false;
+/* component normalizer */
+function __vue_normalize__$B(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Sidebar\\CSidebarNavTitle.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  return component;
+}
+/* style inject */
+
+/* style inject SSR */
+
+var CSidebarNavTitle = __vue_normalize__$B({ render: __vue_render__$B, staticRenderFns: __vue_staticRenderFns__$B }, __vue_inject_styles__$B, __vue_script__$B, __vue_scope_id__$B, __vue_is_functional_template__$B, __vue_module_identifier__$B, undefined, undefined);
+
+var script$C = {
+  name: 'CSidebarNavItem',
+  mixins: [hideMobile],
+  props: {
+    classes: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    classList: function classList() {
+      return ['nav-item'].concat(_toConsumableArray(this.itemClasses));
+    },
+    itemClasses: function itemClasses() {
+      return this.classes ? this.classes.split(' ') : '';
+    }
+  }
+};
+
+/* script */
+var __vue_script__$C = script$C;
+
+/* template */
+var __vue_render__$C = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("li", { class: _vm.classList, on: { click: _vm.hideMobile } }, [_vm._t("default")], 2);
+};
+var __vue_staticRenderFns__$C = [];
+__vue_render__$C._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$C = undefined;
+/* scoped */
+var __vue_scope_id__$C = undefined;
+/* module identifier */
+var __vue_module_identifier__$C = undefined;
+/* functional template */
+var __vue_is_functional_template__$C = false;
+/* component normalizer */
+function __vue_normalize__$C(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Sidebar\\CSidebarNavItem.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  return component;
+}
+/* style inject */
+
+/* style inject SSR */
+
+var CSidebarNavItem = __vue_normalize__$C({ render: __vue_render__$C, staticRenderFns: __vue_staticRenderFns__$C }, __vue_inject_styles__$C, __vue_script__$C, __vue_scope_id__$C, __vue_is_functional_template__$C, __vue_module_identifier__$C, undefined, undefined);
+
+var script$D = {
+  name: 'CSidebarNavLabel',
+  components: {
+    CSidebarNavItem: CSidebarNavItem
+  },
+  props: {
+    name: {
+      type: String,
+      default: ''
+    },
+    url: {
+      type: String,
+      default: '#'
+    },
+    icon: {
+      type: String,
+      default: 'fa fa-circle'
+    },
+    classes: {
+      type: String,
+      default: ''
+    },
+    label: {
+      type: Object,
+      required: true,
+      default: function _default() {}
+    }
+  },
+  computed: {
+    classList: function classList() {
+      var classes = {
+        navItem: ['hidden-cn'].concat(_toConsumableArray(this.getClasses(this.classes))).join(' '),
+        navLink: 'nav-label',
+        icon: [this.icon ? this.icon : 'fa fa-circle', this.label.variant ? 'text-' + this.label.variant : '', this.label.class ? this.label.class : ''].join(' ')
+      };
+      return classes;
+    }
+  },
+  methods: {
+    getClasses: function getClasses(classes) {
+      return classes ? classes.split(' ') : [];
+    }
+  }
+};
+
+/* script */
+var __vue_script__$D = script$D;
+
+/* template */
+var __vue_render__$D = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("c-sidebar-nav-item", { attrs: { classes: _vm.classList.navItem } }, [_c("a", { class: _vm.classList.navLink, attrs: { href: _vm.url } }, [_c("i", { class: _vm.classList.icon }), _vm._v(" " + _vm._s(_vm.name))])]);
+};
+var __vue_staticRenderFns__$D = [];
+__vue_render__$D._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$D = undefined;
+/* scoped */
+var __vue_scope_id__$D = undefined;
+/* module identifier */
+var __vue_module_identifier__$D = undefined;
+/* functional template */
+var __vue_is_functional_template__$D = false;
+/* component normalizer */
+function __vue_normalize__$D(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Sidebar\\CSidebarNavLabel.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  return component;
+}
+/* style inject */
+
+/* style inject SSR */
+
+var CSidebarNavLabel = __vue_normalize__$D({ render: __vue_render__$D, staticRenderFns: __vue_staticRenderFns__$D }, __vue_inject_styles__$D, __vue_script__$D, __vue_scope_id__$D, __vue_is_functional_template__$D, __vue_module_identifier__$D, undefined, undefined);
+
+var script$E = {
+  name: 'CSidebarNav',
+  props: {
+    navItems: {
+      type: Array,
+      required: true,
+      default: function _default() {
+        return [];
+      }
+    }
+  },
+  components: {
+    CSidebarNavDivider: CSidebarNavDivider,
+    CSidebarNavDropdown: CSidebarNavDropdown,
+    CSidebarNavLink: CSidebarNavLink,
+    CSidebarNavTitle: CSidebarNavTitle,
+    CSidebarNavItem: CSidebarNavItem,
+    CSidebarNavLabel: CSidebarNavLabel,
+    VuePerfectScrollbar: VuePerfectScrollbar
+  },
+  data: function data() {
+    return {};
+  },
+
+  computed: {
+    psSettings: function psSettings() {
+      // ToDo: find better rtl fix
+      return {
+        maxScrollbarLength: 200,
+        minScrollbarLength: 40,
+        suppressScrollX: getComputedStyle(document.querySelector('html')).direction !== 'rtl',
+        wheelPropagation: false,
+        interceptRailY: function interceptRailY(styles) {
+          return _extends$1({}, styles, { height: 0 });
+        }
+      };
+    }
+  },
+  methods: {
+    scrollHandle: function scrollHandle(evt) {
+      // console.log(evt)
+    }
+  }
+};
+
+var __vue_script__$E = script$E;
+
+/* template */
+var __vue_render__$E = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("nav", { staticClass: "sidebar-nav" }, [_c("VuePerfectScrollbar", {
+    staticClass: "scroll-area",
+    attrs: { settings: _vm.psSettings },
+    on: { "ps-scroll-y": _vm.scrollHandle }
+  }, [_c("ul", { staticClass: "nav" }, [_vm._l(_vm.navItems, function (item, index) {
+    return [item.title ? [_c("c-sidebar-nav-title", {
+      key: index,
+      attrs: {
+        name: item.name,
+        classes: item.class,
+        wrapper: item.wrapper
+      }
+    })] : item.divider ? [_c("c-sidebar-nav-divider", {
+      key: index,
+      attrs: { classes: item.class }
+    })] : item.label ? [_c("c-sidebar-nav-label", {
+      key: index,
+      attrs: {
+        name: item.name,
+        url: item.url,
+        icon: item.icon,
+        label: item.label,
+        classes: item.class
+      }
+    })] : [item.children ? [_c("c-sidebar-nav-dropdown", {
+      key: index,
+      attrs: {
+        name: item.name,
+        url: item.url,
+        icon: item.icon
+      }
+    }, [_vm._l(item.children, function (childL1, index1) {
+      return [childL1.children ? [_c("c-sidebar-nav-dropdown", {
+        key: index1,
+        attrs: {
+          name: childL1.name,
+          url: childL1.url,
+          icon: childL1.icon
+        }
+      }, _vm._l(childL1.children, function (childL2, index2) {
+        return _c("li", {
+          key: index2,
+          staticClass: "nav-item"
+        }, [_c("c-sidebar-nav-link", {
+          attrs: {
+            name: childL2.name,
+            url: childL2.url,
+            icon: childL2.icon,
+            badge: childL2.badge,
+            variant: item.variant
+          }
+        })], 1);
+      }))] : [_c("c-sidebar-nav-item", {
+        key: index1,
+        attrs: {
+          classes: item.class
+        }
+      }, [_c("c-sidebar-nav-link", {
+        attrs: {
+          name: childL1.name,
+          url: childL1.url,
+          icon: childL1.icon,
+          badge: childL1.badge,
+          variant: item.variant
+        }
+      })], 1)]];
+    })], 2)] : [_c("c-sidebar-nav-item", {
+      key: index,
+      attrs: { classes: item.class }
+    }, [_c("c-sidebar-nav-link", {
+      attrs: {
+        name: item.name,
+        url: item.url,
+        icon: item.icon,
+        badge: item.badge,
+        variant: item.variant
+      }
+    })], 1)]]];
+  })], 2), _vm._v(" "), _vm._t("default")], 2)], 1);
+};
+var __vue_staticRenderFns__$E = [];
+__vue_render__$E._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$E = function __vue_inject_styles__(inject) {
+  if (!inject) return;
+  inject("data-v-34149424_0", { source: "\n.scroll-area[data-v-34149424] {\n  position: absolute;\n  height: 100%;\n  margin: auto;\n}\n", map: { "version": 3, "sources": ["C:\\xampp\\htdocs\\coreui-vue/C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Sidebar\\CSidebarNav.vue"], "names": [], "mappings": ";AAmGA;EACA,mBAAA;EACA,aAAA;EACA,aAAA;CACA", "file": "CSidebarNav.vue", "sourcesContent": ["<template>\r\n  <nav class=\"sidebar-nav\">\r\n    <VuePerfectScrollbar class=\"scroll-area\" :settings=\"psSettings\" @ps-scroll-y=\"scrollHandle\">\r\n      <ul class=\"nav\">\r\n        <template v-for=\"(item, index) in navItems\">\r\n          <template v-if=\"item.title\">\r\n            <c-sidebar-nav-title :key=\"index\" :name=\"item.name\" :classes=\"item.class\" :wrapper=\"item.wrapper\"/>\r\n          </template>\r\n          <template v-else-if=\"item.divider\">\r\n            <c-sidebar-nav-divider :key=\"index\" :classes=\"item.class\"/>\r\n          </template>\r\n          <template v-else-if=\"item.label\">\r\n            <c-sidebar-nav-label :key=\"index\" :name=\"item.name\" :url=\"item.url\" :icon=\"item.icon\" :label=\"item.label\" :classes=\"item.class\"/>\r\n          </template>\r\n          <template v-else>\r\n            <template v-if=\"item.children\">\r\n              <!-- First level dropdown -->\r\n              <c-sidebar-nav-dropdown :key=\"index\" :name=\"item.name\" :url=\"item.url\" :icon=\"item.icon\">\r\n                <template v-for=\"(childL1, index1) in item.children\">\r\n                  <template v-if=\"childL1.children\">\r\n                    <!-- Second level dropdown -->\r\n                    <c-sidebar-nav-dropdown :key=\"index1\" :name=\"childL1.name\" :url=\"childL1.url\" :icon=\"childL1.icon\">\r\n                      <li :key=\"index2\" class=\"nav-item\" v-for=\"(childL2, index2) in childL1.children\">\r\n                        <c-sidebar-nav-link :name=\"childL2.name\" :url=\"childL2.url\" :icon=\"childL2.icon\" :badge=\"childL2.badge\" :variant=\"item.variant\"/>\r\n                      </li>\r\n                    </c-sidebar-nav-dropdown>\r\n                  </template>\r\n                  <template v-else>\r\n                    <c-sidebar-nav-item :key=\"index1\" :classes=\"item.class\">\r\n                      <c-sidebar-nav-link :name=\"childL1.name\" :url=\"childL1.url\" :icon=\"childL1.icon\" :badge=\"childL1.badge\" :variant=\"item.variant\"/>\r\n                    </c-sidebar-nav-item>\r\n                  </template>\r\n                </template>\r\n              </c-sidebar-nav-dropdown>\r\n            </template>\r\n            <template v-else>\r\n              <c-sidebar-nav-item :key=\"index\" :classes=\"item.class\">\r\n                <c-sidebar-nav-link :name=\"item.name\" :url=\"item.url\" :icon=\"item.icon\" :badge=\"item.badge\" :variant=\"item.variant\"/>\r\n              </c-sidebar-nav-item>\r\n            </template>\r\n          </template>\r\n        </template>\r\n      </ul>\r\n      <slot></slot>\r\n    </VuePerfectScrollbar>\r\n  </nav>\r\n</template>\r\n\r\n<script>\r\nimport CSidebarNavDivider from './CSidebarNavDivider'\r\nimport CSidebarNavDropdown from './CSidebarNavDropdown'\r\nimport CSidebarNavLink from './CSidebarNavLink'\r\nimport CSidebarNavTitle from './CSidebarNavTitle'\r\nimport CSidebarNavItem from './CSidebarNavItem'\r\nimport CSidebarNavLabel from './CSidebarNavLabel'\r\nimport VuePerfectScrollbar from 'vue-perfect-scrollbar'\r\n\r\nexport default {\r\n  name: 'CSidebarNav',\r\n  props: {\r\n    navItems: {\r\n      type: Array,\r\n      required: true,\r\n      default: () => []\r\n    }\r\n  },\r\n  components: {\r\n    CSidebarNavDivider,\r\n    CSidebarNavDropdown,\r\n    CSidebarNavLink,\r\n    CSidebarNavTitle,\r\n    CSidebarNavItem,\r\n    CSidebarNavLabel,\r\n    VuePerfectScrollbar\r\n  },\r\n  data () {\r\n    return {}\r\n  },\r\n  computed: {\r\n    psSettings: () => {\r\n      // ToDo: find better rtl fix\r\n      return {\r\n        maxScrollbarLength: 200,\r\n        minScrollbarLength: 40,\r\n        suppressScrollX: getComputedStyle(document.querySelector('html')).direction !== 'rtl',\r\n        wheelPropagation: false,\r\n        interceptRailY: styles => ({ ...styles, height: 0 })\r\n      }\r\n    }\r\n  },\r\n  methods: {\r\n    scrollHandle (evt) {\r\n      // console.log(evt)\r\n    }\r\n  }\r\n}\r\n</script>\r\n\r\n<style scoped lang=\"css\">\r\n  .scroll-area {\r\n    position: absolute;\r\n    height: 100%;\r\n    margin: auto;\r\n  }\r\n</style>\r\n"] }, media: undefined });
+};
+/* scoped */
+var __vue_scope_id__$E = "data-v-34149424";
+/* module identifier */
+var __vue_module_identifier__$E = undefined;
+/* functional template */
+var __vue_is_functional_template__$E = false;
+/* component normalizer */
+function __vue_normalize__$E(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Sidebar\\CSidebarNav.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  {
+    var hook = void 0;
+    if (style) {
+      hook = function hook(context) {
+        style.call(this, createInjector(context));
+      };
+    }
+
+    if (hook !== undefined) {
+      if (component.functional) {
+        // register for functional component in vue file
+        var originalRender = component.render;
+        component.render = function renderWithStyleInjection(h, context) {
+          hook.call(context);
+          return originalRender(h, context);
+        };
+      } else {
+        // inject component registration as beforeCreate hook
+        var existing = component.beforeCreate;
+        component.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+      }
+    }
+  }
+
+  return component;
+}
+/* style inject */
+function __vue_create_injector__$3() {
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var styles = __vue_create_injector__$3.styles || (__vue_create_injector__$3.styles = {});
+  var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());
+
+  return function addStyle(id, css) {
+    if (document.querySelector('style[data-vue-ssr-id~="' + id + '"]')) return; // SSR styles are present.
+
+    var group = isOldIE ? css.media || 'default' : id;
+    var style = styles[group] || (styles[group] = { ids: [], parts: [], element: undefined });
+
+    if (!style.ids.includes(id)) {
+      var code = css.source;
+      var index = style.ids.length;
+
+      style.ids.push(id);
+
+      if (isOldIE) {
+        style.element = style.element || document.querySelector('style[data-group=' + group + ']');
+      }
+
+      if (!style.element) {
+        var el = style.element = document.createElement('style');
+        el.type = 'text/css';
+
+        if (css.media) el.setAttribute('media', css.media);
+        if (isOldIE) {
+          el.setAttribute('data-group', group);
+          el.setAttribute('data-next-index', '0');
+        }
+
+        head.appendChild(el);
+      }
+
+      if (isOldIE) {
+        index = parseInt(style.element.getAttribute('data-next-index'));
+        style.element.setAttribute('data-next-index', index + 1);
+      }
+
+      if (style.element.styleSheet) {
+        style.parts.push(code);
+        style.element.styleSheet.cssText = style.parts.filter(Boolean).join('\n');
+      } else {
+        var textNode = document.createTextNode(code);
+        var nodes = style.element.childNodes;
+        if (nodes[index]) style.element.removeChild(nodes[index]);
+        if (nodes.length) style.element.insertBefore(textNode, nodes[index]);else style.element.appendChild(textNode);
+      }
+    }
+  };
+}
+/* style inject SSR */
+
+var CSidebarNav = __vue_normalize__$E({ render: __vue_render__$E, staticRenderFns: __vue_staticRenderFns__$E }, __vue_inject_styles__$E, __vue_script__$E, __vue_scope_id__$E, __vue_is_functional_template__$E, __vue_module_identifier__$E, __vue_create_injector__$3, undefined);
+
+//
+
+var script$F = {
+  name: 'CSidebarToggler',
+  props: {
+    defaultOpen: {
+      type: Boolean,
+      default: true
+    },
+    display: {
+      type: String,
+      default: 'lg'
+    },
+    mobile: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    classList: function classList() {
+      return ['navbar-toggler'];
+    }
+  },
+  mounted: function mounted() {
+    this.toggle(this.defaultOpen);
+  },
+  methods: {
+    toggle: function toggle(force) {
+      var _ref = [this.display, this.mobile],
+          display = _ref[0],
+          mobile = _ref[1];
+
+      var cssClass = sidebarCssClasses[0];
+      if (!mobile && display && checkBreakpoint(display, validBreakpoints)) {
+        cssClass = 'sidebar-' + display + '-show';
+      }
+      toggleClasses(cssClass, sidebarCssClasses, force);
+    },
+    sidebarToggle: function sidebarToggle(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.toggle();
+    }
+  }
+};
+
+/* script */
+var __vue_script__$F = script$F;
+
+/* template */
+var __vue_render__$F = function __vue_render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("button", {
+    class: _vm.classList,
+    attrs: { display: _vm.display, mobile: _vm.mobile, type: "button" },
+    on: { click: _vm.sidebarToggle }
+  }, [_c("span", { staticClass: "navbar-toggler-icon" })]);
+};
+var __vue_staticRenderFns__$F = [];
+__vue_render__$F._withStripped = true;
+
+/* style */
+var __vue_inject_styles__$F = undefined;
+/* scoped */
+var __vue_scope_id__$F = undefined;
+/* module identifier */
+var __vue_module_identifier__$F = undefined;
+/* functional template */
+var __vue_is_functional_template__$F = false;
+/* component normalizer */
+function __vue_normalize__$F(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+  var component = (typeof script === 'function' ? script.options : script) || {};
+
+  // For security concerns, we use only base name in production mode.
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Sidebar\\CSidebarToggler.vue";
+
+  if (!component.render) {
+    component.render = template.render;
+    component.staticRenderFns = template.staticRenderFns;
+    component._compiled = true;
+
+    if (functional) component.functional = true;
+  }
+
+  component._scopeId = scope;
+
+  return component;
+}
+/* style inject */
+
+/* style inject SSR */
+
+var CSidebarToggler = __vue_normalize__$F({ render: __vue_render__$F, staticRenderFns: __vue_staticRenderFns__$F }, __vue_inject_styles__$F, __vue_script__$F, __vue_scope_id__$F, __vue_is_functional_template__$F, __vue_module_identifier__$F, undefined, undefined);
 
 //
 //
@@ -2864,8 +4908,8 @@ var SidebarToggler = __vue_normalize__$k({ render: __vue_render__$k, staticRende
 //
 //
 
-var script$l = {
-  name: 'CuiWidget01',
+var script$G = {
+  name: 'CWidget01',
   data: function data() {
     return {
       backgroundColor: '',
@@ -2904,10 +4948,10 @@ var script$l = {
 };
 
 /* script */
-var __vue_script__$l = script$l;
+var __vue_script__$G = script$G;
 
 /* template */
-var __vue_render__$l = function __vue_render__() {
+var __vue_render__$G = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -2916,23 +4960,23 @@ var __vue_render__$l = function __vue_render__() {
     attrs: { height: "{}", variant: _vm.variant, value: _vm.value }
   }), _vm._v(" "), _c("small", { staticClass: "text-muted" }, [_vm._v(_vm._s(_vm.footer))])], 1);
 };
-var __vue_staticRenderFns__$l = [];
-__vue_render__$l._withStripped = true;
+var __vue_staticRenderFns__$G = [];
+__vue_render__$G._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$l = undefined;
+var __vue_inject_styles__$G = undefined;
 /* scoped */
-var __vue_scope_id__$l = undefined;
+var __vue_scope_id__$G = undefined;
 /* module identifier */
-var __vue_module_identifier__$l = undefined;
+var __vue_module_identifier__$G = undefined;
 /* functional template */
-var __vue_is_functional_template__$l = false;
+var __vue_is_functional_template__$G = false;
 /* component normalizer */
-function __vue_normalize__$l(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$G(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
-  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CuiWidget01.vue";
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CWidget01.vue";
 
   if (!component.render) {
     component.render = template.render;
@@ -2950,7 +4994,7 @@ function __vue_normalize__$l(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var CuiWidget01 = __vue_normalize__$l({ render: __vue_render__$l, staticRenderFns: __vue_staticRenderFns__$l }, __vue_inject_styles__$l, __vue_script__$l, __vue_scope_id__$l, __vue_is_functional_template__$l, __vue_module_identifier__$l, undefined, undefined);
+var CWidget01 = __vue_normalize__$G({ render: __vue_render__$G, staticRenderFns: __vue_staticRenderFns__$G }, __vue_inject_styles__$G, __vue_script__$G, __vue_scope_id__$G, __vue_is_functional_template__$G, __vue_module_identifier__$G, undefined, undefined);
 
 //
 //
@@ -2966,8 +5010,8 @@ var CuiWidget01 = __vue_normalize__$l({ render: __vue_render__$l, staticRenderFn
 //
 //
 
-var script$m = {
-  name: 'CuiWidget02',
+var script$H = {
+  name: 'CWidget02',
   props: {
     iconClasses: {
       type: String,
@@ -2993,10 +5037,10 @@ var script$m = {
 };
 
 /* script */
-var __vue_script__$m = script$m;
+var __vue_script__$H = script$H;
 
 /* template */
-var __vue_render__$m = function __vue_render__() {
+var __vue_render__$H = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -3010,23 +5054,23 @@ var __vue_render__$m = function __vue_render__() {
     staticClass: "fa fa-angle-right float-right font-lg"
   })])], 1) : _vm._e()], 1);
 };
-var __vue_staticRenderFns__$m = [];
-__vue_render__$m._withStripped = true;
+var __vue_staticRenderFns__$H = [];
+__vue_render__$H._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$m = undefined;
+var __vue_inject_styles__$H = undefined;
 /* scoped */
-var __vue_scope_id__$m = undefined;
+var __vue_scope_id__$H = undefined;
 /* module identifier */
-var __vue_module_identifier__$m = undefined;
+var __vue_module_identifier__$H = undefined;
 /* functional template */
-var __vue_is_functional_template__$m = false;
+var __vue_is_functional_template__$H = false;
 /* component normalizer */
-function __vue_normalize__$m(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$H(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
-  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CuiWidget02.vue";
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CWidget02.vue";
 
   if (!component.render) {
     component.render = template.render;
@@ -3044,7 +5088,7 @@ function __vue_normalize__$m(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var CuiWidget02 = __vue_normalize__$m({ render: __vue_render__$m, staticRenderFns: __vue_staticRenderFns__$m }, __vue_inject_styles__$m, __vue_script__$m, __vue_scope_id__$m, __vue_is_functional_template__$m, __vue_module_identifier__$m, undefined, undefined);
+var CWidget02 = __vue_normalize__$H({ render: __vue_render__$H, staticRenderFns: __vue_staticRenderFns__$H }, __vue_inject_styles__$H, __vue_script__$H, __vue_scope_id__$H, __vue_is_functional_template__$H, __vue_module_identifier__$H, undefined, undefined);
 
 //
 //
@@ -3057,8 +5101,8 @@ var CuiWidget02 = __vue_normalize__$m({ render: __vue_render__$m, staticRenderFn
 //
 //
 
-var script$n = {
-  name: 'CuiWidget03',
+var script$I = {
+  name: 'CWidget03',
   props: {
     iconClasses: {
       type: String,
@@ -3076,10 +5120,10 @@ var script$n = {
 };
 
 /* script */
-var __vue_script__$n = script$n;
+var __vue_script__$I = script$I;
 
 /* template */
-var __vue_render__$n = function __vue_render__() {
+var __vue_render__$I = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -3088,23 +5132,23 @@ var __vue_render__$n = function __vue_render__() {
     class: _vm.iconClasses
   }), _vm._v(" "), _c("div", { staticClass: "h5 text-primary mb-0 pt-3" }, [_vm._v(_vm._s(_vm.header))]), _vm._v(" "), _c("div", { staticClass: "text-muted text-uppercase font-weight-bold font-xs" }, [_vm._v(_vm._s(_vm.text))])])], 1);
 };
-var __vue_staticRenderFns__$n = [];
-__vue_render__$n._withStripped = true;
+var __vue_staticRenderFns__$I = [];
+__vue_render__$I._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$n = undefined;
+var __vue_inject_styles__$I = undefined;
 /* scoped */
-var __vue_scope_id__$n = undefined;
+var __vue_scope_id__$I = undefined;
 /* module identifier */
-var __vue_module_identifier__$n = undefined;
+var __vue_module_identifier__$I = undefined;
 /* functional template */
-var __vue_is_functional_template__$n = false;
+var __vue_is_functional_template__$I = false;
 /* component normalizer */
-function __vue_normalize__$n(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$I(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
-  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CuiWidget03.vue";
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CWidget03.vue";
 
   if (!component.render) {
     component.render = template.render;
@@ -3122,7 +5166,7 @@ function __vue_normalize__$n(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var CuiWidget03 = __vue_normalize__$n({ render: __vue_render__$n, staticRenderFns: __vue_staticRenderFns__$n }, __vue_inject_styles__$n, __vue_script__$n, __vue_scope_id__$n, __vue_is_functional_template__$n, __vue_module_identifier__$n, undefined, undefined);
+var CWidget03 = __vue_normalize__$I({ render: __vue_render__$I, staticRenderFns: __vue_staticRenderFns__$I }, __vue_inject_styles__$I, __vue_script__$I, __vue_scope_id__$I, __vue_is_functional_template__$I, __vue_module_identifier__$I, undefined, undefined);
 
 //
 //
@@ -3146,8 +5190,8 @@ var CuiWidget03 = __vue_normalize__$n({ render: __vue_render__$n, staticRenderFn
 //
 //
 
-var script$o = {
-  name: 'CuiWidget04',
+var script$J = {
+  name: 'CWidget04',
   props: {
     type: {
       type: String,
@@ -3173,32 +5217,32 @@ var script$o = {
 };
 
 /* script */
-var __vue_script__$o = script$o;
+var __vue_script__$J = script$J;
 
 /* template */
-var __vue_render__$o = function __vue_render__() {
+var __vue_render__$J = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _c("div", { staticClass: "brand-card" }, [_c("div", { staticClass: "brand-card-header", class: "bg-" + _vm.type }, [_c("i", { staticClass: "fa", class: "fa-" + _vm.type }), _vm._v(" "), _c("div", { staticClass: "chart-wrapper" }, [_vm._t("default")], 2)]), _vm._v(" "), _c("div", { staticClass: "brand-card-body" }, [_c("div", [_c("div", { staticClass: "text-value" }, [_vm._v(_vm._s(_vm.rightHeader))]), _vm._v(" "), _c("div", { staticClass: "text-uppercase text-muted small" }, [_vm._v(_vm._s(_vm.rightFooter))])]), _vm._v(" "), _c("div", [_c("div", { staticClass: "text-value" }, [_vm._v(_vm._s(_vm.leftHeader))]), _vm._v(" "), _c("div", { staticClass: "text-uppercase text-muted small" }, [_vm._v(_vm._s(_vm.leftFooter))])])])]);
 };
-var __vue_staticRenderFns__$o = [];
-__vue_render__$o._withStripped = true;
+var __vue_staticRenderFns__$J = [];
+__vue_render__$J._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$o = undefined;
+var __vue_inject_styles__$J = undefined;
 /* scoped */
-var __vue_scope_id__$o = undefined;
+var __vue_scope_id__$J = undefined;
 /* module identifier */
-var __vue_module_identifier__$o = undefined;
+var __vue_module_identifier__$J = undefined;
 /* functional template */
-var __vue_is_functional_template__$o = false;
+var __vue_is_functional_template__$J = false;
 /* component normalizer */
-function __vue_normalize__$o(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$J(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
-  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CuiWidget04.vue";
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CWidget04.vue";
 
   if (!component.render) {
     component.render = template.render;
@@ -3216,7 +5260,7 @@ function __vue_normalize__$o(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var CuiWidget04 = __vue_normalize__$o({ render: __vue_render__$o, staticRenderFns: __vue_staticRenderFns__$o }, __vue_inject_styles__$o, __vue_script__$o, __vue_scope_id__$o, __vue_is_functional_template__$o, __vue_module_identifier__$o, undefined, undefined);
+var CWidget04 = __vue_normalize__$J({ render: __vue_render__$J, staticRenderFns: __vue_staticRenderFns__$J }, __vue_inject_styles__$J, __vue_script__$J, __vue_scope_id__$J, __vue_is_functional_template__$J, __vue_module_identifier__$J, undefined, undefined);
 
 //
 //
@@ -3231,8 +5275,8 @@ var CuiWidget04 = __vue_normalize__$o({ render: __vue_render__$o, staticRenderFn
 //
 //
 
-var script$p = {
-  name: 'CuiWidget05',
+var script$K = {
+  name: 'CWidget05',
   data: function data() {
     return {
       backgroundColor: '',
@@ -3271,10 +5315,10 @@ var script$p = {
 };
 
 /* script */
-var __vue_script__$p = script$p;
+var __vue_script__$K = script$K;
 
 /* template */
-var __vue_render__$p = function __vue_render__() {
+var __vue_render__$K = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -3283,23 +5327,23 @@ var __vue_render__$p = function __vue_render__() {
     attrs: { height: "{}", variant: _vm.variant, value: _vm.value }
   })], 1);
 };
-var __vue_staticRenderFns__$p = [];
-__vue_render__$p._withStripped = true;
+var __vue_staticRenderFns__$K = [];
+__vue_render__$K._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$p = undefined;
+var __vue_inject_styles__$K = undefined;
 /* scoped */
-var __vue_scope_id__$p = undefined;
+var __vue_scope_id__$K = undefined;
 /* module identifier */
-var __vue_module_identifier__$p = undefined;
+var __vue_module_identifier__$K = undefined;
 /* functional template */
-var __vue_is_functional_template__$p = false;
+var __vue_is_functional_template__$K = false;
 /* component normalizer */
-function __vue_normalize__$p(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$K(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
-  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CuiWidget05.vue";
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CWidget05.vue";
 
   if (!component.render) {
     component.render = template.render;
@@ -3317,7 +5361,7 @@ function __vue_normalize__$p(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var CuiWidget05 = __vue_normalize__$p({ render: __vue_render__$p, staticRenderFns: __vue_staticRenderFns__$p }, __vue_inject_styles__$p, __vue_script__$p, __vue_scope_id__$p, __vue_is_functional_template__$p, __vue_module_identifier__$p, undefined, undefined);
+var CWidget05 = __vue_normalize__$K({ render: __vue_render__$K, staticRenderFns: __vue_staticRenderFns__$K }, __vue_inject_styles__$K, __vue_script__$K, __vue_scope_id__$K, __vue_is_functional_template__$K, __vue_module_identifier__$K, undefined, undefined);
 
 //
 //
@@ -3333,8 +5377,8 @@ var CuiWidget05 = __vue_normalize__$p({ render: __vue_render__$p, staticRenderFn
 //
 //
 
-var script$q = {
-  name: 'CuiWidget06',
+var script$L = {
+  name: 'CWidget06',
   data: function data() {
     return {
       backgroundColor: ''
@@ -3359,32 +5403,32 @@ var script$q = {
 };
 
 /* script */
-var __vue_script__$q = script$q;
+var __vue_script__$L = script$L;
 
 /* template */
-var __vue_render__$q = function __vue_render__() {
+var __vue_render__$L = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _c("b-card", { class: _vm.cardClasses, attrs: { "no-body": "" } }, [_c("b-card-body", { staticClass: "pb-0" }, [_vm._t("dropdown"), _vm._v(" "), _c("h4", { staticClass: "mb-0" }, [_vm._v(_vm._s(_vm.header))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.text))])], 2), _vm._v(" "), _c("div", { staticClass: "chart-wrapper" }, [_vm._t("chart")], 2)], 1);
 };
-var __vue_staticRenderFns__$q = [];
-__vue_render__$q._withStripped = true;
+var __vue_staticRenderFns__$L = [];
+__vue_render__$L._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$q = undefined;
+var __vue_inject_styles__$L = undefined;
 /* scoped */
-var __vue_scope_id__$q = undefined;
+var __vue_scope_id__$L = undefined;
 /* module identifier */
-var __vue_module_identifier__$q = undefined;
+var __vue_module_identifier__$L = undefined;
 /* functional template */
-var __vue_is_functional_template__$q = false;
+var __vue_is_functional_template__$L = false;
 /* component normalizer */
-function __vue_normalize__$q(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$L(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
-  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CuiWidget06.vue";
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CWidget06.vue";
 
   if (!component.render) {
     component.render = template.render;
@@ -3402,7 +5446,7 @@ function __vue_normalize__$q(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var CuiWidget06 = __vue_normalize__$q({ render: __vue_render__$q, staticRenderFns: __vue_staticRenderFns__$q }, __vue_inject_styles__$q, __vue_script__$q, __vue_scope_id__$q, __vue_is_functional_template__$q, __vue_module_identifier__$q, undefined, undefined);
+var CWidget06 = __vue_normalize__$L({ render: __vue_render__$L, staticRenderFns: __vue_staticRenderFns__$L }, __vue_inject_styles__$L, __vue_script__$L, __vue_scope_id__$L, __vue_is_functional_template__$L, __vue_module_identifier__$L, undefined, undefined);
 
 //
 //
@@ -3427,8 +5471,8 @@ var CuiWidget06 = __vue_normalize__$q({ render: __vue_render__$q, staticRenderFn
 //
 //
 
-var script$r = {
-  name: 'CuiWidget07',
+var script$M = {
+  name: 'CWidget07',
   props: {
     cardClasses: {
       type: String,
@@ -3454,32 +5498,32 @@ var script$r = {
 };
 
 /* script */
-var __vue_script__$r = script$r;
+var __vue_script__$M = script$M;
 
 /* template */
-var __vue_render__$r = function __vue_render__() {
+var __vue_render__$M = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _c("div", { staticClass: "card" }, [_c("div", { staticClass: "card-header", class: _vm.cardClasses }, [_c("div", { staticClass: "font-weight-bold" }, [_c("span", [_vm._v(_vm._s(_vm.rightHeader))]), _vm._v(" "), _c("span", { staticClass: "float-right" }, [_vm._v(_vm._s(_vm.leftHeader))])]), _vm._v(" "), _c("div", [_c("span", [_c("small", [_vm._v(_vm._s(_vm.rightFooter))])]), _vm._v(" "), _c("span", { staticClass: "float-right" }, [_c("small", [_vm._v(_vm._s(_vm.leftFooter))])])]), _vm._v(" "), _c("div", { staticClass: "chart-wrapper" }, [_vm._t("default")], 2)])]);
 };
-var __vue_staticRenderFns__$r = [];
-__vue_render__$r._withStripped = true;
+var __vue_staticRenderFns__$M = [];
+__vue_render__$M._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$r = undefined;
+var __vue_inject_styles__$M = undefined;
 /* scoped */
-var __vue_scope_id__$r = undefined;
+var __vue_scope_id__$M = undefined;
 /* module identifier */
-var __vue_module_identifier__$r = undefined;
+var __vue_module_identifier__$M = undefined;
 /* functional template */
-var __vue_is_functional_template__$r = false;
+var __vue_is_functional_template__$M = false;
 /* component normalizer */
-function __vue_normalize__$r(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$M(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
-  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CuiWidget07.vue";
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CWidget07.vue";
 
   if (!component.render) {
     component.render = template.render;
@@ -3497,7 +5541,7 @@ function __vue_normalize__$r(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var CuiWidget07 = __vue_normalize__$r({ render: __vue_render__$r, staticRenderFns: __vue_staticRenderFns__$r }, __vue_inject_styles__$r, __vue_script__$r, __vue_scope_id__$r, __vue_is_functional_template__$r, __vue_module_identifier__$r, undefined, undefined);
+var CWidget07 = __vue_normalize__$M({ render: __vue_render__$M, staticRenderFns: __vue_staticRenderFns__$M }, __vue_inject_styles__$M, __vue_script__$M, __vue_scope_id__$M, __vue_is_functional_template__$M, __vue_module_identifier__$M, undefined, undefined);
 
 //
 //
@@ -3512,8 +5556,8 @@ var CuiWidget07 = __vue_normalize__$r({ render: __vue_render__$r, staticRenderFn
 //
 //
 
-var script$s = {
-  name: 'CuiWidget08',
+var script$N = {
+  name: 'CWidget08',
   props: {
     cardClasses: {
       type: String,
@@ -3531,32 +5575,32 @@ var script$s = {
 };
 
 /* script */
-var __vue_script__$s = script$s;
+var __vue_script__$N = script$N;
 
 /* template */
-var __vue_render__$s = function __vue_render__() {
+var __vue_render__$N = function __vue_render__() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _c("div", { staticClass: "card" }, [_c("div", { staticClass: "card-body text-center" }, [_c("div", { staticClass: "text-muted small text-uppercase font-weight-bold" }, [_vm._v(_vm._s(_vm.header))]), _vm._v(" "), _c("div", { staticClass: "h2 py-3" }, [_vm._v(_vm._s(_vm.text))]), _vm._v(" "), _c("div", { staticClass: "chart-wrapper" }, [_vm._t("default")], 2)])]);
 };
-var __vue_staticRenderFns__$s = [];
-__vue_render__$s._withStripped = true;
+var __vue_staticRenderFns__$N = [];
+__vue_render__$N._withStripped = true;
 
 /* style */
-var __vue_inject_styles__$s = undefined;
+var __vue_inject_styles__$N = undefined;
 /* scoped */
-var __vue_scope_id__$s = undefined;
+var __vue_scope_id__$N = undefined;
 /* module identifier */
-var __vue_module_identifier__$s = undefined;
+var __vue_module_identifier__$N = undefined;
 /* functional template */
-var __vue_is_functional_template__$s = false;
+var __vue_is_functional_template__$N = false;
 /* component normalizer */
-function __vue_normalize__$s(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$N(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
-  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CuiWidget08.vue";
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Widgets\\CWidget08.vue";
 
   if (!component.render) {
     component.render = template.render;
@@ -3574,10 +5618,131 @@ function __vue_normalize__$s(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var CuiWidget08 = __vue_normalize__$s({ render: __vue_render__$s, staticRenderFns: __vue_staticRenderFns__$s }, __vue_inject_styles__$s, __vue_script__$s, __vue_scope_id__$s, __vue_is_functional_template__$s, __vue_module_identifier__$s, undefined, undefined);
+var CWidget08 = __vue_normalize__$N({ render: __vue_render__$N, staticRenderFns: __vue_staticRenderFns__$N }, __vue_inject_styles__$N, __vue_script__$N, __vue_scope_id__$N, __vue_is_functional_template__$N, __vue_module_identifier__$N, undefined, undefined);
 
-var script$t = {
-  name: 'CuiSimpleBarChart',
+/**
+ * --------------------------------------------------------------------------
+ * CoreUI Utilities (v2.0.19): get-css-custom-properties.js
+ * Licensed under MIT (https://coreui.io/license)
+ * @returns {string} css custom property name
+ * --------------------------------------------------------------------------
+ */
+const getCssCustomProperties = () => {
+  const cssCustomProperties = {};
+  const sheets = document.styleSheets;
+  let cssText = '';
+  for (let i = sheets.length - 1; i > -1; i--) {
+    const rules = sheets[i].cssRules;
+    for (let j = rules.length - 1; j > -1; j--) {
+      if (rules[j].selectorText === '.ie-custom-properties') {
+        cssText = rules[j].cssText;
+        break
+      }
+    }
+    if (cssText) {
+      break
+    }
+  }
+
+  cssText = cssText.substring(
+    cssText.lastIndexOf('{') + 1,
+    cssText.lastIndexOf('}')
+  );
+
+  cssText.split(';').forEach((property) => {
+    if (property) {
+      const name = property.split(': ')[0];
+      const value = property.split(': ')[1];
+      if (name && value) {
+        cssCustomProperties[`--${name.trim()}`] = value.trim();
+      }
+    }
+  });
+  return cssCustomProperties
+};
+
+/**
+ * --------------------------------------------------------------------------
+ * CoreUI Utilities (v2.0.19): get-color.js
+ * Licensed under MIT (https://coreui.io/license)
+ * --------------------------------------------------------------------------
+ */
+
+const minIEVersion = 10;
+const isIE1x = () => Boolean(document.documentMode) && document.documentMode >= minIEVersion;
+const isCustomProperty = (property) => property.match(/^--.*/i);
+
+const getColor = (rawProperty, element = document.body) => {
+  const property = `--${rawProperty}`;
+  let style;
+  if (isCustomProperty(property) && isIE1x()) {
+    const cssCustomProperties = getCssCustomProperties();
+    style = cssCustomProperties[property];
+  } else {
+    style = window.getComputedStyle(element, null).getPropertyValue(property).replace(/^\s/, '');
+  }
+  return style ? style : rawProperty
+};
+
+const deepObjectsMerge = (target, source) => {
+  // Iterate through `source` properties and if an `Object` set property to merge of `target` and `source` properties
+  for (const key of Object.keys(source)) {
+    if (source[key] instanceof Object) {
+      Object.assign(source[key], deepObjectsMerge(target[key], source[key]));
+    }
+  }
+
+  // Join `target` and modified `source`
+  Object.assign(target || {}, source);
+  return target
+};
+
+// import { deepObjectsMerge, getColor } from '@coreui/coreui/dist/js/coreui-utilities'
+
+var generatedLabels = {
+  computed: {
+    generatedLabels: function generatedLabels() {
+      if (this.labels !== undefined) return this.labels;
+      var labels = [];
+      for (var i = 1; i <= this.data.length; i++) {
+        labels.push('');
+      }return labels;
+    }
+  }
+};
+var generatedBackgroundColor = {
+  computed: {
+    generatedBackgroundColor: function generatedBackgroundColor() {
+      return getColor(this.backgroundColor);
+    }
+  }
+};
+var generatedBorderColor = {
+  computed: {
+    generatedBorderColor: function generatedBorderColor() {
+      return getColor(this.borderColor);
+    }
+  }
+};
+var generatedPointHoverBackgroundColor = {
+  computed: {
+    generatedPointHoverBackgroundColor: function generatedPointHoverBackgroundColor() {
+      if (this.$options.propsData.pointHoverBackgroundColor === undefined) return this.generatedBorderColor;
+      return getColor(this.pointHoverBackgroundColor);
+    }
+  }
+};
+var generatedOptions = {
+  computed: {
+    generatedOptions: function generatedOptions() {
+      if (this.$options.propsData.options !== undefined) deepObjectsMerge(this.finalOptions, this.options);
+      return this.finalOptions;
+    }
+  }
+};
+
+var script$O = {
+  name: 'CSimpleBarChart',
   extends: Bar,
   mixins: [generatedLabels, generatedBackgroundColor, generatedBorderColor, generatedOptions],
   props: {
@@ -3646,24 +5811,24 @@ var script$t = {
 };
 
 /* script */
-var __vue_script__$t = script$t;
+var __vue_script__$O = script$O;
 
 /* template */
 
 /* style */
-var __vue_inject_styles__$t = undefined;
+var __vue_inject_styles__$O = undefined;
 /* scoped */
-var __vue_scope_id__$t = undefined;
+var __vue_scope_id__$O = undefined;
 /* module identifier */
-var __vue_module_identifier__$t = undefined;
+var __vue_module_identifier__$O = undefined;
 /* functional template */
-var __vue_is_functional_template__$t = undefined;
+var __vue_is_functional_template__$O = undefined;
 /* component normalizer */
-function __vue_normalize__$t(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$O(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
-  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Charts\\CuiSimpleBarChart.vue";
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Charts\\CSimpleBarChart.vue";
 
   if (!component.render) {
     component.render = template.render;
@@ -3681,10 +5846,10 @@ function __vue_normalize__$t(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var CuiSimpleBarChart = __vue_normalize__$t({}, __vue_inject_styles__$t, __vue_script__$t, __vue_scope_id__$t, __vue_is_functional_template__$t, __vue_module_identifier__$t, undefined, undefined);
+var CSimpleBarChart = __vue_normalize__$O({}, __vue_inject_styles__$O, __vue_script__$O, __vue_scope_id__$O, __vue_is_functional_template__$O, __vue_module_identifier__$O, undefined, undefined);
 
-var script$u = {
-  name: 'CuiSimpleLineChart',
+var script$P = {
+  name: 'CSimpleLineChart',
   extends: Line,
   mixins: [generatedLabels, generatedBackgroundColor, generatedBorderColor, generatedPointHoverBackgroundColor, generatedOptions],
   props: {
@@ -3767,24 +5932,24 @@ var script$u = {
 };
 
 /* script */
-var __vue_script__$u = script$u;
+var __vue_script__$P = script$P;
 
 /* template */
 
 /* style */
-var __vue_inject_styles__$u = undefined;
+var __vue_inject_styles__$P = undefined;
 /* scoped */
-var __vue_scope_id__$u = undefined;
+var __vue_scope_id__$P = undefined;
 /* module identifier */
-var __vue_module_identifier__$u = undefined;
+var __vue_module_identifier__$P = undefined;
 /* functional template */
-var __vue_is_functional_template__$u = undefined;
+var __vue_is_functional_template__$P = undefined;
 /* component normalizer */
-function __vue_normalize__$u(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$P(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
-  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Charts\\CuiSimpleLineChart.vue";
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Charts\\CSimpleLineChart.vue";
 
   if (!component.render) {
     component.render = template.render;
@@ -3802,10 +5967,10 @@ function __vue_normalize__$u(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var CuiSimpleLineChart = __vue_normalize__$u({}, __vue_inject_styles__$u, __vue_script__$u, __vue_scope_id__$u, __vue_is_functional_template__$u, __vue_module_identifier__$u, undefined, undefined);
+var CSimpleLineChart = __vue_normalize__$P({}, __vue_inject_styles__$P, __vue_script__$P, __vue_scope_id__$P, __vue_is_functional_template__$P, __vue_module_identifier__$P, undefined, undefined);
 
-var script$v = {
-  name: 'CuiSimplePointedChart',
+var script$Q = {
+  name: 'CSimplePointedChart',
   extends: Line,
   mixins: [generatedLabels, generatedBackgroundColor, generatedBorderColor, generatedPointHoverBackgroundColor, generatedOptions],
   props: {
@@ -3898,24 +6063,24 @@ var script$v = {
 };
 
 /* script */
-var __vue_script__$v = script$v;
+var __vue_script__$Q = script$Q;
 
 /* template */
 
 /* style */
-var __vue_inject_styles__$v = undefined;
+var __vue_inject_styles__$Q = undefined;
 /* scoped */
-var __vue_scope_id__$v = undefined;
+var __vue_scope_id__$Q = undefined;
 /* module identifier */
-var __vue_module_identifier__$v = undefined;
+var __vue_module_identifier__$Q = undefined;
 /* functional template */
-var __vue_is_functional_template__$v = undefined;
+var __vue_is_functional_template__$Q = undefined;
 /* component normalizer */
-function __vue_normalize__$v(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
+function __vue_normalize__$Q(template, style, script, scope, functional, moduleIdentifier, createInjector, createInjectorSSR) {
   var component = (typeof script === 'function' ? script.options : script) || {};
 
   // For security concerns, we use only base name in production mode.
-  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Charts\\CuiSimplePointedChart.vue";
+  component.__file = "C:\\xampp\\htdocs\\coreui-vue\\src\\components\\Charts\\CSimplePointedChart.vue";
 
   if (!component.render) {
     component.render = template.render;
@@ -3933,19 +6098,27 @@ function __vue_normalize__$v(template, style, script, scope, functional, moduleI
 
 /* style inject SSR */
 
-var CuiSimplePointedChart = __vue_normalize__$v({}, __vue_inject_styles__$v, __vue_script__$v, __vue_scope_id__$v, __vue_is_functional_template__$v, __vue_module_identifier__$v, undefined, undefined);
+var CSimplePointedChart = __vue_normalize__$Q({}, __vue_inject_styles__$Q, __vue_script__$Q, __vue_scope_id__$Q, __vue_is_functional_template__$Q, __vue_module_identifier__$Q, undefined, undefined);
 
 
 
 var Components = /*#__PURE__*/Object.freeze({
   Breadcrumb: Breadcrumb,
+  CBreadcrumb: CBreadcrumb,
   Callout: Callout,
+  CCallout: CCallout,
   Footer: Footer,
+  CFooter: CFooter,
   Switch: Switch,
+  CSwitch: CSwitch,
   Aside: Aside,
   AsideToggler: AsideToggler,
+  CAside: CAside,
+  CAsideToggler: CAsideToggler,
   Header: Header,
   HeaderDropdown: HeaderDropdown,
+  CHeader: CHeader,
+  CHeaderDropdown: CHeaderDropdown,
   Sidebar: Sidebar,
   SidebarFooter: SidebarFooter,
   SidebarForm: SidebarForm,
@@ -3959,17 +6132,30 @@ var Components = /*#__PURE__*/Object.freeze({
   SidebarNavLink: SidebarNavLink,
   SidebarNavTitle: SidebarNavTitle,
   SidebarToggler: SidebarToggler,
-  CuiWidget01: CuiWidget01,
-  CuiWidget02: CuiWidget02,
-  CuiWidget03: CuiWidget03,
-  CuiWidget04: CuiWidget04,
-  CuiWidget05: CuiWidget05,
-  CuiWidget06: CuiWidget06,
-  CuiWidget07: CuiWidget07,
-  CuiWidget08: CuiWidget08,
-  CuiSimpleBarChart: CuiSimpleBarChart,
-  CuiSimpleLineChart: CuiSimpleLineChart,
-  CuiSimplePointedChart: CuiSimplePointedChart
+  CSidebar: CSidebar,
+  CSidebarFooter: CSidebarFooter,
+  CSidebarForm: CSidebarForm,
+  CSidebarHeader: CSidebarHeader,
+  CSidebarMinimizer: CSidebarMinimizer,
+  CSidebarNav: CSidebarNav,
+  CSidebarNavDivider: CSidebarNavDivider,
+  CSidebarNavItem: CSidebarNavItem,
+  CSidebarNavDropdown: CSidebarNavDropdown,
+  CSidebarNavLabel: CSidebarNavLabel,
+  CSidebarNavLink: CSidebarNavLink,
+  CSidebarNavTitle: CSidebarNavTitle,
+  CSidebarToggler: CSidebarToggler,
+  CWidget01: CWidget01,
+  CWidget02: CWidget02,
+  CWidget03: CWidget03,
+  CWidget04: CWidget04,
+  CWidget05: CWidget05,
+  CWidget06: CWidget06,
+  CWidget07: CWidget07,
+  CWidget08: CWidget08,
+  CSimpleBarChart: CSimpleBarChart,
+  CSimpleLineChart: CSimpleLineChart,
+  CSimplePointedChart: CSimplePointedChart
 });
 
 /*eslint import/namespace: [2, { allowComputed: true }]*/
@@ -3984,4 +6170,4 @@ var CoreuiVueModule = {
 };
 
 export default CoreuiVueModule;
-export { Breadcrumb, Callout, Footer, Switch, Aside, AsideToggler, Header, HeaderDropdown, Sidebar, SidebarFooter, SidebarForm, SidebarHeader, SidebarMinimizer, SidebarNav, SidebarNavDivider, SidebarNavItem, SidebarNavDropdown, SidebarNavLabel, SidebarNavLink, SidebarNavTitle, SidebarToggler, CuiWidget01, CuiWidget02, CuiWidget03, CuiWidget04, CuiWidget05, CuiWidget06, CuiWidget07, CuiWidget08, CuiSimpleBarChart, CuiSimpleLineChart, CuiSimplePointedChart };
+export { Breadcrumb, CBreadcrumb, Callout, CCallout, Footer, CFooter, Switch, CSwitch, Aside, AsideToggler, CAside, CAsideToggler, Header, HeaderDropdown, CHeader, CHeaderDropdown, Sidebar, SidebarFooter, SidebarForm, SidebarHeader, SidebarMinimizer, SidebarNav, SidebarNavDivider, SidebarNavItem, SidebarNavDropdown, SidebarNavLabel, SidebarNavLink, SidebarNavTitle, SidebarToggler, CSidebar, CSidebarFooter, CSidebarForm, CSidebarHeader, CSidebarMinimizer, CSidebarNav, CSidebarNavDivider, CSidebarNavItem, CSidebarNavDropdown, CSidebarNavLabel, CSidebarNavLink, CSidebarNavTitle, CSidebarToggler, CWidget01, CWidget02, CWidget03, CWidget04, CWidget05, CWidget06, CWidget07, CWidget08, CSimpleBarChart, CSimpleLineChart, CSimplePointedChart };

@@ -1,18 +1,16 @@
 <template>
   <b-card :class="styleClasses">
-    <div class="h1 text-muted text-right mb-4">
-      <i :class="iconClasses"></i>
-    </div>
-    <div class="h4 mb-0">{{header}}</div>
-    <small class="text-muted text-uppercase font-weight-bold">{{text}}</small>
+    <div class="h4 m-0">{{header}}</div>
+    <div>{{text}}</div>
     <b-progress height={} :variant="variant" :value="value"
                 :class="[backgroundColor ? 'progress-white' : '', 'progress-xs my-3 mb-0']"/>
+    <small class="text-muted">{{footer}}</small>
   </b-card>
 </template>
 
 <script>
 export default {
-  name: 'CuiWidget05',
+  name: 'CWidget01',
   data () {
     return{
       backgroundColor: '',
@@ -26,10 +24,6 @@ export default {
     }
   },
   props: {
-    iconClasses: {
-      type: String,
-      default: 'icon-people'
-    },
     header: {
       type: String,
       default: 'header:string'
@@ -41,6 +35,10 @@ export default {
     variant: {
       type: String,
       default: ''
+    },
+    footer: {
+      type: String,
+      default: 'footer:string'
     },
     value: {
       type: Number,

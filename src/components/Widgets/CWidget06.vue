@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'CuiWidget06',
+  name: 'CWidget06',
   data () {
     return{
       backgroundColor: '',

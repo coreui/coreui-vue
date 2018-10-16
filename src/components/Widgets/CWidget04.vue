@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: 'CuiWidget04',
+  name: 'CWidget04',
   props: {
     type: {
       type: String,
