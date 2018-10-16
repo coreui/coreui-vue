@@ -21,6 +21,7 @@ var chartMixins = require('@/mixins/charts/chartMixins');
 //
 
 var script = {
+  name: 'Breadcrumb',
   props: {
     list: {
       type: Array,
@@ -103,6 +104,7 @@ var Breadcrumb = __vue_normalize__({ render: __vue_render__, staticRenderFns: __
 //
 
 var script$1 = {
+  name: 'Callout',
   props: {
     variant: {
       type: String,
@@ -173,7 +175,7 @@ var Callout = __vue_normalize__$1({ render: __vue_render__$1, staticRenderFns: _
 //
 
 var script$2 = {
-  name: 'AppFooter',
+  name: 'Footer',
   props: {
     fixed: {
       type: Boolean,
@@ -271,6 +273,7 @@ var Footer = __vue_normalize__$2({ render: __vue_render__$2, staticRenderFns: __
 //
 
 var script$3 = {
+  name: 'Switch',
   model: {
     prop: 'modelChecked',
     event: 'change'
@@ -3938,12 +3941,15 @@ function __vue_normalize__$v(template, style, script, scope, functional, moduleI
 
 var CuiSimplePointedChart = __vue_normalize__$v({}, __vue_inject_styles__$v, __vue_script__$v, __vue_scope_id__$v, __vue_is_functional_template__$v, __vue_module_identifier__$v, undefined, undefined);
 
-var LibraryModule = {
-  Aside: Aside,
-  AsideToggler: AsideToggler,
+
+
+var Components = /*#__PURE__*/Object.freeze({
   Breadcrumb: Breadcrumb,
   Callout: Callout,
   Footer: Footer,
+  Switch: Switch,
+  Aside: Aside,
+  AsideToggler: AsideToggler,
   Header: Header,
   HeaderDropdown: HeaderDropdown,
   Sidebar: Sidebar,
@@ -3953,13 +3959,12 @@ var LibraryModule = {
   SidebarMinimizer: SidebarMinimizer,
   SidebarNav: SidebarNav,
   SidebarNavDivider: SidebarNavDivider,
-  SidebarNavDropdown: SidebarNavDropdown,
   SidebarNavItem: SidebarNavItem,
+  SidebarNavDropdown: SidebarNavDropdown,
   SidebarNavLabel: SidebarNavLabel,
   SidebarNavLink: SidebarNavLink,
   SidebarNavTitle: SidebarNavTitle,
   SidebarToggler: SidebarToggler,
-  Switch: Switch,
   CuiWidget01: CuiWidget01,
   CuiWidget02: CuiWidget02,
   CuiWidget03: CuiWidget03,
@@ -3970,51 +3975,27 @@ var LibraryModule = {
   CuiWidget08: CuiWidget08,
   CuiSimpleBarChart: CuiSimpleBarChart,
   CuiSimpleLineChart: CuiSimpleLineChart,
-  CuiSimplePointedChart: CuiSimplePointedChart,
+  CuiSimplePointedChart: CuiSimplePointedChart
+});
 
+/*eslint import/namespace: [2, { allowComputed: true }]*/
+
+var CoreuiVueModule = {
   install: function install(Vue) {
-    // Register components with vue
-    Vue.component("Aside", Aside);
-    Vue.component("AsideToggler", AsideToggler);
-    Vue.component("Breadcrumb", Breadcrumb);
-    Vue.component("Callout", Callout);
-    Vue.component("Footer", Footer);
-    Vue.component("Header", Header);
-    Vue.component("HeaderDropdown", HeaderDropdown);
-    Vue.component("Sidebar", Sidebar);
-    Vue.component("SidebarFooter", SidebarFooter);
-    Vue.component("SidebarForm", SidebarForm);
-    Vue.component("SidebarHeader", SidebarHeader);
-    Vue.component("SidebarMinimizer", SidebarMinimizer);
-    Vue.component("SidebarNav", SidebarNav);
-    Vue.component("SidebarNavDivider", SidebarNavDivider);
-    Vue.component("SidebarNavDropdown", SidebarNavDropdown);
-    Vue.component("SidebarNavItem", SidebarNavItem);
-    Vue.component("SidebarNavLabel", SidebarNavLabel);
-    Vue.component("SidebarNavLink", SidebarNavLink);
-    Vue.component("SidebarNavTitle", SidebarNavTitle);
-    Vue.component("SidebarToggler", SidebarToggler);
-    Vue.component("Switch", Switch);
-    Vue.component("CuiWidget01", CuiWidget01);
-    Vue.component("CuiWidget02", CuiWidget02);
-    Vue.component("CuiWidget03", CuiWidget03);
-    Vue.component("CuiWidget04", CuiWidget04);
-    Vue.component("CuiWidget05", CuiWidget05);
-    Vue.component("CuiWidget06", CuiWidget06);
-    Vue.component("CuiWidget07", CuiWidget07);
-    Vue.component("CuiWidget08", CuiWidget08);
-    Vue.component("CuiSimpleLineChart", CuiSimpleLineChart);
-    Vue.component("CuiSimpleBarChart", CuiSimpleBarChart);
-    Vue.component("CuiSimplePointedChart", CuiSimplePointedChart);
+    for (var plugin in Components) {
+      var comp = Components[plugin];
+      if (comp.name) Vue.component(comp.name, comp);
+    }
   }
 };
 
-exports.default = LibraryModule;
-exports.Aside = Aside;
-exports.AsideToggler = AsideToggler;
+exports.default = CoreuiVueModule;
 exports.Breadcrumb = Breadcrumb;
 exports.Callout = Callout;
 exports.Footer = Footer;
+exports.Switch = Switch;
+exports.Aside = Aside;
+exports.AsideToggler = AsideToggler;
 exports.Header = Header;
 exports.HeaderDropdown = HeaderDropdown;
 exports.Sidebar = Sidebar;
@@ -4030,7 +4011,6 @@ exports.SidebarNavLabel = SidebarNavLabel;
 exports.SidebarNavLink = SidebarNavLink;
 exports.SidebarNavTitle = SidebarNavTitle;
 exports.SidebarToggler = SidebarToggler;
-exports.Switch = Switch;
 exports.CuiWidget01 = CuiWidget01;
 exports.CuiWidget02 = CuiWidget02;
 exports.CuiWidget03 = CuiWidget03;

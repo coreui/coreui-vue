@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  name: 'Callout',
   props: {
     variant: {
       type: String,
