@@ -1,10 +1,10 @@
 <script>
 import { Bar } from 'vue-chartjs'
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips'
-import { generatedLabels, generatedBackgroundColor,generatedBorderColor, generatedOptions } from '@/mixins/charts/chartMixins'
+import { generatedLabels, generatedBackgroundColor,generatedBorderColor, generatedOptions } from '../../mixins/charts/chartMixins'
 
 export default {
-  name: 'CuiSimpleBarChart',
+  name: 'CSimpleBarChart',
   extends: Bar,
   mixins: [generatedLabels, generatedBackgroundColor, generatedBorderColor, generatedOptions],
   props: {

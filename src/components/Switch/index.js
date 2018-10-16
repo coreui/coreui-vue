@@ -1,3 +1,7 @@
 import Switch from './Switch'
+import CSwitch from './CSwitch'
 
-export { Switch }
+export {
+  Switch,
+  CSwitch
+}

@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'CuiWidget08',
+  name: 'CWidget08',
   props: {
     cardClasses: {
       type: String,

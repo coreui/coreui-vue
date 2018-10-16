@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'CuiWidget03',
+  name: 'CWidget03',
   props: {
     iconClasses: {
       type: String,

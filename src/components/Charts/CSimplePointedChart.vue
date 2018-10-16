@@ -1,10 +1,10 @@
 <script>
 import { Line } from 'vue-chartjs'
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips'
-import { generatedLabels, generatedBackgroundColor, generatedBorderColor, generatedPointHoverBackgroundColor, generatedOptions } from '@/mixins/charts/chartMixins'
+import { generatedLabels, generatedBackgroundColor, generatedBorderColor, generatedPointHoverBackgroundColor, generatedOptions } from '../../mixins/charts/chartMixins'
 
 export default {
-  name: 'CuiSimplePointedChart',
+  name: 'CSimplePointedChart',
   extends: Line,
   mixins: [generatedLabels, generatedBackgroundColor, generatedBorderColor, generatedPointHoverBackgroundColor, generatedOptions],
   props: {
