@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'AppFooter',
+  name: 'Footer',
   props: {
     fixed: {
       type: Boolean,

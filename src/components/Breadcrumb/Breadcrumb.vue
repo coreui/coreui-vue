@@ -9,6 +9,7 @@
 
 <script>
 export default {
+  name:'Breadcrumb',
   props: {
     list: {
       type: Array,
