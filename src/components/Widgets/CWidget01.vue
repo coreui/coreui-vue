@@ -1,11 +1,13 @@
 <template>
-  <b-card :class="styleClasses">
-    <div class="h4 m-0">{{header}}</div>
-    <div>{{text}}</div>
-    <b-progress height={} :variant="variant" :value="value"
-                :class="[backgroundColor ? 'progress-white' : '', 'progress-xs my-3 mb-0']"/>
-    <small class="text-muted">{{footer}}</small>
-  </b-card>
+  <div class='card' :class="styleClasses">
+    <div class='card-body'>
+      <div class="h4 m-0">{{header}}</div>
+      <div>{{text}}</div>
+      <c-progress height={} :variant="variant" :value="value"
+                  :class="[backgroundColor ? 'progress-white' : '', 'progress-xs my-3 mb-0']"/>
+      <small class="text-muted">{{footer}}</small>
+    </div>
+  </div>
 </template>
 
 <script>

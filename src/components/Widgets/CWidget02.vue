@@ -1,14 +1,14 @@
 <template>
-  <b-card :no-body="true" footer-class="px-3 py-2">
-    <b-card-body class="p-3 clearfix">
+  <div class='card'>
+    <div class="card-body p-3 clearfix">
       <i :class="iconClasses" class="fa fa-cogs bg-primary p-3 font-2xl mr-3 float-left"></i>
       <div class="h5 text-primary mb-0 mt-2">{{header}}</div>
       <div class="text-muted text-uppercase font-weight-bold font-xs">{{text}}</div>
-    </b-card-body>
-    <div slot="footer" v-if="showLink">
-      <b-link class="font-weight-bold font-xs btn-block text-muted" :href="link">View More <i class="fa fa-angle-right float-right font-lg"></i></b-link>
     </div>
-  </b-card>
+    <div class='card-footer px-3 py-2' v-if="showLink">
+      <c-link class="font-weight-bold font-xs btn-block text-muted" :href="link">View More <i class="fa fa-angle-right float-right font-lg"></i></c-link>
+    </div>
+  </div>
 </template>
 
 <script>
