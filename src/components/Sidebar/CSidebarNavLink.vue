@@ -2,16 +2,17 @@
   <div v-if="isExternalLink">
     <a :href="url" :class="classList">
       <i :class="classIcon"></i> {{name}}
-      <b-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</b-badge>
+      <c-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</c-badge>
     </a>
   </div>
   <div v-else>
     <router-link :to="url" :class="classList">
       <i :class="classIcon"></i> {{name}}
-      <b-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</b-badge>
+      <c-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</c-badge>
     </router-link>
   </div>
 </template>
+
 
 <script>
 export default {

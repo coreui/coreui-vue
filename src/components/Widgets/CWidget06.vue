@@ -1,14 +1,14 @@
 <template>
-  <b-card no-body :class="cardClasses">
-    <b-card-body class="pb-0">
+  <div class="card" :class="cardClasses">
+    <div class="card-body pb-0">
       <slot name='dropdown'></slot>
       <h4 class="mb-0">{{header}}</h4>
       <p>{{text}}</p>
-    </b-card-body>
+    </div>
     <div class="chart-wrapper">
       <slot name='chart'></slot>
     </div>
-  </b-card>
+  </div>
 </template>
 
 <script>
@@ -18,8 +18,6 @@ export default {
     return{
       backgroundColor: '',
     }
-  },
-  created ()  {
   },
   props: {
     cardClasses: {
