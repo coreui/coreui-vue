@@ -61,6 +61,7 @@
   "dependencies": {
     "@coreui/coreui": "^2.0.19",
     "vue-clickaway": "^2.2.2",
+    "vue-functional-data-merge": "^2.0.7",
     "vue-perfect-scrollbar": "^0.1.0"
   },
   "devDependencies": {
