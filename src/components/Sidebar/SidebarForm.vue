@@ -6,7 +6,7 @@
 <script>
 
 export default {
-  name: 'sidebar-form',
+  name: 'SidebarForm',
   computed: {
     hasSlotDefault() {
       return !!this.$slots.default;

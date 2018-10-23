@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'sidebar-nav-link',
+  name: 'SidebarNavLink',
   props: {
     name: {
       type: String,

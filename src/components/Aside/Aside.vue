@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'AppAside',
+  name: 'Aside',
   props: {
     fixed: {
       type: Boolean,

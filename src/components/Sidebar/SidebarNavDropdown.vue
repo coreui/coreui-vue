@@ -9,6 +9,7 @@
 
 <script>
 export default {
+  name: 'SidebarNavDropdown',
   props: {
     name: {
       type: String,

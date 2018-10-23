@@ -6,7 +6,7 @@
 <script>
 
 export default {
-  name: 'sidebar-header',
+  name: 'SidebarHeader',
   computed: {
     hasSlotDefault() {
       return !!this.$slots.default;

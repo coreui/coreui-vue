@@ -8,7 +8,7 @@
 import { hideMobile } from '../../mixins/hideMobile'
 
 export default {
-  name: 'sidebar-nav-item',
+  name: 'SidebarNavItem',
     mixins: [ hideMobile ],
     props: {
     classes: {

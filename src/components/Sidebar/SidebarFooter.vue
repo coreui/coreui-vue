@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'sidebar-footer',
+  name: 'SidebarFooter',
   computed: {
     hasSlotDefault() {
       return !!this.$slots.default;

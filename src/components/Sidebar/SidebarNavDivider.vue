@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'sidebar-nav-divider',
+  name: 'SidebarNavDivider',
   props: {
     classes: {
       type: String,
