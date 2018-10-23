@@ -8,7 +8,7 @@
 import SidebarNavItem from './SidebarNavItem'
 import SidebarNavLink from './SidebarNavLink'
 export default {
-  name: 'sidebar-nav-label',
+  name: 'SidebarNavLabel',
   components: {
     SidebarNavItem,
     SidebarNavLink

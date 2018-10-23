@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'AppHeader',
+  name: 'Header',
   props: {
     fixed: {
       type: Boolean,

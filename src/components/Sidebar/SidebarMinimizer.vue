@@ -5,7 +5,7 @@
 import { togglePs } from '../../mixins/togglePs'
 
 export default {
-  name: 'sidebar-minimizer',
+  name: 'SidebarMinimizer',
   mixins: [ togglePs ],
   mounted: function () {
     const isMinimized = document.body.classList.contains('sidebar-minimized')
