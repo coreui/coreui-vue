@@ -1,7 +1,7 @@
 <script>
 import { Line } from 'vue-chartjs'
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips'
-import { generatedLabels, generatedBackgroundColor, generatedBorderColor, generatedPointHoverBackgroundColor, generatedOptions } from '../../mixins/charts/chartMixins'
+import { generatedLabels, generatedBackgroundColor, generatedBorderColor, generatedPointHoverBackgroundColor, generatedOptions } from '../../mixins/chartMixins'
 
 export default {
   name: 'CSimplePointedChart',

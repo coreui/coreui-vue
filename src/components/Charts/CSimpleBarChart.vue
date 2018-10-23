@@ -1,7 +1,7 @@
 <script>
 import { Bar } from 'vue-chartjs'
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips'
-import { generatedLabels, generatedBackgroundColor,generatedBorderColor, generatedOptions } from '../../mixins/charts/chartMixins'
+import { generatedLabels, generatedBackgroundColor,generatedBorderColor, generatedOptions } from '../../mixins/chartMixins'
 
 export default {
   name: 'CSimpleBarChart',
