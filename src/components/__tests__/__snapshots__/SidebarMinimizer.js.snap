@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SidebarMinimizer.vue renders correctly 1`] = `
-<button
-  class="sidebar-minimizer"
-  type="button"
-/>
-`;

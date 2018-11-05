@@ -1,7 +1,8 @@
 /*eslint import/namespace: [2, { allowComputed: true }]*/
 import * as Components from './components'
 
-const CoreuiVueModule = {
+const CoreuiVue = {
+
   install(Vue) {
     for (let plugin in Components) {
       let comp = Components[plugin]
@@ -11,7 +12,7 @@ const CoreuiVueModule = {
   }
 };
 // Export library
-export default CoreuiVueModule
+export default CoreuiVue
 
 // Export components
 export * from './components';

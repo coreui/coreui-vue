@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSwitch .vue matches custom props snapshot 1`] = `
+<label
+  class="switch switch-lg switch-info form-check-label"
+>
+  <input
+    class="switch-input form-check-input"
+    disabled="disabled"
+    false-value="uncheckedValue"
+    id="switch-id-3"
+    required="required"
+    true-value="value"
+    type="checkbox"
+    value="false"
+  />
+   
+  <span
+    class="switch-slider"
+  />
+</label>
+`;
+
+exports[`CSwitch .vue matches default props snapshot 1`] = `
+<label
+  class="switch switch-secondary form-check-label"
+>
+  <input
+    class="switch-input form-check-input"
+    false-value="uncheckedValue"
+    id="switch-id-1"
+    true-value="value"
+    type="checkbox"
+    value="true"
+  />
+   
+  <span
+    class="switch-slider"
+  />
+</label>
+`;
+
+exports[`CSwitch .vue matches default props snapshot and render correctly 1`] = `
+<label
+  class="switch switch-secondary form-check-label"
+>
+  <input
+    class="switch-input form-check-input"
+    false-value="uncheckedValue"
+    id="switch-id-1"
+    true-value="value"
+    type="checkbox"
+    value="true"
+  />
+   
+  <span
+    class="switch-slider"
+  />
+</label>
+`;

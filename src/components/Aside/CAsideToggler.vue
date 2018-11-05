@@ -5,7 +5,7 @@
     :class="classList"
     type="button"
     @click="asideToggle">
-    <span class="navbar-toggler-icon" />
+  <span class="navbar-toggler-icon" />
   </button>
 </template>
 

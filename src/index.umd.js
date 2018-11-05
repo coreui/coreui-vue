@@ -1,8 +1,8 @@
-import LibraryModule, * as LibraryComponents from "./index";
+import CoreuiVueModule, * as LibraryComponents from "./index";
 
 // Automatically register components if Vue is available globally
 if (typeof window !== "undefined" && window.Vue) {
-  window.Vue.use(LibraryModule);
+  window.Vue.use(CoreuiVueModule);
 }
 
 export default LibraryComponents;
