@@ -1,16 +1,17 @@
-<template>
+<template functional>
   <div class="card">
-    <div :class="cardClasses" class="card-header">
+    <div class="card-header"
+         :class="props.cardClasses">
       <div class="font-weight-bold">
-        <span>{{rightHeader}}</span>
-        <span class="float-right">{{leftHeader}}</span>
+        <span>{{props.rightHeader}}</span>
+        <span class="float-right">{{props.leftHeader}}</span>
       </div>
       <div>
         <span>
-          <small>{{rightFooter}}</small>
+          <small>{{props.rightFooter}}</small>
         </span>
         <span class="float-right">
-          <small>{{leftFooter}}</small>
+          <small>{{props.leftFooter}}</small>
         </span>
       </div>
       <div class="chart-wrapper">
@@ -43,7 +44,7 @@ export default {
     leftFooter: {
       type: String,
       default: 'leftFooter:string'
-    },
+    }
   }
 }
 </script>
