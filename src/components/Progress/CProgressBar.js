@@ -1,3 +1,7 @@
+// import { getColor } from '@coreui/coreui/dist/js/coreui-utilities'
+// const getColor = utilities.getColor
+import getColor  from '@coreui/coreui/js/src/utilities/get-color'
+
 export default {
   name: 'CProgressBar',
   render (h) {
@@ -30,15 +34,15 @@ export default {
     progressBarClasses () {
       return [
         'progress-bar',
-        this.computedVariant ? `bg-${this.computedVariant}` : '',
         (this.computedStriped || this.computedAnimated) ? 'progress-bar-striped' : '',
         this.computedAnimated ? 'progress-bar-animated' : ''
       ]
     },
     progressBarStyles () {
-      return {
-        width: (100 * (this.value / this.computedMax)) + '%'
-      }
+      return [
+         { width: `${(100 * (this.value / this.computedMax))}%` },
+         this.computedVariant? { backgroundColor: this.computedVariant} : {}
+      ]
     },
     progress () {
       const p = Math.pow(10, this.computedPrecision)
@@ -50,7 +54,7 @@ export default {
     },
     computedVariant () {
       // Prefer our variant over parent setting
-      return this.variant || this.$parent.variant
+      return getColor(this.variant || this.$parent.variant)
     },
     computedPrecision () {
       // Prefer our precision over parent setting

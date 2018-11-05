@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CWidget08 matches custom props snapshot 1`] = `
+<div
+  class="card"
+>
+  <div
+    class="card-body text-center"
+  >
+    <div
+      class="text-muted small text-uppercase font-weight-bold"
+    >
+      header
+    </div>
+     
+    <div
+      class="h2 py-3"
+    >
+      text
+    </div>
+     
+    <div
+      class="chart-wrapper"
+    />
+  </div>
+</div>
+`;
+
+exports[`CWidget08 matches default props snapshot 1`] = `
+<div
+  class="card"
+>
+  <div
+    class="card-body text-center"
+  >
+    <div
+      class="text-muted small text-uppercase font-weight-bold"
+    >
+      header:string
+    </div>
+     
+    <div
+      class="h2 py-3"
+    >
+      text:string
+    </div>
+     
+    <div
+      class="chart-wrapper"
+    />
+  </div>
+</div>
+`;
+
+exports[`CWidget08 matches snapshot 1`] = `
+<div
+  class="card"
+>
+  <div
+    class="card-body text-center"
+  >
+    <div
+      class="text-muted small text-uppercase font-weight-bold"
+    >
+      header1
+    </div>
+     
+    <div
+      class="h2 py-3"
+    >
+      text:string
+    </div>
+     
+    <div
+      class="chart-wrapper"
+    />
+  </div>
+</div>
+`;

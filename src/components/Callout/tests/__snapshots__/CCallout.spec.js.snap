@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCallout .vue renders correctly 1`] = `
+<div
+  class="callout"
+>
+  Callout
+</div>
+`;

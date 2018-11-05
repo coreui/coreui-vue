@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`SidebarNavItem.vue renders correctly 1`] = `
-<li
-  class="nav-item"
->
-  test
-</li>
-`;
