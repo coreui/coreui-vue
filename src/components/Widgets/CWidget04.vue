@@ -1,19 +1,19 @@
-<template>
+<template functional>
   <div class="brand-card">
-    <div :class="'bg-' + type" class="brand-card-header">
-      <i  class="fa" :class="'fa-'+ type"></i>
+    <div :class="`brand-card-header bg-${props.type}`">
+      <i :class="`fa fa-${props.type}`"></i>
       <div class="chart-wrapper">
         <slot></slot>
       </div>
     </div>
     <div class="brand-card-body">
       <div>
-        <div class="text-value">{{rightHeader}}</div>
-        <div class="text-uppercase text-muted small">{{rightFooter}}</div>
+        <div class="text-value">{{props.rightHeader}}</div>
+        <div class="text-uppercase text-muted small">{{props.rightFooter}}</div>
       </div>
       <div>
-        <div class="text-value">{{leftHeader}}</div>
-        <div class="text-uppercase text-muted small">{{leftFooter}}</div>
+        <div class="text-value">{{props.leftHeader}}</div>
+        <div class="text-uppercase text-muted small">{{props.leftFooter}}</div>
       </div>
     </div>
   </div>
@@ -42,7 +42,7 @@ export default {
     leftFooter: {
       type: String,
       default: 'leftFooter:string'
-    },
+    }
   }
 }
 </script>

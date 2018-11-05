@@ -1,12 +1,12 @@
-<template>
-  <div class="card" :class="cardClasses">
+<template functional>
+  <div class="card" :class="props.cardClasses">
     <div class="card-body pb-0">
-      <slot name='dropdown'></slot>
-      <h4 class="mb-0">{{header}}</h4>
-      <p>{{text}}</p>
+      <slot name="dropdown"></slot>
+      <h4 class="mb-0">{{props.header}}</h4>
+      <p>{{props.text}}</p>
     </div>
     <div class="chart-wrapper">
-      <slot name='chart'></slot>
+      <slot name="chart"></slot>
     </div>
   </div>
 </template>
@@ -14,11 +14,6 @@
 <script>
 export default {
   name: 'CWidget06',
-  data () {
-    return{
-      backgroundColor: '',
-    }
-  },
   props: {
     cardClasses: {
       type: String,
@@ -31,7 +26,7 @@ export default {
     text: {
       type: String,
       default: 'text:string'
-    },
+    }
   }
 }
 </script>

@@ -1,29 +1,25 @@
-<template>
-  <div class='card' :class="styleClasses">
-    <div class='card-body'>
-      <div class="h4 m-0">{{header}}</div>
-      <div>{{text}}</div>
-      <c-progress height={} :variant="variant" :value="value"
-                  :class="[backgroundColor ? 'progress-white' : '', 'progress-xs my-3 mb-0']"/>
-      <small class="text-muted">{{footer}}</small>
+<template functional>
+  <div :class="props.inverse ? `card text-white bg-${props.variant}` : 'card'">
+    <div class="card-body">
+      <div class="h4 m-0">{{props.header}}</div>
+      <div>{{props.text}}</div>
+      <slot>
+        <CProgress :variant="!props.inverse ? props.variant : ''"
+                   :value = "props.value"
+                   :class="props.inverse ? 'progress-white' : ''"
+                   class="progress-xs my-3 mb-0"/>
+      </slot>
+      <small class="text-muted">{{props.footer}}</small>
     </div>
   </div>
 </template>
 
 <script>
+import CProgress from '../Progress/CProgress'
 export default {
   name: 'CWidget01',
-  data () {
-    return{
-      backgroundColor: '',
-      styleClasses: '',
-    }
-  },
-  created ()  {
-    if(this.variant.includes('background')){
-      this.backgroundColor = this.variant.replace('background-','');
-      this.styleClasses = 'text-white bg-' + this.backgroundColor
-    }
+  components: {
+    CProgress
   },
   props: {
     header: {
@@ -34,18 +30,22 @@ export default {
       type: String,
       default: 'text:string'
     },
-    variant: {
-      type: String,
-      default: ''
-    },
     footer: {
       type: String,
       default: 'footer:string'
     },
+    variant: {
+      type: String,
+      default: 'success'
+    },
+    inverse: {
+      type: Boolean,
+      default: false
+    },
     value: {
       type: Number,
       default: 25
-    },
+    }
   }
 }
 </script>
