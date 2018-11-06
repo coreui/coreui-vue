@@ -88,11 +88,11 @@ export default {
       }
     }
   },
-  methods: {
-    scrollHandle (evt) {
-      // console.log(evt)
-    }
-  }
+  // methods: {
+  //   scrollHandle (evt) {
+  //     // console.log(evt)
+  //   }
+  // }
 }
 </script>
 

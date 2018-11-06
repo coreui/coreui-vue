@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Component from "../CProgressBar";
+import Component from "../CProgressBar.js";
 
 const ComponentName = 'CProgressBar'
 const wrapper = mount(Component,{
@@ -12,7 +12,7 @@ const wrapper = mount(Component,{
 // console.log(wrapper.vm.computedVariant)
 // console.log(wrapper.vm.progressBarStyles)
 
-describe(`${ComponentName} .vue`, () => {
+describe(ComponentName, () => {
   it('has a name', () => {
     expect(Component.name).toMatch(ComponentName)
   })
