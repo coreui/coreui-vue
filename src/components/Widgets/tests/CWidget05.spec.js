@@ -1,59 +1,7 @@
-// import Vue from 'vue'
-// import { mount } from '@vue/test-utils'
-// import Component from '../CWidget05'
-//
-// const ComponentName = 'CWidget05'
-// const defaultWrapper = mount(Component)
-// const customWrapper = mount(Component,{
-//   propsData: {
-//     text: 'test',
-//     header: 'test',
-//     iconClasses: 'icon-custom',
-//     variant: 'info',
-//     value: 35,
-//     inverse: true
-//   }
-// })
-//
-// describe(ComponentName + '.vue', () => {
-//   it('has a name', () => {
-//     expect(Component.name).toMatch(ComponentName)
-//   })
-//   it('is Vue instance', () => {
-//     expect(defaultWrapper.isVueInstance()).toBe(true)
-//   })
-//   it('correctly sets default props and data when created', () => {
-//     expect(defaultWrapper.vm.computedCardClasses).toBe('card')
-//     expect(defaultWrapper.vm.computedBarClasses).toBe('')
-//     expect(defaultWrapper.vm.computedVariant).toBe('success')
-//     expect(defaultWrapper.props().header).toBe('header:string')
-//     expect(defaultWrapper.props().text).toBe('text:string')
-//     expect(defaultWrapper.props().variant).toBe('success')
-//     expect(defaultWrapper.props().value).toBe(25)
-//     expect(defaultWrapper.props().inverse).toBe(false)
-//   })
-//   it('matches default props snapshot', () => {
-//     expect(defaultWrapper.element).toMatchSnapshot()
-//   })
-//   it('correctly sets custom props and data when created', () => {
-//     expect(customWrapper.vm.computedCardClasses).toBe('card text-white bg-info')
-//     expect(customWrapper.vm.computedBarClasses).toBe('progress-white')
-//     expect(customWrapper.vm.computedVariant).toBe('')
-//     expect(customWrapper.props().header).toBe('test')
-//     expect(customWrapper.props().text).toBe('test')
-//     expect(customWrapper.props().variant).toBe('info')
-//     expect(customWrapper.props().value).toBe(35)
-//     expect(customWrapper.props().inverse).toBe(true)
-//   })
-//   it('matches custom props snapshot', () => {
-//     expect(customWrapper.element).toMatchSnapshot()
-//   })
-// })
-
 import { shallowMount } from '@vue/test-utils'
-import Component from '../CWidget01'
+import Component from '../CWidget05'
 
-const ComponentName = 'CWidget01'
+const ComponentName = 'CWidget05'
 const defaultWrapper = shallowMount(Component)
 const customWrapper = shallowMount(Component, {
   context:{
@@ -75,22 +23,27 @@ describe(ComponentName, () => {
   it('is functional component', () => {
     expect(defaultWrapper.isFunctionalComponent).toBe(true)
   })
-  // it('correctly render component with default props', () => {
-  //   expect(defaultWrapper.findAll('div').at(2).text()).toMatch('header:string')
-  //   expect(defaultWrapper.findAll('div').at(3).text()).toMatch('text:string')
-  //   expect(defaultWrapper.find('i').attributes().class).toMatch('fa fa-cogs bg-primary')
-  //   expect(defaultWrapper.find('clink-stub').exists()).toBe(false)
-  // })
+  it('correctly render component with default props', () => {
+    expect(defaultWrapper.findAll('div').at(0).attributes().class).toMatch('card')
+    expect(defaultWrapper.findAll('div').at(3).text()).toMatch('header:string')
+    expect(defaultWrapper.find('small').text()).toMatch('text:string')
+    expect(defaultWrapper.find('cprogress-stub').exists()).toBe(true)
+    expect(defaultWrapper.find('cprogress-stub').attributes().variant).toBe('success')
+    expect(defaultWrapper.find('cprogress-stub').attributes().class).toBe('progress-xs my-3 mb-0')
+    expect(defaultWrapper.find('cprogress-stub').attributes().value).toBe('25')
+  })
   it('matches default props snapshot', () => {
     expect(defaultWrapper.element).toMatchSnapshot()
   })
-  // it('correctly render component with custom props', () => {
-  //   expect(customWrapper.findAll('div').at(2).text()).toMatch('header')
-  //   expect(customWrapper.findAll('div').at(3).text()).toMatch('text')
-  //   expect(customWrapper.find('i').attributes().class).toMatch('someClasses')
-  //   expect(customWrapper.find('clink-stub').exists()).toBe(true)
-  //   expect(customWrapper.find('clink-stub').attributes().href).toMatch('link.com')
-  // })
+  it('correctly render component with custom props', () => {
+    expect(customWrapper.findAll('div').at(0).attributes().class).toMatch('card text-white bg-info')
+    expect(customWrapper.findAll('div').at(3).text()).toMatch('test')
+    expect(customWrapper.find('small').text()).toMatch('test')
+    expect(customWrapper.find('cprogress-stub').exists()).toBe(true)
+    expect(customWrapper.find('cprogress-stub').attributes().variant).toBe('')
+    expect(customWrapper.find('cprogress-stub').attributes().class).toBe('progress-xs my-3 mb-0 progress-white')
+    expect(customWrapper.find('cprogress-stub').attributes().value).toBe('35')
+  })
   it('matches custom props snapshot', () => {
     expect(customWrapper.element).toMatchSnapshot()
   })

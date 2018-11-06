@@ -1,6 +1,4 @@
-// import { getColor } from '@coreui/coreui/dist/js/coreui-utilities'
-// const getColor = utilities.getColor
-import getColor  from '@coreui/coreui/js/src/utilities/get-color'
+import { getColor } from '@coreui/coreui/dist/js/coreui-utilities'
 
 export default {
   name: 'CProgressBar',

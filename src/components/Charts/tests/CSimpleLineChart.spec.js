@@ -1,5 +1,4 @@
 import Component from "../CSimpleLineChart";
-
 const ComponentName = 'CSimpleLineChart'
 
 describe(ComponentName, () => {
@@ -10,4 +9,8 @@ describe(ComponentName, () => {
     expect(typeof Component.props.finalOptions.default).toBe('function')
     expect(typeof Component.props.data.default).toBe('function')
   })
-});
+  it('functions are returning valid default data', () => {
+    expect(typeof Component.props.finalOptions.default()).toBe('object')
+    expect(typeof Component.props.data.default()).not.toBe('undefined')
+  })
+})
