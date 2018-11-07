@@ -39,7 +39,7 @@ export default {
     progressBarStyles () {
       return [
          { width: `${(100 * (this.value / this.computedMax))}%` },
-         this.computedVariant? { backgroundColor: this.computedVariant} : {}
+         this.computedColor? { backgroundColor: this.computedColor} : {}
       ]
     },
     progress () {
@@ -50,9 +50,9 @@ export default {
       // Prefer our max over parent setting
       return typeof this.max === 'number' ? this.max : (this.$parent.max || 100)
     },
-    computedVariant () {
-      // Prefer our variant over parent setting
-      return getColor(this.variant || this.$parent.variant)
+    computedColor () {
+      // Prefer our color over parent setting
+      return getColor(this.color || this.$parent.color)
     },
     computedPrecision () {
       // Prefer our precision over parent setting
@@ -94,7 +94,7 @@ export default {
       type: Number,
       default: null
     },
-    variant: {
+    color: {
       type: String,
       default: null
     },

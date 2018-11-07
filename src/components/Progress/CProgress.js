@@ -13,7 +13,7 @@ export default {
             value: this.value,
             max: this.max,
             precision: this.precision,
-            variant: this.variant,
+            color: this.color,
             animated: this.animated,
             striped: this.striped,
             showProgress: this.showProgress,
@@ -26,7 +26,7 @@ export default {
   },
   props: {
     // These props can be inherited via the child c-progress-bar(s)
-    variant: {
+    color: {
       type: String,
       default: null
     },

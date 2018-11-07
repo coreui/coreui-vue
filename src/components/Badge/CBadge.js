@@ -18,6 +18,10 @@ export const props = Object.assign(linkProps, {
   pill: {
     type: Boolean,
     default: false
+  },
+  additionalClasses: {
+    type: String,
+    default: null
   }
 })
 
@@ -27,7 +31,6 @@ export default {
   props,
   render (h, { props, data, children }) {
     const tag = !props.href && !props.to ? props.tag : Link
-
     const componentData = {
       staticClass: 'badge',
       class: [
@@ -36,7 +39,8 @@ export default {
           'badge-pill': Boolean(props.pill),
           active: props.active,
           disabled: props.disabled
-        }
+        },
+        props.additionalClasses? props.additionalClasses : ''
       ],
       // props: pluckProps(linkProps, props)
       props: props
