@@ -6,7 +6,6 @@
     </a>
     <div :class='menuClasses' :aria-labbeledby="'C-' + safeId">
       <slot></slot>
-      <slot name="dropdown"></slot>
     </div>
   </li>
 </template>

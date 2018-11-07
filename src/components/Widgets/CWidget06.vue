@@ -6,7 +6,7 @@
       <p>{{props.text}}</p>
     </div>
     <div class="chart-wrapper">
-      <slot name="chart"></slot>
+      <slot></slot>
     </div>
   </div>
 </template>
