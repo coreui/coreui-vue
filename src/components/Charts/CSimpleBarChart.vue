@@ -1,12 +1,12 @@
 <script>
 import { Bar } from 'vue-chartjs'
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips'
-import { generatedLabels, generatedBackgroundColor,generatedBorderColor, generatedOptions } from '../../mixins/chartMixins'
+import { generatedLabels, generatedColor,generatedBorderColor, generatedOptions } from '../../mixins/chartMixins'
 
 export default {
   name: 'CSimpleBarChart',
   extends: Bar,
-  mixins: [generatedLabels, generatedBackgroundColor, generatedBorderColor, generatedOptions],
+  mixins: [generatedLabels, generatedColor, generatedBorderColor, generatedOptions],
   props: {
     data: {
       type: Array,
@@ -24,7 +24,7 @@ export default {
       type: String,
       default: 'rgba(255,255,255,.55)'
     },
-    backgroundColor:{
+    color:{
       type: String,
       default: 'rgba(0,0,0,.2)'
     },
@@ -58,7 +58,7 @@ export default {
     const dataset = [
       {
         label: this.label,
-        backgroundColor: this.generatedBackgroundColor,
+        backgroundColor: this.generatedColor,
         borderColor: this.generatedBorderColor,
         data: this.data
       }
