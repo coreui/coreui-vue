@@ -45,7 +45,7 @@ export default {
         return 'switch-id-' + this._uid;
       },
     },
-    color: {
+    variant: {
       type: String,
       default: 'secondary'
     },
@@ -95,7 +95,7 @@ export default {
     uncheckedValue: {
       default: false
     },
-    variant: {
+    shape: {
       type: String,
       default: null,
       validator: value => [null, '3d', 'pill'].indexOf(value) !== -1
@@ -115,8 +115,8 @@ export default {
         'switch',
         this.label ? 'switch-label' : '',
         this.size ? `switch-${this.size}` : '',
-        this.variant ? `switch-${this.variant}` : '',
-        `switch${this.outline ? '-outline' : ''}-${this.color}${this.outline==='alt' ? '-alt' : ''}`,
+        this.shape ? `switch-${this.shape}` : '',
+        `switch${this.outline ? '-outline' : ''}-${this.variant}${this.outline==='alt' ? '-alt' : ''}`,
         'form-check-label'
       ]
     },
