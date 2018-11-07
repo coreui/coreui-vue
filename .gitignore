@@ -1,11 +1,13 @@
 # Dependency directories
 node_modules/
+
+# build packages
 dist/
 
 # Coverage directory
 coverage/
 
-# Generated code dist/
+# Generated code
 
 ### Node ###
 # Logs
