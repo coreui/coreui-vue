@@ -12,10 +12,10 @@ const generatedLabels = {
     },
   },
 }
-const generatedBackgroundColor = {
+const generatedColor = {
   computed:{
-    generatedBackgroundColor(){
-      return getColor(this.backgroundColor)
+    generatedColor(){
+      return getColor(this.color)
     },
   },
 }
@@ -26,12 +26,12 @@ const generatedBorderColor = {
     },
   },
 }
-const generatedPointHoverBackgroundColor = {
+const generatedPointHoverColor = {
   computed:{
-    generatedPointHoverBackgroundColor () {
-     if(this.$options.propsData.pointHoverBackgroundColor === undefined)
+    generatedPointHoverColor () {
+     if(this.$options.propsData.pointHoverColor === undefined)
        return this.generatedBorderColor
-     return getColor(this.pointHoverBackgroundColor)
+     return getColor(this.pointHoverColor)
     },
   },
 }
@@ -46,8 +46,8 @@ const generatedOptions = {
 }
 export{
   generatedLabels,
-  generatedBackgroundColor,
+  generatedColor,
   generatedBorderColor,
-  generatedPointHoverBackgroundColor,
+  generatedPointHoverColor,
   generatedOptions
 }

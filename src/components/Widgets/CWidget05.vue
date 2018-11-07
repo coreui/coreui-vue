@@ -7,7 +7,7 @@
       <div class="h4 mb-0">{{props.header}}</div>
       <small class="text-muted text-uppercase font-weight-bold">{{props.text}}</small>
       <slot>
-        <CProgress :variant="!props.inverse ? props.variant : ''"
+        <CProgress :color="!props.inverse ? props.variant : ''"
                    :value="props.value"
                    :class="props.inverse ? 'progress-white' : ''"
                    class="progress-xs my-3 mb-0"/>
