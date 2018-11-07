@@ -120,12 +120,13 @@ export default {
         interceptRailY: styles => ({ ...styles, height: 0 })
       }
     }
+  },
+  methods: {
+    /*eslint no-unused-vars: ["error", { "argsIgnorePattern": "evt" }]*/
+    scrollHandle (evt) {
+      // console.log(evt)
+    }
   }
-  // methods: {
-  //   scrollHandle (evt) {
-  //     // console.log(evt)
-  //   }
-  // }
 }
 </script>
 
