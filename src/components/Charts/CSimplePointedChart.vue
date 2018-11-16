@@ -1,5 +1,5 @@
 <script>
-import { Line } from 'vue-chartjs'
+import { Line } from '../../extends/BaseChart'
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips'
 import { generatedLabels, generatedColor, generatedBorderColor, generatedPointHoverColor, generatedOptions } from '../../mixins/chartMixins'
 
@@ -16,11 +16,11 @@ export default {
       type: Number,
       default: 40
     },
-    label:{
+    label: {
       type: String,
       default: 'label|string'
     },
-    borderColor:{
+    borderColor: {
       type: String,
       default: 'rgba(255,255,255,.55)'
     },
@@ -29,15 +29,15 @@ export default {
       type: String,
       default: 'transparent'
     },
-    pointHoverColor:{
+    pointHoverColor: {
       type: String,
       default: 'transparent'
     },
-    options:Object,
+    options: Object,
   },
   computed:{
     finalOptions () {
-      return{
+      return {
         tooltips: {
           enabled: false,
           custom: CustomTooltips

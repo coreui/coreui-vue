@@ -2,27 +2,21 @@
   <label :class="classList">
     <input
       :id="id"
+      :name="name"
+      :type="type"
       :checked="isChecked"
       :disabled="disabled"
       :required="required"
-      :name="name"
       :value="value"
-      @change="handleChange"
       class="switch-input form-check-input"
-      type="checkbox"
-      true-value="value"
-      false-value="uncheckedValue"
+      @change="toggle"
     >
-    <template v-if="label">
-      <span
-        :data-checked="dataOn"
-        :data-unchecked="dataOff"
-        class="switch-slider">
-      </span>
-    </template>
-    <template v-else>
-      <span class="switch-slider"></span>
-    </template>
+    <span
+      :data-checked="dataOn"
+      :data-unchecked="dataOff"
+      class="switch-slider"
+    >
+    </span>
   </label>
 </template>
 
@@ -30,28 +24,19 @@
 export default {
   name:'CSwitch',
   model: {
-    prop: 'modelChecked',
+    prop: 'passedValue',
     event: 'change'
   },
   data: function () {
     return {
-      checkedData: this.isChecked ? this.value : this.uncheckedValue
+      isChecked: null,
+      passedValue: null
     }
   },
   props: {
-    id: {
-      type: String,
-      default: function () {
-        return 'switch-id-' + this._uid;
-      },
-    },
     variant: {
       type: String,
       default: 'secondary'
-    },
-    label: {
-      type: Boolean,
-      default: null
     },
     outline: {
       type: [Boolean, String],
@@ -63,81 +48,69 @@ export default {
       default: null,
       validator: value => ['', 'lg', 'sm'].indexOf(value) !== -1
     },
-    checked: {
-      type: Boolean,
-      default: false
-    },
-    defaultChecked: {
-      type: Boolean,
-      default: false
-    },
-    modelChecked: {
-      default: undefined
-    },
-    value: {
-      default: true
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    name: {
-      type: String,
-      default: null
-    },
-    required: {
-      type: Boolean,
-      default: false
-    },
-    onChange: {
-      type: Function
-    },
-    uncheckedValue: {
-      default: false
-    },
     shape: {
       type: String,
       default: null,
       validator: value => [null, '3d', 'pill'].indexOf(value) !== -1
     },
-    dataOn: {
-      type: String,
-      default: 'On'
+    id: String,
+    name: String,
+    checked: {
+      type: Boolean,
+      default: false
     },
-    dataOff: {
+    disabled: Boolean,
+    required: Boolean,
+    value: String,
+    trueValue: [String, Number, Array, Object],
+    falseValue: [String, Number, Array, Object],
+    dataOn: String,
+    dataOff: String,
+    type: {
       type: String,
-      default: 'Off'
+      default: 'checkbox'
     }
   },
   computed: {
     classList () {
       return [
         'switch',
-        this.label ? 'switch-label' : '',
+        this.dataOn || this.dataOff ? 'switch-label' : '',
         this.size ? `switch-${this.size}` : '',
         this.shape ? `switch-${this.shape}` : '',
         `switch${this.outline ? '-outline' : ''}-${this.variant}${this.outline==='alt' ? '-alt' : ''}`,
         'form-check-label'
       ]
-    },
-    isChecked () {
-      if (this.modelChecked === undefined ) {
-        return this.checkedData === this.value
-      }
-      return this.modelChecked === this.value
     }
   },
   methods: {
-    handleChange (event) {
-      this.toggle(event.target.checked);
+    toggle (event) {
+      this.setValues(event.target.checked)
+      this.$emit('change', this.passedValue, event);
     },
-    toggle (checked) {
-      this.checkedData = checked ? this.value : this.uncheckedValue
-      this.$emit('change', this.checkedData);
+    setValues (checked) {
+      this.isChecked = checked
+      if(checked)
+        this.passedValue = this.trueValue !== undefined ? this.trueValue : checked
+      else
+        this.passedValue = this.falseValue !== undefined ? this.falseValue : checked
+    },
+    detectPassedCheck (modelValue) {
+      if(typeof modelValue === 'boolean')
+        this.isChecked = modelValue
+      else if (modelValue === this.falseValue)
+        this.isChecked = false
+      else if (modelValue === this.trueValue)
+        this.isChecked = true
+      else if (this.type === 'checkbox')
+        console.warn('Value passed to CSwitch component by v-model property is not of boolean type and does not equal trueValue or falseValue property.')
     }
   },
-  mounted() {
-    this.toggle(this.defaultChecked || this.checked || this.isChecked);
-  },
+  created () {
+    if(this.$vnode.data.model)
+      this.detectPassedCheck(this.$vnode.data.model.value)
+    else
+      this.isChecked = this.checked
+  }
 }
 </script>
