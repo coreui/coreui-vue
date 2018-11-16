@@ -8,11 +8,11 @@
       <div class="text-muted text-uppercase font-weight-bold font-xs">{{props.text}}</div>
     </div>
     <div class="card-footer px-3 py-2"
-         v-if="props.showLink">
+         v-if="props.link || $slots.default">
       <slot>
         <CLink class="font-weight-bold font-xs btn-block text-muted"
                 :href="props.link">
-          View More
+          {{props.linkText}}
           <i class="fa fa-angle-right float-right font-lg"></i>
         </CLink>
       </slot>
@@ -40,13 +40,13 @@ export default {
       type: String,
       default: 'text:string'
     },
-    showLink: {
-      type: Boolean,
-      default: false
+    linkText: {
+      type: String,
+      default: 'View More'
     },
     link: {
       type: String,
-      default: '#'
+      default: null
     }
   }
 }

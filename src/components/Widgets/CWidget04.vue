@@ -4,9 +4,7 @@
       <slot name="icon">
         <i :class="`fa fa-${props.variant}`"></i>
       </slot>
-      <div class="chart-wrapper">
-        <slot></slot>
-      </div>
+      <slot></slot>
     </div>
     <div class="brand-card-body">
       <div>

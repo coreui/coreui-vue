@@ -19,9 +19,6 @@ exports[`CWidget06 matches custom props snapshot 1`] = `
     </p>
   </div>
    
-  <div
-    class="chart-wrapper"
-  />
 </div>
 `;
 
@@ -44,33 +41,5 @@ exports[`CWidget06 matches default props snapshot 1`] = `
     </p>
   </div>
    
-  <div
-    class="chart-wrapper"
-  />
-</div>
-`;
-
-exports[`CWidget06 matches snapshot 1`] = `
-<div
-  class="card"
->
-  <div
-    class="card-body pb-0"
-  >
-     
-    <h4
-      class="mb-0"
-    >
-      header1
-    </h4>
-     
-    <p>
-      text:string
-    </p>
-  </div>
-   
-  <div
-    class="chart-wrapper"
-  />
 </div>
 `;
