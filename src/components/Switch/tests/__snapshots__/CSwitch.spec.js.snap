@@ -1,60 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CSwitch .vue matches custom props snapshot 1`] = `
+exports[`CSwitch .vue renders correctly 1`] = `
 <label
-  class="switch switch-lg switch-info form-check-label"
+  class="switch switch-secondary form-check-label"
+>
+  <input
+    class="switch-input form-check-input"
+    type="checkbox"
+    value=""
+  />
+   
+  <span
+    class="switch-slider"
+  />
+</label>
+`;
+
+exports[`CSwitch .vue renders correctly 2`] = `
+<label
+  class="switch switch-label switch-lg switch-3d switch-outline-info-alt form-check-label"
 >
   <input
     class="switch-input form-check-input"
     disabled="disabled"
-    false-value="uncheckedValue"
-    id="switch-id-3"
+    id="myId"
+    name="myName"
     required="required"
-    true-value="value"
-    type="checkbox"
-    value="false"
+    type="radio"
+    value="checked"
   />
    
   <span
     class="switch-slider"
-  />
-</label>
-`;
-
-exports[`CSwitch .vue matches default props snapshot 1`] = `
-<label
-  class="switch switch-secondary form-check-label"
->
-  <input
-    class="switch-input form-check-input"
-    false-value="uncheckedValue"
-    id="switch-id-1"
-    true-value="value"
-    type="checkbox"
-    value="true"
-  />
-   
-  <span
-    class="switch-slider"
-  />
-</label>
-`;
-
-exports[`CSwitch .vue matches default props snapshot and render correctly 1`] = `
-<label
-  class="switch switch-secondary form-check-label"
->
-  <input
-    class="switch-input form-check-input"
-    false-value="uncheckedValue"
-    id="switch-id-1"
-    true-value="value"
-    type="checkbox"
-    value="true"
-  />
-   
-  <span
-    class="switch-slider"
+    data-checked="dataOn"
+    data-unchecked="dataOff"
   />
 </label>
 `;

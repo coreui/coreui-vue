@@ -11,9 +11,6 @@ exports[`CWidget04 matches custom props snapshot 1`] = `
       class="fa fa-twitter"
     />
      
-    <div
-      class="chart-wrapper"
-    />
   </div>
    
   <div
@@ -61,9 +58,6 @@ exports[`CWidget04 matches default props snapshot 1`] = `
       class="fa fa-facebook"
     />
      
-    <div
-      class="chart-wrapper"
-    />
   </div>
    
   <div

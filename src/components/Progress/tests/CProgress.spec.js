@@ -4,7 +4,7 @@ import Component from "../CProgress";
 const ComponentName = 'CProgress'
 const wrapper = mount(Component,{
   propsData: {
-    variant: 'black',
+    color: 'black',
     value: 50
   }
 })

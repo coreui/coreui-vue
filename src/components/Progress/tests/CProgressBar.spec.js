@@ -4,11 +4,10 @@ import Component from "../CProgressBar.js";
 const ComponentName = 'CProgressBar'
 const wrapper = mount(Component,{
   propsData: {
-    variant: 'success',
+    color: 'success',
     value: 50
   }
 })
-// /* eslint-disable no-console */
 // console.log(wrapper.vm.computedVariant)
 // console.log(wrapper.vm.progressBarStyles)
 

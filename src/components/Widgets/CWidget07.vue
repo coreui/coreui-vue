@@ -14,9 +14,7 @@
           <small>{{props.leftFooter}}</small>
         </span>
       </div>
-      <div class="chart-wrapper">
-        <slot></slot>
-      </div>
+      <slot></slot>
     </div>
   </div>
 </template>

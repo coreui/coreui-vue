@@ -29,10 +29,10 @@ exports[`CWidget05 matches custom props snapshot 1`] = `
      
     <cprogress-stub
       class="progress-xs my-3 mb-0 progress-white"
+      color=""
       max="100"
       precision="0"
       value="35"
-      variant=""
     />
   </div>
 </div>
@@ -67,10 +67,10 @@ exports[`CWidget05 matches default props snapshot 1`] = `
      
     <cprogress-stub
       class="progress-xs my-3 mb-0"
+      color="success"
       max="100"
       precision="0"
       value="25"
-      variant="success"
     />
   </div>
 </div>

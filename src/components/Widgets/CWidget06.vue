@@ -5,9 +5,7 @@
       <h4 class="mb-0">{{props.header}}</h4>
       <p>{{props.text}}</p>
     </div>
-    <div class="chart-wrapper">
-      <slot></slot>
-    </div>
+    <slot></slot>
   </div>
 </template>
 
