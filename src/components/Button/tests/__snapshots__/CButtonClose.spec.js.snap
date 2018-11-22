@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CButtonClose renders correctly 1`] = `
+<button
+  aria-label="Close"
+  class="close"
+  type="button"
+>
+  ×
+</button>
+`;
+
+exports[`CButtonClose renders correctly 2`] = `
+<button
+  aria-label="test2"
+  class="test2"
+  disabled="disabled"
+  style="color:red"
+  type="button"
+>
+  ok
+</button>
+`;
