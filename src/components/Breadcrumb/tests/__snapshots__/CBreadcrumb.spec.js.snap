@@ -1,16 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CBreadcrumb .vue renders correctly 1`] = `
+exports[`CBreadcrumb renders correctly 1`] = `
 <ol
   class="breadcrumb"
 >
   <li
     class="breadcrumb-item"
+    role="presentation"
+  >
+    <a
+      class=""
+      href="#"
+      target="_self"
+    >
+      Admin
+    </a>
+  </li>
+  <li
+    class="breadcrumb-item"
+    role="presentation"
+  >
+    <a
+      class=""
+      href="#"
+      target="_self"
+    >
+      Manage
+    </a>
+  </li>
+  <li
+    class="breadcrumb-item active"
+    role="presentation"
   >
     <span
       class="active"
     >
-      Home
+      Library
     </span>
   </li>
 </ol>
