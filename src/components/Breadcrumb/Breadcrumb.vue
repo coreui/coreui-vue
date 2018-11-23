@@ -18,7 +18,7 @@ export default {
     }
   },
   created () {
-    console.warn("Breadcrumb component is deprecated and will be removed in the next version, use CBreadcrumRouter comoponent instead.")
+    console.warn("Breadcrumb component is deprecated and will be removed in the next version, use CBreadcrumRouter component instead.")
   },
   methods: {
     getName (item) {
