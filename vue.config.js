@@ -4,4 +4,7 @@ module.exports = {
       hints: false
     }
   }
+  // ,transpileDependencies: [
+  //   'vue-perfect-scrollbar'
+  // ]
 }

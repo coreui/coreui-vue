@@ -1,10 +1,17 @@
 <template>
-  <li :class='dropdownClasses' :id="safeId">
-    <a href="#" :id="'C-' + safeId"  aria-haspopup="true" :aria-expanded="visible"
-       :class="toggleClasses" @click="toggle(!visible)" @blur="toggle(false)">
+  <li :class="dropdownClasses"
+      :id="safeId">
+    <a href="#"
+       :id="'C-' + safeId"
+       aria-haspopup="true" 
+       :aria-expanded="visible"
+       :class="toggleClasses" 
+       @click="toggle(!visible)"
+       @blur="toggle(false)">
       <slot name="button-content">{{text}}</slot>
     </a>
-    <div :class='menuClasses' :aria-labbeledby="'C-' + safeId">
+    <div :class="menuClasses"
+         :aria-labbeledby="'C-' + safeId">
       <slot></slot>
     </div>
   </li>

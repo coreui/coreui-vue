@@ -7,7 +7,7 @@ export default {
     let childNodes = this.$slots.default
     if (!childNodes) {
       childNodes = h(
-        'c-progress-bar',
+        'CProgressBar',
         {
           props: {
             value: this.value,
@@ -25,7 +25,11 @@ export default {
     return h('div', { class: [ 'progress' ], style: this.progressHeight }, [ childNodes ])
   },
   props: {
-    // These props can be inherited via the child c-progress-bar(s)
+    height: {
+      type: String,
+      default: null
+    },
+    // These props can be inherited via the child CProgressBar(s)
     color: {
       type: String,
       default: null
@@ -37,10 +41,6 @@ export default {
     animated: {
       type: Boolean,
       default: false
-    },
-    height: {
-      type: String,
-      default: null
     },
     precision: {
       type: Number,
@@ -58,7 +58,7 @@ export default {
       type: Number,
       default: 100
     },
-    // This prop is not inherited by child c-progress-bar(s)
+    // This prop is not inherited by child CProgressBar(s)
     value: {
       type: Number,
       default: 0

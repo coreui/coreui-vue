@@ -1,5 +1,5 @@
 <script>
-import { Bar } from '../../extends/BaseChart'
+import { Bar } from '../../extends/BaseCharts'
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips'
 import { generatedLabels, generatedColor,generatedBorderColor, generatedOptions } from '../../mixins/chartMixins'
 
