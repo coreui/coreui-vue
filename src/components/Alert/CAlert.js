@@ -60,10 +60,7 @@ export default {
       type: [Boolean, Number],
       default: false
     },
-    fade: {
-      type: Boolean,
-      default: false
-    }
+    fade: Boolean,
   },
   watch: {
     show () {

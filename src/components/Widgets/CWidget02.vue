@@ -44,10 +44,7 @@ export default {
       type: String,
       default: 'View More'
     },
-    link: {
-      type: String,
-      default: null
-    }
+    link: String,
   }
 }
 </script>

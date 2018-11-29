@@ -1,7 +1,7 @@
 import { mergeData } from 'vue-functional-data-merge'
 import CLink, { props as linkProps } from '../Link/CLink'
 
-export const props = Object.assign(linkProps, {
+const props = Object.assign(linkProps, {
   tag: {
     type: String,
     default: 'span'
@@ -10,10 +10,7 @@ export const props = Object.assign(linkProps, {
     type: String,
     default: 'secondary'
   },
-  pill: {
-    type: Boolean,
-    default: false
-  }
+  pill: Boolean,
 })
 
 export default {
@@ -25,7 +22,7 @@ export default {
     const componentData = {
       staticClass: 'badge',
       class: [
-        !props.variant ? 'badge-secondary' : `badge-${props.variant}`,
+        `badge-${props.variant}`,
         {
           'badge-pill': Boolean(props.pill),
           active: props.active,

@@ -5,7 +5,11 @@ const ComponentName = 'CProgressBar'
 const wrapper = mount(Component,{
   propsData: {
     color: 'success',
-    value: 50
+    value: 50,
+    striped: true
+  },
+  slots: {
+    default: '234'
   }
 })
 // console.log(wrapper.vm.computedVariant)

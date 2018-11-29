@@ -45,20 +45,15 @@ export default {
     },
     size: {
       type: String,
-      default: null,
-      validator: value => ['', 'lg', 'sm'].indexOf(value) !== -1
+      validator: value => [ 'lg', 'sm' ].indexOf(value) !== -1
     },
     shape: {
       type: String,
-      default: null,
-      validator: value => [null, '3d', 'pill'].indexOf(value) !== -1
+      validator: value => [ '3d', 'pill' ].indexOf(value) !== -1
     },
     id: String,
     name: String,
-    checked: {
-      type: Boolean,
-      default: false
-    },
+    checked:  Boolean,
     disabled: Boolean,
     required: Boolean,
     value: String,
@@ -75,6 +70,7 @@ export default {
     classList () {
       return [
         'switch',
+
         this.dataOn || this.dataOff ? 'switch-label' : '',
         this.size ? `switch-${this.size}` : '',
         this.shape ? `switch-${this.shape}` : '',

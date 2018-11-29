@@ -12,63 +12,38 @@ import { mergeData } from 'vue-functional-data-merge'
  */
 export function propsFactory () {
   return {
-    href: {
-      type: String,
-      default: null
-    },
-    rel: {
-      type: String,
-      default: null
-    },
+    href:String,
+    rel: String,
     target: {
       type: String,
       default: '_self'
     },
-    active: {
-      type: Boolean,
-      default: false
-    },
+    active: Boolean,
     activeClass: {
       type: String,
       default: 'active'
     },
-    append: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
+    append: Boolean,
+    disabled: Boolean,
     event: {
       type: [String, Array],
       default: 'click'
     },
-    exact: {
-      type: Boolean,
-      default: false
-    },
+    exact: Boolean,
     exactActiveClass: {
       type: String,
       default: 'active'
     },
-    replace: {
-      type: Boolean,
-      default: false
-    },
+    replace: Boolean,
     routerTag: {
       type: String,
       default: 'a'
     },
-    to: {
-      type: [String, Object],
-      default: null
-    }
+    to: [String, Object],
   }
 }
 
 export const props = propsFactory()
-
 
 function computeTag (props, parent) {
   return Boolean(parent.$router) && props.to && !props.disabled ? 'router-link' : 'a'
@@ -132,7 +107,7 @@ function clickHandlerFactory ({ disabled, tag, href, suppliedHandler, parent }) 
 export default {
   functional: true,
   name: 'CLink',
-  props: propsFactory(),
+  props,
   render (h, { props, data, parent, children }) {
     const tag = computeTag(props, parent)
     const rel = computeRel(props)

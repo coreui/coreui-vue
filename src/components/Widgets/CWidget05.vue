@@ -40,10 +40,7 @@ export default {
       type: String,
       default: 'success'
     },
-    inverse: {
-      type: Boolean,
-      default: false
-    },
+    inverse: Boolean,
     value: {
       type: Number,
       default: 25

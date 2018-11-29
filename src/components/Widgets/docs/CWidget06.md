@@ -4,12 +4,11 @@ This widget can style is defined by cardClasses. Inside component there are  slo
 
 prop | default
 --- | ---
-cardClasses  | `''`
 header| `header:string`
 text   | `text:string`
 
 ```html
-<CWidget06 cardClasses="bg-primary"
+<CWidget06 class="bg-primary"
            header="9.823"
            text="Members online">
   <b-dropdown slot="dropdown"

@@ -1,17 +1,12 @@
 import { mergeData } from 'vue-functional-data-merge'
 import CLink from '../Link/CLink'
 
-export const props = {
-  items: {
-    type: Array,
-    default: null
-  }
-}
-
 export default {
   functional: true,
   name: 'CBreadcrumb',
-  props,
+  props: {
+    items: Array,
+  },
   render (h, { props, data }) {
     if(!Array.isArray(props.items)){ return }
     let childNodes = props.items.map((item, index, items) => {

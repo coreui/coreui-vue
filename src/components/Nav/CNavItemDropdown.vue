@@ -3,9 +3,9 @@
       :id="safeId">
     <a href="#"
        :id="'C-' + safeId"
-       aria-haspopup="true" 
+       aria-haspopup="true"
        :aria-expanded="visible"
-       :class="toggleClasses" 
+       :class="toggleClasses"
        @click="toggle(!visible)"
        @blur="toggle(false)">
       <slot name="button-content">{{text}}</slot>
@@ -28,10 +28,7 @@ export default {
     }
   },
   props: {
-    noCaret: {
-      type: Boolean,
-      default: false
-    },
+    noCaret: Boolean,
     extraToggleClasses: {
       type: String,
       default: ''
@@ -44,22 +41,10 @@ export default {
       type: String,
       default: 'Dropdown'
     },
-    show: {
-      type: Boolean,
-      default: false
-    },
-    dropup: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    right: {
-      type: Boolean,
-      default: false
-    },
+    show: Boolean,
+    dropup: Boolean,
+    disabled: Boolean,
+    right: Boolean,
   },
   methods:{
     toggle (visible) {

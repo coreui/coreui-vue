@@ -2,25 +2,26 @@ import { mount } from '@vue/test-utils'
 import Component from "../CProgress";
 
 const ComponentName = 'CProgress'
-const wrapper = mount(Component,{
+const wrapper = mount(Component, {
   propsData: {
     color: 'black',
-    value: 50
+
+  },
+  data: {
+    class: 'test',
+    staticClass: 'test2',
   }
 })
-// /* eslint-disable no-console */
-// console.log(wrapper.vm.computedVariant)
-// console.log(wrapper.vm.progressBarStyles)
+// const wrapper = mount(
+//   <CProgress color="black" role="test" class="myClass"/>
+// )
+
 
 describe(ComponentName, () => {
   it('has a name', () => {
     expect(Component.name).toMatch(ComponentName)
   })
   it('renders correctly', () => {
-    expect(wrapper.element).toMatchSnapshot()
-  })
-  it('sets background color correctly', () => {
-
     expect(wrapper.element).toMatchSnapshot()
   })
 });
