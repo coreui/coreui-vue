@@ -5,7 +5,7 @@ const defaultWrapper = mount(Component)
 const customWrapper = mount(Component,{
   context:{
     props: {
-      cardClasses: 'cardClass',
+      variant: 'info',
       rightHeader: 'rightHeader',
       leftHeader: 'leftHeader',
       rightFooter: 'rightFooter',
@@ -22,7 +22,7 @@ describe(ComponentName, () => {
     expect(defaultWrapper.isFunctionalComponent).toBe(true)
   })
   it('correctly render component with default props', () => {
-    expect(defaultWrapper.findAll('div').at(1).attributes().class).toMatch('card-header bg-primary')
+    expect(defaultWrapper.findAll('div').at(0).attributes().class).toMatch('card bg-primary')
     expect(defaultWrapper.findAll('span').at(0).text()).toMatch('rightHeader:string')
     expect(defaultWrapper.findAll('span').at(1).text()).toMatch('leftHeader:string')
     expect(defaultWrapper.findAll('span').at(2).text()).toMatch('rightFooter:string')
@@ -32,7 +32,7 @@ describe(ComponentName, () => {
     expect(defaultWrapper.element).toMatchSnapshot()
   })
   it('correctly render component with custom props', () => {
-    expect(customWrapper.findAll('div').at(1).attributes().class).toMatch('card-header cardClass')
+    expect(customWrapper.findAll('div').at(0).attributes().class).toMatch('card bg-info')
     expect(customWrapper.findAll('span').at(0).text()).toMatch('rightHeader')
     expect(customWrapper.findAll('span').at(1).text()).toMatch('leftHeader')
     expect(customWrapper.findAll('span').at(2).text()).toMatch('rightFooter')

@@ -27,14 +27,9 @@ exports[`CWidget02 matches custom props snapshot 1`] = `
   <div
     class="card-footer px-3 py-2"
   >
-    <clink-stub
-      activeclass="active"
+    <clink
       class="font-weight-bold font-xs btn-block text-muted"
-      event="click"
-      exactactiveclass="active"
       href="link.com"
-      routertag="a"
-      target="_self"
     >
       
         View More
@@ -42,7 +37,7 @@ exports[`CWidget02 matches custom props snapshot 1`] = `
       <i
         class="fa fa-angle-right float-right font-lg"
       />
-    </clink-stub>
+    </clink>
   </div>
 </div>
 `;

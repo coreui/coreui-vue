@@ -9,15 +9,5 @@ module.exports = {
             'es6.object.assign'
           ]
         }]
-      ],
-      "plugins": [
-        ["module-resolver", {
-          "extensions": [".js", ".vue", ".json"]
-        }]
-      ],
-      "env": {
-        "test": {
-          "plugins": ["dynamic-import-node"]
-        }
-      }
+      ]
     }

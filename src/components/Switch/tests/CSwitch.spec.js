@@ -2,26 +2,26 @@ import { mount } from "@vue/test-utils";
 import Component from "../CSwitch";
 
 const ComponentName = 'CSwitch'
-// const defaultWrapper = mount(Component)
-// const customWrapper = mount(Component, {
-//   propsData: {
-//     variant: 'info',
-//     outline: 'alt',
-//     size: 'lg',
-//     shape:'3d',
-//     name:'myName',
-//     id:'myId',
-//     checked: true,
-//     value: 'checked',
-//     disabled: true,
-//     required: true,
-//     trueValue: 'yes',
-//     falseValue: 'no',
-//     type: 'radio',
-//     dataOn: 'dataOn',
-//     dataOff: 'dataOff'
-//   }
-// })
+const defaultWrapper = mount(Component)
+const customWrapper = mount(Component, {
+  propsData: {
+    variant: 'info',
+    outline: 'alt',
+    size: 'lg',
+    shape:'3d',
+    name:'myName',
+    id:'myId',
+    checked: true,
+    value: 'checked',
+    disabled: true,
+    required: true,
+    trueValue: 'yes',
+    falseValue: 'no',
+    type: 'radio',
+    dataOn: 'dataOn',
+    dataOff: 'dataOff'
+  }
+})
 
 describe(ComponentName, () => {
   it('has a name', () => {

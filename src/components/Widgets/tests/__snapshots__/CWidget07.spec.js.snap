@@ -2,10 +2,10 @@
 
 exports[`CWidget07 matches custom props snapshot 1`] = `
 <div
-  class="card"
+  class="card bg-info"
 >
   <div
-    class="card-header cardClass"
+    class="card-header"
   >
     <div
       class="font-weight-bold"
@@ -43,10 +43,10 @@ exports[`CWidget07 matches custom props snapshot 1`] = `
 
 exports[`CWidget07 matches default props snapshot 1`] = `
 <div
-  class="card"
+  class="card bg-primary"
 >
   <div
-    class="card-header bg-primary"
+    class="card-header"
   >
     <div
       class="font-weight-bold"

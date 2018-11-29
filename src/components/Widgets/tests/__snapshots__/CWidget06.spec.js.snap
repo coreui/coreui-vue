@@ -2,7 +2,7 @@
 
 exports[`CWidget06 matches custom props snapshot 1`] = `
 <div
-  class="card card-xl"
+  class="card bg-info"
 >
   <div
     class="card-body pb-0"
@@ -24,7 +24,7 @@ exports[`CWidget06 matches custom props snapshot 1`] = `
 
 exports[`CWidget06 matches default props snapshot 1`] = `
 <div
-  class="card"
+  class="card bg-primary"
 >
   <div
     class="card-body pb-0"

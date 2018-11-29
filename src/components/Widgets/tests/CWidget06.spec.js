@@ -6,9 +6,9 @@ const defaultWrapper = mount(Component)
 const customWrapper = mount(Component,{
   context:{
     props: {
+      variant: 'info',
       header: 'header',
       text: 'text',
-      cardClasses: 'card-xl',
     }
   }
 })
@@ -31,7 +31,7 @@ describe(ComponentName, () => {
   it('correctly render component with custom props', () => {
     expect(customWrapper.find('h4').text()).toMatch('header')
     expect(customWrapper.find('p').text()).toMatch('text')
-    expect(customWrapper.find('div').attributes().class).toMatch('card card-xl')
+    expect(customWrapper.find('div').attributes().class).toMatch('card bg-info')
   })
   it('matches custom props snapshot', () => {
     expect(customWrapper.element).toMatchSnapshot()
