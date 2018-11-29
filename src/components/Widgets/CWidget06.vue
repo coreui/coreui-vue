@@ -1,13 +1,11 @@
 <template functional>
-  <div class="card" :class="props.cardClasses">
+  <div class="card" :class="`bg-${props.variant}`">
     <div class="card-body pb-0">
       <slot name="dropdown"></slot>
       <h4 class="mb-0">{{props.header}}</h4>
       <p>{{props.text}}</p>
     </div>
-    <div class="chart-wrapper">
-      <slot name="chart"></slot>
-    </div>
+    <slot></slot>
   </div>
 </template>
 
@@ -15,9 +13,9 @@
 export default {
   name: 'CWidget06',
   props: {
-    cardClasses: {
+    variant: {
       type: String,
-      default: ''
+      default: 'primary'
     },
     header: {
       type: String,

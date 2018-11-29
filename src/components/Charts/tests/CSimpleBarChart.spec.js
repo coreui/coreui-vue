@@ -1,17 +1,5 @@
 import Component from "../CSimpleBarChart";
-// import { shallowMount } from '@vue/test-utils'
-
 const ComponentName = 'CSimpleBarChart'
-// import Vue from 'vue'
-// const vm = new Vue(Component1).$mount(document.createElement('div'))
-//
-// /* eslint-disable no-console */
-// console.log(vm.$options);
-// /* eslint-enable no-console */
-
-// console.log(typeof Component.props.data.default())
-// console.log(typeof Component.props.finalOptions.default())
-
 
 describe(ComponentName, () => {
   it('has a name', () => {

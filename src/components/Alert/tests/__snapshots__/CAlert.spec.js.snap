@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CAlert renders correctly 1`] = `
+<div
+  aria-atomic="true"
+  aria-live="polite"
+  class="alert alert-info"
+  role="alert"
+>
+  <!---->
+  Dismissible Alert!
+</div>
+`;
+
+exports[`CAlert renders correctly 2`] = `
+<div
+  aria-atomic="true"
+  aria-live="polite"
+  class="alert alert-success alert-dismissible"
+  role="alert"
+>
+  <cbuttonclose
+    aria-label="close it"
+    style="color: red;"
+  >
+    
+                    ok
+                
+  </cbuttonclose>
+  Dismissible Alert!
+</div>
+`;

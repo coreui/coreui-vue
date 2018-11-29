@@ -1,6 +1,4 @@
-// import { getColor } from '@coreui/coreui/dist/js/coreui-utilities'
-// const getColor = utilities.getColor
-import getColor  from '@coreui/coreui/js/src/utilities/get-color'
+import { getColor } from '@coreui/coreui/dist/js/coreui-utilities'
 
 export default {
   name: 'CProgressBar',
@@ -34,14 +32,16 @@ export default {
     progressBarClasses () {
       return [
         'progress-bar',
-        (this.computedStriped || this.computedAnimated) ? 'progress-bar-striped' : '',
-        this.computedAnimated ? 'progress-bar-animated' : ''
+        {
+          'progress-bar-striped': this.computedStriped || this.computedAnimated,
+          'progress-bar-animated': this.computedAnimated 
+        }
       ]
     },
     progressBarStyles () {
       return [
          { width: `${(100 * (this.value / this.computedMax))}%` },
-         this.computedVariant? { backgroundColor: this.computedVariant} : {}
+         this.computedColor? { backgroundColor: this.computedColor} : {}
       ]
     },
     progress () {
@@ -50,30 +50,26 @@ export default {
     },
     computedMax () {
       // Prefer our max over parent setting
-      return typeof this.max === 'number' ? this.max : (this.$parent.max || 100)
+      return this.max ? this.max : (this.$parent.max || 100)
     },
-    computedVariant () {
-      // Prefer our variant over parent setting
-      return getColor(this.variant || this.$parent.variant)
+    computedColor () {
+      // Prefer our color over parent setting
+      return getColor(this.color || this.$parent.color || '#20A8D8')
     },
     computedPrecision () {
       // Prefer our precision over parent setting
-      return typeof this.precision === 'number' ? this.precision : (this.$parent.precision || 0)
+      return this.precision ? this.precision : (this.$parent.precision || 0)
     },
     computedStriped () {
-      // Prefer our striped over parent setting
       return typeof this.striped === 'boolean' ? this.striped : (this.$parent.striped || false)
     },
     computedAnimated () {
-      // Prefer our animated over parent setting
       return typeof this.animated === 'boolean' ? this.animated : (this.$parent.animated || false)
     },
     computedShowProgress () {
-      // Prefer our showProgress over parent setting
       return typeof this.showProgress === 'boolean' ? this.showProgress : (this.$parent.showProgress || false)
     },
     computedShowValue () {
-      // Prefer our showValue over parent setting
       return typeof this.showValue === 'boolean' ? this.showValue : (this.$parent.showValue || false)
     }
   },
@@ -82,24 +78,12 @@ export default {
       type: Number,
       default: 0
     },
-    label: {
-      type: String,
-      default: null
-    },
+    label: String,
     // $parent prop values take precedence over the following props
     // Which is why they are defaulted to null
-    max: {
-      type: Number,
-      default: null
-    },
-    precision: {
-      type: Number,
-      default: null
-    },
-    variant: {
-      type: String,
-      default: null
-    },
+    max: Number,
+    precision: Number,
+    color: String,
     striped: {
       type: Boolean,
       default: null

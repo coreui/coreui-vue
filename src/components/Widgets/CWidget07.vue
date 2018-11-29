@@ -1,7 +1,6 @@
 <template functional>
-  <div class="card">
-    <div class="card-header"
-         :class="props.cardClasses">
+  <div class="card" :class="`bg-${props.variant}`">
+    <div class="card-header">
       <div class="font-weight-bold">
         <span>{{props.rightHeader}}</span>
         <span class="float-right">{{props.leftHeader}}</span>
@@ -14,9 +13,7 @@
           <small>{{props.leftFooter}}</small>
         </span>
       </div>
-      <div class="chart-wrapper">
-        <slot></slot>
-      </div>
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -25,9 +22,9 @@
 export default {
   name: 'CWidget07',
   props: {
-    cardClasses: {
+    variant: {
       type: String,
-      default: 'bg-primary'
+      default: 'primary'
     },
     rightHeader: {
       type: String,

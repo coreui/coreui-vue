@@ -1,10 +1,10 @@
 <template functional>
   <div class="brand-card">
-    <div :class="`brand-card-header bg-${props.type}`">
-      <i :class="`fa fa-${props.type}`"></i>
-      <div class="chart-wrapper">
-        <slot></slot>
-      </div>
+    <div :class="`brand-card-header bg-${props.variant}`">
+      <slot name="icon">
+        <i :class="`fa fa-${props.variant}`"></i>
+      </slot>
+      <slot></slot>
     </div>
     <div class="brand-card-body">
       <div>
@@ -23,7 +23,7 @@
 export default {
   name: 'CWidget04',
   props: {
-    type: {
+    variant: {
       type: String,
       default: 'facebook'
     },

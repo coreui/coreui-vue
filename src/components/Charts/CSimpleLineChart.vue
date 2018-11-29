@@ -1,40 +1,36 @@
 <script>
-import { Line } from 'vue-chartjs'
+import { Line } from '../../extends/BaseCharts'
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips'
-import { generatedLabels, generatedBackgroundColor, generatedBorderColor, generatedPointHoverBackgroundColor, generatedOptions } from '../../mixins/chartMixins'
+import { generatedLabels, generatedColor, generatedBorderColor, generatedPointHoverColor, generatedOptions } from '../../mixins/chartMixins'
 
 export default {
   name: 'CSimpleLineChart',
   extends: Line,
-  mixins: [generatedLabels, generatedBackgroundColor, generatedBorderColor, generatedPointHoverBackgroundColor, generatedOptions],
+  mixins: [generatedLabels, generatedColor, generatedBorderColor, generatedPointHoverColor, generatedOptions],
   props: {
     data: {
       type: Array,
       default: () => [0, 22, 34, 46, 58, 70, 46, 23, 45, 78, 34, 12]
     },
-    height: {
-      type: Number,
-      default: 40
-    },
     label:{
       type: String,
       default: 'label|string'
     },
-    borderColor:{
+    borderColor: {
       type: String,
       default: 'rgba(255,255,255,.55)'
     },
     labels: Array,
-    backgroundColor:{
+    color: {
       type: String,
       default: 'transparent'
     },
-    pointHoverBackgroundColor:{
+    pointHoverColor: {
       type: String,
       default: 'transparent'
     },
-    options:Object,
-    finalOptions:{
+    options: Object,
+    finalOptions: {
       type: Object,
       default: () => ({
         tooltips: {
@@ -72,8 +68,8 @@ export default {
       {
         label: this.label,
         borderColor: this.generatedBorderColor,
-        backgroundColor: this.generatedBackgroundColor,
-        pointHoverBackgroundColor: this.generatedPointHoverBackgroundColor,
+        backgroundColor: this.generatedColor,
+        pointHoverBackgroundColor: this.generatedPointHoverColor,
         data: this.data
       }
     ]

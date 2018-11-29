@@ -6,7 +6,7 @@ const defaultWrapper = mount(Component)
 const customWrapper = mount(Component,{
   context:{
     props: {
-      type: 'twitter',
+      variant: 'twitter',
       rightHeader: 'rightHeader',
       leftHeader: 'leftHeader',
       rightFooter: 'rightFooter',
@@ -24,10 +24,10 @@ describe(ComponentName, () => {
   })
   it('correctly render component with default props', () => {
     expect(defaultWrapper.findAll('div').at(1).attributes().class).toMatch('brand-card-header bg-facebook')
-    expect(defaultWrapper.findAll('div').at(5).text()).toMatch('rightHeader:string')
-    expect(defaultWrapper.findAll('div').at(6).text()).toMatch('rightFooter:string')
-    expect(defaultWrapper.findAll('div').at(8).text()).toMatch('leftHeader:string')
-    expect(defaultWrapper.findAll('div').at(9).text()).toMatch('leftFooter:string')
+    expect(defaultWrapper.findAll('div').at(4).text()).toMatch('rightHeader:string')
+    expect(defaultWrapper.findAll('div').at(5).text()).toMatch('rightFooter:string')
+    expect(defaultWrapper.findAll('div').at(7).text()).toMatch('leftHeader:string')
+    expect(defaultWrapper.findAll('div').at(8).text()).toMatch('leftFooter:string')
     expect(defaultWrapper.find('i').attributes().class).toMatch('fa fa-facebook')
   })
   it('matches default props snapshot', () => {
@@ -35,10 +35,10 @@ describe(ComponentName, () => {
   })
   it('correctly render component with custom props', () => {
     expect(customWrapper.findAll('div').at(1).attributes().class).toMatch('brand-card-header bg-twitter')
-    expect(customWrapper.findAll('div').at(5).text()).toMatch('rightHeader')
-    expect(customWrapper.findAll('div').at(6).text()).toMatch('rightFooter')
-    expect(customWrapper.findAll('div').at(8).text()).toMatch('leftHeader')
-    expect(customWrapper.findAll('div').at(9).text()).toMatch('leftFooter')
+    expect(customWrapper.findAll('div').at(4).text()).toMatch('rightHeader')
+    expect(customWrapper.findAll('div').at(5).text()).toMatch('rightFooter')
+    expect(customWrapper.findAll('div').at(7).text()).toMatch('leftHeader')
+    expect(customWrapper.findAll('div').at(8).text()).toMatch('leftFooter')
     expect(customWrapper.find('i').attributes().class).toMatch('fa fa-twitter')
   })
   it('matches custom props snapshot', () => {

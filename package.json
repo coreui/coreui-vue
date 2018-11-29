@@ -46,72 +46,71 @@
     "npm": ">= 5.6.0"
   },
   "scripts": {
-    "build": "npm run build:cjs && npm run build:es && npm run build:umd:dev && npm run build:umd:prod",
-    "build:cjs": "rollup -c --environment TARGET:cjs",
-    "build:es": "rollup -c --environment TARGET:esm",
-    "build:umd:dev": "rollup -c --environment TARGET:umd-dev",
-    "build:umd:prod": "rollup -c --environment TARGET:umd-prod",
-    "precommit": "lint-staged",
-    "test": "npm run lint && jest --verbose --coverage",
-    "test:update": "jest --verbose --updateSnapshot",
-    "test:watch": "jest --verbose --watchAll --notify",
-    "lint": "eslint --ext .js,.vue .",
-    "lint:fix": "eslint --ext .js,.vue . --fix"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --target lib --name coreui-vue ./src/index.js",
+    "lint": "vue-cli-service lint",
+    "test": "vue-cli-service test:unit",
+    "test:coverage": "vue-cli-service test:unit --coverage --collectCoverageFrom=src/**/*.{js,vue} --collectCoverageFrom=!**/index*",
+    "test:e2e": "vue-cli-service test:e2e",
+    "clear_jest": "jest --clearCache"
   },
   "dependencies": {
-    "@coreui/coreui": "^2.0.19",
+    "@coreui/coreui": "^2.1.3",
+    "@coreui/coreui-plugin-chartjs-custom-tooltips": "^1.2.0",
+    "chart.js": "^2.7.3",
+    "core-js": "^2.5.7",
+    "vue": "^2.5.17",
     "vue-clickaway": "^2.2.2",
     "vue-functional-data-merge": "^2.0.7",
     "vue-perfect-scrollbar": "^0.1.0"
   },
   "devDependencies": {
-    "@vue/test-utils": "^1.0.0-beta.25",
-    "babel-core": "^6.26.3",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/runtime": "^7.1.5",
+    "@vue/cli-plugin-babel": "^3.2.0",
+    "@vue/cli-plugin-e2e-nightwatch": "^3.2.0",
+    "@vue/cli-plugin-eslint": "^3.2.1",
+    "@vue/cli-plugin-unit-jest": "^3.2.0",
+    "@vue/cli-service": "^3.2.0",
+    "@vue/test-utils": "^1.0.0-beta.26",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "babel-plugin-dynamic-import-node": "^2.2.0",
     "babel-plugin-module-resolver": "^3.1.1",
     "babel-preset-vue-app": "^2.0.0",
-    "eslint": "^5.7.0",
-    "eslint-config-prettier": "^3.1.0",
-    "eslint-import-resolver-babel-module": "^4.0.0",
-    "eslint-plugin-html": "^4.0.6",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jest": "^21.25.1",
-    "eslint-plugin-prettier": "^3.0.0",
-    "eslint-plugin-vue": "^5.0.0-beta.3",
-    "husky": "^1.1.2",
-    "jest": "^23.6.0",
-    "jest-serializer-html": "^5.0.0",
-    "jest-serializer-vue": "^2.0.2",
-    "jest-vue-preprocessor": "^1.4.0",
-    "lint-staged": "^7.3.0",
-    "lodash": "^4.17.11",
-    "node-sass": "^4.9.4",
-    "prettier": "^1.14.3",
-    "rollup": "^0.59.4",
-    "rollup-plugin-babel": "^3.0.7",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-filesize": "^4.0.1",
-    "rollup-plugin-json": "^3.1.0",
-    "rollup-plugin-license": "^0.7.0",
-    "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-replace": "^2.0.0",
-    "rollup-plugin-uglify": "^3.0.0",
-    "rollup-plugin-vue": "^4.3.2",
+    "eslint": "^5.9.0",
+    "eslint-plugin-vue": "^5.0.0-beta.5",
+    "growl": "^1.10.5",
+    "https-proxy-agent": "^2.2.1",
+    "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
-    "uglify-es": "^3.3.10",
-    "vue": "^2.5.17",
-    "vue-jest": "^2.6.0",
-    "vue-loader": "^15.4.2",
-    "vue-router": "^3.0.1",
-    "vue-server-renderer": "^2.5.17",
+    "vue-jest": "^3.0.1",
+    "vue-router": "^3.0.2",
     "vue-template-compiler": "^2.5.17"
   },
-  "lint-staged": {
-    "*.{js,vue}": [
-      "eslint --fix",
-      "git add"
-    ]
-  }
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 9"
+  ]
 }

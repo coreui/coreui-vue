@@ -3,8 +3,8 @@ import Component from '../CWidget02'
 
 const ComponentName = 'CWidget02'
 const defaultWrapper = shallowMount(Component)
-const customWrapper = shallowMount(Component ,{
-  context:{
+const customWrapper = shallowMount(Component, {
+  context: {
     props: {
       header: 'header',
       text: 'text',

@@ -2,10 +2,13 @@
 node_modules/
 dist/
 
+# build packages
+dist/
+
 # Coverage directory
 coverage/
 
-# Generated code dist/
+# Generated code
 
 ### Node ###
 # Logs

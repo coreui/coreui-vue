@@ -1,5 +1,4 @@
 import { mergeData } from 'vue-functional-data-merge'
-// import { arrayIncludes, concat } from '../../utils/array'
 
 /**
  * The Link component is used in many other BV components.
@@ -13,105 +12,38 @@ import { mergeData } from 'vue-functional-data-merge'
  */
 export function propsFactory () {
   return {
-    href: {
-      type: String,
-      default: null
-    },
-    rel: {
-      type: String,
-      default: null
-    },
+    href:String,
+    rel: String,
     target: {
       type: String,
       default: '_self'
     },
-    active: {
-      type: Boolean,
-      default: false
-    },
+    active: Boolean,
     activeClass: {
       type: String,
       default: 'active'
     },
-    append: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
+    append: Boolean,
+    disabled: Boolean,
     event: {
       type: [String, Array],
       default: 'click'
     },
-    exact: {
-      type: Boolean,
-      default: false
-    },
+    exact: Boolean,
     exactActiveClass: {
       type: String,
       default: 'active'
     },
-    replace: {
-      type: Boolean,
-      default: false
-    },
+    replace: Boolean,
     routerTag: {
       type: String,
       default: 'a'
     },
-    to: {
-      type: [String, Object],
-      default: null
-    }
+    to: [String, Object],
   }
 }
 
 export const props = propsFactory()
-
-// export function pickLinkProps (propsToPick) {
-//   const freshLinkProps = propsFactory()
-//   // Normalize everything to array.
-//   propsToPick = concat(propsToPick)
-//
-//   return Object.keys(freshLinkProps).reduce((memo, prop) => {
-//     if (arrayIncludes(propsToPick, prop)) {
-//       memo[prop] = freshLinkProps[prop]
-//     }
-//
-//     return memo
-//   }, {})
-// }
-//
-// export function omitLinkProps (propsToOmit) {
-//   const freshLinkProps = propsFactory()
-//   // Normalize everything to array.
-//   propsToOmit = concat(propsToOmit)
-//
-//   return Object.keys(props).reduce((memo, prop) => {
-//     if (!arrayIncludes(propsToOmit, prop)) {
-//       memo[prop] = freshLinkProps[prop]
-//     }
-//
-//     return memo
-//   }, {})
-// }
-
-export const computed = {
-  linkProps () {
-    let linkProps = {}
-    let propKeys = Object.keys(props)
-
-    for (let i = 0; i < propKeys.length; i++) {
-      const prop = propKeys[i]
-      // Computed Vue getters are bound to the instance.
-      linkProps[prop] = this[prop]
-    }
-
-    return linkProps
-  }
-}
 
 function computeTag (props, parent) {
   return Boolean(parent.$router) && props.to && !props.disabled ? 'router-link' : 'a'
@@ -175,7 +107,7 @@ function clickHandlerFactory ({ disabled, tag, href, suppliedHandler, parent }) 
 export default {
   functional: true,
   name: 'CLink',
-  props: propsFactory(),
+  props,
   render (h, { props, data, parent, children }) {
     const tag = computeTag(props, parent)
     const rel = computeRel(props)
