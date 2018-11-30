@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCard renders correctly 1`] = `
+<div
+  class="card text-left bg-success border-solid text-white"
+>
+  <div
+    class="card-header"
+  >
+    header
+  </div>
+  <div
+    class="card-body"
+  >
+    <!---->
+    <!---->
+    body
+  </div>
+  <div
+    class="card-footer"
+  >
+    footer
+  </div>
+</div>
+`;
+
+exports[`CCard renders correctly with slots 1`] = `
+<div
+  class="card text-left bg-success border-solid text-white"
+>
+  this should overwrite header
+  <br />
+  this should overwrite body
+  <br />
+  this should overwrite footer
+</div>
+`;
