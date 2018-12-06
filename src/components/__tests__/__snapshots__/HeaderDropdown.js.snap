@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HeaderDropdown.vue renders correctly 1`] = `
-<b-nav-item-dropdown>
+<b-nav-item-dropdown-stub>
   <template>
     
       ❔
@@ -17,5 +17,5 @@ exports[`HeaderDropdown.vue renders correctly 1`] = `
       dropdown
     </span>
   </div>
-</b-nav-item-dropdown>
+</b-nav-item-dropdown-stub>
 `;
