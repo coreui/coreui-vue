@@ -12,6 +12,7 @@ exports[`SidebarNavLabel.vue renders correctly 1`] = `
       class="fa fa-circle text-info "
     />
      
+  
   </a>
 </li>
 `;

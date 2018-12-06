@@ -57,13 +57,6 @@ import VuePerfectScrollbar from 'vue-perfect-scrollbar'
 
 export default {
   name: 'SidebarNav',
-  props: {
-    navItems: {
-      type: Array,
-      required: true,
-      default: () => []
-    }
-  },
   components: {
     SidebarNavDivider,
     SidebarNavDropdown,
@@ -72,6 +65,13 @@ export default {
     SidebarNavItem,
     SidebarNavLabel,
     VuePerfectScrollbar
+  },
+  props: {
+    navItems: {
+      type: Array,
+      required: true,
+      default: () => []
+    }
   },
   data () {
     return {}

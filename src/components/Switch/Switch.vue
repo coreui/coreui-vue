@@ -7,11 +7,11 @@
       :required="required"
       :name="name"
       :value="value"
-      @change="handleChange"
       class="switch-input form-check-input"
       type="checkbox"
       true-value="value"
       false-value="uncheckedValue"
+      @change="handleChange"
     >
     <template v-if="label">
       <span
@@ -31,11 +31,6 @@ export default {
   model: {
     prop: 'modelChecked',
     event: 'change'
-  },
-  data: function () {
-    return {
-      checkedData: this.isChecked ? this.value : this.uncheckedValue
-    }
   },
   props: {
     id: {
@@ -108,6 +103,11 @@ export default {
       default: 'Off'
     }
   },
+  data: function () {
+    return {
+      checkedData: this.isChecked ? this.value : this.uncheckedValue
+    }
+  },
   computed: {
     classList () {
       return [
@@ -126,6 +126,9 @@ export default {
       return this.modelChecked === this.value
     }
   },
+  mounted() {
+    this.toggle(this.defaultChecked || this.checked || this.isChecked);
+  },
   methods: {
     handleChange (event) {
       this.toggle(event.target.checked);
@@ -134,9 +137,6 @@ export default {
       this.checkedData = checked ? this.value : this.uncheckedValue
       this.$emit('change', this.checkedData);
     }
-  },
-  mounted() {
-    this.toggle(this.defaultChecked || this.checked || this.isChecked);
   },
 }
 </script>
