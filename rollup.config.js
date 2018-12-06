@@ -7,7 +7,7 @@ import json from "rollup-plugin-json";
 import license from "rollup-plugin-license";
 import resolve from "rollup-plugin-node-resolve";
 import replace from "rollup-plugin-replace";
-import uglify from "rollup-plugin-uglify";
+import { uglify } from "rollup-plugin-uglify";
 import vue from "rollup-plugin-vue";
 import { minify } from "uglify-es";
 
