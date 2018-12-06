@@ -1,12 +1,18 @@
 <template>
-  <div v-if="isExternalLink">
-    <a :href="url" :class="classList">
+  <div v-if="isDisabled">
+    <a href :class="classList" v-bind="attributes" tabindex="-1">
+      <i :class="classIcon"></i> {{name}}
+      <b-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</b-badge>
+    </a>
+  </div>
+  <div v-else-if="isExternalLink">
+    <a :href="url" :class="classList" v-bind="attributes">
       <i :class="classIcon"></i> {{name}}
       <b-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</b-badge>
     </a>
   </div>
   <div v-else>
-    <router-link :to="url" :class="classList">
+    <router-link :to="url" :class="classList" v-bind="attributes">
       <i :class="classIcon"></i> {{name}}
       <b-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</b-badge>
     </router-link>
@@ -38,8 +44,12 @@ export default {
       default: ''
     },
     classes: {
-      type: String,
+      type: [String, Array, Object],
       default: ''
+    },
+    attributes: {
+      type: Object,
+      default: () => { return Object.create(null) }
     }
   },
   computed: {
@@ -47,6 +57,8 @@ export default {
       return [
         'nav-link',
         this.linkVariant,
+        ...this.disabledClasses,
+        ...this.attrClasses,
         ...this.itemClasses
       ]
     },
@@ -60,14 +72,24 @@ export default {
       return this.variant ? `nav-link-${this.variant}` : ''
     },
     itemClasses () {
-      return this.classes ? this.classes.split(' ') : []
+      return this.getClassArray(this.classes)
+    },
+    attrClasses () {
+      return this.getClassArray(this.attributes.class)
+    },
+    disabledClasses () {
+      return this.isDisabled ? 'disabled btn-link'.split(' ') : []
+    },
+    isDisabled () {
+      return Boolean(this.attributes.disabled)
     },
     isExternalLink () {
-      if (this.url.substring(0, 4) === 'http') {
-        return true
-      } else {
-        return false
-      }
+      return Boolean(this.url.substring(0, 4) === 'http')
+    }
+  },
+  methods: {
+    getClassArray(classes) {
+      return !classes ? [] : typeof classes === 'string' || classes instanceof String ? classes.split(' ') : Array.isArray(classes) ? classes : Object.keys(classes).filter(i=>classes[i])
     }
   }
 }
