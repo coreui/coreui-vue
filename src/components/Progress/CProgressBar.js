@@ -34,7 +34,7 @@ export default {
         'progress-bar',
         {
           'progress-bar-striped': this.computedStriped || this.computedAnimated,
-          'progress-bar-animated': this.computedAnimated 
+          'progress-bar-animated': this.computedAnimated
         }
       ]
     },
@@ -54,7 +54,7 @@ export default {
     },
     computedColor () {
       // Prefer our color over parent setting
-      return getColor(this.color || this.$parent.color || '#20A8D8')
+      return getColor(this.color || this.$parent.color || '#fff')
     },
     computedPrecision () {
       // Prefer our precision over parent setting
