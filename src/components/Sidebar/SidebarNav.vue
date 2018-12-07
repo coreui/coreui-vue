@@ -21,13 +21,13 @@
                     <!-- Second level dropdown -->
                     <SidebarNavDropdown :key="index1" :name="childL1.name" :url="childL1.url" :icon="childL1.icon">
                       <li :key="index2" class="nav-item" v-for="(childL2, index2) in childL1.children">
-                        <SidebarNavLink :name="childL2.name" :url="childL2.url" :icon="childL2.icon" :badge="childL2.badge" :variant="item.variant" :attributes="item.attributes" />
+                        <SidebarNavLink :name="childL2.name" :url="childL2.url" :icon="childL2.icon" :badge="childL2.badge" :variant="childL2.variant" :attributes="childL2.attributes" />
                       </li>
                     </SidebarNavDropdown>
                   </template>
                   <template v-else>
                     <SidebarNavItem :key="index1" :classes="item.class">
-                      <SidebarNavLink :name="childL1.name" :url="childL1.url" :icon="childL1.icon" :badge="childL1.badge" :variant="item.variant" :attributes="item.attributes"/>
+                      <SidebarNavLink :name="childL1.name" :url="childL1.url" :icon="childL1.icon" :badge="childL1.badge" :variant="childL1.variant" :attributes="childL1.attributes"/>
                     </SidebarNavItem>
                   </template>
                 </template>

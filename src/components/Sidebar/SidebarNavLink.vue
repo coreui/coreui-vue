@@ -1,22 +1,16 @@
 <template>
-  <div v-if="isDisabled">
-    <a href :class="classList" v-bind="attributes" tabindex="-1">
-      <i :class="classIcon"></i> {{name}}
-      <b-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</b-badge>
-    </a>
-  </div>
-  <div v-else-if="isExternalLink">
-    <a :href="url" :class="classList" v-bind="attributes">
-      <i :class="classIcon"></i> {{name}}
-      <b-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</b-badge>
-    </a>
-  </div>
-  <div v-else>
-    <router-link :to="url" :class="classList" v-bind="attributes">
-      <i :class="classIcon"></i> {{name}}
-      <b-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</b-badge>
-    </router-link>
-  </div>
+  <a :class="classList" v-bind="attributes" tabindex="-1" v-on:click.stop.prevent v-if="isDisabled">
+    <i :class="classIcon"></i> <span>{{name}}</span>
+    <b-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</b-badge>
+  </a>
+  <a :href="url" :class="classList" v-bind="attributes" v-else-if="isExternalLink">
+    <i :class="classIcon"></i> {{name}}
+    <b-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</b-badge>
+  </a>
+  <router-link :to="url" :class="classList" v-bind="attributes" v-else>
+    <i :class="classIcon"></i> {{name}}
+    <b-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</b-badge>
+  </router-link>
 </template>
 
 <script>
@@ -78,7 +72,7 @@ export default {
       return this.getClassArray(this.attributes.class)
     },
     disabledClasses () {
-      return this.isDisabled ? 'disabled btn-link'.split(' ') : []
+      return this.isDisabled ? 'disabled'.split(' ') : []
     },
     isDisabled () {
       return Boolean(this.attributes.disabled)
