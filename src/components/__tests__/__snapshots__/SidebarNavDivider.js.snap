@@ -2,6 +2,6 @@
 
 exports[`SidebarNavDivider.vue renders correctly 1`] = `
 <li
-  class="divider"
+  class="nav-divider"
 />
 `;

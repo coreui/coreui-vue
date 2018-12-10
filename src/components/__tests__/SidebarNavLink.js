@@ -41,6 +41,6 @@ describe("SidebarNavLink.vue", () => {
   it('renders correctly', () => {
     const wrapper = shallowMount(SidebarNavLink, { localVue, router })
     expect(wrapper.element).toMatchSnapshot()
-    expect(wrapper.is('div')).toBe(true)
+    expect(wrapper.is('router-link-stub')).toBe(true)
   })
 });

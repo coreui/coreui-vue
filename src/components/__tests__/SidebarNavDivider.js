@@ -10,6 +10,6 @@ describe("SidebarNavDivider.vue", () => {
   it('renders correctly', () => {
     const wrapper = mount(SidebarNavDivider)
     expect(wrapper.element).toMatchSnapshot()
-    expect(wrapper.classes()).toContain('divider')
+    expect(wrapper.classes()).toContain('nav-divider')
   })
 });
