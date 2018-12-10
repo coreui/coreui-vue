@@ -1,5 +1,34 @@
 ### [@coreui/vue](https://coreui.io/) changelog
 
+##### v2.1.0
+- feat(SidebarNavLink): attributes
+- refactor(SidebarNav*): classes type [String, Array, Object]
+- test: update SidebarNavLabel, SidebarNavLink, SidebarNavDivider
+- refactor: rollup.config.js uglify()
+- chore: update jest.config.js 
+- update `@vue/test-utils` to `^1.0.0-beta.27`
+- update `babel-plugin-dynamic-import-node` to `^2.2.0`
+- update `eslint` to `^5.10.0`
+- update `eslint-config-prettier` to `^3.3.0`
+- update `eslint-plugin-html` to `^5.0.0`
+- update `eslint-plugin-jest` to `^22.1.2`
+- update `eslint-plugin-vue` to `^5.0.0`
+- update `husky` to `^1.2.0`
+- update `lint-staged` to `^8.1.0`
+- update `node-sass` to `^4.11.0`
+- update `prettier` to `^1.15.3`
+- update `rollup` to `^0.67.4`
+- update `rollup-plugin-commonjs` to `^9.2.0`
+- update `rollup-plugin-filesize` to `^5.0.1`
+- update `rollup-plugin-replace` to `^2.1.0`
+- update `rollup-plugin-uglify` to `^6.0.0`
+- update `vue` to `^2.5.19`
+- update `vue-server-renderer` to `^2.5.19`
+- update `vue-template-compiler` to `^2.5.19`
+- update `vue-jest` to `^3.0.1`
+- update `vue-router` to `^3.0.2`
+- update `@coreui/coreui` to `^2.1.4`
+
 ##### v2.0.2
 - fix(AsideToggler): add missing `display { default:'lg' }` prop value
 - fix(AsideToggler): add missing `defaultOpen` prop value handling

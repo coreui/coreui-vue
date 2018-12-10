@@ -2,9 +2,9 @@
 
 [![Npm badge](https://img.shields.io/npm/v/@coreui/vue.svg)][npm]
 [![NPM downloads][npm-download]][npm]
-![Rollup badge](https://img.shields.io/badge/Rollup-^0.59.4-ff69b4.svg)
+![Rollup badge](https://img.shields.io/badge/Rollup-^0.67.4-ff69b4.svg)
 ![Jest](https://img.shields.io/badge/Jest-^23.6.0-blue.svg)
-![Vue](https://img.shields.io/badge/Vue-^2.5.17-brightgreen.svg)
+![Vue](https://img.shields.io/badge/Vue-^2.5.19-brightgreen.svg)
 
 [npm]: https://www.npmjs.com/package/@coreui/vue
 [npm-download]: https://img.shields.io/npm/dm/@coreui/vue.svg?style=flat-square
