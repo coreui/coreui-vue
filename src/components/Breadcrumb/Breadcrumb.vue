@@ -16,17 +16,17 @@ export default {
       default: () => []
     }
   },
+  computed: {
+    routeRecords: function () {
+      return this.list.filter((route) => route.name || route.meta.label)
+    }
+  },
   methods: {
     getName (item) {
       return item.meta && item.meta.label ? item.meta.label : item.name || null
     },
     isLast (index) {
       return index === this.list.length - 1
-    }
-  },
-  computed: {
-    routeRecords: function () {
-      return this.list.filter((route) => route.name || route.meta.label)
     }
   }
 }

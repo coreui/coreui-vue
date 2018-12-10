@@ -27,7 +27,7 @@ export default {
       default: 'fa fa-circle'
     },
     classes: {
-      type: String,
+      type: [String, Array, Object],
       default: ''
     },
     label: {
@@ -39,7 +39,7 @@ export default {
   computed: {
     classList () {
       const classes = {
-        navItem: ['hidden-cn', ...this.getClasses(this.classes)].join(' '),
+        navItem: ['hidden-cn', ...this.itemClasses],
         navLink: 'nav-label',
         icon: [
           this.icon ? this.icon : 'fa fa-circle',
@@ -48,12 +48,11 @@ export default {
         ].join(' ')
       }
       return classes
+    },
+    itemClasses () {
+      const classes = this.classes
+      return !classes ? [] : typeof classes === 'string' || classes instanceof String ? classes.split(' ') : Array.isArray(classes) ? classes : Object.keys(classes).filter(i=>classes[i])
     }
   },
-  methods: {
-    getClasses (classes) {
-      return classes ? classes.split(' ') : []
-    }
-  }
 }
 </script>

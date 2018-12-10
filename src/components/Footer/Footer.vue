@@ -13,15 +13,15 @@ export default {
       default: false
     }
   },
-  mounted: function () {
-    this.isFixed()
-  },
   computed: {
     classList () {
       return [
         'app-footer'
       ]
     }
+  },
+  mounted: function () {
+    this.isFixed()
   },
   methods: {
     isFixed () {

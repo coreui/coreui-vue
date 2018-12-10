@@ -9,10 +9,10 @@ import { hideMobile } from '../../mixins/hideMobile'
 
 export default {
   name: 'sidebar-nav-item',
-    mixins: [ hideMobile ],
-    props: {
+  mixins: [ hideMobile ],
+  props: {
     classes: {
-      type: String,
+      type: [String, Array, Object],
       default: ''
     }
   },
@@ -24,7 +24,8 @@ export default {
       ]
     },
     itemClasses () {
-      return this.classes ? this.classes.split(' ') : ''
+      const classes = this.classes
+      return !classes ? [] : typeof classes === 'string' || classes instanceof String ? classes.split(' ') : Array.isArray(classes) ? classes : Object.keys(classes).filter(i=>classes[i])
     }
   }
 }

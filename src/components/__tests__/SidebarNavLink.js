@@ -29,12 +29,18 @@ describe("SidebarNavLink.vue", () => {
     expect(typeof SidebarNavLink.computed.classList).toBe('function')
     expect(typeof SidebarNavLink.computed.classIcon).toBe('function')
     expect(typeof SidebarNavLink.computed.linkVariant).toBe('function')
+    expect(typeof SidebarNavLink.computed.attrClasses).toBe('function')
     expect(typeof SidebarNavLink.computed.itemClasses).toBe('function')
+    expect(typeof SidebarNavLink.computed.disabledClasses).toBe('function')
+    expect(typeof SidebarNavLink.computed.isDisabled).toBe('function')
     expect(typeof SidebarNavLink.computed.isExternalLink).toBe('function')
+  })
+  it('has getClassArray method', () => {
+    expect(typeof SidebarNavLink.methods.getClassArray).toBe('function')
   })
   it('renders correctly', () => {
     const wrapper = shallowMount(SidebarNavLink, { localVue, router })
     expect(wrapper.element).toMatchSnapshot()
-    expect(wrapper.is('div')).toBe(true)
+    expect(wrapper.is('router-link-stub')).toBe(true)
   })
 });

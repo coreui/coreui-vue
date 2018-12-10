@@ -19,9 +19,7 @@ describe("SidebarNavLabel.vue", () => {
   });
   it('has hasSlotDefault computed property', () => {
     expect(typeof SidebarNavLabel.computed.classList).toBe('function')
-  })
-  it('has getClasses method', () => {
-    expect(typeof SidebarNavLabel.methods.getClasses).toBe('function')
+    expect(typeof SidebarNavLabel.computed.itemClasses).toBe('function')
   })
   it('renders correctly', () => {
     const wrapper = mount(SidebarNavLabel, {
