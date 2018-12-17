@@ -9,70 +9,30 @@ export default {
   props: {
     src: {
       type: String,
-      default: null,
       required: true
     },
-    alt: {
-      type: String,
-      default: null
-    },
-    width: {
-      type: [Number, String],
-      default: null
-    },
-    height: {
-      type: [Number, String],
-      default: null
-    },
-    blankSrc: {
-      // If null, a blank image is generated
-      type: String,
-      default: null
-    },
+    alt: String,
+    width: [Number, String],
+    height: [Number, String],
+    // If null, a blank image is generated
+    blankSrc: String,
     blankColor: {
       type: String,
       default: 'transparent'
     },
-    blankWidth: {
-      type: [Number, String],
-      default: null
-    },
-    blankHeight: {
-      type: [Number, String],
-      default: null
-    },
-    fluid: {
-      type: Boolean,
-      default: false
-    },
-    fluidGrow: {
-      type: Boolean,
-      default: false
-    },
-    block: {
-      type: Boolean,
-      default: false
-    },
-    thumbnail: {
-      type: Boolean,
-      default: false
-    },
+    blankWidth: [Number, String],
+    blankHeight: [Number, String],
+    fluid: Boolean,
+    fluidGrow: Boolean,
+    block: Boolean,
+    thumbnail: Boolean,
     rounded: {
       type: [Boolean, String],
       default: false
     },
-    left: {
-      type: Boolean,
-      default: false
-    },
-    right: {
-      type: Boolean,
-      default: false
-    },
-    center: {
-      type: Boolean,
-      default: false
-    },
+    left: Boolean,
+    right: Boolean,
+    center: Boolean,
     offset: {
       type: [Number, String],
       default: 360

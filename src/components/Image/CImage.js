@@ -18,35 +18,14 @@ function makeBlankImgSrc (width, height, color) {
 }
 
 export const props = {
-  src: {
-    type: String,
-    default: null
-  },
-  alt: {
-    type: String,
-    default: null
-  },
-  width: {
-    type: [Number, String],
-    default: null
-  },
-  height: {
-    type: [Number, String],
-    default: null
-  },
-  block: {
-    type: Boolean,
-    default: false
-  },
-  fluid: {
-    type: Boolean,
-    default: false
-  },
-  fluidGrow: {
-    // Gives fluid images class `w-100` to make them grow to fit container
-    type: Boolean,
-    default: false
-  },
+  src: String,
+  alt: String,
+  width: [Number, String],
+  height: [Number, String],
+  block: Boolean,
+  fluid: Boolean,
+  // Gives fluid images class `w-100` to make them grow to fit container
+  fluidGrow: Boolean,
   rounded: {
     // rounded can be:
     //   false: no rounding of corners
@@ -60,33 +39,17 @@ export const props = {
     type: [Boolean, String],
     default: false
   },
-  thumbnail: {
-    type: Boolean,
-    default: false
-  },
-  left: {
-    type: Boolean,
-    default: false
-  },
-  right: {
-    type: Boolean,
-    default: false
-  },
-  center: {
-    type: Boolean,
-    default: false
-  },
-  blank: {
-    type: Boolean,
-    default: false
-  },
+  thumbnail: Boolean,
+  left: Boolean,
+  right: Boolean,
+  center: Boolean,
+  blank: Boolean,
   blankColor: {
     type: String,
     default: 'transparent'
   }
 }
 
-// @vue/component
 export default {
   functional: true,
   name: 'CImage',
