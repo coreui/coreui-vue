@@ -1,5 +1,19 @@
 ### [@coreui/vue](https://coreui.io/) changelog
 
+##### v2.1.1
+- update `@vue/test-utils` to `^1.0.0-beta.28`
+- update `eslint` to `^5.12.0`
+- update `eslint-plugin-prettier` to `^3.0.1`
+- update `eslint-plugin-vue` to `^5.1.0`
+- update `husky` to `^1.3.1`
+- update `vue` to `^2.5.21`
+- update `vue-jest` to `^3.0.2`
+- update `vue-loader` to `^15.5.1`
+- update `vue-server-renderer` to `^2.5.21`
+- update `vue-template-compiler` to `^2.5.21`
+- update `jest-serializer-html` to `^6.0.0`
+- update `rollup` to `^0.68.2`
+
 ##### v2.1.0
 - feat(SidebarNavLink): attributes
 - refactor(SidebarNav*): classes type [String, Array, Object]
