@@ -17,13 +17,14 @@ describe("SidebarNavLabel.vue", () => {
     expect(wrapper.props().url).toBe('')
     expect(wrapper.props().icon).toBe('fa fa-circle')
   });
-  it('has hasSlotDefault computed property', () => {
+  it('has computed properties', () => {
     expect(typeof SidebarNavLabel.computed.classList).toBe('function')
     expect(typeof SidebarNavLabel.computed.itemClasses).toBe('function')
   })
   it('renders correctly', () => {
     const wrapper = mount(SidebarNavLabel, {
       propsData: {
+        name: 'test',
         label: { variant: 'info' },
         icon: 'fa fa-circle'
       }
