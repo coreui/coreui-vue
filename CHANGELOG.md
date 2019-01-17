@@ -1,5 +1,15 @@
 ### [@coreui/vue](https://coreui.io/) changelog
 
+##### v2.1.2
+- update `babel-plugin-module-resolver` to `^3.1.2`
+- update `eslint-config-prettier` to `^3.5.0`
+- update `eslint-plugin-jest` to `^22.1.3`
+- update `rollup-plugin-uglify` to `^6.0.1`
+- update `vue` to `^2.5.22`
+- update `vue-server-renderer` to `^2.5.22`
+- update `vue-template-compiler` to `^2.5.22`
+- lock `rollup-plugin-vue` on `4.3.2`
+
 ##### v2.1.1
 - update `@vue/test-utils` to `^1.0.0-beta.28`
 - update `eslint` to `^5.12.0`
