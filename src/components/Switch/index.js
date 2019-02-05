@@ -1,7 +1,7 @@
-import COldSwitch from './COldSwitch'
+import Switch from './Switch'
 import CSwitch from './CSwitch'
 
 export {
-  COldSwitch,
+  Switch,
   CSwitch
 }
