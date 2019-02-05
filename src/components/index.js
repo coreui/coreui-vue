@@ -16,4 +16,8 @@ export * from './Button'
 export * from './Card'
 export * from './Dropdown'
 export * from './ListGroup'
+<<<<<<< HEAD
 export * from './Toolip'
+=======
+export * from './Pagination'
+>>>>>>> pagination

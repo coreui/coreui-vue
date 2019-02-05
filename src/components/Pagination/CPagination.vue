@@ -1,0 +1,232 @@
+<template>
+  <ul :class="computedClasses"  role="menubar" aria-disabled="false" aria-label="pagination">
+    <li v-if="!noDoubleArrows"
+        :class="firstClasses"
+    >
+      <CLink class="page-link"
+             @click="setPage(1)"
+             :disabled="page === 1"
+             aria-label="Go to first page"
+      >
+        <span v-html="firstButtonText"></span>
+      </CLink>
+    </li>
+    <li v-if="!noArrows"
+        :class="firstClasses"
+    >
+      <CLink class="page-link"
+             @click="setPage(page - 1)"
+             :disabled="page === 1"
+             aria-label="Go to previous page"
+      >
+        <span v-html="previousButtonText"></span>
+      </CLink>
+    </li>
+    <li v-if="showFirstDots"
+        role="separator"
+        class="page-item disabled d-none d-sm-flex"
+    >
+      <span class="page-link">…</span>
+    </li>
+
+    <li v-for="(item, index) in items"
+        :key="index"
+        :class="setStyle(item)"
+    >
+      <CLink class="page-link"
+             @click="setPage(item)"
+             :aria-label="`Goto page ${item}`"
+      >
+        {{item}}
+      </CLink>
+    </li>
+
+    <li v-if="showLastDots"
+        role="separator"
+        class="page-item disabled d-none d-sm-flex"
+    >
+      <span class="page-link">…</span>
+    </li>
+    <li v-if="!noArrows"
+        :class="lastClasses"
+    >
+      <CLink class="page-link"
+             @click="setPage(page + 1)"
+             :disabled="page === pages"
+             aria-label="Go to next page"
+      >
+        <span v-html="nextButtonText"></span>
+      </CLink>
+    </li>
+    <li v-if="!noDoubleArrows"
+        :class="lastClasses"
+    >
+      <CLink class="page-link"
+             @click="setPage(pages)"
+             :disabled="page === pages"
+             aria-label="Go to last page"
+      >
+        <span v-html="lastButtonText"></span>
+      </CLink>
+    </li>
+  </ul>
+</template>
+
+<script>
+  import elementResizeDetectorMaker from 'element-resize-detector'
+
+  export default {
+    name: 'CPagination',
+    model: {
+      event: 'change'
+    },
+    data () {
+      return {
+        page: this.value,
+        showFirstDots: false,
+        showLastDots: false,
+        rwd: this.size,
+        erd: elementResizeDetectorMaker()
+      }
+    },
+    watch: {
+      value (val) {
+        this.page = val
+      },
+      pages (val) {
+        if(val < this.page)
+          this.$emit('change', val)
+      }
+    },
+    mounted () {
+      if (this.size !== 'sm' && !this.notResponsive)
+        this.erd.listenTo(this.$el, this.onWrapperResize)
+    },
+    computed: {
+      firstClasses () { return ['page-item', { disabled: this.page === 1 }]},
+      lastClasses () { return ['page-item', { disabled: this.page === this.pages }]},
+      computedClasses () {
+        return `pagination b-pagination pagination-${this.rwd} justify-content-${this.align} `
+      },
+      dots () {
+        return this.noDots || this.limit < 4 ? false : true
+      },
+      items () {
+        let maxPrevItems = Math.floor((this.limit - 1) / 2)
+        let maxNextItems = Math.ceil((this.limit - 1) / 2)
+        let items = []
+
+        if(!this.dots){
+          this.showFirstDots = false
+          this.showLastDots = false
+          if(this.page <= maxPrevItems){
+            for (let i = 1; i <= this.limit; i++)
+              items.push(i)
+          }else{
+            let max = this.page + maxNextItems > this.pages ? this.pages : this.page + maxNextItems
+            for (let i = max - this.limit + 1; i <= max; i++)
+              items.push(i)
+          }
+          return items
+        }
+
+        if(this.limit >= this.pages){
+          this.showFirstDots = false
+          this.showLastDots = false
+          for (let i = 1; i <= this.pages; i++)
+            items.push(i)
+          return items
+        }
+
+        if(this.page <= maxPrevItems){
+          this.showFirstDots = false
+          this.showLastDots = true
+          for (let i = 1; i <= this.limit - 1; i++)
+            items.push(i)
+          return items
+        }
+
+        if(this.page > maxPrevItems && this.page < this.pages - maxNextItems){
+          this.showFirstDots = true
+          this.showLastDots = true
+          for (let i = 1 ; i < this.limit - 1 ; i++)
+            items.push(this.page - maxPrevItems + i)
+          return items
+        }
+
+        if(this.page > maxPrevItems && this.page >= this.pages - maxNextItems){
+          this.showFirstDots = true
+          this.showLastDots = false
+          for (let i = this.pages - this.limit + 2 ; i <= this.pages; i++)
+            items.push(i)
+          return items
+        }
+      },
+    },
+    methods: {
+      onWrapperResize (el) {
+        el.clientWidth > 600 ? this.rwd = this.size :
+            el.clientWidth > 400 ?
+              this.rwd = 'md' : this.rwd = 'sm'
+      },
+      setPage (number) {
+        if(number !== this.page)
+          this.$emit('change', number)
+      },
+      setStyle (item) {
+        if(this.value === item) {
+          return 'page-item active'
+        }
+        return 'page-item'
+      }
+    },
+    props: {
+      value: {
+        type: Number,
+        default: 1
+      },
+      pages: {
+        type: Number,
+        default: 10
+      },
+      size: {
+        type: String,
+        default: 'md'
+      },
+      align: {
+        type: String,
+        default: 'start'
+      },
+      limit: {
+        type: Number,
+        default: 5
+      },
+      noDots: Boolean,
+      noArrows: Boolean,
+      noDoubleArrows: Boolean,
+      firstButtonText: {
+        type: String,
+        default: '&laquo;'
+      },
+      previousButtonText: {
+        type: String,
+        default: '&lsaquo;'
+      },
+      nextButtonText: {
+        type: String,
+        default: '&rsaquo;'
+      },
+      lastButtonText: {
+        type: String,
+        default: '&raquo;'
+      },
+      notResponsive: Boolean
+    }
+  }
+</script>
+
+<style scoped>
+.page-link:focus {
+  box-shadow: none;
+}
+</style>
