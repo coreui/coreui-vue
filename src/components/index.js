@@ -15,29 +15,7 @@ export * from './Alert'
 export * from './Button'
 export * from './Card'
 export * from './Dropdown'
-<<<<<<< HEAD
-<<<<<<< HEAD
 export * from './ListGroup'
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-export * from './Toolip'
-=======
 export * from './Pagination'
->>>>>>> pagination
-=======
-export * from './Navbar'
->>>>>>> navbar
-=======
-export * from './Media'
->>>>>>> media
-=======
-export * from './Jumbotron'
->>>>>>> jumbotron
-=======
-export * from './Image'
->>>>>>> image
-=======
-export * from './Grid'
->>>>>>> grid
+export * from './Tooltip'
+export * from './Table'
