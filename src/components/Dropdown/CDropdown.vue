@@ -28,6 +28,10 @@ export default {
       visible: this.show
     }
   },
+  mounted () {
+    if(this.show)
+      this.createPopper
+  },
   props: {
     text: {
       type: String,
@@ -40,25 +44,6 @@ export default {
     menuClasses: String,
     toggleClasses: String,
     popperConfig: Object
-    // popperConfig: {
-    //   type: Object,
-    //   default () {
-    //     return  {
-    //       modifiers: {
-    //         placement: 'bottom-end',
-    //         offset: {
-    //           offset: '20px'
-    //         },
-    //         computeStyle: {
-    //           enabled: true
-    //         },
-    //         flip: {
-    //           enabled: true
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
   },
   mounted () {
     this.checkForPopper()
@@ -88,7 +73,7 @@ export default {
       }
       this._popper = null
     },
-    createPopper () {
+    createPopper (element) {
       this.removePopper()
       this._popper = new Popper(this.$refs.toggle, this.$refs.menu, this.popperConfig)
     }
