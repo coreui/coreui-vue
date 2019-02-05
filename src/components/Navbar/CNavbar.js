@@ -5,10 +5,7 @@ export const props = {
     type: String,
     default: 'nav'
   },
-  type: {
-    type: String,
-    default: 'light'
-  },
+  light: Boolean,
   variant: String,
   toggleable: {
     type: [Boolean, String],
@@ -34,14 +31,16 @@ export default {
       props.tag,
       mergeData(data, {
         staticClass: 'navbar',
-        class: {
-          'd-print': props.print,
-          'sticky-top': props.sticky,
-          [`navbar-${props.type}`]: Boolean(props.type),
-          [`bg-${props.variant}`]: Boolean(props.variant),
-          [`fixed-${props.fixed}`]: Boolean(props.fixed),
-          [`${breakpoint}`]: Boolean(breakpoint)
-        },
+        class: [
+          props.light ? 'navbar-light' : 'navbar-dark',
+          {
+            'd-print': props.print,
+            'sticky-top': props.sticky,
+            [`bg-${props.variant}`]: Boolean(props.variant),
+            [`fixed-${props.fixed}`]: Boolean(props.fixed),
+            [`${breakpoint}`]: Boolean(breakpoint)
+          }
+        ],
         attrs: {
           role: props.tag === 'nav' ? null : 'navigation'
         }
