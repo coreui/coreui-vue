@@ -1,0 +1,171 @@
+<template >
+  <CFormGroup v-bind="{append, prepend, validFeedback,
+                       invalidFeedback, tooltipFeedback, description,
+                       wrapperClasses, class: computedClasses}"
+  >
+    <template slot="label">
+      <slot name="label">
+        <label v-if="label" :for="safeId" :class="labelClasses">{{label}}</label>
+      </slot>
+    </template>
+    <textarea slot="input"
+              v-bind="$attrs"
+              :id="safeId"
+              :class="inputClasses"
+              :readonly="readonly || plaintext"
+              :value="state"
+              @input="onInput($event)"
+              @change="onChange($event)"
+    />
+
+    <template v-for="slot in ['prepend', 'append', 'labelAfterInput', 'validFeedback', 'invalidFeedback','description']"
+              :slot="slot"
+    >
+      <slot :name="slot">
+      </slot>
+    </template>
+  </CFormGroup>
+</template>
+
+<script>
+import * as allFormMixins from './formMixins'
+const mixins = Object.values(allFormMixins)
+import { formTextareaProps as props} from './formProps'
+import CFormGroup from './CFormGroup'
+export default {
+  name: 'CFormTextarea',
+  inheritAttrs: false,
+  model: {
+    event: 'sync'
+  },
+  components: { CFormGroup },
+  mixins,
+  props,
+  // {
+  //   // Html props: disabled, required, rows, cols, placeholder
+  //   append: String,
+  //   prepend: String,
+  //   validFeedback: String,
+  //   invalidFeedback: String,
+  //   tooltipFeedback: Boolean,
+  //   description: String,
+  //   horizontal: [Boolean, Object],
+  //   wasValidated: Boolean,
+  //   label: String,
+  //   id: String,
+  //   readonly: Boolean,
+  //   plaintext: Boolean,
+  //   size: {
+  //     type: String,
+  //     validator: str => ['','sm','lg'].includes(str)
+  //   },
+  //   value: [String, Number, Array],
+  //   isValid: {
+  //     type: Boolean,
+  //     default: null
+  //   },
+  //   lazy: {
+  //     type: [Boolean, Number],
+  //     default: 400
+  //   },
+  //   addInputClasses: String,
+  //   addLabelClasses: String,
+  //   addWrapperClasses: String
+  // },
+  data () {
+    return {
+      state: this.value
+    }
+  },
+  computed: {
+    // classesComputedProps mixin
+    // haveCustomSize () {
+    //   return ['','sm','lg'].includes(this.size) && Boolean(this.size)
+    // },
+    // computedClasses () {
+    //   return [
+    //            this.isHorizontal ? 'form-row': 'form-group',
+    //            {
+    //            'was-validated': this.wasValidated
+    //            }
+    //          ]
+    // },
+    // labelClasses () {
+    //   return [ this.addLabelClasses, {
+    //            'col-form-label': this.isHorizontal,
+    //            [this.horizontal.label || 'col-2']: this.isHorizontal,
+    //            [`col-form-label-${this.size}`]: this.haveCustomSize,
+    //          }]
+    // },
+    // customSizeClass () {
+    //   return this.haveCustomSize ? `form-control-${this.size}` : null
+    // },
+    // inputClasses () {
+    //   return [
+    //     this.inputClass || 'form-control',
+    //     this.stateClass,
+    //     this.addInputClasses,
+    //     this.customSizeClass
+    //   ]
+    // }
+
+    // validationComputedProps mixin
+    // computedIsValid () {
+    //   if (typeof this.isValid === 'function')
+    //     return this.isValid(this.state)
+    //   return this.isValid
+    // },
+    // validationClass () {
+    //   if (this.computedIsValid === null)
+    //     return
+    //   return this.computedIsValid ? 'is-valid' : 'is-invalid'
+    // }
+
+
+    //wrapperComputedProps mixin
+    // isHorizontal () {
+    //   return Boolean(this.horizontal)
+    // },
+    // haveInputGroup () {
+    //   return Boolean(this.tooltipFeedback || this.append ||
+    //      this.prepend || this.$slots.append || this.$slots.prepend)
+    // },
+    // haveWrapper () {
+    //   return this.haveInputGroup || Boolean(this.addWrapperClasses || this.isHorizontal)
+    // },
+    // wrapperClasses () {
+    //   if(this.haveWrapper)
+    //     return [ this.addWrapperClasses, {
+    //              [this.horizontal.input || 'col-10'] : this.isHorizontal,
+    //              'input-group' : this.haveInputGroup
+    //            }]
+    // }
+  },
+
+  //watchValue mixin
+  // watch: {
+  //   value (val, oldVal) {
+  //     if (val !== oldVal)
+  //       this.state = val
+  //   },
+  // },
+  methods: {
+    onInput (e) {
+      this.state = e.target.value
+      this.$emit('input', this.state, e)
+      if (this.lazy === true)
+        return
+
+      clearTimeout(this.syncTimeout)
+      this.syncTimeout = setTimeout((val) => {
+        this.$emit('sync', this.state, e)
+      }, this.lazy !== false ? this.lazy : 0)
+    },
+    onChange (e) {
+      this.state = e.target.value
+      this.$emit('change', this.state, e)
+      this.$emit('sync', this.state, e)
+    },
+  }
+}
+</script>
