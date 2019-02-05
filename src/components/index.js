@@ -19,6 +19,7 @@ export * from './ListGroup'
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export * from './Toolip'
 =======
 export * from './Pagination'
@@ -29,3 +30,6 @@ export * from './Navbar'
 =======
 export * from './Media'
 >>>>>>> media
+=======
+export * from './Jumbotron'
+>>>>>>> jumbotron
