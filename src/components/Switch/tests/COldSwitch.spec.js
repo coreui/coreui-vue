@@ -1,7 +1,7 @@
 import { mount } from "@vue/test-utils";
-import Component from "../Switch";
+import Component from "../COldSwitch";
 
-const ComponentName = 'Switch'
+const ComponentName = 'COldSwitch'
 const defaultWrapper = mount(Component)
 const customWrapper = mount(Component, {
   propsData: {

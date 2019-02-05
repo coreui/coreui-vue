@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name:'Switch',
+  name:'COldSwitch',
   model: {
     prop: 'modelChecked',
     event: 'change'
