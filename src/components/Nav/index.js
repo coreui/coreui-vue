@@ -1,5 +1,7 @@
-import CNavItemDropdown from './CNavItemDropdown'
+import CNav from './CNav'
+import CNavItem from './CNavItem'
 
 export {
-  CNavItemDropdown
+  CNav,
+  CNavItem
 }
