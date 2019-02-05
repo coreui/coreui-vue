@@ -1,43 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CSwitch .vue renders correctly 1`] = `
-<label
-  class="switch switch-secondary form-check-label"
->
-  <input
-    class="switch-input form-check-input"
-    type="checkbox"
-    value=""
-  />
-   
-  <span
-    class="switch-slider"
-  />
-</label>
-`;
-
-exports[`CSwitch .vue renders correctly 2`] = `
-<label
-  class="switch switch-label switch-lg switch-3d switch-outline-info-alt form-check-label"
->
-  <input
-    class="switch-input form-check-input"
-    disabled="disabled"
-    id="myId"
-    name="myName"
-    required="required"
-    type="radio"
-    value="checked"
-  />
-   
-  <span
-    class="switch-slider"
-    data-checked="dataOn"
-    data-unchecked="dataOff"
-  />
-</label>
-`;
-
 exports[`CSwitch renders correctly 1`] = `
 <label
   class="switch switch-secondary form-check-label"

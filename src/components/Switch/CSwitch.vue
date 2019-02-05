@@ -1,15 +1,15 @@
 <template>
   <label :class="classList">
-    <input
-      :id="id"
-      :name="name"
-      :type="type"
-      :checked="isChecked"
-      :disabled="disabled"
-      :required="required"
-      :value="value"
-      class="switch-input form-check-input"
-      @change="toggle"
+    <input v-bind="$attrs"
+          :id="id"
+          :name="name"
+          :type="type"
+          :checked="isChecked"
+          :disabled="disabled"
+          :required="required"
+          :value="value"
+          class="switch-input form-check-input"
+          @change="toggle"
     >
     <span
       :data-checked="dataOn"
@@ -23,14 +23,14 @@
 <script>
 export default {
   name:'CSwitch',
+  inheritAttrs: false,
   model: {
-    prop: 'passedValue',
+    prop: 'checked',
     event: 'change'
   },
-  data: function () {
+  data () {
     return {
-      isChecked: null,
-      passedValue: null
+      isChecked: ''
     }
   },
   props: {
@@ -45,20 +45,29 @@ export default {
     },
     size: {
       type: String,
-      validator: value => [ 'lg', 'sm' ].indexOf(value) !== -1
+      validator: value => ['','lg', 'sm' ].indexOf(value) !== -1
     },
     shape: {
       type: String,
-      validator: value => [ '3d', 'pill' ].indexOf(value) !== -1
+      validator: value => ['','3d', 'pill'].indexOf(value) !== -1
     },
     id: String,
     name: String,
-    checked:  Boolean,
+    checked: [Boolean, String, Number],
     disabled: Boolean,
     required: Boolean,
-    value: String,
-    trueValue: [String, Number, Array, Object],
-    falseValue: [String, Number, Array, Object],
+    value: {
+      type: [String, Number, Boolean],
+      default: null
+    },
+    trueValue: {
+      type: [String, Number, Boolean],
+      default: null
+    },
+    falseValue: {
+      type: [String, Number, Boolean],
+      default: null
+    },
     dataOn: String,
     dataOff: String,
     type: {
@@ -66,47 +75,47 @@ export default {
       default: 'checkbox'
     }
   },
+  created () {
+    this.isChecked = this.getCheckState()
+  },
+  watch: {
+    checked (val, oldVal) {
+      if(val !== oldVal)
+        this.isChecked = this.getCheckState()
+    }
+  },
   computed: {
     classList () {
       return [
         'switch',
-
         this.dataOn || this.dataOff ? 'switch-label' : '',
         this.size ? `switch-${this.size}` : '',
         this.shape ? `switch-${this.shape}` : '',
         `switch${this.outline ? '-outline' : ''}-${this.variant}${this.outline==='alt' ? '-alt' : ''}`,
         'form-check-label'
       ]
-    }
+    },
   },
   methods: {
-    toggle (event) {
-      this.setValues(event.target.checked)
-      this.$emit('change', this.passedValue, event);
-    },
-    setValues (checked) {
-      this.isChecked = checked
-      if(checked)
-        this.passedValue = this.trueValue !== undefined ? this.trueValue : checked
+    getCheckState () {
+      if (this.type === 'radio')
+        return this.checked === this.value
       else
-        this.passedValue = this.falseValue !== undefined ? this.falseValue : checked
+        return typeof this.checked === 'boolean' ? this.checked :
+                          this.checked === this.trueValue ? true : false
     },
-    detectPassedCheck (modelValue) {
-      if(typeof modelValue === 'boolean')
-        this.isChecked = modelValue
-      else if (modelValue === this.falseValue)
-        this.isChecked = false
-      else if (modelValue === this.trueValue)
-        this.isChecked = true
-      else if (this.type === 'checkbox')
-        console.warn('Value passed to CSwitch component by v-model property is not of boolean type and does not equal trueValue or falseValue property.')
-    }
+    toggle (event) {
+      this.isChecked = event.target.checked
+      this.$emit('change', this.getValue(event), event);
+    },
+    getValue (e) {
+      if(this.type === 'radio')
+        return this.value
+      else if(e.target.checked)
+        return this.trueValue !== null ? this.trueValue : true
+      else
+        return this.falseValue !== null ? this.falseValue : false
+    },
   },
-  created () {
-    if(this.$vnode.data.model)
-      this.detectPassedCheck(this.$vnode.data.model.value)
-    else
-      this.isChecked = this.checked
-  }
 }
 </script>
