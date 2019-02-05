@@ -16,6 +16,7 @@ export * from './Button'
 export * from './Card'
 export * from './Dropdown'
 <<<<<<< HEAD
+<<<<<<< HEAD
 export * from './ListGroup'
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -37,3 +38,6 @@ export * from './Jumbotron'
 =======
 export * from './Image'
 >>>>>>> image
+=======
+export * from './Grid'
+>>>>>>> grid
