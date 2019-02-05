@@ -18,6 +18,7 @@ export * from './Dropdown'
 export * from './ListGroup'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export * from './Toolip'
 =======
 export * from './Pagination'
@@ -25,3 +26,6 @@ export * from './Pagination'
 =======
 export * from './Navbar'
 >>>>>>> navbar
+=======
+export * from './Media'
+>>>>>>> media
