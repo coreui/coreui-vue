@@ -15,6 +15,7 @@ export * from './Alert'
 export * from './Button'
 export * from './Card'
 export * from './Dropdown'
+<<<<<<< HEAD
 export * from './ListGroup'
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -33,3 +34,6 @@ export * from './Media'
 =======
 export * from './Jumbotron'
 >>>>>>> jumbotron
+=======
+export * from './Image'
+>>>>>>> image
