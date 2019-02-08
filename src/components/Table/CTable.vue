@@ -160,7 +160,7 @@
 </template>
 
 <script>
-import CPagination from './CPagination'
+import CPagination from '../Pagination/CPagination'
 export default {
   name: 'CTable',
   components: { CPagination },

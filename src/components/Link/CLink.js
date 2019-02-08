@@ -115,7 +115,6 @@ export default {
     const eventType = tag === 'router-link' ? 'nativeOn' : 'on'
     const suppliedHandler = (data[eventType] || {}).click
     const handlers = { click: clickHandlerFactory({ tag, href, disabled: props.disabled, suppliedHandler, parent }) }
-
     const componentData = mergeData(data, {
       class: [
         props.active ? (props.exact ? props.exactActiveClass : props.activeClass) : null,

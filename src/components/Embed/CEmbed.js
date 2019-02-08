@@ -18,6 +18,7 @@ export const props = {
 }
 export default {
   functional: true,
+  name: 'CEmbed',
   props,
   render (h, { props, data, children }) {
     return h(

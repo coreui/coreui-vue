@@ -1,6 +1,6 @@
-<template >
-  <CFormGroup v-bind="{append, prepend, validFeedback,
-                       invalidFeedback, tooltipFeedback, description,
+<template>
+  <CFormGroup v-bind="{validFeedback, invalidFeedback,
+                       tooltipFeedback, description,
                        wrapperClasses, class: computedClasses}"
   >
     <template slot="label">
@@ -8,21 +8,26 @@
         <label v-if="label" :for="safeId" :class="labelClasses">{{label}}</label>
       </slot>
     </template>
-    <textarea slot="input"
-              v-bind="$attrs"
-              :id="safeId"
-              :class="inputClasses"
-              :readonly="readonly || plaintext"
-              :value="state"
-              @input="onInput($event)"
-              @change="onChange($event)"
-    />
 
-    <template v-for="slot in ['prepend', 'append', 'labelAfterInput', 'validFeedback', 'invalidFeedback','description']"
+
+    <template slot="input">
+      <input v-bind="$attrs"
+             :id="safeId"
+             :class="inputClasses"
+             type="file"
+             @change="onChange($event)"
+      />
+      <label v-if="custom" :for="safeId" class="custom-file-label">
+        {{typeof custom === 'string' ? custom : multiple ? 'Choose files...' : 'Choose file...'}}
+      </label>
+    </template>
+
+
+    <template v-for="slot in ['labelAfterInput','validFeedback',
+                              'invalidFeedback','description']"
               :slot="slot"
     >
-      <slot :name="slot">
-      </slot>
+      <slot :name="slot"></slot>
     </template>
   </CFormGroup>
 </template>
@@ -30,58 +35,61 @@
 <script>
 import * as allFormMixins from './formMixins'
 const mixins = Object.values(allFormMixins)
-import { formTextareaProps as props} from './formProps'
+import { formFileProps as props } from './formProps'
 import CFormGroup from './CFormGroup'
 export default {
-  name: 'CFormTextarea',
+  name: 'CFormFile',
   inheritAttrs: false,
-  model: {
-    event: 'sync'
-  },
   components: { CFormGroup },
   mixins,
   props,
   // {
-  //   // Html props: disabled, required, rows, cols, placeholder
-  //   append: String,
-  //   prepend: String,
-  //   validFeedback: String,
-  //   invalidFeedback: String,
-  //   tooltipFeedback: Boolean,
-  //   description: String,
-  //   horizontal: [Boolean, Object],
-  //   wasValidated: Boolean,
+  //   // Html props: disabled, required, accept
   //   label: String,
   //   id: String,
-  //   readonly: Boolean,
-  //   plaintext: Boolean,
+  //   wasValidated: Boolean,
   //   size: {
   //     type: String,
   //     validator: str => ['','sm','lg'].includes(str)
   //   },
-  //   value: [String, Number, Array],
+  //   horizontal: [Boolean, Object],
+  //   validFeedback: String,
+  //   invalidFeedback: String,
+  //   tooltipFeedback: Boolean,
+  //   description: String,
   //   isValid: {
   //     type: Boolean,
   //     default: null
   //   },
-  //   lazy: {
-  //     type: [Boolean, Number],
-  //     default: 400
-  //   },
+  //   multiple: Boolean,
+  //   custom: [Boolean, String],
   //   addInputClasses: String,
   //   addLabelClasses: String,
-  //   addWrapperClasses: String
+  //   addWrapperClasses: String,
   // },
   data () {
     return {
-      state: this.value
+      state: null,
     }
   },
   computed: {
     // classesComputedProps mixin
+    haveCustomSize () {
+      return ['','sm','lg'].includes(this.size) &&
+             Boolean(this.size && !this.custom)
+    },
     // haveCustomSize () {
     //   return ['','sm','lg'].includes(this.size) && Boolean(this.size)
     // },
+    computedClasses () {
+      return [
+               this.isHorizontal ? 'form-row':
+               this.custom ? 'custom-file' : 'form-group position-relative',
+               {
+               'was-validated': this.wasValidated
+               }
+             ]
+    },
     // computedClasses () {
     //   return [
     //            this.isHorizontal ? 'form-row': 'form-group',
@@ -100,6 +108,9 @@ export default {
     // customSizeClass () {
     //   return this.haveCustomSize ? `form-control-${this.size}` : null
     // },
+    inputClass () {
+      return this.custom ? 'custom-file-input' : 'form-control-file'
+    },
     // inputClasses () {
     //   return [
     //     this.inputClass || 'form-control',
@@ -107,7 +118,8 @@ export default {
     //     this.addInputClasses,
     //     this.customSizeClass
     //   ]
-    // }
+    // },
+
 
     // validationComputedProps mixin
     // computedIsValid () {
@@ -121,7 +133,6 @@ export default {
     //   return this.computedIsValid ? 'is-valid' : 'is-invalid'
     // }
 
-
     //wrapperComputedProps mixin
     // isHorizontal () {
     //   return Boolean(this.horizontal)
@@ -130,6 +141,9 @@ export default {
     //   return Boolean(this.tooltipFeedback || this.append ||
     //      this.prepend || this.$slots.append || this.$slots.prepend)
     // },
+    haveInputGroup () {
+      return false
+    }
     // haveWrapper () {
     //   return this.haveInputGroup || Boolean(this.addWrapperClasses || this.isHorizontal)
     // },
@@ -141,31 +155,11 @@ export default {
     //            }]
     // }
   },
-
-  //watchValue mixin
-  // watch: {
-  //   value (val, oldVal) {
-  //     if (val !== oldVal)
-  //       this.state = val
-  //   },
-  // },
   methods: {
-    onInput (e) {
-      this.state = e.target.value
-      this.$emit('input', this.state, e)
-      if (this.lazy === true)
-        return
-
-      clearTimeout(this.syncTimeout)
-      this.syncTimeout = setTimeout((val) => {
-        this.$emit('sync', this.state, e)
-      }, this.lazy !== false ? this.lazy : 0)
-    },
     onChange (e) {
-      this.state = e.target.value
-      this.$emit('change', this.state, e)
-      this.$emit('sync', this.state, e)
-    },
+      this.state = e.target.files
+      this.$emit('change', e.target.files, e)
+    }
   }
 }
 </script>

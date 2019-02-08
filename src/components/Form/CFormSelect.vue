@@ -1,6 +1,6 @@
-<template>
-  <CFormGroup v-bind="{validFeedback, invalidFeedback,
-                       tooltipFeedback, description,
+<template >
+  <CFormGroup v-bind="{append, prepend, validFeedback,
+                       invalidFeedback, tooltipFeedback, description,
                        wrapperClasses, class: computedClasses}"
   >
     <template slot="label">
@@ -10,24 +10,39 @@
     </template>
 
 
-    <template slot="input">
-      <input v-bind="$attrs"
-             :id="safeId"
-             :class="inputClasses"
-             type="file"
-             @change="onChange($event)"
-      />
-      <label v-if="custom" :for="safeId" class="custom-file-label">
-        {{typeof custom === 'string' ? custom : multiple ? 'Choose files...' : 'Choose file...'}}
-      </label>
-    </template>
+    <select slot="input"
+            v-bind="$attrs"
+            :id="safeId"
+            :class="inputClasses"
+            :value="String(state)"
+            @input="onSelect($event)"
+    >
+      <option v-if="placeholder" value="" selected disabled hidden>{{placeholder}}</option>
+      <template v-for="(option, key) in options">
+        <option v-if="typeof option === 'object'"
+                :value="String(option.value)"
+                :disabled="option.disabled"
+                :data-key="key"
+                :key="key"
+        >
+          {{option.text || option.value}}
+        </option>
+        <option v-else
+                :value="String(option)"
+                :data-key="key"
+                :key="key"
+        >
+          {{option}}
+        </option>
+      </template>
+    </select>
 
 
-    <template v-for="slot in ['labelAfterInput','validFeedback',
-                              'invalidFeedback','description']"
+    <template v-for="slot in ['prepend', 'append', 'labelAfterInput', 'validFeedback', 'invalidFeedback', 'description']"
               :slot="slot"
     >
-      <slot :name="slot"></slot>
+      <slot :name="slot">
+      </slot>
     </template>
   </CFormGroup>
 </template>
@@ -35,61 +50,53 @@
 <script>
 import * as allFormMixins from './formMixins'
 const mixins = Object.values(allFormMixins)
-import { formFileProps as props } from './formProps'
+import { formSelectProps as props } from './formProps'
 import CFormGroup from './CFormGroup'
 export default {
-  name: 'CFormFile',
+  name: 'CFormSelect',
   inheritAttrs: false,
   components: { CFormGroup },
   mixins,
   props,
   // {
-  //   // Html props: disabled, required, accept
+  //   // Html props: disabled, required don't use multiple
+  //   value: [String, Number, Boolean],
+  //   options: Array,
   //   label: String,
   //   id: String,
+  //   placeholder: String,
+  //   plaintext: Boolean,
   //   wasValidated: Boolean,
   //   size: {
   //     type: String,
   //     validator: str => ['','sm','lg'].includes(str)
   //   },
   //   horizontal: [Boolean, Object],
+  //   append: String,
+  //   prepend: String,
   //   validFeedback: String,
   //   invalidFeedback: String,
   //   tooltipFeedback: Boolean,
   //   description: String,
+  //   custom: Boolean,
   //   isValid: {
   //     type: Boolean,
   //     default: null
   //   },
-  //   multiple: Boolean,
-  //   custom: [Boolean, String],
   //   addInputClasses: String,
   //   addLabelClasses: String,
-  //   addWrapperClasses: String,
+  //   addWrapperClasses: String
   // },
   data () {
     return {
-      state: null,
+      state: this.value
     }
   },
   computed: {
-    // classesComputedProps mixin
-    haveCustomSize () {
-      return ['','sm','lg'].includes(this.size) &&
-             Boolean(this.size) && !Boolean(this.custom)
-    },
+    // // classesComputedProps mixin
     // haveCustomSize () {
     //   return ['','sm','lg'].includes(this.size) && Boolean(this.size)
     // },
-    computedClasses () {
-      return [
-               this.isHorizontal ? 'form-row':
-               this.custom ? 'custom-file' : 'form-group position-relative',
-               {
-               'was-validated': this.wasValidated
-               }
-             ]
-    },
     // computedClasses () {
     //   return [
     //            this.isHorizontal ? 'form-row': 'form-group',
@@ -105,12 +112,18 @@ export default {
     //            [`col-form-label-${this.size}`]: this.haveCustomSize,
     //          }]
     // },
+    customSizeClass () {
+      return this.haveCustomSize ?
+             `${this.custom ? 'custom-select' : 'form-control'}-${this.size}` :
+             null
+    },
     // customSizeClass () {
     //   return this.haveCustomSize ? `form-control-${this.size}` : null
     // },
     inputClass () {
-      return this.custom ? 'custom-file-input' : 'form-control-file'
-    },
+      return this.custom ? 'custom-select' :
+             `form-control${this.plaintext ? '-plaintext' : ''}`
+    }
     // inputClasses () {
     //   return [
     //     this.inputClass || 'form-control',
@@ -118,7 +131,7 @@ export default {
     //     this.addInputClasses,
     //     this.customSizeClass
     //   ]
-    // },
+    // }
 
 
     // validationComputedProps mixin
@@ -133,6 +146,7 @@ export default {
     //   return this.computedIsValid ? 'is-valid' : 'is-invalid'
     // }
 
+
     //wrapperComputedProps mixin
     // isHorizontal () {
     //   return Boolean(this.horizontal)
@@ -141,9 +155,6 @@ export default {
     //   return Boolean(this.tooltipFeedback || this.append ||
     //      this.prepend || this.$slots.append || this.$slots.prepend)
     // },
-    haveInputGroup () {
-      return false
-    }
     // haveWrapper () {
     //   return this.haveInputGroup || Boolean(this.addWrapperClasses || this.isHorizontal)
     // },
@@ -155,11 +166,22 @@ export default {
     //            }]
     // }
   },
+
+  //watchValue mixin
+  // watch: {
+  //   value (val, oldVal) {
+  //     if (val !== oldVal)
+  //       this.state = val
+  //   },
+  // },
   methods: {
-    onChange (e) {
-      this.state = e.target.files
-      this.$emit('change', e.target.files, e)
-    }
+    onSelect (e) {
+      const dataKey = e.target.selectedOptions[0].dataset.key
+      const value = this.options[dataKey] && this.options[dataKey].value !== undefined ?
+                      this.options[dataKey].value : this.options[dataKey]
+      this.state = value
+      this.$emit('input', value, e)
+    },
   }
 }
 </script>

@@ -15,6 +15,7 @@ const props = {
 
 export default {
   functional: true,
+  name: 'CRow',
   props,
   render (h, { props, data, children }) {
     return h(

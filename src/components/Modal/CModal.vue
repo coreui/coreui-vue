@@ -5,7 +5,7 @@
         <div :class="contentClasses">
           <slot name="header">
             <div class="modal-header" v-if="!noHeader" style="border-bottom:none !important">
-              <h5 class="modal-title">{{title}}dasdasdgdasfgdafgfdgdfgdfgsd<br>fgsdfgsdfgsdfgsdfgsdfgsdhbgkash</h5>
+              <h5 class="modal-title">{{title}}</h5>
               <button type="button" class="close" aria-label="Close" @click="hide()">
                 <span>&times;</span>
               </button>

@@ -2,6 +2,7 @@ import { mergeData } from 'vue-functional-data-merge'
 
 export default {
   functional: true,
+  name: 'CContainer',
   props: {
     fluid: Boolean,
   },

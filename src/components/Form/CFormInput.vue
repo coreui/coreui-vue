@@ -8,35 +8,19 @@
         <label v-if="label" :for="safeId" :class="labelClasses">{{label}}</label>
       </slot>
     </template>
+    <input slot="input"
+           v-bind="$attrs"
+           :id="safeId"
+           :type="type"
+           :class="inputClasses"
+           :readonly="readonly || plaintext"
+           :value="state"
+           @input="onInput($event)"
+           @change="onChange($event)"
+    />
 
-
-    <select slot="input"
-            v-bind="$attrs"
-            :id="safeId"
-            :class="inputClasses"
-            :value="String(state)"
-            @input="onSelect($event)"
-    >
-      <option v-if="placeholder" value="" selected disabled hidden>{{placeholder}}</option>
-      <template v-for="(option, key) in options">
-        <option v-if="typeof option === 'object'"
-                :value="String(option.value)"
-                :disabled="option.disabled"
-                :data-key="key"
-        >
-          {{option.text || option.value}}
-        </option>
-        <option v-else
-                :value="String(option)"
-                :data-key="key"
-        >
-          {{option}}
-        </option>
-      </template>
-    </select>
-
-
-    <template v-for="slot in ['prepend', 'append', 'labelAfterInput', 'validFeedback', 'invalidFeedback', 'description']"
+    <template v-for="slot in ['prepend', 'append', 'labelAfterInput',
+                              'validFeedback', 'invalidFeedback','description']"
               :slot="slot"
     >
       <slot :name="slot">
@@ -46,29 +30,35 @@
 </template>
 
 <script>
+import { formInputProps as props } from './formProps'
 import * as allFormMixins from './formMixins'
 const mixins = Object.values(allFormMixins)
-import { formSelectProps as props } from './formProps'
 import CFormGroup from './CFormGroup'
 export default {
   name: 'CFormInput',
   inheritAttrs: false,
+  model: {
+    event: 'sync'
+  },
   components: { CFormGroup },
   mixins,
   props,
   // {
-  //   // Html props: disabled, required don't use multiple
-  //   value: [String, Number, Boolean],
-  //   options: Array,
+  //   // HTML props: disabled, required
   //   label: String,
+  //   type: {
+  //     type: String,
+  //     default: 'text'
+  //   },
   //   id: String,
-  //   placeholder: String,
+  //   readonly: Boolean,
   //   plaintext: Boolean,
   //   wasValidated: Boolean,
   //   size: {
   //     type: String,
   //     validator: str => ['','sm','lg'].includes(str)
   //   },
+  //   value: [String, Number, Array],
   //   horizontal: [Boolean, Object],
   //   append: String,
   //   prepend: String,
@@ -76,10 +66,13 @@ export default {
   //   invalidFeedback: String,
   //   tooltipFeedback: Boolean,
   //   description: String,
-  //   custom: Boolean,
   //   isValid: {
-  //     type: Boolean,
+  //     type: [Boolean, Function],
   //     default: null
+  //   },
+  //   lazy: {
+  //     type: [Boolean, Number],
+  //     default: 400
   //   },
   //   addInputClasses: String,
   //   addLabelClasses: String,
@@ -87,11 +80,20 @@ export default {
   // },
   data () {
     return {
-      state: this.value
+      state: this.value,
+      syncTimeout: null
     }
   },
+  // created() {
+  //   console.log(this.computedIsValid)
+  // },
+  // watch:{
+  //   computedIsValid (val) {
+  //     console.log(val)
+  //   }
+  // },
   computed: {
-    // // classesComputedProps mixin
+    // classesComputedProps mixin
     // haveCustomSize () {
     //   return ['','sm','lg'].includes(this.size) && Boolean(this.size)
     // },
@@ -110,18 +112,9 @@ export default {
     //            [`col-form-label-${this.size}`]: this.haveCustomSize,
     //          }]
     // },
-    customSizeClass () {
-      return this.haveCustomSize ?
-             `${this.custom ? 'custom-select' : 'form-control'}-${this.size}` :
-             null
-    },
     // customSizeClass () {
     //   return this.haveCustomSize ? `form-control-${this.size}` : null
     // },
-    inputClass () {
-      return this.custom ? 'custom-select' :
-             `form-control${this.plaintext ? '-plaintext' : ''}`
-    }
     // inputClasses () {
     //   return [
     //     this.inputClass || 'form-control',
@@ -130,7 +123,6 @@ export default {
     //     this.customSizeClass
     //   ]
     // }
-
 
     // validationComputedProps mixin
     // computedIsValid () {
@@ -164,7 +156,6 @@ export default {
     //            }]
     // }
   },
-
   //watchValue mixin
   // watch: {
   //   value (val, oldVal) {
@@ -173,12 +164,21 @@ export default {
   //   },
   // },
   methods: {
-    onSelect (e) {
-      const dataKey = e.target.selectedOptions[0].dataset.key
-      const value = this.options[dataKey] && this.options[dataKey].value !== undefined ?
-                      this.options[dataKey].value : this.options[dataKey]
-      this.state = value
-      this.$emit('input', value, e)
+    onInput (e) {
+      this.state = e.target.value
+      this.$emit('input', this.state, e)
+      if (this.lazy === true)
+        return
+
+      clearTimeout(this.syncTimeout)
+      this.syncTimeout = setTimeout(() => {
+        this.$emit('sync', this.state, e)
+      }, this.lazy !== false ? this.lazy : 0)
+    },
+    onChange (e) {
+      this.state = e.target.value
+      this.$emit('change', this.state, e)
+      this.$emit('sync', this.state, e)
     },
   }
 }

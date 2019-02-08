@@ -53,11 +53,11 @@ function computePassedProps (props) {
   return isLink(props) ? pluckProps(linkPropsFactory(), props) : null
 }
 
-function computeAttrs (props, data, link, toggle) {
+function computeAttrs (props, data, isButton, toggle) {
   return {
-    type: !link ? props.type : null,
+    type: isButton ? props.type : null,
     // in CLink disabled property works diffrently
-    disabled: !link ? props.disabled : null,
+    disabled: isButton ? props.disabled : null,
     'aria-pressed': toggle ? String(props.pressed) : null,
     // autocomplete off is needed in toggle mode to prevent some browsers from
     // remembering the previous setting when using the back button.
@@ -71,7 +71,7 @@ export default {
   props: props,
   render (h, { props, data, listeners, children }) {
     const toggle = isToggle(props)
-    const link = isLink(props)
+    const isButton = !isLink(props)
     const on = {
       click (e) {
         if (props.disabled && e instanceof Event) {
@@ -87,9 +87,9 @@ export default {
       staticClass: 'btn',
       class: computeClasses(props),
       props: computePassedProps(props),
-      attrs: computeAttrs(props, data, link, toggle),
+      attrs: computeAttrs(props, data, isButton, toggle),
       on
     }
-    return h(link ? CLink : 'button', mergeData(data, componentData), children)
+    return h(isButton ? 'button' : CLink , mergeData(data, componentData), children)
   }
 }

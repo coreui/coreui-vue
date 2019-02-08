@@ -8,19 +8,17 @@
         <label v-if="label" :for="safeId" :class="labelClasses">{{label}}</label>
       </slot>
     </template>
-    <input slot="input"
-           v-bind="$attrs"
-           :id="safeId"
-           :type="type"
-           :class="inputClasses"
-           :readonly="readonly || plaintext"
-           :value="state"
-           @input="onInput($event)"
-           @change="onChange($event)"
+    <textarea slot="input"
+              v-bind="$attrs"
+              :id="safeId"
+              :class="inputClasses"
+              :readonly="readonly || plaintext"
+              :value="state"
+              @input="onInput($event)"
+              @change="onChange($event)"
     />
 
-    <template v-for="slot in ['prepend', 'append', 'labelAfterInput',
-                              'validFeedback', 'invalidFeedback','description']"
+    <template v-for="slot in ['prepend', 'append', 'labelAfterInput', 'validFeedback', 'invalidFeedback','description']"
               :slot="slot"
     >
       <slot :name="slot">
@@ -30,12 +28,12 @@
 </template>
 
 <script>
-import { formInputProps as props } from './formProps'
 import * as allFormMixins from './formMixins'
 const mixins = Object.values(allFormMixins)
+import { formTextareaProps as props} from './formProps'
 import CFormGroup from './CFormGroup'
 export default {
-  name: 'CFormInput',
+  name: 'CFormTextarea',
   inheritAttrs: false,
   model: {
     event: 'sync'
@@ -44,30 +42,26 @@ export default {
   mixins,
   props,
   // {
-  //   // HTML props: disabled, required
-  //   label: String,
-  //   type: {
-  //     type: String,
-  //     default: 'text'
-  //   },
-  //   id: String,
-  //   readonly: Boolean,
-  //   plaintext: Boolean,
-  //   wasValidated: Boolean,
-  //   size: {
-  //     type: String,
-  //     validator: str => ['','sm','lg'].includes(str)
-  //   },
-  //   value: [String, Number, Array],
-  //   horizontal: [Boolean, Object],
+  //   // Html props: disabled, required, rows, cols, placeholder
   //   append: String,
   //   prepend: String,
   //   validFeedback: String,
   //   invalidFeedback: String,
   //   tooltipFeedback: Boolean,
   //   description: String,
+  //   horizontal: [Boolean, Object],
+  //   wasValidated: Boolean,
+  //   label: String,
+  //   id: String,
+  //   readonly: Boolean,
+  //   plaintext: Boolean,
+  //   size: {
+  //     type: String,
+  //     validator: str => ['','sm','lg'].includes(str)
+  //   },
+  //   value: [String, Number, Array],
   //   isValid: {
-  //     type: [Boolean, Function],
+  //     type: Boolean,
   //     default: null
   //   },
   //   lazy: {
@@ -80,18 +74,9 @@ export default {
   // },
   data () {
     return {
-      state: this.value,
-      syncTimeout: null
+      state: this.value
     }
   },
-  // created() {
-  //   console.log(this.computedIsValid)
-  // },
-  // watch:{
-  //   computedIsValid (val) {
-  //     console.log(val)
-  //   }
-  // },
   computed: {
     // classesComputedProps mixin
     // haveCustomSize () {
@@ -156,6 +141,7 @@ export default {
     //            }]
     // }
   },
+
   //watchValue mixin
   // watch: {
   //   value (val, oldVal) {
@@ -171,7 +157,7 @@ export default {
         return
 
       clearTimeout(this.syncTimeout)
-      this.syncTimeout = setTimeout((val) => {
+      this.syncTimeout = setTimeout(() => {
         this.$emit('sync', this.state, e)
       }, this.lazy !== false ? this.lazy : 0)
     },
