@@ -1,17 +1,17 @@
 import { mergeData } from 'vue-functional-data-merge'
-// import pluckProps from '../../utils/pluck-props'
 import { assign } from '../../utils/object'
-import cardCommon from '../../mixins/cardMixin'
+import sharedCardProps from './sharedCardProps'
 import CCardHeader from './CCardHeader'
 import CCardBody from './CCardBody'
 import CCardFooter from './CCardFooter'
 
 const props = assign(
-  cardCommon.props,
+  sharedCardProps.props,
   {
     header: String,
     body: String,
-    footer: String
+    footer: String,
+    noWrapper: Boolean
   }
 )
 export default {
@@ -24,14 +24,16 @@ export default {
     if (!$slots.header && props.header)
       $slots.header = h(CCardHeader, { domProps: { innerHTML: props.header }})
 
-    if (!$slots.body &&  !$slots.default && props.body)
+    if (!$slots.body && $slots.default)
+      $slots.body = props.noWrapper ? $slots.default : h(CCardBody, $slots.default)
+    else if (!$slots.body &&  !$slots.default && props.body)
       $slots.body = h(CCardBody, { domProps: { innerHTML: props.body }})
 
     if (!$slots.footer && props.footer)
       $slots.footer = h(CCardFooter, { domProps: { innerHTML: props.footer }})
 
     return h(
-      props.tag,
+      props.tag || 'div',
       mergeData(data, {
         staticClass: 'card',
         class: {
@@ -41,7 +43,7 @@ export default {
           [`text-${props.textVariant}`]: Boolean(props.textVariant)
         }
       }),
-      [ $slots.header, $slots.body || $slots.default, $slots.footer ]
+      [ $slots.header, $slots.body, $slots.footer ]
     )
   }
 }

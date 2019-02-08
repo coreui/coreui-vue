@@ -1,9 +1,9 @@
 import { mergeData } from 'vue-functional-data-merge'
 import { assign } from '../../utils/object'
-import cardCommon from '../../mixins/cardMixin'
+import sharedCardProps from './sharedCardProps'
 
 export const props = assign(
-  cardCommon.props,
+  sharedCardProps.props,
   {
     header: String
   }
@@ -15,7 +15,7 @@ export default {
   props,
   render (h, { props, data, children }) {
     return h(
-      props.tag,
+      props.tag || 'header',
       mergeData(data, {
         staticClass: 'card-header',
         class: [

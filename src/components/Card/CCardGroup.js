@@ -1,10 +1,7 @@
 import { mergeData } from 'vue-functional-data-merge'
 
 export const props = {
-  tag: {
-    type: String,
-    default: 'div'
-  },
+  tag: String,
   deck:  Boolean,
   columns: Boolean,
 }
@@ -18,6 +15,6 @@ export default {
       staticClass = 'card-columns'
     if (props.deck)
       staticClass = 'card-deck'
-    return h(props.tag, mergeData(data, { staticClass }), children)
+    return h(props.tag || 'div' , mergeData(data, { staticClass }), children)
   }
 }

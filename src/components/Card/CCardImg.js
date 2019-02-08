@@ -1,6 +1,7 @@
-import {mergeData} from 'vue-functional-data-merge'
+import { mergeData } from 'vue-functional-data-merge'
 
 export const props = {
+  tag: String,
   imgSrc: String,
   imgAlt: String,
   imgTop: Boolean,
@@ -28,7 +29,7 @@ export default {
       staticClass += '-left'
 
     return h(
-      'img',
+      props.tag || 'img',
       mergeData(data, {
         staticClass,
         class: {'img-fluid': props.imgFluid},
