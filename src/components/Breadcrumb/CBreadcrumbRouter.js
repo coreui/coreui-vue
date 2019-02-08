@@ -1,11 +1,11 @@
 import CBreadcrumb from './CBreadcrumb'
 
-export default{
+export default {
   name: 'CBreadcrumbRouter',
   computed: {
     items () {
-      const routes = this.$route.matched.filter((route) => route.name || route.meta.label)
-      return routes.map((route) => {
+      const routes = this.$route.matched.filter(route => route.name || route.meta.label)
+      return routes.map(route => {
         const item = {
           to: route,
           text: route.meta && route.meta.label ? route.meta.label : route.name || null
@@ -15,6 +15,6 @@ export default{
     }
   },
   render (h){
-    return h(CBreadcrumb, { props: {items: this.items} })
+    return h(CBreadcrumb, { props: { items: this.items }})
   }
 }
