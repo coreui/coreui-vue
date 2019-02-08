@@ -1,9 +1,9 @@
-import CColumn from './CColumn'
-import CRow from './CRow'
 import CContainer from './CContainer'
+import CRow from './CRow'
+import CCol from './CCol'
 
 export {
-  CColumn,
+  CContainer,
   CRow,
-  CContainer
+  CCol
 }
