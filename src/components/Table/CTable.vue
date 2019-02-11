@@ -32,7 +32,7 @@
     <slot name="overTable"/>
     <div :class="notResponsive ? '' : 'table-responsive'" class="position-relative">
       <table :class="tableClasses">
-        <thead >
+        <thead :class="headVariant ? `thead-${headVariant}` : ''">
           <tr>
             <th v-if="indexCol" style="width:40px"></th>
             <template v-for="(name, index) in columnNames">
@@ -40,12 +40,14 @@
                   :class="headerClass(index)"
                   :style="headerStyles(index)"
               >
-              <slot :name="`${rawColumnNames[index]}-header`">
-                {{name}}
-              </slot>
-              <slot v-if="!noSorting && sortable(index)" name="sorting-icon" :state="getIconState(index)">
-                <i :class="iconClasses(index)"></i>
-              </slot>
+                <slot v-if="$slots[`${rawColumnNames[index]}-header`]"
+                      :name="`${rawColumnNames[index]}-header`"
+                >
+                </slot>
+                <div v-else v-html="name" class="d-inline"></div>
+                <slot v-if="!noSorting && sortable(index)" name="sorting-icon" :state="getIconState(index)">
+                  <i :class="iconClasses(index)"></i>
+                </slot>
               </th>
             </template>
           </tr>
@@ -198,7 +200,11 @@ export default {
     },
     defaultTableFilter: String,
     defaultColumnFilter: Object,
-    loading: Boolean
+    loading: Boolean,
+    headVariant: {
+      type: String,
+      validator: val => ['light', 'dark'].includes(val)
+    }
   },
   data () {
     return {
@@ -206,7 +212,7 @@ export default {
       columnFilter: this.defaultColumnFilter || {},
       sorter: { name: this.defaultSorter.name, direction: this.defaultSorter.direction },
       firstItemIndex: 0,
-      page: this.activePage || 2,
+      page: this.activePage || 1,
       pages: 0,
       perPageItems: this.perPage,
       passedItems: this.items
@@ -235,8 +241,12 @@ export default {
       const n = this.sorter.name
       return this.tableFiltered.sort((a,b) => {
         //escape html
-        const c = a[n] ? a[n].replace(/<(?:.|\n)*?>/gm, '') : ''
-        const d = b[n] ? b[n].replace(/<(?:.|\n)*?>/gm, '') : ''
+        let c = typeof a[n] === 'string' ? a[n].replace(/<(?:.|\n)*?>/gm, '') : a[n]
+        let d = typeof b[n] === 'string' ? b[n].replace(/<(?:.|\n)*?>/gm, '') : b[n]
+        if (typeof c !== typeof d) {
+          c = String(c)
+          d = String(d)
+        }
         return (c > d) ? 1 * flip : ((d > c) ? -1 * flip : 0)
       })
     },
