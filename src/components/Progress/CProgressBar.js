@@ -1,5 +1,3 @@
-import { getColor } from '@coreui/coreui/dist/js/coreui-utilities'
-
 export default {
   name: 'CProgressBar',
   render (h) {
@@ -32,6 +30,7 @@ export default {
     progressBarClasses () {
       return [
         'progress-bar',
+        this.computedVariant ? `bg-${this.computedVariant}` : '',
         {
           'progress-bar-striped': this.computedStriped || this.computedAnimated,
           'progress-bar-animated': this.computedAnimated
@@ -39,10 +38,7 @@ export default {
       ]
     },
     progressBarStyles () {
-      return [
-         { width: `${(100 * (this.value / this.computedMax))}%` },
-         this.computedColor? { backgroundColor: this.computedColor} : {}
-      ]
+      return { width: `${(100 * (this.value / this.computedMax))}%` }
     },
     progress () {
       const p = Math.pow(10, this.computedPrecision)
@@ -52,9 +48,9 @@ export default {
       // Prefer our max over parent setting
       return this.max ? this.max : (this.$parent.max || 100)
     },
-    computedColor () {
-      // Prefer our color over parent setting
-      return getColor(this.color || this.$parent.color || '#fff')
+    computedVariant () {
+      // Prefer our variant over parent setting
+      return this.variant || this.$parent.variant
     },
     computedPrecision () {
       // Prefer our precision over parent setting
@@ -83,7 +79,7 @@ export default {
     // Which is why they are defaulted to null
     max: Number,
     precision: Number,
-    color: String,
+    variant: String,
     striped: {
       type: Boolean,
       default: null

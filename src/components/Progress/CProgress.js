@@ -14,7 +14,7 @@ export default {
             value: this.value,
             max: this.max,
             precision: this.precision,
-            color: this.color,
+            variant: this.variant,
             animated: this.animated,
             striped: this.striped,
             showProgress: this.showProgress,
@@ -35,12 +35,12 @@ export default {
   props: {
     height: String,
     // These props can be inherited via the child CProgressBar(s)
-    color: String,
+    variant: String,
     striped: Boolean,
     animated: Boolean,
     precision: Number,
     showProgress: Boolean,
-    showValue:  Boolean,
+    showValue: Boolean,
     max: Number,
     // This prop is not inherited by child CProgressBar(s)
     value: Number,

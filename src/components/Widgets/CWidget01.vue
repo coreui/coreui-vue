@@ -4,7 +4,7 @@
       <div class="h4 m-0">{{props.header}}</div>
       <div>{{props.text}}</div>
       <slot>
-        <CProgress :color="!props.inverse ? props.variant : ''"
+        <CProgress :variant="!props.inverse ? props.variant : ''"
                    :value = "props.value"
                    :class="props.inverse ? 'progress-white' : ''"
                    class="progress-xs my-3 mb-0"/>
@@ -34,10 +34,7 @@ export default {
       type: String,
       default: 'footer:string'
     },
-    variant: {
-      type: String,
-      default: 'success'
-    },
+    variant: String,
     inverse: Boolean,
     value: {
       type: Number,
