@@ -1,6 +1,10 @@
 <template>
-  <ul :class="computedClasses"  role="menubar" aria-disabled="false" aria-label="pagination">
-    <li v-if="!noDoubleArrows"
+  <ul :class="computedClasses"
+      role="menubar"
+      aria-disabled="false"
+      aria-label="pagination"
+  >
+    <li v-if="!hideDoubleArrows"
         :class="firstClasses"
     >
       <CLink class="page-link"
@@ -11,7 +15,7 @@
         <span v-html="firstButtonText"></span>
       </CLink>
     </li>
-    <li v-if="!noArrows"
+    <li v-if="!hideArrows"
         :class="firstClasses"
     >
       <CLink class="page-link"
@@ -47,7 +51,7 @@
     >
       <span class="page-link">…</span>
     </li>
-    <li v-if="!noArrows"
+    <li v-if="!hideArrows"
         :class="lastClasses"
     >
       <CLink class="page-link"
@@ -58,7 +62,7 @@
         <span v-html="nextButtonText"></span>
       </CLink>
     </li>
-    <li v-if="!noDoubleArrows"
+    <li v-if="!hideDoubleArrows"
         :class="lastClasses"
     >
       <CLink class="page-link"
@@ -109,7 +113,7 @@
         return `pagination b-pagination pagination-${this.rwd} justify-content-${this.align} `
       },
       dots () {
-        return this.noDots || this.limit < 4 ? false : true
+        return this.hideDots || this.limit < 5 ? false : true
       },
       items () {
         let maxPrevItems = Math.floor((this.limit - 1) / 2)
@@ -191,19 +195,21 @@
       },
       size: {
         type: String,
-        default: 'md'
+        default: 'md',
+        validator: val => ['sm', 'md', 'lg'].includes(val)
       },
       align: {
         type: String,
-        default: 'start'
+        default: 'start',
+        validator: val => ['start', 'center', 'end'].includes(val)
       },
       limit: {
         type: Number,
         default: 5
       },
-      noDots: Boolean,
-      noArrows: Boolean,
-      noDoubleArrows: Boolean,
+      hideDots: Boolean,
+      hideArrows: Boolean,
+      hideDoubleArrows: Boolean,
       firstButtonText: {
         type: String,
         default: '&laquo;'
