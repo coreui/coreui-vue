@@ -28,10 +28,12 @@
 </template>
 
 <script>
+import CFormGroup from './CFormGroup'
+import { formTextareaProps as props} from './formProps'
+
 import * as allFormMixins from './formMixins'
 const mixins = Object.values(allFormMixins)
-import { formTextareaProps as props} from './formProps'
-import CFormGroup from './CFormGroup'
+
 export default {
   name: 'CFormTextarea',
   inheritAttrs: false,

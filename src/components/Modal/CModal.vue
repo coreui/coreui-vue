@@ -1,27 +1,27 @@
 <template>
-  <div @click="checkHide($event)">
+  <div>
     <div :class="modalClasses" tabindex="-1" role="dialog" style="overflow-y:scroll">
       <div :class="dialogClasses" role="document">
         <div :class="contentClasses">
-          <slot name="header">
-            <div class="modal-header" v-if="!noHeader" style="border-bottom:none !important">
-              <h5 class="modal-title">{{title}}</h5>
-              <button type="button" class="close" aria-label="Close" @click="hide()">
-                <span>&times;</span>
-              </button>
-            </div>
-          </slot>
-          <slot name="body" v-if="!noBody">
-            <div class="modal-body">
-              <slot></slot>
-            </div>
-          </slot>
-          <slot name="footer" v-if="!noFooter">
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" @click="hide()">Close</button>
-              <button type="button" :class="btnClasses" @click="hide()">OK</button>
-            </div>
-          </slot>
+          <div v-if="!noHeader" class="modal-header" >
+            <slot name="header" :hide="hide">
+                <h5 class="modal-title">{{title}}</h5>
+                <button type="button" class="close" aria-label="Close" @click="hide()">
+                  <span>&times;</span>
+                </button>
+            </slot>
+          </div>
+          <div v-if="!noBody" class="modal-body">
+            <slot name="body">
+                <slot></slot>
+            </slot>
+          </div>
+          <div v-if="!noFooter" class="modal-footer">
+            <slot name="footer" :hide="hide">
+                <button type="button" class="btn btn-secondary" @click="hide()">Close</button>
+                <button type="button" :class="btnClasses" @click="hide()">OK</button>
+            </slot>
+          </div>
         </div>
       </div>
     </div>
@@ -36,28 +36,28 @@ export default {
   // components: { BButton, BButtonClose },
   model: {
     prop: 'visible',
-    event: 'change'
+    event: 'hide'
   },
   props: {
     visible: Boolean,
     centered: Boolean,
+    title: String,
+    size: String,
+    variant: String,
+    borderVariant: String,
     noFade: Boolean,
     noBackdrop: Boolean,
     noCloseOnBackdrop: Boolean,
     noHeader: Boolean,
     noBody: Boolean,
     noFooter: Boolean,
-    title: String,
-    size: String,
-    variant: String,
-    borderVariant: String,
     addModalClasses: String,
     addDialogClasses: String,
     addContentClasses: String
   },
   data () {
     return {
-      is_visible: false,
+      is_visible: this.visible,
       is_transitioning: false,
       timeout: null,
     }
@@ -114,12 +114,8 @@ export default {
     }
   },
   methods: {
-    checkHide (e) {
-      if(e.target.classList.contains('closeModal'))
-        this.hide()
-    },
     hide () {
-      this.$emit('change', false)
+      this.$emit('hide', false)
     },
     toggle (newVal) {
       setTimeout(() => { this.is_visible = newVal }, 0)

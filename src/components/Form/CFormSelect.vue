@@ -89,7 +89,7 @@ export default {
   // },
   data () {
     return {
-      state: this.value
+      state: typeof this.$options.propsData.value !== 'undefined' ? this.value : ''
     }
   },
   computed: {
@@ -113,7 +113,7 @@ export default {
     //          }]
     // },
     customSizeClass () {
-      return this.haveCustomSize ?
+      return this.haveCustomSize && !this.haveWrapper ?
              `${this.custom ? 'custom-select' : 'form-control'}-${this.size}` :
              null
     },

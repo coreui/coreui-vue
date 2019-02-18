@@ -14,6 +14,7 @@
       <input v-bind="$attrs"
              :id="safeId"
              :class="inputClasses"
+             :multiple="multiple"
              type="file"
              @change="onChange($event)"
       />

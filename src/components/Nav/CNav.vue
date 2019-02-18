@@ -1,0 +1,70 @@
+<template>
+  <ul :class="navClasses" @click="onClick">
+    <slot></slot>
+  </ul>
+</template>
+
+<script>
+import CNavItem from './CNavItem'
+export default {
+  name: 'CNav',
+  props: {
+    fill: Boolean,
+    justified: Boolean,
+    tabs: Boolean,
+    pills: Boolean,
+    vertical: Boolean,
+    items: Object
+  },
+  computed: {
+    navClasses () {
+      return {
+        'nav' : true,
+        'nav-tabs': this.tabs && !this.pills,
+        'nav-pills': this.pills,
+        'flex-column': this.vertical,
+        'nav-fill': this.fill,
+        'nav-justified': this.justified
+      }
+    }
+  },
+  methods: {
+    onClick (e) {
+      let clickedItem = this.getClickedItem(e)
+      clickedItem ? this.activateItem(clickedItem) : null
+    },
+    getClickedItem (e) {
+      return this.$children.filter(item => this.itemWasActivated(item, e))[0]
+    },
+    itemWasActivated (item, e) {
+      return item.$el.contains(e.target) && !item.disabled &&
+        ['CDropdown', 'CNavItem', 'CTab'].includes(item.$options._componentTag)
+    },
+    activateItem (itemToActivate) {
+      this.$children.forEach(item => {
+        return item.isActive = item === itemToActivate ? true : false
+      })
+    }
+  },
+
+//   render (h) {
+//     return h(
+//       'ul',
+//       {
+//         class: {
+//           'nav' : true,
+//           'nav-tabs': this.tabs,
+//           'nav-pills': this.pills,
+//           'flex-column': this.vertical,
+//           'nav-fill': this.fill,
+//           'nav-justified': this.justified
+//         },
+//         on: {
+//           click: this.onClick
+//         }
+//       },
+//       this.$slots.default
+//     )
+//   }
+}
+</script>

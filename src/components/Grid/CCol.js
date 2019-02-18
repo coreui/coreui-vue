@@ -37,7 +37,7 @@ export default {
       'div',
       mergeData(data,
         {
-          class: classes
+          class: classes.length ? classes : 'col'
         }
       ),
       children

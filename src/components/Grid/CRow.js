@@ -11,6 +11,7 @@ const props = {
     type: String,
     validator: str => arrayIncludes(['start', 'end', 'center','between', 'around'], str)
   },
+  // oneCCol: [Boolean, Object] possible feature?
 }
 
 export default {

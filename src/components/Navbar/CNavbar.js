@@ -9,7 +9,8 @@ export const props = {
   variant: String,
   toggleable: {
     type: [Boolean, String],
-    default: false
+    default: false,
+    validator: val => [false, true, 'sm', 'md', 'lg', 'xl'].includes(val)
   },
   fixed: String,
   sticky: Boolean,
@@ -21,24 +22,22 @@ export default {
   functional: true,
   props,
   render (h, { props, data, children }) {
-    let breakpoint = ''
-    if (props.toggleable && typeof props.toggleable === 'string' && props.toggleable !== 'xs') {
-      breakpoint = `navbar-expand-${props.toggleable}`
-    } else if (props.toggleable === false) {
-      breakpoint = 'navbar-expand'
-    }
     return h(
       props.tag,
       mergeData(data, {
         staticClass: 'navbar',
         class: [
           props.light ? 'navbar-light' : 'navbar-dark',
+          props.toggleable !== true ?
+            props.toggleable ?
+              `navbar-expand-${props.toggleable}` :
+              'navbar-expand':
+            '', 
           {
             'd-print': props.print,
             'sticky-top': props.sticky,
             [`bg-${props.variant}`]: Boolean(props.variant),
             [`fixed-${props.fixed}`]: Boolean(props.fixed),
-            [`${breakpoint}`]: Boolean(breakpoint)
           }
         ],
         attrs: {

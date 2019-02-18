@@ -16,8 +16,9 @@ export const wrapperComputedProps = {
     wrapperClasses () {
       if(this.haveWrapper)
         return [ this.addWrapperClasses, {
-                 [this.horizontal.input || 'col-10'] : this.isHorizontal,
-                 'input-group' : this.haveInputGroup
+                 [this.horizontal.input || 'col-sm-9'] : this.isHorizontal,
+                 'input-group' : this.haveInputGroup,
+                 [`input-group-${this.size}`]: this.haveCustomSize
                }]
     }
   }
@@ -50,25 +51,27 @@ export const watchValue = {
 export const classesComputedProps = {
   computed: {
     haveCustomSize () {
-      return ['','sm','lg'].includes(this.size) && Boolean(this.size)
+      return ['sm','lg'].includes(this.size)
     },
     computedClasses () {
       return [
-               this.isHorizontal ? 'form-row': 'form-group',
+               'form-group',
                {
-               'was-validated': this.wasValidated
+                 'was-validated': this.wasValidated,
+                 'form-row': this.isHorizontal
                }
              ]
     },
     labelClasses () {
       return [ this.addLabelClasses, {
                'col-form-label': this.isHorizontal,
-               [this.horizontal.label || 'col-2']: this.isHorizontal,
+               [this.horizontal.label || 'col-sm-3']: this.isHorizontal,
                [`col-form-label-${this.size}`]: this.haveCustomSize,
              }]
     },
     customSizeClass () {
-      return this.haveCustomSize ? `form-control-${this.size}` : null
+      return this.haveCustomSize && !this.haveWrapper ?
+               `form-control-${this.size}` : null
     },
     inputClasses () {
       return [

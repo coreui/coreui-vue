@@ -1,4 +1,4 @@
-export const props = {
+const props = {
   tag: {
     type: String,
     default: 'div'
@@ -21,27 +21,30 @@ export default {
   data () {
     return {
       collapsing: false,
-      heightWatcher: null
+      heightWatcher: null,
     }
   },
   watch: {
     show (val) {
-      if(this.collapsing){
-        this.turn()
-        const height = Number(this.collapsing.slice(0,-2))
-        const current = this.$el.offsetHeight
-        const time =  val ?  (height - current) / height :  current / height
-        this.setFinishTimer(this.duration * time)
-      }else{
-        val ? this.toggle(true) : this.toggle(false)
-        this.setFinishTimer(this.duration)
-      }
+      this.collapse(val)
     },
   },
   mounted () {
     this.$el.style.display = this.show ?  '' : 'none'
   },
   methods: {
+    collapse (val) {
+      if (this.collapsing) {
+        this.turn()
+        const height = Number(this.collapsing.slice(0,-2))
+        const current = this.$el.offsetHeight
+        const time =  val ?  (height - current) / height :  current / height
+        this.setFinishTimer(this.duration * time)
+      } else {
+        val ? this.toggle(true) : this.toggle(false)
+        this.setFinishTimer(this.duration)
+      }
+    },
     turn () {
       if(this.show)
         this.$el.style.height = this.collapsing

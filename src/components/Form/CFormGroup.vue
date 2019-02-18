@@ -1,5 +1,8 @@
 <template functional>
-  <div :class="[data.class, data.staticClass]" :style="[data.style, data.staticStyle]">
+  <div :class="[data.class, data.staticClass]"
+       :style="[data.style, data.staticStyle]"
+       role="group"
+  >
     <template v-if="props.wrapperClasses">
       <slot name="label"></slot>
       <div :class="props.wrapperClasses">
@@ -58,7 +61,7 @@ import { formGroupProps as props } from './formProps'
 export default {
   name: 'CFormGroup',
   inheritAttrs: false,
-  props, 
+  props,
   // {
   //   wrapperClasses: [String, Array, Object],
   //   append: String,

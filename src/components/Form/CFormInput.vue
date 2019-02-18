@@ -1,11 +1,11 @@
-<template >
+<template>
   <CFormGroup v-bind="{append, prepend, validFeedback,
                        invalidFeedback, tooltipFeedback, description,
                        wrapperClasses, class: computedClasses}"
   >
     <template slot="label">
       <slot name="label">
-        <label v-if="label" :for="safeId" :class="labelClasses">{{label}}</label>
+        <label v-if="label" :for="safeId" :class="labelClasses" v-html="label"></label>
       </slot>
     </template>
     <input slot="input"
@@ -30,10 +30,12 @@
 </template>
 
 <script>
+import CFormGroup from './CFormGroup'
 import { formInputProps as props } from './formProps'
+
 import * as allFormMixins from './formMixins'
 const mixins = Object.values(allFormMixins)
-import CFormGroup from './CFormGroup'
+
 export default {
   name: 'CFormInput',
   inheritAttrs: false,
