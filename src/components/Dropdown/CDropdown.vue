@@ -1,24 +1,8 @@
-<template>
-  <li :class="computedDropdownClasses">
-    <a href="#"
-       aria-haspopup="true"
-       :aria-expanded="visible"
-       :class="computedToggleClasses"
-       @click="click($event)"
-       ref="toggle"
-    >
-      <slot name="button">
-        <button class="btn btn-outline-primary dropdown-toggle">{{text}}</button>
-      </slot>
-    </a>
-    <div :class="computedMenuClasses" ref="menu" v-on-clickaway="hide">
-      <slot></slot>
-    </div>
-  </li>
-</template>
 <script>
+import CLink from '../Link/CLink'
 import Popper from 'popper.js'
 import { mixin as clickaway } from 'vue-clickaway'
+import { deepObjectsMerge } from '@coreui/coreui/dist/js/coreui-utilities'
 
 export default {
   name: 'CDropdown',
@@ -33,20 +17,34 @@ export default {
       this.createPopper
   },
   props: {
-    text: {
+    buttonContent: {
       type: String,
       default: 'Dropdown'
     },
     show: Boolean,
     dropup: Boolean,
     disabled: Boolean,
-    right: Boolean,
-    menuClasses: String,
-    toggleClasses: String,
-    popperConfig: Object
+    addMenuClasses: String,
+    addButtonClasses: String,
+    nav: Boolean,
+    noCaret: Boolean,
+    variant: {
+      type: String,
+      default: 'secondary'
+    },
+    size: {
+      type: String,
+      validator: val => ['sm', 'lg'].includes(val)
+    },
+    split: Boolean,
+    offset: Number,
+    placement: String,
+    noFlip: Boolean,
+    popperConfig: Object,
+    noPopper: Boolean,
   },
   mounted () {
-    this.checkForPopper()
+    this.menagePopper()
   },
   methods:{
     hide () {
@@ -57,14 +55,16 @@ export default {
       e.preventDefault()
       this.toggle(!this.visible)
     },
-    toggle (visible) {
+    toggle (value) {
       if(this.disabled)
         return
-      this.visible = visible
-      this.checkForPopper()
+      setTimeout(() => {
+        this.visible = value
+        this.menagePopper()
+      }, 0)
     },
-    checkForPopper () {
-      if(this.popperConfig)
+    menagePopper () {
+      if(!this.noPopper)
           setTimeout(() => this.visible ? this.createPopper() : this.removePopper(), 0)
     },
     removePopper () {
@@ -73,37 +73,102 @@ export default {
       }
       this._popper = null
     },
-    createPopper (element) {
+    createPopper () {
       this.removePopper()
-      this._popper = new Popper(this.$refs.toggle, this.$refs.menu, this.popperConfig)
+      this._popper = new Popper(this.$refs.toggle, this.$refs.menu, this.computedPopperConfig)
     }
   },
   computed: {
+    generatedPopperConfig () {
+      return {
+        placement: this.placement ? this.placement : this.dropup ? 'top-start' : 'bottom-start',
+        modifiers: {
+          offset: { offset: this.offset || 0 },
+          flip: { enabled: !this.noFlip }
+        }
+      }
+    },
+    computedPopperConfig () {
+      return deepObjectsMerge(this.generatedPopperConfig, this.popperConfig || {})
+    },
     computedDropdownClasses () {
       return [
-        'dropdown',
+        !this.dropup ? 'dropdown': 'dropup',
         {
-          'dropup': this.dropup,
-          'show': this.visible
+          'show': this.visible,
+          'nav-item': this.nav,
+          'btn-group': this.haveButtonClasses
         }
       ]
     },
-    computedToggleClasses () {
+    buttonTag () {
+      return this.nav ? CLink : 'button'
+    },
+    haveButtonClasses () {
+      return this.nav && !this.split ? Boolean(this.$options.propsData.variant) : true
+    },
+    computedButtonClasses () {
       return [
-        this.toggleClasses,
+        this.addButtonClasses,
+        this.haveButtonClasses ? `btn btn-${this.variant}` : 'nav-link',
         {
-          'disabled' : this.disabled
+          'dropdown-toggle': !this.noCaret && !this.split,
+          [`btn-${this.size}`]: this.size,
+          'disabled' : this.disabled,
         }
       ]
     },
     computedMenuClasses () {
       return [
-        this.menuClasses,
+        this.addMenuClasses,
         'dropdown-menu',
-        this.right ? 'dropdown-menu-right' : 'dropdown-menu-left',
         { 'show': this.visible }
       ]
-    }
+    },
   },
+  render (h) {
+    const toggle = this.$slots.button || h(
+      this.buttonTag,
+      {
+        style: { cursor: 'pointer' },
+        attrs: {
+          'aria-haspopup': true,
+          'aria-expanded': this.visible,
+        },
+        on: {
+          click: this.split ? '' : this.click
+        },
+        ref: 'toggle',
+        class: this.computedButtonClasses,
+        domProps: !this.$slots.buttonContent ?
+                  { innerHTML: this.buttonContent } :
+                  null
+      }, this.$slots.buttonContent)
+    let splitButton = h(false)
+    if (this.split) {
+      splitButton = h(
+      this.buttonTag,
+      {
+        class: [ this.computedButtonClasses, 'dropdown-toggle dropdown-toggle-split'],
+        on: { click: this.click }
+      })
+    }
+
+
+    const content = h(
+      'div',
+      {
+        class: this.computedMenuClasses,
+        ref: 'menu',
+        directives: [{ name: 'on-clickaway', value: this.hide }],
+      },
+      this.$slots.default
+    )
+    return h(
+      this.nav ? 'li' : 'div',
+      { class: this.computedDropdownClasses },
+      [ toggle, splitButton, content ]
+    )
+  }
 }
 </script>

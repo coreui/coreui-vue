@@ -1,12 +1,10 @@
 import { mergeData } from 'vue-functional-data-merge'
-import CLink, { propsFactory as linkPropsFactory } from '../Link/CLink'
-
-export const props = linkPropsFactory()
+import CLink, { propsFactory } from '../Link/CLink'
 
 export default {
   functional: true,
   name: 'CDropdownItem',
-  props,
+  props: propsFactory(),
   render (h, { props, data, children }) {
     return h(
       CLink,
