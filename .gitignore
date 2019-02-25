@@ -1,9 +1,5 @@
 # Dependency directories
 node_modules/
-dist/
-
-# build packages
-dist/
 
 # Coverage directory
 coverage/
