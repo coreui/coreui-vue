@@ -1,4 +1,4 @@
-# @coreui/vue 
+# @coreui/vue
 
 [![Npm badge](https://img.shields.io/npm/v/@coreui/vue.svg)][npm]
 [![NPM downloads][npm-download]][npm]
@@ -9,9 +9,9 @@
 [npm]: https://www.npmjs.com/package/@coreui/vue
 [npm-download]: https://img.shields.io/npm/dm/@coreui/vue.svg?style=flat-square
 
-> A [@coreui/vue](https://coreui.io/vue) `v2` library project
+> A [@coreui/vue](https://coreui.io/vue) `v3` library project
 
-for use with [CoreUI](https://coreui.io/vue/) `v2` Open Source Bootstrap Admin Template
+for use with [CoreUI](https://coreui.io/vue/) `v3-alpha` Open Source Bootstrap Admin Template
 
 ## Installation
 ```
@@ -21,17 +21,17 @@ npm install @coreui/vue
 
 When in non-modular environment, @coreui/vue will register all the components to vue by itself.</p>
 
-### ES6 
+### ES6
 ```js
 //
 // You can register a component manually
 //
-import { Switch } from '@coreui/vue';
+import { CSwitch } from '@coreui/vue';
 
 export default {
   ...
   components: {
-    Switch
+    CSwitch
   },
   ...
 };
