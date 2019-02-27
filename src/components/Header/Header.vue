@@ -24,6 +24,7 @@ export default {
   },
   mounted: function () {
     this.isFixed(this.fixed)
+    console.error(this.$options._componentTag + ' component is deprecated and will be removed in coreui-vue 3.0 version')
   },
   methods: {
     isFixed (fixed) {

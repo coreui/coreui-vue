@@ -23,6 +23,9 @@ export default {
     calloutVariant () {
       return this.variant ? `callout-${this.variant}` : ''
     }
+  },
+  mounted () {
+    console.error(this.$options._componentTag + ' component is deprecated and will be removed in coreui-vue 3.0 version')
   }
 }
 </script>

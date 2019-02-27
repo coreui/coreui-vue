@@ -15,6 +15,7 @@ export default {
   },
   mounted: function () {
     this.isFixed()
+    console.error(this.$options._componentTag + ' component is deprecated and will be replaced in coreui-vue 3.0 version, please import C - prefixed version')
   },
   computed: {
     classList () {

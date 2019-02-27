@@ -24,6 +24,7 @@ export default {
   mounted: function () {
     this.isFixed(this.fixed)
     this.isOffCanvas(this.offCanvas)
+    console.error(this.$options._componentTag + ' component is deprecated and will be replaced in coreui-vue 3.0 version, please import C - prefixed version')
   },
   methods: {
     isFixed (fixed) {

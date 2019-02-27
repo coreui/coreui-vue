@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name:'COldSwitch',
+  name: 'Switch',
   model: {
     prop: 'modelChecked',
     event: 'change'
@@ -136,8 +136,9 @@ export default {
       this.$emit('change', this.checkedData);
     }
   },
-  mounted() {
-    this.toggle(this.defaultChecked || this.checked || this.isChecked);
+  mounted () {
+    this.toggle(this.defaultChecked || this.checked || this.isChecked)
+    console.error(this.$options._componentTag + ' component is deprecated and will be replaced in coreui-vue 3.0 version, please import C - prefixed version')
   },
 }
 </script>
