@@ -2,7 +2,7 @@ import * as Components from './components'
 import * as Directives from './directives'
 
 const CoreuiVue = {
-  install(Vue) {
+  install (Vue) {
     for (let plugin in Components) {
       Vue.component(plugin, Components[plugin])
     }
