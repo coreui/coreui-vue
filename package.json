@@ -1,7 +1,7 @@
 {
   "name": "@coreui/vue",
   "description": "CoreUI Vue Bootstrap 4 layout components",
-  "version": "3.0.0-alpha-bridge",
+  "version": "3.0.0-bridge-alpha",
   "license": "MIT",
   "main": "dist/coreui-vue.common.js",
   "module": "dist/coreui-vue.esm.js",
@@ -65,7 +65,6 @@
     "vue": "^2.6.6",
     "vue-clickaway": "^2.2.2",
     "vue-functional-data-merge": "^2.0.7",
-    "vue-perfect-scrollbar": "^0.1.0"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.1.0",
