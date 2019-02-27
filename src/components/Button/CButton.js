@@ -23,7 +23,8 @@ const btnProps = {
   pressed: {
     type: Boolean,
     default: null
-  }
+  },
+  text: String
 }
 export const props = assign(linkPropsFactory(), btnProps)
 
@@ -83,11 +84,13 @@ export default {
         }
       }
     }
+    const domProps = children ? '' : { innerHTML: props.text }
     const componentData = {
       staticClass: 'btn',
       class: computeClasses(props),
       props: computePassedProps(props),
       attrs: computeAttrs(props, data, isButton, toggle),
+      domProps,
       on
     }
     return h(isButton ? 'button' : CLink , mergeData(data, componentData), children)
