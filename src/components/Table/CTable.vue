@@ -36,23 +36,28 @@
           <tr>
             <th v-if="indexCol" style="width:40px"></th>
             <template v-for="(name, index) in columnNames">
-              <th @click="changeSort(rawColumnNames[index], index)"
-                  :class="headerClass(index)"
-                  :style="headerStyles(index)"
+              <th
+                @click="changeSort(rawColumnNames[index], index)"
+                :class="[headerClass(index), iconStyles]"
+                :style="headerStyles(index)"
               >
                 <slot v-if="$slots[`${rawColumnNames[index]}-header`]"
                       :name="`${rawColumnNames[index]}-header`"
                 >
                 </slot>
                 <div v-else v-html="name" class="d-inline"></div>
-                <slot v-if="!noSorting && sortable(index)" name="sorting-icon" :state="getIconState(index)">
-                  <i :class="iconClasses(index)"></i>
+                <slot
+                  v-if="!noSorting && sortable(index)"
+                  name="sorting-icon"
+                  :state="getIconState(index)"
+                >
+                  <i style="right:0px;" :class="iconClasses(index)"></i>
                 </slot>
               </th>
             </template>
           </tr>
           <tr v-if="filterRow" class="table-sm">
-            <th v-if="indexCol"class="pb-2 ">
+            <th v-if="indexCol" class="pb-2">
               <i v-if="indexCol !== 'onlyIndexes'" class="cui-ban icons text-danger font-lg text-center d-block" @click="clear" title="clear table"></i>
             </th>
             <template v-for="(colName, index) in rawColumnNames" >
@@ -125,20 +130,26 @@
             </td>
           </tr>
         </tbody>
-        <tfoot v-if="footClone && currentItems.length > 3">
+        <tfoot v-if="footer && currentItems.length > 3">
           <tr>
             <th v-if="indexCol" style="width:40px"></th>
             <template v-for="(name, index) in columnNames">
               <th @click="changeSort(rawColumnNames[index], index)"
-                  :class="headerClass(index)"
+                  :class="[headerClass(index), iconStyles]"
                   :style="headerStyles(index)"
               >
-              <slot :name="`${rawColumnNames[index]}-header`">
-                {{name}}
-              </slot>
-              <slot v-if="!noSorting && sortable(index)" name="sorting-icon" :state="getIconState(index)">
-                <i :class="iconClasses(index)"></i>
-              </slot>
+                <slot v-if="$slots[`${rawColumnNames[index]}-header`]"
+                      :name="`${rawColumnNames[index]}-header`"
+                >
+                </slot>
+                <div v-else v-html="name" class="d-inline"></div>
+                <slot
+                  v-if="!noSorting && sortable(index)"
+                  name="sorting-icon"
+                  :state="getIconState(index)"
+                >
+                  <i style="right:0px;" :class="iconClasses(index)"></i>
+                </slot>
               </th>
             </template>
           </tr>
@@ -193,7 +204,7 @@ export default {
     border: Boolean,
     outlined: Boolean,
     optionsRow: [Boolean, String],
-    footClone: Boolean,
+    footer: Boolean,
     defaultSorter: {
       type: Object,
       default: () => ({ name:'', direction:''})
@@ -307,6 +318,9 @@ export default {
       const size = this.small ? '1.4rem' : this.currentItems.length === 1 ? '2rem' : '3rem'
       return `width:${size};height:${size}`
     },
+    iconStyles () {
+      return !this.noSorting ? 'position-relative pr-4' : ''
+    }
     // loadingStyles () {
     //   return !this.loading ? '' :
     //     `opacity: .4; ${this.loading === 'noEvents' ? 'pointer-events:none' : ''}`
@@ -400,7 +414,7 @@ export default {
     },
     iconClasses (index) {
       const state = this.getIconState(index)
-      return [ 'icon-transition float-right icons font-xl cui-arrow-top',
+      return [ 'icon-transition float-right icons font-xl cui-arrow-top position-absolute',
         {
           'transparent': !state,
           'rotate-icon': state === 'desc'
