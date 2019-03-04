@@ -1,30 +1,23 @@
 import { mergeData } from 'vue-functional-data-merge'
 
-/**
- * The Link component is used in many other BV components.
- * As such, sharing its props makes supporting all its features easier.
- * However, some components need to modify the defaults for their own purpose.
- * Prefer sharing a fresh copy of the props to ensure mutations
- * do not affect other component references to the props.
- *
- * https://github.com/vuejs/vue-router/blob/dev/src/components/link.js
- * @return {{}}
- */
 export function propsFactory () {
   return {
-    href:String,
+    href: String,
+    text: String,
     rel: String,
     target: {
       type: String,
       default: '_self'
     },
+    disabled: Boolean,
     active: Boolean,
+
+    //these are router-link component props (default active class changed)
     activeClass: {
       type: String,
       default: 'active'
     },
     append: Boolean,
-    disabled: Boolean,
     event: {
       type: [String, Array],
       default: 'click'
@@ -45,41 +38,11 @@ export function propsFactory () {
 
 export const props = propsFactory()
 
-function computeTag (props, parent) {
-  return Boolean(parent.$router) && props.to && !props.disabled ? 'router-link' : 'a'
+function getComputedTag ({to, disabled}, parent) {
+  return Boolean(parent.$router) && to && !disabled ? 'router-link' : 'a'
 }
 
-/*eslint no-unused-vars: ["error", {"args": "none"}]*/
-function computeHref ({ disabled, href, to }, tag) {
-  // We've already checked the parent.$router in computeTag,
-  // so router-link means live router.
-  // When deferring to Vue Router's router-link,
-  // don't use the href attr at all.
-  // Must return undefined for router-link to populate href.
-  if (tag === 'router-link') return void 0
-  // If href explicitly provided
-  if (href) return href
-  // Reconstruct href when `to` used, but no router
-  if (to) {
-    // Fallback to `to` prop (if `to` is a string)
-    if (typeof to === 'string') return to
-    // Fallback to `to.path` prop (if `to` is an object)
-    if (typeof to === 'object' && typeof to.path === 'string') return to.path
-  }
-  // If nothing is provided use '#'
-  return '#'
-}
-
-function computeRel ({ target, rel }) {
-  if (target === '_blank' && rel === null) {
-    return 'noopener'
-  }
-  return rel || null
-}
-
-function clickHandlerFactory ({ disabled, tag, href, suppliedHandler, parent }) {
-  const isRouterLink = tag === 'router-link'
-
+function clickHandlerFactory ({ disabled, tag, href, suppliedHandler }) {
   return function onClick (e) {
     if (disabled && e instanceof Event) {
       // Stop event from bubbling up.
@@ -87,17 +50,12 @@ function clickHandlerFactory ({ disabled, tag, href, suppliedHandler, parent }) 
       // Kill the event loop attached to this specific EventTarget.
       e.stopImmediatePropagation()
     } else {
-      parent.$root.$emit('clicked::link', e)
-
-      if (isRouterLink && e.target.__vue__) {
-        e.target.__vue__.$emit('click', e)
-      }
       if (typeof suppliedHandler === 'function') {
         suppliedHandler(...arguments)
       }
     }
 
-    if ((!isRouterLink && href === '#') || disabled) {
+    if ((tag !== 'router-link' && href === '#') || disabled) {
       // Stop scroll-to-top behavior or navigation.
       e.preventDefault()
     }
@@ -109,29 +67,38 @@ export default {
   name: 'CLink',
   props,
   render (h, { props, data, parent, children }) {
-    const tag = computeTag(props, parent)
-    const rel = computeRel(props)
-    const href = computeHref(props, tag)
+    const tag = getComputedTag(props, parent)
+    const rel = props.target === '_blank' && !props.rel ? 'noopener' : props.rel
+    const href = props.href || '#'
+
     const eventType = tag === 'router-link' ? 'nativeOn' : 'on'
     const suppliedHandler = (data[eventType] || {}).click
-    const handlers = { click: clickHandlerFactory({ tag, href, disabled: props.disabled, suppliedHandler, parent }) }
+    const handlers = { click: clickHandlerFactory(
+      { tag, href, disabled: props.disabled, suppliedHandler }
+    )}
+
+    const tabindex = data.attrs ? data.attrs.tabindex : null
+
+    const domProps = props.text ? { innerHTML: props.text } : null
+
     const componentData = mergeData(data, {
-      class: [
-        props.active ? (props.exact ? props.exactActiveClass : props.activeClass) : null,
-        { disabled: props.disabled }
-      ],
+      class: {
+        disabled: props.disabled,
+        'active': props.active
+      },
       attrs: {
         rel,
         href,
         target: props.target,
-        tabindex: props.disabled ? '-1' : (data.attrs ? data.attrs.tabindex : null),
-        'aria-disabled': (tag === 'a' && props.disabled) ? 'true' : null
+        tabindex: props.disabled ? '-1' : tabindex,
+        'aria-disabled': tag === 'a' && props.disabled ? 'true' : null
       },
+      domProps,
       props: Object.assign(props, { tag: props.routerTag })
     })
 
     // If href prop exists on router-link (even undefined or null) it fails working on SSR
-    if (!componentData.attrs.href) {
+    if (tag === 'router-link') {
       delete componentData.attrs.href
     }
 
