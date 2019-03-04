@@ -1,8 +1,11 @@
+<template>
+  <div :class="{ 'navbar-collapse': this.navbar }">
+    <slot></slot>
+  </div>
+</template>
+
+<script>
 const props = {
-  tag: {
-    type: String,
-    default: 'div'
-  },
   duration: {
     type: Number,
     default: 400
@@ -12,7 +15,8 @@ const props = {
     default: 'ease-in-out'
   },
   show: Boolean,
-  navbar: Boolean
+  navbar: Boolean,
+  toggler: String
 }
 
 export default {
@@ -22,18 +26,38 @@ export default {
     return {
       collapsing: false,
       heightWatcher: null,
+      visible: this.show,
+      el: null
     }
   },
   watch: {
-    show (val) {
-      this.collapse(val)
+    show (val, oldVal) {
+      if(val === oldVal) return
+      this.visible = val
     },
+    visible (val, oldVal) {
+      if (val !== oldVal)
+        this.collapseController(val)
+    }
   },
   mounted () {
-    this.$el.style.display = this.show ?  '' : 'none'
+    this.$el.style.display = this.visible ?  '' : 'none'
+    this.$nextTick(() => {
+      this.el = document.getElementById(this.toggler)
+      if(this.el)
+        this.el.addEventListener('click', this.collapse)
+    })
+  },
+  beforeDestroy () {
+    if(this.el)
+      this.el.removeEventListener('click', this.collapse)
   },
   methods: {
-    collapse (val) {
+    collapse () {
+      this.visible = !this.visible
+    },
+    collapseController (val) {
+      this.visible = val
       if (this.collapsing) {
         this.turn()
         const height = Number(this.collapsing.slice(0,-2))
@@ -46,7 +70,7 @@ export default {
       }
     },
     turn () {
-      if(this.show)
+      if(this.visible)
         this.$el.style.height = this.collapsing
       else
         this.$el.style.height = 0
@@ -65,21 +89,13 @@ export default {
       const self = this
       this.heightWatcher = setTimeout(() => {
         self.collapsing = false
-        self.$el.style.display = self.show ? '' : 'none'
+        self.$el.style.display = self.visible ? '' : 'none'
         self.$el.style.height = ''
         self.$el.style.overflow = ''
         self.$el.style.transition = ''
-        this.$emit('finish', self.show)
+        this.$emit('finish', self.visible)
       }, duration)
     }
-  },
-  render (h) {
-    return h(
-      this.tag,
-      {
-        class: { 'navbar-collapse': this.navbar }
-      },
-      [ this.$slots.default ]
-    )
   }
 }
+</script>
