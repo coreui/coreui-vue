@@ -3,9 +3,8 @@ export default {
   name: 'c-tooltip',
   inserted (el, binding) {
     binding.def._tooltip = new Tooltip(el, binding.def.getTooltipConfig(binding))
-    if (binding.modifiers.active) {
+    if (binding.value.active)
       binding.def._tooltip.show()
-    }
   },
   unbind (el, binding) {
     let tooltip = binding.def._tooltip
@@ -16,20 +15,22 @@ export default {
   },
   getTooltipConfig (binding) {
     const props = binding.value
-    const title = typeof binding.value === 'string' ?
-                  binding.value : binding.value.content
+    const title = props.content || props
+    const modifiersTriggers = String(Object.keys(binding.modifiers)).replace(',',' ')
+    const closeOnClickOutside = props.closeOnClickOutside === false ? false : true
     return {
       title,
-      trigger: String(Object.keys(binding.modifiers)).replace(',',' '),
+      trigger: modifiersTriggers || props.trigger || 'hover',
       html: true,
       placement: props.placement || 'top',
       delay: props.delay || 0,
       offset: props.offset || 0,
       arrowSelector: '.arrow',
-      innerSelector: '.tooltip-inner',//passed by extension
-      template: binding.def.getTemplate(),//passed by extension
+      innerSelector: '.tooltip-inner',
+      template: binding.def.getTemplate(),
       boundariesElement: document.getElementById(props.boundaries) || props.boundaries,
       container: props.appendToBody ? document.body : false,
+      closeOnClickOutside,
       popperOptions: props.popperOptions
     }
   },

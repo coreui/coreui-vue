@@ -1,21 +1,14 @@
 import Tooltip from 'tooltip.js'
+
 export default {
   name: 'c-popover',
-  inserted (el, binding) {
-    binding.def._tooltip = new Tooltip(el, binding.def.getTooltipConfig(binding))
-
-    if (binding.modifiers.active) {
-      binding.def._tooltip.show()
-    }
-    // console.log(binding)
+  tooltip: null,
+  inserted (el, binding, vnode) {
+    const tooltip = new Tooltip(el, binding.def.getTooltipConfig(binding))
+    binding.def._tooltip = tooltip
+    if (binding.value.active)
+      tooltip.show()
   },
-  // update (el, binding) {
-  //   console.log(binding.value.counter)
-  //   console.log(binding.def)
-  // },
-  // componentUpdated () {
-  //   console.log('componentUpdated')
-  // },
   unbind (el, binding) {
     let tooltip = binding.def._tooltip
     if (tooltip) {
@@ -25,11 +18,14 @@ export default {
   },
   getTooltipConfig (binding) {
     const props = binding.value
+    const title = props.content || 'content'
+    const modifiersTriggers = String(Object.keys(binding.modifiers)).replace(',',' ')
+    const closeOnClickOutside = props.closeOnClickOutside === false ? false : true
+    const html = props.html === false ? false : true
     return {
-      title: props.content,
-      trigger: String(Object.keys(binding.modifiers)).replace(',',' '),
-      // trigger: 'hover,focus',
-      html: true,
+      title,
+      trigger: modifiersTriggers || props.trigger || 'hover',
+      html,
       placement: props.placement || 'right',
       delay: props.delay || 0,
       offset: props.offset || 0,
@@ -38,6 +34,7 @@ export default {
       template: binding.def.getTemplate(props.header),//passed by extension
       boundariesElement: document.getElementById(props.boundaries) || props.boundaries,
       container: props.appendToBody ? document.body : false,
+      closeOnClickOutside,
       popperOptions: props.popperOptions
     }
   },
