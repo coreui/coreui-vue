@@ -1,7 +1,7 @@
 {
   "name": "@coreui/vue",
   "description": "CoreUI Vue Bootstrap 4 layout components",
-  "version": "3.0.0-bridge-alpha",
+  "version": "3.0.0-bridge-alpha.1",
   "license": "MIT",
   "main": "dist/coreui-vue.common.js",
   "module": "dist/coreui-vue.esm.js",
