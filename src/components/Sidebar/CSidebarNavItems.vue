@@ -44,10 +44,7 @@
                     v-for="(childL2, index2) in childL1.children"
                   >
                     <CSidebarNavLink
-                      :name="childL2.name"
-                      :url="childL2.url"
-                      :icon="childL2.icon"
-                      :badge="childL2.badge"
+                      v-bind="childL2"
                       :variant="item.variant"
                     />
                   </li>
@@ -56,10 +53,7 @@
               <template v-else>
                 <CSidebarNavItem :key="index1" :classes="item.class">
                   <CSidebarNavLink
-                    :name="childL1.name"
-                    :url="childL1.url"
-                    :icon="childL1.icon"
-                    :badge="childL1.badge"
+                    v-bind="childL1"
                     :variant="item.variant"
                   />
                 </CSidebarNavItem>
@@ -69,13 +63,7 @@
         </template>
         <template v-else>
           <CSidebarNavItem :key="index" :classes="item.class">
-            <CSidebarNavLink
-              :name="item.name"
-              :url="item.url"
-              :icon="item.icon"
-              :badge="item.badge"
-              :variant="item.variant"
-            />
+            <CSidebarNavLink v-bind="item"/>
           </CSidebarNavItem>
         </template>
       </template>

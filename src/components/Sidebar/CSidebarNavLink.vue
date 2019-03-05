@@ -1,74 +1,44 @@
 <template>
-  <div v-if="isExternalLink">
-    <a :href="url" :class="classList">
-      <i :class="classIcon"></i> {{name}}
-      <c-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</c-badge>
-    </a>
-  </div>
-  <div v-else>
-    <router-link :to="url" :class="classList">
-      <i :class="classIcon"></i> {{name}}
-      <c-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</c-badge>
-    </router-link>
-  </div>
+  <CLink
+    v-bind="computedProps"
+    :exact="true"
+    class="nav-link"
+  >
+    <i :class="['nav-icon', icon]"></i> {{name}}
+    <CBadge
+      v-if="badge && badge.text"
+      :variant="badge.variant"
+    >
+      {{badge.text}}
+    </CBadge>
+  </CLink>
 </template>
 
-
 <script>
-export default {
-  name: 'CSidebarNavLink',
-  props: {
-    name: {
-      type: String,
-      default: ''
-    },
-    url: {
-      type: String,
-      default: ''
-    },
-    icon: {
-      type: String,
-      default: ''
-    },
+import CLink, { propsFactory as linkPropsFactory} from '../Link/CLink'
+
+const props = Object.assign(linkPropsFactory(), {
+    name: String,
+    icon: [String, Array, Object],
     badge: {
       type: Object,
       default: () => {}
     },
-    variant: {
-      type: String,
-      default: ''
-    },
-    classes: {
-      type: String,
-      default: ''
-    }
-  },
+    variant: String,
+    url: String
+  }
+)
+export default {
+  name: 'CSidebarNavLink',
+  props,
   computed: {
-    classList () {
-      return [
-        'nav-link',
-        this.linkVariant,
-        ...this.itemClasses
-      ]
+    linkGeneratedFromUrlProp () {
+      if (!this.url) return {}
+      return this.url && this.url.substring(0,4) === 'http' ?
+             { href: this.url } : { to: this.url }
     },
-    classIcon () {
-      return [
-        'nav-icon',
-        this.icon
-      ]
-    },
-    linkVariant () {
-      return this.variant ? `nav-link-${this.variant}` : ''
-    },
-    itemClasses () {
-      return this.classes ? this.classes.split(' ') : []
-    },
-    isExternalLink () {
-      if (this.url.substring(0, 4) === 'http') {
-        return true
-      } else {
-        return false
-      }
+    computedProps () {
+      return Object.assign({}, this.$props, this.linkGeneratedFromUrlProp)
     }
   }
 }
