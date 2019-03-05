@@ -1,17 +1,16 @@
 import { mergeData } from 'vue-functional-data-merge'
-import { assign } from '../../utils/object'
 import sharedCardProps from './sharedCardProps'
 import CCardHeader from './CCardHeader'
 import CCardBody from './CCardBody'
 import CCardFooter from './CCardFooter'
 
-const props = assign(
+const props = Object.assign(
   sharedCardProps.props,
   {
     header: String,
     body: String,
     footer: String,
-    noWrapper: Boolean
+    bodyWrapper: Boolean
   }
 )
 export default {
@@ -19,18 +18,21 @@ export default {
   name: 'CCard',
   props,
   render (h, { props, data, slots }) {
-    const $slots = slots()
+    let header = h(false)
+    let body = slots().default
+    let footer = h(false)
 
-    if (!$slots.header && props.header)
-      $slots.header = h(CCardHeader, { domProps: { innerHTML: props.header }})
+    if (props.header)
+      header = h(CCardHeader, { domProps: { innerHTML: props.header }})
 
-    if (!$slots.body && $slots.default)
-      $slots.body = props.noWrapper ? $slots.default : h(CCardBody, $slots.default)
-    else if (!$slots.body &&  !$slots.default && props.body)
-      $slots.body = h(CCardBody, { domProps: { innerHTML: props.body }})
+    if (body === undefined && props.body)
+      body = h(CCardBody, { domProps: { innerHTML: props.body }})
+    else if (props.bodyWrapper)
+      body = h(CCardBody, body)
 
-    if (!$slots.footer && props.footer)
-      $slots.footer = h(CCardFooter, { domProps: { innerHTML: props.footer }})
+
+    if (props.footer)
+      footer = h(CCardFooter, { domProps: { innerHTML: props.footer }})
 
     return h(
       props.tag || 'div',
@@ -43,7 +45,7 @@ export default {
           [`text-${props.textVariant}`]: Boolean(props.textVariant)
         }
       }),
-      [ $slots.header, $slots.body, $slots.footer ]
+      [ header, body, footer ]
     )
   }
 }
