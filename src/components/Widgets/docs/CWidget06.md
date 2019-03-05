@@ -12,16 +12,18 @@ text   | `'text:string'`
 <CWidget06 variant="info"
            header="9.823"
            text="Members online">
-  <b-dropdown slot="dropdown"
-              class="float-right"
-              variant="transparent p-0"
-              right>
-    <i slot="button-content"
-       class="icon-settings"
-    ></i>
-    <b-dropdown-item>Action</b-dropdown-item>
-  </b-dropdown>
+  <template #dropdown>
+    <CDropdown
+      class="float-right"
+      variant="transparent p-0"
+      right
+    >
+      <template #buttonContent>
+        <i class="icon-settings"></i>
+      </template>
+      <CDropdownItem>Action</CDropdownItem>
+    </CDropdown>
+  </template>
   <CSimpleBarChart label="Members"/>
-
 </CWidget06>
 ```

@@ -3,14 +3,14 @@
                        tooltipFeedback, description,
                        wrapperClasses, class: computedClasses}"
   >
-    <template slot="label">
+    <template #label>
       <slot name="label">
         <label v-if="label" :for="safeId" :class="labelClasses">{{label}}</label>
       </slot>
     </template>
 
 
-    <template slot="input">
+    <template #input>
       <input v-bind="$attrs"
              :id="safeId"
              :class="inputClasses"
@@ -26,7 +26,7 @@
 
     <template v-for="slot in ['labelAfterInput','validFeedback',
                               'invalidFeedback','description']"
-              :slot="slot"
+              #[slot]
     >
       <slot :name="slot"></slot>
     </template>

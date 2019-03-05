@@ -1,26 +1,30 @@
 <template>
   <CFormGroup v-bind="{validFeedback, invalidFeedback, tooltipFeedback,
                        description, class: computedClasses}">
-    <input slot="input"
-           v-bind="$attrs"
-           :id="safeId"
-           :type="type"
-           :class="inputClasses"
-           :value="value"
-           :checked="state"
-           @change="onChange($event)"
-    />
+    <template #input>
+      <input
+        v-bind="$attrs"
+        :id="safeId"
+        :type="type"
+        :class="inputClasses"
+        :value="value"
+        :checked="state"
+        @change="onChange($event)"
+      />
+    </template>
 
 
-    <template slot="labelAfterInput">
+    <template #labelAfterInput>
       <slot name="labelAfterInput">
-        <label v-if="label" :for="safeId" :class="labelClasses">{{label}}</label>
+        <label v-if="label" :for="safeId" :class="labelClasses">
+          {{label}}
+        </label>
       </slot>
     </template>
 
 
     <template v-for="slot in ['label', 'prepend', 'append', 'validFeedback', 'invalidFeedback','description']"
-              :slot="slot"
+              #[slot]
     >
       <slot :name="slot">
       </slot>

@@ -33,8 +33,8 @@ You can also customize icon by utilizing slot named "icon"
            rightFooter="time"
            leftHeader="17"
            leftFooter="percentage">
-  <i slot="icon"
-     class="fa fa-battery-1"
-  ></i>
+  <template #icon>
+    <i class="fa fa-battery-1"></i>
+  </template>
 </CWidget04>
 ```

@@ -1,6 +1,6 @@
 <template>
   <b-nav-item-dropdown :right="right" :no-caret="noCaret">
-    <template slot="button-content">
+    <template #buttonContent>
       <slot name="header">
         &#10068;
       </slot>

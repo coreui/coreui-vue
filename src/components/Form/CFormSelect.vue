@@ -3,43 +3,44 @@
                        invalidFeedback, tooltipFeedback, description,
                        wrapperClasses, class: computedClasses}"
   >
-    <template slot="label">
+    <template #label>
       <slot name="label">
         <label v-if="label" :for="safeId" :class="labelClasses">{{label}}</label>
       </slot>
     </template>
 
-
-    <select slot="input"
-            v-bind="$attrs"
-            :id="safeId"
-            :class="inputClasses"
-            :value="String(state)"
-            @input="onSelect($event)"
-    >
-      <option v-if="placeholder" value="" selected disabled hidden>{{placeholder}}</option>
-      <template v-for="(option, key) in options">
-        <option v-if="typeof option === 'object'"
-                :value="String(option.value)"
-                :disabled="option.disabled"
-                :data-key="key"
-                :key="key"
-        >
-          {{option.text || option.value}}
-        </option>
-        <option v-else
-                :value="String(option)"
-                :data-key="key"
-                :key="key"
-        >
-          {{option}}
-        </option>
-      </template>
-    </select>
+    <template #input>
+      <select
+        v-bind="$attrs"
+        :id="safeId"
+        :class="inputClasses"
+        :value="String(state)"
+        @input="onSelect($event)"
+      >
+        <option v-if="placeholder" value="" selected disabled hidden>{{placeholder}}</option>
+        <template v-for="(option, key) in options">
+          <option v-if="typeof option === 'object'"
+                  :value="String(option.value)"
+                  :disabled="option.disabled"
+                  :data-key="key"
+                  :key="key"
+          >
+            {{option.text || option.value}}
+          </option>
+          <option v-else
+                  :value="String(option)"
+                  :data-key="key"
+                  :key="key"
+          >
+            {{option}}
+          </option>
+        </template>
+      </select>
+    </template>
 
 
     <template v-for="slot in ['prepend', 'append', 'labelAfterInput', 'validFeedback', 'invalidFeedback', 'description']"
-              :slot="slot"
+              #[slot]
     >
       <slot :name="slot">
       </slot>

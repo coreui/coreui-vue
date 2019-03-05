@@ -3,25 +3,28 @@
                        invalidFeedback, tooltipFeedback, description,
                        wrapperClasses, class: computedClasses}"
   >
-    <template slot="label">
+    <template #label>
       <slot name="label">
         <label v-if="label" :for="safeId" :class="labelClasses" v-html="label"></label>
       </slot>
     </template>
-    <input slot="input"
-           v-bind="$attrs"
-           :id="safeId"
-           :type="type"
-           :class="inputClasses"
-           :readonly="readonly || plaintext"
-           :value="state"
-           @input="onInput($event)"
-           @change="onChange($event)"
-    />
+    <template #input>
+      <input
+        v-bind="$attrs"
+        :id="safeId"
+        :type="type"
+        :class="inputClasses"
+        :readonly="readonly || plaintext"
+        :value="state"
+        @input="onInput($event)"
+        @change="onChange($event)"
+      />
+    </template>
+
 
     <template v-for="slot in ['prepend', 'append', 'labelAfterInput',
                               'validFeedback', 'invalidFeedback','description']"
-              :slot="slot"
+              #[slot]
     >
       <slot :name="slot">
       </slot>
