@@ -1,6 +1,9 @@
 import { mount } from '@vue/test-utils'
 import Component from '../CWidget05'
-//TODO: render child component
+import CProgress from '../../Progress/CProgress'
+import Vue from 'vue'
+
+Vue.component('CProgress', CProgress)
 
 const ComponentName = 'CWidget05'
 const defaultWrapper = mount(Component)

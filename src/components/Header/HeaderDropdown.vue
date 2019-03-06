@@ -1,5 +1,5 @@
 <template>
-  <b-nav-item-dropdown :right="right" :no-caret="noCaret">
+  <CDropdown :placement="right ? 'bottom-end' : null" :noCaret="noCaret">
     <template #buttonContent>
       <slot name="header">
         &#10068;
@@ -10,20 +10,14 @@
         <span class="text-center">dropdown</span>
       </div>
     </slot>
-  </b-nav-item-dropdown>
+  </CDropdown>
 </template>
 <script>
 export default {
   name: 'HeaderDropdown',
   props: {
-    right: {
-      type: Boolean,
-      default: false
-    },
-    noCaret: {
-      type: Boolean,
-      default: false
-    }
+    right: Boolean,
+    noCaret: Boolean
   },
   mounted () {
     console.error(this.$options._componentTag + ' component is deprecated and will be replaced in coreui-vue 3.0 version, please import C - prefixed version')

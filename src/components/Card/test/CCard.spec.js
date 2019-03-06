@@ -28,9 +28,7 @@ const slotWrapper = mount(Component, {
     }
   },
   slots: {
-    header: 'this should overwrite header<br>',
-    default: 'this should overwrite body<br>',
-    footer: 'this should overwrite footer'
+    default: 'this should overwrite body<br>'
   }
 })
 

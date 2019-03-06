@@ -1,10 +1,13 @@
 import { shallowMount, mount } from '@vue/test-utils'
 import Component from "../HeaderDropdown";
+import CDropdown from "../../Dropdown/CDropdown"
+import Vue from 'vue'
+
+Vue.component('CDropdown', CDropdown)
 
 const ComponentName = 'HeaderDropdown'
 const wrapper = mount(Component)
 // /* eslint-disable no-console */
-// console.log("something")
 
 describe(`${ComponentName} .vue`, () => {
   it('has a name', () => {

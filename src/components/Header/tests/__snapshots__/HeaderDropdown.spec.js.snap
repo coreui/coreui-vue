@@ -1,41 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HeaderDropdown .vue renders correctly 1`] = `
-<b-nav-item-dropdown>
-  <template>
+<div
+  class="dropdown btn-group"
+>
+  <button
+    aria-haspopup="true"
+    class="btn btn-secondary dropdown-toggle"
+    style="cursor: pointer;"
+  >
     
       ❔
     
-  </template>
-   
+  </button>
+  <!---->
   <div
-    style="height: 200px;"
+    class="dropdown-menu"
   >
-    <span
-      class="text-center"
+     
+    <div
+      style="height: 200px;"
     >
-      dropdown
-    </span>
+      <span
+        class="text-center"
+      >
+        dropdown
+      </span>
+    </div>
   </div>
-</b-nav-item-dropdown>
-`;
-
-exports[`HeaderDropdown.vue renders correctly 1`] = `
-<b-nav-item-dropdown>
-  <template>
-    
-      ❔
-    
-  </template>
-   
-  <div
-    style="height: 200px;"
-  >
-    <span
-      class="text-center"
-    >
-      dropdown
-    </span>
-  </div>
-</b-nav-item-dropdown>
+</div>
 `;

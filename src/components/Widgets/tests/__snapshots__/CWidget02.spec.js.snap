@@ -27,9 +27,10 @@ exports[`CWidget02 matches custom props snapshot 1`] = `
   <div
     class="card-footer px-3 py-2"
   >
-    <clink
+    <a
       class="font-weight-bold font-xs btn-block text-muted"
       href="link.com"
+      target="_self"
     >
       
         View More
@@ -37,7 +38,7 @@ exports[`CWidget02 matches custom props snapshot 1`] = `
       <i
         class="fa fa-angle-right float-right font-lg"
       />
-    </clink>
+    </a>
   </div>
 </div>
 `;

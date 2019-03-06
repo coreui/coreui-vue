@@ -3,6 +3,7 @@
 exports[`CProgress renders correctly 1`] = `
 <div
   class="progress"
+  color="black"
 >
   <div
     aria-valuemax="100"
@@ -10,7 +11,7 @@ exports[`CProgress renders correctly 1`] = `
     aria-valuenow="0"
     class="progress-bar"
     role="progressbar"
-    style="width: 0%; background-color: black;"
+    style="width: 0%;"
   >
     <!---->
   </div>

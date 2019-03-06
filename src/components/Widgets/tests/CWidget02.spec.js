@@ -1,6 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
 import Component from '../CWidget02'
-//TODO: render child component
+import CLink from '../../Link/CLink'
+import Vue from 'vue'
+
+Vue.component('CLink', CLink)
 
 const ComponentName = 'CWidget02'
 const defaultWrapper = shallowMount(Component)

@@ -32,9 +32,7 @@ exports[`CBreadcrumb renders correctly 1`] = `
     class="breadcrumb-item active"
     role="presentation"
   >
-    <span
-      class="active"
-    >
+    <span>
       Library
     </span>
   </li>

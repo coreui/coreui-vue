@@ -19,14 +19,16 @@ exports[`CAlert renders correctly 2`] = `
   class="alert alert-success alert-dismissible"
   role="alert"
 >
-  <cbuttonclose
+  <button
     aria-label="close it"
+    class="close"
     style="color: red;"
+    type="button"
   >
     
                     ok
                 
-  </cbuttonclose>
+  </button>
   Dismissible Alert!
 </div>
 `;

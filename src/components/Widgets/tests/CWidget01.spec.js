@@ -1,6 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
 import Component from '../CWidget01'
-//TODO: render child component
+import CProgress from '../../Progress/CProgress'
+import Vue from 'vue'
+
+Vue.component('CProgress', CProgress)
 
 const ComponentName = 'CWidget01'
 const defaultWrapper = shallowMount(Component)
