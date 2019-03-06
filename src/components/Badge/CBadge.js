@@ -11,6 +11,7 @@ const props = Object.assign(linkProps, {
     default: 'secondary'
   },
   pill: Boolean,
+  textHtml: String
 })
 
 export default {
@@ -19,6 +20,7 @@ export default {
   props,
   render (h, { props, data, children }) {
     const tag = !props.href && !props.to ? props.tag : CLink
+    const domProps = props.textHtml ? { innerHTML: props.textHtml } : null
     const componentData = {
       staticClass: 'badge',
       class: [
@@ -29,6 +31,7 @@ export default {
           disabled: props.disabled
         }
       ],
+      domProps,
       props
     }
     return h(tag, mergeData(data, componentData), children)
