@@ -44,6 +44,9 @@ import ModuleLibrary from '@coreui/vue';
 // Install this library
 Vue.use(ModuleLibrary);
 ```
+## Credits
+
+A lot of components were build based on Bootstrap-Vue library (https://bootstrap-vue.js.org/)
 
 ## Changelog
 
