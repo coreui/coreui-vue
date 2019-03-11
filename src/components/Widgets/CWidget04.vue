@@ -1,9 +1,10 @@
 <template functional>
   <div class="brand-card">
     <div :class="`brand-card-header bg-${props.variant}`">
-      <slot name="icon">
-        <i :class="`fa fa-${props.variant}`"></i>
-      </slot>
+      <i
+        v-if="!props.noIcon"
+        :class="props.iconClasses || `fa fa-${props.variant}`"
+      ></i>
       <slot></slot>
     </div>
     <div class="brand-card-body">
@@ -42,7 +43,9 @@ export default {
     leftFooter: {
       type: String,
       default: 'leftFooter:string'
-    }
+    },
+    iconClasses: String,
+    noIcon: Boolean
   }
 }
 </script>
