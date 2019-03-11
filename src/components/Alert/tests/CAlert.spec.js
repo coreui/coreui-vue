@@ -8,7 +8,8 @@ Vue.component('CButtonClose', CButtonClose)
 const ComponentName = 'CAlert'
 const defaultWrapper = mount(Component, {
   propsData: {
-    show: true
+    show: true,
+    dismissible: true
   },
   slots: {
     default: 'Dismissible Alert!'
@@ -24,14 +25,6 @@ const customWrapper = mount(Component, {
   },
   slots: {
     default: 'Dismissible Alert!'
-  },
-  scopedSlots: {
-    default:`   <CButtonClose slot-scope="{ dismiss }"
-                    @click="dismiss"
-                    aria-label="close it"
-                    style="color:red">
-                    ok
-                </CButtonClose>`
   }
 })
 

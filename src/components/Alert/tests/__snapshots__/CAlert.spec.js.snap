@@ -4,10 +4,16 @@ exports[`CAlert renders correctly 1`] = `
 <div
   aria-atomic="true"
   aria-live="polite"
-  class="alert alert-info"
+  class="alert alert-dismissible alert-info"
   role="alert"
 >
-  <!---->
+  <button
+    aria-label="Close"
+    class="close"
+    type="button"
+  >
+    ×
+  </button>
   Dismissible Alert!
 </div>
 `;
@@ -16,18 +22,15 @@ exports[`CAlert renders correctly 2`] = `
 <div
   aria-atomic="true"
   aria-live="polite"
-  class="alert alert-success alert-dismissible"
+  class="alert alert-dismissible alert-success"
   role="alert"
 >
   <button
-    aria-label="close it"
+    aria-label="Close"
     class="close"
-    style="color: red;"
     type="button"
   >
-    
-                    ok
-                
+    ×
   </button>
   Dismissible Alert!
 </div>
