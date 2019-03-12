@@ -6,16 +6,20 @@ export default {
     iconHtml: {
       type: String,
       default: '&times;'
+    },
+    buttonClasses: {
+      type: String,
+      default: 'close'
     }
   },
   render (h, { data, props, slots }) {
     return h(
       'button',
       mergeData(data,  {
-        staticClass: 'close',
+        class: props.buttonClasses,
         attrs: {
-          type: props.type || 'button',
-          'aria-label': props.ariaLabel || 'Close'
+          type: 'button',
+          'aria-label': 'Close'
         },
         domProps: !slots().default ? { innerHTML: props.iconHtml } : null
       }),

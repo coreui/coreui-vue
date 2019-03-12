@@ -1,4 +1,4 @@
-### Badge (CBadge)
+### Badge (CBadge) [Functional]
 
 Simple functional Badge component
 

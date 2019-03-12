@@ -1,16 +1,23 @@
 ### Button close (CButtonClose) [Functional]
 
-This component behaviour is the same as html button element so you can add standard html attributes freely. By default component will output:
+Simple closing button component.
+
+prop | default | valid values
+--- | --- | ---
+iconHtml  | `'&times;'` | String
+buttonClasses  | `'close'` | String
+
+You can add standard html attributes freely, as you would do in normal button element,
+they will overwrite default behaviour. By default component will output:
 
 ```html
-<button aria-label="Close"
-        class="close"
-        type="button"
+<button
+  aria-label="Close"
+  class="close"
+  type="button"
 >
   &times;
 </button>
 ```
 
-By passing class or style attribute you are adding styles to 'close' class. By adding html attributes you overwrite them.
-
-Default slot content will overwrite "&times;" icon.
+If component have default slot, it will overwrite iconHtml prop.
