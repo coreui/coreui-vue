@@ -22,16 +22,16 @@ export default {
     let body = slots().default
     let footer = h(false)
 
-    if (props.header)
+    if (props.headerHtml)
       header = h(CCardHeader, { domProps: { innerHTML: props.headerHtml }})
 
-    if (body === undefined && props.body)
+    if (body === undefined && props.bodyHtml)
       body = h(CCardBody, { domProps: { innerHTML: props.bodyHtml }})
     else if (props.bodyWrapper)
       body = h(CCardBody, body)
 
 
-    if (props.footer)
+    if (props.footerHtml)
       footer = h(CCardFooter, { domProps: { innerHTML: props.footerHtml }})
 
     return h(

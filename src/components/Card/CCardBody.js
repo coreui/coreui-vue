@@ -15,7 +15,7 @@ export const props = assign(
       type: String,
       default: 'h6'
     },
-    body: String,
+    bodyHtml: String,
     overlay: Boolean,
   }
 )
@@ -27,7 +27,7 @@ export default {
   render (h, { props, data, children }) {
     let cardTitle = h(false)
     let cardSubtitle = h(false)
-    let cardContent = children || props.body || [ h(false) ]
+    let cardContent = children
 
     if (props.title) {
       cardTitle = h(props.titleTag, {
@@ -43,6 +43,13 @@ export default {
       })
     }
 
+    if (props.bodyHtml && cardContent === undefined) {
+      cardContent = h(
+        'div',
+        { domProps: { innerHTML: props.bodyHtml}}
+      )
+    }
+
     return h(
       props.tag || 'div',
       mergeData(data, {
@@ -56,7 +63,7 @@ export default {
           }
         ]
       }),
-      [ cardTitle, cardSubtitle, ...cardContent ]
+      [ cardTitle, cardSubtitle, cardContent ]
     )
   }
 }
