@@ -5,12 +5,12 @@ import sharedCardProps from './sharedCardProps'
 export const props = assign(
   sharedCardProps.props,
   {
-    title: String,
+    titleHtml: String,
     titleTag: {
       type: String,
       default: 'h4'
     },
-    subtitle: String,
+    subtitleHtml: String,
     subtitleTag: {
       type: String,
       default: 'h6'
@@ -32,14 +32,14 @@ export default {
     if (props.title) {
       cardTitle = h(props.titleTag, {
         staticClass: 'card-title',
-        domProps: { innerHTML: props.title }
+        domProps: { innerHTML: props.titleHtml }
       })
     }
 
     if (props.subtitle) {
       cardSubtitle = h(props.subtitleTag, {
         staticClass: 'card-subtitle mb-2 text-muted',
-        domProps: { innerHTML: props.subtitle }
+        domProps: { innerHTML: props.subtitleHtml }
       })
     }
 

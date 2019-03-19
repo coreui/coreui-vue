@@ -5,7 +5,7 @@ import sharedCardProps from './sharedCardProps'
 export const props = assign(
   sharedCardProps.props,
   {
-    header: String
+    headerHtml: String
   }
 )
 
@@ -27,7 +27,7 @@ export default {
           }
         ]
       }),
-      children || [h('div', { domProps: { innerHTML: props.header } })]
+      children || [h('div', { domProps: { innerHTML: props.headerHtml } })]
     )
   }
 }

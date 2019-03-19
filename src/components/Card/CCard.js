@@ -7,9 +7,9 @@ import CCardFooter from './CCardFooter'
 const props = Object.assign(
   sharedCardProps.props,
   {
-    header: String,
-    body: String,
-    footer: String,
+    headerHtml: String,
+    bodyHtml: String,
+    footerHtml: String,
     bodyWrapper: Boolean
   }
 )
@@ -23,16 +23,16 @@ export default {
     let footer = h(false)
 
     if (props.header)
-      header = h(CCardHeader, { domProps: { innerHTML: props.header }})
+      header = h(CCardHeader, { domProps: { innerHTML: props.headerHtml }})
 
     if (body === undefined && props.body)
-      body = h(CCardBody, { domProps: { innerHTML: props.body }})
+      body = h(CCardBody, { domProps: { innerHTML: props.bodyHtml }})
     else if (props.bodyWrapper)
       body = h(CCardBody, body)
 
 
     if (props.footer)
-      footer = h(CCardFooter, { domProps: { innerHTML: props.footer }})
+      footer = h(CCardFooter, { domProps: { innerHTML: props.footerHtml }})
 
     return h(
       props.tag || 'div',

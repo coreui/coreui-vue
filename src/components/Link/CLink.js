@@ -3,7 +3,7 @@ import { mergeData } from 'vue-functional-data-merge'
 export function propsFactory () {
   return {
     href: String,
-    text: String,
+    textHtml: String,
     rel: String,
     target: {
       type: String,
@@ -79,7 +79,7 @@ export default {
 
     const tabindex = data.attrs ? data.attrs.tabindex : null
 
-    const domProps = props.text ? { innerHTML: props.text } : null
+    const domProps = props.textHtml ? { innerHTML: props.textHtml } : null
 
     const componentData = mergeData(data, {
       class: {

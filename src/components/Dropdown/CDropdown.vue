@@ -17,7 +17,7 @@ export default {
       this.createPopper
   },
   props: {
-    buttonContent: {
+    buttonHtml: {
       type: String,
       default: 'Dropdown'
     },
@@ -141,7 +141,7 @@ export default {
         ref: 'toggle',
         class: this.computedButtonClasses,
         domProps: !this.$slots.buttonContent ?
-                  { innerHTML: this.buttonContent } :
+                  { innerHTML: this.buttonHtml } :
                   null
       }, this.$slots.buttonContent)
     let splitButton = h(false)
@@ -149,7 +149,10 @@ export default {
       splitButton = h(
       this.buttonTag,
       {
-        class: [ this.computedButtonClasses, 'dropdown-toggle dropdown-toggle-split'],
+        class: [ 
+          this.computedButtonClasses,
+          'dropdown-toggle dropdown-toggle-split'
+        ],
         on: { click: this.click }
       })
     }

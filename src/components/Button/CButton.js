@@ -24,7 +24,7 @@ const btnProps = {
     type: Boolean,
     default: null
   },
-  text: String
+  textHtml: String
 }
 export const props = assign(linkPropsFactory(), btnProps)
 
@@ -84,7 +84,7 @@ export default {
         }
       }
     }
-    const domProps = children ? '' : { innerHTML: props.text }
+    const domProps = children ? '' : { innerHTML: props.textHtml }
     const componentData = {
       staticClass: 'btn',
       class: computeClasses(props),

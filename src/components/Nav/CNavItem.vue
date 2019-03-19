@@ -11,7 +11,7 @@ import CLink, { propsFactory as linkPropsFactory } from '../Link/CLink'
 export default {
   name: 'CNavItem',
   props: Object.assign(linkPropsFactory(), {
-    title: String
+    titleHtml: String
   }),
   data () {
     return {
@@ -35,7 +35,7 @@ export default {
           {
             staticClass: 'nav-link',
             props: this.computedProps,
-            domProps: this.title ? { innerHTML: this.title } : null
+            domProps: this.titleHtml ? { innerHTML: this.titleHtml } : null
           },
           this.$slots.default
         )

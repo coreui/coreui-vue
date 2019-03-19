@@ -4,8 +4,8 @@ export default {
     let childNodes = h(false)
     if (this.$slots.default) {
       childNodes = this.$slots.default
-    } else if (this.label) {
-      childNodes = h('span', { domProps: { innerHTML: this.label } })
+    } else if (this.labelHtml) {
+      childNodes = h('span', { domProps: { innerHTML: this.labelHtml } })
     } else if (this.computedShowProgress) {
       childNodes = this.progress.toFixed(this.computedPrecision)
     } else if (this.computedShowValue) {
@@ -74,7 +74,7 @@ export default {
       type: Number,
       default: 0
     },
-    label: String,
+    labelHtml: String,
     // $parent prop values take precedence over the following props
     // Which is why they are defaulted to null
     max: Number,
