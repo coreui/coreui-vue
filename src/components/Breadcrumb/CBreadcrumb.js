@@ -6,19 +6,27 @@ export default {
   name: 'CBreadcrumb',
   props: {
     items: Array,
+    addClasses: [String, Array],
     addLinkClasses: [String, Array],
-    lastItemClasses: [String, Array],
+    addLastItemClasses: [String, Array]
   },
   render (h, { props, data }) {
     if(!Array.isArray(props.items)){ return }
     let childNodes = props.items.map((item, index, items) => {
       if(typeof item !== 'object'){ return }
+
       const isLast = items.length === index + 1
       const tag = isLast ? 'span' : CLink
-      const itemProps = isLast ?
-        { class: props.lastItemClasses, domProps: { innerHTML: item.text} } :
-        { class: [props.addLinkClasses, item.addLinkClasses],
-          domProps: { innerHTML: item.text}, props: item }
+      const lastItemProps = {
+        class: [props.addClasses, props.addLastItemClasses, item.addClasses],
+        domProps: { innerHTML: item.textHtml}
+      }
+      const linkItemProps = {
+        class: [props.addClasses, props.addLinkClasses, item.addClasses],
+        domProps: { innerHTML: item.textHtml},
+        props: item
+      }
+      const itemProps = isLast ? lastItemProps : linkItemProps
       return h('li',
              {
                staticClass: 'breadcrumb-item',
