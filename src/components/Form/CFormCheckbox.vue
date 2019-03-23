@@ -15,7 +15,7 @@
 
 
     <template #labelAfterInput>
-      <slot name="labelAfterInput">
+      <slot name="label">
         <label v-if="label" :for="safeId" :class="labelClasses">
           {{label}}
         </label>
@@ -24,7 +24,7 @@
 
 
     <template
-      v-for="slot in ['label', 'validFeedback', 'invalidFeedback', 'description']"
+      v-for="slot in ['validFeedback', 'invalidFeedback', 'description']"
       #[slot]
     >
       <slot :name="slot">
