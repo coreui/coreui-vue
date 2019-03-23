@@ -65,8 +65,8 @@ export default {
   //   },
   //   value: [String, Number, Array],
   //   horizontal: [Boolean, Object],
-  //   append: String,
-  //   prepend: String,
+  //   appendHtml: String,
+  //   prependHtml: String,
   //   validFeedback: String,
   //   invalidFeedback: String,
   //   tooltipFeedback: Boolean,
@@ -147,8 +147,8 @@ export default {
     //   return Boolean(this.horizontal)
     // },
     // haveInputGroup () {
-    //   return Boolean(this.tooltipFeedback || this.append ||
-    //      this.prepend || this.$slots.append || this.$slots.prepend)
+    //   return Boolean(this.tooltipFeedback || this.appendHtml ||
+    //      this.prependHtml || this.$slots.append || this.$slots.prepend)
     // },
     // haveWrapper () {
     //   return this.haveInputGroup || Boolean(this.addWrapperClasses || this.isHorizontal)

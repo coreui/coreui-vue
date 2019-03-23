@@ -23,8 +23,9 @@
     </template>
 
 
-    <template v-for="slot in ['label', 'prepend', 'append', 'validFeedback', 'invalidFeedback','description']"
-              #[slot]
+    <template
+      v-for="slot in ['label', 'validFeedback', 'invalidFeedback', 'description']"
+      #[slot]
     >
       <slot :name="slot">
       </slot>
@@ -76,6 +77,7 @@ export default {
   //     type: Boolean,
   //     default: null
   //   },
+  //   addInputClasses: String,
   //   addLabelClasses: String,
   //   custom: [Boolean, String],
   //   inline: Boolean
@@ -113,7 +115,7 @@ export default {
     inputClasses () {
       return [
         this.custom ? 'custom-control-input' : 'form-check-input',
-        this.validationClass,
+        this.validationClass, this.addInputClasses
       ]
     },
 

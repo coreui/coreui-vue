@@ -6,8 +6,8 @@ const formGroupAlwaysSharedProps = {
 }
 const formGroupSharedProps = Object.assign(
   {}, formGroupAlwaysSharedProps,{
-  append: String,
-  prepend: String
+  appendHtml: String,
+  prependHtml: String
 })
 const wrapperClassesProp = {
   wrapperClasses: [String, Array, Object]
@@ -23,6 +23,7 @@ const universalProps = {
     type: [Boolean, Function],
     default: null
   },
+  addInputClasses: String,
   addLabelClasses: String
 }
 const props = Object.assign({}, universalProps, {
@@ -31,7 +32,6 @@ const props = Object.assign({}, universalProps, {
     type: String,
     validator: str => ['','sm','lg'].includes(str)
   },
-  addInputClasses: String,
   addWrapperClasses: String
 })
 const textInputsProps = {

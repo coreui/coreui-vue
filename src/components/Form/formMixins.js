@@ -6,8 +6,8 @@ export const wrapperComputedProps = {
       return Boolean(this.horizontal)
     },
     haveInputGroup () {
-      return Boolean(this.tooltipFeedback || this.append ||
-         this.prepend || this.$slots.append || this.$slots.prepend)
+      return Boolean(this.tooltipFeedback || this.appendHtml ||
+         this.prependHtml || this.$slots.append || this.$slots.prepend)
     },
     haveWrapper () {
       return this.haveInputGroup ||

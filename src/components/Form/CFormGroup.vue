@@ -6,16 +6,16 @@
     <template v-if="props.wrapperClasses">
       <slot name="label"></slot>
       <div :class="props.wrapperClasses">
-        <div v-if="props.prepend || $slots.prepend" class="input-group-prepend">
+        <div v-if="props.prependHtml || $slots.prepend" class="input-group-prepend">
           <slot name="prepend">
-            <span class="input-group-text" v-html="props.prepend"></span>
+            <span class="input-group-text" v-html="props.prependHtml"></span>
           </slot>
         </div>
         <slot name="input"></slot>
         <slot name="labelAfterInput"></slot>
-        <div v-if="props.append || $slots.append" class="input-group-append">
+        <div v-if="props.appendHtml || $slots.append" class="input-group-append">
           <slot name="append">
-            <span class="input-group-text" v-html="props.append"></span>
+            <span class="input-group-text" v-html="props.appendHtml"></span>
           </slot>
         </div>
         <slot name="validFeedback">
@@ -31,16 +31,16 @@
     </template>
     <template v-else>
       <slot name="label"></slot>
-      <div v-if="props.prepend || $slots.prepend" class="input-group-prepend">
+      <div v-if="props.prependHtml || $slots.prepend" class="input-group-prepend">
         <slot name="prepend">
-          <span class="input-group-text" v-html="props.prepend"></span>
+          <span class="input-group-text" v-html="props.prependHtml"></span>
         </slot>
       </div>
       <slot name="input"></slot>
       <slot name="labelAfterInput"></slot>
-      <div v-if="props.append || $slots.append" class="input-group-append">
+      <div v-if="props.appendHtml || $slots.append" class="input-group-append">
         <slot name="append">
-          <span class="input-group-text" v-html="props.append"></span>
+          <span class="input-group-text" v-html="props.appendHtml"></span>
         </slot>
       </div>
       <slot name="validFeedback">
@@ -64,8 +64,8 @@ export default {
   props,
   // {
   //   wrapperClasses: [String, Array, Object],
-  //   append: String,
-  //   prepend: String,
+  //   appendHtml: String,
+  //   prependHtml: String,
   //   validFeedback: String,
   //   invalidFeedback: String,
   //   tooltipFeedback: Boolean,
