@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CWidgetIcon matches custom props snapshot 1`] = `
+<div
+  class="card"
+>
+  <div
+    class="card-body clearfix d-flex align-items-center"
+  >
+    <i
+      class="float-left mr-3 font-2xl p-3"
+    />
+     
+    <div>
+      <div
+        class="text-primary text-value-sm"
+      >
+        
+        header
+      
+      </div>
+       
+      <div
+        class="text-muted text-uppercase font-weight-bold small"
+      >
+        
+        text
+      
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="card-footer px-3 py-2"
+  >
+    <a
+      class="font-weight-bold font-xs btn-block text-muted"
+      href="link.com"
+      target="_self"
+    >
+      
+        View More
+        
+      <i
+        class="fa fa-angle-right float-right font-lg"
+      />
+    </a>
+  </div>
+</div>
+`;
+
+exports[`CWidgetIcon matches default props snapshot 1`] = `
+<div
+  class="card"
+>
+  <div
+    class="card-body clearfix d-flex align-items-center"
+  >
+    <i
+      class="float-left mr-3 font-2xl p-3"
+    />
+     
+    <div>
+      <div
+        class="text-primary text-value-sm"
+      >
+        
+        header:string
+      
+      </div>
+       
+      <div
+        class="text-muted text-uppercase font-weight-bold small"
+      >
+        
+        text:string
+      
+      </div>
+    </div>
+  </div>
+   
+  <!---->
+</div>
+`;
