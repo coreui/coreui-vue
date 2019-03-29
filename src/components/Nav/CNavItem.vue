@@ -1,47 +1,24 @@
-<!-- <template>
+<template>
   <li class="nav-item">
-    <CLink class="nav-link" v-bind="computedProps">
+    <CLink
+      class="nav-link"
+      v-bind="$props"
+      :active="isActive"
+    >
       <slot></slot>
     </CLink>
   </li>
-</template> -->
+</template>
 
 <script>
-import CLink, { propsFactory as linkPropsFactory } from '../Link/CLink'
+import CLink, { props } from '../Link/CLink'
 export default {
   name: 'CNavItem',
-  props: Object.assign(linkPropsFactory(), {
-    titleHtml: String
-  }),
+  props,
   data () {
     return {
       isActive: this.disabled ? null : this.active
     }
-  },
-  computed: {
-    computedProps () {
-      return Object.assign({}, this.$props, { active: this.isActive } )
-    },
-  },
-  render (h) {
-      return h(
-      'li',
-      {
-        staticClass: 'nav-item',
-      },
-      [
-        h(
-          CLink,
-          {
-            staticClass: 'nav-link',
-            props: this.computedProps,
-            domProps: this.titleHtml ? { innerHTML: this.titleHtml } : null
-          },
-          this.$slots.default
-        )
-      ]
-    )
   }
 }
-
 </script>

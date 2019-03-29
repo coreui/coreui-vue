@@ -13,8 +13,7 @@ export default {
     justified: Boolean,
     tabs: Boolean,
     pills: Boolean,
-    vertical: Boolean,
-    items: Object
+    vertical: Boolean
   },
   computed: {
     navClasses () {
@@ -30,7 +29,7 @@ export default {
   },
   methods: {
     onClick (e) {
-      let clickedItem = this.getClickedItem(e)
+      const clickedItem = this.getClickedItem(e)
       clickedItem ? this.activateItem(clickedItem) : null
     },
     getClickedItem (e) {
@@ -45,26 +44,6 @@ export default {
         return item.isActive = item === itemToActivate ? true : false
       })
     }
-  },
-
-//   render (h) {
-//     return h(
-//       'ul',
-//       {
-//         class: {
-//           'nav' : true,
-//           'nav-tabs': this.tabs,
-//           'nav-pills': this.pills,
-//           'flex-column': this.vertical,
-//           'nav-fill': this.fill,
-//           'nav-justified': this.justified
-//         },
-//         on: {
-//           click: this.onClick
-//         }
-//       },
-//       this.$slots.default
-//     )
-//   }
+  }
 }
 </script>
