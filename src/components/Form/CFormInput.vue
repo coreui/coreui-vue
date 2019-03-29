@@ -1,5 +1,5 @@
 <template>
-  <CFormGroup v-bind="{append, prepend, validFeedback,
+  <CFormGroup v-bind="{appendHtml, prependHtml, validFeedback,
                        invalidFeedback, tooltipFeedback, description,
                        wrapperClasses, class: computedClasses}"
   >
