@@ -12,7 +12,10 @@ export const props = {
     default: false,
     validator: val => [false, true, 'sm', 'md', 'lg', 'xl'].includes(val)
   },
-  fixed: String,
+  fixed: {
+    type: String,
+    validator: val => ['top', 'bottom'].includes(val)
+  },
   sticky: Boolean,
   print: Boolean
 }
@@ -31,8 +34,7 @@ export default {
           props.toggleable !== true ?
             props.toggleable ?
               `navbar-expand-${props.toggleable}` :
-              'navbar-expand':
-            '', 
+              'navbar-expand': '',
           {
             'd-print': props.print,
             'sticky-top': props.sticky,
