@@ -4,16 +4,16 @@ export default {
   functional: true,
   name: 'CCol',
   props: {
-    cols: [ Boolean, String, Number, Object ],
+    col: [ Boolean, String, Number, Object ],
     xs: [ Boolean, String, Number, Object ],
     sm: [ Boolean, String, Number, Object ],
     md: [ Boolean, String, Number, Object ],
     lg: [ Boolean, String, Number, Object ],
-    xl: [ Boolean, String, Number, Object ],
+    xl: [ Boolean, String, Number, Object ]
   },
   render (h, { props, data, children }) {
     let classes = []
-    let prefixes = {'cols': '', '-xs': 'xs', 'sm': '-sm',
+    let prefixes = {'col': '', '-xs': 'xs', 'sm': '-sm',
                     'md': '-md', 'lg': '-lg', 'xl': '-xl'}
     Object.keys(props).forEach((key) => {
       if (props[key] === true)
