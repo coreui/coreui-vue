@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'CWidget06',
+  name: 'CWidgetDropdown',
   props: {
     variant: {
       type: String,

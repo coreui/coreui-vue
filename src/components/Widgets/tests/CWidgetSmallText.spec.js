@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
-import Component from '../CWidget07'
-const ComponentName = 'CWidget07'
+import Component from '../CWidgetSmallText'
+const ComponentName = 'CWidgetSmallText'
 const defaultWrapper = mount(Component)
 const customWrapper = mount(Component,{
   context:{

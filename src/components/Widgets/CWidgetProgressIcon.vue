@@ -1,15 +1,20 @@
 <template functional>
   <div :class="props.inverse ? `card text-white bg-${props.variant}` : 'card'">
     <div class="card-body">
-      <div class="h4 m-0">{{props.header}}</div>
-      <div>{{props.text}}</div>
+      <div
+        v-if="props.iconClasses"
+        class="h1 text-muted text-right mb-4"
+      >
+        <i :class="props.iconClasses"></i>
+      </div>
+      <div class="h4 mb-0">{{props.header}}</div>
+      <small class="text-muted text-uppercase font-weight-bold">{{props.text}}</small>
       <slot>
         <CProgress :variant="!props.inverse ? props.variant : ''"
-                   :value = "props.value"
+                   :value="props.value"
                    :class="props.inverse ? 'progress-white' : ''"
                    class="progress-xs my-3 mb-0"/>
       </slot>
-      <small class="text-muted">{{props.footer}}</small>
     </div>
   </div>
 </template>
@@ -17,11 +22,12 @@
 <script>
 import CProgress from '../Progress/CProgress'
 export default {
-  name: 'CWidget01',
+  name: 'CWidgetProgressIcon',
   components: {
     CProgress
   },
   props: {
+    iconClasses: String,
     header: {
       type: String,
       default: 'header:string'
@@ -29,10 +35,6 @@ export default {
     text: {
       type: String,
       default: 'text:string'
-    },
-    footer: {
-      type: String,
-      default: 'footer:string'
     },
     variant: String,
     inverse: Boolean,

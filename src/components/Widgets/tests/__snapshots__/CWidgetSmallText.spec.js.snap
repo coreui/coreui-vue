@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CWidget07 matches custom props snapshot 1`] = `
+exports[`CWidgetSmallText matches custom props snapshot 1`] = `
 <div
   class="card bg-info"
 >
@@ -41,7 +41,7 @@ exports[`CWidget07 matches custom props snapshot 1`] = `
 </div>
 `;
 
-exports[`CWidget07 matches default props snapshot 1`] = `
+exports[`CWidgetSmallText matches default props snapshot 1`] = `
 <div
   class="card bg-primary"
 >

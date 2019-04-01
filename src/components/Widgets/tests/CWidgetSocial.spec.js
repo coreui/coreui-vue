@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
-import Component from '../CWidget04'
+import Component from '../CWidgetSocial'
 
-const ComponentName = 'CWidget04'
+const ComponentName = 'CWidgetSocial'
 const defaultWrapper = mount(Component)
 const customWrapper = mount(Component,{
   context:{

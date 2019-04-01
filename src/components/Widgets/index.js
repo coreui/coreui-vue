@@ -1,12 +1,18 @@
-import CWidget01 from './CWidget01'
-import CWidget04 from './CWidget04'
-import CWidget05 from './CWidget05'
-import CWidget06 from './CWidget06'
-import CWidget07 from './CWidget07'
-import CWidget08 from './CWidget08'
+import CWidgetProgress from './CWidgetProgress'
 import CWidgetIcon from './CWidgetIcon'
+import CWidgetSocial from './CWidgetSocial'
+import CWidgetProgressIcon from './CWidgetProgressIcon'
+import CWidgetDropdown from './CWidgetDropdown'
+import CWidgetSmallText from './CWidgetSmallText'
+import CWidgetSimple from './CWidgetSimple'
 
 
 export {
-  CWidget01, CWidget04, CWidget05, CWidget06, CWidget07, CWidget08, CWidgetIcon
+  CWidgetProgress,
+  CWidgetIcon,
+  CWidgetSocial,
+  CWidgetProgressIcon,
+  CWidgetDropdown,
+  CWidgetSmallText,
+  CWidgetSimple
 }

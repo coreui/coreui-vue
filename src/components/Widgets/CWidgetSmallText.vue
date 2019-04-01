@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: 'CWidget07',
+  name: 'CWidgetSmallText',
   props: {
     variant: {
       type: String,

@@ -1,10 +1,7 @@
 <template functional>
   <div class="brand-card">
     <div :class="`brand-card-header bg-${props.variant}`">
-      <i
-        v-if="!props.noIcon"
-        :class="props.iconClasses || `fa fa-${props.variant}`"
-      ></i>
+      <i :class="props.iconClasses || `fa fa-${props.variant}`"></i>
       <slot></slot>
     </div>
     <div class="brand-card-body">
@@ -22,7 +19,7 @@
 
 <script>
 export default {
-  name: 'CWidget04',
+  name: 'CWidgetSocial',
   props: {
     variant: {
       type: String,
@@ -44,8 +41,7 @@ export default {
       type: String,
       default: 'leftFooter:string'
     },
-    iconClasses: String,
-    noIcon: Boolean
+    iconClasses: String
   }
 }
 </script>

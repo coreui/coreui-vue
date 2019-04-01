@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'CWidget08',
+  name: 'CWidgetSimple',
   props: {
     header: {
       type: String,
