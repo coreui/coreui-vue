@@ -13,13 +13,10 @@ export default {
     labelText: {
       type: String,
       default: 'Loading...'
-    },
-    noLabel: Boolean
+    }
   },
   render(h, { props, data, slots }) {
-    let label = h(false)
-    if (!props.noLabel)
-      label = h('span', { staticClass: 'sr-only' }, props.labelText)
+    const label = h('span', { staticClass: 'sr-only' }, props.labelText)
     const type = props.grow ? 'grow' : 'border'
     return h(
       props.tag,
