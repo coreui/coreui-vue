@@ -78,10 +78,6 @@ export const formSelectProps = Object.assign(
 // Html props: id, disabled, required
 export const formCheckboxProps = Object.assign(
   {}, formGroupAlwaysSharedProps, universalProps, {
-  type: {
-    type: String,
-    default: 'checkbox'
-  },
   checked: [Boolean, String, Number],
   value: {
     type: [String, Number, Boolean],

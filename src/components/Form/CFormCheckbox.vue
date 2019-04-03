@@ -5,7 +5,7 @@
       <input
         v-bind="$attrs"
         :id="safeId"
-        :type="type"
+        :type="$options.type"
         :class="inputClasses"
         :value="value"
         :checked="state"
@@ -43,19 +43,11 @@ export default {
   inheritAttrs: false,
   components: { CFormGroup },
   mixins: [safeId, validationComputedProps],
-  model: {
-    prop: 'checked',
-    event: 'change'
-  },
   props,
   // {
   //   label: String,
   //   id: String,
   //   wasValidated: Boolean,
-  //   type: {
-  //     type: String,
-  //     default: 'checkbox'
-  //   },
   //   checked: [Boolean, String, Number],
   //   value: {
   //     type: [String, Number, Boolean],
@@ -82,9 +74,10 @@ export default {
   //   custom: [Boolean, String],
   //   inline: Boolean
   // },
+  type: 'checkbox',
   data () {
     return {
-      state: null
+      state: null,
     }
   },
   created () {
@@ -98,7 +91,7 @@ export default {
   },
   computed: {
     customType () {
-      return typeof this.custom === 'string' ? this.custom : this.type
+      return this.$options.type === 'checkbox' ? 'checkbox' : 'radio'
     },
     computedClasses () {
       return [
@@ -133,20 +126,15 @@ export default {
   },
   methods: {
     getCheckState () {
-      if (this.type === 'radio')
-        return this.checked === this.value
-      else
-        return typeof this.checked === 'boolean' ? this.checked :
-                          this.checked === this.trueValue ? true : false
+      if (typeof this.checked === 'boolean') return this.checked
+      return this.checked === this.trueValue ? true : false
     },
     onChange (e) {
       this.state = e.target.checked
-      this.$emit('change', this.getValue(e), e)
+      this.$emit('update:checked', this.getValue(e), e)
     },
     getValue (e) {
-      if(this.type === 'radio')
-        return this.value
-      else if(e.target.checked)
+      if(e.target.checked)
         return this.trueValue !== undefined ? this.trueValue : true
       else
         return this.falseValue !== undefined ? this.falseValue : false

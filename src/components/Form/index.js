@@ -5,6 +5,7 @@ import CFormCheckbox from './CFormCheckbox'
 import CFormFile from './CFormFile'
 import CFormTextarea from './CFormTextarea'
 import CFormSelect from './CFormSelect'
+import CFormRadio from './CFormRadio'
 
 export {
   CForm,
@@ -13,5 +14,6 @@ export {
   CFormCheckbox,
   CFormFile,
   CFormTextarea,
-  CFormSelect
+  CFormSelect,
+  CFormRadio
 }
