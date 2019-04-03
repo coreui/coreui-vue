@@ -140,16 +140,16 @@ export default {
         },
         ref: 'toggle',
         class: this.computedButtonClasses,
-        domProps: !this.$slots.buttonContent ?
+        domProps: !this.$slots['button-content'] ?
                   { innerHTML: this.buttonHtml } :
                   null
-      }, this.$slots.buttonContent)
+      }, this.$slots['button-content'])
     let splitButton = h(false)
     if (this.split) {
       splitButton = h(
       this.buttonTag,
       {
-        class: [ 
+        class: [
           this.computedButtonClasses,
           'dropdown-toggle dropdown-toggle-split'
         ],

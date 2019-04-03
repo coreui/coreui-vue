@@ -20,7 +20,7 @@
       />
     </template>
 
-    <template v-for="slot in ['prepend', 'append', 'labelAfterInput', 'validFeedback', 'invalidFeedback','description']"
+    <template v-for="slot in ['prepend', 'append', 'label-after-input', 'valid-feedback', 'invalid-feedback','description']"
               #[slot]
     >
       <slot :name="slot">

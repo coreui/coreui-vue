@@ -5,7 +5,9 @@
   >
     <template #label>
       <slot name="label">
-        <label v-if="label" :for="safeId" :class="labelClasses">{{label}}</label>
+        <label v-if="label" :for="safeId" :class="labelClasses">
+          {{label}}
+        </label>
       </slot>
     </template>
 
@@ -18,14 +20,18 @@
              type="file"
              @change="onChange($event)"
       />
-      <label v-if="custom" :for="safeId" class="custom-file-label">
-        {{typeof custom === 'string' ? custom : multiple ? 'Choose files...' : 'Choose file...'}}
+      <label
+        v-if="custom"
+        :for="safeId"
+        class="custom-file-label"
+      >
+        {{placeholder}}
       </label>
     </template>
 
 
-    <template v-for="slot in ['labelAfterInput','validFeedback',
-                              'invalidFeedback','description']"
+    <template v-for="slot in ['label-after-input','valid-feedback',
+                              'invalid-feedback','description']"
               #[slot]
     >
       <slot :name="slot"></slot>
@@ -74,6 +80,11 @@ export default {
     }
   },
   computed: {
+    placeholder () {
+      return typeof this.custom === 'string' ?
+                      this.custom : this.multiple ?
+                        'Choose files...' : 'Choose file...'
+    },
     // classesComputedProps mixin
     haveCustomSize () {
       return ['','sm','lg'].includes(this.size) &&

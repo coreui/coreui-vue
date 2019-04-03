@@ -12,16 +12,16 @@
           </slot>
         </div>
         <slot name="input"></slot>
-        <slot name="labelAfterInput"></slot>
+        <slot name="label-after-input"></slot>
         <div v-if="props.appendHtml || $slots.append" class="input-group-append">
           <slot name="append">
             <span class="input-group-text" v-html="props.appendHtml"></span>
           </slot>
         </div>
-        <slot name="validFeedback">
+        <slot name="valid-feedback">
           <div v-if="props.validFeedback" :class="props.tooltipFeedback ? 'valid-tooltip' : 'valid-feedback'" v-html="props.validFeedback"></div>
         </slot>
-        <slot name="invalidFeedback">
+        <slot name="invalid-feedback">
           <div v-if="props.invalidFeedback" :class="props.tooltipFeedback ? 'invalid-tooltip' : 'invalid-feedback'" v-html="props.invalidFeedback"></div>
         </slot>
         <slot name="description">
@@ -37,16 +37,16 @@
         </slot>
       </div>
       <slot name="input"></slot>
-      <slot name="labelAfterInput"></slot>
+      <slot name="label-after-input"></slot>
       <div v-if="props.appendHtml || $slots.append" class="input-group-append">
         <slot name="append">
           <span class="input-group-text" v-html="props.appendHtml"></span>
         </slot>
       </div>
-      <slot name="validFeedback">
+      <slot name="valid-feedback">
         <div v-if="props.validFeedback" :class="props.tooltipFeedback ? 'valid-tooltip' : 'valid-feedback'" v-html="props.validFeedback"></div>
       </slot>
-      <slot name="invalidFeedback">
+      <slot name="invalid-feedback">
         <div v-if="props.invalidFeedback" :class="props.tooltipFeedback ? 'invalid-tooltip' : 'invalid-feedback'" v-html="props.invalidFeedback"></div>
       </slot>
       <slot name="description">
