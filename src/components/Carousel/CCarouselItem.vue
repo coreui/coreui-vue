@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import CImage from '../Image/CImage'
 export default {
   name: 'CCarouselItem',
   props: {
