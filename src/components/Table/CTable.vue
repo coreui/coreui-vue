@@ -1,9 +1,8 @@
 <template>
   <div>
     <div v-if="optionsRow" class="row my-2 mx-0">
-
       <div
-        v-show="optionsRow !== 'onlyPagination'"
+        v-show="optionsRow !== 'noFilter'"
         class="col-sm-6 form-inline p-0"
       >
         <label class="mr-2">Filter: </label>
@@ -16,7 +15,7 @@
         >
       </div>
 
-      <div v-show="optionsRow !== 'onlyFilter'" class="col-sm-6 p-0">
+      <div v-show="optionsRow !== 'noPagination'" class="col-sm-6 p-0">
         <div :class="`form-inline ${optionsRow === 'onlyPagination' ? '' : 'float-sm-right'}`">
           <label class="mr-2">Items per page: </label>
           <select
@@ -35,7 +34,7 @@
     </div>
 
 
-    <slot name="overTable"/>
+    <slot name="over-table"/>
     <div :class="`position-relative ${notResponsive ? '' : 'table-responsive'}`">
       <table :class="tableClasses">
         <thead :class="headVariant ? `thead-${headVariant}` : ''">
@@ -65,7 +64,7 @@
           <tr v-if="filterRow" class="table-sm">
             <th v-if="indexColumn" class="pb-2">
               <i
-                v-if="indexColumn !== 'onlyIndexes'"
+                v-if="indexColumn !== 'noCleaner'"
                 class="cui-ban icons text-danger font-lg text-center d-block"
                 @click="clear"
                 title="clear table"
@@ -73,10 +72,7 @@
             </th>
             <template v-for="(colName, index) in rawColumnNames" >
               <th :class="headerClass(index)">
-                <slot
-                  :clear="clear, colName, index"
-                  :name="`${rawColumnNames[index]}-filter`"
-                >
+                <slot :name="`${rawColumnNames[index]}-filter`">
                   <input
                     v-if="!fields || !fields[index].noFilter"
                     class="w-100 c-table-filter"
@@ -98,11 +94,13 @@
             >
                 <slot
                   v-if="indexColumn"
-                  name="index-col"
+                  name="index-column"
+                  :pageIndex="itemIndex"
                   :index="firstItemIndex + itemIndex"
+                  :number="firstItemIndex + itemIndex + 1"
                 >
                   <td>
-                    {{indexColumn !== 'onlyCleaner' ? firstItemIndex + itemIndex + 1 : ''}}
+                    {{indexColumn !== 'noIndexes' ? firstItemIndex + itemIndex + 1 : ''}}
                   </td>
                 </slot>
               <template v-for="(colName, index) in rawColumnNames" >
@@ -119,28 +117,23 @@
                 ></td>
               </template>
             </tr>
-            <slot
-              v-if="$scopedSlots.details || $scopedSlots.detailsRow"
-              name="detailsRow"
-              :item="item"
-              :index="itemIndex  + firstItemIndex"
-              :colspan="colspan"
+            <tr
+              v-if="$scopedSlots.details"
+              class="p-0"
+              style="border:none !important"
             >
-              <tr class="p-0" style="border:none !important">
-                <td
-                  :colspan="colspan"
-                  class="p-0"
-                  style="border:none !important"
-                >
-                  <slot
-                    name="details"
-                    :item="item"
-                    :index="itemIndex + firstItemIndex"
-                    :colspan="colspan"
-                  />
-                </td>
-              </tr>
-            </slot>
+              <td
+                :colspan="colspan"
+                class="p-0"
+                style="border:none !important"
+              >
+                <slot
+                  name="details"
+                  :item="item"
+                  :index="itemIndex + firstItemIndex"
+                />
+              </td>
+            </tr>
           </template>
           <tr v-if="!currentItems.length">
             <td :colspan="colspan">
@@ -201,7 +194,7 @@
         </div>
       </div>
     </div>
-    <slot name="underTable"/>
+    <slot name="under-table"/>
 
 
     <CPagination v-if="!noPagination"
@@ -219,22 +212,21 @@ export default {
   name: 'CTable',
   components: { CPagination },
   props: {
-    items: {
-      type: Array,
-      required: true
-    },
+    items: Array,
     fields: Array,
     perPage: {
       type: Number,
       default: 10
     },
-    activePage: Number,
+    activePage: {
+      type: Number,
+      default: 1
+    },
     indexColumn: [Boolean, String],
     filterRow: Boolean,
     noPagination: Boolean,
     paginationProps: Object,
     addTableClasses: String,
-    stacked: [Boolean, String],
     notResponsive: Boolean,
     noSorting: Boolean,
     small: Boolean,
@@ -264,9 +256,9 @@ export default {
       columnFilter: this.defaultColumnFilter || {},
       sorter: { name: this.defaultSorter.name, direction: this.defaultSorter.direction },
       firstItemIndex: 0,
-      page: this.activePage || 1,
+      page: this.activePage,
       perPageItems: this.perPage,
-      passedItems: this.items
+      passedItems: this.items || []
     }
   },
   computed: {
@@ -325,15 +317,9 @@ export default {
       return this.rawColumnNames.map(el => this.columnNamePretify(el))
     },
     tableClasses () {
-      const stacked = this.stacked ?
-                      typeof this.stacked === 'string' ?
-                      `b-table-stacked-${this.stacked}` :
-                      'b-table-stacked' :
-                      ''
       return [
         'table b-table',
         this.addTableClasses,
-        stacked,
         {
           'is-loading': this.loading,
           'table-sm': this.small,
@@ -429,9 +415,6 @@ export default {
       if(this.fields && this.fields[index] && this.fields[index]._style)
         style += this.fields[index]._style
       return style
-    },
-    haveFilterSlot (index) {
-      return this.$scopedSlots[`${this.rawColumnNames[index]}-filter`]
     },
     rowClicked (item, index) {
       this.$emit('row-clicked', item, index)
