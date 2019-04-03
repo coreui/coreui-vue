@@ -24,10 +24,6 @@
 export default {
   name:'CSwitch',
   inheritAttrs: false,
-  model: {
-    prop: 'checked',
-    event: 'change'
-  },
   data () {
     return {
       isChecked: ''
@@ -106,7 +102,7 @@ export default {
     },
     toggle (event) {
       this.isChecked = event.target.checked
-      this.$emit('change', this.getValue(event), event);
+      this.$emit('update:checked', this.getValue(event), event);
     },
     getValue (e) {
       if(this.type === 'radio')

@@ -39,9 +39,6 @@ const mixins = Object.values(allFormMixins)
 export default {
   name: 'CFormTextarea',
   inheritAttrs: false,
-  model: {
-    event: 'sync'
-  },
   components: { CFormGroup },
   mixins,
   props,
@@ -162,13 +159,13 @@ export default {
 
       clearTimeout(this.syncTimeout)
       this.syncTimeout = setTimeout(() => {
-        this.$emit('sync', this.state, e)
+        this.$emit('update:value', this.state, e)
       }, this.lazy !== false ? this.lazy : 0)
     },
     onChange (e) {
       this.state = e.target.value
       this.$emit('change', this.state, e)
-      this.$emit('sync', this.state, e)
+      this.$emit('update:value', this.state, e)
     },
   }
 }

@@ -181,7 +181,7 @@ export default {
       const value = this.options[dataKey] && this.options[dataKey].value !== undefined ?
                       this.options[dataKey].value : this.options[dataKey]
       this.state = value
-      this.$emit('input', value, e)
+      this.$emit('update:value', value, e)
     },
   }
 }

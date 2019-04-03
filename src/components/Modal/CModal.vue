@@ -59,10 +59,6 @@
 <script>
 export default {
   name: 'CModal',
-  model: {
-    prop: 'visible',
-    event: 'hide'
-  },
   props: {
     visible: Boolean,
     centered: Boolean,
@@ -143,7 +139,7 @@ export default {
         this.hide()
     },
     hide () {
-      this.$emit('hide', false)
+      this.$emit('update:visible', false)
     },
     toggle (newVal) {
       setTimeout(() => { this.is_visible = newVal }, 0)

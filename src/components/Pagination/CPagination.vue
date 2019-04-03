@@ -81,12 +81,9 @@
 
   export default {
     name: 'CPagination',
-    model: {
-      event: 'change'
-    },
     data () {
       return {
-        page: this.value,
+        page: this.activePage,
         showFirstDots: false,
         showLastDots: false,
         rwd: this.size,
@@ -94,12 +91,12 @@
       }
     },
     watch: {
-      value (val) {
-        this.page = val
-      },
+      // activePage (val) {
+      //   this.page = val
+      // },
       pages (val) {
-        if(val < this.page)
-          this.$emit('change', val)
+        if(val < this.activePage)
+          this.$emit('update:activePage', val)
       }
     },
     mounted () {
@@ -107,8 +104,12 @@
         this.erd.listenTo(this.$el, this.onWrapperResize)
     },
     computed: {
-      firstClasses () { return ['page-item', { disabled: this.page === 1 }]},
-      lastClasses () { return ['page-item', { disabled: this.page === this.pages }]},
+      firstClasses () {
+        return ['page-item', { disabled: this.activePage === 1 }]
+      },
+      lastClasses () {
+        return ['page-item', { disabled: this.activePage === this.pages }]
+      },
       computedClasses () {
         return `pagination b-pagination pagination-${this.rwd} justify-content-${this.align} `
       },
@@ -120,21 +121,21 @@
         let maxNextItems = Math.ceil((this.limit - 1) / 2)
         let items = []
 
-        if(!this.dots){
+        if (!this.dots) {
           this.showFirstDots = false
           this.showLastDots = false
-          if(this.page <= maxPrevItems){
+          if (this.activePage <= maxPrevItems) {
             for (let i = 1; i <= this.limit; i++)
               items.push(i)
-          }else{
-            let max = this.page + maxNextItems > this.pages ? this.pages : this.page + maxNextItems
+          } else {
+            let max = this.activePage + maxNextItems > this.pages ? this.pages : this.activePage + maxNextItems
             for (let i = max - this.limit + 1; i <= max; i++)
               items.push(i)
           }
           return items
         }
 
-        if(this.limit >= this.pages){
+        if (this.limit >= this.pages) {
           this.showFirstDots = false
           this.showLastDots = false
           for (let i = 1; i <= this.pages; i++)
@@ -142,7 +143,7 @@
           return items
         }
 
-        if(this.page <= maxPrevItems){
+        if (this.activePage <= maxPrevItems) {
           this.showFirstDots = false
           this.showLastDots = true
           for (let i = 1; i <= this.limit - 1; i++)
@@ -150,15 +151,15 @@
           return items
         }
 
-        if(this.page > maxPrevItems && this.page < this.pages - maxNextItems){
+        if (this.activePage > maxPrevItems && this.activePage < this.pages - maxNextItems) {
           this.showFirstDots = true
           this.showLastDots = true
           for (let i = 1 ; i < this.limit - 1 ; i++)
-            items.push(this.page - maxPrevItems + i)
+            items.push(this.activePage - maxPrevItems + i)
           return items
         }
 
-        if(this.page > maxPrevItems && this.page >= this.pages - maxNextItems){
+        if (this.activePage > maxPrevItems && this.activePage >= this.pages - maxNextItems) {
           this.showFirstDots = true
           this.showLastDots = false
           for (let i = this.pages - this.limit + 2 ; i <= this.pages; i++)
@@ -174,18 +175,18 @@
               this.rwd = 'md' : this.rwd = 'sm'
       },
       setPage (number) {
-        if(number !== this.page)
-          this.$emit('change', number)
+        if(number !== this.activePage)
+          this.$emit('update:activePage', number)
       },
       setStyle (item) {
-        if(this.value === item) {
+        if(this.activePage === item) {
           return 'page-item active'
         }
         return 'page-item'
       }
     },
     props: {
-      value: {
+      activePage: {
         type: Number,
         default: 1
       },

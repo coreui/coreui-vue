@@ -199,7 +199,7 @@
 
     <CPagination v-if="!noPagination"
                  v-show="totalPages > 1"
-                 v-model="page"
+                 :activePage.sync="page"
                  :pages="totalPages"
                  v-bind="paginationProps"
     />
