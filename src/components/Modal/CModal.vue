@@ -63,7 +63,10 @@ export default {
     visible: Boolean,
     centered: Boolean,
     title: String,
-    size: String,
+    size: {
+      type: String,
+      validator: val => ['', 'sm', 'lg'].includes(val)
+    },
     variant: String,
     borderVariant: String,
     noFade: Boolean,
