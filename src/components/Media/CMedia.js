@@ -19,7 +19,8 @@ export default {
     const aside = h(
       'div',
       { class: asideClasses },
-      $slots.aside
+      $slots.aside ||
+      [h('div', { class: 'bg-secondary', style: 'width:64px;height:64px;'})]
     )
     const body = h(
       'div',
