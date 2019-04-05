@@ -81,14 +81,14 @@ export const formCheckboxProps = Object.assign(
   checked: [Boolean, String, Number],
   value: {
     type: [String, Number, Boolean],
-    default: null
+    default: undefined
   },
   trueValue: {
-    type: [String, Number, Boolean],
+    type: [String, Number],
     default: undefined
   },
   falseValue: {
-    type: [String, Number, Boolean],
+    type: [String, Number],
     default: undefined
   },
   custom: [Boolean, String],

@@ -77,16 +77,17 @@ export default {
   type: 'checkbox',
   data () {
     return {
-      state: null,
+      state: undefined,
     }
   },
-  created () {
-    this.state = this.getCheckState()
-  },
   watch: {
-    checked (val, oldVal) {
-      if(val !== oldVal)
-        this.state = this.getCheckState()
+    checked: {
+      immediate: true,
+      handler (val, oldVal) {
+        if (val !== oldVal) {
+          this.state = this.getCheckState()
+        }
+      }
     }
   },
   computed: {
@@ -94,17 +95,23 @@ export default {
       return this.$options.type === 'checkbox' ? 'checkbox' : 'radio'
     },
     computedClasses () {
-      return [
-               this.custom ? `custom-control custom-${this.customType}`: 'form-check',
-               this.inline ? `${this.custom ? 'custom-control' : 'form-check'}-inline` : '',
-               {
-               'was-validated': this.wasValidated
-               }
-             ]
+      const controlClass = this.custom ? 'custom-control' : 'form-check'
+      return {
+        [`${controlClass}`] : true,
+        [`${controlClass}-inline`]: this.inline,
+        [`custom-${this.customType}`]: this.custom,
+        'was-validated': this.wasValidated
+      }
+
     },
+
     labelClasses () {
-      return [this.addLabelClasses, this.custom ? 'custom-control-label': 'form-check-label']
+      return [
+        this.addLabelClasses,
+        this.custom ? 'custom-control-label': 'form-check-label'
+      ]
     },
+
     inputClasses () {
       return [
         this.custom ? 'custom-control-input' : 'form-check-input',
@@ -126,19 +133,26 @@ export default {
   },
   methods: {
     getCheckState () {
-      if (typeof this.checked === 'boolean') return this.checked
-      return this.checked === this.trueValue ? true : false
+      if (typeof this.checked === 'boolean') {
+        return this.checked
+      } else {
+        return this.checked === this.trueValue ? true : false
+      }
     },
+
     onChange (e) {
       this.state = e.target.checked
       this.$emit('update:checked', this.getValue(e), e)
     },
+
     getValue (e) {
-      if(e.target.checked)
+      if (e.target.checked) {
         return this.trueValue !== undefined ? this.trueValue : true
-      else
+      } else {
         return this.falseValue !== undefined ? this.falseValue : false
-    },
+      }
+    }
+
   },
 }
 </script>
