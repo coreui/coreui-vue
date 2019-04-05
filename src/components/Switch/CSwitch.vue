@@ -1,19 +1,16 @@
 <template>
   <label :class="classList">
-    <input v-bind="$attrs"
-          :id="id"
-          :name="name"
-          :type="type"
-          :checked="isChecked"
-          :disabled="disabled"
-          :required="required"
-          :value="value"
-          class="switch-input form-check-input"
-          @change="toggle"
+    <input
+      v-bind="$attrs"
+      :type="type"
+      :checked="isChecked"
+      :value="undefined"
+      class="switch-input form-check-input"
+      @change="toggle"
     >
     <span
-      :data-checked="dataOn"
-      :data-unchecked="dataOff"
+      :data-checked="labelOn"
+      :data-unchecked="labelOff"
       class="switch-slider"
     >
     </span>
@@ -24,11 +21,6 @@
 export default {
   name:'CSwitch',
   inheritAttrs: false,
-  data () {
-    return {
-      isChecked: ''
-    }
-  },
   props: {
     variant: {
       type: String,
@@ -36,82 +28,87 @@ export default {
     },
     outline: {
       type: [Boolean, String],
-      default: null,
-      validator: value => [false, true, '', 'alt'].indexOf(value) !== -1
+      default: undefined,
+      validator: value => [false, true, '', 'alt'].includes(value)
     },
     size: {
       type: String,
-      validator: value => ['','lg', 'sm' ].indexOf(value) !== -1
+      validator: value => ['','lg', 'sm'].includes(value)
     },
     shape: {
       type: String,
-      validator: value => ['','3d', 'pill'].indexOf(value) !== -1
+      validator: value => ['','3d', 'pill'].includes(value)
     },
-    id: String,
-    name: String,
-    checked: [Boolean, String, Number],
-    disabled: Boolean,
-    required: Boolean,
+    checked: {
+      type: [Boolean, String, Number],
+      default: false
+    },
     value: {
       type: [String, Number, Boolean],
-      default: null
+      default: undefined
     },
-    trueValue: {
-      type: [String, Number, Boolean],
-      default: null
-    },
-    falseValue: {
-      type: [String, Number, Boolean],
-      default: null
-    },
-    dataOn: String,
-    dataOff: String,
+    trueValue: [String, Number],
+    falseValue: [String, Number],
+    labelOn: String,
+    labelOff: String,
     type: {
       type: String,
       default: 'checkbox'
     }
   },
-  created () {
-    this.isChecked = this.getCheckState()
+  data () {
+    return {
+      isChecked: undefined
+    }
   },
   watch: {
-    checked (val, oldVal) {
-      if(val !== oldVal)
-        this.isChecked = this.getCheckState()
+    checked: {
+      immediate: true,
+      handler (val, oldVal) {
+        if (val !== oldVal) {
+          this.state = this.getCheckState()
+        }
+      }
     }
   },
   computed: {
     classList () {
+      const outlineString = this.outline ? '-outline' : ''
+      const outlinedAltString = this.outline === 'alt' ? '-alt' : ''
       return [
-        'switch',
-        this.dataOn || this.dataOff ? 'switch-label' : '',
-        this.size ? `switch-${this.size}` : '',
-        this.shape ? `switch-${this.shape}` : '',
-        `switch${this.outline ? '-outline' : ''}-${this.variant}${this.outline==='alt' ? '-alt' : ''}`,
-        'form-check-label'
+        'switch form-check-label',
+        `switch${outlineString}-${this.variant}${outlinedAltString}`,
+        {
+          [`switch-${this.size}`]: this.size,
+          [`switch-${this.shape}`]: this.shape,
+          'switch-label': this.labelOn || this.labelOff
+        }
       ]
-    },
+    }
   },
   methods: {
     getCheckState () {
-      if (this.type === 'radio')
+      if (this.type === 'radio') {
         return this.checked === this.value
-      else
-        return typeof this.checked === 'boolean' ? this.checked :
-                          this.checked === this.trueValue ? true : false
+      } else if (typeof this.checked === 'boolean') {
+        return this.checked
+      } else {
+        return this.checked === this.trueValue ? true : false
+      }
     },
     toggle (event) {
       this.isChecked = event.target.checked
       this.$emit('update:checked', this.getValue(event), event);
     },
     getValue (e) {
-      if(this.type === 'radio')
+      if (this.type === 'radio') {
         return this.value
-      else if(e.target.checked)
-        return this.trueValue !== null ? this.trueValue : true
-      else
-        return this.falseValue !== null ? this.falseValue : false
-    },
-  },
+      } else if (e.target.checked) {
+        return this.trueValue !== undefined ? this.trueValue : true
+      } else {
+        return this.falseValue !== undefined ? this.falseValue : false
+      }
+    }
+  }
 }
 </script>
