@@ -48,7 +48,7 @@
                 :style="headerStyles(index)"
               >
                 <slot :name="`${rawColumnNames[index]}-header`">
-                  <div v-html="name" class="d-inline"></div>
+                  <div class="d-inline">{{name}}</div>
                 </slot>
                 <slot
                   v-if="!noSorting && sortable(index)"
@@ -110,11 +110,9 @@
                   :item="item"
                   :index="itemIndex + firstItemIndex"
                 />
-                <td
-                  v-else
-                  :class="cellClass(item, colName, index)"
-                  v-html="item[colName]"
-                ></td>
+                <td v-else :class="cellClass(item, colName, index)">
+                  {{item[colName]}}
+                </td>
               </template>
             </tr>
             <tr
@@ -163,7 +161,7 @@
                 :style="headerStyles(index)"
               >
                 <slot :name="`${rawColumnNames[index]}-header`">
-                  <div v-html="name" class="d-inline"></div>
+                  <div class="d-inline">{{name}}</div>
                 </slot>
                 <slot
                   v-if="!noSorting && sortable(index)"

@@ -5,7 +5,9 @@
   >
     <template #label>
       <slot name="label">
-        <label v-if="label" :for="safeId" :class="labelClasses" v-html="label"></label>
+        <label v-if="label" :for="safeId" :class="labelClasses">
+          {{label}}
+        </label>
       </slot>
     </template>
     <template #input>

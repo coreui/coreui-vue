@@ -12,7 +12,7 @@
              :disabled="page === 1"
              aria-label="Go to first page"
       >
-        <span v-html="firstButtonText"></span>
+        <span v-html="firstButtonHtml"></span>
       </CLink>
     </li>
     <li v-if="!hideArrows"
@@ -23,7 +23,7 @@
              :disabled="page === 1"
              aria-label="Go to previous page"
       >
-        <span v-html="previousButtonText"></span>
+        <span v-html="previousButtonHtml"></span>
       </CLink>
     </li>
     <li v-if="showFirstDots"
@@ -59,7 +59,7 @@
              :disabled="page === pages"
              aria-label="Go to next page"
       >
-        <span v-html="nextButtonText"></span>
+        <span v-html="nextButtonHtml"></span>
       </CLink>
     </li>
     <li v-if="!hideDoubleArrows"
@@ -70,7 +70,7 @@
              :disabled="page === pages"
              aria-label="Go to last page"
       >
-        <span v-html="lastButtonText"></span>
+        <span v-html="lastButtonHtml"></span>
       </CLink>
     </li>
   </ul>
@@ -211,19 +211,19 @@
       hideDots: Boolean,
       hideArrows: Boolean,
       hideDoubleArrows: Boolean,
-      firstButtonText: {
+      firstButtonHtml: {
         type: String,
         default: '&laquo;'
       },
-      previousButtonText: {
+      previousButtonHtml: {
         type: String,
         default: '&lsaquo;'
       },
-      nextButtonText: {
+      nextButtonHtml: {
         type: String,
         default: '&rsaquo;'
       },
-      lastButtonText: {
+      lastButtonHtml: {
         type: String,
         default: '&raquo;'
       },
