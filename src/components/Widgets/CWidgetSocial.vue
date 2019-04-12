@@ -1,7 +1,10 @@
 <template functional>
   <div class="brand-card">
     <div :class="`brand-card-header bg-${props.variant}`">
-      <i :class="props.iconClasses || `fa fa-${props.variant}`"></i>
+      <i
+        class="position-absolute"
+        :class="props.iconClasses || `fa fa-${props.variant}`"
+      ></i>
       <slot></slot>
     </div>
     <div class="brand-card-body">

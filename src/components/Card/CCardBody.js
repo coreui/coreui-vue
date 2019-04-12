@@ -59,7 +59,8 @@ export default {
             'card-img-overlay': props.overlay,
             [`bg-${props.variant}`]: Boolean(props.variant),
             [`border-${props.borderVariant}`]: Boolean(props.borderVariant),
-            [`text-${props.textVariant}`]: Boolean(props.textVariant)
+            [`text-${props.textVariant}`]: Boolean(props.textVariant),
+            [`text-${props.align}`]: Boolean(props.align)
           }
         ]
       }),

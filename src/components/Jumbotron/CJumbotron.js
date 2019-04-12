@@ -21,27 +21,31 @@ export default {
     let childNodes = []
     const $slots = slots()
 
-    if ($slots.header || props.header){
-      const header = $slots.header || h('h1', { staticClass: 'display-3' }, props.header)
+    if ($slots.header || props.header) {
+      const header = $slots.header ||
+                     h('h1', { staticClass: 'display-3' }, props.header)
       childNodes.push(header)
     }
 
-    if ($slots.lead || props.lead){
+    if ($slots.lead || props.lead) {
       const lead = $slots.lead || h('p', { staticClass: 'lead' }, props.lead)
       childNodes.push(lead)
     }
 
-    if ($slots.default)
+    if ($slots.default) {
       childNodes.push($slots.default)
+    }
 
     if (props.fluid) {
-      childNodes = [h(
-        'div',
-        { staticClass: 'container-fluid' },
-        childNodes
-      )]
+      childNodes = [
+        h(
+          'div',
+          { staticClass: 'container-fluid' },
+          childNodes
+        )
+      ]
     }
-    
+
     return h(
       props.tag,
       mergeData(data, {
