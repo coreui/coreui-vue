@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import { mixin as clickaway } from 'vue-clickaway'
+import { mixin as clickaway } from 'vue-clickaway2'
 import { hideMobile } from '../../mixins/hideMobile'
 
 export default {
