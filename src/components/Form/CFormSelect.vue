@@ -1,11 +1,15 @@
-<template >
-  <CFormGroup v-bind="{appendHtml, prependHtml, validFeedback,
-                       invalidFeedback, tooltipFeedback, description,
-                       wrapperClasses, class: computedClasses}"
+<template>
+  <CFormGroup
+    v-bind="{
+      appendHtml, prependHtml, validFeedback, invalidFeedback,
+      tooltipFeedback, description, wrapperClasses, class: computedClasses
+    }"
   >
     <template #label>
       <slot name="label">
-        <label v-if="label" :for="safeId" :class="labelClasses">{{label}}</label>
+        <label v-if="label" :for="safeId" :class="labelClasses">
+          {{label}}
+        </label>
       </slot>
     </template>
 
@@ -14,23 +18,27 @@
         v-bind="$attrs"
         :id="safeId"
         :class="inputClasses"
-        :value="String(state)"
+        :value="state"
         @input="onSelect($event)"
       >
-        <option v-if="placeholder" value="" selected disabled hidden>{{placeholder}}</option>
+        <option v-if="placeholder" value="" selected disabled hidden>
+          {{placeholder}}
+        </option>
         <template v-for="(option, key) in options">
-          <option v-if="typeof option === 'object'"
-                  :value="String(option.value)"
-                  :disabled="option.disabled"
-                  :data-key="key"
-                  :key="key"
+          <option
+            v-if="typeof option === 'object'"
+            :value="option.value"
+            :disabled="option.disabled"
+            :data-key="key"
+            :key="key"
           >
-            {{option.text || option.value}}
+            {{option.label || option.value}}
           </option>
-          <option v-else
-                  :value="String(option)"
-                  :data-key="key"
-                  :key="key"
+          <option
+            v-else
+            :value="String(option)"
+            :data-key="key"
+            :key="key"
           >
             {{option}}
           </option>
@@ -38,12 +46,8 @@
       </select>
     </template>
 
-
-    <template v-for="slot in ['prepend', 'append', 'label-after-input', 'valid-feedback', 'invalid-feedback', 'description']"
-              #[slot]
-    >
-      <slot :name="slot">
-      </slot>
+    <template v-for="slot in $options.slots" #[slot]>
+      <slot :name="slot"></slot>
     </template>
   </CFormGroup>
 </template>
@@ -57,6 +61,14 @@ export default {
   name: 'CFormSelect',
   inheritAttrs: false,
   components: { CFormGroup },
+  slots: [
+    'prepend',
+    'append',
+    'label-after-input',
+    'valid-feedback',
+    'invalid-feedback',
+    'description'
+  ],
   mixins,
   props,
   // {
@@ -90,7 +102,7 @@ export default {
   // },
   data () {
     return {
-      state: typeof this.$options.propsData.value !== 'undefined' ? this.value : ''
+      state: this.value || undefined
     }
   },
   computed: {
@@ -177,9 +189,11 @@ export default {
   // },
   methods: {
     onSelect (e) {
-      const dataKey = e.target.selectedOptions[0].dataset.key
-      const value = this.options[dataKey] && this.options[dataKey].value !== undefined ?
-                      this.options[dataKey].value : this.options[dataKey]
+      // console.log(e)
+      const optionIndex = e.target.selectedOptions[0].dataset.key
+      const option = this.options[optionIndex]
+      // const optionIsObject = Boolean(option.value)
+      const value = option.value || option
       this.state = value
       this.$emit('update:value', value, e)
     },
