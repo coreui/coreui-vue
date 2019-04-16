@@ -16,7 +16,10 @@
       </div>
 
       <div v-show="optionsRow !== 'noPagination'" class="col-sm-6 p-0">
-        <div :class="`form-inline ${optionsRow === 'onlyPagination' ? '' : 'float-sm-right'}`">
+        <div
+          class="form-inline"
+          :class="`${ optionsRow === 'noFilter' ? '' : 'float-sm-right' }`"
+        >
           <label class="mr-2">Items per page: </label>
           <select
             class="form-control"
@@ -37,8 +40,7 @@
     <slot name="over-table"/>
     <div :class="`position-relative ${notResponsive ? '' : 'table-responsive'}`">
       <table :class="tableClasses">
-        <thead :class="headVariant ? `thead-${headVariant}` : ''">
-
+        <thead>
           <tr>
             <th v-if="indexColumn" style="width:40px"></th>
             <template v-for="(name, index) in columnNames">
@@ -195,11 +197,12 @@
     <slot name="under-table"/>
 
 
-    <CPagination v-if="!noPagination"
-                 v-show="totalPages > 1"
-                 :activePage.sync="page"
-                 :pages="totalPages"
-                 v-bind="paginationProps"
+    <CPagination
+      v-if="pagination"
+      v-show="totalPages > 1"
+      :activePage.sync="page"
+      :pages="totalPages"
+      v-bind="typeof pagination === 'object' ? pagination : null"
     />
   </div>
 </template>
@@ -222,8 +225,7 @@ export default {
     },
     indexColumn: [Boolean, String],
     filterRow: Boolean,
-    noPagination: Boolean,
-    paginationProps: Object,
+    pagination: [Boolean, Object],
     addTableClasses: String,
     notResponsive: Boolean,
     noSorting: Boolean,
@@ -242,11 +244,7 @@ export default {
     },
     defaultTableFilter: String,
     defaultColumnFilter: Object,
-    loading: Boolean,
-    headVariant: {
-      type: String,
-      validator: val => ['light', 'dark'].includes(val)
-    }
+    loading: Boolean
   },
   data () {
     return {
@@ -302,7 +300,7 @@ export default {
       return Math.ceil((this.sortedItems.length)/ this.perPageItems) || 1
     },
     computedPage () {
-      return this.noPagination ? this.activePage : this.page
+      return this.pagination ? this.page : this.activePage
     },
     rawColumnNames () {
       if (this.fields)
