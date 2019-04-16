@@ -2,8 +2,8 @@
   <div>
     <div v-if="optionsRow" class="row my-2 mx-0">
       <div
-        v-show="optionsRow !== 'noFilter'"
         class="col-sm-6 form-inline p-0"
+        v-if="optionsRow !== 'noFilter'"
       >
         <label class="mr-2">Filter: </label>
         <input
@@ -15,15 +15,16 @@
         >
       </div>
 
-      <div v-show="optionsRow !== 'noPagination'" class="col-sm-6 p-0">
-        <div
-          class="form-inline"
-          :class="`${ optionsRow === 'noFilter' ? '' : 'float-sm-right' }`"
-        >
+      <div
+        v-if="havePaginationMenu()"
+        class="col-sm-6 p-0"
+        :class="optionsRow === 'noFilter' ? 'offset-sm-6' : ''"
+      >
+        <div class="form-inline float-sm-right">
           <label class="mr-2">Items per page: </label>
           <select
             class="form-control"
-            @change="perPageItems = Number($event.target.value)"
+            @change="paginationChange"
           >
             <option value="" selected disabled hidden>
               {{perPageItems}}
@@ -355,8 +356,9 @@ export default {
     totalPages: {
       immediate: true,
       handler (val, oldVal) {
-        if(val !== oldVal)
+        if(val !== oldVal) {
           this.$emit('pages-change', val)
+        }
       }
     }
   },
@@ -428,6 +430,14 @@ export default {
           'rotate-icon': state === 'desc'
         }
       ]
+    },
+    paginationChange (e) {
+      this.$emit('pagination-change', e.target.value)
+      this.perPageItems = Number(e.target.value)
+    },
+    havePaginationMenu () {
+      return this.optionsRow !== 'noPagination' &&
+        (this.pagination || this.$listeners['pages-change'])
     }
   },
 }
