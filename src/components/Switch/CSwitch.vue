@@ -4,7 +4,7 @@
       v-bind="$attrs"
       :type="type"
       :checked="isChecked"
-      :value="undefined"
+      :value="value"
       class="switch-input form-check-input"
       @change="toggle"
     >
@@ -66,7 +66,7 @@ export default {
       immediate: true,
       handler (val, oldVal) {
         if (val !== oldVal) {
-          this.state = this.getCheckState()
+          this.isChecked = this.getCheckState()
         }
       }
     }
