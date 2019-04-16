@@ -239,8 +239,8 @@ export default {
     optionsRow: [Boolean, String],
     footer: Boolean,
     defaultSorter: {
-      type: Object,
-      default: () => ({ name:'', direction:''})
+      tyep: Array,
+      default: () => []
     },
     defaultTableFilter: String,
     defaultColumnFilter: Object,
@@ -250,7 +250,7 @@ export default {
     return {
       tableFilter: this.defaultTableFilter,
       columnFilter: this.defaultColumnFilter || {},
-      sorter: { name: this.defaultSorter.name, direction: this.defaultSorter.direction },
+      sorter: { name: this.defaultSorter[0], direction: this.defaultSorter[1] },
       firstItemIndex: 0,
       page: this.activePage,
       perPageItems: this.perPage,
