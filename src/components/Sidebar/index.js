@@ -15,10 +15,11 @@ import CSidebar from './CSidebar'
 import CSidebarFooter from './CSidebarFooter'
 import CSidebarForm from './CSidebarForm'
 import CSidebarHeader from './CSidebarHeader'
+import CSidebarNav from './CSidebarNav'
 import CSidebarMinimizer from './CSidebarMinimizer'
-import CSidebarNavItems from './CSidebarNavItems'
 import CSidebarNavDivider from './CSidebarNavDivider'
 import CSidebarNavDropdown from './CSidebarNavDropdown'
+import CSidebarNavItems from './CSidebarNavItems'
 import CSidebarNavItem from './CSidebarNavItem'
 import CSidebarNavLabel from './CSidebarNavLabel'
 import CSidebarNavLink from './CSidebarNavLink'
@@ -31,7 +32,7 @@ export {
   SidebarNavDivider, SidebarNavItem, SidebarNavDropdown,
   SidebarNavLabel, SidebarNavLink, SidebarNavTitle, SidebarToggler,
   CSidebar, CSidebarFooter, CSidebarForm, CSidebarHeader,
-  CSidebarMinimizer, CSidebarNavItems, CSidebarNavDivider,
+  CSidebarMinimizer, CSidebarNav, CSidebarNavItems, CSidebarNavDivider,
   CSidebarNavItem, CSidebarNavDropdown, CSidebarNavLabel,
   CSidebarNavLink, CSidebarNavTitle, CSidebarToggler
 }
