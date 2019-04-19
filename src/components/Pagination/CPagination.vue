@@ -19,7 +19,7 @@
         :class="firstClasses"
     >
       <CLink class="page-link"
-             @click="setPage(page - 1)"
+             @click="setPage(activePage - 1)"
              :disabled="page === 1"
              aria-label="Go to previous page"
       >
@@ -55,7 +55,7 @@
         :class="lastClasses"
     >
       <CLink class="page-link"
-             @click="setPage(page + 1)"
+             @click="setPage(activePage + 1)"
              :disabled="page === pages"
              aria-label="Go to next page"
       >
