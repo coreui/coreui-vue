@@ -1,29 +1,13 @@
 <template>
-  <button class="sidebar-minimizer" type="button" @click="onClick()"></button>
+  <button
+    class="sidebar-minimizer"
+    type="button"
+    @click="$root.$emit('c-sidebar-toggle-minimize')"
+  >
+  </button>
 </template>
 <script>
-import { togglePs } from '../../mixins/togglePs'
-
 export default {
-  name: 'CSidebarMinimizer',
-  mixins: [ togglePs ],
-  mounted: function () {
-    const isMinimized = document.body.classList.contains('sidebar-minimized')
-    this.togglePs(!isMinimized)
-  },
-  methods: {
-    onClick () {
-      this.sidebarMinimize()
-      this.brandMinimize()
-    },
-    sidebarMinimize () {
-      const isMinimized = document.body.classList.toggle('sidebar-minimized')
-      this.$emit('cui-sidebar-minimize', isMinimized)
-      this.togglePs(!isMinimized)
-    },
-    brandMinimize () {
-      document.body.classList.toggle('brand-minimized')
-    }
-  }
+  name: 'CSidebarMinimizer'
 }
 </script>

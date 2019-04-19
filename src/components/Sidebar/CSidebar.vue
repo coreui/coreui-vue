@@ -9,20 +9,86 @@ import { hideMobile } from '../../mixins/hideMobile'
 
 export default {
   name: 'CSidebar',
-  mixins: [ clickaway, hideMobile ],
+  mixins: [clickaway, hideMobile],
   props: {
-    fixed: {
-      type: Boolean,
-      default: false
+    fixed: Boolean,
+    minimize: Boolean,
+    display: {
+      type: [Boolean, String],
+      default: 'lg',
+      validator: val => [true, false, 'sm', 'md', 'lg', 'xl'].includes(val)
+    },
+    mobile: Boolean
+  },
+  provide () {
+    return {
+      minimized: this.minimized
     }
   },
-  mounted: function () {
+  data () {
+    return {
+      displayed: this.display,
+      minimized: this.minimize
+    }
+  },
+  watch: {
+    display () {
+      this.displayed = this.display
+    },
+    displayed: {
+      immediate: true,
+      handler (val, oldVal) {
+        this.toggleClasses(val, oldVal)
+      }
+    },
+    minimize () {
+      this.minimized = this.minimize
+    },
+    minimized: {
+      immediate: true,
+      handler (val, oldVal) {
+        this.toggleMinimize()
+      }
+    }
+  },
+  mounted () {
+    this.$root.$on('c-sidebar-toggle-minimize', () => {
+      this.minimized = !this.minimized
+    })
+    this.$root.$on('c-sidebar-toggle', () => {
+        this.displayed = this.displayed ? false : this.display
+    })
     this.isFixed()
   },
+  // computed: {
+  //   displayClass () {
+  //     if (this.displayed && !this.mobile) {
+  //       const breakpoint = this.displayed === true ? '' : '-' + this.displayed
+  //       return `sidebar${breakpoint}-show`
+  //     }
+  //   },
+  //   sidebarClasses () {
+  //     return ['sidebar', this.displayClass]
+  //   }
+  // },
   methods: {
     isFixed () {
-      this.fixed ? document.body.classList.add('sidebar-fixed') : document.body.classList.remove('sidebar-fixed')
-      return this.fixed
+      const body = document.body.classList
+      this.fixed ? body.add('sidebar-fixed') : body.remove('sidebar-fixed')
+    },
+    toggleClasses (val, oldVal) {
+      if (val) {
+        const breakpoint = val === true ? '' : '-' + val
+        document.body.classList.add(`sidebar${breakpoint}-show`)
+      }
+      if (oldVal) {
+        const oldBreakpoint = oldVal === true ? '' : '-' + oldVal
+        document.body.classList.remove(`sidebar${oldBreakpoint}-show`)
+      }
+    },
+    toggleMinimize () {
+      document.body.classList.toggle('sidebar-minimized')
+      document.body.classList.toggle('brand-minimized')
     }
   }
 }

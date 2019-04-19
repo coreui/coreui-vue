@@ -1,18 +1,18 @@
 <template>
-  <nav class="sidebar-nav">
-    <PerfectScrollbar
+  <nav class="sidebar-nav"">
+    <VuePerfectScrollbar
       class="scroll-area"
       :settings="psSettings"
-      @ps-scroll-y="scrollHandle"
+      :switcher="!$parent.minimized"
     >
         <CSidebarNavItems :items="navItems"/>
-    </PerfectScrollbar>
+    </VuePerfectScrollbar>
   </nav>
 </template>
 
 <script>
 import CSidebarNavItems from './CSidebarNavItems'
-import PerfectScrollbar from 'vue-perfect-scrollbar'
+import VuePerfectScrollbar from 'vue-perfect-scrollbar'
 
 export default {
   name: 'CSidebarNav',
@@ -25,10 +25,10 @@ export default {
   },
   components: {
     CSidebarNavItems,
-    PerfectScrollbar
+    VuePerfectScrollbar
   },
   computed: {
-    psSettings: () => {
+    psSettings () {
       // ToDo: find better rtl fix
       return {
         maxScrollbarLength: 200,
