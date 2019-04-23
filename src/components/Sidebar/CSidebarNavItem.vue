@@ -1,31 +1,35 @@
 <template>
-  <li :class="classList" @click="hideMobile">
-    <slot></slot>
+  <CSidebarNavDropdown
+    v-if="item.children"
+    :name="item.name"
+    :url="item.url"
+    :icon="item.icon"
+    :open="item.open"
+  >
+    <CSidebarNavItem
+      v-for="(dropdownItem, key) in item.children"
+      :key="key"
+      :item="dropdownItem"
+    />
+  </CSidebarNavDropdown>
+  <li
+    :class="['nav-item', item.classes]"
+    @click="hideMobile"
+    v-else
+  >
+    <slot>
+      <CSidebarNavLink v-bind="item"/>
+    </slot>
   </li>
 </template>
 
 <script>
 import { hideMobile } from '../../mixins/hideMobile'
-
 export default {
   name: 'CSidebarNavItem',
-    mixins: [ hideMobile ],
-    props: {
-    classes: {
-      type: String,
-      default: ''
-    }
-  },
-  computed: {
-    classList () {
-      return [
-        'nav-item',
-        ...this.itemClasses
-      ]
-    },
-    itemClasses () {
-      return this.classes ? this.classes.split(' ') : ''
-    }
+  mixins: [ hideMobile ],
+  props: {
+    item: [String, Array, Object]
   }
 }
 </script>

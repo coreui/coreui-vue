@@ -5,7 +5,7 @@
         <CSidebarNavTitle
           :key="index"
           :name="item.name"
-          :classes="item.class"
+          :class="item.class"
           :wrapper="item.wrapper"
         />
       </template>
@@ -23,49 +23,7 @@
         />
       </template>
       <template v-else>
-        <template v-if="item.children">
-          <!-- First level dropdown -->
-          <CSidebarNavDropdown
-            :key="index"
-            :name="item.name"
-            :url="item.url"
-            :icon="item.icon"
-          >
-            <template v-for="(childL1, index1) in item.children">
-              <template v-if="childL1.children">
-                <!-- Second level dropdown -->
-                <CSidebarNavDropdown :key="index1"
-                                     :name="childL1.name"
-                                     :url="childL1.url"
-                                     :icon="childL1.icon">
-                  <li
-                    :key="index2"
-                    class="nav-item"
-                    v-for="(childL2, index2) in childL1.children"
-                  >
-                    <CSidebarNavLink
-                      v-bind="childL2"
-                      :variant="item.variant"
-                    />
-                  </li>
-                </CSidebarNavDropdown>
-              </template>
-              <template v-else>
-                <CSidebarNavItem :key="index1" :classes="item.class">
-                  <CSidebarNavLink
-                    v-bind="childL1"
-                    :variant="item.variant"
-                  />
-                </CSidebarNavItem>
-              </template>
-            </template>
-          </CSidebarNavDropdown>
-        </template>
-        <template v-else>
-          <CSidebarNavItem :key="index" :classes="item.class">
-            <CSidebarNavLink v-bind="item"/>
-          </CSidebarNavItem>
-        </template>
+        <CSidebarNavItem :key="index" :item="item"/>
       </template>
     </template>
   </ul>
