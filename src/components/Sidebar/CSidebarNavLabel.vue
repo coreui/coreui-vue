@@ -1,7 +1,10 @@
 <template>
-  <c-sidebar-nav-item :classes="classList.navItem">
-    <a :class="classList.navLink" :href="url"><i :class="classList.icon"></i> {{name}}</a>
-  </c-sidebar-nav-item>
+  <CSidebarNavItem :classes="navItemClasses">
+    <a class="nav-label" :href="url">
+      <i :class="iconClasses"></i>
+      {{name}}
+    </a>
+  </CSidebarNavItem>
 </template>
 
 <script>
@@ -12,10 +15,7 @@ export default {
     CSidebarNavItem,
   },
   props: {
-    name: {
-      type: String,
-      default: ''
-    },
+    name: String,
     url: {
       type: String,
       default: '#'
@@ -24,10 +24,7 @@ export default {
       type: String,
       default: 'fa fa-circle'
     },
-    classes: {
-      type: String,
-      default: ''
-    },
+    classes: String,
     label: {
       type: Object,
       required: true,
@@ -35,22 +32,15 @@ export default {
     }
   },
   computed: {
-    classList () {
-      const classes = {
-        navItem: ['hidden-cn', ...this.getClasses(this.classes)].join(' '),
-        navLink: 'nav-label',
-        icon: [
-          this.icon ? this.icon : 'fa fa-circle',
-          this.label.variant ? `text-${this.label.variant}` : '',
-          this.label.class ? this.label.class : ''
-        ].join(' ')
-      }
-      return classes
-    }
-  },
-  methods: {
-    getClasses (classes) {
-      return classes ? classes.split(' ') : []
+    navItemClasses () {
+      return ['hidden-cn', this.classes]
+    },
+    iconClasses () {
+      return [
+        this.icon || 'fa fa-circle',
+        this.label.class,
+        { [`text-${this.label.variant}`] : this.label.variant }
+      ]
     }
   }
 }

@@ -20,11 +20,6 @@ export default {
     },
     mobile: Boolean
   },
-  provide () {
-    return {
-      minimized: this.minimized
-    }
-  },
   data () {
     return {
       displayed: this.display,
@@ -47,7 +42,7 @@ export default {
     minimized: {
       immediate: true,
       handler (val, oldVal) {
-        this.toggleMinimize()
+        val ? this.sidebarMinimize() : this.maximize()
       }
     }
   },
@@ -86,9 +81,13 @@ export default {
         document.body.classList.remove(`sidebar${oldBreakpoint}-show`)
       }
     },
-    toggleMinimize () {
-      document.body.classList.toggle('sidebar-minimized')
-      document.body.classList.toggle('brand-minimized')
+    sidebarMinimize () {
+      document.body.classList.add('sidebar-minimized')
+      document.body.classList.add('brand-minimized')
+    },
+    maximize () {
+      document.body.classList.remove('sidebar-minimized')
+      document.body.classList.remove('brand-minimized')
     }
   }
 }

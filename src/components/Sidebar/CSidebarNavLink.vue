@@ -7,7 +7,7 @@
     <i :class="['nav-icon', icon]"></i> {{name}}
     <CBadge
       v-if="badge && badge.text"
-      :variant="badge.variant"
+      :variant="badge.variant || 'info'"
     >
       {{badge.text}}
     </CBadge>
@@ -15,15 +15,12 @@
 </template>
 
 <script>
-import CLink, { propsFactory as linkPropsFactory} from '../Link/CLink'
+import CLink, { propsFactory as linkPropsFactory } from '../Link/CLink'
 
 const props = Object.assign(linkPropsFactory(), {
     name: String,
     icon: [String, Array, Object],
-    badge: {
-      type: Object,
-      default: () => {}
-    },
+    badge: Object,
     variant: String,
     url: String
   }
@@ -33,9 +30,12 @@ export default {
   props,
   computed: {
     linkGeneratedFromUrlProp () {
-      if (!this.url) return {}
-      return this.url && this.url.substring(0,4) === 'http' ?
-             { href: this.url } : { to: this.url }
+      const url = this.url
+      if (!url) {
+        return {}
+      } else {
+        return url.substring(0,4) === 'http' ? { href: url } : { to: url }
+      }
     },
     computedProps () {
       return Object.assign({}, this.$props, this.linkGeneratedFromUrlProp)

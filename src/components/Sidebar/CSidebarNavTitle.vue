@@ -1,7 +1,10 @@
 <template>
-  <li :class="classList">
+  <li :class="['nav-title', classes]">
     <template v-if="wrapper && wrapper.element">
-      <component v-bind:is="wrapper.element" v-bind="wrapper.attributes">
+      <component
+        :is="wrapper.element"
+        v-bind="wrapper.attributes"
+      >
         {{name}}
       </component>
     </template>
@@ -15,29 +18,9 @@
 export default {
   name: 'CSidebarNavTitle',
   props: {
-    name: {
-      type: String,
-      default: ''
-    },
-    classes: {
-      type: String,
-      default: ''
-    },
-    wrapper: {
-      type: Object,
-      default: () => {}
-    }
-  },
-  computed: {
-    classList () {
-      return [
-        'nav-title',
-        ...this.itemClasses
-      ]
-    },
-    itemClasses () {
-      return this.classes ? this.classes.split(' ') : ''
-    }
+    name: String,
+    classes: [String, Array, Object],
+    wrapper: Object
   }
 }
 </script>

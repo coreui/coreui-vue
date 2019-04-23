@@ -4,12 +4,11 @@
     type="button"
     @click="$root.$emit('c-sidebar-toggle')"
   >
-    <span class="navbar-toggler-icon" />
+    <span class="navbar-toggler-icon"/>
   </button>
 </template>
 
 <script>
-
 export default {
   name: 'CSidebarToggler'
 }

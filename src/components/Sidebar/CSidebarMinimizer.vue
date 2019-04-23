@@ -6,6 +6,7 @@
   >
   </button>
 </template>
+
 <script>
 export default {
   name: 'CSidebarMinimizer'

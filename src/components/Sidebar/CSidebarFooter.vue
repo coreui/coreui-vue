@@ -1,16 +1,11 @@
-<template>
-  <div v-if="hasSlotDefault" class="sidebar-footer">
+<template functional>
+  <div v-if="$slots.default" class="sidebar-footer">
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CSidebarFooter',
-  computed: {
-    hasSlotDefault() {
-      return !!this.$slots.default;
-    }
-  }
+  name: 'CSidebarFooter'
 }
 </script>
