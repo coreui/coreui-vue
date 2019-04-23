@@ -1,6 +1,17 @@
 <template>
-  <router-link tag="li" class="nav-item nav-dropdown" :to="url" disabled>
-    <div class="nav-link nav-dropdown-toggle" @click="handleClick"><i :class="classIcon"></i> {{name}}</div>
+  <router-link
+    tag="li"
+    :class="dropdownClasses"
+    :to="url"
+    disabled
+  >
+    <div
+      class="nav-link nav-dropdown-toggle"
+      @click="handleClick"
+    >
+      <i :class="classIcon"></i>
+      {{name}}
+    </div>
     <ul class="nav-dropdown-items">
       <slot></slot>
     </ul>
@@ -11,31 +22,31 @@
 export default {
   name:'CSidebarNavDropdown',
   props: {
-    name: {
-      type: String,
-      default: ''
-    },
-    url: {
-      type: String,
-      default: ''
-    },
-    icon: {
-      type: String,
-      default: ''
+    name: String,
+    url: String,
+    icon: String,
+    open: Boolean
+  },
+  data () {
+    return {
+      isOpen: this.open
     }
   },
   computed: {
     classIcon () {
+      return ['nav-icon', this.icon]
+    },
+    dropdownClasses () {
       return [
-        'nav-icon',
-        this.icon
+        'nav-item nav-dropdown',
+        { open: this.isOpen }
       ]
     }
   },
   methods: {
     handleClick (e) {
       e.preventDefault()
-      e.target.parentElement.classList.toggle('open')
+      this.isOpen = !this.isOpen
     }
   }
 }
