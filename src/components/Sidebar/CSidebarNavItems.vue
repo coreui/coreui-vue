@@ -31,8 +31,6 @@
 
 <script>
 import CSidebarNavDivider from './CSidebarNavDivider'
-import CSidebarNavDropdown from './CSidebarNavDropdown'
-import CSidebarNavLink from './CSidebarNavLink'
 import CSidebarNavTitle from './CSidebarNavTitle'
 import CSidebarNavItem from './CSidebarNavItem'
 import CSidebarNavLabel from './CSidebarNavLabel'
@@ -48,8 +46,6 @@ export default {
   },
   components: {
     CSidebarNavDivider,
-    CSidebarNavDropdown,
-    CSidebarNavLink,
     CSidebarNavTitle,
     CSidebarNavItem,
     CSidebarNavLabel

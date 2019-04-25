@@ -1,5 +1,5 @@
 <template functional>
-  <li :class="['divider', props.classes]"></li>
+  <li :class="['nav-divider', props.classes]"></li>
 </template>
 
 <script>

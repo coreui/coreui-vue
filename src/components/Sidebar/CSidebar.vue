@@ -42,16 +42,18 @@ export default {
     minimized: {
       immediate: true,
       handler (val, oldVal) {
+        this.emitMinimize(val)
         val ? this.sidebarMinimize() : this.maximize()
       }
     }
   },
   mounted () {
+    this.emitMinimize()
     this.$root.$on('c-sidebar-toggle-minimize', () => {
       this.minimized = !this.minimized
     })
     this.$root.$on('c-sidebar-toggle', () => {
-        this.displayed = this.displayed ? false : this.display
+      this.displayed = this.displayed ? false : this.display
     })
     this.isFixed()
   },
@@ -88,6 +90,11 @@ export default {
     maximize () {
       document.body.classList.remove('sidebar-minimized')
       document.body.classList.remove('brand-minimized')
+    },
+    emitMinimize (val) {
+      this.$children.forEach(child => {
+        child.$emit('c-sidebar-toggle-minimize', val || this.minimized)
+      })
     }
   }
 }
