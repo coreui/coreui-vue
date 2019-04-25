@@ -186,13 +186,11 @@
         :style="topLoadingPosition"
         style="position:absolute;left:50%;transform:translateX(-50%);"
       >
-        <div
+        <CSpinner
           class="spinner-border text-success"
           :style="spinnerSize"
           role="status"
-        >
-          <span class="sr-only">Loading...</span>
-        </div>
+        />
       </div>
     </div>
     <slot name="under-table"/>
@@ -209,10 +207,11 @@
 </template>
 
 <script>
+import CSpinner from '../Spinner/CSpinner'
 import CPagination from '../Pagination/CPagination'
 export default {
   name: 'CTable',
-  components: { CPagination },
+  components: { CPagination, CSpinner },
   props: {
     items: Array,
     fields: Array,
@@ -456,4 +455,17 @@ export default {
 .is-loading {
   opacity: .4;
 }
+</style>
+
+<style scoped lang="scss">
+@import "~@coreui/coreui/scss/partials/tables.scss";
+@import "~@coreui/coreui/scss/partials/input-group.scss";
+@import "~@coreui/coreui/scss/partials/forms.scss";
+@import "~@coreui/coreui/scss/partials/grid.scss";
+@import "~@coreui/coreui/scss/utilities/_flex.scss";
+@import "~@coreui/coreui/scss/utilities/_float.scss";
+@import "~@coreui/coreui/scss/utilities/_position.scss";
+@import "~@coreui/coreui/scss/utilities/_sizing.scss";
+@import "~@coreui/coreui/scss/utilities/_spacing.scss";
+@import "~@coreui/coreui/scss/utilities/_text.scss";
 </style>

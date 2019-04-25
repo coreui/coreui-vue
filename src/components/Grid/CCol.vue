@@ -46,3 +46,7 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  @import "~@coreui/coreui/scss/partials/grid.scss";
+</style>

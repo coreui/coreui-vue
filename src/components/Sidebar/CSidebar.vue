@@ -41,7 +41,7 @@ export default {
     },
     minimized: {
       immediate: true,
-      handler (val, oldVal) {
+      handler (val) {
         this.emitMinimize(val)
         val ? this.sidebarMinimize() : this.maximize()
       }

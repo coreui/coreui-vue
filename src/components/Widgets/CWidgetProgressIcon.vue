@@ -10,10 +10,12 @@
       <div class="h4 mb-0">{{props.header}}</div>
       <small class="text-muted text-uppercase font-weight-bold">{{props.text}}</small>
       <slot>
-        <CProgress :variant="!props.inverse ? props.variant : ''"
-                   :value="props.value"
-                   :class="props.inverse ? 'progress-white' : ''"
-                   class="progress-xs my-3 mb-0"/>
+        <CProgress
+          :variant="!props.inverse ? props.variant : ''"
+          :value="props.value"
+          :class="props.inverse ? 'progress-white' : ''"
+          class="progress-xs my-3 mb-0"
+        />
       </slot>
     </div>
   </div>
@@ -45,3 +47,12 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  @import "~@coreui/coreui/scss/partials/widgets.scss";
+  @import "~@coreui/coreui/scss/partials/card.scss";
+  @import "~@coreui/coreui/scss/utilities/_spacing.scss";
+  @import "~@coreui/coreui/scss/utilities/_text.scss";
+  @import "~@coreui/coreui/scss/utilities/_background.scss";
+
+</style>

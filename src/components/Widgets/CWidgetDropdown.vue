@@ -28,3 +28,11 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  @import "~@coreui/coreui/scss/partials/widgets.scss";
+  @import "~@coreui/coreui/scss/partials/card.scss";
+  @import "~@coreui/coreui/scss/utilities/_spacing.scss";
+  @import "~@coreui/coreui/scss/utilities/_background.scss";
+
+</style>

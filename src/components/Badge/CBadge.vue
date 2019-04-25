@@ -39,3 +39,7 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  @import "~@coreui/coreui/scss/partials/badge.scss";
+</style>

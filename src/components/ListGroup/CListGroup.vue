@@ -20,3 +20,7 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  @import "~@coreui/coreui/scss/partials/list-group.scss";
+</style>

@@ -57,3 +57,14 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  @import "~@coreui/coreui/scss/partials/widgets.scss";
+  @import "~@coreui/coreui/scss/partials/card.scss";
+  @import "~@coreui/coreui/scss/utilities/_spacing.scss";
+  @import "~@coreui/coreui/scss/utilities/_clearfix.scss";
+  @import "~@coreui/coreui/scss/utilities/_display.scss";
+  @import "~@coreui/coreui/scss/utilities/_text.scss";
+  @import "~@coreui/coreui/scss/utilities/_background.scss";
+
+</style>

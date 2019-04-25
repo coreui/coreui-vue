@@ -33,3 +33,8 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  @import "~@coreui/coreui/scss/partials/media.scss";
+  @import "~@coreui/coreui/scss/utilities/_spacing.scss";
+</style>

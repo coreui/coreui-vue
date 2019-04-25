@@ -98,3 +98,7 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  @import "~@coreui/coreui/scss/partials/buttons.scss";
+</style>

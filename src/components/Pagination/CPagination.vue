@@ -7,68 +7,73 @@
     <li v-if="!hideDoubleArrows"
         :class="firstClasses"
     >
-      <CLink class="page-link"
-             @click="setPage(1)"
-             :disabled="page === 1"
-             aria-label="Go to first page"
+      <CLink
+        class="page-link"
+        @click="setPage(1)"
+        :disabled="page === 1"
+        aria-label="Go to first page"
       >
         <span v-html="firstButtonHtml"></span>
       </CLink>
     </li>
-    <li v-if="!hideArrows"
-        :class="firstClasses"
-    >
-      <CLink class="page-link"
-             @click="setPage(activePage - 1)"
-             :disabled="page === 1"
-             aria-label="Go to previous page"
+    <li v-if="!hideArrows" :class="firstClasses">
+      <CLink
+        class="page-link"
+        @click="setPage(page - 1)"
+        :disabled="page === 1"
+        aria-label="Go to previous page"
       >
         <span v-html="previousButtonHtml"></span>
       </CLink>
     </li>
-    <li v-if="showFirstDots"
-        role="separator"
-        class="page-item disabled d-none d-sm-flex"
+    <li
+      v-if="showFirstDots"
+      role="separator"
+      class="page-item disabled d-none d-sm-flex"
     >
       <span class="page-link">…</span>
     </li>
 
-    <li v-for="(item, index) in items"
-        :key="index"
-        :class="setStyle(item)"
+    <li
+      v-for="(item, index) in items"
+      :key="index"
+      :class="setStyle(item)"
     >
-      <CLink class="page-link"
-             @click="setPage(item)"
-             :aria-label="`Goto page ${item}`"
+      <CLink
+        class="page-link"
+        @click="setPage(item)"
+        :aria-label="`Goto page ${item}`"
       >
         {{item}}
       </CLink>
     </li>
 
-    <li v-if="showLastDots"
-        role="separator"
-        class="page-item disabled d-none d-sm-flex"
+    <li
+      v-if="showLastDots"
+      role="separator"
+      class="page-item disabled d-none d-sm-flex"
     >
       <span class="page-link">…</span>
     </li>
-    <li v-if="!hideArrows"
-        :class="lastClasses"
+    <li
+      v-if="!hideArrows"
+      :class="lastClasses"
     >
-      <CLink class="page-link"
-             @click="setPage(activePage + 1)"
-             :disabled="page === pages"
-             aria-label="Go to next page"
+      <CLink
+        class="page-link"
+        @click="setPage(page + 1)"
+        :disabled="page === pages"
+        aria-label="Go to next page"
       >
         <span v-html="nextButtonHtml"></span>
       </CLink>
     </li>
-    <li v-if="!hideDoubleArrows"
-        :class="lastClasses"
-    >
-      <CLink class="page-link"
-             @click="setPage(pages)"
-             :disabled="page === pages"
-             aria-label="Go to last page"
+    <li v-if="!hideDoubleArrows" :class="lastClasses">
+      <CLink
+        class="page-link"
+        @click="setPage(pages)"
+        :disabled="page === pages"
+        aria-label="Go to last page"
       >
         <span v-html="lastButtonHtml"></span>
       </CLink>
@@ -111,7 +116,7 @@
         return ['page-item', { disabled: this.activePage === this.pages }]
       },
       computedClasses () {
-        return `pagination b-pagination pagination-${this.rwd} justify-content-${this.align} `
+        return `pagination pagination-${this.rwd} justify-content-${this.align} `
       },
       dots () {
         return this.hideDots || this.limit < 5 ? false : true
@@ -232,8 +237,10 @@
   }
 </script>
 
-<style scoped>
-.page-link:focus {
-  box-shadow: none;
-}
+<style scoped lang="scss">
+  @import "~@coreui/coreui/scss/partials/pagination.scss";
+  @import "~@coreui/coreui/scss/utilities/_flex.scss";
+  .page-link:focus {
+    box-shadow: none;
+  }
 </style>

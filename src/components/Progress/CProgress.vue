@@ -47,3 +47,8 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  @import "~@coreui/coreui/scss/partials/progress.scss";
+  @import "~@coreui/coreui/scss/utilities/_background.scss";
+</style>

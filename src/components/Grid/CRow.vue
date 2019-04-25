@@ -11,8 +11,7 @@ const props = {
   alignH: {
     type: String,
     validator: str => arrayIncludes(['start', 'end', 'center','between', 'around'], str)
-  },
-  // oneCCol: [Boolean, Object] possible feature?
+  }
 }
 
 export default {
@@ -35,3 +34,8 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  @import "~@coreui/coreui/scss/partials/grid.scss";
+  @import "~@coreui/coreui/scss/utilities/_flex.scss";
+</style>

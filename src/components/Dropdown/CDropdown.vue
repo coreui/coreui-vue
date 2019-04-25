@@ -175,3 +175,15 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  @import "~@coreui/coreui/scss/partials/dropdown.scss";
+  @import "~@coreui/coreui/scss/partials/buttons.scss";
+  @import "~@coreui/coreui/scss/partials/button-group.scss";
+
+  // @import "~@coreui/coreui/scss/partials/nav.scss";
+
+
+  // @import "~@coreui/coreui/scss/utilities/dropdown.scss";
+
+</style>
