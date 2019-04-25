@@ -25,11 +25,26 @@ export default {
     name: String,
     url: String,
     icon: String,
-    open: Boolean
+    open: {
+      type: Boolean,
+      default: undefined
+    }
   },
   data () {
     return {
       isOpen: this.open
+    }
+  },
+  watch: {
+    $route: {
+      immediate: true,
+      handler (route) {
+        if (this.open === undefined) {
+          this.isOpen = route.fullPath.includes(this.url)
+        } else if (this.open === false) {
+          this.isOpen = false
+        }
+      }
     }
   },
   computed: {
