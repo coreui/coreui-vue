@@ -1,12 +1,15 @@
 <template>
-  <nav class="sidebar-nav"">
+  <nav class="sidebar-nav">
     <VuePerfectScrollbar
       class="scroll-area"
       :settings="psSettings"
-      :switcher="!$parent.minimized"
+      v-if="!isMinimized"
     >
         <CSidebarNavItems :items="navItems"/>
     </VuePerfectScrollbar>
+    <template v-else>
+      <CSidebarNavItems :items="navItems"/>
+    </template>
   </nav>
 </template>
 
@@ -26,6 +29,14 @@ export default {
   components: {
     CSidebarNavItems,
     VuePerfectScrollbar
+  },
+  data () {
+    return {
+      isMinimized: false
+    }
+  },
+  created () {
+    this.$on('c-sidebar-toggle-minimize', val => this.isMinimized = val)
   },
   computed: {
     psSettings () {
