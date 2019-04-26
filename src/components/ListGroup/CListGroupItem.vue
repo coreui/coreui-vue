@@ -1,11 +1,9 @@
 <script>
 import { mergeData } from 'vue-functional-data-merge'
-import pluckProps from '../../utils/pluck-props'
-import { assign } from '../../utils/object'
+import getPartOfObject from '../../utils/getPartOfObject'
 import CLink, { propsFactory as linkPropsFactory } from '../Link/CLink'
-let linkProps = linkPropsFactory()
 
-const props = assign(
+const props = Object.assign(
   {
     tag: {
       type: String,
@@ -14,7 +12,7 @@ const props = assign(
     action: Boolean,
     variant: String,
   },
-  linkProps
+  linkPropsFactory()
 )
 
 export default {
@@ -22,12 +20,12 @@ export default {
   name: 'CListGroupItem',
   props,
   render (h, { props, data, children }) {
-    const tag = !props.href && !props.to ? props.tag : CLink
+    const tag = props.href || props.to ? CLink : props.tag
     const isAction = Boolean(
       props.action ||
       props.href ||
       props.to ||
-      props.tag == 'button'
+      props.tag === 'button'
     )
     const attrs = {}
     let itemProps = {}
@@ -37,7 +35,7 @@ export default {
       if (props.disabled)
         attrs.disabled = true
     } else {
-      itemProps = pluckProps(linkProps, props)
+      itemProps = getPartOfObject(props, linkPropsFactory())
     }
     const componentData = {
       attrs,

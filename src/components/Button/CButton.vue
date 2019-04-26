@@ -1,7 +1,6 @@
 <script>
 import { mergeData } from 'vue-functional-data-merge'
-import pluckProps from '../../utils/pluck-props'
-import { assign } from '../../utils/object'
+import getPartOfObject from '../../utils/getPartOfObject'
 import CLink, { propsFactory as linkPropsFactory } from '../Link/CLink'
 
 const btnProps = {
@@ -11,7 +10,7 @@ const btnProps = {
   ghost: Boolean,
   size: {
     type: String,
-    validator: (value) => ['sm','lg'].indexOf(value) !== -1
+    validator: value => ['sm','lg'].includes(value)
   },
   variant: {
     type: String,
@@ -27,7 +26,7 @@ const btnProps = {
   },
   textHtml: String
 }
-export const props = assign(linkPropsFactory(), btnProps)
+export const props = Object.assign(linkPropsFactory(), btnProps)
 
 // Helper functons to minimize runtime memory footprint when lots of buttons on page(TODO: check it)
 function isLink (props) {
@@ -52,7 +51,7 @@ function computeClasses (props) {
 }
 
 function computePassedProps (props) {
-  return isLink(props) ? pluckProps(linkPropsFactory(), props) : null
+  return isLink(props) ? getPartOfObject(props, linkPropsFactory()) : null
 }
 
 function computeAttrs (props, data, isButton, toggle) {
