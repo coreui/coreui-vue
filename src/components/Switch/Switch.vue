@@ -56,12 +56,12 @@ export default {
     outline: {
       type: [Boolean, String],
       default: null,
-      validator: value => [false, true, '', 'alt'].indexOf(value) !== -1
+      validator: outline => [false, true, '', 'alt'].includes(outline)
     },
     size: {
       type: String,
       default: null,
-      validator: value => ['', 'lg', 'sm'].indexOf(value) !== -1
+      validator: size => ['', 'lg', 'sm'].includes(size)
     },
     checked: {
       type: Boolean,
@@ -98,7 +98,7 @@ export default {
     variant: {
       type: String,
       default: null,
-      validator: value => [null, '3d', 'pill'].indexOf(value) !== -1
+      validator: variant => [null, '3d', 'pill'].includes(variant)
     },
     dataOn: {
       type: String,

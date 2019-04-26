@@ -1,16 +1,15 @@
 <script>
 import { mergeData } from 'vue-functional-data-merge'
-import { arrayIncludes } from '../../utils/array'
 
 const props = {
   noGutters: Boolean,
   alignV: {
     type: String,
-    validator: str => arrayIncludes(['start', 'end', 'center','baseline', 'stretch'], str)
+    validator: str => ['start', 'end', 'center','baseline', 'stretch'].includes(str)
   },
   alignH: {
     type: String,
-    validator: str => arrayIncludes(['start', 'end', 'center','between', 'around'], str)
+    validator: str => ['start', 'end', 'center','between', 'around'].includes(str)
   }
 }
 

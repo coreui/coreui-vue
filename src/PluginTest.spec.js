@@ -1,5 +1,5 @@
 // this test is run at coreui-vue-admin-template
-import CoreuiVue from '../index'
+import CoreuiVue from './index'
 
 test("Should register all components when installed", () => {
 

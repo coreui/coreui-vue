@@ -1,9 +1,8 @@
 <script>
 import { mergeData } from 'vue-functional-data-merge'
-import { assign } from '../../utils/object'
 import sharedCardProps from './sharedCardProps'
 
-export const props = assign(
+export const props = Object.assign(
   sharedCardProps.props,
   {
     headerHtml: String

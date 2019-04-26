@@ -5,12 +5,12 @@ export const props = {
   type: {
     type: String,
     default: 'iframe',
-    validator: type => ['iframe', 'embed', 'video', 'object', 'img'].indexOf(type) !== -1
+    validator: type => ['iframe', 'embed', 'video', 'object', 'img'].includes(type)
   },
   aspect: {
     type: String,
     default: '16by9',
-    validator: aspect => ['21by9', '16by9', '4by3', '1by1'].indexOf(aspect) !== -1
+    validator: aspect => ['21by9', '16by9', '4by3', '1by1'].includes(aspect)
   },
   tag: {
     type: String,
