@@ -1,9 +1,55 @@
+<template>
+  <div :class="vertical ? 'row no-gutters': ''">
+    <div :class="[addNavWrapperClasses, gridClasses.navs, { 'card-header': card }]">
+      <ul :class="[navClasses, addNavClasses, { 'h-100': vertical }]">
+        <CTabNav
+          v-for="(tab, key) in elements"
+          @click.native="tabClick(tab)"
+          v-bind="tab.$attrs"
+          :customTitleSlot="tab.$scopedSlots.title"
+          :active="tab === activeTab"
+          :disabled="tab.disabled"
+          :key="key"
+        />
+      </ul>
+    </div>
+    <div :class="[addTabsWrapperClasses, gridClasses.content]">
+      <div :class="['tab-content', addTabsClasses]">
+        <transition :name="noFade ? null : 'fade'" mode="out-in">
+          <KeepAlive>
+            <template v-for="(tab, key) in elements">
+              <CTabContent
+                v-if="activeTab === tab"
+                :content="tab.$scopedSlots.default"
+                :key="key"
+                class="tab-pane active show"
+              />
+            </template>
+          </KeepAlive>
+        </transition>
+      </div>
+    </div>
+    <!-- needed to instantiate CTab components, do nothing -->
+    <slot></slot>
+  </div>
+</template>
+
 <script>
-import CNav from '../Nav/CNav'
+import CTabNav from './CTabNav'
+import CTabContent from './CTabContent'
+
 export default {
   name: 'CTabs',
-  extends: CNav,
+  components: {
+    CTabNav,
+    CTabContent
+  },
   props: {
+    fill: Boolean,
+    justified: Boolean,
+    tabs: Boolean,
+    pills: Boolean,
+    vertical: Boolean,
     tabs: {
       type: Boolean,
       default: true
@@ -19,94 +65,48 @@ export default {
   },
   data () {
     return {
-      children: [],
+      elements: [],
+      activatedTab: null
     }
   },
   computed: {
-    verticalTabsClass() {
-      return !this.vertical ? '' :
-               this.vertical === true ? 'col-sm-6' : `col-sm-${this.vertical}`
+    navClasses () {
+      return {
+        'nav' : true,
+        'nav-tabs': this.tabs && !this.pills,
+        'nav-pills': this.pills,
+        'flex-column': this.vertical,
+        'nav-fill': this.fill,
+        'nav-justified': this.justified
+      }
     },
-    verticalContentClass() {
-      return !this.vertical ? '' :
-               this.vertical === true ? 'col-sm-6' : `col-sm-${12 - this.vertical}`
+    activeTab () {
+      return this.activatedTab || this.elements.filter(el => el.active)[0]
+    },
+    gridClasses () {
+      const cols = this.vertical === true ? 6 : this.vertical
+      return cols ? { navs: `col-sm-${cols}`, content: `col-sm-${12-cols}`} : {}
     }
   },
-  //make children reactive
   mounted () {
-    this.children = this.$children
+    this.$slots.default.forEach(el => this.elements.push(el.componentInstance))
   },
-  updated () {
-    //hacky solution to enable fading
-    if (!this.noFade) {
-      setTimeout(() => {
-        return this.$el.getElementsByClassName('active fade')[0]
-               .classList.add('show')
-      }, 0)
+  methods: {
+    tabClick (tab) {
+      if (!tab.disabled) {
+        this.activatedTab = tab
+      }
     }
-  },
-  render (h) {
-    const nav = h(
-      'ul',
-      {
-        class: [ this.navClasses, this.addNavClasses, {'h-100':this.vertical }],
-        on: {
-          click: this.onClick
-        }
-      },
-      this.$slots.default
-    )
-    const navWrapper = h(
-      'div',
-       { class: [
-         this.addNavWrapperClasses,
-         this.verticalTabsClass,
-         { 'card-header': this.card }
-       ]},
-       [nav]
-     )
-
-    const tab = this.children.map((tab, index) => {
-      return h(
-        'div',
-        {
-          staticClass: 'tab-pane',
-          class: [
-            this.addTabClasses,
-            {
-              active: tab.isActive,
-              fade: !this.noFade
-            }
-          ]
-        },
-        tab.$slots ? tab.$slots.default : ''
-      )
-    })
-
-    const tabs = h(
-      'div',
-      {
-        staticClass: 'tab-content',
-        class: this.addTabsClasses
-      },
-      tab
-    )
-    const tabsWrapper = h(
-      'div',
-      { class: [this.addTabsWrapperClasses, this.verticalContentClass]},
-      [tabs]
-    )
-
-    const wrapper = h(
-      'div',
-      { class: this.vertical ? 'row no-gutters': '' },
-      [navWrapper, tabsWrapper]
-    )
-    return wrapper
   }
 }
 </script>
 
 <style scoped lang="scss">
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .3s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
   @import "~@coreui/coreui/scss/partials/nav.scss";
 </style>
