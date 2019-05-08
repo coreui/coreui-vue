@@ -13,7 +13,7 @@ export default {
       default: true
     },
     fadeOffset: {
-      type: [Number, String],
+      type: [Number, String, Boolean],
       default: -100
     },
     fadeTime: {
@@ -28,8 +28,8 @@ export default {
     }
   },
   mounted () {
-    document.addEventListener('scroll', this.checkVisibility)
-    this.checkVisibility()
+    document.addEventListener('scroll', this.checkPosition)
+    this.checkPosition()
   },
   beforeDestroy () {
     this.removeListener()
@@ -45,7 +45,7 @@ export default {
     }
   },
   methods: {
-    checkVisibility () {
+    checkPosition () {
       const rect = this.$el.getBoundingClientRect()
       const offset = !this.active ? this.loadOffset : this.fadeOffset
       const positionTop = window.innerHeight - rect.top + offset
@@ -66,7 +66,7 @@ export default {
       this.removeListener()
     },
     removeListener () {
-      return document.removeEventListener('scroll', this.checkVisibility)
+      return document.removeEventListener('scroll', this.checkPosition)
     }
   }
 }
