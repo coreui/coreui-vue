@@ -1,50 +1,106 @@
 <template>
-  <CTeleport
-    v-if="isTeleported"
-    :object="$options.object"
-    destroyFunctionName="close"
-    :container="container"
-    v-bind="$attrs"
+  <transition
+    :name="0 ? null : 'fade'"
+    :appear="true"
+    v-if="!isClosed"
   >
-    <slot :close="close"></slot>
-  </CTeleport>
-  <Toast
-    v-else
-    :position="position"
-    v-bind="$attrs"
-  >
-    <slot :close="close"></slot>
-  </Toast>
+    <div
+      :class="[toastClasses]"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      style="z-index:1100"
+      :style="computedStyles"
+    >
+      <div v-if="!props.noHeader" class="toast-header">
+        <strong class="mr-auto" v-html="props.titleHtml"></strong>
+        <CButtonClose
+          v-if="!props.noCloseButton"
+          @click="close()"
+          class="ml-2 mb-1"
+        />
+      </div>
+      <slot :close="close">
+        <div class="toast-body" v-html="props.bodyHtml">
+        </div>
+      </slot>
+    </div>
+  </transition>
 </template>
 
 <script>
-import CTeleport from './CTeleport'
-import Toast from './Toast'
+import toastMixin from './toastMixin'
+import CButtonClose from '../Button/CButtonClose'
+
 export default {
   name: 'CToast',
-  object: Toast,
-  props: {
-    container: [String, Object, HTMLElement],
-  },
+  mixins: [ toastMixin ],
   inject: {
-    inToaster: {
+    toaster: {
       default: false
     }
   },
+  data () {
+    return {
+      isClosed: false,
+      timeout: null
+    }
+  },
+  mounted () {
+    if (this.props.autohide) {
+      this.setAutohide()
+    }
+  },
   computed: {
-    isTeleported () {
-      return this.container !== 'noTeleport' && !this.inToaster
+    toastClasses () {
+      return ['toast',
+        {
+          'show': this.props.show,
+          'full': this.props.position.includes('full')
+        }
+      ]
     },
-    position () {
-      return this.$attrs.position || this.inToaster ? 'block' : null
+    props () {
+      return Object.keys(toastMixin.props).reduce((props, key) => {
+        const propUndefined = !Object.keys(this.$options.propsData).includes(key)
+        const propInheritedFromToaster = propUndefined && this.toaster.props[key]
+        props[key] = propInheritedFromToaster ? this.toaster.props[key] : this[key]
+        return props
+      }, {})
     }
   },
   methods: {
     close () {
-      console.log(this)
-      this.$children[0].$destroy()
-      // this.$destroy()
+      this.isClosed = true
+      this.$el.removeEventListener('mouseover', this.onHover)
+    },
+    onHover () {
+      this.$el.removeEventListener('mouseover', this.onHover)
+      clearTimeout(this.timeout)
+      this.$el.addEventListener('mouseout', this.onHoverOut)
+    },
+    onHoverOut () {
+      this.$el.removeEventListener('mouseout', this.onHoverOut)
+      this.setAutohide()
+    },
+    setAutohide () {
+      this.timeout = setTimeout(() => {
+        this.close()
+      }, this.props.autohide)
+      this.$el.addEventListener('mouseover', this.onHover)
     }
   }
 }
 </script>
+
+<style scoped>
+  .toast.full {
+    max-width: 100%;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .3s;
+  }
+</style>

@@ -1,34 +1,40 @@
 <template>
-  <CTeleport
-    v-if="isTeleported"
-    :object="$options.object"
-    destroyFunctionName="close"
-    :container="container"
-    v-bind="$attrs"
+  <div
+    :class="toasterClasses"
+    :style="computedStyles"
   >
     <slot></slot>
-  </CTeleport>
-  <Toaster
-    v-else
-    v-bind="$attrs"
-  >
-    <slot></slot>
-  </Toaster>
+  </div>
 </template>
 
 <script>
-import CTeleport from './CTeleport'
-import Toaster from './Toaster'
+import toastMixin from './toastMixin'
 export default {
   name: 'CToaster',
-  object: Toaster,
+  provide () {
+    const toaster = {}
+    Object.defineProperty(toaster, 'props', {
+      get: () => this._props
+    })
+    return { toaster }
+  },
+  mixins: [ toastMixin ],
   props: {
-    container: [String, Object, HTMLElement],
+    reverse: Boolean
   },
   computed: {
-    isTeleported () {
-      return this.container !== 'noTeleport'
+    toasterClasses () {
+      return [
+        'toaster',
+        { 'd-flex flex-column-reverse': this.reverse }
+      ]
     }
   }
 }
 </script>
+
+<style scoped>
+.toaster {
+  z-index: 1100
+}
+</style>
