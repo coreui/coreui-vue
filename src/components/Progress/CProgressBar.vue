@@ -1,101 +1,57 @@
+<template>
+  <div
+    :class="progressBarClasses"
+    :style="progressBarStyles"
+    role="progressbar"
+    aria-valuemin="0"
+    :aria-valuemax="props.max.toString()"
+    :aria-valuenow="props.value.toFixed(props.precision)"
+  >
+    <slot>{{ text }}</slot>
+  </div>
+</template>
+
 <script>
+import props from './progressProps'
 export default {
   name: 'CProgressBar',
-  render (h) {
-    let childNodes = h(false)
-    if (this.$slots.default) {
-      childNodes = this.$slots.default
-    } else if (this.labelHtml) {
-      childNodes = h('span', { domProps: { innerHTML: this.labelHtml } })
-    } else if (this.computedShowProgress) {
-      childNodes = this.progress.toFixed(this.computedPrecision)
-    } else if (this.computedShowValue) {
-      childNodes = this.value.toFixed(this.computedPrecision)
+  props,
+  inject: {
+    progress: {
+      default: null
     }
-    return h(
-      'div',
-      {
-        class: this.progressBarClasses,
-        style: this.progressBarStyles,
-        attrs: {
-          role: 'progressbar',
-          'aria-valuemin': '0',
-          'aria-valuemax': this.computedMax.toString(),
-          'aria-valuenow': this.value.toFixed(this.computedPrecision)
-        }
-      },
-      [ childNodes ]
-    )
   },
   computed: {
+    props () {
+      return Object.keys(props).reduce((props, key) => {
+        const propUndefined = !Object.keys(this.$options.propsData).includes(key)
+        const propInheritedFromProgress = propUndefined && this.progress.props[key]
+        props[key] = propInheritedFromProgress ? this.progress.props[key] : this[key]
+        return props
+      }, {})
+    },
     progressBarClasses () {
       return [
         'progress-bar',
-        this.computedVariant ? `bg-${this.computedVariant}` : '',
         {
-          'progress-bar-striped': this.computedStriped || this.computedAnimated,
-          'progress-bar-animated': this.computedAnimated
+          [`bg-${this.props.variant}`]: this.props.variant,
+          'progress-bar-striped': this.props.striped || this.props.animated,
+          'progress-bar-animated': this.props.animated
         }
       ]
     },
+
     progressBarStyles () {
-      return { width: `${(100 * (this.value / this.computedMax))}%` }
+      return { width: `${(100 * (this.props.value / this.props.max))}%` }
     },
-    progress () {
-      const p = Math.pow(10, this.computedPrecision)
-      return Math.round((100 * p * this.value) / this.computedMax) / p
+    progressValue () {
+      const p = Math.pow(10, this.props.precision)
+      return Math.round((100 * p * this.props.value) / this.props.max) / p
     },
-    computedMax () {
-      // Prefer our max over parent setting
-      return this.max ? this.max : (this.$parent.max || 100)
-    },
-    computedVariant () {
-      // Prefer our variant over parent setting
-      return this.variant || this.$parent.variant
-    },
-    computedPrecision () {
-      // Prefer our precision over parent setting
-      return this.precision ? this.precision : (this.$parent.precision || 0)
-    },
-    computedStriped () {
-      return typeof this.striped === 'boolean' ? this.striped : (this.$parent.striped || false)
-    },
-    computedAnimated () {
-      return typeof this.animated === 'boolean' ? this.animated : (this.$parent.animated || false)
-    },
-    computedShowProgress () {
-      return typeof this.showProgress === 'boolean' ? this.showProgress : (this.$parent.showProgress || false)
-    },
-    computedShowValue () {
-      return typeof this.showValue === 'boolean' ? this.showValue : (this.$parent.showValue || false)
-    }
-  },
-  props: {
-    value: {
-      type: Number,
-      default: 0
-    },
-    labelHtml: String,
-    // $parent prop values take precedence over the following props
-    // Which is why they are defaulted to null
-    max: Number,
-    precision: Number,
-    variant: String,
-    striped: {
-      type: Boolean,
-      default: null
-    },
-    animated: {
-      type: Boolean,
-      default: null
-    },
-    showProgress: {
-      type: Boolean,
-      default: null
-    },
-    showValue: {
-      type: Boolean,
-      default: null
+    text () {
+      if (this.props.showValue || this.props.showProgress) {
+        return this.progressValue || this.props.value
+      }
     }
   }
 }
