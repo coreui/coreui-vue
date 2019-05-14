@@ -1,35 +1,48 @@
-<script>
-import { mergeData } from 'vue-functional-data-merge'
+<template>
+  <div :class="mediaClasses">
+    <div :class="computedAsideClasses" >
+      <slot name="aside">
+        <CImage
+          v-if="asideImage"
+          v-bind="asideImage"
+        />
+      </slot>
+    </div>
+    <div :class="computedBodyClasses">
+      <slot></slot>
+    </div>
+  </div>
+</template>
 
+
+<script>
+import CImage from '../Image/CImage'
 export default {
-  functional: true,
   name: 'CMedia',
   props: {
-    asideClasses: String,
+    asidePositionClasses: String,
+    addAsideClasses: String,
+    addBodyClasses: String,
     asideRight: Boolean,
+    asideImage: Object
   },
-  render (h, { props, data, slots }) {
-    let childNodes = []
-    const $slots = slots()
-    const asideClasses = props.asideClasses ?
-                         props.asideClasses :
-                         props.asideRight ?
-                         'ml-3 align-self-start' :
-                         'mr-3 align-self-start'
-
-    const aside = h(
-      'div',
-      { class: asideClasses },
-      $slots.aside ||
-      [h('div', { class: 'bg-secondary', style: 'width:64px;height:64px;'})]
-    )
-    const body = h(
-      'div',
-      { staticClass: 'media-body' },
-      $slots.default
-    )
-    props.asideRight ? childNodes.push(body, aside) : childNodes.push(aside, body)
-    return h('div', mergeData(data, { staticClass: 'media' }), childNodes)
+  computed: {
+    computedAsidePositionClasses () {
+      return this.asidePositionClasses ||
+             `m${this.asideRight? 'l' : 'r' }-3 align-self-start`
+    },
+    computedAsideClasses () {
+      return [this.computedAsidePositionClasses, this.addAsideClasses]
+    },
+    computedBodyClasses () {
+      return [ 'media-body', this.addBodyClasses ]
+    },
+    mediaClasses () {
+      return [
+        'media',
+        { 'd-flex flex-row-reverse': this.asideRight }
+      ]
+    }
   }
 }
 </script>
