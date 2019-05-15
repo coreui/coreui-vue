@@ -1,25 +1,27 @@
 <template>
-  <div class="carousel slide" >
-    <ol v-if="!noIndicators" :class="indicatorClasses">
+  <div class="carousel slide" :style="{ height: height || 'auto' }">
+    <ol v-if="indicators" :class="indicatorClasses">
       <li
-        v-for="(index, key) in itemsLength"
-        @click="setSlide(key)"
-        :class="{'active' : active === key}"
+        v-for="(index, key) in items.length"
+        @click="setItem(key)"
+        :class="{ active: activated === key }"
         :key="key"
       ></li>
     </ol>
     <div class="carousel-inner">
       <slot></slot>
     </div>
-    <template v-if="!noArrows">
-      <a class="carousel-control-prev" @click="previousSlide">
-        <span class="carousel-control-prev-icon"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" @click="nextSlide">
-        <span class="carousel-control-next-icon"></span>
-        <span class="sr-only">Next</span>
-      </a>
+    <template v-if="arrows">
+      <slot name="arrows">
+        <a class="carousel-control-prev" @click="previousItem">
+          <span class="carousel-control-prev-icon"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" @click="nextItem">
+          <span class="carousel-control-next-icon"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </slot>
     </template>
   </div>
 </template>
@@ -30,88 +32,79 @@ export default {
   props: {
     interval: {
       type: Number,
-      default: 4000
+      default: 6000
     },
-    noAnimation: Boolean,
-    noIndicators: Boolean,
-    noArrows: Boolean,
+    animate: Boolean,
+    indicators: Boolean,
+    arrows: Boolean,
     indicatorClasses: {
       type: [String, Array],
       default: 'carousel-indicators'
     },
+    height: String
   },
   data () {
     return {
-      active: 0,
-      itemsLength: null,
+      active: null,
+      activated: null,
+      items: [],
       currentInterval: null,
-      transitioning: null
+      transitioning: false,
+      waitingItem: null
     }
   },
   mounted () {
-    this.itemsLength = this.$children.length
-    this.$children.forEach((item, index) => item.index = index)
-    const activeItem = this.$children.filter(item => item.active)
-    if (activeItem[0]) {
-      this.active = activeItem[0].index || 0
-    } else {
-      this.$children[0].classes = 'active'
-    }
-    this.menageInterval()
+    this.items = this.$slots.default.map(item => item.componentInstance)
+    const activated = this.items.map((item, index) => item.active ? index :null)
+                                .filter(item => item)
+    this.active = activated[0] || 0
+    this.activate(activated[0] || 0)
   },
   methods: {
-    menageInterval () {
-      if (this.noAnimation) return
-
-      clearInterval(this.currentInterval)
-      this.currentInterval = setInterval(() => {
-        this.nextSlide()
-      }, this.interval)
-    },
-    nextSlide () {
-      let index = this.active === this.itemsLength - 1 ? 0 : this.active + 1
-      this.setSlide(index, 'left')
-    },
-    previousSlide () {
-      let index = this.active === 0 ? this.itemsLength -1  : this.active - 1
-      this.setSlide(index, 'right')
-    },
-    setSlide (index, direction = null) {
-      if (index === this.active) {
-        return this.menageInterval()
-      }
-      direction === null ? direction = this.active < index ? 'left' : 'right' : ''
-      if (this.noAnimation) {
-        this.$children[this.active].classes = ''
-        this.$children[index].classes = 'active'
-        this.active = index
-      } else if (!this.transitioning) {
-        this.slide(index, direction)
+    resetInterval () {
+      if (this.animate && this.interval) {
+        clearInterval(this.currentInterval)
+        this.currentInterval = setInterval(() => {
+          this.nextItem()
+        }, this.interval)
       }
     },
-    slide (index, direction) {
-      this.menageInterval()
-      let oldIndex = this.active
+    nextItem () {
+      this.setItem(this.active === this.items.length - 1 ? 0 : this.active + 1, 'next')
+    },
+    previousItem () {
+      this.setItem(this.active === 0 ? this.items.length -1  : this.active - 1, 'prev')
+    },
+    setItem (index, passedOrder = null) {
+      if (index === this.activated) {
+        return this.resetInterval()
+      }
+      const order = passedOrder || (this.active > index ? 'prev' : 'next')
       this.active = index
-      const order = direction === 'right' ? 'prev' : 'next'
-      const orderClass = `carousel-item-${order}`
-      const directionClass = `carousel-item-${direction}`
-      const activeEl = this.$children[oldIndex].$el
-      const nextEl = this.$children[index].$el
-      setTimeout(() =>{
-        nextEl.classList.add(orderClass)
-        nextEl.offsetHeight
-        nextEl.classList.add(directionClass)
-        activeEl.classList.add(directionClass)
-      }, 0)
-
-      this.transitioning = setTimeout(() => {
-        this.transitioning = null
-        nextEl.classList.remove(orderClass)
-        nextEl.classList.remove(directionClass)
-        activeEl.classList.remove(directionClass)
-        this.$children[oldIndex].classes = ''
-        this.$children[index].classes = 'active'
+      if (!this.transitioning) {
+        this.activate(index, order)
+      } else {
+        this.waitingItem = { index, order }
+      }
+    },
+    activate (index, order) {
+      this.resetInterval()
+      this.activated = index
+      if (!order || this.animate) {
+        this.items.forEach(item => item.$emit('setItem', this.items[index]))
+      } else {
+        this.slide(index, order)
+      }
+    },
+    slide (i, order) {
+      this.items.forEach(item => item.$emit('slideToItem', this.items[i], order))
+      this.transitioning = true
+      setTimeout(() => {
+        this.transitioning = false
+        if (this.waitingItem) {
+          this.setItem(this.waitingItem.index, this.waitingItem.order)
+          this.waitingItem = null
+        }
       }, 600)
     }
   }
@@ -120,6 +113,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  .carousel-inner, .carousel-item {
+    height: inherit;
+  }
   @import "~@coreui/coreui/scss/partials/carousel.scss";
   @import "~@coreui/coreui/scss/utilities/_screenreaders.scss";
 </style>
