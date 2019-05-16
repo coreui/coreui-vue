@@ -12,11 +12,11 @@ export default {
   },
   render(h, { props, data, children }) {
     return h(
-      'form',
+      'c-form',
       mergeData(data, {
         class: {
-          'form-inline': props.inline,
-          'was-validated': props.validated
+          'c-form-inline': props.inline,
+          'c-was-validated': props.validated
         },
         // attrs: {
         //   id: props.id,

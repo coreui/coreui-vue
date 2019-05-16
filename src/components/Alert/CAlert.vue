@@ -25,10 +25,10 @@ export default {
   },
   computed: {
     classObject () {
-      return ['alert',
+      return ['c-alert',
               {
-                'alert-dismissible': this.dismissible,
-                [`alert-${this.variant}`]: this.variant
+                'c-alert-dismissible': this.dismissible,
+                [`c-alert-${this.variant}`]: this.variant
               }
              ]
     }

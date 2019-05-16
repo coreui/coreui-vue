@@ -26,10 +26,14 @@ export default {
       props.tag,
       {
         ref: data.ref,
-        staticClass: 'embed-responsive',
-        class:`embed-responsive-${props.aspect}`
+        staticClass: 'c-embed-responsive',
+        class: `c-embed-responsive-${props.aspect}`
       },
-      [h(props.type, mergeData(data, { ref: '', staticClass: 'embed-responsive-item' }), children)]
+      [h(
+        props.type,
+        mergeData(data, { ref: '', staticClass: 'c-embed-responsive-item' }),
+        children
+      )]
     )
   }
 }

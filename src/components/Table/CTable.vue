@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div v-if="optionsRow" class="row my-2 mx-0">
+    <div v-if="optionsRow" class="c-row c-my-2 c-mx-0">
       <div
-        class="col-sm-6 form-inline p-0"
+        class="c-col-sm-6 c-form-inline c-p-0"
         v-if="optionsRow !== 'noFilter'"
       >
-        <label class="mr-2">Filter: </label>
+        <label class="c-mr-2">Filter: </label>
         <input
-          class="form-control c-table-filter"
+          class="c-form-control c-table-filter"
           type="text"
           placeholder="type string..."
           @input="tableFilter = $event.target.value"
@@ -17,13 +17,13 @@
 
       <div
         v-if="havePaginationMenu()"
-        class="col-sm-6 p-0"
-        :class="optionsRow === 'noFilter' ? 'offset-sm-6' : ''"
+        class="c-col-sm-6 c-p-0"
+        :class="optionsRow === 'noFilter' ? 'c-offset-sm-6' : ''"
       >
-        <div class="form-inline float-sm-right">
+        <div class="c-form-inline c-float-sm-right">
           <label class="mr-2">Items per page: </label>
           <select
-            class="form-control"
+            class="c-form-control"
             @change="paginationChange"
           >
             <option value="" selected disabled hidden>
@@ -39,7 +39,7 @@
 
 
     <slot name="over-table"/>
-    <div :class="`position-relative ${notResponsive ? '' : 'table-responsive'}`">
+    <div :class="`c-position-relative ${notResponsive ? '' : 'c-table-responsive'}`">
       <table :class="tableClasses">
         <thead>
           <tr>
@@ -51,7 +51,7 @@
                 :style="headerStyles(index)"
               >
                 <slot :name="`${rawColumnNames[index]}-header`">
-                  <div class="d-inline">{{name}}</div>
+                  <div class="c-d-inline">{{name}}</div>
                 </slot>
                 <slot
                   v-if="!noSorting && sortable(index)"
@@ -64,11 +64,11 @@
             </template>
           </tr>
 
-          <tr v-if="filterRow" class="table-sm">
-            <th v-if="indexColumn" class="pb-2">
+          <tr v-if="filterRow" class="c-table-sm">
+            <th v-if="indexColumn" class="c-pb-2">
               <i
                 v-if="indexColumn !== 'noCleaner'"
-                class="cui-ban icons text-danger font-lg text-center d-block"
+                class="cui-ban c-icons c-text-danger c-font-lg c-text-center c-d-block"
                 @click="clear"
                 title="clear table"
               ></i>
@@ -78,7 +78,7 @@
                 <slot :name="`${rawColumnNames[index]}-filter`">
                   <input
                     v-if="!fields || !fields[index].noFilter"
-                    class="w-100 c-table-filter"
+                    class="c-w-100 c-table-filter"
                     @input="addColumnFilter(colName, $event.target.value)"
                     :value="columnFilter[colName]"
                   ></input>
@@ -89,7 +89,7 @@
         </thead>
 
 
-        <tbody :style="bodyStyle" class="position-relative">
+        <tbody :style="bodyStyle" class="c-position-relative">
           <template v-for="(item, itemIndex) in currentItems" >
             <tr
               :class="item._classes" :tabindex="bodyStyle ? 0 : null"
@@ -120,12 +120,12 @@
             </tr>
             <tr
               v-if="$scopedSlots.details"
-              class="p-0"
+              class="c-p-0"
               style="border:none !important"
             >
               <td
                 :colspan="colspan"
-                class="p-0"
+                class="c-p-0"
                 style="border:none !important"
               >
                 <slot
@@ -139,12 +139,11 @@
           <tr v-if="!currentItems.length">
             <td :colspan="colspan">
               <slot name="empty-table">
-                <div class="text-center my-5">
+                <div class="c-text-center c-my-5">
                   <h2>{{ passedItems.length ? 'No filtering results ' : 'No items'}}
                     <i
-                      style="font-weight:1000"
-                      class="text-danger icons
-                      font-2xl cui-ban"
+                      style="font-weight: 1000"
+                      class="c-text-danger c-icons c-font-2xl cui-ban"
                     ></i>
                   </h2>
                 </div>
@@ -164,7 +163,7 @@
                 :style="headerStyles(index)"
               >
                 <slot :name="`${rawColumnNames[index]}-header`">
-                  <div class="d-inline">{{name}}</div>
+                  <div class="c-d-inline">{{name}}</div>
                 </slot>
                 <slot
                   v-if="!noSorting && sortable(index)"
@@ -187,7 +186,7 @@
         style="position:absolute;left:50%;transform:translateX(-50%);"
       >
         <CSpinner
-          class="spinner-border text-success"
+          class="c-spinner-border c-text-success"
           :style="spinnerSize"
           role="status"
         />
@@ -314,25 +313,25 @@ export default {
     },
     tableClasses () {
       return [
-        'table b-table',
+        'c-table',
         this.addTableClasses,
         {
-          'is-loading': this.loading,
-          'table-sm': this.small,
-          'table-dark': this.dark,
-          'table-striped': this.striped,
-          'b-table-fixed': this.fixed,
-          'table-hover': this.hover,
-          'table-bordered': this.border,
-          'border': this.outlined
+          'c-is-loading': this.loading,
+          'c-table-sm': this.small,
+          'c-table-dark': this.dark,
+          'c-table-striped': this.striped,
+          'c-b-table-fixed': this.fixed,
+          'c-table-hover': this.hover,
+          'c-table-bordered': this.border,
+          'c-border': this.outlined
         }
       ]
     },
     bodyStyle () {
-      return this.$listeners && this.$listeners['row-clicked'] ? 'cursor:pointer' : ''
+      return {'cursor:pointer': this.$listeners && this.$listeners['row-clicked']}
     },
     sortingIconStyles () {
-      return !this.noSorting ? 'position-relative pr-4' : ''
+      return !this.noSorting ? 'c-position-relative c-pr-4' : ''
     },
     colspan () {
       return this.indexColumn ? this.rawColumnNames.length + 1 : this.rawColumnNames.length
@@ -423,10 +422,10 @@ export default {
     },
     iconClasses (index) {
       const state = this.getIconState(index)
-      return [ 'icon-transition float-right icons font-xl cui-arrow-top position-absolute',
+      return [ 'c-icon-transition c-float-right c-icons c-font-xl cui-arrow-top c-position-absolute',
         {
-          'transparent': !state,
-          'rotate-icon': state === 'desc'
+          'c-transparent': !state,
+          'c-rotate-icon': state === 'desc'
         }
       ]
     },
@@ -442,17 +441,17 @@ export default {
 }
 </script>
 <style scoped>
-.transparent {
+.c-transparent {
   opacity: 0.4;
 }
-.icon-transition {
+.c-icon-transition {
   -webkit-transition: transform 0.3s;
   transition: transform 0.3s;
 }
-.rotate-icon {
+.c-rotate-icon {
   transform: rotate(-180deg);
 }
-.is-loading {
+.c-is-loading {
   opacity: .4;
 }
 </style>

@@ -13,8 +13,8 @@ export default {
   },
   render (h, { props, data, children }) {
     const componentData = {
-      staticClass: 'list-group',
-      class: { 'list-group-flush': props.flush }
+      staticClass: 'c-list-group',
+      class: { 'c-list-group-flush': props.flush }
     }
     return h(props.tag, mergeData(data, componentData), children)
   }

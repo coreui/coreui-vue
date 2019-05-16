@@ -126,16 +126,16 @@ export default {
     //          }]
     // },
     customSizeClass () {
-      return this.haveCustomSize && !this.haveWrapper ?
-             `${this.custom ? 'custom-select' : 'form-control'}-${this.size}` :
-             null
+      if (this.haveCustomSize && !this.haveWrapper) {
+        return `${this.custom ?'c-custom-select':'c-form-control'}-${this.size}`
+      }
     },
     // customSizeClass () {
     //   return this.haveCustomSize ? `form-control-${this.size}` : null
     // },
     inputClass () {
-      return this.custom ? 'custom-select' :
-             `form-control${this.plaintext ? '-plaintext' : ''}`
+      const standardClass = `c-form-control${this.plaintext ? '-plaintext' : ''}`
+      return this.custom ? 'c-custom-select' : standardClass
     }
     // inputClasses () {
     //   return [

@@ -18,27 +18,27 @@ export default {
                     'md': '-md', 'lg': '-lg', 'xl': '-xl'}
     Object.keys(props).forEach((key) => {
       if (props[key] === true)
-        classes.push(`col${prefixes[key]}`)
+        classes.push(`c-col${prefixes[key]}`)
 
       if (typeof props[key] === 'number' || typeof props[key] === 'string')
-        classes.push(`col${prefixes[key]}-${props[key]}`)
+        classes.push(`c-col${prefixes[key]}-${props[key]}`)
 
       if (typeof props[key] === 'object') {
         if(props[key].size)
-          classes.push(`col${prefixes[key]}-${props[key].size}`)
+          classes.push(`c-col${prefixes[key]}-${props[key].size}`)
 
         if(props[key].offset)
-          classes.push(`offset${prefixes[key]}-${props[key].offset}`)
+          classes.push(`c-offset${prefixes[key]}-${props[key].offset}`)
 
         if(props[key].order)
-          classes.push(`order${prefixes[key]}-${props[key].order}`)
+          classes.push(`c-order${prefixes[key]}-${props[key].order}`)
       }
     })
     return h(
       'div',
       mergeData(data,
         {
-          class: classes.length ? classes : 'col'
+          class: classes.length ? classes : 'c-col'
         }
       ),
       children

@@ -16,7 +16,7 @@ export default {
     return h(
       props.tag,
       mergeData(data, {
-        staticClass: 'dropdown-divider',
+        staticClass: 'c-dropdown-divider',
         attrs: { role: 'separator' }
       })
     )

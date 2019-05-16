@@ -8,14 +8,14 @@
     >
       <div :class="dialogClasses" role="document">
         <div :class="contentClasses">
-          <div v-if="!noHeader" class="modal-header" >
+          <div v-if="!noHeader" class="c-modal-header" >
             <slot name="header" :hide="hide">
-                <h5 class="modal-title">
+                <h5 class="c-modal-title">
                   {{title}}
                 </h5>
                 <button
                   type="button"
-                  class="close"
+                  class="c-close"
                   aria-label="Close"
                   @click="hide()"
                 >
@@ -23,26 +23,26 @@
                 </button>
             </slot>
           </div>
-          <div v-if="!noBody" class="modal-body">
+          <div v-if="!noBody" class="c-modal-body">
             <slot name="body">
                 <slot></slot>
             </slot>
           </div>
-          <div v-if="!noFooter" class="modal-footer">
+          <div v-if="!noFooter" class="c-modal-footer">
             <slot name="footer" :hide="hide">
-                <button
-                  type="button"
-                  class="btn btn-secondary" @click="hide()"
-                >
-                  Close
-                </button>
-                <button
-                  type="button"
-                  :class="btnClasses"
-                  @click="hide()"
-                >
-                  OK
-                </button>
+              <button
+                type="button"
+                class="c-btn c-btn-secondary" @click="hide()"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                :class="btnClasses"
+                @click="hide()"
+              >
+                OK
+              </button>
             </slot>
           </div>
         </div>
@@ -89,45 +89,45 @@ export default {
   computed: {
     backdropClasses () {
       return {
-        'modal-backdrop': true,
-        fade: !this.noFade,
-        show: this.is_visible || this.noFade
+        'c-modal-backdrop': true,
+        'c-fade': !this.noFade,
+        'c-show': this.is_visible || this.noFade
       }
     },
     modalClasses () {
       return [
-        'modal overflow-auto',
+        'c-modal c-overflow-auto',
         this.addModalClasses,
         {
-          closeModal: !this.noCloseOnBackdrop,
-          fade: !this.noFade,
-          show: this.is_visible,
-          'd-block': this.is_visible || this.is_transitioning,
-          [`modal-${this.variant}`]: Boolean(this.variant)
+          // 'c-close-modal': !this.noCloseOnBackdrop,
+          'c-fade': !this.noFade,
+          'c-show': this.is_visible,
+          'c-d-block': this.is_visible || this.is_transitioning,
+          [`c-modal-${this.variant}`]: Boolean(this.variant)
         }
       ]
     },
     dialogClasses () {
       return [
         this.addDialogClasses,
-        'modal-dialog',
+        'c-modal-dialog',
         {
-          'modal-dialog-centered': this.centered,
-          [`modal-${this.size}`]: Boolean(this.size),
+          'c-modal-dialog-centered': this.centered,
+          [`c-modal-${this.size}`]: Boolean(this.size),
         }
       ]
     },
     contentClasses () {
       return [
         this.addContentClasses,
-        'modal-content',
+        'c-modal-content',
         {
-          [`border-${this.borderVariant}`]: Boolean(this.borderVariant),
+          [`c-border-${this.borderVariant}`]: Boolean(this.borderVariant),
         }
       ]
     },
     btnClasses () {
-      return [`btn btn-${this.variant || 'primary'}`]
+      return [`c-btn c-btn-${this.variant || 'primary'}`]
     }
   },
   watch: {

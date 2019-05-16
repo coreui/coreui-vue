@@ -25,16 +25,18 @@ export default {
   computed: {
     toasterClasses () {
       return [
-        'toaster',
-        { 'd-flex flex-column-reverse': this.reverse }
+        'c-toaster',
+        { 'c-d-flex c-flex-column-reverse': this.reverse }
       ]
     }
   }
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .toaster {
   z-index: 1100
 }
+@import "~@coreui/coreui/scss/partials/toasts.scss";
+@import "~@coreui/coreui/scss/utilities/_flex.scss";
 </style>

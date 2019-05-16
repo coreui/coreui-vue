@@ -8,12 +8,12 @@ export default {
     return h(
       'button',
       mergeData(data, {
-        class: [ 'navbar-toggler' ],
+        class: [ 'c-navbar-toggler' ],
         attrs: {
           type: 'button',
         }
       }),
-      [ slots().default || h('span', { class: ['navbar-toggler-icon'] })]
+      [ slots().default || h('span', { class: ['c-navbar-toggler-icon'] })]
     )
   }
 }

@@ -17,7 +17,7 @@ export default {
     }
   },
   render(h, { props, data, slots }) {
-    const label = h('span', { staticClass: 'sr-only' }, props.labelText)
+    const label = h('span', { staticClass: 'c-sr-only' }, props.labelText)
     const type = props.grow ? 'grow' : 'border'
     return h(
       props.tag,
@@ -26,10 +26,10 @@ export default {
           role: 'status',
           'aria-hidden': label ? null : 'true'
         },
-        class: [`spinner-${type}`,
+        class: [`c-spinner-${type}`,
                  {
-                   [`spinner-${type}-sm`]: props.small,
-                   [`text-${props.variant}`]: Boolean(props.variant)
+                   [`c-spinner-${type}-sm`]: props.small,
+                   [`c-text-${props.variant}`]: Boolean(props.variant)
                  }
                ]
       }),

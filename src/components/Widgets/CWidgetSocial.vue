@@ -1,20 +1,28 @@
 <template functional>
-  <div class="brand-card">
-    <div :class="`brand-card-header bg-${props.variant}`">
+  <div class="c-brand-card">
+    <div :class="`c-brand-card-header c-bg-${props.variant}`">
       <i
-        class="position-absolute"
+        class="c-position-absolute"
         :class="props.iconClasses || `fa fa-${props.variant}`"
       ></i>
       <slot></slot>
     </div>
-    <div class="brand-card-body">
+    <div class="c-brand-card-body">
       <div>
-        <div class="text-value">{{props.rightHeader}}</div>
-        <div class="text-uppercase text-muted small">{{props.rightFooter}}</div>
+        <div class="c-text-value">
+          {{props.rightHeader}}
+        </div>
+        <div class="c-text-uppercase c-text-muted c-small">
+          {{props.rightFooter}}
+        </div>
       </div>
       <div>
-        <div class="text-value">{{props.leftHeader}}</div>
-        <div class="text-uppercase text-muted small">{{props.leftFooter}}</div>
+        <div class="c-text-value">
+          {{props.leftHeader}}
+        </div>
+        <div class="c-text-uppercase c-text-muted c-small">
+          {{props.leftFooter}}
+        </div>
       </div>
     </div>
   </div>

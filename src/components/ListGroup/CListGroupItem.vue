@@ -40,10 +40,10 @@ export default {
     const componentData = {
       attrs,
       props: itemProps,
-      staticClass: 'list-group-item',
+      staticClass: 'c-list-group-item',
       class: {
-        [`list-group-item-${props.variant}`]: Boolean(props.variant),
-        'list-group-item-action': isAction,
+        [`c-list-group-item-${props.variant}`]: Boolean(props.variant),
+        'c-list-group-item-action': isAction,
         active: props.active,
         disabled: props.disabled
       }

@@ -84,7 +84,7 @@ export default {
 
     const componentData = mergeData(data, {
       class: {
-        disabled: props.disabled,
+        'c-disabled': props.disabled,
         'active': props.active
       },
       attrs: {

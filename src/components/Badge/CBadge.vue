@@ -23,11 +23,11 @@ export default {
     const tag = !props.href && !props.to ? props.tag : CLink
     const domProps = props.textHtml ? { innerHTML: props.textHtml } : null
     const componentData = {
-      staticClass: 'badge',
+      staticClass: 'c-badge',
       class: [
-        `badge-${props.variant}`,
+        `c-badge-${props.variant}`,
         {
-          'badge-pill': Boolean(props.pill),
+          'c-badge-pill': Boolean(props.pill),
           active: props.active,
           disabled: props.disabled
         }

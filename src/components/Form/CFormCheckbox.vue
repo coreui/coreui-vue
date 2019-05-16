@@ -1,4 +1,4 @@
-<template>
+c-<template>
   <CFormGroup v-bind="{validFeedback, invalidFeedback, tooltipFeedback,
                        description, class: computedClasses}">
     <template #input>
@@ -95,12 +95,12 @@ export default {
       return this.$options.type === 'checkbox' ? 'checkbox' : 'radio'
     },
     computedClasses () {
-      const controlClass = this.custom ? 'custom-control' : 'form-check'
+      const controlClass = this.custom ? 'c-custom-control' : 'c-form-check'
       return {
         [`${controlClass}`] : true,
         [`${controlClass}-inline`]: this.inline,
-        [`custom-${this.customType}`]: this.custom,
-        'was-validated': this.wasValidated
+        [`c-custom-${this.customType}`]: this.custom,
+        'c-was-validated': this.wasValidated
       }
 
     },
@@ -108,13 +108,13 @@ export default {
     labelClasses () {
       return [
         this.addLabelClasses,
-        this.custom ? 'custom-control-label': 'form-check-label'
+        this.custom ? 'c-custom-control-label': 'c-form-check-label'
       ]
     },
 
     inputClasses () {
       return [
-        this.custom ? 'custom-control-input' : 'form-check-input',
+        this.custom ? 'c-custom-control-input' : 'c-form-check-input',
         this.validationClass, this.addInputClasses
       ]
     },

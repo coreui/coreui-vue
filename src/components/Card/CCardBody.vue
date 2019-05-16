@@ -31,14 +31,14 @@ export default {
 
     if (props.title) {
       cardTitle = h(props.titleTag, {
-        staticClass: 'card-title',
+        staticClass: 'c-card-title',
         domProps: { innerHTML: props.titleHtml }
       })
     }
 
     if (props.subtitle) {
       cardSubtitle = h(props.subtitleTag, {
-        staticClass: 'card-subtitle mb-2 text-muted',
+        staticClass: 'c-card-subtitle c-mb-2 c-text-muted',
         domProps: { innerHTML: props.subtitleHtml }
       })
     }
@@ -53,14 +53,14 @@ export default {
     return h(
       props.tag || 'div',
       mergeData(data, {
-        staticClass: 'card-body',
+        staticClass: 'c-card-body',
         class: [
           {
-            'card-img-overlay': props.overlay,
-            [`bg-${props.variant}`]: Boolean(props.variant),
-            [`border-${props.borderVariant}`]: Boolean(props.borderVariant),
-            [`text-${props.textVariant}`]: Boolean(props.textVariant),
-            [`text-${props.align}`]: Boolean(props.align)
+            'c-card-img-overlay': props.overlay,
+            [`c-bg-${props.variant}`]: Boolean(props.variant),
+            [`c-border-${props.borderVariant}`]: Boolean(props.borderVariant),
+            [`c-text-${props.textVariant}`]: Boolean(props.textVariant),
+            [`c-text-${props.align}`]: Boolean(props.align)
           }
         ]
       }),

@@ -1,7 +1,7 @@
 <template>
-  <CFormGroup v-bind="{validFeedback, invalidFeedback,
-                       tooltipFeedback, description,
-                       wrapperClasses, class: computedClasses}"
+  <CFormGroup
+    v-bind="{validFeedback, invalidFeedback, tooltipFeedback, description,
+             wrapperClasses, class: computedClasses}"
   >
     <template #label>
       <slot name="label">
@@ -13,26 +13,28 @@
 
 
     <template #input>
-      <input v-bind="$attrs"
-             :id="safeId"
-             :class="inputClasses"
-             :multiple="multiple"
-             type="file"
-             @change="onChange($event)"
+      <input
+        v-bind="$attrs"
+        :id="safeId"
+        :class="inputClasses"
+        :multiple="multiple"
+        type="file"
+        @change="onChange($event)"
       />
       <label
         v-if="custom"
         :for="safeId"
-        class="custom-file-label"
+        class="c-custom-file-label"
       >
         {{placeholder}}
       </label>
     </template>
 
 
-    <template v-for="slot in ['label-after-input','valid-feedback',
+    <template
+      v-for="slot in ['label-after-input','valid-feedback',
                               'invalid-feedback','description']"
-              #[slot]
+      #[slot]
     >
       <slot :name="slot"></slot>
     </template>
@@ -95,10 +97,10 @@ export default {
     // },
     computedClasses () {
       return [
-               this.isHorizontal ? 'form-row':
-               this.custom ? 'custom-file' : 'form-group position-relative',
+               this.isHorizontal ? 'c-form-row':
+               this.custom ? 'c-custom-file' : 'c-form-group c-position-relative',
                {
-               'was-validated': this.wasValidated
+                 'c-was-validated': this.wasValidated
                }
              ]
     },
@@ -121,7 +123,7 @@ export default {
     //   return this.haveCustomSize ? `form-control-${this.size}` : null
     // },
     inputClass () {
-      return this.custom ? 'custom-file-input' : 'form-control-file'
+      return this.custom ? 'c-custom-file-input' : 'c-form-control-file'
     },
     // inputClasses () {
     //   return [

@@ -1,14 +1,13 @@
 <template>
-  <ul :class="computedClasses"
-      role="menubar"
-      aria-disabled="false"
-      aria-label="pagination"
+  <ul
+    :class="computedClasses"
+    role="menubar"
+    aria-disabled="false"
+    aria-label="pagination"
   >
-    <li v-if="!hideDoubleArrows"
-        :class="firstClasses"
-    >
+    <li v-if="!hideDoubleArrows" :class="firstClasses">
       <CLink
-        class="page-link"
+        class="c-page-link"
         @click="setPage(1)"
         :disabled="page === 1"
         aria-label="Go to first page"
@@ -18,7 +17,7 @@
     </li>
     <li v-if="!hideArrows" :class="firstClasses">
       <CLink
-        class="page-link"
+        class="c-page-link"
         @click="setPage(page - 1)"
         :disabled="page === 1"
         aria-label="Go to previous page"
@@ -29,9 +28,9 @@
     <li
       v-if="showFirstDots"
       role="separator"
-      class="page-item disabled d-none d-sm-flex"
+      class="c-page-item c-disabled c-d-none c-d-sm-flex"
     >
-      <span class="page-link">…</span>
+      <span class="c-page-link">…</span>
     </li>
 
     <li
@@ -40,7 +39,7 @@
       :class="setStyle(item)"
     >
       <CLink
-        class="page-link"
+        class="c-page-link"
         @click="setPage(item)"
         :aria-label="`Goto page ${item}`"
       >
@@ -51,16 +50,16 @@
     <li
       v-if="showLastDots"
       role="separator"
-      class="page-item disabled d-none d-sm-flex"
+      class="c-page-item c-disabled c-d-none c-d-sm-flex"
     >
-      <span class="page-link">…</span>
+      <span class="c-page-link">…</span>
     </li>
     <li
       v-if="!hideArrows"
       :class="lastClasses"
     >
       <CLink
-        class="page-link"
+        class="c-page-link"
         @click="setPage(page + 1)"
         :disabled="page === pages"
         aria-label="Go to next page"
@@ -70,7 +69,7 @@
     </li>
     <li v-if="!hideDoubleArrows" :class="lastClasses">
       <CLink
-        class="page-link"
+        class="c-page-link"
         @click="setPage(pages)"
         :disabled="page === pages"
         aria-label="Go to last page"
@@ -110,13 +109,13 @@
     },
     computed: {
       firstClasses () {
-        return ['page-item', { disabled: this.activePage === 1 }]
+        return ['c-page-item', { 'c-disabled': this.activePage === 1 }]
       },
       lastClasses () {
-        return ['page-item', { disabled: this.activePage === this.pages }]
+        return ['c-page-item', { 'c-disabled': this.activePage === this.pages }]
       },
       computedClasses () {
-        return `pagination pagination-${this.rwd} justify-content-${this.align} `
+        return `c-pagination c-pagination-${this.rwd} c-justify-content-${this.align} `
       },
       dots () {
         return this.hideDots || this.limit < 5 ? false : true
@@ -185,9 +184,9 @@
       },
       setStyle (item) {
         if(this.activePage === item) {
-          return 'page-item active'
+          return 'c-page-item active'
         }
-        return 'page-item'
+        return 'c-page-item'
       }
     },
     props: {
@@ -240,7 +239,7 @@
 <style scoped lang="scss">
   @import "~@coreui/coreui/scss/partials/pagination.scss";
   @import "~@coreui/coreui/scss/utilities/_flex.scss";
-  .page-link:focus {
+  .c-page-link:focus {
     box-shadow: none;
   }
 </style>

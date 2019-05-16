@@ -4,7 +4,7 @@
       v-if="image || imgSrc"
       :src="imgSrc"
       v-bind="image"
-      class="d-block w-100 h-100 img-fluid"
+      class="c-d-block c-w-100 c-h-100 c-img-fluid"
     />
     <slot>
       <div class="carousel-caption">
@@ -43,10 +43,10 @@ export default {
     },
     itemClasses () {
       return [
-        'carousel-item',
+        'c-carousel-item',
         {
-          [`carousel-item-${this.order}`]: this.order,
-          [`carousel-item-${this.direction}`]: this.transitioning,
+          [`c-carousel-item-${this.order}`]: this.order,
+          [`c-carousel-item-${this.direction}`]: this.transitioning,
           'active': this.activated
         }
       ]

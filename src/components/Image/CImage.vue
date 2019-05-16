@@ -4,7 +4,7 @@
     :src="src"
     :alt="alt"
     :width="width"
-    :height="width"
+    :height="height"
     :class="imageClasses"
   />
   <svg
@@ -59,11 +59,11 @@ export default {
     },
     alignClass () {
       if (this.align === 'left') {
-        return 'float-left'
+        return 'c-float-left'
       } else if (this.align === 'right') {
-        return 'float-right'
+        return 'c-float-right'
       } else if (this.align === 'center') {
-        return 'mx-auto'
+        return 'c-mx-auto'
       }
     },
     imageClasses () {
@@ -71,12 +71,12 @@ export default {
         //animationClass is rendered in CImageLazy
         this.animationClasses,
         {
-          'img-thumbnail': this.thumbnail,
-          'img-fluid': this.fluid || this.fluidGrow,
-          'w-100': this.fluidGrow,
-          [`rounded${this.rounded===true ? '' : '-'+this.rounded}`]: this.rounded,
+          'c-img-thumbnail': this.thumbnail,
+          'c-img-fluid': this.fluid || this.fluidGrow,
+          'c-w-100': this.fluidGrow,
+          [`c-rounded${this.rounded===true?'':'-'+this.rounded}`]: this.rounded,
           [this.alignClass]: Boolean(this.align),
-          'd-block': this.block
+          'c-d-block': this.block
         }
       ]
     }

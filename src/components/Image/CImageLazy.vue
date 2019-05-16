@@ -40,7 +40,7 @@ export default {
     },
     animationClasses () {
       if (this.fade) {
-        return { 'opacity-0' : !this.animated }
+        return { 'c-opacity-0' : !this.animated }
       }
     }
   },
@@ -73,7 +73,7 @@ export default {
 </script>
 
 <style scoped>
-  .opacity-0 {
+  .c-opacity-0 {
     opacity: 0;
   }
 </style>

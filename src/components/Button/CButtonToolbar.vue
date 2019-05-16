@@ -11,8 +11,8 @@ export default {
       'div',
       mergeData(data, {
         class: [
-          'btn-toolbar',
-          props.justify ? 'justify-content-between' : ''
+          'c-btn-toolbar',
+          props.justify ? 'c-justify-content-between' : ''
         ],
         attrs: {
           role: 'toolbar'

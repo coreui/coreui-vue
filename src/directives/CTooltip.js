@@ -25,8 +25,8 @@ export default {
       placement: props.placement || 'top',
       delay: props.delay || 0,
       offset: props.offset || 0,
-      arrowSelector: '.arrow',
-      innerSelector: '.tooltip-inner',
+      arrowSelector: '.c-arrow',
+      innerSelector: '.c-tooltip-inner',
       template: binding.def.getTemplate(),
       boundariesElement: document.getElementById(props.boundaries) || props.boundaries,
       container: props.appendToBody ? document.body : false,
@@ -35,9 +35,9 @@ export default {
     }
   },
   getTemplate (title) {
-    return `<div class="tooltip bs-tooltip-auto fade show" role="tooltip">
-              <div class="arrow"></div>
-              <div class="tooltip-inner"></div>
+    return `<div class="c-tooltip c-bs-tooltip-auto c-fade c-show" role="tooltip">
+              <div class="c-arrow"></div>
+              <div class="c-tooltip-inner"></div>
             </div>`
   }
 }

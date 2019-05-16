@@ -1,15 +1,15 @@
 <template functional>
-  <div class="card" :class="`bg-${props.variant}`">
-    <div class="card-header">
-      <div class="font-weight-bold">
+  <div class="c-card" :class="`c-bg-${props.variant}`">
+    <div class="c-card-header">
+      <div class="c-font-weight-bold">
         <span>{{props.rightHeader}}</span>
-        <span class="float-right">{{props.leftHeader}}</span>
+        <span class="c-float-right">{{props.leftHeader}}</span>
       </div>
       <div>
         <span>
           <small>{{props.rightFooter}}</small>
         </span>
-        <span class="float-right">
+        <span class="c-float-right">
           <small>{{props.leftFooter}}</small>
         </span>
       </div>

@@ -16,7 +16,7 @@ export default {
     return h(
       props.tag,
       mergeData(data, {
-        staticClass: 'dropdown-header',
+        staticClass: 'c-dropdown-header',
       }),
       children
     )

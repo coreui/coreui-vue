@@ -1,9 +1,11 @@
 <template functional>
-  <div class="card">
-    <div class="card-body text-center">
-      <div class="text-muted small text-uppercase font-weight-bold">{{props.header}}</div>
-        <div class="h2 py-3">{{props.text}}</div>
-        <slot></slot>
+  <div class="c-card">
+    <div class="c-card-body c-text-center">
+      <div class="c-text-muted c-small c-text-uppercase c-font-weight-bold">
+        {{props.header}}
+      </div>
+      <div class="c-h2 c-py-3">{{props.text}}</div>
+      <slot></slot>
     </div>
   </div>
 </template>

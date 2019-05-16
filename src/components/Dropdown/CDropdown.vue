@@ -48,24 +48,28 @@ export default {
   },
   methods:{
     hide () {
-      if(this.$refs.menu.classList.contains('show'))
+      if (this.$refs.menu.classList.contains('c-show')) {
         this.toggle(false)
+      }
     },
     click (e) {
       e.preventDefault()
       this.toggle(!this.visible)
     },
     toggle (value) {
-      if(this.disabled)
-        return
-      setTimeout(() => {
-        this.visible = value
-        this.menagePopper()
-      }, 0)
+      if (!this.disabled) {
+        setTimeout(() => {
+          this.visible = value
+          this.menagePopper()
+        }, 0)
+      }
     },
     menagePopper () {
-      if(!this.noPopper)
-          setTimeout(() => this.visible ? this.createPopper() : this.removePopper(), 0)
+      if (!this.noPopper) {
+        setTimeout(() => {
+          this.visible ? this.createPopper() : this.removePopper(), 0
+        })
+      }
     },
     removePopper () {
       if (this._popper) {
@@ -81,7 +85,7 @@ export default {
   computed: {
     generatedPopperConfig () {
       return {
-        placement: this.placement ? this.placement : this.dropup ? 'top-start' : 'bottom-start',
+        placement: this.placement || (this.dropup ? 'top-start' : 'bottom-start'),
         modifiers: {
           offset: { offset: this.offset || 0 },
           flip: { enabled: !this.noFlip }
@@ -93,11 +97,11 @@ export default {
     },
     computedDropdownClasses () {
       return [
-        !this.dropup ? 'dropdown': 'dropup',
+        !this.dropup ? 'c-dropdown': 'c-dropup',
         {
-          'show': this.visible,
-          'nav-item': this.nav,
-          'btn-group': this.haveButtonClasses
+          'c-show': this.visible,
+          'c-nav-item': this.nav,
+          'c-btn-group': this.haveButtonClasses
         }
       ]
     },
@@ -110,19 +114,19 @@ export default {
     computedButtonClasses () {
       return [
         this.addButtonClasses,
-        this.haveButtonClasses ? `btn btn-${this.variant}` : 'nav-link',
+        this.haveButtonClasses ? `c-btn c-btn-${this.variant}` : 'c-nav-link',
         {
-          'dropdown-toggle': !this.noCaret && !this.split,
-          [`btn-${this.size}`]: this.size,
-          'disabled' : this.disabled,
+          'c-dropdown-toggle': !this.noCaret && !this.split,
+          [`c-btn-${this.size}`]: this.size,
+          'c-disabled' : this.disabled,
         }
       ]
     },
     computedMenuClasses () {
       return [
         this.addMenuClasses,
-        'dropdown-menu',
-        { 'show': this.visible }
+        'c-dropdown-menu',
+        { 'c-show': this.visible }
       ]
     },
   },
@@ -151,7 +155,7 @@ export default {
       {
         class: [
           this.computedButtonClasses,
-          'dropdown-toggle dropdown-toggle-split'
+          'c-dropdown-toggle c-dropdown-toggle-split'
         ],
         on: { click: this.click }
       })
@@ -180,10 +184,4 @@ export default {
   @import "~@coreui/coreui/scss/partials/dropdown.scss";
   @import "~@coreui/coreui/scss/partials/buttons.scss";
   @import "~@coreui/coreui/scss/partials/button-group.scss";
-
-  // @import "~@coreui/coreui/scss/partials/nav.scss";
-
-
-  // @import "~@coreui/coreui/scss/utilities/dropdown.scss";
-
 </style>

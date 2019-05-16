@@ -29,18 +29,18 @@ export default {
     return h(
       props.tag,
       mergeData(data, {
-        staticClass: 'navbar',
+        staticClass: 'c-navbar',
         class: [
-          props.light ? 'navbar-light' : 'navbar-dark',
+          props.light ? 'c-navbar-light' : 'c-navbar-dark',
           props.toggleable !== true ?
             props.toggleable ?
-              `navbar-expand-${props.toggleable}` :
-              'navbar-expand': '',
+              `c-navbar-expand-${props.toggleable}` :
+              'c-navbar-expand': '',
           {
-            'd-print': props.print,
-            'sticky-top': props.sticky,
-            [`bg-${props.variant}`]: Boolean(props.variant),
-            [`fixed-${props.fixed}`]: Boolean(props.fixed),
+            'c-d-print': props.print,
+            'c-sticky-top': props.sticky,
+            [`c-bg-${props.variant}`]: Boolean(props.variant),
+            [`c-fixed-${props.fixed}`]: Boolean(props.fixed),
           }
         ],
         attrs: {

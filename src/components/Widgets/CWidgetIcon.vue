@@ -1,33 +1,33 @@
 <template functional>
-  <div class="card">
+  <div class="c-card">
     <div
-      class="card-body clearfix d-flex align-items-center"
-      :class="props.noPadding ? 'p-0' : p-3"
+      class="c-card-body c-clearfix c-d-flex c-align-items-center"
+      :class="props.noPadding ? 'c-p-0' : c-p-3"
     >
       <i
-        :class="[props.addIconClasses, props.noPadding ? 'p-4' : 'p-3']"
-        class="float-left mr-3 font-2xl"
+        :class="[props.addIconClasses, props.noPadding ? 'c-p-4' : 'c-p-3']"
+        class="c-float-left c-mr-3 c-font-2xl"
       ></i>
       <div>
-        <div class="text-primary text-value-sm">
+        <div class="c-text-primary c-text-value-sm">
           {{props.header}}
         </div>
-        <div class="text-muted text-uppercase font-weight-bold small">
+        <div class="c-text-muted c-text-uppercase c-font-weight-bold c-small">
           {{props.text}}
         </div>
       </div>
     </div>
     <div
       v-if="props.link || $slots.default"
-      class="card-footer px-3 py-2"
+      class="c-card-footer c-px-3 c-py-2"
     >
       <slot>
         <CLink
-          class="font-weight-bold font-xs btn-block text-muted"
+          class="c-font-weight-bold c-font-xs c-btn-block c-text-muted"
           :href="props.link"
         >
           {{props.linkText}}
-          <i class="fa fa-angle-right float-right font-lg"></i>
+          <i class="fa fa-angle-right c-float-right c-font-lg"></i>
         </CLink>
       </slot>
     </div>

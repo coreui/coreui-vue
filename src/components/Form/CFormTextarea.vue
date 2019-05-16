@@ -1,11 +1,13 @@
 <template >
-  <CFormGroup v-bind="{appendHtml, prependHtml, validFeedback,
-                       invalidFeedback, tooltipFeedback, description,
-                       wrapperClasses, class: computedClasses}"
+  <CFormGroup
+    v-bind="{appendHtml, prependHtml, validFeedback, invalidFeedback,
+      tooltipFeedback, description, wrapperClasses, class: computedClasses}"
   >
     <template #label>
       <slot name="label">
-        <label v-if="label" :for="safeId" :class="labelClasses">{{label}}</label>
+        <label v-if="label" :for="safeId" :class="labelClasses">
+          {{label}}
+        </label>
       </slot>
     </template>
     <template #input>
@@ -20,8 +22,10 @@
       />
     </template>
 
-    <template v-for="slot in ['prepend', 'append', 'label-after-input', 'valid-feedback', 'invalid-feedback','description']"
-              #[slot]
+    <template
+      v-for="slot in ['prepend', 'append', 'label-after-input',
+                      'valid-feedback', 'invalid-feedback','description']"
+      #[slot]
     >
       <slot :name="slot">
       </slot>

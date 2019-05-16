@@ -21,11 +21,11 @@ export default {
     return h(
       'div',
       mergeData(data, {
-        staticClass: 'row',
+        staticClass: 'c-row',
         class: {
-          'no-gutters': props.noGutters,
-          [`align-items-${props.alignV}`]: props.alignV,
-          [`justify-content-${props.alignH}`]: props.alignH,
+          'c-no-gutters': props.noGutters,
+          [`c-align-items-${props.alignV}`]: props.alignV,
+          [`c-justify-content-${props.alignH}`]: props.alignH,
         }
       }),
       children

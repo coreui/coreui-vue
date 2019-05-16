@@ -1,17 +1,19 @@
 <template functional>
-  <div :class="props.inverse ? `card text-white bg-${props.variant}` : 'card'">
-    <div class="card-body">
-      <div class="h4 m-0">{{props.header}}</div>
+  <div :class="props.inverse ? `c-card c-text-white c-bg-${props.variant}` : 'c-card'">
+    <div class="c-card-body">
+      <div class="c-h4 c-m-0">{{props.header}}</div>
       <div>{{props.text}}</div>
       <slot>
         <CProgress
           :variant="!props.inverse ? props.variant : ''"
           :value = "props.value"
-          :class="props.inverse ? 'progress-white' : ''"
-          class="progress-xs my-3 mb-0"
+          :class="props.inverse ? 'c-progress-white' : ''"
+          class="c-progress-xs c-my-3 c-mb-0"
         />
       </slot>
-      <small class="text-muted">{{props.footer}}</small>
+      <small class="c-text-muted">
+        {{props.footer}}
+      </small>
     </div>
   </div>
 </template>

@@ -12,16 +12,16 @@
       style="z-index:1100"
       :style="computedStyles"
     >
-      <div v-if="!props.noHeader" class="toast-header">
-        <strong class="mr-auto" v-html="props.titleHtml"></strong>
+      <div v-if="!props.noHeader" class="c-toast-header">
+        <strong class="c-mr-auto" v-html="props.titleHtml"></strong>
         <CButtonClose
           v-if="!props.noCloseButton"
           @click="close()"
-          class="ml-2 mb-1"
+          class="c-ml-2 c-mb-1"
         />
       </div>
       <slot :close="close">
-        <div class="toast-body" v-html="props.bodyHtml">
+        <div class="c-toast-body" v-html="props.bodyHtml">
         </div>
       </slot>
     </div>
@@ -53,10 +53,10 @@ export default {
   },
   computed: {
     toastClasses () {
-      return ['toast',
+      return ['c-toast',
         {
-          'show': this.props.show,
-          'full': this.props.position.includes('full')
+          'c-show': this.props.show,
+          'c-full': this.props.position.includes('full')
         }
       ]
     },
@@ -93,7 +93,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .toast.full {
     max-width: 100%;
   }
@@ -103,4 +103,7 @@ export default {
   .fade-enter-active, .fade-leave-active {
     transition: opacity .3s;
   }
+  @import "~@coreui/coreui/scss/partials/toasts.scss";
+  @import "~@coreui/coreui/scss/utilities/_spacing.scss";
+
 </style>

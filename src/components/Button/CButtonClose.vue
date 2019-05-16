@@ -10,7 +10,7 @@ export default {
     },
     buttonClasses: {
       type: String,
-      default: 'close'
+      default: 'c-close'
     }
   },
   render (h, { data, props, slots }) {

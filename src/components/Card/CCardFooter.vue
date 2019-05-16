@@ -17,13 +17,13 @@ export default {
     return h(
       props.tag || 'footer',
       mergeData(data, {
-        staticClass: 'card-footer',
+        staticClass: 'c-card-footer',
         class: [
           {
-            [`text-${props.align}`]: Boolean(props.align),
-            [`bg-${props.variant}`]: Boolean(props.variant),
-            [`border-${props.borderVariant}`]: Boolean(props.borderVariant),
-            [`text-${props.textVariant}`]: Boolean(props.textVariant)
+            [`c-text-${props.align}`]: Boolean(props.align),
+            [`c-bg-${props.variant}`]: Boolean(props.variant),
+            [`c-border-${props.borderVariant}`]: Boolean(props.borderVariant),
+            [`c-text-${props.textVariant}`]: Boolean(props.textVariant)
           }
         ]
       }),

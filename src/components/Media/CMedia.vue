@@ -29,18 +29,18 @@ export default {
   computed: {
     computedAsidePositionClasses () {
       return this.asidePositionClasses ||
-             `m${this.asideRight? 'l' : 'r' }-3 align-self-start`
+             `c-m${this.asideRight? 'l' : 'r' }-3 c-align-self-start`
     },
     computedAsideClasses () {
       return [this.computedAsidePositionClasses, this.addAsideClasses]
     },
     computedBodyClasses () {
-      return [ 'media-body', this.addBodyClasses ]
+      return [ 'c-media-body', this.addBodyClasses ]
     },
     mediaClasses () {
       return [
-        'media',
-        { 'd-flex flex-row-reverse': this.asideRight }
+        'c-media',
+        { 'c-d-flex c-flex-row-reverse': this.asideRight }
       ]
     }
   }
