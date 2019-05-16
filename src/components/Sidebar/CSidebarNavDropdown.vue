@@ -6,13 +6,13 @@
     disabled
   >
     <div
-      class="nav-link nav-dropdown-toggle"
+      class="c-nav-link c-nav-dropdown-toggle"
       @click="handleClick"
     >
       <i :class="classIcon"></i>
       {{name}}
     </div>
-    <ul class="nav-dropdown-items">
+    <ul class="c-nav-dropdown-items">
       <slot></slot>
     </ul>
   </router-link>
@@ -49,12 +49,12 @@ export default {
   },
   computed: {
     classIcon () {
-      return ['nav-icon', this.icon]
+      return ['c-nav-icon', this.icon]
     },
     dropdownClasses () {
       return [
-        'nav-item nav-dropdown',
-        { open: this.isOpen }
+        'c-nav-item c-nav-dropdown',
+        { 'c-open': this.isOpen }
       ]
     }
   },
@@ -68,7 +68,7 @@ export default {
 </script>
 
 <style scoped lang="css">
-  .nav-link {
+  .c-nav-link {
     cursor:pointer;
   }
 </style>

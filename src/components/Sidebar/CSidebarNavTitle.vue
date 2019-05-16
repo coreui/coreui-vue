@@ -1,5 +1,5 @@
 <template>
-  <li :class="['nav-title', classes]">
+  <li :class="['c-nav-title', classes]">
     <template v-if="wrapper && wrapper.element">
       <component
         :is="wrapper.element"

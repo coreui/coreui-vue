@@ -1,6 +1,6 @@
 <template>
-  <div :class="vertical ? 'row no-gutters': ''">
-    <div :class="[addNavWrapperClasses, gridClasses.navs, { 'card-header': card }]">
+  <div :class="vertical ? 'c-row c-no-gutters': ''">
+    <div :class="[addNavWrapperClasses, gridClasses.navs, { 'c-card-header': card }]">
       <ul :class="[navClasses, addNavClasses, { 'h-100': vertical }]">
         <CTabNav
           v-for="(tab, key) in elements"
@@ -14,7 +14,7 @@
       </ul>
     </div>
     <div :class="[addTabsWrapperClasses, gridClasses.content]">
-      <div :class="['tab-content', addTabsClasses]">
+      <div :class="['c-tab-content', addTabsClasses]">
         <transition :name="noFade ? null : 'fade'" mode="out-in">
           <KeepAlive>
             <template v-for="(tab, key) in elements">
@@ -22,7 +22,7 @@
                 v-if="activeTab === tab"
                 :content="tab.$scopedSlots.default"
                 :key="key"
-                class="tab-pane active show"
+                :class="[addTabClasses, 'c-tab-pane active show']"
               />
             </template>
           </KeepAlive>
@@ -72,12 +72,12 @@ export default {
   computed: {
     navClasses () {
       return {
-        'nav' : true,
-        'nav-tabs': this.tabs && !this.pills,
-        'nav-pills': this.pills,
-        'flex-column': this.vertical,
-        'nav-fill': this.fill,
-        'nav-justified': this.justified
+        'c-nav' : true,
+        'c-nav-tabs': this.tabs && !this.pills,
+        'c-nav-pills': this.pills,
+        'c-flex-column': this.vertical,
+        'c-nav-fill': this.fill,
+        'c-nav-justified': this.justified
       }
     },
     activeTab () {
@@ -85,7 +85,7 @@ export default {
     },
     gridClasses () {
       const cols = this.vertical === true ? 6 : this.vertical
-      return cols ? { navs: `col-sm-${cols}`, content: `col-sm-${12-cols}`} : {}
+      return cols ? { navs: `c-col-sm-${cols}`, content: `c-col-sm-${12-cols}`} : {}
     }
   },
   mounted () {

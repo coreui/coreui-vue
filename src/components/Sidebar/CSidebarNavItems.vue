@@ -1,5 +1,5 @@
 <template>
-  <ul class="nav">
+  <ul class="c-nav">
     <template v-for="(item, index) in items">
       <template v-if="item.title">
         <CSidebarNavTitle

@@ -1,9 +1,9 @@
 <template>
-  <nav class="sidebar-nav">
+  <nav class="c-sidebar-nav">
     <VuePerfectScrollbar
-      class="scroll-area"
+      class="c-scroll-area"
       :settings="psSettings"
-      v-if="!isMinimized"
+      v-if="!state.minimized"
     >
         <CSidebarNavItems :items="navItems"/>
     </VuePerfectScrollbar>
@@ -30,13 +30,10 @@ export default {
     CSidebarNavItems,
     VuePerfectScrollbar
   },
-  data () {
-    return {
-      isMinimized: false
+  inject: {
+    state: {
+      default: false
     }
-  },
-  created () {
-    this.$on('c-sidebar-toggle-minimize', val => this.isMinimized = val)
   },
   computed: {
     psSettings () {
@@ -54,8 +51,7 @@ export default {
 </script>
 
 <style scoped lang="css">
-  .scroll-area {
-    position: absolute;
+  .c-scroll-area {
     height: 100%;
     margin: auto;
   }

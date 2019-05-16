@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar" v-on-clickaway="hideMobile">
+  <div :class="sidebarClasses" v-on-clickaway="hideMobile">
     <slot>Sidebar</slot>
   </div>
 </template>
@@ -18,7 +18,16 @@ export default {
       default: 'lg',
       validator: val => [true, false, 'sm', 'md', 'lg', 'xl'].includes(val)
     },
-    mobile: Boolean
+    mobile: Boolean,
+    aside: Boolean,
+    light: Boolean
+  },
+  provide () {
+    const state = {}
+    Object.defineProperty(state, 'minimized', {
+      get: () => this.minimized
+    })
+    return { state }
   },
   data () {
     return {
@@ -26,76 +35,37 @@ export default {
       minimized: this.minimize
     }
   },
-  watch: {
-    display () {
-      this.displayed = this.display
-    },
-    displayed: {
-      immediate: true,
-      handler (val, oldVal) {
-        this.toggleClasses(val, oldVal)
-      }
-    },
-    minimize () {
-      this.minimized = this.minimize
-    },
-    minimized: {
-      immediate: true,
-      handler (val) {
-        this.emitMinimize(val)
-        val ? this.sidebarMinimize() : this.maximize()
-      }
-    }
-  },
   mounted () {
-    this.emitMinimize()
-    this.$root.$on('c-sidebar-toggle-minimize', () => {
+    this.$root.$on(`c-${this.mode}-toggle-minimize`, () => {
       this.minimized = !this.minimized
     })
-    this.$root.$on('c-sidebar-toggle', () => {
-      this.displayed = this.displayed ? false : this.display
+    this.$root.$on(`c-${this.mode}-toggle`, () => {
+      this.displayed = this.displayed ? false : this.display || true
     })
-    this.isFixed()
   },
-  // computed: {
-  //   displayClass () {
-  //     if (this.displayed && !this.mobile) {
-  //       const breakpoint = this.displayed === true ? '' : '-' + this.displayed
-  //       return `sidebar${breakpoint}-show`
-  //     }
-  //   },
-  //   sidebarClasses () {
-  //     return ['sidebar', this.displayClass]
-  //   }
-  // },
-  methods: {
-    isFixed () {
-      const body = document.body.classList
-      this.fixed ? body.add('sidebar-fixed') : body.remove('sidebar-fixed')
+  computed: {
+    mode () {
+      return this.aside ? 'aside' : 'sidebar'
     },
-    toggleClasses (val, oldVal) {
-      if (val) {
-        const breakpoint = val === true ? '' : '-' + val
-        document.body.classList.add(`sidebar${breakpoint}-show`)
-      }
-      if (oldVal) {
-        const oldBreakpoint = oldVal === true ? '' : '-' + oldVal
-        document.body.classList.remove(`sidebar${oldBreakpoint}-show`)
-      }
+    breakpoint () {
+      return this.displayed === true || this.mobile ? '' : '-' + this.display
     },
-    sidebarMinimize () {
-      document.body.classList.add('sidebar-minimized')
-      document.body.classList.add('brand-minimized')
-    },
-    maximize () {
-      document.body.classList.remove('sidebar-minimized')
-      document.body.classList.remove('brand-minimized')
-    },
-    emitMinimize (val) {
-      this.$children.forEach(child => {
-        child.$emit('c-sidebar-toggle-minimize', val || this.minimized)
-      })
+    sidebarClasses () {
+      return [
+               'c-sidebar',
+               `c-sidebar-${this.light ? 'light' : 'dark'}`,
+               {
+                 [`c-sidebar${this.breakpoint}-show`]: this.displayed,
+                 'c-sidebar-fixed': this.fixed,
+                 'c-sidebar-minimized': this.minimized,
+                 'c-sidebar-right': this.aside
+               }
+             ]
     }
   }
 }
 </script>
+
+<style scoped lang="scss">
+  @import "~@coreui/coreui/scss/partials/sidebar.scss";
+</style>

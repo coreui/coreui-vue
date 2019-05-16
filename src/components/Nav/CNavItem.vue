@@ -1,7 +1,7 @@
 <template>
-  <li class="nav-item">
+  <li class="c-nav-item">
     <CLink
-      class="nav-link"
+      class="c-nav-link"
       v-bind="$props"
       :active="isActive"
     >

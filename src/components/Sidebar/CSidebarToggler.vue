@@ -1,15 +1,18 @@
 <template>
   <button
-    class="navbar-toggler"
+    class="c-header-toggler"
     type="button"
-    @click="$root.$emit('c-sidebar-toggle')"
+    @click="$root.$emit(`c-${aside ? 'aside' : 'sidebar' }-toggle`)"
   >
-    <span class="navbar-toggler-icon"/>
+    <span class="c-header-toggler-icon"/>
   </button>
 </template>
 
 <script>
 export default {
-  name: 'CSidebarToggler'
+  name: 'CSidebarToggler',
+  props: {
+    aside: Boolean
+  }
 }
 </script>

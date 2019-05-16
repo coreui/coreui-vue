@@ -8,25 +8,19 @@
 export default {
   name: 'CFooter',
   props: {
-    fixed: {
-      type: Boolean,
-      default: false
-    }
-  },
-  mounted: function () {
-    this.isFixed()
+    fixed: Boolean
   },
   computed: {
     classList () {
       return [
-        'app-footer'
+        'c-app-footer c-footer',
+        { 'c-footer-fixed': this.fixed }
       ]
-    }
-  },
-  methods: {
-    isFixed () {
-      this.fixed ? document.body.classList.add('footer-fixed') : document.body.classList.remove('footer-fixed')
     }
   }
 }
 </script>
+
+<style scoped lang="scss">
+  @import "~@coreui/coreui/scss/partials/footer.scss";
+</style>

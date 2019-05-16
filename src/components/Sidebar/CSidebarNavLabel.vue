@@ -33,13 +33,13 @@ export default {
   },
   computed: {
     navItemClasses () {
-      return ['hidden-cn', this.classes]
+      return ['c-hidden-cn', this.classes]
     },
     iconClasses () {
       return [
         this.icon || 'fa fa-circle',
         this.label.class,
-        { [`text-${this.label.variant}`] : this.label.variant }
+        { [`c-text-${this.label.variant}`] : this.label.variant }
       ]
     }
   }

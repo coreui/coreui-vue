@@ -1,6 +1,5 @@
 <template>
-  <header
-    :class="classList">
+  <header :class="classList">
     <slot>Header</slot>
   </header>
 </template>
@@ -9,27 +8,19 @@
 export default {
   name: 'CHeader',
   props: {
-    fixed: {
-      type: Boolean,
-      default: false
-    }
+    fixed: Boolean
   },
   computed: {
     classList () {
       return [
-        'app-header',
-        'navbar'
+        'c-header c-app-header c-header-light',
+        { 'c-header-fixed': this.fixed}
       ]
-    }
-  },
-  mounted: function () {
-    this.isFixed(this.fixed)
-  },
-  methods: {
-    isFixed (fixed) {
-      fixed ? document.body.classList.add('header-fixed') : document.body.classList.remove('header-fixed')
-      return fixed
     }
   }
 }
 </script>
+
+<style scoped lang="scss">
+  @import "~@coreui/coreui/scss/partials/header.scss";
+</style>

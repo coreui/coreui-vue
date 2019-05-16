@@ -30,13 +30,13 @@ export default {
       const itemProps = isLast ? lastItemProps : linkItemProps
       return h('li',
              {
-               staticClass: 'breadcrumb-item',
+               staticClass: 'c-breadcrumb-item',
                class: { active: isLast },
                attrs: { role: 'presentation' }
              },
              [h(tag, itemProps)])
     })
-    return h('ol', mergeData(data, { staticClass: 'breadcrumb' }), childNodes)
+    return h('ol', mergeData(data, { staticClass: 'c-breadcrumb' }), childNodes)
   }
 }
 </script>

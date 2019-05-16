@@ -13,7 +13,7 @@
     />
   </CSidebarNavDropdown>
   <li
-    :class="['nav-item', item.classes]"
+    :class="['c-nav-item', item.classes]"
     @click="hideMobile"
     v-else
   >

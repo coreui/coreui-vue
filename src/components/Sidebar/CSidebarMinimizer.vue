@@ -1,6 +1,6 @@
 <template>
   <button
-    class="sidebar-minimizer"
+    class="c-sidebar-minimizer"
     type="button"
     @click="$root.$emit('c-sidebar-toggle-minimize')"
   >

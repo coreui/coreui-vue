@@ -1,12 +1,12 @@
 <template functional>
-  <li :class="['nav-divider', props.classes]"></li>
+  <li :class="['c-nav-divider', props.classes]"></li>
 </template>
 
 <script>
 export default {
   name: 'CSidebarNavDivider',
   props: {
-    class: [String, Array, Object]
+    classes: [String, Array, Object]
   }
 }
 </script>

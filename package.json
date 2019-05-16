@@ -55,7 +55,7 @@
     "clear_jest": "jest --clearCache"
   },
   "dependencies": {
-    "@coreui/coreui": "coreui/coreui#component-prefixes",
+    "@coreui/coreui": "next",
     "core-js": "^2.5.7",
     "element-resize-detector": "^1.2.0",
     "popper.js": "^1.14.7",
