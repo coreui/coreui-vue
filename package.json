@@ -47,7 +47,9 @@
   },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name coreui-vue ./src/index.js",
+    "build": "npm-run-all --parallel build:custom build:default",
+    "build:default": "vue-cli-service build --target lib --name coreui-vue ./src/index.js",
+    "build:custom": "vue-cli-service build --target lib --name custom ./src/index.js",
     "lint": "vue-cli-service lint",
     "test": "vue-cli-service test:unit",
     "test:coverage": "vue-cli-service test:unit --coverage --collectCoverageFrom=src/**/*.{js,vue} --collectCoverageFrom=!**/index*",

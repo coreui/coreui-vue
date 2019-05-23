@@ -1,14 +1,5 @@
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("vue"));
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else if(typeof exports === 'object')
-		exports["coreui-vue"] = factory(require("vue"));
-	else
-		root["coreui-vue"] = factory(root["Vue"]);
-})((typeof self !== 'undefined' ? self : this), function(__WEBPACK_EXTERNAL_MODULE__8bbf__) {
-return /******/ (function(modules) { // webpackBootstrap
+module.exports =
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -2001,21 +1992,6 @@ if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
 var add = __webpack_require__("499e").default
 var update = add("1321be29", content, true, {"sourceMap":false,"shadowMode":false});
-
-/***/ }),
-
-/***/ "31e0":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("2350")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".c-nav{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;padding-left:0;margin-bottom:0;list-style:none}.c-nav-link{display:block;padding:.5rem 1rem}.c-nav-link:focus,.c-nav-link:hover{text-decoration:none}.c-nav-link.disabled{color:#73818f;pointer-events:none;cursor:default}.c-nav-tabs{border-bottom:1px solid #c8ced3}.c-nav-tabs .c-nav-item{margin-bottom:-1px}.c-nav-tabs .c-nav-link{border:1px solid transparent;border-top-left-radius:.25rem;border-top-right-radius:.25rem}.c-nav-tabs .c-nav-link:focus,.c-nav-tabs .c-nav-link:hover{border-color:#e4e7ea #e4e7ea #c8ced3}.c-nav-tabs .c-nav-link.disabled{color:#73818f;background-color:transparent;border-color:transparent}.c-nav-tabs .c-nav-item.c-show .c-nav-link,.c-nav-tabs .c-nav-link.active{color:#5c6873;background-color:#e4e5e6;border-color:#c8ced3 #c8ced3 #e4e5e6}.c-nav-tabs .c-dropdown-menu{margin-top:-1px;border-top-left-radius:0;border-top-right-radius:0}.c-nav-pills .c-nav-link{border-radius:.25rem}.c-nav-pills .c-nav-link.active,.c-nav-pills .c-show>.c-nav-link{color:#fff;background-color:#20a8d8}.c-nav-fill .c-nav-item{-webkit-box-flex:1;-ms-flex:1 1 auto;flex:1 1 auto;text-align:center}.c-nav-justified .c-nav-item{-ms-flex-preferred-size:0;flex-basis:0;-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;text-align:center}.c-tab-content>.c-tab-pane{display:none}.c-tab-content>.active{display:block}.c-nav-tabs .c-nav-link{color:#73818f}.c-nav-tabs .c-nav-link:hover{cursor:pointer}.c-nav-tabs .c-nav-link.active{color:#2f353a}.c-nav-tabs .c-nav-link.active,.c-nav-tabs .c-nav-link.active:focus{background:#fff;border-color:#c8ced3;border-bottom-color:#fff}.c-tab-content{margin-top:-1px;background:#fff;border:1px solid #c8ced3}.c-tab-content .c-tab-pane{padding:1rem}.c-card-block .c-tab-content{margin-top:0;border:0}.c-nav-fill .c-nav-link{background-color:#fff;border-color:#c8ced3}.c-nav-fill .c-nav-link+.c-nav-link{margin-left:-1px}.c-nav-fill .c-nav-link.active{margin-top:-1px;border-top:2px solid #20a8d8}[dir=rtl] .c-nav{padding-right:0}", ""]);
-
-// exports
-
 
 /***/ }),
 
@@ -5240,7 +5216,7 @@ exports.push([module.i, ".toaster[data-v-3f112a6f]{z-index:1100}.c-toast[data-v-
 /***/ "8bbf":
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__8bbf__;
+module.exports = require("vue");
 
 /***/ }),
 
@@ -5260,10 +5236,10 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__8bbf__;
 
 exports = module.exports = __webpack_require__("2350")(false);
 // imports
-exports.i(__webpack_require__("31e0"), "");
+
 
 // module
-exports.push([module.i, ".fade-enter-active[data-v-6806eb08],.fade-leave-active[data-v-6806eb08]{-webkit-transition:opacity .3s;transition:opacity .3s}.fade-enter[data-v-6806eb08],.fade-leave-to[data-v-6806eb08]{opacity:0}.c-tab-pane[data-v-6806eb08]{background-color:grey!important}", ""]);
+exports.push([module.i, ".fade-enter-active[data-v-6806eb08],.fade-leave-active[data-v-6806eb08]{-webkit-transition:opacity .3s;transition:opacity .3s}.fade-enter[data-v-6806eb08],.fade-leave-to[data-v-6806eb08]{opacity:0}", ""]);
 
 // exports
 
@@ -22811,5 +22787,4 @@ var update = add("45cf7c76", content, true, {"sourceMap":false,"shadowMode":fals
 /***/ })
 
 /******/ });
-});
-//# sourceMappingURL=coreui-vue.umd.js.map
+//# sourceMappingURL=custom.common.js.map
