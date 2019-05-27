@@ -1,19 +1,15 @@
 <template>
   <div :class="mediaClasses">
-    <div :class="computedAsideClasses" >
+    <div :class="asideClasses">
       <slot name="aside">
-        <CImage
-          v-if="asideImage"
-          v-bind="asideImage"
-        />
+        <CImage v-bind="computedAsideImageProps"/>
       </slot>
     </div>
-    <div :class="computedBodyClasses">
+    <div :class="mediaBodyClasses">
       <slot></slot>
     </div>
   </div>
 </template>
-
 
 <script>
 import CImage from '../Image/CImage'
@@ -24,17 +20,35 @@ export default {
     addAsideClasses: String,
     addBodyClasses: String,
     asideRight: Boolean,
-    asideImage: Object
+    asideImageProps: Object,
+    asidePosition: {
+      type: String,
+      default: 'start',
+      validator: val => ['start', 'center', 'end', 'stretch'].includes(val)
+    }
   },
   computed: {
+    computedAsideImageProps () {
+      return Object.assign(
+        {
+          blankColor: '#777777',
+          width: '64px',
+          height: this.asidePosition === 'stretch' ? '100%' : '64px'
+        },
+        this.asideImageProps || {}
+      )
+    },
     computedAsidePositionClasses () {
-      return this.asidePositionClasses ||
-             `c-m${this.asideRight? 'l' : 'r' }-3 c-align-self-start`
+      return this.asidePositionClasses || `c-m${this.asideRight? 'l' : 'r' }-3`
     },
-    computedAsideClasses () {
-      return [this.computedAsidePositionClasses, this.addAsideClasses]
+    asideClasses () {
+      return [
+        this.computedAsidePositionClasses,
+        this.addAsideClasses,
+        `c-align-self-${this.asidePosition}`
+      ]
     },
-    computedBodyClasses () {
+    mediaBodyClasses () {
       return [ 'c-media-body', this.addBodyClasses ]
     },
     mediaClasses () {
