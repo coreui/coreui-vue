@@ -35,9 +35,6 @@ export default {
     this.removeListener()
   },
   computed: {
-    isActive () {
-      return this.active
-    },
     animationClasses () {
       if (this.fade) {
         return { 'c-opacity-0' : !this.animated }

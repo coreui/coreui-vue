@@ -55,7 +55,8 @@ export default {
   },
   computed: {
     isActive () {
-      return true
+      //active prop is present in CImageLazy component, here always undefined
+      return this.active !== false
     },
     alignClass () {
       if (this.align === 'left') {
