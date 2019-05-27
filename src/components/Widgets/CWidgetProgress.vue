@@ -50,9 +50,11 @@ export default {
 
 <style scoped lang="scss">
   @import "~@coreui/coreui/scss/partials/widgets.scss";
+  @import "~@coreui/coreui/scss/partials/type.scss";
   @import "~@coreui/coreui/scss/partials/card.scss";
   @import "~@coreui/coreui/scss/utilities/_spacing.scss";
   @import "~@coreui/coreui/scss/utilities/_text.scss";
+  @import "~@coreui/coreui/scss/utilities/_typography.scss";
   @import "~@coreui/coreui/scss/utilities/_background.scss";
 
 </style>

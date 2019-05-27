@@ -15,11 +15,11 @@
       <slot name="arrows">
         <a class="c-carousel-control-prev" @click="previousItem">
           <span class="c-carousel-control-prev-icon"></span>
-          <span class="c-sr-only">Previous</span>
+          <span class="sr-only">Previous</span>
         </a>
         <a class="c-carousel-control-next" @click="nextItem">
           <span class="c-carousel-control-next-icon"></span>
-          <span class="c-sr-only">Next</span>
+          <span class="sr-only">Next</span>
         </a>
       </slot>
     </template>
@@ -54,7 +54,7 @@ export default {
     }
   },
   mounted () {
-    this.items = this.$slots.default.map(item => item.componentInstance)
+    this.items = this.$children
     const activated = this.items.map((item, index) => item.active ? index :null)
                                 .filter(item => item)
     this.active = activated[0] || 0
@@ -90,14 +90,19 @@ export default {
     activate (index, order) {
       this.resetInterval()
       this.activated = index
-      if (!order || this.animate) {
+      if (!order || !this.animate) {
         this.items.forEach(item => item.$emit('setItem', this.items[index]))
       } else {
         this.slide(index, order)
       }
     },
     slide (i, order) {
-      this.items.forEach(item => item.$emit('slideToItem', this.items[i], order))
+      this.items[i].$emit('slideToItem', this.items[i], order)
+      this.items.forEach((item, idx) => {
+        if (i !== idx) {
+          item.$emit('slideToItem', this.items[i], order)
+        }
+      })
       this.transitioning = true
       setTimeout(() => {
         this.transitioning = false

@@ -1,5 +1,5 @@
 <template functional>
-  <div class="card" :class="`c-bg-${props.variant}`">
+  <div class="c-card" :class="`c-bg-${props.variant}`">
     <div class="c-card-body c-pb-0">
       <slot name="dropdown"></slot>
       <h4 class="c-mb-0">{{props.header}}</h4>

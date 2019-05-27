@@ -58,7 +58,7 @@
                   name="sorting-icon"
                   :state="getIconState(index)"
                 >
-                  <i style="right:0px;" :class="iconClasses(index)"></i>
+                  <i :class="iconClasses(index)"></i>
                 </slot>
               </th>
             </template>
@@ -170,7 +170,7 @@
                   name="sorting-icon"
                   :state="getIconState(index)"
                 >
-                  <i style="right:0px;" :class="iconClasses(index)"></i>
+                  <i :class="iconClasses(index)"></i>
                 </slot>
               </th>
             </template>
@@ -422,7 +422,9 @@ export default {
     },
     iconClasses (index) {
       const state = this.getIconState(index)
-      return [ 'c-icon-transition c-float-right c-icons c-font-xl cui-arrow-top c-position-absolute',
+      return [
+        'c-icon-transition  c-icons c-font-xl cui-arrow-top',
+        'c-position-absolute c-arrow-position',
         {
           'c-transparent': !state,
           'c-rotate-icon': state === 'desc'
@@ -448,11 +450,18 @@ export default {
   -webkit-transition: transform 0.3s;
   transition: transform 0.3s;
 }
-.c-rotate-icon {
-  transform: rotate(-180deg);
-}
 .c-is-loading {
   opacity: .4;
+}
+.c-arrow-position {
+  right: 0;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.c-rotate-icon {
+  -ms-transform: translateY(-50%)  rotate(-180deg);
+  transform: translateY(-50%) rotate(-180deg);
 }
 </style>
 
@@ -467,4 +476,8 @@ export default {
 @import "~@coreui/coreui/scss/utilities/_sizing.scss";
 @import "~@coreui/coreui/scss/utilities/_spacing.scss";
 @import "~@coreui/coreui/scss/utilities/_text.scss";
+@import "~@coreui/coreui/scss/utilities/_typography.scss";
+
+//Icons
+@import '~@coreui/icons/css/coreui-icons.min.css';
 </style>

@@ -1,6 +1,27 @@
+<template>
+  <transition :name="fade ? 'fade' : null" :appear="true">
+    <div
+      v-if="state"
+      :class="alertClasses"
+      role="alert"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      <CButtonClose
+        v-if="dismissible && dismissible !== 'customButton' "
+        @click="dismiss()"
+        :iconHtml="iconHtml"
+        :disabled="this.dismissible === 'disabled'"
+      />
+      <slot :dismiss="dismiss">
+
+      </slot>
+    </div>
+  </transition>
+</template>
+
 <script>
 import CButtonClose from '../Button/CButtonClose'
-
 export default {
   name: 'CAlert',
   components: { CButtonClose },
@@ -9,7 +30,10 @@ export default {
       type: String,
       default: 'info'
     },
-    dismissible: [Boolean, String],
+    dismissible: {
+      type: [Boolean, String],
+      validator: val => [false, true, 'disabled', 'customButton']
+    },
     show: {
       type: [Boolean, Number],
       default: true
@@ -24,13 +48,14 @@ export default {
     }
   },
   computed: {
-    classObject () {
-      return ['c-alert',
-              {
-                'c-alert-dismissible': this.dismissible,
-                [`c-alert-${this.variant}`]: this.variant
-              }
-             ]
+    alertClasses () {
+      return [
+        'c-alert',
+        {
+          'c-alert-dismissible': this.dismissible,
+          [`c-alert-${this.variant}`]: this.variant
+        }
+      ]
     }
   },
   watch: {
@@ -42,7 +67,7 @@ export default {
     state: {
       immediate: true,
       handler (val, oldVal) {
-        if(val == oldVal) return
+        if (val == oldVal) return
 
         if (!val && oldVal) {
           this.clearCounter()
@@ -71,39 +96,30 @@ export default {
         this.countdownTimeout = null
       }
     }
-  },
-  render (h) {
-    if (!this.state) return h(false)
-
-    let dismissBtn = h(false)
-    if (this.dismissible) {
-      dismissBtn = h(
-        'CButtonClose',
-        {
-          on: { click: this.dismiss },
-          props: { iconHtml: this.iconHtml },
-          attrs: { disabled: this.dismissible === 'disabled'}
-        }
-      )
-    }
-    const alert = h(
-      'div',
-      {
-        class: this.classObject,
-        attrs: { role: 'alert', 'aria-live': 'polite', 'aria-atomic': true}
-      },
-      [dismissBtn, this.$scopedSlots.default({dismiss: this.dismiss})]
-    )
-    return !this.fade ? alert : h(
-      'transition',
-      { props: { name: 'fade', appear: true } },
-      [ alert ]
-    )
   }
 }
 </script>
+<style scoped>
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .3s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
+  /* /deep/ .c-alert-dismissible .c-close {
+     position: absolute;
+     top: 0;
+     right: 0;
+     padding: 0.75rem 1.25rem;
+     color: inherit;
+   } */
+</style>
 
-
-<style scoped lang="scss">
-  @import "~@coreui/coreui/scss/partials/alert.scss";
+<style lang="scss">
+  div:not(.coreui-custom-styles) {
+    // .c-alert {
+    //   background-color: grey !important;
+    // }
+    @import "~@coreui/coreui/scss/partials/alert.scss";
+  }
 </style>

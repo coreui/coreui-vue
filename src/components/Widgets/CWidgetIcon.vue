@@ -66,5 +66,6 @@ export default {
   @import "~@coreui/coreui/scss/utilities/_display.scss";
   @import "~@coreui/coreui/scss/utilities/_text.scss";
   @import "~@coreui/coreui/scss/utilities/_background.scss";
-
+  //Icons
+  @import '~@coreui/icons/css/coreui-icons.min.css';
 </style>

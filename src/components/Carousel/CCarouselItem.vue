@@ -7,7 +7,7 @@
       class="c-d-block c-w-100 c-h-100 c-img-fluid"
     />
     <slot>
-      <div class="carousel-caption">
+      <div class="c-carousel-caption">
         <h3>{{caption}}</h3>
         <p>{{text}}</p>
       </div>
@@ -45,7 +45,7 @@ export default {
       return [
         'c-carousel-item',
         {
-          [`c-carousel-item-${this.order}`]: this.order,
+          [`c-carousel-item-${this.order}`]: this.order && !this.activated,
           [`c-carousel-item-${this.direction}`]: this.transitioning,
           'active': this.activated
         }

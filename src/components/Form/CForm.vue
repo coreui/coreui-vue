@@ -12,7 +12,7 @@ export default {
   },
   render(h, { props, data, children }) {
     return h(
-      'c-form',
+      'form',
       mergeData(data, {
         class: {
           'c-form-inline': props.inline,

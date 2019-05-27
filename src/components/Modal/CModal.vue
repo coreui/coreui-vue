@@ -132,8 +132,9 @@ export default {
   },
   watch: {
     visible (newVal, oldVal) {
-      if (newVal === oldVal) return
-      this.toggle(newVal)
+      if (newVal !== oldVal) {
+        this.toggle(newVal)
+      }
     }
   },
   methods: {
@@ -161,6 +162,7 @@ export default {
 <style scoped lang="scss">
   @import "~@coreui/coreui/scss/partials/modal.scss";
   @import "~@coreui/coreui/scss/partials/buttons.scss";
+  @import "~@coreui/coreui/scss/partials/close.scss";
   @import "~@coreui/coreui/scss/utilities/_borders.scss";
   @import "~@coreui/coreui/scss/utilities/_display.scss";
   @import "~@coreui/coreui/scss/utilities/_overflow.scss";
