@@ -47,9 +47,7 @@ export default {
   props: {
     fill: Boolean,
     justified: Boolean,
-    tabs: Boolean,
     pills: Boolean,
-    vertical: Boolean,
     tabs: {
       type: Boolean,
       default: true
