@@ -49,16 +49,21 @@
     "serve": "vue-cli-service serve",
     "build": "npm-run-all --parallel build:custom build:default",
     "build:default": "vue-cli-service build --target lib --name coreui-vue ./src/index.js",
-    "build:custom": "vue-cli-service build --target lib --name custom ./src/index.js",
+    "build:custom": "npm-run-all createCustom buildCustom deleteCustom",
+    "createCustom": "node build/createCustomStylesLibrary.js",
+    "buildCustom": "vue-cli-service build --target lib --name custom ./tmp/index.js",
+    "deleteCustom": "node build/deleteTmpFolder.js",
     "lint": "vue-cli-service lint",
     "test": "vue-cli-service test:unit",
     "test:coverage": "vue-cli-service test:unit --coverage --collectCoverageFrom=src/**/*.{js,vue} --collectCoverageFrom=!**/index*",
     "test:e2e": "vue-cli-service test:e2e",
-    "clear_jest": "jest --clearCache"
+    "clear_jest": "jest --clearCache",
+    "icons": "node src/components/Icon/build/iconsScript.js"
   },
   "dependencies": {
     "@coreui/coreui": "next",
     "@coreui/icons": "0.3.0",
+    "raw-loader": "^1.0.0",
     "core-js": "^2.5.7",
     "element-resize-detector": "^1.2.0",
     "popper.js": "^1.14.7",

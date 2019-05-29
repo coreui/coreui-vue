@@ -1,5 +1,3 @@
-const inDefaultStylesScript = process.env.npm_lifecycle_script.includes('coreui-vue')
-
 module.exports = {
   configureWebpack:{
     performance: {
@@ -7,11 +5,6 @@ module.exports = {
     }
   },
   css: {
-    extract: false,
-    loaderOptions: {
-      sass: {
-        data: inDefaultStylesScript ? `$defaultStyles: true;` : null
-      }
-    }
+    extract: false
   }
 }
