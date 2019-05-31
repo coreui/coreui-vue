@@ -1,33 +1,36 @@
-<template functional>
+<template>
   <div class="c-card">
     <div
       class="c-card-body c-clearfix c-d-flex c-align-items-center"
-      :class="props.noPadding ? 'c-p-0' : c-p-3"
+      :class="noPadding ? 'c-p-0' : 'c-p-3'"
     >
-      <i
-        :class="[props.addIconClasses, props.noPadding ? 'c-p-4' : 'c-p-3']"
-        class="c-float-left c-mr-3 c-font-2xl"
-      ></i>
+      <div
+        class="c-float-left c-mr-3 c-text-white"
+        :class="[`c-bg-${variant}`, noPadding ? 'c-p-4' : 'c-p-3']"
+      >
+        <slot></slot>
+      </div>
+
       <div>
         <div class="c-text-primary c-text-value-sm">
-          {{props.header}}
+          {{header}}
         </div>
         <div class="c-text-muted c-text-uppercase c-font-weight-bold c-small">
-          {{props.text}}
+          {{text}}
         </div>
       </div>
     </div>
     <div
-      v-if="props.link || $slots.default"
+      v-if="link || $slots.link"
       class="c-card-footer c-px-3 c-py-2"
     >
-      <slot>
+      <slot name="link">
         <CLink
           class="c-font-weight-bold c-font-xs c-btn-block c-text-muted"
-          :href="props.link"
+          :href="link"
         >
-          {{props.linkText}}
-          <i class="fa fa-angle-right c-float-right c-font-lg"></i>
+          {{linkText}}
+          <CIcon name="arrowRight" class="c-float-right" width="16"/>
         </CLink>
       </slot>
     </div>
@@ -36,8 +39,13 @@
 
 <script>
 import CLink from '../Link/CLink'
+import { CIcon } from '@coreui/icons/vue'
+import { arrowRight } from '@coreui/icons'
+CIcon.icons = { arrowRight }
+
 export default {
   name: 'CWidgetIcon',
+  components: { CIcon },
   props: {
     addIconClasses: String,
     header: {
@@ -53,7 +61,11 @@ export default {
       default: 'View More'
     },
     link: String,
-    noPadding: Boolean
+    noPadding: Boolean,
+    variant: {
+      type: String,
+      default: 'primary'
+    }
   }
 }
 </script>
@@ -66,6 +78,4 @@ export default {
   @import "~@coreui/coreui/scss/utilities/_display.scss";
   @import "~@coreui/coreui/scss/utilities/_text.scss";
   @import "~@coreui/coreui/scss/utilities/_background.scss";
-  //Icons
-  @import '~@coreui/icons/css/coreui-icons.min.css';
 </style>

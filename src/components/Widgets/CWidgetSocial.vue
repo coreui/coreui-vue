@@ -1,10 +1,10 @@
 <template functional>
   <div class="c-brand-card">
-    <div :class="`c-brand-card-header c-bg-${props.variant}`">
-      <i
+    <div :class="`c-brand-card-header c-text-white c-bg-${props.variant}`">
+      <!-- <i
         class="c-position-absolute"
         :class="props.iconClasses || `fa fa-${props.variant}`"
-      ></i>
+      ></i> -->
       <slot></slot>
     </div>
     <div class="c-brand-card-body">

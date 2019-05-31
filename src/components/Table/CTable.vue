@@ -58,7 +58,11 @@
                   name="sorting-icon"
                   :state="getIconState(index)"
                 >
-                  <i :class="iconClasses(index)"></i>
+                  <CIcon
+                    width="18"
+                    name="arrowTop"
+                    :class="iconClasses(index)"
+                  />
                 </slot>
               </th>
             </template>
@@ -170,7 +174,11 @@
                   name="sorting-icon"
                   :state="getIconState(index)"
                 >
-                  <i :class="iconClasses(index)"></i>
+                  <CIcon
+                    width="18"
+                    name="arrowTop"
+                    :class="iconClasses(index)"
+                  />
                 </slot>
               </th>
             </template>
@@ -208,9 +216,14 @@
 <script>
 import CSpinner from '../Spinner/CSpinner'
 import CPagination from '../Pagination/CPagination'
+
+import { CIcon } from '@coreui/icons/vue'
+import { arrowTop, arrowBottom } from '@coreui/icons'
+CIcon.icons = { arrowTop, arrowBottom }
+
 export default {
   name: 'CTable',
-  components: { CPagination, CSpinner },
+  components: { CPagination, CSpinner, CIcon },
   props: {
     items: Array,
     fields: Array,
@@ -423,8 +436,7 @@ export default {
     iconClasses (index) {
       const state = this.getIconState(index)
       return [
-        'c-icon-transition  c-icons c-font-xl cui-arrow-top',
-        'c-position-absolute c-arrow-position',
+        'c-icon-transition c-position-absolute c-arrow-position',
         {
           'c-transparent': !state,
           'c-rotate-icon': state === 'desc'
@@ -477,7 +489,4 @@ export default {
 @import "~@coreui/coreui/scss/utilities/_spacing.scss";
 @import "~@coreui/coreui/scss/utilities/_text.scss";
 @import "~@coreui/coreui/scss/utilities/_typography.scss";
-
-//Icons
-@import '~@coreui/icons/css/coreui-icons.min.css';
 </style>

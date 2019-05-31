@@ -57,12 +57,11 @@
     "test": "vue-cli-service test:unit",
     "test:coverage": "vue-cli-service test:unit --coverage --collectCoverageFrom=src/**/*.{js,vue} --collectCoverageFrom=!**/index*",
     "test:e2e": "vue-cli-service test:e2e",
-    "clear_jest": "jest --clearCache",
-    "icons": "node src/components/Icon/build/iconsScript.js"
+    "clear_jest": "jest --clearCache"
   },
   "dependencies": {
     "@coreui/coreui": "next",
-    "@coreui/icons": "0.3.0",
+    "@coreui/icons": "../coreui-icons",
     "raw-loader": "^1.0.0",
     "core-js": "^2.5.7",
     "element-resize-detector": "^1.2.0",

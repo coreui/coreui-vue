@@ -2,16 +2,17 @@
   <div :class="props.inverse ? `c-card c-text-white c-bg-${props.variant}` : 'c-card'">
     <div class="c-card-body">
       <div
-        v-if="props.iconClasses"
+        v-if="$slots.default"
         class="c-h1 c-text-muted c-text-right c-mb-4"
       >
-        <i :class="props.iconClasses"></i>
+        <slot></slot>
+        <!-- <i :class="props.iconClasses"></i> -->
       </div>
       <div class="c-h4 c-mb-0">{{props.header}}</div>
       <small class="c-text-muted c-text-uppercase c-font-weight-bold">
         {{props.text}}
       </small>
-      <slot>
+      <slot name="progress">
         <CProgress
           :variant="!props.inverse ? props.variant : ''"
           :value="props.value"
