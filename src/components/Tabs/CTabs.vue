@@ -1,7 +1,7 @@
 <template>
-  <div :class="vertical ? 'c-row c-no-gutters': ''">
-    <div :class="[addNavWrapperClasses, gridClasses.navs]">
-      <ul :class="[navClasses, addNavClasses, { 'c-h-100': vertical }]">
+  <div :class="tabsClasses">
+    <div :class="navWrapperClasses">
+      <ul :class="navClasses">
         <CTabNav
           v-for="(tab, key) in ctabInstances"
           @click.native="tabClick(tab)"
@@ -67,15 +67,25 @@ export default {
     }
   },
   computed: {
+    tabsClasses () {
+      return { 'c-row c-no-gutters': this.vertical }
+    },
+    navWrapperClasses () {
+      return [ this.addNavWrapperClasses, this.gridClasses.navs]
+    },
     navClasses () {
-      return {
-        'c-nav' : true,
-        'c-nav-tabs': this.tabs && !this.pills,
-        'c-nav-pills': this.pills,
-        'c-flex-column': this.vertical,
-        'c-nav-fill': this.fill,
-        'c-nav-justified': this.justified
-      }
+      return [
+        this.addNavClasses,
+        {
+          'c-nav' : true,
+          'c-nav-tabs': this.tabs && !this.pills,
+          'c-nav-pills': this.pills,
+          'c-flex-column': this.vertical,
+          'c-nav-fill': this.fill,
+          'c-nav-justified': this.justified,
+          'c-h-100': this.vertical
+        }
+      ]
     },
     activeTab () {
       return this.activatedTab || this.ctabInstances.filter(el => el.active)[0]
@@ -113,7 +123,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .fade-enter-active, .fade-leave-active {
     transition: opacity .3s;
   }
