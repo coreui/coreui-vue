@@ -8,7 +8,7 @@
       <div :class="props.wrapperClasses">
         <div
           v-if="props.prependHtml || $slots.prepend"
-          class="input-group-prepend"
+          class="c-input-group-prepend"
         >
           <slot name="prepend">
             <span
@@ -122,7 +122,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   @import "~@coreui/coreui/scss/partials/forms.scss";
   @import "~@coreui/coreui/scss/partials/input-group.scss";
   @import "~@coreui/coreui/scss/partials/grid.scss";

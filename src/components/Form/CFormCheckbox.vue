@@ -1,4 +1,4 @@
-c-<template>
+<template>
   <CFormGroup v-bind="{validFeedback, invalidFeedback, tooltipFeedback,
                        description, class: computedClasses}">
     <template #input>
@@ -157,6 +157,6 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   @import "~@coreui/coreui/scss/partials/forms.scss";
 </style>
