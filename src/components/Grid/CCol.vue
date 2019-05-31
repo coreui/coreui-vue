@@ -10,13 +10,17 @@ export default {
     sm: [ Boolean, String, Number, Object ],
     md: [ Boolean, String, Number, Object ],
     lg: [ Boolean, String, Number, Object ],
-    xl: [ Boolean, String, Number, Object ]
+    xl: [ Boolean, String, Number, Object ],
+    tag: {
+      type: String,
+      default: 'div'
+    }
   },
   render (h, { props, data, children }) {
     let classes = []
-    let prefixes = {'col': '', '-xs': 'xs', 'sm': '-sm',
+    let prefixes = {'col': '', 'xs': '-xs', 'sm': '-sm',
                     'md': '-md', 'lg': '-lg', 'xl': '-xl'}
-    Object.keys(props).forEach((key) => {
+    Object.keys(prefixes).forEach((key) => {
       if (props[key] === true)
         classes.push(`c-col${prefixes[key]}`)
 
@@ -35,7 +39,7 @@ export default {
       }
     })
     return h(
-      'div',
+      props.tag,
       mergeData(data,
         {
           class: classes.length ? classes : 'c-col'
@@ -47,6 +51,6 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   @import "~@coreui/coreui/scss/partials/grid.scss";
 </style>
