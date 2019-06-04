@@ -216,14 +216,17 @@
 <script>
 import CSpinner from '../Spinner/CSpinner'
 import CPagination from '../Pagination/CPagination'
-
-import { CIcon } from '@coreui/icons/vue'
+import { CIcon as CIconRaw} from '@coreui/icons/vue'
 import { arrowTop, arrowBottom } from '@coreui/icons'
-CIcon.icons = { arrowTop, arrowBottom }
+const CIcon = Object.assign({}, CIconRaw, { icons : { arrowTop, arrowBottom }})
 
 export default {
   name: 'CTable',
-  components: { CPagination, CSpinner, CIcon },
+  components: {
+    CPagination,
+    CSpinner,
+    CIcon
+  },
   props: {
     items: Array,
     fields: Array,

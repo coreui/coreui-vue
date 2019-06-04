@@ -9,7 +9,7 @@
       <CLink
         class="c-page-link"
         @click="setPage(1)"
-        :disabled="page === 1"
+        :disabled="activePage === 1"
         aria-label="Go to first page"
       >
         <span v-html="firstButtonHtml"></span>
@@ -18,8 +18,8 @@
     <li v-if="!hideArrows" :class="firstClasses">
       <CLink
         class="c-page-link"
-        @click="setPage(page - 1)"
-        :disabled="page === 1"
+        @click="setPage(activePage - 1)"
+        :disabled="activePage === 1"
         aria-label="Go to previous page"
       >
         <span v-html="previousButtonHtml"></span>
@@ -60,8 +60,8 @@
     >
       <CLink
         class="c-page-link"
-        @click="setPage(page + 1)"
-        :disabled="page === pages"
+        @click="setPage(activePage + 1)"
+        :disabled="activePage === pages"
         aria-label="Go to next page"
       >
         <span v-html="nextButtonHtml"></span>
@@ -71,7 +71,7 @@
       <CLink
         class="c-page-link"
         @click="setPage(pages)"
-        :disabled="page === pages"
+        :disabled="activePage === pages"
         aria-label="Go to last page"
       >
         <span v-html="lastButtonHtml"></span>
@@ -85,9 +85,52 @@
 
   export default {
     name: 'CPagination',
+    props: {
+      activePage: {
+        type: Number,
+        default: 1
+      },
+      pages: {
+        type: Number,
+        default: 10
+      },
+      size: {
+        type: String,
+        default: 'md',
+        validator: val => ['sm', 'md', 'lg'].includes(val)
+      },
+      align: {
+        type: String,
+        default: 'start',
+        validator: val => ['start', 'center', 'end'].includes(val)
+      },
+      limit: {
+        type: Number,
+        default: 5
+      },
+      hideDots: Boolean,
+      hideArrows: Boolean,
+      hideDoubleArrows: Boolean,
+      firstButtonHtml: {
+        type: String,
+        default: '&laquo;'
+      },
+      previousButtonHtml: {
+        type: String,
+        default: '&lsaquo;'
+      },
+      nextButtonHtml: {
+        type: String,
+        default: '&rsaquo;'
+      },
+      lastButtonHtml: {
+        type: String,
+        default: '&raquo;'
+      },
+      notResponsive: Boolean
+    },
     data () {
       return {
-        page: this.activePage,
         showFirstDots: false,
         showLastDots: false,
         rwd: this.size,
@@ -99,13 +142,15 @@
       //   this.page = val
       // },
       pages (val) {
-        if(val < this.activePage)
+        if (val < this.activePage) {
           this.$emit('update:activePage', val)
+        }
       }
     },
     mounted () {
-      if (this.size !== 'sm' && !this.notResponsive)
+      if (this.size !== 'sm' && !this.notResponsive) {
         this.erd.listenTo(this.$el, this.onWrapperResize)
+      }
     },
     computed: {
       firstClasses () {
@@ -188,55 +233,11 @@
         }
         return 'c-page-item'
       }
-    },
-    props: {
-      activePage: {
-        type: Number,
-        default: 1
-      },
-      pages: {
-        type: Number,
-        default: 10
-      },
-      size: {
-        type: String,
-        default: 'md',
-        validator: val => ['sm', 'md', 'lg'].includes(val)
-      },
-      align: {
-        type: String,
-        default: 'start',
-        validator: val => ['start', 'center', 'end'].includes(val)
-      },
-      limit: {
-        type: Number,
-        default: 5
-      },
-      hideDots: Boolean,
-      hideArrows: Boolean,
-      hideDoubleArrows: Boolean,
-      firstButtonHtml: {
-        type: String,
-        default: '&laquo;'
-      },
-      previousButtonHtml: {
-        type: String,
-        default: '&lsaquo;'
-      },
-      nextButtonHtml: {
-        type: String,
-        default: '&rsaquo;'
-      },
-      lastButtonHtml: {
-        type: String,
-        default: '&raquo;'
-      },
-      notResponsive: Boolean
     }
   }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   @import "~@coreui/coreui/scss/partials/pagination.scss";
   @import "~@coreui/coreui/scss/utilities/_flex.scss";
   .c-page-link:focus {

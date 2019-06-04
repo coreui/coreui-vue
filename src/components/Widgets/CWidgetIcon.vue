@@ -39,9 +39,9 @@
 
 <script>
 import CLink from '../Link/CLink'
-import { CIcon } from '@coreui/icons/vue'
+import { CIcon as CIconRaw } from '@coreui/icons/vue'
 import { arrowRight } from '@coreui/icons'
-CIcon.icons = { arrowRight }
+const CIcon = Object.assign({}, CIconRaw, { icons : { arrowRight }})
 
 export default {
   name: 'CWidgetIcon',

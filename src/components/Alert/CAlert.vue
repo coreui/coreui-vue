@@ -22,6 +22,7 @@
 
 <script>
 import CButtonClose from '../Button/CButtonClose'
+
 export default {
   name: 'CAlert',
   components: { CButtonClose },
@@ -116,10 +117,5 @@ export default {
 </style>
 
 <style lang="scss">
-  div:not(.coreui-custom-styles) {
-    // .c-alert {
-    //   background-color: grey !important;
-    // }
-    @import "~@coreui/coreui/scss/partials/alert.scss";
-  }
+  @import "~@coreui/coreui/scss/partials/alert.scss";
 </style>
