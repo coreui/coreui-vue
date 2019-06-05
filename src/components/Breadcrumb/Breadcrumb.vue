@@ -1,7 +1,7 @@
 <template>
   <ol class="breadcrumb">
     <li class="breadcrumb-item" :key="index" v-for="(routeObject, index) in routeRecords">
-      <span class="active" v-if="isLast(index)">{{ getName(routeObject) }}</span>
+      <span class="c-active" v-if="isLast(index)">{{ getName(routeObject) }}</span>
       <router-link :to="routeObject" v-else>{{ getName(routeObject) }}</router-link>
     </li>
   </ol>

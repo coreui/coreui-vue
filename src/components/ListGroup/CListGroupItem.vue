@@ -44,8 +44,8 @@ export default {
       class: {
         [`c-list-group-item-${props.variant}`]: Boolean(props.variant),
         'c-list-group-item-action': isAction,
-        active: props.active,
-        disabled: props.disabled
+        'c-active': props.active,
+        'c-disabled': props.disabled
       }
     }
     return h(tag, mergeData(data, componentData), children)

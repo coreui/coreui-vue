@@ -60,9 +60,8 @@
     "clear_jest": "jest --clearCache"
   },
   "dependencies": {
-    "@coreui/coreui": "next",
-    "@coreui/icons": "../coreui-icons",
-    "raw-loader": "^1.0.0",
+    "@coreui/coreui": "3.0.0-alpha.11",
+    "@coreui/icons": "coreui/coreui-icons#v.1.0.0-alpha",
     "core-js": "^2.5.7",
     "element-resize-detector": "^1.2.0",
     "popper.js": "^1.14.7",

@@ -229,7 +229,7 @@
       },
       setStyle (item) {
         if(this.activePage === item) {
-          return 'c-page-item active'
+          return 'c-page-item c-active'
         }
         return 'c-page-item'
       }

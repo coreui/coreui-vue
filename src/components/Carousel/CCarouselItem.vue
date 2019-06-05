@@ -47,7 +47,7 @@ export default {
         {
           [`c-carousel-item-${this.order}`]: this.order && !this.activated,
           [`c-carousel-item-${this.direction}`]: this.transitioning,
-          'active': this.activated
+          'c-active': this.activated
         }
       ]
     }

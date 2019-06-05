@@ -4,7 +4,7 @@
       <li
         v-for="(index, key) in items.length"
         @click="setItem(key)"
-        :class="{ active: activated === key }"
+        :class="{ 'c-active': activated === key }"
         :key="key"
       ></li>
     </ol>

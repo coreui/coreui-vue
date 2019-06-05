@@ -22,7 +22,7 @@
                 v-if="activeTab === tab"
                 :content="tab.$scopedSlots.default"
                 :key="key"
-                :class="[addTabClasses, 'c-tab-pane active']"
+                :class="[addTabClasses, 'c-tab-pane c-active']"
               />
             </template>
           </KeepAlive>

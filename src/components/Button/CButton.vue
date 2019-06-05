@@ -46,7 +46,7 @@ function computeClasses (props) {
       [`c-btn-ghost-${props.variant}`]: props.ghost,
       'c-btn-block': props.block,
       'c-disabled': props.disabled,
-      active: props.pressed
+      'c-active': props.pressed
     }
   ]
 }

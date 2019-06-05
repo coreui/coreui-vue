@@ -31,7 +31,7 @@ export default {
       return h('li',
              {
                staticClass: 'c-breadcrumb-item',
-               class: { active: isLast },
+               class: { 'c-active': isLast },
                attrs: { role: 'presentation' }
              },
              [h(tag, itemProps)])

@@ -28,8 +28,8 @@ export default {
         `c-badge-${props.variant}`,
         {
           'c-badge-pill': Boolean(props.pill),
-          active: props.active,
-          disabled: props.disabled
+          'c-active': props.active,
+          'c-disabled': props.disabled
         }
       ],
       domProps,

@@ -18,7 +18,7 @@ export default {
           CLink,
           {
             staticClass: 'c-nav-link',
-            class: { active: this.active },
+            class: { 'c-active': this.active },
             props: this.props,
             domProps: this.titleHtml ? { innerHTML: this.titleHtml } : null
           },
