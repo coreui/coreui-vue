@@ -69,13 +69,15 @@
           </tr>
 
           <tr v-if="filterRow" class="c-table-sm">
-            <th v-if="indexColumn" class="c-pb-2">
-              <i
+            <th v-if="indexColumn" class="c-pb-2 c-pl-2">
+              <CIcon
                 v-if="indexColumn !== 'noCleaner'"
-                class="cui-ban c-icons c-text-danger c-font-lg c-text-center c-d-block"
-                @click="clear"
+                width="18"
+                name="ban"
+                @click.native="clear"
+                :class="isFiltered ? 'c-text-danger' : 'c-text-secondary'"
                 title="clear table"
-              ></i>
+              />
             </th>
             <template v-for="(colName, index) in rawColumnNames" >
               <th :class="headerClass(index)">
@@ -145,10 +147,11 @@
               <slot name="empty-table">
                 <div class="c-text-center c-my-5">
                   <h2>{{ passedItems.length ? 'No filtering results ' : 'No items'}}
-                    <i
-                      style="font-weight: 1000"
-                      class="c-text-danger c-icons c-font-2xl cui-ban"
-                    ></i>
+                    <CIcon
+                      width="30"
+                      name="ban"
+                      class="c-text-danger c-mb-2"
+                    />
                   </h2>
                 </div>
               </slot>
@@ -217,8 +220,8 @@
 import CSpinner from '../Spinner/CSpinner'
 import CPagination from '../Pagination/CPagination'
 import { CIcon as CIconRaw} from '@coreui/icons/vue'
-import { arrowTop, arrowBottom } from '@coreui/icons'
-const CIcon = Object.assign({}, CIconRaw, { icons : { arrowTop, arrowBottom }})
+import { arrowTop, ban } from '@coreui/icons'
+const CIcon = Object.assign({}, CIconRaw, { icons : { arrowTop, ban }})
 
 export default {
   name: 'CTable',
@@ -254,7 +257,7 @@ export default {
     optionsRow: [Boolean, String],
     footer: Boolean,
     defaultSorter: {
-      tyep: Array,
+      type: Array,
       default: () => []
     },
     defaultTableFilter: String,
@@ -360,7 +363,11 @@ export default {
       const size = this.small ? '1.4rem' : this.currentItems.length === 1 ? '2rem' : '3rem'
       return `width:${size};height:${size}`
     },
-
+    isFiltered () {
+      return this.tableFilter || Object.keys(this.columnFilter).filter(key => {
+        return this.columnFilter[key]
+      }).length
+    }
   },
   watch: {
     items (val, oldVal) {
