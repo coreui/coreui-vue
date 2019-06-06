@@ -254,8 +254,8 @@ export default {
     optionsRow: [Boolean, String],
     footer: Boolean,
     defaultSorter: {
-      type: Array,
-      default: () => []
+      type: Object,
+      default: () => { return {} }
     },
     defaultTableFilter: String,
     defaultColumnFilter: Object,
@@ -265,7 +265,10 @@ export default {
     return {
       tableFilter: this.defaultTableFilter,
       columnFilter: this.defaultColumnFilter || {},
-      sorter: { name: this.defaultSorter[0], direction: this.defaultSorter[1] },
+      sorter: {
+        column: this.defaultSorter.column || null,
+        asc: this.defaultSorter.asc || true
+      },
       firstItemIndex: 0,
       page: this.activePage || 1,
       perPageItems: this.perPage,
@@ -290,17 +293,20 @@ export default {
       return items
     },
     sortedItems () {
+      const col = this.sorter.column
+      if (!col || !this.rawColumnNames.includes(col)) {
+        return this.tableFiltered
+      }
       //if numbers should be sorted by numeric value they all have to be valid js numbers
-      const flip = this.sorter.direction === 'desc' ? -1 : 1
-      const n = this.sorter.name
+      const flip = this.sorter.asc ? 1 : -1
       return this.tableFiltered.sort((a,b) => {
         //escape html
-        let c = typeof a[n] === 'string' ? a[n].replace(/<(?:.|\n)*?>/gm, '') : a[n]
-        let d = typeof b[n] === 'string' ? b[n].replace(/<(?:.|\n)*?>/gm, '') : b[n]
-        if (typeof c !== typeof d) {
-          c = String(c)
-          d = String(d)
-        }
+        let c = typeof a[col] === 'string' ? a[col].replace(/<(?:.|\n)*?>/gm, '') : a[col]
+        let d = typeof b[col] === 'string' ? b[col].replace(/<(?:.|\n)*?>/gm, '') : b[col]
+        // if (typeof c !== typeof d) {
+        //   c = String(c)
+        //   d = String(d)
+        // }
         return (c > d) ? 1 * flip : ((d > c) ? -1 * flip : 0)
       })
     },
@@ -381,15 +387,13 @@ export default {
     }
   },
   methods: {
-    changeSort (name, index) {
-      if(index && !this.sortable(index))
+    changeSort (column, index) {
+      if (index && !this.sortable(index)) {
         return
-
-      if(this.sorter.name === name && !this.sorter.direction)
-        this.sorter.direction = 'desc'
-      else
-        this.sorter.direction = 0
-      this.sorter.name = name
+      }
+      //if column changed or sort was descending change asc to true
+      this.sorter.asc = this.sorter.column !== column || !this.sorter.asc
+      this.sorter.column = column
     },
     addColumnFilter (colName, value) {
       this.$set(this.columnFilter, colName, value)
@@ -398,7 +402,7 @@ export default {
       this.tableFilter = ''
       this.columnFilter = {}
       this.sorter.name = ''
-      this.sorter.direction = ''
+      this.sorter.asc = true
       const inputs = this.$el.getElementsByClassName('c-table-filter')
       for(let input of inputs)
         input.value =''
@@ -436,9 +440,8 @@ export default {
       this.$emit('row-clicked', item, index)
     },
     getIconState (index) {
-      return this.rawColumnNames[index] === this.sorter.name ?
-             this.sorter.direction === 'desc' ?
-             'desc' : 'asc' : 0
+      const direction = this.sorter.asc ? 'asc' : 'desc'
+      return this.rawColumnNames[index] === this.sorter.column ? direction : 0
     },
     iconClasses (index) {
       const state = this.getIconState(index)
