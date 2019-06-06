@@ -237,10 +237,7 @@ export default {
       type: Number,
       default: 10
     },
-    activePage: {
-      type: Number,
-      default: 1
-    },
+    activePage: Number,
     indexColumn: [Boolean, String],
     filterRow: Boolean,
     pagination: [Boolean, Object],
@@ -270,7 +267,7 @@ export default {
       columnFilter: this.defaultColumnFilter || {},
       sorter: { name: this.defaultSorter[0], direction: this.defaultSorter[1] },
       firstItemIndex: 0,
-      page: this.activePage,
+      page: this.activePage || 1,
       perPageItems: this.perPage,
       passedItems: this.items || []
     }
