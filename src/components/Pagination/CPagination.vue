@@ -26,7 +26,7 @@
       </CLink>
     </li>
     <li
-      v-if="showFirstDots"
+      v-if="beforeDots"
       role="separator"
       class="c-page-item c-disabled c-d-none c-d-sm-flex"
     >
@@ -36,7 +36,7 @@
     <li
       v-for="(item, index) in items"
       :key="index"
-      :class="setStyle(item)"
+      :class="[{ 'c-active': activePage === item }, 'c-page-item']"
     >
       <CLink
         class="c-page-link"
@@ -48,7 +48,7 @@
     </li>
 
     <li
-      v-if="showLastDots"
+      v-if="afterDots"
       role="separator"
       class="c-page-item c-disabled c-d-none c-d-sm-flex"
     >
@@ -131,16 +131,11 @@
     },
     data () {
       return {
-        showFirstDots: false,
-        showLastDots: false,
         rwd: this.size,
         erd: elementResizeDetectorMaker()
       }
     },
     watch: {
-      // activePage (val) {
-      //   this.page = val
-      // },
       pages (val) {
         if (val < this.activePage) {
           this.$emit('update:activePage', val)
@@ -163,59 +158,38 @@
         return `c-pagination c-pagination-${this.rwd} c-justify-content-${this.align} `
       },
       dots () {
-        return this.hideDots || this.limit < 5 ? false : true
+        return !this.hideDots && this.limit > 4 && this.limit < this.pages
+      },
+      maxPrevItems () {
+        return Math.floor((this.limit - 1) / 2)
+      },
+      maxNextItems () {
+        return Math.ceil((this.limit - 1) / 2)
+      },
+      beforeDots () {
+        return this.dots && this.activePage > this.maxPrevItems + 1
+      },
+      afterDots () {
+        return this.dots && this.activePage < this.pages - this.maxNextItems
+      },
+      computedLimit () {
+        return this.limit - this.afterDots - this.beforeDots
+      },
+      range () {
+        return this.activePage + this.maxNextItems
+      },
+      lastItem () {
+        return this.range >= this.pages ? this.pages : this.range-this.afterDots
       },
       items () {
-        let maxPrevItems = Math.floor((this.limit - 1) / 2)
-        let maxNextItems = Math.ceil((this.limit - 1) / 2)
-        let items = []
-
-        if (!this.dots) {
-          this.showFirstDots = false
-          this.showLastDots = false
-          if (this.activePage <= maxPrevItems) {
-            for (let i = 1; i <= this.limit; i++)
-              items.push(i)
-          } else {
-            let max = this.activePage + maxNextItems > this.pages ? this.pages : this.activePage + maxNextItems
-            for (let i = max - this.limit + 1; i <= max; i++)
-              items.push(i)
-          }
-          return items
+        if (this.activePage - this.maxPrevItems <= 1 ) {
+          return Array.from({ length: this.computedLimit }, (v, i) => i + 1 )
+        } else {
+          return Array.from({length: this.computedLimit}, (v, i) => {
+            return this.lastItem - i
+          }).reverse()
         }
-
-        if (this.limit >= this.pages) {
-          this.showFirstDots = false
-          this.showLastDots = false
-          for (let i = 1; i <= this.pages; i++)
-            items.push(i)
-          return items
-        }
-
-        if (this.activePage <= maxPrevItems) {
-          this.showFirstDots = false
-          this.showLastDots = true
-          for (let i = 1; i <= this.limit - 1; i++)
-            items.push(i)
-          return items
-        }
-
-        if (this.activePage > maxPrevItems && this.activePage < this.pages - maxNextItems) {
-          this.showFirstDots = true
-          this.showLastDots = true
-          for (let i = 1 ; i < this.limit - 1 ; i++)
-            items.push(this.activePage - maxPrevItems + i)
-          return items
-        }
-
-        if (this.activePage > maxPrevItems && this.activePage >= this.pages - maxNextItems) {
-          this.showFirstDots = true
-          this.showLastDots = false
-          for (let i = this.pages - this.limit + 2 ; i <= this.pages; i++)
-            items.push(i)
-          return items
-        }
-      },
+      }
     },
     methods: {
       onWrapperResize (el) {
@@ -224,14 +198,9 @@
               this.rwd = 'md' : this.rwd = 'sm'
       },
       setPage (number) {
-        if(number !== this.activePage)
+        if (number !== this.activePage) {
           this.$emit('update:activePage', number)
-      },
-      setStyle (item) {
-        if(this.activePage === item) {
-          return 'c-page-item c-active'
         }
-        return 'c-page-item'
       }
     }
   }
