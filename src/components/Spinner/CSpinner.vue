@@ -10,30 +10,26 @@ export default {
     tag: {
       type: String,
       default: 'span'
-    },
-    labelText: {
-      type: String,
-      default: 'Loading...'
     }
   },
-  render(h, { props, data, slots }) {
-    const label = h('span', { staticClass: 'c-sr-only' }, props.labelText)
+  render(h, { props, data }) {
     const type = props.grow ? 'grow' : 'border'
     return h(
       props.tag,
       mergeData(data, {
         attrs: {
           role: 'status',
-          'aria-hidden': label ? null : 'true'
+          'aria-hidden': 'false',
+          'aria-label': 'Loading'
         },
-        class: [`c-spinner-${type}`,
-                 {
-                   [`c-spinner-${type}-sm`]: props.small,
-                   [`c-text-${props.variant}`]: Boolean(props.variant)
-                 }
-               ]
-      }),
-      [label]
+        class: [
+          `c-spinner-${type}`,
+          {
+            [`c-spinner-${type}-sm`]: props.small,
+            [`c-text-${props.variant}`]: Boolean(props.variant)
+          }
+        ]
+      })
     )
   }
 }
@@ -41,5 +37,4 @@ export default {
 
 <style scoped lang="scss">
   @import "~@coreui/coreui/scss/partials/spinners.scss";
-  @import "~@coreui/coreui/scss/utilities/_screenreaders.scss";
 </style>
