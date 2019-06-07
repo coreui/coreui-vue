@@ -2,7 +2,7 @@
 import CLink from '../Link/CLink'
 import Popper from 'popper.js'
 import { mixin as clickaway } from 'vue-clickaway2'
-import { deepObjectsMerge } from '@coreui/coreui/dist/js/coreui-utilities'
+import deepObjectsMerge from '@coreui/coreui/js/src/utilities/deep-objects-merge'
 
 export default {
   name: 'CDropdown',
