@@ -16,7 +16,7 @@
       </div>
 
       <div
-        v-if="havePaginationMenu()"
+        v-if="optionsRow !== 'noPagination'"
         class="c-col-sm-6 c-p-0"
         :class="optionsRow === 'noFilter' ? 'c-offset-sm-6' : ''"
       >
@@ -29,7 +29,11 @@
             <option value="" selected disabled hidden>
               {{perPageItems}}
             </option>
-            <option v-for="number in [5,10,20,50]" val="number">
+            <option
+              v-for="(number, key) in [5,10,20,50]"
+              :val="number"
+              :key="key"
+            >
               {{number}}
             </option>
           </select>
@@ -49,6 +53,7 @@
                 @click="changeSort(rawColumnNames[index], index)"
                 :class="[headerClass(index), sortingIconStyles]"
                 :style="headerStyles(index)"
+                :key="index"
               >
                 <slot :name="`${rawColumnNames[index]}-header`">
                   <div class="c-d-inline">{{name}}</div>
@@ -80,14 +85,14 @@
               />
             </th>
             <template v-for="(colName, index) in rawColumnNames" >
-              <th :class="headerClass(index)">
+              <th :class="headerClass(index)" :key="index">
                 <slot :name="`${rawColumnNames[index]}-filter`">
                   <input
                     v-if="!fields || !fields[index].noFilter"
                     class="c-w-100 c-table-filter"
                     @input="addColumnFilter(colName, $event.target.value)"
                     :value="columnFilter[colName]"
-                  ></input>
+                  />
                 </slot>
               </th>
             </template>
@@ -100,6 +105,7 @@
             <tr
               :class="item._classes" :tabindex="bodyStyle ? 0 : null"
               @click="rowClicked(item, itemIndex + firstItemIndex)"
+              :key="itemIndex"
             >
                 <slot
                   v-if="indexColumn"
@@ -119,7 +125,11 @@
                   :item="item"
                   :index="itemIndex + firstItemIndex"
                 />
-                <td v-else :class="cellClass(item, colName, index)">
+                <td
+                  v-else
+                  :class="cellClass(item, colName, index)"
+                  :key="index"
+                >
                   {{item[colName]}}
                 </td>
               </template>
@@ -128,6 +138,7 @@
               v-if="$scopedSlots.details"
               class="c-p-0"
               style="border:none !important"
+              :key="'details' + itemIndex"
             >
               <td
                 :colspan="colspan"
@@ -168,6 +179,7 @@
                 @click="changeSort(rawColumnNames[index], index)"
                 :class="[headerClass(index), sortingIconStyles]"
                 :style="headerStyles(index)"
+                :key="index"
               >
                 <slot :name="`${rawColumnNames[index]}-header`">
                   <div class="c-d-inline">{{name}}</div>
@@ -269,7 +281,6 @@ export default {
         column: this.defaultSorter.column || null,
         asc: this.defaultSorter.asc || true
       },
-      firstItemIndex: 0,
       page: this.activePage || 1,
       perPageItems: this.perPage,
       passedItems: this.items || []
@@ -277,17 +288,27 @@ export default {
   },
   computed: {
     columnFiltered () {
-      let items = this.passedItems
+      let items = this.passedItems.slice()
       Object.keys(this.columnFilter).forEach(key => {
-        items = items.filter(item => String(item[key]).toLowerCase().includes(this.columnFilter[key].toLowerCase()))
+        items = items.filter(item => {
+          const columnFilter = this.columnFilter[key].toLowerCase()
+          return String(item[key]).toLowerCase().includes(columnFilter)
+        })
       })
       return items
     },
+    filterableCols () {
+      return this.rawColumnNames.filter(name => {
+        return this.generatedColumnNames.includes(name)
+      })
+    },
     tableFiltered () {
-      let items = this.columnFiltered
+      let items = this.columnFiltered.slice()
       if (this.tableFilter) {
+        const filter = this.tableFilter.toLowerCase()
+        const hasFilter = (item) => String(item).toLowerCase().includes(filter)
         items = items.filter(item => {
-          return Object.keys(item).filter(key => String(item[key]).toLowerCase().includes(this.tableFilter.toLowerCase())).length
+          return this.filterableCols.filter(key => hasFilter(item[key])).length
         })
       }
       return items
@@ -297,25 +318,23 @@ export default {
       if (!col || !this.rawColumnNames.includes(col)) {
         return this.tableFiltered
       }
-      //if numbers should be sorted by numeric value they all have to be valid js numbers
+      //if values in column are to be sorted by numeric value they all have to be type number
       const flip = this.sorter.asc ? 1 : -1
-      return this.tableFiltered.sort((a,b) => {
-        //escape html
-        let c = typeof a[col] === 'string' ? a[col].replace(/<(?:.|\n)*?>/gm, '') : a[col]
-        let d = typeof b[col] === 'string' ? b[col].replace(/<(?:.|\n)*?>/gm, '') : b[col]
-        // if (typeof c !== typeof d) {
-        //   c = String(c)
-        //   d = String(d)
-        // }
-        return (c > d) ? 1 * flip : ((d > c) ? -1 * flip : 0)
+      return this.tableFiltered.slice().sort((a,b) => {
+        return (a[col] > b[col]) ? 1 * flip : ((b[col] > a[col]) ? -1 * flip : 0)
       })
     },
+    firstItemIndex () {
+      return (this.computedPage - 1) * this.perPageItems || 0
+    },
+    paginatedItems () {
+      return this.sortedItems.slice(
+        this.firstItemIndex,
+        this.firstItemIndex + this.perPageItems
+      )
+    },
     currentItems () {
-      if (this.computedPage) {
-        this.firstItemIndex = (this.computedPage - 1) * this.perPageItems
-        return this.sortedItems.slice(this.firstItemIndex, this.firstItemIndex + this.perPageItems)
-      }
-      return this.sortedItems
+      return this.computedPage ? this.paginatedItems : this.sortedItems
     },
     totalPages () {
       return Math.ceil((this.sortedItems.length)/ this.perPageItems) || 1
@@ -323,15 +342,22 @@ export default {
     computedPage () {
       return this.pagination ? this.page : this.activePage
     },
+    generatedColumnNames () {
+      return Object.keys(this.passedItems[0]).filter(el => el.charAt(0) !== '_')
+    },
     rawColumnNames () {
-      if (this.fields)
-        return typeof this.fields[0] === 'object' ? this.fields.map(el => el.key) : this.fields
-      return Object.keys(this.currentItems[0]).filter(el => el.charAt(0) !== '_')
+      if (this.fields) {
+        return this.fields.map(el => el.key || el)
+      }
+      return this.generatedColumnNames
     },
     columnNames () {
-      if (this.fields)
-          return this.fields.map(el => el.label !== undefined ? el.label : this.columnNamePretify(el.key || el))
-      return this.rawColumnNames.map(el => this.columnNamePretify(el))
+      if (this.fields) {
+        return this.fields.map(f => {
+          return f.label !== undefined ? f.label : this.pretifyName(f.key || f)
+        })
+      }
+      return this.rawColumnNames.map(el => this.pretifyName(el))
     },
     tableClasses () {
       return [
@@ -356,26 +382,28 @@ export default {
       return !this.noSorting ? 'c-position-relative c-pr-4' : ''
     },
     colspan () {
-      return this.indexColumn ? this.rawColumnNames.length + 1 : this.rawColumnNames.length
+      return this.rawColumnNames.length + (this.indexColumn ? 1 : 0)
     },
     topLoadingPosition () {
       const headerHeight = (this.filterRow ? 38 : 0) + ( this.small ? 32 + 4 : 46 + 7)
       return `top:${headerHeight}px`
     },
     spinnerSize () {
-      const size = this.small ? '1.4rem' : this.currentItems.length === 1 ? '2rem' : '3rem'
-      return `width:${size};height:${size}`
+      const size = this.small ? 1.4 : this.currentItems.length === 1 ? 2 : 3
+      return `width:${size + 'rem'};height:${size + 'rem'}`
     },
     isFiltered () {
-      return this.tableFilter || Object.keys(this.columnFilter).filter(key => {
-        return this.columnFilter[key]
-      }).length
+      return this.tableFilter || Object.values(this.columnFilter).join('')
     }
   },
   watch: {
     items (val, oldVal) {
-      if(val.length !== oldVal.length || JSON.stringify(val) !== JSON.stringify(oldVal))
+      if (
+        val.length !== oldVal.length ||
+        JSON.stringify(val) !== JSON.stringify(oldVal)
+      ) {
         this.passedItems = val
+      }
     },
     totalPages: {
       immediate: true,
@@ -405,35 +433,38 @@ export default {
       this.sorter.asc = true
       const inputs = this.$el.getElementsByClassName('c-table-filter')
       for(let input of inputs)
-        input.value =''
+        input.value = ''
     },
-    columnNamePretify (name) {
-      const withSpaces = name.replace(/[-_]/g, ' ')
-      return withSpaces.split(' ')
-                       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-                       .join(' ')
+    pretifyName (name) {
+      return name.replace(/[-_]/g, ' ').split(' ').map(word => {
+        return word.charAt(0).toUpperCase() + word.slice(1)
+      }).join(' ')
     },
     cellClass (item, colName, index) {
       let classes = []
-      if(item._cellClasses && item._cellClasses[colName])
+      if (item._cellClasses && item._cellClasses[colName]) {
         classes.push(item._cellClasses[colName])
-      if (this.fields && this.fields[index]._classes)
+      }
+      if (this.fields && this.fields[index]._classes) {
         classes.push(this.fields[index]._classes)
+      }
       return classes
     },
     sortable (index) {
       return !this.noSorting && (!this.fields || !this.fields[index].noSorting)
     },
     headerClass (index) {
-      return this.fields && this.fields[index]._classes ?
-             this.fields[index]._classes : ''
+      const fields = this.fields
+      return fields && fields[index]._classes ? fields[index]._classes : ''
     },
     headerStyles (index) {
       let style = ''
-      if(this.sortable(index))
+      if (this.sortable(index)) {
         style += `cursor:pointer;`
-      if(this.fields && this.fields[index] && this.fields[index]._style)
+      }
+      if (this.fields && this.fields[index] && this.fields[index]._style) {
         style += this.fields[index]._style
+      }
       return style
     },
     rowClicked (item, index) {
@@ -456,12 +487,8 @@ export default {
     paginationChange (e) {
       this.$emit('pagination-change', e.target.value)
       this.perPageItems = Number(e.target.value)
-    },
-    havePaginationMenu () {
-      return this.optionsRow !== 'noPagination' &&
-        (this.pagination || this.$listeners['pages-change'])
     }
-  },
+  }
 }
 </script>
 <style scoped>
