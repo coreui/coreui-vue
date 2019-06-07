@@ -12,10 +12,10 @@ export default {
       visible: this.show
     }
   },
-  mounted () {
-    if(this.show)
-      this.createPopper
-  },
+  // mounted () {
+  //   if(this.show)
+  //     this.createPopper
+  // },
   props: {
     buttonHtml: {
       type: String,

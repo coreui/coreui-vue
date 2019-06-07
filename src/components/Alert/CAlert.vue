@@ -33,7 +33,7 @@ export default {
     },
     dismissible: {
       type: [Boolean, String],
-      validator: val => [false, true, 'disabled', 'customButton']
+      validator: val => [false, true, 'disabled', 'customButton'].includes(val)
     },
     show: {
       type: [Boolean, Number],

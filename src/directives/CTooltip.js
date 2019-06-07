@@ -34,7 +34,7 @@ export default {
       popperOptions: props.popperOptions
     }
   },
-  getTemplate (title) {
+  getTemplate () {
     return `<div class="c-tooltip c-bs-tooltip-auto c-fade c-show" role="tooltip">
               <div class="c-arrow"></div>
               <div class="c-tooltip-inner"></div>

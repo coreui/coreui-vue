@@ -53,7 +53,7 @@
     "createCustom": "node build/createCustomStylesLibrary.js",
     "buildCustom": "vue-cli-service build --target lib --name custom ./tmp/index.js",
     "deleteCustom": "node build/deleteTmpFolder.js",
-    "lint": "vue-cli-service lint",
+    "lint": "vue-cli-service lint --ignore-pattern **/*spec.js",
     "test": "vue-cli-service test:unit",
     "test:coverage": "vue-cli-service test:unit --coverage --collectCoverageFrom=src/**/*.{js,vue} --collectCoverageFrom=!**/index*",
     "test:e2e": "vue-cli-service test:e2e",

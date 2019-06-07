@@ -10,9 +10,9 @@ import resolve from "rollup-plugin-node-resolve";
 import replace from "rollup-plugin-replace";
 import magicImporter from 'node-sass-magic-importer';
 
-import { uglify } from "rollup-plugin-uglify";
+// import { uglify } from "rollup-plugin-uglify";
 import vue from "rollup-plugin-vue";
-import { minify } from "uglify-es";
+// import { minify } from "uglify-es";
 
 import pack from "./package.json";
 

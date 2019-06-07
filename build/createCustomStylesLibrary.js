@@ -1,7 +1,6 @@
 const fs = require('fs-extra')
 fs.copy('src', 'tmp').then(() => {
   fs.readdir('tmp/components', (e, directories) => {
-    console.log('hehe')
     directories.forEach((directory) => {
       fs.readdir(`tmp/components/${directory}`, function(e, files) {
         if (!files) {

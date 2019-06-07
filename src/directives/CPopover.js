@@ -3,7 +3,7 @@ import Tooltip from 'tooltip.js'
 export default {
   name: 'c-popover',
   tooltip: null,
-  inserted (el, binding, vnode) {
+  inserted (el, binding) {
     const tooltip = new Tooltip(el, binding.def.getTooltipConfig(binding))
     binding.def._tooltip = tooltip
     if (binding.value.active)
