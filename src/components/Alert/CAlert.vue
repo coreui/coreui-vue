@@ -100,22 +100,17 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style>
+
   .fade-enter-active, .fade-leave-active {
     transition: opacity .3s;
   }
   .fade-enter, .fade-leave-to {
     opacity: 0;
   }
-  /* /deep/ .c-alert-dismissible .c-close {
-     position: absolute;
-     top: 0;
-     right: 0;
-     padding: 0.75rem 1.25rem;
-     color: inherit;
-   } */
+
 </style>
 
 <style lang="scss">
-  @import "~@coreui/coreui/scss/partials/alert.scss";
+@import "~@coreui/coreui/scss/partials/alert.scss";
 </style>

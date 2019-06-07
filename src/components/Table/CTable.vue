@@ -487,7 +487,7 @@ export default {
 }
 </style>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import "~@coreui/coreui/scss/partials/tables.scss";
 @import "~@coreui/coreui/scss/partials/input-group.scss";
 @import "~@coreui/coreui/scss/partials/forms.scss";

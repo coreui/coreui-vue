@@ -69,7 +69,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
   .c-opacity-0 {
     opacity: 0;
   }

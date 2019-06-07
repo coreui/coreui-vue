@@ -24,7 +24,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   @import "~@coreui/coreui/scss/partials/button-group.scss";
   @import "~@coreui/coreui/scss/utilities/_flex.scss";
 

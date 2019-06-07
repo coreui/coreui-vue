@@ -117,7 +117,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .c-carousel-inner, .c-carousel-item {
     height: inherit;
   }

@@ -67,7 +67,7 @@ export default {
 }
 </script>
 
-<style scoped lang="css">
+<style lang="css">
   .c-nav-link {
     cursor:pointer;
   }

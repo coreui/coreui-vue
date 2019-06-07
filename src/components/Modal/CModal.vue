@@ -159,7 +159,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   @import "~@coreui/coreui/scss/partials/modal.scss";
   @import "~@coreui/coreui/scss/partials/buttons.scss";
   @import "~@coreui/coreui/scss/partials/close.scss";

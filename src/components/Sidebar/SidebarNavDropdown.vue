@@ -44,7 +44,7 @@ export default {
 }
 </script>
 
-<style scoped lang="css">
+<style lang="css">
   .nav-link {
     cursor:pointer;
   }

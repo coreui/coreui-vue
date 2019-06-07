@@ -100,7 +100,7 @@ export default {
 }
 </script>
 
-<style scoped lang="css">
+<style lang="css">
   .scroll-area {
     position: absolute;
     height: 100%;

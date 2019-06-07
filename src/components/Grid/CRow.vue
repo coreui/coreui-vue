@@ -34,7 +34,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   @import "~@coreui/coreui/scss/partials/grid.scss";
   @import "~@coreui/coreui/scss/utilities/_flex.scss";
 </style>

@@ -48,7 +48,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   @import "~@coreui/coreui/scss/partials/nav.scss";
   @import "~@coreui/coreui/scss/utilities/_flex.scss";
 </style>

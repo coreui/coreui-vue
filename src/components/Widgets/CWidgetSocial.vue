@@ -57,7 +57,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   @import "~@coreui/coreui/scss/partials/widgets.scss";
   // @import "~@coreui/coreui/scss/partials/card.scss";
   // @import "~@coreui/coreui/scss/partials/brand-card.scss";

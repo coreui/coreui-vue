@@ -93,7 +93,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   .toast.full {
     max-width: 100%;
   }
