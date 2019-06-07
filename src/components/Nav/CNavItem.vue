@@ -14,6 +14,9 @@
 import CLink, { props } from '../Link/CLink'
 export default {
   name: 'CNavItem',
+  components: {
+    CLink
+  },
   props,
   data () {
     return {

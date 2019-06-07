@@ -19,6 +19,9 @@
 import CImage from '../Image/CImage'
 export default {
   name: 'CCarouselItem',
+  components: {
+    CImage
+  },
   props: {
     image: Object,
     imgSrc: String,

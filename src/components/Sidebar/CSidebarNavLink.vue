@@ -27,6 +27,9 @@ const props = Object.assign(linkPropsFactory(), {
 )
 export default {
   name: 'CSidebarNavLink',
+  components: {
+    CLink
+  },
   props,
   computed: {
     linkGeneratedFromUrlProp () {

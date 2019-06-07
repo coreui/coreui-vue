@@ -15,6 +15,9 @@
 import CImage from '../Image/CImage'
 export default {
   name: 'CMedia',
+  components: {
+    CImage
+  },
   props: {
     asidePositionClasses: String,
     addAsideClasses: String,

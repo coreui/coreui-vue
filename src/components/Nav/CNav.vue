@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import CNavItem from './CNavItem'
 export default {
   name: 'CNav',
   props: {

@@ -45,7 +45,7 @@ const CIcon = Object.assign({}, CIconRaw, { icons : { arrowRight }})
 
 export default {
   name: 'CWidgetIcon',
-  components: { CIcon },
+  components: { CLink, CIcon },
   props: {
     addIconClasses: String,
     header: {
