@@ -12,7 +12,7 @@
       </div>
 
       <div>
-        <div class="c-text-primary c-text-value-sm">
+        <div :class="`c-text-value c-text-${variant}`">
           {{header}}
         </div>
         <div class="c-text-muted c-text-uppercase c-font-weight-bold c-small">
@@ -77,5 +77,6 @@ export default {
   @import "~@coreui/coreui/scss/utilities/_clearfix.scss";
   @import "~@coreui/coreui/scss/utilities/_display.scss";
   @import "~@coreui/coreui/scss/utilities/_text.scss";
+  @import "~@coreui/coreui/scss/utilities/_typography.scss";
   @import "~@coreui/coreui/scss/utilities/_background.scss";
 </style>
