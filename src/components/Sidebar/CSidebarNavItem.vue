@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { hideMobile } from '../../mixins/hideMobile'
+import { hideMobile } from './hideMobile'
 export default {
   name: 'CSidebarNavItem',
   mixins: [ hideMobile ],

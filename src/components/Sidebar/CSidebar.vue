@@ -5,7 +5,7 @@
 </template>
 <script>
 import { mixin as clickaway } from 'vue-clickaway2'
-import { hideMobile } from '../../mixins/hideMobile'
+import { hideMobile } from './hideMobile'
 
 export default {
   name: 'CSidebar',
