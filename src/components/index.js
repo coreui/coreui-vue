@@ -1,5 +1,4 @@
 export * from './Alert'
-export * from './Aside'
 export * from './Badge'
 export * from './Breadcrumb'
 export * from './Button'
