@@ -1,23 +1,23 @@
 <template functional>
-  <div class="c-brand-card">
-    <div :class="`c-brand-card-header c-text-white c-bg-${props.variant}`">
-      <!-- <i
-        class="c-position-absolute"
-        :class="props.iconClasses || `fa fa-${props.variant}`"
-      ></i> -->
+  <div class="c-card">
+    <div
+      class="c-card-header c-content-center c-text-white c-p-0"
+      :class="[`c-bg-${props.variant}`, props.addHeaderClasses]"
+    >
       <slot></slot>
     </div>
-    <div class="c-brand-card-body">
-      <div>
-        <div class="c-text-value">
+    <div class="c-card-body c-row c-text-center">
+      <div class="c-col">
+        <div class="c-text-value-lg">
           {{props.rightHeader}}
         </div>
         <div class="c-text-uppercase c-text-muted c-small">
           {{props.rightFooter}}
         </div>
       </div>
-      <div>
-        <div class="c-text-value">
+      <div class="c-vr"></div>
+      <div class="c-col">
+        <div class="c-text-value-lg">
           {{props.leftHeader}}
         </div>
         <div class="c-text-uppercase c-text-muted c-small">
@@ -32,10 +32,7 @@
 export default {
   name: 'CWidgetSocial',
   props: {
-    variant: {
-      type: String,
-      default: 'facebook'
-    },
+    variant: String,
     rightHeader: {
       type: String,
       default: 'rightHeader:string'
@@ -52,17 +49,17 @@ export default {
       type: String,
       default: 'leftFooter:string'
     },
-    iconClasses: String
+    addHeaderClasses: String
   }
 }
 </script>
 
 <style lang="scss">
   @import "~@coreui/coreui/scss/partials/widgets.scss";
-  // @import "~@coreui/coreui/scss/partials/card.scss";
-  // @import "~@coreui/coreui/scss/partials/brand-card.scss";
-
+  @import "~@coreui/coreui/scss/partials/card.scss";
+  @import "~@coreui/coreui/scss/partials/grid.scss";
   @import "~@coreui/coreui/scss/utilities/_position.scss";
+  @import "~@coreui/coreui/scss/utilities/_spacing.scss";
   @import "~@coreui/coreui/scss/utilities/_text.scss";
   @import "~@coreui/coreui/scss/utilities/_background.scss";
 </style>
