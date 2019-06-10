@@ -181,11 +181,14 @@
       lastItem () {
         return this.range >= this.pages ? this.pages : this.range-this.afterDots
       },
+      itemsAmount () {
+        return this.pages < this.computedLimit ? this.pages : this.computedLimit
+      },
       items () {
         if (this.activePage - this.maxPrevItems <= 1 ) {
-          return Array.from({ length: this.computedLimit }, (v, i) => i + 1 )
+          return Array.from({ length: this.itemsAmount }, (v, i) => i + 1 )
         } else {
-          return Array.from({length: this.computedLimit}, (v, i) => {
+          return Array.from({length: this.itemsAmount}, (v, i) => {
             return this.lastItem - i
           }).reverse()
         }
@@ -193,9 +196,8 @@
     },
     methods: {
       onWrapperResize (el) {
-        el.clientWidth > 600 ? this.rwd = this.size :
-            el.clientWidth > 400 ?
-              this.rwd = 'md' : this.rwd = 'sm'
+        const responsiveSize = el.clientWidth > 400 ? 'md' : 'sm'
+        this.rwd = el.clientWidth > 600 ? this.size : responsiveSize
       },
       setPage (number) {
         if (number !== this.activePage) {
