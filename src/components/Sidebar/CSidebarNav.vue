@@ -3,13 +3,10 @@
     <VuePerfectScrollbar
       class="c-scroll-area"
       :settings="psSettings"
-      v-if="!state.minimized"
+      :switcher="!state.minimized"
     >
         <CSidebarNavItems :items="navItems"/>
     </VuePerfectScrollbar>
-    <template v-else>
-      <CSidebarNavItems :items="navItems"/>
-    </template>
   </nav>
 </template>
 
