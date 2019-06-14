@@ -2,6 +2,7 @@
 import CLink from '../Link/CLink'
 import Popper from 'popper.js'
 import { mixin as clickaway } from 'vue-clickaway2'
+//path enables esm build
 import deepObjectsMerge from '@coreui/coreui/js/src/utilities/deep-objects-merge'
 
 export default {
@@ -12,10 +13,6 @@ export default {
       visible: this.show
     }
   },
-  // mounted () {
-  //   if(this.show)
-  //     this.createPopper
-  // },
   props: {
     buttonHtml: {
       type: String,

@@ -15,5 +15,5 @@ const CoreuiVue = {
 // Export library
 export default CoreuiVue
 
-// Export components
-export * from './components';
+//Export components
+export * from  './components';

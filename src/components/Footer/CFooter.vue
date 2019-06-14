@@ -13,7 +13,7 @@ export default {
   computed: {
     classList () {
       return [
-        'c-app-footer c-footer',
+        'c-footer',
         { 'c-footer-fixed': this.fixed }
       ]
     }
