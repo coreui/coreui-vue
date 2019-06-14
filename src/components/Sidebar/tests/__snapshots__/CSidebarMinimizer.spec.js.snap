@@ -2,7 +2,7 @@
 
 exports[`CSidebarMinimizer .vue renders correctly 1`] = `
 <button
-  class="sidebar-minimizer"
+  class="c-sidebar-minimizer"
   type="button"
 />
 `;

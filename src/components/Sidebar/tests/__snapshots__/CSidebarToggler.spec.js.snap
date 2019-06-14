@@ -2,12 +2,11 @@
 
 exports[`CSidebarToggler .vue renders correctly 1`] = `
 <button
-  class="navbar-toggler"
-  display="lg"
+  class="c-header-toggler"
   type="button"
 >
   <span
-    class="navbar-toggler-icon"
+    class="c-header-toggler-icon"
   />
 </button>
 `;

@@ -2,43 +2,39 @@
 
 exports[`CWidgetProgressIcon matches custom props snapshot 1`] = `
 <div
-  class="card text-white bg-info"
+  class="c-card c-text-white c-bg-info"
 >
   <div
-    class="card-body"
+    class="c-card-body"
   >
-    <div
-      class="h1 text-muted text-right mb-4"
-    >
-      <i
-        class="icon-custom"
-      />
-    </div>
+    <!---->
      
     <div
-      class="h4 mb-0"
+      class="c-h4 c-mb-0"
     >
       test
     </div>
      
     <small
-      class="text-muted text-uppercase font-weight-bold"
+      class="c-text-muted c-text-uppercase c-font-weight-bold"
     >
+      
       test
+    
     </small>
      
     <div
-      class="progress-xs my-3 mb-0 progress progress-white"
+      class="c-progress c-progress-xs c-my-3 c-mb-0 c-progress-white"
     >
       <div
         aria-valuemax="100"
         aria-valuemin="0"
         aria-valuenow="35"
-        class="progress-bar"
+        class="c-progress-bar"
         role="progressbar"
         style="width: 35%;"
       >
-        <!---->
+        
       </div>
     </div>
   </div>
@@ -47,43 +43,39 @@ exports[`CWidgetProgressIcon matches custom props snapshot 1`] = `
 
 exports[`CWidgetProgressIcon matches default props snapshot 1`] = `
 <div
-  class="card"
+  class="c-card"
 >
   <div
-    class="card-body"
+    class="c-card-body"
   >
-    <div
-      class="h1 text-muted text-right mb-4"
-    >
-      <i
-        class="icon-people"
-      />
-    </div>
+    <!---->
      
     <div
-      class="h4 mb-0"
+      class="c-h4 c-mb-0"
     >
       header:string
     </div>
      
     <small
-      class="text-muted text-uppercase font-weight-bold"
+      class="c-text-muted c-text-uppercase c-font-weight-bold"
     >
+      
       text:string
+    
     </small>
      
     <div
-      class="progress-xs my-3 mb-0 progress"
+      class="c-progress c-progress-xs c-my-3 c-mb-0"
     >
       <div
         aria-valuemax="100"
         aria-valuemin="0"
         aria-valuenow="25"
-        class="progress-bar"
+        class="c-progress-bar"
         role="progressbar"
         style="width: 25%;"
       >
-        <!---->
+        
       </div>
     </div>
   </div>

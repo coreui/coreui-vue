@@ -2,26 +2,28 @@
 
 exports[`CSwitch renders correctly 1`] = `
 <label
-  class="switch switch-secondary form-check-label"
+  class="c-switch c-form-check-label c-switch-secondary"
 >
   <input
-    class="switch-input form-check-input"
+    class="c-switch-input c-form-check-input"
     type="checkbox"
     value=""
   />
    
   <span
-    class="switch-slider"
+    class="c-switch-slider"
   />
 </label>
 `;
 
 exports[`CSwitch renders correctly 2`] = `
 <label
-  class="switch switch-label switch-lg switch-3d switch-outline-info-alt form-check-label"
+  class="c-switch c-form-check-label c-switch-outline-info-alt c-switch-lg c-switch-3d"
 >
   <input
-    class="switch-input form-check-input"
+    class="c-switch-input c-form-check-input"
+    dataoff="dataOff"
+    dataon="dataOn"
     disabled="disabled"
     id="myId"
     name="myName"
@@ -31,9 +33,7 @@ exports[`CSwitch renders correctly 2`] = `
   />
    
   <span
-    class="switch-slider"
-    data-checked="dataOn"
-    data-unchecked="dataOff"
+    class="c-switch-slider"
   />
 </label>
 `;

@@ -2,7 +2,7 @@
 
 exports[`CSidebarFooter .vue renders correctly 1`] = `
 <div
-  class="sidebar-footer"
+  class="c-sidebar-footer"
 >
   test
 </div>

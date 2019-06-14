@@ -2,6 +2,6 @@
 
 exports[`CSidebarNavDivider .vue renders correctly 1`] = `
 <li
-  class="divider"
+  class="c-nav-divider"
 />
 `;

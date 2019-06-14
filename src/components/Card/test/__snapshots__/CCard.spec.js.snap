@@ -2,41 +2,20 @@
 
 exports[`CCard renders correctly 1`] = `
 <div
-  class="card text-left bg-success border-solid text-white"
+  class="c-card c-text-left c-bg-success c-border-solid c-text-white"
 >
-  <header
-    class="card-header"
-  >
-    header
-  </header>
-  <div
-    class="card-body"
-  >
-    body
-  </div>
-  <footer
-    class="card-footer"
-  >
-    footer
-  </footer>
+  <!---->
+  <!---->
 </div>
 `;
 
 exports[`CCard renders correctly with slots 1`] = `
 <div
-  class="card text-left bg-success border-solid text-white"
+  class="c-card c-text-left c-bg-success c-border-solid c-text-white"
 >
-  <header
-    class="card-header"
-  >
-    header
-  </header>
+  <!---->
   this should overwrite body
   <br />
-  <footer
-    class="card-footer"
-  >
-    footer
-  </footer>
+  <!---->
 </div>
 `;

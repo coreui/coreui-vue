@@ -2,23 +2,25 @@
 
 exports[`CSidebarNavDropdown .vue renders correctly 1`] = `
 <router-link-stub
-  class="nav-item nav-dropdown"
+  class="c-nav-item c-nav-dropdown"
   disabled=""
   event="click"
   tag="li"
-  to=""
+  to="/somePath"
 >
   <div
-    class="nav-link nav-dropdown-toggle"
+    class="c-nav-link c-nav-dropdown-toggle"
   >
     <i
-      class="nav-icon"
+      class="c-nav-icon"
     />
-     
+    
+    
+  
   </div>
    
   <ul
-    class="nav-dropdown-items"
+    class="c-nav-dropdown-items"
   />
 </router-link-stub>
 `;

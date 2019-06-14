@@ -2,45 +2,56 @@
 
 exports[`CWidgetSocial matches custom props snapshot 1`] = `
 <div
-  class="brand-card"
+  class="c-card"
 >
   <div
-    class="brand-card-header bg-twitter"
-  >
-    <i
-      class="fa fa-twitter"
-    />
-     
-  </div>
+    class="c-card-header c-content-center c-text-white c-p-0 c-bg-twitter"
+  />
    
   <div
-    class="brand-card-body"
+    class="c-card-body c-row c-text-center"
   >
-    <div>
+    <div
+      class="c-col"
+    >
       <div
-        class="text-value"
+        class="c-text-value-lg"
       >
+        
         rightHeader
+      
       </div>
        
       <div
-        class="text-uppercase text-muted small"
+        class="c-text-uppercase c-text-muted c-small"
       >
+        
         rightFooter
+      
       </div>
     </div>
      
-    <div>
+    <div
+      class="c-vr"
+    />
+     
+    <div
+      class="c-col"
+    >
       <div
-        class="text-value"
+        class="c-text-value-lg"
       >
+        
         leftHeader
+      
       </div>
        
       <div
-        class="text-uppercase text-muted small"
+        class="c-text-uppercase c-text-muted c-small"
       >
+        
         leftFooter
+      
       </div>
     </div>
   </div>
@@ -49,45 +60,56 @@ exports[`CWidgetSocial matches custom props snapshot 1`] = `
 
 exports[`CWidgetSocial matches default props snapshot 1`] = `
 <div
-  class="brand-card"
+  class="c-card"
 >
   <div
-    class="brand-card-header bg-facebook"
-  >
-    <i
-      class="fa fa-facebook"
-    />
-     
-  </div>
+    class="c-card-header c-content-center c-text-white c-p-0 c-bg-undefined"
+  />
    
   <div
-    class="brand-card-body"
+    class="c-card-body c-row c-text-center"
   >
-    <div>
+    <div
+      class="c-col"
+    >
       <div
-        class="text-value"
+        class="c-text-value-lg"
       >
+        
         rightHeader:string
+      
       </div>
        
       <div
-        class="text-uppercase text-muted small"
+        class="c-text-uppercase c-text-muted c-small"
       >
+        
         rightFooter:string
+      
       </div>
     </div>
      
-    <div>
+    <div
+      class="c-vr"
+    />
+     
+    <div
+      class="c-col"
+    >
       <div
-        class="text-value"
+        class="c-text-value-lg"
       >
+        
         leftHeader:string
+      
       </div>
        
       <div
-        class="text-uppercase text-muted small"
+        class="c-text-uppercase c-text-muted c-small"
       >
+        
         leftFooter:string
+      
       </div>
     </div>
   </div>

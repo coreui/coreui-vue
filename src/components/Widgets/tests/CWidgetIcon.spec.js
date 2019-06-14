@@ -1,29 +1,27 @@
 import { shallowMount } from '@vue/test-utils'
 import Component from '../CWidgetIcon'
 import CLink from '../../Link/CLink'
+import { CIcon } from '@coreui/icons/vue'
+
 import Vue from 'vue'
 
 Vue.component('CLink', CLink)
+Vue.component('CIcon', CIcon)
 
 const ComponentName = 'CWidgetIcon'
 const defaultWrapper = shallowMount(Component)
 const customWrapper = shallowMount(Component, {
-  context: {
-    props: {
-      header: 'header',
-      text: 'text',
-      link: 'link.com',
-      iconClasses: 'someClasses'
-    }
+  propsData: {
+    header: 'header',
+    text: 'text',
+    link: 'link.com',
+    addIconClasses: 'someClasses'
   }
 })
 
 describe(ComponentName, () => {
   it('has a name', () => {
     expect(Component.name).toMatch(ComponentName)
-  })
-  it('is functional component', () => {
-    expect(defaultWrapper.isFunctionalComponent).toBe(true)
   })
   // it('correctly render component with default props', () => {
   //   expect(defaultWrapper.findAll('div').at(2).text()).toMatch('header:string')

@@ -8,7 +8,10 @@ const router = new VueRouter()
 
 
 const ComponentName = 'CSidebarNavDropdown'
-const wrapper = shallowMount(Component, { localVue, router })
+const wrapper = shallowMount(
+  Component,
+  { localVue, router, propsData: { to: '/somePath' }}
+)
 // /* eslint-disable no-console */
 // console.log("something")
 
@@ -24,7 +27,8 @@ describe(`${ComponentName} .vue`, () => {
       propsData: {
         name: 'test',
         url: '',
-        icon: ''
+        icon: '',
+        to: '/somePath'
       }
     })
     expect(wrapper.props().name).toEqual('test')

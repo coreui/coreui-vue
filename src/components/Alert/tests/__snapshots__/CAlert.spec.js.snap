@@ -2,36 +2,39 @@
 
 exports[`CAlert renders correctly 1`] = `
 <div
+  appear="true"
   aria-atomic="true"
   aria-live="polite"
-  class="alert alert-dismissible alert-info"
+  class="c-alert c-alert-dismissible c-alert-info"
   role="alert"
 >
   <button
     aria-label="Close"
-    class="close"
+    class="c-close"
     type="button"
   >
     ×
   </button>
-  Dismissible Alert!
+   Dismissible Alert!
 </div>
 `;
 
 exports[`CAlert renders correctly 2`] = `
 <div
+  appear="true"
   aria-atomic="true"
   aria-live="polite"
-  class="alert alert-dismissible alert-success"
+  class="c-alert c-alert-dismissible c-alert-success"
+  name="fade"
   role="alert"
 >
   <button
     aria-label="Close"
-    class="close"
+    class="c-close"
     type="button"
   >
     ×
   </button>
-  Dismissible Alert!
+   Dismissible Alert!
 </div>
 `;

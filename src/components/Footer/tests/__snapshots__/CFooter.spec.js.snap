@@ -2,7 +2,7 @@
 
 exports[`CFooter .vue renders correctly 1`] = `
 <footer
-  class="app-footer"
+  class="c-footer"
 >
   Footer
 </footer>

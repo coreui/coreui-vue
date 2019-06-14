@@ -2,39 +2,35 @@
 
 exports[`CBreadcrumb renders correctly 1`] = `
 <ol
-  class="breadcrumb"
+  class="c-breadcrumb"
 >
   <li
-    class="breadcrumb-item"
+    class="c-breadcrumb-item"
     role="presentation"
   >
     <a
       class=""
       href="#"
       target="_self"
-    >
-      Admin
-    </a>
+    />
   </li>
   <li
-    class="breadcrumb-item"
+    class="c-breadcrumb-item"
     role="presentation"
   >
     <a
       class=""
       href="#"
       target="_self"
-    >
-      Manage
-    </a>
+    />
   </li>
   <li
-    class="breadcrumb-item active"
+    class="c-breadcrumb-item c-active"
     role="presentation"
   >
-    <span>
-      Library
-    </span>
+    <span
+      class=""
+    />
   </li>
 </ol>
 `;

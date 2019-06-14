@@ -2,7 +2,7 @@
 
 exports[`CSidebar .vue renders correctly 1`] = `
 <div
-  class="sidebar"
+  class="c-sidebar c-sidebar-dark c-sidebar-lg-show"
 >
   Sidebar
 </div>

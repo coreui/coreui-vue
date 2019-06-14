@@ -2,7 +2,7 @@
 
 exports[`CCardFooter renders correctly 1`] = `
 <footer
-  class="card-footer text-left bg-primary border-solid text-white"
+  class="c-card-footer c-text-left c-bg-primary c-border-solid c-text-white"
 >
   <template>
     content goes here

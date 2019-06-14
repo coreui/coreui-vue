@@ -2,18 +2,18 @@
 
 exports[`CWidgetIcon matches custom props snapshot 1`] = `
 <div
-  class="card"
+  class="c-card"
 >
   <div
-    class="card-body clearfix d-flex align-items-center"
+    class="c-card-body c-clearfix c-d-flex c-align-items-center c-p-3"
   >
-    <i
-      class="float-left mr-3 font-2xl p-3"
+    <div
+      class="c-float-left c-mr-3 c-text-white c-bg-primary c-p-3"
     />
      
     <div>
       <div
-        class="text-primary text-value-sm"
+        class="c-text-value c-text-primary"
       >
         
         header
@@ -21,7 +21,7 @@ exports[`CWidgetIcon matches custom props snapshot 1`] = `
       </div>
        
       <div
-        class="text-muted text-uppercase font-weight-bold small"
+        class="c-text-muted c-text-uppercase c-font-weight-bold c-small"
       >
         
         text
@@ -31,38 +31,44 @@ exports[`CWidgetIcon matches custom props snapshot 1`] = `
   </div>
    
   <div
-    class="card-footer px-3 py-2"
+    class="c-card-footer c-px-3 c-py-2"
   >
-    <a
-      class="font-weight-bold font-xs btn-block text-muted"
+    <clink-stub
+      activeclass="c-active"
+      class="c-font-weight-bold c-font-xs c-btn-block c-text-muted"
+      event="click"
+      exactactiveclass="c-active"
       href="link.com"
+      routertag="a"
       target="_self"
     >
       
         View More
         
-      <i
-        class="fa fa-angle-right float-right font-lg"
+      <cicon-stub
+        class="c-float-right"
+        name="arrowRight"
+        width="16"
       />
-    </a>
+    </clink-stub>
   </div>
 </div>
 `;
 
 exports[`CWidgetIcon matches default props snapshot 1`] = `
 <div
-  class="card"
+  class="c-card"
 >
   <div
-    class="card-body clearfix d-flex align-items-center"
+    class="c-card-body c-clearfix c-d-flex c-align-items-center c-p-3"
   >
-    <i
-      class="float-left mr-3 font-2xl p-3"
+    <div
+      class="c-float-left c-mr-3 c-text-white c-bg-primary c-p-3"
     />
      
     <div>
       <div
-        class="text-primary text-value-sm"
+        class="c-text-value c-text-primary"
       >
         
         header:string
@@ -70,7 +76,7 @@ exports[`CWidgetIcon matches default props snapshot 1`] = `
       </div>
        
       <div
-        class="text-muted text-uppercase font-weight-bold small"
+        class="c-text-muted c-text-uppercase c-font-weight-bold c-small"
       >
         
         text:string

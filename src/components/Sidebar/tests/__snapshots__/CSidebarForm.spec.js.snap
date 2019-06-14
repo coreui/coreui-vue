@@ -2,7 +2,7 @@
 
 exports[`CSidebarForm .vue renders correctly 1`] = `
 <div
-  class="sidebar-form"
+  class="c-sidebar-form"
 >
   test
 </div>

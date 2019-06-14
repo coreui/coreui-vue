@@ -7,7 +7,7 @@ module.exports = {
     ".*\\.js$": "<rootDir>/node_modules/babel-jest",
     ".*\\.vue$": "<rootDir>/node_modules/vue-jest"
   },
-  transformIgnorePatterns: ['<rootDir>/node_modules/'],
+  transformIgnorePatterns: [],
   snapshotSerializers: ["<rootDir>/node_modules/jest-serializer-vue"],
   setupFiles: ["<rootDir>/jest.setup"],
   coverageDirectory: "<rootDir>/coverage",
