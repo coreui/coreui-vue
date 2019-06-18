@@ -73,7 +73,12 @@ function genConfig(name) {
         // preferBuiltins: false,
         extensions: [".js", ".json", ".vue"]
       }),
-      commonjs(),
+      commonjs({
+        namedExports: {
+          '@coreui/coreui/dist/js/coreui-utilities.js': ['deepObjectsMerge'],
+          '@coreui/icons/vue': ['CIcon']
+        }
+      }),
       postcss(),
       vue({
         compileTemplate: true,
