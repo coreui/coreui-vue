@@ -1,11 +1,12 @@
-<template functional>
-  <div class="c-card" :class="`c-bg-${props.variant}`">
+<template>
+  <div class="c-card" :class="`c-bg-${variant}`">
+    <slot name="header"></slot>
     <div class="c-card-body c-pb-0">
-      <slot name="dropdown"></slot>
-      <h4 class="c-mb-0">{{props.header}}</h4>
-      <p>{{props.text}}</p>
+      <slot></slot>
+      <h4 v-if="header" class="c-mb-0">{{header}}</h4>
+      <p v-if="text">{{text}}</p>
     </div>
-    <slot></slot>
+    <slot name="footer"></slot>
   </div>
 </template>
 
@@ -17,14 +18,8 @@ export default {
       type: String,
       default: 'primary'
     },
-    header: {
-      type: String,
-      default: 'header:string'
-    },
-    text: {
-      type: String,
-      default: 'text:string'
-    }
+    header: String,
+    text: String
   }
 }
 </script>

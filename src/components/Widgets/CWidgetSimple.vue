@@ -1,12 +1,17 @@
-<template functional>
+<template>
   <div class="c-card">
+    <slot name="header"></slot>
     <div class="c-card-body c-text-center">
-      <div class="c-text-muted c-small c-text-uppercase c-font-weight-bold">
-        {{props.header}}
+      <div
+        v-if="header"
+        class="c-text-muted c-small c-text-uppercase c-font-weight-bold"
+      >
+        {{header}}
       </div>
-      <div class="c-h2 c-py-3">{{props.text}}</div>
+      <div v-if="text" class="c-h2 c-py-3">{{text}}</div>
       <slot></slot>
     </div>
+    <slot name="footer"></slot>
   </div>
 </template>
 
@@ -14,14 +19,8 @@
 export default {
   name: 'CWidgetSimple',
   props: {
-    header: {
-      type: String,
-      default: 'header:string'
-    },
-    text: {
-      type: String,
-      default: 'text:string'
-    }
+    header: String,
+    text: String
   }
 }
 </script>

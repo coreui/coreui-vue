@@ -1,16 +1,16 @@
-<template functional>
-  <div class="c-card" :class="`c-bg-${props.variant}`">
+<template>
+  <div class="c-card" :class="`c-bg-${variant}`">
     <div class="c-card-header">
       <div class="c-font-weight-bold">
-        <span>{{props.rightHeader}}</span>
-        <span class="c-float-right">{{props.leftHeader}}</span>
+        <span v-if="rightHeader">{{rightHeader}}</span>
+        <span v-if="leftHeader" class="c-float-right">{{leftHeader}}</span>
       </div>
       <div>
         <span>
-          <small>{{props.rightFooter}}</small>
+          <small v-if="rightFooter">{{rightFooter}}</small>
         </span>
         <span class="c-float-right">
-          <small>{{props.leftFooter}}</small>
+          <small v-if="leftFooter">{{leftFooter}}</small>
         </span>
       </div>
       <slot></slot>
@@ -20,28 +20,16 @@
 
 <script>
 export default {
-  name: 'CWidgetSmallText',
+  name: 'CWidgetHeaderDetails',
   props: {
     variant: {
       type: String,
       default: 'primary'
     },
-    rightHeader: {
-      type: String,
-      default: 'rightHeader:string'
-    },
-    rightFooter: {
-      type: String,
-      default: 'rightFooter:string'
-    },
-    leftHeader: {
-      type: String,
-      default: 'leftHeader:string'
-    },
-    leftFooter: {
-      type: String,
-      default: 'leftFooter:string'
-    }
+    rightHeader: String,
+    rightFooter: String,
+    leftHeader: String,
+    leftFooter: String
   }
 }
 </script>

@@ -1,26 +1,30 @@
-<template functional>
-  <div :class="props.inverse ? `c-card c-text-white c-bg-${props.variant}` : 'c-card'">
+<template>
+  <div :class="inverse ? `c-card c-text-white c-bg-${variant}` : 'c-card'">
+    <slot name="header"></slot>
     <div class="c-card-body">
       <div
         v-if="$slots.default"
         class="c-h1 c-text-muted c-text-right c-mb-4"
       >
         <slot></slot>
-        <!-- <i :class="props.iconClasses"></i> -->
       </div>
-      <div class="c-h4 c-mb-0">{{props.header}}</div>
-      <small class="c-text-muted c-text-uppercase c-font-weight-bold">
-        {{props.text}}
+      <div v-if="header" class="c-h4 c-mb-0">{{header}}</div>
+      <small
+        v-if="text"
+        class="c-text-muted c-text-uppercase c-font-weight-bold"
+      >
+        {{text}}
       </small>
       <slot name="progress">
         <CProgress
-          :variant="!props.inverse ? props.variant : ''"
-          :value="props.value"
-          :class="props.inverse ? 'c-progress-white' : ''"
+          :variant="!inverse ? variant : ''"
+          :value="value"
+          :class="inverse ? 'c-progress-white' : ''"
           class="c-progress-xs c-my-3 c-mb-0"
         />
       </slot>
     </div>
+    <slot name="footer"></slot>
   </div>
 </template>
 
@@ -32,16 +36,12 @@ export default {
     CProgress
   },
   props: {
-    iconClasses: String,
-    header: {
+    header: String,
+    text: String,
+    variant: {
       type: String,
-      default: 'header:string'
+      default: 'primary'
     },
-    text: {
-      type: String,
-      default: 'text:string'
-    },
-    variant: String,
     inverse: Boolean,
     value: {
       type: Number,

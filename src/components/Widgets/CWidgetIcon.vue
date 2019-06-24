@@ -1,5 +1,6 @@
 <template>
   <div class="c-card">
+    <slot name="header"></slot>
     <div
       class="c-card-body c-clearfix c-d-flex c-align-items-center"
       :class="noPadding ? 'c-p-0' : 'c-p-3'"
@@ -10,57 +11,28 @@
       >
         <slot></slot>
       </div>
-
       <div>
-        <div :class="`c-text-value c-text-${variant}`">
+        <div v-if="header" :class="`c-text-value c-text-${variant}`">
           {{header}}
         </div>
-        <div class="c-text-muted c-text-uppercase c-font-weight-bold c-small">
+        <div
+          v-if="text"
+          class="c-text-muted c-text-uppercase c-font-weight-bold c-small"
+        >
           {{text}}
         </div>
       </div>
     </div>
-    <div
-      v-if="link || $slots.link"
-      class="c-card-footer c-px-3 c-py-2"
-    >
-      <slot name="link">
-        <CLink
-          class="c-font-weight-bold c-font-xs c-btn-block c-text-muted"
-          :href="link"
-        >
-          {{linkText}}
-          <CIcon name="arrowRight" class="c-float-right" width="16"/>
-        </CLink>
-      </slot>
-    </div>
+    <slot name="footer"></slot>
   </div>
 </template>
 
 <script>
-import CLink from '../Link/CLink'
-import { CIcon as CIconRaw } from '@coreui/icons/vue'
-import { arrowRight } from '@coreui/icons'
-const CIcon = Object.assign({}, CIconRaw, { icons : { arrowRight }})
-
 export default {
   name: 'CWidgetIcon',
-  components: { CLink, CIcon },
   props: {
-    addIconClasses: String,
-    header: {
-      type: String,
-      default: 'header:string'
-    },
-    text: {
-      type: String,
-      default: 'text:string'
-    },
-    linkText: {
-      type: String,
-      default: 'View More'
-    },
-    link: String,
+    header: String,
+    text: String,
     noPadding: Boolean,
     variant: {
       type: String,
