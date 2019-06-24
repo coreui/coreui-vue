@@ -4,6 +4,7 @@ exports[`CWidgetSimple matches custom props snapshot 1`] = `
 <div
   class="c-card"
 >
+   
   <div
     class="c-card-body c-text-center"
   >
@@ -22,30 +23,6 @@ exports[`CWidgetSimple matches custom props snapshot 1`] = `
     </div>
      
   </div>
-</div>
-`;
-
-exports[`CWidgetSimple matches default props snapshot 1`] = `
-<div
-  class="c-card"
->
-  <div
-    class="c-card-body c-text-center"
-  >
-    <div
-      class="c-text-muted c-small c-text-uppercase c-font-weight-bold"
-    >
-      
-      header:string
-    
-    </div>
-     
-    <div
-      class="c-h2 c-py-3"
-    >
-      text:string
-    </div>
-     
-  </div>
+   
 </div>
 `;

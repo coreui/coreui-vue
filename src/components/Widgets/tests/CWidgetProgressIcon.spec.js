@@ -8,24 +8,19 @@ Vue.component('CProgress', CProgress)
 const ComponentName = 'CWidgetProgressIcon'
 const defaultWrapper = mount(Component)
 const customWrapper = mount(Component, {
-  context:{
-    props: {
-      text: 'test',
-      header: 'test',
-      iconClasses: 'icon-custom',
-      variant: 'info',
-      value: 35,
-      inverse: true
-    }
+  propsData: {
+    text: 'test',
+    header: 'test',
+    iconClasses: 'icon-custom',
+    variant: 'info',
+    value: 35,
+    inverse: true
   }
 })
 
 describe(ComponentName, () => {
   it('has a name', () => {
     expect(Component.name).toMatch(ComponentName)
-  })
-  it('is functional component', () => {
-    expect(defaultWrapper.isFunctionalComponent).toBe(true)
   })
   // it('correctly render component with default props', () => {
   //   expect(defaultWrapper.findAll('div').at(0).attributes().class).toMatch('card')

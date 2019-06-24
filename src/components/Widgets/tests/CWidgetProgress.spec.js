@@ -8,24 +8,19 @@ Vue.component('CProgress', CProgress)
 const ComponentName = 'CWidgetProgress'
 const defaultWrapper = shallowMount(Component)
 const customWrapper = shallowMount(Component, {
-  context:{
-    props: {
-      variant: 'info',
-      inverse: true,
-      value: 30,
-      text:'test',
-      header: 'test',
-      footer: 'test'
-    }
+  propsData: {
+    variant: 'info',
+    inverse: true,
+    value: 30,
+    text:'test',
+    header: 'test',
+    footer: 'test'
   }
 })
 
 describe(ComponentName, () => {
   it('has a name', () => {
     expect(Component.name).toMatch(ComponentName)
-  })
-  it('is functional component', () => {
-    expect(defaultWrapper.isFunctionalComponent).toBe(true)
   })
   // it('correctly render component with default props', () => {
   //   expect(defaultWrapper.findAll('div').at(0).attributes().class).toMatch('card')

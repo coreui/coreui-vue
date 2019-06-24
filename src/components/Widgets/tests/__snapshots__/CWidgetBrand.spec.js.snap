@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CWidgetSocial matches custom props snapshot 1`] = `
+exports[`CWidgetBrand matches custom props snapshot 1`] = `
 <div
   class="c-card"
 >
@@ -18,16 +18,16 @@ exports[`CWidgetSocial matches custom props snapshot 1`] = `
         class="c-text-value-lg"
       >
         
-        rightHeader
-      
+          rightHeader
+        
       </div>
        
       <div
         class="c-text-uppercase c-text-muted c-small"
       >
         
-        rightFooter
-      
+          rightFooter
+        
       </div>
     </div>
      
@@ -42,23 +42,23 @@ exports[`CWidgetSocial matches custom props snapshot 1`] = `
         class="c-text-value-lg"
       >
         
-        leftHeader
-      
+          leftHeader
+        
       </div>
        
       <div
         class="c-text-uppercase c-text-muted c-small"
       >
         
-        leftFooter
-      
+          leftFooter
+        
       </div>
     </div>
   </div>
 </div>
 `;
 
-exports[`CWidgetSocial matches default props snapshot 1`] = `
+exports[`CWidgetBrand matches default props snapshot 1`] = `
 <div
   class="c-card"
 >
@@ -72,21 +72,9 @@ exports[`CWidgetSocial matches default props snapshot 1`] = `
     <div
       class="c-col"
     >
-      <div
-        class="c-text-value-lg"
-      >
-        
-        rightHeader:string
-      
-      </div>
+      <!---->
        
-      <div
-        class="c-text-uppercase c-text-muted c-small"
-      >
-        
-        rightFooter:string
-      
-      </div>
+      <!---->
     </div>
      
     <div
@@ -96,21 +84,9 @@ exports[`CWidgetSocial matches default props snapshot 1`] = `
     <div
       class="c-col"
     >
-      <div
-        class="c-text-value-lg"
-      >
-        
-        leftHeader:string
-      
-      </div>
+      <!---->
        
-      <div
-        class="c-text-uppercase c-text-muted c-small"
-      >
-        
-        leftFooter:string
-      
-      </div>
+      <!---->
     </div>
   </div>
 </div>

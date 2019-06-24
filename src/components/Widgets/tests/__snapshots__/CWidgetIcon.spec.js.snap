@@ -2,8 +2,11 @@
 
 exports[`CWidgetIcon matches custom props snapshot 1`] = `
 <div
+  addiconclasses="someClasses"
   class="c-card"
+  link="link.com"
 >
+   
   <div
     class="c-card-body c-clearfix c-d-flex c-align-items-center c-p-3"
   >
@@ -30,28 +33,6 @@ exports[`CWidgetIcon matches custom props snapshot 1`] = `
     </div>
   </div>
    
-  <div
-    class="c-card-footer c-px-3 c-py-2"
-  >
-    <clink-stub
-      activeclass="c-active"
-      class="c-font-weight-bold c-font-xs c-btn-block c-text-muted"
-      event="click"
-      exactactiveclass="c-active"
-      href="link.com"
-      routertag="a"
-      target="_self"
-    >
-      
-        View More
-        
-      <cicon-stub
-        class="c-float-right"
-        name="arrowRight"
-        width="16"
-      />
-    </clink-stub>
-  </div>
 </div>
 `;
 
@@ -59,6 +40,7 @@ exports[`CWidgetIcon matches default props snapshot 1`] = `
 <div
   class="c-card"
 >
+   
   <div
     class="c-card-body c-clearfix c-d-flex c-align-items-center c-p-3"
   >
@@ -67,24 +49,11 @@ exports[`CWidgetIcon matches default props snapshot 1`] = `
     />
      
     <div>
-      <div
-        class="c-text-value c-text-primary"
-      >
-        
-        header:string
-      
-      </div>
+      <!---->
        
-      <div
-        class="c-text-muted c-text-uppercase c-font-weight-bold c-small"
-      >
-        
-        text:string
-      
-      </div>
+      <!---->
     </div>
   </div>
    
-  <!---->
 </div>
 `;
