@@ -18,16 +18,23 @@ export default {
   props,
   inject: {
     progress: {
-      default: null
+      default: undefined
     }
   },
   computed: {
+    directlyDeclaredProps () {
+      return Object.keys(this.$options.propsData)
+    },
+    injectedProps () {
+      return this.progress && this.progress.props ? this.progress.props : {}
+    },
     props () {
-      return Object.keys(props).reduce((props, key) => {
-        const propUndefined = !Object.keys(this.$options.propsData).includes(key)
-        const propInheritedFromProgress = propUndefined && this.progress.props[key]
-        props[key] = propInheritedFromProgress ? this.progress.props[key] : this[key]
-        return props
+      return Object.keys(props).reduce((computedProps, key) => {
+        const propIsDirectlyDeclared = this.directlyDeclaredProps.includes(key)
+        const parentPropExists = this.injectedProps[key] !== undefined
+        const propIsInherited = parentPropExists && !propIsDirectlyDeclared
+        computedProps[key] = propIsInherited ? this.injectedProps[key] : this[key]
+        return computedProps
       }, {})
     },
     progressBarClasses () {
