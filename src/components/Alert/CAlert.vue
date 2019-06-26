@@ -8,21 +8,16 @@
       aria-atomic="true"
     >
       <CButtonClose
-        v-if="dismissible && dismissible !== 'customButton' "
+        v-if="dismissible"
         @click="dismiss()"
-        :iconHtml="iconHtml"
-        :disabled="this.dismissible === 'disabled'"
       />
-      <slot :dismiss="dismiss">
-
-      </slot>
+      <slot :dismiss="dismiss"></slot>
     </div>
   </transition>
 </template>
 
 <script>
 import CButtonClose from '../Button/CButtonClose'
-
 export default {
   name: 'CAlert',
   components: { CButtonClose },
@@ -31,16 +26,12 @@ export default {
       type: String,
       default: 'info'
     },
-    dismissible: {
-      type: [Boolean, String],
-      validator: val => [false, true, 'disabled', 'customButton'].includes(val)
-    },
+    dismissible: Boolean,
     show: {
       type: [Boolean, Number],
       default: true
     },
     fade: Boolean,
-    iconHtml: String
   },
   data () {
     return {
@@ -60,24 +51,19 @@ export default {
     }
   },
   watch: {
-    show (val, oldVal) {
-      if(val == oldVal) return
-      this.clearCounter()
+    show (val) {
       this.state = val
     },
     state: {
       immediate: true,
       handler (val, oldVal) {
-        if (val == oldVal) return
-
+        this.clearCounter()
         if (!val && oldVal) {
-          this.clearCounter()
           this.$emit('dismissed')
         } else if (typeof val === 'number' && val) {
           this.countdownTimeout = setTimeout(() => {
-            this.$listeners['update:show'] ?
-              this.$emit('update:show', this.state - 1) :
-              this.state--
+            const isWatched = this.$listeners['update:show']
+            isWatched ? this.$emit('update:show', this.state - 1) : this.state--
           }, 1000)
         }
       }
@@ -88,7 +74,7 @@ export default {
   },
   methods: {
     dismiss () {
-      this.$emit('update:show', false)
+      this.$emit('update:show', 0)
       this.state = false
     },
     clearCounter () {
@@ -100,8 +86,8 @@ export default {
   }
 }
 </script>
-<style>
 
+<style>
   .fade-enter-active, .fade-leave-active {
     transition: opacity .3s;
   }
