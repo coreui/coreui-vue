@@ -1,9 +1,7 @@
 <template>
   <div :class="itemClasses">
     <CImage
-      v-if="image || imgSrc"
-      :src="imgSrc"
-      v-bind="image"
+      v-bind="computedImage"
       class="c-d-block c-w-100 c-h-100 c-img-fluid"
     />
     <slot>
@@ -23,8 +21,7 @@ export default {
     CImage
   },
   props: {
-    image: Object,
-    imgSrc: String,
+    image: [String, Object],
     caption: String,
     text: String,
     active: Boolean
@@ -53,6 +50,9 @@ export default {
           'c-active': this.activated
         }
       ]
+    },
+    computedImage () {
+      return typeof this.image === 'string' ? { src: this.image } : this.image
     }
   },
   methods: {
