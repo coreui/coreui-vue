@@ -26,7 +26,7 @@
         :for="safeId"
         class="c-custom-file-label"
       >
-        {{placeholder}}
+        {{computedPlaceholder}}
       </label>
     </template>
 
@@ -71,7 +71,7 @@ export default {
   //     default: null
   //   },
   //   multiple: Boolean,
-  //   custom: [Boolean, String],
+  //   custom: Boolean,
   //   addInputClasses: String,
   //   addLabelClasses: String,
   //   addWrapperClasses: String,
@@ -82,18 +82,12 @@ export default {
     }
   },
   computed: {
-    placeholder () {
-      return typeof this.custom === 'string' ?
-                      this.custom : this.multiple ?
-                        'Choose files...' : 'Choose file...'
+    computedPlaceholder () {
+      return this.placeholder || `Choose file${this.multiple ?'s':''}...`
     },
     // classesComputedProps mixin
-    haveCustomSize () {
-      return ['','sm','lg'].includes(this.size) &&
-             Boolean(this.size && !this.custom)
-    },
     // haveCustomSize () {
-    //   return ['','sm','lg'].includes(this.size) && Boolean(this.size)
+    //   return ['sm','lg'].includes(this.size)
     // },
     computedClasses () {
       return [

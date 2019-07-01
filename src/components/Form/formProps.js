@@ -44,10 +44,11 @@ const textInputsProps = {
   }
 }
 
-// Html props: disabled, required, accept, id
+// Html props: disabled, required, accept, id, placeholder
 export const formFileProps = Object.assign(
   {}, formGroupAlwaysSharedProps, props, {
-  custom: [Boolean, String],
+  custom: Boolean,
+  placeholder: String,
   multiple: Boolean
 })
 
@@ -91,6 +92,6 @@ export const formCheckboxProps = Object.assign(
     type: [String, Number],
     default: undefined
   },
-  custom: [Boolean, String],
+  custom: Boolean,
   inline: Boolean
 })
