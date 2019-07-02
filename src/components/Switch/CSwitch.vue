@@ -24,7 +24,7 @@ export default {
   props: {
     variant: {
       type: String,
-      default: 'secondary'
+      default: 'primary'
     },
     outline: {
       type: [Boolean, String],

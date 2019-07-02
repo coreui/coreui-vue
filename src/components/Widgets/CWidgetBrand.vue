@@ -36,7 +36,7 @@ export default {
   props: {
     variant: {
       type: String,
-      variant: 'primary'
+      default: 'primary'
     },
     rightHeader: String,
     rightFooter: String,

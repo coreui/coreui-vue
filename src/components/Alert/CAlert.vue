@@ -24,7 +24,7 @@ export default {
   props: {
     variant: {
       type: String,
-      default: 'info'
+      default: 'primary'
     },
     dismissible: Boolean,
     show: {

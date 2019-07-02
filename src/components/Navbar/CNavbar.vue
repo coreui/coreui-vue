@@ -7,7 +7,10 @@ export const props = {
     default: 'nav'
   },
   light: Boolean,
-  variant: String,
+  variant: {
+    type: String,
+    default: 'primary'
+  },
   toggleable: {
     type: [Boolean, String],
     default: false,

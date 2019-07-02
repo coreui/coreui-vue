@@ -7,7 +7,7 @@
     <i :class="['c-nav-icon', icon]"></i> {{name}}
     <CBadge
       v-if="badge && badge.text"
-      :variant="badge.variant || 'info'"
+      :variant="badge.variant || 'primary'"
     >
       {{badge.text}}
     </CBadge>
@@ -21,7 +21,6 @@ const props = Object.assign(linkPropsFactory(), {
     name: String,
     icon: [String, Array, Object],
     badge: Object,
-    variant: String,
     url: String
   }
 )

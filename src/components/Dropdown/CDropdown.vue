@@ -26,7 +26,7 @@ export default {
     noCaret: Boolean,
     variant: {
       type: String,
-      default: 'secondary'
+      default: 'primary'
     },
     size: {
       type: String,

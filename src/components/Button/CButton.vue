@@ -15,7 +15,7 @@ const btnProps = {
   },
   variant: {
     type: String,
-    default: 'secondary'
+    default: 'primary'
   },
   type: {
     type: String,

@@ -9,7 +9,7 @@ const props = Object.assign(linkProps, {
   },
   variant: {
     type: String,
-    default: 'secondary'
+    default: 'primary'
   },
   pill: Boolean,
   textHtml: String
