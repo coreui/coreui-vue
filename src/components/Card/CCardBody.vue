@@ -3,7 +3,7 @@ import { mergeData } from 'vue-functional-data-merge'
 import sharedCardProps from './sharedCardProps'
 
 export const props = Object.assign(
-  sharedCardProps.props,
+  sharedCardProps,
   {
     titleHtml: String,
     titleTag: {
@@ -45,7 +45,7 @@ export default {
 
     if (props.bodyHtml && cardContent === undefined) {
       cardContent = h(
-        'div',
+        props.tag || 'div',
         { domProps: { innerHTML: props.bodyHtml}}
       )
     }

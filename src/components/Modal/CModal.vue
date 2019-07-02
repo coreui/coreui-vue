@@ -24,9 +24,7 @@
             </slot>
           </div>
           <div v-if="!noBody" class="c-modal-body">
-            <slot name="body">
-                <slot></slot>
-            </slot>
+            <slot :hide="hide"></slot>
           </div>
           <div v-if="!noFooter" class="c-modal-footer">
             <slot name="footer" :hide="hide">
@@ -34,12 +32,12 @@
                 type="button"
                 class="c-btn c-btn-secondary" @click="hide()"
               >
-                Close
+                Cancel
               </button>
               <button
                 type="button"
                 :class="btnClasses"
-                @click="hide()"
+                @click="hide(true)"
               >
                 OK
               </button>
@@ -139,11 +137,13 @@ export default {
   },
   methods: {
     modalClick (e) {
-      if(e.target === this.$el.firstElementChild && !this.noCloseOnBackdrop)
+      if (e.target === this.$el.firstElementChild && !this.noCloseOnBackdrop) {
         this.hide()
+      }
     },
-    hide () {
+    hide (accepted = false) {
       this.$emit('update:visible', false)
+      this.$emit('accepted', accepted)
     },
     toggle (newVal) {
       setTimeout(() => { this.is_visible = newVal }, 0)

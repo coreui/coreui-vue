@@ -8,7 +8,7 @@
 export default {
   name: 'CCallout',
   props: {
-    variant: String,
+    variant: String
   }
 }
 </script>

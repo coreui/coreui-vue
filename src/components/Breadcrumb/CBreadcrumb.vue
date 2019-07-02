@@ -12,9 +12,9 @@ export default {
     addLastItemClasses: [String, Array]
   },
   render (h, { props, data }) {
-    if(!Array.isArray(props.items)){ return }
-    let childNodes = props.items.map((item, index, items) => {
-      if(typeof item !== 'object'){ return }
+    if (!Array.isArray(props.items)) { return }
+    const childNodes = props.items.map((item, index, items) => {
+      if (typeof item !== 'object') { return }
 
       const isLast = items.length === index + 1
       const tag = isLast ? 'span' : CLink
@@ -28,13 +28,15 @@ export default {
         props: item
       }
       const itemProps = isLast ? lastItemProps : linkItemProps
-      return h('li',
-             {
-               staticClass: 'c-breadcrumb-item',
-               class: { 'c-active': isLast },
-               attrs: { role: 'presentation' }
-             },
-             [h(tag, itemProps)])
+      return h(
+        'li',
+         {
+           staticClass: 'c-breadcrumb-item',
+           class: { 'c-active': isLast },
+           attrs: { role: 'presentation' }
+         },
+         [h(tag, itemProps)]
+       )
     })
     return h('ol', mergeData(data, { staticClass: 'c-breadcrumb' }), childNodes)
   }

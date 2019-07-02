@@ -1,6 +1,7 @@
 <template>
   <div :class="itemClasses">
     <CImage
+      v-if="image" 
       v-bind="computedImage"
       class="c-d-block c-w-100 c-h-100 c-img-fluid"
     />

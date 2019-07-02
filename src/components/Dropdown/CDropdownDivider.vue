@@ -1,17 +1,15 @@
 <script>
 import { mergeData } from 'vue-functional-data-merge'
 
-export const props = {
-  tag: {
-    type: String,
-    default: 'div'
-  }
-}
-
 export default {
   functional: true,
   name: 'CDropdownDivider',
-  props,
+  props: {
+    tag: {
+      type: String,
+      default: 'div'
+    }
+  },
   render (h, { props, data }) {
     return h(
       props.tag,

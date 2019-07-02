@@ -32,25 +32,29 @@ export default {
   },
   watch: {
     show (val, oldVal) {
-      if(val === oldVal) return
-      this.visible = val
+      if (val !== oldVal) {
+        this.visible = val
+      }
     },
     visible (val, oldVal) {
-      if (val !== oldVal)
+      if (val !== oldVal) {
         this.collapseController(val)
+      }
     }
   },
   mounted () {
     this.$el.style.display = this.visible ?  '' : 'none'
     this.$nextTick(() => {
       this.el = document.getElementById(this.toggler)
-      if(this.el)
+      if (this.el) {
         this.el.addEventListener('click', this.collapse)
+      }
     })
   },
   beforeDestroy () {
-    if(this.el)
+    if (this.el) {
       this.el.removeEventListener('click', this.collapse)
+    }
   },
   methods: {
     collapse () {
@@ -70,10 +74,11 @@ export default {
       }
     },
     turn () {
-      if(this.visible)
+      if (this.visible) {
         this.$el.style.height = this.collapsing
-      else
+      } else {
         this.$el.style.height = 0
+      }
     },
     toggle (val) {
       this.$el.style.display = ''
@@ -99,3 +104,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+* {
+  will-change: height;
+}
+</style>

@@ -127,7 +127,7 @@
         type: String,
         default: '&raquo;'
       },
-      notResponsive: Boolean
+      responsive: Boolean
     },
     data () {
       return {
@@ -143,7 +143,7 @@
       }
     },
     mounted () {
-      if (this.size !== 'sm' && !this.notResponsive) {
+      if (this.size !== 'sm' && this.responsive) {
         this.erd.listenTo(this.$el, this.onWrapperResize)
       }
     },

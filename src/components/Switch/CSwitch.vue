@@ -53,7 +53,8 @@ export default {
     labelOff: String,
     type: {
       type: String,
-      default: 'checkbox'
+      default: 'checkbox',
+      validator: type => ['checkbox', 'radio'].includes(type)
     }
   },
   data () {

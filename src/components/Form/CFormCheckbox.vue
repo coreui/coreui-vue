@@ -71,7 +71,7 @@ export default {
   //   },
   //   addInputClasses: String,
   //   addLabelClasses: String,
-  //   custom: [Boolean, String],
+  //   custom: Boolean,
   //   inline: Boolean
   // },
   type: 'checkbox',
@@ -94,6 +94,7 @@ export default {
     customType () {
       return this.$options.type === 'checkbox' ? 'checkbox' : 'radio'
     },
+    
     computedClasses () {
       const controlClass = this.custom ? 'c-custom-control' : 'c-form-check'
       return {

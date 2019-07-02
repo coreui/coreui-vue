@@ -1,23 +1,21 @@
 <script>
 import { mergeData } from 'vue-functional-data-merge'
 
-export const props = {
-  tag: {
-    type: String,
-    default: 'div'
-  },
-  fluid: Boolean,
-  header: String,
-  lead: String,
-  variant: String,
-  borderVariant: String,
-  textVariant: String,
-}
-
 export default {
   functional: true,
   name: 'CJumbotron',
-  props,
+  props: {
+    tag: {
+      type: String,
+      default: 'div'
+    },
+    fluid: Boolean,
+    header: String,
+    lead: String,
+    variant: String,
+    borderVariant: String,
+    textVariant: String,
+  },
   render (h, { props, data, slots }) {
     let childNodes = []
     const $slots = slots()

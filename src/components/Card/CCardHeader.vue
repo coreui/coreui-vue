@@ -3,7 +3,7 @@ import { mergeData } from 'vue-functional-data-merge'
 import sharedCardProps from './sharedCardProps'
 
 export const props = Object.assign(
-  sharedCardProps.props,
+  sharedCardProps,
   {
     headerHtml: String
   }

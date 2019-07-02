@@ -1,5 +1,4 @@
 import CForm from './CForm'
-import CFormGroup from './CFormGroup'
 import CFormInput from './CFormInput'
 import CFormCheckbox from './CFormCheckbox'
 import CFormFile from './CFormFile'
@@ -9,7 +8,6 @@ import CFormRadio from './CFormRadio'
 
 export {
   CForm,
-  CFormGroup,
   CFormInput,
   CFormCheckbox,
   CFormFile,

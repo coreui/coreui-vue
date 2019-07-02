@@ -5,7 +5,10 @@ export default {
   name: 'CButtonGroup',
   props: {
     vertical: Boolean,
-    size: String,
+    size: {
+      type: String,
+      validator: size => ['', 'sm', 'lg'].includes(size)
+    }
   },
   render (h, { props, data, children }) {
     return h(

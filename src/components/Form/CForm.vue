@@ -8,7 +8,7 @@ export default {
     // id: String,
     inline: Boolean,
     // novalidate:  Boolean,
-    validated: Boolean,
+    wasValidated: Boolean,
   },
   render(h, { props, data, children }) {
     return h(
@@ -16,7 +16,7 @@ export default {
       mergeData(data, {
         class: {
           'c-form-inline': props.inline,
-          'c-was-validated': props.validated
+          'c-was-validated': props.wasValidated
         },
         // attrs: {
         //   id: props.id,

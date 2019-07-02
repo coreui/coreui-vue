@@ -112,7 +112,6 @@
                   name="index-column"
                   :pageIndex="itemIndex"
                   :index="firstItemIndex + itemIndex"
-                  :number="firstItemIndex + itemIndex + 1"
                 >
                   <td>
                     {{indexColumn !== 'noIndexes' ? firstItemIndex + itemIndex + 1 : ''}}
@@ -155,7 +154,7 @@
           </template>
           <tr v-if="!currentItems.length">
             <td :colspan="colspan">
-              <slot name="empty-table">
+              <slot name="no-items-view">
                 <div class="c-text-center c-my-5">
                   <h2>{{ passedItems.length ? 'No filtering results ' : 'No items'}}
                     <CIcon
@@ -416,7 +415,7 @@ export default {
   },
   methods: {
     changeSort (column, index) {
-      if (index && !this.sortable(index)) {
+      if (column && !this.sortable(index)) {
         return
       }
       //if column changed or sort was descending change asc to true

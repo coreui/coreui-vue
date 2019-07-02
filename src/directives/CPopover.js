@@ -24,7 +24,7 @@ export default {
     const html = props.html === false ? false : true
     return {
       title,
-      trigger: modifiersTriggers || props.trigger || 'hover',
+      trigger: props.trigger || modifiersTriggers || 'hover',
       html,
       placement: props.placement || 'right',
       delay: props.delay || 0,

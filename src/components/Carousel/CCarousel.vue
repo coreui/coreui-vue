@@ -12,17 +12,16 @@
       <slot></slot>
     </div>
     <template v-if="arrows">
-      <slot name="arrows">
-        <a class="c-carousel-control-prev" @click="previousItem">
-          <span class="c-carousel-control-prev-icon"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="c-carousel-control-next" @click="nextItem">
-          <span class="c-carousel-control-next-icon"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </slot>
+      <a class="c-carousel-control-prev" @click="previousItem">
+        <span class="c-carousel-control-prev-icon"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="c-carousel-control-next" @click="nextItem">
+        <span class="c-carousel-control-next-icon"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </template>
+    <slot name="navigation"></slot>
   </div>
 </template>
 

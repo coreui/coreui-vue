@@ -36,7 +36,6 @@ export default {
     //   'bottom': bottom corners rounded
     //   'left': left corners rounded
     //   'circle': circle/oval
-    //   '0': force rounding off
     rounded: {
       type: [Boolean, String],
       validator: val => {
@@ -46,6 +45,7 @@ export default {
     thumbnail: Boolean,
     align: {
       type: String,
+      default: 'center',
       validator: align => ['left', 'right', 'center'].includes(align)
     },
     blankColor: {
@@ -59,24 +59,24 @@ export default {
       return this.active !== false
     },
     alignClass () {
-      if (this.align === 'left') {
-        return 'c-float-left'
+      if (this.align === 'center') {
+        return 'c-mx-auto'
       } else if (this.align === 'right') {
         return 'c-float-right'
-      } else if (this.align === 'center') {
-        return 'c-mx-auto'
+      } else if (this.align === 'left') {
+        return 'c-float-left'
       }
     },
     imageClasses () {
       return [
         //animationClass is rendered in CImageLazy
         this.animationClasses,
+        this.alignClass,
         {
           'c-img-thumbnail': this.thumbnail,
           'c-img-fluid': this.fluid || this.fluidGrow,
           'c-w-100': this.fluidGrow,
           [`c-rounded${this.rounded===true?'':'-'+this.rounded}`]: this.rounded,
-          [this.alignClass]: Boolean(this.align),
           'c-d-block': this.block
         }
       ]

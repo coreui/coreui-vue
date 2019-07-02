@@ -12,7 +12,7 @@ export default {
       mergeData(data, {
         class: [
           'c-btn-toolbar',
-          props.justify ? 'c-justify-content-between' : ''
+          { 'c-justify-content-between': props.justify }
         ],
         attrs: {
           role: 'toolbar'
