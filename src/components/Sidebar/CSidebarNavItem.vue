@@ -13,9 +13,8 @@
     />
   </CSidebarNavDropdown>
   <li
-    :class="['c-nav-item', item.classes]"
-    @click="hideMobile"
     v-else
+    :class="['c-nav-item', item.classes]"
   >
     <slot>
       <CSidebarNavLink v-bind="item"/>
@@ -24,10 +23,8 @@
 </template>
 
 <script>
-import { hideMobile } from './hideMobile'
 export default {
   name: 'CSidebarNavItem',
-  mixins: [ hideMobile ],
   props: {
     item: [String, Array, Object]
   }
