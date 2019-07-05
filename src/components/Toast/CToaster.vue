@@ -9,6 +9,7 @@
 
 <script>
 import toastMixin from './toastMixin'
+
 export default {
   name: 'CToaster',
   provide () {
@@ -34,9 +35,6 @@ export default {
 </script>
 
 <style lang="scss">
-.toaster {
-  z-index: 1100
-}
 @import "~@coreui/coreui/scss/partials/toasts.scss";
 @import "~@coreui/coreui/scss/utilities/_flex.scss";
 </style>

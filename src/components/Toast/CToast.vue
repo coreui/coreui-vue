@@ -1,40 +1,39 @@
 <template>
-  <transition
-    :name="0 ? null : 'fade'"
-    :appear="true"
-    v-if="!isClosed"
+  <div
+    :class="toastClasses"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+    :style="computedStyles"
+    v-if="isShowed"
   >
-    <div
-      :class="[toastClasses]"
-      role="alert"
-      aria-live="assertive"
-      aria-atomic="true"
-      style="z-index:1100"
-      :style="computedStyles"
-    >
-      <div v-if="!props.noHeader" class="c-toast-header">
+    <div v-if="!props.noHeader" class="c-toast-header">
+      <slot name="title">
         <strong class="c-mr-auto" v-html="props.titleHtml"></strong>
-        <CButtonClose
-          v-if="!props.noCloseButton"
-          @click="close()"
-          class="c-ml-2 c-mb-1"
-        />
-      </div>
-      <slot :close="close">
-        <div class="c-toast-body" v-html="props.bodyHtml">
-        </div>
       </slot>
+      <CButtonClose
+        v-if="!props.noCloseButton"
+        @click="close()"
+        class="c-ml-2 c-mb-1"
+      />
     </div>
-  </transition>
+    <slot>
+      <div class="c-toast-body" v-html="props.bodyHtml"></div>
+    </slot>
+  </div>
 </template>
 
 <script>
 import toastMixin from './toastMixin'
 import CButtonClose from '../Button/CButtonClose'
+const props = Object.assign({}, toastMixin.props, {
+  show: Boolean
+})
 
 export default {
   name: 'CToast',
   mixins: [ toastMixin ],
+  props,
   components: {
     CButtonClose
   },
@@ -45,8 +44,13 @@ export default {
   },
   data () {
     return {
-      isClosed: false,
+      isShowed: this.show,
       timeout: null
+    }
+  },
+  watch: {
+    show (val) {
+      this.isShowed = val
     }
   },
   mounted () {
@@ -56,26 +60,36 @@ export default {
   },
   computed: {
     toastClasses () {
-      return ['c-toast',
+      return [
+        'c-toast',
         {
-          'c-show': this.props.show,
+          'c-show': this.isShowed,
           'c-full': this.props.position.includes('full')
         }
       ]
     },
+    directlyDeclaredProps () {
+      return Object.keys(this.$options.propsData)
+    },
+    injectedProps () {
+      return this.toaster && this.toaster.props ? this.toaster.props : {}
+    },
     props () {
-      return Object.keys(toastMixin.props).reduce((props, key) => {
-        const propUndefined = !Object.keys(this.$options.propsData).includes(key)
-        const propInheritedFromToaster = propUndefined && this.toaster.props[key]
-        props[key] = propInheritedFromToaster ? this.toaster.props[key] : this[key]
-        return props
+      return Object.keys(toastMixin.props).reduce((computedProps, key) => {
+        const propIsDirectlyDeclared = this.directlyDeclaredProps.includes(key)
+        const parentPropExists = this.injectedProps[key] !== undefined
+        const propIsInherited = parentPropExists && !propIsDirectlyDeclared
+        computedProps[key] = propIsInherited ? this.injectedProps[key] : this[key]
+        return computedProps
       }, {})
     }
   },
   methods: {
     close () {
-      this.isClosed = true
+      this.isShowed = false
+      this.$emit('update:show', false)
       this.$el.removeEventListener('mouseover', this.onHover)
+      this.$el.removeEventListener('mouseout', this.onHoverOut)
     },
     onHover () {
       this.$el.removeEventListener('mouseover', this.onHover)
@@ -99,12 +113,6 @@ export default {
 <style lang="scss">
   .toast.full {
     max-width: 100%;
-  }
-  .fade-enter, .fade-leave-to {
-    opacity: 0;
-  }
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .3s;
   }
   @import "~@coreui/coreui/scss/partials/toasts.scss";
   @import "~@coreui/coreui/scss/utilities/_spacing.scss";

@@ -10,17 +10,10 @@ export default {
         ].includes(position)
       }
     },
-    show: Boolean,
-    autohide: Number,
+    titleHtml: String,
+    bodyHtml: String,
     noHeader: Boolean,
-    titleHtml: {
-      type: String,
-      default: 'CToast component'
-    },
-    bodyHtml: {
-      type: String,
-      default: 'Hello, world! This is a <b>toast</b> message.'
-    },
+    autohide: Number,
     noCloseButton: Boolean
   },
   computed: {
@@ -28,6 +21,8 @@ export default {
       const position = this.props ? this.props.position : this.position
       if (position !== 'static' && !this.toaster) {
         return [
+          { 'z-index': 1100 },
+          { 'min-width': '350px' },
           { position: 'fixed' },
           this.getVerticalPosition(this.position),
           this.getHorizontalPosition(this.position)
@@ -37,11 +32,7 @@ export default {
   },
   methods: {
     getVerticalPosition (position) {
-      if (position.includes('bottom')) {
-        return { bottom: 0 }
-      } else {
-        return { top: 0 }
-      }
+      return position.includes('bottom') ? { bottom: 0 } : { top: 0 }
     },
     getHorizontalPosition (position) {
       if (position.includes('right')) {
