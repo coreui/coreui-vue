@@ -6,7 +6,8 @@
           v-for="(tab, key) in ctabInstances"
           @click.native="tabClick(tab)"
           v-bind="tab.$attrs"
-          :customTitleSlot="tab.$scopedSlots.title"
+          :title-html="tab.titleHtml"
+          :custom-title-slot="tab.$scopedSlots.title"
           :active="tab === activeTab"
           :disabled="tab.disabled"
           :key="key"
@@ -29,7 +30,7 @@
         </transition>
       </div>
     </div>
-    <!-- needed to instantiate CTab components, do nothing -->
+    <!-- needed to instantiate CTab components, shouldn't render anything -->
     <slot></slot>
   </div>
 </template>
@@ -53,7 +54,7 @@ export default {
       default: true
     },
     noFade: Boolean,
-    vertical: [Boolean, Number, String],
+    vertical: [Boolean, Object],
     addNavWrapperClasses: [String, Array],
     addNavClasses: [String, Array],
     addTabsWrapperClasses: [String, Array],
@@ -91,8 +92,13 @@ export default {
       return this.activatedTab || this.ctabInstances.filter(el => el.active)[0]
     },
     gridClasses () {
-      const cols = this.vertical === true ? 6 : this.vertical
-      return cols ? { navs: `c-col-sm-${cols}`, content: `c-col-sm-${12-cols}`} : {}
+      const vertical = this.vertical
+      if (typeof vertical === 'object' && vertical.navs && vertical.tabs) {
+        return vertical
+      } else if (vertical !== false) {
+        return { navs: 'c-col-sm-4', content: 'c-col-sm-8'}
+      }
+      return {}
     },
     ctabInstances () {
       if (this.defaultSlotNodes) {

@@ -2,6 +2,7 @@
 export default {
   name: 'CTab',
   props: {
+    titleHtml: String, 
     active: Boolean,
     disabled: Boolean
   },
