@@ -75,7 +75,7 @@ function genConfig(name) {
       }),
       commonjs({
         namedExports: {
-          '@coreui/coreui/dist/js/coreui-utilities.js': ['deepObjectsMerge'],
+          '@coreui/coreui/dist/js/coreui-utilities.js': ['deepObjectsMerge', 'getStyle'],
           '@coreui/icons/vue': ['CIcon']
         }
       }),
