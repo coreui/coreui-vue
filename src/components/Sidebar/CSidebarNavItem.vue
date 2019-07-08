@@ -1,10 +1,11 @@
 <template>
   <CSidebarNavDropdown
-    v-if="item.children"
+    v-if="item && item.children"
     :name="item.name"
     :url="item.url"
     :icon="item.icon"
     :open="item.open"
+    :class="item.class"
   >
     <CSidebarNavItem
       v-for="(dropdownItem, key) in item.children"
@@ -14,7 +15,7 @@
   </CSidebarNavDropdown>
   <li
     v-else
-    :class="['c-nav-item', item.classes]"
+    :class="['c-nav-item', item ? item.class : null]"
   >
     <slot>
       <CSidebarNavLink v-bind="item"/>

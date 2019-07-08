@@ -19,8 +19,7 @@ export default {
   props: {
     navItems: {
       type: Array,
-      required: true,
-      default: () => []
+      required: true
     }
   },
   components: {

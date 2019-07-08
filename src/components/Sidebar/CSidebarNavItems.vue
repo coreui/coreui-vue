@@ -18,7 +18,6 @@
           :name="item.name"
           :url="item.url"
           :icon="item.icon"
-          :label="item.label"
           :classes="item.class"
         />
       </template>
