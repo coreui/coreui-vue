@@ -11,6 +11,11 @@ export default {
   name: 'CSidebar',
   props: {
     fixed: Boolean,
+    breakpoint: {
+      type: [String, Boolean],
+      default: 'lg',
+      validator: val => [false, '', 'sm', 'md', 'lg', 'xl'].includes(val)
+    },
     minimize: Boolean,
     show: {
       type: Boolean,
@@ -18,11 +23,6 @@ export default {
     },
     mobileShow: Boolean,
     noHideOnMobileClick: Boolean,
-    breakpoint: {
-      type: [String, Boolean],
-      default: 'lg',
-      validator: val => [false, 'sm', 'md', 'lg', 'xl'].includes(val)
-    },
     aside: Boolean,
     light: Boolean
   },
@@ -45,9 +45,12 @@ export default {
   mounted () {
     this.erd.listenTo(document.body, (el) => this.bodyWidth = el.clientWidth)
 
-    this.$root.$on(`c-${this.mode}-toggle-minimize`, () => {
-      this.switchState('minimized')
+    this.$root.$on(`c-sidebar-minimize`, (evt) => {
+      if (this.$el.contains(evt.target)) {
+        this.switchState('minimized')
+      }
     })
+
     this.$root.$on(`c-${this.mode}-toggle`, () => {
       if (this.isOnMobile) {
         this.switchState('mobileOpen')
@@ -100,9 +103,9 @@ export default {
         `c-sidebar-${this.light ? 'light' : 'dark'}`,
         {
           'c-sidebar-show': this.isOnMobile && this.mobileOpen,
-          [`c-sidebar-${this.breakpoint}-show`]: this.open,
+          [`c-sidebar-${this.breakpoint}-show`]: this.open && this.breakpoint,
           'c-sidebar-fixed': this.fixed,
-          'c-sidebar-minimized': this.minimized,
+          'c-sidebar-minimized': this.minimized && !this.isOnMobile,
           'c-sidebar-right': this.aside
         }
       ]
