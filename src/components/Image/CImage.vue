@@ -45,8 +45,7 @@ export default {
     thumbnail: Boolean,
     align: {
       type: String,
-      default: 'center',
-      validator: align => ['left', 'right', 'center'].includes(align)
+      validator: align => ['', 'left', 'right', 'center'].includes(align)
     },
     blankColor: {
       type: String,
@@ -66,6 +65,7 @@ export default {
       } else if (this.align === 'left') {
         return 'c-float-left'
       }
+      return null
     },
     imageClasses () {
       return [
