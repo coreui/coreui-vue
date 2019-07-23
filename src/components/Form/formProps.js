@@ -23,8 +23,8 @@ const universalProps = {
     type: [Boolean, Function],
     default: null
   },
-  addInputClasses: String,
-  addLabelClasses: String
+  addInputClasses: [String, Array, Object],
+  addLabelClasses: [String, Array, Object]
 }
 const props = Object.assign({}, universalProps, {
   horizontal: [Boolean, Object],
@@ -32,7 +32,7 @@ const props = Object.assign({}, universalProps, {
     type: String,
     validator: str => ['','sm','lg'].includes(str)
   },
-  addWrapperClasses: String
+  addWrapperClasses: [String, Array, Object]
 })
 const textInputsProps = {
   readonly: Boolean,

@@ -9,7 +9,7 @@ export default {
       default: '&times;'
     },
     buttonClasses: {
-      type: String,
+      type: [String, Array, Object],
       default: 'c-close'
     }
   },

@@ -20,8 +20,8 @@ export default {
     show: Boolean,
     dropup: Boolean,
     disabled: Boolean,
-    addMenuClasses: String,
-    addButtonClasses: String,
+    addMenuClasses: [String, Array, Object],
+    addButtonClasses: [String, Array, Object],
     nav: Boolean,
     noCaret: Boolean,
     variant: {

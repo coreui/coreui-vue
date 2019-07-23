@@ -42,7 +42,7 @@ export default {
     rightFooter: String,
     leftHeader: String,
     leftFooter: String,
-    addHeaderClasses: String
+    addHeaderClasses: [String, Array, Object]
   }
 }
 </script>

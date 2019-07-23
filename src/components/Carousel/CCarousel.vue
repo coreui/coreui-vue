@@ -37,7 +37,7 @@ export default {
     indicators: Boolean,
     arrows: Boolean,
     indicatorClasses: {
-      type: [String, Array],
+      type: [String, Array, Object],
       default: 'c-carousel-indicators'
     },
     height: String

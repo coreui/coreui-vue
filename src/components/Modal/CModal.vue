@@ -73,9 +73,9 @@ export default {
     noHeader: Boolean,
     noBody: Boolean,
     noFooter: Boolean,
-    addModalClasses: String,
-    addDialogClasses: String,
-    addContentClasses: String
+    addModalClasses: [String, Array, Object],
+    addDialogClasses: [String, Array, Object],
+    addContentClasses: [String, Array, Object]
   },
   data () {
     return {

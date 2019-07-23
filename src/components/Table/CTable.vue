@@ -252,7 +252,7 @@ export default {
     indexColumn: [Boolean, String],
     filterRow: Boolean,
     pagination: [Boolean, Object],
-    addTableClasses: String,
+    addTableClasses: [String, Array, Object],
     notResponsive: Boolean,
     sorting: Boolean,
     small: Boolean,

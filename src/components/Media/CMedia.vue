@@ -19,9 +19,9 @@ export default {
     CImage
   },
   props: {
-    asidePositionClasses: String,
-    addAsideClasses: String,
-    addBodyClasses: String,
+    asidePositionClasses: [String, Array, Object],
+    addAsideClasses: [String, Array, Object],
+    addBodyClasses: [String, Array, Object],
     asideRight: Boolean,
     asideImageProps: Object,
     asidePosition: {

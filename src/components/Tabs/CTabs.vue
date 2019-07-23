@@ -55,11 +55,11 @@ export default {
     },
     noFade: Boolean,
     vertical: [Boolean, Object],
-    addNavWrapperClasses: [String, Array],
-    addNavClasses: [String, Array],
-    addTabsWrapperClasses: [String, Array],
-    addTabsClasses: [String, Array],
-    addTabClasses: [String, Array]
+    addNavWrapperClasses: [String, Array, Object],
+    addNavClasses: [String, Array, Object],
+    addTabsWrapperClasses: [String, Array, Object],
+    addTabsClasses: [String, Array, Object],
+    addTabClasses: [String, Array, Object]
   },
   data () {
     return {

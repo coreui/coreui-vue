@@ -21,7 +21,7 @@ export default {
       default: '#'
     },
     icon: String,
-    classes: String
+    classes: [String, Array, Object]
   }
 }
 </script>

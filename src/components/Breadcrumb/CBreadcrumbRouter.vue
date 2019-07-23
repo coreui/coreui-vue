@@ -4,9 +4,9 @@ import CBreadcrumb from './CBreadcrumb'
 export default {
   name: 'CBreadcrumbRouter',
   props: {
-    addClasses: [String, Array],
-    addLinkClasses: [String, Array],
-    addLastItemClasses: [String, Array]
+    addClasses: [String, Array, Object],
+    addLinkClasses: [String, Array, Object],
+    addLastItemClasses: [String, Array, Object]
   },
   computed: {
     items () {

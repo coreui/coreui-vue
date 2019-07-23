@@ -7,9 +7,9 @@ export default {
   name: 'CBreadcrumb',
   props: {
     items: Array,
-    addClasses: [String, Array],
-    addLinkClasses: [String, Array],
-    addLastItemClasses: [String, Array]
+    addClasses: [String, Array, Object],
+    addLinkClasses: [String, Array, Object],
+    addLastItemClasses: [String, Array, Object]
   },
   render (h, { props, data }) {
     if (!Array.isArray(props.items)) { return }
