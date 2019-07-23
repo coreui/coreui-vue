@@ -59,7 +59,7 @@
                   <div class="c-d-inline">{{name}}</div>
                 </slot>
                 <slot
-                  v-if="!noSorting && sortable(index)"
+                  v-if="sortable(index)"
                   name="sorting-icon"
                   :state="getIconState(index)"
                 >
@@ -184,7 +184,7 @@
                   <div class="c-d-inline">{{name}}</div>
                 </slot>
                 <slot
-                  v-if="!noSorting && sortable(index)"
+                  v-if="sortable(index)"
                   name="sorting-icon"
                   :state="getIconState(index)"
                 >
@@ -254,7 +254,7 @@ export default {
     pagination: [Boolean, Object],
     addTableClasses: String,
     notResponsive: Boolean,
-    noSorting: Boolean,
+    sorting: Boolean,
     small: Boolean,
     dark: Boolean,
     striped: Boolean,
@@ -378,7 +378,7 @@ export default {
       return {'cursor:pointer': this.$listeners && this.$listeners['row-clicked']}
     },
     sortingIconStyles () {
-      return !this.noSorting ? 'c-position-relative c-pr-4' : ''
+      return this.sorting ? 'c-position-relative c-pr-4' : ''
     },
     colspan () {
       return this.rawColumnNames.length + (this.indexColumn ? 1 : 0)
@@ -450,7 +450,7 @@ export default {
       return classes
     },
     sortable (index) {
-      return !this.noSorting && (!this.fields || !this.fields[index].noSorting)
+      return this.sorting && (!this.fields || !this.fields[index].noSorting)
     },
     headerClass (index) {
       const fields = this.fields
