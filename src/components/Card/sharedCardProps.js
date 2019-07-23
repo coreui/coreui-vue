@@ -5,6 +5,6 @@ export default {
   textVariant: String,
   align: {
     type: String,
-    validator: val => ['left', 'center', 'right'].includes(val)
+    validator: val => ['', 'left', 'center', 'right'].includes(val)
   }
 }

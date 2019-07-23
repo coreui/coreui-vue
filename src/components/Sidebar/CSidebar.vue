@@ -12,9 +12,9 @@ export default {
   props: {
     fixed: Boolean,
     breakpoint: {
-      type: [String, Boolean],
+      type: String,
       default: 'lg',
-      validator: val => [false, '', 'sm', 'md', 'lg', 'xl'].includes(val)
+      validator: val => ['sm', 'md', 'lg', 'xl'].includes(val)
     },
     minimize: Boolean,
     show: {

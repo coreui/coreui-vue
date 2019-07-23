@@ -5,11 +5,11 @@ const props = {
   noGutters: Boolean,
   alignV: {
     type: String,
-    validator: str => ['start', 'end', 'center','baseline', 'stretch'].includes(str)
+    validator: str => ['', 'start', 'end', 'center','baseline', 'stretch'].includes(str)
   },
   alignH: {
     type: String,
-    validator: str => ['start', 'end', 'center','between', 'around'].includes(str)
+    validator: str => ['', 'start', 'end', 'center','between', 'around'].includes(str)
   }
 }
 

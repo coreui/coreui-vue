@@ -30,7 +30,7 @@ export default {
     },
     size: {
       type: String,
-      validator: val => ['sm', 'lg'].includes(val)
+      validator: val => ['', 'sm', 'lg'].includes(val)
     },
     split: Boolean,
     offset: Number,

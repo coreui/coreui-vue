@@ -5,7 +5,7 @@ export default {
       default: 'top-right',
       validator: position => {
         return [
-          'static', 'top-right', 'top-left', 'top-center', 'top-full',
+          '', 'static', 'top-right', 'top-left', 'top-center', 'top-full',
           'bottom-right', 'bottom-left', 'bottom-center', 'bottom-full'
         ].includes(position)
       }

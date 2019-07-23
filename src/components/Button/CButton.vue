@@ -11,7 +11,7 @@ const btnProps = {
   outline: Boolean,
   size: {
     type: String,
-    validator: value => ['sm','lg'].includes(value)
+    validator: value => ['', 'sm', 'lg'].includes(value)
   },
   variant: {
     type: String,

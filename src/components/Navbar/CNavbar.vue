@@ -14,11 +14,11 @@ export const props = {
   toggleable: {
     type: [Boolean, String],
     default: false,
-    validator: val => [false, true, 'sm', 'md', 'lg', 'xl'].includes(val)
+    validator: val => ['', false, true, 'sm', 'md', 'lg', 'xl'].includes(val)
   },
   fixed: {
     type: String,
-    validator: val => ['top', 'bottom'].includes(val)
+    validator: val => ['', 'top', 'bottom'].includes(val)
   },
   sticky: Boolean,
   print: Boolean
@@ -29,21 +29,19 @@ export default {
   functional: true,
   props,
   render (h, { props, data, children }) {
+    const expandClassSuffix = props.toggleable === true ? '' : props.toggleable
     return h(
       props.tag,
       mergeData(data, {
         staticClass: 'c-navbar',
         class: [
           props.light ? 'c-navbar-light' : 'c-navbar-dark',
-          props.toggleable !== true ?
-            props.toggleable ?
-              `c-navbar-expand-${props.toggleable}` :
-              'c-navbar-expand': '',
           {
             'c-d-print': props.print,
             'c-sticky-top': props.sticky,
             [`c-bg-${props.variant}`]: Boolean(props.variant),
             [`c-fixed-${props.fixed}`]: Boolean(props.fixed),
+            [`c-navbar-expand-${expandClassSuffix}`]: Boolean(props.toggleable)
           }
         ],
         attrs: {

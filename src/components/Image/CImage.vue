@@ -39,7 +39,7 @@ export default {
     rounded: {
       type: [Boolean, String],
       validator: val => {
-        return [false, true, 'top','right','bottom','left','circle'].includes(val)
+        return ['', false, true, 'top','right','bottom','left','circle'].includes(val)
       }
     },
     thumbnail: Boolean,
