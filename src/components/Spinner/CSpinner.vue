@@ -5,10 +5,7 @@ export default {
   functional: true,
   props: {
     grow: Boolean,
-    variant: {
-      type: String,
-      default: 'primary'
-    },
+    variant: String,
     small: Boolean,
     tag: {
       type: String,

@@ -31,10 +31,7 @@ export default {
     header: String,
     text: String,
     footer: String,
-    variant: {
-      type: String,
-      default: 'primary'
-    },
+    variant: String,
     inverse: Boolean,
     value: {
       type: Number,

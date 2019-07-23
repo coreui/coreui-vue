@@ -22,10 +22,7 @@ export default {
   name: 'CAlert',
   components: { CButtonClose },
   props: {
-    variant: {
-      type: String,
-      default: 'primary'
-    },
+    variant: String,
     dismissible: Boolean,
     show: {
       type: [Boolean, Number],

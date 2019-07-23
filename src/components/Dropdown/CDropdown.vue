@@ -24,10 +24,7 @@ export default {
     addButtonClasses: [String, Array, Object],
     nav: Boolean,
     noCaret: Boolean,
-    variant: {
-      type: String,
-      default: 'primary'
-    },
+    variant: String,
     size: {
       type: String,
       validator: val => ['', 'sm', 'lg'].includes(val)

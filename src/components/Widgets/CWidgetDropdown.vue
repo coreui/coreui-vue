@@ -14,10 +14,7 @@
 export default {
   name: 'CWidgetDropdown',
   props: {
-    variant: {
-      type: String,
-      default: 'primary'
-    },
+    variant: String,
     header: String,
     text: String
   }

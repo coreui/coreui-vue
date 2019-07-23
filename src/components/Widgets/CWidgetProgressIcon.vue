@@ -38,10 +38,7 @@ export default {
   props: {
     header: String,
     text: String,
-    variant: {
-      type: String,
-      default: 'primary'
-    },
+    variant: String,
     inverse: Boolean,
     value: {
       type: Number,

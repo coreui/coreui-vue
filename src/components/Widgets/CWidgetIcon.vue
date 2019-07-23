@@ -34,10 +34,7 @@ export default {
     header: String,
     text: String,
     noPadding: Boolean,
-    variant: {
-      type: String,
-      default: 'primary'
-    }
+    variant: String
   }
 }
 </script>

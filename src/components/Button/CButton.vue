@@ -13,10 +13,7 @@ const btnProps = {
     type: String,
     validator: value => ['', 'sm', 'lg'].includes(value)
   },
-  variant: {
-    type: String,
-    default: 'primary'
-  },
+  variant: String,
   type: {
     type: String,
     default: 'button'

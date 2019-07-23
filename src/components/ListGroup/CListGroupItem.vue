@@ -10,10 +10,7 @@ const props = Object.assign(
       default: 'div'
     },
     action: Boolean,
-    variant: {
-      type: String,
-      default: 'primary'
-    },
+    variant: String
   },
   linkPropsFactory()
 )

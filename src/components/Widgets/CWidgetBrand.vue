@@ -34,10 +34,7 @@
 export default {
   name: 'CWidgetBrand',
   props: {
-    variant: {
-      type: String,
-      default: 'primary'
-    },
+    variant: String,
     rightHeader: String,
     rightFooter: String,
     leftHeader: String,

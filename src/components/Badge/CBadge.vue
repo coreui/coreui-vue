@@ -7,10 +7,7 @@ const props = Object.assign(linkProps, {
     type: String,
     default: 'span'
   },
-  variant: {
-    type: String,
-    default: 'primary'
-  },
+  variant: String,
   pill: Boolean,
   textHtml: String
 })

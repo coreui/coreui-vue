@@ -22,10 +22,7 @@ export default {
   name:'CSwitch',
   inheritAttrs: false,
   props: {
-    variant: {
-      type: String,
-      default: 'primary'
-    },
+    variant: String,
     outline: {
       type: [Boolean, String],
       default: undefined,
