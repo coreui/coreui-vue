@@ -2,7 +2,6 @@
   <button
     class="c-header-toggler"
     type="button"
-    @click="$root.$emit(`c-${aside ? 'aside' : 'sidebar' }-toggle`)"
   >
     <span class="c-header-toggler-icon"/>
   </button>
@@ -10,9 +9,6 @@
 
 <script>
 export default {
-  name: 'CSidebarToggler',
-  props: {
-    aside: Boolean
-  }
+  name: 'CSidebarToggler'
 }
 </script>
