@@ -31,13 +31,19 @@ export default {
     Object.defineProperty(state, 'minimized', {
       get: () => this.minimized
     })
+    Object.defineProperty(state, 'open', {
+      get: () => this.open
+    })
+     Object.defineProperty(state, 'mobileOpen', {
+      get: () => this.mobileOpen
+    })
     return { state }
   },
   data () {
     return {
       open: this.show,
       mobileOpen: this.mobileShow,
-      minimized: this.initialMinimize,
+      minimized: this.minimize,
       erd: elementResizeDetectorMaker(),
       bodyWidth: undefined,
     }
@@ -51,7 +57,7 @@ export default {
       }
     })
 
-    this.$root.$on(`c-${this.mode}-toggle`, () => {
+    this.$root.$on(this.listenedEvents, () => {
       if (this.isOnMobile) {
         this.switchState('mobileOpen')
       } else {
@@ -87,8 +93,12 @@ export default {
     }
   },
   computed: {
-    mode () {
-      return this.aside ? 'aside' : 'sidebar'
+    listenedEvents () {
+      const componentEvent = this.aside ? 'c-aside-toggle' : 'c-sidebar-toggle'
+      if (this.$attrs.id) {
+        return [componentEvent, this.$attrs.id]
+      }
+      return componentEvent
     },
     isVisible () {
       if (this.bodyWidth) {
