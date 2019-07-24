@@ -35,17 +35,16 @@ function isToggle (props) {
 }
 
 function computeClasses (props) {
-  return [
-    `c-btn-${props.outline ? 'outline-' : ''}${props.variant}`,
-    props.pill ? 'c-btn-pill' : props.square ? 'c-btn-square' : '',
-    {
-      [`c-btn-${props.size}`]: Boolean(props.size),
-      [`c-btn-ghost-${props.variant}`]: props.ghost,
-      'c-btn-block': props.block,
-      'c-disabled': props.disabled,
-      'c-active': props.pressed
-    }
-  ]
+  return {
+    [`c-btn-${props.outline ? 'outline-' : ''}${props.variant}`]: props.variant,
+    [`c-btn-${props.size}`]: Boolean(props.size),
+    [`c-btn-ghost-${props.variant}`]: props.ghost,
+    'c-btn-block': props.block,
+    'c-btn-pill': props.pill,
+    'c-btn-square': props.square && !props.pill,
+    'c-disabled': props.disabled,
+    'c-active': props.pressed
+  }
 }
 
 function computePassedProps (props) {
