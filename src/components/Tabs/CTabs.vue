@@ -1,5 +1,5 @@
 <template>
-  <div :class="tabsClasses">
+  <div :class="wrapperClasses">
     <div :class="navWrapperClasses">
       <ul :class="navClasses">
         <CTabNav
@@ -15,7 +15,7 @@
       </ul>
     </div>
     <div :class="[addTabsWrapperClasses, gridClasses.content]">
-      <div :class="['c-tab-content', addTabsClasses]">
+      <div :class="tabsClasses">
         <transition :name="noFade ? null : 'fade'" mode="out-in">
           <KeepAlive>
             <template v-for="(tab, key) in ctabInstances">
@@ -68,7 +68,7 @@ export default {
     }
   },
   computed: {
-    tabsClasses () {
+    wrapperClasses () {
       return { 'c-row c-no-gutters': this.vertical }
     },
     navWrapperClasses () {
@@ -85,6 +85,15 @@ export default {
           'c-nav-fill': this.fill,
           'c-nav-justified': this.justified,
           'c-h-100': this.vertical
+        }
+      ]
+    },
+    tabsClasses () {
+      return [
+        this.addTabsClasses,
+        'c-tab-content',
+        {
+          'c-pl-3 c-p-0': this.vertical
         }
       ]
     },
