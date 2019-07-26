@@ -14,7 +14,8 @@ export default {
     bodyHtml: String,
     noHeader: Boolean,
     autohide: Number,
-    noCloseButton: Boolean
+    noCloseButton: Boolean,
+    noFade: Boolean
   },
   computed: {
     computedStyles () {
