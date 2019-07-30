@@ -29,14 +29,14 @@ export default {
     let cardSubtitle = h(false)
     let cardContent = children
 
-    if (props.title) {
+    if (props.titleHtml) {
       cardTitle = h(props.titleTag, {
         staticClass: 'c-card-title',
         domProps: { innerHTML: props.titleHtml }
       })
     }
 
-    if (props.subtitle) {
+    if (props.subtitleHtml) {
       cardSubtitle = h(props.subtitleTag, {
         staticClass: 'c-card-subtitle c-mb-2 c-text-muted',
         domProps: { innerHTML: props.subtitleHtml }

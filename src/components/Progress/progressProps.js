@@ -14,5 +14,8 @@ export default {
     type: Number,
     default: 100
   },
-  value: Number
+  value: {
+    type: Number,
+    required: true
+  }
 }

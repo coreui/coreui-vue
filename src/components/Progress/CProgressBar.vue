@@ -5,7 +5,7 @@
     role="progressbar"
     aria-valuemin="0"
     :aria-valuemax="props.max.toString()"
-    :aria-valuenow="props.value.toFixed(props.precision)"
+    :aria-valuenow="computedValue"
   >
     <slot>{{ text }}</slot>
   </div>
@@ -55,10 +55,15 @@ export default {
       const p = Math.pow(10, this.props.precision)
       return Math.round((100 * p * this.props.value) / this.props.max) / p
     },
+    computedValue () {
+      return this.props.value.toFixed(props.precision)
+    },
     text () {
-      if (this.props.showValue || this.props.showProgress) {
-        return this.progressValue || this.props.value
-      }
+      if (this.props.showProgress) {
+        return this.progressValue
+      } else if (this.props.showValue) {
+        return this.computedValue
+      }  
     }
   }
 }

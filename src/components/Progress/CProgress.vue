@@ -1,7 +1,7 @@
 <template>
   <div class="c-progress" :style="{ height }">
     <slot>
-      <CProgressBar/>
+      <CProgressBar :value="value"/>
     </slot>
   </div>
 </template>

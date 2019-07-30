@@ -8,7 +8,6 @@
       <CTreeGeneratorItem
         :item="item"
         :name="itemName"
-        :items="items"
         :components="components"
         :key="itemName"
       />
