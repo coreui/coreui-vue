@@ -30,13 +30,11 @@ export default {
     this.checkPosition()
   },
   beforeDestroy () {
-    this.removeListener()
+    this.removeScrollListener()
   },
   computed: {
     animationClasses () {
-      if (!this.noFade) {
-        return { 'c-opacity-0' : !this.animated }
-      }
+      return { 'c-opacity-0' : !this.noFade && !this.animated }
     },
     propOffset () {
       return !this.active ? this.loadOffset : this.fadeOffset
@@ -59,17 +57,17 @@ export default {
     load () {
       this.active = true
       if (this.noFade) {
-        this.removeListener()
-      } else if (this.fadeOffset >= this.loadOffset) {
-        this.$nextTick(() => this.animate())
+        this.removeScrollListener()
+      } else {
+        this.$nextTick(() => this.checkPosition())
       }
     },
     animate () {
-      this.removeListener()
+      this.removeScrollListener()
       this.$el.style.transition = `opacity ${this.fadeTime}ms ease-in-out`
       this.animated = true
     },
-    removeListener () {
+    removeScrollListener () {
       return document.removeEventListener('scroll', this.checkPosition)
     }
   }

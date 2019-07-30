@@ -7,10 +7,10 @@ export const props = {
     default: 'iframe',
     validator: type => ['iframe', 'embed', 'video', 'object', 'img'].includes(type)
   },
-  aspect: {
+  ratio: {
     type: String,
     default: '16by9',
-    validator: aspect => ['21by9', '16by9', '4by3', '1by1'].includes(aspect)
+    validator: ratio => ['21by9', '16by9', '4by3', '1by1'].includes(ratio)
   },
   tag: {
     type: String,
@@ -27,7 +27,7 @@ export default {
       {
         ref: data.ref,
         staticClass: 'c-embed-responsive',
-        class: `c-embed-responsive-${props.aspect}`
+        class: `c-embed-responsive-${props.ratio}`
       },
       [h(
         props.type,

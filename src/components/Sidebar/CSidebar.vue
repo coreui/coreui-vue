@@ -21,7 +21,7 @@ export default {
       type: Boolean,
       default: true
     },
-    mobileShow: Boolean,
+    showOnMobile: Boolean,
     noHideOnMobileClick: Boolean,
     aside: Boolean,
     light: Boolean
@@ -34,7 +34,7 @@ export default {
     Object.defineProperty(state, 'open', {
       get: () => this.open
     })
-     Object.defineProperty(state, 'mobileOpen', {
+    Object.defineProperty(state, 'mobileOpen', {
       get: () => this.mobileOpen
     })
     return { state }
@@ -42,7 +42,7 @@ export default {
   data () {
     return {
       open: this.show,
-      mobileOpen: this.mobileShow,
+      mobileOpen: this.showOnMobile,
       minimized: this.minimize,
       erd: elementResizeDetectorMaker(),
       bodyWidth: undefined,
@@ -51,11 +51,11 @@ export default {
   mounted () {
     this.erd.listenTo(document.body, (el) => this.bodyWidth = el.clientWidth)
 
-    this.$root.$on(`c-sidebar-minimize`, (evt) => {
-      if (this.$el.contains(evt.target)) {
-        this.switchState('minimized')
-      }
-    })
+    // this.$root.$on(`c-sidebar-minimize`, (evt) => {
+    //   if (this.$el.contains(evt.target)) {
+    //     this.switchState('minimized')
+    //   }
+    // })
 
     this.$root.$on(this.listenedEvents, () => {
       if (this.isOnMobile) {
@@ -71,7 +71,7 @@ export default {
         this.switchState('open')
       }
     },
-    mobileShow (val, oldVal) {
+    showOnMobile (val, oldVal) {
       if (val !== oldVal && val !== this.mobileOpen) {
         this.switchState('mobileOpen')
       }
@@ -141,14 +141,15 @@ export default {
       const classList = Array.from(event.target.classList).join()
       const clickedOutsideSidebar = !this.$el.contains(event.target)
       if (
-        (clickedOutsideSidebar && !classList.includes('c-header-toggler')) || (!clickedOutsideSidebar && event.target.tagName === 'A')
+        (clickedOutsideSidebar && !classList.includes('c-header-toggler')) || 
+        (!clickedOutsideSidebar && event.target.tagName === 'A')
       ) {
         this.switchState('mobileOpen')
       }
     },
     switchState (variable) {
       const propNames = {
-        open: 'show', minimized: 'minimize', mobileOpen: 'mobileShow'
+        open: 'show', minimized: 'minimize', mobileOpen: 'showOnMobile'
       }
       this.$emit(`update:${propNames[variable]}`, !this[variable])
       this[variable] = !this[variable]

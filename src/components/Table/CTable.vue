@@ -244,7 +244,7 @@ export default {
   props: {
     items: Array,
     fields: Array,
-    perPage: {
+    itemsPerPage: {
       type: Number,
       default: 10
     },
@@ -281,7 +281,7 @@ export default {
         asc: this.defaultSorter.asc || true
       },
       page: this.activePage || 1,
-      perPageItems: this.perPage,
+      perPageItems: this.itemsPerPage,
       passedItems: this.items || []
     }
   },

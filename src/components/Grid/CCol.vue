@@ -18,24 +18,31 @@ export default {
   },
   render (h, { props, data, children }) {
     let classes = []
-    let prefixes = {'col': '', 'xs': '-xs', 'sm': '-sm',
-                    'md': '-md', 'lg': '-lg', 'xl': '-xl'}
+    let prefixes = {
+      'col': '', 
+      'xs': '-xs', 
+      'sm': '-sm', 
+      'md': '-md', 
+      'lg': '-lg', 
+      'xl': '-xl'
+    }
     Object.keys(prefixes).forEach((key) => {
-      if (props[key] === true)
+      if (props[key] === true) {
         classes.push(`c-col${prefixes[key]}`)
 
-      if (typeof props[key] === 'number' || typeof props[key] === 'string')
+      } else if (typeof props[key] === 'number' || typeof props[key] === 'string') {
         classes.push(`c-col${prefixes[key]}-${props[key]}`)
-
-      if (typeof props[key] === 'object') {
-        if(props[key].size)
+        
+      } else if (typeof props[key] === 'object') {
+        if (props[key].size) {
           classes.push(`c-col${prefixes[key]}-${props[key].size}`)
-
-        if(props[key].offset)
+        }
+        if (props[key].offset) {
           classes.push(`c-offset${prefixes[key]}-${props[key].offset}`)
-
-        if(props[key].order)
+        }
+        if (props[key].order) {
           classes.push(`c-order${prefixes[key]}-${props[key].order}`)
+        }
       }
     })
     return h(

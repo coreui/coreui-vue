@@ -5,7 +5,7 @@
     aria-disabled="false"
     aria-label="pagination"
   >
-    <li v-if="!hideDoubleArrows" :class="firstClasses">
+    <li v-if="!hideDoubleArrows" :class="backArrowsClasses">
       <CLink
         class="c-page-link"
         @click="setPage(1)"
@@ -15,7 +15,7 @@
         <span v-html="firstButtonHtml"></span>
       </CLink>
     </li>
-    <li v-if="!hideArrows" :class="firstClasses">
+    <li v-if="!hideArrows" :class="backArrowsClasses">
       <CLink
         class="c-page-link"
         @click="setPage(activePage - 1)"
@@ -56,7 +56,7 @@
     </li>
     <li
       v-if="!hideArrows"
-      :class="lastClasses"
+      :class="nextArrowsClasses"
     >
       <CLink
         class="c-page-link"
@@ -67,7 +67,7 @@
         <span v-html="nextButtonHtml"></span>
       </CLink>
     </li>
-    <li v-if="!hideDoubleArrows" :class="lastClasses">
+    <li v-if="!hideDoubleArrows" :class="nextArrowsClasses">
       <CLink
         class="c-page-link"
         @click="setPage(pages)"
@@ -148,16 +148,16 @@
       }
     },
     computed: {
-      firstClasses () {
+      backArrowsClasses () {
         return ['c-page-item', { 'c-disabled': this.activePage === 1 }]
       },
-      lastClasses () {
+      nextArrowsClasses () {
         return ['c-page-item', { 'c-disabled': this.activePage === this.pages }]
       },
       computedClasses () {
-        return `c-pagination c-pagination-${this.rwd} c-justify-content-${this.align} `
+        return `c-pagination c-pagination-${this.rwd} c-justify-content-${this.align}`
       },
-      dots () {
+      showDots () {
         return !this.hideDots && this.limit > 4 && this.limit < this.pages
       },
       maxPrevItems () {
@@ -167,10 +167,10 @@
         return Math.ceil((this.limit - 1) / 2)
       },
       beforeDots () {
-        return this.dots && this.activePage > this.maxPrevItems + 1
+        return this.showDots && this.activePage > this.maxPrevItems + 1
       },
       afterDots () {
-        return this.dots && this.activePage < this.pages - this.maxNextItems
+        return this.showDots && this.activePage < this.pages - this.maxNextItems
       },
       computedLimit () {
         return this.limit - this.afterDots - this.beforeDots
@@ -179,7 +179,7 @@
         return this.activePage + this.maxNextItems
       },
       lastItem () {
-        return this.range >= this.pages ? this.pages : this.range-this.afterDots
+        return this.range >= this.pages ? this.pages : this.range - this.afterDots
       },
       itemsAmount () {
         return this.pages < this.computedLimit ? this.pages : this.computedLimit

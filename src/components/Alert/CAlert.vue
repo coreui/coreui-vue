@@ -8,7 +8,7 @@
       aria-atomic="true"
     >
       <CButtonClose
-        v-if="dismissible"
+        v-if="closeButton"
         @click="dismiss()"
       />
       <slot :dismiss="dismiss"></slot>
@@ -23,7 +23,7 @@ export default {
   components: { CButtonClose },
   props: {
     variant: String,
-    dismissible: Boolean,
+    closeButton: Boolean,
     show: {
       type: [Boolean, Number],
       default: true
@@ -41,7 +41,7 @@ export default {
       return [
         'c-alert',
         {
-          'c-alert-dismissible': this.dismissible,
+          'c-alert-dismissible': this.closeButton,
           [`c-alert-${this.variant}`]: this.variant
         }
       ]

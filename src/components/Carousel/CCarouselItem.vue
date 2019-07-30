@@ -6,9 +6,12 @@
       class="c-d-block c-w-100 c-h-100 c-img-fluid"
     />
     <slot>
-      <div class="c-carousel-caption">
-        <h3>{{caption}}</h3>
-        <p>{{text}}</p>
+      <div 
+        v-if="captionHeader || captionText"
+        class="c-carousel-caption"
+      >
+        <h3>{{captionHeader}}</h3>
+        <p>{{captionText}}</p>
       </div>
     </slot>
   </div>
@@ -23,8 +26,8 @@ export default {
   },
   props: {
     image: [String, Object],
-    caption: String,
-    text: String,
+    captionHeader: String,
+    captionText: String,
     active: Boolean
   },
   data () {

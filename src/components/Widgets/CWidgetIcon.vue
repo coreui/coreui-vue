@@ -3,11 +3,11 @@
     <slot name="header"></slot>
     <div
       class="c-card-body c-clearfix c-d-flex c-align-items-center"
-      :class="noPadding ? 'c-p-0' : 'c-p-3'"
+      :class="noIconPadding ? 'c-p-0' : 'c-p-3'"
     >
       <div
         class="c-float-left c-mr-3 c-text-white"
-        :class="[`c-bg-${variant}`, noPadding ? 'c-p-4' : 'c-p-3']"
+        :class="[`c-bg-${variant}`, noIconPadding ? 'c-p-4' : 'c-p-3']"
       >
         <slot></slot>
       </div>
@@ -33,7 +33,7 @@ export default {
   props: {
     header: String,
     text: String,
-    noPadding: Boolean,
+    noIconPadding: Boolean,
     variant: String
   }
 }
