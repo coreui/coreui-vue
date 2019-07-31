@@ -1,21 +1,25 @@
 <template>
   <component
+    v-if="!item.children || typeof item.children !== 'object'"
+    :is="isPassed ? components[name] : name"
+    v-bind="computedItem"
+  />
+  <component
+    v-else
     :is="isPassed ? components[name] : name"
     v-bind="computedItem"
   >
-    <template v-if="item.children">
-      <template v-for="(descendantItem, descendandName) in item.children">
-        <template v-if="descendandName === 'text'">
-          {{descendantItem}}
-        </template>
-        <CTreeGeneratorItem
-          v-else
-          :key="descendandName"
-          :item="descendantItem"
-          :name="descendandName"
-          :components="components"
-        />
+    <template v-for="(descendantItem, descendandName) in item.children">
+      <template v-if="descendandName === 'text'">
+        {{descendantItem}}
       </template>
+      <CTreeGeneratorItem
+        v-else
+        :key="descendandName"
+        :item="descendantItem"
+        :name="descendandName"
+        :components="components"
+      />
     </template>
   </component>
 </template>
