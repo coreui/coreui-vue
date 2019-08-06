@@ -1,3 +1,28 @@
+<template>
+  <component :is="nav ? 'li' : 'div'" :class="computedDropdownClasses">
+    <slot name="toggler" :click="click" :visible="visible">
+      <component
+        :is="togglerTag"
+        v-on="{ click: splittedToggler ? '' : click }"
+        :class="computedTogglerClasses"
+        v-bind="splittedToggler ? '' : togglerAttrs"
+      >
+        <slot name="toggler-content">{{togglerText}}</slot>
+      </component>
+      <button
+        v-if="splittedToggler"
+        @click="click"
+        class="c-dropdown-toggle c-dropdown-toggle-split"
+        :class="computedTogglerClasses"
+        v-bind="togglerAttrs"
+      />
+    </slot>
+     <div ref="menu" :class="computedMenuClasses" v-on-clickaway="hide">
+      <slot></slot>
+    </div>
+  </component>
+</template>
+
 <script>
 import CLink from '../Link/CLink'
 import Popper from 'popper.js'
@@ -13,15 +38,14 @@ export default {
     }
   },
   props: {
-    buttonHtml: {
+    togglerText: {
       type: String,
       default: 'Dropdown'
     },
     show: Boolean,
-    dropup: Boolean,
     disabled: Boolean,
     addMenuClasses: [String, Array, Object],
-    addButtonClasses: [String, Array, Object],
+    addTogglerClasses: [String, Array, Object],
     nav: Boolean,
     noCaret: Boolean,
     variant: String,
@@ -31,7 +55,18 @@ export default {
     },
     split: Boolean,
     offset: Number,
-    placement: String,
+    placement: {
+      type: String,
+      validator: position => {
+        return [
+          '', 'top-end', 'top', 'top-start',
+          'bottom-end', 'bottom', 'bottom-start',
+          'right-start', 'right', 'right-end',
+          'left-start', 'left', 'left-end'
+        ].includes(position)
+      },
+      default: 'bottom-start'
+    },
     noFlip: Boolean,
     popperConfig: Object,
     noPopper: Boolean,
@@ -41,134 +76,117 @@ export default {
   },
   methods:{
     hide () {
-      if (this.$refs.menu.classList.contains('c-show')) {
+      if (this.visible) {
         this.toggle(false)
       }
     },
+
     click (e) {
       e.preventDefault()
       this.toggle(!this.visible)
     },
+
     toggle (value) {
-      if (!this.disabled) {
+      if (value === false || !this.disabled) {
         setTimeout(() => {
           this.visible = value
           this.menagePopper()
         }, 0)
       }
     },
+
     menagePopper () {
       if (!this.noPopper) {
         setTimeout(() => {
-          this.visible ? this.createPopper() : this.removePopper(), 0
-        })
+          this.visible ? this.createPopper() : this.removePopper()
+        }, 0)
       }
     },
+
     removePopper () {
       if (this._popper) {
         this._popper.destroy()
       }
       this._popper = null
     },
+
     createPopper () {
       this.removePopper()
-      this._popper = new Popper(this.$refs.toggle, this.$refs.menu, this.computedPopperConfig)
+      this._popper = new Popper(
+        this.$refs.toggle, 
+        this.$refs.menu, 
+        this.computedPopperConfig
+      )
     }
   },
   computed: {
     generatedPopperConfig () {
       return {
-        placement: this.placement || (this.dropup ? 'top-start' : 'bottom-start'),
+        placement: this.placement,
         modifiers: {
           offset: { offset: this.offset || 0 },
           flip: { enabled: !this.noFlip }
         }
       }
     },
+
     computedPopperConfig () {
       return deepObjectsMerge(this.generatedPopperConfig, this.popperConfig || {})
     },
+
+    carretClass () {
+      return this.placement.includes('top') ? 'c-dropup' : 
+               this.placement.includes('right') ? 'c-dropright' :
+                 this.placement.includes('left') ? 'c-dropleft' : 'c-dropdown'
+    },
+
     computedDropdownClasses () {
       return [
-        !this.dropup ? 'c-dropdown': 'c-dropup',
+        this.carretClass,
         {
           'c-show': this.visible,
           'c-nav-item': this.nav,
-          'c-btn-group': this.haveButtonClasses
+          'c-btn-group': this.splittedToggler
         }
       ]
     },
-    buttonTag () {
+
+    togglerTag () {
       return this.nav ? CLink : 'button'
     },
-    haveButtonClasses () {
-      return this.nav && !this.split ? Boolean(this.$options.propsData.variant) : true
+
+    splittedToggler () {
+      return this.split && !this.nav
     },
-    computedButtonClasses () {
+
+    computedTogglerClasses () {
       return [
-        this.addButtonClasses,
-        this.haveButtonClasses ? `c-btn c-btn-${this.variant}` : 'c-nav-link',
+        this.addTogglerClasses,
+        this.nav ? 'c-nav-link' : 'c-btn',
         {
           'c-dropdown-toggle': !this.noCaret && !this.split,
-          [`c-btn-${this.size}`]: this.size,
+          [`c-btn-${this.size}`]: this.size && !this.nav,
           'c-disabled' : this.disabled,
+          [`c-${ this.nav ? 'bg' : 'btn'}-${ this.variant }`]: this.variant
         }
       ]
     },
+
+    togglerAttrs () {
+      return {
+        'aria-expanded': this.visible ? 'true' : 'false',
+        'aria-haspopup': 'true',
+        ref: 'toggle'
+      }
+    },
+
     computedMenuClasses () {
       return [
         this.addMenuClasses,
         'c-dropdown-menu',
         { 'c-show': this.visible }
       ]
-    },
-  },
-  render (h) {
-    const toggle = this.$slots.button || h(
-      this.buttonTag,
-      {
-        style: { cursor: 'pointer' },
-        attrs: {
-          'aria-haspopup': true,
-          'aria-expanded': this.visible,
-        },
-        on: {
-          click: this.split ? '' : this.click
-        },
-        ref: 'toggle',
-        class: this.computedButtonClasses,
-        domProps: !this.$slots['button-content'] ?
-                  { innerHTML: this.buttonHtml } :
-                  null
-      }, this.$slots['button-content'])
-    let splitButton = h(false)
-    if (this.split) {
-      splitButton = h(
-      this.buttonTag,
-      {
-        class: [
-          this.computedButtonClasses,
-          'c-dropdown-toggle c-dropdown-toggle-split'
-        ],
-        on: { click: this.click }
-      })
     }
-
-
-    const content = h(
-      'div',
-      {
-        class: this.computedMenuClasses,
-        ref: 'menu',
-        directives: [{ name: 'on-clickaway', value: this.hide }],
-      },
-      this.$slots.default
-    )
-    return h(
-      this.nav ? 'li' : 'div',
-      { class: this.computedDropdownClasses },
-      [ toggle, splitButton, content ]
-    )
   }
 }
 </script>
