@@ -1,3 +1,7 @@
+<template>
+  <CBreadcrumb v-bind="props"/>
+</template>
+
 <script>
 import CBreadcrumb from './CBreadcrumb'
 
@@ -10,32 +14,25 @@ export default {
   },
   computed: {
     items () {
-      const routes = this.$route.matched.filter(route =>
-         route.name || route.meta.label
-      )
-      return routes.map(route => {
-        const item = {
-          to: route,
-          textHtml: route.meta && route.meta.label ?
-                      route.meta.label : route.name || null
-        }
-        return item
+      const routes = this.$route.matched.filter(route => {
+        return route.name || route.meta.label
       })
-    }
-  },
-  render (h) {
-    return h(
-      CBreadcrumb,
-      {
-        props:
-        {
-          items: this.items,
-          addClasses: this.addClasses,
-          addLinkClasses: this.addLinkClasses,
-          addLastItemClasses: this.addLastItemClasses
+      return routes.map(route => {
+        const meta = route.meta || {}
+        return {
+          to: route,
+          textHtml: meta.label || route.name || null
         }
+      })
+    },
+    props () {
+      return {
+        items: this.items,
+        addClasses: this.addClasses,
+        addLinkClasses: this.addLinkClasses,
+        addLastItemClasses: this.addLastItemClasses
       }
-    )
+    }
   }
 }
 </script>
