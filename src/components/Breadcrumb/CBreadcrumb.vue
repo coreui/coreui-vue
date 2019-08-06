@@ -1,44 +1,50 @@
+<template>
+  <ol class="c-breadcrumb">
+    <li
+      v-for="(item, index) in this.items.slice(0, -1)"
+      :key="index"
+      :class="[item.addClasses, sharedClasses, addLinkClasses]"
+      role="presentation"
+    >
+      <component 
+        :is="'CLink'" 
+        v-bind="Object.assign({}, item, { addClasses: null })"
+      />
+    </li>
+    <li 
+      :class="['c-active', lastItem.addClasses, sharedClasses, addLastItemClasses]"
+      role="presentation"
+    >
+     <!-- span added to enable text styling through classes -->
+     <span v-text="lastItem.textHtml"></span>
+    </li>
+  </ol>
+</template>
+
 <script>
-import { mergeData } from 'vue-functional-data-merge'
 import CLink from '../Link/CLink'
 
 export default {
-  functional: true,
   name: 'CBreadcrumb',
+  components: {
+    CLink
+  },
   props: {
-    items: Array,
+    items: {
+      type: Array,
+      required: true
+    },
     addClasses: [String, Array, Object],
     addLinkClasses: [String, Array, Object],
     addLastItemClasses: [String, Array, Object]
   },
-  render (h, { props, data }) {
-    if (!Array.isArray(props.items)) { return }
-    const childNodes = props.items.map((item, index, items) => {
-      if (typeof item !== 'object') { return }
-
-      const isLast = items.length === index + 1
-      const tag = isLast ? 'span' : CLink
-      const lastItemProps = {
-        class: [props.addClasses, props.addLastItemClasses, item.addClasses],
-        domProps: { innerHTML: item.textHtml}
-      }
-      const linkItemProps = {
-        class: [props.addClasses, props.addLinkClasses, item.addClasses],
-        domProps: { innerHTML: item.textHtml},
-        props: item
-      }
-      const itemProps = isLast ? lastItemProps : linkItemProps
-      return h(
-        'li',
-         {
-           staticClass: 'c-breadcrumb-item',
-           class: { 'c-active': isLast },
-           attrs: { role: 'presentation' }
-         },
-         [h(tag, itemProps)]
-       )
-    })
-    return h('ol', mergeData(data, { staticClass: 'c-breadcrumb' }), childNodes)
+  computed: {
+    lastItem () {
+      return this.items[this.items.length -1]
+    },
+    sharedClasses () {
+      return [this.addClasses, 'c-breadcrumb-item']
+    }
   }
 }
 </script>
