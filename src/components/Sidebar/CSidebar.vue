@@ -24,7 +24,13 @@ export default {
     showOnMobile: Boolean,
     noHideOnMobileClick: Boolean,
     aside: Boolean,
-    light: Boolean
+    light: Boolean,
+    dropdownsBehavior: {
+      type: String,
+      validator: (mode) => {
+        return ['', 'closeOnRouteChange', 'closeOnInactiveRoute'].includes(mode)
+      }
+    }
   },
   provide () {
     const state = {}
@@ -37,7 +43,8 @@ export default {
     Object.defineProperty(state, 'mobileOpen', {
       get: () => this.mobileOpen
     })
-    return { state }
+    const dropdownsBehavior = this.dropdownsBehavior
+    return { state, dropdownsBehavior }
   },
   data () {
     return {
@@ -50,12 +57,6 @@ export default {
   },
   mounted () {
     this.erd.listenTo(document.body, (el) => this.bodyWidth = el.clientWidth)
-
-    // this.$root.$on(`c-sidebar-minimize`, (evt) => {
-    //   if (this.$el.contains(evt.target)) {
-    //     this.switchState('minimized')
-    //   }
-    // })
 
     this.$root.$on(this.listenedEvents, () => {
       if (this.isOnMobile) {

@@ -1,21 +1,16 @@
 <template>
-  <router-link
-    tag="li"
-    :class="dropdownClasses"
-    :to="url"
-    disabled
-  >
+  <li :class="dropdownClasses">
     <div
       class="c-nav-link c-nav-dropdown-toggle"
       @click="handleClick"
     >
-      <i :class="classIcon"></i>
+      <i v-if="icon" :class="classIcon"></i>
       {{name}}
     </div>
     <ul class="c-nav-dropdown-items">
       <slot></slot>
     </ul>
-  </router-link>
+  </li>
 </template>
 
 <script>
@@ -23,26 +18,30 @@ export default {
   name:'CSidebarNavDropdown',
   props: {
     name: String,
-    url: String,
+    route: String,
     icon: String,
-    open: {
-      type: Boolean,
-      default: undefined
-    }
+    open: Boolean
   },
   data () {
     return {
       isOpen: this.open
     }
   },
+  inject: {
+    dropdownsBehavior: {
+      default: null
+    }
+  },
   watch: {
     $route: {
       immediate: true,
       handler (route) {
-        if (this.open === undefined) {
-          this.isOpen = route.fullPath.includes(this.url)
-        } else if (this.open === false) {
+        if (this.dropdownsBehavior === 'closeOnRouteChange') {
           this.isOpen = false
+        } else if (this.dropdownsBehavior === 'closeOnInactiveRoute') {
+          this.isOpen = route.fullPath.includes(this.route)
+        } else if (this.isOpen !== true) {
+          this.isOpen = route.fullPath.includes(this.route)
         }
       }
     }
@@ -66,9 +65,3 @@ export default {
   }
 }
 </script>
-
-<style lang="css">
-  .c-nav-link {
-    cursor:pointer;
-  }
-</style>
