@@ -4,7 +4,8 @@
     :exact="true"
     class="c-nav-link"
   >
-    <i :class="['c-nav-icon', icon]"></i> {{name}}
+    <i :class="['c-nav-icon', icon]"></i> 
+    {{name}}
     <CBadge
       v-if="badge && badge.text"
       :variant="badge.variant || 'primary'"

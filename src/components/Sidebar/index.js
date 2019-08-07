@@ -14,8 +14,18 @@ import CSidebarNavTitle from './CSidebarNavTitle'
 import CSidebarToggler from './CSidebarToggler'
 
 export {
-  CSidebar, CSidebarFooter, CSidebarForm, CSidebarHeader,
-  CSidebarMinimizer, CSidebarNav, CSidebarNavItems, CSidebarNavDivider,
-  CSidebarNavItem, CSidebarNavDropdown, CSidebarNavLabel,
-  CSidebarNavLink, CSidebarNavTitle, CSidebarToggler
+  CSidebar,
+  CSidebarFooter,
+  CSidebarForm,
+  CSidebarHeader,
+  CSidebarMinimizer,
+  CSidebarNav,
+  CSidebarNavItems,
+  CSidebarNavDivider,
+  CSidebarNavItem,
+  CSidebarNavDropdown,
+  CSidebarNavLabel,
+  CSidebarNavLink,
+  CSidebarNavTitle,
+  CSidebarToggler
 }

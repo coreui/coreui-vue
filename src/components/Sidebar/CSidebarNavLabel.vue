@@ -1,8 +1,10 @@
 <template>
-  <CSidebarNavItem :classes="['c-hidden-cn', this.classes]">
-    <a class="c-nav-label" :href="url">
-      <i v-if="icon" :class="icon"></i>
-      {{name}}
+  <CSidebarNavItem class="c-hidden-cn">
+    <a class="c-nav-label" v-bind="url ? { href:url } : {}">
+      <slot>
+        <i v-if="icon" :class="icon"></i>
+        {{name}}
+      </slot>
     </a>
   </CSidebarNavItem>
 </template>
@@ -16,12 +18,8 @@ export default {
   },
   props: {
     name: String,
-    url: {
-      type: String,
-      default: '#'
-    },
+    url: String,
     icon: String,
-    classes: [String, Array, Object]
   }
 }
 </script>

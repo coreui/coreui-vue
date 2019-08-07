@@ -1,5 +1,5 @@
 <template>
-  <li :class="['c-nav-title', classes]">
+  <li class="c-nav-title">
     <template v-if="wrapper && wrapper.element">
       <component
         :is="wrapper.element"
@@ -9,7 +9,9 @@
       </component>
     </template>
     <template v-else>
-      {{name}}
+      <slot>
+        {{name}}
+      </slot>
     </template>
   </li>
 </template>
@@ -19,7 +21,6 @@ export default {
   name: 'CSidebarNavTitle',
   props: {
     name: String,
-    classes: [String, Array, Object],
     wrapper: Object
   }
 }

@@ -5,6 +5,7 @@
     :url="item.url"
     :icon="item.icon"
     :open="item.open"
+    :route="item.route"
     :class="item.class"
   >
     <CSidebarNavItem
@@ -27,7 +28,12 @@
 export default {
   name: 'CSidebarNavItem',
   props: {
-    item: [String, Array, Object]
+    item: Object
+    // name: String,
+    // url: String,
+    // icon: String,
+    // open: String,
+    // children: Array
   }
 }
 </script>
