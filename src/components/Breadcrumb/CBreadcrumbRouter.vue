@@ -7,6 +7,9 @@ import CBreadcrumb from './CBreadcrumb'
 
 export default {
   name: 'CBreadcrumbRouter',
+  components: {
+    CBreadcrumb
+  },
   props: {
     addClasses: [String, Array, Object],
     addLinkClasses: [String, Array, Object],
