@@ -22,53 +22,60 @@ export default {
   data () {
     return {
       active: this.loadInitially,
-      animated: this.noFade
+      animated: false,
+      observer: null
     }
   },
   mounted () {
-    document.addEventListener('scroll', this.checkPosition)
-    this.checkPosition()
+    this.defineObserver()
   },
   beforeDestroy () {
-    this.removeScrollListener()
+    this.observer.unobserve(this.$el)    
   },
   computed: {
     animationClasses () {
       return { 'c-opacity-0' : !this.noFade && !this.animated }
     },
-    propOffset () {
-      return !this.active ? this.loadOffset : this.fadeOffset
+    observerArgs () {
+      if (this.active) {
+        return [this.watchForAnimation, { rootMargin: `${this.fadeOffset}px`}]
+      } else {
+        return [this.watchForLoading, { rootMargin: `${this.loadOffset}px`}]
+      }
     }
   },
   methods: {
-    checkPosition () {
-      const rect = this.$el.getBoundingClientRect()
-      const offset = this.getOffset(rect.height || 0)
-      const positionTop = window.innerHeight - rect.top + offset
-      const positionBottom = rect.bottom + offset
-      if (positionTop > 0 && positionBottom > 0) {
-        !this.active ? this.load() : this.animate()
-      }
+    defineObserver () {
+      this.observer = new IntersectionObserver(...this.observerArgs)
+      this.observer.observe(this.$el)
     },
-    getOffset (imageHeight) {
-      const minimalOffset = - (window.innerHeight + imageHeight) / 2 + 50
-      return this.propOffset < minimalOffset ? minimalOffset : this.propOffset
+    watchForLoading (entries) {
+      entries.forEach(entry => {
+        if (entry.intersectionRatio > 0) {
+          this.active = true
+          if (!this.noFade) {
+            this.$nextTick(() => {
+              const animateInstantly = this.loadOffset <= this.fadeOffset
+              animateInstantly ? this.queueAnimation() : this.defineObserver()
+            })
+          }
+        }
+      })
     },
-    load () {
-      this.active = true
-      if (this.noFade) {
-        this.removeScrollListener()
-      } else {
-        this.$nextTick(() => this.checkPosition())
-      }
+    watchForAnimation (entries) {
+      entries.forEach(entry => {
+        if (entry.intersectionRatio > 0) {
+          this.queueAnimation()
+        }
+      })
+    },
+    queueAnimation () {
+      this.$el.complete ? this.animate() : this.$el.onload = () => this.animate()
+      this.observer.unobserve(this.$el)
     },
     animate () {
-      this.removeScrollListener()
       this.$el.style.transition = `opacity ${this.fadeTime}ms ease-in-out`
       this.animated = true
-    },
-    removeScrollListener () {
-      return document.removeEventListener('scroll', this.checkPosition)
     }
   }
 }
