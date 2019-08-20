@@ -16,4 +16,5 @@ const CoreuiVue = {
 export default CoreuiVue
 
 //Export components
-export * from  './components';
+export * from  './components'
+export * from  './directives'
