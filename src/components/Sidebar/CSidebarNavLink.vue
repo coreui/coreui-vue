@@ -1,30 +1,32 @@
 <template>
-  <CLink
-    v-bind="computedProps"
-    :exact="true"
-    class="c-nav-link"
-  >
-    <i :class="['c-nav-icon', icon]"></i> 
-    {{name}}
-    <CBadge
-      v-if="badge && badge.text"
-      :variant="badge.variant || 'primary'"
+  <li class="c-nav-item">
+    <CLink
+      class="c-nav-link"
+      :exact="true"
+      v-bind="linkProps"
     >
-      {{badge.text}}
-    </CBadge>
-  </CLink>
+      <slot>
+        <i :class="['c-nav-icon', icon]"></i> 
+        {{name}}
+        <CBadge
+          v-if="badge && badge.text"
+          :variant="badge.variant || 'primary'"
+        >
+          {{badge.text}}
+        </CBadge>
+      </slot>
+    </CLink>
+  </li>
 </template>
 
 <script>
-import CLink, { propsFactory as linkPropsFactory } from '../Link/CLink'
+import CLink, { props as linkProps } from '../Link/CLink'
+const props = Object.assign(linkProps, {
+  name: String,
+  icon: [String, Array, Object],
+  badge: Object
+})
 
-const props = Object.assign(linkPropsFactory(), {
-    name: String,
-    icon: [String, Array, Object],
-    badge: Object,
-    url: String
-  }
-)
 export default {
   name: 'CSidebarNavLink',
   components: {
@@ -32,16 +34,11 @@ export default {
   },
   props,
   computed: {
-    linkGeneratedFromUrlProp () {
-      const url = this.url
-      if (!url) {
-        return {}
-      } else {
-        return url.substring(0,4) === 'http' ? { href: url } : { to: url }
-      }
-    },
-    computedProps () {
-      return Object.assign({}, this.$props, this.linkGeneratedFromUrlProp)
+    linkProps () {
+      return Object.keys(linkProps).reduce((props, key) => {
+        props[key] = this[key]
+        return props
+      }, {})
     }
   }
 }

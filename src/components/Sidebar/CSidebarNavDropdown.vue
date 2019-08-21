@@ -1,9 +1,9 @@
 <template>
-  <li :class="dropdownClasses">
-    <div
-      class="c-nav-link c-nav-dropdown-toggle"
-      @click="handleClick"
-    >
+  <li 
+    :class="dropdownClasses"
+    @click="handleClick"
+  >
+    <div class="c-nav-link c-nav-dropdown-toggle">
       <i v-if="icon" :class="classIcon"></i>
       {{name}}
     </div>

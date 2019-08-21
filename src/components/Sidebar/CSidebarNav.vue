@@ -5,25 +5,19 @@
       :settings="psSettings"
       :switcher="!state.minimized"
     >
-        <CSidebarNavItems :items="navItems"/>
+      <ul class="c-nav">
+        <slot></slot>
+      </ul>
     </VuePerfectScrollbar>
   </nav>
 </template>
 
 <script>
-import CSidebarNavItems from './CSidebarNavItems'
 import VuePerfectScrollbar from 'vue-perfect-scrollbar'
 
 export default {
   name: 'CSidebarNav',
-  props: {
-    navItems: {
-      type: Array,
-      required: true
-    }
-  },
   components: {
-    CSidebarNavItems,
     VuePerfectScrollbar
   },
   inject: {

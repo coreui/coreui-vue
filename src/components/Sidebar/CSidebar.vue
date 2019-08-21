@@ -68,18 +68,36 @@ export default {
   },
   watch: {
     show (val, oldVal) {
-      if (val !== oldVal && val !== this.open) {
-        this.switchState('open')
+      if (val !== this.open) {
+        this.open = val
+      }
+    },
+    open: {
+      immediate: true,
+      handler (val, oldVal) {
+        this.emitCurrentState('show', val)
       }
     },
     showOnMobile (val, oldVal) {
-      if (val !== oldVal && val !== this.mobileOpen) {
-        this.switchState('mobileOpen')
+      if (val !== this.mobileOpen) {
+        this.showOnMobile = val
+      }
+    },
+    mobileOpen: {
+      immediate: true,
+      handler (val, oldVal) {
+        this.emitCurrentState('showOnMobile', val)
       }
     },
     minimize (val, oldVal) {
-      if (val !== oldVal && val !== this.minimized) {
-        this.switchState('minimized')
+      if (val !== this.minimized) {
+        this.minimized = val
+      }
+    },
+    minimized: {
+      immediate: true,
+      handler (val, oldVal) {
+        this.emitCurrentState('minimize', val)
       }
     },
     isOnMobile: {
@@ -89,6 +107,10 @@ export default {
           document.body.addEventListener('click', this.mobileClick)
         } else if (oldVal === true) {
           document.body.removeEventListener('click', this.mobileClick)
+        }
+        
+        if (val !== undefined) {
+          this.$root.$emit('c-sidebar-mobile-state', val)
         }
       }
     }
@@ -108,15 +130,19 @@ export default {
       return false
     },
     sidebarClasses () {
+      const mobileClasses = {
+        'c-sidebar-show': this.mobileOpen,
+      }
+      const desktopClasses = {
+        'c-sidebar-minimized': this.minimized,
+        [`c-sidebar-${this.breakpoint}-show`]: this.open,
+      }
       return [
-        this.displayClass,
+        this.isOnMobile ? mobileClasses : desktopClasses,
         'c-sidebar',
         `c-sidebar-${this.light ? 'light' : 'dark'}`,
         {
-          'c-sidebar-show': this.isOnMobile && this.mobileOpen,
-          [`c-sidebar-${this.breakpoint}-show`]: this.open && this.breakpoint,
           'c-sidebar-fixed': this.fixed,
-          'c-sidebar-minimized': this.minimized && !this.isOnMobile,
           'c-sidebar-right': this.aside
         }
       ]
@@ -149,11 +175,11 @@ export default {
       }
     },
     switchState (variable) {
-      const propNames = {
-        open: 'show', minimized: 'minimize', mobileOpen: 'showOnMobile'
-      }
-      this.$emit(`update:${propNames[variable]}`, !this[variable])
       this[variable] = !this[variable]
+    },
+    emitCurrentState (variableName, value) {
+      this.$emit(`update:${variableName}`, value)
+      this.$root.$emit(`c-sidebar-${variableName}-state`, value)
     }
   }
 }
