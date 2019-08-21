@@ -4,28 +4,56 @@
 
 <template>
   <div>
-    <template v-for="(item, itemName) in items">
-      <CTreeGeneratorItem
-        :item="item"
-        :name="itemName"
-        :components="components"
-        :key="itemName"
+    <template v-for="(item, index) in items">
+      <template v-if="typeof item !== 'object'">
+        {{item}}
+      </template>
+
+      <component
+        v-else-if="item._children"
+        :is="components[item._tag] || item._tag"
+        v-bind="computedItems[index]"
+        :key="index"
+      >          
+        <CTreeGenerator
+          :items="item._children"
+          :components="components"
+        />
+      </component>
+      <component
+        v-else
+        :is="components[item._tag] || item._tag"
+        v-bind="computedItems[index]"
+        :key="index"
       />
     </template>
   </div>
 </template>
 
 <script>
-import CTreeGeneratorItem from './CTreeGeneratorItem'
-
 export default {
   name: 'CTreeGenerator',
   props: {
-    items: Object,
-    components: Object
+    items: Array,
+    components: {
+      type: Object,
+      default: () => { return {} }
+    }
   },
-  components: {
-    CTreeGeneratorItem
-  }
+  computed: {
+    computedItems () {
+      return this.items.map(item => {
+        if (typeof item === 'object') {
+          return Object.keys(item).reduce((computedItem, key) => {
+            if (!['_children', '_tag'].includes(key)) {
+              computedItem[key] = item[key]
+            }
+            return computedItem
+          }, {})
+        }
+        return item
+      })
+    }
+  } 
 }
 </script>
