@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Component from "../CSidebarNavDivider";
+import Component from '../CSidebarNavDivider'
 
 const ComponentName = 'CSidebarNavDivider'
 const wrapper = mount(Component)

@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Component from "../CSidebarMinimizer";
+import Component from '../CSidebarMinimizer'
 
 const ComponentName = 'CSidebarMinimizer'
 const wrapper = mount(Component)

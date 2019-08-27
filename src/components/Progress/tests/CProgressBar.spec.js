@@ -1,25 +1,26 @@
 import { mount } from '@vue/test-utils'
-import Component from "../CProgressBar";
+import Component from '../CProgressBar'
 
 const ComponentName = 'CProgressBar'
-// const wrapper = mount(Component,{
-//   propsData: {
-//     color: 'success',
-//     value: 50,
-//     striped: true
-//   },
-//   slots: {
-//     default: '234'
-//   }
-// })
-// console.log(wrapper.vm.computedVariant)
-// console.log(wrapper.vm.progressBarStyles)
+const customWrapper = mount(Component,{
+  propsData: {
+    color: 'success',
+    value: 50,
+    striped: true
+  },
+  slots: {
+    default: '234'
+  }
+})
 
 describe(ComponentName, () => {
   it('has a name', () => {
     expect(Component.name).toMatch(ComponentName)
   })
   // it('renders correctly', () => {
-  //   expect(wrapper.element).toMatchSnapshot()
+  //   expect(defaultWrapper.element).toMatchSnapshot()
   // })
+  it('renders correctly', () => {
+    expect(customWrapper.element).toMatchSnapshot()
+  })
 });

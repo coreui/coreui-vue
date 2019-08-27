@@ -1,19 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CSidebarNavDropdown .vue renders correctly 1`] = `
-<router-link-stub
+<li
   class="c-nav-item c-nav-dropdown"
-  disabled=""
-  event="click"
-  tag="li"
-  to="/somePath"
 >
   <div
     class="c-nav-link c-nav-dropdown-toggle"
   >
-    <i
-      class="c-nav-icon"
-    />
+    <!---->
     
     
   
@@ -22,5 +16,5 @@ exports[`CSidebarNavDropdown .vue renders correctly 1`] = `
   <ul
     class="c-nav-dropdown-items"
   />
-</router-link-stub>
+</li>
 `;

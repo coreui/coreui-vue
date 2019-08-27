@@ -1,21 +1,14 @@
-import { shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import Component from '../CWidgetIcon'
-import CLink from '../../Link/CLink'
-import { CIcon } from '@coreui/icons/vue'
-
-import Vue from 'vue'
-
-Vue.component('CLink', CLink)
-Vue.component('CIcon', CIcon)
 
 const ComponentName = 'CWidgetIcon'
-const defaultWrapper = shallowMount(Component)
-const customWrapper = shallowMount(Component, {
+const defaultWrapper = mount(Component)
+const customWrapper = mount(Component, {
   propsData: {
     header: 'header',
     text: 'text',
-    link: 'link.com',
-    addIconClasses: 'someClasses'
+    variant: 'success',
+    noIconPadding: true
   }
 })
 

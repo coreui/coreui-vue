@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Component from "../CSidebar";
+import Component from '../CSidebar'
 
 const ComponentName = 'CSidebar'
 const wrapper = mount(Component)

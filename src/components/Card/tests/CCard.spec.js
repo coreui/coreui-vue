@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Component from "../CCard";
+import Component from '../CCard'
 const ComponentName = 'CCard'
 
 const wrapper = mount(Component, {

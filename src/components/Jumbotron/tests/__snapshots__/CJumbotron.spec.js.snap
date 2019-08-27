@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CJumbotron renders correctly 1`] = `
+<div
+  class="c-jumbotron"
+/>
+`;
+
+exports[`CJumbotron renders correctly 2`] = `
+<div
+  class="c-jumbotron c-jumbotron-fluid c-text-dark c-bg-success c-border-secondary c-border"
+>
+  <div
+    class="c-container-fluid"
+  >
+    <h1
+      class="c-display-3"
+    >
+      header
+    </h1>
+    <p
+      class="c-lead"
+    >
+      lead
+    </p>
+  </div>
+</div>
+`;

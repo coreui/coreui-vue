@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CTabs renders correctly 1`] = `
+<div
+  class=""
+>
+  <div
+    class=""
+  >
+    <ul
+      class="c-nav c-nav-tabs"
+    />
+  </div>
+   
+  <div
+    class=""
+  >
+    <div
+      class="c-tab-content"
+    >
+      <!---->
+    </div>
+  </div>
+   
+</div>
+`;
+
+exports[`CTabs renders correctly 2`] = `
+<div
+  class="c-row c-no-gutters"
+>
+  <div
+    class="additional-nav-wrapper-class c-col-sm-4"
+  >
+    <ul
+      class="additional-nav-class c-nav c-nav-pills c-flex-column c-nav-fill c-nav-justified c-h-100"
+    />
+  </div>
+   
+  <div
+    class="additional-tabs-wrapper-class c-col-sm-8"
+  >
+    <div
+      class="additional-tabs-class c-tab-content c-pl-3 c-p-0"
+    >
+      <!---->
+    </div>
+  </div>
+   
+  <!---->
+  <!---->
+  <!---->
+</div>
+`;

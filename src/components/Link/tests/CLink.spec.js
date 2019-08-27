@@ -1,10 +1,13 @@
 import { mount } from '@vue/test-utils'
-import Component from "../CLink";
+import Component from '../CLink'
 
 const ComponentName = 'CLink'
 const wrapper = mount(Component)
-// /* eslint-disable no-console */
-// console.log("something")
+const customWrapper = mount(Component, {
+  propsData: {
+    to: '/some-router-link'
+  }
+})
 
 describe(`${ComponentName} .vue`, () => {
   it('has a name', () => {
@@ -12,5 +15,8 @@ describe(`${ComponentName} .vue`, () => {
   })
   it('renders correctly', () => {
     expect(wrapper.element).toMatchSnapshot()
+  })
+  it('renders correctly', () => {
+    expect(customWrapper.element).toMatchSnapshot()
   })
 });

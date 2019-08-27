@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CModal renders correctly 1`] = `
+<div>
+  <div
+    class="c-modal c-overflow-auto c-fade"
+    role="dialog"
+    tabindex="-1"
+  >
+    <div
+      class="c-modal-dialog"
+      role="document"
+    >
+      <div
+        class="c-modal-content"
+      >
+        <div
+          class="c-modal-header"
+        >
+          <h5
+            class="c-modal-title"
+          >
+            
+                
+              
+          </h5>
+           
+          <button
+            aria-label="Close"
+            class="c-close"
+            type="button"
+          >
+            <span>
+              ×
+            </span>
+          </button>
+        </div>
+         
+        <div
+          class="c-modal-body"
+        />
+         
+        <div
+          class="c-modal-footer"
+        >
+          <button
+            class="c-btn c-btn-secondary"
+            type="button"
+          >
+            
+              Cancel
+            
+          </button>
+           
+          <button
+            class="c-btn c-btn-primary"
+            type="button"
+          >
+            
+              OK
+            
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  <!---->
+</div>
+`;
+
+exports[`CModal renders correctly 2`] = `
+<div>
+  <div
+    class="c-modal c-overflow-auto additional-modal-class c-show c-d-block c-modal-success"
+    role="dialog"
+    tabindex="-1"
+  >
+    <div
+      class="additional-dialog-class c-modal-dialog c-modal-dialog-centered c-modal-lg"
+      role="document"
+    >
+      <div
+        class="additional-content-class c-modal-content c-border-success"
+      >
+        <div
+          class="c-modal-header"
+        >
+          <h5
+            class="c-modal-title"
+          >
+            
+                modal title
+              
+          </h5>
+           
+          <button
+            aria-label="Close"
+            class="c-close"
+            type="button"
+          >
+            <span>
+              ×
+            </span>
+          </button>
+        </div>
+         
+        <div
+          class="c-modal-body"
+        >
+          CModal body
+        </div>
+         
+        <!---->
+      </div>
+    </div>
+  </div>
+   
+  <!---->
+</div>
+`;

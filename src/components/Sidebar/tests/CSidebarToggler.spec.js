@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Component from "../CSidebarToggler";
+import Component from '../CSidebarToggler'
 
 const ComponentName = 'CSidebarToggler'
 const wrapper = mount(Component)

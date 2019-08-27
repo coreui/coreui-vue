@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CNav renders correctly 1`] = `
+<ul
+  class="c-nav"
+/>
+`;
+
+exports[`CNav renders correctly 2`] = `
+<ul
+  class="c-nav c-nav-pills c-flex-column c-nav-fill c-nav-justified"
+>
+  CNav items
+</ul>
+`;

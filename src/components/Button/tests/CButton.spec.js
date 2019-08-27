@@ -1,7 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Component from "../CButton";
-import {props} from "../CButton";
-
+import Component from '../CButton'
 
 const ComponentName = 'CButton'
 const defaultWrapper = mount(Component)

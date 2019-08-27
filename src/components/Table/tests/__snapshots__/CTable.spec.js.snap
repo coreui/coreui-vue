@@ -1,0 +1,702 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CTable renders correctly 1`] = `
+<div>
+  <!---->
+    
+  <div
+    class="c-position-relative c-table-responsive"
+  >
+    <table
+      class="c-table"
+    >
+      <thead>
+        <tr>
+          <!---->
+           
+        </tr>
+         
+        <!---->
+      </thead>
+       
+      <tbody
+        class="c-position-relative"
+      >
+         
+        <tr>
+          <td
+            colspan="0"
+          >
+            <div
+              class="c-text-center c-my-5"
+            >
+              <h2>
+                No items
+                  
+                <svg
+                  class="c-text-danger c-mb-2"
+                  style="fill: currentColor;"
+                  viewBox="0 0 64 64"
+                  width="30"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>
+                    ban
+                  </title>
+                  <path
+                    d="M53.213 10.787c-5.429-5.429-12.929-8.787-21.213-8.787-16.569 0-30 13.431-30 30 0 8.284 3.358 15.784 8.787 21.213v0c5.429 5.429 12.929 8.787 21.213 8.787 16.569 0 30-13.431 30-30 0-8.284-3.358-15.784-8.787-21.213v0zM32 6c0.007 0 0.015 0 0.023 0 6.483 0 12.409 2.383 16.951 6.32l-0.032-0.027-36.648 36.648c-3.91-4.509-6.293-10.435-6.293-16.918 0-0.008 0-0.016 0-0.024v0.001c0-14.336 11.664-26 26-26zM32 58c-0.007 0-0.014 0-0.022 0-6.452 0-12.352-2.36-16.885-6.264l0.034 0.028 36.637-36.637c3.876 4.499 6.236 10.399 6.236 16.851 0 0.008 0 0.016 0 0.024v-0.001c0 14.336-11.664 26-26 26z"
+                  />
+                </svg>
+              </h2>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+       
+      <!---->
+       
+    </table>
+     
+    <!---->
+  </div>
+    
+  <!---->
+</div>
+`;
+
+exports[`CTable renders correctly 2`] = `
+<div>
+  <div
+    class="c-row c-my-2 c-mx-0"
+  >
+    <div
+      class="c-col-sm-6 c-form-inline c-p-0"
+    >
+      <label
+        class="c-mr-2"
+      >
+        Filter: 
+      </label>
+       
+      <input
+        class="c-form-control c-table-filter"
+        placeholder="type string..."
+        type="text"
+      />
+    </div>
+     
+    <div
+      class="c-col-sm-6 c-p-0"
+    >
+      <div
+        class="c-form-inline c-float-sm-right"
+      >
+        <label
+          class="mr-2"
+        >
+          Items per page: 
+        </label>
+         
+        <select
+          class="c-form-control"
+        >
+          <option
+            disabled="disabled"
+            hidden="hidden"
+            selected="selected"
+            value=""
+          >
+            
+            10
+          
+          </option>
+           
+          <option
+            val="5"
+          >
+            
+            5
+          
+          </option>
+          <option
+            val="10"
+          >
+            
+            10
+          
+          </option>
+          <option
+            val="20"
+          >
+            
+            20
+          
+          </option>
+          <option
+            val="50"
+          >
+            
+            50
+          
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+    
+  <div
+    class="c-position-relative c-table-responsive"
+  >
+    <table
+      class="c-table additional-table-class c-table-dark c-table-striped c-table-hover c-table-bordered c-border"
+    >
+      <thead>
+        <tr>
+          <th
+            style="width: 40px;"
+          />
+           
+          <th
+            class="c-position-relative c-pr-4"
+            style="cursor: pointer; width: 40%;"
+          >
+            <div
+              class="c-d-inline"
+            >
+              Username
+            </div>
+             
+            <svg
+              class="c-icon-transition c-position-absolute c-arrow-position"
+              style="fill: currentColor;"
+              viewBox="0 0 64 64"
+              width="18"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title>
+                arrow-top
+              </title>
+              <path
+                d="M48.828 18.828l-16.828-16.828-16.828 16.828 2.829 2.828 12-12v52.248h4v-52.247l11.999 11.999 2.828-2.828z"
+              />
+            </svg>
+          </th>
+          <th
+            class="c-position-relative c-pr-4"
+            style="cursor: pointer;"
+          >
+            <div
+              class="c-d-inline"
+            >
+              Registered
+            </div>
+             
+            <svg
+              class="c-icon-transition c-position-absolute c-arrow-position c-transparent"
+              style="fill: currentColor;"
+              viewBox="0 0 64 64"
+              width="18"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title>
+                arrow-top
+              </title>
+              <path
+                d="M48.828 18.828l-16.828-16.828-16.828 16.828 2.829 2.828 12-12v52.248h4v-52.247l11.999 11.999 2.828-2.828z"
+              />
+            </svg>
+          </th>
+          <th
+            class="c-position-relative c-pr-4"
+            style="cursor: pointer; width: 20%;"
+          >
+            <div
+              class="c-d-inline"
+            >
+              Role
+            </div>
+             
+            <svg
+              class="c-icon-transition c-position-absolute c-arrow-position c-transparent"
+              style="fill: currentColor;"
+              viewBox="0 0 64 64"
+              width="18"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title>
+                arrow-top
+              </title>
+              <path
+                d="M48.828 18.828l-16.828-16.828-16.828 16.828 2.829 2.828 12-12v52.248h4v-52.247l11.999 11.999 2.828-2.828z"
+              />
+            </svg>
+          </th>
+          <th
+            class="c-position-relative c-pr-4"
+            style="cursor: pointer; width: 20%;"
+          >
+            <div
+              class="c-d-inline"
+            >
+              Status
+            </div>
+             
+            <svg
+              class="c-icon-transition c-position-absolute c-arrow-position c-transparent"
+              style="fill: currentColor;"
+              viewBox="0 0 64 64"
+              width="18"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title>
+                arrow-top
+              </title>
+              <path
+                d="M48.828 18.828l-16.828-16.828-16.828 16.828 2.829 2.828 12-12v52.248h4v-52.247l11.999 11.999 2.828-2.828z"
+              />
+            </svg>
+          </th>
+          <th
+            class="c-position-relative c-pr-4"
+            style="width: 1%;"
+          >
+            <div
+              class="c-d-inline"
+            >
+              
+            </div>
+             
+            <!---->
+          </th>
+        </tr>
+         
+        <tr
+          class="c-table-sm"
+        >
+          <th
+            class="c-pb-2 c-pl-2"
+          >
+            <svg
+              class="c-text-danger"
+              style="fill: currentColor;"
+              title="clear table"
+              viewBox="0 0 64 64"
+              width="18"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title>
+                ban
+              </title>
+              <path
+                d="M53.213 10.787c-5.429-5.429-12.929-8.787-21.213-8.787-16.569 0-30 13.431-30 30 0 8.284 3.358 15.784 8.787 21.213v0c5.429 5.429 12.929 8.787 21.213 8.787 16.569 0 30-13.431 30-30 0-8.284-3.358-15.784-8.787-21.213v0zM32 6c0.007 0 0.015 0 0.023 0 6.483 0 12.409 2.383 16.951 6.32l-0.032-0.027-36.648 36.648c-3.91-4.509-6.293-10.435-6.293-16.918 0-0.008 0-0.016 0-0.024v0.001c0-14.336 11.664-26 26-26zM32 58c-0.007 0-0.014 0-0.022 0-6.452 0-12.352-2.36-16.885-6.264l0.034 0.028 36.637-36.637c3.876 4.499 6.236 10.399 6.236 16.851 0 0.008 0 0.016 0 0.024v-0.001c0 14.336-11.664 26-26 26z"
+              />
+            </svg>
+          </th>
+           
+          <th
+            class=""
+          >
+            <input
+              class="c-w-100 c-table-filter"
+            />
+          </th>
+          <th
+            class=""
+          >
+            <input
+              class="c-w-100 c-table-filter"
+            />
+          </th>
+          <th
+            class=""
+          >
+            <input
+              class="c-w-100 c-table-filter"
+            />
+          </th>
+          <th
+            class=""
+          >
+            <input
+              class="c-w-100 c-table-filter"
+            />
+          </th>
+          <th
+            class=""
+          >
+            <!---->
+          </th>
+        </tr>
+      </thead>
+       
+      <tbody
+        class="c-position-relative"
+      >
+        <tr
+          tabindex="0"
+        >
+          <td>
+            
+                  1
+                
+          </td>
+           
+          <td
+            class=""
+          >
+            
+                Chetan Mohamed
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                2012/02/01
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                Admin
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                Inactive
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                
+              
+          </td>
+        </tr>
+         
+        <!---->
+        <tr
+          tabindex="0"
+        >
+          <td>
+            
+                  2
+                
+          </td>
+           
+          <td
+            class=""
+          >
+            
+                Derick Maximinus
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                2012/03/01
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                Member
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                Pending
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                
+              
+          </td>
+        </tr>
+         
+        <!---->
+        <tr
+          tabindex="0"
+        >
+          <td>
+            
+                  3
+                
+          </td>
+           
+          <td
+            class=""
+          >
+            
+                Estavan Lykos
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                2012/02/01
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                Staff
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                Banned
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                
+              
+          </td>
+        </tr>
+         
+        <!---->
+        <tr
+          tabindex="0"
+        >
+          <td>
+            
+                  4
+                
+          </td>
+           
+          <td
+            class=""
+          >
+            
+                Friderik Dávid
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                2012/01/21
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                Staff
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                Active
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                
+              
+          </td>
+        </tr>
+         
+        <!---->
+        <tr
+          tabindex="0"
+        >
+          <td>
+            
+                  5
+                
+          </td>
+           
+          <td
+            class=""
+          >
+            
+                Yiorgos Avraamu
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                2012/01/01
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                Member
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                Active
+              
+          </td>
+          <td
+            class=""
+          >
+            
+                
+              
+          </td>
+        </tr>
+         
+        <!---->
+         
+        <!---->
+      </tbody>
+       
+      <tfoot>
+        <tr>
+          <th
+            style="width: 40px;"
+          />
+           
+          <th
+            class="c-position-relative c-pr-4"
+            style="cursor: pointer; width: 40%;"
+          >
+            <div
+              class="c-d-inline"
+            >
+              Username
+            </div>
+             
+            <svg
+              class="c-icon-transition c-position-absolute c-arrow-position"
+              style="fill: currentColor;"
+              viewBox="0 0 64 64"
+              width="18"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title>
+                arrow-top
+              </title>
+              <path
+                d="M48.828 18.828l-16.828-16.828-16.828 16.828 2.829 2.828 12-12v52.248h4v-52.247l11.999 11.999 2.828-2.828z"
+              />
+            </svg>
+          </th>
+          <th
+            class="c-position-relative c-pr-4"
+            style="cursor: pointer;"
+          >
+            <div
+              class="c-d-inline"
+            >
+              Registered
+            </div>
+             
+            <svg
+              class="c-icon-transition c-position-absolute c-arrow-position c-transparent"
+              style="fill: currentColor;"
+              viewBox="0 0 64 64"
+              width="18"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title>
+                arrow-top
+              </title>
+              <path
+                d="M48.828 18.828l-16.828-16.828-16.828 16.828 2.829 2.828 12-12v52.248h4v-52.247l11.999 11.999 2.828-2.828z"
+              />
+            </svg>
+          </th>
+          <th
+            class="c-position-relative c-pr-4"
+            style="cursor: pointer; width: 20%;"
+          >
+            <div
+              class="c-d-inline"
+            >
+              Role
+            </div>
+             
+            <svg
+              class="c-icon-transition c-position-absolute c-arrow-position c-transparent"
+              style="fill: currentColor;"
+              viewBox="0 0 64 64"
+              width="18"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title>
+                arrow-top
+              </title>
+              <path
+                d="M48.828 18.828l-16.828-16.828-16.828 16.828 2.829 2.828 12-12v52.248h4v-52.247l11.999 11.999 2.828-2.828z"
+              />
+            </svg>
+          </th>
+          <th
+            class="c-position-relative c-pr-4"
+            style="cursor: pointer; width: 20%;"
+          >
+            <div
+              class="c-d-inline"
+            >
+              Status
+            </div>
+             
+            <svg
+              class="c-icon-transition c-position-absolute c-arrow-position c-transparent"
+              style="fill: currentColor;"
+              viewBox="0 0 64 64"
+              width="18"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title>
+                arrow-top
+              </title>
+              <path
+                d="M48.828 18.828l-16.828-16.828-16.828 16.828 2.829 2.828 12-12v52.248h4v-52.247l11.999 11.999 2.828-2.828z"
+              />
+            </svg>
+          </th>
+          <th
+            class="c-position-relative c-pr-4"
+            style="width: 1%;"
+          >
+            <div
+              class="c-d-inline"
+            >
+              
+            </div>
+             
+            <!---->
+          </th>
+        </tr>
+      </tfoot>
+       
+    </table>
+     
+    <!---->
+  </div>
+    
+  <!---->
+</div>
+`;

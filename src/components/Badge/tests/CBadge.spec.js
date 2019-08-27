@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Component from "../CBadge";
+import Component from '../CBadge'
 
 const ComponentName = 'CBadge'
 const wrapper = mount(Component)

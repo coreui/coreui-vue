@@ -1,12 +1,14 @@
 import { mount } from '@vue/test-utils'
-import Component from "../CCardGroup";
-const ComponentName = 'CCardGroup'
+import Component from '../CCardHeader'
+const ComponentName = 'CCardHeader'
 const wrapper = mount(Component, {
   context: {
     props: {
-      deck: true,
-      column: true,
-      tag: 'p'
+      header: 'header',
+      align: 'left',
+      variant: 'primary',
+      textVariant: 'white',
+      borderVariant: 'solid'
     }
   },
   slots: {

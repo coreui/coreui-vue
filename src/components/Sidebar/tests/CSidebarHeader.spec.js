@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Component from "../CSidebarHeader";
+import Component from '../CSidebarHeader'
 
 const ComponentName = 'CSidebarHeader'
 const wrapper = mount(Component, { slots: { default: 'test'}})

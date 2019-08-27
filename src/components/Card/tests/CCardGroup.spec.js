@@ -1,14 +1,12 @@
 import { mount } from '@vue/test-utils'
-import Component from "../CCardFooter";
-
-const ComponentName = 'CCardFooter'
+import Component from '../CCardGroup'
+const ComponentName = 'CCardGroup'
 const wrapper = mount(Component, {
   context: {
     props: {
-      align: 'left',
-      variant: 'primary',
-      textVariant: 'white',
-      borderVariant: 'solid'
+      deck: true,
+      column: true,
+      tag: 'p'
     }
   },
   slots: {

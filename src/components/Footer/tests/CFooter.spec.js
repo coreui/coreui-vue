@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Component from "../CFooter";
+import Component from '../CFooter'
 
 const ComponentName = 'CFooter'
 const wrapper = mount(Component)

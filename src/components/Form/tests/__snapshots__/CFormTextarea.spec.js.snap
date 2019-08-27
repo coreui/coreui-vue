@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CFormTextarea renders correctly 1`] = `
+<div
+  class="c-form-group c-was-validated"
+  role="group"
+>
+  <label
+    class="additional-label-class c-col-form-label-lg"
+    for="some_id"
+  >
+    
+        label
+      
+  </label>
+   
+  <div
+    class="additional-wrapper-class c-input-group c-input-group-lg"
+  >
+    <!---->
+     
+    <textarea
+      checked="checked"
+      class="c-form-control c-is-valid additional-input-class"
+      custom="true"
+      id="some_id"
+    />
+      
+    <!---->
+     
+    <div
+      class="c-valid-tooltip"
+    >
+      input is valid
+    </div>
+     
+    <div
+      class="c-invalid-tooltip"
+    >
+      input is invalid
+    </div>
+     
+    <small
+      class="c-form-text c-text-muted c-w-100"
+    >
+      permission
+    </small>
+  </div>
+</div>
+`;

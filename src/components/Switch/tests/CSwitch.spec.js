@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import Component from "../CSwitch";
+import Component from '../CSwitch'
 
 const ComponentName = 'CSwitch'
 const defaultWrapper = mount(Component)

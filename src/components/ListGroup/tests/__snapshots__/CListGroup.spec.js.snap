@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CListGroup renders correctly 1`] = `
+<div
+  class="c-list-group"
+/>
+`;
+
+exports[`CListGroup renders correctly 2`] = `
+<div
+  class="c-list-group c-list-group-flush"
+>
+  <template>
+    CListGroup content
+  </template>
+</div>
+`;

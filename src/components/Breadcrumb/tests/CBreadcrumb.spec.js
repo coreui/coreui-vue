@@ -1,20 +1,18 @@
 import { mount } from '@vue/test-utils'
-import Component from "../CBreadcrumb";
+import Component from '../CBreadcrumb'
 
 const ComponentName = 'CBreadcrumb'
 const wrapper = mount(Component, {
-  context: {
-    props: {
-      items: [{
-        text: 'Admin',
-        href: '#'
-      }, {
-        text: 'Manage',
-        href: '#'
-      }, {
-        text: 'Library'
-      }]
-    }
+  propsData: {
+    items: [{
+      text: 'Admin',
+      href: '#'
+    }, {
+      text: 'Manage',
+      href: '#'
+    }, {
+      text: 'Library'
+    }]
   }
 })
 

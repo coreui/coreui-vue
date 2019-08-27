@@ -1,18 +1,17 @@
 import { mount } from '@vue/test-utils'
-import Component from "../CCardHeader";
-const ComponentName = 'CCardHeader'
+import Component from '../CCardBody'
+
+const ComponentName = 'CCardBody'
 const wrapper = mount(Component, {
   context: {
     props: {
-      header: 'header',
       align: 'left',
       variant: 'primary',
       textVariant: 'white',
-      borderVariant: 'solid'
+      borderVariant: 'solid',
+      title: 'title',
+      subtitle: 'subtitle'
     }
-  },
-  slots: {
-    default: 'content goes here'
   }
 })
 

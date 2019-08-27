@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CImage renders correctly 1`] = `
+<svg
+  class=""
+  style="background-color: transparent;"
+/>
+`;
+
+exports[`CImage renders correctly 2`] = `
+<img
+  alt="image"
+  class="c-float-right c-img-fluid c-w-100 c-rounded-right c-d-block"
+  height="200"
+  src="./image-source"
+  width="400"
+/>
+`;

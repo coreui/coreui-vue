@@ -1,13 +1,13 @@
 import { mount } from '@vue/test-utils'
-import Component from "../CSidebarNavLabel";
+import Component from '../CSidebarNavLabel'
 
 const ComponentName = 'CSidebarNavLabel'
-// const wrapper = mount(Component, {
-//   propsData: {
-//     label: { variant: 'info' },
-//     icon: 'fa fa-circle'
-//   }
-// })
+const wrapper = mount(Component, {
+  propsData: {
+    label: { variant: 'info' },
+    icon: 'fa fa-circle'
+  }
+})
 // /* eslint-disable no-console */
 // console.log("something")
 
@@ -36,8 +36,7 @@ describe(`${ComponentName} .vue`, () => {
   // it('has getClasses method', () => {
   //   expect(typeof Component.methods.getClasses).toBe('function')
   // })
-  // it('renders correctly', () => {
-  //   expect(wrapper.element).toMatchSnapshot()
-  //   expect(wrapper.classes()).toContain('hidden-cn')
-  // })
+  it('renders correctly', () => {
+    expect(wrapper.element).toMatchSnapshot()
+  })
 });

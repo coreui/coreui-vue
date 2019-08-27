@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import Component from '../CWidgetProgress'
 import CProgress from '../../Progress/CProgress'
 import Vue from 'vue'
@@ -6,8 +6,8 @@ import Vue from 'vue'
 Vue.component('CProgress', CProgress)
 
 const ComponentName = 'CWidgetProgress'
-const defaultWrapper = shallowMount(Component)
-const customWrapper = shallowMount(Component, {
+const defaultWrapper = mount(Component)
+const customWrapper = mount(Component, {
   propsData: {
     variant: 'info',
     inverse: true,

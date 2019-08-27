@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CFormCheckbox renders correctly 1`] = `
+<div
+  class="c-custom-control c-custom-control-inline c-custom-checkbox c-was-validated"
+  role="group"
+>
+   
+  <!---->
+   
+  <input
+    class="c-custom-control-input c-is-valid additional-input-class"
+    id="some_id"
+    type="checkbox"
+    value="value"
+  />
+   
+  <label
+    class="additional-label-class c-custom-control-label"
+    for="some_id"
+  >
+    
+        label
+      
+  </label>
+   
+  <!---->
+   
+  <div
+    class="c-valid-tooltip"
+  >
+    input is valid
+  </div>
+   
+  <div
+    class="c-invalid-tooltip"
+  >
+    input is invalid
+  </div>
+   
+  <small
+    class="c-form-text c-text-muted c-w-100"
+  >
+    permission
+  </small>
+</div>
+`;

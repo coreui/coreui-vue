@@ -2,7 +2,7 @@
 
 exports[`CButton renders correctly 1`] = `
 <button
-  class="c-btn c-btn-primary"
+  class="c-btn"
   type="button"
 />
 `;

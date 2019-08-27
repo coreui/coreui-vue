@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Component from "../CSidebarFooter";
+import Component from '../CSidebarFooter'
 
 const ComponentName = 'CSidebarFooter'
 const wrapper = mount(Component, { slots: { default: 'test'}})

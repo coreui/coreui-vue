@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CTabNav renders correctly 1`] = `
+<li
+  class="c-nav-item "
+>
+  <a
+    class="c-nav-link"
+    href="#"
+    target="_self"
+  />
+</li>
+`;
+
+exports[`CTabNav renders correctly 2`] = `
+<li
+  class="c-nav-item "
+>
+  <a
+    class="c-nav-link c-active"
+    href="#"
+    target="_self"
+  >
+    title
+  </a>
+</li>
+`;

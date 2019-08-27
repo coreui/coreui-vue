@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CMedia renders correctly 1`] = `
+<div
+  class="c-media"
+>
+  <div
+    class="c-mr-3 c-align-self-start"
+  >
+    <svg
+      class=""
+      height="64px"
+      style="background-color: rgb(119, 119, 119);"
+      width="64px"
+    />
+  </div>
+   
+  <div
+    class="c-media-body"
+  />
+</div>
+`;
+
+exports[`CMedia renders correctly 2`] = `
+<div
+  class="c-media c-d-flex c-flex-row-reverse"
+>
+  <div
+    class="position-class additional-aside-class c-align-self-stretch"
+  >
+    <svg
+      class=""
+      height="100%"
+      style="background-color: rgb(119, 119, 119);"
+      width="64px"
+    />
+  </div>
+   
+  <div
+    class="c-media-body additional-body-class"
+  >
+    CMedia content
+  </div>
+</div>
+`;

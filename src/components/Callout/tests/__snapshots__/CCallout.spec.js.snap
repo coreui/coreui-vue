@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCallout renders correctly 1`] = `
+<div
+  class="c-callout "
+/>
+`;
+
+exports[`CCallout renders correctly 2`] = `
+<div
+  class="c-callout c-callout-success"
+>
+  Callout
+</div>
+`;

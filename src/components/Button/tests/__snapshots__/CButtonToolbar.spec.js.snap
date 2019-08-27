@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CButtonToolbar renders correctly 1`] = `
+<div
+  class="c-btn-toolbar"
+  role="toolbar"
+/>
+`;
+
+exports[`CButtonToolbar renders correctly 2`] = `
+<div
+  class="c-btn-toolbar c-justify-content-between"
+  role="toolbar"
+>
+  <template>
+    Custom button toolbar
+  </template>
+</div>
+`;

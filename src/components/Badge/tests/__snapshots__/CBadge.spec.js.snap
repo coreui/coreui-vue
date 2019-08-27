@@ -2,6 +2,6 @@
 
 exports[`CBadge .vue renders correctly 1`] = `
 <span
-  class="c-badge c-badge-primary"
+  class="c-badge"
 />
 `;

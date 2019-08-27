@@ -2,7 +2,7 @@
 
 exports[`CSwitch renders correctly 1`] = `
 <label
-  class="c-switch c-form-check-label c-switch-primary"
+  class="c-switch c-form-check-label c-switch-undefined"
 >
   <input
     class="c-switch-input c-form-check-input"

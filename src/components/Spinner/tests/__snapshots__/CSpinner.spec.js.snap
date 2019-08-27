@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSpinner renders correctly 1`] = `
+<span
+  aria-hidden="false"
+  aria-label="Loading"
+  class="c-spinner-border"
+  role="status"
+/>
+`;
+
+exports[`CSpinner renders correctly 2`] = `
+<span
+  aria-hidden="false"
+  aria-label="Loading"
+  class="c-spinner-grow c-spinner-grow-sm c-text-success"
+  role="status"
+/>
+`;

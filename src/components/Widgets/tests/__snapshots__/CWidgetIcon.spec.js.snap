@@ -2,21 +2,19 @@
 
 exports[`CWidgetIcon matches custom props snapshot 1`] = `
 <div
-  addiconclasses="someClasses"
   class="c-card"
-  link="link.com"
 >
    
   <div
-    class="c-card-body c-clearfix c-d-flex c-align-items-center c-p-3"
+    class="c-card-body c-clearfix c-d-flex c-align-items-center c-p-0"
   >
     <div
-      class="c-float-left c-mr-3 c-text-white c-bg-primary c-p-3"
+      class="c-float-left c-mr-3 c-text-white c-bg-success c-p-4"
     />
      
     <div>
       <div
-        class="c-text-value c-text-primary"
+        class="c-text-value c-text-success"
       >
         
         header
@@ -45,7 +43,7 @@ exports[`CWidgetIcon matches default props snapshot 1`] = `
     class="c-card-body c-clearfix c-d-flex c-align-items-center c-p-3"
   >
     <div
-      class="c-float-left c-mr-3 c-text-white c-bg-primary c-p-3"
+      class="c-float-left c-mr-3 c-text-white c-bg-undefined c-p-3"
     />
      
     <div>

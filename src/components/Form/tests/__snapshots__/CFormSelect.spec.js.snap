@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CFormSelect renders correctly 1`] = `
+<div
+  class="c-form-group c-was-validated"
+  role="group"
+>
+  <label
+    class="additional-label-class c-col-form-label-lg"
+    for="some_id"
+  >
+    
+        label
+      
+  </label>
+   
+  <div
+    class="c-input-group c-input-group-lg"
+  >
+    <div
+      class="c-input-group-prepend"
+    >
+      <span
+        class="c-input-group-text"
+      >
+        prepended
+      </span>
+    </div>
+     
+    <select
+      checked="checked"
+      class="c-custom-select c-is-valid additional-input-class"
+      id="some_id"
+      inline="true"
+    >
+      <option
+        disabled="disabled"
+        hidden="hidden"
+        selected="selected"
+        value=""
+      >
+        
+        placeholder
+      
+      </option>
+       
+      <option
+        data-key="0"
+        value="Option 1"
+      >
+        
+          Option 1
+        
+      </option>
+      <option
+        data-key="1"
+        value="Option 2"
+      >
+        
+          Option 2
+        
+      </option>
+      <option
+        data-key="2"
+        value="Option 3"
+      >
+        
+          Option 3
+        
+      </option>
+    </select>
+      
+    <div
+      class="c-input-group-append"
+    >
+      <span
+        class="c-input-group-text"
+      >
+        appended
+      </span>
+    </div>
+     
+    <div
+      class="c-valid-tooltip"
+    >
+      input is valid
+    </div>
+     
+    <div
+      class="c-invalid-tooltip"
+    >
+      input is invalid
+    </div>
+     
+    <small
+      class="c-form-text c-text-muted c-w-100"
+    >
+      permission
+    </small>
+  </div>
+</div>
+`;

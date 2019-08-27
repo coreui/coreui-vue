@@ -12,6 +12,7 @@ exports[`CBreadcrumb renders correctly 1`] = `
       class=""
       href="#"
       target="_self"
+      text="Admin"
     />
   </li>
   <li
@@ -22,15 +23,15 @@ exports[`CBreadcrumb renders correctly 1`] = `
       class=""
       href="#"
       target="_self"
+      text="Manage"
     />
   </li>
+   
   <li
-    class="c-breadcrumb-item c-active"
+    class="c-active c-breadcrumb-item"
     role="presentation"
   >
-    <span
-      class=""
-    />
+    <span />
   </li>
 </ol>
 `;

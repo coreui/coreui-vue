@@ -1,0 +1,264 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CPagination renders correctly 1`] = `
+<ul
+  aria-disabled="false"
+  aria-label="pagination"
+  class="c-pagination c-pagination-md c-justify-content-start"
+  role="menubar"
+>
+  <li
+    class="c-page-item c-disabled"
+  >
+    <a
+      aria-disabled="true"
+      aria-label="Go to first page"
+      class="c-page-link c-disabled"
+      href="#"
+      tabindex="-1"
+      target="_self"
+    >
+      <span>
+        «
+      </span>
+    </a>
+  </li>
+   
+  <li
+    class="c-page-item c-disabled"
+  >
+    <a
+      aria-disabled="true"
+      aria-label="Go to previous page"
+      class="c-page-link c-disabled"
+      href="#"
+      tabindex="-1"
+      target="_self"
+    >
+      <span>
+        ‹
+      </span>
+    </a>
+  </li>
+   
+  <!---->
+   
+  <li
+    class="c-active c-page-item"
+  >
+    <a
+      aria-label="Go to page 1"
+      class="c-page-link"
+      href="#"
+      target="_self"
+    >
+      
+      1
+    
+    </a>
+  </li>
+  <li
+    class="c-page-item"
+  >
+    <a
+      aria-label="Go to page 2"
+      class="c-page-link"
+      href="#"
+      target="_self"
+    >
+      
+      2
+    
+    </a>
+  </li>
+  <li
+    class="c-page-item"
+  >
+    <a
+      aria-label="Go to page 3"
+      class="c-page-link"
+      href="#"
+      target="_self"
+    >
+      
+      3
+    
+    </a>
+  </li>
+  <li
+    class="c-page-item"
+  >
+    <a
+      aria-label="Go to page 4"
+      class="c-page-link"
+      href="#"
+      target="_self"
+    >
+      
+      4
+    
+    </a>
+  </li>
+   
+  <li
+    class="c-page-item c-disabled c-d-none c-d-sm-flex"
+    role="separator"
+  >
+    <span
+      class="c-page-link"
+    >
+      …
+    </span>
+  </li>
+   
+  <li
+    class="c-page-item"
+  >
+    <a
+      aria-label="Go to next page"
+      class="c-page-link"
+      href="#"
+      target="_self"
+    >
+      <span>
+        ›
+      </span>
+    </a>
+  </li>
+   
+  <li
+    class="c-page-item"
+  >
+    <a
+      aria-label="Go to last page"
+      class="c-page-link"
+      href="#"
+      target="_self"
+    >
+      <span>
+        »
+      </span>
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`CPagination renders correctly 2`] = `
+<ul
+  aria-disabled="false"
+  aria-label="pagination"
+  class="c-pagination c-pagination-lg c-justify-content-center"
+  role="menubar"
+>
+  <!---->
+   
+  <!---->
+   
+  <!---->
+   
+  <li
+    class="c-page-item"
+  >
+    <a
+      aria-label="Go to page 6"
+      class="c-page-link"
+      href="#"
+      target="_self"
+    >
+      
+      6
+    
+    </a>
+  </li>
+  <li
+    class="c-page-item"
+  >
+    <a
+      aria-label="Go to page 7"
+      class="c-page-link"
+      href="#"
+      target="_self"
+    >
+      
+      7
+    
+    </a>
+  </li>
+  <li
+    class="c-page-item"
+  >
+    <a
+      aria-label="Go to page 8"
+      class="c-page-link"
+      href="#"
+      target="_self"
+    >
+      
+      8
+    
+    </a>
+  </li>
+  <li
+    class="c-active c-page-item"
+  >
+    <a
+      aria-label="Go to page 9"
+      class="c-page-link"
+      href="#"
+      target="_self"
+    >
+      
+      9
+    
+    </a>
+  </li>
+  <li
+    class="c-page-item"
+  >
+    <a
+      aria-label="Go to page 10"
+      class="c-page-link"
+      href="#"
+      target="_self"
+    >
+      
+      10
+    
+    </a>
+  </li>
+  <li
+    class="c-page-item"
+  >
+    <a
+      aria-label="Go to page 11"
+      class="c-page-link"
+      href="#"
+      target="_self"
+    >
+      
+      11
+    
+    </a>
+  </li>
+  <li
+    class="c-page-item"
+  >
+    <a
+      aria-label="Go to page 12"
+      class="c-page-link"
+      href="#"
+      target="_self"
+    >
+      
+      12
+    
+    </a>
+  </li>
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+</ul>
+`;

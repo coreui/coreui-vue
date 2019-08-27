@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSidebarNavLabel .vue renders correctly 1`] = `
+<li
+  class="c-nav-item c-hidden-cn"
+  label="[object Object]"
+>
+  <a
+    class="c-nav-label"
+  >
+    <i
+      class="fa fa-circle"
+    />
+    
+      
+    
+  </a>
+</li>
+`;

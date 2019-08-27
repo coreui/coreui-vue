@@ -7,3 +7,11 @@ exports[`CLink .vue renders correctly 1`] = `
   target="_self"
 />
 `;
+
+exports[`CLink .vue renders correctly 2`] = `
+<a
+  class=""
+  href="#"
+  target="_self"
+/>
+`;

@@ -18,13 +18,20 @@ exports[`CWidgetProgress matches custom props snapshot 1`] = `
       test
     </div>
      
-    <cprogress-stub
-      class="c-progress-xs c-my-3 c-mb-0 c-progress-white"
-      max="100"
-      precision="0"
-      value="30"
-      variant=""
-    />
+    <div
+      class="c-progress c-progress-xs c-my-3 c-mb-0 c-progress-white"
+    >
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="30"
+        class="c-progress-bar"
+        role="progressbar"
+        style="width: 30%;"
+      >
+        
+      </div>
+    </div>
      
     <small
       class="c-text-muted"
@@ -50,13 +57,20 @@ exports[`CWidgetProgress matches default props snapshot 1`] = `
      
     <!---->
      
-    <cprogress-stub
-      class="c-progress-xs c-my-3 c-mb-0"
-      max="100"
-      precision="0"
-      value="25"
-      variant="primary"
-    />
+    <div
+      class="c-progress c-progress-xs c-my-3 c-mb-0"
+    >
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="25"
+        class="c-progress-bar"
+        role="progressbar"
+        style="width: 25%;"
+      >
+        
+      </div>
+    </div>
      
     <!---->
   </div>

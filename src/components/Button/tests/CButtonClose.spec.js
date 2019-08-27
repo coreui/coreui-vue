@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Component from "../CButtonClose";
+import Component from '../CButtonClose'
 
 const ComponentName = 'CButtonClose'
 const defaultWrapper = mount(Component)
