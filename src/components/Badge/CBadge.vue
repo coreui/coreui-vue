@@ -21,14 +21,12 @@ export default {
     const domProps = props.textHtml ? { innerHTML: props.textHtml } : null
     const componentData = {
       staticClass: 'c-badge',
-      class: [
-        `c-badge-${props.variant}`,
-        {
-          'c-badge-pill': Boolean(props.pill),
-          'c-active': props.active,
-          'c-disabled': props.disabled
-        }
-      ],
+      class: {
+        [`c-badge-${props.variant}`]: props.variant,
+        'c-badge-pill': Boolean(props.pill),
+        'c-active': props.active,
+        'c-disabled': props.disabled
+      },
       domProps,
       props
     }

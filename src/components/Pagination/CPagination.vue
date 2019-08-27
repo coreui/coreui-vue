@@ -41,7 +41,7 @@
       <CLink
         class="c-page-link"
         @click="setPage(item)"
-        :aria-label="`Goto page ${item}`"
+        :aria-label="`Go to page ${item}`"
       >
         {{item}}
       </CLink>
@@ -82,9 +82,13 @@
 
 <script>
   import elementResizeDetectorMaker from 'element-resize-detector'
+  import CLink from '../Link/CLink'
 
   export default {
     name: 'CPagination',
+    components: {
+      CLink
+    },
     props: {
       activePage: {
         type: Number,

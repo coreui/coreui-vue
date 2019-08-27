@@ -1,13 +1,10 @@
 <template>
-  <li 
-    :class="dropdownClasses"
-    @click="handleClick"
-  >
-    <div class="c-nav-link c-nav-dropdown-toggle">
+  <li :class="dropdownClasses">
+    <div class="c-nav-link c-nav-dropdown-toggle" @click="handleClick">
       <i v-if="icon" :class="classIcon"></i>
       {{name}}
     </div>
-    <ul class="c-nav-dropdown-items">
+    <ul class="c-nav-dropdown-items" @click="itemClicked">
       <slot></slot>
     </ul>
   </li>
@@ -18,7 +15,10 @@ export default {
   name:'CSidebarNavDropdown',
   props: {
     name: String,
-    route: String,
+    route: {
+      type: String,
+      validator: val => val.length > 0
+    },
     icon: String,
     open: Boolean
   },
@@ -28,7 +28,7 @@ export default {
     }
   },
   inject: {
-    dropdownsBehavior: {
+    dropdownStateOnRouteChange: {
       default: null
     }
   },
@@ -36,11 +36,14 @@ export default {
     $route: {
       immediate: true,
       handler (route) {
-        if (this.dropdownsBehavior === 'closeOnRouteChange') {
+        const mode = this.dropdownStateOnRouteChange
+        if (mode === 'close') {
           this.isOpen = false
-        } else if (this.dropdownsBehavior === 'closeOnInactiveRoute') {
+        } else if (mode === 'closeInactive' && this.route) {
           this.isOpen = route.fullPath.includes(this.route)
-        } else if (this.isOpen !== true) {
+        } else if (mode === 'noAction') {
+          return
+        } else if (mode === 'openActive' && !this.isOpen && this.route) {
           this.isOpen = route.fullPath.includes(this.route)
         }
       }
@@ -61,6 +64,9 @@ export default {
     handleClick (e) {
       e.preventDefault()
       this.isOpen = !this.isOpen
+    },
+    itemClicked (e) {
+      this.$emit('item-clicked', e)
     }
   }
 }

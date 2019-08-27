@@ -40,7 +40,7 @@ export default {
       type: [String, Array, Object],
       default: 'c-carousel-indicators'
     },
-    height: String
+    height: [String, Number]
   },
   data () {
     return {
@@ -58,6 +58,9 @@ export default {
                                 .filter(item => item)
     this.active = activated[0] || 0
     this.activate(activated[0] || 0)
+  },
+  beforeDestroy () {
+    clearInterval(this.currentInterval)
   },
   methods: {
     resetInterval () {

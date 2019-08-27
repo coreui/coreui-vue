@@ -342,7 +342,7 @@ export default {
       return this.pagination ? this.page : this.activePage
     },
     generatedColumnNames () {
-      return Object.keys(this.passedItems[0]).filter(el => el.charAt(0) !== '_')
+      return Object.keys(this.passedItems[0] || {}).filter(el => el.charAt(0) !== '_')
     },
     rawColumnNames () {
       if (this.fields) {

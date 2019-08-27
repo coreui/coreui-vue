@@ -9,11 +9,9 @@ const formGroupSharedProps = Object.assign(
   appendHtml: String,
   prependHtml: String
 })
-const wrapperClassesProp = {
-  wrapperClasses: [String, Array, Object]
-}
+
 export const formGroupProps = Object.assign(
-  {}, formGroupSharedProps, wrapperClassesProp
+  {}, formGroupSharedProps, { wrapperClasses: [String, Array, Object] }
 )
 
 const universalProps = {

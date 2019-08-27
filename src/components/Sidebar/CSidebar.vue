@@ -7,6 +7,7 @@
 <script>
 import elementResizeDetectorMaker from 'element-resize-detector'
 import { getStyle } from '@coreui/coreui/dist/js/coreui-utilities'
+
 export default {
   name: 'CSidebar',
   props: {
@@ -25,10 +26,13 @@ export default {
     noHideOnMobileClick: Boolean,
     aside: Boolean,
     light: Boolean,
-    dropdownsBehavior: {
+    dropdownStateOnRouteChange: {
       type: String,
+      default: 'openActive',
       validator: (mode) => {
-        return ['', 'closeOnRouteChange', 'closeOnInactiveRoute'].includes(mode)
+        return [
+          '', 'openActive', 'close', 'closeInactive', 'noAction'
+        ].includes(mode)
       }
     }
   },
@@ -43,8 +47,8 @@ export default {
     Object.defineProperty(state, 'mobileOpen', {
       get: () => this.mobileOpen
     })
-    const dropdownsBehavior = this.dropdownsBehavior
-    return { state, dropdownsBehavior }
+    const dropdownStateOnRouteChange = this.dropdownStateOnRouteChange
+    return { state, dropdownStateOnRouteChange }
   },
   data () {
     return {
@@ -67,36 +71,36 @@ export default {
     })
   },
   watch: {
-    show (val, oldVal) {
+    show (val) {
       if (val !== this.open) {
         this.open = val
       }
     },
     open: {
       immediate: true,
-      handler (val, oldVal) {
+      handler (val) {
         this.emitCurrentState('show', val)
       }
     },
-    showOnMobile (val, oldVal) {
+    showOnMobile (val) {
       if (val !== this.mobileOpen) {
         this.showOnMobile = val
       }
     },
     mobileOpen: {
       immediate: true,
-      handler (val, oldVal) {
+      handler (val) {
         this.emitCurrentState('showOnMobile', val)
       }
     },
-    minimize (val, oldVal) {
+    minimize (val) {
       if (val !== this.minimized) {
         this.minimized = val
       }
     },
     minimized: {
       immediate: true,
-      handler (val, oldVal) {
+      handler (val) {
         this.emitCurrentState('minimize', val)
       }
     },
