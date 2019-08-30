@@ -438,6 +438,10 @@ export declare class CProgress extends Vue {
 
 export declare class CProgressBar extends CProgress {}
 
+export declare class CRenderFunction extends Vue {
+  items: array
+}
+
 export declare class CSidebar extends Vue {
   fixed: boolean
   breakpoint: string
