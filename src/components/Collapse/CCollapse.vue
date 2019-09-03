@@ -31,15 +31,11 @@ export default {
     }
   },
   watch: {
-    show (val, oldVal) {
-      if (val !== oldVal) {
-        this.visible = val
-      }
+    show (val) {
+      this.visible = val
     },
-    visible (val, oldVal) {
-      if (val !== oldVal) {
-        this.collapseController(val)
-      }
+    visible (val) {
+      this.collapseController(val)
     }
   },
   mounted () {

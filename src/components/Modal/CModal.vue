@@ -129,9 +129,9 @@ export default {
     }
   },
   watch: {
-    visible (newVal, oldVal) {
-      if (newVal !== oldVal) {
-        this.toggle(newVal)
+    visible (val) {
+      if (val !== this.is_visible) {
+        this.toggle(val)
       }
     }
   },

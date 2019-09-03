@@ -4,16 +4,15 @@
       class="c-nav-link"
       :exact="true"
       v-bind="linkProps"
+      @click.native="click"
     >
       <slot>
         <i :class="['c-nav-icon', icon]"></i> 
         {{name}}
         <CBadge
-          v-if="badge && badge.text"
-          :variant="badge.variant || 'primary'"
-        >
-          {{badge.text}}
-        </CBadge>
+          v-if="badge"
+          v-bind="badge"
+        />
       </slot>
     </CLink>
   </li>
@@ -21,6 +20,8 @@
 
 <script>
 import CLink, { props as linkProps } from '../Link/CLink'
+import CBadge from '../Badge/CBadge'
+
 const props = Object.assign(linkProps, {
   name: String,
   icon: [String, Array, Object],
@@ -30,7 +31,7 @@ const props = Object.assign(linkProps, {
 export default {
   name: 'CSidebarNavLink',
   components: {
-    CLink
+    CLink, CBadge
   },
   props,
   computed: {
@@ -39,6 +40,11 @@ export default {
         props[key] = this[key]
         return props
       }, {})
+    }
+  },
+  methods: {
+    click (e) {
+      this.$emit('link-clicked', e)
     }
   }
 }

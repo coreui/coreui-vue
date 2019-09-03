@@ -62,10 +62,8 @@ export default {
   watch: {
     checked: {
       immediate: true,
-      handler (val, oldVal) {
-        if (val !== oldVal) {
-          this.isChecked = this.getCheckState()
-        }
+      handler () {
+        this.isChecked = this.getCheckState()
       }
     }
   },

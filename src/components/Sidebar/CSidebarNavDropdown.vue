@@ -29,10 +29,13 @@ export default {
   },
   inject: {
     dropdownStateOnRouteChange: {
-      default: null
+      default: 'openActive'
     }
   },
   watch: {
+    open (val) {
+      this.isOpen = val
+    },
     $route: {
       immediate: true,
       handler (route) {
@@ -64,6 +67,7 @@ export default {
     handleClick (e) {
       e.preventDefault()
       this.isOpen = !this.isOpen
+      this.$emit('update:open', this.isOpen)
     },
     itemClicked (e) {
       this.$emit('item-clicked', e)

@@ -1,10 +1,10 @@
-<template functional>
-  <div v-if="$slots.default" class="c-sidebar-header">
+<template>
+  <div class="c-sidebar-header">
     <slot></slot>
   </div>
 </template>
-<script>
 
+<script>
 export default {
   name: 'CSidebarHeader'
 }

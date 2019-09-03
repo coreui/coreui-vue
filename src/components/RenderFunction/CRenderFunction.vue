@@ -4,6 +4,11 @@ export default {
   props: {
     contentToRender: Array
   },
+  computed: {
+    content () {
+      return this.contentToRender
+    }
+  },
   render (h) {
     const computeRenderFunction = (renderFunction) => {
       return renderFunction.map(item => {
@@ -22,7 +27,7 @@ export default {
         return item
       })
     }
-    return h(...computeRenderFunction(this.contentToRender))
+    return h(...computeRenderFunction(this.content))
   }
 }
 </script>

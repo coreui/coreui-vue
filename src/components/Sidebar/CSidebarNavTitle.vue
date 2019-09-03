@@ -1,16 +1,11 @@
-<template>
+<template functional>
   <li class="c-nav-title">
-    <slot>
-      {{name}}
-    </slot>
+    <slot></slot>
   </li>
 </template>
 
 <script>
 export default {
-  name: 'CSidebarNavTitle',
-  props: {
-    name: String
-  }
+  name: 'CSidebarNavTitle'
 }
 </script>

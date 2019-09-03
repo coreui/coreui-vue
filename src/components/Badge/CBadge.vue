@@ -23,7 +23,7 @@ export default {
       staticClass: 'c-badge',
       class: {
         [`c-badge-${props.variant}`]: props.variant,
-        'c-badge-pill': Boolean(props.pill),
+        'c-badge-pill': props.pill,
         'c-active': props.active,
         'c-disabled': props.disabled
       },

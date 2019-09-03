@@ -13,12 +13,16 @@
     </div>
     <template v-if="arrows">
       <a class="c-carousel-control-prev" @click="previousItem">
-        <span class="c-carousel-control-prev-icon"></span>
-        <span class="sr-only">Previous</span>
+        <span 
+          class="c-carousel-control-prev-icon"
+          aria-label="Previous"
+        ></span>
       </a>
       <a class="c-carousel-control-next" @click="nextItem">
-        <span class="c-carousel-control-next-icon"></span>
-        <span class="sr-only">Next</span>
+        <span 
+          class="c-carousel-control-next-icon"
+          aria-label="Next"
+        ></span>
       </a>
     </template>
     <slot name="navigation"></slot>
@@ -29,10 +33,7 @@
 export default {
   name: 'CCarousel',
   props: {
-    interval: {
-      type: Number,
-      default: 6000
-    },
+    interval: Number,
     animate: Boolean,
     indicators: Boolean,
     arrows: Boolean,

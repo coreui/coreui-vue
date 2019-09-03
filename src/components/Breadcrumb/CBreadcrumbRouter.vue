@@ -18,13 +18,13 @@ export default {
   computed: {
     items () {
       const routes = this.$route.matched.filter(route => {
-        return route.name || route.meta.label
+        return route.name || (route.meta && route.meta.label)
       })
       return routes.map(route => {
         const meta = route.meta || {}
         return {
           to: route,
-          textHtml: meta.label || route.name || null
+          textHtml: meta.label || route.name
         }
       })
     },

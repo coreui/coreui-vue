@@ -1,5 +1,5 @@
-<template functional>
-  <div v-if="$slots.default" class="c-sidebar-footer">
+<template>
+  <div class="c-sidebar-footer">
     <slot></slot>
   </div>
 </template>

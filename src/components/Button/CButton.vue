@@ -66,7 +66,7 @@ function computeAttrs (props, data, isButton, toggle) {
 export default {
   functional: true,
   name: 'CButton',
-  props: props,
+  props,
   render (h, { props, data, listeners, children }) {
     const toggle = isToggle(props)
     const isButton = !isLink(props)
