@@ -56,7 +56,7 @@ export default {
       handler (val, oldVal) {
         this.clearCounter()
         if (!val && oldVal) {
-          this.$emit('dismissed')
+          this.$emit('update:show', val)
         } else if (typeof val === 'number' && val) {
           this.countdownTimeout = setTimeout(() => {
             const isWatched = this.$listeners['update:show']
@@ -71,7 +71,6 @@ export default {
   },
   methods: {
     dismiss () {
-      this.$emit('update:show', 0)
       this.state = false
     },
     clearCounter () {
