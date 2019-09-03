@@ -43,7 +43,7 @@
 
 <script>
 import * as allFormMixins from './formMixins'
-const mixins = Object.values(allFormMixins)
+const mixins = Object.values(allFormMixins).filter((i, key) => key !== 'watchValue')
 import { formFileProps as props } from './formProps'
 import CFormGroup from './CFormGroup'
 export default {
@@ -53,28 +53,30 @@ export default {
   mixins,
   props,
   // {
-  //   // Html props: disabled, required, accept
-  //   label: String,
-  //   id: String,
-  //   wasValidated: Boolean,
-  //   size: {
-  //     type: String,
-  //     validator: str => ['','sm','lg'].includes(str)
-  //   },
-  //   horizontal: [Boolean, Object],
-  //   validFeedback: String,
-  //   invalidFeedback: String,
-  //   tooltipFeedback: Boolean,
-  //   description: String,
-  //   isValid: {
-  //     type: Boolean,
-  //     default: null
-  //   },
-  //   multiple: Boolean,
-  //   custom: Boolean,
-  //   addInputClasses: String,
-  //   addLabelClasses: String,
-  //   addWrapperClasses: String,
+    // validFeedback: String,
+    // invalidFeedback: String,
+    // tooltipFeedback: Boolean,
+    // description: String,
+
+    // label: String,
+    // wasValidated: Boolean,
+    // isValid: {
+    //   type: [Boolean, Function],
+    //   default: null
+    // },
+    // addInputClasses: [String, Array, Object],
+    // addLabelClasses: [String, Array, Object],
+
+    // horizontal: [Boolean, Object],
+    // size: {
+    //   type: String,
+    //   validator: str => ['','sm','lg'].includes(str)
+    // },
+    // addWrapperClasses: [String, Array, Object],
+
+    // custom: Boolean,
+    // placeholder: String,
+    // multiple: Boolean
   // },
   data () {
     return {
@@ -91,63 +93,57 @@ export default {
     // },
     computedClasses () {
       return [
-               this.isHorizontal ? 'c-form-row':
-               this.custom ? 'c-custom-file' : 'c-form-group c-position-relative',
-               {
-                 'c-was-validated': this.wasValidated
-               }
-             ]
+        this.isHorizontal ? 'c-form-row':
+        this.custom ? 'c-custom-file' : 'c-form-group c-position-relative',
+        {
+          'c-was-validated': this.wasValidated
+        }
+      ]
     },
-    // computedClasses () {
-    //   return [
-    //            this.isHorizontal ? 'form-row': 'form-group',
-    //            {
-    //            'was-validated': this.wasValidated
-    //            }
-    //          ]
-    // },
     // labelClasses () {
-    //   return [ this.addLabelClasses, {
-    //            'col-form-label': this.isHorizontal,
-    //            [this.horizontal.label || 'col-2']: this.isHorizontal,
-    //            [`col-form-label-${this.size}`]: this.haveCustomSize,
-    //          }]
+    //   return [
+    //     this.addLabelClasses,
+    //     {
+    //       'c-col-form-label': this.isHorizontal,
+    //       [this.horizontal.label || 'c-col-sm-3']: this.isHorizontal,
+    //       [`c-col-form-label-${this.size}`]: this.haveCustomSize,
+    //     }
+    //   ]
     // },
     // customSizeClass () {
-    //   return this.haveCustomSize ? `form-control-${this.size}` : null
+    //   if (this.haveCustomSize && !this.haveWrapper) {
+    //     return `c-form-control-${this.size}`
+    //   }
     // },
     inputClass () {
       return this.custom ? 'c-custom-file-input' : 'c-form-control-file'
     },
     // inputClasses () {
     //   return [
-    //     this.inputClass || 'form-control',
-    //     this.stateClass,
+    //     this.inputClass || `c-form-control${this.plaintext ? '-plaintext' : ''}`,
+    //     this.validationClass,
     //     this.addInputClasses,
     //     this.customSizeClass
     //   ]
-    // },
+    // }
 
 
     // validationComputedProps mixin
     // computedIsValid () {
-    //   if (typeof this.isValid === 'function')
+    //   if (typeof this.isValid === 'function') {
     //     return this.isValid(this.state)
+    //   }
     //   return this.isValid
     // },
     // validationClass () {
-    //   if (this.computedIsValid === null)
-    //     return
-    //   return this.computedIsValid ? 'is-valid' : 'is-invalid'
+    //   if (typeof this.computedIsValid === 'boolean') {
+    //     return this.computedIsValid ? 'c-is-valid' : 'c-is-invalid'
+    //   }
     // }
 
     //wrapperComputedProps mixin
     // isHorizontal () {
     //   return Boolean(this.horizontal)
-    // },
-    // haveInputGroup () {
-    //   return Boolean(this.tooltipFeedback || this.appendHtml ||
-    //      this.prependHtml || this.$slots.append || this.$slots.prepend)
     // },
     haveInputGroup () {
       return false
@@ -156,11 +152,16 @@ export default {
     //   return this.haveInputGroup || Boolean(this.addWrapperClasses || this.isHorizontal)
     // },
     // wrapperClasses () {
-    //   if(this.haveWrapper)
-    //     return [ this.addWrapperClasses, {
-    //              [this.horizontal.input || 'col-10'] : this.isHorizontal,
-    //              'input-group' : this.haveInputGroup
-    //            }]
+    //   if (this.haveWrapper) {
+    //     return [
+    //       this.addWrapperClasses,
+    //       {
+    //         [this.horizontal.input || 'c-col-sm-9'] : this.isHorizontal,
+    //         'c-input-group' : this.haveInputGroup,
+    //         [`c-input-group-${this.size}`]: this.haveCustomSize
+    //       }
+    //     ]
+    //   }
     // }
   },
   methods: {

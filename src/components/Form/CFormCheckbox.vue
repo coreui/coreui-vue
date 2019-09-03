@@ -34,8 +34,7 @@
 </template>
 
 <script>
-import safeId from '../../mixins/safeId'
-import { validationComputedProps } from './formMixins'
+import { safeId, validationComputedProps } from './formMixins'
 import { formCheckboxProps as props } from './formProps'
 import CFormGroup from './CFormGroup'
 export default {
@@ -45,34 +44,36 @@ export default {
   mixins: [safeId, validationComputedProps],
   props,
   // {
-  //   label: String,
-  //   id: String,
-  //   wasValidated: Boolean,
-  //   checked: [Boolean, String, Number],
-  //   value: {
-  //     type: [String, Number, Boolean],
-  //     default: null
-  //   },
-  //   trueValue: {
-  //     type: [String, Number, Boolean],
-  //     default: undefined
-  //   },
-  //   falseValue: {
-  //     type: [String, Number, Boolean],
-  //     default: undefined
-  //   },
-  //   validFeedback: String,
-  //   invalidFeedback: String,
-  //   tooltipFeedback: Boolean,
-  //   description: String,
-  //   isValid: {
-  //     type: Boolean,
-  //     default: null
-  //   },
-  //   addInputClasses: String,
-  //   addLabelClasses: String,
-  //   custom: Boolean,
-  //   inline: Boolean
+    // validFeedback: String,
+    // invalidFeedback: String,
+    // tooltipFeedback: Boolean,
+    // description: String,
+
+    // label: String,
+    // wasValidated: Boolean,
+    // isValid: {
+    //   type: [Boolean, Function],
+    //   default: null
+    // },
+    // addInputClasses: [String, Array, Object],
+    // addLabelClasses: [String, Array, Object],
+    
+    // checked: [Boolean, String, Number],
+    // value: {
+    //   type: [String, Number, Boolean],
+    //   default: undefined
+    // },
+    // custom: Boolean,
+    // inline: Boolean,
+    
+    // trueValue: {
+    //   type: [String, Number],
+    //   default: undefined
+    // },
+    // falseValue: {
+    //   type: [String, Number],
+    //   default: undefined
+    // },
   // },
   type: 'checkbox',
   data () {
@@ -83,10 +84,8 @@ export default {
   watch: {
     checked: {
       immediate: true,
-      handler (val, oldVal) {
-        if (val !== oldVal) {
-          this.state = this.getCheckState()
-        }
+      handler () {
+        this.state = this.getCheckState()
       }
     }
   },
@@ -122,14 +121,15 @@ export default {
 
     // validationComputedProps mixin
     // computedIsValid () {
-    //   if (typeof this.isValid === 'function')
+    //   if (typeof this.isValid === 'function') {
     //     return this.isValid(this.state)
+    //   }
     //   return this.isValid
     // },
     // validationClass () {
-    //   if (this.computedIsValid === null)
-    //     return
-    //   return this.computedIsValid ? 'is-valid' : 'is-invalid'
+    //   if (typeof this.computedIsValid === 'boolean') {
+    //     return this.computedIsValid ? 'c-is-valid' : 'c-is-invalid'
+    //   }
     // }
   },
   methods: {

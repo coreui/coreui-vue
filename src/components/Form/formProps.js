@@ -75,13 +75,20 @@ export const formSelectProps = Object.assign(
 })
 
 // Html props: id, disabled, required
-export const formCheckboxProps = Object.assign(
+export const formRadioProps = Object.assign(
   {}, formGroupAlwaysSharedProps, universalProps, {
   checked: [Boolean, String, Number],
   value: {
     type: [String, Number, Boolean],
     default: undefined
   },
+  custom: Boolean,
+  inline: Boolean
+})
+
+// Html props: id, disabled, required
+export const formCheckboxProps = Object.assign(
+  {}, formRadioProps, {
   trueValue: {
     type: [String, Number],
     default: undefined
@@ -89,7 +96,5 @@ export const formCheckboxProps = Object.assign(
   falseValue: {
     type: [String, Number],
     default: undefined
-  },
-  custom: Boolean,
-  inline: Boolean
+  }
 })

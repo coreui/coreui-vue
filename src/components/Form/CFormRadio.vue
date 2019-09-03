@@ -1,14 +1,10 @@
 <script>
 import CFormCheckbox from './CFormCheckbox'
-//solution made to avoid deleting props from CFormCheckbox
-const props = Object.assign({}, CFormCheckbox.props)
-delete props.trueValue
-delete props.falseValue
+import { formRadioProps as props } from './formProps'
 
 export default {
   name: 'CFormRadio',
-  extends: CFormCheckbox,
-  props,
+  extends: Object.assign({}, CFormCheckbox, { props }),
   type: 'radio',
   methods: {
     getCheckState () {

@@ -71,76 +71,86 @@ export default {
   ],
   mixins,
   props,
+  // Html props: disabled, required don't use multiple
   // {
-  //   // Html props: disabled, required don't use multiple
-  //   value: [String, Number, Boolean],
-  //   options: Array,
-  //   label: String,
-  //   id: String,
-  //   placeholder: String,
-  //   plaintext: Boolean,
-  //   wasValidated: Boolean,
-  //   size: {
-  //     type: String,
-  //     validator: str => ['','sm','lg'].includes(str)
-  //   },
-  //   horizontal: [Boolean, Object],
-  //   appendHtml: String,
-  //   prependHtml: String,
   //   validFeedback: String,
   //   invalidFeedback: String,
   //   tooltipFeedback: Boolean,
   //   description: String,
-  //   custom: Boolean,
+
+  //   appendHtml: String,
+  //   prependHtml: String,
+
+  //   label: String,
+  //   wasValidated: Boolean,
   //   isValid: {
-  //     type: Boolean,
+  //     type: [Boolean, Function],
   //     default: null
   //   },
-  //   addInputClasses: String,
-  //   addLabelClasses: String,
-  //   addWrapperClasses: String
+  //   addInputClasses: [String, Array, Object],
+  //   addLabelClasses: [String, Array, Object],
+
+  //   horizontal: [Boolean, Object],
+  //   size: {
+  //     type: String,
+  //     validator: str => ['','sm','lg'].includes(str)
+  //   },
+  //   addWrapperClasses: [String, Array, Object],
+
+  //   options: Array,
+  //   value: [String, Number, Boolean, Array],
+  //   plaintext: Boolean,
+  //   placeholder: String,
+  //   custom: Boolean
   // },
   data () {
     return {
       state: this.value || undefined
     }
   },
+  //watchValue mixin
+  // watch: {
+  //   value (val) {
+  //     this.state = val
+  //   }
+  // },
   computed: {
-    // // classesComputedProps mixin
+    // classesComputedProps mixin
     // haveCustomSize () {
-    //   return ['','sm','lg'].includes(this.size) && Boolean(this.size)
+    //   return ['sm','lg'].includes(this.size)
     // },
     // computedClasses () {
     //   return [
-    //            this.isHorizontal ? 'form-row': 'form-group',
-    //            {
-    //            'was-validated': this.wasValidated
-    //            }
-    //          ]
+    //     'c-form-group',
+    //     {
+    //      'c-was-validated': this.wasValidated,
+    //      'c-form-row': this.isHorizontal
+    //     }
+    //   ]
     // },
     // labelClasses () {
-    //   return [ this.addLabelClasses, {
-    //            'col-form-label': this.isHorizontal,
-    //            [this.horizontal.label || 'col-2']: this.isHorizontal,
-    //            [`col-form-label-${this.size}`]: this.haveCustomSize,
-    //          }]
+    //   return [
+    //     this.addLabelClasses,
+    //     {
+    //       'c-col-form-label': this.isHorizontal,
+    //       [this.horizontal.label || 'c-col-sm-3']: this.isHorizontal,
+    //       [`c-col-form-label-${this.size}`]: this.haveCustomSize,
+    //     }
+    //   ]
     // },
     customSizeClass () {
       if (this.haveCustomSize && !this.haveWrapper) {
         return `${this.custom ?'c-custom-select':'c-form-control'}-${this.size}`
       }
     },
-    // customSizeClass () {
-    //   return this.haveCustomSize ? `form-control-${this.size}` : null
-    // },
     inputClass () {
       const standardClass = `c-form-control${this.plaintext ? '-plaintext' : ''}`
       return this.custom ? 'c-custom-select' : standardClass
     }
     // inputClasses () {
     //   return [
-    //     this.inputClass || 'form-control',
-    //     this.stateClass,
+    //     this.inputClass || `c-form-control${this.plaintext ? '-plaintext' : ''}`,
+    //     this.validationClass,
     //     this.addInputClasses,
     //     this.customSizeClass
     //   ]
@@ -149,15 +159,16 @@ export default {
 
     // validationComputedProps mixin
     // computedIsValid () {
-    //   if (typeof this.isValid === 'function')
+    //   if (typeof this.isValid === 'function') {
     //     return this.isValid(this.state)
+    //   }
     //   return this.isValid
     // },
     // validationClass () {
-    //   if (this.computedIsValid === null)
-    //     return
-    //   return this.computedIsValid ? 'is-valid' : 'is-invalid'
-    // }
+    //   if (typeof this.computedIsValid === 'boolean') {
+    //     return this.computedIsValid ? 'c-is-valid' : 'c-is-invalid'
+    //   }
+    // },
 
 
     //wrapperComputedProps mixin
@@ -165,38 +176,39 @@ export default {
     //   return Boolean(this.horizontal)
     // },
     // haveInputGroup () {
-    //   return Boolean(this.tooltipFeedback || this.appendHtml ||
-    //      this.prependHtml || this.$slots.append || this.$slots.prepend)
+    //   return Boolean(
+    //     this.tooltipFeedback || 
+    //     this.appendHtml ||
+    //     this.prependHtml || 
+    //     this.$slots.append || 
+    //     this.$slots.prepend
+    //   )
     // },
     // haveWrapper () {
     //   return this.haveInputGroup || Boolean(this.addWrapperClasses || this.isHorizontal)
     // },
     // wrapperClasses () {
-    //   if(this.haveWrapper)
-    //     return [ this.addWrapperClasses, {
-    //              [this.horizontal.input || 'col-10'] : this.isHorizontal,
-    //              'input-group' : this.haveInputGroup
-    //            }]
+    //   if (this.haveWrapper) {
+    //     return [
+    //       this.addWrapperClasses,
+    //       {
+    //         [this.horizontal.input || 'c-col-sm-9'] : this.isHorizontal,
+    //         'c-input-group' : this.haveInputGroup,
+    //         [`c-input-group-${this.size}`]: this.haveCustomSize
+    //       }
+    //     ]
+    //   }
     // }
   },
 
-  //watchValue mixin
-  // watch: {
-  //   value (val, oldVal) {
-  //     if (val !== oldVal)
-  //       this.state = val
-  //   },
-  // },
   methods: {
     onSelect (e) {
-      // console.log(e)
       const optionIndex = e.target.selectedOptions[0].dataset.key
       const option = this.options[optionIndex]
-      // const optionIsObject = Boolean(option.value)
       const value = option.value || option
       this.state = value
       this.$emit('update:value', value, e)
-    },
+    }
   }
 }
 </script>

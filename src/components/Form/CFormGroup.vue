@@ -111,13 +111,15 @@ export default {
   inheritAttrs: false,
   props,
   // {
-  //   wrapperClasses: [String, Array, Object],
-  //   appendHtml: String,
-  //   prependHtml: String,
   //   validFeedback: String,
   //   invalidFeedback: String,
   //   tooltipFeedback: Boolean,
-  //   description: String
+  //   description: String,
+
+  //   appendHtml: String,
+  //   prependHtml: String,
+
+  //   wrapperClasses: [String, Array, Object],
   // },
 }
 </script>
