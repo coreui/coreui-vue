@@ -3,7 +3,7 @@
     <VuePerfectScrollbar
       class="c-scroll-area"
       :settings="psSettings"
-      :switcher="!state.minimized"
+      :swicher="!state.minimized"
     >
       <ul class="c-nav">
         <slot></slot>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import VuePerfectScrollbar from 'vue-perfect-scrollbar'
+import VuePerfectScrollbar from './CPerfectScrollbar'
 
 export default {
   name: 'CSidebarNav',
