@@ -15,15 +15,16 @@ const wrapper = mount(
     mocks: {
       $route: { 
         matched: [
-          { path: '', name: 'Home', meta: {} },
-          { path: '/menu', name: 'Menu', meta: {} },
-          { path: '/menu/view', name: 'View', meta: {} } 
+          { path: '', meta: { label: 'Home' } },
+          { path: '/menu', name: 'Menu' },
+          { path: '/menu/view', name: 'View' } 
         ] 
       }
     },
     propsData: { 
-      addLinkClasses: 'test-link-class',
-      addLastItemClasses: 'test-last-item-class',
+      addLinkClasses: 'additional-link-class',
+      addLastItemClasses: 'additional-last-item-class',
+      addClasses: 'additional-class'
     }
   }
 )

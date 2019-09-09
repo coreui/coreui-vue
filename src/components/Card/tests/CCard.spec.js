@@ -9,9 +9,9 @@ const wrapper = mount(Component, {
       variant: 'success',
       textVariant: 'white',
       borderVariant: 'solid',
-      header: 'header',
-      footer: 'footer',
-      body: 'body'
+      headerHtml: 'header',
+      footerHtml: 'footer',
+      bodyHtml: 'body'
     }
   }
 })
@@ -22,13 +22,20 @@ const slotWrapper = mount(Component, {
       variant: 'success',
       textVariant: 'white',
       borderVariant: 'solid',
-      header: 'header',
-      footer: 'footer',
-      body: 'body'
+      bodyWrapper: true
     }
   },
   slots: {
-    default: 'this should overwrite body<br>'
+    default: 'this should be rendered in body wrapper'
+  }
+})
+
+const noBodyCard = mount(Component, {
+  context: {
+    props: {
+      headerHtml: 'header',
+      footerHtml: 'footer'
+    }
   }
 })
 
@@ -41,5 +48,8 @@ describe(ComponentName, () => {
   })
   it('renders correctly with slots', () => {
     expect(slotWrapper.element).toMatchSnapshot()
+  })
+  it('renders correctly with slots', () => {
+    expect(noBodyCard.element).toMatchSnapshot()
   })
 });

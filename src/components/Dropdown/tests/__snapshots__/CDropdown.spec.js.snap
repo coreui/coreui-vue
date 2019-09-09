@@ -22,7 +22,7 @@ exports[`CDropdown renders correctly 1`] = `
 
 exports[`CDropdown renders correctly 2`] = `
 <div
-  class="c-dropdown c-show c-btn-group"
+  class="c-dropright c-show c-btn-group"
 >
   <button
     class="additional-toggler-class c-btn c-btn-lg c-disabled c-btn-success"
@@ -42,4 +42,28 @@ exports[`CDropdown renders correctly 2`] = `
     CDropdown subcomponents
   </div>
 </div>
+`;
+
+exports[`CDropdown renders correctly in nav mode 1`] = `
+<li
+  class="c-dropleft c-nav-item"
+>
+  <a
+    aria-expanded="false"
+    aria-haspopup="true"
+    class="additional-toggler-class c-nav-link c-bg-success"
+    href="#"
+    target="_self"
+  >
+    Dropdown button
+  </a>
+   
+  <!---->
+   
+  <div
+    class="additional-menu-class c-dropdown-menu"
+  >
+    CDropdown subcomponents
+  </div>
+</li>
 `;

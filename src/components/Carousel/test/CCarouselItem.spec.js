@@ -18,10 +18,10 @@ describe(ComponentName, () => {
   it('has a name', () => {
     expect(Component.name).toMatch(ComponentName)
   })
-  it('renders correctly', () => {
-    expect(defaultWrapper.element).toMatchSnapshot()
-  })
-  it('renders correctly', () => {
-    expect(customWrapper.element).toMatchSnapshot()
-  })
+  // it('renders correctly', () => {
+  //   expect(defaultWrapper.element).toMatchSnapshot()
+  // })
+  // it('renders correctly', () => {
+  //   expect(customWrapper.element).toMatchSnapshot()
+  // })
 })

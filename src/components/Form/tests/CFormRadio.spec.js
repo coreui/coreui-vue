@@ -28,4 +28,8 @@ describe(ComponentName, () => {
   it('renders correctly', () => {
     expect(customWrapper.element).toMatchSnapshot()
   })
+  it('renders correctly', () => {
+    customWrapper.find('input').setChecked(true)
+    expect(customWrapper.emitted()['update:checked']).toBeTruthy()
+  })
 })

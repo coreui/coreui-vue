@@ -2,6 +2,12 @@ import { mount } from '@vue/test-utils'
 import Component from '../CFormFile'
 
 const ComponentName = 'CFormFile'
+const wrapper = mount(Component, {
+  propsData: {
+    label: 'label',
+    id: 'some_id',
+  }
+})
 const customWrapper = mount(Component, {
   propsData: {
     label: 'label',
@@ -26,7 +32,14 @@ describe(ComponentName, () => {
   it('has a name', () => {
     expect(Component.name).toMatch(ComponentName)
   })
+  it('renders correctly basic functionality', () => {
+    expect(wrapper.element).toMatchSnapshot()
+  })
   it('renders correctly', () => {
     expect(customWrapper.element).toMatchSnapshot()
+  })
+  it('emmits event after file load', () => {
+    customWrapper.find('input').trigger('change')
+    expect(customWrapper.emitted().change).toBeTruthy()
   })
 })

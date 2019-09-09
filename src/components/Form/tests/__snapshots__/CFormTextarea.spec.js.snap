@@ -2,6 +2,29 @@
 
 exports[`CFormTextarea renders correctly 1`] = `
 <div
+  class="c-form-group"
+  role="group"
+>
+   
+  <!---->
+   
+  <textarea
+    class="c-form-control"
+    id="some_id"
+  />
+    
+  <!---->
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+</div>
+`;
+
+exports[`CFormTextarea renders correctly 2`] = `
+<div
   class="c-form-group c-was-validated"
   role="group"
 >

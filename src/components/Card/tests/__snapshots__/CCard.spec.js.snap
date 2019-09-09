@@ -4,8 +4,21 @@ exports[`CCard renders correctly 1`] = `
 <div
   class="c-card c-text-left c-bg-success c-border-solid c-text-white"
 >
-  <!---->
-  <!---->
+  <header
+    class="c-card-header"
+  >
+    header
+  </header>
+  <div
+    class="c-card-body"
+  >
+    body
+  </div>
+  <footer
+    class="c-card-footer"
+  >
+    footer
+  </footer>
 </div>
 `;
 
@@ -14,8 +27,30 @@ exports[`CCard renders correctly with slots 1`] = `
   class="c-card c-text-left c-bg-success c-border-solid c-text-white"
 >
   <!---->
-  this should overwrite body
-  <br />
+  <div
+    class="c-card-body"
+  >
+    <!---->
+    <!---->
+    this should be rendered in body wrapper
+  </div>
   <!---->
+</div>
+`;
+
+exports[`CCard renders correctly with slots 2`] = `
+<div
+  class="c-card"
+>
+  <header
+    class="c-card-header"
+  >
+    header
+  </header>
+  <footer
+    class="c-card-footer"
+  >
+    footer
+  </footer>
 </div>
 `;

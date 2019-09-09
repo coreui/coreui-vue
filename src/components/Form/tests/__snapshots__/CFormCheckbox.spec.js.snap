@@ -45,3 +45,37 @@ exports[`CFormCheckbox renders correctly 1`] = `
   </small>
 </div>
 `;
+
+exports[`CFormCheckbox renders correctly basic checkbox 1`] = `
+<div
+  class="c-form-check"
+  role="group"
+>
+   
+  <!---->
+   
+  <input
+    class="c-form-check-input"
+    id="some_id"
+    type="checkbox"
+    value=""
+  />
+   
+  <label
+    class="c-form-check-label"
+    for="some_id"
+  >
+    
+        label
+      
+  </label>
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+</div>
+`;

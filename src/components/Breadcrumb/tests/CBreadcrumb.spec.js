@@ -12,7 +12,10 @@ const wrapper = mount(Component, {
       href: '#'
     }, {
       text: 'Library'
-    }]
+    }],
+    addLinkClasses: 'additional-link-class',
+    addLastItemClasses: 'additional-last-item-class',
+    addClasses: 'additional-class'
   }
 })
 

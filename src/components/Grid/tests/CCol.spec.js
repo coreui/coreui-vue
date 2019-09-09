@@ -2,11 +2,14 @@ import { mount } from '@vue/test-utils'
 import Component from '../CCol'
 
 const ComponentName = 'CCol'
-const defaultWrapper = mount(Component)
+const wrapper = mount(Component)
+
 const customWrapper = mount(Component, {
   propsData: {
-    sm: { size: 8 },
-    md: { offset: 2 }
+    sm: 12,
+    md: { size: 6, offset: 3, order: 1},
+    lg: {},
+    xl: true
   },
   slots: {
     default: 'CCol content'
@@ -18,7 +21,7 @@ describe(ComponentName, () => {
     expect(Component.name).toMatch(ComponentName)
   })
   it('renders correctly', () => {
-    expect(defaultWrapper.element).toMatchSnapshot()
+    expect(wrapper.element).toMatchSnapshot()
   })
   it('renders correctly', () => {
     expect(customWrapper.element).toMatchSnapshot()

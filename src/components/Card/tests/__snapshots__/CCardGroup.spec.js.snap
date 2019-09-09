@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CCardGroup renders correctly 1`] = `
-<p
+<div
   class="c-card-deck"
 >
   <template>
     content goes here
   </template>
-</p>
+</div>
 `;

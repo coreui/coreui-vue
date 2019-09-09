@@ -57,3 +57,37 @@ exports[`CFormFile renders correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`CFormFile renders correctly basic functionality 1`] = `
+<div
+  class="c-form-group c-position-relative"
+  role="group"
+>
+  <label
+    class=""
+    for="some_id"
+  >
+    
+        label
+      
+  </label>
+   
+  <!---->
+   
+  <input
+    class="c-form-control-file"
+    id="some_id"
+    type="file"
+  />
+   
+  <!---->
+    
+  <!---->
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+</div>
+`;

@@ -5,7 +5,7 @@ exports[`CAlert renders correctly 1`] = `
   appear="true"
   aria-atomic="true"
   aria-live="polite"
-  class="c-alert c-alert-dismissible c-alert-primary"
+  class="c-alert c-alert-dismissible"
   role="alert"
 >
   <button

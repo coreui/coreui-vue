@@ -14,7 +14,8 @@ const customWrapper = mount(Component, {
     rounded: 'right',
     // thumbnail: true,
     align: 'right',
-    blankColor: 'red'
+    blankColor: 'red',
+    rounded: 'right'
   }
 })
 
@@ -27,5 +28,17 @@ describe(ComponentName, () => {
   })
   it('renders correctly', () => {
     expect(customWrapper.element).toMatchSnapshot()
+  })
+  it('sets align properly', () => {
+    expect(customWrapper.vm.alignClass).toBe('c-float-right')
+    customWrapper.setProps({ align: 'left'})
+    expect(customWrapper.vm.alignClass).toBe('c-float-left')
+    customWrapper.setProps({ align: 'center'})
+    expect(customWrapper.vm.alignClass).toBe('c-mx-auto')
+  })
+  it('changes rounding properly', () => {
+    expect(customWrapper.classes().includes('c-rounded-right')).toBe(true)
+    customWrapper.setProps({ rounded: true})
+    expect(customWrapper.classes().includes('c-rounded')).toBe(true)
   })
 })

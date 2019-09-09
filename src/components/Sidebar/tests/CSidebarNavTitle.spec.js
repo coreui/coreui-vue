@@ -2,31 +2,17 @@ import { mount } from '@vue/test-utils'
 import Component from '../CSidebarNavTitle'
 
 const ComponentName = 'CSidebarNavTitle'
-const wrapper = mount(Component)
-// /* eslint-disable no-console */
-// console.log("something")
+const wrapper = mount(Component, {
+  slots: {
+    default: 'title'
+  }
+})
 
 describe(`${ComponentName} .vue`, () => {
   it('has a name', () => {
     expect(Component.name).toMatch(ComponentName)
   })
-  // Inspect the raw component options
-  it("should have default props", () => {
-    const wrapper2 = mount(Component, {
-      propsData: {
-        name: 'test',
-      }
-    })
-    expect(wrapper2.props().name).toEqual('test')
-  });
-  // it('has classList computed property', () => {
-  //   expect(typeof Component.computed.classList).toBe('function')
-  // })
-  // it('has itemClasses computed property', () => {
-  //   expect(typeof Component.computed.itemClasses).toBe('function')
-  // })
   it('renders correctly', () => {
     expect(wrapper.element).toMatchSnapshot()
-    // expect(wrapper.classes()).toContain('nav-title')
   })
 });

@@ -5,7 +5,7 @@ exports[`CBreadcrumb renders correctly 1`] = `
   class="c-breadcrumb"
 >
   <li
-    class="c-breadcrumb-item"
+    class="additional-class c-breadcrumb-item additional-link-class"
     role="presentation"
   >
     <a
@@ -16,7 +16,7 @@ exports[`CBreadcrumb renders correctly 1`] = `
     />
   </li>
   <li
-    class="c-breadcrumb-item"
+    class="additional-class c-breadcrumb-item additional-link-class"
     role="presentation"
   >
     <a
@@ -28,7 +28,7 @@ exports[`CBreadcrumb renders correctly 1`] = `
   </li>
    
   <li
-    class="c-active c-breadcrumb-item"
+    class="c-active additional-class c-breadcrumb-item additional-last-item-class"
     role="presentation"
   >
     <span />

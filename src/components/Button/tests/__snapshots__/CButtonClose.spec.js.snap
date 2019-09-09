@@ -10,14 +10,24 @@ exports[`CButtonClose renders correctly 1`] = `
 </button>
 `;
 
-exports[`CButtonClose renders correctly 2`] = `
+exports[`CButtonClose renders correctly with custom iconHtml 1`] = `
 <button
   aria-label="Close"
-  class="c-close"
+  class="custom-class"
   disabled="disabled"
   style="color:red"
   type="button"
 >
   ok
+</button>
+`;
+
+exports[`CButtonClose renders correctly with slot 1`] = `
+<button
+  aria-label="Close"
+  class="c-close"
+  type="button"
+>
+  slot
 </button>
 `;

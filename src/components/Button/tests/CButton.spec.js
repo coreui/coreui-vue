@@ -3,17 +3,23 @@ import Component from '../CButton'
 
 const ComponentName = 'CButton'
 const defaultWrapper = mount(Component)
+
+let pressedState = true
 const toggleWrapper = mount(Component, {
   context: {
     props: {
-      pressed: true,
+      pressed: pressedState,
       type: 'input',
       size: 'lg',
       variant: 'info',
+      outline: true,
       ghost: true,
       block: true,
       square: true
     }
+  },
+  listeners: {
+    'update:pressed': () => { pressedState = !pressedState }
   },
   slots: {
     default: 'button'
@@ -34,6 +40,17 @@ const routerLinkWrapper = mount(Component, {
   }
 })
 
+// const disabledButton = mount(Component, {
+//   context: {
+//     props: {
+//       disabled: true
+//     }
+//   },
+//   slots: {
+//     default: 'button'
+//   }
+// })
+
 describe(ComponentName, () => {
   it('has a name', () => {
     expect(Component.name).toMatch(ComponentName)
@@ -41,10 +58,17 @@ describe(ComponentName, () => {
   it('renders correctly', () => {
     expect(defaultWrapper.element).toMatchSnapshot()
   })
-  // it('renders correctly router link button', () => {
-  //   expect(routerLinkWrapper.element).toMatchSnapshot()
-  // })
-  // it('renders correctly toggle button', () => {
-  //   expect(toggleWrapper.element).toMatchSnapshot()
+  it('renders correctly router link button', () => {
+    expect(routerLinkWrapper.element).toMatchSnapshot()
+  })
+  it('renders correctly toggle button', () => {
+    expect(toggleWrapper.element).toMatchSnapshot()
+  })
+  it('changes pressed state', () => {
+    toggleWrapper.trigger('click')
+    expect(pressedState).toBe(false)
+  })
+  // it('disabled', () => {
+  //   disabledButton.trigger('click')
   // })
 })

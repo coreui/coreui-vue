@@ -8,7 +8,7 @@ exports[`CCol renders correctly 1`] = `
 
 exports[`CCol renders correctly 2`] = `
 <div
-  class="c-col-sm-8 c-offset-md-2"
+  class="c-col-sm-12 c-col-md-6 c-offset-md-3 c-order-md-1 c-col-xl"
 >
   <template>
     CCol content

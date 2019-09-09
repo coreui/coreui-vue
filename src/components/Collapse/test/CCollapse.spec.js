@@ -25,4 +25,19 @@ describe(ComponentName, () => {
   it('renders correctly', () => {
     expect(customWrapper.element).toMatchSnapshot()
   })
+  it('changes state correctly', () => {
+    customWrapper.setProps({ show: false })
+    expect(customWrapper.vm.visible).toBe(false)
+    
+    jest.useRealTimers()
+    setTimeout(() => customWrapper.setProps({ show: true }), 300)
+
+    setTimeout(() => {
+      expect(customWrapper.vm.collapsing).toBe(true)
+      expect(customWrapper.vm.visible).toBe(true)
+    }, 500)
+
+    setTimeout(() => expect(customWrapper.vm.collapsing).toBe(false), 700)
+    // jest.runAllTimers()
+  })
 })

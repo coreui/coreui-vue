@@ -9,8 +9,9 @@ const wrapper = mount(Component, {
       variant: 'primary',
       textVariant: 'white',
       borderVariant: 'solid',
-      title: 'title',
-      subtitle: 'subtitle'
+      titleHtml: 'title',
+      subtitleHtml: 'subtitle',
+      bodyHtml: 'body content'
     }
   }
 })

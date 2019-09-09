@@ -4,8 +4,6 @@ exports[`CSidebarNavTitle .vue renders correctly 1`] = `
 <li
   class="c-nav-title"
 >
-  
-    
-  
+  title
 </li>
 `;

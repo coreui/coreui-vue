@@ -6,7 +6,6 @@ const wrapper = mount(Component, {
     props: {
       deck: true,
       column: true,
-      tag: 'p'
     }
   },
   slots: {

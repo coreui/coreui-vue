@@ -2,6 +2,31 @@
 
 exports[`CFormInput renders correctly 1`] = `
 <div
+  class="c-form-group"
+  role="group"
+>
+   
+  <!---->
+   
+  <input
+    class="c-form-control-plaintext c-form-control-lg"
+    id="some_id"
+    readonly="readonly"
+    type="text"
+  />
+    
+  <!---->
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+</div>
+`;
+
+exports[`CFormInput renders correctly 2`] = `
+<div
   class="c-form-group c-was-validated"
   role="group"
 >
