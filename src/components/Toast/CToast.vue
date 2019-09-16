@@ -1,26 +1,28 @@
 <template>
-  <div
-    v-if="this.isShowed || this.hidding"
-    :class="toastClasses"
-    role="alert"
-    aria-live="assertive"
-    aria-atomic="true"
-    :style="computedStyles"
-  >
-    <div v-if="!props.noHeader" class="c-toast-header">
-      <slot name="title">
-        <strong class="c-mr-auto" v-html="props.titleHtml"></strong>
+  <transition :name="!props.noFade ? 'fade' : null" appear> 
+    <div
+      v-show="isShowed"
+      :class="toastClasses"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+      :style="computedStyles"
+    >
+      <div v-if="!props.noHeader" class="c-toast-header">
+        <slot name="title" :close="close">
+          <strong class="c-mr-auto" v-html="props.titleHtml"></strong>
+        </slot>
+        <CButtonClose
+          v-if="!props.noCloseButton"
+          @click="close()"
+          class="c-ml-2 c-mb-1"
+        />
+      </div>
+      <slot>
+        <div class="c-toast-body" v-html="props.bodyHtml"></div>
       </slot>
-      <CButtonClose
-        v-if="!props.noCloseButton"
-        @click="close()"
-        class="c-ml-2 c-mb-1"
-      />
     </div>
-    <slot>
-      <div class="c-toast-body" v-html="props.bodyHtml"></div>
-    </slot>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -45,16 +47,15 @@ export default {
     return {
       isShowed: false,
       hidding: false,
-      timeout: null
+      timeout: null,
+      hiddingTimeout: null
     }
   },
   watch: {
-    show : {
+    show: {
       immediate: true,
       handler (val) {
-        this.$nextTick(() => {
-          val ? this.display() : this.close()
-        })
+        val ? this.display() : this.close()
       }
     }
   },
@@ -63,9 +64,8 @@ export default {
       return [
         'c-toast',
         {
-          'c-show': this.isShowed,
+          'c-d-none': !this.isShowed && !this.hidding,
           'c-full': this.props.position.includes('full'),
-          'c-fade': !this.props.noFade
         }
       ]
     },
@@ -88,28 +88,35 @@ export default {
   methods: {
     display () {
       this.isShowed = true
-      if (this.props.autohide) {
-        this.$nextTick(() => this.setAutohide())
-      }
+      this.$nextTick(() => {
+        if (this.props.autohide) {
+          this.setAutohide()
+        }
+        this.finishHidding()
+      })
     },
-    autohideClose () {
-      this.close()
-      if (!this.noFade) {
-        this.$el.addEventListener('mouseover', this.restoreHiddingToast)
-        setTimeout(() => {
-          this.$el.removeEventListener('mouseover', this.restoreHiddingToast)
-        }, this.props.autohide)
-      }
-    },
-    close () {
+    close (restoreOnHover = false) {
       this.isShowed = false
       this.$emit('update:show', false)
       this.$el.removeEventListener('mouseout', this.onHoverOut)
       this.$el.removeEventListener('mouseover', this.onHover)
+
       if (!this.props.noFade) {
-        this.hidding = true
-         setTimeout(() => this.hidding = false, 1500)
+        this.setHiddingMode(restoreOnHover)
       }
+    },
+    setHiddingMode (restoreOnHover) {
+      this.hidding = true
+      if (restoreOnHover) {
+        this.$el.addEventListener('mouseover', this.restoreHiddingToast)
+      }
+      clearTimeout(this.timeout)
+      this.hiddingTimeout = setTimeout(this.finishHidding, 1500)
+    },
+    finishHidding () {
+      this.$el.removeEventListener('mouseover', this.restoreHiddingToast)
+      this.hidding = false
+      clearTimeout(this.hiddingTimeout)
     },
     onHover () {
       this.$el.removeEventListener('mouseover', this.onHover)
@@ -122,32 +129,39 @@ export default {
     },
     setAutohide () {
       this.timeout = setTimeout(() => {
-        this.autohideClose()
+        this.close(true)
       }, this.props.autohide)
       this.$el.addEventListener('mouseover', this.onHover)
     },
     restoreHiddingToast () {
-      this.hidding = false
-      this.isShowed = true
-      this.onHover()
+      this.display()
     }
   }
 }
 </script>
 
-<style lang="scss">
-  .toast.full {
+<style scoped>
+  .c-toast {
+    opacity: 1;
+  }
+  .c-toast.full {
     max-width: 100%;
   }
   .c-toast:last-child {
     margin-bottom: 0.75rem;
   }
-  .c-toast.c-fade {
+  .fade-enter-active {
+    transition: opacity .5s;
+  }
+  .fade-leave-active {
     transition: opacity 2s;
   }
-  .c-toast.c-fade.c-show {
-    transition: opacity 0.5s;
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
   }
+</style>
+
+<style lang="scss">
   @import "~@coreui/coreui/scss/partials/toasts.scss";
   @import "~@coreui/coreui/scss/utilities/_spacing.scss";
 
