@@ -1,6 +1,6 @@
 <script>
 import { mergeData } from 'vue-functional-data-merge'
-import getPartOfObject from '../../utils/getPartOfObject'
+import pickByKeys from '../../utils/pickByKeys'
 import CLink, { propsFactory as linkPropsFactory } from '../Link/CLink'
 
 const props = Object.assign(
@@ -30,12 +30,14 @@ export default {
     const attrs = {}
     let itemProps = {}
     if (tag === 'button') {
-      if (!data.attrs || !data.attrs.type)
+      if (!data.attrs || !data.attrs.type) {
         attrs.type = 'button'
-      if (props.disabled)
+      }
+      if (props.disabled) {
         attrs.disabled = true
+      }
     } else {
-      itemProps = getPartOfObject(props, linkPropsFactory())
+      itemProps = pickByKeys(props, Object.keys(linkPropsFactory()))
     }
     const componentData = {
       attrs,

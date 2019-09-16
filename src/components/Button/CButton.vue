@@ -1,6 +1,6 @@
 <script>
 import { mergeData } from 'vue-functional-data-merge'
-import getPartOfObject from '../../utils/getPartOfObject'
+import pickByKeys from '../../utils/pickByKeys'
 import CLink, { propsFactory as linkPropsFactory } from '../Link/CLink'
 
 const btnProps = {
@@ -48,7 +48,10 @@ function computeClasses (props) {
 }
 
 function computePassedProps (props) {
-  return isLink(props) ? getPartOfObject(props, linkPropsFactory()) : null
+  if (!isLink(props)) {
+    return null
+  }
+  return pickByKeys(props, Object.keys(linkPropsFactory()))
 }
 
 function computeAttrs (props, data, isButton, toggle) {
@@ -72,10 +75,7 @@ export default {
     const isButton = !isLink(props)
     const on = {
       click (e) {
-        if (props.disabled && e instanceof Event) {
-          e.stopPropagation()
-          e.preventDefault()
-        } else if (toggle && listeners && listeners['update:pressed']) {
+        if (toggle && listeners && listeners['update:pressed']) {
           // Send .sync updates to any "pressed" prop (if .sync listeners)
           listeners['update:pressed'](!props.pressed)
         }
