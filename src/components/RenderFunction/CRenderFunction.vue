@@ -1,4 +1,5 @@
 <script>
+import clone from 'clone'
 export default {
   name: 'CRenderFunction',
   props: {
@@ -6,7 +7,7 @@ export default {
   },
   computed: {
     content () {
-      return this.contentToRender
+      return clone(this.contentToRender)
     }
   },
   render (h) {
@@ -27,7 +28,12 @@ export default {
         return item
       })
     }
-    return h(...computeRenderFunction(this.content))
+    
+    if (Array.isArray(this.content) && this.content.length) {
+      return h(...computeRenderFunction(this.content))
+    } else {
+      return h(false)
+    }
   }
 }
 </script>

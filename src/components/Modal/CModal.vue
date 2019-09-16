@@ -47,7 +47,7 @@
       </div>
     </div>
     <div
-      v-if="!noBackdrop && (is_visible || is_transitioning)"
+      v-if="!noBackdrop && (isVisible || isTransitioning)"
       :class="backdropClasses"
     >
     </div>
@@ -79,8 +79,8 @@ export default {
   },
   data () {
     return {
-      is_visible: this.visible,
-      is_transitioning: false,
+      isVisible: this.visible,
+      isTransitioning: false,
       timeout: null,
     }
   },
@@ -89,7 +89,7 @@ export default {
       return {
         'c-modal-backdrop': true,
         'c-fade': !this.noFade,
-        'c-show': this.is_visible || this.noFade
+        'c-show': this.isVisible || this.noFade
       }
     },
     modalClasses () {
@@ -99,8 +99,8 @@ export default {
         {
           // 'c-close-modal': !this.noCloseOnBackdrop,
           'c-fade': !this.noFade,
-          'c-show': this.is_visible,
-          'c-d-block': this.is_visible || this.is_transitioning,
+          'c-show': this.isVisible,
+          'c-d-block': this.isVisible || this.isTransitioning,
           [`c-modal-${this.variant}`]: Boolean(this.variant)
         }
       ]
@@ -130,9 +130,7 @@ export default {
   },
   watch: {
     visible (val) {
-      if (val !== this.is_visible) {
-        this.toggle(val)
-      }
+      this.toggle(val)
     }
   },
   methods: {
@@ -146,12 +144,12 @@ export default {
       this.$emit('accepted', accepted)
     },
     toggle (newVal) {
-      setTimeout(() => { this.is_visible = newVal }, 0)
+      setTimeout(() => { this.isVisible = newVal }, 0)
       if (!this.noFade) {
-        this.is_transitioning = true
+        this.isTransitioning = true
         clearTimeout(this.timeout)
         this.timeout = setTimeout(() => {
-          this.is_transitioning = false
+          this.isTransitioning = false
         }, 150)
       }
     }

@@ -1,8 +1,9 @@
 <script>
+// this component is a refector of vue-perfect-scrollbar component https://github.com/lecion/vue-perfect-scrollbar
 import PerfectScrollbar from 'perfect-scrollbar'
 
 export default {
-  name: 'vue-perfect-scrollbar',
+  name: 'CPerfectScrollbar',
   props: {
     settings: {
       type: Object,
@@ -47,9 +48,14 @@ export default {
   methods: {
     __init() {
       if (!this._ps_bar) {
-        this._ps_bar = new PerfectScrollbar(this.$el, this.settings)
+        this.__createPerfectScrollbar()
       }
     },
+
+    __createPerfectScrollbar() {
+      this._ps_bar = new PerfectScrollbar(this.$el, this.settings)
+    },
+    
     __uninit() {
       if (this._ps_bar) {
         this._ps_bar.destroy()

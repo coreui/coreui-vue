@@ -32,8 +32,7 @@ export default {
         maxScrollbarLength: 200,
         minScrollbarLength: 40,
         suppressScrollX: getComputedStyle(document.querySelector('html')).direction !== 'rtl',
-        wheelPropagation: false,
-        interceptRailY: styles => ({ ...styles, height: 0 })
+        wheelPropagation: false
       }
     }
   }

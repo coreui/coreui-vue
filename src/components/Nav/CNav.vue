@@ -35,10 +35,13 @@ export default {
       return this.$children.filter(item => this.itemWasActivated(item, e))[0]
     },
     itemWasActivated (item, e) {
-      return item.$el.contains(e.target) && !item.disabled &&
-        ['CDropdown', 'CNavItem', 'CTab'].includes(item.$options._componentTag)
+      return item.$el.contains(e.target) && 
+             !item.disabled && 
+             item.isActive !== undefined
     },
     activateItem (itemToActivate) {
+      // Works on CNavItem, CTab, CDropdown and every component that have 
+      // 'isActive' data prop that determines active state
       this.$children.forEach(item => {
         return item.isActive = item === itemToActivate ? true : false
       })

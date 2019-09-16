@@ -72,9 +72,7 @@ export default {
   },
   watch: {
     show (val) {
-      if (val !== this.open) {
-        this.open = val
-      }
+      this.open = val
     },
     open: {
       immediate: true,
@@ -83,9 +81,7 @@ export default {
       }
     },
     showOnMobile (val) {
-      if (val !== this.mobileOpen) {
-        this.showOnMobile = val
-      }
+      this.mobileOpen = val
     },
     mobileOpen: {
       immediate: true,
@@ -94,9 +90,7 @@ export default {
       }
     },
     minimize (val) {
-      if (val !== this.minimized) {
-        this.minimized = val
-      }
+      this.minimized = val
     },
     minimized: {
       immediate: true,
@@ -127,12 +121,6 @@ export default {
       }
       return componentEvent
     },
-    isVisible () {
-      if (this.bodyWidth) {
-        return this.isOnMobile ? this.mobileOpen : this.open
-      }
-      return false
-    },
     sidebarClasses () {
       const mobileClasses = {
         'c-sidebar-show': this.mobileOpen,
@@ -160,7 +148,7 @@ export default {
       }
     },
     isOnMobile () {
-      const mobileWidth = parseFloat(this.breakpoints[this.breakpoint]) || 0
+      const mobileWidth = parseFloat(this.breakpoints[this.breakpoint])
       return this.bodyWidth && (this.bodyWidth < mobileWidth)
     }
   },

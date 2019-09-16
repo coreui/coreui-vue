@@ -3,8 +3,9 @@ export default {
   name: 'c-tooltip',
   inserted (el, binding) {
     binding.def._tooltip = new Tooltip(el, binding.def.getTooltipConfig(binding))
-    if (binding.value.active)
+    if (binding.value.active) {
       binding.def._tooltip.show()
+    }
   },
   unbind (el, binding) {
     let tooltip = binding.def._tooltip

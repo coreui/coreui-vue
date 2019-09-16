@@ -51,22 +51,22 @@ export default {
     if (this.el) {
       this.el.removeEventListener('click', this.collapse)
     }
+    clearTimeout(this.heightWatcher)
   },
   methods: {
     collapse () {
       this.visible = !this.visible
     },
     collapseController (val) {
-      this.visible = val
-      if (this.collapsing) {
+      if (this.collapsing === false) {
+        val ? this.toggle(true) : this.toggle(false)
+        this.setFinishTimer(this.duration)
+      } else {
         this.turn()
         const height = Number(this.collapsing.slice(0,-2))
         const current = this.$el.offsetHeight
         const time =  val ?  (height - current) / height :  current / height
         this.setFinishTimer(this.duration * time)
-      } else {
-        val ? this.toggle(true) : this.toggle(false)
-        this.setFinishTimer(this.duration)
       }
     },
     turn () {

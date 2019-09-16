@@ -44,11 +44,12 @@ export default {
           this.isOpen = false
         } else if (mode === 'closeInactive' && this.route) {
           this.isOpen = route.fullPath.includes(this.route)
-        } else if (mode === 'noAction') {
-          return
-        } else if (mode === 'openActive' && !this.isOpen && this.route) {
+        }  else if (mode === 'openActive' && !this.isOpen && this.route) {
           this.isOpen = route.fullPath.includes(this.route)
         }
+        // else if (mode === 'noAction') {
+        //   return
+        // }
       }
     }
   },

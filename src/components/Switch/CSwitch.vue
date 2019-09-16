@@ -94,12 +94,12 @@ export default {
     },
     toggle (event) {
       this.isChecked = event.target.checked
-      this.$emit('update:checked', this.getValue(event), event);
+      this.$emit('update:checked', this.getValue(event.target.checked), event)
     },
-    getValue (e) {
+    getValue (checked) {
       if (this.type === 'radio') {
         return this.value
-      } else if (e.target.checked) {
+      } else if (checked) {
         return this.trueValue !== undefined ? this.trueValue : true
       } else {
         return this.falseValue !== undefined ? this.falseValue : false

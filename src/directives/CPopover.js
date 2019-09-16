@@ -6,8 +6,9 @@ export default {
   inserted (el, binding) {
     const tooltip = new Tooltip(el, binding.def.getTooltipConfig(binding))
     binding.def._tooltip = tooltip
-    if (binding.value.active)
+    if (binding.value.active) {
       tooltip.show()
+    }
   },
   unbind (el, binding) {
     let tooltip = binding.def._tooltip
@@ -30,8 +31,8 @@ export default {
       delay: props.delay || 0,
       offset: props.offset || 0,
       arrowSelector: '.c-arrow',
-      innerSelector: '.c-popover-body',//passed by extension
-      template: binding.def.getTemplate(props.header),//passed by extension
+      innerSelector: '.c-popover-body',
+      template: binding.def.getTemplate(props.header),
       boundariesElement: document.getElementById(props.boundaries) || props.boundaries,
       container: props.appendToBody ? document.body : false,
       closeOnClickOutside,

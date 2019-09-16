@@ -208,7 +208,7 @@
         style="position:absolute;left:50%;transform:translateX(-50%);"
       >
         <CSpinner
-          class="c-spinner-border c-text-success"
+          variant="success"
           :style="spinnerSize"
           role="status"
         />
@@ -278,7 +278,7 @@ export default {
       columnFilter: this.defaultColumnFilter || {},
       sorter: {
         column: this.defaultSorter.column || null,
-        asc: this.defaultSorter.asc || true
+        asc: this.defaultSorter.asc === false ? false : true
       },
       page: this.activePage || 1,
       perPageItems: this.itemsPerPage,
@@ -378,7 +378,7 @@ export default {
       return {'cursor:pointer': this.$listeners && this.$listeners['row-clicked']}
     },
     sortingIconStyles () {
-      return this.sorting ? 'c-position-relative c-pr-4' : ''
+      return {'c-position-relative c-pr-4' : this.sorting }
     },
     colspan () {
       return this.rawColumnNames.length + (this.indexColumn ? 1 : 0)
@@ -406,10 +406,8 @@ export default {
     },
     totalPages: {
       immediate: true,
-      handler (val, oldVal) {
-        if(val !== oldVal) {
-          this.$emit('pages-change', val)
-        }
+      handler (val) {
+        this.$emit('pages-change', val)
       }
     }
   },
@@ -487,7 +485,7 @@ export default {
       ]
     },
     paginationChange (e) {
-      this.$emit('pagination-change', e.target.value)
+      this.$emit('pagination-change', Number(e.target.value))
       this.perPageItems = Number(e.target.value)
     }
   }
