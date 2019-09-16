@@ -28,7 +28,7 @@
     <li
       v-if="beforeDots"
       role="separator"
-      class="c-page-item c-disabled c-d-none c-d-sm-flex"
+      class="c-page-item c-disabled"
     >
       <span class="c-page-link">…</span>
     </li>
@@ -50,7 +50,7 @@
     <li
       v-if="afterDots"
       role="separator"
-      class="c-page-item c-disabled c-d-none c-d-sm-flex"
+      class="c-page-item c-disabled"
     >
       <span class="c-page-link">…</span>
     </li>
@@ -131,27 +131,33 @@
         type: String,
         default: '&raquo;'
       },
-      responsive: Boolean
+      responsive: [Boolean, Object]
     },
     data () {
       return {
-        rwd: this.size,
+        minifiedSize: null,
         erd: elementResizeDetectorMaker()
       }
     },
     watch: {
-      pages (val) {
-        if (val < this.activePage) {
-          this.$emit('update:activePage', val)
+      pages: {
+        immediate: true,
+        handler (val) {
+          if (val && val < this.activePage) {
+            this.$emit('update:activePage', val)
+          }
         }
       }
     },
     mounted () {
-      if (this.size !== 'sm' && this.responsive) {
+      if (this.responsive) {
         this.erd.listenTo(this.$el, this.onWrapperResize)
       }
     },
     computed: {
+      dims () {
+        return this.size === 'sm' ? 'sm' : this.minifiedSize || this.size
+      },
       backArrowsClasses () {
         return ['c-page-item', { 'c-disabled': this.activePage === 1 }]
       },
@@ -159,7 +165,7 @@
         return ['c-page-item', { 'c-disabled': this.activePage === this.pages }]
       },
       computedClasses () {
-        return `c-pagination c-pagination-${this.rwd} c-justify-content-${this.align}`
+        return `c-pagination c-pagination-${this.dims} c-justify-content-${this.align}`
       },
       showDots () {
         return !this.hideDots && this.limit > 4 && this.limit < this.pages
@@ -200,8 +206,10 @@
     },
     methods: {
       onWrapperResize (el) {
-        const responsiveSize = el.clientWidth > 400 ? 'md' : 'sm'
-        this.rwd = el.clientWidth > 600 ? this.size : responsiveSize
+        const md = this.responsive.md || 600
+        const sm = this.responsive.sm || 400
+        const wrapper = el.clientWidth
+        this.minifiedSize = wrapper > md ? null : wrapper > sm ? 'md' : 'sm'
       },
       setPage (number) {
         if (number !== this.activePage) {
