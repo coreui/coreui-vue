@@ -28,6 +28,7 @@ const customWrapper = mount(Component, {
     inline: true
   }
 })
+const autoIdWrapper = mount(Component)
 
 describe(ComponentName, () => {
   it('has a name', () => {
@@ -58,5 +59,8 @@ describe(ComponentName, () => {
       return event[0]
     })
     expect(emittedValues).toEqual(['yes', 'no'])
+  })
+  it('generates safe id when no id is passed', () => {
+    expect(autoIdWrapper.vm.safeId.includes('_safe_id_')).toBe(true)
   })
 })

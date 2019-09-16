@@ -2,11 +2,11 @@
 
 exports[`CToast renders correctly 1`] = `
 <div
+  appear=""
   aria-atomic="true"
   aria-live="assertive"
-  class="c-toast c-fade"
+  class="c-toast"
   role="alert"
-  style="z-index: 1100; min-width: 350px; position: fixed; top: 0px; right: 0px;"
 >
   <div
     class="c-toast-header"
@@ -32,11 +32,13 @@ exports[`CToast renders correctly 1`] = `
 
 exports[`CToast renders correctly 2`] = `
 <div
+  appear=""
   aria-atomic="true"
   aria-live="assertive"
-  class="c-toast c-show c-fade"
+  class="c-toast"
+  name="fade"
   role="alert"
-  style="z-index: 1100; min-width: 350px; position: fixed; top: 0px; left: 0px;"
+  style="z-index: 1100; min-width: 350px; position: fixed; bottom: 0px; left: 50%; transform: translateX(-50%);"
 >
   <div
     class="c-toast-header"

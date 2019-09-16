@@ -38,7 +38,7 @@ exports[`CCarousel renders correctly 2`] = `
     class="c-carousel-inner"
   >
     <div
-      class="c-carousel-item"
+      class="c-carousel-item c-active"
     >
       <!---->
        

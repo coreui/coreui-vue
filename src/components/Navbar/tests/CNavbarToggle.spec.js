@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Component from '../CNavbar'
+import Component from '../CNavbarToggle'
 
 const ComponentName = 'CNavbar'
 const defaultWrapper = mount(Component)

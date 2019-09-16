@@ -2,8 +2,28 @@
 
 exports[`CSidebar .vue renders correctly 1`] = `
 <div
-  class="c-sidebar-lg-show c-sidebar c-sidebar-dark"
+  class="c-sidebar-lg-show c-sidebar c-sidebar-light c-sidebar-right"
+  id="sidebar"
 >
   Sidebar
+</div>
+`;
+
+exports[`CSidebar .vue renders correctly 2`] = `
+<div>
+  <div
+    class="c-sidebar-lg-show c-sidebar c-sidebar-dark"
+  >
+    <a
+      href="/some-path"
+    >
+      link
+    </a>
+  </div>
+  <div
+    class="view"
+  >
+    content
+  </div>
 </div>
 `;

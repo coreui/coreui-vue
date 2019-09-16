@@ -72,7 +72,7 @@ exports[`CModal renders correctly 1`] = `
 exports[`CModal renders correctly 2`] = `
 <div>
   <div
-    class="c-modal c-overflow-auto additional-modal-class c-show c-d-block c-modal-success"
+    class="c-modal c-overflow-auto additional-modal-class c-fade c-show c-d-block c-modal-success"
     role="dialog"
     tabindex="-1"
   >
@@ -116,6 +116,8 @@ exports[`CModal renders correctly 2`] = `
     </div>
   </div>
    
-  <!---->
+  <div
+    class="c-modal-backdrop c-fade c-show"
+  />
 </div>
 `;

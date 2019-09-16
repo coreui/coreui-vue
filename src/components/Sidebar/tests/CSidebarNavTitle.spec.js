@@ -15,4 +15,4 @@ describe(`${ComponentName} .vue`, () => {
   it('renders correctly', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
-});
+})

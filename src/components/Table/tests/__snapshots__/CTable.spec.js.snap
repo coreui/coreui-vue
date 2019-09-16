@@ -157,7 +157,7 @@ exports[`CTable renders correctly 2`] = `
           />
            
           <th
-            class="c-position-relative c-pr-4"
+            class="user-custom-class c-position-relative c-pr-4"
             style="cursor: pointer; width: 40%;"
           >
             <div
@@ -167,7 +167,7 @@ exports[`CTable renders correctly 2`] = `
             </div>
              
             <svg
-              class="c-icon-transition c-position-absolute c-arrow-position"
+              class="c-icon-transition c-position-absolute c-arrow-position c-rotate-icon"
               style="fill: currentColor;"
               viewBox="0 0 64 64"
               width="18"
@@ -294,7 +294,7 @@ exports[`CTable renders correctly 2`] = `
           </th>
            
           <th
-            class=""
+            class="user-custom-class"
           >
             <input
               class="c-w-100 c-table-filter"
@@ -342,31 +342,31 @@ exports[`CTable renders correctly 2`] = `
           </td>
            
           <td
-            class=""
+            class="user-custom-class"
           >
             
-                Chetan Mohamed
+                Yiorgos Avraamu
               
           </td>
           <td
             class=""
           >
             
-                2012/02/01
+                2012/01/01
               
           </td>
           <td
             class=""
           >
             
-                Admin
+                Member
               
           </td>
           <td
             class=""
           >
             
-                Inactive
+                Active
               
           </td>
           <td
@@ -389,31 +389,31 @@ exports[`CTable renders correctly 2`] = `
           </td>
            
           <td
-            class=""
+            class="user-custom-class"
           >
             
-                Derick Maximinus
+                Friderik Dávid
+              
+          </td>
+          <td
+            class="custom-cell-class"
+          >
+            
+                2012/01/21
               
           </td>
           <td
             class=""
           >
             
-                2012/03/01
+                Staff
               
           </td>
           <td
             class=""
           >
             
-                Member
-              
-          </td>
-          <td
-            class=""
-          >
-            
-                Pending
+                Active
               
           </td>
           <td
@@ -436,7 +436,7 @@ exports[`CTable renders correctly 2`] = `
           </td>
            
           <td
-            class=""
+            class="user-custom-class"
           >
             
                 Estavan Lykos
@@ -483,31 +483,31 @@ exports[`CTable renders correctly 2`] = `
           </td>
            
           <td
-            class=""
+            class="user-custom-class"
           >
             
-                Friderik Dávid
+                Derick Maximinus
               
           </td>
           <td
             class=""
           >
             
-                2012/01/21
+                2012/03/01
               
           </td>
           <td
             class=""
           >
             
-                Staff
+                Member
               
           </td>
           <td
             class=""
           >
             
-                Active
+                Pending
               
           </td>
           <td
@@ -530,31 +530,31 @@ exports[`CTable renders correctly 2`] = `
           </td>
            
           <td
-            class=""
+            class="user-custom-class"
           >
             
-                Yiorgos Avraamu
+                Chetan Mohamed
               
           </td>
           <td
             class=""
           >
             
-                2012/01/01
+                2012/02/01
               
           </td>
           <td
             class=""
           >
             
-                Member
+                Admin
               
           </td>
           <td
             class=""
           >
             
-                Active
+                Inactive
               
           </td>
           <td
@@ -578,7 +578,7 @@ exports[`CTable renders correctly 2`] = `
           />
            
           <th
-            class="c-position-relative c-pr-4"
+            class="user-custom-class c-position-relative c-pr-4"
             style="cursor: pointer; width: 40%;"
           >
             <div
@@ -588,7 +588,7 @@ exports[`CTable renders correctly 2`] = `
             </div>
              
             <svg
-              class="c-icon-transition c-position-absolute c-arrow-position"
+              class="c-icon-transition c-position-absolute c-arrow-position c-rotate-icon"
               style="fill: currentColor;"
               viewBox="0 0 64 64"
               width="18"
@@ -697,6 +697,99 @@ exports[`CTable renders correctly 2`] = `
     <!---->
   </div>
     
-  <!---->
+  <ul
+    aria-disabled="false"
+    aria-label="pagination"
+    class="c-pagination c-pagination-md c-justify-content-start"
+    role="menubar"
+    style="display: none;"
+  >
+    <li
+      class="c-page-item c-disabled"
+    >
+      <a
+        aria-disabled="true"
+        aria-label="Go to first page"
+        class="c-page-link c-disabled"
+        href="#"
+        tabindex="-1"
+        target="_self"
+      >
+        <span>
+          «
+        </span>
+      </a>
+    </li>
+     
+    <li
+      class="c-page-item c-disabled"
+    >
+      <a
+        aria-disabled="true"
+        aria-label="Go to previous page"
+        class="c-page-link c-disabled"
+        href="#"
+        tabindex="-1"
+        target="_self"
+      >
+        <span>
+          ‹
+        </span>
+      </a>
+    </li>
+     
+    <!---->
+     
+    <li
+      class="c-active c-page-item"
+    >
+      <a
+        aria-label="Go to page 1"
+        class="c-page-link"
+        href="#"
+        target="_self"
+      >
+        
+      1
+    
+      </a>
+    </li>
+     
+    <!---->
+     
+    <li
+      class="c-page-item c-disabled"
+    >
+      <a
+        aria-disabled="true"
+        aria-label="Go to next page"
+        class="c-page-link c-disabled"
+        href="#"
+        tabindex="-1"
+        target="_self"
+      >
+        <span>
+          ›
+        </span>
+      </a>
+    </li>
+     
+    <li
+      class="c-page-item c-disabled"
+    >
+      <a
+        aria-disabled="true"
+        aria-label="Go to last page"
+        class="c-page-link c-disabled"
+        href="#"
+        tabindex="-1"
+        target="_self"
+      >
+        <span>
+          »
+        </span>
+      </a>
+    </li>
+  </ul>
 </div>
 `;

@@ -13,9 +13,11 @@ exports[`CToaster renders correctly 2`] = `
   style="z-index: 1100; min-width: 350px; position: fixed; top: 0px; left: 0px;"
 >
   <div
+    appear=""
     aria-atomic="true"
     aria-live="assertive"
-    class="c-toast c-show c-fade"
+    class="c-toast"
+    name="fade"
     role="alert"
   >
     <div

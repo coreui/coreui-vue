@@ -5,11 +5,25 @@ const ComponentName = 'CListGroupItem'
 const defaultWrapper = mount(Component)
 const customWrapper = mount(Component, {
   propsData: {
+    tag: 'button',
     action: true,
     variant: 'success'
   },
   slots: {
     default: 'CListGroupItem content'
+  }
+})
+
+const disabledWrapper = mount(Component, {
+  propsData: {
+    tag: 'button',
+    disabled: true
+  },
+  attrs: {
+    type: 'submit'
+  },
+  slots: {
+    default: 'disabled CListGroupItem content'
   }
 })
 
@@ -22,5 +36,8 @@ describe(ComponentName, () => {
   })
   it('renders correctly', () => {
     expect(customWrapper.element).toMatchSnapshot()
+  })
+  it('renders correctly disabled', () => {
+    expect(disabledWrapper.element).toMatchSnapshot()
   })
 })

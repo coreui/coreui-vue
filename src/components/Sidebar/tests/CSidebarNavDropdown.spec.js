@@ -1,48 +1,73 @@
 import { mount, createLocalVue } from '@vue/test-utils'
 import VueRouter from 'vue-router'
-import Component from '../CSidebarNavDropdown'
+import CSidebarNavDropdown from '../CSidebarNavDropdown'
 
 const localVue = createLocalVue()
 localVue.use(VueRouter)
 const router = new VueRouter()
 
-
 const ComponentName = 'CSidebarNavDropdown'
-const wrapper = mount(
-  Component,
-  { localVue, router, propsData: { route: '/somePath' }}
-)
-// /* eslint-disable no-console */
-// console.log("something")
 
-describe(`${ComponentName} .vue`, () => {
+const wrapperMounting = (mode) => mount(
+  CSidebarNavDropdown,
+  { 
+    localVue, 
+    router, 
+    propsData: { 
+      route: '/somePath' ,
+      icon: 'cui-settings'
+    },
+    provide: {
+      dropdownStateOnRouteChange: mode
+    }
+  }
+)
+
+const wrapper = wrapperMounting('openActive')
+const wrapperCloseMode = wrapperMounting('close')
+const wrapperCloseInactiveMode = wrapperMounting('closeInactive')
+
+const routeChange = (wrapperToChangeRoute, route) => { 
+  wrapperToChangeRoute.vm.$router.push(route)
+}
+
+describe(ComponentName, () => {
   it('has a name', () => {
-    expect(Component.name).toMatch(ComponentName)
-  })
-  // Inspect the raw component options
-  it("should have default props", () => {
-    const wrapper = mount(Component, {
-      localVue,
-      router,
-      propsData: {
-        name: 'test',
-        route: '/somePath',
-        icon: '',
-        open: false
-      }
-    })
-    expect(wrapper.props().name).toEqual('test')
-    expect(wrapper.props().route).toBe('/somePath')
-    expect(wrapper.props().icon).toBe('')
-  });
-  it('has classIcon computed property', () => {
-    expect(typeof Component.computed.classIcon).toBe('function')
-  })
-  it('has handleClick method', () => {
-    expect(typeof Component.methods.handleClick).toBe('function')
+    expect(CSidebarNavDropdown.name).toBe(ComponentName)
   })
   it('renders correctly', () => {
     expect(wrapper.element).toMatchSnapshot()
-    expect(wrapper.is('li')).toBe(true)
   })
-});
+  it('changes state on open prop change', () => {
+    wrapper.setProps({ open: true })
+    expect(wrapper.vm.isOpen).toBe(true)
+  })
+  it('changes state when clicked on toggle', () => {
+    wrapper.find('.c-nav-link').trigger('click')
+    expect(wrapper.vm.isOpen).toBe(false)
+    expect(wrapper.emitted()['update:open']).toBeTruthy()
+  })
+  it('emitts item-click event when click inside dropdown', () => {
+    wrapper.find('ul').trigger('click')
+    expect(wrapper.emitted()['item-clicked']).toBeTruthy()
+  })
+  it('open active dropdown on route change when in openActive mode', () => {
+    expect(wrapper.vm.isOpen).toBe(false)
+    routeChange(wrapper, '/somePath/sub1')
+    expect(wrapper.vm.isOpen).toBe(true)
+  })
+  it('close dropdown on route change when in close mode', () => {
+    wrapperCloseMode.setProps({open: true})
+    expect(wrapperCloseMode.vm.isOpen).toBe(true)
+    routeChange(wrapperCloseMode, '/somePath/sub2')
+    expect(wrapperCloseMode.vm.isOpen).toBe(false)
+  })
+  it('close inactive dropdown on route change when in closeInactive mode', () => {
+    wrapperCloseInactiveMode.setProps({open: true})
+    expect(wrapperCloseInactiveMode.vm.isOpen).toBe(true)
+    routeChange(wrapperCloseInactiveMode, '/somePath/sub3')
+    expect(wrapperCloseInactiveMode.vm.isOpen).toBe(true)
+    routeChange(wrapperCloseInactiveMode, '/otherDropdownRoute')
+    expect(wrapperCloseInactiveMode.vm.isOpen).toBe(false)
+  })
+})

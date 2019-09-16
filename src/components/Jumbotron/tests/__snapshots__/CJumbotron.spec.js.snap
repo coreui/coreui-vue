@@ -23,6 +23,7 @@ exports[`CJumbotron renders correctly 2`] = `
     >
       lead
     </p>
+    content
   </div>
 </div>
 `;

@@ -47,11 +47,11 @@ describe(ComponentName, () => {
     expect(customWrapper.vm.state).toBe(false)
   })
   it('closes alert after given number of seconds', () => {
+    jest.useFakeTimers()
     defaultWrapper.setProps({ show: 10 })
     expect(defaultWrapper.vm.state).toBe(10)
-    jest.useRealTimers()
     setTimeout(() => expect(defaultWrapper.vm.state).toBe(0), 10001)
-    // jest.runAllTimers()
+    jest.runAllTimers()
   })
   it('closes alert after click on dismiss button', () => {
     customWrapper.setProps({ show: true })
@@ -59,16 +59,17 @@ describe(ComponentName, () => {
     button.trigger('click')
     expect(customWrapper.vm.state).toBe(false)
   })
+
+  it('emmits correct update:show events when listener is set', () => {
+    jest.useFakeTimers()
+    customWrapper.setProps({ show: 10 })
+    setTimeout(() => {
+      expect(customWrapper.emitted()['update:show'].slice(-1)[0]).toEqual([9])
+    }, 1000)
+    jest.runAllTimers()
+  })
   it('properly destroys alert', () => {
     customWrapper.destroy()
     expect(customWrapper.vm.countdownTimeout).toBe(null)
-  })
-  it('emmits correct update:show events when listener is set', () => {
-    customWrapper.setProps({ show: 10 })
-    jest.useRealTimers()
-    setTimeout(() => {
-      expect(customWrapper.emitted()['update:show'][0]).toEqual([9])
-    }, 1100)
-    // jest.runAllTimers()
   })
 })

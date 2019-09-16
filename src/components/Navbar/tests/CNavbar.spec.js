@@ -8,7 +8,11 @@ const customWrapper = mount(Component, {
     fill: true,
     justified: true,
     pills: true,
-    vertical: true
+    vertical: true,
+    fixed: 'top',
+    toggleable: true,
+    light: true,
+    tag: 'div'
   },
   slots: {
     default: 'CNavbar items'

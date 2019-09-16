@@ -6,7 +6,7 @@ exports[`CSwitch renders correctly 1`] = `
 >
   <input
     class="c-switch-input c-form-check-input"
-    type="checkbox"
+    type="radio"
     value=""
   />
    
@@ -24,11 +24,10 @@ exports[`CSwitch renders correctly 2`] = `
     class="c-switch-input c-form-check-input"
     dataoff="dataOff"
     dataon="dataOn"
-    disabled="disabled"
     id="myId"
     name="myName"
     required="required"
-    type="radio"
+    type="checkbox"
     value="checked"
   />
    

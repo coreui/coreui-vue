@@ -17,8 +17,10 @@ exports[`CNavItem renders correctly 2`] = `
   class="c-nav-item"
 >
   <a
-    class="c-nav-link"
+    aria-disabled="true"
+    class="c-nav-link c-disabled"
     href="#"
+    tabindex="-1"
     target="_self"
   >
     CNavItem text

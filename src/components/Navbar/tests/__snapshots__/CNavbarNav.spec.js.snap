@@ -1,21 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CNavbar renders correctly 1`] = `
-<nav
-  class="c-navbar c-navbar-dark"
+<ul
+  class="c-navbar-nav"
 />
 `;
 
 exports[`CNavbar renders correctly 2`] = `
-<nav
-  class="c-navbar c-navbar-dark"
-  fill="true"
-  justified="true"
+<ul
+  class="c-navbar-nav c-nav-fill c-nav-justified"
   pills="true"
   vertical="true"
 >
   <template>
     CNavbar items
   </template>
-</nav>
+</ul>
 `;

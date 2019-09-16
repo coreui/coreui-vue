@@ -3,9 +3,9 @@ import Component from '../CNavItem'
 
 const ComponentName = 'CNavItem'
 const defaultWrapper = mount(Component)
-const customWrapper = mount(Component, {
+const disabledWrapper = mount(Component, {
   propsData: {
-
+    disabled: true
   },
   slots: {
     default: 'CNavItem text'
@@ -20,6 +20,6 @@ describe(ComponentName, () => {
     expect(defaultWrapper.element).toMatchSnapshot()
   })
   it('renders correctly', () => {
-    expect(customWrapper.element).toMatchSnapshot()
+    expect(disabledWrapper.element).toMatchSnapshot()
   })
 })

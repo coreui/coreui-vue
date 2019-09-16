@@ -11,6 +11,9 @@ const customWrapper = mount(Component, {
     variant: 'success',
     borderVariant: 'secondary',
     textVariant: 'dark'
+  },
+  slots: {
+    default: 'content'
   }
 })
 

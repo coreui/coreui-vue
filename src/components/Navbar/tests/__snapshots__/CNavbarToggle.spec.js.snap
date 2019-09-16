@@ -1,21 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CNavbar renders correctly 1`] = `
-<nav
-  class="c-navbar c-navbar-dark"
-/>
+<button
+  class="c-navbar-toggler"
+  type="button"
+>
+  <span
+    class="c-navbar-toggler-icon"
+  />
+</button>
 `;
 
 exports[`CNavbar renders correctly 2`] = `
-<nav
-  class="c-navbar c-navbar-dark"
+<button
+  class="c-navbar-toggler"
   fill="true"
   justified="true"
   pills="true"
+  type="button"
   vertical="true"
 >
-  <template>
-    CNavbar items
-  </template>
-</nav>
+  CNavbar items
+</button>
 `;

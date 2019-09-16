@@ -4,11 +4,11 @@ import Component from '../CButton'
 const ComponentName = 'CButton'
 const defaultWrapper = mount(Component)
 
-let pressedState = true
+let updatePressedEmitted = jest.fn()
 const toggleWrapper = mount(Component, {
   context: {
     props: {
-      pressed: pressedState,
+      pressed: true,
       type: 'input',
       size: 'lg',
       variant: 'info',
@@ -19,12 +19,13 @@ const toggleWrapper = mount(Component, {
     }
   },
   listeners: {
-    'update:pressed': () => { pressedState = !pressedState }
+    'update:pressed': () => { updatePressedEmitted() }
   },
   slots: {
     default: 'button'
   }
 })
+
 const routerLinkWrapper = mount(Component, {
   context: {
     props: {
@@ -35,15 +36,22 @@ const routerLinkWrapper = mount(Component, {
       pill: true
     }
   },
+  listeners: {
+    'update:pressed': () => { updatePressedEmitted() }
+  },
   slots: {
     default: 'button'
   }
 })
 
 // const disabledButton = mount(Component, {
+//   attachToDocument: true,
 //   context: {
 //     props: {
 //       disabled: true
+//     },
+//     attrs: {
+//       id: 'disabled'
 //     }
 //   },
 //   slots: {
@@ -64,11 +72,11 @@ describe(ComponentName, () => {
   it('renders correctly toggle button', () => {
     expect(toggleWrapper.element).toMatchSnapshot()
   })
-  it('changes pressed state', () => {
+  it('emits update:pressed event if pressed prop and listener is defined', () => {
+    routerLinkWrapper.trigger('click')
+    expect(updatePressedEmitted).not.toBeCalled()
+
     toggleWrapper.trigger('click')
-    expect(pressedState).toBe(false)
+    expect(updatePressedEmitted).toBeCalled()
   })
-  // it('disabled', () => {
-  //   disabledButton.trigger('click')
-  // })
 })

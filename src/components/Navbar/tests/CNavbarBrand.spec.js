@@ -1,23 +1,20 @@
 import { mount } from '@vue/test-utils'
-import Component from '../CNavbar'
+import Component from '../CNavbarBrand'
 
-const ComponentName = 'CNavbar'
+const ComponentName = 'CNavbarBrand'
 const defaultWrapper = mount(Component)
 const customWrapper = mount(Component, {
   propsData: {
-    fill: true,
-    justified: true,
-    pills: true,
-    vertical: true
+    href: 'https://coreui.io/'
   },
   slots: {
-    default: 'CNavbar items'
+    default: 'CNavbarBrand'
   }
 })
 
 describe(ComponentName, () => {
   it('has a name', () => {
-    expect(Component.name).toMatch(ComponentName)
+    expect(Component.name).toBe(ComponentName)
   })
   it('renders correctly', () => {
     expect(defaultWrapper.element).toMatchSnapshot()

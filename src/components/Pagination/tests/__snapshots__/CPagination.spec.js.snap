@@ -101,7 +101,7 @@ exports[`CPagination renders correctly 1`] = `
   </li>
    
   <li
-    class="c-page-item c-disabled c-d-none c-d-sm-flex"
+    class="c-page-item c-disabled"
     role="separator"
   >
     <span

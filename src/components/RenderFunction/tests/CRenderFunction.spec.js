@@ -1,12 +1,26 @@
 import { mount } from '@vue/test-utils'
-import Component from '../CTabNav'
+import Component from '../CRenderFunction'
 
-const ComponentName = 'CTabNav'
+const ComponentName = 'CRenderFunction'
 const defaultWrapper = mount(Component)
-export const customWrapper = mount(Component, {
+const customWrapper = mount(Component, {
   propsData: {
-    titleHtml: 'title',
-    active: true
+    contentToRender: [
+      'div', 
+      [
+        [
+          'div',
+          [
+            'text',
+            { slot: 'slot_name'},
+            { slot2: 'no effect object'}
+          ] 
+        ]
+      ]
+    ]
+  },
+  slots: {
+    slot_name: 'slot content'
   }
 })
 

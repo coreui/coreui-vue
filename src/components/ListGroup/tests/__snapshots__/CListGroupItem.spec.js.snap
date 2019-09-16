@@ -7,11 +7,24 @@ exports[`CListGroupItem renders correctly 1`] = `
 `;
 
 exports[`CListGroupItem renders correctly 2`] = `
-<div
+<button
   class="c-list-group-item c-list-group-item-success c-list-group-item-action"
+  type="button"
 >
   <template>
     CListGroupItem content
   </template>
-</div>
+</button>
+`;
+
+exports[`CListGroupItem renders correctly disabled 1`] = `
+<button
+  class="c-list-group-item c-list-group-item-action c-disabled"
+  disabled="disabled"
+  type="submit"
+>
+  <template>
+    disabled CListGroupItem content
+  </template>
+</button>
 `;

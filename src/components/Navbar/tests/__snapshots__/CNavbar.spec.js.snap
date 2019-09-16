@@ -7,15 +7,16 @@ exports[`CNavbar renders correctly 1`] = `
 `;
 
 exports[`CNavbar renders correctly 2`] = `
-<nav
-  class="c-navbar c-navbar-dark"
+<div
+  class="c-navbar c-navbar-light c-fixed-top c-navbar-expand-"
   fill="true"
   justified="true"
   pills="true"
+  role="navigation"
   vertical="true"
 >
   <template>
     CNavbar items
   </template>
-</nav>
+</div>
 `;

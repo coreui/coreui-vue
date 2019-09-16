@@ -1,21 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CNavbar renders correctly 1`] = `
-<nav
-  class="c-navbar c-navbar-dark"
+exports[`CNavbarBrand renders correctly 1`] = `
+<div
+  class="c-navbar-brand"
 />
 `;
 
-exports[`CNavbar renders correctly 2`] = `
-<nav
-  class="c-navbar c-navbar-dark"
-  fill="true"
-  justified="true"
-  pills="true"
-  vertical="true"
+exports[`CNavbarBrand renders correctly 2`] = `
+<a
+  class="c-navbar-brand"
+  href="https://coreui.io/"
+  target="_self"
 >
   <template>
-    CNavbar items
+    CNavbarBrand
   </template>
-</nav>
+</a>
+`;
+
+exports[`CNavbarBrand2 renders correctly 1`] = `
+<div
+  class="c-navbar-brand"
+/>
+`;
+
+exports[`CNavbarBrand2 renders correctly 2`] = `
+<a
+  class="c-navbar-brand"
+  href="https://coreui.io/"
+  target="_self"
+>
+  <template>
+    CNavbarBrand
+  </template>
+</a>
 `;
