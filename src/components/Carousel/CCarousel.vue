@@ -50,7 +50,6 @@ export default {
       items: [],
       currentInterval: null,
       transitioning: false,
-      waitingItem: null
     }
   },
   mounted () {
@@ -81,14 +80,12 @@ export default {
     setItem (index, passedOrder = null) {
       if (index === this.activated) {
         return this.resetInterval()
+      } else if (this.transitioning) {
+        return
       }
       const order = passedOrder || (this.active > index ? 'prev' : 'next')
       this.active = index
-      if (!this.transitioning) {
-        this.activate(index, order)
-      } else {
-        this.waitingItem = { index, order }
-      }
+      this.activate(index, order)
     },
     activate (index, order) {
       this.resetInterval()
@@ -107,13 +104,7 @@ export default {
         }
       })
       this.transitioning = true
-      setTimeout(() => {
-        this.transitioning = false
-        if (this.waitingItem) {
-          this.setItem(this.waitingItem.index, this.waitingItem.order)
-          this.waitingItem = null
-        }
-      }, 600)
+      setTimeout(() => this.transitioning = false, 600)
     }
   }
 
