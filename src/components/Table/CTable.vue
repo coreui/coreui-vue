@@ -5,7 +5,7 @@
         class="c-col-sm-6 c-form-inline c-p-0"
         v-if="optionsRow !== 'noFilter'"
       >
-        <label class="c-mr-2">Filter: </label>
+        <label class="c-mr-2">Filter:</label>
         <input
           class="c-form-control c-table-filter"
           type="text"
@@ -21,7 +21,7 @@
         :class="optionsRow === 'noFilter' ? 'c-offset-sm-6' : ''"
       >
         <div class="c-form-inline c-float-sm-right">
-          <label class="mr-2">Items per page: </label>
+          <label class="c-mr-2">Items per page:</label>
           <select
             class="c-form-control"
             @change="paginationChange"
@@ -288,11 +288,14 @@ export default {
   computed: {
     columnFiltered () {
       let items = this.passedItems.slice()
-      Object.keys(this.columnFilter).forEach(key => {
-        items = items.filter(item => {
-          const columnFilter = this.columnFilter[key].toLowerCase()
-          return String(item[key]).toLowerCase().includes(columnFilter)
-        })
+      Object.entries(this.columnFilter).forEach(([key, value]) => {
+        if (value && this.rawColumnNames.includes(key)) {
+          const columnFilter = String(value).toLowerCase()
+          items = items.filter(item => {
+            return ['string', 'number', 'boolean'].includes(typeof item[key]) 
+                   && String(item[key]).toLowerCase().includes(columnFilter)
+          })
+        }
       })
       return items
     },
