@@ -11,7 +11,7 @@ export default {
     return h(
       'li',
       {
-        staticClass: 'c-nav-item ',
+        staticClass: 'c-nav-item',
       },
       [
         h(

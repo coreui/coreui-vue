@@ -18,6 +18,7 @@
      <!-- span added to enable text styling through classes -->
      <span v-text="lastItem.textHtml"></span>
     </li>
+    <slot></slot>
   </ol>
 </template>
 

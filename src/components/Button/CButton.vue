@@ -74,7 +74,7 @@ export default {
     const toggle = isToggle(props)
     const isButton = !isLink(props)
     const on = {
-      click (e) {
+      click () {
         if (toggle && listeners && listeners['update:pressed']) {
           // Send .sync updates to any "pressed" prop (if .sync listeners)
           listeners['update:pressed'](!props.pressed)

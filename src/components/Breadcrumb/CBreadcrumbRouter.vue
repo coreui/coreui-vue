@@ -1,5 +1,7 @@
 <template>
-  <CBreadcrumb v-bind="props"/>
+  <CBreadcrumb v-bind="props">
+    <slot></slot>
+  </CBreadcrumb>
 </template>
 
 <script>

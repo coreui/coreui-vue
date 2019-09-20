@@ -101,11 +101,10 @@ export default {
       return this.activatedTab || this.ctabInstances.filter(el => el.active)[0]
     },
     gridClasses () {
-      const vertical = this.vertical || {}
-      if (typeof vertical === 'object' && vertical.navs && vertical.content) {
-        return vertical
-      } else if (vertical === true) {
+      if (this.vertical === true) {
         return { navs: 'c-col-sm-4', content: 'c-col-sm-8'}
+      } else {
+        return this.vertical || {}
       }
     },
     ctabInstances () {
