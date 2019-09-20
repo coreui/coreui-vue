@@ -113,7 +113,7 @@ export default {
     createPopper () {
       this.removePopper()
       this._popper = new Popper(
-        this.$refs.toggle, 
+        this.$el.firstElementChild, 
         this.$refs.menu, 
         this.computedPopperConfig
       )
@@ -176,7 +176,6 @@ export default {
       return {
         'aria-expanded': this.visible ? 'true' : 'false',
         'aria-haspopup': 'true',
-        ref: 'toggle'
       }
     },
 
