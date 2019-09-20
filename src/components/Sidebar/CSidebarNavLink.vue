@@ -1,7 +1,7 @@
 <template>
   <li class="c-nav-item">
     <CLink
-      class="c-nav-link"
+      :class="['c-nav-link', addLinkClasses]"
       :exact="true"
       v-bind="linkProps"
       @click.native="click"
@@ -25,7 +25,8 @@ import CBadge from '../Badge/CBadge'
 const props = Object.assign(linkProps, {
   name: String,
   icon: [String, Array, Object],
-  badge: Object
+  badge: Object,
+  addLinkClasses: [String, Array, Object]
 })
 
 export default {
