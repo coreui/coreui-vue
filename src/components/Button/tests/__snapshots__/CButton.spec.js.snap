@@ -2,14 +2,14 @@
 
 exports[`CButton renders correctly 1`] = `
 <button
-  class="c-btn"
+  class="btn"
   type="button"
 />
 `;
 
 exports[`CButton renders correctly router link button 1`] = `
 <a
-  class="c-btn c-btn-success c-btn-sm c-btn-ghost-success c-btn-pill"
+  class="btn btn-success btn-sm btn-ghost-success btn-pill"
   href="#"
   target="_self"
 >
@@ -23,7 +23,7 @@ exports[`CButton renders correctly toggle button 1`] = `
 <button
   aria-pressed="true"
   autocomplete="off"
-  class="c-btn c-btn-outline-info c-btn-lg c-btn-ghost-info c-btn-block c-btn-square c-active"
+  class="btn btn-outline-info btn-lg btn-ghost-info btn-block btn-square active"
   type="input"
 >
   <template>

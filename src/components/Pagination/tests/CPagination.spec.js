@@ -32,7 +32,7 @@ describe(ComponentName, () => {
     expect(customWrapper.emitted()['update:activePage']).toBeTruthy()
   })
   it('emits update:activePage event when inactive item is clicked', () => {
-    const links = defaultWrapper.findAll('.c-page-link')
+    const links = defaultWrapper.findAll('.page-link')
     links.at(2).trigger('click')
     expect(defaultWrapper.emitted()['update:activePage']).not.toBeTruthy()
 

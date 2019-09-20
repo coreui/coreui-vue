@@ -12,8 +12,8 @@ export default {
       'div',
       mergeData(data, {
         class: {
-          'c-container': !props.fluid,
-          'c-container-fluid': props.fluid
+          'container': !props.fluid,
+          'container-fluid': props.fluid
         }
       }),
       children

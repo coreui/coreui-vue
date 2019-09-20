@@ -2,14 +2,14 @@
 
 exports[`CButtonGroup renders correctly 1`] = `
 <div
-  class="c-btn-group"
+  class="btn-group"
   role="group"
 />
 `;
 
 exports[`CButtonGroup renders correctly 2`] = `
 <div
-  class="c-btn-group-vertical c-btn-group-lg"
+  class="btn-group-vertical btn-group-lg"
   role="group"
 >
   <template>

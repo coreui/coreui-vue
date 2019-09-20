@@ -2,18 +2,18 @@
 
 exports[`CNavbar renders correctly 1`] = `
 <button
-  class="c-navbar-toggler"
+  class="navbar-toggler"
   type="button"
 >
   <span
-    class="c-navbar-toggler-icon"
+    class="navbar-toggler-icon"
   />
 </button>
 `;
 
 exports[`CNavbar renders correctly 2`] = `
 <button
-  class="c-navbar-toggler"
+  class="navbar-toggler"
   fill="true"
   justified="true"
   pills="true"

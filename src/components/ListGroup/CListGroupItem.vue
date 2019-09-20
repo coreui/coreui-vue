@@ -42,12 +42,12 @@ export default {
     const componentData = {
       attrs,
       props: itemProps,
-      staticClass: 'c-list-group-item',
+      staticClass: 'list-group-item',
       class: {
-        [`c-list-group-item-${props.variant}`]: Boolean(props.variant),
-        'c-list-group-item-action': isAction,
-        'c-active': props.active,
-        'c-disabled': props.disabled
+        [`list-group-item-${props.variant}`]: Boolean(props.variant),
+        'list-group-item-action': isAction,
+        'active': props.active,
+        'disabled': props.disabled
       }
     }
     return h(tag, mergeData(data, componentData), children)

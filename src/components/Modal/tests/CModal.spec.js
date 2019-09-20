@@ -35,7 +35,7 @@ describe(ComponentName, () => {
     expect(customWrapper.element).toMatchSnapshot()
   })
   it('hides on backdrop click', () => {
-    const click = () => customWrapper.find('.c-modal').trigger('click')
+    const click = () => customWrapper.find('.modal').trigger('click')
     click()
     expect(customWrapper.emitted().accepted).not.toBeTruthy()
 

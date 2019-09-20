@@ -2,10 +2,10 @@
 
 exports[`CBreadcrumbRouter renders correctly 1`] = `
 <ol
-  class="c-breadcrumb"
+  class="breadcrumb"
 >
   <li
-    class="additional-class c-breadcrumb-item additional-link-class"
+    class="additional-class breadcrumb-item additional-link-class"
     role="presentation"
   >
     <a
@@ -17,7 +17,7 @@ exports[`CBreadcrumbRouter renders correctly 1`] = `
     </a>
   </li>
   <li
-    class="additional-class c-breadcrumb-item additional-link-class"
+    class="additional-class breadcrumb-item additional-link-class"
     role="presentation"
   >
     <a
@@ -30,12 +30,13 @@ exports[`CBreadcrumbRouter renders correctly 1`] = `
   </li>
    
   <li
-    class="c-active additional-class c-breadcrumb-item additional-last-item-class"
+    class="active additional-class breadcrumb-item additional-last-item-class"
     role="presentation"
   >
     <span>
       View
     </span>
   </li>
+   
 </ol>
 `;

@@ -61,7 +61,7 @@
     "clear_jest": "jest --clearCache"
   },
   "dependencies": {
-    "@coreui/coreui": "3.0.0-alpha.12",
+    "@coreui/coreui": "3.0.0-alpha.13",
     "@coreui/icons": "coreui/coreui-icons#v1-alpha",
     "element-resize-detector": "^1.2.0",
     "clone": "^2.1.2",

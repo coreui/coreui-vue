@@ -13,7 +13,7 @@ export default {
     return h(
       props.tag,
       mergeData(data, {
-        staticClass: 'c-dropdown-header',
+        staticClass: 'dropdown-header',
       }),
       children
     )

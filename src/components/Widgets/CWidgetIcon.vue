@@ -1,23 +1,23 @@
 <template>
-  <div class="c-card">
+  <div class="card">
     <slot name="header"></slot>
     <div
-      class="c-card-body c-clearfix c-d-flex c-align-items-center"
-      :class="noIconPadding ? 'c-p-0' : 'c-p-3'"
+      class="card-body clearfix d-flex align-items-center"
+      :class="noIconPadding ? 'p-0' : 'p-3'"
     >
       <div
-        class="c-float-left c-mr-3 c-text-white"
-        :class="[`c-bg-${variant}`, noIconPadding ? 'c-p-4' : 'c-p-3']"
+        class="float-left mr-3 text-white"
+        :class="[`bg-${variant}`, noIconPadding ? 'p-4' : 'p-3']"
       >
         <slot></slot>
       </div>
       <div>
-        <div v-if="header" :class="`c-text-value c-text-${variant}`">
+        <div v-if="header" :class="`text-value text-${variant}`">
           {{header}}
         </div>
         <div
           v-if="text"
-          class="c-text-muted c-text-uppercase c-font-weight-bold c-small"
+          class="text-muted text-uppercase font-weight-bold small"
         >
           {{text}}
         </div>

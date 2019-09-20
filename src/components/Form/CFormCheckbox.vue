@@ -95,12 +95,12 @@ export default {
     },
     
     computedClasses () {
-      const controlClass = this.custom ? 'c-custom-control' : 'c-form-check'
+      const controlClass = this.custom ? 'custom-control' : 'form-check'
       return {
         [`${controlClass}`] : true,
         [`${controlClass}-inline`]: this.inline,
-        [`c-custom-${this.customType}`]: this.custom,
-        'c-was-validated': this.wasValidated
+        [`custom-${this.customType}`]: this.custom,
+        'was-validated': this.wasValidated
       }
 
     },
@@ -108,13 +108,13 @@ export default {
     labelClasses () {
       return [
         this.addLabelClasses,
-        this.custom ? 'c-custom-control-label': 'c-form-check-label'
+        this.custom ? 'custom-control-label': 'form-check-label'
       ]
     },
 
     inputClasses () {
       return [
-        this.custom ? 'c-custom-control-input' : 'c-form-check-input',
+        this.custom ? 'custom-control-input' : 'form-check-input',
         this.validationClass, this.addInputClasses
       ]
     },
@@ -128,7 +128,7 @@ export default {
     // },
     // validationClass () {
     //   if (typeof this.computedIsValid === 'boolean') {
-    //     return this.computedIsValid ? 'c-is-valid' : 'c-is-invalid'
+    //     return this.computedIsValid ? 'is-valid' : 'is-invalid'
     //   }
     // }
   },

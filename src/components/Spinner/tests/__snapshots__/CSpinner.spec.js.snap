@@ -4,7 +4,7 @@ exports[`CSpinner renders correctly 1`] = `
 <span
   aria-hidden="false"
   aria-label="Loading"
-  class="c-spinner-border"
+  class="spinner-border"
   role="status"
 />
 `;
@@ -13,7 +13,7 @@ exports[`CSpinner renders correctly 2`] = `
 <span
   aria-hidden="false"
   aria-label="Loading"
-  class="c-spinner-grow c-spinner-grow-sm c-text-success"
+  class="spinner-grow spinner-grow-sm text-success"
   role="status"
 />
 `;

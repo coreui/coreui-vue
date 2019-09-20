@@ -1,5 +1,5 @@
 <template>
-  <ol class="c-breadcrumb">
+  <ol class="breadcrumb">
     <li
       v-for="(item, index) in this.items.slice(0, -1)"
       :key="index"
@@ -12,7 +12,7 @@
       />
     </li>
     <li 
-      :class="['c-active', lastItem.addClasses, sharedClasses, addLastItemClasses]"
+      :class="['active', lastItem.addClasses, sharedClasses, addLastItemClasses]"
       role="presentation"
     >
      <!-- span added to enable text styling through classes -->
@@ -44,7 +44,7 @@ export default {
       return this.items[this.items.length -1]
     },
     sharedClasses () {
-      return [this.addClasses, 'c-breadcrumb-item']
+      return [this.addClasses, 'breadcrumb-item']
     }
   }
 }

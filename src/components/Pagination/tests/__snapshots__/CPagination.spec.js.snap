@@ -4,16 +4,16 @@ exports[`CPagination renders correctly 1`] = `
 <ul
   aria-disabled="false"
   aria-label="pagination"
-  class="c-pagination c-pagination-md c-justify-content-start"
+  class="pagination pagination-md justify-content-start"
   role="menubar"
 >
   <li
-    class="c-page-item c-disabled"
+    class="page-item disabled"
   >
     <a
       aria-disabled="true"
       aria-label="Go to first page"
-      class="c-page-link c-disabled"
+      class="page-link disabled"
       href="#"
       tabindex="-1"
       target="_self"
@@ -25,12 +25,12 @@ exports[`CPagination renders correctly 1`] = `
   </li>
    
   <li
-    class="c-page-item c-disabled"
+    class="page-item disabled"
   >
     <a
       aria-disabled="true"
       aria-label="Go to previous page"
-      class="c-page-link c-disabled"
+      class="page-link disabled"
       href="#"
       tabindex="-1"
       target="_self"
@@ -44,11 +44,11 @@ exports[`CPagination renders correctly 1`] = `
   <!---->
    
   <li
-    class="c-active c-page-item"
+    class="active page-item"
   >
     <a
       aria-label="Go to page 1"
-      class="c-page-link"
+      class="page-link"
       href="#"
       target="_self"
     >
@@ -58,11 +58,11 @@ exports[`CPagination renders correctly 1`] = `
     </a>
   </li>
   <li
-    class="c-page-item"
+    class="page-item"
   >
     <a
       aria-label="Go to page 2"
-      class="c-page-link"
+      class="page-link"
       href="#"
       target="_self"
     >
@@ -72,11 +72,11 @@ exports[`CPagination renders correctly 1`] = `
     </a>
   </li>
   <li
-    class="c-page-item"
+    class="page-item"
   >
     <a
       aria-label="Go to page 3"
-      class="c-page-link"
+      class="page-link"
       href="#"
       target="_self"
     >
@@ -86,11 +86,11 @@ exports[`CPagination renders correctly 1`] = `
     </a>
   </li>
   <li
-    class="c-page-item"
+    class="page-item"
   >
     <a
       aria-label="Go to page 4"
-      class="c-page-link"
+      class="page-link"
       href="#"
       target="_self"
     >
@@ -101,22 +101,22 @@ exports[`CPagination renders correctly 1`] = `
   </li>
    
   <li
-    class="c-page-item c-disabled"
+    class="page-item disabled"
     role="separator"
   >
     <span
-      class="c-page-link"
+      class="page-link"
     >
       …
     </span>
   </li>
    
   <li
-    class="c-page-item"
+    class="page-item"
   >
     <a
       aria-label="Go to next page"
-      class="c-page-link"
+      class="page-link"
       href="#"
       target="_self"
     >
@@ -127,11 +127,11 @@ exports[`CPagination renders correctly 1`] = `
   </li>
    
   <li
-    class="c-page-item"
+    class="page-item"
   >
     <a
       aria-label="Go to last page"
-      class="c-page-link"
+      class="page-link"
       href="#"
       target="_self"
     >
@@ -147,7 +147,7 @@ exports[`CPagination renders correctly 2`] = `
 <ul
   aria-disabled="false"
   aria-label="pagination"
-  class="c-pagination c-pagination-lg c-justify-content-center"
+  class="pagination pagination-lg justify-content-center"
   role="menubar"
 >
   <!---->
@@ -157,11 +157,11 @@ exports[`CPagination renders correctly 2`] = `
   <!---->
    
   <li
-    class="c-page-item"
+    class="page-item"
   >
     <a
       aria-label="Go to page 6"
-      class="c-page-link"
+      class="page-link"
       href="#"
       target="_self"
     >
@@ -171,11 +171,11 @@ exports[`CPagination renders correctly 2`] = `
     </a>
   </li>
   <li
-    class="c-page-item"
+    class="page-item"
   >
     <a
       aria-label="Go to page 7"
-      class="c-page-link"
+      class="page-link"
       href="#"
       target="_self"
     >
@@ -185,11 +185,11 @@ exports[`CPagination renders correctly 2`] = `
     </a>
   </li>
   <li
-    class="c-page-item"
+    class="page-item"
   >
     <a
       aria-label="Go to page 8"
-      class="c-page-link"
+      class="page-link"
       href="#"
       target="_self"
     >
@@ -199,11 +199,11 @@ exports[`CPagination renders correctly 2`] = `
     </a>
   </li>
   <li
-    class="c-active c-page-item"
+    class="active page-item"
   >
     <a
       aria-label="Go to page 9"
-      class="c-page-link"
+      class="page-link"
       href="#"
       target="_self"
     >
@@ -213,11 +213,11 @@ exports[`CPagination renders correctly 2`] = `
     </a>
   </li>
   <li
-    class="c-page-item"
+    class="page-item"
   >
     <a
       aria-label="Go to page 10"
-      class="c-page-link"
+      class="page-link"
       href="#"
       target="_self"
     >
@@ -227,11 +227,11 @@ exports[`CPagination renders correctly 2`] = `
     </a>
   </li>
   <li
-    class="c-page-item"
+    class="page-item"
   >
     <a
       aria-label="Go to page 11"
-      class="c-page-link"
+      class="page-link"
       href="#"
       target="_self"
     >
@@ -241,11 +241,11 @@ exports[`CPagination renders correctly 2`] = `
     </a>
   </li>
   <li
-    class="c-page-item"
+    class="page-item"
   >
     <a
       aria-label="Go to page 12"
-      class="c-page-link"
+      class="page-link"
       href="#"
       target="_self"
     >

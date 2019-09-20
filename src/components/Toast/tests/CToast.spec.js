@@ -43,7 +43,7 @@ describe(ComponentName, () => {
     expect(wrapper.vm.isShowed).toBe(false)
   })
   it('closes by close button correctly', () => {
-    customWrapper.find('.c-close').trigger('click')
+    customWrapper.find('.close').trigger('click')
     expect(customWrapper.vm.isShowed).toBe(false)
   })
   it('autohiding works correctly', (done) => {

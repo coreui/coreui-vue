@@ -87,12 +87,12 @@ describe(ComponentName, () => {
     expect(CPopover.name).toBe(ComponentName)
   })
   it('is rendered when activated initially', () => {
-    expect(popoverWrapper.find('.c-popover').isVisible()).toBe(true)
+    expect(popoverWrapper.find('.popover').isVisible()).toBe(true)
   })
 
   it('destroys correctly', (done) => {
     setTimeout(() => {
-      expect(popoverWrapper.find('.c-btn').exists()).not.toBe(true)
+      expect(popoverWrapper.find('.btn').exists()).not.toBe(true)
       done()
     }, 11)
   })

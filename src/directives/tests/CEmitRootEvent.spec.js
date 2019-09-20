@@ -73,7 +73,7 @@ describe(ComponentName, () => {
     const eventEmitted = jest.fn(() => {})
     wrapper.vm.$root.$on('event-name', eventEmitted)
     expect(eventEmitted).not.toBeCalled()
-    wrapper.find('.c-btn').trigger('click')
+    wrapper.find('.btn').trigger('click')
     expect(eventEmitted).toBeCalled()
   })
 
@@ -81,7 +81,7 @@ describe(ComponentName, () => {
     const eventEmitted = jest.fn(() => {})
     wrapperModifiers.vm.$root.$on('event-name', eventEmitted)
     expect(eventEmitted).not.toBeCalled()
-    wrapperModifiers.find('.c-btn').trigger('mouseover')
+    wrapperModifiers.find('.btn').trigger('mouseover')
     expect(eventEmitted).toBeCalled()
   })
 

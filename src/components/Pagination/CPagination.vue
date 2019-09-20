@@ -7,7 +7,7 @@
   >
     <li v-if="!hideDoubleArrows" :class="backArrowsClasses">
       <CLink
-        class="c-page-link"
+        class="page-link"
         @click="setPage(1)"
         :disabled="activePage === 1"
         aria-label="Go to first page"
@@ -17,7 +17,7 @@
     </li>
     <li v-if="!hideArrows" :class="backArrowsClasses">
       <CLink
-        class="c-page-link"
+        class="page-link"
         @click="setPage(activePage - 1)"
         :disabled="activePage === 1"
         aria-label="Go to previous page"
@@ -28,18 +28,18 @@
     <li
       v-if="beforeDots"
       role="separator"
-      class="c-page-item c-disabled"
+      class="page-item disabled"
     >
-      <span class="c-page-link">…</span>
+      <span class="page-link">…</span>
     </li>
 
     <li
       v-for="(item, index) in items"
       :key="index"
-      :class="[{ 'c-active': activePage === item }, 'c-page-item']"
+      :class="[{ 'active': activePage === item }, 'page-item']"
     >
       <CLink
-        class="c-page-link"
+        class="page-link"
         @click="setPage(item)"
         :aria-label="`Go to page ${item}`"
       >
@@ -50,16 +50,16 @@
     <li
       v-if="afterDots"
       role="separator"
-      class="c-page-item c-disabled"
+      class="page-item disabled"
     >
-      <span class="c-page-link">…</span>
+      <span class="page-link">…</span>
     </li>
     <li
       v-if="!hideArrows"
       :class="nextArrowsClasses"
     >
       <CLink
-        class="c-page-link"
+        class="page-link"
         @click="setPage(activePage + 1)"
         :disabled="activePage === pages"
         aria-label="Go to next page"
@@ -69,7 +69,7 @@
     </li>
     <li v-if="!hideDoubleArrows" :class="nextArrowsClasses">
       <CLink
-        class="c-page-link"
+        class="page-link"
         @click="setPage(pages)"
         :disabled="activePage === pages"
         aria-label="Go to last page"
@@ -159,13 +159,13 @@
         return this.size === 'sm' ? 'sm' : this.minifiedSize || this.size
       },
       backArrowsClasses () {
-        return ['c-page-item', { 'c-disabled': this.activePage === 1 }]
+        return ['page-item', { 'disabled': this.activePage === 1 }]
       },
       nextArrowsClasses () {
-        return ['c-page-item', { 'c-disabled': this.activePage === this.pages }]
+        return ['page-item', { 'disabled': this.activePage === this.pages }]
       },
       computedClasses () {
-        return `c-pagination c-pagination-${this.dims} c-justify-content-${this.align}`
+        return `pagination pagination-${this.dims} justify-content-${this.align}`
       },
       showDots () {
         return !this.hideDots && this.limit > 4 && this.limit < this.pages
@@ -223,7 +223,7 @@
 <style lang="scss">
   @import "~@coreui/coreui/scss/partials/pagination.scss";
   @import "~@coreui/coreui/scss/utilities/_flex.scss";
-  .c-page-link:focus {
+  .page-link:focus {
     box-shadow: none;
   }
 </style>

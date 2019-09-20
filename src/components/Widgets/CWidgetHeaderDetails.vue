@@ -1,15 +1,15 @@
 <template>
-  <div class="c-card" :class="`c-bg-${variant}`">
-    <div class="c-card-header">
-      <div class="c-font-weight-bold">
+  <div class="card" :class="`bg-${variant}`">
+    <div class="card-header">
+      <div class="font-weight-bold">
         <span v-if="rightHeader">{{rightHeader}}</span>
-        <span v-if="leftHeader" class="c-float-right">{{leftHeader}}</span>
+        <span v-if="leftHeader" class="float-right">{{leftHeader}}</span>
       </div>
       <div>
         <span>
           <small v-if="rightFooter">{{rightFooter}}</small>
         </span>
-        <span class="c-float-right">
+        <span class="float-right">
           <small v-if="leftFooter">{{leftFooter}}</small>
         </span>
       </div>

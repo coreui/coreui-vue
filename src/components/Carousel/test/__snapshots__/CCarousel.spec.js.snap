@@ -2,13 +2,13 @@
 
 exports[`CCarousel renders correctly 1`] = `
 <div
-  class="c-carousel c-slide"
+  class="carousel slide"
   style="height: auto;"
 >
   <!---->
    
   <div
-    class="c-carousel-inner"
+    class="carousel-inner"
   />
    
   <!---->
@@ -18,13 +18,13 @@ exports[`CCarousel renders correctly 1`] = `
 
 exports[`CCarousel renders correctly 2`] = `
 <div
-  class="c-carousel c-slide"
+  class="carousel slide"
 >
   <ol
-    class="c-carousel-indicators additional-class"
+    class="carousel-indicators additional-class"
   >
     <li
-      class="c-active"
+      class="active"
     />
     <li
       class=""
@@ -35,24 +35,24 @@ exports[`CCarousel renders correctly 2`] = `
   </ol>
    
   <div
-    class="c-carousel-inner"
+    class="carousel-inner"
   >
     <div
-      class="c-carousel-item c-active"
+      class="carousel-item active"
     >
       <!---->
        
       <!---->
     </div>
     <div
-      class="c-carousel-item"
+      class="carousel-item"
     >
       <!---->
        
       <!---->
     </div>
     <div
-      class="c-carousel-item"
+      class="carousel-item"
     >
       <!---->
        
@@ -61,20 +61,20 @@ exports[`CCarousel renders correctly 2`] = `
   </div>
    
   <a
-    class="c-carousel-control-prev"
+    class="carousel-control-prev"
   >
     <span
       aria-label="Previous"
-      class="c-carousel-control-prev-icon"
+      class="carousel-control-prev-icon"
     />
   </a>
    
   <a
-    class="c-carousel-control-next"
+    class="carousel-control-next"
   >
     <span
       aria-label="Next"
-      class="c-carousel-control-next-icon"
+      class="carousel-control-next-icon"
     />
   </a>
    

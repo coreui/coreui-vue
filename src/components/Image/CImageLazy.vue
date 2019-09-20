@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     animationClasses () {
-      return { 'c-opacity-0' : !this.noFade && !this.animated }
+      return { 'opacity-0' : !this.noFade && !this.animated }
     },
     observerArgs () {
       if (this.active) {
@@ -82,7 +82,7 @@ export default {
 </script>
 
 <style>
-  .c-opacity-0 {
+  .opacity-0 {
     opacity: 0;
   }
 </style>

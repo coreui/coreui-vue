@@ -11,7 +11,7 @@ export default {
       CLink,
       mergeData(data, {
         props,
-        staticClass: 'c-dropdown-item',
+        staticClass: 'dropdown-item',
         attrs: { role: 'menuitem' }
       }),
       children

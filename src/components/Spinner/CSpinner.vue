@@ -23,10 +23,10 @@ export default {
           'aria-label': 'Loading'
         },
         class: [
-          `c-spinner-${type}`,
+          `spinner-${type}`,
           {
-            [`c-spinner-${type}-sm`]: props.small,
-            [`c-text-${props.variant}`]: Boolean(props.variant)
+            [`spinner-${type}-sm`]: props.small,
+            [`text-${props.variant}`]: Boolean(props.variant)
           }
         ]
       })

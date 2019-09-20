@@ -14,7 +14,7 @@ export default {
     return h(
       tag,
       mergeData(data, {
-        staticClass: 'c-navbar-brand',
+        staticClass: 'navbar-brand',
         props: isLink ? props : null
       }),
       children

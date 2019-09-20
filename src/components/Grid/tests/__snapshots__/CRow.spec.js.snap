@@ -2,13 +2,13 @@
 
 exports[`CRow renders correctly 1`] = `
 <div
-  class="c-row"
+  class="row"
 />
 `;
 
 exports[`CRow renders correctly 2`] = `
 <div
-  class="c-row c-no-gutters c-align-items-center c-justify-content-start"
+  class="row no-gutters align-items-center justify-content-start"
 >
   <template>
     CRow content

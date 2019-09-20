@@ -1,14 +1,14 @@
 <template>
-  <div class="c-card">
+  <div class="card">
     <slot name="header"></slot>
-    <div class="c-card-body c-text-center">
+    <div class="card-body text-center">
       <div
         v-if="header"
-        class="c-text-muted c-small c-text-uppercase c-font-weight-bold"
+        class="text-muted small text-uppercase font-weight-bold"
       >
         {{header}}
       </div>
-      <div v-if="text" class="c-h2 c-py-3">{{text}}</div>
+      <div v-if="text" class="h2 py-3">{{text}}</div>
       <slot></slot>
     </div>
     <slot name="footer"></slot>

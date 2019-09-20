@@ -90,7 +90,7 @@ describe(ComponentName, () => {
   it('does not open when dropdown is disabled', () => {
     const toggle = () => {
       jest.useFakeTimers()
-      customWrapper.find('.c-dropdown-toggle-split').trigger('click')
+      customWrapper.find('.dropdown-toggle-split').trigger('click')
       jest.runAllTimers()
     }
     

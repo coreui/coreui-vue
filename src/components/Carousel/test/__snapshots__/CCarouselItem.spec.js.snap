@@ -2,10 +2,10 @@
 
 exports[`CCarouselItem renders correctly 1`] = `
 <div
-  class="c-carousel-item"
+  class="carousel-item"
 >
   <img
-    class="c-d-block c-w-100 c-h-100 c-img-fluid"
+    class="d-block w-100 h-100 img-fluid"
     src="../someImagePath"
   />
    
@@ -16,10 +16,10 @@ exports[`CCarouselItem renders correctly 1`] = `
 exports[`CCarouselItem renders correctly 2`] = `
 <div
   captionfooter="footer"
-  class="c-carousel-item"
+  class="carousel-item"
 >
   <img
-    class="c-d-block c-w-100 c-h-100 c-img-fluid"
+    class="d-block w-100 h-100 img-fluid"
     src="../someImagePath"
   />
    CCarouselItem

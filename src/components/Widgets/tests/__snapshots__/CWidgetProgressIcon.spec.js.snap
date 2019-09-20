@@ -2,23 +2,23 @@
 
 exports[`CWidgetProgressIcon matches custom props snapshot 1`] = `
 <div
-  class="c-card c-text-white c-bg-info"
+  class="card text-white bg-info"
   iconclasses="icon-custom"
 >
    
   <div
-    class="c-card-body"
+    class="card-body"
   >
     <!---->
      
     <div
-      class="c-h4 c-mb-0"
+      class="h4 mb-0"
     >
       test
     </div>
      
     <small
-      class="c-text-muted c-text-uppercase c-font-weight-bold"
+      class="text-muted text-uppercase font-weight-bold"
     >
       
       test
@@ -26,13 +26,13 @@ exports[`CWidgetProgressIcon matches custom props snapshot 1`] = `
     </small>
      
     <div
-      class="c-progress c-progress-xs c-my-3 c-mb-0 c-progress-white"
+      class="progress progress-xs my-3 mb-0 progress-white"
     >
       <div
         aria-valuemax="100"
         aria-valuemin="0"
         aria-valuenow="35"
-        class="c-progress-bar"
+        class="progress-bar"
         role="progressbar"
         style="width: 35%;"
       >
@@ -46,11 +46,11 @@ exports[`CWidgetProgressIcon matches custom props snapshot 1`] = `
 
 exports[`CWidgetProgressIcon matches default props snapshot 1`] = `
 <div
-  class="c-card"
+  class="card"
 >
    
   <div
-    class="c-card-body"
+    class="card-body"
   >
     <!---->
      
@@ -59,13 +59,13 @@ exports[`CWidgetProgressIcon matches default props snapshot 1`] = `
     <!---->
      
     <div
-      class="c-progress c-progress-xs c-my-3 c-mb-0"
+      class="progress progress-xs my-3 mb-0"
     >
       <div
         aria-valuemax="100"
         aria-valuemin="0"
         aria-valuenow="25"
-        class="c-progress-bar"
+        class="progress-bar"
         role="progressbar"
         style="width: 25%;"
       >

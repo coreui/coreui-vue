@@ -2,7 +2,7 @@
 
 exports[`CNav renders correctly 1`] = `
 <ul
-  class="c-nav c-nav-tabs"
+  class="nav nav-tabs"
 >
   CNav items
 </ul>
@@ -10,40 +10,40 @@ exports[`CNav renders correctly 1`] = `
 
 exports[`CNav renders correctly 2`] = `
 <ul
-  class="c-nav c-nav-pills c-flex-column c-nav-fill c-nav-justified"
+  class="nav nav-pills flex-column nav-fill nav-justified"
 >
   <li
-    class="c-nav-item"
+    class="nav-item"
   >
     <a
-      class="c-nav-link"
+      class="nav-link"
       href="#"
       target="_self"
     />
   </li>
   <li
-    class="c-nav-item"
+    class="nav-item"
   >
     <a
-      class="c-nav-link"
+      class="nav-link"
       href="#"
       target="_self"
     />
   </li>
   <li
-    class="c-nav-item"
+    class="nav-item"
   >
     <a
-      class="c-nav-link"
+      class="nav-link"
       href="#"
       target="_self"
     />
   </li>
   <li
-    class="c-nav-item"
+    class="nav-item"
   >
     <a
-      class="c-nav-link"
+      class="nav-link"
       href="#"
       target="_self"
     />

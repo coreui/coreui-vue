@@ -1,31 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CSidebarNavDropdown .vue renders correctly 1`] = `
-<li
-  class="c-nav-item c-nav-dropdown"
->
-  <div
-    class="c-nav-link c-nav-dropdown-toggle"
-  >
-    <i
-      class="c-nav-icon cui-settings"
-    />
-    
-    
-  
-  </div>
-   
-  <ul
-    class="c-nav-dropdown-items"
-  />
-</li>
-`;
-
 exports[`CSidebarNavDropdown renders correctly 1`] = `
 <li
   class="c-nav-item c-nav-dropdown"
 >
-  <div
+  <a
     class="c-nav-link c-nav-dropdown-toggle"
   >
     <i
@@ -34,7 +13,7 @@ exports[`CSidebarNavDropdown renders correctly 1`] = `
     
     
   
-  </div>
+  </a>
    
   <ul
     class="c-nav-dropdown-items"

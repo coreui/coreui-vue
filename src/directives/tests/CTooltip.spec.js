@@ -85,12 +85,12 @@ describe(ComponentName, () => {
     expect(CTooltip.name).toBe(ComponentName)
   })
   it('is rendered when activated initially', () => {
-    expect(tooltipWrapper.find('.c-tooltip').isVisible()).toBe(true)
+    expect(tooltipWrapper.find('.tooltip').isVisible()).toBe(true)
   })
 
   it('destroys correctly', (done) => {
     setTimeout(() => {
-      expect(tooltipWrapper.find('.c-btn').exists()).not.toBe(true)
+      expect(tooltipWrapper.find('.btn').exists()).not.toBe(true)
       done()
     }, 11)
   })

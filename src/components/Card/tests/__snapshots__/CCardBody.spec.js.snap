@@ -2,15 +2,15 @@
 
 exports[`CCardBody renders correctly 1`] = `
 <div
-  class="c-card-body c-bg-primary c-border-solid c-text-white c-text-left"
+  class="card-body bg-primary border-solid text-white text-left"
 >
   <h4
-    class="c-card-title"
+    class="card-title"
   >
     title
   </h4>
   <h6
-    class="c-card-subtitle c-mb-2 c-text-muted"
+    class="card-subtitle mb-2 text-muted"
   >
     subtitle
   </h6>

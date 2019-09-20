@@ -26,8 +26,8 @@ export default {
   computed: {
     toasterClasses () {
       return [
-        'c-toaster',
-        { 'c-d-flex c-flex-column-reverse': this.reverse }
+        'toaster',
+        { 'd-flex flex-column-reverse': this.reverse }
       ]
     }
   }

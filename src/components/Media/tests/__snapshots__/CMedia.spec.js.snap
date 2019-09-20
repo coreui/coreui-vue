@@ -2,10 +2,10 @@
 
 exports[`CMedia renders correctly 1`] = `
 <div
-  class="c-media"
+  class="media"
 >
   <div
-    class="c-mr-3 c-align-self-start"
+    class="mr-3 align-self-start"
   >
     <svg
       class=""
@@ -16,17 +16,17 @@ exports[`CMedia renders correctly 1`] = `
   </div>
    
   <div
-    class="c-media-body"
+    class="media-body"
   />
 </div>
 `;
 
 exports[`CMedia renders correctly 2`] = `
 <div
-  class="c-media c-d-flex c-flex-row-reverse"
+  class="media d-flex flex-row-reverse"
 >
   <div
-    class="position-class additional-aside-class c-align-self-stretch"
+    class="position-class additional-aside-class align-self-stretch"
   >
     <svg
       class=""
@@ -37,7 +37,7 @@ exports[`CMedia renders correctly 2`] = `
   </div>
    
   <div
-    class="c-media-body additional-body-class"
+    class="media-body additional-body-class"
   >
     CMedia content
   </div>

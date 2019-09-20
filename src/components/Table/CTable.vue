@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div v-if="optionsRow" class="c-row c-my-2 c-mx-0">
+    <div v-if="optionsRow" class="row my-2 mx-0">
       <div
-        class="c-col-sm-6 c-form-inline c-p-0"
+        class="col-sm-6 form-inline p-0"
         v-if="optionsRow !== 'noFilter'"
       >
-        <label class="c-mr-2">Filter:</label>
+        <label class="mr-2">Filter:</label>
         <input
-          class="c-form-control c-table-filter"
+          class="form-control table-filter"
           type="text"
           placeholder="type string..."
           @input="tableFilter = $event.target.value"
@@ -17,13 +17,13 @@
 
       <div
         v-if="optionsRow !== 'noPagination'"
-        class="c-col-sm-6 c-p-0"
-        :class="optionsRow === 'noFilter' ? 'c-offset-sm-6' : ''"
+        class="col-sm-6 p-0"
+        :class="optionsRow === 'noFilter' ? 'offset-sm-6' : ''"
       >
-        <div class="c-form-inline c-float-sm-right">
-          <label class="c-mr-2">Items per page:</label>
+        <div class="form-inline float-sm-right">
+          <label class="mr-2">Items per page:</label>
           <select
-            class="c-form-control"
+            class="form-control"
             @change="paginationChange"
           >
             <option value="" selected disabled hidden>
@@ -43,7 +43,7 @@
 
 
     <slot name="over-table"/>
-    <div :class="`c-position-relative ${notResponsive ? '' : 'c-table-responsive'}`">
+    <div :class="`position-relative ${notResponsive ? '' : 'table-responsive'}`">
       <table :class="tableClasses">
         <thead>
           <tr>
@@ -56,7 +56,7 @@
                 :key="index"
               >
                 <slot :name="`${rawColumnNames[index]}-header`">
-                  <div class="c-d-inline">{{name}}</div>
+                  <div class="d-inline">{{name}}</div>
                 </slot>
                 <slot
                   v-if="sortable(index)"
@@ -73,14 +73,14 @@
             </template>
           </tr>
 
-          <tr v-if="filterRow" class="c-table-sm">
-            <th v-if="indexColumn" class="c-pb-2 c-pl-2">
+          <tr v-if="filterRow" class="table-sm">
+            <th v-if="indexColumn" class="pb-2 pl-2">
               <CIcon
                 v-if="indexColumn !== 'noCleaner'"
                 width="18"
                 name="ban"
                 @click.native="clear"
-                :class="isFiltered ? 'c-text-danger' : 'c-text-secondary'"
+                :class="isFiltered ? 'text-danger' : 'text-secondary'"
                 title="clear table"
               />
             </th>
@@ -89,7 +89,7 @@
                 <slot :name="`${rawColumnNames[index]}-filter`">
                   <input
                     v-if="!fields || !fields[index].noFilter"
-                    class="c-w-100 c-table-filter"
+                    class="w-100 table-filter"
                     @input="addColumnFilter(colName, $event.target.value)"
                     :value="columnFilter[colName]"
                   />
@@ -100,7 +100,7 @@
         </thead>
 
 
-        <tbody :style="bodyStyle" class="c-position-relative">
+        <tbody :style="bodyStyle" class="position-relative">
           <template v-for="(item, itemIndex) in currentItems" >
             <tr
               :class="item._classes" :tabindex="bodyStyle ? 0 : null"
@@ -135,13 +135,13 @@
             </tr>
             <tr
               v-if="$scopedSlots.details"
-              class="c-p-0"
+              class="p-0"
               style="border:none !important"
               :key="'details' + itemIndex"
             >
               <td
                 :colspan="colspan"
-                class="c-p-0"
+                class="p-0"
                 style="border:none !important"
               >
                 <slot
@@ -155,12 +155,12 @@
           <tr v-if="!currentItems.length">
             <td :colspan="colspan">
               <slot name="no-items-view">
-                <div class="c-text-center c-my-5">
+                <div class="text-center my-5">
                   <h2>{{ passedItems.length ? 'No filtering results ' : 'No items'}}
                     <CIcon
                       width="30"
                       name="ban"
-                      class="c-text-danger c-mb-2"
+                      class="text-danger mb-2"
                     />
                   </h2>
                 </div>
@@ -181,7 +181,7 @@
                 :key="index"
               >
                 <slot :name="`${rawColumnNames[index]}-header`">
-                  <div class="c-d-inline">{{name}}</div>
+                  <div class="d-inline">{{name}}</div>
                 </slot>
                 <slot
                   v-if="sortable(index)"
@@ -363,17 +363,17 @@ export default {
     },
     tableClasses () {
       return [
-        'c-table',
+        'table',
         this.addTableClasses,
         {
-          'c-is-loading': this.loading,
-          'c-table-sm': this.small,
-          'c-table-dark': this.dark,
-          'c-table-striped': this.striped,
-          'c-b-table-fixed': this.fixed,
-          'c-table-hover': this.hover,
-          'c-table-bordered': this.border,
-          'c-border': this.outlined
+          'is-loading': this.loading,
+          'table-sm': this.small,
+          'table-dark': this.dark,
+          'table-striped': this.striped,
+          'b-table-fixed': this.fixed,
+          'table-hover': this.hover,
+          'table-bordered': this.border,
+          'border': this.outlined
         }
       ]
     },
@@ -381,7 +381,7 @@ export default {
       return {'cursor:pointer': this.$listeners && this.$listeners['row-clicked']}
     },
     sortingIconStyles () {
-      return {'c-position-relative c-pr-4' : this.sorting }
+      return {'position-relative pr-4' : this.sorting }
     },
     colspan () {
       return this.rawColumnNames.length + (this.indexColumn ? 1 : 0)
@@ -431,7 +431,7 @@ export default {
       this.columnFilter = {}
       this.sorter.name = ''
       this.sorter.asc = true
-      const inputs = this.$el.getElementsByClassName('c-table-filter')
+      const inputs = this.$el.getElementsByClassName('table-filter')
       for(let input of inputs)
         input.value = ''
     },
@@ -480,10 +480,10 @@ export default {
     iconClasses (index) {
       const state = this.getIconState(index)
       return [
-        'c-icon-transition c-position-absolute c-arrow-position',
+        'icon-transition position-absolute arrow-position',
         {
-          'c-transparent': !state,
-          'c-rotate-icon': state === 'desc'
+          'transparent': !state,
+          'rotate-icon': state === 'desc'
         }
       ]
     },
@@ -495,23 +495,23 @@ export default {
 }
 </script>
 <style scoped>
-.c-transparent {
+.transparent {
   opacity: 0.4;
 }
-.c-icon-transition {
+.icon-transition {
   -webkit-transition: transform 0.3s;
   transition: transform 0.3s;
 }
-.c-is-loading {
+.is-loading {
   opacity: .4;
 }
-.c-arrow-position {
+.arrow-position {
   right: 0;
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-.c-rotate-icon {
+.rotate-icon {
   -ms-transform: translateY(-50%)  rotate(-180deg);
   transform: translateY(-50%) rotate(-180deg);
 }

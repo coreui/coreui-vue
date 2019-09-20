@@ -2,20 +2,20 @@
 
 exports[`CWidgetBrand matches custom props snapshot 1`] = `
 <div
-  class="c-card"
+  class="card"
 >
   <div
-    class="c-card-header c-content-center c-text-white c-p-0 c-bg-twitter"
+    class="card-header content-center text-white p-0 bg-twitter"
   />
    
   <div
-    class="c-card-body c-row c-text-center"
+    class="card-body row text-center"
   >
     <div
-      class="c-col"
+      class="col"
     >
       <div
-        class="c-text-value-lg"
+        class="text-value-lg"
       >
         
           rightHeader
@@ -23,7 +23,7 @@ exports[`CWidgetBrand matches custom props snapshot 1`] = `
       </div>
        
       <div
-        class="c-text-uppercase c-text-muted c-small"
+        class="text-uppercase text-muted small"
       >
         
           rightFooter
@@ -32,14 +32,14 @@ exports[`CWidgetBrand matches custom props snapshot 1`] = `
     </div>
      
     <div
-      class="c-vr"
+      class="vr"
     />
      
     <div
-      class="c-col"
+      class="col"
     >
       <div
-        class="c-text-value-lg"
+        class="text-value-lg"
       >
         
           leftHeader
@@ -47,7 +47,7 @@ exports[`CWidgetBrand matches custom props snapshot 1`] = `
       </div>
        
       <div
-        class="c-text-uppercase c-text-muted c-small"
+        class="text-uppercase text-muted small"
       >
         
           leftFooter
@@ -60,17 +60,17 @@ exports[`CWidgetBrand matches custom props snapshot 1`] = `
 
 exports[`CWidgetBrand matches default props snapshot 1`] = `
 <div
-  class="c-card"
+  class="card"
 >
   <div
-    class="c-card-header c-content-center c-text-white c-p-0 c-bg-undefined"
+    class="card-header content-center text-white p-0 bg-undefined"
   />
    
   <div
-    class="c-card-body c-row c-text-center"
+    class="card-body row text-center"
   >
     <div
-      class="c-col"
+      class="col"
     >
       <!---->
        
@@ -78,11 +78,11 @@ exports[`CWidgetBrand matches default props snapshot 1`] = `
     </div>
      
     <div
-      class="c-vr"
+      class="vr"
     />
      
     <div
-      class="c-col"
+      class="col"
     >
       <!---->
        

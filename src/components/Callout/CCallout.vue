@@ -1,5 +1,5 @@
 <template functional>
-  <div :class="`c-callout ${props.variant ? 'c-callout-' + props.variant : ''}`">
+  <div :class="`callout ${props.variant ? 'callout-' + props.variant : ''}`">
     <slot></slot>
   </div>
 </template>

@@ -23,7 +23,7 @@
                 v-if="activeTab === tab"
                 :content="tab.$scopedSlots.default"
                 :key="key"
-                :class="[addTabClasses, 'c-tab-pane c-active']"
+                :class="[addTabClasses, 'tab-pane active']"
               />
             </template>
           </KeepAlive>
@@ -69,7 +69,7 @@ export default {
   },
   computed: {
     wrapperClasses () {
-      return { 'c-row c-no-gutters': this.vertical }
+      return { 'row no-gutters': this.vertical }
     },
     navWrapperClasses () {
       return [ this.addNavWrapperClasses, this.gridClasses.navs]
@@ -78,22 +78,22 @@ export default {
       return [
         this.addNavClasses,
         {
-          'c-nav' : true,
-          'c-nav-tabs': this.tabs && !this.pills,
-          'c-nav-pills': this.pills,
-          'c-flex-column': this.vertical,
-          'c-nav-fill': this.fill,
-          'c-nav-justified': this.justified,
-          'c-h-100': this.vertical
+          'nav' : true,
+          'nav-tabs': this.tabs && !this.pills,
+          'nav-pills': this.pills,
+          'flex-column': this.vertical,
+          'nav-fill': this.fill,
+          'nav-justified': this.justified,
+          'h-100': this.vertical
         }
       ]
     },
     tabsClasses () {
       return [
         this.addTabsClasses,
-        'c-tab-content',
+        'tab-content',
         {
-          'c-pl-3 c-p-0': this.vertical
+          'pl-3 p-0': this.vertical
         }
       ]
     },
@@ -102,7 +102,7 @@ export default {
     },
     gridClasses () {
       if (this.vertical === true) {
-        return { navs: 'c-col-sm-4', content: 'c-col-sm-8'}
+        return { navs: 'col-sm-4', content: 'col-sm-8'}
       } else {
         return this.vertical || {}
       }

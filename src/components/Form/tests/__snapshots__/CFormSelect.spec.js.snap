@@ -2,14 +2,14 @@
 
 exports[`CFormSelect renders correctly 1`] = `
 <div
-  class="c-form-group"
+  class="form-group"
   role="group"
 >
    
   <!---->
    
   <select
-    class="c-form-control-plaintext c-form-control-lg"
+    class="form-control-plaintext form-control-lg"
     id="some_id"
   >
     <option
@@ -61,14 +61,14 @@ exports[`CFormSelect renders correctly 1`] = `
 
 exports[`CFormSelect renders correctly 2`] = `
 <div
-  class="c-form-group"
+  class="form-group"
   role="group"
 >
    
   <!---->
    
   <select
-    class="c-custom-select c-custom-select-lg"
+    class="custom-select custom-select-lg"
     id="some_id"
   >
     <!---->
@@ -111,11 +111,11 @@ exports[`CFormSelect renders correctly 2`] = `
 
 exports[`CFormSelect renders correctly 3`] = `
 <div
-  class="c-form-group c-was-validated"
+  class="form-group was-validated"
   role="group"
 >
   <label
-    class="additional-label-class c-col-form-label-lg"
+    class="additional-label-class col-form-label-lg"
     for="some_id"
   >
     
@@ -124,13 +124,13 @@ exports[`CFormSelect renders correctly 3`] = `
   </label>
    
   <div
-    class="c-input-group c-input-group-lg"
+    class="input-group input-group-lg"
   >
     <div
-      class="c-input-group-prepend"
+      class="input-group-prepend"
     >
       <span
-        class="c-input-group-text"
+        class="input-group-text"
       >
         prepended
       </span>
@@ -138,7 +138,7 @@ exports[`CFormSelect renders correctly 3`] = `
      
     <select
       checked="checked"
-      class="c-custom-select c-is-valid additional-input-class"
+      class="custom-select is-valid additional-input-class"
       id="some_id"
       inline="true"
     >
@@ -180,29 +180,29 @@ exports[`CFormSelect renders correctly 3`] = `
     </select>
       
     <div
-      class="c-input-group-append"
+      class="input-group-append"
     >
       <span
-        class="c-input-group-text"
+        class="input-group-text"
       >
         appended
       </span>
     </div>
      
     <div
-      class="c-valid-tooltip"
+      class="valid-tooltip"
     >
       input is valid
     </div>
      
     <div
-      class="c-invalid-tooltip"
+      class="invalid-tooltip"
     >
       input is invalid
     </div>
      
     <small
-      class="c-form-text c-text-muted c-w-100"
+      class="form-text text-muted w-100"
     >
       permission
     </small>

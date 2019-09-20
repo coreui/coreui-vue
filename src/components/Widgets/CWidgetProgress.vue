@@ -1,18 +1,18 @@
 <template>
-  <div :class="inverse ? `c-card c-text-white c-bg-${variant}` : 'c-card'">
+  <div :class="inverse ? `card text-white bg-${variant}` : 'card'">
     <slot name="header"></slot>
-    <div class="c-card-body">
-      <div v-if="header" class="c-h4 c-m-0">{{header}}</div>
+    <div class="card-body">
+      <div v-if="header" class="h4 m-0">{{header}}</div>
       <div v-if="text">{{text}}</div>
       <slot>
         <CProgress
           :variant="!inverse ? variant : ''"
           :value="value"
-          :class="inverse ? 'c-progress-white' : ''"
-          class="c-progress-xs c-my-3 c-mb-0"
+          :class="inverse ? 'progress-white' : ''"
+          class="progress-xs my-3 mb-0"
         />
       </slot>
-      <small v-if="footer" class="c-text-muted">
+      <small v-if="footer" class="text-muted">
         {{footer}}
       </small>
     </div>

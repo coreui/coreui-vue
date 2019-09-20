@@ -2,7 +2,7 @@
 
 exports[`CCardGroup renders correctly 1`] = `
 <div
-  class="c-card-deck"
+  class="card-deck"
 >
   <template>
     content goes here

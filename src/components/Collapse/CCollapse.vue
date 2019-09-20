@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'c-navbar-collapse': this.navbar }">
+  <div :class="{ 'navbar-collapse': this.navbar }">
     <slot></slot>
   </div>
 </template>

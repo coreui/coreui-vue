@@ -15,8 +15,8 @@ export default {
       'form',
       mergeData(data, {
         class: {
-          'c-form-inline': props.inline,
-          'c-was-validated': props.wasValidated
+          'form-inline': props.inline,
+          'was-validated': props.wasValidated
         },
         // attrs: {
         //   id: props.id,

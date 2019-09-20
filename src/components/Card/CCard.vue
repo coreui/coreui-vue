@@ -40,12 +40,12 @@ export default {
     return h(
       props.tag || 'div',
       mergeData(data, {
-        staticClass: 'c-card',
+        staticClass: 'card',
         class: {
-          [`c-text-${props.align}`]: Boolean(props.align),
-          [`c-bg-${props.variant}`]: Boolean(props.variant),
-          [`c-border-${props.borderVariant}`]: Boolean(props.borderVariant),
-          [`c-text-${props.textVariant}`]: Boolean(props.textVariant)
+          [`text-${props.align}`]: Boolean(props.align),
+          [`bg-${props.variant}`]: Boolean(props.variant),
+          [`border-${props.borderVariant}`]: Boolean(props.borderVariant),
+          [`text-${props.textVariant}`]: Boolean(props.textVariant)
         }
       }),
       [ header, body, footer ]

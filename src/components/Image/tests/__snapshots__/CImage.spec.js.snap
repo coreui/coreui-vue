@@ -10,7 +10,7 @@ exports[`CImage renders correctly 1`] = `
 exports[`CImage renders correctly 2`] = `
 <img
   alt="image"
-  class="c-float-right c-img-fluid c-w-100 c-rounded-right c-d-block"
+  class="float-right img-fluid w-100 rounded-right d-block"
   height="200"
   src="./image-source"
   width="400"

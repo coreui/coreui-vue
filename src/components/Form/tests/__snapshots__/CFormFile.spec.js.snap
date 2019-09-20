@@ -2,11 +2,11 @@
 
 exports[`CFormFile renders correctly 1`] = `
 <div
-  class="c-form-row c-was-validated"
+  class="form-row was-validated"
   role="group"
 >
   <label
-    class="additional-label-class c-col-form-label c-col-sm-3"
+    class="additional-label-class col-form-label col-sm-3"
     for="some_id"
   >
     
@@ -15,19 +15,19 @@ exports[`CFormFile renders correctly 1`] = `
   </label>
    
   <div
-    class="additional-wrapper-class c-col-sm-9"
+    class="additional-wrapper-class col-sm-9"
   >
     <!---->
      
     <input
-      class="c-custom-file-input c-is-valid additional-input-class"
+      class="custom-file-input is-valid additional-input-class"
       id="some_id"
       multiple="multiple"
       type="file"
     />
      
     <label
-      class="c-custom-file-label"
+      class="custom-file-label"
       for="some_id"
     >
       
@@ -38,19 +38,19 @@ exports[`CFormFile renders correctly 1`] = `
     <!---->
      
     <div
-      class="c-valid-tooltip"
+      class="valid-tooltip"
     >
       input is valid
     </div>
      
     <div
-      class="c-invalid-tooltip"
+      class="invalid-tooltip"
     >
       input is invalid
     </div>
      
     <small
-      class="c-form-text c-text-muted c-w-100"
+      class="form-text text-muted w-100"
     >
       permission
     </small>
@@ -60,7 +60,7 @@ exports[`CFormFile renders correctly 1`] = `
 
 exports[`CFormFile renders correctly basic functionality 1`] = `
 <div
-  class="c-form-group c-position-relative"
+  class="form-group position-relative"
   role="group"
 >
   <label
@@ -75,7 +75,7 @@ exports[`CFormFile renders correctly basic functionality 1`] = `
   <!---->
    
   <input
-    class="c-form-control-file"
+    class="form-control-file"
     id="some_id"
     type="file"
   />

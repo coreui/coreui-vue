@@ -59,11 +59,11 @@ export default {
     },
     alignClass () {
       if (this.align === 'center') {
-        return 'c-mx-auto'
+        return 'mx-auto'
       } else if (this.align === 'right') {
-        return 'c-float-right'
+        return 'float-right'
       } else if (this.align === 'left') {
-        return 'c-float-left'
+        return 'float-left'
       }
       return null
     },
@@ -73,11 +73,11 @@ export default {
         this.animationClasses,
         this.alignClass,
         {
-          'c-img-thumbnail': this.thumbnail,
-          'c-img-fluid': this.fluid || this.fluidGrow,
-          'c-w-100': this.fluidGrow,
-          [`c-rounded${this.rounded===true?'':'-'+this.rounded}`]: this.rounded,
-          'c-d-block': this.block
+          'img-thumbnail': this.thumbnail,
+          'img-fluid': this.fluid || this.fluidGrow,
+          'w-100': this.fluidGrow,
+          [`rounded${this.rounded===true?'':'-'+this.rounded}`]: this.rounded,
+          'd-block': this.block
         }
       ]
     }

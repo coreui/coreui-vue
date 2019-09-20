@@ -2,36 +2,36 @@
 
 exports[`CToaster renders correctly 1`] = `
 <div
-  class="c-toaster"
+  class="toaster"
   style="z-index: 1100; min-width: 350px; position: fixed; top: 0px; right: 0px;"
 />
 `;
 
 exports[`CToaster renders correctly 2`] = `
 <div
-  class="c-toaster"
+  class="toaster"
   style="z-index: 1100; min-width: 350px; position: fixed; top: 0px; left: 0px;"
 >
   <div
     appear=""
     aria-atomic="true"
     aria-live="assertive"
-    class="c-toast"
+    class="toast"
     name="fade"
     role="alert"
   >
     <div
-      class="c-toast-header"
+      class="toast-header"
     >
       <strong
-        class="c-mr-auto"
+        class="mr-auto"
       >
         title
       </strong>
        
       <button
         aria-label="Close"
-        class="c-ml-2 c-mb-1 c-close"
+        class="ml-2 mb-1 close"
         type="button"
       >
         ×

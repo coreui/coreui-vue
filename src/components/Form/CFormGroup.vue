@@ -8,11 +8,11 @@
       <div :class="props.wrapperClasses">
         <div
           v-if="props.prependHtml || $slots.prepend"
-          class="c-input-group-prepend"
+          class="input-group-prepend"
         >
           <slot name="prepend">
             <span
-              class="c-input-group-text"
+              class="input-group-text"
               v-html="props.prependHtml"
             ></span>
           </slot>
@@ -21,11 +21,11 @@
         <slot name="label-after-input"></slot>
         <div
           v-if="props.appendHtml || $slots.append"
-          class="c-input-group-append"
+          class="input-group-append"
         >
           <slot name="append">
             <span
-              class="c-input-group-text"
+              class="input-group-text"
               v-html="props.appendHtml"
             ></span>
           </slot>
@@ -33,21 +33,21 @@
         <slot name="valid-feedback">
           <div
             v-if="props.validFeedback"
-            :class="props.tooltipFeedback ? 'c-valid-tooltip' : 'c-valid-feedback'"
+            :class="props.tooltipFeedback ? 'valid-tooltip' : 'valid-feedback'"
             v-text="props.validFeedback"
           ></div>
         </slot>
         <slot name="invalid-feedback">
           <div
             v-if="props.invalidFeedback"
-            :class="props.tooltipFeedback ? 'c-invalid-tooltip' : 'c-invalid-feedback'"
+            :class="props.tooltipFeedback ? 'invalid-tooltip' : 'invalid-feedback'"
             v-text="props.invalidFeedback"
           ></div>
         </slot>
         <slot name="description">
           <small
             v-if="props.description"
-            class="c-form-text c-text-muted c-w-100"
+            class="form-text text-muted w-100"
             v-text="props.description"
           ></small>
         </slot>
@@ -57,11 +57,11 @@
       <slot name="label"></slot>
       <div
         v-if="props.prependHtml || $slots.prepend"
-        class="c-input-group-prepend"
+        class="input-group-prepend"
       >
         <slot name="prepend">
           <span
-            class="c-input-group-text"
+            class="input-group-text"
             v-html="props.prependHtml"
           ></span>
         </slot>
@@ -70,11 +70,11 @@
       <slot name="label-after-input"></slot>
       <div
         v-if="props.appendHtml || $slots.append"
-        class="c-input-group-append"
+        class="input-group-append"
       >
         <slot name="append">
           <span
-            class="c-input-group-text"
+            class="input-group-text"
             v-html="props.appendHtml"
           ></span>
         </slot>
@@ -82,21 +82,21 @@
       <slot name="valid-feedback">
         <div
           v-if="props.validFeedback"
-          :class="props.tooltipFeedback ? 'c-valid-tooltip' : 'c-valid-feedback'"
+          :class="props.tooltipFeedback ? 'valid-tooltip' : 'valid-feedback'"
           v-text="props.validFeedback"
         ></div>
       </slot>
       <slot name="invalid-feedback">
         <div
           v-if="props.invalidFeedback"
-          :class="props.tooltipFeedback ? 'c-invalid-tooltip' : 'c-invalid-feedback'"
+          :class="props.tooltipFeedback ? 'invalid-tooltip' : 'invalid-feedback'"
           v-text="props.invalidFeedback"
         ></div>
       </slot>
       <slot name="description">
         <small
           v-if="props.description"
-          class="c-form-text c-text-muted c-w-100"
+          class="form-text text-muted w-100"
           v-text="props.description"
         ></small>
       </slot>

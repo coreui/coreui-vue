@@ -26,12 +26,12 @@ export default {
       props.tag,
       {
         ref: data.ref,
-        staticClass: 'c-embed-responsive',
-        class: `c-embed-responsive-${props.ratio}`
+        staticClass: 'embed-responsive',
+        class: `embed-responsive-${props.ratio}`
       },
       [h(
         props.type,
-        mergeData(data, { ref: '', staticClass: 'c-embed-responsive-item' }),
+        mergeData(data, { ref: '', staticClass: 'embed-responsive-item' }),
         children
       )]
     )

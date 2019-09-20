@@ -5,10 +5,10 @@ exports[`CTable renders correctly 1`] = `
   <!---->
     
   <div
-    class="c-position-relative c-table-responsive"
+    class="position-relative table-responsive"
   >
     <table
-      class="c-table"
+      class="table"
     >
       <thead>
         <tr>
@@ -20,7 +20,7 @@ exports[`CTable renders correctly 1`] = `
       </thead>
        
       <tbody
-        class="c-position-relative"
+        class="position-relative"
       >
          
         <tr>
@@ -28,13 +28,13 @@ exports[`CTable renders correctly 1`] = `
             colspan="0"
           >
             <div
-              class="c-text-center c-my-5"
+              class="text-center my-5"
             >
               <h2>
                 No items
                   
                 <svg
-                  class="c-text-danger c-mb-2"
+                  class="text-danger mb-2"
                   style="fill: currentColor;"
                   viewBox="0 0 64 64"
                   width="30"
@@ -67,38 +67,38 @@ exports[`CTable renders correctly 1`] = `
 exports[`CTable renders correctly 2`] = `
 <div>
   <div
-    class="c-row c-my-2 c-mx-0"
+    class="row my-2 mx-0"
   >
     <div
-      class="c-col-sm-6 c-form-inline c-p-0"
+      class="col-sm-6 form-inline p-0"
     >
       <label
-        class="c-mr-2"
+        class="mr-2"
       >
-        Filter: 
+        Filter:
       </label>
        
       <input
-        class="c-form-control c-table-filter"
+        class="form-control table-filter"
         placeholder="type string..."
         type="text"
       />
     </div>
      
     <div
-      class="c-col-sm-6 c-p-0"
+      class="col-sm-6 p-0"
     >
       <div
-        class="c-form-inline c-float-sm-right"
+        class="form-inline float-sm-right"
       >
         <label
           class="mr-2"
         >
-          Items per page: 
+          Items per page:
         </label>
          
         <select
-          class="c-form-control"
+          class="form-control"
         >
           <option
             disabled="disabled"
@@ -145,10 +145,10 @@ exports[`CTable renders correctly 2`] = `
   </div>
     
   <div
-    class="c-position-relative c-table-responsive"
+    class="position-relative table-responsive"
   >
     <table
-      class="c-table additional-table-class c-table-dark c-table-striped c-table-hover c-table-bordered c-border"
+      class="table additional-table-class table-dark table-striped table-hover table-bordered border"
     >
       <thead>
         <tr>
@@ -157,17 +157,17 @@ exports[`CTable renders correctly 2`] = `
           />
            
           <th
-            class="user-custom-class c-position-relative c-pr-4"
+            class="user-custom-class position-relative pr-4"
             style="cursor: pointer; width: 40%;"
           >
             <div
-              class="c-d-inline"
+              class="d-inline"
             >
               Username
             </div>
              
             <svg
-              class="c-icon-transition c-position-absolute c-arrow-position c-rotate-icon"
+              class="icon-transition position-absolute arrow-position rotate-icon"
               style="fill: currentColor;"
               viewBox="0 0 64 64"
               width="18"
@@ -182,17 +182,17 @@ exports[`CTable renders correctly 2`] = `
             </svg>
           </th>
           <th
-            class="c-position-relative c-pr-4"
+            class="position-relative pr-4"
             style="cursor: pointer;"
           >
             <div
-              class="c-d-inline"
+              class="d-inline"
             >
               Registered
             </div>
              
             <svg
-              class="c-icon-transition c-position-absolute c-arrow-position c-transparent"
+              class="icon-transition position-absolute arrow-position transparent"
               style="fill: currentColor;"
               viewBox="0 0 64 64"
               width="18"
@@ -207,17 +207,17 @@ exports[`CTable renders correctly 2`] = `
             </svg>
           </th>
           <th
-            class="c-position-relative c-pr-4"
+            class="position-relative pr-4"
             style="cursor: pointer; width: 20%;"
           >
             <div
-              class="c-d-inline"
+              class="d-inline"
             >
               Role
             </div>
              
             <svg
-              class="c-icon-transition c-position-absolute c-arrow-position c-transparent"
+              class="icon-transition position-absolute arrow-position transparent"
               style="fill: currentColor;"
               viewBox="0 0 64 64"
               width="18"
@@ -232,17 +232,17 @@ exports[`CTable renders correctly 2`] = `
             </svg>
           </th>
           <th
-            class="c-position-relative c-pr-4"
+            class="position-relative pr-4"
             style="cursor: pointer; width: 20%;"
           >
             <div
-              class="c-d-inline"
+              class="d-inline"
             >
               Status
             </div>
              
             <svg
-              class="c-icon-transition c-position-absolute c-arrow-position c-transparent"
+              class="icon-transition position-absolute arrow-position transparent"
               style="fill: currentColor;"
               viewBox="0 0 64 64"
               width="18"
@@ -257,11 +257,11 @@ exports[`CTable renders correctly 2`] = `
             </svg>
           </th>
           <th
-            class="c-position-relative c-pr-4"
+            class="position-relative pr-4"
             style="width: 1%;"
           >
             <div
-              class="c-d-inline"
+              class="d-inline"
             >
               
             </div>
@@ -271,13 +271,13 @@ exports[`CTable renders correctly 2`] = `
         </tr>
          
         <tr
-          class="c-table-sm"
+          class="table-sm"
         >
           <th
-            class="c-pb-2 c-pl-2"
+            class="pb-2 pl-2"
           >
             <svg
-              class="c-text-danger"
+              class="text-danger"
               style="fill: currentColor;"
               title="clear table"
               viewBox="0 0 64 64"
@@ -297,28 +297,28 @@ exports[`CTable renders correctly 2`] = `
             class="user-custom-class"
           >
             <input
-              class="c-w-100 c-table-filter"
+              class="w-100 table-filter"
             />
           </th>
           <th
             class=""
           >
             <input
-              class="c-w-100 c-table-filter"
+              class="w-100 table-filter"
             />
           </th>
           <th
             class=""
           >
             <input
-              class="c-w-100 c-table-filter"
+              class="w-100 table-filter"
             />
           </th>
           <th
             class=""
           >
             <input
-              class="c-w-100 c-table-filter"
+              class="w-100 table-filter"
             />
           </th>
           <th
@@ -330,7 +330,7 @@ exports[`CTable renders correctly 2`] = `
       </thead>
        
       <tbody
-        class="c-position-relative"
+        class="position-relative"
       >
         <tr
           tabindex="0"
@@ -578,17 +578,17 @@ exports[`CTable renders correctly 2`] = `
           />
            
           <th
-            class="user-custom-class c-position-relative c-pr-4"
+            class="user-custom-class position-relative pr-4"
             style="cursor: pointer; width: 40%;"
           >
             <div
-              class="c-d-inline"
+              class="d-inline"
             >
               Username
             </div>
              
             <svg
-              class="c-icon-transition c-position-absolute c-arrow-position c-rotate-icon"
+              class="icon-transition position-absolute arrow-position rotate-icon"
               style="fill: currentColor;"
               viewBox="0 0 64 64"
               width="18"
@@ -603,17 +603,17 @@ exports[`CTable renders correctly 2`] = `
             </svg>
           </th>
           <th
-            class="c-position-relative c-pr-4"
+            class="position-relative pr-4"
             style="cursor: pointer;"
           >
             <div
-              class="c-d-inline"
+              class="d-inline"
             >
               Registered
             </div>
              
             <svg
-              class="c-icon-transition c-position-absolute c-arrow-position c-transparent"
+              class="icon-transition position-absolute arrow-position transparent"
               style="fill: currentColor;"
               viewBox="0 0 64 64"
               width="18"
@@ -628,17 +628,17 @@ exports[`CTable renders correctly 2`] = `
             </svg>
           </th>
           <th
-            class="c-position-relative c-pr-4"
+            class="position-relative pr-4"
             style="cursor: pointer; width: 20%;"
           >
             <div
-              class="c-d-inline"
+              class="d-inline"
             >
               Role
             </div>
              
             <svg
-              class="c-icon-transition c-position-absolute c-arrow-position c-transparent"
+              class="icon-transition position-absolute arrow-position transparent"
               style="fill: currentColor;"
               viewBox="0 0 64 64"
               width="18"
@@ -653,17 +653,17 @@ exports[`CTable renders correctly 2`] = `
             </svg>
           </th>
           <th
-            class="c-position-relative c-pr-4"
+            class="position-relative pr-4"
             style="cursor: pointer; width: 20%;"
           >
             <div
-              class="c-d-inline"
+              class="d-inline"
             >
               Status
             </div>
              
             <svg
-              class="c-icon-transition c-position-absolute c-arrow-position c-transparent"
+              class="icon-transition position-absolute arrow-position transparent"
               style="fill: currentColor;"
               viewBox="0 0 64 64"
               width="18"
@@ -678,11 +678,11 @@ exports[`CTable renders correctly 2`] = `
             </svg>
           </th>
           <th
-            class="c-position-relative c-pr-4"
+            class="position-relative pr-4"
             style="width: 1%;"
           >
             <div
-              class="c-d-inline"
+              class="d-inline"
             >
               
             </div>
@@ -700,17 +700,17 @@ exports[`CTable renders correctly 2`] = `
   <ul
     aria-disabled="false"
     aria-label="pagination"
-    class="c-pagination c-pagination-md c-justify-content-start"
+    class="pagination pagination-md justify-content-start"
     role="menubar"
     style="display: none;"
   >
     <li
-      class="c-page-item c-disabled"
+      class="page-item disabled"
     >
       <a
         aria-disabled="true"
         aria-label="Go to first page"
-        class="c-page-link c-disabled"
+        class="page-link disabled"
         href="#"
         tabindex="-1"
         target="_self"
@@ -722,12 +722,12 @@ exports[`CTable renders correctly 2`] = `
     </li>
      
     <li
-      class="c-page-item c-disabled"
+      class="page-item disabled"
     >
       <a
         aria-disabled="true"
         aria-label="Go to previous page"
-        class="c-page-link c-disabled"
+        class="page-link disabled"
         href="#"
         tabindex="-1"
         target="_self"
@@ -741,11 +741,11 @@ exports[`CTable renders correctly 2`] = `
     <!---->
      
     <li
-      class="c-active c-page-item"
+      class="active page-item"
     >
       <a
         aria-label="Go to page 1"
-        class="c-page-link"
+        class="page-link"
         href="#"
         target="_self"
       >
@@ -758,12 +758,12 @@ exports[`CTable renders correctly 2`] = `
     <!---->
      
     <li
-      class="c-page-item c-disabled"
+      class="page-item disabled"
     >
       <a
         aria-disabled="true"
         aria-label="Go to next page"
-        class="c-page-link c-disabled"
+        class="page-link disabled"
         href="#"
         tabindex="-1"
         target="_self"
@@ -775,12 +775,12 @@ exports[`CTable renders correctly 2`] = `
     </li>
      
     <li
-      class="c-page-item c-disabled"
+      class="page-item disabled"
     >
       <a
         aria-disabled="true"
         aria-label="Go to last page"
-        class="c-page-link c-disabled"
+        class="page-link disabled"
         href="#"
         tabindex="-1"
         target="_self"

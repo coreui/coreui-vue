@@ -30,15 +30,15 @@ export default {
     return h(
       props.tag,
       mergeData(data, {
-        staticClass: 'c-navbar',
+        staticClass: 'navbar',
         class: [
-          props.light ? 'c-navbar-light' : 'c-navbar-dark',
+          props.light ? 'navbar-light' : 'navbar-dark',
           {
-            'c-d-print': props.print,
-            'c-sticky-top': props.sticky,
-            [`c-bg-${props.variant}`]: Boolean(props.variant),
-            [`c-fixed-${props.fixed}`]: Boolean(props.fixed),
-            [`c-navbar-expand-${expandClassSuffix}`]: Boolean(props.toggleable)
+            'd-print': props.print,
+            'sticky-top': props.sticky,
+            [`bg-${props.variant}`]: Boolean(props.variant),
+            [`fixed-${props.fixed}`]: Boolean(props.fixed),
+            [`navbar-expand-${expandClassSuffix}`]: Boolean(props.toggleable)
           }
         ],
         attrs: {

@@ -2,7 +2,7 @@
 
 exports[`CDropdownItem renders correctly 1`] = `
 <a
-  class="c-dropdown-item"
+  class="dropdown-item"
   href="#"
   role="menuitem"
   target="_self"
@@ -11,7 +11,7 @@ exports[`CDropdownItem renders correctly 1`] = `
 
 exports[`CDropdownItem renders correctly 2`] = `
 <a
-  class="c-dropdown-item"
+  class="dropdown-item"
   href="#"
   role="menuitem"
   target="_self"

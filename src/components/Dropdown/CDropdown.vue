@@ -12,7 +12,7 @@
       <button
         v-if="splittedToggler"
         @click="click"
-        class="c-dropdown-toggle c-dropdown-toggle-split"
+        class="dropdown-toggle dropdown-toggle-split"
         :class="computedTogglerClasses"
         v-bind="togglerAttrs"
       />
@@ -135,18 +135,18 @@ export default {
     },
 
     carretClass () {
-      return this.placement.includes('top') ? 'c-dropup' : 
-               this.placement.includes('right') ? 'c-dropright' :
-                 this.placement.includes('left') ? 'c-dropleft' : 'c-dropdown'
+      return this.placement.includes('top') ? 'dropup' : 
+               this.placement.includes('right') ? 'dropright' :
+                 this.placement.includes('left') ? 'dropleft' : 'dropdown'
     },
 
     computedDropdownClasses () {
       return [
         this.carretClass,
         {
-          'c-show': this.visible,
-          'c-nav-item': this.nav,
-          'c-btn-group': this.splittedToggler
+          'show': this.visible,
+          'nav-item': this.nav,
+          'btn-group': this.splittedToggler
         }
       ]
     },
@@ -162,12 +162,12 @@ export default {
     computedTogglerClasses () {
       return [
         this.addTogglerClasses,
-        this.nav ? 'c-nav-link' : 'c-btn',
+        this.nav ? 'nav-link' : 'btn',
         {
-          'c-dropdown-toggle': !this.noCaret && !this.split,
-          [`c-btn-${this.size}`]: this.size && !this.nav,
-          'c-disabled' : this.disabled,
-          [`c-${ this.nav ? 'bg' : 'btn'}-${ this.variant }`]: this.variant
+          'dropdown-toggle': !this.noCaret && !this.split,
+          [`btn-${this.size}`]: this.size && !this.nav,
+          'disabled' : this.disabled,
+          [`${ this.nav ? 'bg' : 'btn'}-${ this.variant }`]: this.variant
         }
       ]
     },
@@ -183,8 +183,8 @@ export default {
     computedMenuClasses () {
       return [
         this.addMenuClasses,
-        'c-dropdown-menu',
-        { 'c-show': this.visible }
+        'dropdown-menu',
+        { 'show': this.visible }
       ]
     }
   }

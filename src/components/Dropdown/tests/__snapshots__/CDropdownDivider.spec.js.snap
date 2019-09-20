@@ -2,14 +2,14 @@
 
 exports[`CDropdownDivider renders correctly 1`] = `
 <div
-  class="c-dropdown-divider"
+  class="dropdown-divider"
   role="separator"
 />
 `;
 
 exports[`CDropdownDivider renders correctly 2`] = `
 <hr
-  class="c-dropdown-divider"
+  class="dropdown-divider"
   role="separator"
 />
 `;

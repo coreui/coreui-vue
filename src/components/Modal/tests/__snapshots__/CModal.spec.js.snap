@@ -3,22 +3,22 @@
 exports[`CModal renders correctly 1`] = `
 <div>
   <div
-    class="c-modal c-overflow-auto c-fade"
+    class="modal overflow-auto fade"
     role="dialog"
     tabindex="-1"
   >
     <div
-      class="c-modal-dialog"
+      class="modal-dialog"
       role="document"
     >
       <div
-        class="c-modal-content"
+        class="modal-content"
       >
         <div
-          class="c-modal-header"
+          class="modal-header"
         >
           <h5
-            class="c-modal-title"
+            class="modal-title"
           >
             
                 
@@ -27,7 +27,7 @@ exports[`CModal renders correctly 1`] = `
            
           <button
             aria-label="Close"
-            class="c-close"
+            class="close"
             type="button"
           >
             <span>
@@ -37,14 +37,14 @@ exports[`CModal renders correctly 1`] = `
         </div>
          
         <div
-          class="c-modal-body"
+          class="modal-body"
         />
          
         <div
-          class="c-modal-footer"
+          class="modal-footer"
         >
           <button
-            class="c-btn c-btn-secondary"
+            class="btn btn-secondary"
             type="button"
           >
             
@@ -53,7 +53,7 @@ exports[`CModal renders correctly 1`] = `
           </button>
            
           <button
-            class="c-btn c-btn-primary"
+            class="btn btn-primary"
             type="button"
           >
             
@@ -72,22 +72,22 @@ exports[`CModal renders correctly 1`] = `
 exports[`CModal renders correctly 2`] = `
 <div>
   <div
-    class="c-modal c-overflow-auto additional-modal-class c-fade c-show c-d-block c-modal-success"
+    class="modal overflow-auto additional-modal-class fade show d-block modal-success"
     role="dialog"
     tabindex="-1"
   >
     <div
-      class="additional-dialog-class c-modal-dialog c-modal-dialog-centered c-modal-lg"
+      class="additional-dialog-class modal-dialog modal-dialog-centered modal-lg"
       role="document"
     >
       <div
-        class="additional-content-class c-modal-content c-border-success"
+        class="additional-content-class modal-content border-success"
       >
         <div
-          class="c-modal-header"
+          class="modal-header"
         >
           <h5
-            class="c-modal-title"
+            class="modal-title"
           >
             
                 modal title
@@ -96,7 +96,7 @@ exports[`CModal renders correctly 2`] = `
            
           <button
             aria-label="Close"
-            class="c-close"
+            class="close"
             type="button"
           >
             <span>
@@ -106,7 +106,7 @@ exports[`CModal renders correctly 2`] = `
         </div>
          
         <div
-          class="c-modal-body"
+          class="modal-body"
         >
           CModal body
         </div>
@@ -117,7 +117,7 @@ exports[`CModal renders correctly 2`] = `
   </div>
    
   <div
-    class="c-modal-backdrop c-fade c-show"
+    class="modal-backdrop fade show"
   />
 </div>
 `;

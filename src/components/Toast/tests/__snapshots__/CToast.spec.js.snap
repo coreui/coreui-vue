@@ -5,19 +5,19 @@ exports[`CToast renders correctly 1`] = `
   appear=""
   aria-atomic="true"
   aria-live="assertive"
-  class="c-toast"
+  class="toast"
   role="alert"
 >
   <div
-    class="c-toast-header"
+    class="toast-header"
   >
     <strong
-      class="c-mr-auto"
+      class="mr-auto"
     />
      
     <button
       aria-label="Close"
-      class="c-ml-2 c-mb-1 c-close"
+      class="ml-2 mb-1 close"
       type="button"
     >
       ×
@@ -25,7 +25,7 @@ exports[`CToast renders correctly 1`] = `
   </div>
    
   <div
-    class="c-toast-body"
+    class="toast-body"
   />
 </div>
 `;
@@ -35,23 +35,23 @@ exports[`CToast renders correctly 2`] = `
   appear=""
   aria-atomic="true"
   aria-live="assertive"
-  class="c-toast"
+  class="toast"
   name="fade"
   role="alert"
   style="z-index: 1100; min-width: 350px; position: fixed; bottom: 0px; left: 50%; transform: translateX(-50%);"
 >
   <div
-    class="c-toast-header"
+    class="toast-header"
   >
     <strong
-      class="c-mr-auto"
+      class="mr-auto"
     >
       title
     </strong>
      
     <button
       aria-label="Close"
-      class="c-ml-2 c-mb-1 c-close"
+      class="ml-2 mb-1 close"
       type="button"
     >
       ×

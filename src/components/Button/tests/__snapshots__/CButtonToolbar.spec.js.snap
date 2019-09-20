@@ -2,14 +2,14 @@
 
 exports[`CButtonToolbar renders correctly 1`] = `
 <div
-  class="c-btn-toolbar"
+  class="btn-toolbar"
   role="toolbar"
 />
 `;
 
 exports[`CButtonToolbar renders correctly 2`] = `
 <div
-  class="c-btn-toolbar c-justify-content-between"
+  class="btn-toolbar justify-content-between"
   role="toolbar"
 >
   <template>

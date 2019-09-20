@@ -2,24 +2,24 @@
 
 exports[`CJumbotron renders correctly 1`] = `
 <div
-  class="c-jumbotron"
+  class="jumbotron"
 />
 `;
 
 exports[`CJumbotron renders correctly 2`] = `
 <div
-  class="c-jumbotron c-jumbotron-fluid c-text-dark c-bg-success c-border-secondary c-border"
+  class="jumbotron jumbotron-fluid text-dark bg-success border-secondary border"
 >
   <div
-    class="c-container-fluid"
+    class="container-fluid"
   >
     <h1
-      class="c-display-3"
+      class="display-3"
     >
       header
     </h1>
     <p
-      class="c-lead"
+      class="lead"
     >
       lead
     </p>

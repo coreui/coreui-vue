@@ -5,12 +5,12 @@ exports[`CAlert renders correctly 1`] = `
   appear="true"
   aria-atomic="true"
   aria-live="polite"
-  class="c-alert c-alert-dismissible"
+  class="alert alert-dismissible"
   role="alert"
 >
   <button
     aria-label="Close"
-    class="c-close"
+    class="close"
     type="button"
   >
     ×
@@ -24,13 +24,13 @@ exports[`CAlert renders correctly 2`] = `
   appear="true"
   aria-atomic="true"
   aria-live="polite"
-  class="c-alert c-alert-dismissible c-alert-success"
+  class="alert alert-dismissible alert-success"
   name="fade"
   role="alert"
 >
   <button
     aria-label="Close"
-    class="c-close"
+    class="close"
     type="button"
   >
     ×

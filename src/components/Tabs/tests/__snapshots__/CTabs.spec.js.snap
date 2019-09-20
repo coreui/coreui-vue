@@ -8,7 +8,7 @@ exports[`CTabs renders correctly 1`] = `
     class=""
   >
     <ul
-      class="c-nav c-nav-tabs"
+      class="nav nav-tabs"
     />
   </div>
    
@@ -16,7 +16,7 @@ exports[`CTabs renders correctly 1`] = `
     class=""
   >
     <div
-      class="c-tab-content"
+      class="tab-content"
     >
       <!---->
     </div>
@@ -27,19 +27,19 @@ exports[`CTabs renders correctly 1`] = `
 
 exports[`CTabs renders correctly 2`] = `
 <div
-  class="c-row c-no-gutters"
+  class="row no-gutters"
 >
   <div
-    class="additional-nav-wrapper-class c-col-sm-3"
+    class="additional-nav-wrapper-class col-sm-3"
   >
     <ul
-      class="additional-nav-class c-nav c-nav-pills c-flex-column c-nav-fill c-nav-justified c-h-100"
+      class="additional-nav-class nav nav-pills flex-column nav-fill nav-justified h-100"
     >
       <li
-        class="c-nav-item "
+        class="nav-item"
       >
         <a
-          class="c-nav-link c-active"
+          class="nav-link active"
           href="#"
           target="_self"
         >
@@ -47,10 +47,10 @@ exports[`CTabs renders correctly 2`] = `
         </a>
       </li>
       <li
-        class="c-nav-item "
+        class="nav-item"
       >
         <a
-          class="c-nav-link"
+          class="nav-link"
           href="#"
           target="_self"
         >
@@ -58,10 +58,10 @@ exports[`CTabs renders correctly 2`] = `
         </a>
       </li>
       <li
-        class="c-nav-item "
+        class="nav-item"
       >
         <a
-          class="c-nav-link"
+          class="nav-link"
           href="#"
           target="_self"
         >
@@ -69,10 +69,10 @@ exports[`CTabs renders correctly 2`] = `
         </a>
       </li>
       <li
-        class="c-nav-item "
+        class="nav-item"
       >
         <a
-          class="c-nav-link"
+          class="nav-link"
           href="#"
           target="_self"
         >
@@ -83,13 +83,13 @@ exports[`CTabs renders correctly 2`] = `
   </div>
    
   <div
-    class="additional-tabs-wrapper-class c-col-sm-9"
+    class="additional-tabs-wrapper-class col-sm-9"
   >
     <div
-      class="additional-tabs-class c-tab-content c-pl-3 c-p-0"
+      class="additional-tabs-class tab-content pl-3 p-0"
     >
       <div
-        class="additional-tab-class c-tab-pane c-active"
+        class="additional-tab-class tab-pane active"
         mode="out-in"
         name="fade"
       >

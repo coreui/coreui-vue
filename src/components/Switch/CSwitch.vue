@@ -5,13 +5,13 @@
       :type="type"
       :checked="isChecked"
       :value="value"
-      class="c-switch-input c-form-check-input"
+      class="switch-input form-check-input"
       @change="toggle"
     >
     <span
       :data-checked="labelOn"
       :data-unchecked="labelOff"
-      class="c-switch-slider"
+      class="switch-slider"
     >
     </span>
   </label>
@@ -72,12 +72,12 @@ export default {
       const outlineString = this.outline ? '-outline' : ''
       const outlinedAltString = this.outline === 'alt' ? '-alt' : ''
       return [
-        'c-switch c-form-check-label',
-        `c-switch${outlineString}-${this.variant}${outlinedAltString}`,
+        'switch form-check-label',
+        `switch${outlineString}-${this.variant}${outlinedAltString}`,
         {
-          [`c-switch-${this.size}`]: this.size,
-          [`c-switch-${this.shape}`]: this.shape,
-          'c-switch-label': this.labelOn || this.labelOff
+          [`switch-${this.size}`]: this.size,
+          [`switch-${this.shape}`]: this.shape,
+          'switch-label': this.labelOn || this.labelOff
         }
       ]
     }

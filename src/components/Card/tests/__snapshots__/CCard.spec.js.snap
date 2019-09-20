@@ -2,20 +2,20 @@
 
 exports[`CCard renders correctly 1`] = `
 <div
-  class="c-card c-text-left c-bg-success c-border-solid c-text-white"
+  class="card text-left bg-success border-solid text-white"
 >
   <header
-    class="c-card-header"
+    class="card-header"
   >
     header
   </header>
   <div
-    class="c-card-body"
+    class="card-body"
   >
     body
   </div>
   <footer
-    class="c-card-footer"
+    class="card-footer"
   >
     footer
   </footer>
@@ -24,11 +24,11 @@ exports[`CCard renders correctly 1`] = `
 
 exports[`CCard renders correctly with slots 1`] = `
 <div
-  class="c-card c-text-left c-bg-success c-border-solid c-text-white"
+  class="card text-left bg-success border-solid text-white"
 >
   <!---->
   <div
-    class="c-card-body"
+    class="card-body"
   >
     <!---->
     <!---->
@@ -40,15 +40,15 @@ exports[`CCard renders correctly with slots 1`] = `
 
 exports[`CCard renders correctly with slots 2`] = `
 <div
-  class="c-card"
+  class="card"
 >
   <header
-    class="c-card-header"
+    class="card-header"
   >
     header
   </header>
   <footer
-    class="c-card-footer"
+    class="card-footer"
   >
     footer
   </footer>

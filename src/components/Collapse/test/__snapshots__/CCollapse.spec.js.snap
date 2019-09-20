@@ -9,7 +9,7 @@ exports[`CCollapse renders correctly 1`] = `
 
 exports[`CCollapse renders correctly 2`] = `
 <div
-  class="c-navbar-collapse"
+  class="navbar-collapse"
   style="display: none;"
 >
   CCollapse content

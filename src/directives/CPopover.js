@@ -30,8 +30,8 @@ export default {
       placement: props.placement || 'right',
       delay: props.delay || 0,
       offset: props.offset || 0,
-      arrowSelector: '.c-arrow',
-      innerSelector: '.c-popover-body',
+      arrowSelector: '.arrow',
+      innerSelector: '.popover-body',
       template: binding.def.getTemplate(props.header),
       boundariesElement: document.getElementById(props.boundaries) || props.boundaries,
       container: props.appendToBody ? document.body : false,
@@ -40,10 +40,10 @@ export default {
     }
   },
   getTemplate (header) {
-    return `<div class="c-popover c-bs-popover-auto c-fade c-show" role="tooltip">
-              <div class="c-arrow"></div>
-              <h3 class="c-popover-header">${header || 'header'}</h3>
-              <div class="c-popover-body"></div>
+    return `<div class="popover bs-popover-auto fade show" role="tooltip">
+              <div class="arrow"></div>
+              <h3 class="popover-header">${header || 'header'}</h3>
+              <div class="popover-body"></div>
             </div>`
   }
 }

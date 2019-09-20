@@ -39,10 +39,10 @@ export default {
   computed: {
     alertClasses () {
       return [
-        'c-alert',
+        'alert',
         {
-          'c-alert-dismissible': this.closeButton,
-          [`c-alert-${this.variant}`]: this.variant
+          'alert-dismissible': this.closeButton,
+          [`alert-${this.variant}`]: this.variant
         }
       ]
     }

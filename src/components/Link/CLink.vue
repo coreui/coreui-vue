@@ -16,7 +16,7 @@ export function propsFactory () {
     //these are router-link component props (default active class changed)
     activeClass: {
       type: String,
-      default: 'c-active'
+      default: 'active'
     },
     append: Boolean,
     event: {
@@ -26,7 +26,7 @@ export function propsFactory () {
     exact: Boolean,
     exactActiveClass: {
       type: String,
-      default: 'c-active'
+      default: 'active'
     },
     replace: Boolean,
     routerTag: {
@@ -84,8 +84,8 @@ export default {
 
     const componentData = mergeData(data, {
       class: {
-        'c-disabled': props.disabled,
-        'c-active': props.active
+        'disabled': props.disabled,
+        'active': props.active
       },
       attrs: {
         rel,

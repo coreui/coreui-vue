@@ -8,7 +8,7 @@ exports[`CForm renders correctly 1`] = `
 
 exports[`CForm renders correctly 2`] = `
 <form
-  class="c-form-inline c-was-validated"
+  class="form-inline was-validated"
 >
   <template>
     CForm content

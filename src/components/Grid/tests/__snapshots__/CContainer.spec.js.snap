@@ -2,13 +2,13 @@
 
 exports[`CContainer renders correctly 1`] = `
 <div
-  class="c-container"
+  class="container"
 />
 `;
 
 exports[`CContainer renders correctly 2`] = `
 <div
-  class="c-container-fluid"
+  class="container-fluid"
 >
   <template>
     CContainer content

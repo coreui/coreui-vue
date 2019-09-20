@@ -10,39 +10,39 @@ exports[`CFormGroup renders correctly 1`] = `
     class="additional-wrapper-class"
   >
     <div
-      class="c-input-group-prepend"
+      class="input-group-prepend"
     >
       <span
-        class="c-input-group-text"
+        class="input-group-text"
       >
         prepended
       </span>
     </div>
        
     <div
-      class="c-input-group-append"
+      class="input-group-append"
     >
       <span
-        class="c-input-group-text"
+        class="input-group-text"
       >
         appended
       </span>
     </div>
      
     <div
-      class="c-valid-tooltip"
+      class="valid-tooltip"
     >
       input is valid
     </div>
      
     <div
-      class="c-invalid-tooltip"
+      class="invalid-tooltip"
     >
       input is invalid
     </div>
      
     <small
-      class="c-form-text c-text-muted c-w-100"
+      class="form-text text-muted w-100"
     >
       permission
     </small>

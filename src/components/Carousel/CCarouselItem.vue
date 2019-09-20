@@ -3,12 +3,12 @@
     <CImage
       v-if="image" 
       v-bind="computedImage"
-      class="c-d-block c-w-100 c-h-100 c-img-fluid"
+      class="d-block w-100 h-100 img-fluid"
     />
     <slot>
       <div 
         v-if="captionHeader || captionText"
-        class="c-carousel-caption"
+        class="carousel-caption"
       >
         <h3>{{captionHeader}}</h3>
         <p>{{captionText}}</p>
@@ -47,11 +47,11 @@ export default {
     },
     itemClasses () {
       return [
-        'c-carousel-item',
+        'carousel-item',
         {
-          [`c-carousel-item-${this.order}`]: this.order && !this.activated,
-          [`c-carousel-item-${this.direction}`]: this.transitioning,
-          'c-active': this.activated
+          [`carousel-item-${this.order}`]: this.order && !this.activated,
+          [`carousel-item-${this.direction}`]: this.transitioning,
+          'active': this.activated
         }
       ]
     },

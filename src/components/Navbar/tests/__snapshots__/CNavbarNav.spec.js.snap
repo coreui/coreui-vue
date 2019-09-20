@@ -2,13 +2,13 @@
 
 exports[`CNavbar renders correctly 1`] = `
 <ul
-  class="c-navbar-nav"
+  class="navbar-nav"
 />
 `;
 
 exports[`CNavbar renders correctly 2`] = `
 <ul
-  class="c-navbar-nav c-nav-fill c-nav-justified"
+  class="navbar-nav nav-fill nav-justified"
   pills="true"
   vertical="true"
 >

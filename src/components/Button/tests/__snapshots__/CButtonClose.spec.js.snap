@@ -3,7 +3,7 @@
 exports[`CButtonClose renders correctly 1`] = `
 <button
   aria-label="Close"
-  class="c-close"
+  class="close"
   type="button"
 >
   ×
@@ -25,7 +25,7 @@ exports[`CButtonClose renders correctly with custom iconHtml 1`] = `
 exports[`CButtonClose renders correctly with slot 1`] = `
 <button
   aria-label="Close"
-  class="c-close"
+  class="close"
   type="button"
 >
   slot

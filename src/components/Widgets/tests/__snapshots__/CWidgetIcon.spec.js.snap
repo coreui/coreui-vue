@@ -2,19 +2,19 @@
 
 exports[`CWidgetIcon matches custom props snapshot 1`] = `
 <div
-  class="c-card"
+  class="card"
 >
    
   <div
-    class="c-card-body c-clearfix c-d-flex c-align-items-center c-p-0"
+    class="card-body clearfix d-flex align-items-center p-0"
   >
     <div
-      class="c-float-left c-mr-3 c-text-white c-bg-success c-p-4"
+      class="float-left mr-3 text-white bg-success p-4"
     />
      
     <div>
       <div
-        class="c-text-value c-text-success"
+        class="text-value text-success"
       >
         
         header
@@ -22,7 +22,7 @@ exports[`CWidgetIcon matches custom props snapshot 1`] = `
       </div>
        
       <div
-        class="c-text-muted c-text-uppercase c-font-weight-bold c-small"
+        class="text-muted text-uppercase font-weight-bold small"
       >
         
         text
@@ -36,14 +36,14 @@ exports[`CWidgetIcon matches custom props snapshot 1`] = `
 
 exports[`CWidgetIcon matches default props snapshot 1`] = `
 <div
-  class="c-card"
+  class="card"
 >
    
   <div
-    class="c-card-body c-clearfix c-d-flex c-align-items-center c-p-3"
+    class="card-body clearfix d-flex align-items-center p-3"
   >
     <div
-      class="c-float-left c-mr-3 c-text-white c-bg-undefined c-p-3"
+      class="float-left mr-3 text-white bg-undefined p-3"
     />
      
     <div>

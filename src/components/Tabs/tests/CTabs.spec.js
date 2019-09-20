@@ -35,7 +35,7 @@ const App = Vue.extend({
           justified: true,
           pills: true,
           noFade: false,
-          vertical: { navs: 'c-col-sm-3', content: 'c-col-sm-9' },
+          vertical: { navs: 'col-sm-3', content: 'col-sm-9' },
           addNavWrapperClasses: 'additional-nav-wrapper-class',
           addNavClasses: 'additional-nav-class',
           addTabsWrapperClasses: 'additional-tabs-wrapper-class',
@@ -75,17 +75,17 @@ describe(ComponentName, () => {
     expect(customWrapper.element).toMatchSnapshot()
   })
   it('do not change tab on click when disabled', () => {
-    const tabs = customWrapper.findAll('.c-nav-item')
+    const tabs = customWrapper.findAll('.nav-item')
     tabs.at(3).trigger('click')
-    expect(customWrapper.find('.c-tab-pane').text()).toBe('tab1 content')
+    expect(customWrapper.find('.tab-pane').text()).toBe('tab1 content')
   })
   it('changes tab on click', () => {
-    const tabs = customWrapper.findAll('.c-nav-item')
+    const tabs = customWrapper.findAll('.nav-item')
     tabs.at(2).trigger('click')
-    expect(customWrapper.find('.c-tab-pane').text()).toBe('')
+    expect(customWrapper.find('.tab-pane').text()).toBe('')
   })
   it('properly changes vertical classes', () => {
     defaultWrapper.setProps({ vertical: true })
-    expect(defaultWrapper.vm.gridClasses.navs).toBe('c-col-sm-4')
+    expect(defaultWrapper.vm.gridClasses.navs).toBe('col-sm-4')
   })
 })

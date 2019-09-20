@@ -17,12 +17,12 @@ export default {
   computed: {
     navClasses () {
       return {
-        'c-nav' : true,
-        'c-nav-tabs': this.tabs && !this.pills,
-        'c-nav-pills': this.pills,
-        'c-flex-column': this.vertical,
-        'c-nav-fill': this.fill,
-        'c-nav-justified': this.justified
+        'nav' : true,
+        'nav-tabs': this.tabs && !this.pills,
+        'nav-pills': this.pills,
+        'flex-column': this.vertical,
+        'nav-fill': this.fill,
+        'nav-justified': this.justified
       }
     }
   },

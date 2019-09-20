@@ -17,7 +17,7 @@ exports[`CSidebarNavLink.vue renders correctly 1`] = `
       test link
       
     <span
-      class="c-badge c-badge-success"
+      class="badge badge-success"
     >
       NEW
     </span>

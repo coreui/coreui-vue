@@ -39,11 +39,11 @@ export default {
     },
     progressBarClasses () {
       return [
-        'c-progress-bar',
+        'progress-bar',
         {
-          [`c-bg-${this.props.variant}`]: this.props.variant,
-          'c-progress-bar-striped': this.props.striped || this.props.animated,
-          'c-progress-bar-animated': this.props.animated
+          [`bg-${this.props.variant}`]: this.props.variant,
+          'progress-bar-striped': this.props.striped || this.props.animated,
+          'progress-bar-animated': this.props.animated
         }
       ]
     },

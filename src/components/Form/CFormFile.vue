@@ -24,7 +24,7 @@
       <label
         v-if="custom"
         :for="safeId"
-        class="c-custom-file-label"
+        class="custom-file-label"
       >
         {{computedPlaceholder}}
       </label>
@@ -93,10 +93,10 @@ export default {
     // },
     computedClasses () {
       return [
-        this.isHorizontal ? 'c-form-row':
-        this.custom ? 'c-custom-file' : 'c-form-group c-position-relative',
+        this.isHorizontal ? 'form-row':
+        this.custom ? 'custom-file' : 'form-group position-relative',
         {
-          'c-was-validated': this.wasValidated
+          'was-validated': this.wasValidated
         }
       ]
     },
@@ -104,23 +104,23 @@ export default {
     //   return [
     //     this.addLabelClasses,
     //     {
-    //       'c-col-form-label': this.isHorizontal,
-    //       [this.horizontal.label || 'c-col-sm-3']: this.isHorizontal,
-    //       [`c-col-form-label-${this.size}`]: this.haveCustomSize,
+    //       'col-form-label': this.isHorizontal,
+    //       [this.horizontal.label || 'col-sm-3']: this.isHorizontal,
+    //       [`col-form-label-${this.size}`]: this.haveCustomSize,
     //     }
     //   ]
     // },
     // customSizeClass () {
     //   if (this.haveCustomSize && !this.haveWrapper) {
-    //     return `c-form-control-${this.size}`
+    //     return `form-control-${this.size}`
     //   }
     // },
     inputClass () {
-      return this.custom ? 'c-custom-file-input' : 'c-form-control-file'
+      return this.custom ? 'custom-file-input' : 'form-control-file'
     },
     // inputClasses () {
     //   return [
-    //     this.inputClass || `c-form-control${this.plaintext ? '-plaintext' : ''}`,
+    //     this.inputClass || `form-control${this.plaintext ? '-plaintext' : ''}`,
     //     this.validationClass,
     //     this.addInputClasses,
     //     this.customSizeClass
@@ -137,7 +137,7 @@ export default {
     // },
     // validationClass () {
     //   if (typeof this.computedIsValid === 'boolean') {
-    //     return this.computedIsValid ? 'c-is-valid' : 'c-is-invalid'
+    //     return this.computedIsValid ? 'is-valid' : 'is-invalid'
     //   }
     // }
 
@@ -156,9 +156,9 @@ export default {
     //     return [
     //       this.addWrapperClasses,
     //       {
-    //         [this.horizontal.input || 'c-col-sm-9'] : this.isHorizontal,
-    //         'c-input-group' : this.haveInputGroup,
-    //         [`c-input-group-${this.size}`]: this.haveCustomSize
+    //         [this.horizontal.input || 'col-sm-9'] : this.isHorizontal,
+    //         'input-group' : this.haveInputGroup,
+    //         [`input-group-${this.size}`]: this.haveCustomSize
     //       }
     //     ]
     //   }

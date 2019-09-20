@@ -11,14 +11,14 @@ export default {
     return h(
       'li',
       {
-        staticClass: 'c-nav-item',
+        staticClass: 'nav-item',
       },
       [
         h(
           CLink,
           {
-            staticClass: 'c-nav-link',
-            class: { 'c-active': this.active },
+            staticClass: 'nav-link',
+            class: { 'active': this.active },
             props: this.props,
             domProps: this.titleHtml ? { innerHTML: this.titleHtml } : null
           },

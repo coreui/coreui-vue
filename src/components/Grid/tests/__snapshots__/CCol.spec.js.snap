@@ -2,13 +2,13 @@
 
 exports[`CCol renders correctly 1`] = `
 <div
-  class="c-col"
+  class="col"
 />
 `;
 
 exports[`CCol renders correctly 2`] = `
 <div
-  class="c-col-sm-12 c-col-md-6 c-offset-md-3 c-order-md-1 c-col-xl"
+  class="col-sm-12 col-md-6 offset-md-3 order-md-1 col-xl"
 >
   <template>
     CCol content

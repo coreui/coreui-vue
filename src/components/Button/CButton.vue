@@ -36,14 +36,14 @@ function isToggle (props) {
 
 function computeClasses (props) {
   return {
-    [`c-btn-${props.outline ? 'outline-' : ''}${props.variant}`]: props.variant,
-    [`c-btn-${props.size}`]: Boolean(props.size),
-    [`c-btn-ghost-${props.variant}`]: props.ghost,
-    'c-btn-block': props.block,
-    'c-btn-pill': props.pill,
-    'c-btn-square': props.square && !props.pill,
-    'c-disabled': props.disabled,
-    'c-active': props.pressed
+    [`btn-${props.outline ? 'outline-' : ''}${props.variant}`]: props.variant,
+    [`btn-${props.size}`]: Boolean(props.size),
+    [`btn-ghost-${props.variant}`]: props.ghost,
+    'btn-block': props.block,
+    'btn-pill': props.pill,
+    'btn-square': props.square && !props.pill,
+    'disabled': props.disabled,
+    'active': props.pressed
   }
 }
 
@@ -83,7 +83,7 @@ export default {
     }
     const domProps = children ? '' : { innerHTML: props.textHtml }
     const componentData = {
-      staticClass: 'c-btn',
+      staticClass: 'btn',
       class: computeClasses(props),
       props: computePassedProps(props),
       attrs: computeAttrs(props, data, isButton, toggle),

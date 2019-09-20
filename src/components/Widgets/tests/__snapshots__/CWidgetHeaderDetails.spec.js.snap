@@ -2,20 +2,20 @@
 
 exports[`CWidgetHeaderDetails matches custom props snapshot 1`] = `
 <div
-  class="c-card c-bg-info"
+  class="card bg-info"
 >
   <div
-    class="c-card-header"
+    class="card-header"
   >
     <div
-      class="c-font-weight-bold"
+      class="font-weight-bold"
     >
       <span>
         rightHeader
       </span>
        
       <span
-        class="c-float-right"
+        class="float-right"
       >
         leftHeader
       </span>
@@ -29,7 +29,7 @@ exports[`CWidgetHeaderDetails matches custom props snapshot 1`] = `
       </span>
        
       <span
-        class="c-float-right"
+        class="float-right"
       >
         <small>
           leftFooter
@@ -43,13 +43,13 @@ exports[`CWidgetHeaderDetails matches custom props snapshot 1`] = `
 
 exports[`CWidgetHeaderDetails matches default props snapshot 1`] = `
 <div
-  class="c-card c-bg-undefined"
+  class="card bg-undefined"
 >
   <div
-    class="c-card-header"
+    class="card-header"
   >
     <div
-      class="c-font-weight-bold"
+      class="font-weight-bold"
     >
       <!---->
        
@@ -62,7 +62,7 @@ exports[`CWidgetHeaderDetails matches default props snapshot 1`] = `
       </span>
        
       <span
-        class="c-float-right"
+        class="float-right"
       >
         <!---->
       </span>

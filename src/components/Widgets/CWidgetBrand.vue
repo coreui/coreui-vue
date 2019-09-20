@@ -1,27 +1,27 @@
 <template>
-  <div class="c-card">
+  <div class="card">
     <div
-      class="c-card-header c-content-center c-text-white c-p-0"
-      :class="[`c-bg-${variant}`, addHeaderClasses]"
+      class="card-header content-center text-white p-0"
+      :class="[`bg-${variant}`, addHeaderClasses]"
     >
       <slot></slot>
     </div>
     <slot name="body">
-      <div class="c-card-body c-row c-text-center">
-        <div class="c-col">
-          <div v-if="rightHeader" class="c-text-value-lg">
+      <div class="card-body row text-center">
+        <div class="col">
+          <div v-if="rightHeader" class="text-value-lg">
             {{rightHeader}}
           </div>
-          <div v-if="rightFooter" class="c-text-uppercase c-text-muted c-small">
+          <div v-if="rightFooter" class="text-uppercase text-muted small">
             {{rightFooter}}
           </div>
         </div>
-        <div class="c-vr"></div>
-        <div class="c-col">
-          <div v-if="leftHeader" class="c-text-value-lg">
+        <div class="vr"></div>
+        <div class="col">
+          <div v-if="leftHeader" class="text-value-lg">
             {{leftHeader}}
           </div>
-          <div v-if="leftFooter" class="c-text-uppercase c-text-muted c-small">
+          <div v-if="leftFooter" class="text-uppercase text-muted small">
             {{leftFooter}}
           </div>
         </div>

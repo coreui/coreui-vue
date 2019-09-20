@@ -22,9 +22,9 @@ export const wrapperComputedProps = {
         return [
           this.addWrapperClasses,
           {
-            [this.horizontal.input || 'c-col-sm-9'] : this.isHorizontal,
-            'c-input-group' : this.haveInputGroup,
-            [`c-input-group-${this.size}`]: this.haveCustomSize
+            [this.horizontal.input || 'col-sm-9'] : this.isHorizontal,
+            'input-group' : this.haveInputGroup,
+            [`input-group-${this.size}`]: this.haveCustomSize
           }
         ]
       }
@@ -42,7 +42,7 @@ export const validationComputedProps = {
     },
     validationClass () {
       if (typeof this.computedIsValid === 'boolean') {
-        return this.computedIsValid ? 'c-is-valid' : 'c-is-invalid'
+        return this.computedIsValid ? 'is-valid' : 'is-invalid'
       }
     }
   }
@@ -63,10 +63,10 @@ export const classesComputedProps = {
     },
     computedClasses () {
       return [
-        'c-form-group',
+        'form-group',
         {
-         'c-was-validated': this.wasValidated,
-         'c-form-row': this.isHorizontal
+         'was-validated': this.wasValidated,
+         'form-row': this.isHorizontal
         }
       ]
     },
@@ -74,20 +74,20 @@ export const classesComputedProps = {
       return [
         this.addLabelClasses,
         {
-          'c-col-form-label': this.isHorizontal,
-          [this.horizontal.label || 'c-col-sm-3']: this.isHorizontal,
-          [`c-col-form-label-${this.size}`]: this.haveCustomSize,
+          'col-form-label': this.isHorizontal,
+          [this.horizontal.label || 'col-sm-3']: this.isHorizontal,
+          [`col-form-label-${this.size}`]: this.haveCustomSize,
         }
       ]
     },
     customSizeClass () {
       if (this.haveCustomSize && !this.haveWrapper) {
-        return `c-form-control-${this.size}`
+        return `form-control-${this.size}`
       }
     },
     inputClasses () {
       return [
-        this.inputClass || `c-form-control${this.plaintext ? '-plaintext' : ''}`,
+        this.inputClass || `form-control${this.plaintext ? '-plaintext' : ''}`,
         this.validationClass,
         this.addInputClasses,
         this.customSizeClass

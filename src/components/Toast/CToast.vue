@@ -8,18 +8,18 @@
       aria-atomic="true"
       :style="computedStyles"
     >
-      <div v-if="!props.noHeader" class="c-toast-header">
+      <div v-if="!props.noHeader" class="toast-header">
         <slot name="title" :close="close">
-          <strong class="c-mr-auto" v-html="props.titleHtml"></strong>
+          <strong class="mr-auto" v-html="props.titleHtml"></strong>
         </slot>
         <CButtonClose
           v-if="!props.noCloseButton"
           @click="close()"
-          class="c-ml-2 c-mb-1"
+          class="ml-2 mb-1"
         />
       </div>
       <slot>
-        <div class="c-toast-body" v-html="props.bodyHtml"></div>
+        <div class="toast-body" v-html="props.bodyHtml"></div>
       </slot>
     </div>
   </transition>
@@ -62,10 +62,10 @@ export default {
   computed: {
     toastClasses () {
       return [
-        'c-toast',
+        'toast',
         {
-          'c-d-none': !this.isShowed && !this.hidding,
-          'c-full': this.props.position.includes('full'),
+          'd-none': !this.isShowed && !this.hidding,
+          'full': this.props.position.includes('full'),
         }
       ]
     },
@@ -141,13 +141,13 @@ export default {
 </script>
 
 <style scoped>
-  .c-toast {
+  .toast {
     opacity: 1;
   }
-  .c-toast.full {
+  .toast.full {
     max-width: 100%;
   }
-  .c-toast:last-child {
+  .toast:last-child {
     margin-bottom: 0.75rem;
   }
   .fade-enter-active {

@@ -2,13 +2,13 @@
 
 exports[`CDropdownHeader renders correctly 1`] = `
 <h6
-  class="c-dropdown-header"
+  class="dropdown-header"
 />
 `;
 
 exports[`CDropdownHeader renders correctly 2`] = `
 <h5
-  class="c-dropdown-header"
+  class="dropdown-header"
 >
   <template>
     CDropdownHeader content

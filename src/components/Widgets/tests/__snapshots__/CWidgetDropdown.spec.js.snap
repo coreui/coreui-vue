@@ -2,15 +2,15 @@
 
 exports[`CWidgetDropdown matches custom props snapshot 1`] = `
 <div
-  class="c-card c-bg-info"
+  class="card bg-info"
 >
    
   <div
-    class="c-card-body c-pb-0"
+    class="card-body pb-0"
   >
      
     <h4
-      class="c-mb-0"
+      class="mb-0"
     >
       header
     </h4>
@@ -25,11 +25,11 @@ exports[`CWidgetDropdown matches custom props snapshot 1`] = `
 
 exports[`CWidgetDropdown matches default props snapshot 1`] = `
 <div
-  class="c-card c-bg-undefined"
+  class="card bg-undefined"
 >
    
   <div
-    class="c-card-body c-pb-0"
+    class="card-body pb-0"
   >
      
     <!---->

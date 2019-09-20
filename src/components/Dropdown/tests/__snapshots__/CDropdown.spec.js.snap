@@ -2,12 +2,12 @@
 
 exports[`CDropdown renders correctly 1`] = `
 <div
-  class="c-dropdown"
+  class="dropdown"
 >
   <button
     aria-expanded="false"
     aria-haspopup="true"
-    class="c-btn c-dropdown-toggle"
+    class="btn dropdown-toggle"
   >
     Dropdown
   </button>
@@ -15,17 +15,17 @@ exports[`CDropdown renders correctly 1`] = `
   <!---->
    
   <div
-    class="c-dropdown-menu"
+    class="dropdown-menu"
   />
 </div>
 `;
 
 exports[`CDropdown renders correctly 2`] = `
 <div
-  class="c-dropright c-show c-btn-group"
+  class="dropright show btn-group"
 >
   <button
-    class="additional-toggler-class c-btn c-btn-lg c-disabled c-btn-success"
+    class="additional-toggler-class btn btn-lg disabled btn-success"
   >
     Dropdown button
   </button>
@@ -33,11 +33,11 @@ exports[`CDropdown renders correctly 2`] = `
   <button
     aria-expanded="true"
     aria-haspopup="true"
-    class="c-dropdown-toggle c-dropdown-toggle-split additional-toggler-class c-btn c-btn-lg c-disabled c-btn-success"
+    class="dropdown-toggle dropdown-toggle-split additional-toggler-class btn btn-lg disabled btn-success"
   />
    
   <div
-    class="additional-menu-class c-dropdown-menu c-show"
+    class="additional-menu-class dropdown-menu show"
   >
     CDropdown subcomponents
   </div>
@@ -46,12 +46,12 @@ exports[`CDropdown renders correctly 2`] = `
 
 exports[`CDropdown renders correctly in nav mode 1`] = `
 <li
-  class="c-dropleft c-nav-item"
+  class="dropleft nav-item"
 >
   <a
     aria-expanded="false"
     aria-haspopup="true"
-    class="additional-toggler-class c-nav-link c-bg-success"
+    class="additional-toggler-class nav-link bg-success"
     href="#"
     target="_self"
   >
@@ -61,7 +61,7 @@ exports[`CDropdown renders correctly in nav mode 1`] = `
   <!---->
    
   <div
-    class="additional-menu-class c-dropdown-menu"
+    class="additional-menu-class dropdown-menu"
   >
     CDropdown subcomponents
   </div>

@@ -1,9 +1,9 @@
 <template>
-  <div class="c-card" :class="`c-bg-${variant}`">
+  <div class="card" :class="`bg-${variant}`">
     <slot name="header"></slot>
-    <div class="c-card-body c-pb-0">
+    <div class="card-body pb-0">
       <slot></slot>
-      <h4 v-if="header" class="c-mb-0">{{header}}</h4>
+      <h4 v-if="header" class="mb-0">{{header}}</h4>
       <p v-if="text">{{text}}</p>
     </div>
     <slot name="footer"></slot>

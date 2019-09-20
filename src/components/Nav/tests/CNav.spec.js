@@ -28,7 +28,7 @@ const customWrapper = mount(Component, {
     default: [CNavItem, CNavItem, CNavItem, CNavItem]
   }
 })
-const items = customWrapper.findAll('.c-nav-item')
+const items = customWrapper.findAll('.nav-item')
 
 describe(ComponentName, () => {
   it('has a name', () => {
@@ -41,7 +41,7 @@ describe(ComponentName, () => {
     expect(customWrapper.element).toMatchSnapshot()
   })
   it('activate item on click', () => {
-    const items = customWrapper.findAll('.c-nav-item')
+    const items = customWrapper.findAll('.nav-item')
     items.at(1).trigger('click')
     expect(items.at(1).vm.isActive).toBe(true)
   })

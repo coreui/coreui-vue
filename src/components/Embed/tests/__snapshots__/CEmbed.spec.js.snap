@@ -2,20 +2,20 @@
 
 exports[`CEmbed renders correctly 1`] = `
 <div
-  class="c-embed-responsive c-embed-responsive-16by9"
+  class="embed-responsive embed-responsive-16by9"
 >
   <iframe
-    class="c-embed-responsive-item"
+    class="embed-responsive-item"
   />
 </div>
 `;
 
 exports[`CEmbed renders correctly 2`] = `
 <div
-  class="c-embed-responsive c-embed-responsive-4by3"
+  class="embed-responsive embed-responsive-4by3"
 >
   <embed
-    class="c-embed-responsive-item"
+    class="embed-responsive-item"
   >
     <template>
       CEmbed item

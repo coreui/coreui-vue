@@ -2,10 +2,10 @@
 
 exports[`CNavItem renders correctly 1`] = `
 <li
-  class="c-nav-item"
+  class="nav-item"
 >
   <a
-    class="c-nav-link"
+    class="nav-link"
     href="#"
     target="_self"
   />
@@ -14,11 +14,11 @@ exports[`CNavItem renders correctly 1`] = `
 
 exports[`CNavItem renders correctly 2`] = `
 <li
-  class="c-nav-item"
+  class="nav-item"
 >
   <a
     aria-disabled="true"
-    class="c-nav-link c-disabled"
+    class="nav-link disabled"
     href="#"
     tabindex="-1"
     target="_self"

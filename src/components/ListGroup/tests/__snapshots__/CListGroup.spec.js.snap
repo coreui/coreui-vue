@@ -2,13 +2,13 @@
 
 exports[`CListGroup renders correctly 1`] = `
 <div
-  class="c-list-group"
+  class="list-group"
 />
 `;
 
 exports[`CListGroup renders correctly 2`] = `
 <div
-  class="c-list-group c-list-group-flush"
+  class="list-group list-group-flush"
 >
   <template>
     CListGroup content

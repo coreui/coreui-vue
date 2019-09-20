@@ -1,26 +1,26 @@
 <template>
-  <div class="c-carousel c-slide" :style="{ height: height || 'auto' }">
+  <div class="carousel slide" :style="{ height: height || 'auto' }">
     <ol v-if="indicators" :class="indicatorClasses">
       <li
         v-for="(index, key) in items.length"
         @click="setItem(key)"
-        :class="{ 'c-active': activated === key }"
+        :class="{ 'active': activated === key }"
         :key="key"
       ></li>
     </ol>
-    <div class="c-carousel-inner">
+    <div class="carousel-inner">
       <slot></slot>
     </div>
     <template v-if="arrows">
-      <a class="c-carousel-control-prev" @click="previousItem">
+      <a class="carousel-control-prev" @click="previousItem">
         <span 
-          class="c-carousel-control-prev-icon"
+          class="carousel-control-prev-icon"
           aria-label="Previous"
         ></span>
       </a>
-      <a class="c-carousel-control-next" @click="nextItem">
+      <a class="carousel-control-next" @click="nextItem">
         <span 
-          class="c-carousel-control-next-icon"
+          class="carousel-control-next-icon"
           aria-label="Next"
         ></span>
       </a>
@@ -39,7 +39,7 @@ export default {
     arrows: Boolean,
     indicatorClasses: {
       type: [String, Array, Object],
-      default: 'c-carousel-indicators'
+      default: 'carousel-indicators'
     },
     height: [String, Number]
   },
@@ -112,7 +112,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .c-carousel-inner, .c-carousel-item {
+  .carousel-inner, .carousel-item {
     height: inherit;
   }
   @import "~@coreui/coreui/scss/partials/carousel.scss";

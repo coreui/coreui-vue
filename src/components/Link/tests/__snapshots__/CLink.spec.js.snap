@@ -33,7 +33,7 @@ exports[`CLink .vue renders correctly 2`] = `
   </a>
   <a
     aria-disabled="true"
-    class="c-disabled"
+    class="disabled"
     href="/a"
     tabindex="-1"
     target="_self"

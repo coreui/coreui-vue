@@ -15,10 +15,10 @@ export default {
     return h(
       props.tag,
       mergeData(data, {
-        staticClass: 'c-navbar-nav',
+        staticClass: 'navbar-nav',
         class: {
-          'c-nav-fill': props.fill,
-          'c-nav-justified': props.justified
+          'nav-fill': props.fill,
+          'nav-justified': props.justified
         }
       }),
       children

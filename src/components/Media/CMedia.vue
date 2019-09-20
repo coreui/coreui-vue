@@ -42,22 +42,22 @@ export default {
       )
     },
     computedAsidePositionClasses () {
-      return this.asidePositionClasses || `c-m${this.asideRight? 'l' : 'r' }-3`
+      return this.asidePositionClasses || `m${this.asideRight? 'l' : 'r' }-3`
     },
     asideClasses () {
       return [
         this.computedAsidePositionClasses,
         this.addAsideClasses,
-        `c-align-self-${this.asidePosition}`
+        `align-self-${this.asidePosition}`
       ]
     },
     mediaBodyClasses () {
-      return [ 'c-media-body', this.addBodyClasses ]
+      return [ 'media-body', this.addBodyClasses ]
     },
     mediaClasses () {
       return [
-        'c-media',
-        { 'c-d-flex c-flex-row-reverse': this.asideRight }
+        'media',
+        { 'd-flex flex-row-reverse': this.asideRight }
       ]
     }
   }
