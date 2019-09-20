@@ -1,4 +1,5 @@
 import CSidebar from './CSidebar'
+import CSidebarBrand from './CSidebarBrand'
 import CSidebarFooter from './CSidebarFooter'
 import CSidebarForm from './CSidebarForm'
 import CSidebarHeader from './CSidebarHeader'
@@ -13,6 +14,7 @@ import CSidebarToggler from './CSidebarToggler'
 
 export {
   CSidebar,
+  CSidebarBrand,
   CSidebarFooter,
   CSidebarForm,
   CSidebarHeader,
