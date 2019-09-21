@@ -39,7 +39,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style scoped>
   .c-scroll-area {
     height: 100%;
     margin: auto;

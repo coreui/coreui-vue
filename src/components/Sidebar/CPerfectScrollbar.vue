@@ -72,7 +72,7 @@ export default {
   render (h) {
     return h(
       this.tag,
-      { class: { 'c-position-relative': true } },
+      { style: 'position: relative' },
       this.$slots.default
     )
   }

@@ -1,6 +1,6 @@
 <template>
   <header :class="classList">
-    <slot>Header</slot>
+    <slot></slot>
   </header>
 </template>
 
@@ -8,13 +8,19 @@
 export default {
   name: 'CHeader',
   props: {
-    fixed: Boolean
+    fixed: Boolean,
+    light: Boolean,
+    withSubheader: Boolean
   },
   computed: {
     classList () {
       return [
-        'c-header c-app-header c-header-light',
-        { 'c-header-fixed': this.fixed}
+        'c-header c-header-light',
+        { 
+          'c-header-fixed': this.fixed,
+          'c-header-light': this.light,
+          'c-header-with-subheader': this.withSubheader
+        }
       ]
     }
   }
