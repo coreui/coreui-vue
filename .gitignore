@@ -15,7 +15,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # Integrity files
-package-lock.json
 .yarn-integrity
 
 # Optional npm cache directory
