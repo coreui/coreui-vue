@@ -68,8 +68,7 @@ export default {
       default: 'bottom-start'
     },
     noFlip: Boolean,
-    popperConfig: Object,
-    noPopper: Boolean,
+    popperConfig: Object
   },
   mounted () {
     this.menagePopper()
@@ -96,11 +95,9 @@ export default {
     },
 
     menagePopper () {
-      if (!this.noPopper) {
-        setTimeout(() => {
-          this.visible ? this.createPopper() : this.removePopper()
-        }, 0)
-      }
+      setTimeout(() => {
+        this.visible ? this.createPopper() : this.removePopper()
+      }, 0)
     },
 
     removePopper () {
