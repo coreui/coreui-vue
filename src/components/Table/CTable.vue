@@ -1,24 +1,24 @@
 <template>
   <div>
-    <div v-if="optionsRow" class="row my-2 mx-0">
+    <div v-if="itemsPerPageSelect || tableFilter" class="row my-2 mx-0">
       <div
         class="col-sm-6 form-inline p-0"
-        v-if="optionsRow !== 'noFilter'"
+        v-if="tableFilter"
       >
         <label class="mr-2">Filter:</label>
         <input
           class="form-control table-filter"
           type="text"
           placeholder="type string..."
-          @input="tableFilter = $event.target.value"
-          :value="tableFilter"
+          @input="tableFilterVal = $event.target.value"
+          :value="tableFilterVal"
         >
       </div>
 
       <div
-        v-if="optionsRow !== 'noPagination'"
+        v-if="itemsPerPageSelect"
         class="col-sm-6 p-0"
-        :class="optionsRow === 'noFilter' ? 'offset-sm-6' : ''"
+        :class="{ 'offset-sm-6': !tableFilter }"
       >
         <div class="form-inline float-sm-right">
           <label class="mr-2">Items per page:</label>
@@ -59,7 +59,7 @@
                   <div class="d-inline">{{name}}</div>
                 </slot>
                 <slot
-                  v-if="sortable(index)"
+                  v-if="isSortable(index)"
                   name="sorting-icon"
                   :state="getIconState(index)"
                 >
@@ -73,7 +73,7 @@
             </template>
           </tr>
 
-          <tr v-if="filterRow" class="table-sm">
+          <tr v-if="columnFilter" class="table-sm">
             <th v-if="indexColumn" class="pb-2 pl-2">
               <CIcon
                 v-if="indexColumn !== 'noCleaner'"
@@ -91,7 +91,7 @@
                     v-if="!fields || !fields[index].noFilter"
                     class="w-100 table-filter"
                     @input="addColumnFilter(colName, $event.target.value)"
-                    :value="columnFilter[colName]"
+                    :value="columnFilterVal[colName]"
                   />
                 </slot>
               </th>
@@ -100,10 +100,14 @@
         </thead>
 
 
-        <tbody :style="bodyStyle" class="position-relative">
+        <tbody 
+          :style="clickableRows ? 'cursor:pointer;': null" 
+          class="position-relative"
+        >
           <template v-for="(item, itemIndex) in currentItems" >
             <tr
-              :class="item._classes" :tabindex="bodyStyle ? 0 : null"
+              :class="item._classes" 
+              :tabindex="clickableRows ? 0 : null"
               @click="rowClicked(item, itemIndex + firstItemIndex)"
               :key="itemIndex"
             >
@@ -129,7 +133,7 @@
                   :class="cellClass(item, colName, index)"
                   :key="index"
                 >
-                  {{item[colName]}}
+                  {{String(item[colName])}}
                 </td>
               </template>
             </tr>
@@ -184,7 +188,7 @@
                   <div class="d-inline">{{name}}</div>
                 </slot>
                 <slot
-                  v-if="sortable(index)"
+                  v-if="isSortable(index)"
                   name="sorting-icon"
                   :state="getIconState(index)"
                 >
@@ -248,13 +252,13 @@ export default {
       type: Number,
       default: 10
     },
-    activePage: Number,
+    activePage: Number,    
     indexColumn: [Boolean, String],
-    filterRow: Boolean,
+    columnFilter: Boolean,
     pagination: [Boolean, Object],
     addTableClasses: [String, Array, Object],
     notResponsive: Boolean,
-    sorting: Boolean,
+    sortable: Boolean,
     small: Boolean,
     dark: Boolean,
     striped: Boolean,
@@ -262,7 +266,8 @@ export default {
     hover: Boolean,
     border: Boolean,
     outlined: Boolean,
-    optionsRow: [Boolean, String],
+    itemsPerPageSelect: Boolean,
+    tableFilter: Boolean,
     footer: Boolean,
     defaultSorter: {
       type: Object,
@@ -270,12 +275,13 @@ export default {
     },
     defaultTableFilter: String,
     defaultColumnFilter: Object,
-    loading: Boolean
+    loading: Boolean,
+    clickableRows: Boolean
   },
   data () {
     return {
-      tableFilter: this.defaultTableFilter,
-      columnFilter: this.defaultColumnFilter || {},
+      tableFilterVal: this.defaultTableFilter,
+      columnFilterVal: this.defaultColumnFilter || {},
       sorter: {
         column: this.defaultSorter.column || null,
         asc: this.defaultSorter.asc === false ? false : true
@@ -288,12 +294,11 @@ export default {
   computed: {
     columnFiltered () {
       let items = this.passedItems.slice()
-      Object.entries(this.columnFilter).forEach(([key, value]) => {
+      Object.entries(this.columnFilterVal).forEach(([key, value]) => {
         if (value && this.rawColumnNames.includes(key)) {
           const columnFilter = String(value).toLowerCase()
           items = items.filter(item => {
-            return ['string', 'number', 'boolean'].includes(typeof item[key]) 
-                   && String(item[key]).toLowerCase().includes(columnFilter)
+            return String(item[key]).toLowerCase().includes(columnFilter)
           })
         }
       })
@@ -306,8 +311,8 @@ export default {
     },
     tableFiltered () {
       let items = this.columnFiltered.slice()
-      if (this.tableFilter) {
-        const filter = this.tableFilter.toLowerCase()
+      if (this.tableFilterVal) {
+        const filter = this.tableFilterVal.toLowerCase()
         const hasFilter = (item) => String(item).toLowerCase().includes(filter)
         items = items.filter(item => {
           return this.filterableCols.filter(key => hasFilter(item[key])).length
@@ -377,17 +382,14 @@ export default {
         }
       ]
     },
-    bodyStyle () {
-      return {'cursor:pointer': this.$listeners && this.$listeners['row-clicked']}
-    },
     sortingIconStyles () {
-      return {'position-relative pr-4' : this.sorting }
+      return {'position-relative pr-4' : this.sortable }
     },
     colspan () {
       return this.rawColumnNames.length + (this.indexColumn ? 1 : 0)
     },
     topLoadingPosition () {
-      const headerHeight = (this.filterRow ? 38 : 0) + ( this.small ? 32 + 4 : 46 + 7)
+      const headerHeight = (this.columnFilter ? 38 : 0) + ( this.small ? 32 + 4 : 46 + 7)
       return `top:${headerHeight}px`
     },
     spinnerSize () {
@@ -395,7 +397,7 @@ export default {
       return `width:${size + 'rem'};height:${size + 'rem'}`
     },
     isFiltered () {
-      return this.tableFilter || Object.values(this.columnFilter).join('')
+      return this.tableFilterVal || Object.values(this.columnFilterVal).join('')
     }
   },
   watch: {
@@ -416,7 +418,7 @@ export default {
   },
   methods: {
     changeSort (column, index) {
-      if (column && !this.sortable(index)) {
+      if (column && !this.isSortable(index)) {
         return
       }
       //if column changed or sort was descending change asc to true
@@ -424,16 +426,17 @@ export default {
       this.sorter.column = column
     },
     addColumnFilter (colName, value) {
-      this.$set(this.columnFilter, colName, value)
+      this.$set(this.columnFilterVal, colName, value)
     },
     clear () {
-      this.tableFilter = ''
-      this.columnFilter = {}
-      this.sorter.name = ''
+      this.tableFilterVal = ''
+      this.columnFilterVal = {}
+      this.sorter.column = ''
       this.sorter.asc = true
       const inputs = this.$el.getElementsByClassName('table-filter')
-      for(let input of inputs)
+      for (let input of inputs) {
         input.value = ''
+      }
     },
     pretifyName (name) {
       return name.replace(/[-_.]/g, ' ')
@@ -453,8 +456,8 @@ export default {
       }
       return classes
     },
-    sortable (index) {
-      return this.sorting && (!this.fields || !this.fields[index].noSorting)
+    isSortable (index) {
+      return this.sortable && (!this.fields || !this.fields[index].notSortable)
     },
     headerClass (index) {
       const fields = this.fields
@@ -462,7 +465,7 @@ export default {
     },
     headerStyles (index) {
       let style = ''
-      if (this.sortable(index)) {
+      if (this.isSortable(index)) {
         style += `cursor:pointer;`
       }
       if (this.fields && this.fields[index] && this.fields[index]._style) {
