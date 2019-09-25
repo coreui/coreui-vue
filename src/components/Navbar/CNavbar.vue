@@ -50,11 +50,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-  @import "~@coreui/coreui/scss/partials/navbar.scss";
-  @import "~@coreui/coreui/scss/utilities/_background.scss";
-  @import "~@coreui/coreui/scss/utilities/_text.scss";
-  @import "~@coreui/coreui/scss/utilities/_display.scss";
-  @import "~@coreui/coreui/scss/utilities/_position.scss";
-</style>

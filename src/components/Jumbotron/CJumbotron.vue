@@ -62,10 +62,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-  @import "~@coreui/coreui/scss/partials/jumbotron.scss";
-  @import "~@coreui/coreui/scss/utilities/_text.scss";
-  @import "~@coreui/coreui/scss/utilities/_borders.scss";
-  @import "~@coreui/coreui/scss/utilities/_background.scss";
-</style>

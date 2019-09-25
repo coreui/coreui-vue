@@ -27,7 +27,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-  @import "~@coreui/coreui/scss/partials/button-group.scss";
-</style>

@@ -172,7 +172,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-  @import "~@coreui/coreui/scss/partials/forms.scss";
-</style>

@@ -220,9 +220,7 @@
   }
 </script>
 
-<style lang="scss">
-  @import "~@coreui/coreui/scss/partials/pagination.scss";
-  @import "~@coreui/coreui/scss/utilities/_flex.scss";
+<style>
   .page-link:focus {
     box-shadow: none;
   }

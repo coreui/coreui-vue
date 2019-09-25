@@ -33,8 +33,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-@import "~@coreui/coreui/scss/partials/toasts.scss";
-@import "~@coreui/coreui/scss/utilities/_flex.scss";
-</style>

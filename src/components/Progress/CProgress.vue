@@ -23,8 +23,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-  @import "~@coreui/coreui/scss/partials/progress.scss";
-  @import "~@coreui/coreui/scss/utilities/_background.scss";
-</style>

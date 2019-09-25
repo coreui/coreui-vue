@@ -128,9 +128,11 @@ function genConfig(name) {
   // output a license to builds
   config.plugins.push(
     license({
-      sourceMap: true,
+      sourcemap: true,
       banner: {
-        file: path.resolve("LICENSE.md")
+        content: {
+          file: path.resolve("LICENSE.txt")
+        }
       }
     })
   );

@@ -79,7 +79,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-  @import "~@coreui/coreui/scss/partials/carousel.scss";
-</style>

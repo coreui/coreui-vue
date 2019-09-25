@@ -111,10 +111,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
   .carousel-inner, .carousel-item {
     height: inherit;
   }
-  @import "~@coreui/coreui/scss/partials/carousel.scss";
-  @import "~@coreui/coreui/scss/utilities/_screenreaders.scss";
 </style>

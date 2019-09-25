@@ -92,7 +92,3 @@ export default {
   }
 
 </style>
-
-<style lang="scss">
-@import "~@coreui/coreui/scss/partials/alert.scss";
-</style>

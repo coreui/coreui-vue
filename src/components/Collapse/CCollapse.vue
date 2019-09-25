@@ -100,9 +100,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-* {
-  will-change: height;
-}
-</style>

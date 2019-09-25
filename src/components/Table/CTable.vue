@@ -519,17 +519,3 @@ export default {
   transform: translateY(-50%) rotate(-180deg);
 }
 </style>
-
-<style lang="scss">
-@import "~@coreui/coreui/scss/partials/tables.scss";
-@import "~@coreui/coreui/scss/partials/input-group.scss";
-@import "~@coreui/coreui/scss/partials/forms.scss";
-@import "~@coreui/coreui/scss/partials/grid.scss";
-@import "~@coreui/coreui/scss/utilities/_flex.scss";
-@import "~@coreui/coreui/scss/utilities/_float.scss";
-@import "~@coreui/coreui/scss/utilities/_position.scss";
-@import "~@coreui/coreui/scss/utilities/_sizing.scss";
-@import "~@coreui/coreui/scss/utilities/_spacing.scss";
-@import "~@coreui/coreui/scss/utilities/_text.scss";
-@import "~@coreui/coreui/scss/utilities/_typography.scss";
-</style>
