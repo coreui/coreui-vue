@@ -1,9 +1,13 @@
 <template>
-  <component :is="nav ? 'li' : 'div'" :class="computedDropdownClasses">
-    <slot name="toggler" :click="click" :visible="visible">
+  <component 
+    :is="nav ? 'li' : 'div'" 
+    :class="computedDropdownClasses"
+    v-on-clickaway="hide"
+  >
+    <slot name="toggler">
       <component
         :is="togglerTag"
-        v-on="{ click: splittedToggler ? '' : click }"
+        v-on="{ click: splittedToggler ? hide : toggle }"
         :class="computedTogglerClasses"
         v-bind="splittedToggler ? '' : togglerAttrs"
       >
@@ -11,13 +15,13 @@
       </component>
       <button
         v-if="splittedToggler"
-        @click="click"
+        @click="toggle"
         class="dropdown-toggle dropdown-toggle-split"
         :class="computedTogglerClasses"
         v-bind="togglerAttrs"
       />
     </slot>
-     <div ref="menu" :class="computedMenuClasses" v-on-clickaway="hide">
+     <div ref="menu" :class="computedMenuClasses">
       <slot></slot>
     </div>
   </component>
@@ -32,11 +36,6 @@ import { deepObjectsMerge } from '@coreui/coreui/dist/js/coreui-utilities'
 export default {
   name: 'CDropdown',
   mixins: [ clickaway ],
-  data () {
-    return {
-      visible: this.show
-    }
-  },
   props: {
     togglerText: {
       type: String,
@@ -70,34 +69,34 @@ export default {
     noFlip: Boolean,
     popperConfig: Object
   },
-  mounted () {
-    this.menagePopper()
+  data () {
+    return {
+      visible: this.show
+    }
   },
-  methods:{
+  watch: {
+    show (val) {
+      this.visible = val
+    },
+    visible: {
+      immediate: true,
+      handler (val) {
+        val ? this.createPopper() : this.removePopper()
+        this.$emit('update:show', val)
+      }
+    },
+    $route () {
+      this.visible = false
+    }
+  },
+  methods: {
     hide () {
-      if (this.visible) {
-        this.toggle(false)
-      }
+      this.visible = false
     },
 
-    click (e) {
+    toggle (e) {
       e.preventDefault()
-      this.toggle(!this.visible)
-    },
-
-    toggle (value) {
-      if (value === false || !this.disabled) {
-        setTimeout(() => {
-          this.visible = value
-          this.menagePopper()
-        }, 0)
-      }
-    },
-
-    menagePopper () {
-      setTimeout(() => {
-        this.visible ? this.createPopper() : this.removePopper()
-      }, 0)
+      this.visible = !this.visible
     },
 
     removePopper () {
@@ -109,11 +108,18 @@ export default {
 
     createPopper () {
       this.removePopper()
-      this._popper = new Popper(
-        this.$el.firstElementChild, 
-        this.$refs.menu, 
-        this.computedPopperConfig
-      )
+      if (this.disabled) {
+        this.visible = false
+        return
+      }
+      this.$nextTick(() => {
+        this._popper = new Popper(
+          this.$el.firstElementChild, 
+          this.$refs.menu, 
+          this.computedPopperConfig
+        )
+      })
+      
     }
   },
   computed: {
