@@ -6,14 +6,16 @@ export default {
   props: {
     tag: {
       type: String,
-      default: 'h6'
-    }
+      default: 'div'
+    },
+    variant: String
   },
   render (h, { props, data, children }) {
     return h(
       props.tag,
       mergeData(data, {
         staticClass: 'dropdown-header',
+        class: { [`bg-${props.variant}`]: props.variant }
       }),
       children
     )
