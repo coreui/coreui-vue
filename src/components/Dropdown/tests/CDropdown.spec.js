@@ -1,5 +1,10 @@
-import { mount } from '@vue/test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
 import Component from '../CDropdown'
+import VueRouter from 'vue-router'
+
+const localVue = new createLocalVue()
+localVue.use(VueRouter)
+const router = new VueRouter()
 
 //needed for popper.js
 global.document.createRange = () => ({
@@ -12,12 +17,16 @@ global.document.createRange = () => ({
 })
 
 const ComponentName = 'CDropdown'
-const defaultWrapper = mount(Component)
+const wrapper = mount(Component, {
+  router,
+  localVue
+})
+
 const customWrapper = mount(Component, {
+
   propsData: {
     togglerText: 'Dropdown button',
     show: true,
-    disabled: true,
     addMenuClasses: 'additional-menu-class',
     addTogglerClasses: 'additional-toggler-class',
     nav: false,
@@ -44,8 +53,7 @@ const navWrapper = mount(Component, {
     variant: 'success',
     offset: 20,
     placement: 'left',
-    noFlip: true,
-    noPopper: true
+    noFlip: true
   },
   slots: {
     default: 'CDropdown subcomponents'
@@ -58,9 +66,9 @@ describe(ComponentName, () => {
     expect(Component.name).toMatch(ComponentName)
   })
   it('renders correctly', () => {
-    expect(defaultWrapper.element).toMatchSnapshot()
+    expect(wrapper.element).toMatchSnapshot()
   })
-  it('renders correctly', () => {
+  it('renders custom wrapper correctly', () => {
     expect(customWrapper.element).toMatchSnapshot()
   })
   it('renders correctly in nav mode', () => {
@@ -69,23 +77,33 @@ describe(ComponentName, () => {
   it('properly toggle dropdown', () => {
     const toggle = () => {
       jest.useFakeTimers()
-      defaultWrapper.find('button').trigger('click')
+      wrapper.find('button').trigger('click')
       jest.runAllTimers()
     }
     const hide = () => {
       jest.useFakeTimers()
-      defaultWrapper.vm.hide()
+      wrapper.vm.hide()
       jest.runAllTimers()
     }
 
-    expect(defaultWrapper.vm.visible).toBe(false)
+    expect(wrapper.vm.visible).toBe(false)
     toggle()
-    expect(defaultWrapper.vm.visible).toBe(true)
+    expect(wrapper.vm.visible).toBe(true)
     //mimics v-on-clickaway
     hide()
-    expect(defaultWrapper.vm.visible).toBe(false)
+    expect(wrapper.vm.visible).toBe(false)
     hide()
-    expect(defaultWrapper.vm.visible).toBe(false)
+    expect(wrapper.vm.visible).toBe(false)
+  })
+  it('toggles when show prop is changed', () => {
+    expect(wrapper.vm.visible).toBe(false)
+    wrapper.setProps({ show: true })
+    expect(wrapper.vm.visible).toBe(true)
+  })
+  it('toggles when show prop is changed', () => {
+    expect(wrapper.vm.visible).toBe(true)
+    wrapper.vm.$router.push('new-route-name')
+    expect(wrapper.vm.visible).toBe(false)
   })
   it('does not open when dropdown is disabled', () => {
     const toggle = () => {
@@ -95,6 +113,7 @@ describe(ComponentName, () => {
     }
     
     expect(customWrapper.vm.visible).toBe(true)
+    customWrapper.setProps({ disabled: true })
     toggle()
     expect(customWrapper.vm.visible).toBe(false)
     toggle()

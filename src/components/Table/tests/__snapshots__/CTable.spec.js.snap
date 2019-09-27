@@ -332,9 +332,7 @@ exports[`CTable renders correctly 2`] = `
       <tbody
         class="position-relative"
       >
-        <tr
-          tabindex="0"
-        >
+        <tr>
           <td>
             
                   1
@@ -373,15 +371,13 @@ exports[`CTable renders correctly 2`] = `
             class=""
           >
             
-                
+                undefined
               
           </td>
         </tr>
          
         <!---->
-        <tr
-          tabindex="0"
-        >
+        <tr>
           <td>
             
                   2
@@ -420,15 +416,13 @@ exports[`CTable renders correctly 2`] = `
             class=""
           >
             
-                
+                undefined
               
           </td>
         </tr>
          
         <!---->
-        <tr
-          tabindex="0"
-        >
+        <tr>
           <td>
             
                   3
@@ -467,15 +461,13 @@ exports[`CTable renders correctly 2`] = `
             class=""
           >
             
-                
+                undefined
               
           </td>
         </tr>
          
         <!---->
-        <tr
-          tabindex="0"
-        >
+        <tr>
           <td>
             
                   4
@@ -514,15 +506,13 @@ exports[`CTable renders correctly 2`] = `
             class=""
           >
             
-                
+                undefined
               
           </td>
         </tr>
          
         <!---->
-        <tr
-          tabindex="0"
-        >
+        <tr>
           <td>
             
                   5
@@ -561,7 +551,7 @@ exports[`CTable renders correctly 2`] = `
             class=""
           >
             
-                
+                undefined
               
           </td>
         </tr>

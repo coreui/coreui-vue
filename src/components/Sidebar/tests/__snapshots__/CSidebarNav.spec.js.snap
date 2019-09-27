@@ -5,7 +5,8 @@ exports[`CSidebarNav .vue renders correctly 1`] = `
   class="c-sidebar-nav"
 >
   <div
-    class="c-scroll-area c-position-relative ps"
+    class="c-scroll-area ps"
+    style="position: relative;"
   >
     <ul
       class="c-nav"
@@ -42,7 +43,8 @@ exports[`CSidebarNav .vue renders correctly in sidebar 1`] = `
     class="c-sidebar-nav"
   >
     <div
-      class="c-scroll-area c-position-relative ps"
+      class="c-scroll-area ps"
+      style="position: relative;"
     >
       <ul
         class="c-nav"

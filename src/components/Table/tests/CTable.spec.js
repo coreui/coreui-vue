@@ -26,13 +26,14 @@ const customWrapper = mount(Component, {
       'registered',
       { key: 'role', _style:'width:20%;' },
       { key: 'status', _style:'width:20%;' },
-      { key: 'show_details' , label:'', _style:'width:1%', noSorting: true, noFilter: true },
+      { key: 'show_details' , label:'', _style:'width:1%', notSortable: true, noFilter: true },
     ],
 
     indexColumn: true,
-    filterRow: true,
+    tableFilter: true,
+    itemsPerPageSelect: true,
     addTableClasses: 'additional-table-class',
-    sorting: true,
+    sortable: true,
     small: false,
     dark: true,
     striped: true,
@@ -40,7 +41,7 @@ const customWrapper = mount(Component, {
     hover: true,
     border: true,
     outlined: true,
-    optionsRow: true,
+    columnFilter: true,
     footer: true,
     defaultSorter: { column: 'username', asc: false },
     defaultColumnFilter: { registered: '2012' },
@@ -77,7 +78,7 @@ describe(ComponentName, () => {
   })
   it('clear table filters', () => {
     customWrapper.findAll('tr').at(1).find('svg').trigger('click')
-    expect(customWrapper.vm.sorter.name).toBe('')
+    expect(customWrapper.vm.sorter.column).toBe('')
   })
   it('changes colspan when indexColumn is switched', () => {
     const colspanWithIndexColumn = customWrapper.vm.colspan
@@ -85,9 +86,9 @@ describe(ComponentName, () => {
     expect(customWrapper.vm.colspan).toBe(colspanWithIndexColumn - 1)
   })
   it('table filter works correctly', () => {
-    customWrapper.setData({ tableFilter: 'Yiorgos' })
+    customWrapper.setData({ tableFilterVal: 'Yiorgos' })
     expect(customWrapper.vm.sortedItems.length).toBe(1)
-    customWrapper.setData({ tableFilter: undefined })
+    customWrapper.setData({ tableFilterVal: null })
   })
   it('shows loading layer when loading prop is set', () => {
     customWrapper.setProps({ loading: true })
