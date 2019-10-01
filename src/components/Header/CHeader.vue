@@ -9,7 +9,6 @@ export default {
   name: 'CHeader',
   props: {
     fixed: Boolean,
-    light: Boolean,
     withSubheader: Boolean
   },
   computed: {
@@ -18,7 +17,6 @@ export default {
         'c-header c-header-light',
         { 
           'c-header-fixed': this.fixed,
-          'c-header-light': this.light,
           'c-header-with-subheader': this.withSubheader
         }
       ]
