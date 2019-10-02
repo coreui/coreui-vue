@@ -4,7 +4,10 @@ export default {
   functional: true,
   name: 'CButtonToolbar',
   props: {
-    justify: Boolean,
+    justify: {
+      type: String,
+      validator: val => ['', 'start', 'end', 'between', 'center'].includes(val)
+    }
   },
   render (h, { props, data, children }) {
     return h(
@@ -12,9 +15,10 @@ export default {
       mergeData(data, {
         class: [
           'btn-toolbar',
-          { 'justify-content-between': props.justify }
+          { [`justify-content-${props.justify}`]: props.justify }
         ],
         attrs: {
+          'aria-label': 'toolbar',
           role: 'toolbar'
         }
       }),
