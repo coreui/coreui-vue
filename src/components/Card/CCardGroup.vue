@@ -6,7 +6,7 @@ export default {
   props: {
     tag: String,
     deck:  Boolean,
-    columns: Boolean,
+    columns: Boolean
   },
   render (h, { props, data, children }) {
     return h(

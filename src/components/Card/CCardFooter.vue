@@ -2,17 +2,10 @@
 import { mergeData } from 'vue-functional-data-merge'
 import sharedCardProps from './sharedCardProps'
 
-export const props = Object.assign(
-  sharedCardProps,
-  {
-    footerHtml:  String,
-  }
-)
-
 export default {
   functional: true,
   name: 'CCardFooter',
-  props,
+  props: sharedCardProps,
   render (h, { props, data, children }) {
     return h(
       props.tag || 'footer',

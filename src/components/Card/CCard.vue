@@ -20,17 +20,17 @@ export default {
   props,
   render (h, { props, data, slots }) {
     let header = h(false)
-    let body = slots().default
+    let main = slots().default
     let footer = h(false)
 
     if (props.headerHtml) {
       header = h(CCardHeader, { domProps: { innerHTML: props.headerHtml }})
     }
 
-    if (body === undefined && props.bodyHtml) {
-      body = h(CCardBody, { domProps: { innerHTML: props.bodyHtml }})
+    if (main === undefined && props.bodyHtml) {
+      main = h(CCardBody, { domProps: { innerHTML: props.bodyHtml }})
     } else if (props.bodyWrapper) {
-      body = h(CCardBody, body)
+      main = h(CCardBody, main)
     }
 
     if (props.footerHtml) {
@@ -48,7 +48,7 @@ export default {
           [`text-${props.textVariant}`]: Boolean(props.textVariant)
         }
       }),
-      [ header, body, footer ]
+      [ header, main, footer ]
     )
   }
 }

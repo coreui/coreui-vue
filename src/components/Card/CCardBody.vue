@@ -2,61 +2,17 @@
 import { mergeData } from 'vue-functional-data-merge'
 import sharedCardProps from './sharedCardProps'
 
-export const props = Object.assign(
-  sharedCardProps,
-  {
-    titleHtml: String,
-    titleTag: {
-      type: String,
-      default: 'h4'
-    },
-    subtitleHtml: String,
-    subtitleTag: {
-      type: String,
-      default: 'h6'
-    },
-    bodyHtml: String,
-    overlay: Boolean,
-  }
-)
-
 export default {
   functional: true,
   name: 'CCardBody',
-  props,
+  props: sharedCardProps,
   render (h, { props, data, children }) {
-    let cardTitle = h(false)
-    let cardSubtitle = h(false)
-    let cardContent = children
-
-    if (props.titleHtml) {
-      cardTitle = h(props.titleTag, {
-        staticClass: 'card-title',
-        domProps: { innerHTML: props.titleHtml }
-      })
-    }
-
-    if (props.subtitleHtml) {
-      cardSubtitle = h(props.subtitleTag, {
-        staticClass: 'card-subtitle mb-2 text-muted',
-        domProps: { innerHTML: props.subtitleHtml }
-      })
-    }
-
-    if (props.bodyHtml && cardContent === undefined) {
-      cardContent = h(
-        props.tag || 'div',
-        { domProps: { innerHTML: props.bodyHtml}}
-      )
-    }
-
     return h(
       props.tag || 'div',
       mergeData(data, {
         staticClass: 'card-body',
         class: [
           {
-            'card-img-overlay': props.overlay,
             [`bg-${props.variant}`]: Boolean(props.variant),
             [`border-${props.borderVariant}`]: Boolean(props.borderVariant),
             [`text-${props.textVariant}`]: Boolean(props.textVariant),
@@ -64,7 +20,7 @@ export default {
           }
         ]
       }),
-      [ cardTitle, cardSubtitle, cardContent ]
+      [ children ]
     )
   }
 }
