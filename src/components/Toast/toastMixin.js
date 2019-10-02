@@ -13,7 +13,10 @@ export default {
     titleHtml: String,
     bodyHtml: String,
     noHeader: Boolean,
-    autohide: Number,
+    autohide: {
+      type: [Number, Boolean],
+      validator: val => typeof val === 'number' || val === false
+    },
     noCloseButton: Boolean,
     noFade: Boolean
   },
