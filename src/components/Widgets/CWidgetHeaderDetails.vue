@@ -1,5 +1,5 @@
 <template>
-  <div class="card" :class="`bg-${variant}`">
+  <div class="card" :class="`bg-${variant} text-white`">
     <div class="card-header">
       <div class="font-weight-bold">
         <span v-if="rightHeader">{{rightHeader}}</span>

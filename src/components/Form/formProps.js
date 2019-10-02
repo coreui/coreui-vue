@@ -35,7 +35,7 @@ const props = Object.assign({}, universalProps, {
 const textInputsProps = {
   readonly: Boolean,
   plaintext: Boolean,
-  value: String,
+  value: [String, Number],
   lazy: {
     type: [Boolean, Number],
     default: 400

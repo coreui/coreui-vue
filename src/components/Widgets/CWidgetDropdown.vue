@@ -1,5 +1,5 @@
 <template>
-  <div class="card" :class="`bg-${variant}`">
+  <div class="card" :class="`bg-${variant} text-white`">
     <slot name="header"></slot>
     <div class="card-body pb-0">
       <slot></slot>

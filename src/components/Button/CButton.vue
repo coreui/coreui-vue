@@ -90,7 +90,11 @@ export default {
       domProps,
       on
     }
-    return h(isButton ? 'button' : CLink , mergeData(data, componentData), children)
+    return h(
+      isButton ? 'button' : CLink, 
+      mergeData(data, componentData), 
+      children
+    )
   }
 }
 </script>

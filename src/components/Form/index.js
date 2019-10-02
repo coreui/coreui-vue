@@ -5,6 +5,7 @@ import CFormFile from './CFormFile'
 import CFormTextarea from './CFormTextarea'
 import CFormSelect from './CFormSelect'
 import CFormRadio from './CFormRadio'
+import CFormGroup from './CFormGroup'
 
 export {
   CForm,
@@ -13,5 +14,6 @@ export {
   CFormFile,
   CFormTextarea,
   CFormSelect,
-  CFormRadio
+  CFormRadio,
+  CFormGroup
 }
