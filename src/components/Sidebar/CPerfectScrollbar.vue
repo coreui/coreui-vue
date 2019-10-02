@@ -11,7 +11,7 @@ export default {
         return {}
       },
     },
-    swicher: {
+    switcher: {
       type: Boolean,
       default: true,
     },
@@ -22,7 +22,7 @@ export default {
   },
 
   watch: {
-    swicher (val) {
+    switcher (val) {
       if (!val) {
         this.__uninit()
       } else {
@@ -32,7 +32,7 @@ export default {
   },
 
   mounted () {
-    if (!this.$isServer && this.swicher) {
+    if (!this.$isServer && this.switcher) {
       this.__init()
     }
   },

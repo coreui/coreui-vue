@@ -3,7 +3,7 @@
     <VuePerfectScrollbar
       class="c-scroll-area"
       :settings="psSettings"
-      :swicher="!state.minimized"
+      :switcher="!state.minimized"
     >
       <ul class="c-nav">
         <slot></slot>
