@@ -72,26 +72,37 @@ export declare class CCard extends CardSharedClasses {
   bodyWrapper: boolean
 }
 
-export declare class CCardBody extends CardSharedClasses {
-  titleHtml: string
-  titleTag: string
-  subtitleHtml: string
-  subtitleTag: string
-  bodyHtml: string
-  overlay: boolean
+export declare class CCardBody extends CardSharedClasses {}
+
+export declare class CCardFooter extends CardSharedClasses {}
+
+export declare class CCardHeader extends CardSharedClasses {}
+
+export declare class CCardImg extends CImg { 
+  placement: string
 }
 
-export declare class CCardFooter extends CardSharedClasses {
-  footerHtml:  string
+export declare class CCardImgOverlay extends Vue {
+  tag: string
 }
 
-export declare class CCardHeader extends CardSharedClasses {
-  headerHtml: string
+export declare class CCardLink extends CLink {}
+
+export declare class CCardSubtitle extends Vue {
+  tag: string
+}
+
+export declare class CCardTitle extends Vue {
+  tag: string
+}
+
+export declare class CCardtext extends Vue {
+  tag: string
 }
 
 export declare class CCardGroup extends Vue {
   tag: string
-  deck:  boolean
+  deck: boolean
   columns: boolean
 }
 
