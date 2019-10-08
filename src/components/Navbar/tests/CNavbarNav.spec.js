@@ -5,10 +5,7 @@ const ComponentName = 'CNavbar'
 const defaultWrapper = mount(Component)
 const customWrapper = mount(Component, {
   propsData: {
-    fill: true,
-    justified: true,
-    pills: true,
-    vertical: true
+    tag: 'div'
   },
   slots: {
     default: 'CNavbar items'
@@ -22,7 +19,7 @@ describe(ComponentName, () => {
   it('renders correctly', () => {
     expect(defaultWrapper.element).toMatchSnapshot()
   })
-  it('renders correctly', () => {
+  it('renders correctly with content', () => {
     expect(customWrapper.element).toMatchSnapshot()
   })
 })

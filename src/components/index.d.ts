@@ -401,8 +401,6 @@ export declare class CNavbarBrand extends CLink {
 
 export declare class CNavbarNav extends Vue {
   tag: string
-  fill: boolean
-  justified: boolean
 }
 
 export declare class CNavbarToggle extends Vue {}

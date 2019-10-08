@@ -6,14 +6,12 @@ exports[`CNavbar renders correctly 1`] = `
 />
 `;
 
-exports[`CNavbar renders correctly 2`] = `
-<ul
-  class="navbar-nav nav-fill nav-justified"
-  pills="true"
-  vertical="true"
+exports[`CNavbar renders correctly with content 1`] = `
+<div
+  class="navbar-nav"
 >
   <template>
     CNavbar items
   </template>
-</ul>
+</div>
 `;

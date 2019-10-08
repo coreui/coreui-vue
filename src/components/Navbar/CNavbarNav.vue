@@ -7,19 +7,13 @@ export default {
     tag: {
       type: String,
       default: 'ul'
-    },
-    fill: Boolean,
-    justified: Boolean,
+    }
   },
   render (h, { props, data, children }) {
     return h(
       props.tag,
       mergeData(data, {
-        staticClass: 'navbar-nav',
-        class: {
-          'nav-fill': props.fill,
-          'nav-justified': props.justified
-        }
+        staticClass: 'navbar-nav'
       }),
       children
     )
