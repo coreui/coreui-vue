@@ -5,7 +5,7 @@ const ComponentName = 'CModal'
 const defaultWrapper = mount(Component)
 const customWrapper = mount(Component, {
   propsData: {
-    visible: true,
+    show: true,
     centered: true,
     title: 'modal title',
     size: 'lg',
@@ -37,11 +37,11 @@ describe(ComponentName, () => {
   it('hides on backdrop click', () => {
     const click = () => customWrapper.find('.modal').trigger('click')
     click()
-    expect(customWrapper.emitted().accepted).not.toBeTruthy()
+    expect(customWrapper.emitted().hide).not.toBeTruthy()
 
     customWrapper.setProps({ noCloseOnBackdrop: false })
     click()
-    expect(customWrapper.emitted().accepted).toBeTruthy()
+    expect(customWrapper.emitted().hide).toBeTruthy()
   })
   it('doesnt animate when noFade prop is set', () => {
     defaultWrapper.setProps({ noFade: true })
@@ -51,7 +51,7 @@ describe(ComponentName, () => {
   it('toggles visibility correctly', () => {
     jest.useFakeTimers()
 
-    customWrapper.setProps({ visible: false })
+    customWrapper.setProps({ show: false })
     expect(customWrapper.vm.isTransitioning).toBe(true)
     jest.runAllTimers()
 

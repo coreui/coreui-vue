@@ -369,7 +369,7 @@ export declare class CMedia extends Vue {
 }
 
 export declare class CModal extends Vue {
-  visible: boolean
+  show: boolean
   centered: boolean
   title: string
   size: string
@@ -571,7 +571,7 @@ export declare class CTabs extends Vue {
 }
 
 export declare class CTab extends Vue {
-  titleHtml: string, 
+  titleHtml: string 
   active: boolean
   disabled: boolean
 }

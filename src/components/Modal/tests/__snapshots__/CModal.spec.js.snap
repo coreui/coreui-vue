@@ -14,7 +14,7 @@ exports[`CModal renders correctly 1`] = `
       <div
         class="modal-content"
       >
-        <div
+        <header
           class="modal-header"
         >
           <h5
@@ -34,13 +34,13 @@ exports[`CModal renders correctly 1`] = `
               ×
             </span>
           </button>
-        </div>
+        </header>
          
         <div
           class="modal-body"
         />
          
-        <div
+        <footer
           class="modal-footer"
         >
           <button
@@ -48,8 +48,8 @@ exports[`CModal renders correctly 1`] = `
             type="button"
           >
             
-              Cancel
-            
+                Cancel
+              
           </button>
            
           <button
@@ -57,10 +57,10 @@ exports[`CModal renders correctly 1`] = `
             type="button"
           >
             
-              OK
-            
+                OK
+              
           </button>
-        </div>
+        </footer>
       </div>
     </div>
   </div>
@@ -83,7 +83,7 @@ exports[`CModal renders correctly 2`] = `
       <div
         class="additional-content-class modal-content border-success"
       >
-        <div
+        <header
           class="modal-header"
         >
           <h5
@@ -103,7 +103,7 @@ exports[`CModal renders correctly 2`] = `
               ×
             </span>
           </button>
-        </div>
+        </header>
          
         <div
           class="modal-body"

@@ -8,8 +8,10 @@
     >
       <div :class="dialogClasses" role="document">
         <div :class="contentClasses">
-          <div v-if="!noHeader" class="modal-header" >
-            <slot name="header" :hide="hide">
+          <slot v-if="!noHeader" name="header-wrapper"
+          >
+            <header  class="modal-header">
+              <slot name="header">
                 <h5 class="modal-title">
                   {{title}}
                 </h5>
@@ -17,37 +19,43 @@
                   type="button"
                   class="close"
                   aria-label="Close"
-                  @click="hide()"
+                  @click="hide($event)"
                 >
                   <span>&times;</span>
                 </button>
-            </slot>
-          </div>
-          <div v-if="!noBody" class="modal-body">
-            <slot :hide="hide"></slot>
-          </div>
-          <div v-if="!noFooter" class="modal-footer">
-            <slot name="footer" :hide="hide">
-              <button
-                type="button"
-                class="btn btn-secondary" @click="hide()"
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                :class="btnClasses"
-                @click="hide(true)"
-              >
-                OK
-              </button>
-            </slot>
-          </div>
+              </slot>
+            </header>
+          </slot>
+          <slot v-if="!noBody" name="body-wrapper">
+            <div class="modal-body">
+              <slot></slot>
+            </div>
+          </slot>
+          <slot v-if="!noFooter" name="footer-wrapper">
+            <footer class="modal-footer">
+              <slot name="footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary" 
+                  @click="hide($event)"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  :class="btnClasses"
+                  @click="hide($event)"
+                >
+                  OK
+                </button>
+              </slot>
+            </footer>
+          </slot>
         </div>
       </div>
     </div>
     <div
-      v-if="!noBackdrop && (isVisible || isTransitioning)"
+      v-if="!noBackdrop && (visible || isTransitioning)"
       :class="backdropClasses"
     >
     </div>
@@ -58,7 +66,7 @@
 export default {
   name: 'CModal',
   props: {
-    visible: Boolean,
+    show: Boolean,
     centered: Boolean,
     title: String,
     size: {
@@ -79,7 +87,7 @@ export default {
   },
   data () {
     return {
-      isVisible: this.visible,
+      visible: this.show,
       isTransitioning: false,
       timeout: null,
     }
@@ -89,7 +97,7 @@ export default {
       return {
         'modal-backdrop': true,
         'fade': !this.noFade,
-        'show': this.isVisible || this.noFade
+        'show': this.visible || this.noFade
       }
     },
     modalClasses () {
@@ -99,8 +107,8 @@ export default {
         {
           // 'close-modal': !this.noCloseOnBackdrop,
           'fade': !this.noFade,
-          'show': this.isVisible,
-          'd-block': this.isVisible || this.isTransitioning,
+          'show': this.visible,
+          'd-block': this.visible || this.isTransitioning,
           [`modal-${this.variant}`]: Boolean(this.variant)
         }
       ]
@@ -129,22 +137,22 @@ export default {
     }
   },
   watch: {
-    visible (val) {
+    show (val) {
       this.toggle(val)
     }
   },
   methods: {
     modalClick (e) {
       if (e.target === this.$el.firstElementChild && !this.noCloseOnBackdrop) {
-        this.hide()
+        this.hide(e)
       }
     },
-    hide (accepted = false) {
-      this.$emit('update:visible', false)
-      this.$emit('accepted', accepted)
+    hide (e) {
+      this.$emit('update:show', false)
+      this.$emit('hide', e)
     },
     toggle (newVal) {
-      setTimeout(() => { this.isVisible = newVal }, 0)
+      setTimeout(() => { this.visible = newVal }, 0)
       if (!this.noFade) {
         this.isTransitioning = true
         clearTimeout(this.timeout)
