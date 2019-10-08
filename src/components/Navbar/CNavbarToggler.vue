@@ -1,18 +1,20 @@
 <script>
 import { mergeData } from 'vue-functional-data-merge'
-//todo animation to x
 export default {
-  name: 'CNavbarToggle',
+  name: 'CNavbarToggler',
   functional: true,
-  render (h, {data, slots}) {
+  props: {
+    tag: String
+  },
+  render (h, { data, props, slots }) {
     return h(
-      'button',
-      mergeData(data, {
-        class: [ 'navbar-toggler' ],
+      props.tag || 'button',
+      mergeData({
+        class: 'navbar-toggler',
         attrs: {
           type: 'button',
         }
-      }),
+      }, data),
       [ slots().default || h('span', { class: ['navbar-toggler-icon'] })]
     )
   }

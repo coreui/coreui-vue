@@ -414,7 +414,9 @@ export declare class CNavbarNav extends Vue {
   tag: string
 }
 
-export declare class CNavbarToggle extends Vue {}
+export declare class CNavbarToggler extends Vue {
+  tag: string
+}
 
 export declare class CPagination extends Vue {
   activePage: number

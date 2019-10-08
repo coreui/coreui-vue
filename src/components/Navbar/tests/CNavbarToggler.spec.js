@@ -1,14 +1,14 @@
 import { mount } from '@vue/test-utils'
-import Component from '../CNavbarToggle'
+import Component from '../CNavbarToggler'
 
-const ComponentName = 'CNavbar'
+const ComponentName = 'CNavbarToggler'
 const defaultWrapper = mount(Component)
 const customWrapper = mount(Component, {
-  propsData: {
-    fill: true,
-    justified: true,
-    pills: true,
-    vertical: true
+  props: {
+    tag: 'div'
+  },
+  attrs: {
+    type: 'submit'
   },
   slots: {
     default: 'CNavbar items'
@@ -17,7 +17,7 @@ const customWrapper = mount(Component, {
 
 describe(ComponentName, () => {
   it('has a name', () => {
-    expect(Component.name).toMatch(ComponentName)
+    expect(Component.name).toBe(ComponentName)
   })
   it('renders correctly', () => {
     expect(defaultWrapper.element).toMatchSnapshot()

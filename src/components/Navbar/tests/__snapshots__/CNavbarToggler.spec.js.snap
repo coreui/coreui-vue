@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CNavbar renders correctly 1`] = `
+exports[`CNavbarToggler renders correctly 1`] = `
 <button
   class="navbar-toggler"
   type="button"
@@ -11,14 +11,10 @@ exports[`CNavbar renders correctly 1`] = `
 </button>
 `;
 
-exports[`CNavbar renders correctly 2`] = `
+exports[`CNavbarToggler renders correctly 2`] = `
 <button
   class="navbar-toggler"
-  fill="true"
-  justified="true"
-  pills="true"
-  type="button"
-  vertical="true"
+  type="submit"
 >
   CNavbar items
 </button>
