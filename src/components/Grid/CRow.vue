@@ -2,12 +2,13 @@
 import { mergeData } from 'vue-functional-data-merge'
 
 const props = {
+  tag: String,
   noGutters: Boolean,
-  alignV: {
+  alignVertical: {
     type: String,
     validator: str => ['', 'start', 'end', 'center','baseline', 'stretch'].includes(str)
   },
-  alignH: {
+  alignHorizontal: {
     type: String,
     validator: str => ['', 'start', 'end', 'center','between', 'around'].includes(str)
   }
@@ -19,13 +20,13 @@ export default {
   props,
   render (h, { props, data, children }) {
     return h(
-      'div',
+      props.tag || 'div',
       mergeData(data, {
         staticClass: 'row',
         class: {
           'no-gutters': props.noGutters,
-          [`align-items-${props.alignV}`]: props.alignV,
-          [`justify-content-${props.alignH}`]: props.alignH,
+          [`align-items-${props.alignVertical}`]: props.alignVertical,
+          [`justify-content-${props.alignHorizontal}`]: props.alignHorizontal,
         }
       }),
       children

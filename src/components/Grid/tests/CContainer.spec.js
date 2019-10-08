@@ -6,6 +6,7 @@ const defaultWrapper = mount(Component)
 const customWrapper = mount(Component, {
   propsData: {
     fluid: true,
+    tag: 'header'
   },
   slots: {
     default: 'CContainer content'

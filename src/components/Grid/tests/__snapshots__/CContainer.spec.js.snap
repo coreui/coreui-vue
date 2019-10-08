@@ -7,11 +7,11 @@ exports[`CContainer renders correctly 1`] = `
 `;
 
 exports[`CContainer renders correctly 2`] = `
-<div
+<header
   class="container-fluid"
 >
   <template>
     CContainer content
   </template>
-</div>
+</header>
 `;

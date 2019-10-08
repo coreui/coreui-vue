@@ -284,12 +284,14 @@ export declare class CCol extends Vue {
 
 export declare class CContainer extends Vue {
   fluid: boolean
+  tag: string
 }
 
 export declare class CRow extends Vue {
+  tag: string
   noGutters: boolean
-  alignV: string
-  alignH: string
+  alignVertical: string
+  alignHorizontal: string
 }
 
 export declare class CHeader extends Vue {

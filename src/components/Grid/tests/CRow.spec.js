@@ -5,9 +5,10 @@ const ComponentName = 'CRow'
 const defaultWrapper = mount(Component)
 const customWrapper = mount(Component, {
   propsData: {
+    tag: 'header',
     noGutters: true,
-    alignV: 'center',
-    alignH: 'start'
+    alignVertical: 'center',
+    alignHorizontal: 'start'
   },
   slots: {
     default: 'CRow content'

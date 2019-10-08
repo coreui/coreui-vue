@@ -7,11 +7,11 @@ exports[`CRow renders correctly 1`] = `
 `;
 
 exports[`CRow renders correctly 2`] = `
-<div
+<header
   class="row no-gutters align-items-center justify-content-start"
 >
   <template>
     CRow content
   </template>
-</div>
+</header>
 `;
