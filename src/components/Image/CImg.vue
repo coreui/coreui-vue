@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'CImage',
+  name: 'CImg',
   props: {
     src: String,
     alt: String,
@@ -54,7 +54,7 @@ export default {
   },
   computed: {
     isActive () {
-      //active prop is present in CImageLazy component, here always undefined
+      //active prop is present in CImgLazy component, here always undefined
       return this.active !== false
     },
     alignClass () {
@@ -69,7 +69,7 @@ export default {
     },
     imageClasses () {
       return [
-        //animationClass is rendered in CImageLazy
+        //animationClass is rendered in CImgLazy
         this.animationClasses,
         this.alignClass,
         {

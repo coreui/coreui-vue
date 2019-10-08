@@ -289,7 +289,7 @@ export declare class CHeader extends Vue {
   fixed: boolean
 }
 
-export declare class CImage extends Vue {
+export declare class CImg extends Vue {
   src: string
   alt: string
   width: [number, string]
@@ -303,7 +303,7 @@ export declare class CImage extends Vue {
   blankColor: string
 }
 
-export declare class CImageLazy extends CImage {
+export declare class CImgLazy extends CImg {
   loadInitially: boolean
   loadOffset: number
   noFade: boolean

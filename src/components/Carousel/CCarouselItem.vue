@@ -1,6 +1,6 @@
 <template>
   <div :class="itemClasses">
-    <CImage
+    <CImg
       v-if="image" 
       v-bind="computedImage"
       class="d-block w-100 h-100 img-fluid"
@@ -18,11 +18,11 @@
 </template>
 
 <script>
-import CImage from '../Image/CImage'
+import CImg from '../Image/CImg'
 export default {
   name: 'CCarouselItem',
   components: {
-    CImage
+    CImg
   },
   props: {
     image: [String, Object],

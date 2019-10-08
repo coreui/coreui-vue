@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Component from '../CImageLazy'
+import Component from '../CImgLazy'
 
 global.IntersectionObserver = class IntersectionObserver {
   constructor() {}
@@ -11,7 +11,7 @@ global.IntersectionObserver = class IntersectionObserver {
   }
 };
 
-const ComponentName = 'CImageLazy'
+const ComponentName = 'CImgLazy'
 const defaultWrapper = mount(Component)
 const customWrapper = mount(Component, {
   propsData: {

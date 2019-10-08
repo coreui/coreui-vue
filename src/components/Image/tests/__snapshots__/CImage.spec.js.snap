@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CImage renders correctly 1`] = `
+exports[`CImg renders correctly 1`] = `
 <svg
   class=""
   style="background-color: transparent;"
 />
 `;
 
-exports[`CImage renders correctly 2`] = `
+exports[`CImg renders correctly 2`] = `
 <img
   alt="image"
   class="float-right img-fluid w-100 rounded-right d-block"

@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
-import Component from '../CImage'
+import Component from '../CImg'
 
-const ComponentName = 'CImage'
+const ComponentName = 'CImg'
 const defaultWrapper = mount(Component)
 const customWrapper = mount(Component, {
   propsData: {

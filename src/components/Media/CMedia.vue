@@ -2,7 +2,7 @@
   <div :class="mediaClasses">
     <div :class="asideClasses">
       <slot name="aside">
-        <CImage v-bind="computedAsideImageProps"/>
+        <CImg v-bind="computedAsideImageProps"/>
       </slot>
     </div>
     <div :class="mediaBodyClasses">
@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import CImage from '../Image/CImage'
+import CImg from '../Image/CImg'
 export default {
   name: 'CMedia',
   components: {
-    CImage
+    CImg
   },
   props: {
     asidePositionClasses: [String, Array, Object],

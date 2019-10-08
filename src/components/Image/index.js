@@ -1,7 +1,7 @@
-import CImage from './CImage'
-import CImageLazy from './CImageLazy'
+import CImg from './CImg'
+import CImgLazy from './CImgLazy'
 
 export {
-  CImage,
-  CImageLazy
+  CImg,
+  CImgLazy
 }

@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CImageLazy renders correctly 1`] = `
+exports[`CImgLazy renders correctly 1`] = `
 <svg
   class="opacity-0"
   style="background-color: transparent;"
 />
 `;
 
-exports[`CImageLazy renders correctly 2`] = `
+exports[`CImgLazy renders correctly 2`] = `
 <svg
   class="opacity-0 float-right img-fluid w-100 rounded-right d-block"
   height="200"

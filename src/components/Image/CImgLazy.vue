@@ -1,8 +1,8 @@
 <script>
-import CImage from './CImage'
+import CImg from './CImg'
 export default {
-  name: 'CImageLazy',
-  extends: CImage,
+  name: 'CImgLazy',
+  extends: CImg,
   props: {
     loadInitially: Boolean,
     loadOffset: {
