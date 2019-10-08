@@ -29,7 +29,7 @@ const customWrapper = mount(Component, {
     show: true,
     addMenuClasses: 'additional-menu-class',
     addTogglerClasses: 'additional-toggler-class',
-    nav: false,
+    inNav: false,
     noCaret: true,
     variant: 'success',
     size: 'lg',
@@ -48,7 +48,7 @@ const navWrapper = mount(Component, {
     togglerText: 'Dropdown button',
     addMenuClasses: 'additional-menu-class',
     addTogglerClasses: 'additional-toggler-class',
-    nav: true,
+    inNav: true,
     noCaret: true,
     variant: 'success',
     offset: 20,
@@ -71,7 +71,7 @@ describe(ComponentName, () => {
   it('renders custom wrapper correctly', () => {
     expect(customWrapper.element).toMatchSnapshot()
   })
-  it('renders correctly in nav mode', () => {
+  it('renders correctly inNav', () => {
     expect(navWrapper.element).toMatchSnapshot()
   })
   it('properly toggle dropdown', () => {

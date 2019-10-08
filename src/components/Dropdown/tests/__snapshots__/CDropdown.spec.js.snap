@@ -20,7 +20,7 @@ exports[`CDropdown renders correctly 1`] = `
 </div>
 `;
 
-exports[`CDropdown renders correctly in nav mode 1`] = `
+exports[`CDropdown renders correctly inNav 1`] = `
 <li
   class="dropleft nav-item"
 >

@@ -136,7 +136,7 @@ export declare class CDropdown extends Vue {
   disabled: boolean
   addMenuClasses: [string, Array<any>, object]
   addTogglerClasses: [string, Array<any>, object]
-  nav: boolean
+  inNav: boolean
   noCaret: boolean
   variant: string
   size: string

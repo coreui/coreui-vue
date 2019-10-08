@@ -1,6 +1,6 @@
 <template>
   <component 
-    :is="nav ? 'li' : 'div'" 
+    :is="inNav ? 'li' : 'div'" 
     :class="computedDropdownClasses"
     v-on-clickaway="hide"
   >
@@ -21,7 +21,10 @@
         v-bind="togglerAttrs"
       />
     </slot>
-     <div ref="menu" :class="computedMenuClasses">
+    <div 
+      ref="menu"
+      :class="computedMenuClasses"
+    >
       <slot></slot>
     </div>
   </component>
@@ -45,7 +48,7 @@ export default {
     disabled: Boolean,
     addMenuClasses: [String, Array, Object],
     addTogglerClasses: [String, Array, Object],
-    nav: Boolean,
+    inNav: Boolean,
     noCaret: Boolean,
     variant: String,
     size: {
@@ -148,29 +151,29 @@ export default {
         this.carretClass,
         {
           'show': this.visible,
-          'nav-item': this.nav,
+          'nav-item': this.inNav,
           'btn-group': this.splittedToggler
         }
       ]
     },
 
     togglerTag () {
-      return this.nav ? CLink : 'button'
+      return this.inNav ? CLink : 'button'
     },
 
     splittedToggler () {
-      return this.split && !this.nav
+      return this.split && !this.inNav
     },
 
     computedTogglerClasses () {
       return [
         this.addTogglerClasses,
-        this.nav ? 'nav-link' : 'btn',
+        this.inNav ? 'nav-link' : 'btn',
         {
           'dropdown-toggle': !this.noCaret && !this.split,
-          [`btn-${this.size}`]: this.size && !this.nav,
+          [`btn-${this.size}`]: this.size && !this.inNav,
           'disabled' : this.disabled,
-          [`${ this.nav ? 'bg' : 'btn'}-${ this.variant }`]: this.variant
+          [`${ this.inNav ? 'bg' : 'btn'}-${ this.variant }`]: this.variant
         }
       ]
     },
