@@ -10,7 +10,7 @@ const customWrapper = mount(Component, {
     pills: true,
     vertical: true,
     fixed: 'top',
-    toggleable: true,
+    expandable: true,
     light: true,
     tag: 'div'
   },

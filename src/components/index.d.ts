@@ -400,7 +400,7 @@ export declare class CNavbar extends Vue {
   tag: string
   light: boolean
   variant: string
-  toggleable: [boolean, string]
+  expandable: [boolean, string]
   fixed: string
   sticky: boolean
   print: boolean

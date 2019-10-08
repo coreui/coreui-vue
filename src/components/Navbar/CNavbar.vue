@@ -8,10 +8,9 @@ export const props = {
   },
   light: Boolean,
   variant: String,
-  toggleable: {
+  expandable: {
     type: [Boolean, String],
-    default: false,
-    validator: val => ['', false, true, 'sm', 'md', 'lg', 'xl'].includes(val)
+    default: false
   },
   fixed: {
     type: String,
@@ -26,7 +25,7 @@ export default {
   functional: true,
   props,
   render (h, { props, data, children }) {
-    const expandClassSuffix = props.toggleable === true ? '' : props.toggleable
+    const expandClassSuffix = props.expandable === true ? '' : `-${props.expandable}`
     return h(
       props.tag,
       mergeData(data, {
@@ -38,7 +37,7 @@ export default {
             'sticky-top': props.sticky,
             [`bg-${props.variant}`]: Boolean(props.variant),
             [`fixed-${props.fixed}`]: Boolean(props.fixed),
-            [`navbar-expand-${expandClassSuffix}`]: Boolean(props.toggleable)
+            [`navbar-expand${expandClassSuffix}`]: Boolean(props.expandable)
           }
         ],
         attrs: {

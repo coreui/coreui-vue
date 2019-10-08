@@ -8,7 +8,7 @@ exports[`CNavbar renders correctly 1`] = `
 
 exports[`CNavbar renders correctly 2`] = `
 <div
-  class="navbar navbar-light fixed-top navbar-expand-"
+  class="navbar navbar-light fixed-top navbar-expand"
   fill="true"
   justified="true"
   pills="true"
