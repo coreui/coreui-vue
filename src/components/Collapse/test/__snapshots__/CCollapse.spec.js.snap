@@ -11,6 +11,7 @@ exports[`CCollapse renders correctly 2`] = `
 <div
   class="navbar-collapse"
   style="display: none;"
+  toggler="some_id"
 >
   CCollapse content
 </div>

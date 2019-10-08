@@ -15,8 +15,7 @@ const props = {
     default: 'ease-in-out'
   },
   show: Boolean,
-  navbar: Boolean,
-  toggler: String
+  navbar: Boolean
 }
 
 export default {
@@ -40,23 +39,11 @@ export default {
   },
   mounted () {
     this.$el.style.display = this.visible ?  '' : 'none'
-    this.$nextTick(() => {
-      this.el = document.getElementById(this.toggler)
-      if (this.el) {
-        this.el.addEventListener('click', this.collapse)
-      }
-    })
   },
   beforeDestroy () {
-    if (this.el) {
-      this.el.removeEventListener('click', this.collapse)
-    }
     clearTimeout(this.heightWatcher)
   },
   methods: {
-    collapse () {
-      this.visible = !this.visible
-    },
     collapseController (val) {
       if (this.collapsing === false) {
         val ? this.toggle(true) : this.toggle(false)

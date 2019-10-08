@@ -117,7 +117,6 @@ export declare class CCollapse extends Vue {
   transition: string
   show: boolean
   navbar: boolean
-  toggler: string
 }
 
 export declare class CDropdown extends Vue {

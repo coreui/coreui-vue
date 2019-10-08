@@ -21,24 +21,12 @@ const togglerWrapper = mount(CCollapse, {
   propsData: {
     duration: 500,
     show: true,
-    navbar: true,
-    toggler: 'toggler_id'
+    navbar: true
   },
   slots: {
-    default: '<button id="toggler_id">button</button>'
+    default: 'Collapse content'
   }
 })
-// const App = Vue.extend({
-//   components: { CCollapse },
-//   render (h) {
-//     return h('div', {}, [
-//       h('CCollapse', { props: { toggler: 'toggler_id' }}, ['content']),
-//       h('button', { attrs: { id: 'toggler_id' }}, ['button']),
-//     ])
-//   }
-// })
-
-// const togglerWrapper = mount(App)
 
 describe(ComponentName, () => {
   it('has a name', () => {
@@ -75,15 +63,6 @@ describe(ComponentName, () => {
       expect(customWrapper.vm.collapsing).toBe(false)
     }, 700)
     jest.runAllTimers()
-  })
-  it('toggle on toggler click', () => {
-    togglerWrapper.find('button').trigger('click')
-    expect(togglerWrapper.vm.visible).toBe(false)
-  })
-  it('removes toggler event listener on destroy', () => {
-    const spy = jest.spyOn(togglerWrapper.vm.el, 'removeEventListener')
-    togglerWrapper.destroy()
-    expect(spy).toBeCalled()
   })
   it('destroy with no errors', () => {
     try {
