@@ -441,7 +441,7 @@ export declare class CProgress extends Vue {
   striped: boolean
   animated: boolean
   precision: number
-  showProgress: boolean
+  showPercentage: boolean
   showValue: boolean
   max: number
   value: number

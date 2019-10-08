@@ -59,8 +59,8 @@ export default {
       return this.props.value.toFixed(props.precision)
     },
     text () {
-      if (this.props.showProgress) {
-        return this.progressValue
+      if (this.props.showPercentage) {
+        return this.progressValue + '%'
       } else if (this.props.showValue) {
         return this.computedValue
       }  

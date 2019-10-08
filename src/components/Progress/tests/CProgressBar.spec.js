@@ -28,10 +28,8 @@ describe(ComponentName, () => {
     expect(customWrapper.element).toMatchSnapshot()
   })
   it('renders progress correctly', () => {
-    // expect(customWrapper.vm.text).toBe(50)
-
-    customWrapper.setProps({ showProgress: true })
-    // console.log(customWrapper.vm.progressValue, customWrapper.vm.props)
-    expect(customWrapper.vm.text).toBe(25)
+    expect(customWrapper.vm.text).toBe('50')
+    customWrapper.setProps({ showPercentage: true })
+    expect(customWrapper.vm.text).toBe('25%')
   })
 })

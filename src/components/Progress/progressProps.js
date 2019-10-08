@@ -8,7 +8,7 @@ export default {
     type: Number,
     default: 0
   },
-  showProgress: Boolean,
+  showPercentage: Boolean,
   showValue: Boolean,
   max: {
     type: Number,
