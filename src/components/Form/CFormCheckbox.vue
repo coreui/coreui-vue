@@ -64,16 +64,7 @@ export default {
     //   default: undefined
     // },
     // custom: Boolean,
-    // inline: Boolean,
-    
-    // trueValue: {
-    //   type: [String, Number],
-    //   default: undefined
-    // },
-    // falseValue: {
-    //   type: [String, Number],
-    //   default: undefined
-    // },
+    // inline: Boolean
   // },
   type: 'checkbox',
   data () {
@@ -134,11 +125,7 @@ export default {
   },
   methods: {
     getCheckState () {
-      if (typeof this.checked === 'boolean') {
-        return this.checked
-      } else {
-        return this.checked === this.trueValue ? true : false
-      }
+      return this.checked
     },
 
     onChange (e) {
@@ -147,11 +134,7 @@ export default {
     },
 
     getValue (e) {
-      if (e.target.checked) {
-        return this.trueValue !== undefined ? this.trueValue : true
-      } else {
-        return this.falseValue !== undefined ? this.falseValue : false
-      }
+      return e.target.checked
     }
 
   },

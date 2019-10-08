@@ -3,10 +3,10 @@
     <input
       v-bind="$attrs"
       :type="type"
-      :checked="isChecked"
+      :checked="state"
       :value="value"
       class="c-switch-input form-check-input"
-      @change="toggle"
+      @change="onChange"
     >
     <span
       :data-checked="labelOn"
@@ -36,16 +36,11 @@ export default {
       type: String,
       validator: value => ['','3d', 'pill'].includes(value)
     },
-    checked: {
-      type: [Boolean, String, Number],
-      default: false
-    },
+    checked: Boolean,
     value: {
       type: [String, Number, Boolean],
       default: undefined
     },
-    trueValue: [String, Number],
-    falseValue: [String, Number],
     labelOn: String,
     labelOff: String,
     type: {
@@ -56,14 +51,14 @@ export default {
   },
   data () {
     return {
-      isChecked: undefined
+      state: undefined
     }
   },
   watch: {
     checked: {
       immediate: true,
       handler () {
-        this.isChecked = this.getCheckState()
+        this.state = this.getCheckState()
       }
     }
   },
@@ -86,24 +81,16 @@ export default {
     getCheckState () {
       if (this.type === 'radio') {
         return this.checked === this.value
-      } else if (typeof this.checked === 'boolean') {
-        return this.checked
       } else {
-        return this.checked === this.trueValue ? true : false
+        return this.checked
       }
     },
-    toggle (event) {
-      this.isChecked = event.target.checked
+    onChange (event) {
+      this.state = event.target.checked
       this.$emit('update:checked', this.getValue(event.target.checked), event)
     },
     getValue (checked) {
-      if (this.type === 'radio') {
-        return this.value
-      } else if (checked) {
-        return this.trueValue !== undefined ? this.trueValue : true
-      } else {
-        return this.falseValue !== undefined ? this.falseValue : false
-      }
+      return this.type === 'radio' ? this.value : checked
     }
   }
 }

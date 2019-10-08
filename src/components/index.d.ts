@@ -175,11 +175,6 @@ declare class formSharedProps extends Vue {
   description: string
 }
 
-export declare class CFormCheckbox extends CFormRadio {
-  trueValue: [string, number]
-  falseValue: [string, number]
-}
-
 export declare class CFormFile extends formSharedProps {
   label: string
   wasValidated: boolean
@@ -232,10 +227,12 @@ export declare class CFormRadio extends formSharedProps {
 
   checked: [boolean, string, number]
   value: [string, number, boolean]
-  trueValue: [string, number]
-  falseValue: [string, number]
   custom: boolean
   inline: boolean
+}
+
+export declare class CFormCheckbox extends CFormRadio {
+  checked: boolean
 }
 
 export declare class CFormSelect extends formSharedProps {
@@ -523,10 +520,8 @@ export declare class CSwitch extends Vue {
   outline: [boolean, string]
   size: string
   shape: string
-  checked: [boolean, string, number]
+  checked: boolean
   value: [string, number, boolean]
-  trueValue: [string, number]
-  falseValue: [string, number]
   labelOn: string
   labelOff: string
   type: string
