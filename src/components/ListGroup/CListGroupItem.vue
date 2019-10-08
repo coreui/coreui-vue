@@ -7,7 +7,7 @@ const props = Object.assign(
   {
     tag: {
       type: String,
-      default: 'div'
+      default: 'li'
     },
     action: Boolean,
     variant: String

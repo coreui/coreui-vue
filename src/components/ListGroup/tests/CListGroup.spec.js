@@ -2,7 +2,12 @@ import { mount } from '@vue/test-utils'
 import Component from '../CListGroup'
 
 const ComponentName = 'CListGroup'
-const defaultWrapper = mount(Component)
+const wrapper = mount(Component, {
+  propsData: {
+    horizontal: 'sm'
+  }
+})
+
 const customWrapper = mount(Component, {
   propsData: {
     flush: true
@@ -17,9 +22,9 @@ describe(ComponentName, () => {
     expect(Component.name).toMatch(ComponentName)
   })
   it('renders correctly', () => {
-    expect(defaultWrapper.element).toMatchSnapshot()
+    expect(wrapper.element).toMatchSnapshot()
   })
-  it('renders correctly', () => {
+  it('renders correctly with flush option', () => {
     expect(customWrapper.element).toMatchSnapshot()
   })
 })

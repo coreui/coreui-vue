@@ -7,14 +7,23 @@ export default {
   props: {
     tag: {
       type: String,
-      default: 'div'
+      default: 'ul'
     },
     flush: Boolean,
+    horizontal: [Boolean, String]
   },
   render (h, { props, data, children }) {
+    const hor = props.horizontal
+    const horizontalClassSuffix = typeof hor === 'string' ? `-${hor}` : ''
     const componentData = {
       staticClass: 'list-group',
-      class: { 'list-group-flush': props.flush }
+      class: { 
+        'list-group-flush': !hor && props.flush,
+        [`list-group-horizontal${horizontalClassSuffix}`]: hor,
+      },
+      attrs: {
+        role: data.attrs ? data.attrs.role || 'list-items' : 'list-items'
+      }
     }
     return h(props.tag, mergeData(data, componentData), children)
   }

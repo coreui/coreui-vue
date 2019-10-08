@@ -350,6 +350,7 @@ export declare class CLink extends Vue {
 export declare class CListGroup extends Vue {
   tag: string
   flush: boolean
+  horizontal: [string, boolean]
 }
 
 export declare class CListGroupitem extends CLink {
