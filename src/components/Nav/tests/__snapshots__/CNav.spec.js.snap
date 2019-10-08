@@ -10,7 +10,7 @@ exports[`CNav renders correctly 1`] = `
 
 exports[`CNav renders correctly 2`] = `
 <ul
-  class="nav nav-pills flex-column nav-fill nav-justified"
+  class="nav nav-pills flex-column nav-fill nav-justified card-header-pills"
 >
   <li
     class="nav-item"

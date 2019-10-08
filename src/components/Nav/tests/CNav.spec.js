@@ -22,7 +22,8 @@ const customWrapper = mount(Component, {
     fill: true,
     justified: true,
     pills: true,
-    vertical: true
+    vertical: true,
+    inCard: true
   },
   slots: {
     default: [CNavItem, CNavItem, CNavItem, CNavItem]

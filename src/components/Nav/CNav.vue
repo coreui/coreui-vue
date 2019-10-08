@@ -12,17 +12,21 @@ export default {
     justified: Boolean,
     tabs: Boolean,
     pills: Boolean,
-    vertical: Boolean
+    vertical: Boolean,
+    inCard: Boolean
   },
   computed: {
     navClasses () {
+      const hasTabs = this.tabs && !this.pills
       return {
         'nav' : true,
-        'nav-tabs': this.tabs && !this.pills,
+        'nav-tabs': hasTabs,
         'nav-pills': this.pills,
         'flex-column': this.vertical,
         'nav-fill': this.fill,
-        'nav-justified': this.justified
+        'nav-justified': this.justified,
+        'card-header-tabs': this.inCard && hasTabs,
+        'card-header-pills': this.inCard && this.pills
       }
     }
   },

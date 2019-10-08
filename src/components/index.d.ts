@@ -392,6 +392,7 @@ export declare class CNav extends Vue {
   tabs: boolean
   pills: boolean
   vertical: boolean
+  inCard: boolean
 }
 
 export declare class CNavItem extends CLink {}
