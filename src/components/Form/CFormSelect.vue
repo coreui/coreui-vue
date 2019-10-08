@@ -28,6 +28,8 @@
           <option
             v-if="typeof option === 'object'"
             :value="option.value"
+            :class="option.class"
+            v-bind="option.attrs"
             :disabled="option.disabled"
             :data-key="key"
             :key="key"
