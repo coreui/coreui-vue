@@ -8,7 +8,7 @@ import Vue from 'vue'
 const ComponentName = 'CPerfectScrollbar'
 const wrapper = mount(Component, {
   propsData: {
-    swicher: false
+    switcher: false
   }
 })
 
@@ -50,7 +50,7 @@ describe(`${ComponentName} .vue`, () => {
     expect(typeof errors).toBe('undefined')
   })
   it('do not initialize new instance when one is already set', () => {
-    wrapper.setProps({ swicher: true })
+    wrapper.setProps({ switcher: true })
     const spy = jest.spyOn(wrapper.vm, '__createPerfectScrollbar')
     wrapper.vm.__init()
     expect(spy).not.toBeCalled()
@@ -58,7 +58,7 @@ describe(`${ComponentName} .vue`, () => {
   it('calls __uninit function on switch to false', () => {
     const spy = jest.spyOn(wrapper.vm, '__uninit')
     expect(spy).not.toBeCalled()
-    wrapper.setProps({ swicher: false })
+    wrapper.setProps({ switcher: false })
     expect(spy).toBeCalled()
   })
   it('calls __uninit function before destroy', () => {

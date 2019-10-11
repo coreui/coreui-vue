@@ -2,6 +2,7 @@
 
 exports[`CButtonToolbar renders correctly 1`] = `
 <div
+  aria-label="toolbar"
   class="btn-toolbar"
   role="toolbar"
 />
@@ -9,6 +10,7 @@ exports[`CButtonToolbar renders correctly 1`] = `
 
 exports[`CButtonToolbar renders correctly 2`] = `
 <div
+  aria-label="toolbar"
   class="btn-toolbar justify-content-between"
   role="toolbar"
 >

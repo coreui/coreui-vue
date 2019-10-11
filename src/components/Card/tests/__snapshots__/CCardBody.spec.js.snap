@@ -3,19 +3,5 @@
 exports[`CCardBody renders correctly 1`] = `
 <div
   class="card-body bg-primary border-solid text-white text-left"
->
-  <h4
-    class="card-title"
-  >
-    title
-  </h4>
-  <h6
-    class="card-subtitle mb-2 text-muted"
-  >
-    subtitle
-  </h6>
-  <div>
-    body content
-  </div>
-</div>
+/>
 `;

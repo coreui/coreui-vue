@@ -2,7 +2,7 @@
 
 exports[`CWidgetHeaderDetails matches custom props snapshot 1`] = `
 <div
-  class="card bg-info"
+  class="card bg-info text-white"
 >
   <div
     class="card-header"
@@ -43,7 +43,7 @@ exports[`CWidgetHeaderDetails matches custom props snapshot 1`] = `
 
 exports[`CWidgetHeaderDetails matches default props snapshot 1`] = `
 <div
-  class="card bg-undefined"
+  class="card bg-undefined text-white"
 >
   <div
     class="card-header"

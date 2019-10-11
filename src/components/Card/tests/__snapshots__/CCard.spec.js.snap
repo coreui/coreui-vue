@@ -30,8 +30,6 @@ exports[`CCard renders correctly with slots 1`] = `
   <div
     class="card-body"
   >
-    <!---->
-    <!---->
     this should be rendered in body wrapper
   </div>
   <!---->

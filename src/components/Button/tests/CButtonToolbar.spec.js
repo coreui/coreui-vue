@@ -5,7 +5,7 @@ const ComponentName = 'CButtonToolbar'
 const defaultWrapper = mount(Component)
 const customWrapper = mount(Component, {
   propsData: {
-    justify: true
+    justify: 'between'
   },
   slots: {
     default: 'Custom button toolbar'
