@@ -1,7 +1,7 @@
 <template>
   <li class="c-nav-item">
     <CLink
-      :class="['c-nav-link', addLinkClasses]"
+      :class="linkClasses"
       :exact="true"
       v-bind="linkProps"
       @click.native="click"
@@ -26,13 +26,15 @@ const props = Object.assign(linkProps, {
   name: String,
   icon: [String, Array, Object],
   badge: Object,
-  addLinkClasses: [String, Array, Object]
+  addLinkClasses: [String, Array, Object],
+  label: Boolean
 })
 
 export default {
   name: 'CSidebarNavLink',
   components: {
-    CLink, CBadge
+    CLink, 
+    CBadge
   },
   props,
   computed: {
@@ -41,6 +43,12 @@ export default {
         props[key] = this[key]
         return props
       }, {})
+    },
+    linkClasses () {
+      return [
+        this.label ? 'c-nav-label' : 'c-nav-link',
+        this.addLinkClasses
+      ]
     }
   },
   methods: {

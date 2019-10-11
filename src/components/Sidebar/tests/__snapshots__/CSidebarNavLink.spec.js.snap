@@ -24,3 +24,28 @@ exports[`CSidebarNavLink.vue renders correctly 1`] = `
   </a>
 </li>
 `;
+
+exports[`CSidebarNavLink.vue renders correctly in label mode 1`] = `
+<li
+  class="c-nav-item"
+  id="link"
+>
+  <a
+    class="c-nav-label"
+    href="#"
+    target="_self"
+  >
+    <i
+      class="c-nav-icon cui-settings"
+    />
+     
+      test link
+      
+    <span
+      class="badge badge-success"
+    >
+      NEW
+    </span>
+  </a>
+</li>
+`;
