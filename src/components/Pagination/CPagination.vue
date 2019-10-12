@@ -1,83 +1,84 @@
 <template>
-  <ul
-    :class="computedClasses"
-    role="menubar"
-    aria-disabled="false"
-    aria-label="pagination"
-  >
-    <li v-if="!hideDoubleArrows" :class="backArrowsClasses">
-      <CLink
-        class="page-link"
-        @click="setPage(1)"
-        :disabled="activePage === 1"
-        aria-label="Go to first page"
+  <nav aria-label="pagination">
+    <ul :class="computedClasses">
+      <li v-if="!hideDoubleArrows" :class="backArrowsClasses">
+        <CLink
+          class="page-link"
+          @click="setPage(1)"
+          :disabled="activePage === 1"
+          aria-label="Go to first page"
+          :aria-disabled="activePage === 1"
+        >
+          <span v-html="firstButtonHtml"></span>
+        </CLink>
+      </li>
+      <li v-if="!hideArrows" :class="backArrowsClasses">
+        <CLink
+          class="page-link"
+          @click="setPage(activePage - 1)"
+          :disabled="activePage === 1"
+          aria-label="Go to previous page"
+          :aria-disabled="activePage === 1"
+        >
+          <span v-html="previousButtonHtml"></span>
+        </CLink>
+      </li>
+      <li
+        v-if="beforeDots"
+        role="separator"
+        class="page-item disabled"
       >
-        <span v-html="firstButtonHtml"></span>
-      </CLink>
-    </li>
-    <li v-if="!hideArrows" :class="backArrowsClasses">
-      <CLink
-        class="page-link"
-        @click="setPage(activePage - 1)"
-        :disabled="activePage === 1"
-        aria-label="Go to previous page"
-      >
-        <span v-html="previousButtonHtml"></span>
-      </CLink>
-    </li>
-    <li
-      v-if="beforeDots"
-      role="separator"
-      class="page-item disabled"
-    >
-      <span class="page-link">…</span>
-    </li>
+        <span class="page-link">…</span>
+      </li>
 
-    <li
-      v-for="(item, index) in items"
-      :key="index"
-      :class="[{ 'active': activePage === item }, 'page-item']"
-    >
-      <CLink
-        class="page-link"
-        @click="setPage(item)"
-        :aria-label="`Go to page ${item}`"
+      <li
+        v-for="(item, index) in items"
+        :key="index"
+        :class="[{ 'active': activePage === item }, 'page-item']"
       >
-        {{item}}
-      </CLink>
-    </li>
+        <CLink
+          class="page-link"
+          @click="setPage(item)"
+          :aria-label="`Go to page ${item}`"
+        >
+          {{item}}
+        </CLink>
+      </li>
 
-    <li
-      v-if="afterDots"
-      role="separator"
-      class="page-item disabled"
-    >
-      <span class="page-link">…</span>
-    </li>
-    <li
-      v-if="!hideArrows"
-      :class="nextArrowsClasses"
-    >
-      <CLink
-        class="page-link"
-        @click="setPage(activePage + 1)"
-        :disabled="activePage === pages"
-        aria-label="Go to next page"
+      <li
+        v-if="afterDots"
+        role="separator"
+        class="page-item disabled"
       >
-        <span v-html="nextButtonHtml"></span>
-      </CLink>
-    </li>
-    <li v-if="!hideDoubleArrows" :class="nextArrowsClasses">
-      <CLink
-        class="page-link"
-        @click="setPage(pages)"
-        :disabled="activePage === pages"
-        aria-label="Go to last page"
+        <span class="page-link">…</span>
+      </li>
+      <li
+        v-if="!hideArrows"
+        :class="nextArrowsClasses"
       >
-        <span v-html="lastButtonHtml"></span>
-      </CLink>
-    </li>
-  </ul>
+        <CLink
+          class="page-link"
+          @click="setPage(activePage + 1)"
+          :disabled="activePage === pages"
+          aria-label="Go to next page"
+          :aria-disabled="activePage === pages"
+        >
+          <span v-html="nextButtonHtml"></span>
+        </CLink>
+      </li>
+      <li v-if="!hideDoubleArrows" :class="nextArrowsClasses">
+        <CLink
+          class="page-link"
+          @click="setPage(pages)"
+          :disabled="activePage === pages"
+          aria-label="Go to last page"
+          :aria-disabled="activePage === pages"
+        >
+          <span v-html="lastButtonHtml"></span>
+        </CLink>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script>
