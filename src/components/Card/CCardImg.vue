@@ -17,7 +17,7 @@ export default {
   name: 'CCardImg',
   props,
   render (h, { props, data, children }) {
-    const haveClassSuffix = ['bottom', 'top'].includes(props.placement)
+    const haveClassSuffix = props.placement !== 'full'
     return h(
       CImg,
       mergeData(data, {
