@@ -20,32 +20,32 @@ export default {
       validator: val => val.length > 0
     },
     icon: String,
-    open: Boolean
+    show: Boolean
   },
   data () {
     return {
-      isOpen: this.open
+      open: this.show
     }
   },
   inject: {
-    dropdownStateOnRouteChange: {
+    dropdownMode: {
       default: 'openActive'
     }
   },
   watch: {
-    open (val) {
-      this.isOpen = val
+    show (val) {
+      this.open = val
     },
     $route: {
       immediate: true,
       handler (route) {
-        const mode = this.dropdownStateOnRouteChange
+        const mode = this.dropdownMode
         if (mode === 'close') {
-          this.isOpen = false
+          this.open = false
         } else if (mode === 'closeInactive' && this.route) {
-          this.isOpen = route.fullPath.includes(this.route)
-        }  else if (mode === 'openActive' && !this.isOpen && this.route) {
-          this.isOpen = route.fullPath.includes(this.route)
+          this.open = route.fullPath.includes(this.route)
+        }  else if (mode === 'openActive' && !this.open && this.route) {
+          this.open = route.fullPath.includes(this.route)
         }
         // else if (mode === 'noAction') {
         //   return
@@ -60,15 +60,15 @@ export default {
     dropdownClasses () {
       return [
         'c-nav-item c-nav-dropdown',
-        { 'c-open': this.isOpen }
+        { 'c-open': this.open }
       ]
     }
   },
   methods: {
     handleClick (e) {
       e.preventDefault()
-      this.isOpen = !this.isOpen
-      this.$emit('update:open', this.isOpen)
+      this.open = !this.open
+      this.$emit('update:show', this.open)
     },
     itemClicked (e) {
       this.$emit('item-clicked', e)

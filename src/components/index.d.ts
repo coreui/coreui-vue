@@ -455,15 +455,17 @@ export declare class CRenderFunction extends Vue {
 
 export declare class CSidebar extends Vue {
   fixed: boolean
-  breakpoint: string
+  unfoldable: boolean
+  breakpoint: [string, boolean]
   minimize: boolean
   show: boolean
-  showOnMobile: boolean
-  noHideOnMobileClick: boolean
+  hideOnMobileClick: boolean
   aside: boolean
-  light: boolean
-  dropdownsBehavior: string
+  colorScheme: string
+  dropdownMode: string
 }
+
+export declare class CSidebarClose extends Vue { }
 
 export declare class CSidebarFooter extends Vue {}
 
@@ -483,7 +485,7 @@ export declare class CSidebarNavDropdown extends Vue {
   name: string
   route: string
   icon: string
-  open: boolean
+  show: boolean
 }
 
 export declare class CSidebarNavItem extends Vue {

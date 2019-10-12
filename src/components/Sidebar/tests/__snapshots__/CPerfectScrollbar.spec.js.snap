@@ -8,7 +8,7 @@ exports[`CPerfectScrollbar .vue renders correctly 1`] = `
 
 exports[`CPerfectScrollbar .vue renders correctly in sidebar 1`] = `
 <div
-  class="c-sidebar-lg-show c-sidebar c-sidebar-dark"
+  class="c-sidebar c-sidebar-dark c-sidebar-lg-show"
 >
   <nav
     class="c-sidebar-nav"

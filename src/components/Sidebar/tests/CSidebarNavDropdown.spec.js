@@ -18,7 +18,7 @@ const wrapperMounting = (mode) => mount(
       icon: 'cui-settings'
     },
     provide: {
-      dropdownStateOnRouteChange: mode
+      dropdownMode: mode
     }
   }
 )
@@ -38,36 +38,36 @@ describe(ComponentName, () => {
   it('renders correctly', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
-  it('changes state on open prop change', () => {
-    wrapper.setProps({ open: true })
-    expect(wrapper.vm.isOpen).toBe(true)
+  it('changes state on show prop change', () => {
+    wrapper.setProps({ show: true })
+    expect(wrapper.vm.open).toBe(true)
   })
   it('changes state when clicked on toggle', () => {
     wrapper.find('.c-nav-link').trigger('click')
-    expect(wrapper.vm.isOpen).toBe(false)
-    expect(wrapper.emitted()['update:open']).toBeTruthy()
+    expect(wrapper.vm.open).toBe(false)
+    expect(wrapper.emitted()['update:show']).toBeTruthy()
   })
   it('emitts item-click event when click inside dropdown', () => {
     wrapper.find('ul').trigger('click')
     expect(wrapper.emitted()['item-clicked']).toBeTruthy()
   })
-  it('open active dropdown on route change when in openActive mode', () => {
-    expect(wrapper.vm.isOpen).toBe(false)
+  it('show active dropdown on route change when in openActive mode', () => {
+    expect(wrapper.vm.open).toBe(false)
     routeChange(wrapper, '/somePath/sub1')
-    expect(wrapper.vm.isOpen).toBe(true)
+    expect(wrapper.vm.open).toBe(true)
   })
   it('close dropdown on route change when in close mode', () => {
-    wrapperCloseMode.setProps({open: true})
-    expect(wrapperCloseMode.vm.isOpen).toBe(true)
+    wrapperCloseMode.setProps({show: true})
+    expect(wrapperCloseMode.vm.open).toBe(true)
     routeChange(wrapperCloseMode, '/somePath/sub2')
-    expect(wrapperCloseMode.vm.isOpen).toBe(false)
+    expect(wrapperCloseMode.vm.open).toBe(false)
   })
   it('close inactive dropdown on route change when in closeInactive mode', () => {
-    wrapperCloseInactiveMode.setProps({open: true})
-    expect(wrapperCloseInactiveMode.vm.isOpen).toBe(true)
+    wrapperCloseInactiveMode.setProps({show: true})
+    expect(wrapperCloseInactiveMode.vm.open).toBe(true)
     routeChange(wrapperCloseInactiveMode, '/somePath/sub3')
-    expect(wrapperCloseInactiveMode.vm.isOpen).toBe(true)
+    expect(wrapperCloseInactiveMode.vm.open).toBe(true)
     routeChange(wrapperCloseInactiveMode, '/otherDropdownRoute')
-    expect(wrapperCloseInactiveMode.vm.isOpen).toBe(false)
+    expect(wrapperCloseInactiveMode.vm.open).toBe(false)
   })
 })

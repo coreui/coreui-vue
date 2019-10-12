@@ -2,8 +2,7 @@
   <li class="c-nav-item">
     <CLink
       :class="linkClasses"
-      :exact="true"
-      v-bind="linkProps"
+      v-bind="computedLinkProps"
       @click.native="click"
     >
       <slot>
@@ -43,6 +42,12 @@ export default {
         props[key] = this[key]
         return props
       }, {})
+    },
+    addedLinkProps () {
+      return this.$options.propsData.exact === undefined ? { exact: true } : {}
+    },
+    computedLinkProps () {
+      return Object.assign(this.linkProps, this.addedLinkProps)
     },
     linkClasses () {
       return [
