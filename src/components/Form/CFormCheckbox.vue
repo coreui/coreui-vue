@@ -75,8 +75,8 @@ export default {
   watch: {
     checked: {
       immediate: true,
-      handler () {
-        this.state = this.getCheckState()
+      handler (val) {
+        this.state = val
       }
     }
   },
@@ -124,19 +124,10 @@ export default {
     // }
   },
   methods: {
-    getCheckState () {
-      return this.checked
-    },
-
     onChange (e) {
       this.state = e.target.checked
-      this.$emit('update:checked', this.getValue(e), e)
-    },
-
-    getValue (e) {
-      return e.target.checked
+      this.$emit('update:checked', e.target.checked, e)
     }
-
   },
 }
 </script>

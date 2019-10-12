@@ -1,18 +1,9 @@
 <script>
 import CFormCheckbox from './CFormCheckbox'
-import { formRadioProps as props } from './formProps'
 
 export default {
   name: 'CFormRadio',
-  extends: Object.assign({}, CFormCheckbox, { props }),
-  type: 'radio',
-  methods: {
-    getCheckState () {
-      return this.checked === this.value
-    },
-    getValue () {
-      return this.value
-    }
-  }
+  extends: CFormCheckbox,
+  type: 'radio'
 }
 </script>

@@ -57,8 +57,8 @@ export default {
   watch: {
     checked: {
       immediate: true,
-      handler () {
-        this.state = this.getCheckState()
+      handler (val) {
+        this.state = val
       }
     }
   },
@@ -78,19 +78,9 @@ export default {
     }
   },
   methods: {
-    getCheckState () {
-      if (this.type === 'radio') {
-        return this.checked === this.value
-      } else {
-        return this.checked
-      }
-    },
-    onChange (event) {
-      this.state = event.target.checked
-      this.$emit('update:checked', this.getValue(event.target.checked), event)
-    },
-    getValue (checked) {
-      return this.type === 'radio' ? this.value : checked
+    onChange (e) {
+      this.state = e.target.checked
+      this.$emit('update:checked', e.target.checked, e)
     }
   }
 }
