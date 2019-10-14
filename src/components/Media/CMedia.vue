@@ -19,12 +19,15 @@ export default {
     CImg
   },
   props: {
-    asidePositionClasses: [String, Array, Object],
+    addAsideMargin: {
+      type: Boolean,
+      default: true
+    },
     addAsideClasses: [String, Array, Object],
     addBodyClasses: [String, Array, Object],
     asideRight: Boolean,
     asideImageProps: Object,
-    asidePosition: {
+    asideVerticalPosition: {
       type: String,
       default: 'start',
       validator: val => ['start', 'center', 'end', 'stretch'].includes(val)
@@ -36,19 +39,16 @@ export default {
         {
           blankColor: '#777777',
           width: '64px',
-          height: this.asidePosition === 'stretch' ? '100%' : '64px'
+          height: this.asideVerticalPosition === 'stretch' ? '100%' : '64px'
         },
         this.asideImageProps || {}
       )
     },
-    computedAsidePositionClasses () {
-      return this.asidePositionClasses || `m${this.asideRight? 'l' : 'r' }-3`
-    },
     asideClasses () {
       return [
-        this.computedAsidePositionClasses,
+        this.addAsideMargin ? `m${this.asideRight? 'l' : 'r' }-3` : '',
         this.addAsideClasses,
-        `align-self-${this.asidePosition}`
+        `align-self-${this.asideVerticalPosition}`
       ]
     },
     mediaBodyClasses () {

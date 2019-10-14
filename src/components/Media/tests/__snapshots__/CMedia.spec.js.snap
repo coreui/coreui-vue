@@ -26,7 +26,7 @@ exports[`CMedia renders correctly 2`] = `
   class="media d-flex flex-row-reverse"
 >
   <div
-    class="position-class additional-aside-class align-self-stretch"
+    class="additional-aside-class align-self-stretch"
   >
     <svg
       class=""

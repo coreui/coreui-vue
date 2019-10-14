@@ -360,12 +360,12 @@ export declare class CListGroupitem extends CLink {
 }
 
 export declare class CMedia extends Vue {
-  asidePositionClasses: [string, Array<any>, object]
+  addAsideMargin: boolean
   addAsideClasses: [string, Array<any>, object]
   addBodyClasses: [string, Array<any>, object]
   asideRight: boolean
   asideImageProps: object
-  asidePosition: string
+  asideVerticalPosition: string
 }
 
 export declare class CModal extends Vue {

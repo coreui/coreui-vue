@@ -5,11 +5,11 @@ const ComponentName = 'CMedia'
 const defaultWrapper = mount(Component)
 const customWrapper = mount(Component, {
   propsData: {
-    asidePositionClasses: 'position-class',
+    addAsideMargin: false,
     addAsideClasses: 'additional-aside-class',
     addBodyClasses: 'additional-body-class',
     asideRight: true,
-    asidePosition: 'stretch'
+    asideVerticalPosition: 'stretch'
   },
   slots: {
     default: 'CMedia content'
