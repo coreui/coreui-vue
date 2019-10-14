@@ -7,7 +7,7 @@ export const props = {
     default: 'nav'
   },
   light: Boolean,
-  variant: String,
+  color: String,
   expandable: {
     type: [Boolean, String],
     default: false
@@ -35,7 +35,7 @@ export default {
           {
             'd-print': props.print,
             'sticky-top': props.sticky,
-            [`bg-${props.variant}`]: Boolean(props.variant),
+            [`bg-${props.color}`]: Boolean(props.color),
             [`fixed-${props.fixed}`]: Boolean(props.fixed),
             [`navbar-expand${expandClassSuffix}`]: Boolean(props.expandable)
           }

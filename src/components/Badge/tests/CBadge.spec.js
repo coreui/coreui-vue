@@ -6,7 +6,7 @@ const wrapper = mount(Component)
 const customWrapper = mount(Component, {
   propsData: {
     textHtml: 'Badge text',
-    variant: 'success',
+    color: 'success',
     active: true,
     pill: true,
     disabled: true,

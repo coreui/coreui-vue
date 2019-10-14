@@ -31,7 +31,7 @@ const customWrapper = mount(Component, {
     addTogglerClasses: 'additional-toggler-class',
     inNav: false,
     noCaret: true,
-    variant: 'success',
+    color: 'success',
     size: 'lg',
     split: true,
     offset: 20,
@@ -50,7 +50,7 @@ const navWrapper = mount(Component, {
     addTogglerClasses: 'additional-toggler-class',
     inNav: true,
     noCaret: true,
-    variant: 'success',
+    color: 'success',
     offset: 20,
     placement: 'left',
     noFlip: true

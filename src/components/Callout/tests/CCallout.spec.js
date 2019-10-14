@@ -5,7 +5,7 @@ const ComponentName = 'CCallout'
 const defaultWrapper = mount(Component)
 const customWrapper = mount(Component, {
   propsData: {
-    variant: 'success',
+    color: 'success',
   },
   slots: {
     default: 'Callout'

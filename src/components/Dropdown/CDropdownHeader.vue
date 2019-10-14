@@ -8,14 +8,14 @@ export default {
       type: String,
       default: 'div'
     },
-    variant: String
+    color: String
   },
   render (h, { props, data, children }) {
     return h(
       props.tag,
       mergeData(data, {
         staticClass: 'dropdown-header',
-        class: { [`bg-${props.variant}`]: props.variant }
+        class: { [`bg-${props.color}`]: props.color }
       }),
       children
     )

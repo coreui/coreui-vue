@@ -1,5 +1,5 @@
 <template>
-  <div class="card" :class="`bg-${variant} text-white`">
+  <div class="card" :class="`bg-${color} text-white`">
     <div class="card-header">
       <div class="font-weight-bold">
         <span v-if="rightHeader">{{rightHeader}}</span>
@@ -22,7 +22,7 @@
 export default {
   name: 'CWidgetHeaderDetails',
   props: {
-    variant: String,
+    color: String,
     rightHeader: String,
     rightFooter: String,
     leftHeader: String,

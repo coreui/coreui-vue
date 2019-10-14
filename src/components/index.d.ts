@@ -1,6 +1,6 @@
 import Vue from 'vue'
 export declare class CAlert extends Vue {
-  variant: string
+  color: string
   closeButton: boolean
   show: boolean
   fade: boolean
@@ -8,7 +8,7 @@ export declare class CAlert extends Vue {
 
 export declare class CBadge extends CLink {
   tag: string
-  variant: string
+  color: string
   pill: boolean
   textHtml: string
 }
@@ -33,7 +33,7 @@ export declare class CButton extends CLink {
   ghost: boolean
   outline: boolean
   size: string
-  variant: string
+  color: string
   type: string
   pressed: boolean
   textHtml: string
@@ -54,14 +54,14 @@ export declare class CButtonToolbar extends Vue {
 }
 
 export declare class CCallout extends Vue {
-  variant: string
+  color: string
 }
 
 declare class CardSharedClasses extends Vue {
   tag: string
-  variant: string
-  borderVariant: string
-  textVariant: string
+  color: string
+  borderColor: string
+  textColor: string
   align: string
 }
 
@@ -138,7 +138,7 @@ export declare class CDropdown extends Vue {
   addTogglerClasses: [string, Array<any>, object]
   inNav: boolean
   noCaret: boolean
-  variant: string
+  color: string
   size: string
   split: boolean
   offset: number
@@ -325,9 +325,9 @@ export declare class CJumbotron extends Vue {
   fluid: boolean
   header: string
   lead: string
-  variant: string
-  borderVariant: string
-  textVariant: string
+  color: string
+  borderColor: string
+  textColor: string
 }
 
 export declare class CLink extends Vue {
@@ -356,7 +356,7 @@ export declare class CListGroup extends Vue {
 export declare class CListGroupitem extends CLink {
   tag: string
   action: boolean
-  variant: string
+  color: string
 }
 
 export declare class CMedia extends Vue {
@@ -373,8 +373,8 @@ export declare class CModal extends Vue {
   centered: boolean
   title: string
   size: string
-  variant: string
-  borderVariant: string
+  color: string
+  borderColor: string
   noFade: boolean
   noBackdrop: boolean
   noCloseOnBackdrop: boolean
@@ -400,7 +400,7 @@ export declare class CNavItem extends CLink {}
 export declare class CNavbar extends Vue {
   tag: string
   light: boolean
-  variant: string
+  color: string
   expandable: [boolean, string]
   fixed: string
   sticky: boolean
@@ -437,7 +437,7 @@ export declare class CPagination extends Vue {
 
 export declare class CProgress extends Vue {
   height: string
-  variant: string
+  color: string
   striped: boolean
   animated: boolean
   precision: number
@@ -518,13 +518,13 @@ export declare class CSidebarNavToggler extends Vue {}
 
 export declare class CSpinner extends Vue {
   grow: boolean
-  variant: string
+  color: string
   small: boolean
   tag: string
 }
 
 export declare class CSwitch extends Vue {
-  variant: string
+  color: string
   outline: [boolean, string]
   size: string
   shape: string
@@ -611,7 +611,7 @@ export declare class CTreeGeneratorItem extends Vue {
 }
 
 export declare class CWidgetBrand extends Vue {
-  variant: string
+  color: string
   rightHeader: string
   rightFooter: string
   leftHeader: string
@@ -620,13 +620,13 @@ export declare class CWidgetBrand extends Vue {
 }
 
 export declare class CWidgetDropdown extends Vue {
-  variant: string
+  color: string
   header: string
   text: string
 }
 
 export declare class CWidgetHeaderDetails extends Vue {
-  variant: string
+  color: string
   rightHeader: string
   rightFooter: string
   leftHeader: string
@@ -637,14 +637,14 @@ export declare class CWidgetIcon extends Vue {
   header: string
   text: string
   noIconPadding: boolean
-  variant: string
+  color: string
 }
 
 export declare class CWidgetProgress extends Vue {
   header: string
   text: string
   footer: string
-  variant: string
+  color: string
   inverse: boolean
   value: number
 }
@@ -652,7 +652,7 @@ export declare class CWidgetProgress extends Vue {
 export declare class CWidgetProgressIcon extends Vue {
   header: string
   text: string
-  variant: string
+  color: string
   inverse: boolean
   value: number
 }

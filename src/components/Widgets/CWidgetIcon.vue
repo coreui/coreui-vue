@@ -7,12 +7,12 @@
     >
       <div
         class="float-left mr-3 text-white"
-        :class="[`bg-${variant}`, noIconPadding ? 'p-4' : 'p-3']"
+        :class="[`bg-${color}`, noIconPadding ? 'p-4' : 'p-3']"
       >
         <slot></slot>
       </div>
       <div>
-        <div v-if="header" :class="`text-value text-${variant}`">
+        <div v-if="header" :class="`text-value text-${color}`">
           {{header}}
         </div>
         <div
@@ -34,7 +34,7 @@ export default {
     header: String,
     text: String,
     noIconPadding: Boolean,
-    variant: String
+    color: String
   }
 }
 </script>

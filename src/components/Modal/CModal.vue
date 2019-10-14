@@ -73,8 +73,8 @@ export default {
       type: String,
       validator: val => ['', 'sm', 'lg'].includes(val)
     },
-    variant: String,
-    borderVariant: String,
+    color: String,
+    borderColor: String,
     noFade: Boolean,
     noBackdrop: Boolean,
     noCloseOnBackdrop: Boolean,
@@ -109,7 +109,7 @@ export default {
           'fade': !this.noFade,
           'show': this.visible,
           'd-block': this.visible || this.isTransitioning,
-          [`modal-${this.variant}`]: Boolean(this.variant)
+          [`modal-${this.color}`]: Boolean(this.color)
         }
       ]
     },
@@ -128,12 +128,12 @@ export default {
         this.addContentClasses,
         'modal-content',
         {
-          [`border-${this.borderVariant}`]: Boolean(this.borderVariant),
+          [`border-${this.borderColor}`]: Boolean(this.borderColor),
         }
       ]
     },
     btnClasses () {
-      return [`btn btn-${this.variant || 'primary'}`]
+      return [`btn btn-${this.color || 'primary'}`]
     }
   },
   watch: {

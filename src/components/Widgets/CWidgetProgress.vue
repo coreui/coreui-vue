@@ -1,12 +1,12 @@
 <template>
-  <div :class="inverse ? `card text-white bg-${variant}` : 'card'">
+  <div :class="inverse ? `card text-white bg-${color}` : 'card'">
     <slot name="header"></slot>
     <div class="card-body">
       <div v-if="header" class="h4 m-0">{{header}}</div>
       <div v-if="text">{{text}}</div>
       <slot>
         <CProgress
-          :variant="!inverse ? variant : ''"
+          :color="!inverse ? color : ''"
           :value="value"
           :class="inverse ? 'progress-white' : ''"
           class="progress-xs my-3 mb-0"
@@ -31,7 +31,7 @@ export default {
     header: String,
     text: String,
     footer: String,
-    variant: String,
+    color: String,
     inverse: Boolean,
     value: {
       type: Number,

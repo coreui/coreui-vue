@@ -20,13 +20,12 @@ exports[`CProgress renders correctly 1`] = `
 exports[`CProgress renders correctly 2`] = `
 <div
   class="test"
-  color="black"
 >
   <div
     aria-valuemax="100"
     aria-valuemin="0"
     aria-valuenow="20"
-    class="progress-bar"
+    class="progress-bar bg-black"
     role="progressbar"
     style="width: 20%;"
   >

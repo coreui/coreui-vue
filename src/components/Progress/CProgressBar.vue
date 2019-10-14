@@ -41,7 +41,7 @@ export default {
       return [
         'progress-bar',
         {
-          [`bg-${this.props.variant}`]: this.props.variant,
+          [`bg-${this.props.color}`]: this.props.color,
           'progress-bar-striped': this.props.striped || this.props.animated,
           'progress-bar-animated': this.props.animated
         }

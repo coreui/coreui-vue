@@ -9,7 +9,7 @@ const ComponentName = 'CWidgetProgress'
 const defaultWrapper = mount(Component)
 const customWrapper = mount(Component, {
   propsData: {
-    variant: 'info',
+    color: 'info',
     inverse: true,
     value: 30,
     text:'test',

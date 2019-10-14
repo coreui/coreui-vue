@@ -13,9 +13,9 @@ export default {
         staticClass: 'card-body',
         class: [
           {
-            [`bg-${props.variant}`]: Boolean(props.variant),
-            [`border-${props.borderVariant}`]: Boolean(props.borderVariant),
-            [`text-${props.textVariant}`]: Boolean(props.textVariant),
+            [`bg-${props.color}`]: Boolean(props.color),
+            [`border-${props.borderColor}`]: Boolean(props.borderColor),
+            [`text-${props.textColor}`]: Boolean(props.textColor),
             [`text-${props.align}`]: Boolean(props.align)
           }
         ]

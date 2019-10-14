@@ -8,9 +8,9 @@ const customWrapper = mount(Component, {
     fluid: true,
     header: 'header',
     lead: 'lead',
-    variant: 'success',
-    borderVariant: 'secondary',
-    textVariant: 'dark'
+    color: 'success',
+    borderColor: 'secondary',
+    textColor: 'dark'
   },
   slots: {
     default: 'content'

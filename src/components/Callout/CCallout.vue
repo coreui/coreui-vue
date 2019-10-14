@@ -1,5 +1,5 @@
 <template functional>
-  <div :class="`callout ${props.variant ? 'callout-' + props.variant : ''}`">
+  <div :class="`callout ${props.color ? 'callout-' + props.color : ''}`">
     <slot></slot>
   </div>
 </template>
@@ -8,7 +8,7 @@
 export default {
   name: 'CCallout',
   props: {
-    variant: String
+    color: String
   }
 }
 </script>

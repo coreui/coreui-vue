@@ -21,7 +21,7 @@ const customWrapper = mount(Component, {
     show: true,
     fade: true,
     closeButton: true,
-    variant: 'success'
+    color: 'success'
   },
   slots: {
     default: 'Dismissible Alert!'

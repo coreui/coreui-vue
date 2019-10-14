@@ -1,5 +1,5 @@
 <template>
-  <div :class="inverse ? `card text-white bg-${variant}` : 'card'">
+  <div :class="inverse ? `card text-white bg-${color}` : 'card'">
     <slot name="header"></slot>
     <div class="card-body">
       <div
@@ -17,7 +17,7 @@
       </small>
       <slot name="progress">
         <CProgress
-          :variant="!inverse ? variant : ''"
+          :color="!inverse ? color : ''"
           :value="value"
           :class="inverse ? 'progress-white' : ''"
           class="progress-xs my-3 mb-0"
@@ -38,7 +38,7 @@ export default {
   props: {
     header: String,
     text: String,
-    variant: String,
+    color: String,
     inverse: Boolean,
     value: {
       type: Number,

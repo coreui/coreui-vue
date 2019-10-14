@@ -7,7 +7,7 @@ const customWrapper = mount(Component, {
   propsData: {
     header: 'header',
     text: 'text',
-    variant: 'success',
+    color: 'success',
     noIconPadding: true
   }
 })

@@ -5,7 +5,7 @@ const ComponentName = 'CWidgetDropdown'
 const defaultWrapper = mount(Component)
 const customWrapper = mount(Component,{
   propsData: {
-    variant: 'info',
+    color: 'info',
     header: 'header',
     text: 'text',
   }

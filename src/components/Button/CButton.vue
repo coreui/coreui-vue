@@ -13,7 +13,7 @@ const btnProps = {
     type: String,
     validator: value => ['', 'sm', 'lg'].includes(value)
   },
-  variant: String,
+  color: String,
   type: {
     type: String,
     default: 'button'
@@ -36,9 +36,9 @@ function isToggle (props) {
 
 function computeClasses (props) {
   return {
-    [`btn-${props.outline ? 'outline-' : ''}${props.variant}`]: props.variant,
+    [`btn-${props.outline ? 'outline-' : ''}${props.color}`]: props.color,
     [`btn-${props.size}`]: Boolean(props.size),
-    [`btn-ghost-${props.variant}`]: props.ghost,
+    [`btn-ghost-${props.color}`]: props.ghost,
     'btn-block': props.block,
     'btn-pill': props.pill,
     'btn-square': props.square && !props.pill,

@@ -687,99 +687,100 @@ exports[`CTable renders correctly 2`] = `
     <!---->
   </div>
     
-  <ul
-    aria-disabled="false"
+  <nav
     aria-label="pagination"
-    class="pagination pagination-md justify-content-start"
-    role="menubar"
     style="display: none;"
   >
-    <li
-      class="page-item disabled"
+    <ul
+      class="pagination pagination-md justify-content-start"
     >
-      <a
-        aria-disabled="true"
-        aria-label="Go to first page"
-        class="page-link disabled"
-        href="#"
-        tabindex="-1"
-        target="_self"
+      <li
+        class="page-item disabled"
       >
-        <span>
-          «
-        </span>
-      </a>
-    </li>
-     
-    <li
-      class="page-item disabled"
-    >
-      <a
-        aria-disabled="true"
-        aria-label="Go to previous page"
-        class="page-link disabled"
-        href="#"
-        tabindex="-1"
-        target="_self"
+        <a
+          aria-disabled="true"
+          aria-label="Go to first page"
+          class="page-link disabled"
+          href="#"
+          tabindex="-1"
+          target="_self"
+        >
+          <span>
+            «
+          </span>
+        </a>
+      </li>
+       
+      <li
+        class="page-item disabled"
       >
-        <span>
-          ‹
-        </span>
-      </a>
-    </li>
-     
-    <!---->
-     
-    <li
-      class="active page-item"
-    >
-      <a
-        aria-label="Go to page 1"
-        class="page-link"
-        href="#"
-        target="_self"
+        <a
+          aria-disabled="true"
+          aria-label="Go to previous page"
+          class="page-link disabled"
+          href="#"
+          tabindex="-1"
+          target="_self"
+        >
+          <span>
+            ‹
+          </span>
+        </a>
+      </li>
+       
+      <!---->
+       
+      <li
+        class="active page-item"
       >
-        
-      1
-    
-      </a>
-    </li>
-     
-    <!---->
-     
-    <li
-      class="page-item disabled"
-    >
-      <a
-        aria-disabled="true"
-        aria-label="Go to next page"
-        class="page-link disabled"
-        href="#"
-        tabindex="-1"
-        target="_self"
+        <a
+          aria-label="Go to page 1"
+          class="page-link"
+          href="#"
+          target="_self"
+        >
+          
+        1
+      
+        </a>
+      </li>
+       
+      <!---->
+       
+      <li
+        class="page-item disabled"
       >
-        <span>
-          ›
-        </span>
-      </a>
-    </li>
-     
-    <li
-      class="page-item disabled"
-    >
-      <a
-        aria-disabled="true"
-        aria-label="Go to last page"
-        class="page-link disabled"
-        href="#"
-        tabindex="-1"
-        target="_self"
+        <a
+          aria-disabled="true"
+          aria-label="Go to next page"
+          class="page-link disabled"
+          href="#"
+          tabindex="-1"
+          target="_self"
+        >
+          <span>
+            ›
+          </span>
+        </a>
+      </li>
+       
+      <li
+        class="page-item disabled"
       >
-        <span>
-          »
-        </span>
-      </a>
-    </li>
-  </ul>
+        <a
+          aria-disabled="true"
+          aria-label="Go to last page"
+          class="page-link disabled"
+          href="#"
+          tabindex="-1"
+          target="_self"
+        >
+          <span>
+            »
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 </div>
 `;

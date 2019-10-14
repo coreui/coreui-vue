@@ -11,7 +11,7 @@ const toggleWrapper = mount(Component, {
       pressed: true,
       type: 'input',
       size: 'lg',
-      variant: 'info',
+      color: 'info',
       outline: true,
       ghost: true,
       block: true,
@@ -31,7 +31,7 @@ const routerLinkWrapper = mount(Component, {
     props: {
       to: '/dashboard',
       size: 'sm',
-      variant: 'success',
+      color: 'success',
       ghost: true,
       pill: true
     }

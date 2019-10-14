@@ -22,7 +22,7 @@ export default {
   name: 'CAlert',
   components: { CButtonClose },
   props: {
-    variant: String,
+    color: String,
     closeButton: Boolean,
     show: {
       type: [Boolean, Number],
@@ -42,7 +42,7 @@ export default {
         'alert',
         {
           'alert-dismissible': this.closeButton,
-          [`alert-${this.variant}`]: this.variant
+          [`alert-${this.color}`]: this.color
         }
       ]
     }

@@ -12,9 +12,9 @@ export default {
     fluid: Boolean,
     header: String,
     lead: String,
-    variant: String,
-    borderVariant: String,
-    textVariant: String,
+    color: String,
+    borderColor: String,
+    textColor: String,
   },
   render (h, { props, data, slots }) {
     let childNodes = []
@@ -51,10 +51,10 @@ export default {
         staticClass: 'jumbotron',
         class: {
           'jumbotron-fluid': props.fluid,
-          [`text-${props.textVariant}`]: Boolean(props.textVariant),
-          [`bg-${props.variant}`]: Boolean(props.variant),
-          [`border-${props.borderVariant}`]: Boolean(props.borderVariant),
-          'border': Boolean(props.borderVariant)
+          [`text-${props.textColor}`]: Boolean(props.textColor),
+          [`bg-${props.color}`]: Boolean(props.color),
+          [`border-${props.borderColor}`]: Boolean(props.borderColor),
+          'border': Boolean(props.borderColor)
         }
       }),
       childNodes

@@ -12,7 +12,7 @@ const customWrapper = mount(Component, {
     text: 'test',
     header: 'test',
     iconClasses: 'icon-custom',
-    variant: 'info',
+    color: 'info',
     value: 35,
     inverse: true
   }

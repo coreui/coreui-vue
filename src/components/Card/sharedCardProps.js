@@ -1,8 +1,8 @@
 export default {
   tag: String,
-  variant: String,
-  borderVariant: String,
-  textVariant: String,
+  color: String,
+  borderColor: String,
+  textColor: String,
   align: {
     type: String,
     validator: val => ['', 'left', 'center', 'right'].includes(val)

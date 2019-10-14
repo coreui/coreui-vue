@@ -7,7 +7,7 @@ const props = Object.assign(linkProps, {
     type: String,
     default: 'span'
   },
-  variant: String,
+  color: String,
   pill: Boolean,
   textHtml: String
 })
@@ -22,7 +22,7 @@ export default {
     const componentData = {
       staticClass: 'badge',
       class: {
-        [`badge-${props.variant}`]: props.variant,
+        [`badge-${props.color}`]: props.color,
         'badge-pill': props.pill,
         'active': props.active,
         'disabled': props.disabled

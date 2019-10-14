@@ -50,7 +50,7 @@ export default {
     addTogglerClasses: [String, Array, Object],
     inNav: Boolean,
     noCaret: Boolean,
-    variant: String,
+    color: String,
     size: {
       type: String,
       validator: val => ['', 'sm', 'lg'].includes(val)
@@ -173,7 +173,7 @@ export default {
           'dropdown-toggle': !this.noCaret && !this.split,
           [`btn-${this.size}`]: this.size && !this.inNav,
           'disabled' : this.disabled,
-          [`${ this.inNav ? 'bg' : 'btn'}-${ this.variant }`]: this.variant
+          [`${ this.inNav ? 'bg' : 'btn'}-${ this.color }`]: this.color
         }
       ]
     },

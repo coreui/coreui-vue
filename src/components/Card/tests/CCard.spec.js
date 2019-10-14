@@ -6,9 +6,9 @@ const wrapper = mount(Component, {
   context: {
     props: {
       align: 'left',
-      variant: 'success',
-      textVariant: 'white',
-      borderVariant: 'solid',
+      color: 'success',
+      textColor: 'white',
+      borderColor: 'solid',
       headerHtml: 'header',
       footerHtml: 'footer',
       bodyHtml: 'body'
@@ -19,9 +19,9 @@ const slotWrapper = mount(Component, {
   context: {
     props: {
       align: 'left',
-      variant: 'success',
-      textVariant: 'white',
-      borderVariant: 'solid',
+      color: 'success',
+      textColor: 'white',
+      borderColor: 'solid',
       bodyWrapper: true
     }
   },

@@ -6,9 +6,9 @@ const wrapper = mount(Component, {
     props: {
       header: 'header',
       align: 'left',
-      variant: 'primary',
-      textVariant: 'white',
-      borderVariant: 'solid'
+      color: 'primary',
+      textColor: 'white',
+      borderColor: 'solid'
     }
   },
   slots: {

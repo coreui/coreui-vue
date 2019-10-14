@@ -17,7 +17,7 @@ const wrapper = mount(Component, {
 
 const customWrapper = mount(Component, {
   propsData: {
-    variant: 'info',
+    color: 'info',
     outline: 'alt',
     size: 'lg',
     shape:'3d',

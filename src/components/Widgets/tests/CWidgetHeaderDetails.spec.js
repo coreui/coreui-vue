@@ -4,7 +4,7 @@ const ComponentName = 'CWidgetHeaderDetails'
 const defaultWrapper = mount(Component)
 const customWrapper = mount(Component,{
   propsData: {
-    variant: 'info',
+    color: 'info',
     rightHeader: 'rightHeader',
     leftHeader: 'leftHeader',
     rightFooter: 'rightFooter',

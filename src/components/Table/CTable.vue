@@ -212,7 +212,7 @@
         style="position:absolute;left:50%;transform:translateX(-50%);"
       >
         <CSpinner
-          variant="success"
+          color="success"
           :style="spinnerSize"
           role="status"
         />

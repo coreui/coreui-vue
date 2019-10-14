@@ -5,7 +5,7 @@ const ComponentName = 'CWidgetBrand'
 const defaultWrapper = mount(Component)
 const customWrapper = mount(Component,{
   propsData: {
-    variant: 'twitter',
+    color: 'twitter',
     rightHeader: 'rightHeader',
     leftHeader: 'leftHeader',
     rightFooter: 'rightFooter',

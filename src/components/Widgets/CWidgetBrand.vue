@@ -2,7 +2,7 @@
   <div class="card">
     <div
       class="card-header content-center text-white p-0"
-      :class="[`bg-${variant}`, addHeaderClasses]"
+      :class="[`bg-${color}`, addHeaderClasses]"
     >
       <slot></slot>
     </div>
@@ -34,7 +34,7 @@
 export default {
   name: 'CWidgetBrand',
   props: {
-    variant: String,
+    color: String,
     rightHeader: String,
     rightFooter: String,
     leftHeader: String,

@@ -22,7 +22,7 @@ export default {
   name:'CSwitch',
   inheritAttrs: false,
   props: {
-    variant: String,
+    color: String,
     outline: {
       type: [Boolean, String],
       default: undefined,
@@ -68,7 +68,7 @@ export default {
       const outlinedAltString = this.outline === 'alt' ? '-alt' : ''
       return [
         'c-switch form-check-label',
-        `c-switch${outlineString}-${this.variant}${outlinedAltString}`,
+        `c-switch${outlineString}-${this.color}${outlinedAltString}`,
         {
           [`c-switch-${this.size}`]: this.size,
           [`c-switch-${this.shape}`]: this.shape,

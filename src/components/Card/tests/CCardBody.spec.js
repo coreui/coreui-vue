@@ -6,9 +6,9 @@ const wrapper = mount(Component, {
   context: {
     props: {
       align: 'left',
-      variant: 'primary',
-      textVariant: 'white',
-      borderVariant: 'solid',
+      color: 'primary',
+      textColor: 'white',
+      borderColor: 'solid',
       titleHtml: 'title',
       subtitleHtml: 'subtitle',
       bodyHtml: 'body content'

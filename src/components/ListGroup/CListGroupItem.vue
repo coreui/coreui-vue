@@ -10,7 +10,7 @@ const props = Object.assign(
       default: 'li'
     },
     action: Boolean,
-    variant: String
+    color: String
   },
   linkPropsFactory()
 )
@@ -44,7 +44,7 @@ export default {
       props: itemProps,
       staticClass: 'list-group-item',
       class: {
-        [`list-group-item-${props.variant}`]: Boolean(props.variant),
+        [`list-group-item-${props.color}`]: Boolean(props.color),
         'list-group-item-action': isAction,
         'active': props.active,
         'disabled': props.disabled

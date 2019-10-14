@@ -5,7 +5,7 @@ export default {
   functional: true,
   props: {
     grow: Boolean,
-    variant: String,
+    color: String,
     small: Boolean,
     tag: {
       type: String,
@@ -26,7 +26,7 @@ export default {
           `spinner-${type}`,
           {
             [`spinner-${type}-sm`]: props.small,
-            [`text-${props.variant}`]: Boolean(props.variant)
+            [`text-${props.color}`]: Boolean(props.color)
           }
         ]
       })
