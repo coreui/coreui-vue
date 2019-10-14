@@ -30,7 +30,7 @@ exports[`CToast renders correctly 1`] = `
 </div>
 `;
 
-exports[`CToast renders correctly 2`] = `
+exports[`CToast renders correctly custom wrapper 1`] = `
 <div
   appear=""
   aria-atomic="true"
@@ -45,9 +45,7 @@ exports[`CToast renders correctly 2`] = `
   >
     <strong
       class="mr-auto"
-    >
-      title
-    </strong>
+    />
      
     <button
       aria-label="Close"
@@ -57,6 +55,11 @@ exports[`CToast renders correctly 2`] = `
       ×
     </button>
   </div>
-   CToast body
+   
+  <div
+    class="toast-body"
+  >
+    CToast body
+  </div>
 </div>
 `;

@@ -10,15 +10,22 @@ export default {
         ].includes(position)
       }
     },
-    titleHtml: String,
-    bodyHtml: String,
-    noHeader: Boolean,
+    hasHeader: {
+      type: Boolean,
+      default: true
+    },
     autohide: {
       type: [Number, Boolean],
       validator: val => typeof val === 'number' || val === false
     },
-    noCloseButton: Boolean,
-    noFade: Boolean
+    closeButton: {
+      type: Boolean,
+      default: true
+    },
+    fade: {
+      type: Boolean,
+      default: true
+    }
   },
   computed: {
     computedStyles () {

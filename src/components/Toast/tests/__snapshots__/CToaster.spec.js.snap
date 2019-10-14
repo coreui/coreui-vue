@@ -7,7 +7,7 @@ exports[`CToaster renders correctly 1`] = `
 />
 `;
 
-exports[`CToaster renders correctly 2`] = `
+exports[`CToaster renders correctly custom wrapper 1`] = `
 <div
   class="toaster"
   style="z-index: 1100; min-width: 350px; position: fixed; top: 0px; left: 0px;"
@@ -17,27 +17,15 @@ exports[`CToaster renders correctly 2`] = `
     aria-atomic="true"
     aria-live="assertive"
     class="toast"
-    name="fade"
     role="alert"
   >
+    <!---->
+     
     <div
-      class="toast-header"
+      class="toast-body"
     >
-      <strong
-        class="mr-auto"
-      >
-        title
-      </strong>
-       
-      <button
-        aria-label="Close"
-        class="ml-2 mb-1 close"
-        type="button"
-      >
-        ×
-      </button>
+      toast body
     </div>
-     toast body
   </div>
 </div>
 `;

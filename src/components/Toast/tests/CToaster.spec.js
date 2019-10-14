@@ -5,19 +5,22 @@ const ComponentName = 'CToaster'
 
 const toast = {
   render (h) {
-    return h(CToast, { props: { show: true } }, 'toast body');
+    return h(
+      CToast, 
+      { props: { show: true, headerHtml: 'toast header'} }, 
+      'toast body'
+    )
   }
 }
 
 const defaultWrapper = mount(Component)
-const customWrapper2 = mount(Component, {
+const customWrapper = mount(Component, {
   propsData: {
     position: 'top-left',
-    titleHtml: 'title',
-    noHeader: false,
+    hasHeader: false,
     autohide: 3000,
-    noCloseButton: false,
-    noFade: false
+    closeButton: false,
+    fade: false
   },
   slots: {
     default: toast
@@ -31,7 +34,7 @@ describe(ComponentName, () => {
   it('renders correctly', () => {
     expect(defaultWrapper.element).toMatchSnapshot()
   })
-  it('renders correctly', () => {
-    expect(customWrapper2.element).toMatchSnapshot()
+  it('renders correctly custom wrapper', () => {
+    expect(customWrapper.element).toMatchSnapshot()
   })
 })

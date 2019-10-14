@@ -5,7 +5,7 @@ const ComponentName = 'CToast'
 const wrapper = mount(Component, {
   propsData: {
     show: true,
-    noFade: true,
+    fade: false,
     position: 'static'
   }
 })
@@ -14,10 +14,10 @@ const customWrapper = mount(Component, {
   propsData: {
     show: true,
     position: 'bottom-center',
-    titleHtml: 'title',
+    headerHtml: 'title',
     noHeader: false,
     autohide: 10,
-    noCloseButton: false
+    closeButton: true
   },
   slots: {
     default: 'CToast body'
@@ -31,7 +31,7 @@ describe(ComponentName, () => {
   it('renders correctly', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
-  it('renders correctly', () => {
+  it('renders correctly custom wrapper', () => {
     expect(customWrapper.element).toMatchSnapshot()
   })
   it('closes by watcher correctly', () => {

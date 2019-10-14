@@ -583,16 +583,16 @@ export declare class CTab extends Vue {
 
 declare class ToastProps extends Vue {
   position: string
-  titleHtml: string
-  bodyHtml: string
-  noHeader: boolean
+  hasHeader: boolean
   autohide: number
-  noCloseButton: boolean
-  noFade: boolean
+  closeButton: boolean
+  fade: boolean
 }
 
 export declare class CToast extends ToastProps {
   show: boolean
+  headerHtml: string
+  bodyHtml: string
 }
 
 export declare class CToaster extends ToastProps {

@@ -1,5 +1,5 @@
 <template>
-  <transition :name="!props.noFade ? 'fade' : null" appear> 
+  <transition :name="props.fade ? 'fade' : null" appear> 
     <div
       v-show="isShowed"
       :class="toastClasses"
@@ -8,19 +8,20 @@
       aria-atomic="true"
       :style="computedStyles"
     >
-      <div v-if="!props.noHeader" class="toast-header">
-        <slot name="title" :close="close">
-          <strong class="mr-auto" v-html="props.titleHtml"></strong>
+      <div v-if="props.hasHeader" class="toast-header">
+        <slot name="header">
+          <strong class="mr-auto" v-html="props.headerHtml"></strong>
         </slot>
         <CButtonClose
-          v-if="!props.noCloseButton"
+          v-if="props.closeButton"
           @click="close()"
           class="ml-2 mb-1"
         />
       </div>
-      <slot>
-        <div class="toast-body" v-html="props.bodyHtml"></div>
-      </slot>
+      <div v-if="$slots.default" class="toast-body">
+        <slot></slot>
+      </div>
+      <div v-else class="toast-body" v-html="props.bodyHtml"></div>
     </div>
   </transition>
 </template>
@@ -33,7 +34,9 @@ export default {
   name: 'CToast',
   mixins: [ toastMixin ],
   props: {
-    show: Boolean
+    show: Boolean,
+    headerHtml: String,
+    bodyHtml: String
   },
   components: {
     CButtonClose
@@ -96,12 +99,16 @@ export default {
       })
     },
     close (restoreOnHover = false) {
+      if (this.isShowed === false) {
+        return
+      }
+      
       this.isShowed = false
       this.$emit('update:show', false)
       this.$el.removeEventListener('mouseout', this.onHoverOut)
       this.$el.removeEventListener('mouseover', this.onHover)
 
-      if (!this.props.noFade) {
+      if (this.props.fade) {
         this.setHiddingMode(restoreOnHover)
       }
     },
