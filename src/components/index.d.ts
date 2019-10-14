@@ -302,6 +302,10 @@ export declare class CHeader extends Vue {
   withSubheader: boolean
 }
 
+export declare class CHeaderNav extends Vue {}
+
+export declare class CHeaderNavItem extends CLink {}
+
 export declare class CImg extends Vue {
   src: string
   alt: string
