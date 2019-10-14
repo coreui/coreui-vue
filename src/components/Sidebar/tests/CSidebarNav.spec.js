@@ -11,13 +11,13 @@ const Sidebar = Vue.extend({
   components: { CSidebar, CSidebarNav },
   data () {
     return {
-      minimized: false
+      minimize: false
     }
   },
   render (h) {
     return h(
       'CSidebar', 
-      { props: { minimize: this.minimized } }, 
+      { props: { minimize: this.minimize } }, 
       [h('CSidebarNav')]
     )
   }
@@ -37,15 +37,12 @@ describe(`${ComponentName} .vue`, () => {
   })
   it('properly inherits state from sidebar', () => {
     const nav = sidebarWrapper.vm.$children[0].$children[0]
-    expect(nav.state.open).toBe(true)
-    expect(nav.state.mobileOpen).toBe(false)
+    expect(nav.state.minimize).toBe(false)
 
-    expect(nav.state.minimized).toBe(false)
+    sidebarWrapper.setData({minimize: true})
+    expect(nav.state.minimize).toBe(true)
 
-    sidebarWrapper.setData({minimized: true})
-    expect(nav.state.minimized).toBe(true)
-
-    sidebarWrapper.setData({minimized: false})
-    expect(nav.state.minimized).toBe(false)
+    sidebarWrapper.setData({minimize: false})
+    expect(nav.state.minimize).toBe(false)
   })
 })

@@ -40,7 +40,14 @@ export default {
     }
   },
   provide () {
-    return { dropdownMode: this.dropdownMode }
+    const state = {}
+    Object.defineProperty(state, 'minimize', {
+      get: () => this.minimize
+    })
+    return { 
+      state,
+      dropdownMode: this.dropdownMode 
+    }
   },
   data () {
     return {
@@ -85,13 +92,13 @@ export default {
       if (
         hiddingElementClicked &&
         this.hideOnMobileClick &&
-        this.isOnMobile(event)
+        this.isOnMobile()
       ) {
         this.open = false
         this.$emit('update:show', false)
       }
     },
-    isOnMobile (event) {
+    isOnMobile () {
       return Boolean(getComputedStyle(this.$el).getPropertyValue('--on-mobile'))
     }
   }

@@ -45,7 +45,7 @@ const App = Vue.extend({
 })
 
 const sidebarWrapper = mount(App, { attachToDocument: true })
-const sidebarComponent = sidebarWrapper.vm.$children[0]
+// const sidebarComponent = sidebarWrapper.vm.$children[0]
 
 describe(`${ComponentName} .vue`, () => {
   it('has a name', () => {
