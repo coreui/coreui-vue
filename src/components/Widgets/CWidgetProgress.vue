@@ -1,6 +1,5 @@
 <template>
   <div :class="inverse ? `card text-white bg-${color}` : 'card'">
-    <slot name="header"></slot>
     <div class="card-body">
       <div v-if="header" class="h4 m-0">{{header}}</div>
       <div v-if="text">{{text}}</div>
@@ -16,7 +15,6 @@
         {{footer}}
       </small>
     </div>
-    <slot name="footer"></slot>
   </div>
 </template>
 

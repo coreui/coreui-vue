@@ -4,7 +4,6 @@ exports[`CWidgetIcon matches custom props snapshot 1`] = `
 <div
   class="card"
 >
-   
   <div
     class="card-body clearfix d-flex align-items-center p-0"
   >
@@ -30,7 +29,6 @@ exports[`CWidgetIcon matches custom props snapshot 1`] = `
       </div>
     </div>
   </div>
-   
 </div>
 `;
 
@@ -38,7 +36,6 @@ exports[`CWidgetIcon matches default props snapshot 1`] = `
 <div
   class="card"
 >
-   
   <div
     class="card-body clearfix d-flex align-items-center p-3"
   >
@@ -52,6 +49,5 @@ exports[`CWidgetIcon matches default props snapshot 1`] = `
       <!---->
     </div>
   </div>
-   
 </div>
 `;

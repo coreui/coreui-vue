@@ -1,6 +1,5 @@
 <template>
   <div class="card">
-    <slot name="header"></slot>
     <div
       class="card-body clearfix d-flex align-items-center"
       :class="noIconPadding ? 'p-0' : 'p-3'"
@@ -23,7 +22,6 @@
         </div>
       </div>
     </div>
-    <slot name="footer"></slot>
   </div>
 </template>
 

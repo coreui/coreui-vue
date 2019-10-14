@@ -1,6 +1,5 @@
 <template>
   <div class="card">
-    <slot name="header"></slot>
     <div class="card-body text-center">
       <div
         v-if="header"
@@ -8,10 +7,11 @@
       >
         {{header}}
       </div>
-      <div v-if="text" class="h2 py-3">{{text}}</div>
+      <div v-if="text" class="h2 py-3">
+        {{text}}
+      </div>
       <slot></slot>
     </div>
-    <slot name="footer"></slot>
   </div>
 </template>
 

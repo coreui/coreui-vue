@@ -1,6 +1,5 @@
 <template>
   <div :class="inverse ? `card text-white bg-${color}` : 'card'">
-    <slot name="header"></slot>
     <div class="card-body">
       <div
         v-if="$slots.default"
@@ -24,7 +23,6 @@
         />
       </slot>
     </div>
-    <slot name="footer"></slot>
   </div>
 </template>
 

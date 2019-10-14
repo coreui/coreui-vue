@@ -4,7 +4,6 @@ exports[`CWidgetProgress matches custom props snapshot 1`] = `
 <div
   class="card text-white bg-info"
 >
-   
   <div
     class="card-body"
   >
@@ -41,7 +40,6 @@ exports[`CWidgetProgress matches custom props snapshot 1`] = `
     
     </small>
   </div>
-   
 </div>
 `;
 
@@ -49,7 +47,6 @@ exports[`CWidgetProgress matches default props snapshot 1`] = `
 <div
   class="card"
 >
-   
   <div
     class="card-body"
   >
@@ -74,6 +71,5 @@ exports[`CWidgetProgress matches default props snapshot 1`] = `
      
     <!---->
   </div>
-   
 </div>
 `;

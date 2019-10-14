@@ -4,7 +4,6 @@ exports[`CWidgetSimple matches custom props snapshot 1`] = `
 <div
   class="card"
 >
-   
   <div
     class="card-body text-center"
   >
@@ -19,10 +18,11 @@ exports[`CWidgetSimple matches custom props snapshot 1`] = `
     <div
       class="h2 py-3"
     >
+      
       text
+    
     </div>
      
   </div>
-   
 </div>
 `;

@@ -1,6 +1,5 @@
 <template>
   <div class="card" :class="`bg-${color} text-white`">
-    <slot name="header"></slot>
     <div class="card-body pb-0">
       <slot></slot>
       <h4 v-if="header" class="mb-0">{{header}}</h4>

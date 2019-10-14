@@ -4,7 +4,6 @@ exports[`CWidgetDropdown matches custom props snapshot 1`] = `
 <div
   class="card bg-info text-white"
 >
-   
   <div
     class="card-body pb-0"
   >
@@ -27,7 +26,6 @@ exports[`CWidgetDropdown matches default props snapshot 1`] = `
 <div
   class="card bg-undefined text-white"
 >
-   
   <div
     class="card-body pb-0"
   >
