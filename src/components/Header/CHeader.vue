@@ -1,20 +1,29 @@
 <template>
-  <header :class="classList">
+  <component :is="tag" :class="classList">
     <slot></slot>
-  </header>
+  </component>
 </template>
 
 <script>
 export default {
   name: 'CHeader',
   props: {
+    tag: {
+      type: String,
+      default: 'header'
+    },
+    colorScheme: {
+      type: String,
+      default: 'light'
+    },
     fixed: Boolean,
     withSubheader: Boolean
   },
   computed: {
     classList () {
       return [
-        'c-header c-header-light',
+        'c-header',
+        `c-header-${this.colorScheme}`,
         { 
           'c-header-fixed': this.fixed,
           'c-header-with-subheader': this.withSubheader

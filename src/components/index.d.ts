@@ -165,6 +165,7 @@ export declare class CEmbed extends Vue {
 }
 
 export declare class CFooter extends Vue {
+  tag: string
   fixed: boolean
 }
 
@@ -296,6 +297,9 @@ export declare class CRow extends Vue {
 
 export declare class CHeader extends Vue {
   fixed: boolean
+  tag: string
+  colorScheme: string
+  withSubheader: boolean
 }
 
 export declare class CImg extends Vue {

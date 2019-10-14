@@ -1,13 +1,17 @@
 <template>
-  <footer :class="classList">
+  <component :is="tag" :class="classList">
     <slot>Footer</slot>
-  </footer>
+  </component>
 </template>
 
 <script>
 export default {
   name: 'CFooter',
   props: {
+    tag: {
+      type: String,
+      default: 'footer'
+    },
     fixed: Boolean
   },
   computed: {
