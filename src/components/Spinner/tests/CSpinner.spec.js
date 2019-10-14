@@ -7,7 +7,7 @@ const customWrapper = mount(Component, {
   propsData: {
     grow: true,
     color: 'success',
-    small: true
+    size: 'sm'
   }
 })
 

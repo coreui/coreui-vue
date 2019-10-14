@@ -6,7 +6,7 @@ export default {
   props: {
     grow: Boolean,
     color: String,
-    small: Boolean,
+    size: String,
     tag: {
       type: String,
       default: 'span'
@@ -25,7 +25,7 @@ export default {
         class: [
           `spinner-${type}`,
           {
-            [`spinner-${type}-sm`]: props.small,
+            [`spinner-${type}-${props.size}`]: props.size,
             [`text-${props.color}`]: Boolean(props.color)
           }
         ]

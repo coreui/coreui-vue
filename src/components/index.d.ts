@@ -519,7 +519,7 @@ export declare class CSidebarNavToggler extends Vue {}
 export declare class CSpinner extends Vue {
   grow: boolean
   color: string
-  small: boolean
+  size: string
   tag: string
 }
 
