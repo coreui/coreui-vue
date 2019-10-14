@@ -17,11 +17,11 @@ export default {
   getTooltipConfig (binding) {
     const props = binding.value
     const title = props.content || props
-    const modifiersTriggers = String(Object.keys(binding.modifiers)).replace(',',' ')
+    // const modifiersTriggers = String(Object.keys(binding.modifiers)).replace(',',' ')
     const closeOnClickOutside = props.closeOnClickOutside === false ? false : true
     return {
       title,
-      trigger: modifiersTriggers || props.trigger || 'hover',
+      trigger: 'hover',
       html: true,
       placement: props.placement || 'top',
       delay: props.delay || 0,
