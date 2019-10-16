@@ -26,7 +26,7 @@ const customWrapper = mount(Component, {
       'registered',
       { key: 'role', _style:'width:20%;' },
       { key: 'status', _style:'width:20%;' },
-      { key: 'show_details' , label:'', _style:'width:1%', notSortable: true, noFilter: true },
+      { key: 'show_details' , label:'', _style:'width:1%', sortable: false, filterable: false },
     ],
 
     indexColumn: true,
@@ -76,10 +76,6 @@ describe(ComponentName, () => {
     customWrapper.setProps({ fields: undefined })
     expect(customWrapper.vm.columnNames[0]).toBe('Username')
   })
-  it('clear table filters', () => {
-    customWrapper.findAll('tr').at(1).find('svg').trigger('click')
-    expect(customWrapper.vm.sorter.column).toBe('')
-  })
   it('changes colspan when indexColumn is switched', () => {
     const colspanWithIndexColumn = customWrapper.vm.colspan
     customWrapper.setProps({ indexColumn: false })
@@ -94,16 +90,6 @@ describe(ComponentName, () => {
     customWrapper.setProps({ loading: true })
     expect(customWrapper.contains('.spinner-border')).toBe(true)
     customWrapper.setProps({ loading: false })
-  })
-  it('emits event when items per page changes', () => {
-    customWrapper.findAll('tr').at(1).find('input').setValue('Estavan')
-    expect(customWrapper.vm.spinnerSize.includes('2')).toBe(true)
-
-    customWrapper.findAll('tr').at(1).find('input').setValue('')
-    expect(customWrapper.vm.spinnerSize.includes('3')).toBe(true)
-
-    customWrapper.setProps({ small: true })
-    expect(customWrapper.vm.spinnerSize.includes('1.4')).toBe(true)
   })
   it('emits event when items per page changes', () => {
     customWrapper.findAll('option').at(2).setSelected()

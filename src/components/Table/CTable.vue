@@ -43,7 +43,7 @@
 
 
     <slot name="over-table"/>
-    <div :class="`position-relative ${notResponsive ? '' : 'table-responsive'}`">
+    <div :class="`position-relative ${responsive ? 'table-responsive' : '' }`">
       <table :class="tableClasses">
         <thead>
           <tr>
@@ -74,21 +74,12 @@
           </tr>
 
           <tr v-if="columnFilter" class="table-sm">
-            <th v-if="indexColumn" class="pb-2 pl-2">
-              <CIcon
-                v-if="indexColumn !== 'noCleaner'"
-                width="18"
-                name="ban"
-                @click.native="clear"
-                :class="isFiltered ? 'text-danger' : 'text-secondary'"
-                title="clear table"
-              />
-            </th>
+            <th v-if="indexColumn"></th>
             <template v-for="(colName, index) in rawColumnNames" >
               <th :class="headerClass(index)" :key="index">
                 <slot :name="`${rawColumnNames[index]}-filter`">
                   <input
-                    v-if="!fields || !fields[index].noFilter"
+                    v-if="!fields || !fields[index].filterable !== false"
                     class="w-100 table-filter"
                     @input="addColumnFilter(colName, $event.target.value)"
                     :value="columnFilterVal[colName]"
@@ -118,7 +109,7 @@
                   :index="firstItemIndex + itemIndex"
                 >
                   <td>
-                    {{indexColumn !== 'noIndexes' ? firstItemIndex + itemIndex + 1 : ''}}
+                    {{ firstItemIndex + itemIndex + 1 }}
                   </td>
                 </slot>
               <template v-for="(colName, index) in rawColumnNames" >
@@ -205,18 +196,14 @@
         <slot name="caption"/>
       </table>
 
+      <slot name="loading" v-if="loading">
+        <div style="position:absolute;left:0;top:0;bottom:0;right:0;background-color:rgb(255,255,255,0.4);">
+          <div style="position:absolute;bottom:50%;left:50%;transform:translateX(-50%);">
+            <CSpinner color="success"/>
+          </div>
+        </div>
+      </slot>
 
-      <div
-        v-if="loading"
-        :style="topLoadingPosition"
-        style="position:absolute;left:50%;transform:translateX(-50%);"
-      >
-        <CSpinner
-          color="success"
-          :style="spinnerSize"
-          role="status"
-        />
-      </div>
     </div>
     <slot name="under-table"/>
 
@@ -253,13 +240,16 @@ export default {
       default: 10
     },
     activePage: Number,    
-    indexColumn: [Boolean, String],
+    indexColumn: Boolean,
     columnFilter: Boolean,
     pagination: [Boolean, Object],
     addTableClasses: [String, Array, Object],
-    notResponsive: Boolean,
+    responsive: {
+      type: Boolean,
+      default: true
+    },
     sortable: Boolean,
-    small: Boolean,
+    size: String,
     dark: Boolean,
     striped: Boolean,
     fixed: Boolean,
@@ -371,8 +361,7 @@ export default {
         'table',
         this.addTableClasses,
         {
-          'is-loading': this.loading,
-          'table-sm': this.small,
+          [`table-${this.size}`]: this.size,
           'table-dark': this.dark,
           'table-striped': this.striped,
           'b-table-fixed': this.fixed,
@@ -387,14 +376,6 @@ export default {
     },
     colspan () {
       return this.rawColumnNames.length + (this.indexColumn ? 1 : 0)
-    },
-    topLoadingPosition () {
-      const headerHeight = (this.columnFilter ? 38 : 0) + ( this.small ? 32 + 4 : 46 + 7)
-      return `top:${headerHeight}px`
-    },
-    spinnerSize () {
-      const size = this.small ? 1.4 : this.currentItems.length === 1 ? 2 : 3
-      return `width:${size + 'rem'};height:${size + 'rem'}`
     },
     isFiltered () {
       return this.tableFilterVal || Object.values(this.columnFilterVal).join('')
@@ -428,16 +409,16 @@ export default {
     addColumnFilter (colName, value) {
       this.$set(this.columnFilterVal, colName, value)
     },
-    clear () {
-      this.tableFilterVal = ''
-      this.columnFilterVal = {}
-      this.sorter.column = ''
-      this.sorter.asc = true
-      const inputs = this.$el.getElementsByClassName('table-filter')
-      for (let input of inputs) {
-        input.value = ''
-      }
-    },
+    // clear () {
+    //   this.tableFilterVal = ''
+    //   this.columnFilterVal = {}
+    //   this.sorter.column = ''
+    //   this.sorter.asc = true
+    //   const inputs = this.$el.getElementsByClassName('table-filter')
+    //   for (let input of inputs) {
+    //     input.value = ''
+    //   }
+    // },
     pretifyName (name) {
       return name.replace(/[-_.]/g, ' ')
         .replace(/ +/g, ' ')
@@ -457,7 +438,7 @@ export default {
       return classes
     },
     isSortable (index) {
-      return this.sortable && (!this.fields || !this.fields[index].notSortable)
+      return this.sortable && (!this.fields || this.fields[index].sortable !== false)
     },
     headerClass (index) {
       const fields = this.fields
@@ -504,9 +485,6 @@ export default {
 .icon-transition {
   -webkit-transition: transform 0.3s;
   transition: transform 0.3s;
-}
-.is-loading {
-  opacity: .4;
 }
 .arrow-position {
   right: 0;
