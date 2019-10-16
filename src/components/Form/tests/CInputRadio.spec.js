@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
-import Component from '../CFormRadio'
+import Component from '../CInputRadio'
 
-const ComponentName = 'CFormRadio'
+const ComponentName = 'CInputRadio'
 const customWrapper = mount(Component, {
   propsData: {
     label: 'label',

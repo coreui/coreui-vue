@@ -1,21 +1,25 @@
 import { mount } from '@vue/test-utils'
-import Component from '../CFormTextarea'
+import Component from '../CInput'
 
-const ComponentName = 'CFormTextarea'
+const ComponentName = 'CInput'
 const wrapper = mount(Component, {
   propsData: {
     id: 'some_id',
-    lazy: false
+    lazy: false,
+    size: 'lg',
+    plaintext: true,
+    isValid: (val) => val && val.length > 12
   }
 })
 
 const customWrapper = mount(Component, {
   propsData: {
+    type: 'number',
     label: 'label',
     id: 'some_id',
     wasValidated: true,
     checked: true,
-    value: 'value',
+    value: '32',
     validFeedback: 'input is valid',
     invalidFeedback: 'input is invalid',
     tooltipFeedback: true,
@@ -41,7 +45,7 @@ describe(ComponentName, () => {
     expect(customWrapper.element).toMatchSnapshot()
   })
   it('update value when not lazy', () => {
-    const input = wrapper.find('textarea')
+    const input = wrapper.find('input')
     input.element.value = 'something'
 
     jest.useFakeTimers()
@@ -52,7 +56,7 @@ describe(ComponentName, () => {
   })
   it('update value after given time lazy is number', () => {
     wrapper.setProps({ lazy: 300 })
-    const input = wrapper.find('textarea')
+    const input = wrapper.find('input')
     input.element.value = 'something else'
     const eventsStr = () => JSON.stringify(wrapper.emitted()['update:value'])
 
@@ -66,7 +70,7 @@ describe(ComponentName, () => {
     jest.runAllTimers()
   })
   it('update value only on change event when lazy', () => {
-    const input = customWrapper.find('textarea')
+    const input = customWrapper.find('input')
     input.element.value = 33
 
     jest.useFakeTimers()
@@ -76,5 +80,9 @@ describe(ComponentName, () => {
 
     input.trigger('change')
     expect(customWrapper.emitted()['update:value']).toBeTruthy()
+  })
+  it('changes value correctly', () => {
+    wrapper.setProps({ value: 'new value' })
+    expect(wrapper.vm.state).toBe('new value')
   })
 })

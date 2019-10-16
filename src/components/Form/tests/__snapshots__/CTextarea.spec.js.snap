@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CFormTextarea renders correctly 1`] = `
+exports[`CTextarea renders correctly 1`] = `
 <div
   class="form-group"
   role="group"
@@ -23,7 +23,7 @@ exports[`CFormTextarea renders correctly 1`] = `
 </div>
 `;
 
-exports[`CFormTextarea renders correctly 2`] = `
+exports[`CTextarea renders correctly 2`] = `
 <div
   class="form-group was-validated"
   role="group"

@@ -1,19 +1,19 @@
 import CForm from './CForm'
-import CFormInput from './CFormInput'
-import CFormCheckbox from './CFormCheckbox'
-import CFormFile from './CFormFile'
-import CFormTextarea from './CFormTextarea'
-import CFormSelect from './CFormSelect'
-import CFormRadio from './CFormRadio'
 import CFormGroup from './CFormGroup'
+import CInput from './CInput'
+import CInputCheckbox from './CInputCheckbox'
+import CInputFile from './CInputFile'
+import CInputRadio from './CInputRadio'
+import CSelect from './CSelect'
+import CTextarea from './CTextarea'
 
 export {
   CForm,
-  CFormInput,
-  CFormCheckbox,
-  CFormFile,
-  CFormTextarea,
-  CFormSelect,
-  CFormRadio,
-  CFormGroup
+  CFormGroup,
+  CInput,
+  CInputCheckbox,
+  CInputFile,
+  CInputRadio,
+  CSelect,
+  CTextarea
 }

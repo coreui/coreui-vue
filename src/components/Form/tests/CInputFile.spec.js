@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
-import Component from '../CFormCheckbox'
+import Component from '../CInputFile'
 
-const ComponentName = 'CFormCheckbox'
+const ComponentName = 'CInputFile'
 const wrapper = mount(Component, {
   propsData: {
     label: 'label',
@@ -13,8 +13,8 @@ const customWrapper = mount(Component, {
     label: 'label',
     id: 'some_id',
     wasValidated: true,
+    horizontal: true,
     checked: true,
-    value: 'value',
     validFeedback: 'input is valid',
     invalidFeedback: 'input is invalid',
     tooltipFeedback: true,
@@ -22,31 +22,24 @@ const customWrapper = mount(Component, {
     isValid: true,
     addInputClasses: 'additional-input-class',
     addLabelClasses: 'additional-label-class',
+    addWrapperClasses: 'additional-wrapper-class',
     custom: true,
-    inline: true
+    multiple: true
   }
 })
-const autoIdWrapper = mount(Component)
 
 describe(ComponentName, () => {
   it('has a name', () => {
     expect(Component.name).toMatch(ComponentName)
   })
-  it('renders correctly basic checkbox', () => {
+  it('renders correctly basic functionality', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
   it('renders correctly', () => {
     expect(customWrapper.element).toMatchSnapshot()
   })
-  it('emmits correct values on check', () => {
-    wrapper.find('input').setChecked()
-    wrapper.find('input').setChecked(false)
-    const emittedValues = wrapper.emitted()['update:checked'].map(event => {
-      return event[0]
-    })
-    expect(emittedValues).toEqual([true, false])
-  })
-  it('generates safe id when no id is passed', () => {
-    expect(autoIdWrapper.vm.safeId.includes('_safe_id_')).toBe(true)
+  it('emmits event after file load', () => {
+    customWrapper.find('input').trigger('change')
+    expect(customWrapper.emitted().change).toBeTruthy()
   })
 })

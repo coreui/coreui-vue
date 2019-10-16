@@ -174,7 +174,7 @@ declare class formSharedProps extends Vue {
   description: string
 }
 
-export declare class CFormFile extends formSharedProps {
+export declare class CInputFile extends formSharedProps {
   label: string
   wasValidated: boolean
   isValid: [boolean, ()=>{}]
@@ -195,9 +195,8 @@ export declare class CFormGroup extends formSharedProps {
   wrapperClasses: [string, Array<any>, object]
 }
 
-export declare class CFormInput extends formSharedProps {
+export declare class CInput extends formSharedProps {
   type: string
-
   appendHtml: string
   prependHtml: string
   readonly: boolean
@@ -214,7 +213,7 @@ export declare class CFormInput extends formSharedProps {
   addWrapperClasses: [string, Array<any>, object]
 }
 
-export declare class CFormRadio extends formSharedProps {
+export declare class CInputRadio extends formSharedProps {
   appendHtml: string
   prependHtml: string
 
@@ -230,11 +229,11 @@ export declare class CFormRadio extends formSharedProps {
   inline: boolean
 }
 
-export declare class CFormCheckbox extends CFormRadio {
+export declare class CInputCheckbox extends CInputRadio {
   checked: boolean
 }
 
-export declare class CFormSelect extends formSharedProps {
+export declare class CSelect extends formSharedProps {
   appendHtml: string
   prependHtml: string
 
@@ -254,7 +253,7 @@ export declare class CFormSelect extends formSharedProps {
   custom: boolean
 }
 
-export declare class CFormTextarea extends formSharedProps {
+export declare class CTextarea extends formSharedProps {
   appendHtml: string
   prependHtml: string
   readonly: boolean

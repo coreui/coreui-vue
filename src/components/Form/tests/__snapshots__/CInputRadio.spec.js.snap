@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CFormRadio renders correctly 1`] = `
+exports[`CInputRadio renders correctly 1`] = `
 <div
   class="custom-control custom-control-inline custom-radio was-validated"
   role="group"

@@ -43,7 +43,7 @@ const textInputsProps = {
 }
 
 // Html props: disabled, required, accept, id, placeholder
-export const formFileProps = Object.assign(
+export const inputFileProps = Object.assign(
   {}, formGroupAlwaysSharedProps, props, {
   custom: Boolean,
   placeholder: String,
@@ -51,12 +51,12 @@ export const formFileProps = Object.assign(
 })
 
 // Html props: disabled, required, rows, cols, placeholder, id
-export const formTextareaProps = Object.assign(
+export const textareaProps = Object.assign(
   {}, formGroupSharedProps, props, textInputsProps
 )
 
 // HTML props: disabled, required, placeholder, id
-export const formInputProps = Object.assign(
+export const inputProps = Object.assign(
   {}, formGroupSharedProps, props, textInputsProps, {
   type: {
     type: String,
@@ -65,7 +65,7 @@ export const formInputProps = Object.assign(
 })
 
 // Html props: disabled, id required don't use multiple
-export const formSelectProps = Object.assign(
+export const selectProps = Object.assign(
   {}, formGroupSharedProps, props, {
   options: Array,
   value: [String, Number, Boolean, Array],
@@ -75,7 +75,7 @@ export const formSelectProps = Object.assign(
 })
 
 // Html props: id, disabled, required
-export const formCheckboxProps = Object.assign(
+export const inputCheckboxProps = Object.assign(
   {}, formGroupAlwaysSharedProps, universalProps, {
   checked: Boolean,
   value: {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CFormInput renders correctly 1`] = `
+exports[`CInput renders correctly 1`] = `
 <div
   class="form-group"
   role="group"
@@ -25,7 +25,7 @@ exports[`CFormInput renders correctly 1`] = `
 </div>
 `;
 
-exports[`CFormInput renders correctly 2`] = `
+exports[`CInput renders correctly 2`] = `
 <div
   class="form-group was-validated"
   role="group"

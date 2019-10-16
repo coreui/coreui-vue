@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
-import Component from '../CFormSelect'
+import Component from '../CSelect'
 
-const ComponentName = 'CFormSelect'
+const ComponentName = 'CSelect'
 const wrapperPlaintext = mount(Component, {
   propsData: {
     id: 'some_id',

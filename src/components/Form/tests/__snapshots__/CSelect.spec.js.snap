@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CFormSelect renders correctly 1`] = `
+exports[`CSelect renders correctly 1`] = `
 <div
   class="form-group"
   role="group"
@@ -59,7 +59,7 @@ exports[`CFormSelect renders correctly 1`] = `
 </div>
 `;
 
-exports[`CFormSelect renders correctly 2`] = `
+exports[`CSelect renders correctly 2`] = `
 <div
   class="form-group"
   role="group"
@@ -109,7 +109,7 @@ exports[`CFormSelect renders correctly 2`] = `
 </div>
 `;
 
-exports[`CFormSelect renders correctly 3`] = `
+exports[`CSelect renders correctly 3`] = `
 <div
   class="form-group was-validated"
   role="group"

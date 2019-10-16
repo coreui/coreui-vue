@@ -37,13 +37,12 @@
 
 <script>
 import CFormGroup from './CFormGroup'
-import { formInputProps as props } from './formProps'
-
+import { inputProps as props } from './formProps'
 import * as allFormMixins from './formMixins'
 const mixins = Object.values(allFormMixins)
 
 export default {
-  name: 'CFormInput',
+  name: 'CInput',
   inheritAttrs: false,
   components: { CFormGroup },
   mixins,

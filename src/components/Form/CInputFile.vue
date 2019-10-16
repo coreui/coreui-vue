@@ -1,7 +1,7 @@
-<template >
+<template>
   <CFormGroup
-    v-bind="{appendHtml, prependHtml, validFeedback, invalidFeedback,
-      tooltipFeedback, description, wrapperClasses, class: computedClasses}"
+    v-bind="{validFeedback, invalidFeedback, tooltipFeedback, description,
+             wrapperClasses, class: computedClasses}"
   >
     <template #label>
       <slot name="label">
@@ -10,101 +10,97 @@
         </label>
       </slot>
     </template>
+
+
     <template #input>
-      <textarea
+      <input
         v-bind="$attrs"
         :id="safeId"
         :class="inputClasses"
-        :readonly="readonly || plaintext"
-        :value="state"
-        @input="onInput($event)"
+        :multiple="multiple"
+        type="file"
         @change="onChange($event)"
       />
+      <label
+        v-if="custom"
+        :for="safeId"
+        class="custom-file-label"
+      >
+        {{computedPlaceholder}}
+      </label>
     </template>
 
+
     <template
-      v-for="slot in ['prepend', 'append', 'label-after-input',
-                      'valid-feedback', 'invalid-feedback','description']"
+      v-for="slot in ['label-after-input','valid-feedback',
+                              'invalid-feedback','description']"
       #[slot]
     >
-      <slot :name="slot">
-      </slot>
+      <slot :name="slot"></slot>
     </template>
   </CFormGroup>
 </template>
 
 <script>
-import CFormGroup from './CFormGroup'
-import { formTextareaProps as props} from './formProps'
-
 import * as allFormMixins from './formMixins'
-const mixins = Object.values(allFormMixins)
+const mixins = Object.values(allFormMixins).filter((i, key) => key !== 'watchValue')
+import { inputFileProps as props } from './formProps'
+import CFormGroup from './CFormGroup'
 
 export default {
-  name: 'CFormTextarea',
+  name: 'CInputFile',
   inheritAttrs: false,
   components: { CFormGroup },
   mixins,
   props,
-  // Html props: disabled, required, rows, cols, placeholder
   // {
-  //   validFeedback: String,
-  //   invalidFeedback: String,
-  //   tooltipFeedback: Boolean,
-  //   description: String,
+    // validFeedback: String,
+    // invalidFeedback: String,
+    // tooltipFeedback: Boolean,
+    // description: String,
 
-  //   appendHtml: String,
-  //   prependHtml: String,
+    // label: String,
+    // wasValidated: Boolean,
+    // isValid: {
+    //   type: [Boolean, Function],
+    //   default: null
+    // },
+    // addInputClasses: [String, Array, Object],
+    // addLabelClasses: [String, Array, Object],
 
-  //   label: String,
-  //   wasValidated: Boolean,
-  //   isValid: {
-  //     type: [Boolean, Function],
-  //     default: null
-  //   },
-  //   addInputClasses: [String, Array, Object],
-  //   addLabelClasses: [String, Array, Object],
+    // horizontal: [Boolean, Object],
+    // size: {
+    //   type: String,
+    //   validator: str => ['','sm','lg'].includes(str)
+    // },
+    // addWrapperClasses: [String, Array, Object],
 
-  //   horizontal: [Boolean, Object],
-  //   size: {
-  //     type: String,
-  //     validator: str => ['','sm','lg'].includes(str)
-  //   },
-  //   addWrapperClasses: [String, Array, Object],
-
-  //   readonly: Boolean,
-  //   plaintext: Boolean,
-  //   value: String,
-  //   lazy: {
-  //     type: [Boolean, Number],
-  //     default: 400
-  //   }
+    // custom: Boolean,
+    // placeholder: String,
+    // multiple: Boolean
   // },
   data () {
     return {
-      state: this.value
+      state: null,
     }
   },
-  //watchValue mixin
-  // watch: {
-  //   value (val) {
-  //     this.state = val
-  //   }
-  // },
   computed: {
+    computedPlaceholder () {
+      return this.placeholder || `Choose file${this.multiple ?'s':''}...`
+    },
     // classesComputedProps mixin
     // haveCustomSize () {
     //   return ['sm','lg'].includes(this.size)
     // },
-    // computedClasses () {
-    //   return [
-    //     'form-group',
-    //     {
-    //      'was-validated': this.wasValidated,
-    //      'form-row': this.isHorizontal
-    //     }
-    //   ]
-    // },
+    computedClasses () {
+      return [
+        this.isHorizontal ? 'form-row':
+        this.custom ? 'custom-file' : 'form-group position-relative',
+        {
+          'was-validated': this.wasValidated
+        }
+      ]
+    },
     // labelClasses () {
     //   return [
     //     this.addLabelClasses,
@@ -120,6 +116,9 @@ export default {
     //     return `form-control-${this.size}`
     //   }
     // },
+    inputClass () {
+      return this.custom ? 'custom-file-input' : 'form-control-file'
+    },
     // inputClasses () {
     //   return [
     //     this.inputClass || `form-control${this.plaintext ? '-plaintext' : ''}`,
@@ -128,6 +127,7 @@ export default {
     //     this.customSizeClass
     //   ]
     // }
+
 
     // validationComputedProps mixin
     // computedIsValid () {
@@ -142,20 +142,13 @@ export default {
     //   }
     // }
 
-
     //wrapperComputedProps mixin
     // isHorizontal () {
     //   return Boolean(this.horizontal)
     // },
-    // haveInputGroup () {
-    //   return Boolean(
-    //     this.tooltipFeedback || 
-    //     this.appendHtml ||
-    //     this.prependHtml || 
-    //     this.$slots.append || 
-    //     this.$slots.prepend
-    //   )
-    // },
+    haveInputGroup () {
+      return false
+    }
     // haveWrapper () {
     //   return this.haveInputGroup || Boolean(this.addWrapperClasses || this.isHorizontal)
     // },
@@ -172,25 +165,11 @@ export default {
     //   }
     // }
   },
-
-
   methods: {
-    onInput (e) {
-      this.state = e.target.value
-      this.$emit('input', this.state, e)
-      if (this.lazy === true)
-        return
-
-      clearTimeout(this.syncTimeout)
-      this.syncTimeout = setTimeout(() => {
-        this.$emit('update:value', this.state, e)
-      }, this.lazy !== false ? this.lazy : 0)
-    },
     onChange (e) {
-      this.state = e.target.value
-      this.$emit('change', this.state, e)
-      this.$emit('update:value', this.state, e)
-    },
+      this.state = e.target.files
+      this.$emit('change', e.target.files, e)
+    }
   }
 }
 </script>

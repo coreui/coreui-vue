@@ -35,10 +35,11 @@
 
 <script>
 import { safeId, validationComputedProps } from './formMixins'
-import { formCheckboxProps as props } from './formProps'
+import { inputCheckboxProps as props } from './formProps'
 import CFormGroup from './CFormGroup'
+
 export default {
-  name: 'CFormCheckbox',
+  name: 'CInputCheckbox',
   inheritAttrs: false,
   components: { CFormGroup },
   mixins: [safeId, validationComputedProps],

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CFormCheckbox renders correctly 1`] = `
+exports[`CInputCheckbox renders correctly 1`] = `
 <div
   class="custom-control custom-control-inline custom-checkbox was-validated"
   role="group"
@@ -46,7 +46,7 @@ exports[`CFormCheckbox renders correctly 1`] = `
 </div>
 `;
 
-exports[`CFormCheckbox renders correctly basic checkbox 1`] = `
+exports[`CInputCheckbox renders correctly basic checkbox 1`] = `
 <div
   class="form-check"
   role="group"

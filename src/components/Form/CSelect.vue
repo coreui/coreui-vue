@@ -57,10 +57,11 @@
 <script>
 import * as allFormMixins from './formMixins'
 const mixins = Object.values(allFormMixins)
-import { formSelectProps as props } from './formProps'
+import { selectProps as props } from './formProps'
 import CFormGroup from './CFormGroup'
+
 export default {
-  name: 'CFormSelect',
+  name: 'CSelect',
   inheritAttrs: false,
   components: { CFormGroup },
   slots: [
