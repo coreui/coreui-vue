@@ -13,7 +13,7 @@ export default {
   },
   render (h, { data, props, slots }) {
     const attrs = props.tag === 'button' ? { type: 'button' } : null
-    const type = props.inNavbar ? 'navbar' : props.inHeader ? 'header' : null 
+    const type = props.inNavbar ? 'navbar' : props.inHeader ? 'c-header' : null 
     const staticClass = type ? `${type}-toggler` : ''
     const iconClass = type ? `${staticClass}-icon` : ''
     return h(
