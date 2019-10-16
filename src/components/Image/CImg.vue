@@ -12,7 +12,7 @@
     :class="imageClasses"
     :width="width"
     :height="height"
-    :style="{'background-color': isActive ? blankColor : 'transparent' }"
+    :style="{'background-color': isActive ? placeholderColor : 'transparent' }"
   />
 </template>
 
@@ -47,7 +47,7 @@ export default {
       type: String,
       validator: align => ['', 'left', 'right', 'center'].includes(align)
     },
-    blankColor: {
+    placeholderColor: {
       type: String,
       default: 'transparent'
     }

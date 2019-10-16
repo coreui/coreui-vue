@@ -315,7 +315,7 @@ export declare class CImg extends Vue {
   rounded: [boolean, string]
   thumbnail: boolean
   align: string
-  blankColor: string
+  placeholderColor: string
 }
 
 export declare class CImgLazy extends CImg {

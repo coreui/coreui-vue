@@ -37,7 +37,7 @@ export default {
     computedAsideImageProps () {
       return Object.assign(
         {
-          blankColor: '#777777',
+          placeholderColor: '#777777',
           width: '64px',
           height: this.asideVerticalPosition === 'stretch' ? '100%' : '64px'
         },

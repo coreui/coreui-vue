@@ -24,7 +24,7 @@ const customWrapper = mount(Component, {
     rounded: 'right',
     // thumbnail: true,
     align: 'right',
-    blankColor: 'red'
+    placeholderColor: 'red'
   }
 })
 
