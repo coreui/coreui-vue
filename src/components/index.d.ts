@@ -417,10 +417,6 @@ export declare class CNavbarNav extends Vue {
   tag: string
 }
 
-export declare class CNavbarToggler extends Vue {
-  tag: string
-}
-
 export declare class CPagination extends Vue {
   activePage: number
   pages: number
@@ -605,6 +601,12 @@ export declare class CToast extends ToastProps {
 
 export declare class CToaster extends ToastProps {
   reverse: boolean
+}
+
+export declare class CToggler extends Vue {
+  tag: string
+  inNavbar: boolean
+  inHeader: boolean
 }
 
 export declare class CTreeGenerator extends Vue {

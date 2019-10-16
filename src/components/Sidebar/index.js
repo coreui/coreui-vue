@@ -10,7 +10,6 @@ import CSidebarNavDivider from './CSidebarNavDivider'
 import CSidebarNavDropdown from './CSidebarNavDropdown'
 import CSidebarNavLink from './CSidebarNavLink'
 import CSidebarNavTitle from './CSidebarNavTitle'
-import CSidebarToggler from './CSidebarToggler'
 
 export {
   CSidebar,
@@ -24,6 +23,5 @@ export {
   CSidebarNavDivider,
   CSidebarNavDropdown,
   CSidebarNavLink,
-  CSidebarNavTitle,
-  CSidebarToggler
+  CSidebarNavTitle
 }
