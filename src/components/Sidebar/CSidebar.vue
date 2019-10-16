@@ -8,8 +8,12 @@
 export default {
   name: 'CSidebar',
   props: {
-    fixed: Boolean,
+    fixed: {
+      type: Boolean,
+      default: true
+    },
     unfoldable: Boolean,
+    overlaid: Boolean,
     breakpoint: {
       type: [String, Boolean],
       default: 'lg',
@@ -19,6 +23,10 @@ export default {
     show: {
       type: Boolean,
       default: null
+    },
+    size: {
+      type: String,
+      validator: (val) => ['', 'sm', 'lg', 'xl'].includes(val)
     },
     hideOnMobileClick: {
       type: Boolean,
@@ -42,7 +50,7 @@ export default {
   provide () {
     const state = {}
     Object.defineProperty(state, 'minimize', {
-      get: () => this.minimize
+      get: () => this.minimize && !this.unfoldable
     })
     return { 
       state,
@@ -81,7 +89,9 @@ export default {
           'c-sidebar-fixed': this.fixed,
           'c-sidebar-right': this.aside,
           'c-sidebar-minimized': this.minimize && !this.unfoldable,
-          'c-sidebar-minimized-unfoldable': this.minimize && this.unfoldable
+          'c-sidebar-unfoldable': this.minimize && this.unfoldable,
+          'c-sidebar-overlaid': this.overlaid,
+          [`c-sidebar-${this.size}`]: this.size,
         }
       ]
     }

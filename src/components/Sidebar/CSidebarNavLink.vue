@@ -1,12 +1,12 @@
 <template>
-  <li class="c-nav-item">
+  <li class="c-sidebar-nav-item">
     <CLink
       :class="linkClasses"
       v-bind="computedLinkProps"
       @click.native="click"
     >
       <slot>
-        <i :class="['c-nav-icon', icon]"></i> 
+        <i :class="['c-sidebar-nav-icon', icon]"></i> 
         {{name}}
         <CBadge
           v-if="badge"
@@ -51,7 +51,7 @@ export default {
     },
     linkClasses () {
       return [
-        this.label ? 'c-nav-label' : 'c-nav-link',
+        this.label ? 'c-sidebar-nav-label' : 'c-sidebar-nav-link',
         this.addLinkClasses
       ]
     }

@@ -1,24 +1,21 @@
 <template>
-  <nav class="c-sidebar-nav">
-    <VuePerfectScrollbar
-      class="c-scroll-area"
-      :settings="psSettings"
-      :switcher="!state.minimize"
-    >
-      <ul class="c-nav">
-        <slot></slot>
-      </ul>
-    </VuePerfectScrollbar>
-  </nav>
+  <CScrollbar
+    class="c-scroll-area c-sidebar-nav"
+    :settings="psSettings"
+    :switcher="!state.minimize"
+    tag="ul"
+  >
+    <slot></slot>
+  </CScrollbar>
 </template>
 
 <script>
-import VuePerfectScrollbar from './CPerfectScrollbar'
+import CScrollbar from '../Scrollbar/CScrollbar'
 
 export default {
   name: 'CSidebarNav',
   components: {
-    VuePerfectScrollbar
+    CScrollbar
   },
   inject: {
     state: {
@@ -42,6 +39,5 @@ export default {
 <style scoped>
   .c-scroll-area {
     height: 100%;
-    margin: auto;
   }
 </style>

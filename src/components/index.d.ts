@@ -454,6 +454,11 @@ export declare class CProgressBar extends CProgress {}
 export declare class CRenderFunction extends Vue {
   items: array
 }
+export declare class CScrollbar extends Vue {
+  settings: object
+  switcher: boolean
+  tag: string
+}
 
 export declare class CSidebar extends Vue {
   fixed: boolean
@@ -465,6 +470,8 @@ export declare class CSidebar extends Vue {
   aside: boolean
   colorScheme: string
   dropdownMode: string
+  size: string
+  overlaid: boolean
 }
 
 export declare class CSidebarClose extends Vue { }

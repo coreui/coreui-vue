@@ -1,11 +1,11 @@
 import { mount } from '@vue/test-utils'
-import CSidebarNav from '../CSidebarNav'
-import CSidebar from '../CSidebar'
-import Component from '../CPerfectScrollbar'
+import CSidebarNav from '../../Sidebar/CSidebarNav'
+import CSidebar from '../../Sidebar/CSidebar'
+import Component from '../CScrollbar'
 import Vue from 'vue'
 
 
-const ComponentName = 'CPerfectScrollbar'
+const ComponentName = 'CScrollbar'
 const wrapper = mount(Component, {
   propsData: {
     switcher: false

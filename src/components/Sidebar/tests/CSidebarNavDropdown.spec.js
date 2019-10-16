@@ -43,7 +43,7 @@ describe(ComponentName, () => {
     expect(wrapper.vm.open).toBe(true)
   })
   it('changes state when clicked on toggle', () => {
-    wrapper.find('.c-nav-link').trigger('click')
+    wrapper.find('.c-sidebar-nav-link').trigger('click')
     expect(wrapper.vm.open).toBe(false)
     expect(wrapper.emitted()['update:show']).toBeTruthy()
   })

@@ -3,7 +3,7 @@
 import PerfectScrollbar from 'perfect-scrollbar'
 
 export default {
-  name: 'CPerfectScrollbar',
+  name: 'CScrollbar',
   props: {
     settings: {
       type: Object,

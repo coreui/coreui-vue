@@ -2,13 +2,13 @@
 
 exports[`CSidebarNavDropdown renders correctly 1`] = `
 <li
-  class="c-nav-item c-nav-dropdown"
+  class="c-sidebar-nav-item c-sidebar-nav-dropdown"
 >
   <a
-    class="c-nav-link c-nav-dropdown-toggle"
+    class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle"
   >
     <i
-      class="c-nav-icon cui-settings"
+      class="c-sidebar-nav-icon cui-settings"
     />
     
     
@@ -16,7 +16,7 @@ exports[`CSidebarNavDropdown renders correctly 1`] = `
   </a>
    
   <ul
-    class="c-nav-dropdown-items"
+    class="c-sidebar-nav-dropdown-items"
   />
 </li>
 `;

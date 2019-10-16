@@ -1,5 +1,5 @@
 <template functional>
-  <li class="c-nav-divider"></li>
+  <li class="c-sidebar-nav-divider"></li>
 </template>
 
 <script>

@@ -1,10 +1,10 @@
 <template>
   <li :class="dropdownClasses">
-    <a class="c-nav-link c-nav-dropdown-toggle" @click="handleClick">
+    <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" @click="handleClick">
       <i v-if="icon" :class="classIcon"></i>
       {{name}}
     </a>
-    <ul class="c-nav-dropdown-items" @click="itemClicked">
+    <ul class="c-sidebar-nav-dropdown-items" @click="itemClicked">
       <slot></slot>
     </ul>
   </li>
@@ -55,12 +55,12 @@ export default {
   },
   computed: {
     classIcon () {
-      return ['c-nav-icon', this.icon]
+      return ['c-sidebar-nav-icon', this.icon]
     },
     dropdownClasses () {
       return [
-        'c-nav-item c-nav-dropdown',
-        { 'c-open': this.open }
+        'c-sidebar-nav-item c-sidebar-nav-dropdown',
+        { 'c-show': this.open }
       ]
     }
   },

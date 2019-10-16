@@ -1,5 +1,5 @@
 <template functional>
-  <li class="c-nav-title">
+  <li class="c-sidebar-nav-title">
     <slot></slot>
   </li>
 </template>
