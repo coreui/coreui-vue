@@ -15,7 +15,6 @@ const customWrapper = mount(Component, {
     show: true,
     position: 'bottom-center',
     headerHtml: 'title',
-    noHeader: false,
     autohide: 10,
     closeButton: true
   },

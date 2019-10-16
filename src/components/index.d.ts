@@ -113,7 +113,6 @@ export declare class CCarousel extends Vue {
   arrows: boolean
   indicatorClasses: [string, Array<any>, object]
   height: string
-  noPauseOnHover: boolean
 }
 
 export declare class CCarouselItem extends Vue {
@@ -137,15 +136,14 @@ export declare class CDropdown extends Vue {
   addMenuClasses: [string, Array<any>, object]
   addTogglerClasses: [string, Array<any>, object]
   inNav: boolean
-  noCaret: boolean
+  caret: boolean
   color: string
   size: string
   split: boolean
   offset: number
   placement: string
-  noFlip: boolean
+  flip: boolean
   popperConfig: object
-  noPopper: boolean
 }
 
 export declare class CDropdownDivider extends Vue {
@@ -290,7 +288,7 @@ export declare class CContainer extends Vue {
 
 export declare class CRow extends Vue {
   tag: string
-  noGutters: boolean
+  gutters: boolean
   alignVertical: string
   alignHorizontal: string
 }
@@ -323,7 +321,7 @@ export declare class CImg extends Vue {
 export declare class CImgLazy extends CImg {
   loadInitially: boolean
   loadOffset: number
-  noFade: boolean
+  fade: boolean
   fadeOffset: number
   fadeTime: number
 }
@@ -383,12 +381,9 @@ export declare class CModal extends Vue {
   size: string
   color: string
   borderColor: string
-  noFade: boolean
-  noBackdrop: boolean
-  noCloseOnBackdrop: boolean
-  noHeader: boolean
-  noBody: boolean
-  noFooter: boolean
+  fade: boolean
+  backdrop: boolean
+  closeOnBackdrop: boolean
   addModalClasses: [string, Array<any>, object]
   addDialogClasses: [string, Array<any>, object]
   addContentClasses: [string, Array<any>, object]
@@ -433,9 +428,9 @@ export declare class CPagination extends Vue {
   size: string
   align: string
   limit: number
-  hideDots: boolean
-  hideArrows: boolean
-  hideDoubleArrows: boolean
+  dots: boolean
+  arrows: boolean
+  doubleArrows: boolean
   firstButtonHtml: string
   previousButtonHtml: string
   nextButtonHtml: string
@@ -548,11 +543,11 @@ export declare class CTable extends Vue {
   fields: Array<any>
   itemsPerPage: number
   activePage: number
-  indexColumn: [boolean, string]
+  indexColumn: boolean
   filterRow: boolean
   pagination: [boolean, object]
   addTableClasses: [string, Array<any>, object]
-  notResponsive: boolean
+  responsive: boolean
   sorting: boolean
   small: boolean
   dark: boolean
@@ -574,7 +569,7 @@ export declare class CTabs extends Vue {
   justified: boolean
   pills: boolean
   tabs: boolean
-  noFade: boolean
+  fade: boolean
   vertical: [boolean, object]
   addNavWrapperClasses: [string, Array<any>, object]
   addNavClasses: [string, Array<any>, object]
@@ -591,7 +586,6 @@ export declare class CTab extends Vue {
 
 declare class ToastProps extends Vue {
   position: string
-  hasHeader: boolean
   autohide: number
   closeButton: boolean
   fade: boolean
@@ -644,7 +638,7 @@ export declare class CWidgetHeaderDetails extends Vue {
 export declare class CWidgetIcon extends Vue {
   header: string
   text: string
-  noIconPadding: boolean
+  iconPadding: boolean
   color: string
 }
 

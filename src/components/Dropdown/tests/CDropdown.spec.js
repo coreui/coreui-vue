@@ -30,13 +30,13 @@ const customWrapper = mount(Component, {
     addMenuClasses: 'additional-menu-class',
     addTogglerClasses: 'additional-toggler-class',
     inNav: false,
-    noCaret: true,
+    caret: false,
     color: 'success',
     size: 'lg',
     split: true,
     offset: 20,
     placement: 'right-end',
-    noFlip: true,
+    flip: false,
   },
   slots: {
     default: 'CDropdown subcomponents'
@@ -49,11 +49,11 @@ const navWrapper = mount(Component, {
     addMenuClasses: 'additional-menu-class',
     addTogglerClasses: 'additional-toggler-class',
     inNav: true,
-    noCaret: true,
+    caret: false,
     color: 'success',
     offset: 20,
     placement: 'left',
-    noFlip: true
+    flip: false
   },
   slots: {
     default: 'CDropdown subcomponents'

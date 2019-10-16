@@ -16,7 +16,7 @@
     </div>
     <div :class="[addTabsWrapperClasses, gridClasses.content]">
       <div :class="tabsClasses">
-        <transition :name="noFade ? null : 'fade'" mode="out-in">
+        <transition :name="fade ? 'fade' : ''" mode="out-in">
           <KeepAlive>
             <template v-for="(tab, key) in ctabInstances">
               <CTabContent
@@ -53,7 +53,10 @@ export default {
       type: Boolean,
       default: true
     },
-    noFade: Boolean,
+    fade: {
+      type: Boolean,
+      default: true
+    },
     vertical: [Boolean, Object],
     addNavWrapperClasses: [String, Array, Object],
     addNavClasses: [String, Array, Object],

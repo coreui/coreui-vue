@@ -8,9 +8,8 @@
     >
       <div :class="dialogClasses" role="document">
         <div :class="contentClasses">
-          <slot v-if="!noHeader" name="header-wrapper"
-          >
-            <header  class="modal-header">
+          <slot name="header-wrapper">
+            <header class="modal-header">
               <slot name="header">
                 <h5 class="modal-title">
                   {{title}}
@@ -26,12 +25,12 @@
               </slot>
             </header>
           </slot>
-          <slot v-if="!noBody" name="body-wrapper">
+          <slot name="body-wrapper">
             <div class="modal-body">
               <slot></slot>
             </div>
           </slot>
-          <slot v-if="!noFooter" name="footer-wrapper">
+          <slot name="footer-wrapper">
             <footer class="modal-footer">
               <slot name="footer">
                 <button
@@ -55,7 +54,7 @@
       </div>
     </div>
     <div
-      v-if="!noBackdrop && (visible || isTransitioning)"
+      v-if="backdrop && (visible || isTransitioning)"
       :class="backdropClasses"
     >
     </div>
@@ -75,12 +74,18 @@ export default {
     },
     color: String,
     borderColor: String,
-    noFade: Boolean,
-    noBackdrop: Boolean,
-    noCloseOnBackdrop: Boolean,
-    noHeader: Boolean,
-    noBody: Boolean,
-    noFooter: Boolean,
+    fade: {
+      type: Boolean,
+      default: true
+    },
+    backdrop: {
+      type: Boolean,
+      default: true
+    },
+    closeOnBackdrop: {
+      type: Boolean,
+      default: true
+    },
     addModalClasses: [String, Array, Object],
     addDialogClasses: [String, Array, Object],
     addContentClasses: [String, Array, Object]
@@ -96,8 +101,8 @@ export default {
     backdropClasses () {
       return {
         'modal-backdrop': true,
-        'fade': !this.noFade,
-        'show': this.visible || this.noFade
+        'fade': this.fade,
+        'show': this.visible || !this.fade
       }
     },
     modalClasses () {
@@ -105,8 +110,7 @@ export default {
         'modal overflow-auto',
         this.addModalClasses,
         {
-          // 'close-modal': !this.noCloseOnBackdrop,
-          'fade': !this.noFade,
+          'fade': this.fade,
           'show': this.visible,
           'd-block': this.visible || this.isTransitioning,
           [`modal-${this.color}`]: Boolean(this.color)
@@ -143,7 +147,7 @@ export default {
   },
   methods: {
     modalClick (e) {
-      if (e.target === this.$el.firstElementChild && !this.noCloseOnBackdrop) {
+      if (e.target === this.$el.firstElementChild && this.closeOnBackdrop) {
         this.hide(e)
       }
     },
@@ -153,7 +157,7 @@ export default {
     },
     toggle (newVal) {
       setTimeout(() => { this.visible = newVal }, 0)
-      if (!this.noFade) {
+      if (this.fade) {
         this.isTransitioning = true
         clearTimeout(this.timeout)
         this.timeout = setTimeout(() => {

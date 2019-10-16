@@ -55,11 +55,11 @@ describe(ComponentName, () => {
   it('queueing animation observer on loading watcher properly', () => {
     const spy = jest.spyOn(customWrapper.vm, 'queueAnimation')
     
-    customWrapper.setProps({noFade: true})
+    customWrapper.setProps({fade: false})
     customWrapper.vm.watchForLoading(triggeringEntry)
     expect(spy).not.toBeCalled()
 
-    customWrapper.setProps({noFade: false, fadeOffset: 600})
+    customWrapper.setProps({fade: true, fadeOffset: 600})
     customWrapper.vm.watchForLoading(triggeringEntry)
     customWrapper.vm.$nextTick(() => expect(spy).toBeCalled())
   })

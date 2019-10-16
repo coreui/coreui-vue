@@ -9,7 +9,10 @@ export default {
       type: Number,
       default: 500
     },
-    noFade: Boolean,
+    fade: {
+      type: Boolean,
+      default: true
+    },
     fadeOffset: {
       type: Number,
       default: -100
@@ -34,7 +37,7 @@ export default {
   },
   computed: {
     animationClasses () {
-      return { 'opacity-0' : !this.noFade && !this.animated }
+      return { 'opacity-0' : this.fade && !this.animated }
     },
     observerArgs () {
       if (this.active) {
@@ -53,7 +56,7 @@ export default {
       entries.forEach(entry => {
         if (entry.intersectionRatio > 0) {
           this.active = true
-          if (!this.noFade) {
+          if (this.fade) {
             this.$nextTick(() => {
               const animateInstantly = this.loadOffset <= this.fadeOffset
               animateInstantly ? this.queueAnimation() : this.defineObserver()

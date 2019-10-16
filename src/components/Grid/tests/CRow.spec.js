@@ -6,7 +6,7 @@ const defaultWrapper = mount(Component)
 const customWrapper = mount(Component, {
   propsData: {
     tag: 'header',
-    noGutters: true,
+    gutters: false,
     alignVertical: 'center',
     alignHorizontal: 'start'
   },

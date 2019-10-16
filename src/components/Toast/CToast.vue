@@ -8,9 +8,12 @@
       aria-atomic="true"
       :style="computedStyles"
     >
-      <div v-if="props.hasHeader" class="toast-header">
+      <div 
+        v-if="headerHtml !== undefined || $slots.header" 
+        class="toast-header"
+      >
         <slot name="header">
-          <strong class="mr-auto" v-html="props.headerHtml"></strong>
+          <strong class="mr-auto" v-html="headerHtml"></strong>
         </slot>
         <CButtonClose
           v-if="props.closeButton"
@@ -21,7 +24,7 @@
       <div v-if="$slots.default" class="toast-body">
         <slot></slot>
       </div>
-      <div v-else class="toast-body" v-html="props.bodyHtml"></div>
+      <div v-else class="toast-body" v-html="bodyHtml"></div>
     </div>
   </transition>
 </template>

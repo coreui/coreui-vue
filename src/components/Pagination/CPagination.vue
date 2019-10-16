@@ -1,7 +1,7 @@
 <template>
   <nav aria-label="pagination">
     <ul :class="computedClasses">
-      <li v-if="!hideDoubleArrows" :class="backArrowsClasses">
+      <li v-if="doubleArrows" :class="backArrowsClasses">
         <CLink
           class="page-link"
           @click="setPage(1)"
@@ -12,7 +12,7 @@
           <span v-html="firstButtonHtml"></span>
         </CLink>
       </li>
-      <li v-if="!hideArrows" :class="backArrowsClasses">
+      <li v-if="arrows" :class="backArrowsClasses">
         <CLink
           class="page-link"
           @click="setPage(activePage - 1)"
@@ -53,7 +53,7 @@
         <span class="page-link">…</span>
       </li>
       <li
-        v-if="!hideArrows"
+        v-if="arrows"
         :class="nextArrowsClasses"
       >
         <CLink
@@ -66,7 +66,7 @@
           <span v-html="nextButtonHtml"></span>
         </CLink>
       </li>
-      <li v-if="!hideDoubleArrows" :class="nextArrowsClasses">
+      <li v-if="doubleArrows" :class="nextArrowsClasses">
         <CLink
           class="page-link"
           @click="setPage(pages)"
@@ -113,9 +113,18 @@
         type: Number,
         default: 5
       },
-      hideDots: Boolean,
-      hideArrows: Boolean,
-      hideDoubleArrows: Boolean,
+      dots: {
+        type: Boolean,
+        default: true
+      },
+      arrows: {
+        type: Boolean,
+        default: true
+      },
+      doubleArrows: {
+        type: Boolean,
+        default: true
+      },
       firstButtonHtml: {
         type: String,
         default: '&laquo;'
@@ -169,7 +178,7 @@
         return `pagination pagination-${this.dims} justify-content-${this.align}`
       },
       showDots () {
-        return !this.hideDots && this.limit > 4 && this.limit < this.pages
+        return this.dots && this.limit > 4 && this.limit < this.pages
       },
       maxPrevItems () {
         return Math.floor((this.limit - 1) / 2)

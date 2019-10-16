@@ -2,11 +2,11 @@
   <div class="card">
     <div
       class="card-body clearfix d-flex align-items-center"
-      :class="noIconPadding ? 'p-0' : 'p-3'"
+      :class="iconPadding ? 'p-3' : 'p-0'"
     >
       <div
         class="float-left mr-3 text-white"
-        :class="[`bg-${color}`, noIconPadding ? 'p-4' : 'p-3']"
+        :class="[`bg-${color}`, iconPadding ? 'p-3' : 'p-4']"
       >
         <slot></slot>
       </div>
@@ -31,7 +31,10 @@ export default {
   props: {
     header: String,
     text: String,
-    noIconPadding: Boolean,
+    iconPadding: {
+      type: Boolean,
+      default: true
+    },
     color: String
   }
 }

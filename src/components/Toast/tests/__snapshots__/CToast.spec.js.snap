@@ -8,21 +8,7 @@ exports[`CToast renders correctly 1`] = `
   class="toast"
   role="alert"
 >
-  <div
-    class="toast-header"
-  >
-    <strong
-      class="mr-auto"
-    />
-     
-    <button
-      aria-label="Close"
-      class="ml-2 mb-1 close"
-      type="button"
-    >
-      ×
-    </button>
-  </div>
+  <!---->
    
   <div
     class="toast-body"
@@ -45,7 +31,9 @@ exports[`CToast renders correctly custom wrapper 1`] = `
   >
     <strong
       class="mr-auto"
-    />
+    >
+      title
+    </strong>
      
     <button
       aria-label="Close"

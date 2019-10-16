@@ -10,10 +10,6 @@ export default {
         ].includes(position)
       }
     },
-    hasHeader: {
-      type: Boolean,
-      default: true
-    },
     autohide: {
       type: [Number, Boolean],
       validator: val => typeof val === 'number' || val === false

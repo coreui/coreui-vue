@@ -10,9 +10,9 @@ const customWrapper = mount(Component, {
     size: 'lg',
     align: 'center',
     limit: 7,
-    hideDots: true,
-    hideArrows: true,
-    hideDoubleArrows: true,
+    dots: false,
+    arrows: false,
+    doubleArrows: false,
     responsive: true
   }
 })

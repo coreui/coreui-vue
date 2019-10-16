@@ -11,10 +11,9 @@ const customWrapper = mount(Component, {
     size: 'lg',
     color: 'success',
     borderColor: 'success',
-    noFade: false,
-    noBackdrop: false,
-    noCloseOnBackdrop: true,
-    noFooter: true,
+    fade: true,
+    backdrop: true,
+    closeOnBackdrop: false,
     addModalClasses: 'additional-modal-class',
     addDialogClasses: 'additional-dialog-class',
     addContentClasses: 'additional-content-class'
@@ -34,17 +33,17 @@ describe(ComponentName, () => {
   it('renders correctly', () => {
     expect(customWrapper.element).toMatchSnapshot()
   })
-  it('hides on backdrop click', () => {
+  it('hides on backdrop click when closeOnBackdrop prop is true', () => {
     const click = () => customWrapper.find('.modal').trigger('click')
     click()
     expect(customWrapper.emitted().hide).not.toBeTruthy()
 
-    customWrapper.setProps({ noCloseOnBackdrop: false })
+    customWrapper.setProps({ closeOnBackdrop: true })
     click()
     expect(customWrapper.emitted().hide).toBeTruthy()
   })
-  it('doesnt animate when noFade prop is set', () => {
-    defaultWrapper.setProps({ noFade: true })
+  it('doesnt animate when fade prop is set to false', () => {
+    defaultWrapper.setProps({ fade: false })
     defaultWrapper.vm.toggle(true)
     expect(defaultWrapper.vm.isTransitioning).toBe(false)
   })

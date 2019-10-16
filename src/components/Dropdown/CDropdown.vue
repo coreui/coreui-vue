@@ -49,7 +49,10 @@ export default {
     addMenuClasses: [String, Array, Object],
     addTogglerClasses: [String, Array, Object],
     inNav: Boolean,
-    noCaret: Boolean,
+    caret: {
+      type: Boolean,
+      default: true
+    },
     color: String,
     size: {
       type: String,
@@ -69,7 +72,10 @@ export default {
       },
       default: 'bottom-start'
     },
-    noFlip: Boolean,
+    flip: {
+      type: Boolean,
+      default: true
+    },
     popperConfig: Object
   },
   data () {
@@ -131,7 +137,7 @@ export default {
         placement: this.placement,
         modifiers: {
           offset: { offset: this.offset || 0 },
-          flip: { enabled: !this.noFlip }
+          flip: { enabled: this.flip }
         }
       }
     },
@@ -170,7 +176,7 @@ export default {
         this.addTogglerClasses,
         this.inNav ? 'nav-link' : 'btn',
         {
-          'dropdown-toggle': !this.noCaret && !this.split,
+          'dropdown-toggle': this.caret && !this.split,
           [`btn-${this.size}`]: this.size && !this.inNav,
           'disabled' : this.disabled,
           [`${ this.inNav ? 'bg' : 'btn'}-${ this.color }`]: this.color

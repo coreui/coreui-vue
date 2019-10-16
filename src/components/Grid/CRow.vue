@@ -3,7 +3,10 @@ import { mergeData } from 'vue-functional-data-merge'
 
 const props = {
   tag: String,
-  noGutters: Boolean,
+  gutters: {
+    type: Boolean,
+    default: true
+  },
   alignVertical: {
     type: String,
     validator: str => ['', 'start', 'end', 'center','baseline', 'stretch'].includes(str)
@@ -24,7 +27,7 @@ export default {
       mergeData(data, {
         staticClass: 'row',
         class: {
-          'no-gutters': props.noGutters,
+          'no-gutters': !props.gutters,
           [`align-items-${props.alignVertical}`]: props.alignVertical,
           [`justify-content-${props.alignHorizontal}`]: props.alignHorizontal,
         }

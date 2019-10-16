@@ -7,7 +7,7 @@ const toast = {
   render (h) {
     return h(
       CToast, 
-      { props: { show: true, headerHtml: 'toast header'} }, 
+      { props: { show: true } }, 
       'toast body'
     )
   }
@@ -17,7 +17,6 @@ const defaultWrapper = mount(Component)
 const customWrapper = mount(Component, {
   propsData: {
     position: 'top-left',
-    hasHeader: false,
     autohide: 3000,
     closeButton: false,
     fade: false
