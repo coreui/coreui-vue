@@ -82,7 +82,6 @@
 </template>
 
 <script>
-  import elementResizeDetectorMaker from 'element-resize-detector'
   import CLink from '../Link/CLink'
 
   export default {
@@ -140,13 +139,6 @@
       lastButtonHtml: {
         type: String,
         default: '&raquo;'
-      },
-      responsive: [Boolean, Object]
-    },
-    data () {
-      return {
-        minifiedSize: null,
-        erd: elementResizeDetectorMaker()
       }
     },
     watch: {
@@ -159,15 +151,7 @@
         }
       }
     },
-    mounted () {
-      if (this.responsive) {
-        this.erd.listenTo(this.$el, this.onWrapperResize)
-      }
-    },
     computed: {
-      dims () {
-        return this.size === 'sm' ? 'sm' : this.minifiedSize || this.size
-      },
       backArrowsClasses () {
         return ['page-item', { 'disabled': this.activePage === 1 }]
       },
@@ -175,7 +159,7 @@
         return ['page-item', { 'disabled': this.activePage === this.pages }]
       },
       computedClasses () {
-        return `pagination pagination-${this.dims} justify-content-${this.align}`
+        return `pagination pagination-${this.size} justify-content-${this.align}`
       },
       showDots () {
         return this.dots && this.limit > 4 && this.limit < this.pages
@@ -215,12 +199,6 @@
       }
     },
     methods: {
-      onWrapperResize (el) {
-        const md = this.responsive.md || 600
-        const sm = this.responsive.sm || 400
-        const wrapper = el.clientWidth
-        this.minifiedSize = wrapper > md ? null : wrapper > sm ? 'md' : 'sm'
-      },
       setPage (number) {
         if (number !== this.activePage) {
           this.$emit('update:activePage', number)

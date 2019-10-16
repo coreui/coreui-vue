@@ -12,8 +12,7 @@ const customWrapper = mount(Component, {
     limit: 7,
     dots: false,
     arrows: false,
-    doubleArrows: false,
-    responsive: true
+    doubleArrows: false
   }
 })
 
@@ -38,15 +37,5 @@ describe(ComponentName, () => {
 
     links.at(4).trigger('click')
     expect(defaultWrapper.emitted()['update:activePage']).toBeTruthy()
-  })
-  it('correctly change size on wrapper resize when responsive', () => {
-    customWrapper.vm.onWrapperResize({ clientWidth: 700 })
-    expect(customWrapper.vm.dims).toBe('lg')
-
-    customWrapper.vm.onWrapperResize({ clientWidth: 500 })
-    expect(customWrapper.vm.dims).toBe('md')
-
-    customWrapper.vm.onWrapperResize({ clientWidth: 300 })
-    expect(customWrapper.vm.dims).toBe('sm')
   })
 })
