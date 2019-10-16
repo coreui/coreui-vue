@@ -407,7 +407,6 @@ export declare class CNavbar extends Vue {
   expandable: [boolean, string]
   fixed: string
   sticky: boolean
-  print: boolean
 }
 
 export declare class CNavbarBrand extends CLink {

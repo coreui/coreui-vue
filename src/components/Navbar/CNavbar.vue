@@ -16,8 +16,7 @@ export const props = {
     type: String,
     validator: val => ['', 'top', 'bottom'].includes(val)
   },
-  sticky: Boolean,
-  print: Boolean
+  sticky: Boolean
 }
 
 export default {
@@ -33,7 +32,6 @@ export default {
         class: [
           props.light ? 'navbar-light' : 'navbar-dark',
           {
-            'd-print': props.print,
             'sticky-top': props.sticky,
             [`bg-${props.color}`]: Boolean(props.color),
             [`fixed-${props.fixed}`]: Boolean(props.fixed),
