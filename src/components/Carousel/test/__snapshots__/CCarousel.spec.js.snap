@@ -12,7 +12,6 @@ exports[`CCarousel renders correctly 1`] = `
   />
    
   <!---->
-   
 </div>
 `;
 
@@ -77,6 +76,5 @@ exports[`CCarousel renders correctly 2`] = `
       class="carousel-control-next-icon"
     />
   </a>
-   
 </div>
 `;

@@ -25,7 +25,6 @@
         ></span>
       </a>
     </template>
-    <slot name="navigation"></slot>
   </div>
 </template>
 
