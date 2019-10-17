@@ -13,7 +13,9 @@ exports[`CBreadcrumbRouter renders correctly 1`] = `
       href="#"
       target="_self"
     >
+      
       Home
+    
     </a>
   </li>
   <li
@@ -25,7 +27,9 @@ exports[`CBreadcrumbRouter renders correctly 1`] = `
       href="#"
       target="_self"
     >
+      
       Menu
+    
     </a>
   </li>
    

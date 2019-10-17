@@ -21,8 +21,7 @@ const btnProps = {
   pressed: {
     type: Boolean,
     default: null
-  },
-  textHtml: String
+  }
 }
 export const props = Object.assign(linkPropsFactory(), btnProps)
 
@@ -81,13 +80,11 @@ export default {
         }
       }
     }
-    const domProps = children ? '' : { innerHTML: props.textHtml }
     const componentData = {
       staticClass: 'btn',
       class: computeClasses(props),
       props: computePassedProps(props),
       attrs: computeAttrs(props, data, isButton, toggle),
-      domProps,
       on
     }
     return h(

@@ -26,7 +26,7 @@ export default {
         const meta = route.meta || {}
         return {
           to: route,
-          textHtml: meta.label || route.name
+          text: meta.label || route.name
         }
       })
     },

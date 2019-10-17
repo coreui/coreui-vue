@@ -9,7 +9,7 @@ const wrapper = mount(Component, {
     icon: 'cui-settings',
     badge: {
       color: 'success',
-      textHtml: 'NEW'
+      text: 'NEW'
     }
   },
   attrs: {
@@ -25,7 +25,7 @@ const wrapperLabel = mount(Component, {
     icon: 'cui-settings',
     badge: {
       color: 'success',
-      textHtml: 'NEW'
+      text: 'NEW'
     }
   },
   attrs: {

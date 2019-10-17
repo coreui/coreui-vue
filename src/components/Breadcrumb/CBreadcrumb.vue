@@ -6,17 +6,16 @@
       :class="[item.addClasses, sharedClasses, addLinkClasses]"
       role="presentation"
     >
-      <component 
-        :is="'CLink'" 
-        v-bind="Object.assign({}, item, { addClasses: null })"
-      />
+      <CLink v-bind="Object.assign({}, item, { addClasses: null, text: null })">
+        {{item.text}}
+      </CLink>
     </li>
     <li 
       :class="['active', lastItem.addClasses, sharedClasses, addLastItemClasses]"
       role="presentation"
     >
      <!-- span added to enable text styling through classes -->
-     <span v-text="lastItem.textHtml"></span>
+     <span v-text="lastItem.text"></span>
     </li>
     <slot></slot>
   </ol>

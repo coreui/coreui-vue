@@ -19,7 +19,9 @@ exports[`CSidebarNavLink.vue renders correctly 1`] = `
     <span
       class="badge badge-success"
     >
-      NEW
+      
+        NEW
+      
     </span>
   </a>
 </li>
@@ -44,7 +46,9 @@ exports[`CSidebarNavLink.vue renders correctly in label mode 1`] = `
     <span
       class="badge badge-success"
     >
-      NEW
+      
+        NEW
+      
     </span>
   </a>
 </li>

@@ -10,7 +10,6 @@ export declare class CBadge extends CLink {
   tag: string
   color: string
   pill: boolean
-  textHtml: string
 }
 
 export declare class CBreadcrumb extends Vue {
@@ -36,7 +35,6 @@ export declare class CButton extends CLink {
   color: string
   type: string
   pressed: boolean
-  textHtml: string
 }
 
 export declare class CButtonClose extends Vue {
@@ -337,7 +335,6 @@ export declare class CJumbotron extends Vue {
 
 export declare class CLink extends Vue {
   href: string
-  textHtml: string
   rel: string
   target: string
   disabled: boolean

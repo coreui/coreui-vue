@@ -5,12 +5,14 @@ const ComponentName = 'CBadge'
 const wrapper = mount(Component)
 const customWrapper = mount(Component, {
   propsData: {
-    textHtml: 'Badge text',
     color: 'success',
     active: true,
     pill: true,
     disabled: true,
     href: 'someLink'
+  },
+  slots: {
+    default: 'Badge text'
   }
 })
 
@@ -21,7 +23,7 @@ describe(`${ComponentName} .vue`, () => {
   it('renders correctly', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
-  it('renders correctly from textHtml prop', () => {
+  it('renders correctly with slot', () => {
     expect(customWrapper.element).toMatchSnapshot()
   })
 });

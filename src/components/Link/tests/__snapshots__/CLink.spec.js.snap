@@ -25,13 +25,6 @@ exports[`CLink .vue renders correctly 2`] = `
     href-a
   </a>
   <a
-    class=""
-    href="/a"
-    target="_self"
-  >
-    href-a
-  </a>
-  <a
     aria-disabled="true"
     class="disabled"
     href="/a"

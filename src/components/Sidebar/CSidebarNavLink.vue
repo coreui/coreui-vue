@@ -10,8 +10,10 @@
         {{name}}
         <CBadge
           v-if="badge"
-          v-bind="badge"
-        />
+          v-bind="Object.assign({}, badge, { text: null })"
+        >
+          {{badge.text}}
+        </CBadge>
       </slot>
     </CLink>
   </li>

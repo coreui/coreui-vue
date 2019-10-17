@@ -22,8 +22,6 @@ const App = localVue.extend({
       h('CLink', { props: { to: '/a' }, nativeOn: { click } }, ['to-path-a']),
       // regular link
       h('CLink', { props: { href: '/a' }, on: { click } }, ['href-a']),
-      // regular link with textHtml prop
-      h('CLink', { props: { href: '/a', textHtml: 'href-a' } }),
       // disabled link
       h('CLink', { props: { disabled: true, href: '/a' }, on: { click } }, ['href-a'])
     ])
@@ -46,7 +44,6 @@ describe(`${ComponentName} .vue`, () => {
     const links = customWrapper.findAll('a')
 
     links.at(2).trigger('click')  
-    links.at(3).trigger('click')
     expect(triggerLink).not.toBeCalled()
 
     links.at(0).trigger('click')

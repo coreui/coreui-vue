@@ -4,7 +4,6 @@ import { mergeData } from 'vue-functional-data-merge'
 export function propsFactory () {
   return {
     href: String,
-    textHtml: String,
     rel: String,
     target: {
       type: String,
@@ -80,8 +79,6 @@ export default {
 
     const tabindex = data.attrs ? data.attrs.tabindex : null
 
-    const domProps = props.textHtml ? { innerHTML: props.textHtml } : null
-
     const componentData = mergeData(data, {
       class: {
         'disabled': props.disabled,
@@ -94,7 +91,6 @@ export default {
         tabindex: props.disabled ? '-1' : tabindex,
         'aria-disabled': tag === 'a' && props.disabled ? 'true' : null
       },
-      domProps,
       props: Object.assign(props, { tag: props.routerTag })
     })
 

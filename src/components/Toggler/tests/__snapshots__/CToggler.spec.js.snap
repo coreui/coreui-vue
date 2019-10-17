@@ -12,10 +12,10 @@ exports[`CToggler .vue renders correctly 1`] = `
 
 exports[`CToggler .vue renders correctly inHeader 1`] = `
 <div
-  class="header-toggler"
+  class="c-header-toggler"
 >
   <span
-    class="header-toggler-icon"
+    class="c-header-toggler-icon"
   />
 </div>
 `;
