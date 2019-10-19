@@ -3,6 +3,7 @@
     :is="inNav ? 'li' : 'div'" 
     :class="computedDropdownClasses"
     v-on-clickaway="hide"
+    @click="checkClick($event)"
   >
     <slot name="toggler">
       <component
@@ -99,6 +100,15 @@ export default {
     }
   },
   methods: {
+    checkClick (e) {
+      if (
+        this.$scopedSlots.toggler && 
+        this.$el.firstElementChild.contains(e.target)
+      ) {
+        this.toggle(e)
+      }
+    },
+
     hide () {
       this.visible = false
     },
