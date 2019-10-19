@@ -34,18 +34,26 @@ exports[`CTable renders correctly 1`] = `
                 No items
                   
                 <svg
-                  class="text-danger mb-2"
+                  class="text-danger mb-2 c-icon"
                   style="fill: currentColor;"
-                  viewBox="0 0 64 64"
+                  viewBox="0 0 24 24"
                   width="30"
                   xmlns="http://www.w3.org/2000/svg"
                 >
+                  
+
+
                   <title>
                     ban
                   </title>
+                  
+
                   <path
-                    d="M53.213 10.787c-5.429-5.429-12.929-8.787-21.213-8.787-16.569 0-30 13.431-30 30 0 8.284 3.358 15.784 8.787 21.213v0c5.429 5.429 12.929 8.787 21.213 8.787 16.569 0 30-13.431 30-30 0-8.284-3.358-15.784-8.787-21.213v0zM32 6c0.007 0 0.015 0 0.023 0 6.483 0 12.409 2.383 16.951 6.32l-0.032-0.027-36.648 36.648c-3.91-4.509-6.293-10.435-6.293-16.918 0-0.008 0-0.016 0-0.024v0.001c0-14.336 11.664-26 26-26zM32 58c-0.007 0-0.014 0-0.022 0-6.452 0-12.352-2.36-16.885-6.264l0.034 0.028 36.637-36.637c3.876 4.499 6.236 10.399 6.236 16.851 0 0.008 0 0.016 0 0.024v-0.001c0 14.336-11.664 26-26 26z"
+                    d="M19.955 4.045c-2.036-2.036-4.848-3.295-7.955-3.295-6.213 0-11.25 5.037-11.25 11.25 0 3.107 1.259 5.919 3.295 7.955v0c2.036 2.036 4.848 3.295 7.955 3.295 6.213 0 11.25-5.037 11.25-11.25 0-3.107-1.259-5.919-3.295-7.955v0zM12 2.25c0.003 0 0.006 0 0.009 0 2.431 0 4.653 0.894 6.356 2.37l-0.012-0.010-13.743 13.743c-1.466-1.691-2.36-3.913-2.36-6.344 0-0.003 0-0.006 0-0.009v0c0-5.376 4.374-9.75 9.75-9.75zM12 21.75c-0.002 0-0.005 0-0.008 0-2.419 0-4.632-0.885-6.332-2.349l0.013 0.011 13.739-13.739c1.453 1.687 2.338 3.9 2.338 6.319 0 0.003 0 0.006 0 0.009v-0c0 5.376-4.374 9.75-9.75 9.75z"
                   />
+                  
+
+
                 </svg>
               </h2>
             </div>
@@ -167,18 +175,26 @@ exports[`CTable renders correctly 2`] = `
             </div>
              
             <svg
-              class="icon-transition position-absolute arrow-position rotate-icon"
+              class="c-icon icon-transition position-absolute arrow-position rotate-icon"
               style="fill: currentColor;"
-              viewBox="0 0 64 64"
+              viewBox="0 0 24 24"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
             >
+              
+
+
               <title>
                 arrow-top
               </title>
+              
+
               <path
-                d="M48.828 18.828l-16.828-16.828-16.828 16.828 2.829 2.828 12-12v52.248h4v-52.247l11.999 11.999 2.828-2.828z"
+                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
               />
+              
+
+
             </svg>
           </th>
           <th
@@ -192,18 +208,26 @@ exports[`CTable renders correctly 2`] = `
             </div>
              
             <svg
-              class="icon-transition position-absolute arrow-position transparent"
+              class="c-icon icon-transition position-absolute arrow-position transparent"
               style="fill: currentColor;"
-              viewBox="0 0 64 64"
+              viewBox="0 0 24 24"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
             >
+              
+
+
               <title>
                 arrow-top
               </title>
+              
+
               <path
-                d="M48.828 18.828l-16.828-16.828-16.828 16.828 2.829 2.828 12-12v52.248h4v-52.247l11.999 11.999 2.828-2.828z"
+                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
               />
+              
+
+
             </svg>
           </th>
           <th
@@ -217,18 +241,26 @@ exports[`CTable renders correctly 2`] = `
             </div>
              
             <svg
-              class="icon-transition position-absolute arrow-position transparent"
+              class="c-icon icon-transition position-absolute arrow-position transparent"
               style="fill: currentColor;"
-              viewBox="0 0 64 64"
+              viewBox="0 0 24 24"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
             >
+              
+
+
               <title>
                 arrow-top
               </title>
+              
+
               <path
-                d="M48.828 18.828l-16.828-16.828-16.828 16.828 2.829 2.828 12-12v52.248h4v-52.247l11.999 11.999 2.828-2.828z"
+                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
               />
+              
+
+
             </svg>
           </th>
           <th
@@ -242,18 +274,26 @@ exports[`CTable renders correctly 2`] = `
             </div>
              
             <svg
-              class="icon-transition position-absolute arrow-position transparent"
+              class="c-icon icon-transition position-absolute arrow-position transparent"
               style="fill: currentColor;"
-              viewBox="0 0 64 64"
+              viewBox="0 0 24 24"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
             >
+              
+
+
               <title>
                 arrow-top
               </title>
+              
+
               <path
-                d="M48.828 18.828l-16.828-16.828-16.828 16.828 2.829 2.828 12-12v52.248h4v-52.247l11.999 11.999 2.828-2.828z"
+                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
               />
+              
+
+
             </svg>
           </th>
           <th
@@ -562,18 +602,26 @@ exports[`CTable renders correctly 2`] = `
             </div>
              
             <svg
-              class="icon-transition position-absolute arrow-position rotate-icon"
+              class="c-icon icon-transition position-absolute arrow-position rotate-icon"
               style="fill: currentColor;"
-              viewBox="0 0 64 64"
+              viewBox="0 0 24 24"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
             >
+              
+
+
               <title>
                 arrow-top
               </title>
+              
+
               <path
-                d="M48.828 18.828l-16.828-16.828-16.828 16.828 2.829 2.828 12-12v52.248h4v-52.247l11.999 11.999 2.828-2.828z"
+                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
               />
+              
+
+
             </svg>
           </th>
           <th
@@ -587,18 +635,26 @@ exports[`CTable renders correctly 2`] = `
             </div>
              
             <svg
-              class="icon-transition position-absolute arrow-position transparent"
+              class="c-icon icon-transition position-absolute arrow-position transparent"
               style="fill: currentColor;"
-              viewBox="0 0 64 64"
+              viewBox="0 0 24 24"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
             >
+              
+
+
               <title>
                 arrow-top
               </title>
+              
+
               <path
-                d="M48.828 18.828l-16.828-16.828-16.828 16.828 2.829 2.828 12-12v52.248h4v-52.247l11.999 11.999 2.828-2.828z"
+                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
               />
+              
+
+
             </svg>
           </th>
           <th
@@ -612,18 +668,26 @@ exports[`CTable renders correctly 2`] = `
             </div>
              
             <svg
-              class="icon-transition position-absolute arrow-position transparent"
+              class="c-icon icon-transition position-absolute arrow-position transparent"
               style="fill: currentColor;"
-              viewBox="0 0 64 64"
+              viewBox="0 0 24 24"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
             >
+              
+
+
               <title>
                 arrow-top
               </title>
+              
+
               <path
-                d="M48.828 18.828l-16.828-16.828-16.828 16.828 2.829 2.828 12-12v52.248h4v-52.247l11.999 11.999 2.828-2.828z"
+                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
               />
+              
+
+
             </svg>
           </th>
           <th
@@ -637,18 +701,26 @@ exports[`CTable renders correctly 2`] = `
             </div>
              
             <svg
-              class="icon-transition position-absolute arrow-position transparent"
+              class="c-icon icon-transition position-absolute arrow-position transparent"
               style="fill: currentColor;"
-              viewBox="0 0 64 64"
+              viewBox="0 0 24 24"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
             >
+              
+
+
               <title>
                 arrow-top
               </title>
+              
+
               <path
-                d="M48.828 18.828l-16.828-16.828-16.828 16.828 2.829 2.828 12-12v52.248h4v-52.247l11.999 11.999 2.828-2.828z"
+                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
               />
+              
+
+
             </svg>
           </th>
           <th
