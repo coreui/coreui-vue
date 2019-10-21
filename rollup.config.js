@@ -1,22 +1,22 @@
-import { camelCase } from "lodash";
-import path from "path";
-import babel from "rollup-plugin-babel";
-import commonjs from "rollup-plugin-commonjs";
-import filesize from "rollup-plugin-filesize";
-import json from "rollup-plugin-json";
-import license from "rollup-plugin-license";
+import { camelCase } from 'lodash';
+import path from 'path';
+import babel from 'rollup-plugin-babel';
+import commonjs from 'rollup-plugin-commonjs';
+import filesize from 'rollup-plugin-filesize';
+import json from 'rollup-plugin-json';
+import license from 'rollup-plugin-license';
 import postcss from 'rollup-plugin-postcss'
-import resolve from "rollup-plugin-node-resolve";
-import replace from "rollup-plugin-replace";
+import resolve from 'rollup-plugin-node-resolve';
+import replace from 'rollup-plugin-replace';
 import magicImporter from 'node-sass-magic-importer';
 
-// import { uglify } from "rollup-plugin-uglify";
-import vue from "rollup-plugin-vue";
-// import { minify } from "uglify-es";
+// import { uglify } from 'rollup-plugin-uglify';
+import vue from 'rollup-plugin-vue';
+// import { minify } from 'uglify-es';
 
-import pack from "./package.json";
+import pack from './package.json';
 
-const projectName = "coreui-vue";
+const projectName = 'coreui-vue';
 
 // compute globals from dependencies
 const globals = pack.dependencies && Object.assign({}, ...Object.keys(pack.dependencies).map((key) => ({
@@ -26,30 +26,30 @@ const globals = pack.dependencies && Object.assign({}, ...Object.keys(pack.depen
 const builds = {
   // (CommonJS). Used by bundlers e.g. Webpack & Browserify
   cjs: {
-    entry: "src/index.js",
+    entry: 'src/index.js',
     dest: `dist/${projectName}.common.js`,
-    format: "cjs"
+    format: 'cjs'
   },
   // (ES Modules). Used by bundlers that support ES Modules,
   // e.g. Rollup & Webpack 2
   esm: {
-    entry: "src/index.js",
+    entry: 'src/index.js',
     dest: `dist/${projectName}.esm.js`,
-    format: "esm"
+    format: 'esm'
   },
   // build (Browser)
-  "umd-dev": {
-    entry: "src/index.umd.js",
+  'umd-dev': {
+    entry: 'src/index.umd.js',
     dest: `dist/${projectName}.js`,
-    format: "umd",
-    env: "development"
+    format: 'umd',
+    env: 'development'
   },
   // production build (Browser)
-  "umd-prod": {
-    entry: "src/index.umd.js",
+  'umd-prod': {
+    entry: 'src/index.umd.js',
     dest: `dist/${projectName}.min.js`,
-    format: "umd",
-    env: "production"
+    format: 'umd',
+    env: 'production'
   }
 };
 
@@ -71,7 +71,7 @@ function genConfig(name) {
         // browser: true,
         // jsnext: true,
         // preferBuiltins: false,
-        extensions: [".js", ".json", ".vue"]
+        extensions: ['.js', '.json', '.vue']
       }),
       commonjs({
         namedExports: {
@@ -93,16 +93,16 @@ function genConfig(name) {
       }),
       json(),
       babel({
-        exclude: "node_modules/**",
+        exclude: 'node_modules/**',
         runtimeHelpers: true,
         presets: [
-          ["@vue/app", { modules: false }]
+          ['@vue/app', { modules: false }]
         ]
       }),
       filesize()
     ].concat(opts.plugins || []),
     output: {
-      exports: "named",
+      exports: 'named',
       file: opts.dest,
       // dir: 'dist/es',
       format: opts.format,
@@ -115,12 +115,12 @@ function genConfig(name) {
   if (opts.env) {
     config.plugins.push(
       replace({
-        "process.env.NODE_ENV": JSON.stringify(opts.env)
+        'process.env.NODE_ENV': JSON.stringify(opts.env)
       })
     );
 
     // minify on production targets
-    // if (opts.env === "production") {
+    // if (opts.env === 'production') {
     //   config.plugins.push(uglify({}, minify));
     // }
   }
@@ -131,13 +131,13 @@ function genConfig(name) {
       sourcemap: true,
       banner: {
         content: {
-          file: path.resolve("LICENSE.txt")
+          file: path.resolve('LICENSE.txt')
         }
       }
     })
   );
 
-  Object.defineProperty(config, "_name", {
+  Object.defineProperty(config, '_name', {
     enumerable: false,
     value: name
   });
@@ -145,5 +145,5 @@ function genConfig(name) {
   return config;
 }
 
-const target = process.env.TARGET || "umd-prod";
+const target = process.env.TARGET || 'umd-prod';
 module.exports = genConfig(target);

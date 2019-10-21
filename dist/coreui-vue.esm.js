@@ -8,28 +8,6 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-var _isObject = function (it) {
-  return typeof it === 'object' ? it !== null : typeof it === 'function';
-};
-
-var _anObject = function (it) {
-  if (!_isObject(it)) throw TypeError(it + ' is not an object!');
-  return it;
-};
-
-var _fails = function (exec) {
-  try {
-    return !!exec();
-  } catch (e) {
-    return true;
-  }
-};
-
-// Thank's IE8 for his funny defineProperty
-var _descriptors = !_fails(function () {
-  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
-});
-
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 function unwrapExports (x) {
@@ -40,469 +18,51 @@ function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
 
-var _global = createCommonjsModule(function (module) {
+var check = function (it) {
+  return it && it.Math == Math && it;
+};
+
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math
-  ? window : typeof self != 'undefined' && self.Math == Math ? self
+var global_1 =
+  // eslint-disable-next-line no-undef
+  check(typeof globalThis == 'object' && globalThis) ||
+  check(typeof window == 'object' && window) ||
+  check(typeof self == 'object' && self) ||
+  check(typeof commonjsGlobal == 'object' && commonjsGlobal) ||
   // eslint-disable-next-line no-new-func
-  : Function('return this')();
-if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
-});
+  Function('return this')();
 
-var document$1 = _global.document;
-// typeof document.createElement is 'object' in old IE
-var is = _isObject(document$1) && _isObject(document$1.createElement);
-var _domCreate = function (it) {
-  return is ? document$1.createElement(it) : {};
-};
-
-var _ie8DomDefine = !_descriptors && !_fails(function () {
-  return Object.defineProperty(_domCreate('div'), 'a', { get: function () { return 7; } }).a != 7;
-});
-
-// 7.1.1 ToPrimitive(input [, PreferredType])
-
-// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-// and the second argument - flag - preferred type is a string
-var _toPrimitive = function (it, S) {
-  if (!_isObject(it)) return it;
-  var fn, val;
-  if (S && typeof (fn = it.toString) == 'function' && !_isObject(val = fn.call(it))) return val;
-  if (typeof (fn = it.valueOf) == 'function' && !_isObject(val = fn.call(it))) return val;
-  if (!S && typeof (fn = it.toString) == 'function' && !_isObject(val = fn.call(it))) return val;
-  throw TypeError("Can't convert object to primitive value");
-};
-
-var dP = Object.defineProperty;
-
-var f = _descriptors ? Object.defineProperty : function defineProperty(O, P, Attributes) {
-  _anObject(O);
-  P = _toPrimitive(P, true);
-  _anObject(Attributes);
-  if (_ie8DomDefine) try {
-    return dP(O, P, Attributes);
-  } catch (e) { /* empty */ }
-  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
-  if ('value' in Attributes) O[P] = Attributes.value;
-  return O;
-};
-
-var _objectDp = {
-	f: f
-};
-
-var dP$1 = _objectDp.f;
-var FProto = Function.prototype;
-var nameRE = /^\s*function ([^ (]*)/;
-var NAME = 'name';
-
-// 19.2.4.2 name
-NAME in FProto || _descriptors && dP$1(FProto, NAME, {
-  configurable: true,
-  get: function () {
-    try {
-      return ('' + this).match(nameRE)[1];
-    } catch (e) {
-      return '';
-    }
-  }
-});
-
-var _core = createCommonjsModule(function (module) {
-var core = module.exports = { version: '2.6.5' };
-if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
-});
-
-var _propertyDesc = function (bitmap, value) {
-  return {
-    enumerable: !(bitmap & 1),
-    configurable: !(bitmap & 2),
-    writable: !(bitmap & 4),
-    value: value
-  };
-};
-
-var _hide = _descriptors ? function (object, key, value) {
-  return _objectDp.f(object, key, _propertyDesc(1, value));
-} : function (object, key, value) {
-  object[key] = value;
-  return object;
-};
-
-var hasOwnProperty = {}.hasOwnProperty;
-var _has = function (it, key) {
-  return hasOwnProperty.call(it, key);
-};
-
-var id = 0;
-var px = Math.random();
-var _uid = function (key) {
-  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
-};
-
-var _library = false;
-
-var _shared = createCommonjsModule(function (module) {
-var SHARED = '__core-js_shared__';
-var store = _global[SHARED] || (_global[SHARED] = {});
-
-(module.exports = function (key, value) {
-  return store[key] || (store[key] = value !== undefined ? value : {});
-})('versions', []).push({
-  version: _core.version,
-  mode:  'global',
-  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
-});
-});
-
-var _functionToString = _shared('native-function-to-string', Function.toString);
-
-var _redefine = createCommonjsModule(function (module) {
-var SRC = _uid('src');
-
-var TO_STRING = 'toString';
-var TPL = ('' + _functionToString).split(TO_STRING);
-
-_core.inspectSource = function (it) {
-  return _functionToString.call(it);
-};
-
-(module.exports = function (O, key, val, safe) {
-  var isFunction = typeof val == 'function';
-  if (isFunction) _has(val, 'name') || _hide(val, 'name', key);
-  if (O[key] === val) return;
-  if (isFunction) _has(val, SRC) || _hide(val, SRC, O[key] ? '' + O[key] : TPL.join(String(key)));
-  if (O === _global) {
-    O[key] = val;
-  } else if (!safe) {
-    delete O[key];
-    _hide(O, key, val);
-  } else if (O[key]) {
-    O[key] = val;
-  } else {
-    _hide(O, key, val);
-  }
-// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
-})(Function.prototype, TO_STRING, function toString() {
-  return typeof this == 'function' && this[SRC] || _functionToString.call(this);
-});
-});
-
-var _aFunction = function (it) {
-  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
-  return it;
-};
-
-// optional / simple context binding
-
-var _ctx = function (fn, that, length) {
-  _aFunction(fn);
-  if (that === undefined) return fn;
-  switch (length) {
-    case 1: return function (a) {
-      return fn.call(that, a);
-    };
-    case 2: return function (a, b) {
-      return fn.call(that, a, b);
-    };
-    case 3: return function (a, b, c) {
-      return fn.call(that, a, b, c);
-    };
-  }
-  return function (/* ...args */) {
-    return fn.apply(that, arguments);
-  };
-};
-
-var PROTOTYPE = 'prototype';
-
-var $export = function (type, name, source) {
-  var IS_FORCED = type & $export.F;
-  var IS_GLOBAL = type & $export.G;
-  var IS_STATIC = type & $export.S;
-  var IS_PROTO = type & $export.P;
-  var IS_BIND = type & $export.B;
-  var target = IS_GLOBAL ? _global : IS_STATIC ? _global[name] || (_global[name] = {}) : (_global[name] || {})[PROTOTYPE];
-  var exports = IS_GLOBAL ? _core : _core[name] || (_core[name] = {});
-  var expProto = exports[PROTOTYPE] || (exports[PROTOTYPE] = {});
-  var key, own, out, exp;
-  if (IS_GLOBAL) source = name;
-  for (key in source) {
-    // contains in native
-    own = !IS_FORCED && target && target[key] !== undefined;
-    // export native or passed
-    out = (own ? target : source)[key];
-    // bind timers to global for call from export context
-    exp = IS_BIND && own ? _ctx(out, _global) : IS_PROTO && typeof out == 'function' ? _ctx(Function.call, out) : out;
-    // extend global
-    if (target) _redefine(target, key, out, type & $export.U);
-    // export
-    if (exports[key] != out) _hide(exports, key, exp);
-    if (IS_PROTO && expProto[key] != out) expProto[key] = out;
-  }
-};
-_global.core = _core;
-// type bitmap
-$export.F = 1;   // forced
-$export.G = 2;   // global
-$export.S = 4;   // static
-$export.P = 8;   // proto
-$export.B = 16;  // bind
-$export.W = 32;  // wrap
-$export.U = 64;  // safe
-$export.R = 128; // real proto method for `library`
-var _export = $export;
-
-var toString = {}.toString;
-
-var _cof = function (it) {
-  return toString.call(it).slice(8, -1);
-};
-
-// fallback for non-array-like ES3 and non-enumerable old V8 strings
-
-// eslint-disable-next-line no-prototype-builtins
-var _iobject = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
-  return _cof(it) == 'String' ? it.split('') : Object(it);
-};
-
-// 7.2.1 RequireObjectCoercible(argument)
-var _defined = function (it) {
-  if (it == undefined) throw TypeError("Can't call method on  " + it);
-  return it;
-};
-
-// to indexed object, toObject with fallback for non-array-like ES3 strings
-
-
-var _toIobject = function (it) {
-  return _iobject(_defined(it));
-};
-
-// 7.1.4 ToInteger
-var ceil = Math.ceil;
-var floor = Math.floor;
-var _toInteger = function (it) {
-  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
-};
-
-// 7.1.15 ToLength
-
-var min = Math.min;
-var _toLength = function (it) {
-  return it > 0 ? min(_toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
-};
-
-var max = Math.max;
-var min$1 = Math.min;
-var _toAbsoluteIndex = function (index, length) {
-  index = _toInteger(index);
-  return index < 0 ? max(index + length, 0) : min$1(index, length);
-};
-
-// false -> Array#indexOf
-// true  -> Array#includes
-
-
-
-var _arrayIncludes = function (IS_INCLUDES) {
-  return function ($this, el, fromIndex) {
-    var O = _toIobject($this);
-    var length = _toLength(O.length);
-    var index = _toAbsoluteIndex(fromIndex, length);
-    var value;
-    // Array#includes uses SameValueZero equality algorithm
-    // eslint-disable-next-line no-self-compare
-    if (IS_INCLUDES && el != el) while (length > index) {
-      value = O[index++];
-      // eslint-disable-next-line no-self-compare
-      if (value != value) return true;
-    // Array#indexOf ignores holes, Array#includes - not
-    } else for (;length > index; index++) if (IS_INCLUDES || index in O) {
-      if (O[index] === el) return IS_INCLUDES || index || 0;
-    } return !IS_INCLUDES && -1;
-  };
-};
-
-var _wks = createCommonjsModule(function (module) {
-var store = _shared('wks');
-
-var Symbol = _global.Symbol;
-var USE_SYMBOL = typeof Symbol == 'function';
-
-var $exports = module.exports = function (name) {
-  return store[name] || (store[name] =
-    USE_SYMBOL && Symbol[name] || (USE_SYMBOL ? Symbol : _uid)('Symbol.' + name));
-};
-
-$exports.store = store;
-});
-
-// 22.1.3.31 Array.prototype[@@unscopables]
-var UNSCOPABLES = _wks('unscopables');
-var ArrayProto = Array.prototype;
-if (ArrayProto[UNSCOPABLES] == undefined) _hide(ArrayProto, UNSCOPABLES, {});
-var _addToUnscopables = function (key) {
-  ArrayProto[UNSCOPABLES][key] = true;
-};
-
-// https://github.com/tc39/Array.prototype.includes
-
-var $includes = _arrayIncludes(true);
-
-_export(_export.P, 'Array', {
-  includes: function includes(el /* , fromIndex = 0 */) {
-    return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
-  }
-});
-
-_addToUnscopables('includes');
-
-// 7.2.8 IsRegExp(argument)
-
-
-var MATCH = _wks('match');
-var _isRegexp = function (it) {
-  var isRegExp;
-  return _isObject(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : _cof(it) == 'RegExp');
-};
-
-// helper for String#{startsWith, endsWith, includes}
-
-
-
-var _stringContext = function (that, searchString, NAME) {
-  if (_isRegexp(searchString)) throw TypeError('String#' + NAME + " doesn't accept regex!");
-  return String(_defined(that));
-};
-
-var MATCH$1 = _wks('match');
-var _failsIsRegexp = function (KEY) {
-  var re = /./;
-  try {
-    '/./'[KEY](re);
-  } catch (e) {
-    try {
-      re[MATCH$1] = false;
-      return !'/./'[KEY](re);
-    } catch (f) { /* empty */ }
-  } return true;
-};
-
-var INCLUDES = 'includes';
-
-_export(_export.P + _export.F * _failsIsRegexp(INCLUDES), 'String', {
-  includes: function includes(searchString /* , position = 0 */) {
-    return !!~_stringContext(this, searchString, INCLUDES)
-      .indexOf(searchString, arguments.length > 1 ? arguments[1] : undefined);
-  }
-});
-
-var _global$1 = createCommonjsModule(function (module) {
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math
-  ? window : typeof self != 'undefined' && self.Math == Math ? self
-  // eslint-disable-next-line no-new-func
-  : Function('return this')();
-if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
-});
-
-var _core$1 = createCommonjsModule(function (module) {
-var core = module.exports = { version: '2.6.5' };
-if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
-});
-
-var _aFunction$1 = function (it) {
-  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
-  return it;
-};
-
-// optional / simple context binding
-
-var _ctx$1 = function (fn, that, length) {
-  _aFunction$1(fn);
-  if (that === undefined) return fn;
-  switch (length) {
-    case 1: return function (a) {
-      return fn.call(that, a);
-    };
-    case 2: return function (a, b) {
-      return fn.call(that, a, b);
-    };
-    case 3: return function (a, b, c) {
-      return fn.call(that, a, b, c);
-    };
-  }
-  return function (/* ...args */) {
-    return fn.apply(that, arguments);
-  };
-};
-
-var _isObject$1 = function (it) {
-  return typeof it === 'object' ? it !== null : typeof it === 'function';
-};
-
-var _anObject$1 = function (it) {
-  if (!_isObject$1(it)) throw TypeError(it + ' is not an object!');
-  return it;
-};
-
-var _fails$1 = function (exec) {
+var fails = function (exec) {
   try {
     return !!exec();
-  } catch (e) {
+  } catch (error) {
     return true;
   }
 };
 
 // Thank's IE8 for his funny defineProperty
-var _descriptors$1 = !_fails$1(function () {
+var descriptors = !fails(function () {
   return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
 });
 
-var document$2 = _global$1.document;
-// typeof document.createElement is 'object' in old IE
-var is$1 = _isObject$1(document$2) && _isObject$1(document$2.createElement);
-var _domCreate$1 = function (it) {
-  return is$1 ? document$2.createElement(it) : {};
+var nativePropertyIsEnumerable = {}.propertyIsEnumerable;
+var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+
+// Nashorn ~ JDK8 bug
+var NASHORN_BUG = getOwnPropertyDescriptor && !nativePropertyIsEnumerable.call({ 1: 2 }, 1);
+
+// `Object.prototype.propertyIsEnumerable` method implementation
+// https://tc39.github.io/ecma262/#sec-object.prototype.propertyisenumerable
+var f = NASHORN_BUG ? function propertyIsEnumerable(V) {
+  var descriptor = getOwnPropertyDescriptor(this, V);
+  return !!descriptor && descriptor.enumerable;
+} : nativePropertyIsEnumerable;
+
+var objectPropertyIsEnumerable = {
+	f: f
 };
 
-var _ie8DomDefine$1 = !_descriptors$1 && !_fails$1(function () {
-  return Object.defineProperty(_domCreate$1('div'), 'a', { get: function () { return 7; } }).a != 7;
-});
-
-// 7.1.1 ToPrimitive(input [, PreferredType])
-
-// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-// and the second argument - flag - preferred type is a string
-var _toPrimitive$1 = function (it, S) {
-  if (!_isObject$1(it)) return it;
-  var fn, val;
-  if (S && typeof (fn = it.toString) == 'function' && !_isObject$1(val = fn.call(it))) return val;
-  if (typeof (fn = it.valueOf) == 'function' && !_isObject$1(val = fn.call(it))) return val;
-  if (!S && typeof (fn = it.toString) == 'function' && !_isObject$1(val = fn.call(it))) return val;
-  throw TypeError("Can't convert object to primitive value");
-};
-
-var dP$2 = Object.defineProperty;
-
-var f$1 = _descriptors$1 ? Object.defineProperty : function defineProperty(O, P, Attributes) {
-  _anObject$1(O);
-  P = _toPrimitive$1(P, true);
-  _anObject$1(Attributes);
-  if (_ie8DomDefine$1) try {
-    return dP$2(O, P, Attributes);
-  } catch (e) { /* empty */ }
-  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
-  if ('value' in Attributes) O[P] = Attributes.value;
-  return O;
-};
-
-var _objectDp$1 = {
-	f: f$1
-};
-
-var _propertyDesc$1 = function (bitmap, value) {
+var createPropertyDescriptor = function (bitmap, value) {
   return {
     enumerable: !(bitmap & 1),
     configurable: !(bitmap & 2),
@@ -511,162 +71,303 @@ var _propertyDesc$1 = function (bitmap, value) {
   };
 };
 
-var _hide$1 = _descriptors$1 ? function (object, key, value) {
-  return _objectDp$1.f(object, key, _propertyDesc$1(1, value));
+var toString = {}.toString;
+
+var classofRaw = function (it) {
+  return toString.call(it).slice(8, -1);
+};
+
+var split = ''.split;
+
+// fallback for non-array-like ES3 and non-enumerable old V8 strings
+var indexedObject = fails(function () {
+  // throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
+  // eslint-disable-next-line no-prototype-builtins
+  return !Object('z').propertyIsEnumerable(0);
+}) ? function (it) {
+  return classofRaw(it) == 'String' ? split.call(it, '') : Object(it);
+} : Object;
+
+// `RequireObjectCoercible` abstract operation
+// https://tc39.github.io/ecma262/#sec-requireobjectcoercible
+var requireObjectCoercible = function (it) {
+  if (it == undefined) throw TypeError("Can't call method on " + it);
+  return it;
+};
+
+// toObject with fallback for non-array-like ES3 strings
+
+
+
+var toIndexedObject = function (it) {
+  return indexedObject(requireObjectCoercible(it));
+};
+
+var isObject = function (it) {
+  return typeof it === 'object' ? it !== null : typeof it === 'function';
+};
+
+// `ToPrimitive` abstract operation
+// https://tc39.github.io/ecma262/#sec-toprimitive
+// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+// and the second argument - flag - preferred type is a string
+var toPrimitive = function (input, PREFERRED_STRING) {
+  if (!isObject(input)) return input;
+  var fn, val;
+  if (PREFERRED_STRING && typeof (fn = input.toString) == 'function' && !isObject(val = fn.call(input))) return val;
+  if (typeof (fn = input.valueOf) == 'function' && !isObject(val = fn.call(input))) return val;
+  if (!PREFERRED_STRING && typeof (fn = input.toString) == 'function' && !isObject(val = fn.call(input))) return val;
+  throw TypeError("Can't convert object to primitive value");
+};
+
+var hasOwnProperty = {}.hasOwnProperty;
+
+var has = function (it, key) {
+  return hasOwnProperty.call(it, key);
+};
+
+var document$1 = global_1.document;
+// typeof document.createElement is 'object' in old IE
+var EXISTS = isObject(document$1) && isObject(document$1.createElement);
+
+var documentCreateElement = function (it) {
+  return EXISTS ? document$1.createElement(it) : {};
+};
+
+// Thank's IE8 for his funny defineProperty
+var ie8DomDefine = !descriptors && !fails(function () {
+  return Object.defineProperty(documentCreateElement('div'), 'a', {
+    get: function () { return 7; }
+  }).a != 7;
+});
+
+var nativeGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+
+// `Object.getOwnPropertyDescriptor` method
+// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptor
+var f$1 = descriptors ? nativeGetOwnPropertyDescriptor : function getOwnPropertyDescriptor(O, P) {
+  O = toIndexedObject(O);
+  P = toPrimitive(P, true);
+  if (ie8DomDefine) try {
+    return nativeGetOwnPropertyDescriptor(O, P);
+  } catch (error) { /* empty */ }
+  if (has(O, P)) return createPropertyDescriptor(!objectPropertyIsEnumerable.f.call(O, P), O[P]);
+};
+
+var objectGetOwnPropertyDescriptor = {
+	f: f$1
+};
+
+var anObject = function (it) {
+  if (!isObject(it)) {
+    throw TypeError(String(it) + ' is not an object');
+  } return it;
+};
+
+var nativeDefineProperty = Object.defineProperty;
+
+// `Object.defineProperty` method
+// https://tc39.github.io/ecma262/#sec-object.defineproperty
+var f$2 = descriptors ? nativeDefineProperty : function defineProperty(O, P, Attributes) {
+  anObject(O);
+  P = toPrimitive(P, true);
+  anObject(Attributes);
+  if (ie8DomDefine) try {
+    return nativeDefineProperty(O, P, Attributes);
+  } catch (error) { /* empty */ }
+  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported');
+  if ('value' in Attributes) O[P] = Attributes.value;
+  return O;
+};
+
+var objectDefineProperty = {
+	f: f$2
+};
+
+var createNonEnumerableProperty = descriptors ? function (object, key, value) {
+  return objectDefineProperty.f(object, key, createPropertyDescriptor(1, value));
 } : function (object, key, value) {
   object[key] = value;
   return object;
 };
 
-var hasOwnProperty$1 = {}.hasOwnProperty;
-var _has$1 = function (it, key) {
-  return hasOwnProperty$1.call(it, key);
+var setGlobal = function (key, value) {
+  try {
+    createNonEnumerableProperty(global_1, key, value);
+  } catch (error) {
+    global_1[key] = value;
+  } return value;
 };
 
-var PROTOTYPE$1 = 'prototype';
+var SHARED = '__core-js_shared__';
+var store = global_1[SHARED] || setGlobal(SHARED, {});
 
-var $export$1 = function (type, name, source) {
-  var IS_FORCED = type & $export$1.F;
-  var IS_GLOBAL = type & $export$1.G;
-  var IS_STATIC = type & $export$1.S;
-  var IS_PROTO = type & $export$1.P;
-  var IS_BIND = type & $export$1.B;
-  var IS_WRAP = type & $export$1.W;
-  var exports = IS_GLOBAL ? _core$1 : _core$1[name] || (_core$1[name] = {});
-  var expProto = exports[PROTOTYPE$1];
-  var target = IS_GLOBAL ? _global$1 : IS_STATIC ? _global$1[name] : (_global$1[name] || {})[PROTOTYPE$1];
-  var key, own, out;
-  if (IS_GLOBAL) source = name;
-  for (key in source) {
-    // contains in native
-    own = !IS_FORCED && target && target[key] !== undefined;
-    if (own && _has$1(exports, key)) continue;
-    // export native or passed
-    out = own ? target[key] : source[key];
-    // prevent global pollution for namespaces
-    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
-    // bind timers to global for call from export context
-    : IS_BIND && own ? _ctx$1(out, _global$1)
-    // wrap global constructors for prevent change them in library
-    : IS_WRAP && target[key] == out ? (function (C) {
-      var F = function (a, b, c) {
-        if (this instanceof C) {
-          switch (arguments.length) {
-            case 0: return new C();
-            case 1: return new C(a);
-            case 2: return new C(a, b);
-          } return new C(a, b, c);
-        } return C.apply(this, arguments);
-      };
-      F[PROTOTYPE$1] = C[PROTOTYPE$1];
-      return F;
-    // make static versions for prototype methods
-    })(out) : IS_PROTO && typeof out == 'function' ? _ctx$1(Function.call, out) : out;
-    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
-    if (IS_PROTO) {
-      (exports.virtual || (exports.virtual = {}))[key] = out;
-      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
-      if (type & $export$1.R && expProto && !expProto[key]) _hide$1(expProto, key, out);
-    }
-  }
-};
-// type bitmap
-$export$1.F = 1;   // forced
-$export$1.G = 2;   // global
-$export$1.S = 4;   // static
-$export$1.P = 8;   // proto
-$export$1.B = 16;  // bind
-$export$1.W = 32;  // wrap
-$export$1.U = 64;  // safe
-$export$1.R = 128; // real proto method for `library`
-var _export$1 = $export$1;
+var sharedStore = store;
 
-var toString$1 = {}.toString;
+var shared = createCommonjsModule(function (module) {
+(module.exports = function (key, value) {
+  return sharedStore[key] || (sharedStore[key] = value !== undefined ? value : {});
+})('versions', []).push({
+  version: '3.3.2',
+  mode:  'global',
+  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
+});
+});
 
-var _cof$1 = function (it) {
-  return toString$1.call(it).slice(8, -1);
+var functionToString = shared('native-function-to-string', Function.toString);
+
+var WeakMap = global_1.WeakMap;
+
+var nativeWeakMap = typeof WeakMap === 'function' && /native code/.test(functionToString.call(WeakMap));
+
+var id = 0;
+var postfix = Math.random();
+
+var uid = function (key) {
+  return 'Symbol(' + String(key === undefined ? '' : key) + ')_' + (++id + postfix).toString(36);
 };
 
-// 7.2.2 IsArray(argument)
+var keys = shared('keys');
 
-var _isArray = Array.isArray || function isArray(arg) {
-  return _cof$1(arg) == 'Array';
+var sharedKey = function (key) {
+  return keys[key] || (keys[key] = uid(key));
 };
 
-// 22.1.2.2 / 15.4.3.2 Array.isArray(arg)
+var hiddenKeys = {};
 
+var WeakMap$1 = global_1.WeakMap;
+var set, get, has$1;
 
-_export$1(_export$1.S, 'Array', { isArray: _isArray });
+var enforce = function (it) {
+  return has$1(it) ? get(it) : set(it, {});
+};
 
-var isArray = _core$1.Array.isArray;
+var getterFor = function (TYPE) {
+  return function (it) {
+    var state;
+    if (!isObject(it) || (state = get(it)).type !== TYPE) {
+      throw TypeError('Incompatible receiver, ' + TYPE + ' required');
+    } return state;
+  };
+};
 
-var isArray$1 = isArray;
-
-function _arrayWithHoles(arr) {
-  if (isArray$1(arr)) return arr;
+if (nativeWeakMap) {
+  var store$1 = new WeakMap$1();
+  var wmget = store$1.get;
+  var wmhas = store$1.has;
+  var wmset = store$1.set;
+  set = function (it, metadata) {
+    wmset.call(store$1, it, metadata);
+    return metadata;
+  };
+  get = function (it) {
+    return wmget.call(store$1, it) || {};
+  };
+  has$1 = function (it) {
+    return wmhas.call(store$1, it);
+  };
+} else {
+  var STATE = sharedKey('state');
+  hiddenKeys[STATE] = true;
+  set = function (it, metadata) {
+    createNonEnumerableProperty(it, STATE, metadata);
+    return metadata;
+  };
+  get = function (it) {
+    return has(it, STATE) ? it[STATE] : {};
+  };
+  has$1 = function (it) {
+    return has(it, STATE);
+  };
 }
 
-var _iterStep = function (done, value) {
-  return { value: value, done: !!done };
+var internalState = {
+  set: set,
+  get: get,
+  has: has$1,
+  enforce: enforce,
+  getterFor: getterFor
 };
 
-var _iterators = {};
+var redefine = createCommonjsModule(function (module) {
+var getInternalState = internalState.get;
+var enforceInternalState = internalState.enforce;
+var TEMPLATE = String(functionToString).split('toString');
 
-// fallback for non-array-like ES3 and non-enumerable old V8 strings
+shared('inspectSource', function (it) {
+  return functionToString.call(it);
+});
 
-// eslint-disable-next-line no-prototype-builtins
-var _iobject$1 = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
-  return _cof$1(it) == 'String' ? it.split('') : Object(it);
+(module.exports = function (O, key, value, options) {
+  var unsafe = options ? !!options.unsafe : false;
+  var simple = options ? !!options.enumerable : false;
+  var noTargetGet = options ? !!options.noTargetGet : false;
+  if (typeof value == 'function') {
+    if (typeof key == 'string' && !has(value, 'name')) createNonEnumerableProperty(value, 'name', key);
+    enforceInternalState(value).source = TEMPLATE.join(typeof key == 'string' ? key : '');
+  }
+  if (O === global_1) {
+    if (simple) O[key] = value;
+    else setGlobal(key, value);
+    return;
+  } else if (!unsafe) {
+    delete O[key];
+  } else if (!noTargetGet && O[key]) {
+    simple = true;
+  }
+  if (simple) O[key] = value;
+  else createNonEnumerableProperty(O, key, value);
+// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
+})(Function.prototype, 'toString', function toString() {
+  return typeof this == 'function' && getInternalState(this).source || functionToString.call(this);
+});
+});
+
+var path = global_1;
+
+var aFunction = function (variable) {
+  return typeof variable == 'function' ? variable : undefined;
 };
 
-// 7.2.1 RequireObjectCoercible(argument)
-var _defined$1 = function (it) {
-  if (it == undefined) throw TypeError("Can't call method on  " + it);
-  return it;
+var getBuiltIn = function (namespace, method) {
+  return arguments.length < 2 ? aFunction(path[namespace]) || aFunction(global_1[namespace])
+    : path[namespace] && path[namespace][method] || global_1[namespace] && global_1[namespace][method];
 };
 
-// to indexed object, toObject with fallback for non-array-like ES3 strings
+var ceil = Math.ceil;
+var floor = Math.floor;
 
-
-var _toIobject$1 = function (it) {
-  return _iobject$1(_defined$1(it));
+// `ToInteger` abstract operation
+// https://tc39.github.io/ecma262/#sec-tointeger
+var toInteger = function (argument) {
+  return isNaN(argument = +argument) ? 0 : (argument > 0 ? floor : ceil)(argument);
 };
 
-var _library$1 = true;
+var min = Math.min;
 
-var _redefine$1 = _hide$1;
-
-// 7.1.4 ToInteger
-var ceil$1 = Math.ceil;
-var floor$1 = Math.floor;
-var _toInteger$1 = function (it) {
-  return isNaN(it = +it) ? 0 : (it > 0 ? floor$1 : ceil$1)(it);
+// `ToLength` abstract operation
+// https://tc39.github.io/ecma262/#sec-tolength
+var toLength = function (argument) {
+  return argument > 0 ? min(toInteger(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
 };
 
-// 7.1.15 ToLength
+var max = Math.max;
+var min$1 = Math.min;
 
-var min$2 = Math.min;
-var _toLength$1 = function (it) {
-  return it > 0 ? min$2(_toInteger$1(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
+// Helper for a popular repeating case of the spec:
+// Let integer be ? ToInteger(index).
+// If integer < 0, let result be max((length + integer), 0); else let result be min(length, length).
+var toAbsoluteIndex = function (index, length) {
+  var integer = toInteger(index);
+  return integer < 0 ? max(integer + length, 0) : min$1(integer, length);
 };
 
-var max$1 = Math.max;
-var min$3 = Math.min;
-var _toAbsoluteIndex$1 = function (index, length) {
-  index = _toInteger$1(index);
-  return index < 0 ? max$1(index + length, 0) : min$3(index, length);
-};
-
-// false -> Array#indexOf
-// true  -> Array#includes
-
-
-
-var _arrayIncludes$1 = function (IS_INCLUDES) {
+// `Array.prototype.{ indexOf, includes }` methods implementation
+var createMethod = function (IS_INCLUDES) {
   return function ($this, el, fromIndex) {
-    var O = _toIobject$1($this);
-    var length = _toLength$1(O.length);
-    var index = _toAbsoluteIndex$1(fromIndex, length);
+    var O = toIndexedObject($this);
+    var length = toLength(O.length);
+    var index = toAbsoluteIndex(fromIndex, length);
     var value;
     // Array#includes uses SameValueZero equality algorithm
     // eslint-disable-next-line no-self-compare
@@ -675,364 +376,1444 @@ var _arrayIncludes$1 = function (IS_INCLUDES) {
       // eslint-disable-next-line no-self-compare
       if (value != value) return true;
     // Array#indexOf ignores holes, Array#includes - not
-    } else for (;length > index; index++) if (IS_INCLUDES || index in O) {
-      if (O[index] === el) return IS_INCLUDES || index || 0;
+    } else for (;length > index; index++) {
+      if ((IS_INCLUDES || index in O) && O[index] === el) return IS_INCLUDES || index || 0;
     } return !IS_INCLUDES && -1;
   };
 };
 
-var _shared$1 = createCommonjsModule(function (module) {
-var SHARED = '__core-js_shared__';
-var store = _global$1[SHARED] || (_global$1[SHARED] = {});
+var arrayIncludes = {
+  // `Array.prototype.includes` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.includes
+  includes: createMethod(true),
+  // `Array.prototype.indexOf` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.indexof
+  indexOf: createMethod(false)
+};
 
+var indexOf = arrayIncludes.indexOf;
+
+
+var objectKeysInternal = function (object, names) {
+  var O = toIndexedObject(object);
+  var i = 0;
+  var result = [];
+  var key;
+  for (key in O) !has(hiddenKeys, key) && has(O, key) && result.push(key);
+  // Don't enum bug & hidden keys
+  while (names.length > i) if (has(O, key = names[i++])) {
+    ~indexOf(result, key) || result.push(key);
+  }
+  return result;
+};
+
+// IE8- don't enum bug keys
+var enumBugKeys = [
+  'constructor',
+  'hasOwnProperty',
+  'isPrototypeOf',
+  'propertyIsEnumerable',
+  'toLocaleString',
+  'toString',
+  'valueOf'
+];
+
+var hiddenKeys$1 = enumBugKeys.concat('length', 'prototype');
+
+// `Object.getOwnPropertyNames` method
+// https://tc39.github.io/ecma262/#sec-object.getownpropertynames
+var f$3 = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
+  return objectKeysInternal(O, hiddenKeys$1);
+};
+
+var objectGetOwnPropertyNames = {
+	f: f$3
+};
+
+var f$4 = Object.getOwnPropertySymbols;
+
+var objectGetOwnPropertySymbols = {
+	f: f$4
+};
+
+// all object keys, includes non-enumerable and symbols
+var ownKeys = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
+  var keys = objectGetOwnPropertyNames.f(anObject(it));
+  var getOwnPropertySymbols = objectGetOwnPropertySymbols.f;
+  return getOwnPropertySymbols ? keys.concat(getOwnPropertySymbols(it)) : keys;
+};
+
+var copyConstructorProperties = function (target, source) {
+  var keys = ownKeys(source);
+  var defineProperty = objectDefineProperty.f;
+  var getOwnPropertyDescriptor = objectGetOwnPropertyDescriptor.f;
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
+    if (!has(target, key)) defineProperty(target, key, getOwnPropertyDescriptor(source, key));
+  }
+};
+
+var replacement = /#|\.prototype\./;
+
+var isForced = function (feature, detection) {
+  var value = data[normalize(feature)];
+  return value == POLYFILL ? true
+    : value == NATIVE ? false
+    : typeof detection == 'function' ? fails(detection)
+    : !!detection;
+};
+
+var normalize = isForced.normalize = function (string) {
+  return String(string).replace(replacement, '.').toLowerCase();
+};
+
+var data = isForced.data = {};
+var NATIVE = isForced.NATIVE = 'N';
+var POLYFILL = isForced.POLYFILL = 'P';
+
+var isForced_1 = isForced;
+
+var getOwnPropertyDescriptor$1 = objectGetOwnPropertyDescriptor.f;
+
+
+
+
+
+
+/*
+  options.target      - name of the target object
+  options.global      - target is the global object
+  options.stat        - export as static methods of target
+  options.proto       - export as prototype methods of target
+  options.real        - real prototype method for the `pure` version
+  options.forced      - export even if the native feature is available
+  options.bind        - bind methods to the target, required for the `pure` version
+  options.wrap        - wrap constructors to preventing global pollution, required for the `pure` version
+  options.unsafe      - use the simple assignment of property instead of delete + defineProperty
+  options.sham        - add a flag to not completely full polyfills
+  options.enumerable  - export as enumerable property
+  options.noTargetGet - prevent calling a getter on target
+*/
+var _export = function (options, source) {
+  var TARGET = options.target;
+  var GLOBAL = options.global;
+  var STATIC = options.stat;
+  var FORCED, target, key, targetProperty, sourceProperty, descriptor;
+  if (GLOBAL) {
+    target = global_1;
+  } else if (STATIC) {
+    target = global_1[TARGET] || setGlobal(TARGET, {});
+  } else {
+    target = (global_1[TARGET] || {}).prototype;
+  }
+  if (target) for (key in source) {
+    sourceProperty = source[key];
+    if (options.noTargetGet) {
+      descriptor = getOwnPropertyDescriptor$1(target, key);
+      targetProperty = descriptor && descriptor.value;
+    } else targetProperty = target[key];
+    FORCED = isForced_1(GLOBAL ? key : TARGET + (STATIC ? '.' : '#') + key, options.forced);
+    // contained in target
+    if (!FORCED && targetProperty !== undefined) {
+      if (typeof sourceProperty === typeof targetProperty) continue;
+      copyConstructorProperties(sourceProperty, targetProperty);
+    }
+    // add a flag to not completely full polyfills
+    if (options.sham || (targetProperty && targetProperty.sham)) {
+      createNonEnumerableProperty(sourceProperty, 'sham', true);
+    }
+    // extend global
+    redefine(target, key, sourceProperty, options);
+  }
+};
+
+var nativeSymbol = !!Object.getOwnPropertySymbols && !fails(function () {
+  // Chrome 38 Symbol has incorrect toString conversion
+  // eslint-disable-next-line no-undef
+  return !String(Symbol());
+});
+
+var Symbol$1 = global_1.Symbol;
+var store$2 = shared('wks');
+
+var wellKnownSymbol = function (name) {
+  return store$2[name] || (store$2[name] = nativeSymbol && Symbol$1[name]
+    || (nativeSymbol ? Symbol$1 : uid)('Symbol.' + name));
+};
+
+// `Object.keys` method
+// https://tc39.github.io/ecma262/#sec-object.keys
+var objectKeys = Object.keys || function keys(O) {
+  return objectKeysInternal(O, enumBugKeys);
+};
+
+// `Object.defineProperties` method
+// https://tc39.github.io/ecma262/#sec-object.defineproperties
+var objectDefineProperties = descriptors ? Object.defineProperties : function defineProperties(O, Properties) {
+  anObject(O);
+  var keys = objectKeys(Properties);
+  var length = keys.length;
+  var index = 0;
+  var key;
+  while (length > index) objectDefineProperty.f(O, key = keys[index++], Properties[key]);
+  return O;
+};
+
+var html = getBuiltIn('document', 'documentElement');
+
+var IE_PROTO = sharedKey('IE_PROTO');
+
+var PROTOTYPE = 'prototype';
+var Empty = function () { /* empty */ };
+
+// Create object with fake `null` prototype: use iframe Object with cleared prototype
+var createDict = function () {
+  // Thrash, waste and sodomy: IE GC bug
+  var iframe = documentCreateElement('iframe');
+  var length = enumBugKeys.length;
+  var lt = '<';
+  var script = 'script';
+  var gt = '>';
+  var js = 'java' + script + ':';
+  var iframeDocument;
+  iframe.style.display = 'none';
+  html.appendChild(iframe);
+  iframe.src = String(js);
+  iframeDocument = iframe.contentWindow.document;
+  iframeDocument.open();
+  iframeDocument.write(lt + script + gt + 'document.F=Object' + lt + '/' + script + gt);
+  iframeDocument.close();
+  createDict = iframeDocument.F;
+  while (length--) delete createDict[PROTOTYPE][enumBugKeys[length]];
+  return createDict();
+};
+
+// `Object.create` method
+// https://tc39.github.io/ecma262/#sec-object.create
+var objectCreate = Object.create || function create(O, Properties) {
+  var result;
+  if (O !== null) {
+    Empty[PROTOTYPE] = anObject(O);
+    result = new Empty();
+    Empty[PROTOTYPE] = null;
+    // add "__proto__" for Object.getPrototypeOf polyfill
+    result[IE_PROTO] = O;
+  } else result = createDict();
+  return Properties === undefined ? result : objectDefineProperties(result, Properties);
+};
+
+hiddenKeys[IE_PROTO] = true;
+
+var UNSCOPABLES = wellKnownSymbol('unscopables');
+var ArrayPrototype = Array.prototype;
+
+// Array.prototype[@@unscopables]
+// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+if (ArrayPrototype[UNSCOPABLES] == undefined) {
+  createNonEnumerableProperty(ArrayPrototype, UNSCOPABLES, objectCreate(null));
+}
+
+// add a key to Array.prototype[@@unscopables]
+var addToUnscopables = function (key) {
+  ArrayPrototype[UNSCOPABLES][key] = true;
+};
+
+var $includes = arrayIncludes.includes;
+
+
+// `Array.prototype.includes` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.includes
+_export({ target: 'Array', proto: true }, {
+  includes: function includes(el /* , fromIndex = 0 */) {
+    return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+addToUnscopables('includes');
+
+var aFunction$1 = function (it) {
+  if (typeof it != 'function') {
+    throw TypeError(String(it) + ' is not a function');
+  } return it;
+};
+
+// `ToObject` abstract operation
+// https://tc39.github.io/ecma262/#sec-toobject
+var toObject = function (argument) {
+  return Object(requireObjectCoercible(argument));
+};
+
+// `Array.prototype.{ reduce, reduceRight }` methods implementation
+var createMethod$1 = function (IS_RIGHT) {
+  return function (that, callbackfn, argumentsLength, memo) {
+    aFunction$1(callbackfn);
+    var O = toObject(that);
+    var self = indexedObject(O);
+    var length = toLength(O.length);
+    var index = IS_RIGHT ? length - 1 : 0;
+    var i = IS_RIGHT ? -1 : 1;
+    if (argumentsLength < 2) while (true) {
+      if (index in self) {
+        memo = self[index];
+        index += i;
+        break;
+      }
+      index += i;
+      if (IS_RIGHT ? index < 0 : length <= index) {
+        throw TypeError('Reduce of empty array with no initial value');
+      }
+    }
+    for (;IS_RIGHT ? index >= 0 : length > index; index += i) if (index in self) {
+      memo = callbackfn(memo, self[index], index, O);
+    }
+    return memo;
+  };
+};
+
+var arrayReduce = {
+  // `Array.prototype.reduce` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.reduce
+  left: createMethod$1(false),
+  // `Array.prototype.reduceRight` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.reduceright
+  right: createMethod$1(true)
+};
+
+var sloppyArrayMethod = function (METHOD_NAME, argument) {
+  var method = [][METHOD_NAME];
+  return !method || !fails(function () {
+    // eslint-disable-next-line no-useless-call,no-throw-literal
+    method.call(null, argument || function () { throw 1; }, 1);
+  });
+};
+
+var $reduce = arrayReduce.left;
+
+
+// `Array.prototype.reduce` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.reduce
+_export({ target: 'Array', proto: true, forced: sloppyArrayMethod('reduce') }, {
+  reduce: function reduce(callbackfn /* , initialValue */) {
+    return $reduce(this, callbackfn, arguments.length, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+var defineProperty = objectDefineProperty.f;
+
+var FunctionPrototype = Function.prototype;
+var FunctionPrototypeToString = FunctionPrototype.toString;
+var nameRE = /^\s*function ([^ (]*)/;
+var NAME = 'name';
+
+// Function instances `.name` property
+// https://tc39.github.io/ecma262/#sec-function-instances-name
+if (descriptors && !(NAME in FunctionPrototype)) {
+  defineProperty(FunctionPrototype, NAME, {
+    configurable: true,
+    get: function () {
+      try {
+        return FunctionPrototypeToString.call(this).match(nameRE)[1];
+      } catch (error) {
+        return '';
+      }
+    }
+  });
+}
+
+var propertyIsEnumerable = objectPropertyIsEnumerable.f;
+
+// `Object.{ entries, values }` methods implementation
+var createMethod$2 = function (TO_ENTRIES) {
+  return function (it) {
+    var O = toIndexedObject(it);
+    var keys = objectKeys(O);
+    var length = keys.length;
+    var i = 0;
+    var result = [];
+    var key;
+    while (length > i) {
+      key = keys[i++];
+      if (!descriptors || propertyIsEnumerable.call(O, key)) {
+        result.push(TO_ENTRIES ? [key, O[key]] : O[key]);
+      }
+    }
+    return result;
+  };
+};
+
+var objectToArray = {
+  // `Object.entries` method
+  // https://tc39.github.io/ecma262/#sec-object.entries
+  entries: createMethod$2(true),
+  // `Object.values` method
+  // https://tc39.github.io/ecma262/#sec-object.values
+  values: createMethod$2(false)
+};
+
+var $entries = objectToArray.entries;
+
+// `Object.entries` method
+// https://tc39.github.io/ecma262/#sec-object.entries
+_export({ target: 'Object', stat: true }, {
+  entries: function entries(O) {
+    return $entries(O);
+  }
+});
+
+var MATCH = wellKnownSymbol('match');
+
+// `IsRegExp` abstract operation
+// https://tc39.github.io/ecma262/#sec-isregexp
+var isRegexp = function (it) {
+  var isRegExp;
+  return isObject(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : classofRaw(it) == 'RegExp');
+};
+
+var notARegexp = function (it) {
+  if (isRegexp(it)) {
+    throw TypeError("The method doesn't accept regular expressions");
+  } return it;
+};
+
+var MATCH$1 = wellKnownSymbol('match');
+
+var correctIsRegexpLogic = function (METHOD_NAME) {
+  var regexp = /./;
+  try {
+    '/./'[METHOD_NAME](regexp);
+  } catch (e) {
+    try {
+      regexp[MATCH$1] = false;
+      return '/./'[METHOD_NAME](regexp);
+    } catch (f) { /* empty */ }
+  } return false;
+};
+
+// `String.prototype.includes` method
+// https://tc39.github.io/ecma262/#sec-string.prototype.includes
+_export({ target: 'String', proto: true, forced: !correctIsRegexpLogic('includes') }, {
+  includes: function includes(searchString /* , position = 0 */) {
+    return !!~String(requireObjectCoercible(this))
+      .indexOf(notARegexp(searchString), arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+var check$1 = function (it) {
+  return it && it.Math == Math && it;
+};
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global_1$1 =
+  // eslint-disable-next-line no-undef
+  check$1(typeof globalThis == 'object' && globalThis) ||
+  check$1(typeof window == 'object' && window) ||
+  check$1(typeof self == 'object' && self) ||
+  check$1(typeof commonjsGlobal == 'object' && commonjsGlobal) ||
+  // eslint-disable-next-line no-new-func
+  Function('return this')();
+
+var fails$1 = function (exec) {
+  try {
+    return !!exec();
+  } catch (error) {
+    return true;
+  }
+};
+
+// Thank's IE8 for his funny defineProperty
+var descriptors$1 = !fails$1(function () {
+  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
+});
+
+var nativePropertyIsEnumerable$1 = {}.propertyIsEnumerable;
+var getOwnPropertyDescriptor$2 = Object.getOwnPropertyDescriptor;
+
+// Nashorn ~ JDK8 bug
+var NASHORN_BUG$1 = getOwnPropertyDescriptor$2 && !nativePropertyIsEnumerable$1.call({ 1: 2 }, 1);
+
+// `Object.prototype.propertyIsEnumerable` method implementation
+// https://tc39.github.io/ecma262/#sec-object.prototype.propertyisenumerable
+var f$5 = NASHORN_BUG$1 ? function propertyIsEnumerable(V) {
+  var descriptor = getOwnPropertyDescriptor$2(this, V);
+  return !!descriptor && descriptor.enumerable;
+} : nativePropertyIsEnumerable$1;
+
+var objectPropertyIsEnumerable$1 = {
+	f: f$5
+};
+
+var createPropertyDescriptor$1 = function (bitmap, value) {
+  return {
+    enumerable: !(bitmap & 1),
+    configurable: !(bitmap & 2),
+    writable: !(bitmap & 4),
+    value: value
+  };
+};
+
+var toString$1 = {}.toString;
+
+var classofRaw$1 = function (it) {
+  return toString$1.call(it).slice(8, -1);
+};
+
+var split$1 = ''.split;
+
+// fallback for non-array-like ES3 and non-enumerable old V8 strings
+var indexedObject$1 = fails$1(function () {
+  // throws an error in rhino, see https://github.com/mozilla/rhino/issues/346
+  // eslint-disable-next-line no-prototype-builtins
+  return !Object('z').propertyIsEnumerable(0);
+}) ? function (it) {
+  return classofRaw$1(it) == 'String' ? split$1.call(it, '') : Object(it);
+} : Object;
+
+// `RequireObjectCoercible` abstract operation
+// https://tc39.github.io/ecma262/#sec-requireobjectcoercible
+var requireObjectCoercible$1 = function (it) {
+  if (it == undefined) throw TypeError("Can't call method on " + it);
+  return it;
+};
+
+// toObject with fallback for non-array-like ES3 strings
+
+
+
+var toIndexedObject$1 = function (it) {
+  return indexedObject$1(requireObjectCoercible$1(it));
+};
+
+var isObject$1 = function (it) {
+  return typeof it === 'object' ? it !== null : typeof it === 'function';
+};
+
+// `ToPrimitive` abstract operation
+// https://tc39.github.io/ecma262/#sec-toprimitive
+// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+// and the second argument - flag - preferred type is a string
+var toPrimitive$1 = function (input, PREFERRED_STRING) {
+  if (!isObject$1(input)) return input;
+  var fn, val;
+  if (PREFERRED_STRING && typeof (fn = input.toString) == 'function' && !isObject$1(val = fn.call(input))) return val;
+  if (typeof (fn = input.valueOf) == 'function' && !isObject$1(val = fn.call(input))) return val;
+  if (!PREFERRED_STRING && typeof (fn = input.toString) == 'function' && !isObject$1(val = fn.call(input))) return val;
+  throw TypeError("Can't convert object to primitive value");
+};
+
+var hasOwnProperty$1 = {}.hasOwnProperty;
+
+var has$2 = function (it, key) {
+  return hasOwnProperty$1.call(it, key);
+};
+
+var document$2 = global_1$1.document;
+// typeof document.createElement is 'object' in old IE
+var EXISTS$1 = isObject$1(document$2) && isObject$1(document$2.createElement);
+
+var documentCreateElement$1 = function (it) {
+  return EXISTS$1 ? document$2.createElement(it) : {};
+};
+
+// Thank's IE8 for his funny defineProperty
+var ie8DomDefine$1 = !descriptors$1 && !fails$1(function () {
+  return Object.defineProperty(documentCreateElement$1('div'), 'a', {
+    get: function () { return 7; }
+  }).a != 7;
+});
+
+var nativeGetOwnPropertyDescriptor$1 = Object.getOwnPropertyDescriptor;
+
+// `Object.getOwnPropertyDescriptor` method
+// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptor
+var f$6 = descriptors$1 ? nativeGetOwnPropertyDescriptor$1 : function getOwnPropertyDescriptor(O, P) {
+  O = toIndexedObject$1(O);
+  P = toPrimitive$1(P, true);
+  if (ie8DomDefine$1) try {
+    return nativeGetOwnPropertyDescriptor$1(O, P);
+  } catch (error) { /* empty */ }
+  if (has$2(O, P)) return createPropertyDescriptor$1(!objectPropertyIsEnumerable$1.f.call(O, P), O[P]);
+};
+
+var objectGetOwnPropertyDescriptor$1 = {
+	f: f$6
+};
+
+var replacement$1 = /#|\.prototype\./;
+
+var isForced$1 = function (feature, detection) {
+  var value = data$1[normalize$1(feature)];
+  return value == POLYFILL$1 ? true
+    : value == NATIVE$1 ? false
+    : typeof detection == 'function' ? fails$1(detection)
+    : !!detection;
+};
+
+var normalize$1 = isForced$1.normalize = function (string) {
+  return String(string).replace(replacement$1, '.').toLowerCase();
+};
+
+var data$1 = isForced$1.data = {};
+var NATIVE$1 = isForced$1.NATIVE = 'N';
+var POLYFILL$1 = isForced$1.POLYFILL = 'P';
+
+var isForced_1$1 = isForced$1;
+
+var path$1 = {};
+
+var aFunction$2 = function (it) {
+  if (typeof it != 'function') {
+    throw TypeError(String(it) + ' is not a function');
+  } return it;
+};
+
+// optional / simple context binding
+var bindContext = function (fn, that, length) {
+  aFunction$2(fn);
+  if (that === undefined) return fn;
+  switch (length) {
+    case 0: return function () {
+      return fn.call(that);
+    };
+    case 1: return function (a) {
+      return fn.call(that, a);
+    };
+    case 2: return function (a, b) {
+      return fn.call(that, a, b);
+    };
+    case 3: return function (a, b, c) {
+      return fn.call(that, a, b, c);
+    };
+  }
+  return function (/* ...args */) {
+    return fn.apply(that, arguments);
+  };
+};
+
+var anObject$1 = function (it) {
+  if (!isObject$1(it)) {
+    throw TypeError(String(it) + ' is not an object');
+  } return it;
+};
+
+var nativeDefineProperty$1 = Object.defineProperty;
+
+// `Object.defineProperty` method
+// https://tc39.github.io/ecma262/#sec-object.defineproperty
+var f$7 = descriptors$1 ? nativeDefineProperty$1 : function defineProperty(O, P, Attributes) {
+  anObject$1(O);
+  P = toPrimitive$1(P, true);
+  anObject$1(Attributes);
+  if (ie8DomDefine$1) try {
+    return nativeDefineProperty$1(O, P, Attributes);
+  } catch (error) { /* empty */ }
+  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported');
+  if ('value' in Attributes) O[P] = Attributes.value;
+  return O;
+};
+
+var objectDefineProperty$1 = {
+	f: f$7
+};
+
+var createNonEnumerableProperty$1 = descriptors$1 ? function (object, key, value) {
+  return objectDefineProperty$1.f(object, key, createPropertyDescriptor$1(1, value));
+} : function (object, key, value) {
+  object[key] = value;
+  return object;
+};
+
+var getOwnPropertyDescriptor$3 = objectGetOwnPropertyDescriptor$1.f;
+
+
+
+
+
+
+var wrapConstructor = function (NativeConstructor) {
+  var Wrapper = function (a, b, c) {
+    if (this instanceof NativeConstructor) {
+      switch (arguments.length) {
+        case 0: return new NativeConstructor();
+        case 1: return new NativeConstructor(a);
+        case 2: return new NativeConstructor(a, b);
+      } return new NativeConstructor(a, b, c);
+    } return NativeConstructor.apply(this, arguments);
+  };
+  Wrapper.prototype = NativeConstructor.prototype;
+  return Wrapper;
+};
+
+/*
+  options.target      - name of the target object
+  options.global      - target is the global object
+  options.stat        - export as static methods of target
+  options.proto       - export as prototype methods of target
+  options.real        - real prototype method for the `pure` version
+  options.forced      - export even if the native feature is available
+  options.bind        - bind methods to the target, required for the `pure` version
+  options.wrap        - wrap constructors to preventing global pollution, required for the `pure` version
+  options.unsafe      - use the simple assignment of property instead of delete + defineProperty
+  options.sham        - add a flag to not completely full polyfills
+  options.enumerable  - export as enumerable property
+  options.noTargetGet - prevent calling a getter on target
+*/
+var _export$1 = function (options, source) {
+  var TARGET = options.target;
+  var GLOBAL = options.global;
+  var STATIC = options.stat;
+  var PROTO = options.proto;
+
+  var nativeSource = GLOBAL ? global_1$1 : STATIC ? global_1$1[TARGET] : (global_1$1[TARGET] || {}).prototype;
+
+  var target = GLOBAL ? path$1 : path$1[TARGET] || (path$1[TARGET] = {});
+  var targetPrototype = target.prototype;
+
+  var FORCED, USE_NATIVE, VIRTUAL_PROTOTYPE;
+  var key, sourceProperty, targetProperty, nativeProperty, resultProperty, descriptor;
+
+  for (key in source) {
+    FORCED = isForced_1$1(GLOBAL ? key : TARGET + (STATIC ? '.' : '#') + key, options.forced);
+    // contains in native
+    USE_NATIVE = !FORCED && nativeSource && has$2(nativeSource, key);
+
+    targetProperty = target[key];
+
+    if (USE_NATIVE) if (options.noTargetGet) {
+      descriptor = getOwnPropertyDescriptor$3(nativeSource, key);
+      nativeProperty = descriptor && descriptor.value;
+    } else nativeProperty = nativeSource[key];
+
+    // export native or implementation
+    sourceProperty = (USE_NATIVE && nativeProperty) ? nativeProperty : source[key];
+
+    if (USE_NATIVE && typeof targetProperty === typeof sourceProperty) continue;
+
+    // bind timers to global for call from export context
+    if (options.bind && USE_NATIVE) resultProperty = bindContext(sourceProperty, global_1$1);
+    // wrap global constructors for prevent changs in this version
+    else if (options.wrap && USE_NATIVE) resultProperty = wrapConstructor(sourceProperty);
+    // make static versions for prototype methods
+    else if (PROTO && typeof sourceProperty == 'function') resultProperty = bindContext(Function.call, sourceProperty);
+    // default case
+    else resultProperty = sourceProperty;
+
+    // add a flag to not completely full polyfills
+    if (options.sham || (sourceProperty && sourceProperty.sham) || (targetProperty && targetProperty.sham)) {
+      createNonEnumerableProperty$1(resultProperty, 'sham', true);
+    }
+
+    target[key] = resultProperty;
+
+    if (PROTO) {
+      VIRTUAL_PROTOTYPE = TARGET + 'Prototype';
+      if (!has$2(path$1, VIRTUAL_PROTOTYPE)) {
+        createNonEnumerableProperty$1(path$1, VIRTUAL_PROTOTYPE, {});
+      }
+      // export virtual prototype methods
+      path$1[VIRTUAL_PROTOTYPE][key] = sourceProperty;
+      // export real prototype methods
+      if (options.real && targetPrototype && !targetPrototype[key]) {
+        createNonEnumerableProperty$1(targetPrototype, key, sourceProperty);
+      }
+    }
+  }
+};
+
+// `IsArray` abstract operation
+// https://tc39.github.io/ecma262/#sec-isarray
+var isArray = Array.isArray || function isArray(arg) {
+  return classofRaw$1(arg) == 'Array';
+};
+
+// `Array.isArray` method
+// https://tc39.github.io/ecma262/#sec-array.isarray
+_export$1({ target: 'Array', stat: true }, {
+  isArray: isArray
+});
+
+var isArray$1 = path$1.Array.isArray;
+
+var isArray$2 = isArray$1;
+
+var isArray$3 = isArray$2;
+
+function _arrayWithHoles(arr) {
+  if (isArray$3(arr)) return arr;
+}
+
+var iterators = {};
+
+var setGlobal$1 = function (key, value) {
+  try {
+    createNonEnumerableProperty$1(global_1$1, key, value);
+  } catch (error) {
+    global_1$1[key] = value;
+  } return value;
+};
+
+var SHARED$1 = '__core-js_shared__';
+var store$3 = global_1$1[SHARED$1] || setGlobal$1(SHARED$1, {});
+
+var sharedStore$1 = store$3;
+
+var shared$1 = createCommonjsModule(function (module) {
 (module.exports = function (key, value) {
-  return store[key] || (store[key] = value !== undefined ? value : {});
+  return sharedStore$1[key] || (sharedStore$1[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: _core$1.version,
+  version: '3.3.2',
   mode:  'pure' ,
   copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
 });
 });
 
+var functionToString$1 = shared$1('native-function-to-string', Function.toString);
+
+var WeakMap$2 = global_1$1.WeakMap;
+
+var nativeWeakMap$1 = typeof WeakMap$2 === 'function' && /native code/.test(functionToString$1.call(WeakMap$2));
+
 var id$1 = 0;
-var px$1 = Math.random();
-var _uid$1 = function (key) {
-  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id$1 + px$1).toString(36));
+var postfix$1 = Math.random();
+
+var uid$1 = function (key) {
+  return 'Symbol(' + String(key === undefined ? '' : key) + ')_' + (++id$1 + postfix$1).toString(36);
 };
 
-var shared = _shared$1('keys');
+var keys$1 = shared$1('keys');
 
-var _sharedKey = function (key) {
-  return shared[key] || (shared[key] = _uid$1(key));
+var sharedKey$1 = function (key) {
+  return keys$1[key] || (keys$1[key] = uid$1(key));
 };
 
-var arrayIndexOf = _arrayIncludes$1(false);
-var IE_PROTO = _sharedKey('IE_PROTO');
+var hiddenKeys$2 = {};
 
-var _objectKeysInternal = function (object, names) {
-  var O = _toIobject$1(object);
+var WeakMap$3 = global_1$1.WeakMap;
+var set$1, get$1, has$3;
+
+var enforce$1 = function (it) {
+  return has$3(it) ? get$1(it) : set$1(it, {});
+};
+
+var getterFor$1 = function (TYPE) {
+  return function (it) {
+    var state;
+    if (!isObject$1(it) || (state = get$1(it)).type !== TYPE) {
+      throw TypeError('Incompatible receiver, ' + TYPE + ' required');
+    } return state;
+  };
+};
+
+if (nativeWeakMap$1) {
+  var store$4 = new WeakMap$3();
+  var wmget$1 = store$4.get;
+  var wmhas$1 = store$4.has;
+  var wmset$1 = store$4.set;
+  set$1 = function (it, metadata) {
+    wmset$1.call(store$4, it, metadata);
+    return metadata;
+  };
+  get$1 = function (it) {
+    return wmget$1.call(store$4, it) || {};
+  };
+  has$3 = function (it) {
+    return wmhas$1.call(store$4, it);
+  };
+} else {
+  var STATE$1 = sharedKey$1('state');
+  hiddenKeys$2[STATE$1] = true;
+  set$1 = function (it, metadata) {
+    createNonEnumerableProperty$1(it, STATE$1, metadata);
+    return metadata;
+  };
+  get$1 = function (it) {
+    return has$2(it, STATE$1) ? it[STATE$1] : {};
+  };
+  has$3 = function (it) {
+    return has$2(it, STATE$1);
+  };
+}
+
+var internalState$1 = {
+  set: set$1,
+  get: get$1,
+  has: has$3,
+  enforce: enforce$1,
+  getterFor: getterFor$1
+};
+
+// `ToObject` abstract operation
+// https://tc39.github.io/ecma262/#sec-toobject
+var toObject$1 = function (argument) {
+  return Object(requireObjectCoercible$1(argument));
+};
+
+var correctPrototypeGetter = !fails$1(function () {
+  function F() { /* empty */ }
+  F.prototype.constructor = null;
+  return Object.getPrototypeOf(new F()) !== F.prototype;
+});
+
+var IE_PROTO$1 = sharedKey$1('IE_PROTO');
+var ObjectPrototype = Object.prototype;
+
+// `Object.getPrototypeOf` method
+// https://tc39.github.io/ecma262/#sec-object.getprototypeof
+var objectGetPrototypeOf = correctPrototypeGetter ? Object.getPrototypeOf : function (O) {
+  O = toObject$1(O);
+  if (has$2(O, IE_PROTO$1)) return O[IE_PROTO$1];
+  if (typeof O.constructor == 'function' && O instanceof O.constructor) {
+    return O.constructor.prototype;
+  } return O instanceof Object ? ObjectPrototype : null;
+};
+
+var nativeSymbol$1 = !!Object.getOwnPropertySymbols && !fails$1(function () {
+  // Chrome 38 Symbol has incorrect toString conversion
+  // eslint-disable-next-line no-undef
+  return !String(Symbol());
+});
+
+var Symbol$2 = global_1$1.Symbol;
+var store$5 = shared$1('wks');
+
+var wellKnownSymbol$1 = function (name) {
+  return store$5[name] || (store$5[name] = nativeSymbol$1 && Symbol$2[name]
+    || (nativeSymbol$1 ? Symbol$2 : uid$1)('Symbol.' + name));
+};
+
+var ITERATOR = wellKnownSymbol$1('iterator');
+var BUGGY_SAFARI_ITERATORS = false;
+
+// `%IteratorPrototype%` object
+// https://tc39.github.io/ecma262/#sec-%iteratorprototype%-object
+var IteratorPrototype, PrototypeOfArrayIteratorPrototype, arrayIterator;
+
+if ([].keys) {
+  arrayIterator = [].keys();
+  // Safari 8 has buggy iterators w/o `next`
+  if (!('next' in arrayIterator)) BUGGY_SAFARI_ITERATORS = true;
+  else {
+    PrototypeOfArrayIteratorPrototype = objectGetPrototypeOf(objectGetPrototypeOf(arrayIterator));
+    if (PrototypeOfArrayIteratorPrototype !== Object.prototype) IteratorPrototype = PrototypeOfArrayIteratorPrototype;
+  }
+}
+
+if (IteratorPrototype == undefined) IteratorPrototype = {};
+
+var iteratorsCore = {
+  IteratorPrototype: IteratorPrototype,
+  BUGGY_SAFARI_ITERATORS: BUGGY_SAFARI_ITERATORS
+};
+
+var ceil$1 = Math.ceil;
+var floor$1 = Math.floor;
+
+// `ToInteger` abstract operation
+// https://tc39.github.io/ecma262/#sec-tointeger
+var toInteger$1 = function (argument) {
+  return isNaN(argument = +argument) ? 0 : (argument > 0 ? floor$1 : ceil$1)(argument);
+};
+
+var min$2 = Math.min;
+
+// `ToLength` abstract operation
+// https://tc39.github.io/ecma262/#sec-tolength
+var toLength$1 = function (argument) {
+  return argument > 0 ? min$2(toInteger$1(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
+};
+
+var max$1 = Math.max;
+var min$3 = Math.min;
+
+// Helper for a popular repeating case of the spec:
+// Let integer be ? ToInteger(index).
+// If integer < 0, let result be max((length + integer), 0); else let result be min(length, length).
+var toAbsoluteIndex$1 = function (index, length) {
+  var integer = toInteger$1(index);
+  return integer < 0 ? max$1(integer + length, 0) : min$3(integer, length);
+};
+
+// `Array.prototype.{ indexOf, includes }` methods implementation
+var createMethod$3 = function (IS_INCLUDES) {
+  return function ($this, el, fromIndex) {
+    var O = toIndexedObject$1($this);
+    var length = toLength$1(O.length);
+    var index = toAbsoluteIndex$1(fromIndex, length);
+    var value;
+    // Array#includes uses SameValueZero equality algorithm
+    // eslint-disable-next-line no-self-compare
+    if (IS_INCLUDES && el != el) while (length > index) {
+      value = O[index++];
+      // eslint-disable-next-line no-self-compare
+      if (value != value) return true;
+    // Array#indexOf ignores holes, Array#includes - not
+    } else for (;length > index; index++) {
+      if ((IS_INCLUDES || index in O) && O[index] === el) return IS_INCLUDES || index || 0;
+    } return !IS_INCLUDES && -1;
+  };
+};
+
+var arrayIncludes$1 = {
+  // `Array.prototype.includes` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.includes
+  includes: createMethod$3(true),
+  // `Array.prototype.indexOf` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.indexof
+  indexOf: createMethod$3(false)
+};
+
+var indexOf$1 = arrayIncludes$1.indexOf;
+
+
+var objectKeysInternal$1 = function (object, names) {
+  var O = toIndexedObject$1(object);
   var i = 0;
   var result = [];
   var key;
-  for (key in O) if (key != IE_PROTO) _has$1(O, key) && result.push(key);
+  for (key in O) !has$2(hiddenKeys$2, key) && has$2(O, key) && result.push(key);
   // Don't enum bug & hidden keys
-  while (names.length > i) if (_has$1(O, key = names[i++])) {
-    ~arrayIndexOf(result, key) || result.push(key);
+  while (names.length > i) if (has$2(O, key = names[i++])) {
+    ~indexOf$1(result, key) || result.push(key);
   }
   return result;
 };
 
-// IE 8- don't enum bug keys
-var _enumBugKeys = (
-  'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
-).split(',');
+// IE8- don't enum bug keys
+var enumBugKeys$1 = [
+  'constructor',
+  'hasOwnProperty',
+  'isPrototypeOf',
+  'propertyIsEnumerable',
+  'toLocaleString',
+  'toString',
+  'valueOf'
+];
 
-// 19.1.2.14 / 15.2.3.14 Object.keys(O)
-
-
-
-var _objectKeys = Object.keys || function keys(O) {
-  return _objectKeysInternal(O, _enumBugKeys);
+// `Object.keys` method
+// https://tc39.github.io/ecma262/#sec-object.keys
+var objectKeys$1 = Object.keys || function keys(O) {
+  return objectKeysInternal$1(O, enumBugKeys$1);
 };
 
-var _objectDps = _descriptors$1 ? Object.defineProperties : function defineProperties(O, Properties) {
-  _anObject$1(O);
-  var keys = _objectKeys(Properties);
+// `Object.defineProperties` method
+// https://tc39.github.io/ecma262/#sec-object.defineproperties
+var objectDefineProperties$1 = descriptors$1 ? Object.defineProperties : function defineProperties(O, Properties) {
+  anObject$1(O);
+  var keys = objectKeys$1(Properties);
   var length = keys.length;
-  var i = 0;
-  var P;
-  while (length > i) _objectDp$1.f(O, P = keys[i++], Properties[P]);
+  var index = 0;
+  var key;
+  while (length > index) objectDefineProperty$1.f(O, key = keys[index++], Properties[key]);
   return O;
 };
 
-var document$3 = _global$1.document;
-var _html = document$3 && document$3.documentElement;
+var aFunction$3 = function (variable) {
+  return typeof variable == 'function' ? variable : undefined;
+};
 
-// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
+var getBuiltIn$1 = function (namespace, method) {
+  return arguments.length < 2 ? aFunction$3(path$1[namespace]) || aFunction$3(global_1$1[namespace])
+    : path$1[namespace] && path$1[namespace][method] || global_1$1[namespace] && global_1$1[namespace][method];
+};
 
+var html$1 = getBuiltIn$1('document', 'documentElement');
 
+var IE_PROTO$2 = sharedKey$1('IE_PROTO');
 
-var IE_PROTO$1 = _sharedKey('IE_PROTO');
-var Empty = function () { /* empty */ };
-var PROTOTYPE$2 = 'prototype';
+var PROTOTYPE$1 = 'prototype';
+var Empty$1 = function () { /* empty */ };
 
 // Create object with fake `null` prototype: use iframe Object with cleared prototype
-var createDict = function () {
+var createDict$1 = function () {
   // Thrash, waste and sodomy: IE GC bug
-  var iframe = _domCreate$1('iframe');
-  var i = _enumBugKeys.length;
+  var iframe = documentCreateElement$1('iframe');
+  var length = enumBugKeys$1.length;
   var lt = '<';
+  var script = 'script';
   var gt = '>';
+  var js = 'java' + script + ':';
   var iframeDocument;
   iframe.style.display = 'none';
-  _html.appendChild(iframe);
-  iframe.src = 'javascript:'; // eslint-disable-line no-script-url
-  // createDict = iframe.contentWindow.Object;
-  // html.removeChild(iframe);
+  html$1.appendChild(iframe);
+  iframe.src = String(js);
   iframeDocument = iframe.contentWindow.document;
   iframeDocument.open();
-  iframeDocument.write(lt + 'script' + gt + 'document.F=Object' + lt + '/script' + gt);
+  iframeDocument.write(lt + script + gt + 'document.F=Object' + lt + '/' + script + gt);
   iframeDocument.close();
-  createDict = iframeDocument.F;
-  while (i--) delete createDict[PROTOTYPE$2][_enumBugKeys[i]];
-  return createDict();
+  createDict$1 = iframeDocument.F;
+  while (length--) delete createDict$1[PROTOTYPE$1][enumBugKeys$1[length]];
+  return createDict$1();
 };
 
-var _objectCreate = Object.create || function create(O, Properties) {
+// `Object.create` method
+// https://tc39.github.io/ecma262/#sec-object.create
+var objectCreate$1 = Object.create || function create(O, Properties) {
   var result;
   if (O !== null) {
-    Empty[PROTOTYPE$2] = _anObject$1(O);
-    result = new Empty();
-    Empty[PROTOTYPE$2] = null;
+    Empty$1[PROTOTYPE$1] = anObject$1(O);
+    result = new Empty$1();
+    Empty$1[PROTOTYPE$1] = null;
     // add "__proto__" for Object.getPrototypeOf polyfill
-    result[IE_PROTO$1] = O;
-  } else result = createDict();
-  return Properties === undefined ? result : _objectDps(result, Properties);
+    result[IE_PROTO$2] = O;
+  } else result = createDict$1();
+  return Properties === undefined ? result : objectDefineProperties$1(result, Properties);
 };
 
-var _wks$1 = createCommonjsModule(function (module) {
-var store = _shared$1('wks');
+hiddenKeys$2[IE_PROTO$2] = true;
 
-var Symbol = _global$1.Symbol;
-var USE_SYMBOL = typeof Symbol == 'function';
-
-var $exports = module.exports = function (name) {
-  return store[name] || (store[name] =
-    USE_SYMBOL && Symbol[name] || (USE_SYMBOL ? Symbol : _uid$1)('Symbol.' + name));
-};
-
-$exports.store = store;
-});
-
-var def = _objectDp$1.f;
-
-var TAG = _wks$1('toStringTag');
-
-var _setToStringTag = function (it, tag, stat) {
-  if (it && !_has$1(it = stat ? it : it.prototype, TAG)) def(it, TAG, { configurable: true, value: tag });
-};
-
-var IteratorPrototype = {};
-
-// 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-_hide$1(IteratorPrototype, _wks$1('iterator'), function () { return this; });
-
-var _iterCreate = function (Constructor, NAME, next) {
-  Constructor.prototype = _objectCreate(IteratorPrototype, { next: _propertyDesc$1(1, next) });
-  _setToStringTag(Constructor, NAME + ' Iterator');
-};
-
-// 7.1.13 ToObject(argument)
-
-var _toObject = function (it) {
-  return Object(_defined$1(it));
-};
-
-// 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-
-
-var IE_PROTO$2 = _sharedKey('IE_PROTO');
-var ObjectProto = Object.prototype;
-
-var _objectGpo = Object.getPrototypeOf || function (O) {
-  O = _toObject(O);
-  if (_has$1(O, IE_PROTO$2)) return O[IE_PROTO$2];
-  if (typeof O.constructor == 'function' && O instanceof O.constructor) {
-    return O.constructor.prototype;
-  } return O instanceof Object ? ObjectProto : null;
-};
-
-var ITERATOR = _wks$1('iterator');
-var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
-var FF_ITERATOR = '@@iterator';
-var KEYS = 'keys';
-var VALUES = 'values';
-
-var returnThis = function () { return this; };
-
-var _iterDefine = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCED) {
-  _iterCreate(Constructor, NAME, next);
-  var getMethod = function (kind) {
-    if (!BUGGY && kind in proto) return proto[kind];
-    switch (kind) {
-      case KEYS: return function keys() { return new Constructor(this, kind); };
-      case VALUES: return function values() { return new Constructor(this, kind); };
-    } return function entries() { return new Constructor(this, kind); };
-  };
-  var TAG = NAME + ' Iterator';
-  var DEF_VALUES = DEFAULT == VALUES;
-  var VALUES_BUG = false;
-  var proto = Base.prototype;
-  var $native = proto[ITERATOR] || proto[FF_ITERATOR] || DEFAULT && proto[DEFAULT];
-  var $default = $native || getMethod(DEFAULT);
-  var $entries = DEFAULT ? !DEF_VALUES ? $default : getMethod('entries') : undefined;
-  var $anyNative = NAME == 'Array' ? proto.entries || $native : $native;
-  var methods, key, IteratorPrototype;
-  // Fix native
-  if ($anyNative) {
-    IteratorPrototype = _objectGpo($anyNative.call(new Base()));
-    if (IteratorPrototype !== Object.prototype && IteratorPrototype.next) {
-      // Set @@toStringTag to native iterators
-      _setToStringTag(IteratorPrototype, TAG, true);
-    }
-  }
-  // fix Array#{values, @@iterator}.name in V8 / FF
-  if (DEF_VALUES && $native && $native.name !== VALUES) {
-    VALUES_BUG = true;
-    $default = function values() { return $native.call(this); };
-  }
-  // Define iterator
-  if (( FORCED) && (BUGGY || VALUES_BUG || !proto[ITERATOR])) {
-    _hide$1(proto, ITERATOR, $default);
-  }
-  // Plug for library
-  _iterators[NAME] = $default;
-  _iterators[TAG] = returnThis;
-  if (DEFAULT) {
-    methods = {
-      values: DEF_VALUES ? $default : getMethod(VALUES),
-      keys: IS_SET ? $default : getMethod(KEYS),
-      entries: $entries
-    };
-    if (FORCED) for (key in methods) {
-      if (!(key in proto)) _redefine$1(proto, key, methods[key]);
-    } else _export$1(_export$1.P + _export$1.F * (BUGGY || VALUES_BUG), NAME, methods);
-  }
-  return methods;
-};
-
-// 22.1.3.4 Array.prototype.entries()
-// 22.1.3.13 Array.prototype.keys()
-// 22.1.3.29 Array.prototype.values()
-// 22.1.3.30 Array.prototype[@@iterator]()
-var es6_array_iterator = _iterDefine(Array, 'Array', function (iterated, kind) {
-  this._t = _toIobject$1(iterated); // target
-  this._i = 0;                   // next index
-  this._k = kind;                // kind
-// 22.1.5.2.1 %ArrayIteratorPrototype%.next()
-}, function () {
-  var O = this._t;
-  var kind = this._k;
-  var index = this._i++;
-  if (!O || index >= O.length) {
-    this._t = undefined;
-    return _iterStep(1);
-  }
-  if (kind == 'keys') return _iterStep(0, index);
-  if (kind == 'values') return _iterStep(0, O[index]);
-  return _iterStep(0, [index, O[index]]);
-}, 'values');
-
-// argumentsList[@@iterator] is %ArrayProto_values% (9.4.4.6, 9.4.4.7)
-_iterators.Arguments = _iterators.Array;
-
-var TO_STRING_TAG = _wks$1('toStringTag');
-
-var DOMIterables = ('CSSRuleList,CSSStyleDeclaration,CSSValueList,ClientRectList,DOMRectList,DOMStringList,' +
-  'DOMTokenList,DataTransferItemList,FileList,HTMLAllCollection,HTMLCollection,HTMLFormElement,HTMLSelectElement,' +
-  'MediaList,MimeTypeArray,NamedNodeMap,NodeList,PaintRequestList,Plugin,PluginArray,SVGLengthList,SVGNumberList,' +
-  'SVGPathSegList,SVGPointList,SVGStringList,SVGTransformList,SourceBufferList,StyleSheetList,TextTrackCueList,' +
-  'TextTrackList,TouchList').split(',');
-
-for (var i = 0; i < DOMIterables.length; i++) {
-  var NAME$1 = DOMIterables[i];
-  var Collection = _global$1[NAME$1];
-  var proto = Collection && Collection.prototype;
-  if (proto && !proto[TO_STRING_TAG]) _hide$1(proto, TO_STRING_TAG, NAME$1);
-  _iterators[NAME$1] = _iterators.Array;
-}
-
-// true  -> String#at
-// false -> String#codePointAt
-var _stringAt = function (TO_STRING) {
-  return function (that, pos) {
-    var s = String(_defined$1(that));
-    var i = _toInteger$1(pos);
-    var l = s.length;
-    var a, b;
-    if (i < 0 || i >= l) return TO_STRING ? '' : undefined;
-    a = s.charCodeAt(i);
-    return a < 0xd800 || a > 0xdbff || i + 1 === l || (b = s.charCodeAt(i + 1)) < 0xdc00 || b > 0xdfff
-      ? TO_STRING ? s.charAt(i) : a
-      : TO_STRING ? s.slice(i, i + 2) : (a - 0xd800 << 10) + (b - 0xdc00) + 0x10000;
-  };
-};
-
-var $at = _stringAt(true);
-
-// 21.1.3.27 String.prototype[@@iterator]()
-_iterDefine(String, 'String', function (iterated) {
-  this._t = String(iterated); // target
-  this._i = 0;                // next index
-// 21.1.5.2.1 %StringIteratorPrototype%.next()
-}, function () {
-  var O = this._t;
-  var index = this._i;
-  var point;
-  if (index >= O.length) return { value: undefined, done: true };
-  point = $at(O, index);
-  this._i += point.length;
-  return { value: point, done: false };
-});
-
-// getting tag from 19.1.3.6 Object.prototype.toString()
-
-var TAG$1 = _wks$1('toStringTag');
+var TO_STRING_TAG = wellKnownSymbol$1('toStringTag');
 // ES3 wrong here
-var ARG = _cof$1(function () { return arguments; }()) == 'Arguments';
+var CORRECT_ARGUMENTS = classofRaw$1(function () { return arguments; }()) == 'Arguments';
 
 // fallback for IE11 Script Access Denied error
 var tryGet = function (it, key) {
   try {
     return it[key];
-  } catch (e) { /* empty */ }
+  } catch (error) { /* empty */ }
 };
 
-var _classof = function (it) {
-  var O, T, B;
+// getting tag from ES6+ `Object.prototype.toString`
+var classof = function (it) {
+  var O, tag, result;
   return it === undefined ? 'Undefined' : it === null ? 'Null'
     // @@toStringTag case
-    : typeof (T = tryGet(O = Object(it), TAG$1)) == 'string' ? T
+    : typeof (tag = tryGet(O = Object(it), TO_STRING_TAG)) == 'string' ? tag
     // builtinTag case
-    : ARG ? _cof$1(O)
+    : CORRECT_ARGUMENTS ? classofRaw$1(O)
     // ES3 arguments fallback
-    : (B = _cof$1(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : B;
+    : (result = classofRaw$1(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : result;
 };
 
-var ITERATOR$1 = _wks$1('iterator');
+var TO_STRING_TAG$1 = wellKnownSymbol$1('toStringTag');
+var test = {};
 
-var core_getIteratorMethod = _core$1.getIteratorMethod = function (it) {
-  if (it != undefined) return it[ITERATOR$1]
+test[TO_STRING_TAG$1] = 'z';
+
+// `Object.prototype.toString` method implementation
+// https://tc39.github.io/ecma262/#sec-object.prototype.tostring
+var objectToString = String(test) !== '[object z]' ? function toString() {
+  return '[object ' + classof(this) + ']';
+} : test.toString;
+
+var defineProperty$1 = objectDefineProperty$1.f;
+
+
+
+
+
+var TO_STRING_TAG$2 = wellKnownSymbol$1('toStringTag');
+var METHOD_REQUIRED = objectToString !== ({}).toString;
+
+var setToStringTag = function (it, TAG, STATIC, SET_METHOD) {
+  if (it) {
+    var target = STATIC ? it : it.prototype;
+    if (!has$2(target, TO_STRING_TAG$2)) {
+      defineProperty$1(target, TO_STRING_TAG$2, { configurable: true, value: TAG });
+    }
+    if (SET_METHOD && METHOD_REQUIRED) {
+      createNonEnumerableProperty$1(target, 'toString', objectToString);
+    }
+  }
+};
+
+var IteratorPrototype$1 = iteratorsCore.IteratorPrototype;
+
+
+
+
+
+var returnThis = function () { return this; };
+
+var createIteratorConstructor = function (IteratorConstructor, NAME, next) {
+  var TO_STRING_TAG = NAME + ' Iterator';
+  IteratorConstructor.prototype = objectCreate$1(IteratorPrototype$1, { next: createPropertyDescriptor$1(1, next) });
+  setToStringTag(IteratorConstructor, TO_STRING_TAG, false, true);
+  iterators[TO_STRING_TAG] = returnThis;
+  return IteratorConstructor;
+};
+
+var aPossiblePrototype = function (it) {
+  if (!isObject$1(it) && it !== null) {
+    throw TypeError("Can't set " + String(it) + ' as a prototype');
+  } return it;
+};
+
+// `Object.setPrototypeOf` method
+// https://tc39.github.io/ecma262/#sec-object.setprototypeof
+// Works with __proto__ only. Old v8 can't work with null proto objects.
+/* eslint-disable no-proto */
+var objectSetPrototypeOf = Object.setPrototypeOf || ('__proto__' in {} ? function () {
+  var CORRECT_SETTER = false;
+  var test = {};
+  var setter;
+  try {
+    setter = Object.getOwnPropertyDescriptor(Object.prototype, '__proto__').set;
+    setter.call(test, []);
+    CORRECT_SETTER = test instanceof Array;
+  } catch (error) { /* empty */ }
+  return function setPrototypeOf(O, proto) {
+    anObject$1(O);
+    aPossiblePrototype(proto);
+    if (CORRECT_SETTER) setter.call(O, proto);
+    else O.__proto__ = proto;
+    return O;
+  };
+}() : undefined);
+
+var redefine$1 = function (target, key, value, options) {
+  if (options && options.enumerable) target[key] = value;
+  else createNonEnumerableProperty$1(target, key, value);
+};
+
+var IteratorPrototype$2 = iteratorsCore.IteratorPrototype;
+var BUGGY_SAFARI_ITERATORS$1 = iteratorsCore.BUGGY_SAFARI_ITERATORS;
+var ITERATOR$1 = wellKnownSymbol$1('iterator');
+var KEYS = 'keys';
+var VALUES = 'values';
+var ENTRIES = 'entries';
+
+var returnThis$1 = function () { return this; };
+
+var defineIterator = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, IS_SET, FORCED) {
+  createIteratorConstructor(IteratorConstructor, NAME, next);
+
+  var getIterationMethod = function (KIND) {
+    if (KIND === DEFAULT && defaultIterator) return defaultIterator;
+    if (!BUGGY_SAFARI_ITERATORS$1 && KIND in IterablePrototype) return IterablePrototype[KIND];
+    switch (KIND) {
+      case KEYS: return function keys() { return new IteratorConstructor(this, KIND); };
+      case VALUES: return function values() { return new IteratorConstructor(this, KIND); };
+      case ENTRIES: return function entries() { return new IteratorConstructor(this, KIND); };
+    } return function () { return new IteratorConstructor(this); };
+  };
+
+  var TO_STRING_TAG = NAME + ' Iterator';
+  var INCORRECT_VALUES_NAME = false;
+  var IterablePrototype = Iterable.prototype;
+  var nativeIterator = IterablePrototype[ITERATOR$1]
+    || IterablePrototype['@@iterator']
+    || DEFAULT && IterablePrototype[DEFAULT];
+  var defaultIterator = !BUGGY_SAFARI_ITERATORS$1 && nativeIterator || getIterationMethod(DEFAULT);
+  var anyNativeIterator = NAME == 'Array' ? IterablePrototype.entries || nativeIterator : nativeIterator;
+  var CurrentIteratorPrototype, methods, KEY;
+
+  // fix native
+  if (anyNativeIterator) {
+    CurrentIteratorPrototype = objectGetPrototypeOf(anyNativeIterator.call(new Iterable()));
+    if (IteratorPrototype$2 !== Object.prototype && CurrentIteratorPrototype.next) {
+      // Set @@toStringTag to native iterators
+      setToStringTag(CurrentIteratorPrototype, TO_STRING_TAG, true, true);
+      iterators[TO_STRING_TAG] = returnThis$1;
+    }
+  }
+
+  // fix Array#{values, @@iterator}.name in V8 / FF
+  if (DEFAULT == VALUES && nativeIterator && nativeIterator.name !== VALUES) {
+    INCORRECT_VALUES_NAME = true;
+    defaultIterator = function values() { return nativeIterator.call(this); };
+  }
+
+  // define iterator
+  if (( FORCED) && IterablePrototype[ITERATOR$1] !== defaultIterator) {
+    createNonEnumerableProperty$1(IterablePrototype, ITERATOR$1, defaultIterator);
+  }
+  iterators[NAME] = defaultIterator;
+
+  // export additional methods
+  if (DEFAULT) {
+    methods = {
+      values: getIterationMethod(VALUES),
+      keys: IS_SET ? defaultIterator : getIterationMethod(KEYS),
+      entries: getIterationMethod(ENTRIES)
+    };
+    if (FORCED) for (KEY in methods) {
+      if (BUGGY_SAFARI_ITERATORS$1 || INCORRECT_VALUES_NAME || !(KEY in IterablePrototype)) {
+        redefine$1(IterablePrototype, KEY, methods[KEY]);
+      }
+    } else _export$1({ target: NAME, proto: true, forced: BUGGY_SAFARI_ITERATORS$1 || INCORRECT_VALUES_NAME }, methods);
+  }
+
+  return methods;
+};
+
+var ARRAY_ITERATOR = 'Array Iterator';
+var setInternalState = internalState$1.set;
+var getInternalState = internalState$1.getterFor(ARRAY_ITERATOR);
+
+// `Array.prototype.entries` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.entries
+// `Array.prototype.keys` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.keys
+// `Array.prototype.values` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.values
+// `Array.prototype[@@iterator]` method
+// https://tc39.github.io/ecma262/#sec-array.prototype-@@iterator
+// `CreateArrayIterator` internal method
+// https://tc39.github.io/ecma262/#sec-createarrayiterator
+var es_array_iterator = defineIterator(Array, 'Array', function (iterated, kind) {
+  setInternalState(this, {
+    type: ARRAY_ITERATOR,
+    target: toIndexedObject$1(iterated), // target
+    index: 0,                          // next index
+    kind: kind                         // kind
+  });
+// `%ArrayIteratorPrototype%.next` method
+// https://tc39.github.io/ecma262/#sec-%arrayiteratorprototype%.next
+}, function () {
+  var state = getInternalState(this);
+  var target = state.target;
+  var kind = state.kind;
+  var index = state.index++;
+  if (!target || index >= target.length) {
+    state.target = undefined;
+    return { value: undefined, done: true };
+  }
+  if (kind == 'keys') return { value: index, done: false };
+  if (kind == 'values') return { value: target[index], done: false };
+  return { value: [index, target[index]], done: false };
+}, 'values');
+
+// argumentsList[@@iterator] is %ArrayProto_values%
+// https://tc39.github.io/ecma262/#sec-createunmappedargumentsobject
+// https://tc39.github.io/ecma262/#sec-createmappedargumentsobject
+iterators.Arguments = iterators.Array;
+
+// iterable DOM collections
+// flag - `iterable` interface - 'entries', 'keys', 'values', 'forEach' methods
+var domIterables = {
+  CSSRuleList: 0,
+  CSSStyleDeclaration: 0,
+  CSSValueList: 0,
+  ClientRectList: 0,
+  DOMRectList: 0,
+  DOMStringList: 0,
+  DOMTokenList: 1,
+  DataTransferItemList: 0,
+  FileList: 0,
+  HTMLAllCollection: 0,
+  HTMLCollection: 0,
+  HTMLFormElement: 0,
+  HTMLSelectElement: 0,
+  MediaList: 0,
+  MimeTypeArray: 0,
+  NamedNodeMap: 0,
+  NodeList: 1,
+  PaintRequestList: 0,
+  Plugin: 0,
+  PluginArray: 0,
+  SVGLengthList: 0,
+  SVGNumberList: 0,
+  SVGPathSegList: 0,
+  SVGPointList: 0,
+  SVGStringList: 0,
+  SVGTransformList: 0,
+  SourceBufferList: 0,
+  StyleSheetList: 0,
+  TextTrackCueList: 0,
+  TextTrackList: 0,
+  TouchList: 0
+};
+
+var TO_STRING_TAG$3 = wellKnownSymbol$1('toStringTag');
+
+for (var COLLECTION_NAME in domIterables) {
+  var Collection = global_1$1[COLLECTION_NAME];
+  var CollectionPrototype = Collection && Collection.prototype;
+  if (CollectionPrototype && !CollectionPrototype[TO_STRING_TAG$3]) {
+    createNonEnumerableProperty$1(CollectionPrototype, TO_STRING_TAG$3, COLLECTION_NAME);
+  }
+  iterators[COLLECTION_NAME] = iterators.Array;
+}
+
+// `String.prototype.{ codePointAt, at }` methods implementation
+var createMethod$4 = function (CONVERT_TO_STRING) {
+  return function ($this, pos) {
+    var S = String(requireObjectCoercible$1($this));
+    var position = toInteger$1(pos);
+    var size = S.length;
+    var first, second;
+    if (position < 0 || position >= size) return CONVERT_TO_STRING ? '' : undefined;
+    first = S.charCodeAt(position);
+    return first < 0xD800 || first > 0xDBFF || position + 1 === size
+      || (second = S.charCodeAt(position + 1)) < 0xDC00 || second > 0xDFFF
+        ? CONVERT_TO_STRING ? S.charAt(position) : first
+        : CONVERT_TO_STRING ? S.slice(position, position + 2) : (first - 0xD800 << 10) + (second - 0xDC00) + 0x10000;
+  };
+};
+
+var stringMultibyte = {
+  // `String.prototype.codePointAt` method
+  // https://tc39.github.io/ecma262/#sec-string.prototype.codepointat
+  codeAt: createMethod$4(false),
+  // `String.prototype.at` method
+  // https://github.com/mathiasbynens/String.prototype.at
+  charAt: createMethod$4(true)
+};
+
+var charAt = stringMultibyte.charAt;
+
+
+
+var STRING_ITERATOR = 'String Iterator';
+var setInternalState$1 = internalState$1.set;
+var getInternalState$1 = internalState$1.getterFor(STRING_ITERATOR);
+
+// `String.prototype[@@iterator]` method
+// https://tc39.github.io/ecma262/#sec-string.prototype-@@iterator
+defineIterator(String, 'String', function (iterated) {
+  setInternalState$1(this, {
+    type: STRING_ITERATOR,
+    string: String(iterated),
+    index: 0
+  });
+// `%StringIteratorPrototype%.next` method
+// https://tc39.github.io/ecma262/#sec-%stringiteratorprototype%.next
+}, function next() {
+  var state = getInternalState$1(this);
+  var string = state.string;
+  var index = state.index;
+  var point;
+  if (index >= string.length) return { value: undefined, done: true };
+  point = charAt(string, index);
+  state.index += point.length;
+  return { value: point, done: false };
+});
+
+var ITERATOR$2 = wellKnownSymbol$1('iterator');
+
+var getIteratorMethod = function (it) {
+  if (it != undefined) return it[ITERATOR$2]
     || it['@@iterator']
-    || _iterators[_classof(it)];
+    || iterators[classof(it)];
 };
 
-var core_getIterator = _core$1.getIterator = function (it) {
-  var iterFn = core_getIteratorMethod(it);
-  if (typeof iterFn != 'function') throw TypeError(it + ' is not iterable!');
-  return _anObject$1(iterFn.call(it));
+var getIterator = function (it) {
+  var iteratorMethod = getIteratorMethod(it);
+  if (typeof iteratorMethod != 'function') {
+    throw TypeError(String(it) + ' is not iterable');
+  } return anObject$1(iteratorMethod.call(it));
 };
-
-var getIterator = core_getIterator;
 
 var getIterator$1 = getIterator;
 
-var ITERATOR$2 = _wks$1('iterator');
+var getIterator$2 = getIterator$1;
 
-var core_isIterable = _core$1.isIterable = function (it) {
+var ITERATOR$3 = wellKnownSymbol$1('iterator');
+
+var isIterable = function (it) {
   var O = Object(it);
-  return O[ITERATOR$2] !== undefined
+  return O[ITERATOR$3] !== undefined
     || '@@iterator' in O
     // eslint-disable-next-line no-prototype-builtins
-    || _iterators.hasOwnProperty(_classof(O));
+    || iterators.hasOwnProperty(classof(O));
 };
-
-var isIterable = core_isIterable;
 
 var isIterable$1 = isIterable;
 
+var isIterable$2 = isIterable$1;
+
 function _iterableToArrayLimit(arr, i) {
-  if (!(isIterable$1(Object(arr)) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+  if (!(isIterable$2(Object(arr)) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
     return;
   }
 
@@ -1042,7 +1823,7 @@ function _iterableToArrayLimit(arr, i) {
   var _e = undefined;
 
   try {
-    for (var _i = getIterator$1(arr), _s; !(_n = (_s = _i.next()).done); _n = true) {
+    for (var _i = getIterator$2(arr), _s; !(_n = (_s = _i.next()).done); _n = true) {
       _arr.push(_s.value);
 
       if (i && _arr.length === i) break;
@@ -1069,326 +1850,170 @@ function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
 }
 
-var _iterStep$1 = function (done, value) {
-  return { value: value, done: !!done };
+var aPossiblePrototype$1 = function (it) {
+  if (!isObject(it) && it !== null) {
+    throw TypeError("Can't set " + String(it) + ' as a prototype');
+  } return it;
 };
 
-var _iterators$1 = {};
-
-var shared$1 = _shared('keys');
-
-var _sharedKey$1 = function (key) {
-  return shared$1[key] || (shared$1[key] = _uid(key));
-};
-
-var arrayIndexOf$1 = _arrayIncludes(false);
-var IE_PROTO$3 = _sharedKey$1('IE_PROTO');
-
-var _objectKeysInternal$1 = function (object, names) {
-  var O = _toIobject(object);
-  var i = 0;
-  var result = [];
-  var key;
-  for (key in O) if (key != IE_PROTO$3) _has(O, key) && result.push(key);
-  // Don't enum bug & hidden keys
-  while (names.length > i) if (_has(O, key = names[i++])) {
-    ~arrayIndexOf$1(result, key) || result.push(key);
-  }
-  return result;
-};
-
-// IE 8- don't enum bug keys
-var _enumBugKeys$1 = (
-  'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
-).split(',');
-
-// 19.1.2.14 / 15.2.3.14 Object.keys(O)
-
-
-
-var _objectKeys$1 = Object.keys || function keys(O) {
-  return _objectKeysInternal$1(O, _enumBugKeys$1);
-};
-
-var _objectDps$1 = _descriptors ? Object.defineProperties : function defineProperties(O, Properties) {
-  _anObject(O);
-  var keys = _objectKeys$1(Properties);
-  var length = keys.length;
-  var i = 0;
-  var P;
-  while (length > i) _objectDp.f(O, P = keys[i++], Properties[P]);
-  return O;
-};
-
-var document$4 = _global.document;
-var _html$1 = document$4 && document$4.documentElement;
-
-// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-
-
-
-var IE_PROTO$4 = _sharedKey$1('IE_PROTO');
-var Empty$1 = function () { /* empty */ };
-var PROTOTYPE$3 = 'prototype';
-
-// Create object with fake `null` prototype: use iframe Object with cleared prototype
-var createDict$1 = function () {
-  // Thrash, waste and sodomy: IE GC bug
-  var iframe = _domCreate('iframe');
-  var i = _enumBugKeys$1.length;
-  var lt = '<';
-  var gt = '>';
-  var iframeDocument;
-  iframe.style.display = 'none';
-  _html$1.appendChild(iframe);
-  iframe.src = 'javascript:'; // eslint-disable-line no-script-url
-  // createDict = iframe.contentWindow.Object;
-  // html.removeChild(iframe);
-  iframeDocument = iframe.contentWindow.document;
-  iframeDocument.open();
-  iframeDocument.write(lt + 'script' + gt + 'document.F=Object' + lt + '/script' + gt);
-  iframeDocument.close();
-  createDict$1 = iframeDocument.F;
-  while (i--) delete createDict$1[PROTOTYPE$3][_enumBugKeys$1[i]];
-  return createDict$1();
-};
-
-var _objectCreate$1 = Object.create || function create(O, Properties) {
-  var result;
-  if (O !== null) {
-    Empty$1[PROTOTYPE$3] = _anObject(O);
-    result = new Empty$1();
-    Empty$1[PROTOTYPE$3] = null;
-    // add "__proto__" for Object.getPrototypeOf polyfill
-    result[IE_PROTO$4] = O;
-  } else result = createDict$1();
-  return Properties === undefined ? result : _objectDps$1(result, Properties);
-};
-
-var def$1 = _objectDp.f;
-
-var TAG$2 = _wks('toStringTag');
-
-var _setToStringTag$1 = function (it, tag, stat) {
-  if (it && !_has(it = stat ? it : it.prototype, TAG$2)) def$1(it, TAG$2, { configurable: true, value: tag });
-};
-
-var IteratorPrototype$1 = {};
-
-// 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-_hide(IteratorPrototype$1, _wks('iterator'), function () { return this; });
-
-var _iterCreate$1 = function (Constructor, NAME, next) {
-  Constructor.prototype = _objectCreate$1(IteratorPrototype$1, { next: _propertyDesc(1, next) });
-  _setToStringTag$1(Constructor, NAME + ' Iterator');
-};
-
-// 7.1.13 ToObject(argument)
-
-var _toObject$1 = function (it) {
-  return Object(_defined(it));
-};
-
-// 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-
-
-var IE_PROTO$5 = _sharedKey$1('IE_PROTO');
-var ObjectProto$1 = Object.prototype;
-
-var _objectGpo$1 = Object.getPrototypeOf || function (O) {
-  O = _toObject$1(O);
-  if (_has(O, IE_PROTO$5)) return O[IE_PROTO$5];
-  if (typeof O.constructor == 'function' && O instanceof O.constructor) {
-    return O.constructor.prototype;
-  } return O instanceof Object ? ObjectProto$1 : null;
-};
-
-var ITERATOR$3 = _wks('iterator');
-var BUGGY$1 = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
-var FF_ITERATOR$1 = '@@iterator';
-var KEYS$1 = 'keys';
-var VALUES$1 = 'values';
-
-var returnThis$1 = function () { return this; };
-
-var _iterDefine$1 = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCED) {
-  _iterCreate$1(Constructor, NAME, next);
-  var getMethod = function (kind) {
-    if (!BUGGY$1 && kind in proto) return proto[kind];
-    switch (kind) {
-      case KEYS$1: return function keys() { return new Constructor(this, kind); };
-      case VALUES$1: return function values() { return new Constructor(this, kind); };
-    } return function entries() { return new Constructor(this, kind); };
+// `Object.setPrototypeOf` method
+// https://tc39.github.io/ecma262/#sec-object.setprototypeof
+// Works with __proto__ only. Old v8 can't work with null proto objects.
+/* eslint-disable no-proto */
+var objectSetPrototypeOf$1 = Object.setPrototypeOf || ('__proto__' in {} ? function () {
+  var CORRECT_SETTER = false;
+  var test = {};
+  var setter;
+  try {
+    setter = Object.getOwnPropertyDescriptor(Object.prototype, '__proto__').set;
+    setter.call(test, []);
+    CORRECT_SETTER = test instanceof Array;
+  } catch (error) { /* empty */ }
+  return function setPrototypeOf(O, proto) {
+    anObject(O);
+    aPossiblePrototype$1(proto);
+    if (CORRECT_SETTER) setter.call(O, proto);
+    else O.__proto__ = proto;
+    return O;
   };
-  var TAG = NAME + ' Iterator';
-  var DEF_VALUES = DEFAULT == VALUES$1;
-  var VALUES_BUG = false;
-  var proto = Base.prototype;
-  var $native = proto[ITERATOR$3] || proto[FF_ITERATOR$1] || DEFAULT && proto[DEFAULT];
-  var $default = $native || getMethod(DEFAULT);
-  var $entries = DEFAULT ? !DEF_VALUES ? $default : getMethod('entries') : undefined;
-  var $anyNative = NAME == 'Array' ? proto.entries || $native : $native;
-  var methods, key, IteratorPrototype;
-  // Fix native
-  if ($anyNative) {
-    IteratorPrototype = _objectGpo$1($anyNative.call(new Base()));
-    if (IteratorPrototype !== Object.prototype && IteratorPrototype.next) {
-      // Set @@toStringTag to native iterators
-      _setToStringTag$1(IteratorPrototype, TAG, true);
-      // fix for some old engines
-      if ( typeof IteratorPrototype[ITERATOR$3] != 'function') _hide(IteratorPrototype, ITERATOR$3, returnThis$1);
+}() : undefined);
+
+// makes subclassing work correct for wrapped built-ins
+var inheritIfRequired = function ($this, dummy, Wrapper) {
+  var NewTarget, NewTargetPrototype;
+  if (
+    // it can work only with native `setPrototypeOf`
+    objectSetPrototypeOf$1 &&
+    // we haven't completely correct pre-ES6 way for getting `new.target`, so use this
+    typeof (NewTarget = dummy.constructor) == 'function' &&
+    NewTarget !== Wrapper &&
+    isObject(NewTargetPrototype = NewTarget.prototype) &&
+    NewTargetPrototype !== Wrapper.prototype
+  ) objectSetPrototypeOf$1($this, NewTargetPrototype);
+  return $this;
+};
+
+// a string of all valid unicode whitespaces
+// eslint-disable-next-line max-len
+var whitespaces = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
+
+var whitespace = '[' + whitespaces + ']';
+var ltrim = RegExp('^' + whitespace + whitespace + '*');
+var rtrim = RegExp(whitespace + whitespace + '*$');
+
+// `String.prototype.{ trim, trimStart, trimEnd, trimLeft, trimRight }` methods implementation
+var createMethod$5 = function (TYPE) {
+  return function ($this) {
+    var string = String(requireObjectCoercible($this));
+    if (TYPE & 1) string = string.replace(ltrim, '');
+    if (TYPE & 2) string = string.replace(rtrim, '');
+    return string;
+  };
+};
+
+var stringTrim = {
+  // `String.prototype.{ trimLeft, trimStart }` methods
+  // https://tc39.github.io/ecma262/#sec-string.prototype.trimstart
+  start: createMethod$5(1),
+  // `String.prototype.{ trimRight, trimEnd }` methods
+  // https://tc39.github.io/ecma262/#sec-string.prototype.trimend
+  end: createMethod$5(2),
+  // `String.prototype.trim` method
+  // https://tc39.github.io/ecma262/#sec-string.prototype.trim
+  trim: createMethod$5(3)
+};
+
+var getOwnPropertyNames = objectGetOwnPropertyNames.f;
+var getOwnPropertyDescriptor$4 = objectGetOwnPropertyDescriptor.f;
+var defineProperty$2 = objectDefineProperty.f;
+var trim = stringTrim.trim;
+
+var NUMBER = 'Number';
+var NativeNumber = global_1[NUMBER];
+var NumberPrototype = NativeNumber.prototype;
+
+// Opera ~12 has broken Object#toString
+var BROKEN_CLASSOF = classofRaw(objectCreate(NumberPrototype)) == NUMBER;
+
+// `ToNumber` abstract operation
+// https://tc39.github.io/ecma262/#sec-tonumber
+var toNumber = function (argument) {
+  var it = toPrimitive(argument, false);
+  var first, third, radix, maxCode, digits, length, index, code;
+  if (typeof it == 'string' && it.length > 2) {
+    it = trim(it);
+    first = it.charCodeAt(0);
+    if (first === 43 || first === 45) {
+      third = it.charCodeAt(2);
+      if (third === 88 || third === 120) return NaN; // Number('+0x1') should be NaN, old V8 fix
+    } else if (first === 48) {
+      switch (it.charCodeAt(1)) {
+        case 66: case 98: radix = 2; maxCode = 49; break; // fast equal of /^0b[01]+$/i
+        case 79: case 111: radix = 8; maxCode = 55; break; // fast equal of /^0o[0-7]+$/i
+        default: return +it;
+      }
+      digits = it.slice(2);
+      length = digits.length;
+      for (index = 0; index < length; index++) {
+        code = digits.charCodeAt(index);
+        // parseInt parses a string to a first unavailable symbol
+        // but ToNumber should return NaN if a string contains unavailable symbols
+        if (code < 48 || code > maxCode) return NaN;
+      } return parseInt(digits, radix);
+    }
+  } return +it;
+};
+
+// `Number` constructor
+// https://tc39.github.io/ecma262/#sec-number-constructor
+if (isForced_1(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumber('+0x1'))) {
+  var NumberWrapper = function Number(value) {
+    var it = arguments.length < 1 ? 0 : value;
+    var dummy = this;
+    return dummy instanceof NumberWrapper
+      // check on 1..constructor(foo) case
+      && (BROKEN_CLASSOF ? fails(function () { NumberPrototype.valueOf.call(dummy); }) : classofRaw(dummy) != NUMBER)
+        ? inheritIfRequired(new NativeNumber(toNumber(it)), dummy, NumberWrapper) : toNumber(it);
+  };
+  for (var keys$2 = descriptors ? getOwnPropertyNames(NativeNumber) : (
+    // ES3:
+    'MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,' +
+    // ES2015 (in case, if modules with ES2015 Number statics required before):
+    'EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,' +
+    'MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger'
+  ).split(','), j = 0, key; keys$2.length > j; j++) {
+    if (has(NativeNumber, key = keys$2[j]) && !has(NumberWrapper, key)) {
+      defineProperty$2(NumberWrapper, key, getOwnPropertyDescriptor$4(NativeNumber, key));
     }
   }
-  // fix Array#{values, @@iterator}.name in V8 / FF
-  if (DEF_VALUES && $native && $native.name !== VALUES$1) {
-    VALUES_BUG = true;
-    $default = function values() { return $native.call(this); };
-  }
-  // Define iterator
-  if ( (BUGGY$1 || VALUES_BUG || !proto[ITERATOR$3])) {
-    _hide(proto, ITERATOR$3, $default);
-  }
-  // Plug for library
-  _iterators$1[NAME] = $default;
-  _iterators$1[TAG] = returnThis$1;
-  if (DEFAULT) {
-    methods = {
-      values: DEF_VALUES ? $default : getMethod(VALUES$1),
-      keys: IS_SET ? $default : getMethod(KEYS$1),
-      entries: $entries
-    };
-    if (FORCED) for (key in methods) {
-      if (!(key in proto)) _redefine(proto, key, methods[key]);
-    } else _export(_export.P + _export.F * (BUGGY$1 || VALUES_BUG), NAME, methods);
-  }
-  return methods;
-};
-
-// 22.1.3.4 Array.prototype.entries()
-// 22.1.3.13 Array.prototype.keys()
-// 22.1.3.29 Array.prototype.values()
-// 22.1.3.30 Array.prototype[@@iterator]()
-var es6_array_iterator$1 = _iterDefine$1(Array, 'Array', function (iterated, kind) {
-  this._t = _toIobject(iterated); // target
-  this._i = 0;                   // next index
-  this._k = kind;                // kind
-// 22.1.5.2.1 %ArrayIteratorPrototype%.next()
-}, function () {
-  var O = this._t;
-  var kind = this._k;
-  var index = this._i++;
-  if (!O || index >= O.length) {
-    this._t = undefined;
-    return _iterStep$1(1);
-  }
-  if (kind == 'keys') return _iterStep$1(0, index);
-  if (kind == 'values') return _iterStep$1(0, O[index]);
-  return _iterStep$1(0, [index, O[index]]);
-}, 'values');
-
-// argumentsList[@@iterator] is %ArrayProto_values% (9.4.4.6, 9.4.4.7)
-_iterators$1.Arguments = _iterators$1.Array;
-
-_addToUnscopables('keys');
-_addToUnscopables('values');
-_addToUnscopables('entries');
-
-var ITERATOR$4 = _wks('iterator');
-var TO_STRING_TAG$1 = _wks('toStringTag');
-var ArrayValues = _iterators$1.Array;
-
-var DOMIterables$1 = {
-  CSSRuleList: true, // TODO: Not spec compliant, should be false.
-  CSSStyleDeclaration: false,
-  CSSValueList: false,
-  ClientRectList: false,
-  DOMRectList: false,
-  DOMStringList: false,
-  DOMTokenList: true,
-  DataTransferItemList: false,
-  FileList: false,
-  HTMLAllCollection: false,
-  HTMLCollection: false,
-  HTMLFormElement: false,
-  HTMLSelectElement: false,
-  MediaList: true, // TODO: Not spec compliant, should be false.
-  MimeTypeArray: false,
-  NamedNodeMap: false,
-  NodeList: true,
-  PaintRequestList: false,
-  Plugin: false,
-  PluginArray: false,
-  SVGLengthList: false,
-  SVGNumberList: false,
-  SVGPathSegList: false,
-  SVGPointList: false,
-  SVGStringList: false,
-  SVGTransformList: false,
-  SourceBufferList: false,
-  StyleSheetList: true, // TODO: Not spec compliant, should be false.
-  TextTrackCueList: false,
-  TextTrackList: false,
-  TouchList: false
-};
-
-for (var collections = _objectKeys$1(DOMIterables$1), i$1 = 0; i$1 < collections.length; i$1++) {
-  var NAME$2 = collections[i$1];
-  var explicit = DOMIterables$1[NAME$2];
-  var Collection$1 = _global[NAME$2];
-  var proto$1 = Collection$1 && Collection$1.prototype;
-  var key;
-  if (proto$1) {
-    if (!proto$1[ITERATOR$4]) _hide(proto$1, ITERATOR$4, ArrayValues);
-    if (!proto$1[TO_STRING_TAG$1]) _hide(proto$1, TO_STRING_TAG$1, NAME$2);
-    _iterators$1[NAME$2] = ArrayValues;
-    if (explicit) for (key in es6_array_iterator$1) if (!proto$1[key]) _redefine(proto$1, key, es6_array_iterator$1[key], true);
-  }
+  NumberWrapper.prototype = NumberPrototype;
+  NumberPrototype.constructor = NumberWrapper;
+  redefine(global_1, NUMBER, NumberWrapper);
 }
 
-var f$2 = {}.propertyIsEnumerable;
-
-var _objectPie = {
-	f: f$2
-};
-
-var isEnum = _objectPie.f;
-var _objectToArray = function (isEntries) {
-  return function (it) {
-    var O = _toIobject(it);
-    var keys = _objectKeys$1(O);
-    var length = keys.length;
-    var i = 0;
-    var result = [];
-    var key;
-    while (length > i) if (isEnum.call(O, key = keys[i++])) {
-      result.push(isEntries ? [key, O[key]] : O[key]);
-    } return result;
-  };
-};
-
-// https://github.com/tc39/proposal-object-values-entries
-
-var $entries = _objectToArray(true);
-
-_export(_export.S, 'Object', {
-  entries: function entries(it) {
-    return $entries(it);
-  }
+// `Object.defineProperty` method
+// https://tc39.github.io/ecma262/#sec-object.defineproperty
+_export$1({ target: 'Object', stat: true, forced: !descriptors$1, sham: !descriptors$1 }, {
+  defineProperty: objectDefineProperty$1.f
 });
 
-// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-_export$1(_export$1.S + _export$1.F * !_descriptors$1, 'Object', { defineProperty: _objectDp$1.f });
+var defineProperty_1 = createCommonjsModule(function (module) {
+var Object = path$1.Object;
 
-var $Object = _core$1.Object;
-var defineProperty = function defineProperty(it, key, desc) {
-  return $Object.defineProperty(it, key, desc);
+var defineProperty = module.exports = function defineProperty(it, key, desc) {
+  return Object.defineProperty(it, key, desc);
 };
 
-var defineProperty$1 = defineProperty;
+if (Object.defineProperty.sham) defineProperty.sham = true;
+});
+
+var defineProperty$3 = defineProperty_1;
+
+var defineProperty$4 = defineProperty$3;
 
 function _defineProperty(obj, key, value) {
   if (key in obj) {
-    defineProperty$1(obj, key, {
+    defineProperty$4(obj, key, {
       value: value,
       enumerable: true,
       configurable: true,
@@ -1399,161 +2024,6 @@ function _defineProperty(obj, key, value) {
   }
 
   return obj;
-}
-
-var gOPD = Object.getOwnPropertyDescriptor;
-
-var f$3 = _descriptors ? gOPD : function getOwnPropertyDescriptor(O, P) {
-  O = _toIobject(O);
-  P = _toPrimitive(P, true);
-  if (_ie8DomDefine) try {
-    return gOPD(O, P);
-  } catch (e) { /* empty */ }
-  if (_has(O, P)) return _propertyDesc(!_objectPie.f.call(O, P), O[P]);
-};
-
-var _objectGopd = {
-	f: f$3
-};
-
-// Works with __proto__ only. Old v8 can't work with null proto objects.
-/* eslint-disable no-proto */
-
-
-var check = function (O, proto) {
-  _anObject(O);
-  if (!_isObject(proto) && proto !== null) throw TypeError(proto + ": can't set as prototype!");
-};
-var _setProto = {
-  set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
-    function (test, buggy, set) {
-      try {
-        set = _ctx(Function.call, _objectGopd.f(Object.prototype, '__proto__').set, 2);
-        set(test, []);
-        buggy = !(test instanceof Array);
-      } catch (e) { buggy = true; }
-      return function setPrototypeOf(O, proto) {
-        check(O, proto);
-        if (buggy) O.__proto__ = proto;
-        else set(O, proto);
-        return O;
-      };
-    }({}, false) : undefined),
-  check: check
-};
-
-var setPrototypeOf = _setProto.set;
-var _inheritIfRequired = function (that, target, C) {
-  var S = target.constructor;
-  var P;
-  if (S !== C && typeof S == 'function' && (P = S.prototype) !== C.prototype && _isObject(P) && setPrototypeOf) {
-    setPrototypeOf(that, P);
-  } return that;
-};
-
-// 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-
-var hiddenKeys = _enumBugKeys$1.concat('length', 'prototype');
-
-var f$4 = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
-  return _objectKeysInternal$1(O, hiddenKeys);
-};
-
-var _objectGopn = {
-	f: f$4
-};
-
-var _stringWs = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
-  '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
-
-var space = '[' + _stringWs + ']';
-var non = '\u200b\u0085';
-var ltrim = RegExp('^' + space + space + '*');
-var rtrim = RegExp(space + space + '*$');
-
-var exporter = function (KEY, exec, ALIAS) {
-  var exp = {};
-  var FORCE = _fails(function () {
-    return !!_stringWs[KEY]() || non[KEY]() != non;
-  });
-  var fn = exp[KEY] = FORCE ? exec(trim) : _stringWs[KEY];
-  if (ALIAS) exp[ALIAS] = fn;
-  _export(_export.P + _export.F * FORCE, 'String', exp);
-};
-
-// 1 -> String#trimLeft
-// 2 -> String#trimRight
-// 3 -> String#trim
-var trim = exporter.trim = function (string, TYPE) {
-  string = String(_defined(string));
-  if (TYPE & 1) string = string.replace(ltrim, '');
-  if (TYPE & 2) string = string.replace(rtrim, '');
-  return string;
-};
-
-var _stringTrim = exporter;
-
-var gOPN = _objectGopn.f;
-var gOPD$1 = _objectGopd.f;
-var dP$3 = _objectDp.f;
-var $trim = _stringTrim.trim;
-var NUMBER = 'Number';
-var $Number = _global[NUMBER];
-var Base = $Number;
-var proto$2 = $Number.prototype;
-// Opera ~12 has broken Object#toString
-var BROKEN_COF = _cof(_objectCreate$1(proto$2)) == NUMBER;
-var TRIM = 'trim' in String.prototype;
-
-// 7.1.3 ToNumber(argument)
-var toNumber = function (argument) {
-  var it = _toPrimitive(argument, false);
-  if (typeof it == 'string' && it.length > 2) {
-    it = TRIM ? it.trim() : $trim(it, 3);
-    var first = it.charCodeAt(0);
-    var third, radix, maxCode;
-    if (first === 43 || first === 45) {
-      third = it.charCodeAt(2);
-      if (third === 88 || third === 120) return NaN; // Number('+0x1') should be NaN, old V8 fix
-    } else if (first === 48) {
-      switch (it.charCodeAt(1)) {
-        case 66: case 98: radix = 2; maxCode = 49; break; // fast equal /^0b[01]+$/i
-        case 79: case 111: radix = 8; maxCode = 55; break; // fast equal /^0o[0-7]+$/i
-        default: return +it;
-      }
-      for (var digits = it.slice(2), i = 0, l = digits.length, code; i < l; i++) {
-        code = digits.charCodeAt(i);
-        // parseInt parses a string to a first unavailable symbol
-        // but ToNumber should return NaN if a string contains unavailable symbols
-        if (code < 48 || code > maxCode) return NaN;
-      } return parseInt(digits, radix);
-    }
-  } return +it;
-};
-
-if (!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')) {
-  $Number = function Number(value) {
-    var it = arguments.length < 1 ? 0 : value;
-    var that = this;
-    return that instanceof $Number
-      // check on 1..constructor(foo) case
-      && (BROKEN_COF ? _fails(function () { proto$2.valueOf.call(that); }) : _cof(that) != NUMBER)
-        ? _inheritIfRequired(new Base(toNumber(it)), that, $Number) : toNumber(it);
-  };
-  for (var keys = _descriptors ? gOPN(Base) : (
-    // ES3:
-    'MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,' +
-    // ES6 (in case, if modules with ES6 Number statics required before):
-    'EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,' +
-    'MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger'
-  ).split(','), j = 0, key$1; keys.length > j; j++) {
-    if (_has(Base, key$1 = keys[j]) && !_has($Number, key$1)) {
-      dP$3($Number, key$1, gOPD$1(Base, key$1));
-    }
-  }
-  $Number.prototype = proto$2;
-  proto$2.constructor = $Number;
-  _redefine(_global, NUMBER, $Number);
 }
 
 var e=function(){return (e=Object.assign||function(e){for(var t,r=1,s=arguments.length;r<s;r++)for(var a in t=arguments[r])Object.prototype.hasOwnProperty.call(t,a)&&(e[a]=t[a]);return e}).apply(this,arguments)},t={kebab:/-(\w)/g,styleProp:/:(.*)/,styleList:/;(?![^(]*\))/g};function r(e,t){return t?t.toUpperCase():""}function s(e){for(var s,a={},c=0,o=e.split(t.styleList);c<o.length;c++){var n=o[c].split(t.styleProp),i=n[0],l=n[1];(i=i.trim())&&("string"==typeof l&&(l=l.trim()),a[(s=i,s.replace(t.kebab,r))]=l);}return a}function a(){for(var t,r,a={},c=arguments.length;c--;)for(var o=0,n=Object.keys(arguments[c]);o<n.length;o++)switch(t=n[o]){case"class":case"style":case"directives":if(Array.isArray(a[t])||(a[t]=[]),"style"===t){var i=void 0;i=Array.isArray(arguments[c].style)?arguments[c].style:[arguments[c].style];for(var l=0;l<i.length;l++){var y=i[l];"string"==typeof y&&(i[l]=s(y));}arguments[c].style=i;}a[t]=a[t].concat(arguments[c][t]);break;case"staticClass":if(!arguments[c][t])break;void 0===a[t]&&(a[t]=""),a[t]&&(a[t]+=" "),a[t]+=arguments[c][t].trim();break;case"on":case"nativeOn":a[t]||(a[t]={});for(var p=0,f=Object.keys(arguments[c][t]||{});p<f.length;p++)r=f[p],a[t][r]?a[t][r]=[].concat(a[t][r],arguments[c][t][r]):a[t][r]=arguments[c][t][r];break;case"attrs":case"props":case"domProps":case"scopedSlots":case"staticStyle":case"hook":case"transition":a[t]||(a[t]={}),a[t]=e({},arguments[c][t],a[t]);break;case"slot":case"key":case"ref":case"tag":case"show":case"keepAlive":default:a[t]||(a[t]=arguments[c][t]);}return a}
@@ -1709,7 +2179,7 @@ var script$1 = {
     CButtonClose: CButtonClose
   },
   props: {
-    variant: String,
+    color: String,
     closeButton: Boolean,
     show: {
       type: [Boolean, Number],
@@ -1727,7 +2197,7 @@ var script$1 = {
     alertClasses: function alertClasses() {
       return ['alert', _defineProperty({
         'alert-dismissible': this.closeButton
-      }, "alert-".concat(this.variant), this.variant)];
+      }, "alert-".concat(this.color), this.color)];
     }
   },
   watch: {
@@ -1870,7 +2340,6 @@ __vue_render__._withStripped = true;
 function propsFactory() {
   return {
     href: String,
-    textHtml: String,
     rel: String,
     target: {
       type: String,
@@ -1956,9 +2425,6 @@ var script$2 = {
       })
     };
     var tabindex = data.attrs ? data.attrs.tabindex : null;
-    var domProps = props.textHtml ? {
-      innerHTML: props.textHtml
-    } : null;
     var componentData = a(data, {
       class: {
         'disabled': props.disabled,
@@ -1971,7 +2437,6 @@ var script$2 = {
         tabindex: props.disabled ? '-1' : tabindex,
         'aria-disabled': tag === 'a' && props.disabled ? 'true' : null
       },
-      domProps: domProps,
       props: Object.assign(props, {
         tag: props.routerTag
       })
@@ -2023,9 +2488,8 @@ var props$1 = Object.assign(props, {
     type: String,
     default: 'span'
   },
-  variant: String,
-  pill: Boolean,
-  textHtml: String
+  color: String,
+  pill: Boolean
 });
 var script$3 = {
   functional: true,
@@ -2038,13 +2502,9 @@ var script$3 = {
         data = _ref.data,
         children = _ref.children;
     var tag = !props.href && !props.to ? props.tag : CLink;
-    var domProps = props.textHtml ? {
-      innerHTML: props.textHtml
-    } : null;
     var componentData = {
       staticClass: 'badge',
-      class: (_class = {}, _defineProperty(_class, "badge-".concat(props.variant), props.variant), _defineProperty(_class, 'badge-pill', props.pill), _defineProperty(_class, 'active', props.active), _defineProperty(_class, 'disabled', props.disabled), _class),
-      domProps: domProps,
+      class: (_class = {}, _defineProperty(_class, "badge-".concat(props.color), props.color), _defineProperty(_class, 'badge-pill', props.pill), _defineProperty(_class, 'active', props.active), _defineProperty(_class, 'disabled', props.disabled), _class),
       props: props
     };
     return h(tag, a(data, componentData), children);
@@ -2130,11 +2590,12 @@ var __vue_render__$1 = function() {
             _c(
               "CLink",
               _vm._b(
-                { tag: "component" },
-                "component",
-                Object.assign({}, item, { addClasses: null }),
+                {},
+                "CLink",
+                Object.assign({}, item, { addClasses: null, text: null }),
                 false
-              )
+              ),
+              [_vm._v("\n      " + _vm._s(item.text) + "\n    ")]
             )
           ],
           1
@@ -2152,11 +2613,7 @@ var __vue_render__$1 = function() {
           ],
           attrs: { role: "presentation" }
         },
-        [
-          _c("span", {
-            domProps: { textContent: _vm._s(_vm.lastItem.textHtml) }
-          })
-        ]
+        [_c("span", { domProps: { textContent: _vm._s(_vm.lastItem.text) } })]
       ),
       _vm._v(" "),
       _vm._t("default")
@@ -2192,6 +2649,149 @@ __vue_render__$1._withStripped = true;
     undefined
   );
 
+// optional / simple context binding
+var bindContext$1 = function (fn, that, length) {
+  aFunction$1(fn);
+  if (that === undefined) return fn;
+  switch (length) {
+    case 0: return function () {
+      return fn.call(that);
+    };
+    case 1: return function (a) {
+      return fn.call(that, a);
+    };
+    case 2: return function (a, b) {
+      return fn.call(that, a, b);
+    };
+    case 3: return function (a, b, c) {
+      return fn.call(that, a, b, c);
+    };
+  }
+  return function (/* ...args */) {
+    return fn.apply(that, arguments);
+  };
+};
+
+// `IsArray` abstract operation
+// https://tc39.github.io/ecma262/#sec-isarray
+var isArray$4 = Array.isArray || function isArray(arg) {
+  return classofRaw(arg) == 'Array';
+};
+
+var SPECIES = wellKnownSymbol('species');
+
+// `ArraySpeciesCreate` abstract operation
+// https://tc39.github.io/ecma262/#sec-arrayspeciescreate
+var arraySpeciesCreate = function (originalArray, length) {
+  var C;
+  if (isArray$4(originalArray)) {
+    C = originalArray.constructor;
+    // cross-realm fallback
+    if (typeof C == 'function' && (C === Array || isArray$4(C.prototype))) C = undefined;
+    else if (isObject(C)) {
+      C = C[SPECIES];
+      if (C === null) C = undefined;
+    }
+  } return new (C === undefined ? Array : C)(length === 0 ? 0 : length);
+};
+
+var push = [].push;
+
+// `Array.prototype.{ forEach, map, filter, some, every, find, findIndex }` methods implementation
+var createMethod$6 = function (TYPE) {
+  var IS_MAP = TYPE == 1;
+  var IS_FILTER = TYPE == 2;
+  var IS_SOME = TYPE == 3;
+  var IS_EVERY = TYPE == 4;
+  var IS_FIND_INDEX = TYPE == 6;
+  var NO_HOLES = TYPE == 5 || IS_FIND_INDEX;
+  return function ($this, callbackfn, that, specificCreate) {
+    var O = toObject($this);
+    var self = indexedObject(O);
+    var boundFunction = bindContext$1(callbackfn, that, 3);
+    var length = toLength(self.length);
+    var index = 0;
+    var create = specificCreate || arraySpeciesCreate;
+    var target = IS_MAP ? create($this, length) : IS_FILTER ? create($this, 0) : undefined;
+    var value, result;
+    for (;length > index; index++) if (NO_HOLES || index in self) {
+      value = self[index];
+      result = boundFunction(value, index, O);
+      if (TYPE) {
+        if (IS_MAP) target[index] = result; // map
+        else if (result) switch (TYPE) {
+          case 3: return true;              // some
+          case 5: return value;             // find
+          case 6: return index;             // findIndex
+          case 2: push.call(target, value); // filter
+        } else if (IS_EVERY) return false;  // every
+      }
+    }
+    return IS_FIND_INDEX ? -1 : IS_SOME || IS_EVERY ? IS_EVERY : target;
+  };
+};
+
+var arrayIteration = {
+  // `Array.prototype.forEach` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.foreach
+  forEach: createMethod$6(0),
+  // `Array.prototype.map` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.map
+  map: createMethod$6(1),
+  // `Array.prototype.filter` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.filter
+  filter: createMethod$6(2),
+  // `Array.prototype.some` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.some
+  some: createMethod$6(3),
+  // `Array.prototype.every` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.every
+  every: createMethod$6(4),
+  // `Array.prototype.find` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.find
+  find: createMethod$6(5),
+  // `Array.prototype.findIndex` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.findIndex
+  findIndex: createMethod$6(6)
+};
+
+var SPECIES$1 = wellKnownSymbol('species');
+
+var arrayMethodHasSpeciesSupport = function (METHOD_NAME) {
+  return !fails(function () {
+    var array = [];
+    var constructor = array.constructor = {};
+    constructor[SPECIES$1] = function () {
+      return { foo: 1 };
+    };
+    return array[METHOD_NAME](Boolean).foo !== 1;
+  });
+};
+
+var $filter = arrayIteration.filter;
+
+
+// `Array.prototype.filter` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.filter
+// with adding support of @@species
+_export({ target: 'Array', proto: true, forced: !arrayMethodHasSpeciesSupport('filter') }, {
+  filter: function filter(callbackfn /* , thisArg */) {
+    return $filter(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+var $map = arrayIteration.map;
+
+
+// `Array.prototype.map` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.map
+// with adding support of @@species
+_export({ target: 'Array', proto: true, forced: !arrayMethodHasSpeciesSupport('map') }, {
+  map: function map(callbackfn /* , thisArg */) {
+    return $map(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
 var script$5 = {
   name: 'CBreadcrumbRouter',
   components: {
@@ -2211,7 +2811,7 @@ var script$5 = {
         var meta = route.meta || {};
         return {
           to: route,
-          textHtml: meta.label || route.name
+          text: meta.label || route.name
         };
       });
     },
@@ -2269,25 +2869,65 @@ __vue_render__$2._withStripped = true;
     undefined
   );
 
-// most Object methods by ES6 should accept primitives
-
-
-
-var _objectSap = function (KEY, exec) {
-  var fn = (_core.Object || {})[KEY] || Object[KEY];
-  var exp = {};
-  exp[KEY] = exec(fn);
-  _export(_export.S + _export.F * _fails(function () { fn(1); }), 'Object', exp);
+var createProperty = function (object, key, value) {
+  var propertyKey = toPrimitive(key);
+  if (propertyKey in object) objectDefineProperty.f(object, propertyKey, createPropertyDescriptor(0, value));
+  else object[propertyKey] = value;
 };
 
-// 19.1.2.14 Object.keys(O)
+var IS_CONCAT_SPREADABLE = wellKnownSymbol('isConcatSpreadable');
+var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
+var MAXIMUM_ALLOWED_INDEX_EXCEEDED = 'Maximum allowed index exceeded';
 
+var IS_CONCAT_SPREADABLE_SUPPORT = !fails(function () {
+  var array = [];
+  array[IS_CONCAT_SPREADABLE] = false;
+  return array.concat()[0] !== array;
+});
 
+var SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('concat');
 
-_objectSap('keys', function () {
-  return function keys(it) {
-    return _objectKeys$1(_toObject$1(it));
-  };
+var isConcatSpreadable = function (O) {
+  if (!isObject(O)) return false;
+  var spreadable = O[IS_CONCAT_SPREADABLE];
+  return spreadable !== undefined ? !!spreadable : isArray$4(O);
+};
+
+var FORCED = !IS_CONCAT_SPREADABLE_SUPPORT || !SPECIES_SUPPORT;
+
+// `Array.prototype.concat` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.concat
+// with adding support of @@isConcatSpreadable and @@species
+_export({ target: 'Array', proto: true, forced: FORCED }, {
+  concat: function concat(arg) { // eslint-disable-line no-unused-vars
+    var O = toObject(this);
+    var A = arraySpeciesCreate(O, 0);
+    var n = 0;
+    var i, k, length, len, E;
+    for (i = -1, length = arguments.length; i < length; i++) {
+      E = i === -1 ? O : arguments[i];
+      if (isConcatSpreadable(E)) {
+        len = toLength(E.length);
+        if (n + len > MAX_SAFE_INTEGER) throw TypeError(MAXIMUM_ALLOWED_INDEX_EXCEEDED);
+        for (k = 0; k < len; k++, n++) if (k in E) createProperty(A, n, E[k]);
+      } else {
+        if (n >= MAX_SAFE_INTEGER) throw TypeError(MAXIMUM_ALLOWED_INDEX_EXCEEDED);
+        createProperty(A, n++, E);
+      }
+    }
+    A.length = n;
+    return A;
+  }
+});
+
+var FAILS_ON_PRIMITIVES = fails(function () { objectKeys(1); });
+
+// `Object.keys` method
+// https://tc39.github.io/ecma262/#sec-object.keys
+_export({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITIVES }, {
+  keys: function keys(it) {
+    return objectKeys(toObject(it));
+  }
 });
 
 function pickByKeys(originalObject, keys) {
@@ -2312,7 +2952,7 @@ var btnProps = {
       return ['', 'sm', 'lg'].includes(value);
     }
   },
-  variant: String,
+  color: String,
   type: {
     type: String,
     default: 'button'
@@ -2320,8 +2960,7 @@ var btnProps = {
   pressed: {
     type: Boolean,
     default: null
-  },
-  textHtml: String
+  }
 };
 var props$2 = Object.assign(propsFactory(), btnProps); // Helper functons to minimize runtime memory footprint when lots of buttons on page(TODO: check it)
 
@@ -2336,7 +2975,7 @@ function isToggle(props) {
 function computeClasses(props) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "btn-".concat(props.outline ? 'outline-' : '').concat(props.variant), props.variant), _defineProperty(_ref, "btn-".concat(props.size), Boolean(props.size)), _defineProperty(_ref, "btn-ghost-".concat(props.variant), props.ghost), _defineProperty(_ref, 'btn-block', props.block), _defineProperty(_ref, 'btn-pill', props.pill), _defineProperty(_ref, 'btn-square', props.square && !props.pill), _defineProperty(_ref, 'disabled', props.disabled), _defineProperty(_ref, 'active', props.pressed), _ref;
+  return _ref = {}, _defineProperty(_ref, "btn-".concat(props.outline ? 'outline-' : '').concat(props.color), props.color), _defineProperty(_ref, "btn-".concat(props.size), Boolean(props.size)), _defineProperty(_ref, "btn-ghost-".concat(props.color), props.ghost), _defineProperty(_ref, 'btn-block', props.block), _defineProperty(_ref, 'btn-pill', props.pill), _defineProperty(_ref, 'btn-square', props.square && !props.pill), _defineProperty(_ref, 'disabled', props.disabled), _defineProperty(_ref, 'active', props.pressed), _ref;
 }
 
 function computePassedProps(props) {
@@ -2378,15 +3017,11 @@ var script$6 = {
         }
       }
     };
-    var domProps = children ? '' : {
-      innerHTML: props.textHtml
-    };
     var componentData = {
       staticClass: 'btn',
       class: computeClasses(props),
       props: computePassedProps(props),
       attrs: computeAttrs(props, data, isButton, toggle),
-      domProps: domProps,
       on: on
     };
     return h(isButton ? 'button' : CLink, a(data, componentData), children);
@@ -2482,17 +3117,21 @@ var script$8 = {
   functional: true,
   name: 'CButtonToolbar',
   props: {
-    justify: Boolean
+    justify: {
+      type: String,
+      validator: function validator(val) {
+        return ['', 'start', 'end', 'between', 'center'].includes(val);
+      }
+    }
   },
   render: function render(h, _ref) {
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
     return h('div', a(data, {
-      class: ['btn-toolbar', {
-        'justify-content-between': props.justify
-      }],
+      class: ['btn-toolbar', _defineProperty({}, "justify-content-".concat(props.justify), props.justify)],
       attrs: {
+        'aria-label': 'toolbar',
         role: 'toolbar'
       }
     }), children);
@@ -2538,7 +3177,7 @@ const __vue_script__$8 = script$8;
 var script$9 = {
   name: 'CCallout',
   props: {
-    variant: String
+    color: String
   }
 };
 
@@ -2551,8 +3190,7 @@ var __vue_render__$3 = function(_h, _vm) {
   return _c(
     "div",
     {
-      class:
-        "callout " + (_vm.props.variant ? "callout-" + _vm.props.variant : "")
+      class: "callout " + (_vm.props.color ? "callout-" + _vm.props.color : "")
     },
     [_vm._t("default")],
     2
@@ -2586,7 +3224,68 @@ __vue_render__$3._withStripped = true;
     undefined
   );
 
-//
+var $forEach = arrayIteration.forEach;
+
+
+// `Array.prototype.forEach` method implementation
+// https://tc39.github.io/ecma262/#sec-array.prototype.foreach
+var arrayForEach = sloppyArrayMethod('forEach') ? function forEach(callbackfn /* , thisArg */) {
+  return $forEach(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+} : [].forEach;
+
+// `Array.prototype.forEach` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.foreach
+_export({ target: 'Array', proto: true, forced: [].forEach != arrayForEach }, {
+  forEach: arrayForEach
+});
+
+// iterable DOM collections
+// flag - `iterable` interface - 'entries', 'keys', 'values', 'forEach' methods
+var domIterables$1 = {
+  CSSRuleList: 0,
+  CSSStyleDeclaration: 0,
+  CSSValueList: 0,
+  ClientRectList: 0,
+  DOMRectList: 0,
+  DOMStringList: 0,
+  DOMTokenList: 1,
+  DataTransferItemList: 0,
+  FileList: 0,
+  HTMLAllCollection: 0,
+  HTMLCollection: 0,
+  HTMLFormElement: 0,
+  HTMLSelectElement: 0,
+  MediaList: 0,
+  MimeTypeArray: 0,
+  NamedNodeMap: 0,
+  NodeList: 1,
+  PaintRequestList: 0,
+  Plugin: 0,
+  PluginArray: 0,
+  SVGLengthList: 0,
+  SVGNumberList: 0,
+  SVGPathSegList: 0,
+  SVGPointList: 0,
+  SVGStringList: 0,
+  SVGTransformList: 0,
+  SourceBufferList: 0,
+  StyleSheetList: 0,
+  TextTrackCueList: 0,
+  TextTrackList: 0,
+  TouchList: 0
+};
+
+for (var COLLECTION_NAME$1 in domIterables$1) {
+  var Collection$1 = global_1[COLLECTION_NAME$1];
+  var CollectionPrototype$1 = Collection$1 && Collection$1.prototype;
+  // some Chrome versions have non-configurable methods on DOMTokenList
+  if (CollectionPrototype$1 && CollectionPrototype$1.forEach !== arrayForEach) try {
+    createNonEnumerableProperty(CollectionPrototype$1, 'forEach', arrayForEach);
+  } catch (error) {
+    CollectionPrototype$1.forEach = arrayForEach;
+  }
+}
+
 //
 //
 //
@@ -2778,9 +3477,7 @@ var __vue_render__$4 = function() {
               ]
             )
           ]
-        : _vm._e(),
-      _vm._v(" "),
-      _vm._t("navigation")
+        : _vm._e()
     ],
     2
   )
@@ -2832,7 +3529,7 @@ __vue_render__$4._withStripped = true;
 //
 //
 var script$b = {
-  name: 'CImage',
+  name: 'CImg',
   props: {
     src: String,
     alt: String,
@@ -2863,14 +3560,14 @@ var script$b = {
         return ['', 'left', 'right', 'center'].includes(align);
       }
     },
-    blankColor: {
+    placeholderColor: {
       type: String,
       default: 'transparent'
     }
   },
   computed: {
     isActive: function isActive() {
-      //active prop is present in CImageLazy component, here always undefined
+      //active prop is present in CImgLazy component, here always undefined
       return this.active !== false;
     },
     alignClass: function alignClass() {
@@ -2887,7 +3584,7 @@ var script$b = {
     imageClasses: function imageClasses() {
       var _ref;
 
-      return [//animationClass is rendered in CImageLazy
+      return [//animationClass is rendered in CImgLazy
       this.animationClasses, this.alignClass, (_ref = {
         'img-thumbnail': this.thumbnail,
         'img-fluid': this.fluid || this.fluidGrow,
@@ -2918,7 +3615,9 @@ var __vue_render__$5 = function() {
     : _c("svg", {
         class: _vm.imageClasses,
         style: {
-          "background-color": _vm.isActive ? _vm.blankColor : "transparent"
+          "background-color": _vm.isActive
+            ? _vm.placeholderColor
+            : "transparent"
         },
         attrs: { width: _vm.width, height: _vm.height }
       })
@@ -2940,7 +3639,7 @@ __vue_render__$5._withStripped = true;
   
 
   
-  var CImage = normalizeComponent_1(
+  var CImg = normalizeComponent_1(
     { render: __vue_render__$5, staticRenderFns: __vue_staticRenderFns__$5 },
     __vue_inject_styles__$b,
     __vue_script__$b,
@@ -2954,7 +3653,7 @@ __vue_render__$5._withStripped = true;
 var script$c = {
   name: 'CCarouselItem',
   components: {
-    CImage: CImage
+    CImg: CImg
   },
   props: {
     image: [String, Object],
@@ -3025,10 +3724,10 @@ var __vue_render__$6 = function() {
     [
       _vm.image
         ? _c(
-            "CImage",
+            "CImg",
             _vm._b(
               { staticClass: "d-block w-100 h-100 img-fluid" },
-              "CImage",
+              "CImg",
               _vm.computedImage,
               false
             )
@@ -3126,9 +3825,9 @@ const __vue_script__$d = script$d;
 
 var sharedCardProps = {
   tag: String,
-  variant: String,
-  borderVariant: String,
-  textVariant: String,
+  color: String,
+  borderColor: String,
+  textColor: String,
   align: {
     type: String,
     validator: function validator(val) {
@@ -3137,13 +3836,10 @@ var sharedCardProps = {
   }
 };
 
-var props$3 = Object.assign(sharedCardProps, {
-  headerHtml: String
-});
 var script$e = {
   functional: true,
   name: 'CCardHeader',
-  props: props$3,
+  props: sharedCardProps,
   render: function render(h, _ref) {
     var _ref2;
 
@@ -3152,7 +3848,7 @@ var script$e = {
         children = _ref.children;
     return h(props.tag || 'header', a(data, {
       staticClass: 'card-header',
-      class: [(_ref2 = {}, _defineProperty(_ref2, "text-".concat(props.align), Boolean(props.align)), _defineProperty(_ref2, "bg-".concat(props.variant), Boolean(props.variant)), _defineProperty(_ref2, "border-".concat(props.borderVariant), Boolean(props.borderVariant)), _defineProperty(_ref2, "text-".concat(props.textVariant), Boolean(props.textVariant)), _ref2)]
+      class: [(_ref2 = {}, _defineProperty(_ref2, "text-".concat(props.align), Boolean(props.align)), _defineProperty(_ref2, "bg-".concat(props.color), Boolean(props.color)), _defineProperty(_ref2, "border-".concat(props.borderColor), Boolean(props.borderColor)), _defineProperty(_ref2, "text-".concat(props.textColor), Boolean(props.textColor)), _ref2)]
     }), children || [h('div', {
       domProps: {
         innerHTML: props.headerHtml
@@ -3191,66 +3887,20 @@ const __vue_script__$e = script$e;
     undefined
   );
 
-var props$4 = Object.assign(sharedCardProps, {
-  titleHtml: String,
-  titleTag: {
-    type: String,
-    default: 'h4'
-  },
-  subtitleHtml: String,
-  subtitleTag: {
-    type: String,
-    default: 'h6'
-  },
-  bodyHtml: String,
-  overlay: Boolean
-});
 var script$f = {
   functional: true,
   name: 'CCardBody',
-  props: props$4,
+  props: sharedCardProps,
   render: function render(h, _ref) {
     var _ref2;
 
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
-    var cardTitle = h(false);
-    var cardSubtitle = h(false);
-    var cardContent = children;
-
-    if (props.titleHtml) {
-      cardTitle = h(props.titleTag, {
-        staticClass: 'card-title',
-        domProps: {
-          innerHTML: props.titleHtml
-        }
-      });
-    }
-
-    if (props.subtitleHtml) {
-      cardSubtitle = h(props.subtitleTag, {
-        staticClass: 'card-subtitle mb-2 text-muted',
-        domProps: {
-          innerHTML: props.subtitleHtml
-        }
-      });
-    }
-
-    if (props.bodyHtml && cardContent === undefined) {
-      cardContent = h(props.tag || 'div', {
-        domProps: {
-          innerHTML: props.bodyHtml
-        }
-      });
-    }
-
     return h(props.tag || 'div', a(data, {
       staticClass: 'card-body',
-      class: [(_ref2 = {
-        'card-img-overlay': props.overlay
-      }, _defineProperty(_ref2, "bg-".concat(props.variant), Boolean(props.variant)), _defineProperty(_ref2, "border-".concat(props.borderVariant), Boolean(props.borderVariant)), _defineProperty(_ref2, "text-".concat(props.textVariant), Boolean(props.textVariant)), _defineProperty(_ref2, "text-".concat(props.align), Boolean(props.align)), _ref2)]
-    }), [cardTitle, cardSubtitle, cardContent]);
+      class: [(_ref2 = {}, _defineProperty(_ref2, "bg-".concat(props.color), Boolean(props.color)), _defineProperty(_ref2, "border-".concat(props.borderColor), Boolean(props.borderColor)), _defineProperty(_ref2, "text-".concat(props.textColor), Boolean(props.textColor)), _defineProperty(_ref2, "text-".concat(props.align), Boolean(props.align)), _ref2)]
+    }), [children]);
   }
 };
 
@@ -3284,13 +3934,10 @@ const __vue_script__$f = script$f;
     undefined
   );
 
-var props$5 = Object.assign(sharedCardProps, {
-  footerHtml: String
-});
 var script$g = {
   functional: true,
   name: 'CCardFooter',
-  props: props$5,
+  props: sharedCardProps,
   render: function render(h, _ref) {
     var _ref2;
 
@@ -3299,7 +3946,7 @@ var script$g = {
         children = _ref.children;
     return h(props.tag || 'footer', a(data, {
       staticClass: 'card-footer',
-      class: [(_ref2 = {}, _defineProperty(_ref2, "text-".concat(props.align), Boolean(props.align)), _defineProperty(_ref2, "bg-".concat(props.variant), Boolean(props.variant)), _defineProperty(_ref2, "border-".concat(props.borderVariant), Boolean(props.borderVariant)), _defineProperty(_ref2, "text-".concat(props.textVariant), Boolean(props.textVariant)), _ref2)]
+      class: [(_ref2 = {}, _defineProperty(_ref2, "text-".concat(props.align), Boolean(props.align)), _defineProperty(_ref2, "bg-".concat(props.color), Boolean(props.color)), _defineProperty(_ref2, "border-".concat(props.borderColor), Boolean(props.borderColor)), _defineProperty(_ref2, "text-".concat(props.textColor), Boolean(props.textColor)), _ref2)]
     }), children || [h('div', {
       domProps: {
         innerHTML: props.footerHtml
@@ -3338,7 +3985,7 @@ const __vue_script__$g = script$g;
     undefined
   );
 
-var props$6 = Object.assign(sharedCardProps, {
+var props$3 = Object.assign(sharedCardProps, {
   headerHtml: String,
   bodyHtml: String,
   footerHtml: String,
@@ -3347,7 +3994,7 @@ var props$6 = Object.assign(sharedCardProps, {
 var script$h = {
   functional: true,
   name: 'CCard',
-  props: props$6,
+  props: props$3,
   render: function render(h, _ref) {
     var _class;
 
@@ -3355,7 +4002,7 @@ var script$h = {
         data = _ref.data,
         slots = _ref.slots;
     var header = h(false);
-    var body = slots().default;
+    var main = slots().default;
     var footer = h(false);
 
     if (props.headerHtml) {
@@ -3366,14 +4013,14 @@ var script$h = {
       });
     }
 
-    if (body === undefined && props.bodyHtml) {
-      body = h(CCardBody, {
+    if (main === undefined && props.bodyHtml) {
+      main = h(CCardBody, {
         domProps: {
           innerHTML: props.bodyHtml
         }
       });
     } else if (props.bodyWrapper) {
-      body = h(CCardBody, body);
+      main = h(CCardBody, main);
     }
 
     if (props.footerHtml) {
@@ -3386,8 +4033,8 @@ var script$h = {
 
     return h(props.tag || 'div', a(data, {
       staticClass: 'card',
-      class: (_class = {}, _defineProperty(_class, "text-".concat(props.align), Boolean(props.align)), _defineProperty(_class, "bg-".concat(props.variant), Boolean(props.variant)), _defineProperty(_class, "border-".concat(props.borderVariant), Boolean(props.borderVariant)), _defineProperty(_class, "text-".concat(props.textVariant), Boolean(props.textVariant)), _class)
-    }), [header, body, footer]);
+      class: (_class = {}, _defineProperty(_class, "text-".concat(props.align), Boolean(props.align)), _defineProperty(_class, "bg-".concat(props.color), Boolean(props.color)), _defineProperty(_class, "border-".concat(props.borderColor), Boolean(props.borderColor)), _defineProperty(_class, "text-".concat(props.textColor), Boolean(props.textColor)), _class)
+    }), [header, main, footer]);
   }
 };
 
@@ -3421,13 +4068,332 @@ const __vue_script__$h = script$h;
     undefined
   );
 
+var script$i = {
+  functional: true,
+  name: 'CCardTitle',
+  props: {
+    tag: String
+  },
+  render: function render(h, _ref) {
+    var props = _ref.props,
+        data = _ref.data,
+        children = _ref.children;
+    return h(props.tag || 'h4', a(data, {
+      staticClass: 'card-title'
+    }), children);
+  }
+};
+
+/* script */
+const __vue_script__$i = script$i;
+
+/* template */
+
+  /* style */
+  const __vue_inject_styles__$i = undefined;
+  /* scoped */
+  const __vue_scope_id__$i = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$i = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$i = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CCardTitle = normalizeComponent_1(
+    {},
+    __vue_inject_styles__$i,
+    __vue_script__$i,
+    __vue_scope_id__$i,
+    __vue_is_functional_template__$i,
+    __vue_module_identifier__$i,
+    undefined,
+    undefined
+  );
+
+var script$j = {
+  functional: true,
+  name: 'CCardSubtitle',
+  props: {
+    tag: String
+  },
+  render: function render(h, _ref) {
+    var props = _ref.props,
+        data = _ref.data,
+        children = _ref.children;
+    return h(props.tag || 'h6', a(data, {
+      staticClass: 'card-subtitle'
+    }), children);
+  }
+};
+
+/* script */
+const __vue_script__$j = script$j;
+
+/* template */
+
+  /* style */
+  const __vue_inject_styles__$j = undefined;
+  /* scoped */
+  const __vue_scope_id__$j = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$j = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$j = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CCardSubtitle = normalizeComponent_1(
+    {},
+    __vue_inject_styles__$j,
+    __vue_script__$j,
+    __vue_scope_id__$j,
+    __vue_is_functional_template__$j,
+    __vue_module_identifier__$j,
+    undefined,
+    undefined
+  );
+
+var script$k = {
+  functional: true,
+  name: 'CCardText',
+  props: {
+    tag: String
+  },
+  render: function render(h, _ref) {
+    var props = _ref.props,
+        data = _ref.data,
+        children = _ref.children;
+    return h(props.tag || 'p', a(data, {
+      staticClass: 'card-text'
+    }), children);
+  }
+};
+
+/* script */
+const __vue_script__$k = script$k;
+
+/* template */
+
+  /* style */
+  const __vue_inject_styles__$k = undefined;
+  /* scoped */
+  const __vue_scope_id__$k = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$k = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$k = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CCardText = normalizeComponent_1(
+    {},
+    __vue_inject_styles__$k,
+    __vue_script__$k,
+    __vue_scope_id__$k,
+    __vue_is_functional_template__$k,
+    __vue_module_identifier__$k,
+    undefined,
+    undefined
+  );
+
+var props$4 = Object.assign({
+  placement: {
+    type: String,
+    default: 'full',
+    validator: function validator(val) {
+      return ['', 'top', 'bottom', 'full'].includes(val);
+    }
+  }
+}, CImg.props);
+var script$l = {
+  functional: true,
+  name: 'CCardImg',
+  props: props$4,
+  render: function render(h, _ref) {
+    var props = _ref.props,
+        data = _ref.data,
+        children = _ref.children;
+    var haveClassSuffix = props.placement !== 'full';
+    return h(CImg, a(data, {
+      class: "card-img".concat(haveClassSuffix ? "-".concat(props.placement) : ''),
+      props: props
+    }), children);
+  }
+};
+
+/* script */
+const __vue_script__$l = script$l;
+
+/* template */
+
+  /* style */
+  const __vue_inject_styles__$l = undefined;
+  /* scoped */
+  const __vue_scope_id__$l = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$l = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$l = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CCardImg = normalizeComponent_1(
+    {},
+    __vue_inject_styles__$l,
+    __vue_script__$l,
+    __vue_scope_id__$l,
+    __vue_is_functional_template__$l,
+    __vue_module_identifier__$l,
+    undefined,
+    undefined
+  );
+
+var script$m = {
+  functional: true,
+  name: 'CCardImgOverlay',
+  props: {
+    tag: String
+  },
+  render: function render(h, _ref) {
+    var props = _ref.props,
+        data = _ref.data,
+        children = _ref.children;
+    return h(props.tag || 'div', a(data, {
+      staticClass: 'card-img-overlay'
+    }), children);
+  }
+};
+
+/* script */
+const __vue_script__$m = script$m;
+
+/* template */
+
+  /* style */
+  const __vue_inject_styles__$m = undefined;
+  /* scoped */
+  const __vue_scope_id__$m = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$m = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$m = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CCardImgOverlay = normalizeComponent_1(
+    {},
+    __vue_inject_styles__$m,
+    __vue_script__$m,
+    __vue_scope_id__$m,
+    __vue_is_functional_template__$m,
+    __vue_module_identifier__$m,
+    undefined,
+    undefined
+  );
+
+var script$n = {
+  functional: true,
+  name: 'CCardLink',
+  props: props,
+  render: function render(h, _ref) {
+    var props = _ref.props,
+        data = _ref.data,
+        children = _ref.children;
+    return h(CLink, a(data, {
+      staticClass: 'card-link',
+      props: props
+    }), children);
+  }
+};
+
+/* script */
+const __vue_script__$n = script$n;
+
+/* template */
+
+  /* style */
+  const __vue_inject_styles__$n = undefined;
+  /* scoped */
+  const __vue_scope_id__$n = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$n = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$n = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CCardLink = normalizeComponent_1(
+    {},
+    __vue_inject_styles__$n,
+    __vue_script__$n,
+    __vue_scope_id__$n,
+    __vue_is_functional_template__$n,
+    __vue_module_identifier__$n,
+    undefined,
+    undefined
+  );
+
+var SPECIES$2 = wellKnownSymbol('species');
+var nativeSlice = [].slice;
+var max$2 = Math.max;
+
+// `Array.prototype.slice` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.slice
+// fallback for not array-like ES3 strings and DOM objects
+_export({ target: 'Array', proto: true, forced: !arrayMethodHasSpeciesSupport('slice') }, {
+  slice: function slice(start, end) {
+    var O = toIndexedObject(this);
+    var length = toLength(O.length);
+    var k = toAbsoluteIndex(start, length);
+    var fin = toAbsoluteIndex(end === undefined ? length : end, length);
+    // inline `ArraySpeciesCreate` for usage native `Array#slice` where it's possible
+    var Constructor, result, n;
+    if (isArray$4(O)) {
+      Constructor = O.constructor;
+      // cross-realm fallback
+      if (typeof Constructor == 'function' && (Constructor === Array || isArray$4(Constructor.prototype))) {
+        Constructor = undefined;
+      } else if (isObject(Constructor)) {
+        Constructor = Constructor[SPECIES$2];
+        if (Constructor === null) Constructor = undefined;
+      }
+      if (Constructor === Array || Constructor === undefined) {
+        return nativeSlice.call(O, k, fin);
+      }
+    }
+    result = new (Constructor === undefined ? Array : Constructor)(max$2(fin - k, 0));
+    for (n = 0; k < fin; k++, n++) if (k in O) createProperty(result, n, O[k]);
+    result.length = n;
+    return result;
+  }
+});
+
 //
 //
 //
 //
 //
 //
-var props$7 = {
+var props$5 = {
   duration: {
     type: Number,
     default: 400
@@ -3437,12 +4403,11 @@ var props$7 = {
     default: 'ease-in-out'
   },
   show: Boolean,
-  navbar: Boolean,
-  toggler: String
+  navbar: Boolean
 };
-var script$i = {
+var script$o = {
   name: 'CCollapse',
-  props: props$7,
+  props: props$5,
   data: function data() {
     return {
       collapsing: false,
@@ -3460,28 +4425,12 @@ var script$i = {
     }
   },
   mounted: function mounted() {
-    var _this = this;
-
     this.$el.style.display = this.visible ? '' : 'none';
-    this.$nextTick(function () {
-      _this.el = document.getElementById(_this.toggler);
-
-      if (_this.el) {
-        _this.el.addEventListener('click', _this.collapse);
-      }
-    });
   },
   beforeDestroy: function beforeDestroy() {
-    if (this.el) {
-      this.el.removeEventListener('click', this.collapse);
-    }
-
     clearTimeout(this.heightWatcher);
   },
   methods: {
-    collapse: function collapse() {
-      this.visible = !this.visible;
-    },
     collapseController: function collapseController(val) {
       if (this.collapsing === false) {
         val ? this.toggle(true) : this.toggle(false);
@@ -3502,7 +4451,7 @@ var script$i = {
       }
     },
     toggle: function toggle(val) {
-      var _this2 = this;
+      var _this = this;
 
       this.$el.style.display = '';
       this.collapsing = this.$el.scrollHeight + 'px';
@@ -3511,11 +4460,11 @@ var script$i = {
       this.$el.style.transition = "all ".concat(this.duration, "ms ").concat(this.transition);
       var self = this;
       setTimeout(function () {
-        self.$el.style.height = val ? _this2.collapsing : 0;
+        self.$el.style.height = val ? _this.collapsing : 0;
       }, 0);
     },
     setFinishTimer: function setFinishTimer(duration) {
-      var _this3 = this;
+      var _this2 = this;
 
       clearTimeout(this.heightWatcher);
       var self = this;
@@ -3526,14 +4475,14 @@ var script$i = {
         self.$el.style.overflow = '';
         self.$el.style.transition = '';
 
-        _this3.$emit('finish', self.visible);
+        _this2.$emit('finish', self.visible);
       }, duration);
     }
   }
 };
 
 /* script */
-const __vue_script__$i = script$i;
+const __vue_script__$o = script$o;
 
 /* template */
 var __vue_render__$7 = function() {
@@ -3551,13 +4500,13 @@ var __vue_staticRenderFns__$7 = [];
 __vue_render__$7._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$i = undefined;
+  const __vue_inject_styles__$o = undefined;
   /* scoped */
-  const __vue_scope_id__$i = undefined;
+  const __vue_scope_id__$o = undefined;
   /* module identifier */
-  const __vue_module_identifier__$i = undefined;
+  const __vue_module_identifier__$o = undefined;
   /* functional template */
-  const __vue_is_functional_template__$i = false;
+  const __vue_is_functional_template__$o = false;
   /* style inject */
   
   /* style inject SSR */
@@ -3566,100 +4515,24 @@ __vue_render__$7._withStripped = true;
   
   var CCollapse = normalizeComponent_1(
     { render: __vue_render__$7, staticRenderFns: __vue_staticRenderFns__$7 },
-    __vue_inject_styles__$i,
-    __vue_script__$i,
-    __vue_scope_id__$i,
-    __vue_is_functional_template__$i,
-    __vue_module_identifier__$i,
+    __vue_inject_styles__$o,
+    __vue_script__$o,
+    __vue_scope_id__$o,
+    __vue_is_functional_template__$o,
+    __vue_module_identifier__$o,
     undefined,
     undefined
   );
 
-// 7.3.20 SpeciesConstructor(O, defaultConstructor)
-
-
-var SPECIES = _wks('species');
-var _speciesConstructor = function (O, D) {
-  var C = _anObject(O).constructor;
-  var S;
-  return C === undefined || (S = _anObject(C)[SPECIES]) == undefined ? D : _aFunction(S);
-};
-
-// true  -> String#at
-// false -> String#codePointAt
-var _stringAt$1 = function (TO_STRING) {
-  return function (that, pos) {
-    var s = String(_defined(that));
-    var i = _toInteger(pos);
-    var l = s.length;
-    var a, b;
-    if (i < 0 || i >= l) return TO_STRING ? '' : undefined;
-    a = s.charCodeAt(i);
-    return a < 0xd800 || a > 0xdbff || i + 1 === l || (b = s.charCodeAt(i + 1)) < 0xdc00 || b > 0xdfff
-      ? TO_STRING ? s.charAt(i) : a
-      : TO_STRING ? s.slice(i, i + 2) : (a - 0xd800 << 10) + (b - 0xdc00) + 0x10000;
-  };
-};
-
-var at = _stringAt$1(true);
-
- // `AdvanceStringIndex` abstract operation
-// https://tc39.github.io/ecma262/#sec-advancestringindex
-var _advanceStringIndex = function (S, index, unicode) {
-  return index + (unicode ? at(S, index).length : 1);
-};
-
-// getting tag from 19.1.3.6 Object.prototype.toString()
-
-var TAG$3 = _wks('toStringTag');
-// ES3 wrong here
-var ARG$1 = _cof(function () { return arguments; }()) == 'Arguments';
-
-// fallback for IE11 Script Access Denied error
-var tryGet$1 = function (it, key) {
-  try {
-    return it[key];
-  } catch (e) { /* empty */ }
-};
-
-var _classof$1 = function (it) {
-  var O, T, B;
-  return it === undefined ? 'Undefined' : it === null ? 'Null'
-    // @@toStringTag case
-    : typeof (T = tryGet$1(O = Object(it), TAG$3)) == 'string' ? T
-    // builtinTag case
-    : ARG$1 ? _cof(O)
-    // ES3 arguments fallback
-    : (B = _cof(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : B;
-};
-
-var builtinExec = RegExp.prototype.exec;
-
- // `RegExpExec` abstract operation
-// https://tc39.github.io/ecma262/#sec-regexpexec
-var _regexpExecAbstract = function (R, S) {
-  var exec = R.exec;
-  if (typeof exec === 'function') {
-    var result = exec.call(R, S);
-    if (typeof result !== 'object') {
-      throw new TypeError('RegExp exec method returned something other than an Object or null');
-    }
-    return result;
-  }
-  if (_classof$1(R) !== 'RegExp') {
-    throw new TypeError('RegExp#exec called on incompatible receiver');
-  }
-  return builtinExec.call(R, S);
-};
-
-// 21.2.5.3 get RegExp.prototype.flags
-
-var _flags = function () {
-  var that = _anObject(this);
+// `RegExp.prototype.flags` getter implementation
+// https://tc39.github.io/ecma262/#sec-get-regexp.prototype.flags
+var regexpFlags = function () {
+  var that = anObject(this);
   var result = '';
   if (that.global) result += 'g';
   if (that.ignoreCase) result += 'i';
   if (that.multiline) result += 'm';
+  if (that.dotAll) result += 's';
   if (that.unicode) result += 'u';
   if (that.sticky) result += 'y';
   return result;
@@ -3673,14 +4546,12 @@ var nativeReplace = String.prototype.replace;
 
 var patchedExec = nativeExec;
 
-var LAST_INDEX = 'lastIndex';
-
 var UPDATES_LAST_INDEX_WRONG = (function () {
-  var re1 = /a/,
-      re2 = /b*/g;
+  var re1 = /a/;
+  var re2 = /b*/g;
   nativeExec.call(re1, 'a');
   nativeExec.call(re2, 'a');
-  return re1[LAST_INDEX] !== 0 || re2[LAST_INDEX] !== 0;
+  return re1.lastIndex !== 0 || re2.lastIndex !== 0;
 })();
 
 // nonparticipating capturing group, copied from es5-shim's String#split patch.
@@ -3694,19 +4565,18 @@ if (PATCH) {
     var lastIndex, reCopy, match, i;
 
     if (NPCG_INCLUDED) {
-      reCopy = new RegExp('^' + re.source + '$(?!\\s)', _flags.call(re));
+      reCopy = new RegExp('^' + re.source + '$(?!\\s)', regexpFlags.call(re));
     }
-    if (UPDATES_LAST_INDEX_WRONG) lastIndex = re[LAST_INDEX];
+    if (UPDATES_LAST_INDEX_WRONG) lastIndex = re.lastIndex;
 
     match = nativeExec.call(re, str);
 
     if (UPDATES_LAST_INDEX_WRONG && match) {
-      re[LAST_INDEX] = re.global ? match.index + match[0].length : lastIndex;
+      re.lastIndex = re.global ? match.index + match[0].length : lastIndex;
     }
     if (NPCG_INCLUDED && match && match.length > 1) {
       // Fix browsers whose `exec` methods don't consistently return `undefined`
       // for NPCG, like IE8. NOTE: This doesn' work for /(.?)?/
-      // eslint-disable-next-line no-loop-func
       nativeReplace.call(match[0], reCopy, function () {
         for (i = 1; i < arguments.length - 2; i++) {
           if (arguments[i] === undefined) match[i] = undefined;
@@ -3718,19 +4588,15 @@ if (PATCH) {
   };
 }
 
-var _regexpExec = patchedExec;
+var regexpExec = patchedExec;
 
-_export({
-  target: 'RegExp',
-  proto: true,
-  forced: _regexpExec !== /./.exec
-}, {
-  exec: _regexpExec
+_export({ target: 'RegExp', proto: true, forced: /./.exec !== regexpExec }, {
+  exec: regexpExec
 });
 
-var SPECIES$1 = _wks('species');
+var SPECIES$3 = wellKnownSymbol('species');
 
-var REPLACE_SUPPORTS_NAMED_GROUPS = !_fails(function () {
+var REPLACE_SUPPORTS_NAMED_GROUPS = !fails(function () {
   // #replace needs built-in support for named groups.
   // #match works fine because it just return the exec results, even if it has
   // a "grops" property.
@@ -3743,39 +4609,42 @@ var REPLACE_SUPPORTS_NAMED_GROUPS = !_fails(function () {
   return ''.replace(re, '$<a>') !== '7';
 });
 
-var SPLIT_WORKS_WITH_OVERWRITTEN_EXEC = (function () {
-  // Chrome 51 has a buggy "split" implementation when RegExp#exec !== nativeExec
+// Chrome 51 has a buggy "split" implementation when RegExp#exec !== nativeExec
+// Weex JS has frozen built-in prototypes, so use try / catch wrapper
+var SPLIT_WORKS_WITH_OVERWRITTEN_EXEC = !fails(function () {
   var re = /(?:)/;
   var originalExec = re.exec;
   re.exec = function () { return originalExec.apply(this, arguments); };
   var result = 'ab'.split(re);
-  return result.length === 2 && result[0] === 'a' && result[1] === 'b';
-})();
+  return result.length !== 2 || result[0] !== 'a' || result[1] !== 'b';
+});
 
-var _fixReWks = function (KEY, length, exec) {
-  var SYMBOL = _wks(KEY);
+var fixRegexpWellKnownSymbolLogic = function (KEY, length, exec, sham) {
+  var SYMBOL = wellKnownSymbol(KEY);
 
-  var DELEGATES_TO_SYMBOL = !_fails(function () {
+  var DELEGATES_TO_SYMBOL = !fails(function () {
     // String methods call symbol-named RegEp methods
     var O = {};
     O[SYMBOL] = function () { return 7; };
     return ''[KEY](O) != 7;
   });
 
-  var DELEGATES_TO_EXEC = DELEGATES_TO_SYMBOL ? !_fails(function () {
+  var DELEGATES_TO_EXEC = DELEGATES_TO_SYMBOL && !fails(function () {
     // Symbol-named RegExp methods call .exec
     var execCalled = false;
     var re = /a/;
     re.exec = function () { execCalled = true; return null; };
+
     if (KEY === 'split') {
       // RegExp[@@split] doesn't call the regex's exec method, but first creates
       // a new one. We need to return the patched regex when creating the new one.
       re.constructor = {};
-      re.constructor[SPECIES$1] = function () { return re; };
+      re.constructor[SPECIES$3] = function () { return re; };
     }
+
     re[SYMBOL]('');
     return !execCalled;
-  }) : undefined;
+  });
 
   if (
     !DELEGATES_TO_SYMBOL ||
@@ -3784,105 +4653,161 @@ var _fixReWks = function (KEY, length, exec) {
     (KEY === 'split' && !SPLIT_WORKS_WITH_OVERWRITTEN_EXEC)
   ) {
     var nativeRegExpMethod = /./[SYMBOL];
-    var fns = exec(
-      _defined,
-      SYMBOL,
-      ''[KEY],
-      function maybeCallNative(nativeMethod, regexp, str, arg2, forceStringMethod) {
-        if (regexp.exec === _regexpExec) {
-          if (DELEGATES_TO_SYMBOL && !forceStringMethod) {
-            // The native String method already delegates to @@method (this
-            // polyfilled function), leasing to infinite recursion.
-            // We avoid it by directly calling the native @@method method.
-            return { done: true, value: nativeRegExpMethod.call(regexp, str, arg2) };
-          }
-          return { done: true, value: nativeMethod.call(str, regexp, arg2) };
+    var methods = exec(SYMBOL, ''[KEY], function (nativeMethod, regexp, str, arg2, forceStringMethod) {
+      if (regexp.exec === regexpExec) {
+        if (DELEGATES_TO_SYMBOL && !forceStringMethod) {
+          // The native String method already delegates to @@method (this
+          // polyfilled function), leasing to infinite recursion.
+          // We avoid it by directly calling the native @@method method.
+          return { done: true, value: nativeRegExpMethod.call(regexp, str, arg2) };
         }
-        return { done: false };
+        return { done: true, value: nativeMethod.call(str, regexp, arg2) };
       }
-    );
-    var strfn = fns[0];
-    var rxfn = fns[1];
+      return { done: false };
+    });
+    var stringMethod = methods[0];
+    var regexMethod = methods[1];
 
-    _redefine(String.prototype, KEY, strfn);
-    _hide(RegExp.prototype, SYMBOL, length == 2
+    redefine(String.prototype, KEY, stringMethod);
+    redefine(RegExp.prototype, SYMBOL, length == 2
       // 21.2.5.8 RegExp.prototype[@@replace](string, replaceValue)
       // 21.2.5.11 RegExp.prototype[@@split](string, limit)
-      ? function (string, arg) { return rxfn.call(string, this, arg); }
+      ? function (string, arg) { return regexMethod.call(string, this, arg); }
       // 21.2.5.6 RegExp.prototype[@@match](string)
       // 21.2.5.9 RegExp.prototype[@@search](string)
-      : function (string) { return rxfn.call(string, this); }
+      : function (string) { return regexMethod.call(string, this); }
     );
+    if (sham) createNonEnumerableProperty(RegExp.prototype[SYMBOL], 'sham', true);
   }
 };
 
-var $min = Math.min;
-var $push = [].push;
-var $SPLIT = 'split';
-var LENGTH = 'length';
-var LAST_INDEX$1 = 'lastIndex';
-var MAX_UINT32 = 0xffffffff;
+var SPECIES$4 = wellKnownSymbol('species');
+
+// `SpeciesConstructor` abstract operation
+// https://tc39.github.io/ecma262/#sec-speciesconstructor
+var speciesConstructor = function (O, defaultConstructor) {
+  var C = anObject(O).constructor;
+  var S;
+  return C === undefined || (S = anObject(C)[SPECIES$4]) == undefined ? defaultConstructor : aFunction$1(S);
+};
+
+// `String.prototype.{ codePointAt, at }` methods implementation
+var createMethod$7 = function (CONVERT_TO_STRING) {
+  return function ($this, pos) {
+    var S = String(requireObjectCoercible($this));
+    var position = toInteger(pos);
+    var size = S.length;
+    var first, second;
+    if (position < 0 || position >= size) return CONVERT_TO_STRING ? '' : undefined;
+    first = S.charCodeAt(position);
+    return first < 0xD800 || first > 0xDBFF || position + 1 === size
+      || (second = S.charCodeAt(position + 1)) < 0xDC00 || second > 0xDFFF
+        ? CONVERT_TO_STRING ? S.charAt(position) : first
+        : CONVERT_TO_STRING ? S.slice(position, position + 2) : (first - 0xD800 << 10) + (second - 0xDC00) + 0x10000;
+  };
+};
+
+var stringMultibyte$1 = {
+  // `String.prototype.codePointAt` method
+  // https://tc39.github.io/ecma262/#sec-string.prototype.codepointat
+  codeAt: createMethod$7(false),
+  // `String.prototype.at` method
+  // https://github.com/mathiasbynens/String.prototype.at
+  charAt: createMethod$7(true)
+};
+
+var charAt$1 = stringMultibyte$1.charAt;
+
+// `AdvanceStringIndex` abstract operation
+// https://tc39.github.io/ecma262/#sec-advancestringindex
+var advanceStringIndex = function (S, index, unicode) {
+  return index + (unicode ? charAt$1(S, index).length : 1);
+};
+
+// `RegExpExec` abstract operation
+// https://tc39.github.io/ecma262/#sec-regexpexec
+var regexpExecAbstract = function (R, S) {
+  var exec = R.exec;
+  if (typeof exec === 'function') {
+    var result = exec.call(R, S);
+    if (typeof result !== 'object') {
+      throw TypeError('RegExp exec method returned something other than an Object or null');
+    }
+    return result;
+  }
+
+  if (classofRaw(R) !== 'RegExp') {
+    throw TypeError('RegExp#exec called on incompatible receiver');
+  }
+
+  return regexpExec.call(R, S);
+};
+
+var arrayPush = [].push;
+var min$4 = Math.min;
+var MAX_UINT32 = 0xFFFFFFFF;
 
 // babel-minify transpiles RegExp('x', 'y') -> /x/y and it causes SyntaxError
-var SUPPORTS_Y = !_fails(function () { RegExp(MAX_UINT32, 'y'); });
+var SUPPORTS_Y = !fails(function () { return !RegExp(MAX_UINT32, 'y'); });
 
 // @@split logic
-_fixReWks('split', 2, function (defined, SPLIT, $split, maybeCallNative) {
+fixRegexpWellKnownSymbolLogic('split', 2, function (SPLIT, nativeSplit, maybeCallNative) {
   var internalSplit;
   if (
-    'abbc'[$SPLIT](/(b)*/)[1] == 'c' ||
-    'test'[$SPLIT](/(?:)/, -1)[LENGTH] != 4 ||
-    'ab'[$SPLIT](/(?:ab)*/)[LENGTH] != 2 ||
-    '.'[$SPLIT](/(.?)(.?)/)[LENGTH] != 4 ||
-    '.'[$SPLIT](/()()/)[LENGTH] > 1 ||
-    ''[$SPLIT](/.?/)[LENGTH]
+    'abbc'.split(/(b)*/)[1] == 'c' ||
+    'test'.split(/(?:)/, -1).length != 4 ||
+    'ab'.split(/(?:ab)*/).length != 2 ||
+    '.'.split(/(.?)(.?)/).length != 4 ||
+    '.'.split(/()()/).length > 1 ||
+    ''.split(/.?/).length
   ) {
     // based on es5-shim implementation, need to rework it
     internalSplit = function (separator, limit) {
-      var string = String(this);
-      if (separator === undefined && limit === 0) return [];
+      var string = String(requireObjectCoercible(this));
+      var lim = limit === undefined ? MAX_UINT32 : limit >>> 0;
+      if (lim === 0) return [];
+      if (separator === undefined) return [string];
       // If `separator` is not a regex, use native split
-      if (!_isRegexp(separator)) return $split.call(string, separator, limit);
+      if (!isRegexp(separator)) {
+        return nativeSplit.call(string, separator, lim);
+      }
       var output = [];
       var flags = (separator.ignoreCase ? 'i' : '') +
                   (separator.multiline ? 'm' : '') +
                   (separator.unicode ? 'u' : '') +
                   (separator.sticky ? 'y' : '');
       var lastLastIndex = 0;
-      var splitLimit = limit === undefined ? MAX_UINT32 : limit >>> 0;
       // Make `global` and avoid `lastIndex` issues by working with a copy
       var separatorCopy = new RegExp(separator.source, flags + 'g');
       var match, lastIndex, lastLength;
-      while (match = _regexpExec.call(separatorCopy, string)) {
-        lastIndex = separatorCopy[LAST_INDEX$1];
+      while (match = regexpExec.call(separatorCopy, string)) {
+        lastIndex = separatorCopy.lastIndex;
         if (lastIndex > lastLastIndex) {
           output.push(string.slice(lastLastIndex, match.index));
-          if (match[LENGTH] > 1 && match.index < string[LENGTH]) $push.apply(output, match.slice(1));
-          lastLength = match[0][LENGTH];
+          if (match.length > 1 && match.index < string.length) arrayPush.apply(output, match.slice(1));
+          lastLength = match[0].length;
           lastLastIndex = lastIndex;
-          if (output[LENGTH] >= splitLimit) break;
+          if (output.length >= lim) break;
         }
-        if (separatorCopy[LAST_INDEX$1] === match.index) separatorCopy[LAST_INDEX$1]++; // Avoid an infinite loop
+        if (separatorCopy.lastIndex === match.index) separatorCopy.lastIndex++; // Avoid an infinite loop
       }
-      if (lastLastIndex === string[LENGTH]) {
+      if (lastLastIndex === string.length) {
         if (lastLength || !separatorCopy.test('')) output.push('');
       } else output.push(string.slice(lastLastIndex));
-      return output[LENGTH] > splitLimit ? output.slice(0, splitLimit) : output;
+      return output.length > lim ? output.slice(0, lim) : output;
     };
   // Chakra, V8
-  } else if ('0'[$SPLIT](undefined, 0)[LENGTH]) {
+  } else if ('0'.split(undefined, 0).length) {
     internalSplit = function (separator, limit) {
-      return separator === undefined && limit === 0 ? [] : $split.call(this, separator, limit);
+      return separator === undefined && limit === 0 ? [] : nativeSplit.call(this, separator, limit);
     };
-  } else {
-    internalSplit = $split;
-  }
+  } else internalSplit = nativeSplit;
 
   return [
     // `String.prototype.split` method
     // https://tc39.github.io/ecma262/#sec-string.prototype.split
     function split(separator, limit) {
-      var O = defined(this);
+      var O = requireObjectCoercible(this);
       var splitter = separator == undefined ? undefined : separator[SPLIT];
       return splitter !== undefined
         ? splitter.call(separator, O, limit)
@@ -3894,12 +4819,12 @@ _fixReWks('split', 2, function (defined, SPLIT, $split, maybeCallNative) {
     // NOTE: This cannot be properly polyfilled in engines that don't support
     // the 'y' flag.
     function (regexp, limit) {
-      var res = maybeCallNative(internalSplit, regexp, this, limit, internalSplit !== $split);
+      var res = maybeCallNative(internalSplit, regexp, this, limit, internalSplit !== nativeSplit);
       if (res.done) return res.value;
 
-      var rx = _anObject(regexp);
+      var rx = anObject(regexp);
       var S = String(this);
-      var C = _speciesConstructor(rx, RegExp);
+      var C = speciesConstructor(rx, RegExp);
 
       var unicodeMatching = rx.unicode;
       var flags = (rx.ignoreCase ? 'i' : '') +
@@ -3912,19 +4837,19 @@ _fixReWks('split', 2, function (defined, SPLIT, $split, maybeCallNative) {
       var splitter = new C(SUPPORTS_Y ? rx : '^(?:' + rx.source + ')', flags);
       var lim = limit === undefined ? MAX_UINT32 : limit >>> 0;
       if (lim === 0) return [];
-      if (S.length === 0) return _regexpExecAbstract(splitter, S) === null ? [S] : [];
+      if (S.length === 0) return regexpExecAbstract(splitter, S) === null ? [S] : [];
       var p = 0;
       var q = 0;
       var A = [];
       while (q < S.length) {
         splitter.lastIndex = SUPPORTS_Y ? q : 0;
-        var z = _regexpExecAbstract(splitter, SUPPORTS_Y ? S : S.slice(q));
+        var z = regexpExecAbstract(splitter, SUPPORTS_Y ? S : S.slice(q));
         var e;
         if (
           z === null ||
-          (e = $min(_toLength(splitter.lastIndex + (SUPPORTS_Y ? 0 : q)), S.length)) === p
+          (e = min$4(toLength(splitter.lastIndex + (SUPPORTS_Y ? 0 : q)), S.length)) === p
         ) {
-          q = _advanceStringIndex(S, q, unicodeMatching);
+          q = advanceStringIndex(S, q, unicodeMatching);
         } else {
           A.push(S.slice(p, q));
           if (A.length === lim) return A;
@@ -3939,11 +4864,11 @@ _fixReWks('split', 2, function (defined, SPLIT, $split, maybeCallNative) {
       return A;
     }
   ];
-});
+}, !SUPPORTS_Y);
 
 /**!
  * @fileOverview Kickass library to create and place poppers near their reference elements.
- * @version 1.15.0
+ * @version 1.16.0
  * @license
  * Copyright (c) 2016 Federico Zivolo and contributors
  *
@@ -3965,16 +4890,17 @@ _fixReWks('split', 2, function (defined, SPLIT, $split, maybeCallNative) {
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-var isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined';
+var isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined' && typeof navigator !== 'undefined';
 
-var longerTimeoutBrowsers = ['Edge', 'Trident', 'Firefox'];
-var timeoutDuration = 0;
-for (var i$2 = 0; i$2 < longerTimeoutBrowsers.length; i$2 += 1) {
-  if (isBrowser && navigator.userAgent.indexOf(longerTimeoutBrowsers[i$2]) >= 0) {
-    timeoutDuration = 1;
-    break;
+var timeoutDuration = function () {
+  var longerTimeoutBrowsers = ['Edge', 'Trident', 'Firefox'];
+  for (var i = 0; i < longerTimeoutBrowsers.length; i += 1) {
+    if (isBrowser && navigator.userAgent.indexOf(longerTimeoutBrowsers[i]) >= 0) {
+      return 1;
+    }
   }
-}
+  return 0;
+}();
 
 function microtaskDebounce(fn) {
   var called = false;
@@ -4092,6 +5018,17 @@ function getScrollParent(element) {
   }
 
   return getScrollParent(getParentNode(element));
+}
+
+/**
+ * Returns the reference node of the reference object, or the reference object itself.
+ * @method
+ * @memberof Popper.Utils
+ * @param {Element|Object} reference - the reference element (the popper will be relative to this)
+ * @returns {Element} parent
+ */
+function getReferenceNode(reference) {
+  return reference && reference.referenceNode ? reference.referenceNode : reference;
 }
 
 var isIE11 = isBrowser && !!(window.MSInputMethodContext && document.documentMode);
@@ -4323,7 +5260,7 @@ var createClass = function () {
 
 
 
-var defineProperty$2 = function (obj, key, value) {
+var defineProperty$5 = function (obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
       value: value,
@@ -4402,8 +5339,8 @@ function getBoundingClientRect(element) {
 
   // subtract scrollbar size from sizes
   var sizes = element.nodeName === 'HTML' ? getWindowSizes(element.ownerDocument) : {};
-  var width = sizes.width || element.clientWidth || result.right - result.left;
-  var height = sizes.height || element.clientHeight || result.bottom - result.top;
+  var width = sizes.width || element.clientWidth || result.width;
+  var height = sizes.height || element.clientHeight || result.height;
 
   var horizScrollbar = element.offsetWidth - width;
   var vertScrollbar = element.offsetHeight - height;
@@ -4555,7 +5492,7 @@ function getBoundaries(popper, reference, padding, boundariesElement) {
   // NOTE: 1 DOM access here
 
   var boundaries = { top: 0, left: 0 };
-  var offsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, reference);
+  var offsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, getReferenceNode(reference));
 
   // Handle viewport case
   if (boundariesElement === 'viewport') {
@@ -4683,7 +5620,7 @@ function computeAutoPlacement(placement, refRect, popper, reference, boundariesE
 function getReferenceOffsets(state, popper, reference) {
   var fixedPosition = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
 
-  var commonOffsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, reference);
+  var commonOffsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, getReferenceNode(reference));
   return getOffsetRectRelativeToArbitraryNode(reference, commonOffsetParent, fixedPosition);
 }
 
@@ -4945,7 +5882,7 @@ function destroy() {
 
   this.disableEventListeners();
 
-  // remove the popper if user explicity asked for the deletion on destroy
+  // remove the popper if user explicitly asked for the deletion on destroy
   // do not use `remove` because IE11 doesn't support it
   if (this.options.removeOnDestroy) {
     this.popper.parentNode.removeChild(this.popper);
@@ -5402,7 +6339,7 @@ function arrow(data, options) {
   sideValue = Math.max(Math.min(popper[len] - arrowElementSize, sideValue), 0);
 
   data.arrowElement = arrowElement;
-  data.offsets.arrow = (_data$offsets$arrow = {}, defineProperty$2(_data$offsets$arrow, side, Math.round(sideValue)), defineProperty$2(_data$offsets$arrow, altSide, ''), _data$offsets$arrow);
+  data.offsets.arrow = (_data$offsets$arrow = {}, defineProperty$5(_data$offsets$arrow, side, Math.round(sideValue)), defineProperty$5(_data$offsets$arrow, altSide, ''), _data$offsets$arrow);
 
   return data;
 }
@@ -5832,7 +6769,7 @@ function preventOverflow(data, options) {
       if (popper[placement] < boundaries[placement] && !options.escapeWithReference) {
         value = Math.max(popper[placement], boundaries[placement]);
       }
-      return defineProperty$2({}, placement, value);
+      return defineProperty$5({}, placement, value);
     },
     secondary: function secondary(placement) {
       var mainSide = placement === 'right' ? 'left' : 'top';
@@ -5840,7 +6777,7 @@ function preventOverflow(data, options) {
       if (popper[placement] > boundaries[placement] && !options.escapeWithReference) {
         value = Math.min(popper[mainSide], boundaries[placement] - (placement === 'right' ? popper.width : popper.height));
       }
-      return defineProperty$2({}, mainSide, value);
+      return defineProperty$5({}, mainSide, value);
     }
   };
 
@@ -5877,8 +6814,8 @@ function shift(data) {
     var measurement = isVertical ? 'width' : 'height';
 
     var shiftOffsets = {
-      start: defineProperty$2({}, side, reference[side]),
-      end: defineProperty$2({}, side, reference[side] + reference[measurement] - popper[measurement])
+      start: defineProperty$5({}, side, reference[side]),
+      end: defineProperty$5({}, side, reference[side] + reference[measurement] - popper[measurement])
     };
 
     data.offsets.popper = _extends({}, popper, shiftOffsets[shiftvariation]);
@@ -6588,7 +7525,7 @@ function isPrimitive (value) {
  * Objects from primitive values when we know the value
  * is a JSON-compliant type.
  */
-function isObject (obj) {
+function isObject$2 (obj) {
   return obj !== null && typeof obj === 'object'
 }
 
@@ -6788,7 +7725,7 @@ function extend (to, _from) {
 /**
  * Merge an Array of Objects into a single Object.
  */
-function toObject (arr) {
+function toObject$2 (arr) {
   var res = {};
   for (var i = 0; i < arr.length; i++) {
     if (arr[i]) {
@@ -6825,8 +7762,8 @@ var identity = function (_) { return _; };
  */
 function looseEqual (a, b) {
   if (a === b) { return true }
-  var isObjectA = isObject(a);
-  var isObjectB = isObject(b);
+  var isObjectA = isObject$2(a);
+  var isObjectB = isObject$2(b);
   if (isObjectA && isObjectB) {
     try {
       var isArrayA = Array.isArray(a);
@@ -7024,7 +7961,7 @@ function isReserved (str) {
 /**
  * Define a property.
  */
-function def$2 (obj, key, val, enumerable) {
+function def (obj, key, val, enumerable) {
   Object.defineProperty(obj, key, {
     value: val,
     enumerable: !!enumerable,
@@ -7237,14 +8174,14 @@ if (process.env.NODE_ENV !== 'production') {
 
 /*  */
 
-var uid = 0;
+var uid$2 = 0;
 
 /**
  * A dep is an observable that can have multiple
  * directives subscribing to it.
  */
 var Dep = function Dep () {
-  this.id = uid++;
+  this.id = uid$2++;
   this.subs = [];
 };
 
@@ -7406,7 +8343,7 @@ var methodsToPatch = [
 methodsToPatch.forEach(function (method) {
   // cache original method
   var original = arrayProto[method];
-  def$2(arrayMethods, method, function mutator () {
+  def(arrayMethods, method, function mutator () {
     var args = [], len = arguments.length;
     while ( len-- ) args[ len ] = arguments[ len ];
 
@@ -7453,7 +8390,7 @@ var Observer = function Observer (value) {
   this.value = value;
   this.dep = new Dep();
   this.vmCount = 0;
-  def$2(value, '__ob__', this);
+  def(value, '__ob__', this);
   if (Array.isArray(value)) {
     if (hasProto) {
       protoAugment(value, arrayMethods);
@@ -7507,7 +8444,7 @@ function protoAugment (target, src) {
 function copyAugment (target, src, keys) {
   for (var i = 0, l = keys.length; i < l; i++) {
     var key = keys[i];
-    def$2(target, key, src[key]);
+    def(target, key, src[key]);
   }
 }
 
@@ -7517,7 +8454,7 @@ function copyAugment (target, src, keys) {
  * or the existing observer if the value already has one.
  */
 function observe (value, asRootData) {
-  if (!isObject(value) || value instanceof VNode) {
+  if (!isObject$2(value) || value instanceof VNode) {
     return
   }
   var ob;
@@ -7607,7 +8544,7 @@ function defineReactive$$1 (
  * triggers change notification if the property doesn't
  * already exist.
  */
-function set (target, key, val) {
+function set$2 (target, key, val) {
   if (process.env.NODE_ENV !== 'production' &&
     (isUndef(target) || isPrimitive(target))
   ) {
@@ -7726,7 +8663,7 @@ function mergeData (to, from) {
     toVal = to[key];
     fromVal = from[key];
     if (!hasOwn(to, key)) {
-      set(to, key, fromVal);
+      set$2(to, key, fromVal);
     } else if (
       toVal !== fromVal &&
       isPlainObject(toVal) &&
@@ -8189,7 +9126,7 @@ function getPropDefaultValue (vm, prop, key) {
   }
   var def = prop.default;
   // warn against non-factory defaults for Object & Array
-  if (process.env.NODE_ENV !== 'production' && isObject(def)) {
+  if (process.env.NODE_ENV !== 'production' && isObject$2(def)) {
     warn(
       'Invalid default value for prop "' + key + '": ' +
       'Props with type Object/Array must use a factory function ' +
@@ -8649,7 +9586,7 @@ function traverse (val) {
 function _traverse (val, seen) {
   var i, keys;
   var isA = Array.isArray(val);
-  if ((!isA && !isObject(val)) || Object.isFrozen(val) || val instanceof VNode) {
+  if ((!isA && !isObject$2(val)) || Object.isFrozen(val) || val instanceof VNode) {
     return
   }
   if (val.__ob__) {
@@ -9124,9 +10061,9 @@ function normalizeScopedSlots (
   if (slots && Object.isExtensible(slots)) {
     (slots)._normalized = res;
   }
-  def$2(res, '$stable', isStable);
-  def$2(res, '$key', key);
-  def$2(res, '$hasNormal', hasNormalSlots);
+  def(res, '$stable', isStable);
+  def(res, '$key', key);
+  def(res, '$hasNormal', hasNormalSlots);
   return res
 }
 
@@ -9179,7 +10116,7 @@ function renderList (
     for (i = 0; i < val; i++) {
       ret[i] = render(i + 1, i);
     }
-  } else if (isObject(val)) {
+  } else if (isObject$2(val)) {
     if (hasSymbol && val[Symbol.iterator]) {
       ret = [];
       var iterator = val[Symbol.iterator]();
@@ -9220,7 +10157,7 @@ function renderSlot (
   if (scopedSlotFn) { // scoped slot
     props = props || {};
     if (bindObject) {
-      if (process.env.NODE_ENV !== 'production' && !isObject(bindObject)) {
+      if (process.env.NODE_ENV !== 'production' && !isObject$2(bindObject)) {
         warn(
           'slot v-bind without argument expects an Object',
           this
@@ -9295,14 +10232,14 @@ function bindObjectProps (
   isSync
 ) {
   if (value) {
-    if (!isObject(value)) {
+    if (!isObject$2(value)) {
       process.env.NODE_ENV !== 'production' && warn(
         'v-bind without argument expects an Object or Array value',
         this
       );
     } else {
       if (Array.isArray(value)) {
-        value = toObject(value);
+        value = toObject$2(value);
       }
       var hash;
       var loop = function ( key ) {
@@ -9725,7 +10662,7 @@ function createComponent (
   var baseCtor = context.$options._base;
 
   // plain options object: turn it into a constructor
-  if (isObject(Ctor)) {
+  if (isObject$2(Ctor)) {
     Ctor = baseCtor.extend(Ctor);
   }
 
@@ -10005,10 +10942,10 @@ function applyNS (vnode, ns, force) {
 // necessary to ensure parent re-render when deep bindings like :style and
 // :class are used on slot nodes
 function registerDeepBindings (data) {
-  if (isObject(data.style)) {
+  if (isObject$2(data.style)) {
     traverse(data.style);
   }
-  if (isObject(data.class)) {
+  if (isObject$2(data.class)) {
     traverse(data.class);
   }
 }
@@ -10133,7 +11070,7 @@ function ensureCtor (comp, base) {
   ) {
     comp = comp.default;
   }
-  return isObject(comp)
+  return isObject$2(comp)
     ? base.extend(comp)
     : comp
 }
@@ -10224,7 +11161,7 @@ function resolveAsyncComponent (
 
     var res = factory(resolve, reject);
 
-    if (isObject(res)) {
+    if (isObject$2(res)) {
       if (isPromise(res)) {
         // () => Promise
         if (isUndef(factory.resolved)) {
@@ -10770,7 +11707,7 @@ var MAX_UPDATE_COUNT = 100;
 
 var queue = [];
 var activatedChildren = [];
-var has = {};
+var has$4 = {};
 var circular = {};
 var waiting = false;
 var flushing = false;
@@ -10781,7 +11718,7 @@ var index = 0;
  */
 function resetSchedulerState () {
   index = queue.length = activatedChildren.length = 0;
-  has = {};
+  has$4 = {};
   if (process.env.NODE_ENV !== 'production') {
     circular = {};
   }
@@ -10845,10 +11782,10 @@ function flushSchedulerQueue () {
       watcher.before();
     }
     id = watcher.id;
-    has[id] = null;
+    has$4[id] = null;
     watcher.run();
     // in dev build, check and stop circular updates.
-    if (process.env.NODE_ENV !== 'production' && has[id] != null) {
+    if (process.env.NODE_ENV !== 'production' && has$4[id] != null) {
       circular[id] = (circular[id] || 0) + 1;
       if (circular[id] > MAX_UPDATE_COUNT) {
         warn(
@@ -10917,8 +11854,8 @@ function callActivatedHooks (queue) {
  */
 function queueWatcher (watcher) {
   var id = watcher.id;
-  if (has[id] == null) {
-    has[id] = true;
+  if (has$4[id] == null) {
+    has$4[id] = true;
     if (!flushing) {
       queue.push(watcher);
     } else {
@@ -10947,7 +11884,7 @@ function queueWatcher (watcher) {
 
 
 
-var uid$2 = 0;
+var uid$2$1 = 0;
 
 /**
  * A watcher parses an expression, collects dependencies,
@@ -10977,7 +11914,7 @@ var Watcher = function Watcher (
     this.deep = this.user = this.lazy = this.sync = false;
   }
   this.cb = cb;
-  this.id = ++uid$2; // uid for batching
+  this.id = ++uid$2$1; // uid for batching
   this.active = true;
   this.dirty = this.lazy; // for lazy watchers
   this.deps = [];
@@ -11096,7 +12033,7 @@ Watcher.prototype.run = function run () {
       // Deep watchers and watchers on Object/Arrays should fire even
       // when the value is the same, because the value may
       // have mutated.
-      isObject(value) ||
+      isObject$2(value) ||
       this.deep
     ) {
       // set new value
@@ -11468,7 +12405,7 @@ function stateMixin (Vue) {
   Object.defineProperty(Vue.prototype, '$data', dataDef);
   Object.defineProperty(Vue.prototype, '$props', propsDef);
 
-  Vue.prototype.$set = set;
+  Vue.prototype.$set = set$2;
   Vue.prototype.$delete = del;
 
   Vue.prototype.$watch = function (
@@ -11944,7 +12881,7 @@ function initGlobalAPI (Vue) {
     defineReactive: defineReactive$$1
   };
 
-  Vue.set = set;
+  Vue.set = set$2;
   Vue.delete = del;
   Vue.nextTick = nextTick;
 
@@ -12092,7 +13029,7 @@ function stringifyClass (value) {
   if (Array.isArray(value)) {
     return stringifyArray(value)
   }
-  if (isObject(value)) {
+  if (isObject$2(value)) {
     return stringifyObject(value)
   }
   if (typeof value === 'string') {
@@ -13638,7 +14575,7 @@ function normalizeStyleData (data) {
 // normalize possible array / string values into Object
 function normalizeStyleBinding (bindingStyle) {
   if (Array.isArray(bindingStyle)) {
-    return toObject(bindingStyle)
+    return toObject$2(bindingStyle)
   }
   if (typeof bindingStyle === 'string') {
     return parseStyleText(bindingStyle)
@@ -13691,7 +14628,7 @@ var setProp = function (el, name, val) {
   } else if (importantRE.test(val)) {
     el.style.setProperty(hyphenate(name), val.replace(importantRE, ''), 'important');
   } else {
-    var normalizedName = normalize(name);
+    var normalizedName = normalize$2(name);
     if (Array.isArray(val)) {
       // Support values array created by autoprefixer, e.g.
       // {display: ["-webkit-box", "-ms-flexbox", "flex"]}
@@ -13708,7 +14645,7 @@ var setProp = function (el, name, val) {
 var vendorNames = ['Webkit', 'Moz', 'ms'];
 
 var emptyStyle;
-var normalize = cached(function (prop) {
+var normalize$2 = cached(function (prop) {
   emptyStyle = emptyStyle || document.createElement('div').style;
   prop = camelize(prop);
   if (prop !== 'filter' && (prop in emptyStyle)) {
@@ -14100,7 +15037,7 @@ function enter (vnode, toggleDisplay) {
     : enterCancelled;
 
   var explicitEnterDuration = toNumber$1(
-    isObject(duration)
+    isObject$2(duration)
       ? duration.enter
       : duration
   );
@@ -14208,7 +15145,7 @@ function leave (vnode, rm) {
   var userWantsControl = getHookArgumentsLength(leave);
 
   var explicitLeaveDuration = toNumber$1(
-    isObject(duration)
+    isObject$2(duration)
       ? duration.leave
       : duration
   );
@@ -14757,15 +15694,15 @@ var Transition = {
 
 /*  */
 
-var props$8 = extend({
+var props$6 = extend({
   tag: String,
   moveClass: String
 }, transitionProps);
 
-delete props$8.mode;
+delete props$6.mode;
 
 var TransitionGroup = {
-  props: props$8,
+  props: props$6,
 
   beforeMount: function beforeMount () {
     var this$1 = this;
@@ -15332,9 +16269,8 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
 unwrapExports(coreuiUtilities);
 var coreuiUtilities_1 = coreuiUtilities.deepObjectsMerge;
-var coreuiUtilities_2 = coreuiUtilities.getStyle;
 
-var script$j = {
+var script$p = {
   name: 'CDropdown',
   mixins: [mixin_1],
   props: {
@@ -15346,9 +16282,12 @@ var script$j = {
     disabled: Boolean,
     addMenuClasses: [String, Array, Object],
     addTogglerClasses: [String, Array, Object],
-    nav: Boolean,
-    noCaret: Boolean,
-    variant: String,
+    inNav: Boolean,
+    caret: {
+      type: Boolean,
+      default: true
+    },
+    color: String,
     size: {
       type: String,
       validator: function validator(val) {
@@ -15364,7 +16303,10 @@ var script$j = {
       },
       default: 'bottom-start'
     },
-    noFlip: Boolean,
+    flip: {
+      type: Boolean,
+      default: true
+    },
     popperConfig: Object
   },
   data: function data() {
@@ -15388,6 +16330,11 @@ var script$j = {
     }
   },
   methods: {
+    checkClick: function checkClick(e) {
+      if (this.$scopedSlots.toggler && this.$el.firstElementChild.contains(e.target)) {
+        this.toggle(e);
+      }
+    },
     hide: function hide() {
       this.visible = false;
     },
@@ -15426,7 +16373,7 @@ var script$j = {
             offset: this.offset || 0
           },
           flip: {
-            enabled: !this.noFlip
+            enabled: this.flip
           }
         }
       };
@@ -15440,22 +16387,22 @@ var script$j = {
     computedDropdownClasses: function computedDropdownClasses() {
       return [this.carretClass, {
         'show': this.visible,
-        'nav-item': this.nav,
+        'nav-item': this.inNav,
         'btn-group': this.splittedToggler
       }];
     },
     togglerTag: function togglerTag() {
-      return this.nav ? CLink : 'button';
+      return this.inNav ? CLink : 'button';
     },
     splittedToggler: function splittedToggler() {
-      return this.split && !this.nav;
+      return this.split && !this.inNav;
     },
     computedTogglerClasses: function computedTogglerClasses() {
       var _ref;
 
-      return [this.addTogglerClasses, this.nav ? 'nav-link' : 'btn', (_ref = {
-        'dropdown-toggle': !this.noCaret && !this.split
-      }, _defineProperty(_ref, "btn-".concat(this.size), this.size && !this.nav), _defineProperty(_ref, 'disabled', this.disabled), _defineProperty(_ref, "".concat(this.nav ? 'bg' : 'btn', "-").concat(this.variant), this.variant), _ref)];
+      return [this.addTogglerClasses, this.inNav ? 'nav-link' : 'btn', (_ref = {
+        'dropdown-toggle': this.caret && !this.split
+      }, _defineProperty(_ref, "btn-".concat(this.size), this.size && !this.inNav), _defineProperty(_ref, 'disabled', this.disabled), _defineProperty(_ref, "".concat(this.inNav ? 'bg' : 'btn', "-").concat(this.color), this.color), _ref)];
     },
     togglerAttrs: function togglerAttrs() {
       return {
@@ -15472,7 +16419,7 @@ var script$j = {
 };
 
 /* script */
-const __vue_script__$j = script$j;
+const __vue_script__$p = script$p;
 
 /* template */
 var __vue_render__$8 = function() {
@@ -15480,7 +16427,7 @@ var __vue_render__$8 = function() {
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _c(
-    _vm.nav ? "li" : "div",
+    _vm.inNav ? "li" : "div",
     {
       directives: [
         {
@@ -15491,7 +16438,12 @@ var __vue_render__$8 = function() {
         }
       ],
       tag: "component",
-      class: _vm.computedDropdownClasses
+      class: _vm.computedDropdownClasses,
+      on: {
+        click: function($event) {
+          return _vm.checkClick($event)
+        }
+      }
     },
     [
       _vm._t("toggler", [
@@ -15541,13 +16493,13 @@ var __vue_staticRenderFns__$8 = [];
 __vue_render__$8._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$j = undefined;
+  const __vue_inject_styles__$p = undefined;
   /* scoped */
-  const __vue_scope_id__$j = undefined;
+  const __vue_scope_id__$p = undefined;
   /* module identifier */
-  const __vue_module_identifier__$j = undefined;
+  const __vue_module_identifier__$p = undefined;
   /* functional template */
-  const __vue_is_functional_template__$j = false;
+  const __vue_is_functional_template__$p = false;
   /* style inject */
   
   /* style inject SSR */
@@ -15556,16 +16508,16 @@ __vue_render__$8._withStripped = true;
   
   var CDropdown = normalizeComponent_1(
     { render: __vue_render__$8, staticRenderFns: __vue_staticRenderFns__$8 },
-    __vue_inject_styles__$j,
-    __vue_script__$j,
-    __vue_scope_id__$j,
-    __vue_is_functional_template__$j,
-    __vue_module_identifier__$j,
+    __vue_inject_styles__$p,
+    __vue_script__$p,
+    __vue_scope_id__$p,
+    __vue_is_functional_template__$p,
+    __vue_module_identifier__$p,
     undefined,
     undefined
   );
 
-var script$k = {
+var script$q = {
   functional: true,
   name: 'CDropdownHeader',
   props: {
@@ -15573,7 +16525,7 @@ var script$k = {
       type: String,
       default: 'div'
     },
-    variant: String
+    color: String
   },
   render: function render(h, _ref) {
     var props = _ref.props,
@@ -15581,24 +16533,24 @@ var script$k = {
         children = _ref.children;
     return h(props.tag, a(data, {
       staticClass: 'dropdown-header',
-      class: _defineProperty({}, "bg-".concat(props.variant), props.variant)
+      class: _defineProperty({}, "bg-".concat(props.color), props.color)
     }), children);
   }
 };
 
 /* script */
-const __vue_script__$k = script$k;
+const __vue_script__$q = script$q;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$k = undefined;
+  const __vue_inject_styles__$q = undefined;
   /* scoped */
-  const __vue_scope_id__$k = undefined;
+  const __vue_scope_id__$q = undefined;
   /* module identifier */
-  const __vue_module_identifier__$k = undefined;
+  const __vue_module_identifier__$q = undefined;
   /* functional template */
-  const __vue_is_functional_template__$k = undefined;
+  const __vue_is_functional_template__$q = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -15607,16 +16559,16 @@ const __vue_script__$k = script$k;
   
   var CDropdownHeader = normalizeComponent_1(
     {},
-    __vue_inject_styles__$k,
-    __vue_script__$k,
-    __vue_scope_id__$k,
-    __vue_is_functional_template__$k,
-    __vue_module_identifier__$k,
+    __vue_inject_styles__$q,
+    __vue_script__$q,
+    __vue_scope_id__$q,
+    __vue_is_functional_template__$q,
+    __vue_module_identifier__$q,
     undefined,
     undefined
   );
 
-var script$l = {
+var script$r = {
   functional: true,
   name: 'CDropdownDivider',
   props: {
@@ -15638,18 +16590,18 @@ var script$l = {
 };
 
 /* script */
-const __vue_script__$l = script$l;
+const __vue_script__$r = script$r;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$l = undefined;
+  const __vue_inject_styles__$r = undefined;
   /* scoped */
-  const __vue_scope_id__$l = undefined;
+  const __vue_scope_id__$r = undefined;
   /* module identifier */
-  const __vue_module_identifier__$l = undefined;
+  const __vue_module_identifier__$r = undefined;
   /* functional template */
-  const __vue_is_functional_template__$l = undefined;
+  const __vue_is_functional_template__$r = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -15658,16 +16610,16 @@ const __vue_script__$l = script$l;
   
   var CDropdownDivider = normalizeComponent_1(
     {},
-    __vue_inject_styles__$l,
-    __vue_script__$l,
-    __vue_scope_id__$l,
-    __vue_is_functional_template__$l,
-    __vue_module_identifier__$l,
+    __vue_inject_styles__$r,
+    __vue_script__$r,
+    __vue_scope_id__$r,
+    __vue_is_functional_template__$r,
+    __vue_module_identifier__$r,
     undefined,
     undefined
   );
 
-var script$m = {
+var script$s = {
   functional: true,
   name: 'CDropdownItem',
   props: propsFactory(),
@@ -15686,18 +16638,18 @@ var script$m = {
 };
 
 /* script */
-const __vue_script__$m = script$m;
+const __vue_script__$s = script$s;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$m = undefined;
+  const __vue_inject_styles__$s = undefined;
   /* scoped */
-  const __vue_scope_id__$m = undefined;
+  const __vue_scope_id__$s = undefined;
   /* module identifier */
-  const __vue_module_identifier__$m = undefined;
+  const __vue_module_identifier__$s = undefined;
   /* functional template */
-  const __vue_is_functional_template__$m = undefined;
+  const __vue_is_functional_template__$s = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -15706,16 +16658,16 @@ const __vue_script__$m = script$m;
   
   var CDropdownItem = normalizeComponent_1(
     {},
-    __vue_inject_styles__$m,
-    __vue_script__$m,
-    __vue_scope_id__$m,
-    __vue_is_functional_template__$m,
-    __vue_module_identifier__$m,
+    __vue_inject_styles__$s,
+    __vue_script__$s,
+    __vue_scope_id__$s,
+    __vue_is_functional_template__$s,
+    __vue_module_identifier__$s,
     undefined,
     undefined
   );
 
-var props$9 = {
+var props$7 = {
   type: {
     type: String,
     default: 'iframe',
@@ -15735,10 +16687,10 @@ var props$9 = {
     default: 'div'
   }
 };
-var script$n = {
+var script$t = {
   functional: true,
   name: 'CEmbed',
-  props: props$9,
+  props: props$7,
   render: function render(h, _ref) {
     var props = _ref.props,
         data = _ref.data,
@@ -15755,18 +16707,18 @@ var script$n = {
 };
 
 /* script */
-const __vue_script__$n = script$n;
+const __vue_script__$t = script$t;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$n = undefined;
+  const __vue_inject_styles__$t = undefined;
   /* scoped */
-  const __vue_scope_id__$n = undefined;
+  const __vue_scope_id__$t = undefined;
   /* module identifier */
-  const __vue_module_identifier__$n = undefined;
+  const __vue_module_identifier__$t = undefined;
   /* functional template */
-  const __vue_is_functional_template__$n = undefined;
+  const __vue_is_functional_template__$t = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -15775,37 +16727,41 @@ const __vue_script__$n = script$n;
   
   var CEmbed = normalizeComponent_1(
     {},
-    __vue_inject_styles__$n,
-    __vue_script__$n,
-    __vue_scope_id__$n,
-    __vue_is_functional_template__$n,
-    __vue_module_identifier__$n,
+    __vue_inject_styles__$t,
+    __vue_script__$t,
+    __vue_scope_id__$t,
+    __vue_is_functional_template__$t,
+    __vue_module_identifier__$t,
     undefined,
     undefined
   );
 
 var quot = /"/g;
+
 // B.2.3.2.1 CreateHTML(string, tag, attribute, value)
-var createHTML = function (string, tag, attribute, value) {
-  var S = String(_defined(string));
+// https://tc39.github.io/ecma262/#sec-createhtml
+var createHtml = function (string, tag, attribute, value) {
+  var S = String(requireObjectCoercible(string));
   var p1 = '<' + tag;
   if (attribute !== '') p1 += ' ' + attribute + '="' + String(value).replace(quot, '&quot;') + '"';
   return p1 + '>' + S + '</' + tag + '>';
 };
-var _stringHtml = function (NAME, exec) {
-  var O = {};
-  O[NAME] = exec(createHTML);
-  _export(_export.P + _export.F * _fails(function () {
-    var test = ''[NAME]('"');
+
+// check the existence of a method, lowercase
+// of a tag and escaping quotes in arguments
+var forcedStringHtmlMethod = function (METHOD_NAME) {
+  return fails(function () {
+    var test = ''[METHOD_NAME]('"');
     return test !== test.toLowerCase() || test.split('"').length > 3;
-  }), 'String', O);
+  });
 };
 
-// B.2.3.6 String.prototype.fixed()
-_stringHtml('fixed', function (createHTML) {
-  return function fixed() {
-    return createHTML(this, 'tt', '', '');
-  };
+// `String.prototype.fixed` method
+// https://tc39.github.io/ecma262/#sec-string.prototype.fixed
+_export({ target: 'String', proto: true, forced: forcedStringHtmlMethod('fixed') }, {
+  fixed: function fixed() {
+    return createHtml(this, 'tt', '', '');
+  }
 });
 
 //
@@ -15814,9 +16770,13 @@ _stringHtml('fixed', function (createHTML) {
 //
 //
 //
-var script$o = {
+var script$u = {
   name: 'CFooter',
   props: {
+    tag: {
+      type: String,
+      default: 'footer'
+    },
     fixed: Boolean
   },
   computed: {
@@ -15829,7 +16789,7 @@ var script$o = {
 };
 
 /* script */
-const __vue_script__$o = script$o;
+const __vue_script__$u = script$u;
 
 /* template */
 var __vue_render__$9 = function() {
@@ -15837,8 +16797,8 @@ var __vue_render__$9 = function() {
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _c(
-    "footer",
-    { class: _vm.classList },
+    _vm.tag,
+    { tag: "component", class: _vm.classList },
     [_vm._t("default", [_vm._v("Footer")])],
     2
   )
@@ -15847,13 +16807,13 @@ var __vue_staticRenderFns__$9 = [];
 __vue_render__$9._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$o = undefined;
+  const __vue_inject_styles__$u = undefined;
   /* scoped */
-  const __vue_scope_id__$o = undefined;
+  const __vue_scope_id__$u = undefined;
   /* module identifier */
-  const __vue_module_identifier__$o = undefined;
+  const __vue_module_identifier__$u = undefined;
   /* functional template */
-  const __vue_is_functional_template__$o = false;
+  const __vue_is_functional_template__$u = false;
   /* style inject */
   
   /* style inject SSR */
@@ -15862,16 +16822,16 @@ __vue_render__$9._withStripped = true;
   
   var CFooter = normalizeComponent_1(
     { render: __vue_render__$9, staticRenderFns: __vue_staticRenderFns__$9 },
-    __vue_inject_styles__$o,
-    __vue_script__$o,
-    __vue_scope_id__$o,
-    __vue_is_functional_template__$o,
-    __vue_module_identifier__$o,
+    __vue_inject_styles__$u,
+    __vue_script__$u,
+    __vue_scope_id__$u,
+    __vue_is_functional_template__$u,
+    __vue_module_identifier__$u,
     undefined,
     undefined
   );
 
-var script$p = {
+var script$v = {
   name: 'CForm',
   functional: true,
   props: {
@@ -15898,18 +16858,18 @@ var script$p = {
 };
 
 /* script */
-const __vue_script__$p = script$p;
+const __vue_script__$v = script$v;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$p = undefined;
+  const __vue_inject_styles__$v = undefined;
   /* scoped */
-  const __vue_scope_id__$p = undefined;
+  const __vue_scope_id__$v = undefined;
   /* module identifier */
-  const __vue_module_identifier__$p = undefined;
+  const __vue_module_identifier__$v = undefined;
   /* functional template */
-  const __vue_is_functional_template__$p = undefined;
+  const __vue_is_functional_template__$v = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -15918,24 +16878,14 @@ const __vue_script__$p = script$p;
   
   var CForm = normalizeComponent_1(
     {},
-    __vue_inject_styles__$p,
-    __vue_script__$p,
-    __vue_scope_id__$p,
-    __vue_is_functional_template__$p,
-    __vue_module_identifier__$p,
+    __vue_inject_styles__$v,
+    __vue_script__$v,
+    __vue_scope_id__$v,
+    __vue_is_functional_template__$v,
+    __vue_module_identifier__$v,
     undefined,
     undefined
   );
-
-// https://github.com/tc39/proposal-object-values-entries
-
-var $values = _objectToArray(false);
-
-_export(_export.S, 'Object', {
-  values: function values(it) {
-    return $values(it);
-  }
-});
 
 var formGroupAlwaysSharedProps = {
   validFeedback: String,
@@ -15960,7 +16910,7 @@ var universalProps = {
   addInputClasses: [String, Array, Object],
   addLabelClasses: [String, Array, Object]
 };
-var props$a = Object.assign({}, universalProps, {
+var props$8 = Object.assign({}, universalProps, {
   horizontal: [Boolean, Object],
   size: {
     type: String,
@@ -15973,29 +16923,29 @@ var props$a = Object.assign({}, universalProps, {
 var textInputsProps = {
   readonly: Boolean,
   plaintext: Boolean,
-  value: String,
+  value: [String, Number],
   lazy: {
     type: [Boolean, Number],
     default: 400
   }
 }; // Html props: disabled, required, accept, id, placeholder
 
-var formFileProps = Object.assign({}, formGroupAlwaysSharedProps, props$a, {
+var inputFileProps = Object.assign({}, formGroupAlwaysSharedProps, props$8, {
   custom: Boolean,
   placeholder: String,
   multiple: Boolean
 }); // Html props: disabled, required, rows, cols, placeholder, id
 
-var formTextareaProps = Object.assign({}, formGroupSharedProps, props$a, textInputsProps); // HTML props: disabled, required, placeholder, id
+var textareaProps = Object.assign({}, formGroupSharedProps, props$8, textInputsProps); // HTML props: disabled, required, placeholder, id
 
-var formInputProps = Object.assign({}, formGroupSharedProps, props$a, textInputsProps, {
+var inputProps = Object.assign({}, formGroupSharedProps, props$8, textInputsProps, {
   type: {
     type: String,
     default: 'text'
   }
 }); // Html props: disabled, id required don't use multiple
 
-var formSelectProps = Object.assign({}, formGroupSharedProps, props$a, {
+var selectProps = Object.assign({}, formGroupSharedProps, props$8, {
   options: Array,
   value: [String, Number, Boolean, Array],
   plaintext: Boolean,
@@ -16003,29 +16953,18 @@ var formSelectProps = Object.assign({}, formGroupSharedProps, props$a, {
   custom: Boolean
 }); // Html props: id, disabled, required
 
-var formRadioProps = Object.assign({}, formGroupAlwaysSharedProps, universalProps, {
-  checked: [Boolean, String, Number],
+var inputCheckboxProps = Object.assign({}, formGroupAlwaysSharedProps, universalProps, {
+  checked: Boolean,
   value: {
     type: [String, Number, Boolean],
     default: undefined
   },
   custom: Boolean,
   inline: Boolean
-}); // Html props: id, disabled, required
-
-var formCheckboxProps = Object.assign({}, formRadioProps, {
-  trueValue: {
-    type: [String, Number],
-    default: undefined
-  },
-  falseValue: {
-    type: [String, Number],
-    default: undefined
-  }
 });
 
 //
-var script$q = {
+var script$w = {
   name: 'CFormGroup',
   inheritAttrs: false,
   props: formGroupProps // {
@@ -16041,7 +16980,7 @@ var script$q = {
 };
 
 /* script */
-const __vue_script__$q = script$q;
+const __vue_script__$w = script$w;
 
 /* template */
 var __vue_render__$a = function(_h, _vm) {
@@ -16218,13 +17157,13 @@ var __vue_staticRenderFns__$a = [];
 __vue_render__$a._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$q = undefined;
+  const __vue_inject_styles__$w = undefined;
   /* scoped */
-  const __vue_scope_id__$q = undefined;
+  const __vue_scope_id__$w = undefined;
   /* module identifier */
-  const __vue_module_identifier__$q = undefined;
+  const __vue_module_identifier__$w = undefined;
   /* functional template */
-  const __vue_is_functional_template__$q = true;
+  const __vue_is_functional_template__$w = true;
   /* style inject */
   
   /* style inject SSR */
@@ -16233,74 +17172,137 @@ __vue_render__$a._withStripped = true;
   
   var CFormGroup = normalizeComponent_1(
     { render: __vue_render__$a, staticRenderFns: __vue_staticRenderFns__$a },
-    __vue_inject_styles__$q,
-    __vue_script__$q,
-    __vue_scope_id__$q,
-    __vue_is_functional_template__$q,
-    __vue_module_identifier__$q,
+    __vue_inject_styles__$w,
+    __vue_script__$w,
+    __vue_scope_id__$w,
+    __vue_is_functional_template__$w,
+    __vue_module_identifier__$w,
     undefined,
     undefined
   );
 
-// 21.2.5.3 get RegExp.prototype.flags()
-if (_descriptors && /./g.flags != 'g') _objectDp.f(RegExp.prototype, 'flags', {
-  configurable: true,
-  get: _flags
+var $values = objectToArray.values;
+
+// `Object.values` method
+// https://tc39.github.io/ecma262/#sec-object.values
+_export({ target: 'Object', stat: true }, {
+  values: function values(O) {
+    return $values(O);
+  }
 });
 
+var DatePrototype = Date.prototype;
+var INVALID_DATE = 'Invalid Date';
 var TO_STRING = 'toString';
-var $toString = /./[TO_STRING];
+var nativeDateToString = DatePrototype[TO_STRING];
+var getTime = DatePrototype.getTime;
 
-var define = function (fn) {
-  _redefine(RegExp.prototype, TO_STRING, fn, true);
-};
-
-// 21.2.5.14 RegExp.prototype.toString()
-if (_fails(function () { return $toString.call({ source: 'a', flags: 'b' }) != '/a/b'; })) {
-  define(function toString() {
-    var R = _anObject(this);
-    return '/'.concat(R.source, '/',
-      'flags' in R ? R.flags : !_descriptors && R instanceof RegExp ? _flags.call(R) : undefined);
-  });
-// FF44- RegExp#toString has a wrong name
-} else if ($toString.name != TO_STRING) {
-  define(function toString() {
-    return $toString.call(this);
+// `Date.prototype.toString` method
+// https://tc39.github.io/ecma262/#sec-date.prototype.tostring
+if (new Date(NaN) + '' != INVALID_DATE) {
+  redefine(DatePrototype, TO_STRING, function toString() {
+    var value = getTime.call(this);
+    // eslint-disable-next-line no-self-compare
+    return value === value ? nativeDateToString.call(this) : INVALID_DATE;
   });
 }
 
-var max$2 = Math.max;
-var min$4 = Math.min;
+var TO_STRING_TAG$4 = wellKnownSymbol('toStringTag');
+// ES3 wrong here
+var CORRECT_ARGUMENTS$1 = classofRaw(function () { return arguments; }()) == 'Arguments';
+
+// fallback for IE11 Script Access Denied error
+var tryGet$1 = function (it, key) {
+  try {
+    return it[key];
+  } catch (error) { /* empty */ }
+};
+
+// getting tag from ES6+ `Object.prototype.toString`
+var classof$1 = function (it) {
+  var O, tag, result;
+  return it === undefined ? 'Undefined' : it === null ? 'Null'
+    // @@toStringTag case
+    : typeof (tag = tryGet$1(O = Object(it), TO_STRING_TAG$4)) == 'string' ? tag
+    // builtinTag case
+    : CORRECT_ARGUMENTS$1 ? classofRaw(O)
+    // ES3 arguments fallback
+    : (result = classofRaw(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : result;
+};
+
+var TO_STRING_TAG$5 = wellKnownSymbol('toStringTag');
+var test$1 = {};
+
+test$1[TO_STRING_TAG$5] = 'z';
+
+// `Object.prototype.toString` method implementation
+// https://tc39.github.io/ecma262/#sec-object.prototype.tostring
+var objectToString$1 = String(test$1) !== '[object z]' ? function toString() {
+  return '[object ' + classof$1(this) + ']';
+} : test$1.toString;
+
+var ObjectPrototype$1 = Object.prototype;
+
+// `Object.prototype.toString` method
+// https://tc39.github.io/ecma262/#sec-object.prototype.tostring
+if (objectToString$1 !== ObjectPrototype$1.toString) {
+  redefine(ObjectPrototype$1, 'toString', objectToString$1, { unsafe: true });
+}
+
+var TO_STRING$1 = 'toString';
+var RegExpPrototype = RegExp.prototype;
+var nativeToString = RegExpPrototype[TO_STRING$1];
+
+var NOT_GENERIC = fails(function () { return nativeToString.call({ source: 'a', flags: 'b' }) != '/a/b'; });
+// FF44- RegExp#toString has a wrong name
+var INCORRECT_NAME = nativeToString.name != TO_STRING$1;
+
+// `RegExp.prototype.toString` method
+// https://tc39.github.io/ecma262/#sec-regexp.prototype.tostring
+if (NOT_GENERIC || INCORRECT_NAME) {
+  redefine(RegExp.prototype, TO_STRING$1, function toString() {
+    var R = anObject(this);
+    var p = String(R.source);
+    var rf = R.flags;
+    var f = String(rf === undefined && R instanceof RegExp && !('flags' in RegExpPrototype) ? regexpFlags.call(R) : rf);
+    return '/' + p + '/' + f;
+  }, { unsafe: true });
+}
+
+var max$3 = Math.max;
+var min$5 = Math.min;
 var floor$2 = Math.floor;
-var SUBSTITUTION_SYMBOLS = /\$([$&`']|\d\d?|<[^>]*>)/g;
-var SUBSTITUTION_SYMBOLS_NO_NAMED = /\$([$&`']|\d\d?)/g;
+var SUBSTITUTION_SYMBOLS = /\$([$&'`]|\d\d?|<[^>]*>)/g;
+var SUBSTITUTION_SYMBOLS_NO_NAMED = /\$([$&'`]|\d\d?)/g;
 
 var maybeToString = function (it) {
   return it === undefined ? it : String(it);
 };
 
 // @@replace logic
-_fixReWks('replace', 2, function (defined, REPLACE, $replace, maybeCallNative) {
+fixRegexpWellKnownSymbolLogic('replace', 2, function (REPLACE, nativeReplace, maybeCallNative) {
   return [
     // `String.prototype.replace` method
     // https://tc39.github.io/ecma262/#sec-string.prototype.replace
     function replace(searchValue, replaceValue) {
-      var O = defined(this);
-      var fn = searchValue == undefined ? undefined : searchValue[REPLACE];
-      return fn !== undefined
-        ? fn.call(searchValue, O, replaceValue)
-        : $replace.call(String(O), searchValue, replaceValue);
+      var O = requireObjectCoercible(this);
+      var replacer = searchValue == undefined ? undefined : searchValue[REPLACE];
+      return replacer !== undefined
+        ? replacer.call(searchValue, O, replaceValue)
+        : nativeReplace.call(String(O), searchValue, replaceValue);
     },
     // `RegExp.prototype[@@replace]` method
     // https://tc39.github.io/ecma262/#sec-regexp.prototype-@@replace
     function (regexp, replaceValue) {
-      var res = maybeCallNative($replace, regexp, this, replaceValue);
+      var res = maybeCallNative(nativeReplace, regexp, this, replaceValue);
       if (res.done) return res.value;
 
-      var rx = _anObject(regexp);
+      var rx = anObject(regexp);
       var S = String(this);
+
       var functionalReplace = typeof replaceValue === 'function';
       if (!functionalReplace) replaceValue = String(replaceValue);
+
       var global = rx.global;
       if (global) {
         var fullUnicode = rx.unicode;
@@ -16308,19 +17310,23 @@ _fixReWks('replace', 2, function (defined, REPLACE, $replace, maybeCallNative) {
       }
       var results = [];
       while (true) {
-        var result = _regexpExecAbstract(rx, S);
+        var result = regexpExecAbstract(rx, S);
         if (result === null) break;
+
         results.push(result);
         if (!global) break;
+
         var matchStr = String(result[0]);
-        if (matchStr === '') rx.lastIndex = _advanceStringIndex(S, _toLength(rx.lastIndex), fullUnicode);
+        if (matchStr === '') rx.lastIndex = advanceStringIndex(S, toLength(rx.lastIndex), fullUnicode);
       }
+
       var accumulatedResult = '';
       var nextSourcePosition = 0;
       for (var i = 0; i < results.length; i++) {
         result = results[i];
+
         var matched = String(result[0]);
-        var position = max$2(min$4(_toInteger(result.index), S.length), 0);
+        var position = max$3(min$5(toInteger(result.index), S.length), 0);
         var captures = [];
         // NOTE: This is equivalent to
         //   captures = result.slice(1).map(maybeToString)
@@ -16345,16 +17351,16 @@ _fixReWks('replace', 2, function (defined, REPLACE, $replace, maybeCallNative) {
     }
   ];
 
-    // https://tc39.github.io/ecma262/#sec-getsubstitution
+  // https://tc39.github.io/ecma262/#sec-getsubstitution
   function getSubstitution(matched, str, position, captures, namedCaptures, replacement) {
     var tailPos = position + matched.length;
     var m = captures.length;
     var symbols = SUBSTITUTION_SYMBOLS_NO_NAMED;
     if (namedCaptures !== undefined) {
-      namedCaptures = _toObject$1(namedCaptures);
+      namedCaptures = toObject(namedCaptures);
       symbols = SUBSTITUTION_SYMBOLS;
     }
-    return $replace.call(replacement, symbols, function (match, ch) {
+    return nativeReplace.call(replacement, symbols, function (match, ch) {
       var capture;
       switch (ch.charAt(0)) {
         case '$': return '$';
@@ -16471,22 +17477,23 @@ var classesComputedProps = {
 };
 
 var allFormMixins = /*#__PURE__*/Object.freeze({
-  safeId: safeId,
-  wrapperComputedProps: wrapperComputedProps,
-  validationComputedProps: validationComputedProps,
-  watchValue: watchValue,
-  classesComputedProps: classesComputedProps
+	__proto__: null,
+	safeId: safeId,
+	wrapperComputedProps: wrapperComputedProps,
+	validationComputedProps: validationComputedProps,
+	watchValue: watchValue,
+	classesComputedProps: classesComputedProps
 });
 
 var mixins = Object.values(allFormMixins);
-var script$r = {
-  name: 'CFormInput',
+var script$x = {
+  name: 'CInput',
   inheritAttrs: false,
   components: {
     CFormGroup: CFormGroup
   },
   mixins: mixins,
-  props: formInputProps,
+  props: inputProps,
   // Html props: disabled, required, rows, cols, placeholder
   // {
   //   validFeedback: String,
@@ -16635,7 +17642,7 @@ var script$r = {
 };
 
 /* script */
-const __vue_script__$r = script$r;
+const __vue_script__$x = script$x;
 
 /* template */
 var __vue_render__$b = function() {
@@ -16748,38 +17755,38 @@ var __vue_staticRenderFns__$b = [];
 __vue_render__$b._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$r = undefined;
+  const __vue_inject_styles__$x = undefined;
   /* scoped */
-  const __vue_scope_id__$r = undefined;
+  const __vue_scope_id__$x = undefined;
   /* module identifier */
-  const __vue_module_identifier__$r = undefined;
+  const __vue_module_identifier__$x = undefined;
   /* functional template */
-  const __vue_is_functional_template__$r = false;
+  const __vue_is_functional_template__$x = false;
   /* style inject */
   
   /* style inject SSR */
   
 
   
-  var CFormInput = normalizeComponent_1(
+  var CInput = normalizeComponent_1(
     { render: __vue_render__$b, staticRenderFns: __vue_staticRenderFns__$b },
-    __vue_inject_styles__$r,
-    __vue_script__$r,
-    __vue_scope_id__$r,
-    __vue_is_functional_template__$r,
-    __vue_module_identifier__$r,
+    __vue_inject_styles__$x,
+    __vue_script__$x,
+    __vue_scope_id__$x,
+    __vue_is_functional_template__$x,
+    __vue_module_identifier__$x,
     undefined,
     undefined
   );
 
-var script$s = {
-  name: 'CFormCheckbox',
+var script$y = {
+  name: 'CInputCheckbox',
   inheritAttrs: false,
   components: {
     CFormGroup: CFormGroup
   },
   mixins: [safeId, validationComputedProps],
-  props: formCheckboxProps,
+  props: inputCheckboxProps,
   // {
   // validFeedback: String,
   // invalidFeedback: String,
@@ -16799,15 +17806,7 @@ var script$s = {
   //   default: undefined
   // },
   // custom: Boolean,
-  // inline: Boolean,
-  // trueValue: {
-  //   type: [String, Number],
-  //   default: undefined
-  // },
-  // falseValue: {
-  //   type: [String, Number],
-  //   default: undefined
-  // },
+  // inline: Boolean
   // },
   type: 'checkbox',
   data: function data() {
@@ -16818,8 +17817,8 @@ var script$s = {
   watch: {
     checked: {
       immediate: true,
-      handler: function handler() {
-        this.state = this.getCheckState();
+      handler: function handler(val) {
+        this.state = val;
       }
     }
   },
@@ -16853,29 +17852,15 @@ var script$s = {
 
   },
   methods: {
-    getCheckState: function getCheckState() {
-      if (typeof this.checked === 'boolean') {
-        return this.checked;
-      } else {
-        return this.checked === this.trueValue ? true : false;
-      }
-    },
     onChange: function onChange(e) {
       this.state = e.target.checked;
-      this.$emit('update:checked', this.getValue(e), e);
-    },
-    getValue: function getValue(e) {
-      if (e.target.checked) {
-        return this.trueValue !== undefined ? this.trueValue : true;
-      } else {
-        return this.falseValue !== undefined ? this.falseValue : false;
-      }
+      this.$emit('update:checked', e.target.checked, e);
     }
   }
 };
 
 /* script */
-const __vue_script__$s = script$s;
+const __vue_script__$y = script$y;
 
 /* template */
 var __vue_render__$c = function() {
@@ -16971,26 +17956,26 @@ var __vue_staticRenderFns__$c = [];
 __vue_render__$c._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$s = undefined;
+  const __vue_inject_styles__$y = undefined;
   /* scoped */
-  const __vue_scope_id__$s = undefined;
+  const __vue_scope_id__$y = undefined;
   /* module identifier */
-  const __vue_module_identifier__$s = undefined;
+  const __vue_module_identifier__$y = undefined;
   /* functional template */
-  const __vue_is_functional_template__$s = false;
+  const __vue_is_functional_template__$y = false;
   /* style inject */
   
   /* style inject SSR */
   
 
   
-  var CFormCheckbox = normalizeComponent_1(
+  var CInputCheckbox = normalizeComponent_1(
     { render: __vue_render__$c, staticRenderFns: __vue_staticRenderFns__$c },
-    __vue_inject_styles__$s,
-    __vue_script__$s,
-    __vue_scope_id__$s,
-    __vue_is_functional_template__$s,
-    __vue_module_identifier__$s,
+    __vue_inject_styles__$y,
+    __vue_script__$y,
+    __vue_scope_id__$y,
+    __vue_is_functional_template__$y,
+    __vue_module_identifier__$y,
     undefined,
     undefined
   );
@@ -16998,14 +17983,14 @@ __vue_render__$c._withStripped = true;
 var mixins$1 = Object.values(allFormMixins).filter(function (i, key) {
   return key !== 'watchValue';
 });
-var script$t = {
-  name: 'CFormFile',
+var script$z = {
+  name: 'CInputFile',
   inheritAttrs: false,
   components: {
     CFormGroup: CFormGroup
   },
   mixins: mixins$1,
-  props: formFileProps,
+  props: inputFileProps,
   // {
   // validFeedback: String,
   // invalidFeedback: String,
@@ -17117,7 +18102,7 @@ var script$t = {
 };
 
 /* script */
-const __vue_script__$t = script$t;
+const __vue_script__$z = script$z;
 
 /* template */
 var __vue_render__$d = function() {
@@ -17239,39 +18224,406 @@ var __vue_staticRenderFns__$d = [];
 __vue_render__$d._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$t = undefined;
+  const __vue_inject_styles__$z = undefined;
   /* scoped */
-  const __vue_scope_id__$t = undefined;
+  const __vue_scope_id__$z = undefined;
   /* module identifier */
-  const __vue_module_identifier__$t = undefined;
+  const __vue_module_identifier__$z = undefined;
   /* functional template */
-  const __vue_is_functional_template__$t = false;
+  const __vue_is_functional_template__$z = false;
   /* style inject */
   
   /* style inject SSR */
   
 
   
-  var CFormFile = normalizeComponent_1(
+  var CInputFile = normalizeComponent_1(
     { render: __vue_render__$d, staticRenderFns: __vue_staticRenderFns__$d },
-    __vue_inject_styles__$t,
-    __vue_script__$t,
-    __vue_scope_id__$t,
-    __vue_is_functional_template__$t,
-    __vue_module_identifier__$t,
+    __vue_inject_styles__$z,
+    __vue_script__$z,
+    __vue_scope_id__$z,
+    __vue_is_functional_template__$z,
+    __vue_module_identifier__$z,
+    undefined,
+    undefined
+  );
+
+var script$A = {
+  name: 'CInputRadio',
+  extends: CInputCheckbox,
+  type: 'radio'
+};
+
+/* script */
+const __vue_script__$A = script$A;
+
+/* template */
+
+  /* style */
+  const __vue_inject_styles__$A = undefined;
+  /* scoped */
+  const __vue_scope_id__$A = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$A = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$A = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CInputRadio = normalizeComponent_1(
+    {},
+    __vue_inject_styles__$A,
+    __vue_script__$A,
+    __vue_scope_id__$A,
+    __vue_is_functional_template__$A,
+    __vue_module_identifier__$A,
     undefined,
     undefined
   );
 
 var mixins$2 = Object.values(allFormMixins);
-var script$u = {
-  name: 'CFormTextarea',
+var script$B = {
+  name: 'CSelect',
   inheritAttrs: false,
   components: {
     CFormGroup: CFormGroup
   },
+  slots: ['prepend', 'append', 'label-after-input', 'valid-feedback', 'invalid-feedback', 'description'],
   mixins: mixins$2,
-  props: formTextareaProps,
+  props: selectProps,
+  // Html props: disabled, required don't use multiple
+  // {
+  //   validFeedback: String,
+  //   invalidFeedback: String,
+  //   tooltipFeedback: Boolean,
+  //   description: String,
+  //   appendHtml: String,
+  //   prependHtml: String,
+  //   label: String,
+  //   wasValidated: Boolean,
+  //   isValid: {
+  //     type: [Boolean, Function],
+  //     default: null
+  //   },
+  //   addInputClasses: [String, Array, Object],
+  //   addLabelClasses: [String, Array, Object],
+  //   horizontal: [Boolean, Object],
+  //   size: {
+  //     type: String,
+  //     validator: str => ['','sm','lg'].includes(str)
+  //   },
+  //   addWrapperClasses: [String, Array, Object],
+  //   options: Array,
+  //   value: [String, Number, Boolean, Array],
+  //   plaintext: Boolean,
+  //   placeholder: String,
+  //   custom: Boolean
+  // },
+  data: function data() {
+    return {
+      state: this.value || undefined
+    };
+  },
+  //watchValue mixin
+  // watch: {
+  //   value (val) {
+  //     this.state = val
+  //   }
+  // },
+  computed: {
+    // classesComputedProps mixin
+    // haveCustomSize () {
+    //   return ['sm','lg'].includes(this.size)
+    // },
+    // computedClasses () {
+    //   return [
+    //     'form-group',
+    //     {
+    //      'was-validated': this.wasValidated,
+    //      'form-row': this.isHorizontal
+    //     }
+    //   ]
+    // },
+    // labelClasses () {
+    //   return [
+    //     this.addLabelClasses,
+    //     {
+    //       'col-form-label': this.isHorizontal,
+    //       [this.horizontal.label || 'col-sm-3']: this.isHorizontal,
+    //       [`col-form-label-${this.size}`]: this.haveCustomSize,
+    //     }
+    //   ]
+    // },
+    customSizeClass: function customSizeClass() {
+      if (this.haveCustomSize && !this.haveWrapper) {
+        return "".concat(this.custom ? 'custom-select' : 'form-control', "-").concat(this.size);
+      }
+    },
+    inputClass: function inputClass() {
+      var standardClass = "form-control".concat(this.plaintext ? '-plaintext' : '');
+      return this.custom ? 'custom-select' : standardClass;
+    } // inputClasses () {
+    //   return [
+    //     this.inputClass || `form-control${this.plaintext ? '-plaintext' : ''}`,
+    //     this.validationClass,
+    //     this.addInputClasses,
+    //     this.customSizeClass
+    //   ]
+    // }
+    // validationComputedProps mixin
+    // computedIsValid () {
+    //   if (typeof this.isValid === 'function') {
+    //     return this.isValid(this.state)
+    //   }
+    //   return this.isValid
+    // },
+    // validationClass () {
+    //   if (typeof this.computedIsValid === 'boolean') {
+    //     return this.computedIsValid ? 'is-valid' : 'is-invalid'
+    //   }
+    // },
+    //wrapperComputedProps mixin
+    // isHorizontal () {
+    //   return Boolean(this.horizontal)
+    // },
+    // haveInputGroup () {
+    //   return Boolean(
+    //     this.tooltipFeedback || 
+    //     this.appendHtml ||
+    //     this.prependHtml || 
+    //     this.$slots.append || 
+    //     this.$slots.prepend
+    //   )
+    // },
+    // haveWrapper () {
+    //   return this.haveInputGroup || Boolean(this.addWrapperClasses || this.isHorizontal)
+    // },
+    // wrapperClasses () {
+    //   if (this.haveWrapper) {
+    //     return [
+    //       this.addWrapperClasses,
+    //       {
+    //         [this.horizontal.input || 'col-sm-9'] : this.isHorizontal,
+    //         'input-group' : this.haveInputGroup,
+    //         [`input-group-${this.size}`]: this.haveCustomSize
+    //       }
+    //     ]
+    //   }
+    // }
+
+  },
+  methods: {
+    onSelect: function onSelect(e) {
+      var optionIndex = e.target.selectedOptions[0].dataset.key;
+      var option = this.options[optionIndex];
+      var value = option.value || option;
+      this.state = value;
+      this.$emit('update:value', value, e);
+    }
+  }
+};
+
+/* script */
+const __vue_script__$B = script$B;
+
+/* template */
+var __vue_render__$e = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c(
+    "CFormGroup",
+    _vm._b(
+      {
+        scopedSlots: _vm._u(
+          [
+            {
+              key: "label",
+              fn: function() {
+                return [
+                  _vm._t("label", [
+                    _vm.label
+                      ? _c(
+                          "label",
+                          {
+                            class: _vm.labelClasses,
+                            attrs: { for: _vm.safeId }
+                          },
+                          [
+                            _vm._v(
+                              "\n        " + _vm._s(_vm.label) + "\n      "
+                            )
+                          ]
+                        )
+                      : _vm._e()
+                  ])
+                ]
+              },
+              proxy: true
+            },
+            {
+              key: "input",
+              fn: function() {
+                return [
+                  _c(
+                    "select",
+                    _vm._b(
+                      {
+                        class: _vm.inputClasses,
+                        attrs: { id: _vm.safeId },
+                        domProps: { value: _vm.state },
+                        on: {
+                          input: function($event) {
+                            return _vm.onSelect($event)
+                          }
+                        }
+                      },
+                      "select",
+                      _vm.$attrs,
+                      false
+                    ),
+                    [
+                      _vm.placeholder
+                        ? _c(
+                            "option",
+                            {
+                              attrs: {
+                                value: "",
+                                selected: "",
+                                disabled: "",
+                                hidden: ""
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n        " +
+                                  _vm._s(_vm.placeholder) +
+                                  "\n      "
+                              )
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm._l(_vm.options, function(option, key) {
+                        return [
+                          typeof option === "object"
+                            ? _c(
+                                "option",
+                                _vm._b(
+                                  {
+                                    key: key,
+                                    class: option.class,
+                                    attrs: {
+                                      disabled: option.disabled,
+                                      "data-key": key
+                                    },
+                                    domProps: { value: option.value }
+                                  },
+                                  "option",
+                                  option.attrs,
+                                  false
+                                ),
+                                [
+                                  _vm._v(
+                                    "\n          " +
+                                      _vm._s(option.label || option.value) +
+                                      "\n        "
+                                  )
+                                ]
+                              )
+                            : _c(
+                                "option",
+                                {
+                                  key: key,
+                                  attrs: { "data-key": key },
+                                  domProps: { value: String(option) }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n          " +
+                                      _vm._s(option) +
+                                      "\n        "
+                                  )
+                                ]
+                              )
+                        ]
+                      })
+                    ],
+                    2
+                  )
+                ]
+              },
+              proxy: true
+            },
+            _vm._l(_vm.$options.slots, function(slot) {
+              return {
+                key: slot,
+                fn: function() {
+                  return [_vm._t(slot)]
+                },
+                proxy: true
+              }
+            })
+          ],
+          null,
+          true
+        )
+      },
+      "CFormGroup",
+      {
+        appendHtml: _vm.appendHtml,
+        prependHtml: _vm.prependHtml,
+        validFeedback: _vm.validFeedback,
+        invalidFeedback: _vm.invalidFeedback,
+        tooltipFeedback: _vm.tooltipFeedback,
+        description: _vm.description,
+        wrapperClasses: _vm.wrapperClasses,
+        class: _vm.computedClasses
+      },
+      false
+    )
+  )
+};
+var __vue_staticRenderFns__$e = [];
+__vue_render__$e._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$B = undefined;
+  /* scoped */
+  const __vue_scope_id__$B = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$B = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$B = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CSelect = normalizeComponent_1(
+    { render: __vue_render__$e, staticRenderFns: __vue_staticRenderFns__$e },
+    __vue_inject_styles__$B,
+    __vue_script__$B,
+    __vue_scope_id__$B,
+    __vue_is_functional_template__$B,
+    __vue_module_identifier__$B,
+    undefined,
+    undefined
+  );
+
+var mixins$3 = Object.values(allFormMixins);
+var script$C = {
+  name: 'CTextarea',
+  inheritAttrs: false,
+  components: {
+    CFormGroup: CFormGroup
+  },
+  mixins: mixins$3,
+  props: textareaProps,
   // Html props: disabled, required, rows, cols, placeholder
   // {
   //   validFeedback: String,
@@ -17411,10 +18763,10 @@ var script$u = {
 };
 
 /* script */
-const __vue_script__$u = script$u;
+const __vue_script__$C = script$C;
 
 /* template */
-var __vue_render__$e = function() {
+var __vue_render__$f = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -17519,416 +18871,46 @@ var __vue_render__$e = function() {
     )
   )
 };
-var __vue_staticRenderFns__$e = [];
-__vue_render__$e._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$u = undefined;
-  /* scoped */
-  const __vue_scope_id__$u = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$u = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$u = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var CFormTextarea = normalizeComponent_1(
-    { render: __vue_render__$e, staticRenderFns: __vue_staticRenderFns__$e },
-    __vue_inject_styles__$u,
-    __vue_script__$u,
-    __vue_scope_id__$u,
-    __vue_is_functional_template__$u,
-    __vue_module_identifier__$u,
-    undefined,
-    undefined
-  );
-
-var mixins$3 = Object.values(allFormMixins);
-var script$v = {
-  name: 'CFormSelect',
-  inheritAttrs: false,
-  components: {
-    CFormGroup: CFormGroup
-  },
-  slots: ['prepend', 'append', 'label-after-input', 'valid-feedback', 'invalid-feedback', 'description'],
-  mixins: mixins$3,
-  props: formSelectProps,
-  // Html props: disabled, required don't use multiple
-  // {
-  //   validFeedback: String,
-  //   invalidFeedback: String,
-  //   tooltipFeedback: Boolean,
-  //   description: String,
-  //   appendHtml: String,
-  //   prependHtml: String,
-  //   label: String,
-  //   wasValidated: Boolean,
-  //   isValid: {
-  //     type: [Boolean, Function],
-  //     default: null
-  //   },
-  //   addInputClasses: [String, Array, Object],
-  //   addLabelClasses: [String, Array, Object],
-  //   horizontal: [Boolean, Object],
-  //   size: {
-  //     type: String,
-  //     validator: str => ['','sm','lg'].includes(str)
-  //   },
-  //   addWrapperClasses: [String, Array, Object],
-  //   options: Array,
-  //   value: [String, Number, Boolean, Array],
-  //   plaintext: Boolean,
-  //   placeholder: String,
-  //   custom: Boolean
-  // },
-  data: function data() {
-    return {
-      state: this.value || undefined
-    };
-  },
-  //watchValue mixin
-  // watch: {
-  //   value (val) {
-  //     this.state = val
-  //   }
-  // },
-  computed: {
-    // classesComputedProps mixin
-    // haveCustomSize () {
-    //   return ['sm','lg'].includes(this.size)
-    // },
-    // computedClasses () {
-    //   return [
-    //     'form-group',
-    //     {
-    //      'was-validated': this.wasValidated,
-    //      'form-row': this.isHorizontal
-    //     }
-    //   ]
-    // },
-    // labelClasses () {
-    //   return [
-    //     this.addLabelClasses,
-    //     {
-    //       'col-form-label': this.isHorizontal,
-    //       [this.horizontal.label || 'col-sm-3']: this.isHorizontal,
-    //       [`col-form-label-${this.size}`]: this.haveCustomSize,
-    //     }
-    //   ]
-    // },
-    customSizeClass: function customSizeClass() {
-      if (this.haveCustomSize && !this.haveWrapper) {
-        return "".concat(this.custom ? 'custom-select' : 'form-control', "-").concat(this.size);
-      }
-    },
-    inputClass: function inputClass() {
-      var standardClass = "form-control".concat(this.plaintext ? '-plaintext' : '');
-      return this.custom ? 'custom-select' : standardClass;
-    } // inputClasses () {
-    //   return [
-    //     this.inputClass || `form-control${this.plaintext ? '-plaintext' : ''}`,
-    //     this.validationClass,
-    //     this.addInputClasses,
-    //     this.customSizeClass
-    //   ]
-    // }
-    // validationComputedProps mixin
-    // computedIsValid () {
-    //   if (typeof this.isValid === 'function') {
-    //     return this.isValid(this.state)
-    //   }
-    //   return this.isValid
-    // },
-    // validationClass () {
-    //   if (typeof this.computedIsValid === 'boolean') {
-    //     return this.computedIsValid ? 'is-valid' : 'is-invalid'
-    //   }
-    // },
-    //wrapperComputedProps mixin
-    // isHorizontal () {
-    //   return Boolean(this.horizontal)
-    // },
-    // haveInputGroup () {
-    //   return Boolean(
-    //     this.tooltipFeedback || 
-    //     this.appendHtml ||
-    //     this.prependHtml || 
-    //     this.$slots.append || 
-    //     this.$slots.prepend
-    //   )
-    // },
-    // haveWrapper () {
-    //   return this.haveInputGroup || Boolean(this.addWrapperClasses || this.isHorizontal)
-    // },
-    // wrapperClasses () {
-    //   if (this.haveWrapper) {
-    //     return [
-    //       this.addWrapperClasses,
-    //       {
-    //         [this.horizontal.input || 'col-sm-9'] : this.isHorizontal,
-    //         'input-group' : this.haveInputGroup,
-    //         [`input-group-${this.size}`]: this.haveCustomSize
-    //       }
-    //     ]
-    //   }
-    // }
-
-  },
-  methods: {
-    onSelect: function onSelect(e) {
-      var optionIndex = e.target.selectedOptions[0].dataset.key;
-      var option = this.options[optionIndex];
-      var value = option.value || option;
-      this.state = value;
-      this.$emit('update:value', value, e);
-    }
-  }
-};
-
-/* script */
-const __vue_script__$v = script$v;
-
-/* template */
-var __vue_render__$f = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c(
-    "CFormGroup",
-    _vm._b(
-      {
-        scopedSlots: _vm._u(
-          [
-            {
-              key: "label",
-              fn: function() {
-                return [
-                  _vm._t("label", [
-                    _vm.label
-                      ? _c(
-                          "label",
-                          {
-                            class: _vm.labelClasses,
-                            attrs: { for: _vm.safeId }
-                          },
-                          [
-                            _vm._v(
-                              "\n        " + _vm._s(_vm.label) + "\n      "
-                            )
-                          ]
-                        )
-                      : _vm._e()
-                  ])
-                ]
-              },
-              proxy: true
-            },
-            {
-              key: "input",
-              fn: function() {
-                return [
-                  _c(
-                    "select",
-                    _vm._b(
-                      {
-                        class: _vm.inputClasses,
-                        attrs: { id: _vm.safeId },
-                        domProps: { value: _vm.state },
-                        on: {
-                          input: function($event) {
-                            return _vm.onSelect($event)
-                          }
-                        }
-                      },
-                      "select",
-                      _vm.$attrs,
-                      false
-                    ),
-                    [
-                      _vm.placeholder
-                        ? _c(
-                            "option",
-                            {
-                              attrs: {
-                                value: "",
-                                selected: "",
-                                disabled: "",
-                                hidden: ""
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n        " +
-                                  _vm._s(_vm.placeholder) +
-                                  "\n      "
-                              )
-                            ]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm._l(_vm.options, function(option, key) {
-                        return [
-                          typeof option === "object"
-                            ? _c(
-                                "option",
-                                {
-                                  key: key,
-                                  attrs: {
-                                    disabled: option.disabled,
-                                    "data-key": key
-                                  },
-                                  domProps: { value: option.value }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n          " +
-                                      _vm._s(option.label || option.value) +
-                                      "\n        "
-                                  )
-                                ]
-                              )
-                            : _c(
-                                "option",
-                                {
-                                  key: key,
-                                  attrs: { "data-key": key },
-                                  domProps: { value: String(option) }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n          " +
-                                      _vm._s(option) +
-                                      "\n        "
-                                  )
-                                ]
-                              )
-                        ]
-                      })
-                    ],
-                    2
-                  )
-                ]
-              },
-              proxy: true
-            },
-            _vm._l(_vm.$options.slots, function(slot) {
-              return {
-                key: slot,
-                fn: function() {
-                  return [_vm._t(slot)]
-                },
-                proxy: true
-              }
-            })
-          ],
-          null,
-          true
-        )
-      },
-      "CFormGroup",
-      {
-        appendHtml: _vm.appendHtml,
-        prependHtml: _vm.prependHtml,
-        validFeedback: _vm.validFeedback,
-        invalidFeedback: _vm.invalidFeedback,
-        tooltipFeedback: _vm.tooltipFeedback,
-        description: _vm.description,
-        wrapperClasses: _vm.wrapperClasses,
-        class: _vm.computedClasses
-      },
-      false
-    )
-  )
-};
 var __vue_staticRenderFns__$f = [];
 __vue_render__$f._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$v = undefined;
+  const __vue_inject_styles__$C = undefined;
   /* scoped */
-  const __vue_scope_id__$v = undefined;
+  const __vue_scope_id__$C = undefined;
   /* module identifier */
-  const __vue_module_identifier__$v = undefined;
+  const __vue_module_identifier__$C = undefined;
   /* functional template */
-  const __vue_is_functional_template__$v = false;
+  const __vue_is_functional_template__$C = false;
   /* style inject */
   
   /* style inject SSR */
   
 
   
-  var CFormSelect = normalizeComponent_1(
+  var CTextarea = normalizeComponent_1(
     { render: __vue_render__$f, staticRenderFns: __vue_staticRenderFns__$f },
-    __vue_inject_styles__$v,
-    __vue_script__$v,
-    __vue_scope_id__$v,
-    __vue_is_functional_template__$v,
-    __vue_module_identifier__$v,
+    __vue_inject_styles__$C,
+    __vue_script__$C,
+    __vue_scope_id__$C,
+    __vue_is_functional_template__$C,
+    __vue_module_identifier__$C,
     undefined,
     undefined
   );
 
-var script$w = {
-  name: 'CFormRadio',
-  extends: Object.assign({}, CFormCheckbox, {
-    props: formRadioProps
-  }),
-  type: 'radio',
-  methods: {
-    getCheckState: function getCheckState() {
-      return this.checked === this.value;
-    },
-    getValue: function getValue() {
-      return this.value;
-    }
-  }
-};
-
-/* script */
-const __vue_script__$w = script$w;
-
-/* template */
-
-  /* style */
-  const __vue_inject_styles__$w = undefined;
-  /* scoped */
-  const __vue_scope_id__$w = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$w = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$w = undefined;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var CFormRadio = normalizeComponent_1(
-    {},
-    __vue_inject_styles__$w,
-    __vue_script__$w,
-    __vue_scope_id__$w,
-    __vue_is_functional_template__$w,
-    __vue_module_identifier__$w,
-    undefined,
-    undefined
-  );
-
-var script$x = {
+var script$D = {
   functional: true,
   name: 'CContainer',
   props: {
-    fluid: Boolean
+    fluid: Boolean,
+    tag: String
   },
   render: function render(h, _ref) {
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
-    return h('div', a(data, {
+    return h(props.tag || 'div', a(data, {
       class: {
         'container': !props.fluid,
         'container-fluid': props.fluid
@@ -17938,18 +18920,18 @@ var script$x = {
 };
 
 /* script */
-const __vue_script__$x = script$x;
+const __vue_script__$D = script$D;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$x = undefined;
+  const __vue_inject_styles__$D = undefined;
   /* scoped */
-  const __vue_scope_id__$x = undefined;
+  const __vue_scope_id__$D = undefined;
   /* module identifier */
-  const __vue_module_identifier__$x = undefined;
+  const __vue_module_identifier__$D = undefined;
   /* functional template */
-  const __vue_is_functional_template__$x = undefined;
+  const __vue_is_functional_template__$D = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -17958,62 +18940,66 @@ const __vue_script__$x = script$x;
   
   var CContainer = normalizeComponent_1(
     {},
-    __vue_inject_styles__$x,
-    __vue_script__$x,
-    __vue_scope_id__$x,
-    __vue_is_functional_template__$x,
-    __vue_module_identifier__$x,
+    __vue_inject_styles__$D,
+    __vue_script__$D,
+    __vue_scope_id__$D,
+    __vue_is_functional_template__$D,
+    __vue_module_identifier__$D,
     undefined,
     undefined
   );
 
-var props$b = {
-  noGutters: Boolean,
-  alignV: {
+var props$9 = {
+  tag: String,
+  gutters: {
+    type: Boolean,
+    default: true
+  },
+  alignVertical: {
     type: String,
     validator: function validator(str) {
       return ['', 'start', 'end', 'center', 'baseline', 'stretch'].includes(str);
     }
   },
-  alignH: {
+  alignHorizontal: {
     type: String,
     validator: function validator(str) {
       return ['', 'start', 'end', 'center', 'between', 'around'].includes(str);
     }
   }
 };
-var script$y = {
+var script$E = {
   functional: true,
   name: 'CRow',
-  props: props$b,
+  props: props$9,
   render: function render(h, _ref) {
     var _class;
 
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
-    return h('div', a(data, {
+    return h(props.tag || 'div', a(data, {
       staticClass: 'row',
       class: (_class = {
-        'no-gutters': props.noGutters
-      }, _defineProperty(_class, "align-items-".concat(props.alignV), props.alignV), _defineProperty(_class, "justify-content-".concat(props.alignH), props.alignH), _class)
+        'no-gutters': !props.gutters
+      }, _defineProperty(_class, "align-items-".concat(props.alignVertical), props.alignVertical), _defineProperty(_class, "justify-content-".concat(props.alignHorizontal), props.alignHorizontal), _class)
     }), children);
   }
 };
 
 /* script */
-const __vue_script__$y = script$y;
+const __vue_script__$E = script$E;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$y = undefined;
+  const __vue_inject_styles__$E = undefined;
   /* scoped */
-  const __vue_scope_id__$y = undefined;
+  const __vue_scope_id__$E = undefined;
   /* module identifier */
-  const __vue_module_identifier__$y = undefined;
+  const __vue_module_identifier__$E = undefined;
   /* functional template */
-  const __vue_is_functional_template__$y = undefined;
+  const __vue_is_functional_template__$E = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -18022,130 +19008,135 @@ const __vue_script__$y = script$y;
   
   var CRow = normalizeComponent_1(
     {},
-    __vue_inject_styles__$y,
-    __vue_script__$y,
-    __vue_scope_id__$y,
-    __vue_is_functional_template__$y,
-    __vue_module_identifier__$y,
+    __vue_inject_styles__$E,
+    __vue_script__$E,
+    __vue_scope_id__$E,
+    __vue_is_functional_template__$E,
+    __vue_module_identifier__$E,
     undefined,
     undefined
   );
 
-var f$5 = _wks$1;
+var f$8 = wellKnownSymbol$1;
 
-var _wksExt = {
-	f: f$5
-};
-
-var iterator = _wksExt.f('iterator');
-
-var iterator$1 = iterator;
-
-var _meta = createCommonjsModule(function (module) {
-var META = _uid$1('meta');
-
-
-var setDesc = _objectDp$1.f;
-var id = 0;
-var isExtensible = Object.isExtensible || function () {
-  return true;
-};
-var FREEZE = !_fails$1(function () {
-  return isExtensible(Object.preventExtensions({}));
-});
-var setMeta = function (it) {
-  setDesc(it, META, { value: {
-    i: 'O' + ++id, // object ID
-    w: {}          // weak collections IDs
-  } });
-};
-var fastKey = function (it, create) {
-  // return primitive with prefix
-  if (!_isObject$1(it)) return typeof it == 'symbol' ? it : (typeof it == 'string' ? 'S' : 'P') + it;
-  if (!_has$1(it, META)) {
-    // can't set metadata to uncaught frozen object
-    if (!isExtensible(it)) return 'F';
-    // not necessary to add metadata
-    if (!create) return 'E';
-    // add missing metadata
-    setMeta(it);
-  // return object ID
-  } return it[META].i;
-};
-var getWeak = function (it, create) {
-  if (!_has$1(it, META)) {
-    // can't set metadata to uncaught frozen object
-    if (!isExtensible(it)) return true;
-    // not necessary to add metadata
-    if (!create) return false;
-    // add missing metadata
-    setMeta(it);
-  // return hash weak collections IDs
-  } return it[META].w;
-};
-// add metadata on freeze-family methods calling
-var onFreeze = function (it) {
-  if (FREEZE && meta.NEED && isExtensible(it) && !_has$1(it, META)) setMeta(it);
-  return it;
-};
-var meta = module.exports = {
-  KEY: META,
-  NEED: false,
-  fastKey: fastKey,
-  getWeak: getWeak,
-  onFreeze: onFreeze
-};
-});
-
-var defineProperty$3 = _objectDp$1.f;
-var _wksDefine = function (name) {
-  var $Symbol = _core$1.Symbol || (_core$1.Symbol =  {} );
-  if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty$3($Symbol, name, { value: _wksExt.f(name) });
-};
-
-var f$6 = Object.getOwnPropertySymbols;
-
-var _objectGops = {
-	f: f$6
-};
-
-var f$7 = {}.propertyIsEnumerable;
-
-var _objectPie$1 = {
-	f: f$7
-};
-
-// all enumerable object keys, includes symbols
-
-
-
-var _enumKeys = function (it) {
-  var result = _objectKeys(it);
-  var getSymbols = _objectGops.f;
-  if (getSymbols) {
-    var symbols = getSymbols(it);
-    var isEnum = _objectPie$1.f;
-    var i = 0;
-    var key;
-    while (symbols.length > i) if (isEnum.call(it, key = symbols[i++])) result.push(key);
-  } return result;
-};
-
-// 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-
-var hiddenKeys$1 = _enumBugKeys.concat('length', 'prototype');
-
-var f$8 = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
-  return _objectKeysInternal(O, hiddenKeys$1);
-};
-
-var _objectGopn$1 = {
+var wrappedWellKnownSymbol = {
 	f: f$8
 };
 
-// fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
+var defineProperty$6 = objectDefineProperty$1.f;
 
-var gOPN$1 = _objectGopn$1.f;
+var defineWellKnownSymbol = function (NAME) {
+  var Symbol = path$1.Symbol || (path$1.Symbol = {});
+  if (!has$2(Symbol, NAME)) defineProperty$6(Symbol, NAME, {
+    value: wrappedWellKnownSymbol.f(NAME)
+  });
+};
+
+// `Symbol.iterator` well-known symbol
+// https://tc39.github.io/ecma262/#sec-symbol.iterator
+defineWellKnownSymbol('iterator');
+
+var iterator = wrappedWellKnownSymbol.f('iterator');
+
+var iterator$1 = iterator;
+
+var iterator$2 = iterator$1;
+
+var createProperty$1 = function (object, key, value) {
+  var propertyKey = toPrimitive$1(key);
+  if (propertyKey in object) objectDefineProperty$1.f(object, propertyKey, createPropertyDescriptor$1(0, value));
+  else object[propertyKey] = value;
+};
+
+var SPECIES$5 = wellKnownSymbol$1('species');
+
+// `ArraySpeciesCreate` abstract operation
+// https://tc39.github.io/ecma262/#sec-arrayspeciescreate
+var arraySpeciesCreate$1 = function (originalArray, length) {
+  var C;
+  if (isArray(originalArray)) {
+    C = originalArray.constructor;
+    // cross-realm fallback
+    if (typeof C == 'function' && (C === Array || isArray(C.prototype))) C = undefined;
+    else if (isObject$1(C)) {
+      C = C[SPECIES$5];
+      if (C === null) C = undefined;
+    }
+  } return new (C === undefined ? Array : C)(length === 0 ? 0 : length);
+};
+
+var SPECIES$6 = wellKnownSymbol$1('species');
+
+var arrayMethodHasSpeciesSupport$1 = function (METHOD_NAME) {
+  return !fails$1(function () {
+    var array = [];
+    var constructor = array.constructor = {};
+    constructor[SPECIES$6] = function () {
+      return { foo: 1 };
+    };
+    return array[METHOD_NAME](Boolean).foo !== 1;
+  });
+};
+
+var IS_CONCAT_SPREADABLE$1 = wellKnownSymbol$1('isConcatSpreadable');
+var MAX_SAFE_INTEGER$1 = 0x1FFFFFFFFFFFFF;
+var MAXIMUM_ALLOWED_INDEX_EXCEEDED$1 = 'Maximum allowed index exceeded';
+
+var IS_CONCAT_SPREADABLE_SUPPORT$1 = !fails$1(function () {
+  var array = [];
+  array[IS_CONCAT_SPREADABLE$1] = false;
+  return array.concat()[0] !== array;
+});
+
+var SPECIES_SUPPORT$1 = arrayMethodHasSpeciesSupport$1('concat');
+
+var isConcatSpreadable$1 = function (O) {
+  if (!isObject$1(O)) return false;
+  var spreadable = O[IS_CONCAT_SPREADABLE$1];
+  return spreadable !== undefined ? !!spreadable : isArray(O);
+};
+
+var FORCED$1 = !IS_CONCAT_SPREADABLE_SUPPORT$1 || !SPECIES_SUPPORT$1;
+
+// `Array.prototype.concat` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.concat
+// with adding support of @@isConcatSpreadable and @@species
+_export$1({ target: 'Array', proto: true, forced: FORCED$1 }, {
+  concat: function concat(arg) { // eslint-disable-line no-unused-vars
+    var O = toObject$1(this);
+    var A = arraySpeciesCreate$1(O, 0);
+    var n = 0;
+    var i, k, length, len, E;
+    for (i = -1, length = arguments.length; i < length; i++) {
+      E = i === -1 ? O : arguments[i];
+      if (isConcatSpreadable$1(E)) {
+        len = toLength$1(E.length);
+        if (n + len > MAX_SAFE_INTEGER$1) throw TypeError(MAXIMUM_ALLOWED_INDEX_EXCEEDED$1);
+        for (k = 0; k < len; k++, n++) if (k in E) createProperty$1(A, n, E[k]);
+      } else {
+        if (n >= MAX_SAFE_INTEGER$1) throw TypeError(MAXIMUM_ALLOWED_INDEX_EXCEEDED$1);
+        createProperty$1(A, n++, E);
+      }
+    }
+    A.length = n;
+    return A;
+  }
+});
+
+var hiddenKeys$3 = enumBugKeys$1.concat('length', 'prototype');
+
+// `Object.getOwnPropertyNames` method
+// https://tc39.github.io/ecma262/#sec-object.getownpropertynames
+var f$9 = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
+  return objectKeysInternal$1(O, hiddenKeys$3);
+};
+
+var objectGetOwnPropertyNames$1 = {
+	f: f$9
+};
+
+var nativeGetOwnPropertyNames = objectGetOwnPropertyNames$1.f;
+
 var toString$3 = {}.toString;
 
 var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNames
@@ -18153,294 +19144,453 @@ var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNa
 
 var getWindowNames = function (it) {
   try {
-    return gOPN$1(it);
-  } catch (e) {
+    return nativeGetOwnPropertyNames(it);
+  } catch (error) {
     return windowNames.slice();
   }
 };
 
-var f$9 = function getOwnPropertyNames(it) {
-  return windowNames && toString$3.call(it) == '[object Window]' ? getWindowNames(it) : gOPN$1(_toIobject$1(it));
+// fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
+var f$a = function getOwnPropertyNames(it) {
+  return windowNames && toString$3.call(it) == '[object Window]'
+    ? getWindowNames(it)
+    : nativeGetOwnPropertyNames(toIndexedObject$1(it));
 };
 
-var _objectGopnExt = {
-	f: f$9
-};
-
-var gOPD$2 = Object.getOwnPropertyDescriptor;
-
-var f$a = _descriptors$1 ? gOPD$2 : function getOwnPropertyDescriptor(O, P) {
-  O = _toIobject$1(O);
-  P = _toPrimitive$1(P, true);
-  if (_ie8DomDefine$1) try {
-    return gOPD$2(O, P);
-  } catch (e) { /* empty */ }
-  if (_has$1(O, P)) return _propertyDesc$1(!_objectPie$1.f.call(O, P), O[P]);
-};
-
-var _objectGopd$1 = {
+var objectGetOwnPropertyNamesExternal = {
 	f: f$a
 };
 
-// ECMAScript 6 symbols shim
+var f$b = Object.getOwnPropertySymbols;
 
+var objectGetOwnPropertySymbols$1 = {
+	f: f$b
+};
 
+var push$1 = [].push;
 
+// `Array.prototype.{ forEach, map, filter, some, every, find, findIndex }` methods implementation
+var createMethod$8 = function (TYPE) {
+  var IS_MAP = TYPE == 1;
+  var IS_FILTER = TYPE == 2;
+  var IS_SOME = TYPE == 3;
+  var IS_EVERY = TYPE == 4;
+  var IS_FIND_INDEX = TYPE == 6;
+  var NO_HOLES = TYPE == 5 || IS_FIND_INDEX;
+  return function ($this, callbackfn, that, specificCreate) {
+    var O = toObject$1($this);
+    var self = indexedObject$1(O);
+    var boundFunction = bindContext(callbackfn, that, 3);
+    var length = toLength$1(self.length);
+    var index = 0;
+    var create = specificCreate || arraySpeciesCreate$1;
+    var target = IS_MAP ? create($this, length) : IS_FILTER ? create($this, 0) : undefined;
+    var value, result;
+    for (;length > index; index++) if (NO_HOLES || index in self) {
+      value = self[index];
+      result = boundFunction(value, index, O);
+      if (TYPE) {
+        if (IS_MAP) target[index] = result; // map
+        else if (result) switch (TYPE) {
+          case 3: return true;              // some
+          case 5: return value;             // find
+          case 6: return index;             // findIndex
+          case 2: push$1.call(target, value); // filter
+        } else if (IS_EVERY) return false;  // every
+      }
+    }
+    return IS_FIND_INDEX ? -1 : IS_SOME || IS_EVERY ? IS_EVERY : target;
+  };
+};
 
+var arrayIteration$1 = {
+  // `Array.prototype.forEach` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.foreach
+  forEach: createMethod$8(0),
+  // `Array.prototype.map` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.map
+  map: createMethod$8(1),
+  // `Array.prototype.filter` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.filter
+  filter: createMethod$8(2),
+  // `Array.prototype.some` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.some
+  some: createMethod$8(3),
+  // `Array.prototype.every` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.every
+  every: createMethod$8(4),
+  // `Array.prototype.find` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.find
+  find: createMethod$8(5),
+  // `Array.prototype.findIndex` method
+  // https://tc39.github.io/ecma262/#sec-array.prototype.findIndex
+  findIndex: createMethod$8(6)
+};
 
-var META = _meta.KEY;
+var $forEach$1 = arrayIteration$1.forEach;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var gOPD$3 = _objectGopd$1.f;
-var dP$4 = _objectDp$1.f;
-var gOPN$2 = _objectGopnExt.f;
-var $Symbol = _global$1.Symbol;
-var $JSON = _global$1.JSON;
-var _stringify = $JSON && $JSON.stringify;
-var PROTOTYPE$4 = 'prototype';
-var HIDDEN = _wks$1('_hidden');
-var TO_PRIMITIVE = _wks$1('toPrimitive');
-var isEnum$1 = {}.propertyIsEnumerable;
-var SymbolRegistry = _shared$1('symbol-registry');
-var AllSymbols = _shared$1('symbols');
-var OPSymbols = _shared$1('op-symbols');
-var ObjectProto$2 = Object[PROTOTYPE$4];
-var USE_NATIVE = typeof $Symbol == 'function';
-var QObject = _global$1.QObject;
+var HIDDEN = sharedKey$1('hidden');
+var SYMBOL = 'Symbol';
+var PROTOTYPE$2 = 'prototype';
+var TO_PRIMITIVE = wellKnownSymbol$1('toPrimitive');
+var setInternalState$2 = internalState$1.set;
+var getInternalState$2 = internalState$1.getterFor(SYMBOL);
+var ObjectPrototype$2 = Object[PROTOTYPE$2];
+var $Symbol = global_1$1.Symbol;
+var JSON$1 = global_1$1.JSON;
+var nativeJSONStringify = JSON$1 && JSON$1.stringify;
+var nativeGetOwnPropertyDescriptor$2 = objectGetOwnPropertyDescriptor$1.f;
+var nativeDefineProperty$2 = objectDefineProperty$1.f;
+var nativeGetOwnPropertyNames$1 = objectGetOwnPropertyNamesExternal.f;
+var nativePropertyIsEnumerable$2 = objectPropertyIsEnumerable$1.f;
+var AllSymbols = shared$1('symbols');
+var ObjectPrototypeSymbols = shared$1('op-symbols');
+var StringToSymbolRegistry = shared$1('string-to-symbol-registry');
+var SymbolToStringRegistry = shared$1('symbol-to-string-registry');
+var WellKnownSymbolsStore = shared$1('wks');
+var QObject = global_1$1.QObject;
 // Don't use setters in Qt Script, https://github.com/zloirock/core-js/issues/173
-var setter = !QObject || !QObject[PROTOTYPE$4] || !QObject[PROTOTYPE$4].findChild;
+var USE_SETTER = !QObject || !QObject[PROTOTYPE$2] || !QObject[PROTOTYPE$2].findChild;
 
 // fallback for old Android, https://code.google.com/p/v8/issues/detail?id=687
-var setSymbolDesc = _descriptors$1 && _fails$1(function () {
-  return _objectCreate(dP$4({}, 'a', {
-    get: function () { return dP$4(this, 'a', { value: 7 }).a; }
+var setSymbolDescriptor = descriptors$1 && fails$1(function () {
+  return objectCreate$1(nativeDefineProperty$2({}, 'a', {
+    get: function () { return nativeDefineProperty$2(this, 'a', { value: 7 }).a; }
   })).a != 7;
-}) ? function (it, key, D) {
-  var protoDesc = gOPD$3(ObjectProto$2, key);
-  if (protoDesc) delete ObjectProto$2[key];
-  dP$4(it, key, D);
-  if (protoDesc && it !== ObjectProto$2) dP$4(ObjectProto$2, key, protoDesc);
-} : dP$4;
+}) ? function (O, P, Attributes) {
+  var ObjectPrototypeDescriptor = nativeGetOwnPropertyDescriptor$2(ObjectPrototype$2, P);
+  if (ObjectPrototypeDescriptor) delete ObjectPrototype$2[P];
+  nativeDefineProperty$2(O, P, Attributes);
+  if (ObjectPrototypeDescriptor && O !== ObjectPrototype$2) {
+    nativeDefineProperty$2(ObjectPrototype$2, P, ObjectPrototypeDescriptor);
+  }
+} : nativeDefineProperty$2;
 
-var wrap = function (tag) {
-  var sym = AllSymbols[tag] = _objectCreate($Symbol[PROTOTYPE$4]);
-  sym._k = tag;
-  return sym;
+var wrap = function (tag, description) {
+  var symbol = AllSymbols[tag] = objectCreate$1($Symbol[PROTOTYPE$2]);
+  setInternalState$2(symbol, {
+    type: SYMBOL,
+    tag: tag,
+    description: description
+  });
+  if (!descriptors$1) symbol.description = description;
+  return symbol;
 };
 
-var isSymbol = USE_NATIVE && typeof $Symbol.iterator == 'symbol' ? function (it) {
+var isSymbol = nativeSymbol$1 && typeof $Symbol.iterator == 'symbol' ? function (it) {
   return typeof it == 'symbol';
 } : function (it) {
-  return it instanceof $Symbol;
+  return Object(it) instanceof $Symbol;
 };
 
-var $defineProperty = function defineProperty(it, key, D) {
-  if (it === ObjectProto$2) $defineProperty(OPSymbols, key, D);
-  _anObject$1(it);
-  key = _toPrimitive$1(key, true);
-  _anObject$1(D);
-  if (_has$1(AllSymbols, key)) {
-    if (!D.enumerable) {
-      if (!_has$1(it, HIDDEN)) dP$4(it, HIDDEN, _propertyDesc$1(1, {}));
-      it[HIDDEN][key] = true;
+var $defineProperty = function defineProperty(O, P, Attributes) {
+  if (O === ObjectPrototype$2) $defineProperty(ObjectPrototypeSymbols, P, Attributes);
+  anObject$1(O);
+  var key = toPrimitive$1(P, true);
+  anObject$1(Attributes);
+  if (has$2(AllSymbols, key)) {
+    if (!Attributes.enumerable) {
+      if (!has$2(O, HIDDEN)) nativeDefineProperty$2(O, HIDDEN, createPropertyDescriptor$1(1, {}));
+      O[HIDDEN][key] = true;
     } else {
-      if (_has$1(it, HIDDEN) && it[HIDDEN][key]) it[HIDDEN][key] = false;
-      D = _objectCreate(D, { enumerable: _propertyDesc$1(0, false) });
-    } return setSymbolDesc(it, key, D);
-  } return dP$4(it, key, D);
-};
-var $defineProperties = function defineProperties(it, P) {
-  _anObject$1(it);
-  var keys = _enumKeys(P = _toIobject$1(P));
-  var i = 0;
-  var l = keys.length;
-  var key;
-  while (l > i) $defineProperty(it, key = keys[i++], P[key]);
-  return it;
-};
-var $create = function create(it, P) {
-  return P === undefined ? _objectCreate(it) : $defineProperties(_objectCreate(it), P);
-};
-var $propertyIsEnumerable = function propertyIsEnumerable(key) {
-  var E = isEnum$1.call(this, key = _toPrimitive$1(key, true));
-  if (this === ObjectProto$2 && _has$1(AllSymbols, key) && !_has$1(OPSymbols, key)) return false;
-  return E || !_has$1(this, key) || !_has$1(AllSymbols, key) || _has$1(this, HIDDEN) && this[HIDDEN][key] ? E : true;
-};
-var $getOwnPropertyDescriptor = function getOwnPropertyDescriptor(it, key) {
-  it = _toIobject$1(it);
-  key = _toPrimitive$1(key, true);
-  if (it === ObjectProto$2 && _has$1(AllSymbols, key) && !_has$1(OPSymbols, key)) return;
-  var D = gOPD$3(it, key);
-  if (D && _has$1(AllSymbols, key) && !(_has$1(it, HIDDEN) && it[HIDDEN][key])) D.enumerable = true;
-  return D;
-};
-var $getOwnPropertyNames = function getOwnPropertyNames(it) {
-  var names = gOPN$2(_toIobject$1(it));
-  var result = [];
-  var i = 0;
-  var key;
-  while (names.length > i) {
-    if (!_has$1(AllSymbols, key = names[i++]) && key != HIDDEN && key != META) result.push(key);
-  } return result;
-};
-var $getOwnPropertySymbols = function getOwnPropertySymbols(it) {
-  var IS_OP = it === ObjectProto$2;
-  var names = gOPN$2(IS_OP ? OPSymbols : _toIobject$1(it));
-  var result = [];
-  var i = 0;
-  var key;
-  while (names.length > i) {
-    if (_has$1(AllSymbols, key = names[i++]) && (IS_OP ? _has$1(ObjectProto$2, key) : true)) result.push(AllSymbols[key]);
-  } return result;
+      if (has$2(O, HIDDEN) && O[HIDDEN][key]) O[HIDDEN][key] = false;
+      Attributes = objectCreate$1(Attributes, { enumerable: createPropertyDescriptor$1(0, false) });
+    } return setSymbolDescriptor(O, key, Attributes);
+  } return nativeDefineProperty$2(O, key, Attributes);
 };
 
-// 19.4.1.1 Symbol([description])
-if (!USE_NATIVE) {
+var $defineProperties = function defineProperties(O, Properties) {
+  anObject$1(O);
+  var properties = toIndexedObject$1(Properties);
+  var keys = objectKeys$1(properties).concat($getOwnPropertySymbols(properties));
+  $forEach$1(keys, function (key) {
+    if (!descriptors$1 || $propertyIsEnumerable.call(properties, key)) $defineProperty(O, key, properties[key]);
+  });
+  return O;
+};
+
+var $create = function create(O, Properties) {
+  return Properties === undefined ? objectCreate$1(O) : $defineProperties(objectCreate$1(O), Properties);
+};
+
+var $propertyIsEnumerable = function propertyIsEnumerable(V) {
+  var P = toPrimitive$1(V, true);
+  var enumerable = nativePropertyIsEnumerable$2.call(this, P);
+  if (this === ObjectPrototype$2 && has$2(AllSymbols, P) && !has$2(ObjectPrototypeSymbols, P)) return false;
+  return enumerable || !has$2(this, P) || !has$2(AllSymbols, P) || has$2(this, HIDDEN) && this[HIDDEN][P] ? enumerable : true;
+};
+
+var $getOwnPropertyDescriptor = function getOwnPropertyDescriptor(O, P) {
+  var it = toIndexedObject$1(O);
+  var key = toPrimitive$1(P, true);
+  if (it === ObjectPrototype$2 && has$2(AllSymbols, key) && !has$2(ObjectPrototypeSymbols, key)) return;
+  var descriptor = nativeGetOwnPropertyDescriptor$2(it, key);
+  if (descriptor && has$2(AllSymbols, key) && !(has$2(it, HIDDEN) && it[HIDDEN][key])) {
+    descriptor.enumerable = true;
+  }
+  return descriptor;
+};
+
+var $getOwnPropertyNames = function getOwnPropertyNames(O) {
+  var names = nativeGetOwnPropertyNames$1(toIndexedObject$1(O));
+  var result = [];
+  $forEach$1(names, function (key) {
+    if (!has$2(AllSymbols, key) && !has$2(hiddenKeys$2, key)) result.push(key);
+  });
+  return result;
+};
+
+var $getOwnPropertySymbols = function getOwnPropertySymbols(O) {
+  var IS_OBJECT_PROTOTYPE = O === ObjectPrototype$2;
+  var names = nativeGetOwnPropertyNames$1(IS_OBJECT_PROTOTYPE ? ObjectPrototypeSymbols : toIndexedObject$1(O));
+  var result = [];
+  $forEach$1(names, function (key) {
+    if (has$2(AllSymbols, key) && (!IS_OBJECT_PROTOTYPE || has$2(ObjectPrototype$2, key))) {
+      result.push(AllSymbols[key]);
+    }
+  });
+  return result;
+};
+
+// `Symbol` constructor
+// https://tc39.github.io/ecma262/#sec-symbol-constructor
+if (!nativeSymbol$1) {
   $Symbol = function Symbol() {
-    if (this instanceof $Symbol) throw TypeError('Symbol is not a constructor!');
-    var tag = _uid$1(arguments.length > 0 ? arguments[0] : undefined);
-    var $set = function (value) {
-      if (this === ObjectProto$2) $set.call(OPSymbols, value);
-      if (_has$1(this, HIDDEN) && _has$1(this[HIDDEN], tag)) this[HIDDEN][tag] = false;
-      setSymbolDesc(this, tag, _propertyDesc$1(1, value));
+    if (this instanceof $Symbol) throw TypeError('Symbol is not a constructor');
+    var description = !arguments.length || arguments[0] === undefined ? undefined : String(arguments[0]);
+    var tag = uid$1(description);
+    var setter = function (value) {
+      if (this === ObjectPrototype$2) setter.call(ObjectPrototypeSymbols, value);
+      if (has$2(this, HIDDEN) && has$2(this[HIDDEN], tag)) this[HIDDEN][tag] = false;
+      setSymbolDescriptor(this, tag, createPropertyDescriptor$1(1, value));
     };
-    if (_descriptors$1 && setter) setSymbolDesc(ObjectProto$2, tag, { configurable: true, set: $set });
-    return wrap(tag);
+    if (descriptors$1 && USE_SETTER) setSymbolDescriptor(ObjectPrototype$2, tag, { configurable: true, set: setter });
+    return wrap(tag, description);
   };
-  _redefine$1($Symbol[PROTOTYPE$4], 'toString', function toString() {
-    return this._k;
+
+  redefine$1($Symbol[PROTOTYPE$2], 'toString', function toString() {
+    return getInternalState$2(this).tag;
   });
 
-  _objectGopd$1.f = $getOwnPropertyDescriptor;
-  _objectDp$1.f = $defineProperty;
-  _objectGopn$1.f = _objectGopnExt.f = $getOwnPropertyNames;
-  _objectPie$1.f = $propertyIsEnumerable;
-  _objectGops.f = $getOwnPropertySymbols;
+  objectPropertyIsEnumerable$1.f = $propertyIsEnumerable;
+  objectDefineProperty$1.f = $defineProperty;
+  objectGetOwnPropertyDescriptor$1.f = $getOwnPropertyDescriptor;
+  objectGetOwnPropertyNames$1.f = objectGetOwnPropertyNamesExternal.f = $getOwnPropertyNames;
+  objectGetOwnPropertySymbols$1.f = $getOwnPropertySymbols;
 
-  if (_descriptors$1 && !_library$1) {
-    _redefine$1(ObjectProto$2, 'propertyIsEnumerable', $propertyIsEnumerable, true);
+  if (descriptors$1) {
+    // https://github.com/tc39/proposal-Symbol-description
+    nativeDefineProperty$2($Symbol[PROTOTYPE$2], 'description', {
+      configurable: true,
+      get: function description() {
+        return getInternalState$2(this).description;
+      }
+    });
   }
 
-  _wksExt.f = function (name) {
-    return wrap(_wks$1(name));
+  wrappedWellKnownSymbol.f = function (name) {
+    return wrap(wellKnownSymbol$1(name), name);
   };
 }
 
-_export$1(_export$1.G + _export$1.W + _export$1.F * !USE_NATIVE, { Symbol: $Symbol });
-
-for (var es6Symbols = (
-  // 19.4.2.2, 19.4.2.3, 19.4.2.4, 19.4.2.6, 19.4.2.8, 19.4.2.9, 19.4.2.10, 19.4.2.11, 19.4.2.12, 19.4.2.13, 19.4.2.14
-  'hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables'
-).split(','), j$1 = 0; es6Symbols.length > j$1;)_wks$1(es6Symbols[j$1++]);
-
-for (var wellKnownSymbols = _objectKeys(_wks$1.store), k = 0; wellKnownSymbols.length > k;) _wksDefine(wellKnownSymbols[k++]);
-
-_export$1(_export$1.S + _export$1.F * !USE_NATIVE, 'Symbol', {
-  // 19.4.2.1 Symbol.for(key)
-  'for': function (key) {
-    return _has$1(SymbolRegistry, key += '')
-      ? SymbolRegistry[key]
-      : SymbolRegistry[key] = $Symbol(key);
-  },
-  // 19.4.2.5 Symbol.keyFor(sym)
-  keyFor: function keyFor(sym) {
-    if (!isSymbol(sym)) throw TypeError(sym + ' is not a symbol!');
-    for (var key in SymbolRegistry) if (SymbolRegistry[key] === sym) return key;
-  },
-  useSetter: function () { setter = true; },
-  useSimple: function () { setter = false; }
+_export$1({ global: true, wrap: true, forced: !nativeSymbol$1, sham: !nativeSymbol$1 }, {
+  Symbol: $Symbol
 });
 
-_export$1(_export$1.S + _export$1.F * !USE_NATIVE, 'Object', {
-  // 19.1.2.2 Object.create(O [, Properties])
+$forEach$1(objectKeys$1(WellKnownSymbolsStore), function (name) {
+  defineWellKnownSymbol(name);
+});
+
+_export$1({ target: SYMBOL, stat: true, forced: !nativeSymbol$1 }, {
+  // `Symbol.for` method
+  // https://tc39.github.io/ecma262/#sec-symbol.for
+  'for': function (key) {
+    var string = String(key);
+    if (has$2(StringToSymbolRegistry, string)) return StringToSymbolRegistry[string];
+    var symbol = $Symbol(string);
+    StringToSymbolRegistry[string] = symbol;
+    SymbolToStringRegistry[symbol] = string;
+    return symbol;
+  },
+  // `Symbol.keyFor` method
+  // https://tc39.github.io/ecma262/#sec-symbol.keyfor
+  keyFor: function keyFor(sym) {
+    if (!isSymbol(sym)) throw TypeError(sym + ' is not a symbol');
+    if (has$2(SymbolToStringRegistry, sym)) return SymbolToStringRegistry[sym];
+  },
+  useSetter: function () { USE_SETTER = true; },
+  useSimple: function () { USE_SETTER = false; }
+});
+
+_export$1({ target: 'Object', stat: true, forced: !nativeSymbol$1, sham: !descriptors$1 }, {
+  // `Object.create` method
+  // https://tc39.github.io/ecma262/#sec-object.create
   create: $create,
-  // 19.1.2.4 Object.defineProperty(O, P, Attributes)
+  // `Object.defineProperty` method
+  // https://tc39.github.io/ecma262/#sec-object.defineproperty
   defineProperty: $defineProperty,
-  // 19.1.2.3 Object.defineProperties(O, Properties)
+  // `Object.defineProperties` method
+  // https://tc39.github.io/ecma262/#sec-object.defineproperties
   defineProperties: $defineProperties,
-  // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
-  getOwnPropertyDescriptor: $getOwnPropertyDescriptor,
-  // 19.1.2.7 Object.getOwnPropertyNames(O)
+  // `Object.getOwnPropertyDescriptor` method
+  // https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptors
+  getOwnPropertyDescriptor: $getOwnPropertyDescriptor
+});
+
+_export$1({ target: 'Object', stat: true, forced: !nativeSymbol$1 }, {
+  // `Object.getOwnPropertyNames` method
+  // https://tc39.github.io/ecma262/#sec-object.getownpropertynames
   getOwnPropertyNames: $getOwnPropertyNames,
-  // 19.1.2.8 Object.getOwnPropertySymbols(O)
+  // `Object.getOwnPropertySymbols` method
+  // https://tc39.github.io/ecma262/#sec-object.getownpropertysymbols
   getOwnPropertySymbols: $getOwnPropertySymbols
 });
 
-// 24.3.2 JSON.stringify(value [, replacer [, space]])
-$JSON && _export$1(_export$1.S + _export$1.F * (!USE_NATIVE || _fails$1(function () {
-  var S = $Symbol();
+// Chrome 38 and 39 `Object.getOwnPropertySymbols` fails on primitives
+// https://bugs.chromium.org/p/v8/issues/detail?id=3443
+_export$1({ target: 'Object', stat: true, forced: fails$1(function () { objectGetOwnPropertySymbols$1.f(1); }) }, {
+  getOwnPropertySymbols: function getOwnPropertySymbols(it) {
+    return objectGetOwnPropertySymbols$1.f(toObject$1(it));
+  }
+});
+
+// `JSON.stringify` method behavior with symbols
+// https://tc39.github.io/ecma262/#sec-json.stringify
+JSON$1 && _export$1({ target: 'JSON', stat: true, forced: !nativeSymbol$1 || fails$1(function () {
+  var symbol = $Symbol();
   // MS Edge converts symbol values to JSON as {}
-  // WebKit converts symbol values to JSON as null
-  // V8 throws on boxed symbols
-  return _stringify([S]) != '[null]' || _stringify({ a: S }) != '{}' || _stringify(Object(S)) != '{}';
-})), 'JSON', {
+  return nativeJSONStringify([symbol]) != '[null]'
+    // WebKit converts symbol values to JSON as null
+    || nativeJSONStringify({ a: symbol }) != '{}'
+    // V8 throws on boxed symbols
+    || nativeJSONStringify(Object(symbol)) != '{}';
+}) }, {
   stringify: function stringify(it) {
     var args = [it];
-    var i = 1;
+    var index = 1;
     var replacer, $replacer;
-    while (arguments.length > i) args.push(arguments[i++]);
+    while (arguments.length > index) args.push(arguments[index++]);
     $replacer = replacer = args[1];
-    if (!_isObject$1(replacer) && it === undefined || isSymbol(it)) return; // IE8 returns string on undefined
-    if (!_isArray(replacer)) replacer = function (key, value) {
+    if (!isObject$1(replacer) && it === undefined || isSymbol(it)) return; // IE8 returns string on undefined
+    if (!isArray(replacer)) replacer = function (key, value) {
       if (typeof $replacer == 'function') value = $replacer.call(this, key, value);
       if (!isSymbol(value)) return value;
     };
     args[1] = replacer;
-    return _stringify.apply($JSON, args);
+    return nativeJSONStringify.apply(JSON$1, args);
   }
 });
 
-// 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
-$Symbol[PROTOTYPE$4][TO_PRIMITIVE] || _hide$1($Symbol[PROTOTYPE$4], TO_PRIMITIVE, $Symbol[PROTOTYPE$4].valueOf);
-// 19.4.3.5 Symbol.prototype[@@toStringTag]
-_setToStringTag($Symbol, 'Symbol');
-// 20.2.1.9 Math[@@toStringTag]
-_setToStringTag(Math, 'Math', true);
-// 24.3.3 JSON[@@toStringTag]
-_setToStringTag(_global$1.JSON, 'JSON', true);
+// `Symbol.prototype[@@toPrimitive]` method
+// https://tc39.github.io/ecma262/#sec-symbol.prototype-@@toprimitive
+if (!$Symbol[PROTOTYPE$2][TO_PRIMITIVE]) {
+  createNonEnumerableProperty$1($Symbol[PROTOTYPE$2], TO_PRIMITIVE, $Symbol[PROTOTYPE$2].valueOf);
+}
+// `Symbol.prototype[@@toStringTag]` property
+// https://tc39.github.io/ecma262/#sec-symbol.prototype-@@tostringtag
+setToStringTag($Symbol, SYMBOL);
 
-_wksDefine('asyncIterator');
+hiddenKeys$2[HIDDEN] = true;
 
-_wksDefine('observable');
+// `Symbol.asyncIterator` well-known symbol
+// https://tc39.github.io/ecma262/#sec-symbol.asynciterator
+defineWellKnownSymbol('asyncIterator');
 
-var symbol = _core$1.Symbol;
+// `Symbol.hasInstance` well-known symbol
+// https://tc39.github.io/ecma262/#sec-symbol.hasinstance
+defineWellKnownSymbol('hasInstance');
+
+// `Symbol.isConcatSpreadable` well-known symbol
+// https://tc39.github.io/ecma262/#sec-symbol.isconcatspreadable
+defineWellKnownSymbol('isConcatSpreadable');
+
+// `Symbol.match` well-known symbol
+// https://tc39.github.io/ecma262/#sec-symbol.match
+defineWellKnownSymbol('match');
+
+// `Symbol.matchAll` well-known symbol
+defineWellKnownSymbol('matchAll');
+
+// `Symbol.replace` well-known symbol
+// https://tc39.github.io/ecma262/#sec-symbol.replace
+defineWellKnownSymbol('replace');
+
+// `Symbol.search` well-known symbol
+// https://tc39.github.io/ecma262/#sec-symbol.search
+defineWellKnownSymbol('search');
+
+// `Symbol.species` well-known symbol
+// https://tc39.github.io/ecma262/#sec-symbol.species
+defineWellKnownSymbol('species');
+
+// `Symbol.split` well-known symbol
+// https://tc39.github.io/ecma262/#sec-symbol.split
+defineWellKnownSymbol('split');
+
+// `Symbol.toPrimitive` well-known symbol
+// https://tc39.github.io/ecma262/#sec-symbol.toprimitive
+defineWellKnownSymbol('toPrimitive');
+
+// `Symbol.toStringTag` well-known symbol
+// https://tc39.github.io/ecma262/#sec-symbol.tostringtag
+defineWellKnownSymbol('toStringTag');
+
+// `Symbol.unscopables` well-known symbol
+// https://tc39.github.io/ecma262/#sec-symbol.unscopables
+defineWellKnownSymbol('unscopables');
+
+// Math[@@toStringTag] property
+// https://tc39.github.io/ecma262/#sec-math-@@tostringtag
+setToStringTag(Math, 'Math', true);
+
+// JSON[@@toStringTag] property
+// https://tc39.github.io/ecma262/#sec-json-@@tostringtag
+setToStringTag(global_1$1.JSON, 'JSON', true);
+
+var symbol = path$1.Symbol;
+
+// `Symbol.asyncDispose` well-known symbol
+// https://github.com/tc39/proposal-using-statement
+defineWellKnownSymbol('asyncDispose');
+
+// `Symbol.dispose` well-known symbol
+// https://github.com/tc39/proposal-using-statement
+defineWellKnownSymbol('dispose');
+
+// `Symbol.observable` well-known symbol
+// https://github.com/tc39/proposal-observable
+defineWellKnownSymbol('observable');
+
+// `Symbol.patternMatch` well-known symbol
+// https://github.com/tc39/proposal-pattern-matching
+defineWellKnownSymbol('patternMatch');
+
+// TODO: remove from `core-js@4`
+
+
+defineWellKnownSymbol('replaceAll');
 
 var symbol$1 = symbol;
 
-function _typeof2(obj) { if (typeof symbol$1 === "function" && typeof iterator$1 === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof symbol$1 === "function" && obj.constructor === symbol$1 && obj !== symbol$1.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
+var symbol$2 = symbol$1;
+
+function _typeof2(obj) { if (typeof symbol$2 === "function" && typeof iterator$2 === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof symbol$2 === "function" && obj.constructor === symbol$2 && obj !== symbol$2.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
 
 function _typeof(obj) {
-  if (typeof symbol$1 === "function" && _typeof2(iterator$1) === "symbol") {
+  if (typeof symbol$2 === "function" && _typeof2(iterator$2) === "symbol") {
     _typeof = function _typeof(obj) {
       return _typeof2(obj);
     };
   } else {
     _typeof = function _typeof(obj) {
-      return obj && typeof symbol$1 === "function" && obj.constructor === symbol$1 && obj !== symbol$1.prototype ? "symbol" : _typeof2(obj);
+      return obj && typeof symbol$2 === "function" && obj.constructor === symbol$2 && obj !== symbol$2.prototype ? "symbol" : _typeof2(obj);
     };
   }
 
   return _typeof(obj);
 }
 
-var script$z = {
+var script$F = {
   functional: true,
   name: 'CCol',
   props: {
@@ -18494,18 +19644,18 @@ var script$z = {
 };
 
 /* script */
-const __vue_script__$z = script$z;
+const __vue_script__$F = script$F;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$z = undefined;
+  const __vue_inject_styles__$F = undefined;
   /* scoped */
-  const __vue_scope_id__$z = undefined;
+  const __vue_scope_id__$F = undefined;
   /* module identifier */
-  const __vue_module_identifier__$z = undefined;
+  const __vue_module_identifier__$F = undefined;
   /* functional template */
-  const __vue_is_functional_template__$z = undefined;
+  const __vue_is_functional_template__$F = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -18514,11 +19664,11 @@ const __vue_script__$z = script$z;
   
   var CCol = normalizeComponent_1(
     {},
-    __vue_inject_styles__$z,
-    __vue_script__$z,
-    __vue_scope_id__$z,
-    __vue_is_functional_template__$z,
-    __vue_module_identifier__$z,
+    __vue_inject_styles__$F,
+    __vue_script__$F,
+    __vue_scope_id__$F,
+    __vue_is_functional_template__$F,
+    __vue_module_identifier__$F,
     undefined,
     undefined
   );
@@ -18529,18 +19679,24 @@ const __vue_script__$z = script$z;
 //
 //
 //
-var script$A = {
+var script$G = {
   name: 'CHeader',
   props: {
+    tag: {
+      type: String,
+      default: 'header'
+    },
+    colorScheme: {
+      type: String,
+      default: 'light'
+    },
     fixed: Boolean,
-    light: Boolean,
     withSubheader: Boolean
   },
   computed: {
     classList: function classList() {
-      return ['c-header c-header-light', {
+      return ['c-header', "c-header-".concat(this.colorScheme), {
         'c-header-fixed': this.fixed,
-        'c-header-light': this.light,
         'c-header-with-subheader': this.withSubheader
       }];
     }
@@ -18548,26 +19704,31 @@ var script$A = {
 };
 
 /* script */
-const __vue_script__$A = script$A;
+const __vue_script__$G = script$G;
 
 /* template */
 var __vue_render__$g = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return _c("header", { class: _vm.classList }, [_vm._t("default")], 2)
+  return _c(
+    _vm.tag,
+    { tag: "component", class: _vm.classList },
+    [_vm._t("default")],
+    2
+  )
 };
 var __vue_staticRenderFns__$g = [];
 __vue_render__$g._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$A = undefined;
+  const __vue_inject_styles__$G = undefined;
   /* scoped */
-  const __vue_scope_id__$A = undefined;
+  const __vue_scope_id__$G = undefined;
   /* module identifier */
-  const __vue_module_identifier__$A = undefined;
+  const __vue_module_identifier__$G = undefined;
   /* functional template */
-  const __vue_is_functional_template__$A = false;
+  const __vue_is_functional_template__$G = false;
   /* style inject */
   
   /* style inject SSR */
@@ -18576,17 +19737,65 @@ __vue_render__$g._withStripped = true;
   
   var CHeader = normalizeComponent_1(
     { render: __vue_render__$g, staticRenderFns: __vue_staticRenderFns__$g },
-    __vue_inject_styles__$A,
-    __vue_script__$A,
-    __vue_scope_id__$A,
-    __vue_is_functional_template__$A,
-    __vue_module_identifier__$A,
+    __vue_inject_styles__$G,
+    __vue_script__$G,
+    __vue_scope_id__$G,
+    __vue_is_functional_template__$G,
+    __vue_module_identifier__$G,
     undefined,
     undefined
   );
 
 //
-var script$B = {
+//
+//
+//
+//
+//
+var script$H = {
+  name: 'CHeaderNav'
+};
+
+/* script */
+const __vue_script__$H = script$H;
+
+/* template */
+var __vue_render__$h = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("ul", { staticClass: "c-header-nav" }, [_vm._t("default")], 2)
+};
+var __vue_staticRenderFns__$h = [];
+__vue_render__$h._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$H = undefined;
+  /* scoped */
+  const __vue_scope_id__$H = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$H = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$H = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CHeaderNav = normalizeComponent_1(
+    { render: __vue_render__$h, staticRenderFns: __vue_staticRenderFns__$h },
+    __vue_inject_styles__$H,
+    __vue_script__$H,
+    __vue_scope_id__$H,
+    __vue_is_functional_template__$H,
+    __vue_module_identifier__$H,
+    undefined,
+    undefined
+  );
+
+//
+var script$I = {
   name: 'CHeaderNavItem',
   components: {
     CLink: CLink
@@ -18595,10 +19804,10 @@ var script$B = {
 };
 
 /* script */
-const __vue_script__$B = script$B;
+const __vue_script__$I = script$I;
 
 /* template */
-var __vue_render__$h = function() {
+var __vue_render__$i = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -18621,17 +19830,17 @@ var __vue_render__$h = function() {
     1
   )
 };
-var __vue_staticRenderFns__$h = [];
-__vue_render__$h._withStripped = true;
+var __vue_staticRenderFns__$i = [];
+__vue_render__$i._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$B = undefined;
+  const __vue_inject_styles__$I = undefined;
   /* scoped */
-  const __vue_scope_id__$B = undefined;
+  const __vue_scope_id__$I = undefined;
   /* module identifier */
-  const __vue_module_identifier__$B = undefined;
+  const __vue_module_identifier__$I = undefined;
   /* functional template */
-  const __vue_is_functional_template__$B = false;
+  const __vue_is_functional_template__$I = false;
   /* style inject */
   
   /* style inject SSR */
@@ -18639,81 +19848,84 @@ __vue_render__$h._withStripped = true;
 
   
   var CHeaderNavItem = normalizeComponent_1(
-    { render: __vue_render__$h, staticRenderFns: __vue_staticRenderFns__$h },
-    __vue_inject_styles__$B,
-    __vue_script__$B,
-    __vue_scope_id__$B,
-    __vue_is_functional_template__$B,
-    __vue_module_identifier__$B,
+    { render: __vue_render__$i, staticRenderFns: __vue_staticRenderFns__$i },
+    __vue_inject_styles__$I,
+    __vue_script__$I,
+    __vue_scope_id__$I,
+    __vue_is_functional_template__$I,
+    __vue_module_identifier__$I,
     undefined,
     undefined
   );
 
-// fast apply, http://jsperf.lnkit.com/fast-apply/5
-var _invoke = function (fn, args, that) {
-  var un = that === undefined;
-  switch (args.length) {
-    case 0: return un ? fn()
-                      : fn.call(that);
-    case 1: return un ? fn(args[0])
-                      : fn.call(that, args[0]);
-    case 2: return un ? fn(args[0], args[1])
-                      : fn.call(that, args[0], args[1]);
-    case 3: return un ? fn(args[0], args[1], args[2])
-                      : fn.call(that, args[0], args[1], args[2]);
-    case 4: return un ? fn(args[0], args[1], args[2], args[3])
-                      : fn.call(that, args[0], args[1], args[2], args[3]);
-  } return fn.apply(that, args);
-};
-
-var arraySlice = [].slice;
+var slice = [].slice;
 var factories = {};
 
-var construct = function (F, len, args) {
-  if (!(len in factories)) {
-    for (var n = [], i = 0; i < len; i++) n[i] = 'a[' + i + ']';
+var construct = function (C, argsLength, args) {
+  if (!(argsLength in factories)) {
+    for (var list = [], i = 0; i < argsLength; i++) list[i] = 'a[' + i + ']';
     // eslint-disable-next-line no-new-func
-    factories[len] = Function('F,a', 'return new F(' + n.join(',') + ')');
-  } return factories[len](F, args);
+    factories[argsLength] = Function('C,a', 'return new C(' + list.join(',') + ')');
+  } return factories[argsLength](C, args);
 };
 
-var _bind = Function.bind || function bind(that /* , ...args */) {
-  var fn = _aFunction$1(this);
-  var partArgs = arraySlice.call(arguments, 1);
-  var bound = function (/* args... */) {
-    var args = partArgs.concat(arraySlice.call(arguments));
-    return this instanceof bound ? construct(fn, args.length, args) : _invoke(fn, args, that);
+// `Function.prototype.bind` method implementation
+// https://tc39.github.io/ecma262/#sec-function.prototype.bind
+var functionBind = Function.bind || function bind(that /* , ...args */) {
+  var fn = aFunction$2(this);
+  var partArgs = slice.call(arguments, 1);
+  var boundFunction = function bound(/* args... */) {
+    var args = partArgs.concat(slice.call(arguments));
+    return this instanceof boundFunction ? construct(fn, args.length, args) : fn.apply(that, args);
   };
-  if (_isObject$1(fn.prototype)) bound.prototype = fn.prototype;
-  return bound;
+  if (isObject$1(fn.prototype)) boundFunction.prototype = fn.prototype;
+  return boundFunction;
 };
 
-// 26.1.2 Reflect.construct(target, argumentsList [, newTarget])
+// `Function.prototype.bind` method
+// https://tc39.github.io/ecma262/#sec-function.prototype.bind
+_export$1({ target: 'Function', proto: true }, {
+  bind: functionBind
+});
 
+var entryVirtual = function (CONSTRUCTOR) {
+  return path$1[CONSTRUCTOR + 'Prototype'];
+};
 
+var bind$2 = entryVirtual('Function').bind;
 
+var FunctionPrototype$1 = Function.prototype;
 
+var bind_1 = function (it) {
+  var own = it.bind;
+  return it === FunctionPrototype$1 || (it instanceof Function && own === FunctionPrototype$1.bind) ? bind$2 : own;
+};
 
+var bind$3 = bind_1;
 
+var bind$4 = bind$3;
 
-var rConstruct = (_global$1.Reflect || {}).construct;
+var nativeConstruct = getBuiltIn$1('Reflect', 'construct');
 
+// `Reflect.construct` method
+// https://tc39.github.io/ecma262/#sec-reflect.construct
 // MS Edge supports only 2 arguments and argumentsList argument is optional
 // FF Nightly sets third argument as `new.target`, but does not create `this` from it
-var NEW_TARGET_BUG = _fails$1(function () {
+var NEW_TARGET_BUG = fails$1(function () {
   function F() { /* empty */ }
-  return !(rConstruct(function () { /* empty */ }, [], F) instanceof F);
+  return !(nativeConstruct(function () { /* empty */ }, [], F) instanceof F);
 });
-var ARGS_BUG = !_fails$1(function () {
-  rConstruct(function () { /* empty */ });
+var ARGS_BUG = !fails$1(function () {
+  nativeConstruct(function () { /* empty */ });
 });
+var FORCED$2 = NEW_TARGET_BUG || ARGS_BUG;
 
-_export$1(_export$1.S + _export$1.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect', {
+_export$1({ target: 'Reflect', stat: true, forced: FORCED$2, sham: FORCED$2 }, {
   construct: function construct(Target, args /* , newTarget */) {
-    _aFunction$1(Target);
-    _anObject$1(args);
-    var newTarget = arguments.length < 3 ? Target : _aFunction$1(arguments[2]);
-    if (ARGS_BUG && !NEW_TARGET_BUG) return rConstruct(Target, args, newTarget);
+    aFunction$2(Target);
+    anObject$1(args);
+    var newTarget = arguments.length < 3 ? Target : aFunction$2(arguments[2]);
+    if (ARGS_BUG && !NEW_TARGET_BUG) return nativeConstruct(Target, args, newTarget);
     if (Target == newTarget) {
       // w/o altered newTarget, optimization for 0-4 arguments
       switch (args.length) {
@@ -18726,51 +19938,31 @@ _export$1(_export$1.S + _export$1.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect', {
       // w/o altered newTarget, lot of arguments case
       var $args = [null];
       $args.push.apply($args, args);
-      return new (_bind.apply(Target, $args))();
+      return new (functionBind.apply(Target, $args))();
     }
     // with altered newTarget, not support built-in constructors
     var proto = newTarget.prototype;
-    var instance = _objectCreate(_isObject$1(proto) ? proto : Object.prototype);
+    var instance = objectCreate$1(isObject$1(proto) ? proto : Object.prototype);
     var result = Function.apply.call(Target, instance, args);
-    return _isObject$1(result) ? result : instance;
+    return isObject$1(result) ? result : instance;
   }
 });
 
-var construct$1 = _core$1.Reflect.construct;
+var construct$1 = path$1.Reflect.construct;
 
 var construct$2 = construct$1;
 
-// Works with __proto__ only. Old v8 can't work with null proto objects.
-/* eslint-disable no-proto */
+var construct$3 = construct$2;
 
+// `Object.setPrototypeOf` method
+// https://tc39.github.io/ecma262/#sec-object.setprototypeof
+_export$1({ target: 'Object', stat: true }, {
+  setPrototypeOf: objectSetPrototypeOf
+});
 
-var check$1 = function (O, proto) {
-  _anObject$1(O);
-  if (!_isObject$1(proto) && proto !== null) throw TypeError(proto + ": can't set as prototype!");
-};
-var _setProto$1 = {
-  set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
-    function (test, buggy, set) {
-      try {
-        set = _ctx$1(Function.call, _objectGopd$1.f(Object.prototype, '__proto__').set, 2);
-        set(test, []);
-        buggy = !(test instanceof Array);
-      } catch (e) { buggy = true; }
-      return function setPrototypeOf(O, proto) {
-        check$1(O, proto);
-        if (buggy) O.__proto__ = proto;
-        else set(O, proto);
-        return O;
-      };
-    }({}, false) : undefined),
-  check: check$1
-};
+var setPrototypeOf = path$1.Object.setPrototypeOf;
 
-// 19.1.3.19 Object.setPrototypeOf(O, proto)
-
-_export$1(_export$1.S, 'Object', { setPrototypeOf: _setProto$1.set });
-
-var setPrototypeOf$1 = _core$1.Object.setPrototypeOf;
+var setPrototypeOf$1 = setPrototypeOf;
 
 var setPrototypeOf$2 = setPrototypeOf$1;
 
@@ -18784,12 +19976,12 @@ function _setPrototypeOf(o, p) {
 }
 
 function isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !construct$2) return false;
-  if (construct$2.sham) return false;
+  if (typeof Reflect === "undefined" || !construct$3) return false;
+  if (construct$3.sham) return false;
   if (typeof Proxy === "function") return true;
 
   try {
-    Date.prototype.toString.call(construct$2(Date, [], function () {}));
+    Date.prototype.toString.call(construct$3(Date, [], function () {}));
     return true;
   } catch (e) {
     return false;
@@ -18798,12 +19990,14 @@ function isNativeReflectConstruct() {
 
 function _construct(Parent, args, Class) {
   if (isNativeReflectConstruct()) {
-    _construct = construct$2;
+    _construct = construct$3;
   } else {
     _construct = function _construct(Parent, args, Class) {
       var a = [null];
       a.push.apply(a, args);
-      var Constructor = Function.bind.apply(Parent, a);
+
+      var Constructor = bind$4(Function).apply(Parent, a);
+
       var instance = new Constructor();
       if (Class) _setPrototypeOf(instance, Class.prototype);
       return instance;
@@ -18814,7 +20008,7 @@ function _construct(Parent, args, Class) {
 }
 
 function _arrayWithoutHoles(arr) {
-  if (isArray$1(arr)) {
+  if (isArray$3(arr)) {
     for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {
       arr2[i] = arr[i];
     }
@@ -18824,89 +20018,114 @@ function _arrayWithoutHoles(arr) {
 }
 
 // call something on iterator step with safe closing on error
-
-var _iterCall = function (iterator, fn, value, entries) {
+var callWithSafeIterationClosing = function (iterator, fn, value, ENTRIES) {
   try {
-    return entries ? fn(_anObject$1(value)[0], value[1]) : fn(value);
+    return ENTRIES ? fn(anObject$1(value)[0], value[1]) : fn(value);
   // 7.4.6 IteratorClose(iterator, completion)
-  } catch (e) {
-    var ret = iterator['return'];
-    if (ret !== undefined) _anObject$1(ret.call(iterator));
-    throw e;
+  } catch (error) {
+    var returnMethod = iterator['return'];
+    if (returnMethod !== undefined) anObject$1(returnMethod.call(iterator));
+    throw error;
   }
 };
 
+var ITERATOR$4 = wellKnownSymbol$1('iterator');
+var ArrayPrototype$1 = Array.prototype;
+
 // check on default Array iterator
-
-var ITERATOR$5 = _wks$1('iterator');
-var ArrayProto$1 = Array.prototype;
-
-var _isArrayIter = function (it) {
-  return it !== undefined && (_iterators.Array === it || ArrayProto$1[ITERATOR$5] === it);
+var isArrayIteratorMethod = function (it) {
+  return it !== undefined && (iterators.Array === it || ArrayPrototype$1[ITERATOR$4] === it);
 };
 
-var _createProperty = function (object, index, value) {
-  if (index in object) _objectDp$1.f(object, index, _propertyDesc$1(0, value));
-  else object[index] = value;
+// `Array.from` method implementation
+// https://tc39.github.io/ecma262/#sec-array.from
+var arrayFrom = function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
+  var O = toObject$1(arrayLike);
+  var C = typeof this == 'function' ? this : Array;
+  var argumentsLength = arguments.length;
+  var mapfn = argumentsLength > 1 ? arguments[1] : undefined;
+  var mapping = mapfn !== undefined;
+  var index = 0;
+  var iteratorMethod = getIteratorMethod(O);
+  var length, result, step, iterator, next;
+  if (mapping) mapfn = bindContext(mapfn, argumentsLength > 2 ? arguments[2] : undefined, 2);
+  // if the target is not iterable or it's an array with the default iterator - use a simple case
+  if (iteratorMethod != undefined && !(C == Array && isArrayIteratorMethod(iteratorMethod))) {
+    iterator = iteratorMethod.call(O);
+    next = iterator.next;
+    result = new C();
+    for (;!(step = next.call(iterator)).done; index++) {
+      createProperty$1(result, index, mapping
+        ? callWithSafeIterationClosing(iterator, mapfn, [step.value, index], true)
+        : step.value
+      );
+    }
+  } else {
+    length = toLength$1(O.length);
+    result = new C(length);
+    for (;length > index; index++) {
+      createProperty$1(result, index, mapping ? mapfn(O[index], index) : O[index]);
+    }
+  }
+  result.length = index;
+  return result;
 };
 
-var ITERATOR$6 = _wks$1('iterator');
+var ITERATOR$5 = wellKnownSymbol$1('iterator');
 var SAFE_CLOSING = false;
 
 try {
-  var riter = [7][ITERATOR$6]();
-  riter['return'] = function () { SAFE_CLOSING = true; };
+  var called = 0;
+  var iteratorWithReturn = {
+    next: function () {
+      return { done: !!called++ };
+    },
+    'return': function () {
+      SAFE_CLOSING = true;
+    }
+  };
+  iteratorWithReturn[ITERATOR$5] = function () {
+    return this;
+  };
   // eslint-disable-next-line no-throw-literal
-  Array.from(riter, function () { throw 2; });
-} catch (e) { /* empty */ }
+  Array.from(iteratorWithReturn, function () { throw 2; });
+} catch (error) { /* empty */ }
 
-var _iterDetect = function (exec, skipClosing) {
-  if (!skipClosing && !SAFE_CLOSING) return false;
-  var safe = false;
+var checkCorrectnessOfIteration = function (exec, SKIP_CLOSING) {
+  if (!SKIP_CLOSING && !SAFE_CLOSING) return false;
+  var ITERATION_SUPPORT = false;
   try {
-    var arr = [7];
-    var iter = arr[ITERATOR$6]();
-    iter.next = function () { return { done: safe = true }; };
-    arr[ITERATOR$6] = function () { return iter; };
-    exec(arr);
-  } catch (e) { /* empty */ }
-  return safe;
+    var object = {};
+    object[ITERATOR$5] = function () {
+      return {
+        next: function () {
+          return { done: ITERATION_SUPPORT = true };
+        }
+      };
+    };
+    exec(object);
+  } catch (error) { /* empty */ }
+  return ITERATION_SUPPORT;
 };
 
-_export$1(_export$1.S + _export$1.F * !_iterDetect(function (iter) { Array.from(iter); }), 'Array', {
-  // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
-  from: function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
-    var O = _toObject(arrayLike);
-    var C = typeof this == 'function' ? this : Array;
-    var aLen = arguments.length;
-    var mapfn = aLen > 1 ? arguments[1] : undefined;
-    var mapping = mapfn !== undefined;
-    var index = 0;
-    var iterFn = core_getIteratorMethod(O);
-    var length, result, step, iterator;
-    if (mapping) mapfn = _ctx$1(mapfn, aLen > 2 ? arguments[2] : undefined, 2);
-    // if object isn't iterable or it's array with default iterator - use simple case
-    if (iterFn != undefined && !(C == Array && _isArrayIter(iterFn))) {
-      for (iterator = iterFn.call(O), result = new C(); !(step = iterator.next()).done; index++) {
-        _createProperty(result, index, mapping ? _iterCall(iterator, mapfn, [step.value, index], true) : step.value);
-      }
-    } else {
-      length = _toLength$1(O.length);
-      for (result = new C(length); length > index; index++) {
-        _createProperty(result, index, mapping ? mapfn(O[index], index) : O[index]);
-      }
-    }
-    result.length = index;
-    return result;
-  }
+var INCORRECT_ITERATION = !checkCorrectnessOfIteration(function (iterable) {
+  Array.from(iterable);
 });
 
-var from_1 = _core$1.Array.from;
+// `Array.from` method
+// https://tc39.github.io/ecma262/#sec-array.from
+_export$1({ target: 'Array', stat: true, forced: INCORRECT_ITERATION }, {
+  from: arrayFrom
+});
+
+var from_1 = path$1.Array.from;
 
 var from_1$1 = from_1;
 
+var from_1$2 = from_1$1;
+
 function _iterableToArray(iter) {
-  if (isIterable$1(Object(iter)) || Object.prototype.toString.call(iter) === "[object Arguments]") return from_1$1(iter);
+  if (isIterable$2(Object(iter)) || Object.prototype.toString.call(iter) === "[object Arguments]") return from_1$2(iter);
 }
 
 function _nonIterableSpread() {
@@ -18917,16 +20136,19 @@ function _toConsumableArray(arr) {
   return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
 }
 
-var script$C = {
-  name: 'CImageLazy',
-  extends: CImage,
+var script$J = {
+  name: 'CImgLazy',
+  extends: CImg,
   props: {
     loadInitially: Boolean,
     loadOffset: {
       type: Number,
       default: 500
     },
-    noFade: Boolean,
+    fade: {
+      type: Boolean,
+      default: true
+    },
     fadeOffset: {
       type: Number,
       default: -100
@@ -18952,7 +20174,7 @@ var script$C = {
   computed: {
     animationClasses: function animationClasses() {
       return {
-        'opacity-0': !this.noFade && !this.animated
+        'opacity-0': this.fade && !this.animated
       };
     },
     observerArgs: function observerArgs() {
@@ -18979,7 +20201,7 @@ var script$C = {
         if (entry.intersectionRatio > 0) {
           _this.active = true;
 
-          if (!_this.noFade) {
+          if (_this.fade) {
             _this.$nextTick(function () {
               var animateInstantly = _this.loadOffset <= _this.fadeOffset;
               animateInstantly ? _this.queueAnimation() : _this.defineObserver();
@@ -19016,35 +20238,35 @@ var css$2 = "\n.opacity-0 {\n  opacity: 0;\n}\n";
 styleInject(css$2);
 
 /* script */
-const __vue_script__$C = script$C;
+const __vue_script__$J = script$J;
 /* template */
 
   /* style */
-  const __vue_inject_styles__$C = undefined;
+  const __vue_inject_styles__$J = undefined;
   /* scoped */
-  const __vue_scope_id__$C = undefined;
+  const __vue_scope_id__$J = undefined;
   /* module identifier */
-  const __vue_module_identifier__$C = undefined;
+  const __vue_module_identifier__$J = undefined;
   /* functional template */
-  const __vue_is_functional_template__$C = undefined;
+  const __vue_is_functional_template__$J = undefined;
   /* style inject */
   
   /* style inject SSR */
   
 
   
-  var CImageLazy = normalizeComponent_1(
+  var CImgLazy = normalizeComponent_1(
     {},
-    __vue_inject_styles__$C,
-    __vue_script__$C,
-    __vue_scope_id__$C,
-    __vue_is_functional_template__$C,
-    __vue_module_identifier__$C,
+    __vue_inject_styles__$J,
+    __vue_script__$J,
+    __vue_scope_id__$J,
+    __vue_is_functional_template__$J,
+    __vue_module_identifier__$J,
     undefined,
     undefined
   );
 
-var script$D = {
+var script$K = {
   functional: true,
   name: 'CJumbotron',
   props: {
@@ -19055,9 +20277,9 @@ var script$D = {
     fluid: Boolean,
     header: String,
     lead: String,
-    variant: String,
-    borderVariant: String,
-    textVariant: String
+    color: String,
+    borderColor: String,
+    textColor: String
   },
   render: function render(h, _ref) {
     var _class;
@@ -19096,24 +20318,24 @@ var script$D = {
       staticClass: 'jumbotron',
       class: (_class = {
         'jumbotron-fluid': props.fluid
-      }, _defineProperty(_class, "text-".concat(props.textVariant), Boolean(props.textVariant)), _defineProperty(_class, "bg-".concat(props.variant), Boolean(props.variant)), _defineProperty(_class, "border-".concat(props.borderVariant), Boolean(props.borderVariant)), _defineProperty(_class, 'border', Boolean(props.borderVariant)), _class)
+      }, _defineProperty(_class, "text-".concat(props.textColor), Boolean(props.textColor)), _defineProperty(_class, "bg-".concat(props.color), Boolean(props.color)), _defineProperty(_class, "border-".concat(props.borderColor), Boolean(props.borderColor)), _defineProperty(_class, 'border', Boolean(props.borderColor)), _class)
     }), childNodes);
   }
 };
 
 /* script */
-const __vue_script__$D = script$D;
+const __vue_script__$K = script$K;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$D = undefined;
+  const __vue_inject_styles__$K = undefined;
   /* scoped */
-  const __vue_scope_id__$D = undefined;
+  const __vue_scope_id__$K = undefined;
   /* module identifier */
-  const __vue_module_identifier__$D = undefined;
+  const __vue_module_identifier__$K = undefined;
   /* functional template */
-  const __vue_is_functional_template__$D = undefined;
+  const __vue_is_functional_template__$K = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -19122,33 +20344,39 @@ const __vue_script__$D = script$D;
   
   var CJumbotron = normalizeComponent_1(
     {},
-    __vue_inject_styles__$D,
-    __vue_script__$D,
-    __vue_scope_id__$D,
-    __vue_is_functional_template__$D,
-    __vue_module_identifier__$D,
+    __vue_inject_styles__$K,
+    __vue_script__$K,
+    __vue_scope_id__$K,
+    __vue_is_functional_template__$K,
+    __vue_module_identifier__$K,
     undefined,
     undefined
   );
 
-var script$E = {
+var script$L = {
   functional: true,
   name: 'CListGroup',
   props: {
     tag: {
       type: String,
-      default: 'div'
+      default: 'ul'
     },
-    flush: Boolean
+    flush: Boolean,
+    horizontal: [Boolean, String]
   },
   render: function render(h, _ref) {
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
+    var hor = props.horizontal;
+    var horizontalClassSuffix = typeof hor === 'string' ? "-".concat(hor) : '';
     var componentData = {
       staticClass: 'list-group',
-      class: {
-        'list-group-flush': props.flush
+      class: _defineProperty({
+        'list-group-flush': !hor && props.flush
+      }, "list-group-horizontal".concat(horizontalClassSuffix), hor),
+      attrs: {
+        role: data.attrs ? data.attrs.role || 'list-items' : 'list-items'
       }
     };
     return h(props.tag, a(data, componentData), children);
@@ -19156,18 +20384,18 @@ var script$E = {
 };
 
 /* script */
-const __vue_script__$E = script$E;
+const __vue_script__$L = script$L;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$E = undefined;
+  const __vue_inject_styles__$L = undefined;
   /* scoped */
-  const __vue_scope_id__$E = undefined;
+  const __vue_scope_id__$L = undefined;
   /* module identifier */
-  const __vue_module_identifier__$E = undefined;
+  const __vue_module_identifier__$L = undefined;
   /* functional template */
-  const __vue_is_functional_template__$E = undefined;
+  const __vue_is_functional_template__$L = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -19176,27 +20404,27 @@ const __vue_script__$E = script$E;
   
   var CListGroup = normalizeComponent_1(
     {},
-    __vue_inject_styles__$E,
-    __vue_script__$E,
-    __vue_scope_id__$E,
-    __vue_is_functional_template__$E,
-    __vue_module_identifier__$E,
+    __vue_inject_styles__$L,
+    __vue_script__$L,
+    __vue_scope_id__$L,
+    __vue_is_functional_template__$L,
+    __vue_module_identifier__$L,
     undefined,
     undefined
   );
 
-var props$c = Object.assign({
+var props$a = Object.assign({
   tag: {
     type: String,
-    default: 'div'
+    default: 'li'
   },
   action: Boolean,
-  variant: String
+  color: String
 }, propsFactory());
-var script$F = {
+var script$M = {
   functional: true,
   name: 'CListGroupItem',
-  props: props$c,
+  props: props$a,
   render: function render(h, _ref) {
     var _class;
 
@@ -19224,25 +20452,25 @@ var script$F = {
       attrs: attrs,
       props: itemProps,
       staticClass: 'list-group-item',
-      class: (_class = {}, _defineProperty(_class, "list-group-item-".concat(props.variant), Boolean(props.variant)), _defineProperty(_class, 'list-group-item-action', isAction), _defineProperty(_class, 'active', props.active), _defineProperty(_class, 'disabled', props.disabled), _class)
+      class: (_class = {}, _defineProperty(_class, "list-group-item-".concat(props.color), Boolean(props.color)), _defineProperty(_class, 'list-group-item-action', isAction), _defineProperty(_class, 'active', props.active), _defineProperty(_class, 'disabled', props.disabled), _class)
     };
     return h(tag, a(data, componentData), children);
   }
 };
 
 /* script */
-const __vue_script__$F = script$F;
+const __vue_script__$M = script$M;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$F = undefined;
+  const __vue_inject_styles__$M = undefined;
   /* scoped */
-  const __vue_scope_id__$F = undefined;
+  const __vue_scope_id__$M = undefined;
   /* module identifier */
-  const __vue_module_identifier__$F = undefined;
+  const __vue_module_identifier__$M = undefined;
   /* functional template */
-  const __vue_is_functional_template__$F = undefined;
+  const __vue_is_functional_template__$M = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -19251,27 +20479,30 @@ const __vue_script__$F = script$F;
   
   var CListGroupItem = normalizeComponent_1(
     {},
-    __vue_inject_styles__$F,
-    __vue_script__$F,
-    __vue_scope_id__$F,
-    __vue_is_functional_template__$F,
-    __vue_module_identifier__$F,
+    __vue_inject_styles__$M,
+    __vue_script__$M,
+    __vue_scope_id__$M,
+    __vue_is_functional_template__$M,
+    __vue_module_identifier__$M,
     undefined,
     undefined
   );
 
-var script$G = {
+var script$N = {
   name: 'CMedia',
   components: {
-    CImage: CImage
+    CImg: CImg
   },
   props: {
-    asidePositionClasses: [String, Array, Object],
+    addAsideMargin: {
+      type: Boolean,
+      default: true
+    },
     addAsideClasses: [String, Array, Object],
     addBodyClasses: [String, Array, Object],
     asideRight: Boolean,
     asideImageProps: Object,
-    asidePosition: {
+    asideVerticalPosition: {
       type: String,
       default: 'start',
       validator: function validator(val) {
@@ -19282,16 +20513,13 @@ var script$G = {
   computed: {
     computedAsideImageProps: function computedAsideImageProps() {
       return Object.assign({
-        blankColor: '#777777',
+        placeholderColor: '#777777',
         width: '64px',
-        height: this.asidePosition === 'stretch' ? '100%' : '64px'
+        height: this.asideVerticalPosition === 'stretch' ? '100%' : '64px'
       }, this.asideImageProps || {});
     },
-    computedAsidePositionClasses: function computedAsidePositionClasses() {
-      return this.asidePositionClasses || "m".concat(this.asideRight ? 'l' : 'r', "-3");
-    },
     asideClasses: function asideClasses() {
-      return [this.computedAsidePositionClasses, this.addAsideClasses, "align-self-".concat(this.asidePosition)];
+      return [this.addAsideMargin ? "m".concat(this.asideRight ? 'l' : 'r', "-3") : '', this.addAsideClasses, "align-self-".concat(this.asideVerticalPosition)];
     },
     mediaBodyClasses: function mediaBodyClasses() {
       return ['media-body', this.addBodyClasses];
@@ -19305,10 +20533,10 @@ var script$G = {
 };
 
 /* script */
-const __vue_script__$G = script$G;
+const __vue_script__$N = script$N;
 
 /* template */
-var __vue_render__$i = function() {
+var __vue_render__$j = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -19318,7 +20546,7 @@ var __vue_render__$i = function() {
       { class: _vm.asideClasses },
       [
         _vm._t("aside", [
-          _c("CImage", _vm._b({}, "CImage", _vm.computedAsideImageProps, false))
+          _c("CImg", _vm._b({}, "CImg", _vm.computedAsideImageProps, false))
         ])
       ],
       2
@@ -19327,17 +20555,17 @@ var __vue_render__$i = function() {
     _c("div", { class: _vm.mediaBodyClasses }, [_vm._t("default")], 2)
   ])
 };
-var __vue_staticRenderFns__$i = [];
-__vue_render__$i._withStripped = true;
+var __vue_staticRenderFns__$j = [];
+__vue_render__$j._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$G = undefined;
+  const __vue_inject_styles__$N = undefined;
   /* scoped */
-  const __vue_scope_id__$G = undefined;
+  const __vue_scope_id__$N = undefined;
   /* module identifier */
-  const __vue_module_identifier__$G = undefined;
+  const __vue_module_identifier__$N = undefined;
   /* functional template */
-  const __vue_is_functional_template__$G = false;
+  const __vue_is_functional_template__$N = false;
   /* style inject */
   
   /* style inject SSR */
@@ -19345,12 +20573,12 @@ __vue_render__$i._withStripped = true;
 
   
   var CMedia = normalizeComponent_1(
-    { render: __vue_render__$i, staticRenderFns: __vue_staticRenderFns__$i },
-    __vue_inject_styles__$G,
-    __vue_script__$G,
-    __vue_scope_id__$G,
-    __vue_is_functional_template__$G,
-    __vue_module_identifier__$G,
+    { render: __vue_render__$j, staticRenderFns: __vue_staticRenderFns__$j },
+    __vue_inject_styles__$N,
+    __vue_script__$N,
+    __vue_scope_id__$N,
+    __vue_is_functional_template__$N,
+    __vue_module_identifier__$N,
     undefined,
     undefined
   );
@@ -19411,10 +20639,17 @@ __vue_render__$i._withStripped = true;
 //
 //
 //
-var script$H = {
+//
+//
+//
+//
+//
+//
+//
+var script$O = {
   name: 'CModal',
   props: {
-    visible: Boolean,
+    show: Boolean,
     centered: Boolean,
     title: String,
     size: {
@@ -19423,21 +20658,27 @@ var script$H = {
         return ['', 'sm', 'lg'].includes(val);
       }
     },
-    variant: String,
-    borderVariant: String,
-    noFade: Boolean,
-    noBackdrop: Boolean,
-    noCloseOnBackdrop: Boolean,
-    noHeader: Boolean,
-    noBody: Boolean,
-    noFooter: Boolean,
+    color: String,
+    borderColor: String,
+    fade: {
+      type: Boolean,
+      default: true
+    },
+    backdrop: {
+      type: Boolean,
+      default: true
+    },
+    closeOnBackdrop: {
+      type: Boolean,
+      default: true
+    },
     addModalClasses: [String, Array, Object],
     addDialogClasses: [String, Array, Object],
     addContentClasses: [String, Array, Object]
   },
   data: function data() {
     return {
-      isVisible: this.visible,
+      visible: this.show,
       isTransitioning: false,
       timeout: null
     };
@@ -19446,17 +20687,16 @@ var script$H = {
     backdropClasses: function backdropClasses() {
       return {
         'modal-backdrop': true,
-        'fade': !this.noFade,
-        'show': this.isVisible || this.noFade
+        'fade': this.fade,
+        'show': this.visible || !this.fade
       };
     },
     modalClasses: function modalClasses() {
       return ['modal overflow-auto', this.addModalClasses, _defineProperty({
-        // 'close-modal': !this.noCloseOnBackdrop,
-        'fade': !this.noFade,
-        'show': this.isVisible,
-        'd-block': this.isVisible || this.isTransitioning
-      }, "modal-".concat(this.variant), Boolean(this.variant))];
+        'fade': this.fade,
+        'show': this.visible,
+        'd-block': this.visible || this.isTransitioning
+      }, "modal-".concat(this.color), Boolean(this.color))];
     },
     dialogClasses: function dialogClasses() {
       return [this.addDialogClasses, 'modal-dialog', _defineProperty({
@@ -19464,36 +20704,35 @@ var script$H = {
       }, "modal-".concat(this.size), Boolean(this.size))];
     },
     contentClasses: function contentClasses() {
-      return [this.addContentClasses, 'modal-content', _defineProperty({}, "border-".concat(this.borderVariant), Boolean(this.borderVariant))];
+      return [this.addContentClasses, 'modal-content', _defineProperty({}, "border-".concat(this.borderColor), Boolean(this.borderColor))];
     },
     btnClasses: function btnClasses() {
-      return ["btn btn-".concat(this.variant || 'primary')];
+      return ["btn btn-".concat(this.color || 'primary')];
     }
   },
   watch: {
-    visible: function visible(val) {
+    show: function show(val) {
       this.toggle(val);
     }
   },
   methods: {
     modalClick: function modalClick(e) {
-      if (e.target === this.$el.firstElementChild && !this.noCloseOnBackdrop) {
-        this.hide();
+      if (e.target === this.$el.firstElementChild && this.closeOnBackdrop) {
+        this.hide(e);
       }
     },
-    hide: function hide() {
-      var accepted = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-      this.$emit('update:visible', false);
-      this.$emit('accepted', accepted);
+    hide: function hide(e) {
+      this.$emit('update:show', false);
+      this.$emit('hide', e);
     },
     toggle: function toggle(newVal) {
       var _this = this;
 
       setTimeout(function () {
-        _this.isVisible = newVal;
+        _this.visible = newVal;
       }, 0);
 
-      if (!this.noFade) {
+      if (this.fade) {
         this.isTransitioning = true;
         clearTimeout(this.timeout);
         this.timeout = setTimeout(function () {
@@ -19505,10 +20744,10 @@ var script$H = {
 };
 
 /* script */
-const __vue_script__$H = script$H;
+const __vue_script__$O = script$O;
 
 /* template */
-var __vue_render__$j = function() {
+var __vue_render__$k = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -19526,116 +20765,108 @@ var __vue_render__$j = function() {
       },
       [
         _c("div", { class: _vm.dialogClasses, attrs: { role: "document" } }, [
-          _c("div", { class: _vm.contentClasses }, [
-            !_vm.noHeader
-              ? _c(
-                  "div",
+          _c(
+            "div",
+            { class: _vm.contentClasses },
+            [
+              _vm._t("header-wrapper", [
+                _c(
+                  "header",
                   { staticClass: "modal-header" },
                   [
-                    _vm._t(
-                      "header",
-                      [
-                        _c("h5", { staticClass: "modal-title" }, [
-                          _vm._v(
-                            "\n                " +
-                              _vm._s(_vm.title) +
-                              "\n              "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "close",
-                            attrs: { type: "button", "aria-label": "Close" },
-                            on: {
-                              click: function($event) {
-                                return _vm.hide()
-                              }
-                            }
-                          },
-                          [_c("span", [_vm._v("×")])]
+                    _vm._t("header", [
+                      _c("h5", { staticClass: "modal-title" }, [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(_vm.title) +
+                            "\n              "
                         )
-                      ],
-                      { hide: _vm.hide }
-                    )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "close",
+                          attrs: { type: "button", "aria-label": "Close" },
+                          on: {
+                            click: function($event) {
+                              return _vm.hide($event)
+                            }
+                          }
+                        },
+                        [_c("span", [_vm._v("×")])]
+                      )
+                    ])
                   ],
                   2
                 )
-              : _vm._e(),
-            _vm._v(" "),
-            !_vm.noBody
-              ? _c(
-                  "div",
-                  { staticClass: "modal-body" },
-                  [_vm._t("default", null, { hide: _vm.hide })],
-                  2
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            !_vm.noFooter
-              ? _c(
-                  "div",
+              ]),
+              _vm._v(" "),
+              _vm._t("body-wrapper", [
+                _c("div", { staticClass: "modal-body" }, [_vm._t("default")], 2)
+              ]),
+              _vm._v(" "),
+              _vm._t("footer-wrapper", [
+                _c(
+                  "footer",
                   { staticClass: "modal-footer" },
                   [
-                    _vm._t(
-                      "footer",
-                      [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-secondary",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                return _vm.hide()
-                              }
+                    _vm._t("footer", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-secondary",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.hide($event)
                             }
-                          },
-                          [_vm._v("\n              Cancel\n            ")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            class: _vm.btnClasses,
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                return _vm.hide(true)
-                              }
+                          }
+                        },
+                        [_vm._v("\n                Cancel\n              ")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          class: _vm.btnClasses,
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.hide($event)
                             }
-                          },
-                          [_vm._v("\n              OK\n            ")]
-                        )
-                      ],
-                      { hide: _vm.hide }
-                    )
+                          }
+                        },
+                        [_vm._v("\n                OK\n              ")]
+                      )
+                    ])
                   ],
                   2
                 )
-              : _vm._e()
-          ])
+              ])
+            ],
+            2
+          )
         ])
       ]
     ),
     _vm._v(" "),
-    !_vm.noBackdrop && (_vm.isVisible || _vm.isTransitioning)
+    _vm.backdrop && (_vm.visible || _vm.isTransitioning)
       ? _c("div", { class: _vm.backdropClasses })
       : _vm._e()
   ])
 };
-var __vue_staticRenderFns__$j = [];
-__vue_render__$j._withStripped = true;
+var __vue_staticRenderFns__$k = [];
+__vue_render__$k._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$H = undefined;
+  const __vue_inject_styles__$O = undefined;
   /* scoped */
-  const __vue_scope_id__$H = undefined;
+  const __vue_scope_id__$O = undefined;
   /* module identifier */
-  const __vue_module_identifier__$H = undefined;
+  const __vue_module_identifier__$O = undefined;
   /* functional template */
-  const __vue_is_functional_template__$H = false;
+  const __vue_is_functional_template__$O = false;
   /* style inject */
   
   /* style inject SSR */
@@ -19643,33 +20874,37 @@ __vue_render__$j._withStripped = true;
 
   
   var CModal = normalizeComponent_1(
-    { render: __vue_render__$j, staticRenderFns: __vue_staticRenderFns__$j },
-    __vue_inject_styles__$H,
-    __vue_script__$H,
-    __vue_scope_id__$H,
-    __vue_is_functional_template__$H,
-    __vue_module_identifier__$H,
+    { render: __vue_render__$k, staticRenderFns: __vue_staticRenderFns__$k },
+    __vue_inject_styles__$O,
+    __vue_script__$O,
+    __vue_scope_id__$O,
+    __vue_is_functional_template__$O,
+    __vue_module_identifier__$O,
     undefined,
     undefined
   );
 
-var _arrayFill = function fill(value /* , start = 0, end = @length */) {
-  var O = _toObject$1(this);
-  var length = _toLength(O.length);
-  var aLen = arguments.length;
-  var index = _toAbsoluteIndex(aLen > 1 ? arguments[1] : undefined, length);
-  var end = aLen > 2 ? arguments[2] : undefined;
-  var endPos = end === undefined ? length : _toAbsoluteIndex(end, length);
+// `Array.prototype.fill` method implementation
+// https://tc39.github.io/ecma262/#sec-array.prototype.fill
+var arrayFill = function fill(value /* , start = 0, end = @length */) {
+  var O = toObject(this);
+  var length = toLength(O.length);
+  var argumentsLength = arguments.length;
+  var index = toAbsoluteIndex(argumentsLength > 1 ? arguments[1] : undefined, length);
+  var end = argumentsLength > 2 ? arguments[2] : undefined;
+  var endPos = end === undefined ? length : toAbsoluteIndex(end, length);
   while (endPos > index) O[index++] = value;
   return O;
 };
 
-// 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
+// `Array.prototype.fill` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.fill
+_export({ target: 'Array', proto: true }, {
+  fill: arrayFill
+});
 
-
-_export(_export.P, 'Array', { fill: _arrayFill });
-
-_addToUnscopables('fill');
+// https://tc39.github.io/ecma262/#sec-array.prototype-@@unscopables
+addToUnscopables('fill');
 
 //
 //
@@ -19677,24 +20912,28 @@ _addToUnscopables('fill');
 //
 //
 //
-var script$I = {
+var script$P = {
   name: 'CNav',
   props: {
     fill: Boolean,
     justified: Boolean,
     tabs: Boolean,
     pills: Boolean,
-    vertical: Boolean
+    vertical: Boolean,
+    inCard: Boolean
   },
   computed: {
     navClasses: function navClasses() {
+      var hasTabs = this.tabs && !this.pills;
       return {
         'nav': true,
-        'nav-tabs': this.tabs && !this.pills,
+        'nav-tabs': hasTabs,
         'nav-pills': this.pills,
         'flex-column': this.vertical,
         'nav-fill': this.fill,
-        'nav-justified': this.justified
+        'nav-justified': this.justified,
+        'card-header-tabs': this.inCard && hasTabs,
+        'card-header-pills': this.inCard && this.pills
       };
     }
   },
@@ -19724,10 +20963,10 @@ var script$I = {
 };
 
 /* script */
-const __vue_script__$I = script$I;
+const __vue_script__$P = script$P;
 
 /* template */
-var __vue_render__$k = function() {
+var __vue_render__$l = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -19738,17 +20977,17 @@ var __vue_render__$k = function() {
     2
   )
 };
-var __vue_staticRenderFns__$k = [];
-__vue_render__$k._withStripped = true;
+var __vue_staticRenderFns__$l = [];
+__vue_render__$l._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$I = undefined;
+  const __vue_inject_styles__$P = undefined;
   /* scoped */
-  const __vue_scope_id__$I = undefined;
+  const __vue_scope_id__$P = undefined;
   /* module identifier */
-  const __vue_module_identifier__$I = undefined;
+  const __vue_module_identifier__$P = undefined;
   /* functional template */
-  const __vue_is_functional_template__$I = false;
+  const __vue_is_functional_template__$P = false;
   /* style inject */
   
   /* style inject SSR */
@@ -19756,18 +20995,18 @@ __vue_render__$k._withStripped = true;
 
   
   var CNav = normalizeComponent_1(
-    { render: __vue_render__$k, staticRenderFns: __vue_staticRenderFns__$k },
-    __vue_inject_styles__$I,
-    __vue_script__$I,
-    __vue_scope_id__$I,
-    __vue_is_functional_template__$I,
-    __vue_module_identifier__$I,
+    { render: __vue_render__$l, staticRenderFns: __vue_staticRenderFns__$l },
+    __vue_inject_styles__$P,
+    __vue_script__$P,
+    __vue_scope_id__$P,
+    __vue_is_functional_template__$P,
+    __vue_module_identifier__$P,
     undefined,
     undefined
   );
 
 //
-var script$J = {
+var script$Q = {
   name: 'CNavItem',
   components: {
     CLink: CLink
@@ -19781,10 +21020,10 @@ var script$J = {
 };
 
 /* script */
-const __vue_script__$J = script$J;
+const __vue_script__$Q = script$Q;
 
 /* template */
-var __vue_render__$l = function() {
+var __vue_render__$m = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -19807,17 +21046,17 @@ var __vue_render__$l = function() {
     1
   )
 };
-var __vue_staticRenderFns__$l = [];
-__vue_render__$l._withStripped = true;
+var __vue_staticRenderFns__$m = [];
+__vue_render__$m._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$J = undefined;
+  const __vue_inject_styles__$Q = undefined;
   /* scoped */
-  const __vue_scope_id__$J = undefined;
+  const __vue_scope_id__$Q = undefined;
   /* module identifier */
-  const __vue_module_identifier__$J = undefined;
+  const __vue_module_identifier__$Q = undefined;
   /* functional template */
-  const __vue_is_functional_template__$J = false;
+  const __vue_is_functional_template__$Q = false;
   /* style inject */
   
   /* style inject SSR */
@@ -19825,29 +21064,26 @@ __vue_render__$l._withStripped = true;
 
   
   var CNavItem = normalizeComponent_1(
-    { render: __vue_render__$l, staticRenderFns: __vue_staticRenderFns__$l },
-    __vue_inject_styles__$J,
-    __vue_script__$J,
-    __vue_scope_id__$J,
-    __vue_is_functional_template__$J,
-    __vue_module_identifier__$J,
+    { render: __vue_render__$m, staticRenderFns: __vue_staticRenderFns__$m },
+    __vue_inject_styles__$Q,
+    __vue_script__$Q,
+    __vue_scope_id__$Q,
+    __vue_is_functional_template__$Q,
+    __vue_module_identifier__$Q,
     undefined,
     undefined
   );
 
-var props$d = {
+var props$b = {
   tag: {
     type: String,
     default: 'nav'
   },
   light: Boolean,
-  variant: String,
-  toggleable: {
+  color: String,
+  expandable: {
     type: [Boolean, String],
-    default: false,
-    validator: function validator(val) {
-      return ['', false, true, 'sm', 'md', 'lg', 'xl'].includes(val);
-    }
+    default: false
   },
   fixed: {
     type: String,
@@ -19855,26 +21091,24 @@ var props$d = {
       return ['', 'top', 'bottom'].includes(val);
     }
   },
-  sticky: Boolean,
-  print: Boolean
+  sticky: Boolean
 };
-var script$K = {
+var script$R = {
   name: 'CNavbar',
   functional: true,
-  props: props$d,
+  props: props$b,
   render: function render(h, _ref) {
     var _ref2;
 
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
-    var expandClassSuffix = props.toggleable === true ? '' : props.toggleable;
+    var expandClassSuffix = props.expandable === true ? '' : "-".concat(props.expandable);
     return h(props.tag, a(data, {
       staticClass: 'navbar',
       class: [props.light ? 'navbar-light' : 'navbar-dark', (_ref2 = {
-        'd-print': props.print,
         'sticky-top': props.sticky
-      }, _defineProperty(_ref2, "bg-".concat(props.variant), Boolean(props.variant)), _defineProperty(_ref2, "fixed-".concat(props.fixed), Boolean(props.fixed)), _defineProperty(_ref2, "navbar-expand-".concat(expandClassSuffix), Boolean(props.toggleable)), _ref2)],
+      }, _defineProperty(_ref2, "bg-".concat(props.color), Boolean(props.color)), _defineProperty(_ref2, "fixed-".concat(props.fixed), Boolean(props.fixed)), _defineProperty(_ref2, "navbar-expand".concat(expandClassSuffix), Boolean(props.expandable)), _ref2)],
       attrs: {
         role: props.tag === 'nav' ? null : 'navigation'
       }
@@ -19883,18 +21117,18 @@ var script$K = {
 };
 
 /* script */
-const __vue_script__$K = script$K;
+const __vue_script__$R = script$R;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$K = undefined;
+  const __vue_inject_styles__$R = undefined;
   /* scoped */
-  const __vue_scope_id__$K = undefined;
+  const __vue_scope_id__$R = undefined;
   /* module identifier */
-  const __vue_module_identifier__$K = undefined;
+  const __vue_module_identifier__$R = undefined;
   /* functional template */
-  const __vue_is_functional_template__$K = undefined;
+  const __vue_is_functional_template__$R = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -19903,53 +21137,47 @@ const __vue_script__$K = script$K;
   
   var CNavbar = normalizeComponent_1(
     {},
-    __vue_inject_styles__$K,
-    __vue_script__$K,
-    __vue_scope_id__$K,
-    __vue_is_functional_template__$K,
-    __vue_module_identifier__$K,
+    __vue_inject_styles__$R,
+    __vue_script__$R,
+    __vue_scope_id__$R,
+    __vue_is_functional_template__$R,
+    __vue_module_identifier__$R,
     undefined,
     undefined
   );
 
-var script$L = {
+var script$S = {
   name: 'CNavbarNav',
   functional: true,
   props: {
     tag: {
       type: String,
       default: 'ul'
-    },
-    fill: Boolean,
-    justified: Boolean
+    }
   },
   render: function render(h, _ref) {
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
     return h(props.tag, a(data, {
-      staticClass: 'navbar-nav',
-      class: {
-        'nav-fill': props.fill,
-        'nav-justified': props.justified
-      }
+      staticClass: 'navbar-nav'
     }), children);
   }
 };
 
 /* script */
-const __vue_script__$L = script$L;
+const __vue_script__$S = script$S;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$L = undefined;
+  const __vue_inject_styles__$S = undefined;
   /* scoped */
-  const __vue_scope_id__$L = undefined;
+  const __vue_scope_id__$S = undefined;
   /* module identifier */
-  const __vue_module_identifier__$L = undefined;
+  const __vue_module_identifier__$S = undefined;
   /* functional template */
-  const __vue_is_functional_template__$L = undefined;
+  const __vue_is_functional_template__$S = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -19958,69 +21186,22 @@ const __vue_script__$L = script$L;
   
   var CNavbarNav = normalizeComponent_1(
     {},
-    __vue_inject_styles__$L,
-    __vue_script__$L,
-    __vue_scope_id__$L,
-    __vue_is_functional_template__$L,
-    __vue_module_identifier__$L,
+    __vue_inject_styles__$S,
+    __vue_script__$S,
+    __vue_scope_id__$S,
+    __vue_is_functional_template__$S,
+    __vue_module_identifier__$S,
     undefined,
     undefined
   );
 
-var script$M = {
-  name: 'CNavbarToggle',
-  functional: true,
-  render: function render(h, _ref) {
-    var data = _ref.data,
-        slots = _ref.slots;
-    return h('button', a(data, {
-      class: ['navbar-toggler'],
-      attrs: {
-        type: 'button'
-      }
-    }), [slots().default || h('span', {
-      class: ['navbar-toggler-icon']
-    })]);
-  }
-};
-
-/* script */
-const __vue_script__$M = script$M;
-
-/* template */
-
-  /* style */
-  const __vue_inject_styles__$M = undefined;
-  /* scoped */
-  const __vue_scope_id__$M = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$M = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$M = undefined;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var CNavbarToggle = normalizeComponent_1(
-    {},
-    __vue_inject_styles__$M,
-    __vue_script__$M,
-    __vue_scope_id__$M,
-    __vue_is_functional_template__$M,
-    __vue_module_identifier__$M,
-    undefined,
-    undefined
-  );
-
-var props$e = Object.assign(propsFactory(), {
+var props$c = Object.assign(propsFactory(), {
   tag: String
 });
-var script$N = {
+var script$T = {
   name: 'CNavbarBrand',
   functional: true,
-  props: props$e,
+  props: props$c,
   render: function render(h, _ref) {
     var props = _ref.props,
         data = _ref.data,
@@ -20035,18 +21216,18 @@ var script$N = {
 };
 
 /* script */
-const __vue_script__$N = script$N;
+const __vue_script__$T = script$T;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$N = undefined;
+  const __vue_inject_styles__$T = undefined;
   /* scoped */
-  const __vue_scope_id__$N = undefined;
+  const __vue_scope_id__$T = undefined;
   /* module identifier */
-  const __vue_module_identifier__$N = undefined;
+  const __vue_module_identifier__$T = undefined;
   /* functional template */
-  const __vue_is_functional_template__$N = undefined;
+  const __vue_is_functional_template__$T = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -20055,1770 +21236,325 @@ const __vue_script__$N = script$N;
   
   var CNavbarBrand = normalizeComponent_1(
     {},
-    __vue_inject_styles__$N,
-    __vue_script__$N,
-    __vue_scope_id__$N,
-    __vue_is_functional_template__$N,
-    __vue_module_identifier__$N,
+    __vue_inject_styles__$T,
+    __vue_script__$T,
+    __vue_scope_id__$T,
+    __vue_is_functional_template__$T,
+    __vue_module_identifier__$T,
     undefined,
     undefined
   );
 
-var $at$1 = _stringAt$1(true);
-
-// 21.1.3.27 String.prototype[@@iterator]()
-_iterDefine$1(String, 'String', function (iterated) {
-  this._t = String(iterated); // target
-  this._i = 0;                // next index
-// 21.1.5.2.1 %StringIteratorPrototype%.next()
-}, function () {
-  var O = this._t;
-  var index = this._i;
-  var point;
-  if (index >= O.length) return { value: undefined, done: true };
-  point = $at$1(O, index);
-  this._i += point.length;
-  return { value: point, done: false };
-});
-
 // call something on iterator step with safe closing on error
-
-var _iterCall$1 = function (iterator, fn, value, entries) {
+var callWithSafeIterationClosing$1 = function (iterator, fn, value, ENTRIES) {
   try {
-    return entries ? fn(_anObject(value)[0], value[1]) : fn(value);
+    return ENTRIES ? fn(anObject(value)[0], value[1]) : fn(value);
   // 7.4.6 IteratorClose(iterator, completion)
-  } catch (e) {
-    var ret = iterator['return'];
-    if (ret !== undefined) _anObject(ret.call(iterator));
-    throw e;
+  } catch (error) {
+    var returnMethod = iterator['return'];
+    if (returnMethod !== undefined) anObject(returnMethod.call(iterator));
+    throw error;
   }
 };
 
+var iterators$1 = {};
+
+var ITERATOR$6 = wellKnownSymbol('iterator');
+var ArrayPrototype$2 = Array.prototype;
+
 // check on default Array iterator
-
-var ITERATOR$7 = _wks('iterator');
-var ArrayProto$2 = Array.prototype;
-
-var _isArrayIter$1 = function (it) {
-  return it !== undefined && (_iterators$1.Array === it || ArrayProto$2[ITERATOR$7] === it);
+var isArrayIteratorMethod$1 = function (it) {
+  return it !== undefined && (iterators$1.Array === it || ArrayPrototype$2[ITERATOR$6] === it);
 };
 
-var _createProperty$1 = function (object, index, value) {
-  if (index in object) _objectDp.f(object, index, _propertyDesc(0, value));
-  else object[index] = value;
-};
+var ITERATOR$7 = wellKnownSymbol('iterator');
 
-var ITERATOR$8 = _wks('iterator');
-
-var core_getIteratorMethod$1 = _core.getIteratorMethod = function (it) {
-  if (it != undefined) return it[ITERATOR$8]
+var getIteratorMethod$1 = function (it) {
+  if (it != undefined) return it[ITERATOR$7]
     || it['@@iterator']
-    || _iterators$1[_classof$1(it)];
+    || iterators$1[classof$1(it)];
 };
 
-var ITERATOR$9 = _wks('iterator');
+// `Array.from` method implementation
+// https://tc39.github.io/ecma262/#sec-array.from
+var arrayFrom$1 = function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
+  var O = toObject(arrayLike);
+  var C = typeof this == 'function' ? this : Array;
+  var argumentsLength = arguments.length;
+  var mapfn = argumentsLength > 1 ? arguments[1] : undefined;
+  var mapping = mapfn !== undefined;
+  var index = 0;
+  var iteratorMethod = getIteratorMethod$1(O);
+  var length, result, step, iterator, next;
+  if (mapping) mapfn = bindContext$1(mapfn, argumentsLength > 2 ? arguments[2] : undefined, 2);
+  // if the target is not iterable or it's an array with the default iterator - use a simple case
+  if (iteratorMethod != undefined && !(C == Array && isArrayIteratorMethod$1(iteratorMethod))) {
+    iterator = iteratorMethod.call(O);
+    next = iterator.next;
+    result = new C();
+    for (;!(step = next.call(iterator)).done; index++) {
+      createProperty(result, index, mapping
+        ? callWithSafeIterationClosing$1(iterator, mapfn, [step.value, index], true)
+        : step.value
+      );
+    }
+  } else {
+    length = toLength(O.length);
+    result = new C(length);
+    for (;length > index; index++) {
+      createProperty(result, index, mapping ? mapfn(O[index], index) : O[index]);
+    }
+  }
+  result.length = index;
+  return result;
+};
+
+var ITERATOR$8 = wellKnownSymbol('iterator');
 var SAFE_CLOSING$1 = false;
 
 try {
-  var riter$1 = [7][ITERATOR$9]();
-  riter$1['return'] = function () { SAFE_CLOSING$1 = true; };
+  var called$1 = 0;
+  var iteratorWithReturn$1 = {
+    next: function () {
+      return { done: !!called$1++ };
+    },
+    'return': function () {
+      SAFE_CLOSING$1 = true;
+    }
+  };
+  iteratorWithReturn$1[ITERATOR$8] = function () {
+    return this;
+  };
   // eslint-disable-next-line no-throw-literal
-  Array.from(riter$1, function () { throw 2; });
-} catch (e) { /* empty */ }
+  Array.from(iteratorWithReturn$1, function () { throw 2; });
+} catch (error) { /* empty */ }
 
-var _iterDetect$1 = function (exec, skipClosing) {
-  if (!skipClosing && !SAFE_CLOSING$1) return false;
-  var safe = false;
+var checkCorrectnessOfIteration$1 = function (exec, SKIP_CLOSING) {
+  if (!SKIP_CLOSING && !SAFE_CLOSING$1) return false;
+  var ITERATION_SUPPORT = false;
   try {
-    var arr = [7];
-    var iter = arr[ITERATOR$9]();
-    iter.next = function () { return { done: safe = true }; };
-    arr[ITERATOR$9] = function () { return iter; };
-    exec(arr);
-  } catch (e) { /* empty */ }
-  return safe;
+    var object = {};
+    object[ITERATOR$8] = function () {
+      return {
+        next: function () {
+          return { done: ITERATION_SUPPORT = true };
+        }
+      };
+    };
+    exec(object);
+  } catch (error) { /* empty */ }
+  return ITERATION_SUPPORT;
 };
 
-_export(_export.S + _export.F * !_iterDetect$1(function (iter) { Array.from(iter); }), 'Array', {
-  // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
-  from: function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
-    var O = _toObject$1(arrayLike);
-    var C = typeof this == 'function' ? this : Array;
-    var aLen = arguments.length;
-    var mapfn = aLen > 1 ? arguments[1] : undefined;
-    var mapping = mapfn !== undefined;
-    var index = 0;
-    var iterFn = core_getIteratorMethod$1(O);
-    var length, result, step, iterator;
-    if (mapping) mapfn = _ctx(mapfn, aLen > 2 ? arguments[2] : undefined, 2);
-    // if object isn't iterable or it's array with default iterator - use simple case
-    if (iterFn != undefined && !(C == Array && _isArrayIter$1(iterFn))) {
-      for (iterator = iterFn.call(O), result = new C(); !(step = iterator.next()).done; index++) {
-        _createProperty$1(result, index, mapping ? _iterCall$1(iterator, mapfn, [step.value, index], true) : step.value);
-      }
-    } else {
-      length = _toLength(O.length);
-      for (result = new C(length); length > index; index++) {
-        _createProperty$1(result, index, mapping ? mapfn(O[index], index) : O[index]);
-      }
-    }
-    result.length = index;
-    return result;
+var INCORRECT_ITERATION$1 = !checkCorrectnessOfIteration$1(function (iterable) {
+  Array.from(iterable);
+});
+
+// `Array.from` method
+// https://tc39.github.io/ecma262/#sec-array.from
+_export({ target: 'Array', stat: true, forced: INCORRECT_ITERATION$1 }, {
+  from: arrayFrom$1
+});
+
+var nativeReverse = [].reverse;
+var test$2 = [1, 2];
+
+// `Array.prototype.reverse` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.reverse
+// fix for Safari 12.0 bug
+// https://bugs.webkit.org/show_bug.cgi?id=188794
+_export({ target: 'Array', proto: true, forced: String(test$2) === String(test$2.reverse()) }, {
+  reverse: function reverse() {
+    if (isArray$4(this)) this.length = this.length;
+    return nativeReverse.call(this);
   }
 });
 
-var collectionUtils = createCommonjsModule(function (module) {
-
-var utils = module.exports = {};
-
-/**
- * Loops through the collection and calls the callback for each element. if the callback returns truthy, the loop is broken and returns the same value.
- * @public
- * @param {*} collection The collection to loop through. Needs to have a length property set and have indices set from 0 to length - 1.
- * @param {function} callback The callback to be called for each element. The element will be given as a parameter to the callback. If this callback returns truthy, the loop is broken and the same value is returned.
- * @returns {*} The value that a callback has returned (if truthy). Otherwise nothing.
- */
-utils.forEach = function(collection, callback) {
-    for(var i = 0; i < collection.length; i++) {
-        var result = callback(collection[i]);
-        if(result) {
-            return result;
-        }
-    }
-};
+var correctPrototypeGetter$1 = !fails(function () {
+  function F() { /* empty */ }
+  F.prototype.constructor = null;
+  return Object.getPrototypeOf(new F()) !== F.prototype;
 });
 
-var elementUtils = function(options) {
-    var getState = options.stateHandler.getState;
+var IE_PROTO$3 = sharedKey('IE_PROTO');
+var ObjectPrototype$3 = Object.prototype;
 
-    /**
-     * Tells if the element has been made detectable and ready to be listened for resize events.
-     * @public
-     * @param {element} The element to check.
-     * @returns {boolean} True or false depending on if the element is detectable or not.
-     */
-    function isDetectable(element) {
-        var state = getState(element);
-        return state && !!state.isDetectable;
+// `Object.getPrototypeOf` method
+// https://tc39.github.io/ecma262/#sec-object.getprototypeof
+var objectGetPrototypeOf$1 = correctPrototypeGetter$1 ? Object.getPrototypeOf : function (O) {
+  O = toObject(O);
+  if (has(O, IE_PROTO$3)) return O[IE_PROTO$3];
+  if (typeof O.constructor == 'function' && O instanceof O.constructor) {
+    return O.constructor.prototype;
+  } return O instanceof Object ? ObjectPrototype$3 : null;
+};
+
+var ITERATOR$9 = wellKnownSymbol('iterator');
+var BUGGY_SAFARI_ITERATORS$2 = false;
+
+var returnThis$2 = function () { return this; };
+
+// `%IteratorPrototype%` object
+// https://tc39.github.io/ecma262/#sec-%iteratorprototype%-object
+var IteratorPrototype$3, PrototypeOfArrayIteratorPrototype$1, arrayIterator$1;
+
+if ([].keys) {
+  arrayIterator$1 = [].keys();
+  // Safari 8 has buggy iterators w/o `next`
+  if (!('next' in arrayIterator$1)) BUGGY_SAFARI_ITERATORS$2 = true;
+  else {
+    PrototypeOfArrayIteratorPrototype$1 = objectGetPrototypeOf$1(objectGetPrototypeOf$1(arrayIterator$1));
+    if (PrototypeOfArrayIteratorPrototype$1 !== Object.prototype) IteratorPrototype$3 = PrototypeOfArrayIteratorPrototype$1;
+  }
+}
+
+if (IteratorPrototype$3 == undefined) IteratorPrototype$3 = {};
+
+// 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
+if ( !has(IteratorPrototype$3, ITERATOR$9)) {
+  createNonEnumerableProperty(IteratorPrototype$3, ITERATOR$9, returnThis$2);
+}
+
+var iteratorsCore$1 = {
+  IteratorPrototype: IteratorPrototype$3,
+  BUGGY_SAFARI_ITERATORS: BUGGY_SAFARI_ITERATORS$2
+};
+
+var defineProperty$7 = objectDefineProperty.f;
+
+
+
+var TO_STRING_TAG$6 = wellKnownSymbol('toStringTag');
+
+var setToStringTag$1 = function (it, TAG, STATIC) {
+  if (it && !has(it = STATIC ? it : it.prototype, TO_STRING_TAG$6)) {
+    defineProperty$7(it, TO_STRING_TAG$6, { configurable: true, value: TAG });
+  }
+};
+
+var IteratorPrototype$4 = iteratorsCore$1.IteratorPrototype;
+
+
+
+
+
+var returnThis$3 = function () { return this; };
+
+var createIteratorConstructor$1 = function (IteratorConstructor, NAME, next) {
+  var TO_STRING_TAG = NAME + ' Iterator';
+  IteratorConstructor.prototype = objectCreate(IteratorPrototype$4, { next: createPropertyDescriptor(1, next) });
+  setToStringTag$1(IteratorConstructor, TO_STRING_TAG, false);
+  iterators$1[TO_STRING_TAG] = returnThis$3;
+  return IteratorConstructor;
+};
+
+var IteratorPrototype$5 = iteratorsCore$1.IteratorPrototype;
+var BUGGY_SAFARI_ITERATORS$3 = iteratorsCore$1.BUGGY_SAFARI_ITERATORS;
+var ITERATOR$a = wellKnownSymbol('iterator');
+var KEYS$1 = 'keys';
+var VALUES$1 = 'values';
+var ENTRIES$1 = 'entries';
+
+var returnThis$4 = function () { return this; };
+
+var defineIterator$1 = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, IS_SET, FORCED) {
+  createIteratorConstructor$1(IteratorConstructor, NAME, next);
+
+  var getIterationMethod = function (KIND) {
+    if (KIND === DEFAULT && defaultIterator) return defaultIterator;
+    if (!BUGGY_SAFARI_ITERATORS$3 && KIND in IterablePrototype) return IterablePrototype[KIND];
+    switch (KIND) {
+      case KEYS$1: return function keys() { return new IteratorConstructor(this, KIND); };
+      case VALUES$1: return function values() { return new IteratorConstructor(this, KIND); };
+      case ENTRIES$1: return function entries() { return new IteratorConstructor(this, KIND); };
+    } return function () { return new IteratorConstructor(this); };
+  };
+
+  var TO_STRING_TAG = NAME + ' Iterator';
+  var INCORRECT_VALUES_NAME = false;
+  var IterablePrototype = Iterable.prototype;
+  var nativeIterator = IterablePrototype[ITERATOR$a]
+    || IterablePrototype['@@iterator']
+    || DEFAULT && IterablePrototype[DEFAULT];
+  var defaultIterator = !BUGGY_SAFARI_ITERATORS$3 && nativeIterator || getIterationMethod(DEFAULT);
+  var anyNativeIterator = NAME == 'Array' ? IterablePrototype.entries || nativeIterator : nativeIterator;
+  var CurrentIteratorPrototype, methods, KEY;
+
+  // fix native
+  if (anyNativeIterator) {
+    CurrentIteratorPrototype = objectGetPrototypeOf$1(anyNativeIterator.call(new Iterable()));
+    if (IteratorPrototype$5 !== Object.prototype && CurrentIteratorPrototype.next) {
+      if ( objectGetPrototypeOf$1(CurrentIteratorPrototype) !== IteratorPrototype$5) {
+        if (objectSetPrototypeOf$1) {
+          objectSetPrototypeOf$1(CurrentIteratorPrototype, IteratorPrototype$5);
+        } else if (typeof CurrentIteratorPrototype[ITERATOR$a] != 'function') {
+          createNonEnumerableProperty(CurrentIteratorPrototype, ITERATOR$a, returnThis$4);
+        }
+      }
+      // Set @@toStringTag to native iterators
+      setToStringTag$1(CurrentIteratorPrototype, TO_STRING_TAG, true);
     }
+  }
 
-    /**
-     * Marks the element that it has been made detectable and ready to be listened for resize events.
-     * @public
-     * @param {element} The element to mark.
-     */
-    function markAsDetectable(element) {
-        getState(element).isDetectable = true;
-    }
+  // fix Array#{values, @@iterator}.name in V8 / FF
+  if (DEFAULT == VALUES$1 && nativeIterator && nativeIterator.name !== VALUES$1) {
+    INCORRECT_VALUES_NAME = true;
+    defaultIterator = function values() { return nativeIterator.call(this); };
+  }
 
-    /**
-     * Tells if the element is busy or not.
-     * @public
-     * @param {element} The element to check.
-     * @returns {boolean} True or false depending on if the element is busy or not.
-     */
-    function isBusy(element) {
-        return !!getState(element).busy;
-    }
+  // define iterator
+  if ( IterablePrototype[ITERATOR$a] !== defaultIterator) {
+    createNonEnumerableProperty(IterablePrototype, ITERATOR$a, defaultIterator);
+  }
+  iterators$1[NAME] = defaultIterator;
 
-    /**
-     * Marks the object is busy and should not be made detectable.
-     * @public
-     * @param {element} element The element to mark.
-     * @param {boolean} busy If the element is busy or not.
-     */
-    function markBusy(element, busy) {
-        getState(element).busy = !!busy;
-    }
-
-    return {
-        isDetectable: isDetectable,
-        markAsDetectable: markAsDetectable,
-        isBusy: isBusy,
-        markBusy: markBusy
+  // export additional methods
+  if (DEFAULT) {
+    methods = {
+      values: getIterationMethod(VALUES$1),
+      keys: IS_SET ? defaultIterator : getIterationMethod(KEYS$1),
+      entries: getIterationMethod(ENTRIES$1)
     };
+    if (FORCED) for (KEY in methods) {
+      if (BUGGY_SAFARI_ITERATORS$3 || INCORRECT_VALUES_NAME || !(KEY in IterablePrototype)) {
+        redefine(IterablePrototype, KEY, methods[KEY]);
+      }
+    } else _export({ target: NAME, proto: true, forced: BUGGY_SAFARI_ITERATORS$3 || INCORRECT_VALUES_NAME }, methods);
+  }
+
+  return methods;
 };
 
-var listenerHandler = function(idHandler) {
-    var eventListeners = {};
+var charAt$2 = stringMultibyte$1.charAt;
 
-    /**
-     * Gets all listeners for the given element.
-     * @public
-     * @param {element} element The element to get all listeners for.
-     * @returns All listeners for the given element.
-     */
-    function getListeners(element) {
-        var id = idHandler.get(element);
 
-        if (id === undefined) {
-            return [];
-        }
 
-        return eventListeners[id] || [];
-    }
+var STRING_ITERATOR$1 = 'String Iterator';
+var setInternalState$3 = internalState.set;
+var getInternalState$3 = internalState.getterFor(STRING_ITERATOR$1);
 
-    /**
-     * Stores the given listener for the given element. Will not actually add the listener to the element.
-     * @public
-     * @param {element} element The element that should have the listener added.
-     * @param {function} listener The callback that the element has added.
-     */
-    function addListener(element, listener) {
-        var id = idHandler.get(element);
-
-        if(!eventListeners[id]) {
-            eventListeners[id] = [];
-        }
-
-        eventListeners[id].push(listener);
-    }
-
-    function removeListener(element, listener) {
-        var listeners = getListeners(element);
-        for (var i = 0, len = listeners.length; i < len; ++i) {
-            if (listeners[i] === listener) {
-              listeners.splice(i, 1);
-              break;
-            }
-        }
-    }
-
-    function removeAllListeners(element) {
-      var listeners = getListeners(element);
-      if (!listeners) { return; }
-      listeners.length = 0;
-    }
-
-    return {
-        get: getListeners,
-        add: addListener,
-        removeListener: removeListener,
-        removeAllListeners: removeAllListeners
-    };
-};
-
-var idGenerator = function() {
-    var idCount = 1;
-
-    /**
-     * Generates a new unique id in the context.
-     * @public
-     * @returns {number} A unique id in the context.
-     */
-    function generate() {
-        return idCount++;
-    }
-
-    return {
-        generate: generate
-    };
-};
-
-var idHandler = function(options) {
-    var idGenerator     = options.idGenerator;
-    var getState        = options.stateHandler.getState;
-
-    /**
-     * Gets the resize detector id of the element.
-     * @public
-     * @param {element} element The target element to get the id of.
-     * @returns {string|number|null} The id of the element. Null if it has no id.
-     */
-    function getId(element) {
-        var state = getState(element);
-
-        if (state && state.id !== undefined) {
-            return state.id;
-        }
-
-        return null;
-    }
-
-    /**
-     * Sets the resize detector id of the element. Requires the element to have a resize detector state initialized.
-     * @public
-     * @param {element} element The target element to set the id of.
-     * @returns {string|number|null} The id of the element.
-     */
-    function setId(element) {
-        var state = getState(element);
-
-        if (!state) {
-            throw new Error("setId required the element to have a resize detection state.");
-        }
-
-        var id = idGenerator.generate();
-
-        state.id = id;
-
-        return id;
-    }
-
-    return {
-        get: getId,
-        set: setId
-    };
-};
-
-/* global console: false */
-
-/**
- * Reporter that handles the reporting of logs, warnings and errors.
- * @public
- * @param {boolean} quiet Tells if the reporter should be quiet or not.
- */
-var reporter = function(quiet) {
-    function noop() {
-        //Does nothing.
-    }
-
-    var reporter = {
-        log: noop,
-        warn: noop,
-        error: noop
-    };
-
-    if(!quiet && window.console) {
-        var attachFunction = function(reporter, name) {
-            //The proxy is needed to be able to call the method with the console context,
-            //since we cannot use bind.
-            reporter[name] = function reporterProxy() {
-                var f = console[name];
-                if (f.apply) { //IE9 does not support console.log.apply :)
-                    f.apply(console, arguments);
-                } else {
-                    for (var i = 0; i < arguments.length; i++) {
-                        f(arguments[i]);
-                    }
-                }
-            };
-        };
-
-        attachFunction(reporter, "log");
-        attachFunction(reporter, "warn");
-        attachFunction(reporter, "error");
-    }
-
-    return reporter;
-};
-
-var browserDetector = createCommonjsModule(function (module) {
-
-var detector = module.exports = {};
-
-detector.isIE = function(version) {
-    function isAnyIeVersion() {
-        var agent = navigator.userAgent.toLowerCase();
-        return agent.indexOf("msie") !== -1 || agent.indexOf("trident") !== -1 || agent.indexOf(" edge/") !== -1;
-    }
-
-    if(!isAnyIeVersion()) {
-        return false;
-    }
-
-    if(!version) {
-        return true;
-    }
-
-    //Shamelessly stolen from https://gist.github.com/padolsey/527683
-    var ieVersion = (function(){
-        var undef,
-            v = 3,
-            div = document.createElement("div"),
-            all = div.getElementsByTagName("i");
-
-        do {
-            div.innerHTML = "<!--[if gt IE " + (++v) + "]><i></i><![endif]-->";
-        }
-        while (all[0]);
-
-        return v > 4 ? v : undef;
-    }());
-
-    return version === ieVersion;
-};
-
-detector.isLegacyOpera = function() {
-    return !!window.opera;
-};
+// `String.prototype[@@iterator]` method
+// https://tc39.github.io/ecma262/#sec-string.prototype-@@iterator
+defineIterator$1(String, 'String', function (iterated) {
+  setInternalState$3(this, {
+    type: STRING_ITERATOR$1,
+    string: String(iterated),
+    index: 0
+  });
+// `%StringIteratorPrototype%.next` method
+// https://tc39.github.io/ecma262/#sec-%stringiteratorprototype%.next
+}, function next() {
+  var state = getInternalState$3(this);
+  var string = state.string;
+  var index = state.index;
+  var point;
+  if (index >= string.length) return { value: undefined, done: true };
+  point = charAt$2(string, index);
+  state.index += point.length;
+  return { value: point, done: false };
 });
 
-var utils_1 = createCommonjsModule(function (module) {
-
-var utils = module.exports = {};
-
-utils.getOption = getOption;
-
-function getOption(options, name, defaultValue) {
-    var value = options[name];
-
-    if((value === undefined || value === null) && defaultValue !== undefined) {
-        return defaultValue;
-    }
-
-    return value;
-}
-});
-
-var batchProcessor = function batchProcessorMaker(options) {
-    options             = options || {};
-    var reporter        = options.reporter;
-    var asyncProcess    = utils_1.getOption(options, "async", true);
-    var autoProcess     = utils_1.getOption(options, "auto", true);
-
-    if(autoProcess && !asyncProcess) {
-        reporter && reporter.warn("Invalid options combination. auto=true and async=false is invalid. Setting async=true.");
-        asyncProcess = true;
-    }
-
-    var batch = Batch();
-    var asyncFrameHandler;
-    var isProcessing = false;
-
-    function addFunction(level, fn) {
-        if(!isProcessing && autoProcess && asyncProcess && batch.size() === 0) {
-            // Since this is async, it is guaranteed to be executed after that the fn is added to the batch.
-            // This needs to be done before, since we're checking the size of the batch to be 0.
-            processBatchAsync();
-        }
-
-        batch.add(level, fn);
-    }
-
-    function processBatch() {
-        // Save the current batch, and create a new batch so that incoming functions are not added into the currently processing batch.
-        // Continue processing until the top-level batch is empty (functions may be added to the new batch while processing, and so on).
-        isProcessing = true;
-        while (batch.size()) {
-            var processingBatch = batch;
-            batch = Batch();
-            processingBatch.process();
-        }
-        isProcessing = false;
-    }
-
-    function forceProcessBatch(localAsyncProcess) {
-        if (isProcessing) {
-            return;
-        }
-
-        if(localAsyncProcess === undefined) {
-            localAsyncProcess = asyncProcess;
-        }
-
-        if(asyncFrameHandler) {
-            cancelFrame(asyncFrameHandler);
-            asyncFrameHandler = null;
-        }
-
-        if(localAsyncProcess) {
-            processBatchAsync();
-        } else {
-            processBatch();
-        }
-    }
-
-    function processBatchAsync() {
-        asyncFrameHandler = requestFrame(processBatch);
-    }
-
-    function cancelFrame(listener) {
-        // var cancel = window.cancelAnimationFrame || window.mozCancelAnimationFrame || window.webkitCancelAnimationFrame || window.clearTimeout;
-        var cancel = clearTimeout;
-        return cancel(listener);
-    }
-
-    function requestFrame(callback) {
-        // var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || function(fn) { return window.setTimeout(fn, 20); };
-        var raf = function(fn) { return setTimeout(fn, 0); };
-        return raf(callback);
-    }
-
-    return {
-        add: addFunction,
-        force: forceProcessBatch
-    };
-};
-
-function Batch() {
-    var batch       = {};
-    var size        = 0;
-    var topLevel    = 0;
-    var bottomLevel = 0;
-
-    function add(level, fn) {
-        if(!fn) {
-            fn = level;
-            level = 0;
-        }
-
-        if(level > topLevel) {
-            topLevel = level;
-        } else if(level < bottomLevel) {
-            bottomLevel = level;
-        }
-
-        if(!batch[level]) {
-            batch[level] = [];
-        }
-
-        batch[level].push(fn);
-        size++;
-    }
-
-    function process() {
-        for(var level = bottomLevel; level <= topLevel; level++) {
-            var fns = batch[level];
-
-            for(var i = 0; i < fns.length; i++) {
-                var fn = fns[i];
-                fn();
-            }
-        }
-    }
-
-    function getSize() {
-        return size;
-    }
-
-    return {
-        add: add,
-        process: process,
-        size: getSize
-    };
-}
-
-var prop = "_erd";
-
-function initState$1(element) {
-    element[prop] = {};
-    return getState(element);
-}
-
-function getState(element) {
-    return element[prop];
-}
-
-function cleanState(element) {
-    delete element[prop];
-}
-
-var stateHandler = {
-    initState: initState$1,
-    getState: getState,
-    cleanState: cleanState
-};
-
-var object = function(options) {
-    options             = options || {};
-    var reporter        = options.reporter;
-    var batchProcessor  = options.batchProcessor;
-    var getState        = options.stateHandler.getState;
-
-    if(!reporter) {
-        throw new Error("Missing required dependency: reporter.");
-    }
-
-    /**
-     * Adds a resize event listener to the element.
-     * @public
-     * @param {element} element The element that should have the listener added.
-     * @param {function} listener The listener callback to be called for each resize event of the element. The element will be given as a parameter to the listener callback.
-     */
-    function addListener(element, listener) {
-        function listenerProxy() {
-            listener(element);
-        }
-
-        if(browserDetector.isIE(8)) {
-            //IE 8 does not support object, but supports the resize event directly on elements.
-            getState(element).object = {
-                proxy: listenerProxy
-            };
-            element.attachEvent("onresize", listenerProxy);
-        } else {
-            var object = getObject(element);
-
-            if(!object) {
-                throw new Error("Element is not detectable by this strategy.");
-            }
-
-            object.contentDocument.defaultView.addEventListener("resize", listenerProxy);
-        }
-    }
-
-    function buildCssTextString(rules) {
-        var seperator = options.important ? " !important; " : "; ";
-
-        return (rules.join(seperator) + seperator).trim();
-    }
-
-    /**
-     * Makes an element detectable and ready to be listened for resize events. Will call the callback when the element is ready to be listened for resize changes.
-     * @private
-     * @param {object} options Optional options object.
-     * @param {element} element The element to make detectable
-     * @param {function} callback The callback to be called when the element is ready to be listened for resize changes. Will be called with the element as first parameter.
-     */
-    function makeDetectable(options, element, callback) {
-        if (!callback) {
-            callback = element;
-            element = options;
-            options = null;
-        }
-
-        options = options || {};
-
-        function injectObject(element, callback) {
-            var OBJECT_STYLE = buildCssTextString(["display: block", "position: absolute", "top: 0", "left: 0", "width: 100%", "height: 100%", "border: none", "padding: 0", "margin: 0", "opacity: 0", "z-index: -1000", "pointer-events: none"]);
-
-            //The target element needs to be positioned (everything except static) so the absolute positioned object will be positioned relative to the target element.
-
-            // Position altering may be performed directly or on object load, depending on if style resolution is possible directly or not.
-            var positionCheckPerformed = false;
-
-            // The element may not yet be attached to the DOM, and therefore the style object may be empty in some browsers.
-            // Since the style object is a reference, it will be updated as soon as the element is attached to the DOM.
-            var style = window.getComputedStyle(element);
-            var width = element.offsetWidth;
-            var height = element.offsetHeight;
-
-            getState(element).startSize = {
-                width: width,
-                height: height
-            };
-
-            function mutateDom() {
-                function alterPositionStyles() {
-                    if(style.position === "static") {
-                        element.style.setProperty("position", "relative", options.important ? "important" : "");
-
-                        var removeRelativeStyles = function(reporter, element, style, property) {
-                            function getNumericalValue(value) {
-                                return value.replace(/[^-\d\.]/g, "");
-                            }
-
-                            var value = style[property];
-
-                            if(value !== "auto" && getNumericalValue(value) !== "0") {
-                                reporter.warn("An element that is positioned static has style." + property + "=" + value + " which is ignored due to the static positioning. The element will need to be positioned relative, so the style." + property + " will be set to 0. Element: ", element);
-                                element.style.setProperty(property, "0", options.important ? "important" : "");
-                            }
-                        };
-
-                        //Check so that there are no accidental styles that will make the element styled differently now that is is relative.
-                        //If there are any, set them to 0 (this should be okay with the user since the style properties did nothing before [since the element was positioned static] anyway).
-                        removeRelativeStyles(reporter, element, style, "top");
-                        removeRelativeStyles(reporter, element, style, "right");
-                        removeRelativeStyles(reporter, element, style, "bottom");
-                        removeRelativeStyles(reporter, element, style, "left");
-                    }
-                }
-
-                function onObjectLoad() {
-                    // The object has been loaded, which means that the element now is guaranteed to be attached to the DOM.
-                    if (!positionCheckPerformed) {
-                        alterPositionStyles();
-                    }
-
-                    /*jshint validthis: true */
-
-                    function getDocument(element, callback) {
-                        //Opera 12 seem to call the object.onload before the actual document has been created.
-                        //So if it is not present, poll it with an timeout until it is present.
-                        //TODO: Could maybe be handled better with object.onreadystatechange or similar.
-                        if(!element.contentDocument) {
-                            setTimeout(function checkForObjectDocument() {
-                                getDocument(element, callback);
-                            }, 100);
-
-                            return;
-                        }
-
-                        callback(element.contentDocument);
-                    }
-
-                    //Mutating the object element here seems to fire another load event.
-                    //Mutating the inner document of the object element is fine though.
-                    var objectElement = this;
-
-                    //Create the style element to be added to the object.
-                    getDocument(objectElement, function onObjectDocumentReady(objectDocument) {
-                        //Notify that the element is ready to be listened to.
-                        callback(element);
-                    });
-                }
-
-                // The element may be detached from the DOM, and some browsers does not support style resolving of detached elements.
-                // The alterPositionStyles needs to be delayed until we know the element has been attached to the DOM (which we are sure of when the onObjectLoad has been fired), if style resolution is not possible.
-                if (style.position !== "") {
-                    alterPositionStyles();
-                    positionCheckPerformed = true;
-                }
-
-                //Add an object element as a child to the target element that will be listened to for resize events.
-                var object = document.createElement("object");
-                object.style.cssText = OBJECT_STYLE;
-                object.tabIndex = -1;
-                object.type = "text/html";
-                object.onload = onObjectLoad;
-
-                //Safari: This must occur before adding the object to the DOM.
-                //IE: Does not like that this happens before, even if it is also added after.
-                if(!browserDetector.isIE()) {
-                    object.data = "about:blank";
-                }
-
-                if (!getState(element)) {
-                    // The element has been uninstalled before the actual loading happened.
-                    return;
-                }
-
-                element.appendChild(object);
-                getState(element).object = object;
-
-                //IE: This must occur after adding the object to the DOM.
-                if(browserDetector.isIE()) {
-                    object.data = "about:blank";
-                }
-            }
-
-            if(batchProcessor) {
-                batchProcessor.add(mutateDom);
-            } else {
-                mutateDom();
-            }
-        }
-
-        if(browserDetector.isIE(8)) {
-            //IE 8 does not support objects properly. Luckily they do support the resize event.
-            //So do not inject the object and notify that the element is already ready to be listened to.
-            //The event handler for the resize event is attached in the utils.addListener instead.
-            callback(element);
-        } else {
-            injectObject(element, callback);
-        }
-    }
-
-    /**
-     * Returns the child object of the target element.
-     * @private
-     * @param {element} element The target element.
-     * @returns The object element of the target.
-     */
-    function getObject(element) {
-        return getState(element).object;
-    }
-
-    function uninstall(element) {
-        if (!getState(element)) {
-            return;
-        }
-
-        var object = getObject(element);
-
-        if (!object) {
-            return;
-        }
-
-        if (browserDetector.isIE(8)) {
-            element.detachEvent("onresize", object.proxy);
-        } else {
-            element.removeChild(object);
-        }
-        delete getState(element).object;
-    }
-
-    return {
-        makeDetectable: makeDetectable,
-        addListener: addListener,
-        uninstall: uninstall
-    };
-};
-
-var forEach = collectionUtils.forEach;
-
-var scroll = function(options) {
-    options             = options || {};
-    var reporter        = options.reporter;
-    var batchProcessor  = options.batchProcessor;
-    var getState        = options.stateHandler.getState;
-    var idHandler       = options.idHandler;
-
-    if (!batchProcessor) {
-        throw new Error("Missing required dependency: batchProcessor");
-    }
-
-    if (!reporter) {
-        throw new Error("Missing required dependency: reporter.");
-    }
-
-    //TODO: Could this perhaps be done at installation time?
-    var scrollbarSizes = getScrollbarSizes();
-
-    var styleId = "erd_scroll_detection_scrollbar_style";
-    var detectionContainerClass = "erd_scroll_detection_container";
-
-    function initDocument(targetDocument) {
-        // Inject the scrollbar styling that prevents them from appearing sometimes in Chrome.
-        // The injected container needs to have a class, so that it may be styled with CSS (pseudo elements).
-        injectScrollStyle(targetDocument, styleId, detectionContainerClass);
-    }
-
-    initDocument(window.document);
-
-    function buildCssTextString(rules) {
-        var seperator = options.important ? " !important; " : "; ";
-
-        return (rules.join(seperator) + seperator).trim();
-    }
-
-    function getScrollbarSizes() {
-        var width = 500;
-        var height = 500;
-
-        var child = document.createElement("div");
-        child.style.cssText = buildCssTextString(["position: absolute", "width: " + width*2 + "px", "height: " + height*2 + "px", "visibility: hidden", "margin: 0", "padding: 0"]);
-
-        var container = document.createElement("div");
-        container.style.cssText = buildCssTextString(["position: absolute", "width: " + width + "px", "height: " + height + "px", "overflow: scroll", "visibility: none", "top: " + -width*3 + "px", "left: " + -height*3 + "px", "visibility: hidden", "margin: 0", "padding: 0"]);
-
-        container.appendChild(child);
-
-        document.body.insertBefore(container, document.body.firstChild);
-
-        var widthSize = width - container.clientWidth;
-        var heightSize = height - container.clientHeight;
-
-        document.body.removeChild(container);
-
-        return {
-            width: widthSize,
-            height: heightSize
-        };
-    }
-
-    function injectScrollStyle(targetDocument, styleId, containerClass) {
-        function injectStyle(style, method) {
-            method = method || function (element) {
-                targetDocument.head.appendChild(element);
-            };
-
-            var styleElement = targetDocument.createElement("style");
-            styleElement.innerHTML = style;
-            styleElement.id = styleId;
-            method(styleElement);
-            return styleElement;
-        }
-
-        if (!targetDocument.getElementById(styleId)) {
-            var containerAnimationClass = containerClass + "_animation";
-            var containerAnimationActiveClass = containerClass + "_animation_active";
-            var style = "/* Created by the element-resize-detector library. */\n";
-            style += "." + containerClass + " > div::-webkit-scrollbar { " + buildCssTextString(["display: none"]) + " }\n\n";
-            style += "." + containerAnimationActiveClass + " { " + buildCssTextString(["-webkit-animation-duration: 0.1s", "animation-duration: 0.1s", "-webkit-animation-name: " + containerAnimationClass, "animation-name: " + containerAnimationClass]) + " }\n";
-            style += "@-webkit-keyframes " + containerAnimationClass +  " { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }\n";
-            style += "@keyframes " + containerAnimationClass +          " { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }";
-            injectStyle(style);
-        }
-    }
-
-    function addAnimationClass(element) {
-        element.className += " " + detectionContainerClass + "_animation_active";
-    }
-
-    function addEvent(el, name, cb) {
-        if (el.addEventListener) {
-            el.addEventListener(name, cb);
-        } else if(el.attachEvent) {
-            el.attachEvent("on" + name, cb);
-        } else {
-            return reporter.error("[scroll] Don't know how to add event listeners.");
-        }
-    }
-
-    function removeEvent(el, name, cb) {
-        if (el.removeEventListener) {
-            el.removeEventListener(name, cb);
-        } else if(el.detachEvent) {
-            el.detachEvent("on" + name, cb);
-        } else {
-            return reporter.error("[scroll] Don't know how to remove event listeners.");
-        }
-    }
-
-    function getExpandElement(element) {
-        return getState(element).container.childNodes[0].childNodes[0].childNodes[0];
-    }
-
-    function getShrinkElement(element) {
-        return getState(element).container.childNodes[0].childNodes[0].childNodes[1];
-    }
-
-    /**
-     * Adds a resize event listener to the element.
-     * @public
-     * @param {element} element The element that should have the listener added.
-     * @param {function} listener The listener callback to be called for each resize event of the element. The element will be given as a parameter to the listener callback.
-     */
-    function addListener(element, listener) {
-        var listeners = getState(element).listeners;
-
-        if (!listeners.push) {
-            throw new Error("Cannot add listener to an element that is not detectable.");
-        }
-
-        getState(element).listeners.push(listener);
-    }
-
-    /**
-     * Makes an element detectable and ready to be listened for resize events. Will call the callback when the element is ready to be listened for resize changes.
-     * @private
-     * @param {object} options Optional options object.
-     * @param {element} element The element to make detectable
-     * @param {function} callback The callback to be called when the element is ready to be listened for resize changes. Will be called with the element as first parameter.
-     */
-    function makeDetectable(options, element, callback) {
-        if (!callback) {
-            callback = element;
-            element = options;
-            options = null;
-        }
-
-        options = options || {};
-
-        function debug() {
-            if (options.debug) {
-                var args = Array.prototype.slice.call(arguments);
-                args.unshift(idHandler.get(element), "Scroll: ");
-                if (reporter.log.apply) {
-                    reporter.log.apply(null, args);
-                } else {
-                    for (var i = 0; i < args.length; i++) {
-                        reporter.log(args[i]);
-                    }
-                }
-            }
-        }
-
-        function isDetached(element) {
-            function isInDocument(element) {
-                return element === element.ownerDocument.body || element.ownerDocument.body.contains(element);
-            }
-
-            if (!isInDocument(element)) {
-                return true;
-            }
-
-            // FireFox returns null style in hidden iframes. See https://github.com/wnr/element-resize-detector/issues/68 and https://bugzilla.mozilla.org/show_bug.cgi?id=795520
-            if (window.getComputedStyle(element) === null) {
-                return true;
-            }
-
-            return false;
-        }
-
-        function isUnrendered(element) {
-            // Check the absolute positioned container since the top level container is display: inline.
-            var container = getState(element).container.childNodes[0];
-            var style = window.getComputedStyle(container);
-            return !style.width || style.width.indexOf("px") === -1; //Can only compute pixel value when rendered.
-        }
-
-        function getStyle() {
-            // Some browsers only force layouts when actually reading the style properties of the style object, so make sure that they are all read here,
-            // so that the user of the function can be sure that it will perform the layout here, instead of later (important for batching).
-            var elementStyle            = window.getComputedStyle(element);
-            var style                   = {};
-            style.position              = elementStyle.position;
-            style.width                 = element.offsetWidth;
-            style.height                = element.offsetHeight;
-            style.top                   = elementStyle.top;
-            style.right                 = elementStyle.right;
-            style.bottom                = elementStyle.bottom;
-            style.left                  = elementStyle.left;
-            style.widthCSS              = elementStyle.width;
-            style.heightCSS             = elementStyle.height;
-            return style;
-        }
-
-        function storeStartSize() {
-            var style = getStyle();
-            getState(element).startSize = {
-                width: style.width,
-                height: style.height
-            };
-            debug("Element start size", getState(element).startSize);
-        }
-
-        function initListeners() {
-            getState(element).listeners = [];
-        }
-
-        function storeStyle() {
-            debug("storeStyle invoked.");
-            if (!getState(element)) {
-                debug("Aborting because element has been uninstalled");
-                return;
-            }
-
-            var style = getStyle();
-            getState(element).style = style;
-        }
-
-        function storeCurrentSize(element, width, height) {
-            getState(element).lastWidth = width;
-            getState(element).lastHeight  = height;
-        }
-
-        function getExpandChildElement(element) {
-            return getExpandElement(element).childNodes[0];
-        }
-
-        function getWidthOffset() {
-            return 2 * scrollbarSizes.width + 1;
-        }
-
-        function getHeightOffset() {
-            return 2 * scrollbarSizes.height + 1;
-        }
-
-        function getExpandWidth(width) {
-            return width + 10 + getWidthOffset();
-        }
-
-        function getExpandHeight(height) {
-            return height + 10 + getHeightOffset();
-        }
-
-        function getShrinkWidth(width) {
-            return width * 2 + getWidthOffset();
-        }
-
-        function getShrinkHeight(height) {
-            return height * 2 + getHeightOffset();
-        }
-
-        function positionScrollbars(element, width, height) {
-            var expand          = getExpandElement(element);
-            var shrink          = getShrinkElement(element);
-            var expandWidth     = getExpandWidth(width);
-            var expandHeight    = getExpandHeight(height);
-            var shrinkWidth     = getShrinkWidth(width);
-            var shrinkHeight    = getShrinkHeight(height);
-            expand.scrollLeft   = expandWidth;
-            expand.scrollTop    = expandHeight;
-            shrink.scrollLeft   = shrinkWidth;
-            shrink.scrollTop    = shrinkHeight;
-        }
-
-        function injectContainerElement() {
-            var container = getState(element).container;
-
-            if (!container) {
-                container                   = document.createElement("div");
-                container.className         = detectionContainerClass;
-                container.style.cssText     = buildCssTextString(["visibility: hidden", "display: inline", "width: 0px", "height: 0px", "z-index: -1", "overflow: hidden", "margin: 0", "padding: 0"]);
-                getState(element).container = container;
-                addAnimationClass(container);
-                element.appendChild(container);
-
-                var onAnimationStart = function () {
-                    getState(element).onRendered && getState(element).onRendered();
-                };
-
-                addEvent(container, "animationstart", onAnimationStart);
-
-                // Store the event handler here so that they may be removed when uninstall is called.
-                // See uninstall function for an explanation why it is needed.
-                getState(element).onAnimationStart = onAnimationStart;
-            }
-
-            return container;
-        }
-
-        function injectScrollElements() {
-            function alterPositionStyles() {
-                var style = getState(element).style;
-
-                if(style.position === "static") {
-                    element.style.setProperty("position", "relative",options.important ? "important" : "");
-
-                    var removeRelativeStyles = function(reporter, element, style, property) {
-                        function getNumericalValue(value) {
-                            return value.replace(/[^-\d\.]/g, "");
-                        }
-
-                        var value = style[property];
-
-                        if(value !== "auto" && getNumericalValue(value) !== "0") {
-                            reporter.warn("An element that is positioned static has style." + property + "=" + value + " which is ignored due to the static positioning. The element will need to be positioned relative, so the style." + property + " will be set to 0. Element: ", element);
-                            element.style[property] = 0;
-                        }
-                    };
-
-                    //Check so that there are no accidental styles that will make the element styled differently now that is is relative.
-                    //If there are any, set them to 0 (this should be okay with the user since the style properties did nothing before [since the element was positioned static] anyway).
-                    removeRelativeStyles(reporter, element, style, "top");
-                    removeRelativeStyles(reporter, element, style, "right");
-                    removeRelativeStyles(reporter, element, style, "bottom");
-                    removeRelativeStyles(reporter, element, style, "left");
-                }
-            }
-
-            function getLeftTopBottomRightCssText(left, top, bottom, right) {
-                left = (!left ? "0" : (left + "px"));
-                top = (!top ? "0" : (top + "px"));
-                bottom = (!bottom ? "0" : (bottom + "px"));
-                right = (!right ? "0" : (right + "px"));
-
-                return ["left: " + left, "top: " + top, "right: " + right, "bottom: " + bottom];
-            }
-
-            debug("Injecting elements");
-
-            if (!getState(element)) {
-                debug("Aborting because element has been uninstalled");
-                return;
-            }
-
-            alterPositionStyles();
-
-            var rootContainer = getState(element).container;
-
-            if (!rootContainer) {
-                rootContainer = injectContainerElement();
-            }
-
-            // Due to this WebKit bug https://bugs.webkit.org/show_bug.cgi?id=80808 (currently fixed in Blink, but still present in WebKit browsers such as Safari),
-            // we need to inject two containers, one that is width/height 100% and another that is left/top -1px so that the final container always is 1x1 pixels bigger than
-            // the targeted element.
-            // When the bug is resolved, "containerContainer" may be removed.
-
-            // The outer container can occasionally be less wide than the targeted when inside inline elements element in WebKit (see https://bugs.webkit.org/show_bug.cgi?id=152980).
-            // This should be no problem since the inner container either way makes sure the injected scroll elements are at least 1x1 px.
-
-            var scrollbarWidth          = scrollbarSizes.width;
-            var scrollbarHeight         = scrollbarSizes.height;
-            var containerContainerStyle = buildCssTextString(["position: absolute", "flex: none", "overflow: hidden", "z-index: -1", "visibility: hidden", "width: 100%", "height: 100%", "left: 0px", "top: 0px"]);
-            var containerStyle          = buildCssTextString(["position: absolute", "flex: none", "overflow: hidden", "z-index: -1", "visibility: hidden"].concat(getLeftTopBottomRightCssText(-(1 + scrollbarWidth), -(1 + scrollbarHeight), -scrollbarHeight, -scrollbarWidth)));
-            var expandStyle             = buildCssTextString(["position: absolute", "flex: none", "overflow: scroll", "z-index: -1", "visibility: hidden", "width: 100%", "height: 100%"]);
-            var shrinkStyle             = buildCssTextString(["position: absolute", "flex: none", "overflow: scroll", "z-index: -1", "visibility: hidden", "width: 100%", "height: 100%"]);
-            var expandChildStyle        = buildCssTextString(["position: absolute", "left: 0", "top: 0"]);
-            var shrinkChildStyle        = buildCssTextString(["position: absolute", "width: 200%", "height: 200%"]);
-
-            var containerContainer      = document.createElement("div");
-            var container               = document.createElement("div");
-            var expand                  = document.createElement("div");
-            var expandChild             = document.createElement("div");
-            var shrink                  = document.createElement("div");
-            var shrinkChild             = document.createElement("div");
-
-            // Some browsers choke on the resize system being rtl, so force it to ltr. https://github.com/wnr/element-resize-detector/issues/56
-            // However, dir should not be set on the top level container as it alters the dimensions of the target element in some browsers.
-            containerContainer.dir              = "ltr";
-
-            containerContainer.style.cssText    = containerContainerStyle;
-            containerContainer.className        = detectionContainerClass;
-            container.className                 = detectionContainerClass;
-            container.style.cssText             = containerStyle;
-            expand.style.cssText                = expandStyle;
-            expandChild.style.cssText           = expandChildStyle;
-            shrink.style.cssText                = shrinkStyle;
-            shrinkChild.style.cssText           = shrinkChildStyle;
-
-            expand.appendChild(expandChild);
-            shrink.appendChild(shrinkChild);
-            container.appendChild(expand);
-            container.appendChild(shrink);
-            containerContainer.appendChild(container);
-            rootContainer.appendChild(containerContainer);
-
-            function onExpandScroll() {
-                getState(element).onExpand && getState(element).onExpand();
-            }
-
-            function onShrinkScroll() {
-                getState(element).onShrink && getState(element).onShrink();
-            }
-
-            addEvent(expand, "scroll", onExpandScroll);
-            addEvent(shrink, "scroll", onShrinkScroll);
-
-            // Store the event handlers here so that they may be removed when uninstall is called.
-            // See uninstall function for an explanation why it is needed.
-            getState(element).onExpandScroll = onExpandScroll;
-            getState(element).onShrinkScroll = onShrinkScroll;
-        }
-
-        function registerListenersAndPositionElements() {
-            function updateChildSizes(element, width, height) {
-                var expandChild             = getExpandChildElement(element);
-                var expandWidth             = getExpandWidth(width);
-                var expandHeight            = getExpandHeight(height);
-                expandChild.style.setProperty("width", expandWidth + "px", options.important ? "important" : "");
-                expandChild.style.setProperty("height", expandHeight + "px", options.important ? "important" : "");
-            }
-
-            function updateDetectorElements(done) {
-                var width           = element.offsetWidth;
-                var height          = element.offsetHeight;
-
-                // Check whether the size has actually changed since last time the algorithm ran. If not, some steps may be skipped.
-                var sizeChanged = width !== getState(element).lastWidth || height !== getState(element).lastHeight;
-
-                debug("Storing current size", width, height);
-
-                // Store the size of the element sync here, so that multiple scroll events may be ignored in the event listeners.
-                // Otherwise the if-check in handleScroll is useless.
-                storeCurrentSize(element, width, height);
-
-                // Since we delay the processing of the batch, there is a risk that uninstall has been called before the batch gets to execute.
-                // Since there is no way to cancel the fn executions, we need to add an uninstall guard to all fns of the batch.
-
-                batchProcessor.add(0, function performUpdateChildSizes() {
-                    if (!sizeChanged) {
-                        return;
-                    }
-
-                    if (!getState(element)) {
-                        debug("Aborting because element has been uninstalled");
-                        return;
-                    }
-
-                    if (!areElementsInjected()) {
-                        debug("Aborting because element container has not been initialized");
-                        return;
-                    }
-
-                    if (options.debug) {
-                        var w = element.offsetWidth;
-                        var h = element.offsetHeight;
-
-                        if (w !== width || h !== height) {
-                            reporter.warn(idHandler.get(element), "Scroll: Size changed before updating detector elements.");
-                        }
-                    }
-
-                    updateChildSizes(element, width, height);
-                });
-
-                batchProcessor.add(1, function updateScrollbars() {
-                    // This function needs to be invoked event though the size is unchanged. The element could have been resized very quickly and then
-                    // been restored to the original size, which will have changed the scrollbar positions.
-
-                    if (!getState(element)) {
-                        debug("Aborting because element has been uninstalled");
-                        return;
-                    }
-
-                    if (!areElementsInjected()) {
-                        debug("Aborting because element container has not been initialized");
-                        return;
-                    }
-
-                    positionScrollbars(element, width, height);
-                });
-
-                if (sizeChanged && done) {
-                    batchProcessor.add(2, function () {
-                        if (!getState(element)) {
-                            debug("Aborting because element has been uninstalled");
-                            return;
-                        }
-
-                        if (!areElementsInjected()) {
-                          debug("Aborting because element container has not been initialized");
-                          return;
-                        }
-
-                        done();
-                    });
-                }
-            }
-
-            function areElementsInjected() {
-                return !!getState(element).container;
-            }
-
-            function notifyListenersIfNeeded() {
-                function isFirstNotify() {
-                    return getState(element).lastNotifiedWidth === undefined;
-                }
-
-                debug("notifyListenersIfNeeded invoked");
-
-                var state = getState(element);
-
-                // Don't notify if the current size is the start size, and this is the first notification.
-                if (isFirstNotify() && state.lastWidth === state.startSize.width && state.lastHeight === state.startSize.height) {
-                    return debug("Not notifying: Size is the same as the start size, and there has been no notification yet.");
-                }
-
-                // Don't notify if the size already has been notified.
-                if (state.lastWidth === state.lastNotifiedWidth && state.lastHeight === state.lastNotifiedHeight) {
-                    return debug("Not notifying: Size already notified");
-                }
-
-
-                debug("Current size not notified, notifying...");
-                state.lastNotifiedWidth = state.lastWidth;
-                state.lastNotifiedHeight = state.lastHeight;
-                forEach(getState(element).listeners, function (listener) {
-                    listener(element);
-                });
-            }
-
-            function handleRender() {
-                debug("startanimation triggered.");
-
-                if (isUnrendered(element)) {
-                    debug("Ignoring since element is still unrendered...");
-                    return;
-                }
-
-                debug("Element rendered.");
-                var expand = getExpandElement(element);
-                var shrink = getShrinkElement(element);
-                if (expand.scrollLeft === 0 || expand.scrollTop === 0 || shrink.scrollLeft === 0 || shrink.scrollTop === 0) {
-                    debug("Scrollbars out of sync. Updating detector elements...");
-                    updateDetectorElements(notifyListenersIfNeeded);
-                }
-            }
-
-            function handleScroll() {
-                debug("Scroll detected.");
-
-                if (isUnrendered(element)) {
-                    // Element is still unrendered. Skip this scroll event.
-                    debug("Scroll event fired while unrendered. Ignoring...");
-                    return;
-                }
-
-                updateDetectorElements(notifyListenersIfNeeded);
-            }
-
-            debug("registerListenersAndPositionElements invoked.");
-
-            if (!getState(element)) {
-                debug("Aborting because element has been uninstalled");
-                return;
-            }
-
-            getState(element).onRendered = handleRender;
-            getState(element).onExpand = handleScroll;
-            getState(element).onShrink = handleScroll;
-
-            var style = getState(element).style;
-            updateChildSizes(element, style.width, style.height);
-        }
-
-        function finalizeDomMutation() {
-            debug("finalizeDomMutation invoked.");
-
-            if (!getState(element)) {
-                debug("Aborting because element has been uninstalled");
-                return;
-            }
-
-            var style = getState(element).style;
-            storeCurrentSize(element, style.width, style.height);
-            positionScrollbars(element, style.width, style.height);
-        }
-
-        function ready() {
-            callback(element);
-        }
-
-        function install() {
-            debug("Installing...");
-            initListeners();
-            storeStartSize();
-
-            batchProcessor.add(0, storeStyle);
-            batchProcessor.add(1, injectScrollElements);
-            batchProcessor.add(2, registerListenersAndPositionElements);
-            batchProcessor.add(3, finalizeDomMutation);
-            batchProcessor.add(4, ready);
-        }
-
-        debug("Making detectable...");
-
-        if (isDetached(element)) {
-            debug("Element is detached");
-
-            injectContainerElement();
-
-            debug("Waiting until element is attached...");
-
-            getState(element).onRendered = function () {
-                debug("Element is now attached");
-                install();
-            };
-        } else {
-            install();
-        }
-    }
-
-    function uninstall(element) {
-        var state = getState(element);
-
-        if (!state) {
-            // Uninstall has been called on a non-erd element.
-            return;
-        }
-
-        // Uninstall may have been called in the following scenarios:
-        // (1) Right between the sync code and async batch (here state.busy = true, but nothing have been registered or injected).
-        // (2) In the ready callback of the last level of the batch by another element (here, state.busy = true, but all the stuff has been injected).
-        // (3) After the installation process (here, state.busy = false and all the stuff has been injected).
-        // So to be on the safe side, let's check for each thing before removing.
-
-        // We need to remove the event listeners, because otherwise the event might fire on an uninstall element which results in an error when trying to get the state of the element.
-        state.onExpandScroll && removeEvent(getExpandElement(element), "scroll", state.onExpandScroll);
-        state.onShrinkScroll && removeEvent(getShrinkElement(element), "scroll", state.onShrinkScroll);
-        state.onAnimationStart && removeEvent(state.container, "animationstart", state.onAnimationStart);
-
-        state.container && element.removeChild(state.container);
-    }
-
-    return {
-        makeDetectable: makeDetectable,
-        addListener: addListener,
-        uninstall: uninstall,
-        initDocument: initDocument
-    };
-};
-
-var forEach$1                 = collectionUtils.forEach;
-
-
-
-
-
-
-
-
-
-//Detection strategies.
-
-
-
-function isCollection(obj) {
-    return Array.isArray(obj) || obj.length !== undefined;
-}
-
-function toArray$1(collection) {
-    if (!Array.isArray(collection)) {
-        var array = [];
-        forEach$1(collection, function (obj) {
-            array.push(obj);
-        });
-        return array;
-    } else {
-        return collection;
-    }
-}
-
-function isElement(obj) {
-    return obj && obj.nodeType === 1;
-}
-
-/**
- * @typedef idHandler
- * @type {object}
- * @property {function} get Gets the resize detector id of the element.
- * @property {function} set Generate and sets the resize detector id of the element.
- */
-
-/**
- * @typedef Options
- * @type {object}
- * @property {boolean} callOnAdd    Determines if listeners should be called when they are getting added.
-                                    Default is true. If true, the listener is guaranteed to be called when it has been added.
-                                    If false, the listener will not be guarenteed to be called when it has been added (does not prevent it from being called).
- * @property {idHandler} idHandler  A custom id handler that is responsible for generating, setting and retrieving id's for elements.
-                                    If not provided, a default id handler will be used.
- * @property {reporter} reporter    A custom reporter that handles reporting logs, warnings and errors.
-                                    If not provided, a default id handler will be used.
-                                    If set to false, then nothing will be reported.
- * @property {boolean} debug        If set to true, the the system will report debug messages as default for the listenTo method.
- */
-
-/**
- * Creates an element resize detector instance.
- * @public
- * @param {Options?} options Optional global options object that will decide how this instance will work.
- */
-var elementResizeDetector = function(options) {
-    options = options || {};
-
-    //idHandler is currently not an option to the listenTo function, so it should not be added to globalOptions.
-    var idHandler$1;
-
-    if (options.idHandler) {
-        // To maintain compatability with idHandler.get(element, readonly), make sure to wrap the given idHandler
-        // so that readonly flag always is true when it's used here. This may be removed next major version bump.
-        idHandler$1 = {
-            get: function (element) { return options.idHandler.get(element, true); },
-            set: options.idHandler.set
-        };
-    } else {
-        var idGenerator$1 = idGenerator();
-        var defaultIdHandler = idHandler({
-            idGenerator: idGenerator$1,
-            stateHandler: stateHandler
-        });
-        idHandler$1 = defaultIdHandler;
-    }
-
-    //reporter is currently not an option to the listenTo function, so it should not be added to globalOptions.
-    var reporter$1 = options.reporter;
-
-    if(!reporter$1) {
-        //If options.reporter is false, then the reporter should be quiet.
-        var quiet = reporter$1 === false;
-        reporter$1 = reporter(quiet);
-    }
-
-    //batchProcessor is currently not an option to the listenTo function, so it should not be added to globalOptions.
-    var batchProcessor$1 = getOption(options, "batchProcessor", batchProcessor({ reporter: reporter$1 }));
-
-    //Options to be used as default for the listenTo function.
-    var globalOptions = {};
-    globalOptions.callOnAdd     = !!getOption(options, "callOnAdd", true);
-    globalOptions.debug         = !!getOption(options, "debug", false);
-
-    var eventListenerHandler    = listenerHandler(idHandler$1);
-    var elementUtils$1            = elementUtils({
-        stateHandler: stateHandler
-    });
-
-    //The detection strategy to be used.
-    var detectionStrategy;
-    var desiredStrategy = getOption(options, "strategy", "object");
-    var importantCssRules = getOption(options, "important", false);
-    var strategyOptions = {
-        reporter: reporter$1,
-        batchProcessor: batchProcessor$1,
-        stateHandler: stateHandler,
-        idHandler: idHandler$1,
-        important: importantCssRules
-    };
-
-    if(desiredStrategy === "scroll") {
-        if (browserDetector.isLegacyOpera()) {
-            reporter$1.warn("Scroll strategy is not supported on legacy Opera. Changing to object strategy.");
-            desiredStrategy = "object";
-        } else if (browserDetector.isIE(9)) {
-            reporter$1.warn("Scroll strategy is not supported on IE9. Changing to object strategy.");
-            desiredStrategy = "object";
-        }
-    }
-
-    if(desiredStrategy === "scroll") {
-        detectionStrategy = scroll(strategyOptions);
-    } else if(desiredStrategy === "object") {
-        detectionStrategy = object(strategyOptions);
-    } else {
-        throw new Error("Invalid strategy name: " + desiredStrategy);
-    }
-
-    //Calls can be made to listenTo with elements that are still being installed.
-    //Also, same elements can occur in the elements list in the listenTo function.
-    //With this map, the ready callbacks can be synchronized between the calls
-    //so that the ready callback can always be called when an element is ready - even if
-    //it wasn't installed from the function itself.
-    var onReadyCallbacks = {};
-
-    /**
-     * Makes the given elements resize-detectable and starts listening to resize events on the elements. Calls the event callback for each event for each element.
-     * @public
-     * @param {Options?} options Optional options object. These options will override the global options. Some options may not be overriden, such as idHandler.
-     * @param {element[]|element} elements The given array of elements to detect resize events of. Single element is also valid.
-     * @param {function} listener The callback to be executed for each resize event for each element.
-     */
-    function listenTo(options, elements, listener) {
-        function onResizeCallback(element) {
-            var listeners = eventListenerHandler.get(element);
-            forEach$1(listeners, function callListenerProxy(listener) {
-                listener(element);
-            });
-        }
-
-        function addListener(callOnAdd, element, listener) {
-            eventListenerHandler.add(element, listener);
-
-            if(callOnAdd) {
-                listener(element);
-            }
-        }
-
-        //Options object may be omitted.
-        if(!listener) {
-            listener = elements;
-            elements = options;
-            options = {};
-        }
-
-        if(!elements) {
-            throw new Error("At least one element required.");
-        }
-
-        if(!listener) {
-            throw new Error("Listener required.");
-        }
-
-        if (isElement(elements)) {
-            // A single element has been passed in.
-            elements = [elements];
-        } else if (isCollection(elements)) {
-            // Convert collection to array for plugins.
-            // TODO: May want to check so that all the elements in the collection are valid elements.
-            elements = toArray$1(elements);
-        } else {
-            return reporter$1.error("Invalid arguments. Must be a DOM element or a collection of DOM elements.");
-        }
-
-        var elementsReady = 0;
-
-        var callOnAdd = getOption(options, "callOnAdd", globalOptions.callOnAdd);
-        var onReadyCallback = getOption(options, "onReady", function noop() {});
-        var debug = getOption(options, "debug", globalOptions.debug);
-
-        forEach$1(elements, function attachListenerToElement(element) {
-            if (!stateHandler.getState(element)) {
-                stateHandler.initState(element);
-                idHandler$1.set(element);
-            }
-
-            var id = idHandler$1.get(element);
-
-            debug && reporter$1.log("Attaching listener to element", id, element);
-
-            if(!elementUtils$1.isDetectable(element)) {
-                debug && reporter$1.log(id, "Not detectable.");
-                if(elementUtils$1.isBusy(element)) {
-                    debug && reporter$1.log(id, "System busy making it detectable");
-
-                    //The element is being prepared to be detectable. Do not make it detectable.
-                    //Just add the listener, because the element will soon be detectable.
-                    addListener(callOnAdd, element, listener);
-                    onReadyCallbacks[id] = onReadyCallbacks[id] || [];
-                    onReadyCallbacks[id].push(function onReady() {
-                        elementsReady++;
-
-                        if(elementsReady === elements.length) {
-                            onReadyCallback();
-                        }
-                    });
-                    return;
-                }
-
-                debug && reporter$1.log(id, "Making detectable...");
-                //The element is not prepared to be detectable, so do prepare it and add a listener to it.
-                elementUtils$1.markBusy(element, true);
-                return detectionStrategy.makeDetectable({ debug: debug, important: importantCssRules }, element, function onElementDetectable(element) {
-                    debug && reporter$1.log(id, "onElementDetectable");
-
-                    if (stateHandler.getState(element)) {
-                        elementUtils$1.markAsDetectable(element);
-                        elementUtils$1.markBusy(element, false);
-                        detectionStrategy.addListener(element, onResizeCallback);
-                        addListener(callOnAdd, element, listener);
-
-                        // Since the element size might have changed since the call to "listenTo", we need to check for this change,
-                        // so that a resize event may be emitted.
-                        // Having the startSize object is optional (since it does not make sense in some cases such as unrendered elements), so check for its existance before.
-                        // Also, check the state existance before since the element may have been uninstalled in the installation process.
-                        var state = stateHandler.getState(element);
-                        if (state && state.startSize) {
-                            var width = element.offsetWidth;
-                            var height = element.offsetHeight;
-                            if (state.startSize.width !== width || state.startSize.height !== height) {
-                                onResizeCallback(element);
-                            }
-                        }
-
-                        if(onReadyCallbacks[id]) {
-                            forEach$1(onReadyCallbacks[id], function(callback) {
-                                callback();
-                            });
-                        }
-                    } else {
-                        // The element has been unisntalled before being detectable.
-                        debug && reporter$1.log(id, "Element uninstalled before being detectable.");
-                    }
-
-                    delete onReadyCallbacks[id];
-
-                    elementsReady++;
-                    if(elementsReady === elements.length) {
-                        onReadyCallback();
-                    }
-                });
-            }
-
-            debug && reporter$1.log(id, "Already detecable, adding listener.");
-
-            //The element has been prepared to be detectable and is ready to be listened to.
-            addListener(callOnAdd, element, listener);
-            elementsReady++;
-        });
-
-        if(elementsReady === elements.length) {
-            onReadyCallback();
-        }
-    }
-
-    function uninstall(elements) {
-        if(!elements) {
-            return reporter$1.error("At least one element is required.");
-        }
-
-        if (isElement(elements)) {
-            // A single element has been passed in.
-            elements = [elements];
-        } else if (isCollection(elements)) {
-            // Convert collection to array for plugins.
-            // TODO: May want to check so that all the elements in the collection are valid elements.
-            elements = toArray$1(elements);
-        } else {
-            return reporter$1.error("Invalid arguments. Must be a DOM element or a collection of DOM elements.");
-        }
-
-        forEach$1(elements, function (element) {
-            eventListenerHandler.removeAllListeners(element);
-            detectionStrategy.uninstall(element);
-            stateHandler.cleanState(element);
-        });
-    }
-
-    function initDocument(targetDocument) {
-        detectionStrategy.initDocument && detectionStrategy.initDocument(targetDocument);
-    }
-
-    return {
-        listenTo: listenTo,
-        removeListener: eventListenerHandler.removeListener,
-        removeAllListeners: eventListenerHandler.removeAllListeners,
-        uninstall: uninstall,
-        initDocument: initDocument
-    };
-};
-
-function getOption(options, name, defaultValue) {
-    var value = options[name];
-
-    if((value === undefined || value === null) && defaultValue !== undefined) {
-        return defaultValue;
-    }
-
-    return value;
-}
-
-var script$O = {
+var script$U = {
   name: 'CPagination',
   components: {
     CLink: CLink
@@ -21850,9 +21586,18 @@ var script$O = {
       type: Number,
       default: 5
     },
-    hideDots: Boolean,
-    hideArrows: Boolean,
-    hideDoubleArrows: Boolean,
+    dots: {
+      type: Boolean,
+      default: true
+    },
+    arrows: {
+      type: Boolean,
+      default: true
+    },
+    doubleArrows: {
+      type: Boolean,
+      default: true
+    },
     firstButtonHtml: {
       type: String,
       default: '&laquo;'
@@ -21868,14 +21613,7 @@ var script$O = {
     lastButtonHtml: {
       type: String,
       default: '&raquo;'
-    },
-    responsive: [Boolean, Object]
-  },
-  data: function data() {
-    return {
-      minifiedSize: null,
-      erd: elementResizeDetector()
-    };
+    }
   },
   watch: {
     pages: {
@@ -21887,15 +21625,7 @@ var script$O = {
       }
     }
   },
-  mounted: function mounted() {
-    if (this.responsive) {
-      this.erd.listenTo(this.$el, this.onWrapperResize);
-    }
-  },
   computed: {
-    dims: function dims() {
-      return this.size === 'sm' ? 'sm' : this.minifiedSize || this.size;
-    },
     backArrowsClasses: function backArrowsClasses() {
       return ['page-item', {
         'disabled': this.activePage === 1
@@ -21907,10 +21637,10 @@ var script$O = {
       }];
     },
     computedClasses: function computedClasses() {
-      return "pagination pagination-".concat(this.dims, " justify-content-").concat(this.align);
+      return "pagination pagination-".concat(this.size, " justify-content-").concat(this.align);
     },
     showDots: function showDots() {
-      return !this.hideDots && this.limit > 4 && this.limit < this.pages;
+      return this.dots && this.limit > 4 && this.limit < this.pages;
     },
     maxPrevItems: function maxPrevItems() {
       return Math.floor((this.limit - 1) / 2);
@@ -21955,12 +21685,6 @@ var script$O = {
     }
   },
   methods: {
-    onWrapperResize: function onWrapperResize(el) {
-      var md = this.responsive.md || 600;
-      var sm = this.responsive.sm || 400;
-      var wrapper = el.clientWidth;
-      this.minifiedSize = wrapper > md ? null : wrapper > sm ? 'md' : 'sm';
-    },
     setPage: function setPage(number) {
       if (number !== this.activePage) {
         this.$emit('update:activePage', number);
@@ -21973,199 +21697,204 @@ var css$3 = "\n.page-link:focus {\n  -webkit-box-shadow: none;\n          box-sh
 styleInject(css$3);
 
 /* script */
-const __vue_script__$O = script$O;
+const __vue_script__$U = script$U;
 /* template */
-var __vue_render__$m = function() {
+var __vue_render__$n = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return _c(
-    "ul",
-    {
-      class: _vm.computedClasses,
-      attrs: {
-        role: "menubar",
-        "aria-disabled": "false",
-        "aria-label": "pagination"
-      }
-    },
-    [
-      !_vm.hideDoubleArrows
-        ? _c(
-            "li",
-            { class: _vm.backArrowsClasses },
-            [
-              _c(
-                "CLink",
-                {
-                  staticClass: "page-link",
-                  attrs: {
-                    disabled: _vm.activePage === 1,
-                    "aria-label": "Go to first page"
-                  },
-                  on: {
-                    click: function($event) {
-                      return _vm.setPage(1)
+  return _c("nav", { attrs: { "aria-label": "pagination" } }, [
+    _c(
+      "ul",
+      { class: _vm.computedClasses },
+      [
+        _vm.doubleArrows
+          ? _c(
+              "li",
+              { class: _vm.backArrowsClasses },
+              [
+                _c(
+                  "CLink",
+                  {
+                    staticClass: "page-link",
+                    attrs: {
+                      disabled: _vm.activePage === 1,
+                      "aria-label": "Go to first page",
+                      "aria-disabled": _vm.activePage === 1
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.setPage(1)
+                      }
                     }
-                  }
-                },
-                [
-                  _c("span", {
-                    domProps: { innerHTML: _vm._s(_vm.firstButtonHtml) }
-                  })
-                ]
-              )
-            ],
-            1
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      !_vm.hideArrows
-        ? _c(
-            "li",
-            { class: _vm.backArrowsClasses },
-            [
-              _c(
-                "CLink",
-                {
-                  staticClass: "page-link",
-                  attrs: {
-                    disabled: _vm.activePage === 1,
-                    "aria-label": "Go to previous page"
                   },
-                  on: {
-                    click: function($event) {
-                      return _vm.setPage(_vm.activePage - 1)
-                    }
-                  }
-                },
-                [
-                  _c("span", {
-                    domProps: { innerHTML: _vm._s(_vm.previousButtonHtml) }
-                  })
-                ]
-              )
-            ],
-            1
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.beforeDots
-        ? _c(
-            "li",
-            { staticClass: "page-item disabled", attrs: { role: "separator" } },
-            [_c("span", { staticClass: "page-link" }, [_vm._v("…")])]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm._l(_vm.items, function(item, index) {
-        return _c(
-          "li",
-          {
-            key: index,
-            class: [{ active: _vm.activePage === item }, "page-item"]
-          },
-          [
-            _c(
-              "CLink",
-              {
-                staticClass: "page-link",
-                attrs: { "aria-label": "Go to page " + item },
-                on: {
-                  click: function($event) {
-                    return _vm.setPage(item)
-                  }
-                }
-              },
-              [_vm._v("\n      " + _vm._s(item) + "\n    ")]
+                  [
+                    _c("span", {
+                      domProps: { innerHTML: _vm._s(_vm.firstButtonHtml) }
+                    })
+                  ]
+                )
+              ],
+              1
             )
-          ],
-          1
-        )
-      }),
-      _vm._v(" "),
-      _vm.afterDots
-        ? _c(
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.arrows
+          ? _c(
+              "li",
+              { class: _vm.backArrowsClasses },
+              [
+                _c(
+                  "CLink",
+                  {
+                    staticClass: "page-link",
+                    attrs: {
+                      disabled: _vm.activePage === 1,
+                      "aria-label": "Go to previous page",
+                      "aria-disabled": _vm.activePage === 1
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.setPage(_vm.activePage - 1)
+                      }
+                    }
+                  },
+                  [
+                    _c("span", {
+                      domProps: { innerHTML: _vm._s(_vm.previousButtonHtml) }
+                    })
+                  ]
+                )
+              ],
+              1
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.beforeDots
+          ? _c(
+              "li",
+              {
+                staticClass: "page-item disabled",
+                attrs: { role: "separator" }
+              },
+              [_c("span", { staticClass: "page-link" }, [_vm._v("…")])]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm._l(_vm.items, function(item, index) {
+          return _c(
             "li",
-            { staticClass: "page-item disabled", attrs: { role: "separator" } },
-            [_c("span", { staticClass: "page-link" }, [_vm._v("…")])]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      !_vm.hideArrows
-        ? _c(
-            "li",
-            { class: _vm.nextArrowsClasses },
+            {
+              key: index,
+              class: [{ active: _vm.activePage === item }, "page-item"]
+            },
             [
               _c(
                 "CLink",
                 {
                   staticClass: "page-link",
-                  attrs: {
-                    disabled: _vm.activePage === _vm.pages,
-                    "aria-label": "Go to next page"
-                  },
+                  attrs: { "aria-label": "Go to page " + item },
                   on: {
                     click: function($event) {
-                      return _vm.setPage(_vm.activePage + 1)
+                      return _vm.setPage(item)
                     }
                   }
                 },
-                [
-                  _c("span", {
-                    domProps: { innerHTML: _vm._s(_vm.nextButtonHtml) }
-                  })
-                ]
+                [_vm._v("\n        " + _vm._s(item) + "\n      ")]
               )
             ],
             1
           )
-        : _vm._e(),
-      _vm._v(" "),
-      !_vm.hideDoubleArrows
-        ? _c(
-            "li",
-            { class: _vm.nextArrowsClasses },
-            [
-              _c(
-                "CLink",
-                {
-                  staticClass: "page-link",
-                  attrs: {
-                    disabled: _vm.activePage === _vm.pages,
-                    "aria-label": "Go to last page"
-                  },
-                  on: {
-                    click: function($event) {
-                      return _vm.setPage(_vm.pages)
+        }),
+        _vm._v(" "),
+        _vm.afterDots
+          ? _c(
+              "li",
+              {
+                staticClass: "page-item disabled",
+                attrs: { role: "separator" }
+              },
+              [_c("span", { staticClass: "page-link" }, [_vm._v("…")])]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.arrows
+          ? _c(
+              "li",
+              { class: _vm.nextArrowsClasses },
+              [
+                _c(
+                  "CLink",
+                  {
+                    staticClass: "page-link",
+                    attrs: {
+                      disabled: _vm.activePage === _vm.pages,
+                      "aria-label": "Go to next page",
+                      "aria-disabled": _vm.activePage === _vm.pages
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.setPage(_vm.activePage + 1)
+                      }
                     }
-                  }
-                },
-                [
-                  _c("span", {
-                    domProps: { innerHTML: _vm._s(_vm.lastButtonHtml) }
-                  })
-                ]
-              )
-            ],
-            1
-          )
-        : _vm._e()
-    ],
-    2
-  )
+                  },
+                  [
+                    _c("span", {
+                      domProps: { innerHTML: _vm._s(_vm.nextButtonHtml) }
+                    })
+                  ]
+                )
+              ],
+              1
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.doubleArrows
+          ? _c(
+              "li",
+              { class: _vm.nextArrowsClasses },
+              [
+                _c(
+                  "CLink",
+                  {
+                    staticClass: "page-link",
+                    attrs: {
+                      disabled: _vm.activePage === _vm.pages,
+                      "aria-label": "Go to last page",
+                      "aria-disabled": _vm.activePage === _vm.pages
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.setPage(_vm.pages)
+                      }
+                    }
+                  },
+                  [
+                    _c("span", {
+                      domProps: { innerHTML: _vm._s(_vm.lastButtonHtml) }
+                    })
+                  ]
+                )
+              ],
+              1
+            )
+          : _vm._e()
+      ],
+      2
+    )
+  ])
 };
-var __vue_staticRenderFns__$m = [];
-__vue_render__$m._withStripped = true;
+var __vue_staticRenderFns__$n = [];
+__vue_render__$n._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$O = undefined;
+  const __vue_inject_styles__$U = undefined;
   /* scoped */
-  const __vue_scope_id__$O = undefined;
+  const __vue_scope_id__$U = undefined;
   /* module identifier */
-  const __vue_module_identifier__$O = undefined;
+  const __vue_module_identifier__$U = undefined;
   /* functional template */
-  const __vue_is_functional_template__$O = false;
+  const __vue_is_functional_template__$U = false;
   /* style inject */
   
   /* style inject SSR */
@@ -22173,27 +21902,167 @@ __vue_render__$m._withStripped = true;
 
   
   var CPagination = normalizeComponent_1(
-    { render: __vue_render__$m, staticRenderFns: __vue_staticRenderFns__$m },
-    __vue_inject_styles__$O,
-    __vue_script__$O,
-    __vue_scope_id__$O,
-    __vue_is_functional_template__$O,
-    __vue_module_identifier__$O,
+    { render: __vue_render__$n, staticRenderFns: __vue_staticRenderFns__$n },
+    __vue_inject_styles__$U,
+    __vue_script__$U,
+    __vue_scope_id__$U,
+    __vue_is_functional_template__$U,
+    __vue_module_identifier__$U,
     undefined,
     undefined
   );
 
-var props$f = {
+// `thisNumberValue` abstract operation
+// https://tc39.github.io/ecma262/#sec-thisnumbervalue
+var thisNumberValue = function (value) {
+  if (typeof value != 'number' && classofRaw(value) != 'Number') {
+    throw TypeError('Incorrect invocation');
+  }
+  return +value;
+};
+
+// `String.prototype.repeat` method implementation
+// https://tc39.github.io/ecma262/#sec-string.prototype.repeat
+var stringRepeat = ''.repeat || function repeat(count) {
+  var str = String(requireObjectCoercible(this));
+  var result = '';
+  var n = toInteger(count);
+  if (n < 0 || n == Infinity) throw RangeError('Wrong number of repetitions');
+  for (;n > 0; (n >>>= 1) && (str += str)) if (n & 1) result += str;
+  return result;
+};
+
+var nativeToFixed = 1.0.toFixed;
+var floor$3 = Math.floor;
+
+var pow = function (x, n, acc) {
+  return n === 0 ? acc : n % 2 === 1 ? pow(x, n - 1, acc * x) : pow(x * x, n / 2, acc);
+};
+
+var log = function (x) {
+  var n = 0;
+  var x2 = x;
+  while (x2 >= 4096) {
+    n += 12;
+    x2 /= 4096;
+  }
+  while (x2 >= 2) {
+    n += 1;
+    x2 /= 2;
+  } return n;
+};
+
+var FORCED$3 = nativeToFixed && (
+  0.00008.toFixed(3) !== '0.000' ||
+  0.9.toFixed(0) !== '1' ||
+  1.255.toFixed(2) !== '1.25' ||
+  1000000000000000128.0.toFixed(0) !== '1000000000000000128'
+) || !fails(function () {
+  // V8 ~ Android 4.3-
+  nativeToFixed.call({});
+});
+
+// `Number.prototype.toFixed` method
+// https://tc39.github.io/ecma262/#sec-number.prototype.tofixed
+_export({ target: 'Number', proto: true, forced: FORCED$3 }, {
+  // eslint-disable-next-line max-statements
+  toFixed: function toFixed(fractionDigits) {
+    var number = thisNumberValue(this);
+    var fractDigits = toInteger(fractionDigits);
+    var data = [0, 0, 0, 0, 0, 0];
+    var sign = '';
+    var result = '0';
+    var e, z, j, k;
+
+    var multiply = function (n, c) {
+      var index = -1;
+      var c2 = c;
+      while (++index < 6) {
+        c2 += n * data[index];
+        data[index] = c2 % 1e7;
+        c2 = floor$3(c2 / 1e7);
+      }
+    };
+
+    var divide = function (n) {
+      var index = 6;
+      var c = 0;
+      while (--index >= 0) {
+        c += data[index];
+        data[index] = floor$3(c / n);
+        c = (c % n) * 1e7;
+      }
+    };
+
+    var dataToString = function () {
+      var index = 6;
+      var s = '';
+      while (--index >= 0) {
+        if (s !== '' || index === 0 || data[index] !== 0) {
+          var t = String(data[index]);
+          s = s === '' ? t : s + stringRepeat.call('0', 7 - t.length) + t;
+        }
+      } return s;
+    };
+
+    if (fractDigits < 0 || fractDigits > 20) throw RangeError('Incorrect fraction digits');
+    // eslint-disable-next-line no-self-compare
+    if (number != number) return 'NaN';
+    if (number <= -1e21 || number >= 1e21) return String(number);
+    if (number < 0) {
+      sign = '-';
+      number = -number;
+    }
+    if (number > 1e-21) {
+      e = log(number * pow(2, 69, 1)) - 69;
+      z = e < 0 ? number * pow(2, -e, 1) : number / pow(2, e, 1);
+      z *= 0x10000000000000;
+      e = 52 - e;
+      if (e > 0) {
+        multiply(0, z);
+        j = fractDigits;
+        while (j >= 7) {
+          multiply(1e7, 0);
+          j -= 7;
+        }
+        multiply(pow(10, j, 1), 0);
+        j = e - 1;
+        while (j >= 23) {
+          divide(1 << 23);
+          j -= 23;
+        }
+        divide(1 << j);
+        multiply(1, 1);
+        divide(2);
+        result = dataToString();
+      } else {
+        multiply(0, z);
+        multiply(1 << -e, 0);
+        result = dataToString() + stringRepeat.call('0', fractDigits);
+      }
+    }
+    if (fractDigits > 0) {
+      k = result.length;
+      result = sign + (k <= fractDigits
+        ? '0.' + stringRepeat.call('0', fractDigits - k) + result
+        : result.slice(0, k - fractDigits) + '.' + result.slice(k - fractDigits));
+    } else {
+      result = sign + result;
+    } return result;
+  }
+});
+
+var props$d = {
   height: String,
   // These props can be inherited via the child CProgressBar(s)
-  variant: String,
+  color: String,
   striped: Boolean,
   animated: Boolean,
   precision: {
     type: Number,
     default: 0
   },
-  showProgress: Boolean,
+  showPercentage: Boolean,
   showValue: Boolean,
   max: {
     type: Number,
@@ -22205,9 +22074,9 @@ var props$f = {
   }
 };
 
-var script$P = {
+var script$V = {
   name: 'CProgressBar',
-  props: props$f,
+  props: props$d,
   inject: {
     progress: {
       default: undefined
@@ -22223,7 +22092,7 @@ var script$P = {
     props: function props() {
       var _this = this;
 
-      return Object.keys(props$f).reduce(function (computedProps, key) {
+      return Object.keys(props$d).reduce(function (computedProps, key) {
         var propIsDirectlyDeclared = _this.directlyDeclaredProps.includes(key);
 
         var parentPropExists = _this.injectedProps[key] !== undefined;
@@ -22235,7 +22104,7 @@ var script$P = {
     progressBarClasses: function progressBarClasses() {
       var _ref;
 
-      return ['progress-bar', (_ref = {}, _defineProperty(_ref, "bg-".concat(this.props.variant), this.props.variant), _defineProperty(_ref, 'progress-bar-striped', this.props.striped || this.props.animated), _defineProperty(_ref, 'progress-bar-animated', this.props.animated), _ref)];
+      return ['progress-bar', (_ref = {}, _defineProperty(_ref, "bg-".concat(this.props.color), this.props.color), _defineProperty(_ref, 'progress-bar-striped', this.props.striped || this.props.animated), _defineProperty(_ref, 'progress-bar-animated', this.props.animated), _ref)];
     },
     progressBarStyles: function progressBarStyles() {
       return {
@@ -22247,11 +22116,11 @@ var script$P = {
       return Math.round(100 * p * this.props.value / this.props.max) / p;
     },
     computedValue: function computedValue() {
-      return this.props.value.toFixed(props$f.precision);
+      return this.props.value.toFixed(props$d.precision);
     },
     text: function text() {
-      if (this.props.showProgress) {
-        return this.progressValue;
+      if (this.props.showPercentage) {
+        return this.progressValue + '%';
       } else if (this.props.showValue) {
         return this.computedValue;
       }
@@ -22260,10 +22129,10 @@ var script$P = {
 };
 
 /* script */
-const __vue_script__$P = script$P;
+const __vue_script__$V = script$V;
 
 /* template */
-var __vue_render__$n = function() {
+var __vue_render__$o = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -22283,17 +22152,17 @@ var __vue_render__$n = function() {
     2
   )
 };
-var __vue_staticRenderFns__$n = [];
-__vue_render__$n._withStripped = true;
+var __vue_staticRenderFns__$o = [];
+__vue_render__$o._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$P = undefined;
+  const __vue_inject_styles__$V = undefined;
   /* scoped */
-  const __vue_scope_id__$P = undefined;
+  const __vue_scope_id__$V = undefined;
   /* module identifier */
-  const __vue_module_identifier__$P = undefined;
+  const __vue_module_identifier__$V = undefined;
   /* functional template */
-  const __vue_is_functional_template__$P = false;
+  const __vue_is_functional_template__$V = false;
   /* style inject */
   
   /* style inject SSR */
@@ -22301,23 +22170,23 @@ __vue_render__$n._withStripped = true;
 
   
   var CProgressBar = normalizeComponent_1(
-    { render: __vue_render__$n, staticRenderFns: __vue_staticRenderFns__$n },
-    __vue_inject_styles__$P,
-    __vue_script__$P,
-    __vue_scope_id__$P,
-    __vue_is_functional_template__$P,
-    __vue_module_identifier__$P,
+    { render: __vue_render__$o, staticRenderFns: __vue_staticRenderFns__$o },
+    __vue_inject_styles__$V,
+    __vue_script__$V,
+    __vue_scope_id__$V,
+    __vue_is_functional_template__$V,
+    __vue_module_identifier__$V,
     undefined,
     undefined
   );
 
 //
-var script$Q = {
+var script$W = {
   name: 'CProgress',
   components: {
     CProgressBar: CProgressBar
   },
-  props: props$f,
+  props: props$d,
   provide: function provide() {
     var _this = this;
 
@@ -22334,10 +22203,10 @@ var script$Q = {
 };
 
 /* script */
-const __vue_script__$Q = script$Q;
+const __vue_script__$W = script$W;
 
 /* template */
-var __vue_render__$o = function() {
+var __vue_render__$p = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -22348,17 +22217,17 @@ var __vue_render__$o = function() {
     2
   )
 };
-var __vue_staticRenderFns__$o = [];
-__vue_render__$o._withStripped = true;
+var __vue_staticRenderFns__$p = [];
+__vue_render__$p._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$Q = undefined;
+  const __vue_inject_styles__$W = undefined;
   /* scoped */
-  const __vue_scope_id__$Q = undefined;
+  const __vue_scope_id__$W = undefined;
   /* module identifier */
-  const __vue_module_identifier__$Q = undefined;
+  const __vue_module_identifier__$W = undefined;
   /* functional template */
-  const __vue_is_functional_template__$Q = false;
+  const __vue_is_functional_template__$W = false;
   /* style inject */
   
   /* style inject SSR */
@@ -22366,12 +22235,12 @@ __vue_render__$o._withStripped = true;
 
   
   var CProgress = normalizeComponent_1(
-    { render: __vue_render__$o, staticRenderFns: __vue_staticRenderFns__$o },
-    __vue_inject_styles__$Q,
-    __vue_script__$Q,
-    __vue_scope_id__$Q,
-    __vue_is_functional_template__$Q,
-    __vue_module_identifier__$Q,
+    { render: __vue_render__$p, staticRenderFns: __vue_staticRenderFns__$p },
+    __vue_inject_styles__$W,
+    __vue_script__$W,
+    __vue_scope_id__$W,
+    __vue_is_functional_template__$W,
+    __vue_module_identifier__$W,
     undefined,
     undefined
   );
@@ -22635,7 +22504,7 @@ if ( module.exports) {
 }
 });
 
-var script$R = {
+var script$X = {
   name: 'CRenderFunction',
   props: {
     contentToRender: Array
@@ -22676,18 +22545,18 @@ var script$R = {
 };
 
 /* script */
-const __vue_script__$R = script$R;
+const __vue_script__$X = script$X;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$R = undefined;
+  const __vue_inject_styles__$X = undefined;
   /* scoped */
-  const __vue_scope_id__$R = undefined;
+  const __vue_scope_id__$X = undefined;
   /* module identifier */
-  const __vue_module_identifier__$R = undefined;
+  const __vue_module_identifier__$X = undefined;
   /* functional template */
-  const __vue_is_functional_template__$R = undefined;
+  const __vue_is_functional_template__$X = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -22696,479 +22565,11 @@ const __vue_script__$R = script$R;
   
   var CRenderFunction = normalizeComponent_1(
     {},
-    __vue_inject_styles__$R,
-    __vue_script__$R,
-    __vue_scope_id__$R,
-    __vue_is_functional_template__$R,
-    __vue_module_identifier__$R,
-    undefined,
-    undefined
-  );
-
-var script$S = {
-  name: 'CSidebar',
-  props: {
-    fixed: Boolean,
-    breakpoint: {
-      type: String,
-      default: 'lg',
-      validator: function validator(val) {
-        return ['sm', 'md', 'lg', 'xl'].includes(val);
-      }
-    },
-    minimize: Boolean,
-    show: {
-      type: Boolean,
-      default: true
-    },
-    showOnMobile: Boolean,
-    noHideOnMobileClick: Boolean,
-    aside: Boolean,
-    light: Boolean,
-    dropdownStateOnRouteChange: {
-      type: String,
-      default: 'openActive',
-      validator: function validator(mode) {
-        return ['', 'openActive', 'close', 'closeInactive', 'noAction'].includes(mode);
-      }
-    }
-  },
-  provide: function provide() {
-    var _this = this;
-
-    var state = {};
-    Object.defineProperty(state, 'minimized', {
-      get: function get() {
-        return _this.minimized;
-      }
-    });
-    Object.defineProperty(state, 'open', {
-      get: function get() {
-        return _this.open;
-      }
-    });
-    Object.defineProperty(state, 'mobileOpen', {
-      get: function get() {
-        return _this.mobileOpen;
-      }
-    });
-    var dropdownStateOnRouteChange = this.dropdownStateOnRouteChange;
-    return {
-      state: state,
-      dropdownStateOnRouteChange: dropdownStateOnRouteChange
-    };
-  },
-  data: function data() {
-    return {
-      open: this.show,
-      mobileOpen: this.showOnMobile,
-      minimized: this.minimize,
-      erd: elementResizeDetector(),
-      bodyWidth: undefined
-    };
-  },
-  mounted: function mounted() {
-    var _this2 = this;
-
-    this.erd.listenTo(document.body, function (el) {
-      return _this2.bodyWidth = el.clientWidth;
-    });
-    this.$root.$on(this.listenedEvents, function () {
-      if (_this2.isOnMobile) {
-        _this2.switchState('mobileOpen');
-      } else {
-        _this2.switchState('open');
-      }
-    });
-  },
-  watch: {
-    show: function show(val) {
-      this.open = val;
-    },
-    open: {
-      immediate: true,
-      handler: function handler(val) {
-        this.emitCurrentState('show', val);
-      }
-    },
-    showOnMobile: function showOnMobile(val) {
-      this.mobileOpen = val;
-    },
-    mobileOpen: {
-      immediate: true,
-      handler: function handler(val) {
-        this.emitCurrentState('showOnMobile', val);
-      }
-    },
-    minimize: function minimize(val) {
-      this.minimized = val;
-    },
-    minimized: {
-      immediate: true,
-      handler: function handler(val) {
-        this.emitCurrentState('minimize', val);
-      }
-    },
-    isOnMobile: {
-      immediate: true,
-      handler: function handler(val, oldVal) {
-        if (val === true && val !== oldVal) {
-          document.body.addEventListener('click', this.mobileClick);
-        } else if (oldVal === true) {
-          document.body.removeEventListener('click', this.mobileClick);
-        }
-
-        if (val !== undefined) {
-          this.$root.$emit('c-sidebar-mobile-state', val);
-        }
-      }
-    }
-  },
-  computed: {
-    listenedEvents: function listenedEvents() {
-      var componentEvent = this.aside ? 'c-aside-toggle' : 'c-sidebar-toggle';
-
-      if (this.$attrs.id) {
-        return [componentEvent, this.$attrs.id];
-      }
-
-      return componentEvent;
-    },
-    sidebarClasses: function sidebarClasses() {
-      var mobileClasses = {
-        'c-sidebar-show': this.mobileOpen
-      };
-
-      var desktopClasses = _defineProperty({
-        'c-sidebar-minimized': this.minimized
-      }, "c-sidebar-".concat(this.breakpoint, "-show"), this.open);
-
-      return [this.isOnMobile ? mobileClasses : desktopClasses, 'c-sidebar', "c-sidebar-".concat(this.light ? 'light' : 'dark'), {
-        'c-sidebar-fixed': this.fixed,
-        'c-sidebar-right': this.aside
-      }];
-    },
-    breakpoints: function breakpoints() {
-      return {
-        'sm': coreuiUtilities_2('--breakpoint-sm') || '576px',
-        'md': coreuiUtilities_2('--breakpoint-md') || '768px',
-        'lg': coreuiUtilities_2('--breakpoint-lg') || '992px',
-        'xl': coreuiUtilities_2('--breakpoint-xl') || '1200px'
-      };
-    },
-    isOnMobile: function isOnMobile() {
-      var mobileWidth = parseFloat(this.breakpoints[this.breakpoint]);
-      return this.bodyWidth && this.bodyWidth < mobileWidth;
-    }
-  },
-  methods: {
-    mobileClick: function mobileClick(event) {
-      if (!this.mobileOpen || this.noHideOnMobileClick) {
-        return;
-      }
-
-      var classList = Array.from(event.target.classList).join();
-      var clickedOutsideSidebar = !this.$el.contains(event.target);
-
-      if (clickedOutsideSidebar && !classList.includes('c-header-toggler') || !clickedOutsideSidebar && event.target.tagName === 'A') {
-        this.switchState('mobileOpen');
-      }
-    },
-    switchState: function switchState(variable) {
-      this[variable] = !this[variable];
-    },
-    emitCurrentState: function emitCurrentState(variableName, value) {
-      this.$emit("update:".concat(variableName), value);
-      this.$root.$emit("c-sidebar-".concat(variableName, "-state"), value);
-    }
-  }
-};
-
-/* script */
-const __vue_script__$S = script$S;
-
-/* template */
-var __vue_render__$p = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c(
-    "div",
-    { class: _vm.sidebarClasses },
-    [_vm._t("default", [_vm._v("Sidebar")])],
-    2
-  )
-};
-var __vue_staticRenderFns__$p = [];
-__vue_render__$p._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$S = undefined;
-  /* scoped */
-  const __vue_scope_id__$S = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$S = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$S = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var CSidebar = normalizeComponent_1(
-    { render: __vue_render__$p, staticRenderFns: __vue_staticRenderFns__$p },
-    __vue_inject_styles__$S,
-    __vue_script__$S,
-    __vue_scope_id__$S,
-    __vue_is_functional_template__$S,
-    __vue_module_identifier__$S,
-    undefined,
-    undefined
-  );
-
-//
-var script$T = {
-  name: 'CSidebarBrand',
-  components: {
-    CLink: CLink
-  },
-  props: {
-    fullSrc: String,
-    minimizedSrc: String,
-    wrappedInLink: Object
-  }
-};
-
-/* script */
-const __vue_script__$T = script$T;
-
-/* template */
-var __vue_render__$q = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c(
-    "div",
-    { staticClass: "c-sidebar-brand" },
-    [
-      _vm._t("default", [
-        _vm.wrappedInLink
-          ? _c("CLink", _vm._b({}, "CLink", _vm.wrappedInLink, false), [
-              _c("img", {
-                staticClass: "c-sidebar-brand-full",
-                attrs: {
-                  src: _vm.fullSrc,
-                  width: "118",
-                  height: "46",
-                  alt: "Logo"
-                }
-              }),
-              _vm._v(" "),
-              _c("img", {
-                staticClass: "c-sidebar-brand-minimized",
-                attrs: {
-                  src: _vm.minimizedSrc,
-                  width: "118",
-                  height: "46",
-                  alt: "Logo"
-                }
-              })
-            ])
-          : [
-              _c("img", {
-                staticClass: "c-sidebar-brand-full",
-                attrs: {
-                  src: _vm.fullSrc,
-                  width: "118",
-                  height: "46",
-                  alt: "Logo"
-                }
-              }),
-              _vm._v(" "),
-              _c("img", {
-                staticClass: "c-sidebar-brand-minimized",
-                attrs: {
-                  src: _vm.minimizedSrc,
-                  width: "118",
-                  height: "46",
-                  alt: "Logo"
-                }
-              })
-            ]
-      ])
-    ],
-    2
-  )
-};
-var __vue_staticRenderFns__$q = [];
-__vue_render__$q._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$T = undefined;
-  /* scoped */
-  const __vue_scope_id__$T = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$T = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$T = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var CSidebarBrand = normalizeComponent_1(
-    { render: __vue_render__$q, staticRenderFns: __vue_staticRenderFns__$q },
-    __vue_inject_styles__$T,
-    __vue_script__$T,
-    __vue_scope_id__$T,
-    __vue_is_functional_template__$T,
-    __vue_module_identifier__$T,
-    undefined,
-    undefined
-  );
-
-//
-//
-//
-//
-//
-//
-var script$U = {
-  name: 'CSidebarFooter'
-};
-
-/* script */
-const __vue_script__$U = script$U;
-
-/* template */
-var __vue_render__$r = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c("div", { staticClass: "c-sidebar-footer" }, [_vm._t("default")], 2)
-};
-var __vue_staticRenderFns__$r = [];
-__vue_render__$r._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$U = undefined;
-  /* scoped */
-  const __vue_scope_id__$U = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$U = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$U = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var CSidebarFooter = normalizeComponent_1(
-    { render: __vue_render__$r, staticRenderFns: __vue_staticRenderFns__$r },
-    __vue_inject_styles__$U,
-    __vue_script__$U,
-    __vue_scope_id__$U,
-    __vue_is_functional_template__$U,
-    __vue_module_identifier__$U,
-    undefined,
-    undefined
-  );
-
-//
-//
-//
-//
-//
-//
-var script$V = {
-  name: 'CSidebarForm'
-};
-
-/* script */
-const __vue_script__$V = script$V;
-
-/* template */
-var __vue_render__$s = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c("div", { staticClass: "c-sidebar-form" }, [_vm._t("default")], 2)
-};
-var __vue_staticRenderFns__$s = [];
-__vue_render__$s._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$V = undefined;
-  /* scoped */
-  const __vue_scope_id__$V = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$V = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$V = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var CSidebarForm = normalizeComponent_1(
-    { render: __vue_render__$s, staticRenderFns: __vue_staticRenderFns__$s },
-    __vue_inject_styles__$V,
-    __vue_script__$V,
-    __vue_scope_id__$V,
-    __vue_is_functional_template__$V,
-    __vue_module_identifier__$V,
-    undefined,
-    undefined
-  );
-
-//
-//
-//
-//
-//
-//
-var script$W = {
-  name: 'CSidebarHeader'
-};
-
-/* script */
-const __vue_script__$W = script$W;
-
-/* template */
-var __vue_render__$t = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c("div", { staticClass: "c-sidebar-header" }, [_vm._t("default")], 2)
-};
-var __vue_staticRenderFns__$t = [];
-__vue_render__$t._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$W = undefined;
-  /* scoped */
-  const __vue_scope_id__$W = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$W = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$W = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var CSidebarHeader = normalizeComponent_1(
-    { render: __vue_render__$t, staticRenderFns: __vue_staticRenderFns__$t },
-    __vue_inject_styles__$W,
-    __vue_script__$W,
-    __vue_scope_id__$W,
-    __vue_is_functional_template__$W,
-    __vue_module_identifier__$W,
+    __vue_inject_styles__$X,
+    __vue_script__$X,
+    __vue_scope_id__$X,
+    __vue_is_functional_template__$X,
+    __vue_module_identifier__$X,
     undefined,
     undefined
   );
@@ -23178,11 +22579,11 @@ __vue_render__$t._withStripped = true;
  * (c) 2018 Hyunje Jun
  * @license MIT
  */
-function get(element) {
+function get$2(element) {
   return getComputedStyle(element);
 }
 
-function set$1(element, obj) {
+function set$3(element, obj) {
   for (var key in obj) {
     var val = obj[key];
     if (typeof val === 'number') {
@@ -23466,7 +22867,7 @@ function isEditable(el) {
 }
 
 function outerWidth(element) {
-  var styles = get(element);
+  var styles = get$2(element);
   return (
     toInt(styles.width) +
     toInt(styles.paddingLeft) +
@@ -23608,7 +23009,7 @@ function updateCss(element, i) {
   } else {
     xRailOffset.top = i.scrollbarXTop + roundedScrollTop;
   }
-  set$1(i.scrollbarXRail, xRailOffset);
+  set$3(i.scrollbarXRail, xRailOffset);
 
   var yRailOffset = { top: roundedScrollTop, height: i.railYHeight };
   if (i.isScrollbarYUsingRight) {
@@ -23634,13 +23035,13 @@ function updateCss(element, i) {
       yRailOffset.left = i.scrollbarYLeft + element.scrollLeft;
     }
   }
-  set$1(i.scrollbarYRail, yRailOffset);
+  set$3(i.scrollbarYRail, yRailOffset);
 
-  set$1(i.scrollbarX, {
+  set$3(i.scrollbarX, {
     left: i.scrollbarXLeft,
     width: i.scrollbarXWidth - i.railBorderXWidth,
   });
-  set$1(i.scrollbarY, {
+  set$3(i.scrollbarY, {
     top: i.scrollbarYTop,
     height: i.scrollbarYHeight - i.railBorderYWidth,
   });
@@ -23966,7 +23367,7 @@ var wheel = function(i) {
         return true;
       }
 
-      var style = get(cursor);
+      var style = get$2(cursor);
       var overflow = [style.overflow, style.overflowX, style.overflowY].join(
         ''
       );
@@ -24154,7 +23555,7 @@ var touch = function(i) {
         return true;
       }
 
-      var style = get(cursor);
+      var style = get$2(cursor);
       var overflow = [style.overflow, style.overflowX, style.overflowY].join(
         ''
       );
@@ -24313,7 +23714,7 @@ var PerfectScrollbar = function PerfectScrollbar(element, userSettings) {
   var focus = function () { return element.classList.add(cls.state.focus); };
   var blur = function () { return element.classList.remove(cls.state.focus); };
 
-  this.isRtl = get(element).direction === 'rtl';
+  this.isRtl = get$2(element).direction === 'rtl';
   this.isNegativeScroll = (function () {
     var originalScrollLeft = element.scrollLeft;
     var result = null;
@@ -24338,7 +23739,7 @@ var PerfectScrollbar = function PerfectScrollbar(element, userSettings) {
   this.scrollbarXActive = null;
   this.scrollbarXWidth = null;
   this.scrollbarXLeft = null;
-  var railXStyle = get(this.scrollbarXRail);
+  var railXStyle = get$2(this.scrollbarXRail);
   this.scrollbarXBottom = parseInt(railXStyle.bottom, 10);
   if (isNaN(this.scrollbarXBottom)) {
     this.isScrollbarXUsingBottom = false;
@@ -24349,10 +23750,10 @@ var PerfectScrollbar = function PerfectScrollbar(element, userSettings) {
   this.railBorderXWidth =
     toInt(railXStyle.borderLeftWidth) + toInt(railXStyle.borderRightWidth);
   // Set rail to display:block to calculate margins
-  set$1(this.scrollbarXRail, { display: 'block' });
+  set$3(this.scrollbarXRail, { display: 'block' });
   this.railXMarginWidth =
     toInt(railXStyle.marginLeft) + toInt(railXStyle.marginRight);
-  set$1(this.scrollbarXRail, { display: '' });
+  set$3(this.scrollbarXRail, { display: '' });
   this.railXWidth = null;
   this.railXRatio = null;
 
@@ -24366,7 +23767,7 @@ var PerfectScrollbar = function PerfectScrollbar(element, userSettings) {
   this.scrollbarYActive = null;
   this.scrollbarYHeight = null;
   this.scrollbarYTop = null;
-  var railYStyle = get(this.scrollbarYRail);
+  var railYStyle = get$2(this.scrollbarYRail);
   this.scrollbarYRight = parseInt(railYStyle.right, 10);
   if (isNaN(this.scrollbarYRight)) {
     this.isScrollbarYUsingRight = false;
@@ -24377,10 +23778,10 @@ var PerfectScrollbar = function PerfectScrollbar(element, userSettings) {
   this.scrollbarYOuterWidth = this.isRtl ? outerWidth(this.scrollbarY) : null;
   this.railBorderYWidth =
     toInt(railYStyle.borderTopWidth) + toInt(railYStyle.borderBottomWidth);
-  set$1(this.scrollbarYRail, { display: 'block' });
+  set$3(this.scrollbarYRail, { display: 'block' });
   this.railYMarginHeight =
     toInt(railYStyle.marginTop) + toInt(railYStyle.marginBottom);
-  set$1(this.scrollbarYRail, { display: '' });
+  set$3(this.scrollbarYRail, { display: '' });
   this.railYHeight = null;
   this.railYRatio = null;
 
@@ -24420,26 +23821,26 @@ PerfectScrollbar.prototype.update = function update () {
     : 0;
 
   // Recalculate rail margins
-  set$1(this.scrollbarXRail, { display: 'block' });
-  set$1(this.scrollbarYRail, { display: 'block' });
+  set$3(this.scrollbarXRail, { display: 'block' });
+  set$3(this.scrollbarYRail, { display: 'block' });
   this.railXMarginWidth =
-    toInt(get(this.scrollbarXRail).marginLeft) +
-    toInt(get(this.scrollbarXRail).marginRight);
+    toInt(get$2(this.scrollbarXRail).marginLeft) +
+    toInt(get$2(this.scrollbarXRail).marginRight);
   this.railYMarginHeight =
-    toInt(get(this.scrollbarYRail).marginTop) +
-    toInt(get(this.scrollbarYRail).marginBottom);
+    toInt(get$2(this.scrollbarYRail).marginTop) +
+    toInt(get$2(this.scrollbarYRail).marginBottom);
 
   // Hide scrollbars not to affect scrollWidth and scrollHeight
-  set$1(this.scrollbarXRail, { display: 'none' });
-  set$1(this.scrollbarYRail, { display: 'none' });
+  set$3(this.scrollbarXRail, { display: 'none' });
+  set$3(this.scrollbarYRail, { display: 'none' });
 
   updateGeometry(this);
 
   processScrollDiff(this, 'top', 0, false, true);
   processScrollDiff(this, 'left', 0, false, true);
 
-  set$1(this.scrollbarXRail, { display: '' });
-  set$1(this.scrollbarYRail, { display: '' });
+  set$3(this.scrollbarXRail, { display: '' });
+  set$3(this.scrollbarYRail, { display: '' });
 };
 
 PerfectScrollbar.prototype.onScroll = function onScroll (e) {
@@ -24489,8 +23890,8 @@ PerfectScrollbar.prototype.removePsClasses = function removePsClasses () {
 };
 
 // this component is a refector of vue-perfect-scrollbar component https://github.com/lecion/vue-perfect-scrollbar
-var script$X = {
-  name: 'CPerfectScrollbar',
+var script$Y = {
+  name: 'CScrollbar',
   props: {
     settings: {
       type: Object,
@@ -24498,7 +23899,7 @@ var script$X = {
         return {};
       }
     },
-    swicher: {
+    switcher: {
       type: Boolean,
       default: true
     },
@@ -24508,7 +23909,7 @@ var script$X = {
     }
   },
   watch: {
-    swicher: function swicher(val) {
+    switcher: function switcher(val) {
       if (!val) {
         this.__uninit();
       } else {
@@ -24517,7 +23918,7 @@ var script$X = {
     }
   },
   mounted: function mounted() {
-    if (!this.$isServer && this.swicher) {
+    if (!this.$isServer && this.switcher) {
       this.__init();
     }
   },
@@ -24560,39 +23961,559 @@ var css$4 = "/*\n * Container style\n */\n.ps {\n  overflow: hidden !important;\
 styleInject(css$4);
 
 /* script */
-const __vue_script__$X = script$X;
+const __vue_script__$Y = script$Y;
 /* template */
 
   /* style */
-  const __vue_inject_styles__$X = undefined;
+  const __vue_inject_styles__$Y = undefined;
   /* scoped */
-  const __vue_scope_id__$X = undefined;
+  const __vue_scope_id__$Y = undefined;
   /* module identifier */
-  const __vue_module_identifier__$X = undefined;
+  const __vue_module_identifier__$Y = undefined;
   /* functional template */
-  const __vue_is_functional_template__$X = undefined;
+  const __vue_is_functional_template__$Y = undefined;
   /* style inject */
   
   /* style inject SSR */
   
 
   
-  var VuePerfectScrollbar = normalizeComponent_1(
+  var CScrollbar = normalizeComponent_1(
     {},
-    __vue_inject_styles__$X,
-    __vue_script__$X,
-    __vue_scope_id__$X,
-    __vue_is_functional_template__$X,
-    __vue_module_identifier__$X,
+    __vue_inject_styles__$Y,
+    __vue_script__$Y,
+    __vue_scope_id__$Y,
+    __vue_is_functional_template__$Y,
+    __vue_module_identifier__$Y,
     undefined,
     undefined
   );
 
 //
-var script$Y = {
+//
+//
+//
+//
+//
+var script$Z = {
+  name: 'CSidebar',
+  props: {
+    fixed: {
+      type: Boolean,
+      default: true
+    },
+    unfoldable: Boolean,
+    overlaid: Boolean,
+    breakpoint: {
+      type: [String, Boolean],
+      default: 'lg',
+      validator: function validator(val) {
+        return [false, '', 'sm', 'md', 'lg', 'xl'].includes(val);
+      }
+    },
+    minimize: Boolean,
+    show: {
+      type: Boolean,
+      default: null
+    },
+    size: {
+      type: String,
+      validator: function validator(val) {
+        return ['', 'sm', 'lg', 'xl'].includes(val);
+      }
+    },
+    hideOnMobileClick: {
+      type: Boolean,
+      default: true
+    },
+    aside: Boolean,
+    colorScheme: {
+      type: String,
+      default: 'dark'
+    },
+    dropdownMode: {
+      type: String,
+      default: 'openActive',
+      validator: function validator(mode) {
+        return ['', 'openActive', 'close', 'closeInactive', 'noAction'].includes(mode);
+      }
+    }
+  },
+  provide: function provide() {
+    var _this = this;
+
+    var state = {};
+    Object.defineProperty(state, 'minimize', {
+      get: function get() {
+        return _this.minimize && !_this.unfoldable;
+      }
+    });
+    return {
+      state: state,
+      dropdownMode: this.dropdownMode
+    };
+  },
+  data: function data() {
+    return {
+      open: this.show
+    };
+  },
+  watch: {
+    show: function show(val) {
+      this.open = val;
+    }
+  },
+  computed: {
+    displayClasses: function displayClasses() {
+      var breakpointPrefix = this.breakpoint === false ? '' : "-".concat(this.breakpoint);
+      var responsiveClass = "c-sidebar".concat(breakpointPrefix, "-show");
+
+      if (this.open === false) {
+        return null;
+      } else if (this.open === true) {
+        return ['c-sidebar-show', breakpointPrefix ? responsiveClass : ''];
+      } else if (this.open === null) {
+        return responsiveClass;
+      }
+    },
+    sidebarClasses: function sidebarClasses() {
+      return ['c-sidebar', "c-sidebar-".concat(this.colorScheme), this.displayClasses, _defineProperty({
+        'c-sidebar-fixed': this.fixed,
+        'c-sidebar-right': this.aside,
+        'c-sidebar-minimized': this.minimize && !this.unfoldable,
+        'c-sidebar-unfoldable': this.minimize && this.unfoldable,
+        'c-sidebar-overlaid': this.overlaid
+      }, "c-sidebar-".concat(this.size), this.size)];
+    }
+  },
+  methods: {
+    sidebarClick: function sidebarClick(event) {
+      var hiddingElementClicked = event.target.tagName === 'A';
+
+      if (hiddingElementClicked && this.hideOnMobileClick && this.isOnMobile()) {
+        this.open = false;
+        this.$emit('update:show', false);
+      }
+    },
+    isOnMobile: function isOnMobile() {
+      return Boolean(getComputedStyle(this.$el).getPropertyValue('--on-mobile'));
+    }
+  }
+};
+
+var css$5 = "\n@media (max-width: 992px) {\n.c-sidebar-lg-show[data-v-7e631a42] {\r\n    --on-mobile: true;\n}\n}\r\n";
+styleInject(css$5);
+
+/* script */
+const __vue_script__$Z = script$Z;
+/* template */
+var __vue_render__$q = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c(
+    "div",
+    { class: _vm.sidebarClasses, on: { click: _vm.sidebarClick } },
+    [_vm._t("default")],
+    2
+  )
+};
+var __vue_staticRenderFns__$q = [];
+__vue_render__$q._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$Z = undefined;
+  /* scoped */
+  const __vue_scope_id__$Z = "data-v-7e631a42";
+  /* module identifier */
+  const __vue_module_identifier__$Z = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$Z = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CSidebar = normalizeComponent_1(
+    { render: __vue_render__$q, staticRenderFns: __vue_staticRenderFns__$q },
+    __vue_inject_styles__$Z,
+    __vue_script__$Z,
+    __vue_scope_id__$Z,
+    __vue_is_functional_template__$Z,
+    __vue_module_identifier__$Z,
+    undefined,
+    undefined
+  );
+
+//
+var script$_ = {
+  name: 'CSidebarBrand',
+  components: {
+    CLink: CLink
+  },
+  props: {
+    fullSrc: String,
+    minimizedSrc: String,
+    wrappedInLink: Object
+  }
+};
+
+/* script */
+const __vue_script__$_ = script$_;
+
+/* template */
+var __vue_render__$r = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c(
+    "div",
+    { staticClass: "c-sidebar-brand" },
+    [
+      _vm._t("default", [
+        _vm.wrappedInLink
+          ? _c("CLink", _vm._b({}, "CLink", _vm.wrappedInLink, false), [
+              _c("img", {
+                staticClass: "c-sidebar-brand-full",
+                attrs: {
+                  src: _vm.fullSrc,
+                  width: "118",
+                  height: "46",
+                  alt: "Logo"
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "c-sidebar-brand-minimized",
+                attrs: {
+                  src: _vm.minimizedSrc,
+                  width: "118",
+                  height: "46",
+                  alt: "Logo"
+                }
+              })
+            ])
+          : [
+              _c("img", {
+                staticClass: "c-sidebar-brand-full",
+                attrs: {
+                  src: _vm.fullSrc,
+                  width: "118",
+                  height: "46",
+                  alt: "Logo"
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "c-sidebar-brand-minimized",
+                attrs: {
+                  src: _vm.minimizedSrc,
+                  width: "118",
+                  height: "46",
+                  alt: "Logo"
+                }
+              })
+            ]
+      ])
+    ],
+    2
+  )
+};
+var __vue_staticRenderFns__$r = [];
+__vue_render__$r._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$_ = undefined;
+  /* scoped */
+  const __vue_scope_id__$_ = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$_ = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$_ = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CSidebarBrand = normalizeComponent_1(
+    { render: __vue_render__$r, staticRenderFns: __vue_staticRenderFns__$r },
+    __vue_inject_styles__$_,
+    __vue_script__$_,
+    __vue_scope_id__$_,
+    __vue_is_functional_template__$_,
+    __vue_module_identifier__$_,
+    undefined,
+    undefined
+  );
+
+//
+var script$$ = {
+  name: 'CSidebarClose',
+  components: {
+    CButtonClose: CButtonClose
+  }
+};
+
+/* script */
+const __vue_script__$$ = script$$;
+
+/* template */
+var __vue_render__$s = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("CButtonClose", { attrs: { buttonClasses: "c-sidebar-close" } }, [
+    _c(
+      "svg",
+      {
+        staticClass: "c-icon",
+        attrs: { width: "24", height: "24", viewBox: "0 0 24 24" }
+      },
+      [
+        _c("title", [_vm._v("x")]),
+        _vm._v(" "),
+        _c("path", {
+          attrs: {
+            d:
+              "M20.030 5.030l-1.061-1.061-6.97 6.97-6.97-6.97-1.061 1.061 6.97 6.97-6.97 6.97 1.061 1.061 6.97-6.97 6.97 6.97 1.061-1.061-6.97-6.97 6.97-6.97z"
+          }
+        })
+      ]
+    )
+  ])
+};
+var __vue_staticRenderFns__$s = [];
+__vue_render__$s._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$$ = undefined;
+  /* scoped */
+  const __vue_scope_id__$$ = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$$ = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$$ = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CSidebarClose = normalizeComponent_1(
+    { render: __vue_render__$s, staticRenderFns: __vue_staticRenderFns__$s },
+    __vue_inject_styles__$$,
+    __vue_script__$$,
+    __vue_scope_id__$$,
+    __vue_is_functional_template__$$,
+    __vue_module_identifier__$$,
+    undefined,
+    undefined
+  );
+
+//
+//
+//
+//
+//
+//
+var script$10 = {
+  name: 'CSidebarFooter'
+};
+
+/* script */
+const __vue_script__$10 = script$10;
+
+/* template */
+var __vue_render__$t = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("div", { staticClass: "c-sidebar-footer" }, [_vm._t("default")], 2)
+};
+var __vue_staticRenderFns__$t = [];
+__vue_render__$t._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$10 = undefined;
+  /* scoped */
+  const __vue_scope_id__$10 = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$10 = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$10 = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CSidebarFooter = normalizeComponent_1(
+    { render: __vue_render__$t, staticRenderFns: __vue_staticRenderFns__$t },
+    __vue_inject_styles__$10,
+    __vue_script__$10,
+    __vue_scope_id__$10,
+    __vue_is_functional_template__$10,
+    __vue_module_identifier__$10,
+    undefined,
+    undefined
+  );
+
+//
+//
+//
+//
+//
+//
+var script$11 = {
+  name: 'CSidebarForm'
+};
+
+/* script */
+const __vue_script__$11 = script$11;
+
+/* template */
+var __vue_render__$u = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("div", { staticClass: "c-sidebar-form" }, [_vm._t("default")], 2)
+};
+var __vue_staticRenderFns__$u = [];
+__vue_render__$u._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$11 = undefined;
+  /* scoped */
+  const __vue_scope_id__$11 = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$11 = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$11 = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CSidebarForm = normalizeComponent_1(
+    { render: __vue_render__$u, staticRenderFns: __vue_staticRenderFns__$u },
+    __vue_inject_styles__$11,
+    __vue_script__$11,
+    __vue_scope_id__$11,
+    __vue_is_functional_template__$11,
+    __vue_module_identifier__$11,
+    undefined,
+    undefined
+  );
+
+//
+//
+//
+//
+//
+//
+var script$12 = {
+  name: 'CSidebarHeader'
+};
+
+/* script */
+const __vue_script__$12 = script$12;
+
+/* template */
+var __vue_render__$v = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("div", { staticClass: "c-sidebar-header" }, [_vm._t("default")], 2)
+};
+var __vue_staticRenderFns__$v = [];
+__vue_render__$v._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$12 = undefined;
+  /* scoped */
+  const __vue_scope_id__$12 = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$12 = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$12 = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CSidebarHeader = normalizeComponent_1(
+    { render: __vue_render__$v, staticRenderFns: __vue_staticRenderFns__$v },
+    __vue_inject_styles__$12,
+    __vue_script__$12,
+    __vue_scope_id__$12,
+    __vue_is_functional_template__$12,
+    __vue_module_identifier__$12,
+    undefined,
+    undefined
+  );
+
+//
+//
+//
+//
+//
+//
+//
+//
+var script$13 = {
+  name: 'CSidebarMinimizer'
+};
+
+/* script */
+const __vue_script__$13 = script$13;
+
+/* template */
+var __vue_render__$w = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("button", {
+    staticClass: "c-sidebar-minimizer",
+    attrs: { type: "button" }
+  })
+};
+var __vue_staticRenderFns__$w = [];
+__vue_render__$w._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$13 = undefined;
+  /* scoped */
+  const __vue_scope_id__$13 = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$13 = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$13 = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CSidebarMinimizer = normalizeComponent_1(
+    { render: __vue_render__$w, staticRenderFns: __vue_staticRenderFns__$w },
+    __vue_inject_styles__$13,
+    __vue_script__$13,
+    __vue_scope_id__$13,
+    __vue_is_functional_template__$13,
+    __vue_module_identifier__$13,
+    undefined,
+    undefined
+  );
+
+//
+var script$14 = {
   name: 'CSidebarNav',
   components: {
-    VuePerfectScrollbar: VuePerfectScrollbar
+    CScrollbar: CScrollbar
   },
   inject: {
     state: {
@@ -24612,43 +24533,41 @@ var script$Y = {
   }
 };
 
-var css$5 = "\n.c-scroll-area[data-v-df894802] {\n  height: 100%;\n  margin: auto;\n}\n";
-styleInject(css$5);
+var css$6 = "\n.c-scroll-area[data-v-5ee85876] {\n  height: 100%;\n}\n";
+styleInject(css$6);
 
 /* script */
-const __vue_script__$Y = script$Y;
+const __vue_script__$14 = script$14;
 /* template */
-var __vue_render__$u = function() {
+var __vue_render__$x = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _c(
-    "nav",
-    { staticClass: "c-sidebar-nav" },
-    [
-      _c(
-        "VuePerfectScrollbar",
-        {
-          staticClass: "c-scroll-area",
-          attrs: { settings: _vm.psSettings, swicher: !_vm.state.minimized }
-        },
-        [_c("ul", { staticClass: "c-nav" }, [_vm._t("default")], 2)]
-      )
-    ],
-    1
+    "CScrollbar",
+    {
+      staticClass: "c-scroll-area c-sidebar-nav",
+      attrs: {
+        settings: _vm.psSettings,
+        switcher: !_vm.state.minimize,
+        tag: "ul"
+      }
+    },
+    [_vm._t("default")],
+    2
   )
 };
-var __vue_staticRenderFns__$u = [];
-__vue_render__$u._withStripped = true;
+var __vue_staticRenderFns__$x = [];
+__vue_render__$x._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$Y = undefined;
+  const __vue_inject_styles__$14 = undefined;
   /* scoped */
-  const __vue_scope_id__$Y = "data-v-df894802";
+  const __vue_scope_id__$14 = "data-v-5ee85876";
   /* module identifier */
-  const __vue_module_identifier__$Y = undefined;
+  const __vue_module_identifier__$14 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$Y = false;
+  const __vue_is_functional_template__$14 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -24656,12 +24575,12 @@ __vue_render__$u._withStripped = true;
 
   
   var CSidebarNav = normalizeComponent_1(
-    { render: __vue_render__$u, staticRenderFns: __vue_staticRenderFns__$u },
-    __vue_inject_styles__$Y,
-    __vue_script__$Y,
-    __vue_scope_id__$Y,
-    __vue_is_functional_template__$Y,
-    __vue_module_identifier__$Y,
+    { render: __vue_render__$x, staticRenderFns: __vue_staticRenderFns__$x },
+    __vue_inject_styles__$14,
+    __vue_script__$14,
+    __vue_scope_id__$14,
+    __vue_is_functional_template__$14,
+    __vue_module_identifier__$14,
     undefined,
     undefined
   );
@@ -24670,82 +24589,29 @@ __vue_render__$u._withStripped = true;
 //
 //
 //
-//
-//
-//
-//
-var script$Z = {
-  name: 'CSidebarMinimizer'
-};
-
-/* script */
-const __vue_script__$Z = script$Z;
-
-/* template */
-var __vue_render__$v = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c("button", {
-    staticClass: "c-sidebar-minimizer",
-    attrs: { type: "button" }
-  })
-};
-var __vue_staticRenderFns__$v = [];
-__vue_render__$v._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$Z = undefined;
-  /* scoped */
-  const __vue_scope_id__$Z = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$Z = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$Z = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var CSidebarMinimizer = normalizeComponent_1(
-    { render: __vue_render__$v, staticRenderFns: __vue_staticRenderFns__$v },
-    __vue_inject_styles__$Z,
-    __vue_script__$Z,
-    __vue_scope_id__$Z,
-    __vue_is_functional_template__$Z,
-    __vue_module_identifier__$Z,
-    undefined,
-    undefined
-  );
-
-//
-//
-//
-//
-var script$_ = {
+var script$15 = {
   name: 'CSidebarNavDivider'
 };
 
 /* script */
-const __vue_script__$_ = script$_;
+const __vue_script__$15 = script$15;
 
 /* template */
-var __vue_render__$w = function(_h, _vm) {
+var __vue_render__$y = function(_h, _vm) {
   var _c = _vm._c;
-  return _c("li", { staticClass: "c-nav-divider" })
+  return _c("li", { staticClass: "c-sidebar-nav-divider" })
 };
-var __vue_staticRenderFns__$w = [];
-__vue_render__$w._withStripped = true;
+var __vue_staticRenderFns__$y = [];
+__vue_render__$y._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$_ = undefined;
+  const __vue_inject_styles__$15 = undefined;
   /* scoped */
-  const __vue_scope_id__$_ = undefined;
+  const __vue_scope_id__$15 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$_ = undefined;
+  const __vue_module_identifier__$15 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$_ = true;
+  const __vue_is_functional_template__$15 = true;
   /* style inject */
   
   /* style inject SSR */
@@ -24753,12 +24619,12 @@ __vue_render__$w._withStripped = true;
 
   
   var CSidebarNavDivider = normalizeComponent_1(
-    { render: __vue_render__$w, staticRenderFns: __vue_staticRenderFns__$w },
-    __vue_inject_styles__$_,
-    __vue_script__$_,
-    __vue_scope_id__$_,
-    __vue_is_functional_template__$_,
-    __vue_module_identifier__$_,
+    { render: __vue_render__$y, staticRenderFns: __vue_staticRenderFns__$y },
+    __vue_inject_styles__$15,
+    __vue_script__$15,
+    __vue_scope_id__$15,
+    __vue_is_functional_template__$15,
+    __vue_module_identifier__$15,
     undefined,
     undefined
   );
@@ -24775,8 +24641,12 @@ __vue_render__$w._withStripped = true;
 //
 //
 //
-var script$$ = {
+// import CIcon from '@coreui/icons/vue'
+var script$16 = {
   name: 'CSidebarNavDropdown',
+  // components: {
+  //   CIcon
+  // },
   props: {
     name: String,
     route: {
@@ -24785,34 +24655,34 @@ var script$$ = {
         return val.length > 0;
       }
     },
-    icon: String,
-    open: Boolean
+    icon: [String, Object],
+    show: Boolean
   },
   data: function data() {
     return {
-      isOpen: this.open
+      open: this.show
     };
   },
   inject: {
-    dropdownStateOnRouteChange: {
+    dropdownMode: {
       default: 'openActive'
     }
   },
   watch: {
-    open: function open(val) {
-      this.isOpen = val;
+    show: function show(val) {
+      this.open = val;
     },
     $route: {
       immediate: true,
       handler: function handler(route) {
-        var mode = this.dropdownStateOnRouteChange;
+        var mode = this.dropdownMode;
 
         if (mode === 'close') {
-          this.isOpen = false;
+          this.open = false;
         } else if (mode === 'closeInactive' && this.route) {
-          this.isOpen = route.fullPath.includes(this.route);
-        } else if (mode === 'openActive' && !this.isOpen && this.route) {
-          this.isOpen = route.fullPath.includes(this.route);
+          this.open = route.fullPath.includes(this.route);
+        } else if (mode === 'openActive' && !this.open && this.route) {
+          this.open = route.fullPath.includes(this.route);
         } // else if (mode === 'noAction') {
         //   return
         // }
@@ -24822,19 +24692,30 @@ var script$$ = {
   },
   computed: {
     classIcon: function classIcon() {
-      return ['c-nav-icon', this.icon];
+      return ['c-sidebar-nav-icon', this.icon];
     },
     dropdownClasses: function dropdownClasses() {
-      return ['c-nav-item c-nav-dropdown', {
-        'c-open': this.isOpen
+      return ['c-sidebar-nav-item c-sidebar-nav-dropdown', {
+        'c-show': this.open
       }];
+    },
+    computedIcon: function computedIcon() {
+      if (_typeof(this.icon) === 'object') {
+        return Object.assign({
+          customClasses: 'c-sidebar-nav-icon'
+        }, this.icon);
+      } else {
+        return {
+          customClasses: [this.icon, 'c-sidebar-nav-icon']
+        };
+      }
     }
   },
   methods: {
     handleClick: function handleClick(e) {
       e.preventDefault();
-      this.isOpen = !this.isOpen;
-      this.$emit('update:open', this.isOpen);
+      this.open = !this.open;
+      this.$emit('update:show', this.open);
     },
     itemClicked: function itemClicked(e) {
       this.$emit('item-clicked', e);
@@ -24843,10 +24724,10 @@ var script$$ = {
 };
 
 /* script */
-const __vue_script__$$ = script$$;
+const __vue_script__$16 = script$16;
 
 /* template */
-var __vue_render__$x = function() {
+var __vue_render__$z = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -24854,34 +24735,40 @@ var __vue_render__$x = function() {
     _c(
       "a",
       {
-        staticClass: "c-nav-link c-nav-dropdown-toggle",
+        staticClass: "c-sidebar-nav-link c-sidebar-nav-dropdown-toggle",
         on: { click: _vm.handleClick }
       },
       [
-        _vm.icon ? _c("i", { class: _vm.classIcon }) : _vm._e(),
+        _vm.icon
+          ? _c("CIcon", _vm._b({}, "CIcon", _vm.computedIcon, false))
+          : _vm._e(),
         _vm._v("\n    " + _vm._s(_vm.name) + "\n  ")
-      ]
+      ],
+      1
     ),
     _vm._v(" "),
     _c(
       "ul",
-      { staticClass: "c-nav-dropdown-items", on: { click: _vm.itemClicked } },
+      {
+        staticClass: "c-sidebar-nav-dropdown-items",
+        on: { click: _vm.itemClicked }
+      },
       [_vm._t("default")],
       2
     )
   ])
 };
-var __vue_staticRenderFns__$x = [];
-__vue_render__$x._withStripped = true;
+var __vue_staticRenderFns__$z = [];
+__vue_render__$z._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$$ = undefined;
+  const __vue_inject_styles__$16 = undefined;
   /* scoped */
-  const __vue_scope_id__$$ = undefined;
+  const __vue_scope_id__$16 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$$ = undefined;
+  const __vue_module_identifier__$16 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$$ = false;
+  const __vue_is_functional_template__$16 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -24889,104 +24776,31 @@ __vue_render__$x._withStripped = true;
 
   
   var CSidebarNavDropdown = normalizeComponent_1(
-    { render: __vue_render__$x, staticRenderFns: __vue_staticRenderFns__$x },
-    __vue_inject_styles__$$,
-    __vue_script__$$,
-    __vue_scope_id__$$,
-    __vue_is_functional_template__$$,
-    __vue_module_identifier__$$,
+    { render: __vue_render__$z, staticRenderFns: __vue_staticRenderFns__$z },
+    __vue_inject_styles__$16,
+    __vue_script__$16,
+    __vue_scope_id__$16,
+    __vue_is_functional_template__$16,
+    __vue_module_identifier__$16,
     undefined,
     undefined
   );
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var script$10 = {
-  name: 'CSidebarNavLabel',
-  props: {
-    name: String,
-    url: String,
-    icon: String
-  }
-};
-
-/* script */
-const __vue_script__$10 = script$10;
-
-/* template */
-var __vue_render__$y = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c("li", { staticClass: "c-nav-item c-hidden-cn" }, [
-    _c(
-      "a",
-      _vm._b(
-        { staticClass: "c-nav-label" },
-        "a",
-        _vm.url ? { href: _vm.url } : {},
-        false
-      ),
-      [
-        _vm._t("default", [
-          _vm.icon ? _c("i", { class: _vm.icon }) : _vm._e(),
-          _vm._v("\n      " + _vm._s(_vm.name) + "\n    ")
-        ])
-      ],
-      2
-    )
-  ])
-};
-var __vue_staticRenderFns__$y = [];
-__vue_render__$y._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$10 = undefined;
-  /* scoped */
-  const __vue_scope_id__$10 = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$10 = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$10 = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var CSidebarNavLabel = normalizeComponent_1(
-    { render: __vue_render__$y, staticRenderFns: __vue_staticRenderFns__$y },
-    __vue_inject_styles__$10,
-    __vue_script__$10,
-    __vue_scope_id__$10,
-    __vue_is_functional_template__$10,
-    __vue_module_identifier__$10,
-    undefined,
-    undefined
-  );
-
-var props$g = Object.assign(props, {
+var props$e = Object.assign(props, {
   name: String,
-  icon: [String, Array, Object],
+  icon: [String, Object],
   badge: Object,
-  addLinkClasses: [String, Array, Object]
+  addLinkClasses: [String, Array, Object],
+  label: Boolean
 });
-var script$11 = {
+var script$17 = {
   name: 'CSidebarNavLink',
   components: {
     CLink: CLink,
-    CBadge: CBadge
+    CBadge: CBadge // CIcon
+
   },
-  props: props$g,
+  props: props$e,
   computed: {
     linkProps: function linkProps() {
       var _this = this;
@@ -24995,6 +24809,28 @@ var script$11 = {
         props[key] = _this[key];
         return props;
       }, {});
+    },
+    addedLinkProps: function addedLinkProps() {
+      return this.$options.propsData.exact === undefined ? {
+        exact: true
+      } : {};
+    },
+    computedLinkProps: function computedLinkProps() {
+      return Object.assign(this.linkProps, this.addedLinkProps);
+    },
+    linkClasses: function linkClasses() {
+      return [this.label ? 'c-sidebar-nav-label' : 'c-sidebar-nav-link', this.addLinkClasses];
+    },
+    computedIcon: function computedIcon() {
+      if (_typeof(this.icon) === 'object') {
+        return Object.assign({
+          customClasses: 'c-sidebar-nav-icon'
+        }, this.icon);
+      } else {
+        return {
+          customClasses: [this.icon, 'c-sidebar-nav-icon']
+        };
+      }
     }
   },
   methods: {
@@ -25005,23 +24841,22 @@ var script$11 = {
 };
 
 /* script */
-const __vue_script__$11 = script$11;
+const __vue_script__$17 = script$17;
 
 /* template */
-var __vue_render__$z = function() {
+var __vue_render__$A = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _c(
     "li",
-    { staticClass: "c-nav-item" },
+    { staticClass: "c-sidebar-nav-item" },
     [
       _c(
         "CLink",
         _vm._b(
           {
-            class: ["c-nav-link", _vm.addLinkClasses],
-            attrs: { exact: true },
+            class: _vm.linkClasses,
             nativeOn: {
               click: function($event) {
                 return _vm.click($event)
@@ -25029,15 +24864,26 @@ var __vue_render__$z = function() {
             }
           },
           "CLink",
-          _vm.linkProps,
+          _vm.computedLinkProps,
           false
         ),
         [
           _vm._t("default", [
-            _c("i", { class: ["c-nav-icon", _vm.icon] }),
-            _vm._v(" \n      " + _vm._s(_vm.name) + "\n      "),
+            _vm.icon
+              ? _c("CIcon", _vm._b({}, "CIcon", _vm.computedIcon, false))
+              : _vm._e(),
+            _vm._v("\n      " + _vm._s(_vm.name) + "\n      "),
             _vm.badge
-              ? _c("CBadge", _vm._b({}, "CBadge", _vm.badge, false))
+              ? _c(
+                  "CBadge",
+                  _vm._b(
+                    {},
+                    "CBadge",
+                    Object.assign({}, _vm.badge, { text: null }),
+                    false
+                  ),
+                  [_vm._v("\n        " + _vm._s(_vm.badge.text) + "\n      ")]
+                )
               : _vm._e()
           ])
         ],
@@ -25047,17 +24893,17 @@ var __vue_render__$z = function() {
     1
   )
 };
-var __vue_staticRenderFns__$z = [];
-__vue_render__$z._withStripped = true;
+var __vue_staticRenderFns__$A = [];
+__vue_render__$A._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$11 = undefined;
+  const __vue_inject_styles__$17 = undefined;
   /* scoped */
-  const __vue_scope_id__$11 = undefined;
+  const __vue_scope_id__$17 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$11 = undefined;
+  const __vue_module_identifier__$17 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$11 = false;
+  const __vue_is_functional_template__$17 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -25065,12 +24911,12 @@ __vue_render__$z._withStripped = true;
 
   
   var CSidebarNavLink = normalizeComponent_1(
-    { render: __vue_render__$z, staticRenderFns: __vue_staticRenderFns__$z },
-    __vue_inject_styles__$11,
-    __vue_script__$11,
-    __vue_scope_id__$11,
-    __vue_is_functional_template__$11,
-    __vue_module_identifier__$11,
+    { render: __vue_render__$A, staticRenderFns: __vue_staticRenderFns__$A },
+    __vue_inject_styles__$17,
+    __vue_script__$17,
+    __vue_scope_id__$17,
+    __vue_is_functional_template__$17,
+    __vue_module_identifier__$17,
     undefined,
     undefined
   );
@@ -25081,29 +24927,34 @@ __vue_render__$z._withStripped = true;
 //
 //
 //
-var script$12 = {
+var script$18 = {
   name: 'CSidebarNavTitle'
 };
 
 /* script */
-const __vue_script__$12 = script$12;
+const __vue_script__$18 = script$18;
 
 /* template */
-var __vue_render__$A = function(_h, _vm) {
+var __vue_render__$B = function(_h, _vm) {
   var _c = _vm._c;
-  return _c("li", { staticClass: "c-nav-title" }, [_vm._t("default")], 2)
+  return _c(
+    "li",
+    { staticClass: "c-sidebar-nav-title" },
+    [_vm._t("default")],
+    2
+  )
 };
-var __vue_staticRenderFns__$A = [];
-__vue_render__$A._withStripped = true;
+var __vue_staticRenderFns__$B = [];
+__vue_render__$B._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$12 = undefined;
+  const __vue_inject_styles__$18 = undefined;
   /* scoped */
-  const __vue_scope_id__$12 = undefined;
+  const __vue_scope_id__$18 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$12 = undefined;
+  const __vue_module_identifier__$18 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$12 = true;
+  const __vue_is_functional_template__$18 = true;
   /* style inject */
   
   /* style inject SSR */
@@ -25111,90 +24962,23 @@ __vue_render__$A._withStripped = true;
 
   
   var CSidebarNavTitle = normalizeComponent_1(
-    { render: __vue_render__$A, staticRenderFns: __vue_staticRenderFns__$A },
-    __vue_inject_styles__$12,
-    __vue_script__$12,
-    __vue_scope_id__$12,
-    __vue_is_functional_template__$12,
-    __vue_module_identifier__$12,
-    undefined,
-    undefined
-  );
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var script$13 = {
-  name: 'CSidebarToggler'
-};
-
-/* script */
-const __vue_script__$13 = script$13;
-
-/* template */
-var __vue_render__$B = function() {
-  var _vm = this;
-  return _vm._m(0)
-};
-var __vue_staticRenderFns__$B = [
-  function() {
-    var _vm = this;
-    var _h = _vm.$createElement;
-    var _c = _vm._self._c || _h;
-    return _c(
-      "button",
-      { staticClass: "c-header-toggler", attrs: { type: "button" } },
-      [_c("span", { staticClass: "c-header-toggler-icon" })]
-    )
-  }
-];
-__vue_render__$B._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$13 = undefined;
-  /* scoped */
-  const __vue_scope_id__$13 = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$13 = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$13 = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var CSidebarToggler = normalizeComponent_1(
     { render: __vue_render__$B, staticRenderFns: __vue_staticRenderFns__$B },
-    __vue_inject_styles__$13,
-    __vue_script__$13,
-    __vue_scope_id__$13,
-    __vue_is_functional_template__$13,
-    __vue_module_identifier__$13,
+    __vue_inject_styles__$18,
+    __vue_script__$18,
+    __vue_scope_id__$18,
+    __vue_is_functional_template__$18,
+    __vue_module_identifier__$18,
     undefined,
     undefined
   );
 
-// B.2.3.11 String.prototype.small()
-_stringHtml('small', function (createHTML) {
-  return function small() {
-    return createHTML(this, 'small', '', '');
-  };
-});
-
-var script$14 = {
+var script$19 = {
   name: 'CSpinner',
   functional: true,
   props: {
     grow: Boolean,
-    variant: String,
-    small: Boolean,
+    color: String,
+    size: String,
     tag: {
       type: String,
       default: 'span'
@@ -25212,24 +24996,24 @@ var script$14 = {
         'aria-hidden': 'false',
         'aria-label': 'Loading'
       },
-      class: ["spinner-".concat(type), (_ref2 = {}, _defineProperty(_ref2, "spinner-".concat(type, "-sm"), props.small), _defineProperty(_ref2, "text-".concat(props.variant), Boolean(props.variant)), _ref2)]
+      class: ["spinner-".concat(type), (_ref2 = {}, _defineProperty(_ref2, "spinner-".concat(type, "-").concat(props.size), props.size), _defineProperty(_ref2, "text-".concat(props.color), Boolean(props.color)), _ref2)]
     }));
   }
 };
 
 /* script */
-const __vue_script__$14 = script$14;
+const __vue_script__$19 = script$19;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$14 = undefined;
+  const __vue_inject_styles__$19 = undefined;
   /* scoped */
-  const __vue_scope_id__$14 = undefined;
+  const __vue_scope_id__$19 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$14 = undefined;
+  const __vue_module_identifier__$19 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$14 = undefined;
+  const __vue_is_functional_template__$19 = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -25238,11 +25022,11 @@ const __vue_script__$14 = script$14;
   
   var CSpinner = normalizeComponent_1(
     {},
-    __vue_inject_styles__$14,
-    __vue_script__$14,
-    __vue_scope_id__$14,
-    __vue_is_functional_template__$14,
-    __vue_module_identifier__$14,
+    __vue_inject_styles__$19,
+    __vue_script__$19,
+    __vue_scope_id__$19,
+    __vue_is_functional_template__$19,
+    __vue_module_identifier__$19,
     undefined,
     undefined
   );
@@ -25266,11 +25050,11 @@ const __vue_script__$14 = script$14;
 //
 //
 //
-var script$15 = {
+var script$1a = {
   name: 'CSwitch',
   inheritAttrs: false,
   props: {
-    variant: String,
+    color: String,
     outline: {
       type: [Boolean, String],
       default: undefined,
@@ -25290,16 +25074,11 @@ var script$15 = {
         return ['', '3d', 'pill'].includes(value);
       }
     },
-    checked: {
-      type: [Boolean, String, Number],
-      default: false
-    },
+    checked: Boolean,
     value: {
       type: [String, Number, Boolean],
       default: undefined
     },
-    trueValue: [String, Number],
-    falseValue: [String, Number],
     labelOn: String,
     labelOff: String,
     type: {
@@ -25312,14 +25091,14 @@ var script$15 = {
   },
   data: function data() {
     return {
-      isChecked: undefined
+      state: undefined
     };
   },
   watch: {
     checked: {
       immediate: true,
-      handler: function handler() {
-        this.isChecked = this.getCheckState();
+      handler: function handler(val) {
+        this.state = val;
       }
     }
   },
@@ -25329,37 +25108,19 @@ var script$15 = {
 
       var outlineString = this.outline ? '-outline' : '';
       var outlinedAltString = this.outline === 'alt' ? '-alt' : '';
-      return ['switch form-check-label', "switch".concat(outlineString, "-").concat(this.variant).concat(outlinedAltString), (_ref = {}, _defineProperty(_ref, "switch-".concat(this.size), this.size), _defineProperty(_ref, "switch-".concat(this.shape), this.shape), _defineProperty(_ref, 'switch-label', this.labelOn || this.labelOff), _ref)];
+      return ['c-switch form-check-label', "c-switch".concat(outlineString, "-").concat(this.color).concat(outlinedAltString), (_ref = {}, _defineProperty(_ref, "c-switch-".concat(this.size), this.size), _defineProperty(_ref, "c-switch-".concat(this.shape), this.shape), _defineProperty(_ref, 'c-switch-label', this.labelOn || this.labelOff), _ref)];
     }
   },
   methods: {
-    getCheckState: function getCheckState() {
-      if (this.type === 'radio') {
-        return this.checked === this.value;
-      } else if (typeof this.checked === 'boolean') {
-        return this.checked;
-      } else {
-        return this.checked === this.trueValue ? true : false;
-      }
-    },
-    toggle: function toggle(event) {
-      this.isChecked = event.target.checked;
-      this.$emit('update:checked', this.getValue(event.target.checked), event);
-    },
-    getValue: function getValue(checked) {
-      if (this.type === 'radio') {
-        return this.value;
-      } else if (checked) {
-        return this.trueValue !== undefined ? this.trueValue : true;
-      } else {
-        return this.falseValue !== undefined ? this.falseValue : false;
-      }
+    onChange: function onChange(e) {
+      this.state = e.target.checked;
+      this.$emit('update:checked', e.target.checked, e);
     }
   }
 };
 
 /* script */
-const __vue_script__$15 = script$15;
+const __vue_script__$1a = script$1a;
 
 /* template */
 var __vue_render__$C = function() {
@@ -25371,10 +25132,10 @@ var __vue_render__$C = function() {
       "input",
       _vm._b(
         {
-          staticClass: "switch-input form-check-input",
+          staticClass: "c-switch-input form-check-input",
           attrs: { type: _vm.type },
-          domProps: { checked: _vm.isChecked, value: _vm.value },
-          on: { change: _vm.toggle }
+          domProps: { checked: _vm.state, value: _vm.value },
+          on: { change: _vm.onChange }
         },
         "input",
         _vm.$attrs,
@@ -25383,7 +25144,7 @@ var __vue_render__$C = function() {
     ),
     _vm._v(" "),
     _c("span", {
-      staticClass: "switch-slider",
+      staticClass: "c-switch-slider",
       attrs: { "data-checked": _vm.labelOn, "data-unchecked": _vm.labelOff }
     })
   ])
@@ -25392,13 +25153,13 @@ var __vue_staticRenderFns__$C = [];
 __vue_render__$C._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$15 = undefined;
+  const __vue_inject_styles__$1a = undefined;
   /* scoped */
-  const __vue_scope_id__$15 = undefined;
+  const __vue_scope_id__$1a = undefined;
   /* module identifier */
-  const __vue_module_identifier__$15 = undefined;
+  const __vue_module_identifier__$1a = undefined;
   /* functional template */
-  const __vue_is_functional_template__$15 = false;
+  const __vue_is_functional_template__$1a = false;
   /* style inject */
   
   /* style inject SSR */
@@ -25407,394 +25168,51 @@ __vue_render__$C._withStripped = true;
   
   var CSwitch = normalizeComponent_1(
     { render: __vue_render__$C, staticRenderFns: __vue_staticRenderFns__$C },
-    __vue_inject_styles__$15,
-    __vue_script__$15,
-    __vue_scope_id__$15,
-    __vue_is_functional_template__$15,
-    __vue_module_identifier__$15,
+    __vue_inject_styles__$1a,
+    __vue_script__$1a,
+    __vue_scope_id__$1a,
+    __vue_is_functional_template__$1a,
+    __vue_module_identifier__$1a,
     undefined,
     undefined
   );
 
-var f$b = _wks;
+var nativeJoin = [].join;
 
-var _wksExt$1 = {
-	f: f$b
-};
+var ES3_STRINGS = indexedObject != Object;
+var SLOPPY_METHOD = sloppyArrayMethod('join', ',');
 
-var defineProperty$4 = _objectDp.f;
-var _wksDefine$1 = function (name) {
-  var $Symbol = _core.Symbol || (_core.Symbol =  _global.Symbol || {});
-  if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty$4($Symbol, name, { value: _wksExt$1.f(name) });
-};
-
-_wksDefine$1('asyncIterator');
-
-var _meta$1 = createCommonjsModule(function (module) {
-var META = _uid('meta');
-
-
-var setDesc = _objectDp.f;
-var id = 0;
-var isExtensible = Object.isExtensible || function () {
-  return true;
-};
-var FREEZE = !_fails(function () {
-  return isExtensible(Object.preventExtensions({}));
-});
-var setMeta = function (it) {
-  setDesc(it, META, { value: {
-    i: 'O' + ++id, // object ID
-    w: {}          // weak collections IDs
-  } });
-};
-var fastKey = function (it, create) {
-  // return primitive with prefix
-  if (!_isObject(it)) return typeof it == 'symbol' ? it : (typeof it == 'string' ? 'S' : 'P') + it;
-  if (!_has(it, META)) {
-    // can't set metadata to uncaught frozen object
-    if (!isExtensible(it)) return 'F';
-    // not necessary to add metadata
-    if (!create) return 'E';
-    // add missing metadata
-    setMeta(it);
-  // return object ID
-  } return it[META].i;
-};
-var getWeak = function (it, create) {
-  if (!_has(it, META)) {
-    // can't set metadata to uncaught frozen object
-    if (!isExtensible(it)) return true;
-    // not necessary to add metadata
-    if (!create) return false;
-    // add missing metadata
-    setMeta(it);
-  // return hash weak collections IDs
-  } return it[META].w;
-};
-// add metadata on freeze-family methods calling
-var onFreeze = function (it) {
-  if (FREEZE && meta.NEED && isExtensible(it) && !_has(it, META)) setMeta(it);
-  return it;
-};
-var meta = module.exports = {
-  KEY: META,
-  NEED: false,
-  fastKey: fastKey,
-  getWeak: getWeak,
-  onFreeze: onFreeze
-};
-});
-
-var f$c = Object.getOwnPropertySymbols;
-
-var _objectGops$1 = {
-	f: f$c
-};
-
-// all enumerable object keys, includes symbols
-
-
-
-var _enumKeys$1 = function (it) {
-  var result = _objectKeys$1(it);
-  var getSymbols = _objectGops$1.f;
-  if (getSymbols) {
-    var symbols = getSymbols(it);
-    var isEnum = _objectPie.f;
-    var i = 0;
-    var key;
-    while (symbols.length > i) if (isEnum.call(it, key = symbols[i++])) result.push(key);
-  } return result;
-};
-
-// 7.2.2 IsArray(argument)
-
-var _isArray$1 = Array.isArray || function isArray(arg) {
-  return _cof(arg) == 'Array';
-};
-
-// fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
-
-var gOPN$3 = _objectGopn.f;
-var toString$4 = {}.toString;
-
-var windowNames$1 = typeof window == 'object' && window && Object.getOwnPropertyNames
-  ? Object.getOwnPropertyNames(window) : [];
-
-var getWindowNames$1 = function (it) {
-  try {
-    return gOPN$3(it);
-  } catch (e) {
-    return windowNames$1.slice();
-  }
-};
-
-var f$d = function getOwnPropertyNames(it) {
-  return windowNames$1 && toString$4.call(it) == '[object Window]' ? getWindowNames$1(it) : gOPN$3(_toIobject(it));
-};
-
-var _objectGopnExt$1 = {
-	f: f$d
-};
-
-// ECMAScript 6 symbols shim
-
-
-
-
-
-var META$1 = _meta$1.KEY;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var gOPD$4 = _objectGopd.f;
-var dP$5 = _objectDp.f;
-var gOPN$4 = _objectGopnExt$1.f;
-var $Symbol$1 = _global.Symbol;
-var $JSON$1 = _global.JSON;
-var _stringify$1 = $JSON$1 && $JSON$1.stringify;
-var PROTOTYPE$5 = 'prototype';
-var HIDDEN$1 = _wks('_hidden');
-var TO_PRIMITIVE$1 = _wks('toPrimitive');
-var isEnum$2 = {}.propertyIsEnumerable;
-var SymbolRegistry$1 = _shared('symbol-registry');
-var AllSymbols$1 = _shared('symbols');
-var OPSymbols$1 = _shared('op-symbols');
-var ObjectProto$3 = Object[PROTOTYPE$5];
-var USE_NATIVE$1 = typeof $Symbol$1 == 'function';
-var QObject$1 = _global.QObject;
-// Don't use setters in Qt Script, https://github.com/zloirock/core-js/issues/173
-var setter$1 = !QObject$1 || !QObject$1[PROTOTYPE$5] || !QObject$1[PROTOTYPE$5].findChild;
-
-// fallback for old Android, https://code.google.com/p/v8/issues/detail?id=687
-var setSymbolDesc$1 = _descriptors && _fails(function () {
-  return _objectCreate$1(dP$5({}, 'a', {
-    get: function () { return dP$5(this, 'a', { value: 7 }).a; }
-  })).a != 7;
-}) ? function (it, key, D) {
-  var protoDesc = gOPD$4(ObjectProto$3, key);
-  if (protoDesc) delete ObjectProto$3[key];
-  dP$5(it, key, D);
-  if (protoDesc && it !== ObjectProto$3) dP$5(ObjectProto$3, key, protoDesc);
-} : dP$5;
-
-var wrap$1 = function (tag) {
-  var sym = AllSymbols$1[tag] = _objectCreate$1($Symbol$1[PROTOTYPE$5]);
-  sym._k = tag;
-  return sym;
-};
-
-var isSymbol$1 = USE_NATIVE$1 && typeof $Symbol$1.iterator == 'symbol' ? function (it) {
-  return typeof it == 'symbol';
-} : function (it) {
-  return it instanceof $Symbol$1;
-};
-
-var $defineProperty$1 = function defineProperty(it, key, D) {
-  if (it === ObjectProto$3) $defineProperty$1(OPSymbols$1, key, D);
-  _anObject(it);
-  key = _toPrimitive(key, true);
-  _anObject(D);
-  if (_has(AllSymbols$1, key)) {
-    if (!D.enumerable) {
-      if (!_has(it, HIDDEN$1)) dP$5(it, HIDDEN$1, _propertyDesc(1, {}));
-      it[HIDDEN$1][key] = true;
-    } else {
-      if (_has(it, HIDDEN$1) && it[HIDDEN$1][key]) it[HIDDEN$1][key] = false;
-      D = _objectCreate$1(D, { enumerable: _propertyDesc(0, false) });
-    } return setSymbolDesc$1(it, key, D);
-  } return dP$5(it, key, D);
-};
-var $defineProperties$1 = function defineProperties(it, P) {
-  _anObject(it);
-  var keys = _enumKeys$1(P = _toIobject(P));
-  var i = 0;
-  var l = keys.length;
-  var key;
-  while (l > i) $defineProperty$1(it, key = keys[i++], P[key]);
-  return it;
-};
-var $create$1 = function create(it, P) {
-  return P === undefined ? _objectCreate$1(it) : $defineProperties$1(_objectCreate$1(it), P);
-};
-var $propertyIsEnumerable$1 = function propertyIsEnumerable(key) {
-  var E = isEnum$2.call(this, key = _toPrimitive(key, true));
-  if (this === ObjectProto$3 && _has(AllSymbols$1, key) && !_has(OPSymbols$1, key)) return false;
-  return E || !_has(this, key) || !_has(AllSymbols$1, key) || _has(this, HIDDEN$1) && this[HIDDEN$1][key] ? E : true;
-};
-var $getOwnPropertyDescriptor$1 = function getOwnPropertyDescriptor(it, key) {
-  it = _toIobject(it);
-  key = _toPrimitive(key, true);
-  if (it === ObjectProto$3 && _has(AllSymbols$1, key) && !_has(OPSymbols$1, key)) return;
-  var D = gOPD$4(it, key);
-  if (D && _has(AllSymbols$1, key) && !(_has(it, HIDDEN$1) && it[HIDDEN$1][key])) D.enumerable = true;
-  return D;
-};
-var $getOwnPropertyNames$1 = function getOwnPropertyNames(it) {
-  var names = gOPN$4(_toIobject(it));
-  var result = [];
-  var i = 0;
-  var key;
-  while (names.length > i) {
-    if (!_has(AllSymbols$1, key = names[i++]) && key != HIDDEN$1 && key != META$1) result.push(key);
-  } return result;
-};
-var $getOwnPropertySymbols$1 = function getOwnPropertySymbols(it) {
-  var IS_OP = it === ObjectProto$3;
-  var names = gOPN$4(IS_OP ? OPSymbols$1 : _toIobject(it));
-  var result = [];
-  var i = 0;
-  var key;
-  while (names.length > i) {
-    if (_has(AllSymbols$1, key = names[i++]) && (IS_OP ? _has(ObjectProto$3, key) : true)) result.push(AllSymbols$1[key]);
-  } return result;
-};
-
-// 19.4.1.1 Symbol([description])
-if (!USE_NATIVE$1) {
-  $Symbol$1 = function Symbol() {
-    if (this instanceof $Symbol$1) throw TypeError('Symbol is not a constructor!');
-    var tag = _uid(arguments.length > 0 ? arguments[0] : undefined);
-    var $set = function (value) {
-      if (this === ObjectProto$3) $set.call(OPSymbols$1, value);
-      if (_has(this, HIDDEN$1) && _has(this[HIDDEN$1], tag)) this[HIDDEN$1][tag] = false;
-      setSymbolDesc$1(this, tag, _propertyDesc(1, value));
-    };
-    if (_descriptors && setter$1) setSymbolDesc$1(ObjectProto$3, tag, { configurable: true, set: $set });
-    return wrap$1(tag);
-  };
-  _redefine($Symbol$1[PROTOTYPE$5], 'toString', function toString() {
-    return this._k;
-  });
-
-  _objectGopd.f = $getOwnPropertyDescriptor$1;
-  _objectDp.f = $defineProperty$1;
-  _objectGopn.f = _objectGopnExt$1.f = $getOwnPropertyNames$1;
-  _objectPie.f = $propertyIsEnumerable$1;
-  _objectGops$1.f = $getOwnPropertySymbols$1;
-
-  if (_descriptors && !_library) {
-    _redefine(ObjectProto$3, 'propertyIsEnumerable', $propertyIsEnumerable$1, true);
-  }
-
-  _wksExt$1.f = function (name) {
-    return wrap$1(_wks(name));
-  };
-}
-
-_export(_export.G + _export.W + _export.F * !USE_NATIVE$1, { Symbol: $Symbol$1 });
-
-for (var es6Symbols$1 = (
-  // 19.4.2.2, 19.4.2.3, 19.4.2.4, 19.4.2.6, 19.4.2.8, 19.4.2.9, 19.4.2.10, 19.4.2.11, 19.4.2.12, 19.4.2.13, 19.4.2.14
-  'hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables'
-).split(','), j$2 = 0; es6Symbols$1.length > j$2;)_wks(es6Symbols$1[j$2++]);
-
-for (var wellKnownSymbols$1 = _objectKeys$1(_wks.store), k$1 = 0; wellKnownSymbols$1.length > k$1;) _wksDefine$1(wellKnownSymbols$1[k$1++]);
-
-_export(_export.S + _export.F * !USE_NATIVE$1, 'Symbol', {
-  // 19.4.2.1 Symbol.for(key)
-  'for': function (key) {
-    return _has(SymbolRegistry$1, key += '')
-      ? SymbolRegistry$1[key]
-      : SymbolRegistry$1[key] = $Symbol$1(key);
-  },
-  // 19.4.2.5 Symbol.keyFor(sym)
-  keyFor: function keyFor(sym) {
-    if (!isSymbol$1(sym)) throw TypeError(sym + ' is not a symbol!');
-    for (var key in SymbolRegistry$1) if (SymbolRegistry$1[key] === sym) return key;
-  },
-  useSetter: function () { setter$1 = true; },
-  useSimple: function () { setter$1 = false; }
-});
-
-_export(_export.S + _export.F * !USE_NATIVE$1, 'Object', {
-  // 19.1.2.2 Object.create(O [, Properties])
-  create: $create$1,
-  // 19.1.2.4 Object.defineProperty(O, P, Attributes)
-  defineProperty: $defineProperty$1,
-  // 19.1.2.3 Object.defineProperties(O, Properties)
-  defineProperties: $defineProperties$1,
-  // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
-  getOwnPropertyDescriptor: $getOwnPropertyDescriptor$1,
-  // 19.1.2.7 Object.getOwnPropertyNames(O)
-  getOwnPropertyNames: $getOwnPropertyNames$1,
-  // 19.1.2.8 Object.getOwnPropertySymbols(O)
-  getOwnPropertySymbols: $getOwnPropertySymbols$1
-});
-
-// 24.3.2 JSON.stringify(value [, replacer [, space]])
-$JSON$1 && _export(_export.S + _export.F * (!USE_NATIVE$1 || _fails(function () {
-  var S = $Symbol$1();
-  // MS Edge converts symbol values to JSON as {}
-  // WebKit converts symbol values to JSON as null
-  // V8 throws on boxed symbols
-  return _stringify$1([S]) != '[null]' || _stringify$1({ a: S }) != '{}' || _stringify$1(Object(S)) != '{}';
-})), 'JSON', {
-  stringify: function stringify(it) {
-    var args = [it];
-    var i = 1;
-    var replacer, $replacer;
-    while (arguments.length > i) args.push(arguments[i++]);
-    $replacer = replacer = args[1];
-    if (!_isObject(replacer) && it === undefined || isSymbol$1(it)) return; // IE8 returns string on undefined
-    if (!_isArray$1(replacer)) replacer = function (key, value) {
-      if (typeof $replacer == 'function') value = $replacer.call(this, key, value);
-      if (!isSymbol$1(value)) return value;
-    };
-    args[1] = replacer;
-    return _stringify$1.apply($JSON$1, args);
+// `Array.prototype.join` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.join
+_export({ target: 'Array', proto: true, forced: ES3_STRINGS || SLOPPY_METHOD }, {
+  join: function join(separator) {
+    return nativeJoin.call(toIndexedObject(this), separator === undefined ? ',' : separator);
   }
 });
 
-// 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
-$Symbol$1[PROTOTYPE$5][TO_PRIMITIVE$1] || _hide($Symbol$1[PROTOTYPE$5], TO_PRIMITIVE$1, $Symbol$1[PROTOTYPE$5].valueOf);
-// 19.4.3.5 Symbol.prototype[@@toStringTag]
-_setToStringTag$1($Symbol$1, 'Symbol');
-// 20.2.1.9 Math[@@toStringTag]
-_setToStringTag$1(Math, 'Math', true);
-// 24.3.3 JSON[@@toStringTag]
-_setToStringTag$1(_global.JSON, 'JSON', true);
+var nativeSort = [].sort;
+var test$3 = [1, 2, 3];
 
-var _strictMethod = function (method, arg) {
-  return !!method && _fails(function () {
-    // eslint-disable-next-line no-useless-call
-    arg ? method.call(null, function () { /* empty */ }, 1) : method.call(null);
-  });
-};
+// IE8-
+var FAILS_ON_UNDEFINED = fails(function () {
+  test$3.sort(undefined);
+});
+// V8 bug
+var FAILS_ON_NULL = fails(function () {
+  test$3.sort(null);
+});
+// Old WebKit
+var SLOPPY_METHOD$1 = sloppyArrayMethod('sort');
 
-var $sort = [].sort;
-var test = [1, 2, 3];
+var FORCED$4 = FAILS_ON_UNDEFINED || !FAILS_ON_NULL || SLOPPY_METHOD$1;
 
-_export(_export.P + _export.F * (_fails(function () {
-  // IE8-
-  test.sort(undefined);
-}) || !_fails(function () {
-  // V8 bug
-  test.sort(null);
-  // Old WebKit
-}) || !_strictMethod($sort)), 'Array', {
-  // 22.1.3.25 Array.prototype.sort(comparefn)
+// `Array.prototype.sort` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.sort
+_export({ target: 'Array', proto: true, forced: FORCED$4 }, {
   sort: function sort(comparefn) {
     return comparefn === undefined
-      ? $sort.call(_toObject$1(this))
-      : $sort.call(_toObject$1(this), _aFunction(comparefn));
+      ? nativeSort.call(toObject(this))
+      : nativeSort.call(toObject(this), aFunction$1(comparefn));
   }
 });
 
@@ -25940,20 +25358,6 @@ module.exports = function () {
   if (that.unicode) result += 'u';
   if (that.sticky) result += 'y';
   return result;
-};
-
-
-/***/ }),
-
-/***/ "0d58":
-/***/ (function(module, exports, __webpack_require__) {
-
-// 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__("ce10");
-var enumBugKeys = __webpack_require__("e11e");
-
-module.exports = Object.keys || function keys(O) {
-  return $keys(O, enumBugKeys);
 };
 
 
@@ -26105,14 +25509,6 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "2621":
-/***/ (function(module, exports) {
-
-exports.f = Object.getOwnPropertySymbols;
-
-
-/***/ }),
-
 /***/ "2aba":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -26217,27 +25613,6 @@ module.exports = __webpack_require__("9e1e") ? function (object, key, value) {
 } : function (object, key, value) {
   object[key] = value;
   return object;
-};
-
-
-/***/ }),
-
-/***/ "36bd":
-/***/ (function(module, exports, __webpack_require__) {
-// 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
-
-var toObject = __webpack_require__("4bf8");
-var toAbsoluteIndex = __webpack_require__("77f1");
-var toLength = __webpack_require__("9def");
-module.exports = function fill(value /* , start = 0, end = @length */) {
-  var O = toObject(this);
-  var length = toLength(O.length);
-  var aLen = arguments.length;
-  var index = toAbsoluteIndex(aLen > 1 ? arguments[1] : undefined, length);
-  var end = aLen > 2 ? arguments[2] : undefined;
-  var endPos = end === undefined ? length : toAbsoluteIndex(end, length);
-  while (endPos > index) O[index++] = value;
-  return O;
 };
 
 
@@ -26366,14 +25741,6 @@ module.exports = patchedExec;
 
 /***/ }),
 
-/***/ "52a7":
-/***/ (function(module, exports) {
-
-exports.f = {}.propertyIsEnumerable;
-
-
-/***/ }),
-
 /***/ "5537":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -26470,18 +25837,6 @@ module.exports = function (R, S) {
 
 /***/ }),
 
-/***/ "613b":
-/***/ (function(module, exports, __webpack_require__) {
-
-var shared = __webpack_require__("5537")('keys');
-var uid = __webpack_require__("ca5a");
-module.exports = function (key) {
-  return shared[key] || (shared[key] = uid(key));
-};
-
-
-/***/ }),
-
 /***/ "626a":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -26552,63 +25907,6 @@ module.exports = function (it, S) {
   if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
   throw TypeError("Can't convert object to primitive value");
 };
-
-
-/***/ }),
-
-/***/ "6c7b":
-/***/ (function(module, exports, __webpack_require__) {
-
-// 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
-var $export = __webpack_require__("5ca1");
-
-$export($export.P, 'Array', { fill: __webpack_require__("36bd") });
-
-__webpack_require__("9c6c")('fill');
-
-
-/***/ }),
-
-/***/ "7333":
-/***/ (function(module, exports, __webpack_require__) {
-
-// 19.1.2.1 Object.assign(target, source, ...)
-var DESCRIPTORS = __webpack_require__("9e1e");
-var getKeys = __webpack_require__("0d58");
-var gOPS = __webpack_require__("2621");
-var pIE = __webpack_require__("52a7");
-var toObject = __webpack_require__("4bf8");
-var IObject = __webpack_require__("626a");
-var $assign = Object.assign;
-
-// should work with symbols and should have deterministic property order (V8 bug)
-module.exports = !$assign || __webpack_require__("79e5")(function () {
-  var A = {};
-  var B = {};
-  // eslint-disable-next-line no-undef
-  var S = Symbol();
-  var K = 'abcdefghijklmnopqrst';
-  A[S] = 7;
-  K.split('').forEach(function (k) { B[k] = k; });
-  return $assign({}, A)[S] != 7 || Object.keys($assign({}, B)).join('') != K;
-}) ? function assign(target, source) { // eslint-disable-line no-unused-vars
-  var T = toObject(target);
-  var aLen = arguments.length;
-  var index = 1;
-  var getSymbols = gOPS.f;
-  var isEnum = pIE.f;
-  while (aLen > index) {
-    var S = IObject(arguments[index++]);
-    var keys = getSymbols ? getKeys(S).concat(getSymbols(S)) : getKeys(S);
-    var length = keys.length;
-    var j = 0;
-    var key;
-    while (length > j) {
-      key = keys[j++];
-      if (!DESCRIPTORS || isEnum.call(S, key)) T[key] = S[key];
-    }
-  } return T;
-} : $assign;
 
 
 /***/ }),
@@ -27004,30 +26302,6 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "ce10":
-/***/ (function(module, exports, __webpack_require__) {
-
-var has = __webpack_require__("69a8");
-var toIObject = __webpack_require__("6821");
-var arrayIndexOf = __webpack_require__("c366")(false);
-var IE_PROTO = __webpack_require__("613b")('IE_PROTO');
-
-module.exports = function (object, names) {
-  var O = toIObject(object);
-  var i = 0;
-  var result = [];
-  var key;
-  for (key in O) if (key != IE_PROTO) has(O, key) && result.push(key);
-  // Don't enum bug & hidden keys
-  while (names.length > i) if (has(O, key = names[i++])) {
-    ~arrayIndexOf(result, key) || result.push(key);
-  }
-  return result;
-};
-
-
-/***/ }),
-
 /***/ "d2c8":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -27060,17 +26334,6 @@ module.exports = function (it) {
   if (typeof it != 'function') throw TypeError(it + ' is not a function!');
   return it;
 };
-
-
-/***/ }),
-
-/***/ "e11e":
-/***/ (function(module, exports) {
-
-// IE 8- don't enum bug keys
-module.exports = (
-  'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
-).split(',');
 
 
 /***/ }),
@@ -27118,17 +26381,6 @@ module.exports = (
 
 /***/ }),
 
-/***/ "f751":
-/***/ (function(module, exports, __webpack_require__) {
-
-// 19.1.3.1 Object.assign(target, source)
-var $export = __webpack_require__("5ca1");
-
-$export($export.S + $export.F, 'Object', { assign: __webpack_require__("7333") });
-
-
-/***/ }),
-
 /***/ "fa5b":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -27155,19 +26407,16 @@ if (typeof window !== 'undefined') {
   }
 }
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7e872e7a-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./CIcon.vue?vue&type=template&id=5f5e5bae&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('svg',{style:(_vm.style),attrs:{"xmlns":"http://www.w3.org/2000/svg","viewBox":_vm.viewBox},domProps:{"innerHTML":_vm._s(_vm.icon.svgContent)}})};
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6d8e4675-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./CIcon.vue?vue&type=template&id=7852aafd&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('svg',{class:_vm.computedClasses,attrs:{"xmlns":"http://www.w3.org/2000/svg","viewBox":_vm.viewBox},domProps:{"innerHTML":_vm._s(_vm.icon.svgContent)}})};
 var staticRenderFns = [];
 
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.replace.js
 var es6_regexp_replace = __webpack_require__("a481");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.fill.js
-var es6_array_fill = __webpack_require__("6c7b");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.assign.js
-var es6_object_assign = __webpack_require__("f751");
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
+var es6_function_name = __webpack_require__("7f7f");
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es7.array.includes.js
 var es7_array_includes = __webpack_require__("6762");
@@ -27175,12 +26424,7 @@ var es7_array_includes = __webpack_require__("6762");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.string.includes.js
 var es6_string_includes = __webpack_require__("2fdb");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
-var es6_function_name = __webpack_require__("7f7f");
-
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./CIcon.vue?vue&type=script&lang=js&
-
-
 
 
 
@@ -27201,23 +26445,15 @@ var es6_function_name = __webpack_require__("7f7f");
   props: {
     name: String,
     content: [String, Array],
-    fill: String,
-    background: String
-  },
-  data: function data() {
-    return {
-      lineHeight: null
-    };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    this.$nextTick(function () {
-      if (_this.$el && _this.code) {
-        var computedStyle = window.getComputedStyle(_this.$el, null);
-        _this.lineHeight = computedStyle.getPropertyValue('line-height');
+    // fill: String,
+    // background: String,
+    size: {
+      type: String,
+      validator: function validator(size) {
+        return ['sm', 'lg', 'xl', 'custom-size'].includes(size);
       }
-    });
+    },
+    customClasses: String
   },
   computed: {
     iconName: function iconName() {
@@ -27245,22 +26481,22 @@ var es6_function_name = __webpack_require__("7f7f");
     viewBox: function viewBox() {
       return this.$attrs.viewBox || "0 0 ".concat(this.icon.coordinates);
     },
-    autoDimensions: function autoDimensions() {
-      var noDimensions = !this.$attrs.height && !this.$attrs.width;
-      return noDimensions ? {
-        height: this.lineHeight
-      } : {};
+    // style () {
+    //   return {
+    //     fill: this.fill || 'currentColor',
+    //     background: this.background
+    //   }
+    // },
+    computedSize: function computedSize() {
+      return this.$attrs.width || this.$attrs.height ? 'custom-size' : this.size;
     },
-    style: function style() {
-      return Object.assign({}, this.autoDimensions, {
-        fill: this.fill || 'currentColor',
-        background: this.background
-      });
+    computedClasses: function computedClasses() {
+      return this.customClasses || "c-icon c-icon-".concat(this.computedSize);
     }
   },
   methods: {
     toCamelCase: function toCamelCase(str) {
-      return str.replace(/([-_][a-z])/ig, function ($1) {
+      return str.replace(/([-_][a-z0-9])/ig, function ($1) {
         return $1.toUpperCase().replace('-', '');
       });
     }
@@ -27409,9 +26645,9 @@ var CIconPlugin = {
 unwrapExports(coreuiIconsVue_common);
 var coreuiIconsVue_common_1 = coreuiIconsVue_common.CIcon;
 
-const arrowTop = ["<title>arrow-top</title><path d='M48.828 18.828l-16.828-16.828-16.828 16.828 2.829 2.828 12-12v52.248h4v-52.247l11.999 11.999 2.828-2.828z'></path>"];
+const arrowTop = ["24 24","\r\r<title>arrow-top</title>\r<path d='M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z'></path>\r\r"];
 
-const ban = ["<title>ban</title><path d='M53.213 10.787c-5.429-5.429-12.929-8.787-21.213-8.787-16.569 0-30 13.431-30 30 0 8.284 3.358 15.784 8.787 21.213v0c5.429 5.429 12.929 8.787 21.213 8.787 16.569 0 30-13.431 30-30 0-8.284-3.358-15.784-8.787-21.213v0zM32 6c0.007 0 0.015 0 0.023 0 6.483 0 12.409 2.383 16.951 6.32l-0.032-0.027-36.648 36.648c-3.91-4.509-6.293-10.435-6.293-16.918 0-0.008 0-0.016 0-0.024v0.001c0-14.336 11.664-26 26-26zM32 58c-0.007 0-0.014 0-0.022 0-6.452 0-12.352-2.36-16.885-6.264l0.034 0.028 36.637-36.637c3.876 4.499 6.236 10.399 6.236 16.851 0 0.008 0 0.016 0 0.024v-0.001c0 14.336-11.664 26-26 26z'></path>"];
+const ban = ["24 24","\r\r<title>ban</title>\r<path d='M19.955 4.045c-2.036-2.036-4.848-3.295-7.955-3.295-6.213 0-11.25 5.037-11.25 11.25 0 3.107 1.259 5.919 3.295 7.955v0c2.036 2.036 4.848 3.295 7.955 3.295 6.213 0 11.25-5.037 11.25-11.25 0-3.107-1.259-5.919-3.295-7.955v0zM12 2.25c0.003 0 0.006 0 0.009 0 2.431 0 4.653 0.894 6.356 2.37l-0.012-0.010-13.743 13.743c-1.466-1.691-2.36-3.913-2.36-6.344 0-0.003 0-0.006 0-0.009v0c0-5.376 4.374-9.75 9.75-9.75zM12 21.75c-0.002 0-0.005 0-0.008 0-2.419 0-4.632-0.885-6.332-2.349l0.013 0.011 13.739-13.739c1.453 1.687 2.338 3.9 2.338 6.319 0 0.003 0 0.006 0 0.009v-0c0 5.376-4.374 9.75-9.75 9.75z'></path>\r\r"];
 
 var CIcon = Object.assign({}, coreuiIconsVue_common_1, {
   icons: {
@@ -27419,7 +26655,7 @@ var CIcon = Object.assign({}, coreuiIconsVue_common_1, {
     ban: ban
   }
 });
-var script$16 = {
+var script$1b = {
   name: 'CTable',
   components: {
     CPagination: CPagination,
@@ -27434,13 +26670,16 @@ var script$16 = {
       default: 10
     },
     activePage: Number,
-    indexColumn: [Boolean, String],
+    indexColumn: Boolean,
     columnFilter: Boolean,
     pagination: [Boolean, Object],
     addTableClasses: [String, Array, Object],
-    notResponsive: Boolean,
+    responsive: {
+      type: Boolean,
+      default: true
+    },
     sortable: Boolean,
-    small: Boolean,
+    size: String,
     dark: Boolean,
     striped: Boolean,
     fixed: Boolean,
@@ -27577,16 +26816,9 @@ var script$16 = {
       });
     },
     tableClasses: function tableClasses() {
-      return ['table', this.addTableClasses, {
-        'is-loading': this.loading,
-        'table-sm': this.small,
-        'table-dark': this.dark,
-        'table-striped': this.striped,
-        'b-table-fixed': this.fixed,
-        'table-hover': this.hover,
-        'table-bordered': this.border,
-        'border': this.outlined
-      }];
+      var _ref3;
+
+      return ['table', this.addTableClasses, (_ref3 = {}, _defineProperty(_ref3, "table-".concat(this.size), this.size), _defineProperty(_ref3, 'table-dark', this.dark), _defineProperty(_ref3, 'table-striped', this.striped), _defineProperty(_ref3, 'b-table-fixed', this.fixed), _defineProperty(_ref3, 'table-hover', this.hover), _defineProperty(_ref3, 'table-bordered', this.border), _defineProperty(_ref3, 'border', this.outlined), _ref3)];
     },
     sortingIconStyles: function sortingIconStyles() {
       return {
@@ -27595,14 +26827,6 @@ var script$16 = {
     },
     colspan: function colspan() {
       return this.rawColumnNames.length + (this.indexColumn ? 1 : 0);
-    },
-    topLoadingPosition: function topLoadingPosition() {
-      var headerHeight = (this.columnFilter ? 38 : 0) + (this.small ? 32 + 4 : 46 + 7);
-      return "top:".concat(headerHeight, "px");
-    },
-    spinnerSize: function spinnerSize() {
-      var size = this.small ? 1.4 : this.currentItems.length === 1 ? 2 : 3;
-      return "width:".concat(size + 'rem', ";height:").concat(size + 'rem');
     },
     isFiltered: function isFiltered() {
       return this.tableFilterVal || Object.values(this.columnFilterVal).join('');
@@ -27634,36 +26858,16 @@ var script$16 = {
     addColumnFilter: function addColumnFilter(colName, value) {
       this.$set(this.columnFilterVal, colName, value);
     },
-    clear: function clear() {
-      this.tableFilterVal = '';
-      this.columnFilterVal = {};
-      this.sorter.column = '';
-      this.sorter.asc = true;
-      var inputs = this.$el.getElementsByClassName('table-filter');
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
-
-      try {
-        for (var _iterator = inputs[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var input = _step.value;
-          input.value = '';
-        }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return != null) {
-            _iterator.return();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
-        }
-      }
-    },
+    // clear () {
+    //   this.tableFilterVal = ''
+    //   this.columnFilterVal = {}
+    //   this.sorter.column = ''
+    //   this.sorter.asc = true
+    //   const inputs = this.$el.getElementsByClassName('table-filter')
+    //   for (let input of inputs) {
+    //     input.value = ''
+    //   }
+    // },
     pretifyName: function pretifyName(name) {
       return name.replace(/[-_.]/g, ' ').replace(/ +/g, ' ').replace(/([a-z0-9])([A-Z])/g, '$1 $2').split(' ').map(function (word) {
         return word.charAt(0).toUpperCase() + word.slice(1);
@@ -27683,7 +26887,7 @@ var script$16 = {
       return classes;
     },
     isSortable: function isSortable(index) {
-      return this.sortable && (!this.fields || !this.fields[index].notSortable);
+      return this.sortable && (!this.fields || this.fields[index].sortable !== false);
     },
     headerClass: function headerClass(index) {
       var fields = this.fields;
@@ -27723,11 +26927,11 @@ var script$16 = {
   }
 };
 
-var css$6 = "\n.transparent[data-v-251d8d63] {\r\n  opacity: 0.4;\n}\n.icon-transition[data-v-251d8d63] {\r\n  -webkit-transition: transform 0.3s;\r\n  -webkit-transition: -webkit-transform 0.3s;\r\n  transition: -webkit-transform 0.3s;\r\n  transition: transform 0.3s;\r\n  transition: transform 0.3s, -webkit-transform 0.3s;\n}\n.is-loading[data-v-251d8d63] {\r\n  opacity: .4;\n}\n.arrow-position[data-v-251d8d63] {\r\n  right: 0;\r\n  top: 50%;\r\n  -webkit-transform: translateY(-50%);\r\n          transform: translateY(-50%);\n}\n.rotate-icon[data-v-251d8d63] {\r\n  -webkit-transform: translateY(-50%) rotate(-180deg);\r\n          transform: translateY(-50%) rotate(-180deg);\n}\r\n";
-styleInject(css$6);
+var css$7 = "\n.transparent[data-v-a8f48572] {\r\n  opacity: 0.4;\n}\n.icon-transition[data-v-a8f48572] {\r\n  -webkit-transition: transform 0.3s;\r\n  -webkit-transition: -webkit-transform 0.3s;\r\n  transition: -webkit-transform 0.3s;\r\n  transition: transform 0.3s;\r\n  transition: transform 0.3s, -webkit-transform 0.3s;\n}\n.arrow-position[data-v-a8f48572] {\r\n  right: 0;\r\n  top: 50%;\r\n  -webkit-transform: translateY(-50%);\r\n          transform: translateY(-50%);\n}\n.rotate-icon[data-v-a8f48572] {\r\n  -webkit-transform: translateY(-50%) rotate(-180deg);\r\n          transform: translateY(-50%) rotate(-180deg);\n}\r\n";
+styleInject(css$7);
 
 /* script */
-const __vue_script__$16 = script$16;
+const __vue_script__$1b = script$1b;
 /* template */
 var __vue_render__$D = function() {
   var _vm = this;
@@ -27823,7 +27027,7 @@ var __vue_render__$D = function() {
         "div",
         {
           class:
-            "position-relative " + (_vm.notResponsive ? "" : "table-responsive")
+            "position-relative " + (_vm.responsive ? "table-responsive" : "")
         },
         [
           _c(
@@ -27891,32 +27095,7 @@ var __vue_render__$D = function() {
                       "tr",
                       { staticClass: "table-sm" },
                       [
-                        _vm.indexColumn
-                          ? _c(
-                              "th",
-                              { staticClass: "pb-2 pl-2" },
-                              [
-                                _vm.indexColumn !== "noCleaner"
-                                  ? _c("CIcon", {
-                                      class: _vm.isFiltered
-                                        ? "text-danger"
-                                        : "text-secondary",
-                                      attrs: {
-                                        width: "18",
-                                        name: "ban",
-                                        title: "clear table"
-                                      },
-                                      nativeOn: {
-                                        click: function($event) {
-                                          return _vm.clear($event)
-                                        }
-                                      }
-                                    })
-                                  : _vm._e()
-                              ],
-                              1
-                            )
-                          : _vm._e(),
+                        _vm.indexColumn ? _c("th") : _vm._e(),
                         _vm._v(" "),
                         _vm._l(_vm.rawColumnNames, function(colName, index) {
                           return [
@@ -27925,7 +27104,8 @@ var __vue_render__$D = function() {
                               { key: index, class: _vm.headerClass(index) },
                               [
                                 _vm._t(_vm.rawColumnNames[index] + "-filter", [
-                                  !_vm.fields || !_vm.fields[index].noFilter
+                                  !_vm.fields ||
+                                  !_vm.fields[index].filterable !== false
                                     ? _c("input", {
                                         staticClass: "w-100 table-filter",
                                         domProps: {
@@ -27986,9 +27166,7 @@ var __vue_render__$D = function() {
                                     _vm._v(
                                       "\n                  " +
                                         _vm._s(
-                                          _vm.indexColumn !== "noIndexes"
-                                            ? _vm.firstItemIndex + itemIndex + 1
-                                            : ""
+                                          _vm.firstItemIndex + itemIndex + 1
                                         ) +
                                         "\n                "
                                     )
@@ -28162,26 +27340,39 @@ var __vue_render__$D = function() {
           ),
           _vm._v(" "),
           _vm.loading
-            ? _c(
-                "div",
-                {
-                  staticStyle: {
-                    position: "absolute",
-                    left: "50%",
-                    transform: "translateX(-50%)"
+            ? _vm._t("loading", [
+                _c(
+                  "div",
+                  {
+                    staticStyle: {
+                      position: "absolute",
+                      left: "0",
+                      top: "0",
+                      bottom: "0",
+                      right: "0",
+                      "background-color": "rgb(255,255,255,0.4)"
+                    }
                   },
-                  style: _vm.topLoadingPosition
-                },
-                [
-                  _c("CSpinner", {
-                    style: _vm.spinnerSize,
-                    attrs: { variant: "success", role: "status" }
-                  })
-                ],
-                1
-              )
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticStyle: {
+                          position: "absolute",
+                          bottom: "50%",
+                          left: "50%",
+                          transform: "translateX(-50%)"
+                        }
+                      },
+                      [_c("CSpinner", { attrs: { color: "success" } })],
+                      1
+                    )
+                  ]
+                )
+              ])
             : _vm._e()
-        ]
+        ],
+        2
       ),
       _vm._v(" "),
       _vm._t("under-table"),
@@ -28223,13 +27414,13 @@ var __vue_staticRenderFns__$D = [];
 __vue_render__$D._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$16 = undefined;
+  const __vue_inject_styles__$1b = undefined;
   /* scoped */
-  const __vue_scope_id__$16 = "data-v-251d8d63";
+  const __vue_scope_id__$1b = "data-v-a8f48572";
   /* module identifier */
-  const __vue_module_identifier__$16 = undefined;
+  const __vue_module_identifier__$1b = undefined;
   /* functional template */
-  const __vue_is_functional_template__$16 = false;
+  const __vue_is_functional_template__$1b = false;
   /* style inject */
   
   /* style inject SSR */
@@ -28238,16 +27429,16 @@ __vue_render__$D._withStripped = true;
   
   var CTable = normalizeComponent_1(
     { render: __vue_render__$D, staticRenderFns: __vue_staticRenderFns__$D },
-    __vue_inject_styles__$16,
-    __vue_script__$16,
-    __vue_scope_id__$16,
-    __vue_is_functional_template__$16,
-    __vue_module_identifier__$16,
+    __vue_inject_styles__$1b,
+    __vue_script__$1b,
+    __vue_scope_id__$1b,
+    __vue_is_functional_template__$1b,
+    __vue_module_identifier__$1b,
     undefined,
     undefined
   );
 
-var script$17 = {
+var script$1c = {
   name: 'CTab',
   props: {
     titleHtml: String,
@@ -28260,18 +27451,18 @@ var script$17 = {
 };
 
 /* script */
-const __vue_script__$17 = script$17;
+const __vue_script__$1c = script$1c;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$17 = undefined;
+  const __vue_inject_styles__$1c = undefined;
   /* scoped */
-  const __vue_scope_id__$17 = undefined;
+  const __vue_scope_id__$1c = undefined;
   /* module identifier */
-  const __vue_module_identifier__$17 = undefined;
+  const __vue_module_identifier__$1c = undefined;
   /* functional template */
-  const __vue_is_functional_template__$17 = undefined;
+  const __vue_is_functional_template__$1c = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -28280,16 +27471,16 @@ const __vue_script__$17 = script$17;
   
   var CTab = normalizeComponent_1(
     {},
-    __vue_inject_styles__$17,
-    __vue_script__$17,
-    __vue_scope_id__$17,
-    __vue_is_functional_template__$17,
-    __vue_module_identifier__$17,
+    __vue_inject_styles__$1c,
+    __vue_script__$1c,
+    __vue_scope_id__$1c,
+    __vue_is_functional_template__$1c,
+    __vue_module_identifier__$1c,
     undefined,
     undefined
   );
 
-var script$18 = {
+var script$1d = {
   name: 'CTabNav',
   props: Object.assign(propsFactory(), {
     titleHtml: String,
@@ -28312,18 +27503,18 @@ var script$18 = {
 };
 
 /* script */
-const __vue_script__$18 = script$18;
+const __vue_script__$1d = script$1d;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$18 = undefined;
+  const __vue_inject_styles__$1d = undefined;
   /* scoped */
-  const __vue_scope_id__$18 = undefined;
+  const __vue_scope_id__$1d = undefined;
   /* module identifier */
-  const __vue_module_identifier__$18 = undefined;
+  const __vue_module_identifier__$1d = undefined;
   /* functional template */
-  const __vue_is_functional_template__$18 = undefined;
+  const __vue_is_functional_template__$1d = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -28332,16 +27523,16 @@ const __vue_script__$18 = script$18;
   
   var CTabNav = normalizeComponent_1(
     {},
-    __vue_inject_styles__$18,
-    __vue_script__$18,
-    __vue_scope_id__$18,
-    __vue_is_functional_template__$18,
-    __vue_module_identifier__$18,
+    __vue_inject_styles__$1d,
+    __vue_script__$1d,
+    __vue_scope_id__$1d,
+    __vue_is_functional_template__$1d,
+    __vue_module_identifier__$1d,
     undefined,
     undefined
   );
 
-var script$19 = {
+var script$1e = {
   name: 'CTabContent',
   props: {
     content: Function
@@ -28352,18 +27543,18 @@ var script$19 = {
 };
 
 /* script */
-const __vue_script__$19 = script$19;
+const __vue_script__$1e = script$1e;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$19 = undefined;
+  const __vue_inject_styles__$1e = undefined;
   /* scoped */
-  const __vue_scope_id__$19 = undefined;
+  const __vue_scope_id__$1e = undefined;
   /* module identifier */
-  const __vue_module_identifier__$19 = undefined;
+  const __vue_module_identifier__$1e = undefined;
   /* functional template */
-  const __vue_is_functional_template__$19 = undefined;
+  const __vue_is_functional_template__$1e = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -28372,16 +27563,16 @@ const __vue_script__$19 = script$19;
   
   var CTabContent = normalizeComponent_1(
     {},
-    __vue_inject_styles__$19,
-    __vue_script__$19,
-    __vue_scope_id__$19,
-    __vue_is_functional_template__$19,
-    __vue_module_identifier__$19,
+    __vue_inject_styles__$1e,
+    __vue_script__$1e,
+    __vue_scope_id__$1e,
+    __vue_is_functional_template__$1e,
+    __vue_module_identifier__$1e,
     undefined,
     undefined
   );
 
-var script$1a = {
+var script$1f = {
   name: 'CTabs',
   components: {
     CTabNav: CTabNav,
@@ -28395,7 +27586,10 @@ var script$1a = {
       type: Boolean,
       default: true
     },
-    noFade: Boolean,
+    fade: {
+      type: Boolean,
+      default: true
+    },
     vertical: [Boolean, Object],
     addNavWrapperClasses: [String, Array, Object],
     addNavClasses: [String, Array, Object],
@@ -28480,11 +27674,11 @@ var script$1a = {
   }
 };
 
-var css$7 = "\n.fade-enter-active, .fade-leave-active {\n  -webkit-transition: opacity .3s;\n  transition: opacity .3s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n";
-styleInject(css$7);
+var css$8 = "\n.fade-enter-active, .fade-leave-active {\n  -webkit-transition: opacity .3s;\n  transition: opacity .3s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n";
+styleInject(css$8);
 
 /* script */
-const __vue_script__$1a = script$1a;
+const __vue_script__$1f = script$1f;
 /* template */
 var __vue_render__$E = function() {
   var _vm = this;
@@ -28536,7 +27730,7 @@ var __vue_render__$E = function() {
             [
               _c(
                 "transition",
-                { attrs: { name: _vm.noFade ? null : "fade", mode: "out-in" } },
+                { attrs: { name: _vm.fade ? "fade" : "", mode: "out-in" } },
                 [
                   _c(
                     "KeepAlive",
@@ -28573,13 +27767,13 @@ var __vue_staticRenderFns__$E = [];
 __vue_render__$E._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1a = undefined;
+  const __vue_inject_styles__$1f = undefined;
   /* scoped */
-  const __vue_scope_id__$1a = undefined;
+  const __vue_scope_id__$1f = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1a = undefined;
+  const __vue_module_identifier__$1f = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1a = false;
+  const __vue_is_functional_template__$1f = false;
   /* style inject */
   
   /* style inject SSR */
@@ -28588,11 +27782,11 @@ __vue_render__$E._withStripped = true;
   
   var CTabs = normalizeComponent_1(
     { render: __vue_render__$E, staticRenderFns: __vue_staticRenderFns__$E },
-    __vue_inject_styles__$1a,
-    __vue_script__$1a,
-    __vue_scope_id__$1a,
-    __vue_is_functional_template__$1a,
-    __vue_module_identifier__$1a,
+    __vue_inject_styles__$1f,
+    __vue_script__$1f,
+    __vue_scope_id__$1f,
+    __vue_is_functional_template__$1f,
+    __vue_module_identifier__$1f,
     undefined,
     undefined
   );
@@ -28606,12 +27800,20 @@ var toastMixin = {
         return ['', 'static', 'top-right', 'top-left', 'top-center', 'top-full', 'bottom-right', 'bottom-left', 'bottom-center', 'bottom-full'].includes(position);
       }
     },
-    titleHtml: String,
-    bodyHtml: String,
-    noHeader: Boolean,
-    autohide: Number,
-    noCloseButton: Boolean,
-    noFade: Boolean
+    autohide: {
+      type: [Number, Boolean],
+      validator: function validator(val) {
+        return typeof val === 'number' || val === false;
+      }
+    },
+    closeButton: {
+      type: Boolean,
+      default: true
+    },
+    fade: {
+      type: Boolean,
+      default: true
+    }
   },
   computed: {
     computedStyles: function computedStyles() {
@@ -28660,11 +27862,13 @@ var toastMixin = {
   }
 };
 
-var script$1b = {
+var script$1g = {
   name: 'CToast',
   mixins: [toastMixin],
   props: {
-    show: Boolean
+    show: Boolean,
+    headerHtml: String,
+    bodyHtml: String
   },
   components: {
     CButtonClose: CButtonClose
@@ -28731,12 +27935,17 @@ var script$1b = {
     },
     close: function close() {
       var restoreOnHover = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+      if (this.isShowed === false) {
+        return;
+      }
+
       this.isShowed = false;
       this.$emit('update:show', false);
       this.$el.removeEventListener('mouseout', this.onHoverOut);
       this.$el.removeEventListener('mouseover', this.onHover);
 
-      if (!this.props.noFade) {
+      if (this.props.fade) {
         this.setHiddingMode(restoreOnHover);
       }
     },
@@ -28778,11 +27987,11 @@ var script$1b = {
   }
 };
 
-var css$8 = "\n.toast[data-v-50461642] {\n  opacity: 1;\n}\n.toast.full[data-v-50461642] {\n  max-width: 100%;\n}\n.toast[data-v-50461642]:last-child {\n  margin-bottom: 0.75rem;\n}\n.fade-enter-active[data-v-50461642] {\n  -webkit-transition: opacity .5s;\n  transition: opacity .5s;\n}\n.fade-leave-active[data-v-50461642] {\n  -webkit-transition: opacity 2s;\n  transition: opacity 2s;\n}\n.fade-enter[data-v-50461642], .fade-leave-to[data-v-50461642] {\n  opacity: 0;\n}\n";
-styleInject(css$8);
+var css$9 = "\n.toast[data-v-7cbe8ce7] {\n  opacity: 1;\n}\n.toast.full[data-v-7cbe8ce7] {\n  max-width: 100%;\n}\n.toast[data-v-7cbe8ce7]:last-child {\n  margin-bottom: 0.75rem;\n}\n.fade-enter-active[data-v-7cbe8ce7] {\n  -webkit-transition: opacity .5s;\n  transition: opacity .5s;\n}\n.fade-leave-active[data-v-7cbe8ce7] {\n  -webkit-transition: opacity 2s;\n  transition: opacity 2s;\n}\n.fade-enter[data-v-7cbe8ce7], .fade-leave-to[data-v-7cbe8ce7] {\n  opacity: 0;\n}\n";
+styleInject(css$9);
 
 /* script */
-const __vue_script__$1b = script$1b;
+const __vue_script__$1g = script$1g;
 /* template */
 var __vue_render__$F = function() {
   var _vm = this;
@@ -28790,7 +27999,7 @@ var __vue_render__$F = function() {
   var _c = _vm._self._c || _h;
   return _c(
     "transition",
-    { attrs: { name: !_vm.props.noFade ? "fade" : null, appear: "" } },
+    { attrs: { name: _vm.props.fade ? "fade" : null, appear: "" } },
     [
       _c(
         "div",
@@ -28812,23 +28021,19 @@ var __vue_render__$F = function() {
           }
         },
         [
-          !_vm.props.noHeader
+          _vm.headerHtml !== undefined || _vm.$slots.header
             ? _c(
                 "div",
                 { staticClass: "toast-header" },
                 [
-                  _vm._t(
-                    "title",
-                    [
-                      _c("strong", {
-                        staticClass: "mr-auto",
-                        domProps: { innerHTML: _vm._s(_vm.props.titleHtml) }
-                      })
-                    ],
-                    { close: _vm.close }
-                  ),
+                  _vm._t("header", [
+                    _c("strong", {
+                      staticClass: "mr-auto",
+                      domProps: { innerHTML: _vm._s(_vm.headerHtml) }
+                    })
+                  ]),
                   _vm._v(" "),
-                  !_vm.props.noCloseButton
+                  _vm.props.closeButton
                     ? _c("CButtonClose", {
                         staticClass: "ml-2 mb-1",
                         on: {
@@ -28843,14 +28048,13 @@ var __vue_render__$F = function() {
               )
             : _vm._e(),
           _vm._v(" "),
-          _vm._t("default", [
-            _c("div", {
-              staticClass: "toast-body",
-              domProps: { innerHTML: _vm._s(_vm.props.bodyHtml) }
-            })
-          ])
-        ],
-        2
+          _vm.$slots.default
+            ? _c("div", { staticClass: "toast-body" }, [_vm._t("default")], 2)
+            : _c("div", {
+                staticClass: "toast-body",
+                domProps: { innerHTML: _vm._s(_vm.bodyHtml) }
+              })
+        ]
       )
     ]
   )
@@ -28859,13 +28063,13 @@ var __vue_staticRenderFns__$F = [];
 __vue_render__$F._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1b = undefined;
+  const __vue_inject_styles__$1g = undefined;
   /* scoped */
-  const __vue_scope_id__$1b = "data-v-50461642";
+  const __vue_scope_id__$1g = "data-v-7cbe8ce7";
   /* module identifier */
-  const __vue_module_identifier__$1b = undefined;
+  const __vue_module_identifier__$1g = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1b = false;
+  const __vue_is_functional_template__$1g = false;
   /* style inject */
   
   /* style inject SSR */
@@ -28874,17 +28078,16 @@ __vue_render__$F._withStripped = true;
   
   var CToast = normalizeComponent_1(
     { render: __vue_render__$F, staticRenderFns: __vue_staticRenderFns__$F },
-    __vue_inject_styles__$1b,
-    __vue_script__$1b,
-    __vue_scope_id__$1b,
-    __vue_is_functional_template__$1b,
-    __vue_module_identifier__$1b,
+    __vue_inject_styles__$1g,
+    __vue_script__$1g,
+    __vue_scope_id__$1g,
+    __vue_is_functional_template__$1g,
+    __vue_module_identifier__$1g,
     undefined,
     undefined
   );
 
-//
-var script$1c = {
+var script$1h = {
   name: 'CToaster',
   provide: function provide() {
     var _this = this;
@@ -28913,7 +28116,7 @@ var script$1c = {
 };
 
 /* script */
-const __vue_script__$1c = script$1c;
+const __vue_script__$1h = script$1h;
 
 /* template */
 var __vue_render__$G = function() {
@@ -28931,13 +28134,13 @@ var __vue_staticRenderFns__$G = [];
 __vue_render__$G._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1c = undefined;
+  const __vue_inject_styles__$1h = undefined;
   /* scoped */
-  const __vue_scope_id__$1c = undefined;
+  const __vue_scope_id__$1h = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1c = undefined;
+  const __vue_module_identifier__$1h = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1c = false;
+  const __vue_is_functional_template__$1h = false;
   /* style inject */
   
   /* style inject SSR */
@@ -28946,16 +28149,76 @@ __vue_render__$G._withStripped = true;
   
   var CToaster = normalizeComponent_1(
     { render: __vue_render__$G, staticRenderFns: __vue_staticRenderFns__$G },
-    __vue_inject_styles__$1c,
-    __vue_script__$1c,
-    __vue_scope_id__$1c,
-    __vue_is_functional_template__$1c,
-    __vue_module_identifier__$1c,
+    __vue_inject_styles__$1h,
+    __vue_script__$1h,
+    __vue_scope_id__$1h,
+    __vue_is_functional_template__$1h,
+    __vue_module_identifier__$1h,
     undefined,
     undefined
   );
 
-var script$1d = {
+var script$1i = {
+  name: 'CToggler',
+  functional: true,
+  props: {
+    tag: {
+      type: String,
+      default: 'button'
+    },
+    inHeader: Boolean,
+    inNavbar: Boolean
+  },
+  render: function render(h, _ref) {
+    var data = _ref.data,
+        props = _ref.props,
+        slots = _ref.slots;
+    var attrs = props.tag === 'button' ? {
+      type: 'button'
+    } : null;
+    var type = props.inNavbar ? 'navbar' : props.inHeader ? 'c-header' : null;
+    var staticClass = type ? "".concat(type, "-toggler") : '';
+    var iconClass = type ? "".concat(staticClass, "-icon") : '';
+    return h(props.tag, a({
+      staticClass: staticClass,
+      attrs: attrs
+    }, data), [slots().default || h('span', {
+      class: iconClass
+    })]);
+  }
+};
+
+/* script */
+const __vue_script__$1i = script$1i;
+
+/* template */
+
+  /* style */
+  const __vue_inject_styles__$1i = undefined;
+  /* scoped */
+  const __vue_scope_id__$1i = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$1i = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$1i = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CToggler = normalizeComponent_1(
+    {},
+    __vue_inject_styles__$1i,
+    __vue_script__$1i,
+    __vue_scope_id__$1i,
+    __vue_is_functional_template__$1i,
+    __vue_module_identifier__$1i,
+    undefined,
+    undefined
+  );
+
+var script$1j = {
   name: 'CWidgetProgress',
   components: {
     CProgress: CProgress
@@ -28964,7 +28227,7 @@ var script$1d = {
     header: String,
     text: String,
     footer: String,
-    variant: String,
+    color: String,
     inverse: Boolean,
     value: {
       type: Number,
@@ -28974,7 +28237,7 @@ var script$1d = {
 };
 
 /* script */
-const __vue_script__$1d = script$1d;
+const __vue_script__$1j = script$1j;
 
 /* template */
 var __vue_render__$H = function() {
@@ -28983,10 +28246,8 @@ var __vue_render__$H = function() {
   var _c = _vm._self._c || _h;
   return _c(
     "div",
-    { class: _vm.inverse ? "card text-white bg-" + _vm.variant : "card" },
+    { class: _vm.inverse ? "card text-white bg-" + _vm.color : "card" },
     [
-      _vm._t("header"),
-      _vm._v(" "),
       _c(
         "div",
         { staticClass: "card-body" },
@@ -29001,10 +28262,7 @@ var __vue_render__$H = function() {
             _c("CProgress", {
               staticClass: "progress-xs my-3 mb-0",
               class: _vm.inverse ? "progress-white" : "",
-              attrs: {
-                variant: !_vm.inverse ? _vm.variant : "",
-                value: _vm.value
-              }
+              attrs: { color: !_vm.inverse ? _vm.color : "", value: _vm.value }
             })
           ]),
           _vm._v(" "),
@@ -29015,24 +28273,21 @@ var __vue_render__$H = function() {
             : _vm._e()
         ],
         2
-      ),
-      _vm._v(" "),
-      _vm._t("footer")
-    ],
-    2
+      )
+    ]
   )
 };
 var __vue_staticRenderFns__$H = [];
 __vue_render__$H._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1d = undefined;
+  const __vue_inject_styles__$1j = undefined;
   /* scoped */
-  const __vue_scope_id__$1d = undefined;
+  const __vue_scope_id__$1j = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1d = undefined;
+  const __vue_module_identifier__$1j = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1d = false;
+  const __vue_is_functional_template__$1j = false;
   /* style inject */
   
   /* style inject SSR */
@@ -29041,11 +28296,11 @@ __vue_render__$H._withStripped = true;
   
   var CWidgetProgress = normalizeComponent_1(
     { render: __vue_render__$H, staticRenderFns: __vue_staticRenderFns__$H },
-    __vue_inject_styles__$1d,
-    __vue_script__$1d,
-    __vue_scope_id__$1d,
-    __vue_is_functional_template__$1d,
-    __vue_module_identifier__$1d,
+    __vue_inject_styles__$1j,
+    __vue_script__$1j,
+    __vue_scope_id__$1j,
+    __vue_is_functional_template__$1j,
+    __vue_module_identifier__$1j,
     undefined,
     undefined
   );
@@ -29077,86 +28332,78 @@ __vue_render__$H._withStripped = true;
 //
 //
 //
-//
-//
-var script$1e = {
+var script$1k = {
   name: 'CWidgetIcon',
   props: {
     header: String,
     text: String,
-    noIconPadding: Boolean,
-    variant: String
+    iconPadding: {
+      type: Boolean,
+      default: true
+    },
+    color: String
   }
 };
 
 /* script */
-const __vue_script__$1e = script$1e;
+const __vue_script__$1k = script$1k;
 
 /* template */
 var __vue_render__$I = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return _c(
-    "div",
-    { staticClass: "card" },
-    [
-      _vm._t("header"),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "card-body clearfix d-flex align-items-center",
-          class: _vm.noIconPadding ? "p-0" : "p-3"
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "float-left mr-3 text-white",
-              class: ["bg-" + _vm.variant, _vm.noIconPadding ? "p-4" : "p-3"]
-            },
-            [_vm._t("default")],
-            2
-          ),
+  return _c("div", { staticClass: "card" }, [
+    _c(
+      "div",
+      {
+        staticClass: "card-body clearfix d-flex align-items-center",
+        class: _vm.iconPadding ? "p-3" : "p-0"
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "float-left mr-3 text-white",
+            class: ["bg-" + _vm.color, _vm.iconPadding ? "p-3" : "p-4"]
+          },
+          [_vm._t("default")],
+          2
+        ),
+        _vm._v(" "),
+        _c("div", [
+          _vm.header
+            ? _c("div", { class: "text-value text-" + _vm.color }, [
+                _vm._v("\n        " + _vm._s(_vm.header) + "\n      ")
+              ])
+            : _vm._e(),
           _vm._v(" "),
-          _c("div", [
-            _vm.header
-              ? _c("div", { class: "text-value text-" + _vm.variant }, [
-                  _vm._v("\n        " + _vm._s(_vm.header) + "\n      ")
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.text
-              ? _c(
-                  "div",
-                  {
-                    staticClass:
-                      "text-muted text-uppercase font-weight-bold small"
-                  },
-                  [_vm._v("\n        " + _vm._s(_vm.text) + "\n      ")]
-                )
-              : _vm._e()
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _vm._t("footer")
-    ],
-    2
-  )
+          _vm.text
+            ? _c(
+                "div",
+                {
+                  staticClass:
+                    "text-muted text-uppercase font-weight-bold small"
+                },
+                [_vm._v("\n        " + _vm._s(_vm.text) + "\n      ")]
+              )
+            : _vm._e()
+        ])
+      ]
+    )
+  ])
 };
 var __vue_staticRenderFns__$I = [];
 __vue_render__$I._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1e = undefined;
+  const __vue_inject_styles__$1k = undefined;
   /* scoped */
-  const __vue_scope_id__$1e = undefined;
+  const __vue_scope_id__$1k = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1e = undefined;
+  const __vue_module_identifier__$1k = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1e = false;
+  const __vue_is_functional_template__$1k = false;
   /* style inject */
   
   /* style inject SSR */
@@ -29165,11 +28412,11 @@ __vue_render__$I._withStripped = true;
   
   var CWidgetIcon = normalizeComponent_1(
     { render: __vue_render__$I, staticRenderFns: __vue_staticRenderFns__$I },
-    __vue_inject_styles__$1e,
-    __vue_script__$1e,
-    __vue_scope_id__$1e,
-    __vue_is_functional_template__$1e,
-    __vue_module_identifier__$1e,
+    __vue_inject_styles__$1k,
+    __vue_script__$1k,
+    __vue_scope_id__$1k,
+    __vue_is_functional_template__$1k,
+    __vue_module_identifier__$1k,
     undefined,
     undefined
   );
@@ -29206,10 +28453,10 @@ __vue_render__$I._withStripped = true;
 //
 //
 //
-var script$1f = {
+var script$1l = {
   name: 'CWidgetBrand',
   props: {
-    variant: String,
+    color: String,
     rightHeader: String,
     rightFooter: String,
     leftHeader: String,
@@ -29219,7 +28466,7 @@ var script$1f = {
 };
 
 /* script */
-const __vue_script__$1f = script$1f;
+const __vue_script__$1l = script$1l;
 
 /* template */
 var __vue_render__$J = function() {
@@ -29234,7 +28481,7 @@ var __vue_render__$J = function() {
         "div",
         {
           staticClass: "card-header content-center text-white p-0",
-          class: ["bg-" + _vm.variant, _vm.addHeaderClasses]
+          class: ["bg-" + _vm.color, _vm.addHeaderClasses]
         },
         [_vm._t("default")],
         2
@@ -29285,13 +28532,13 @@ var __vue_staticRenderFns__$J = [];
 __vue_render__$J._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1f = undefined;
+  const __vue_inject_styles__$1l = undefined;
   /* scoped */
-  const __vue_scope_id__$1f = undefined;
+  const __vue_scope_id__$1l = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1f = undefined;
+  const __vue_module_identifier__$1l = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1f = false;
+  const __vue_is_functional_template__$1l = false;
   /* style inject */
   
   /* style inject SSR */
@@ -29300,16 +28547,16 @@ __vue_render__$J._withStripped = true;
   
   var CWidgetBrand = normalizeComponent_1(
     { render: __vue_render__$J, staticRenderFns: __vue_staticRenderFns__$J },
-    __vue_inject_styles__$1f,
-    __vue_script__$1f,
-    __vue_scope_id__$1f,
-    __vue_is_functional_template__$1f,
-    __vue_module_identifier__$1f,
+    __vue_inject_styles__$1l,
+    __vue_script__$1l,
+    __vue_scope_id__$1l,
+    __vue_is_functional_template__$1l,
+    __vue_module_identifier__$1l,
     undefined,
     undefined
   );
 
-var script$1g = {
+var script$1m = {
   name: 'CWidgetProgressIcon',
   components: {
     CProgress: CProgress
@@ -29317,7 +28564,7 @@ var script$1g = {
   props: {
     header: String,
     text: String,
-    variant: String,
+    color: String,
     inverse: Boolean,
     value: {
       type: Number,
@@ -29327,7 +28574,7 @@ var script$1g = {
 };
 
 /* script */
-const __vue_script__$1g = script$1g;
+const __vue_script__$1m = script$1m;
 
 /* template */
 var __vue_render__$K = function() {
@@ -29336,10 +28583,8 @@ var __vue_render__$K = function() {
   var _c = _vm._self._c || _h;
   return _c(
     "div",
-    { class: _vm.inverse ? "card text-white bg-" + _vm.variant : "card" },
+    { class: _vm.inverse ? "card text-white bg-" + _vm.color : "card" },
     [
-      _vm._t("header"),
-      _vm._v(" "),
       _c(
         "div",
         { staticClass: "card-body" },
@@ -29371,32 +28616,26 @@ var __vue_render__$K = function() {
             _c("CProgress", {
               staticClass: "progress-xs my-3 mb-0",
               class: _vm.inverse ? "progress-white" : "",
-              attrs: {
-                variant: !_vm.inverse ? _vm.variant : "",
-                value: _vm.value
-              }
+              attrs: { color: !_vm.inverse ? _vm.color : "", value: _vm.value }
             })
           ])
         ],
         2
-      ),
-      _vm._v(" "),
-      _vm._t("footer")
-    ],
-    2
+      )
+    ]
   )
 };
 var __vue_staticRenderFns__$K = [];
 __vue_render__$K._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1g = undefined;
+  const __vue_inject_styles__$1m = undefined;
   /* scoped */
-  const __vue_scope_id__$1g = undefined;
+  const __vue_scope_id__$1m = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1g = undefined;
+  const __vue_module_identifier__$1m = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1g = false;
+  const __vue_is_functional_template__$1m = false;
   /* style inject */
   
   /* style inject SSR */
@@ -29405,11 +28644,11 @@ __vue_render__$K._withStripped = true;
   
   var CWidgetProgressIcon = normalizeComponent_1(
     { render: __vue_render__$K, staticRenderFns: __vue_staticRenderFns__$K },
-    __vue_inject_styles__$1g,
-    __vue_script__$1g,
-    __vue_scope_id__$1g,
-    __vue_is_functional_template__$1g,
-    __vue_module_identifier__$1g,
+    __vue_inject_styles__$1m,
+    __vue_script__$1m,
+    __vue_scope_id__$1m,
+    __vue_is_functional_template__$1m,
+    __vue_module_identifier__$1m,
     undefined,
     undefined
   );
@@ -29425,18 +28664,17 @@ __vue_render__$K._withStripped = true;
 //
 //
 //
-//
-var script$1h = {
+var script$1n = {
   name: 'CWidgetDropdown',
   props: {
-    variant: String,
+    color: String,
     header: String,
     text: String
   }
 };
 
 /* script */
-const __vue_script__$1h = script$1h;
+const __vue_script__$1n = script$1n;
 
 /* template */
 var __vue_render__$L = function() {
@@ -29445,10 +28683,8 @@ var __vue_render__$L = function() {
   var _c = _vm._self._c || _h;
   return _c(
     "div",
-    { staticClass: "card", class: "bg-" + _vm.variant },
+    { staticClass: "card", class: "bg-" + _vm.color + " text-white" },
     [
-      _vm._t("header"),
-      _vm._v(" "),
       _c(
         "div",
         { staticClass: "card-body pb-0" },
@@ -29473,13 +28709,13 @@ var __vue_staticRenderFns__$L = [];
 __vue_render__$L._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1h = undefined;
+  const __vue_inject_styles__$1n = undefined;
   /* scoped */
-  const __vue_scope_id__$1h = undefined;
+  const __vue_scope_id__$1n = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1h = undefined;
+  const __vue_module_identifier__$1n = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1h = false;
+  const __vue_is_functional_template__$1n = false;
   /* style inject */
   
   /* style inject SSR */
@@ -29488,11 +28724,11 @@ __vue_render__$L._withStripped = true;
   
   var CWidgetDropdown = normalizeComponent_1(
     { render: __vue_render__$L, staticRenderFns: __vue_staticRenderFns__$L },
-    __vue_inject_styles__$1h,
-    __vue_script__$1h,
-    __vue_scope_id__$1h,
-    __vue_is_functional_template__$1h,
-    __vue_module_identifier__$1h,
+    __vue_inject_styles__$1n,
+    __vue_script__$1n,
+    __vue_scope_id__$1n,
+    __vue_is_functional_template__$1n,
+    __vue_module_identifier__$1n,
     undefined,
     undefined
   );
@@ -29517,10 +28753,10 @@ __vue_render__$L._withStripped = true;
 //
 //
 //
-var script$1i = {
+var script$1o = {
   name: 'CWidgetHeaderDetails',
   props: {
-    variant: String,
+    color: String,
     rightHeader: String,
     rightFooter: String,
     leftHeader: String,
@@ -29529,61 +28765,65 @@ var script$1i = {
 };
 
 /* script */
-const __vue_script__$1i = script$1i;
+const __vue_script__$1o = script$1o;
 
 /* template */
 var __vue_render__$M = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return _c("div", { staticClass: "card", class: "bg-" + _vm.variant }, [
-    _c(
-      "div",
-      { staticClass: "card-header" },
-      [
-        _c("div", { staticClass: "font-weight-bold" }, [
-          _vm.rightHeader
-            ? _c("span", [_vm._v(_vm._s(_vm.rightHeader))])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.leftHeader
-            ? _c("span", { staticClass: "float-right" }, [
-                _vm._v(_vm._s(_vm.leftHeader))
-              ])
-            : _vm._e()
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("span", [
-            _vm.rightFooter
-              ? _c("small", [_vm._v(_vm._s(_vm.rightFooter))])
+  return _c(
+    "div",
+    { staticClass: "card", class: "bg-" + _vm.color + " text-white" },
+    [
+      _c(
+        "div",
+        { staticClass: "card-header" },
+        [
+          _c("div", { staticClass: "font-weight-bold" }, [
+            _vm.rightHeader
+              ? _c("span", [_vm._v(_vm._s(_vm.rightHeader))])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.leftHeader
+              ? _c("span", { staticClass: "float-right" }, [
+                  _vm._v(_vm._s(_vm.leftHeader))
+                ])
               : _vm._e()
           ]),
           _vm._v(" "),
-          _c("span", { staticClass: "float-right" }, [
-            _vm.leftFooter
-              ? _c("small", [_vm._v(_vm._s(_vm.leftFooter))])
-              : _vm._e()
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._t("default")
-      ],
-      2
-    )
-  ])
+          _c("div", [
+            _c("span", [
+              _vm.rightFooter
+                ? _c("small", [_vm._v(_vm._s(_vm.rightFooter))])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "float-right" }, [
+              _vm.leftFooter
+                ? _c("small", [_vm._v(_vm._s(_vm.leftFooter))])
+                : _vm._e()
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._t("default")
+        ],
+        2
+      )
+    ]
+  )
 };
 var __vue_staticRenderFns__$M = [];
 __vue_render__$M._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1i = undefined;
+  const __vue_inject_styles__$1o = undefined;
   /* scoped */
-  const __vue_scope_id__$1i = undefined;
+  const __vue_scope_id__$1o = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1i = undefined;
+  const __vue_module_identifier__$1o = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1i = false;
+  const __vue_is_functional_template__$1o = false;
   /* style inject */
   
   /* style inject SSR */
@@ -29592,11 +28832,11 @@ __vue_render__$M._withStripped = true;
   
   var CWidgetHeaderDetails = normalizeComponent_1(
     { render: __vue_render__$M, staticRenderFns: __vue_staticRenderFns__$M },
-    __vue_inject_styles__$1i,
-    __vue_script__$1i,
-    __vue_scope_id__$1i,
-    __vue_is_functional_template__$1i,
-    __vue_module_identifier__$1i,
+    __vue_inject_styles__$1o,
+    __vue_script__$1o,
+    __vue_scope_id__$1o,
+    __vue_is_functional_template__$1o,
+    __vue_module_identifier__$1o,
     undefined,
     undefined
   );
@@ -29618,7 +28858,7 @@ __vue_render__$M._withStripped = true;
 //
 //
 //
-var script$1j = {
+var script$1p = {
   name: 'CWidgetSimple',
   props: {
     header: String,
@@ -29627,59 +28867,51 @@ var script$1j = {
 };
 
 /* script */
-const __vue_script__$1j = script$1j;
+const __vue_script__$1p = script$1p;
 
 /* template */
 var __vue_render__$N = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return _c(
-    "div",
-    { staticClass: "card" },
-    [
-      _vm._t("header"),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "card-body text-center" },
-        [
-          _vm.header
-            ? _c(
-                "div",
-                {
-                  staticClass:
-                    "text-muted small text-uppercase font-weight-bold"
-                },
-                [_vm._v("\n      " + _vm._s(_vm.header) + "\n    ")]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.text
-            ? _c("div", { staticClass: "h2 py-3" }, [_vm._v(_vm._s(_vm.text))])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm._t("default")
-        ],
-        2
-      ),
-      _vm._v(" "),
-      _vm._t("footer")
-    ],
-    2
-  )
+  return _c("div", { staticClass: "card" }, [
+    _c(
+      "div",
+      { staticClass: "card-body text-center" },
+      [
+        _vm.header
+          ? _c(
+              "div",
+              {
+                staticClass: "text-muted small text-uppercase font-weight-bold"
+              },
+              [_vm._v("\n      " + _vm._s(_vm.header) + "\n    ")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.text
+          ? _c("div", { staticClass: "h2 py-3" }, [
+              _vm._v("\n      " + _vm._s(_vm.text) + "\n    ")
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm._t("default")
+      ],
+      2
+    )
+  ])
 };
 var __vue_staticRenderFns__$N = [];
 __vue_render__$N._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1j = undefined;
+  const __vue_inject_styles__$1p = undefined;
   /* scoped */
-  const __vue_scope_id__$1j = undefined;
+  const __vue_scope_id__$1p = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1j = undefined;
+  const __vue_module_identifier__$1p = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1j = false;
+  const __vue_is_functional_template__$1p = false;
   /* style inject */
   
   /* style inject SSR */
@@ -29688,11 +28920,11 @@ __vue_render__$N._withStripped = true;
   
   var CWidgetSimple = normalizeComponent_1(
     { render: __vue_render__$N, staticRenderFns: __vue_staticRenderFns__$N },
-    __vue_inject_styles__$1j,
-    __vue_script__$1j,
-    __vue_scope_id__$1j,
-    __vue_is_functional_template__$1j,
-    __vue_module_identifier__$1j,
+    __vue_inject_styles__$1p,
+    __vue_script__$1p,
+    __vue_scope_id__$1p,
+    __vue_is_functional_template__$1p,
+    __vue_module_identifier__$1p,
     undefined,
     undefined
   );
@@ -29700,91 +28932,100 @@ __vue_render__$N._withStripped = true;
 
 
 var Components = /*#__PURE__*/Object.freeze({
-  CLink: CLink,
-  CAlert: CAlert,
-  CBreadcrumb: CBreadcrumb,
-  CBreadcrumbRouter: CBreadcrumbRouter,
-  CButton: CButton,
-  CButtonClose: CButtonClose,
-  CButtonGroup: CButtonGroup,
-  CButtonToolbar: CButtonToolbar,
-  CCallout: CCallout,
-  CCarousel: CCarousel,
-  CCarouselItem: CCarouselItem,
-  CCardGroup: CCardGroup,
-  CCard: CCard,
-  CCardBody: CCardBody,
-  CCardFooter: CCardFooter,
-  CCardHeader: CCardHeader,
-  CCollapse: CCollapse,
-  CDropdown: CDropdown,
-  CDropdownHeader: CDropdownHeader,
-  CDropdownDivider: CDropdownDivider,
-  CDropdownItem: CDropdownItem,
-  CEmbed: CEmbed,
-  CFooter: CFooter,
-  CForm: CForm,
-  CFormInput: CFormInput,
-  CFormCheckbox: CFormCheckbox,
-  CFormFile: CFormFile,
-  CFormTextarea: CFormTextarea,
-  CFormSelect: CFormSelect,
-  CFormRadio: CFormRadio,
-  CContainer: CContainer,
-  CRow: CRow,
-  CCol: CCol,
-  CHeader: CHeader,
-  CHeaderNavItem: CHeaderNavItem,
-  CImage: CImage,
-  CImageLazy: CImageLazy,
-  CJumbotron: CJumbotron,
-  CBadge: CBadge,
-  CListGroup: CListGroup,
-  CListGroupItem: CListGroupItem,
-  CMedia: CMedia,
-  CModal: CModal,
-  CNav: CNav,
-  CNavItem: CNavItem,
-  CNavbar: CNavbar,
-  CNavbarNav: CNavbarNav,
-  CNavbarToggle: CNavbarToggle,
-  CNavbarBrand: CNavbarBrand,
-  CPagination: CPagination,
-  CProgress: CProgress,
-  CProgressBar: CProgressBar,
-  CRenderFunction: CRenderFunction,
-  CSidebar: CSidebar,
-  CSidebarBrand: CSidebarBrand,
-  CSidebarFooter: CSidebarFooter,
-  CSidebarForm: CSidebarForm,
-  CSidebarHeader: CSidebarHeader,
-  CSidebarMinimizer: CSidebarMinimizer,
-  CSidebarNav: CSidebarNav,
-  CSidebarNavDivider: CSidebarNavDivider,
-  CSidebarNavDropdown: CSidebarNavDropdown,
-  CSidebarNavLabel: CSidebarNavLabel,
-  CSidebarNavLink: CSidebarNavLink,
-  CSidebarNavTitle: CSidebarNavTitle,
-  CSidebarToggler: CSidebarToggler,
-  CSpinner: CSpinner,
-  CSwitch: CSwitch,
-  CTable: CTable,
-  CTab: CTab,
-  CTabs: CTabs,
-  CToast: CToast,
-  CToaster: CToaster,
-  CWidgetProgress: CWidgetProgress,
-  CWidgetIcon: CWidgetIcon,
-  CWidgetBrand: CWidgetBrand,
-  CWidgetProgressIcon: CWidgetProgressIcon,
-  CWidgetDropdown: CWidgetDropdown,
-  CWidgetHeaderDetails: CWidgetHeaderDetails,
-  CWidgetSimple: CWidgetSimple
+	__proto__: null,
+	CListGroup: CListGroup,
+	CListGroupItem: CListGroupItem,
+	CAlert: CAlert,
+	CBreadcrumb: CBreadcrumb,
+	CBreadcrumbRouter: CBreadcrumbRouter,
+	CButton: CButton,
+	CButtonClose: CButtonClose,
+	CButtonGroup: CButtonGroup,
+	CButtonToolbar: CButtonToolbar,
+	CCallout: CCallout,
+	CCarousel: CCarousel,
+	CCarouselItem: CCarouselItem,
+	CCardGroup: CCardGroup,
+	CCard: CCard,
+	CCardBody: CCardBody,
+	CCardFooter: CCardFooter,
+	CCardHeader: CCardHeader,
+	CCardTitle: CCardTitle,
+	CCardSubtitle: CCardSubtitle,
+	CCardText: CCardText,
+	CCardImg: CCardImg,
+	CCardImgOverlay: CCardImgOverlay,
+	CCardLink: CCardLink,
+	CCollapse: CCollapse,
+	CDropdown: CDropdown,
+	CDropdownHeader: CDropdownHeader,
+	CDropdownDivider: CDropdownDivider,
+	CDropdownItem: CDropdownItem,
+	CEmbed: CEmbed,
+	CFooter: CFooter,
+	CForm: CForm,
+	CFormGroup: CFormGroup,
+	CInput: CInput,
+	CInputCheckbox: CInputCheckbox,
+	CInputFile: CInputFile,
+	CInputRadio: CInputRadio,
+	CSelect: CSelect,
+	CTextarea: CTextarea,
+	CContainer: CContainer,
+	CRow: CRow,
+	CCol: CCol,
+	CHeader: CHeader,
+	CHeaderNav: CHeaderNav,
+	CHeaderNavItem: CHeaderNavItem,
+	CImg: CImg,
+	CImgLazy: CImgLazy,
+	CJumbotron: CJumbotron,
+	CLink: CLink,
+	CBadge: CBadge,
+	CMedia: CMedia,
+	CModal: CModal,
+	CNav: CNav,
+	CNavItem: CNavItem,
+	CNavbar: CNavbar,
+	CNavbarNav: CNavbarNav,
+	CNavbarBrand: CNavbarBrand,
+	CPagination: CPagination,
+	CProgress: CProgress,
+	CProgressBar: CProgressBar,
+	CRenderFunction: CRenderFunction,
+	CScrollbar: CScrollbar,
+	CSidebar: CSidebar,
+	CSidebarBrand: CSidebarBrand,
+	CSidebarClose: CSidebarClose,
+	CSidebarFooter: CSidebarFooter,
+	CSidebarForm: CSidebarForm,
+	CSidebarHeader: CSidebarHeader,
+	CSidebarMinimizer: CSidebarMinimizer,
+	CSidebarNav: CSidebarNav,
+	CSidebarNavDivider: CSidebarNavDivider,
+	CSidebarNavDropdown: CSidebarNavDropdown,
+	CSidebarNavLink: CSidebarNavLink,
+	CSidebarNavTitle: CSidebarNavTitle,
+	CSpinner: CSpinner,
+	CSwitch: CSwitch,
+	CTable: CTable,
+	CTab: CTab,
+	CTabs: CTabs,
+	CToast: CToast,
+	CToaster: CToaster,
+	CToggler: CToggler,
+	CWidgetProgress: CWidgetProgress,
+	CWidgetIcon: CWidgetIcon,
+	CWidgetBrand: CWidgetBrand,
+	CWidgetProgressIcon: CWidgetProgressIcon,
+	CWidgetDropdown: CWidgetDropdown,
+	CWidgetHeaderDetails: CWidgetHeaderDetails,
+	CWidgetSimple: CWidgetSimple
 });
 
 /**!
  * @fileOverview Kickass library to create and place poppers near their reference elements.
- * @version 1.3.2
+ * @version 1.3.3
  * @license
  * Copyright (c) 2016 Federico Zivolo and contributors
  *
@@ -29885,8 +29126,8 @@ var Tooltip = function () {
    * @param {String} options.placement='top'
    *      Placement of the popper accepted values: `top(-start, -end), right(-start, -end), bottom(-start, -end),
    *      left(-start, -end)`
-   * @param {String} options.arrowSelector='.tooltip-arrow, .tooltip__arrow' - className used to locate the DOM arrow element in the tooltip.
-   * @param {String} options.innerSelector='.tooltip-inner, .tooltip__inner' - className used to locate the DOM inner element in the tooltip.
+   * @param {String} [options.arrowSelector='.tooltip-arrow, .tooltip__arrow'] - className used to locate the DOM arrow element in the tooltip.
+   * @param {String} [options.innerSelector='.tooltip-inner, .tooltip__inner'] - className used to locate the DOM inner element in the tooltip.
    * @param {HTMLElement|String|false} options.container=false - Append the tooltip to a specific element.
    * @param {Number|Object} options.delay=0
    *      Delay showing and hiding the tooltip (ms) - does not apply to manual trigger type.
@@ -30024,9 +29265,9 @@ var Tooltip = function () {
         // if title is a element node or document fragment, append it only if allowHtml is true
         allowHtml && titleNode.appendChild(title);
       } else if (isFunction$1(title)) {
-        // if title is a function, call it and set textContent or innerHtml depending by `allowHtml` value
-        var titleText = title.call(reference);
-        allowHtml ? titleNode.innerHTML = titleText : titleNode.textContent = titleText;
+        // Recursively call ourself so that the return value of the function gets handled appropriately - either
+        // as a dom node, a string, or even as another function.
+        this._addTitleContent(reference, title.call(reference), allowHtml, titleNode);
       } else {
         // if it's just a simple text, set textContent or innerHtml depending by `allowHtml` value
         allowHtml ? titleNode.innerHTML = title : titleNode.textContent = title;
@@ -30078,7 +29319,7 @@ var Tooltip = function () {
           element: options.arrowSelector
         }),
         offset: _extends$1({}, this._popperOptions.modifiers && this._popperOptions.modifiers.offset, {
-          offset: options.offset
+          offset: options.offset || this._popperOptions.modifiers && this._popperOptions.modifiers.offset && this._popperOptions.modifiers.offset.offset || options.offset
         })
       });
 
@@ -30382,13 +29623,13 @@ var CPopover = {
   },
   getTooltipConfig: function getTooltipConfig(binding) {
     var props = binding.value;
-    var title = props.content || 'content';
-    var modifiersTriggers = String(Object.keys(binding.modifiers)).replace(',', ' ');
+    var title = props.content || 'content'; // const modifiersTriggers = String(Object.keys(binding.modifiers)).replace(',',' ')
+
     var closeOnClickOutside = props.closeOnClickOutside === false ? false : true;
     var html = props.html === false ? false : true;
     return {
       title: title,
-      trigger: props.trigger || modifiersTriggers || 'hover',
+      trigger: 'click',
       html: html,
       placement: props.placement || 'right',
       delay: props.delay || 0,
@@ -30426,12 +29667,12 @@ var CTooltip = {
   },
   getTooltipConfig: function getTooltipConfig(binding) {
     var props = binding.value;
-    var title = props.content || props;
-    var modifiersTriggers = String(Object.keys(binding.modifiers)).replace(',', ' ');
+    var title = props.content || props; // const modifiersTriggers = String(Object.keys(binding.modifiers)).replace(',',' ')
+
     var closeOnClickOutside = props.closeOnClickOutside === false ? false : true;
     return {
       title: title,
-      trigger: modifiersTriggers || props.trigger || 'hover',
+      trigger: 'hover',
       html: true,
       placement: props.placement || 'top',
       delay: props.delay || 0,
@@ -30470,9 +29711,10 @@ var CEmitRootEvent = {
 
 
 var Directives = /*#__PURE__*/Object.freeze({
-  CPopover: CPopover,
-  CTooltip: CTooltip,
-  CEmitRootEvent: CEmitRootEvent
+	__proto__: null,
+	CPopover: CPopover,
+	CTooltip: CTooltip,
+	CEmitRootEvent: CEmitRootEvent
 });
 
 var removeKeysFromObject = function removeKeysFromObject(object, keys) {
@@ -30511,4 +29753,4 @@ var CoreuiVue = {
 }; // Export library
 
 export default CoreuiVue;
-export { CAlert, CBadge, CBreadcrumb, CBreadcrumbRouter, CButton, CButtonClose, CButtonGroup, CButtonToolbar, CCallout, CCard, CCardBody, CCardFooter, CCardGroup, CCardHeader, CCarousel, CCarouselItem, CCol, CCollapse, CContainer, CDropdown, CDropdownDivider, CDropdownHeader, CDropdownItem, CEmbed, CEmitRootEvent, CFooter, CForm, CFormCheckbox, CFormFile, CFormInput, CFormRadio, CFormSelect, CFormTextarea, CHeader, CHeaderNavItem, CImage, CImageLazy, CJumbotron, CLink, CListGroup, CListGroupItem, CMedia, CModal, CNav, CNavItem, CNavbar, CNavbarBrand, CNavbarNav, CNavbarToggle, CPagination, CPopover, CProgress, CProgressBar, CRenderFunction, CRow, CSidebar, CSidebarBrand, CSidebarFooter, CSidebarForm, CSidebarHeader, CSidebarMinimizer, CSidebarNav, CSidebarNavDivider, CSidebarNavDropdown, CSidebarNavLabel, CSidebarNavLink, CSidebarNavTitle, CSidebarToggler, CSpinner, CSwitch, CTab, CTable, CTabs, CToast, CToaster, CTooltip, CWidgetBrand, CWidgetDropdown, CWidgetHeaderDetails, CWidgetIcon, CWidgetProgress, CWidgetProgressIcon, CWidgetSimple };
+export { CAlert, CBadge, CBreadcrumb, CBreadcrumbRouter, CButton, CButtonClose, CButtonGroup, CButtonToolbar, CCallout, CCard, CCardBody, CCardFooter, CCardGroup, CCardHeader, CCardImg, CCardImgOverlay, CCardLink, CCardSubtitle, CCardText, CCardTitle, CCarousel, CCarouselItem, CCol, CCollapse, CContainer, CDropdown, CDropdownDivider, CDropdownHeader, CDropdownItem, CEmbed, CEmitRootEvent, CFooter, CForm, CFormGroup, CHeader, CHeaderNav, CHeaderNavItem, CImg, CImgLazy, CInput, CInputCheckbox, CInputFile, CInputRadio, CJumbotron, CLink, CListGroup, CListGroupItem, CMedia, CModal, CNav, CNavItem, CNavbar, CNavbarBrand, CNavbarNav, CPagination, CPopover, CProgress, CProgressBar, CRenderFunction, CRow, CScrollbar, CSelect, CSidebar, CSidebarBrand, CSidebarClose, CSidebarFooter, CSidebarForm, CSidebarHeader, CSidebarMinimizer, CSidebarNav, CSidebarNavDivider, CSidebarNavDropdown, CSidebarNavLink, CSidebarNavTitle, CSpinner, CSwitch, CTab, CTable, CTabs, CTextarea, CToast, CToaster, CToggler, CTooltip, CWidgetBrand, CWidgetDropdown, CWidgetHeaderDetails, CWidgetIcon, CWidgetProgress, CWidgetProgressIcon, CWidgetSimple };
