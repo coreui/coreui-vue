@@ -34,8 +34,7 @@ exports[`CTable renders correctly 1`] = `
                 No items
                   
                 <svg
-                  class="text-danger mb-2 c-icon"
-                  style="fill: currentColor;"
+                  class="text-danger mb-2 c-icon c-icon-custom-size"
                   viewBox="0 0 24 24"
                   width="30"
                   xmlns="http://www.w3.org/2000/svg"
@@ -175,8 +174,7 @@ exports[`CTable renders correctly 2`] = `
             </div>
              
             <svg
-              class="c-icon icon-transition position-absolute arrow-position rotate-icon"
-              style="fill: currentColor;"
+              class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position rotate-icon"
               viewBox="0 0 24 24"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
@@ -208,8 +206,7 @@ exports[`CTable renders correctly 2`] = `
             </div>
              
             <svg
-              class="c-icon icon-transition position-absolute arrow-position transparent"
-              style="fill: currentColor;"
+              class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
               viewBox="0 0 24 24"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
@@ -241,8 +238,7 @@ exports[`CTable renders correctly 2`] = `
             </div>
              
             <svg
-              class="c-icon icon-transition position-absolute arrow-position transparent"
-              style="fill: currentColor;"
+              class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
               viewBox="0 0 24 24"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
@@ -274,8 +270,7 @@ exports[`CTable renders correctly 2`] = `
             </div>
              
             <svg
-              class="c-icon icon-transition position-absolute arrow-position transparent"
-              style="fill: currentColor;"
+              class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
               viewBox="0 0 24 24"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
@@ -602,8 +597,7 @@ exports[`CTable renders correctly 2`] = `
             </div>
              
             <svg
-              class="c-icon icon-transition position-absolute arrow-position rotate-icon"
-              style="fill: currentColor;"
+              class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position rotate-icon"
               viewBox="0 0 24 24"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
@@ -635,8 +629,7 @@ exports[`CTable renders correctly 2`] = `
             </div>
              
             <svg
-              class="c-icon icon-transition position-absolute arrow-position transparent"
-              style="fill: currentColor;"
+              class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
               viewBox="0 0 24 24"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
@@ -668,8 +661,7 @@ exports[`CTable renders correctly 2`] = `
             </div>
              
             <svg
-              class="c-icon icon-transition position-absolute arrow-position transparent"
-              style="fill: currentColor;"
+              class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
               viewBox="0 0 24 24"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
@@ -701,8 +693,7 @@ exports[`CTable renders correctly 2`] = `
             </div>
              
             <svg
-              class="c-icon icon-transition position-absolute arrow-position transparent"
-              style="fill: currentColor;"
+              class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
               viewBox="0 0 24 24"
               width="18"
               xmlns="http://www.w3.org/2000/svg"

@@ -6,7 +6,7 @@
       @click.native="click"
     >
       <slot>
-        <i :class="['c-sidebar-nav-icon', icon]"></i> 
+        <CIcon v-if="icon" v-bind="computedIcon"/>
         {{name}}
         <CBadge
           v-if="badge"
@@ -22,10 +22,11 @@
 <script>
 import CLink, { props as linkProps } from '../Link/CLink'
 import CBadge from '../Badge/CBadge'
+// import CIcon from '@coreui/icons/vue'
 
 const props = Object.assign(linkProps, {
   name: String,
-  icon: [String, Array, Object],
+  icon: [String, Object],
   badge: Object,
   addLinkClasses: [String, Array, Object],
   label: Boolean
@@ -35,7 +36,8 @@ export default {
   name: 'CSidebarNavLink',
   components: {
     CLink, 
-    CBadge
+    CBadge,
+    // CIcon
   },
   props,
   computed: {
@@ -56,6 +58,16 @@ export default {
         this.label ? 'c-sidebar-nav-label' : 'c-sidebar-nav-link',
         this.addLinkClasses
       ]
+    },
+    computedIcon () {
+      if (typeof this.icon === 'object') {
+        return Object.assign(
+          { customClasses: 'c-sidebar-nav-icon' },
+          this.icon
+        )
+      } else {
+        return { customClasses: [this.icon, 'c-sidebar-nav-icon']}
+      }
     }
   },
   methods: {

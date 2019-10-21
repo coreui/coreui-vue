@@ -1,7 +1,7 @@
 <template>
   <li :class="dropdownClasses">
     <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" @click="handleClick">
-      <i v-if="icon" :class="classIcon"></i>
+      <CIcon v-if="icon" v-bind="computedIcon"/>
       {{name}}
     </a>
     <ul class="c-sidebar-nav-dropdown-items" @click="itemClicked">
@@ -11,15 +11,20 @@
 </template>
 
 <script>
+// import CIcon from '@coreui/icons/vue'
+
 export default {
   name:'CSidebarNavDropdown',
+  // components: {
+  //   CIcon
+  // },
   props: {
     name: String,
     route: {
       type: String,
       validator: val => val.length > 0
     },
-    icon: String,
+    icon: [String, Object],
     show: Boolean
   },
   data () {
@@ -62,6 +67,16 @@ export default {
         'c-sidebar-nav-item c-sidebar-nav-dropdown',
         { 'c-show': this.open }
       ]
+    },
+    computedIcon () {
+      if (typeof this.icon === 'object') {
+        return Object.assign(
+          { customClasses: 'c-sidebar-nav-icon' },
+          this.icon
+        )
+      } else {
+        return { customClasses: [this.icon, 'c-sidebar-nav-icon']}
+      }
     }
   },
   methods: {
