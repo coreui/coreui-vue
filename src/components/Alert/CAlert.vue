@@ -11,7 +11,7 @@
         v-if="closeButton"
         @click="dismiss()"
       />
-      <slot :dismiss="dismiss"></slot>
+      <slot></slot>
     </div>
   </transition>
 </template>

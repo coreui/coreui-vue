@@ -9,7 +9,7 @@ export default {
     size: String,
     tag: {
       type: String,
-      default: 'span'
+      default: 'div'
     }
   },
   render(h, { props, data }) {

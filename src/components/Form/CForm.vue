@@ -5,10 +5,8 @@ export default {
   name: 'CForm',
   functional: true,
   props: {
-    // id: String,
     inline: Boolean,
-    // novalidate:  Boolean,
-    wasValidated: Boolean,
+    wasValidated: Boolean
   },
   render(h, { props, data, children }) {
     return h(
@@ -17,11 +15,7 @@ export default {
         class: {
           'form-inline': props.inline,
           'was-validated': props.wasValidated
-        },
-        // attrs: {
-        //   id: props.id,
-        //   novalidate: props.novalidate
-        // }
+        }
       }),
       children
     )

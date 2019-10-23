@@ -18,7 +18,7 @@ export default {
   },
   render (h, { props, data, children }) {
     let classes = []
-    let prefixes = {
+    let suffixes = {
       'col': '', 
       'xs': '-xs', 
       'sm': '-sm', 
@@ -26,22 +26,22 @@ export default {
       'lg': '-lg', 
       'xl': '-xl'
     }
-    Object.keys(prefixes).forEach((key) => {
+    Object.keys(suffixes).forEach((key) => {
       if (props[key] === true) {
-        classes.push(`col${prefixes[key]}`)
+        classes.push(`col${suffixes[key]}`)
 
       } else if (typeof props[key] === 'number' || typeof props[key] === 'string') {
-        classes.push(`col${prefixes[key]}-${props[key]}`)
+        classes.push(`col${suffixes[key]}-${props[key]}`)
         
       } else if (typeof props[key] === 'object') {
         if (props[key].size) {
-          classes.push(`col${prefixes[key]}-${props[key].size}`)
+          classes.push(`col${suffixes[key]}-${props[key].size}`)
         }
         if (props[key].offset) {
-          classes.push(`offset${prefixes[key]}-${props[key].offset}`)
+          classes.push(`offset${suffixes[key]}-${props[key].offset}`)
         }
         if (props[key].order) {
-          classes.push(`order${prefixes[key]}-${props[key].order}`)
+          classes.push(`order${suffixes[key]}-${props[key].order}`)
         }
       }
     })

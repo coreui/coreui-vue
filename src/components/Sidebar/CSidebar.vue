@@ -109,16 +109,8 @@ export default {
       }
     },
     isOnMobile () {
-      return Boolean(getComputedStyle(this.$el).getPropertyValue('--on-mobile'))
+      return Boolean(getComputedStyle(this.$el).getPropertyValue('--is-mobile'))
     }
   }
 }
 </script>
-
-<style scoped>
-@media (max-width: 992px) {
-  .c-sidebar-lg-show {
-    --on-mobile: true;
-  }
-}
-</style>

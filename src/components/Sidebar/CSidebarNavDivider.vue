@@ -1,4 +1,4 @@
-<template functional>
+<template>
   <li class="c-sidebar-nav-divider"></li>
 </template>
 

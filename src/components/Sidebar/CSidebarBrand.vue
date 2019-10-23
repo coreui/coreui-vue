@@ -4,14 +4,14 @@
       <CLink v-if="wrappedInLink" v-bind="wrappedInLink">
         <img
           class="c-sidebar-brand-full" 
-          :src="fullSrc" 
+          :src="fullSrc || src" 
           width="118" 
           height="46" 
           alt="Logo"
         >
         <img 
           class="c-sidebar-brand-minimized" 
-          :src="minimizedSrc"
+          :src="minimizedSrc || src"
           width="118" 
           height="46" 
           alt="Logo"
@@ -20,14 +20,14 @@
       <template v-else>
         <img 
           class="c-sidebar-brand-full" 
-          :src="fullSrc" 
+          :src="fullSrc || src" 
           width="118" 
           height="46" 
           alt="Logo"
         >
         <img 
           class="c-sidebar-brand-minimized" 
-          :src="minimizedSrc"
+          :src="minimizedSrc || src"
           width="118" 
           height="46" 
           alt="Logo"
@@ -45,6 +45,7 @@ export default {
     CLink
   },
   props: {
+    src: String,
     fullSrc: String,
     minimizedSrc: String,
     wrappedInLink: Object
