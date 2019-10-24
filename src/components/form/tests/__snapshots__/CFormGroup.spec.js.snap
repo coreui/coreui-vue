@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CFormGroup renders correctly 1`] = `
+<div
+  class=""
+  role="group"
+>
+   
+  <div
+    class="additional-wrapper-class"
+  >
+    <div
+      class="input-group-prepend"
+    >
+      <span
+        class="input-group-text"
+      >
+        prepended
+      </span>
+    </div>
+       
+    <div
+      class="input-group-append"
+    >
+      <span
+        class="input-group-text"
+      >
+        appended
+      </span>
+    </div>
+     
+    <div
+      class="valid-tooltip"
+    >
+      input is valid
+    </div>
+     
+    <div
+      class="invalid-tooltip"
+    >
+      input is invalid
+    </div>
+     
+    <small
+      class="form-text text-muted w-100"
+    >
+      permission
+    </small>
+  </div>
+</div>
+`;

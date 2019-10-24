@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CForm renders correctly 1`] = `
+<form
+  class=""
+/>
+`;
+
+exports[`CForm renders correctly 2`] = `
+<form
+  class="form-inline was-validated"
+>
+  <template>
+    CForm content
+  </template>
+</form>
+`;

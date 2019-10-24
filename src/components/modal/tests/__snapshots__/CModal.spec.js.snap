@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CModal renders correctly 1`] = `
+<div>
+  <div
+    class="modal overflow-auto fade"
+    role="dialog"
+    tabindex="-1"
+  >
+    <div
+      class="modal-dialog"
+      role="document"
+    >
+      <div
+        class="modal-content"
+      >
+        <header
+          class="modal-header"
+        >
+          <h5
+            class="modal-title"
+          >
+            
+                
+              
+          </h5>
+           
+          <button
+            aria-label="Close"
+            class="close"
+            type="button"
+          >
+            <span>
+              ×
+            </span>
+          </button>
+        </header>
+         
+        <div
+          class="modal-body"
+        />
+         
+        <footer
+          class="modal-footer"
+        >
+          <button
+            class="btn btn-secondary"
+            type="button"
+          >
+            
+                Cancel
+              
+          </button>
+           
+          <button
+            class="btn btn-primary"
+            type="button"
+          >
+            
+                OK
+              
+          </button>
+        </footer>
+      </div>
+    </div>
+  </div>
+   
+  <!---->
+</div>
+`;
+
+exports[`CModal renders correctly 2`] = `
+<div>
+  <div
+    class="modal overflow-auto additional-modal-class fade show d-block modal-success"
+    role="dialog"
+    tabindex="-1"
+  >
+    <div
+      class="additional-dialog-class modal-dialog modal-dialog-centered modal-lg"
+      role="document"
+    >
+      <div
+        class="additional-content-class modal-content border-success"
+      >
+        <header
+          class="modal-header"
+        >
+          <h5
+            class="modal-title"
+          >
+            
+                modal title
+              
+          </h5>
+           
+          <button
+            aria-label="Close"
+            class="close"
+            type="button"
+          >
+            <span>
+              ×
+            </span>
+          </button>
+        </header>
+         
+        <div
+          class="modal-body"
+        >
+          CModal body
+        </div>
+         
+        <footer
+          class="modal-footer"
+        >
+          <button
+            class="btn btn-secondary"
+            type="button"
+          >
+            
+                Cancel
+              
+          </button>
+           
+          <button
+            class="btn btn-success"
+            type="button"
+          >
+            
+                OK
+              
+          </button>
+        </footer>
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="modal-backdrop fade show"
+  />
+</div>
+`;

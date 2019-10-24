@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCarouselItem renders correctly 1`] = `
+<div
+  class="carousel-item"
+>
+  <img
+    class="d-block w-100 h-100 img-fluid"
+    src="../someImagePath"
+  />
+   
+  <!---->
+</div>
+`;
+
+exports[`CCarouselItem renders correctly 2`] = `
+<div
+  captionfooter="footer"
+  class="carousel-item"
+>
+  <img
+    class="d-block w-100 h-100 img-fluid"
+    src="../someImagePath"
+  />
+   CCarouselItem
+</div>
+`;

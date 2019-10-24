@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CContainer renders correctly 1`] = `
+<div
+  class="container"
+/>
+`;
+
+exports[`CContainer renders correctly 2`] = `
+<header
+  class="container-fluid"
+>
+  <template>
+    CContainer content
+  </template>
+</header>
+`;

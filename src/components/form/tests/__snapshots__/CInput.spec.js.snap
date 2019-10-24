@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CInput renders correctly 1`] = `
+<div
+  class="form-group"
+  role="group"
+>
+   
+  <!---->
+   
+  <input
+    class="form-control-plaintext form-control-lg"
+    id="some_id"
+    readonly="readonly"
+    type="text"
+  />
+    
+  <!---->
+   
+  <!---->
+   
+  <!---->
+   
+  <!---->
+</div>
+`;
+
+exports[`CInput renders correctly 2`] = `
+<div
+  class="form-group was-validated"
+  role="group"
+>
+  <label
+    class="additional-label-class col-form-label-lg"
+    for="some_id"
+  >
+    
+        label
+      
+  </label>
+   
+  <div
+    class="additional-wrapper-class input-group input-group-lg"
+  >
+    <!---->
+     
+    <input
+      class="form-control is-valid additional-input-class"
+      custom="true"
+      id="some_id"
+      type="number"
+    />
+      
+    <!---->
+     
+    <div
+      class="valid-tooltip"
+    >
+      input is valid
+    </div>
+     
+    <div
+      class="invalid-tooltip"
+    >
+      input is invalid
+    </div>
+     
+    <small
+      class="form-text text-muted w-100"
+    >
+      permission
+    </small>
+  </div>
+</div>
+`;

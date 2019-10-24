@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CDropdownHeader renders correctly 1`] = `
+<div
+  class="dropdown-header"
+/>
+`;
+
+exports[`CDropdownHeader renders correctly 2`] = `
+<h5
+  class="dropdown-header"
+>
+  <template>
+    CDropdownHeader content
+  </template>
+</h5>
+`;

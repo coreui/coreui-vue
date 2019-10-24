@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CScrollbar .vue renders correctly 1`] = `
+<div
+  style="position: relative;"
+/>
+`;
+
+exports[`CScrollbar .vue renders correctly in sidebar 1`] = `
+<div
+  class="c-sidebar c-sidebar-dark c-sidebar-lg-show c-sidebar-fixed"
+>
+  <ul
+    class="c-scroll-area c-sidebar-nav ps"
+    style="position: relative;"
+  >
+    <div
+      class="ps__rail-x"
+      style="left: 0px; top: 0px;"
+    >
+      <div
+        class="ps__thumb-x"
+        style="left: 0px; width: 0px;"
+        tabindex="0"
+      />
+    </div>
+    <div
+      class="ps__rail-y"
+      style="top: 0px; left: 0px;"
+    >
+      <div
+        class="ps__thumb-y"
+        style="top: 0px; height: 0px;"
+        tabindex="0"
+      />
+    </div>
+  </ul>
+</div>
+`;

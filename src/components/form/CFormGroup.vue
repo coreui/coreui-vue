@@ -1,0 +1,126 @@
+<template functional>
+  <div 
+    :class="[data.class, data.staticClass]"
+    :style="[data.style, data.staticStyle]"
+    role="group"
+  >
+    <template v-if="props.wrapperClasses">
+      <slot name="label"></slot>
+      <div :class="props.wrapperClasses">
+        <div
+          v-if="props.prependHtml || $slots.prepend"
+          class="input-group-prepend"
+        >
+          <slot name="prepend">
+            <span
+              class="input-group-text"
+              v-html="props.prependHtml"
+            ></span>
+          </slot>
+        </div>
+        <slot name="input"></slot>
+        <slot name="label-after-input"></slot>
+        <div
+          v-if="props.appendHtml || $slots.append"
+          class="input-group-append"
+        >
+          <slot name="append">
+            <span
+              class="input-group-text"
+              v-html="props.appendHtml"
+            ></span>
+          </slot>
+        </div>
+        <slot name="valid-feedback">
+          <div
+            v-if="props.validFeedback"
+            :class="props.tooltipFeedback ? 'valid-tooltip' : 'valid-feedback'"
+            v-text="props.validFeedback"
+          ></div>
+        </slot>
+        <slot name="invalid-feedback">
+          <div
+            v-if="props.invalidFeedback"
+            :class="props.tooltipFeedback ? 'invalid-tooltip' : 'invalid-feedback'"
+            v-text="props.invalidFeedback"
+          ></div>
+        </slot>
+        <slot name="description">
+          <small
+            v-if="props.description"
+            class="form-text text-muted w-100"
+            v-text="props.description"
+          ></small>
+        </slot>
+      </div>
+    </template>
+    <template v-else>
+      <slot name="label"></slot>
+      <div
+        v-if="props.prependHtml || $slots.prepend"
+        class="input-group-prepend"
+      >
+        <slot name="prepend">
+          <span
+            class="input-group-text"
+            v-html="props.prependHtml"
+          ></span>
+        </slot>
+      </div>
+      <slot name="input"></slot>
+      <slot name="label-after-input"></slot>
+      <div
+        v-if="props.appendHtml || $slots.append"
+        class="input-group-append"
+      >
+        <slot name="append">
+          <span
+            class="input-group-text"
+            v-html="props.appendHtml"
+          ></span>
+        </slot>
+      </div>
+      <slot name="valid-feedback">
+        <div
+          v-if="props.validFeedback"
+          :class="props.tooltipFeedback ? 'valid-tooltip' : 'valid-feedback'"
+          v-text="props.validFeedback"
+        ></div>
+      </slot>
+      <slot name="invalid-feedback">
+        <div
+          v-if="props.invalidFeedback"
+          :class="props.tooltipFeedback ? 'invalid-tooltip' : 'invalid-feedback'"
+          v-text="props.invalidFeedback"
+        ></div>
+      </slot>
+      <slot name="description">
+        <small
+          v-if="props.description"
+          class="form-text text-muted w-100"
+          v-text="props.description"
+        ></small>
+      </slot>
+    </template>
+  </div>
+</template>
+
+<script>
+import { formGroupProps as props } from './form-props'
+export default {
+  name: 'CFormGroup',
+  inheritAttrs: false,
+  props,
+  // {
+  //   validFeedback: String,
+  //   invalidFeedback: String,
+  //   tooltipFeedback: Boolean,
+  //   description: String,
+
+  //   appendHtml: String,
+  //   prependHtml: String,
+
+  //   wrapperClasses: [String, Array, Object],
+  // },
+}
+</script>

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CBadge .vue renders correctly 1`] = `
+<span
+  class="badge"
+/>
+`;
+
+exports[`CBadge .vue renders correctly with slot 1`] = `
+<a
+  aria-disabled="true"
+  class="badge disabled active badge-success badge-pill active disabled"
+  href="someLink"
+  tabindex="-1"
+  target="_self"
+>
+  <template>
+    Badge text
+  </template>
+</a>
+`;

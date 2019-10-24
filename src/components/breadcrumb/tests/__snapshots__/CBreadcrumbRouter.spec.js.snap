@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CBreadcrumbRouter renders correctly 1`] = `
+<ol
+  class="breadcrumb"
+>
+  <li
+    class="additional-class breadcrumb-item additional-link-class"
+    role="presentation"
+  >
+    <a
+      class=""
+      href="#"
+      target="_self"
+    >
+      
+      Home
+    
+    </a>
+  </li>
+  <li
+    class="additional-class breadcrumb-item additional-link-class"
+    role="presentation"
+  >
+    <a
+      class=""
+      href="#"
+      target="_self"
+    >
+      
+      Menu
+    
+    </a>
+  </li>
+   
+  <li
+    class="active additional-class breadcrumb-item additional-last-item-class"
+    role="presentation"
+  >
+    <span>
+      View
+    </span>
+  </li>
+   
+</ol>
+`;

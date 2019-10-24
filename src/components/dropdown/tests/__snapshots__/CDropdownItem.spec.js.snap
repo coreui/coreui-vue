@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CDropdownItem renders correctly 1`] = `
+<a
+  class="dropdown-item"
+  href="#"
+  role="menuitem"
+  target="_self"
+/>
+`;
+
+exports[`CDropdownItem renders correctly 2`] = `
+<a
+  class="dropdown-item"
+  href="#"
+  role="menuitem"
+  target="_self"
+>
+  <template>
+    CDropdownItem content
+  </template>
+</a>
+`;

@@ -1,7 +1,7 @@
 <script>
 import { mergeData } from 'vue-functional-data-merge'
-import pickByKeys from '../../utils/pickByKeys'
-import CLink, { propsFactory as linkPropsFactory } from '../Link/CLink'
+import pickByKeys from '../../utils/pick-by-keys'
+import CLink, { propsFactory as linkPropsFactory } from '../link/CLink'
 
 const props = Object.assign(
   {

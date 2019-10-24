@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CLink .vue renders correctly 1`] = `
+<a
+  class=""
+  href="#"
+  target="_self"
+/>
+`;
+
+exports[`CLink .vue renders correctly 2`] = `
+<main>
+  <a
+    class=""
+    href="#/a"
+    target="_self"
+  >
+    to-path-a
+  </a>
+  <a
+    class=""
+    href="/a"
+    target="_self"
+  >
+    href-a
+  </a>
+  <a
+    aria-disabled="true"
+    class="disabled"
+    href="/a"
+    tabindex="-1"
+    target="_self"
+  >
+    href-a
+  </a>
+</main>
+`;

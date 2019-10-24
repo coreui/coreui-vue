@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CButton renders correctly 1`] = `
+<button
+  class="btn"
+  type="button"
+/>
+`;
+
+exports[`CButton renders correctly router link button 1`] = `
+<a
+  class="btn btn-success btn-sm btn-ghost-success btn-pill"
+  href="#"
+  target="_self"
+>
+  <template>
+    button
+  </template>
+</a>
+`;
+
+exports[`CButton renders correctly toggle button 1`] = `
+<button
+  aria-pressed="true"
+  autocomplete="off"
+  class="btn btn-outline-info btn-lg btn-ghost-info btn-block btn-square active"
+  type="input"
+>
+  <template>
+    button
+  </template>
+</button>
+`;

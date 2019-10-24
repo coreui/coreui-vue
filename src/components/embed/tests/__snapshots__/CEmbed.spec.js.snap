@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CEmbed renders correctly 1`] = `
+<div
+  class="embed-responsive embed-responsive-16by9"
+>
+  <iframe
+    class="embed-responsive-item"
+  />
+</div>
+`;
+
+exports[`CEmbed renders correctly 2`] = `
+<div
+  class="embed-responsive embed-responsive-4by3"
+>
+  <embed
+    class="embed-responsive-item"
+  >
+    <template>
+      CEmbed item
+    </template>
+  </embed>
+</div>
+`;
