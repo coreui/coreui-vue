@@ -408,6 +408,9 @@ export declare class CNavbar extends Vue {
 export declare class CNavbarBrand extends CLink {
   tag: string
 }
+export declare class CNavbarText extends Vue {
+  tag: string
+}
 
 export declare class CNavbarNav extends Vue {
   tag: string

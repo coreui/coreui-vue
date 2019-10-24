@@ -1,9 +1,11 @@
 import CNavbar from './CNavbar'
-import CNavbarNav from './CNavbarNav'
 import CNavbarBrand from './CNavbarBrand'
+import CNavbarNav from './CNavbarNav'
+import CNavbarText from './CNavbarText'
 
 export {
   CNavbar,
+  CNavbarBrand,
   CNavbarNav,
-  CNavbarBrand
+  CNavbarText
 }
