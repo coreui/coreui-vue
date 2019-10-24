@@ -4,10 +4,6 @@ export default {
   name: 'CButtonClose',
   functional: true,
   props: {
-    iconHtml: {
-      type: String,
-      default: '&times;'
-    },
     buttonClasses: {
       type: [String, Array, Object],
       default: 'close'
@@ -22,7 +18,7 @@ export default {
           type: 'button',
           'aria-label': 'Close'
         },
-        domProps: !slots().default ? { innerHTML: props.iconHtml } : null
+        domProps: !slots().default ? { innerHTML: '&times;' } : null
       }),
       slots().default
     )

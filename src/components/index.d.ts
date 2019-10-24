@@ -38,7 +38,6 @@ export declare class CButton extends CLink {
 }
 
 export declare class CButtonClose extends Vue {
-  iconHtml: string
   buttonClasses: [string, Array<any>, object]
 }
 

@@ -11,13 +11,15 @@ const slotWrapper = mount(Component, {
 const customWrapper = mount(Component, {
   context: {
     props: {
-      iconHtml: 'ok',
       buttonClasses: 'custom-class'
     }
   },
   attrs: {
     disabled: 'disabled',
     style: 'color:red'
+  },
+  slots: {
+    default: 'ok'
   }
 })
 
