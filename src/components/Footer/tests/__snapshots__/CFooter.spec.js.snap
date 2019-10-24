@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`CFooter .vue renders correctly 1`] = `
-<footer
-  class="c-footer"
->
-  Footer
-</footer>
-`;

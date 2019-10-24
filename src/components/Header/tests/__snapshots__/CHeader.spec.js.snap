@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`CHeader .vue renders correctly 1`] = `
-<header
-  class="c-header c-header-light"
-/>
-`;
