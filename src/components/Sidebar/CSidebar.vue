@@ -21,8 +21,8 @@ export default {
     },
     minimize: Boolean,
     show: {
-      type: Boolean,
-      default: null
+      type: [Boolean, String],
+      default: 'responsive'
     },
     size: {
       type: String,
@@ -68,24 +68,13 @@ export default {
     }
   },
   computed: {
-    displayClasses () {
-      const breakpointPrefix = this.breakpoint === false ? '' : `-${this.breakpoint}`
-      const responsiveClass = `c-sidebar${breakpointPrefix}-show`
-      if (this.open === false) {
-        return null
-      } else if (this.open === true) {
-        return ['c-sidebar-show', breakpointPrefix ? responsiveClass : '' ]
-      } else if (this.open === null) {
-        return responsiveClass
-      }
-    },
-
     sidebarClasses () {
       return [
         'c-sidebar',
         `c-sidebar-${this.colorScheme}`,
-        this.displayClasses,
         {
+          'c-sidebar-show': this.open === true,
+          [`c-sidebar-${this.breakpoint}-show`]: this.open === 'responsive',
           'c-sidebar-fixed': this.fixed,
           'c-sidebar-right': this.aside,
           'c-sidebar-minimized': this.minimize && !this.unfoldable,
@@ -104,8 +93,8 @@ export default {
         this.hideOnMobileClick &&
         this.isOnMobile()
       ) {
-        this.open = false
-        this.$emit('update:show', false)
+        this.open = 'responsive'
+        this.$emit('update:show', 'responsive')
       }
     },
     isOnMobile () {

@@ -10,7 +10,7 @@ exports[`CSidebar .vue renders correctly 1`] = `
 exports[`CSidebar .vue renders correctly 2`] = `
 <div>
   <div
-    class="c-sidebar c-sidebar-dark c-sidebar-show c-sidebar-lg-show c-sidebar-fixed"
+    class="c-sidebar c-sidebar-dark c-sidebar-show c-sidebar-fixed"
   >
     <a
       href="/some-path"

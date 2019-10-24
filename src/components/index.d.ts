@@ -457,7 +457,7 @@ export declare class CSidebar extends Vue {
   unfoldable: boolean
   breakpoint: [string, boolean]
   minimize: boolean
-  show: boolean
+  show: [boolean, string]
   hideOnMobileClick: boolean
   aside: boolean
   colorScheme: string
