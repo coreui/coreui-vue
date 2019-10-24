@@ -2,6 +2,6 @@
 
 exports[`CHeader .vue renders correctly 1`] = `
 <header
-  class="c-header c-header-light"
+  class="c-header c-header-light c-header-fixed"
 />
 `;

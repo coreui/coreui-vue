@@ -2,8 +2,6 @@
 
 exports[`CFooter .vue renders correctly 1`] = `
 <footer
-  class="c-footer"
->
-  Footer
-</footer>
+  class="c-footer c-footer-fixed"
+/>
 `;

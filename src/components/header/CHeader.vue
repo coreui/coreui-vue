@@ -16,7 +16,10 @@ export default {
       type: String,
       default: 'light'
     },
-    fixed: Boolean,
+    fixed: {
+      type: Boolean,
+      default: true
+    },
     withSubheader: Boolean
   },
   computed: {

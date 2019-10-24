@@ -1,6 +1,6 @@
 <template>
   <component :is="tag" :class="classList">
-    <slot>Footer</slot>
+    <slot></slot>
   </component>
 </template>
 
@@ -12,7 +12,10 @@ export default {
       type: String,
       default: 'footer'
     },
-    fixed: Boolean
+    fixed: {
+      type: Boolean,
+      default: true
+    }
   },
   computed: {
     classList () {
