@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CToggler .vue renders correctly 1`] = `
+<button
+  type="button"
+>
+  <span
+    class=""
+  />
+</button>
+`;
+
+exports[`CToggler .vue renders correctly inHeader 1`] = `
+<div
+  class="c-header-toggler"
+>
+  <span
+    class="c-header-toggler-icon"
+  />
+</div>
+`;
+
+exports[`CToggler .vue renders correctly inNavbar 1`] = `
+<button
+  class="navbar-toggler"
+  type="button"
+>
+  icon
+</button>
+`;

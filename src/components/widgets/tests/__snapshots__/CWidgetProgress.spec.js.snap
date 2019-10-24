@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CWidgetProgress matches custom props snapshot 1`] = `
+<div
+  class="card text-white bg-info"
+>
+  <div
+    class="card-body"
+  >
+    <div
+      class="h4 m-0"
+    >
+      test
+    </div>
+     
+    <div>
+      test
+    </div>
+     
+    <div
+      class="progress progress-xs my-3 mb-0 progress-white"
+    >
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="30"
+        class="progress-bar"
+        role="progressbar"
+        style="width: 30%;"
+      >
+        
+      </div>
+    </div>
+     
+    <small
+      class="text-muted"
+    >
+      
+      test
+    
+    </small>
+  </div>
+</div>
+`;
+
+exports[`CWidgetProgress matches default props snapshot 1`] = `
+<div
+  class="card"
+>
+  <div
+    class="card-body"
+  >
+    <!---->
+     
+    <!---->
+     
+    <div
+      class="progress progress-xs my-3 mb-0"
+    >
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="25"
+        class="progress-bar"
+        role="progressbar"
+        style="width: 25%;"
+      >
+        
+      </div>
+    </div>
+     
+    <!---->
+  </div>
+</div>
+`;

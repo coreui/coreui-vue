@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CWidgetBrand matches custom props snapshot 1`] = `
+<div
+  class="card"
+>
+  <div
+    class="card-header content-center text-white p-0 bg-twitter"
+  />
+   
+  <div
+    class="card-body row text-center"
+  >
+    <div
+      class="col"
+    >
+      <div
+        class="text-value-lg"
+      >
+        
+          rightHeader
+        
+      </div>
+       
+      <div
+        class="text-uppercase text-muted small"
+      >
+        
+          rightFooter
+        
+      </div>
+    </div>
+     
+    <div
+      class="vr"
+    />
+     
+    <div
+      class="col"
+    >
+      <div
+        class="text-value-lg"
+      >
+        
+          leftHeader
+        
+      </div>
+       
+      <div
+        class="text-uppercase text-muted small"
+      >
+        
+          leftFooter
+        
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CWidgetBrand matches default props snapshot 1`] = `
+<div
+  class="card"
+>
+  <div
+    class="card-header content-center text-white p-0 bg-undefined"
+  />
+   
+  <div
+    class="card-body row text-center"
+  >
+    <div
+      class="col"
+    >
+      <!---->
+       
+      <!---->
+    </div>
+     
+    <div
+      class="vr"
+    />
+     
+    <div
+      class="col"
+    >
+      <!---->
+       
+      <!---->
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSidebarNavTitle .vue renders correctly 1`] = `
+<li
+  class="c-sidebar-nav-title"
+>
+  title
+</li>
+`;

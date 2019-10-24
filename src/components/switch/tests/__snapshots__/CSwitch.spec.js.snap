@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSwitch renders correctly 1`] = `
+<label
+  class="c-switch form-check-label c-switch-undefined"
+>
+  <input
+    class="c-switch-input form-check-input"
+    type="radio"
+    value=""
+  />
+   
+  <span
+    class="c-switch-slider"
+  />
+</label>
+`;
+
+exports[`CSwitch renders correctly 2`] = `
+<label
+  class="c-switch form-check-label c-switch-outline-info-alt c-switch-lg c-switch-3d"
+>
+  <input
+    class="c-switch-input form-check-input"
+    dataoff="dataOff"
+    dataon="dataOn"
+    id="myId"
+    name="myName"
+    required="required"
+    type="checkbox"
+    value="checked"
+  />
+   
+  <span
+    class="c-switch-slider"
+  />
+</label>
+`;

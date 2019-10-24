@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CWidgetIcon matches custom props snapshot 1`] = `
+<div
+  class="card"
+>
+  <div
+    class="card-body clearfix d-flex align-items-center p-0"
+  >
+    <div
+      class="float-left mr-3 text-white bg-success p-4"
+    />
+     
+    <div>
+      <div
+        class="text-value text-success"
+      >
+        
+        header
+      
+      </div>
+       
+      <div
+        class="text-muted text-uppercase font-weight-bold small"
+      >
+        
+        text
+      
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CWidgetIcon matches default props snapshot 1`] = `
+<div
+  class="card"
+>
+  <div
+    class="card-body clearfix d-flex align-items-center p-3"
+  >
+    <div
+      class="float-left mr-3 text-white bg-undefined p-3"
+    />
+     
+    <div>
+      <!---->
+       
+      <!---->
+    </div>
+  </div>
+</div>
+`;

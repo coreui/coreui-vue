@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CTabs renders correctly 1`] = `
+<div
+  class=""
+>
+  <div
+    class=""
+  >
+    <ul
+      class="nav nav-tabs"
+    />
+  </div>
+   
+  <div
+    class=""
+  >
+    <div
+      class="tab-content"
+    >
+      <!---->
+    </div>
+  </div>
+   
+</div>
+`;
+
+exports[`CTabs renders correctly 2`] = `
+<div
+  class="row no-gutters"
+>
+  <div
+    class="additional-nav-wrapper-class col-sm-3"
+  >
+    <ul
+      class="additional-nav-class nav nav-pills flex-column nav-fill nav-justified h-100"
+    >
+      <li
+        class="nav-item"
+      >
+        <a
+          class="nav-link active"
+          href="#"
+          target="_self"
+        >
+          tab1
+        </a>
+      </li>
+      <li
+        class="nav-item"
+      >
+        <a
+          class="nav-link"
+          href="#"
+          target="_self"
+        >
+          tab2
+        </a>
+      </li>
+      <li
+        class="nav-item"
+      >
+        <a
+          class="nav-link"
+          href="#"
+          target="_self"
+        >
+          tab3
+        </a>
+      </li>
+      <li
+        class="nav-item"
+      >
+        <a
+          class="nav-link"
+          href="#"
+          target="_self"
+        >
+          tab 4
+        </a>
+      </li>
+    </ul>
+  </div>
+   
+  <div
+    class="additional-tabs-wrapper-class col-sm-9"
+  >
+    <div
+      class="additional-tabs-class tab-content pl-3 p-0"
+    >
+      <div
+        class="additional-tab-class tab-pane active"
+        mode="out-in"
+        name="fade"
+      >
+        tab1 content
+      </div>
+    </div>
+  </div>
+   
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <div>
+    ignored element
+  </div>
+</div>
+`;
