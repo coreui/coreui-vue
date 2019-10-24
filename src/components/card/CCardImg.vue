@@ -3,7 +3,7 @@ import { mergeData } from 'vue-functional-data-merge'
 import CImg from '../image/CImg'
 const props = Object.assign(
   { 
-    placement: {
+    variant: {
       type: String,
       default: 'full',
       validator: val => ['', 'top', 'bottom', 'full'].includes(val)
@@ -17,11 +17,11 @@ export default {
   name: 'CCardImg',
   props,
   render (h, { props, data, children }) {
-    const haveClassSuffix = props.placement !== 'full'
+    const haveClassSuffix = props.variant !== 'full'
     return h(
       CImg,
       mergeData(data, {
-        class: `card-img${haveClassSuffix ? `-${props.placement}` : ''}`,
+        class: `card-img${haveClassSuffix ? `-${props.variant}` : ''}`,
         props
       }),
       children

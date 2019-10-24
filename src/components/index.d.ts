@@ -76,7 +76,7 @@ export declare class CCardFooter extends CardSharedClasses {}
 export declare class CCardHeader extends CardSharedClasses {}
 
 export declare class CCardImg extends CImg { 
-  placement: string
+  variant: string
 }
 
 export declare class CCardImgOverlay extends Vue {
