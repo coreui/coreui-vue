@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CSpinner renders correctly 1`] = `
-<span
+<div
   aria-hidden="false"
   aria-label="Loading"
   class="spinner-border"
@@ -10,7 +10,7 @@ exports[`CSpinner renders correctly 1`] = `
 `;
 
 exports[`CSpinner renders correctly 2`] = `
-<span
+<div
   aria-hidden="false"
   aria-label="Loading"
   class="spinner-grow spinner-grow-sm text-success"
