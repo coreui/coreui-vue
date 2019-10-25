@@ -14,7 +14,8 @@ const props = {
   alignHorizontal: {
     type: String,
     validator: str => ['', 'start', 'end', 'center','between', 'around'].includes(str)
-  }
+  },
+  form: Boolean
 }
 
 export default {
@@ -25,7 +26,7 @@ export default {
     return h(
       props.tag || 'div',
       mergeData(data, {
-        staticClass: 'row',
+        staticClass: props.form ? 'form-row' : 'row',
         class: {
           'no-gutters': !props.gutters,
           [`align-items-${props.alignVertical}`]: props.alignVertical,

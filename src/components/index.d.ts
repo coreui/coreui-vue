@@ -287,6 +287,7 @@ export declare class CRow extends Vue {
   gutters: boolean
   alignVertical: string
   alignHorizontal: string
+  form: boolean
 }
 
 export declare class CHeader extends Vue {
