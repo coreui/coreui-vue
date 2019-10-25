@@ -326,8 +326,6 @@ export declare class CImgLazy extends CImg {
 export declare class CJumbotron extends Vue {
   tag: string
   fluid: boolean
-  header: string
-  lead: string
   color: string
   borderColor: string
   textColor: string

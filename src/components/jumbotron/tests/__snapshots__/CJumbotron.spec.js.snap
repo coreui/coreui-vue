@@ -13,16 +13,6 @@ exports[`CJumbotron renders correctly 2`] = `
   <div
     class="container-fluid"
   >
-    <h1
-      class="display-3"
-    >
-      header
-    </h1>
-    <p
-      class="lead"
-    >
-      lead
-    </p>
     content
   </div>
 </div>

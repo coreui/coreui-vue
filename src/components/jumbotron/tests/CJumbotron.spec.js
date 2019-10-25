@@ -6,8 +6,6 @@ const defaultWrapper = mount(Component)
 const customWrapper = mount(Component, {
   propsData: {
     fluid: true,
-    header: 'header',
-    lead: 'lead',
     color: 'success',
     borderColor: 'secondary',
     textColor: 'dark'

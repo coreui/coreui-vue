@@ -10,30 +10,13 @@ export default {
       default: 'div'
     },
     fluid: Boolean,
-    header: String,
-    lead: String,
     color: String,
     borderColor: String,
     textColor: String,
   },
   render (h, { props, data, slots }) {
-    let childNodes = []
+    let childNodes = slots().default
     const $slots = slots()
-
-    if ($slots.header || props.header) {
-      const header = $slots.header ||
-                     h('h1', { staticClass: 'display-3' }, props.header)
-      childNodes.push(header)
-    }
-
-    if ($slots.lead || props.lead) {
-      const lead = $slots.lead || h('p', { staticClass: 'lead' }, props.lead)
-      childNodes.push(lead)
-    }
-
-    if ($slots.default) {
-      childNodes.push($slots.default)
-    }
 
     if (props.fluid) {
       childNodes = [
