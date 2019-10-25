@@ -297,9 +297,21 @@ export declare class CHeader extends Vue {
   withSubheader: boolean
 }
 
+export declare class CHeaderBrand extends Vue {
+  wrappedInLink: [object, string]
+}
+
 export declare class CHeaderNav extends Vue {}
 
-export declare class CHeaderNavItem extends CLink {}
+export declare class CHeaderNavItem extends CLink {
+  onlyLink: boolean
+}
+
+export declare class CHeaderNavLink extends CLink { }
+
+export declare class CSubheader extends CLink {
+  tag: string
+}
 
 export declare class CImg extends Vue {
   src: string
@@ -466,6 +478,14 @@ export declare class CSidebar extends Vue {
   size: string
   overlaid: boolean
 }
+
+export declare class CSidebarBrand extends Vue { 
+  img: [object, string]
+  imgMinimized: [object, string]
+  imgFull: [object, string]
+  wrappedInLink: [object, string]
+}
+
 
 export declare class CSidebarClose extends Vue { }
 
