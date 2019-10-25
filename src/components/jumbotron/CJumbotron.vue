@@ -16,7 +16,6 @@ export default {
   },
   render (h, { props, data, slots }) {
     let childNodes = slots().default
-    const $slots = slots()
 
     if (props.fluid) {
       childNodes = [
