@@ -10,10 +10,8 @@ exports[`CJumbotron renders correctly 2`] = `
 <div
   class="jumbotron jumbotron-fluid text-dark bg-success border-secondary border"
 >
-  <div
-    class="container-fluid"
-  >
+  <template>
     content
-  </div>
+  </template>
 </div>
 `;

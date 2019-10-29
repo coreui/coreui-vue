@@ -14,19 +14,7 @@ export default {
     borderColor: String,
     textColor: String,
   },
-  render (h, { props, data, slots }) {
-    let childNodes = slots().default
-
-    if (props.fluid) {
-      childNodes = [
-        h(
-          'div',
-          { staticClass: 'container-fluid' },
-          childNodes
-        )
-      ]
-    }
-
+  render (h, { props, data, children }) {
     return h(
       props.tag,
       mergeData(data, {
@@ -39,7 +27,7 @@ export default {
           'border': Boolean(props.borderColor)
         }
       }),
-      childNodes
+      children
     )
   }
 }
