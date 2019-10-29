@@ -11,7 +11,8 @@ const props = Object.assign(
     headerHtml: String,
     bodyHtml: String,
     footerHtml: String,
-    bodyWrapper: Boolean
+    bodyWrapper: Boolean,
+    accentColor: String
   }
 )
 export default {
@@ -42,10 +43,11 @@ export default {
       mergeData(data, {
         staticClass: 'card',
         class: {
-          [`text-${props.align}`]: Boolean(props.align),
-          [`bg-${props.color}`]: Boolean(props.color),
-          [`border-${props.borderColor}`]: Boolean(props.borderColor),
-          [`text-${props.textColor}`]: Boolean(props.textColor)
+          [`card-accent-${props.accentColor}`]: props.accentColor,
+          [`text-${props.align}`]: props.align,
+          [`bg-${props.color}`]: props.color,
+          [`border-${props.borderColor}`]: props.borderColor,
+          [`text-${props.textColor}`]: props.textColor
         }
       }),
       [ header, main, footer ]

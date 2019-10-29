@@ -24,7 +24,7 @@ exports[`CCard renders correctly 1`] = `
 
 exports[`CCard renders correctly with slots 1`] = `
 <div
-  class="card text-left bg-success border-solid text-white"
+  class="card card-accent-primary text-left bg-success border-solid text-white"
 >
   <!---->
   <div
@@ -36,7 +36,7 @@ exports[`CCard renders correctly with slots 1`] = `
 </div>
 `;
 
-exports[`CCard renders correctly with slots 2`] = `
+exports[`CCard renders correctly without body 1`] = `
 <div
   class="card"
 >

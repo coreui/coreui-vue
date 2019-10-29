@@ -66,6 +66,7 @@ export declare class CCard extends CardSharedClasses {
   bodyHtml: string
   footerHtml: string
   bodyWrapper: boolean
+  accentColor: string
 }
 
 export declare class CCardBody extends CardSharedClasses {}

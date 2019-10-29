@@ -22,6 +22,7 @@ const slotWrapper = mount(Component, {
       color: 'success',
       textColor: 'white',
       borderColor: 'solid',
+      accentColor: 'primary',
       bodyWrapper: true
     }
   },
@@ -49,7 +50,7 @@ describe(ComponentName, () => {
   it('renders correctly with slots', () => {
     expect(slotWrapper.element).toMatchSnapshot()
   })
-  it('renders correctly with slots', () => {
+  it('renders correctly without body', () => {
     expect(noBodyCard.element).toMatchSnapshot()
   })
 });
