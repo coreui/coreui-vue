@@ -18,19 +18,24 @@
         v-bind="$attrs"
         :id="safeId"
         :class="inputClasses"
-        :value="state"
         @input="onSelect($event)"
       >
-        <option v-if="placeholder" value="" selected disabled hidden>
+        <option 
+          v-if="placeholder" 
+          value="" 
+          selected 
+          disabled
+          hidden
+        >
           {{placeholder}}
         </option>
         <template v-for="(option, key) in options">
           <option
             v-if="typeof option === 'object'"
             :value="option.value"
-            :class="option.class"
             v-bind="option.attrs"
             :disabled="option.disabled"
+            :selected="option.value === value"
             :data-key="key"
             :key="key"
           >
@@ -38,7 +43,8 @@
           </option>
           <option
             v-else
-            :value="String(option)"
+            :value="option"
+            :selected="option === value"
             :data-key="key"
             :key="key"
           >
@@ -118,6 +124,9 @@ export default {
   //   }
   // },
   computed: {
+    selectedItem () {
+
+    },
     // classesComputedProps mixin
     // haveCustomSize () {
     //   return ['sm','lg'].includes(this.size)
