@@ -11,10 +11,7 @@ exports[`CTable renders correctly 1`] = `
       class="table"
     >
       <thead>
-        <tr>
-          <!---->
-           
-        </tr>
+        <tr />
          
         <!---->
       </thead>
@@ -160,10 +157,6 @@ exports[`CTable renders correctly 2`] = `
       <thead>
         <tr>
           <th
-            style="width: 40px;"
-          />
-           
-          <th
             class="user-custom-class position-relative pr-4"
             style="cursor: pointer; width: 40%;"
           >
@@ -308,8 +301,6 @@ exports[`CTable renders correctly 2`] = `
         <tr
           class="table-sm"
         >
-          <th />
-           
           <th
             class="user-custom-class"
           >
@@ -352,12 +343,6 @@ exports[`CTable renders correctly 2`] = `
         class="position-relative"
       >
         <tr>
-          <td>
-            
-                  1
-                
-          </td>
-           
           <td
             class="user-custom-class"
           >
@@ -397,12 +382,6 @@ exports[`CTable renders correctly 2`] = `
          
         <!---->
         <tr>
-          <td>
-            
-                  2
-                
-          </td>
-           
           <td
             class="user-custom-class"
           >
@@ -442,12 +421,6 @@ exports[`CTable renders correctly 2`] = `
          
         <!---->
         <tr>
-          <td>
-            
-                  3
-                
-          </td>
-           
           <td
             class="user-custom-class"
           >
@@ -487,12 +460,6 @@ exports[`CTable renders correctly 2`] = `
          
         <!---->
         <tr>
-          <td>
-            
-                  4
-                
-          </td>
-           
           <td
             class="user-custom-class"
           >
@@ -532,12 +499,6 @@ exports[`CTable renders correctly 2`] = `
          
         <!---->
         <tr>
-          <td>
-            
-                  5
-                
-          </td>
-           
           <td
             class="user-custom-class"
           >
@@ -582,10 +543,6 @@ exports[`CTable renders correctly 2`] = `
        
       <tfoot>
         <tr>
-          <th
-            style="width: 40px;"
-          />
-           
           <th
             class="user-custom-class position-relative pr-4"
             style="cursor: pointer; width: 40%;"
@@ -739,7 +696,7 @@ exports[`CTable renders correctly 2`] = `
     style="display: none;"
   >
     <ul
-      class="pagination pagination-md justify-content-start"
+      class="pagination  justify-content-start"
     >
       <li
         class="page-item disabled"

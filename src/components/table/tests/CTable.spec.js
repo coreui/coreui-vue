@@ -29,7 +29,6 @@ const customWrapper = mount(Component, {
       { key: 'show_details' , label:'', _style:'width:1%', sortable: false, filterable: false },
     ],
 
-    indexColumn: true,
     tableFilter: true,
     itemsPerPageSelect: true,
     addTableClasses: 'additional-table-class',
@@ -61,26 +60,26 @@ describe(ComponentName, () => {
   })
   it('changes sorting correctly', () => {
     expect(customWrapper.vm.sortedItems[0].username).toBe('Yiorgos Avraamu')
-    customWrapper.find('tr').findAll('th').at(4).trigger('click')
+    customWrapper.find('tr').findAll('th').at(3).trigger('click')
     expect(customWrapper.vm.sortedItems[0].status).toBe('Active')
 
-    customWrapper.find('tr').findAll('th').at(4).trigger('click')
+    customWrapper.find('tr').findAll('th').at(3).trigger('click')
     expect(customWrapper.vm.sortedItems[0].status).toBe('Pending')
   })
-  it('doesnt change sorter when clicked on noSortable column', () => {
+  it('doesnt change sorter when clicked on not sortable column', () => {
     const oldSorterColumn = customWrapper.vm.sorter.column
-    customWrapper.find('tr').findAll('th').at(5).trigger('click')
+    customWrapper.find('tr').findAll('th').at(4).trigger('click')
     expect(customWrapper.vm.sorter.column).toBe(oldSorterColumn)
   })
   it('renders pretified column names when fields are not defined', () => {
     customWrapper.setProps({ fields: undefined })
     expect(customWrapper.vm.columnNames[0]).toBe('Username')
   })
-  it('changes colspan when indexColumn is switched', () => {
-    const colspanWithIndexColumn = customWrapper.vm.colspan
-    customWrapper.setProps({ indexColumn: false })
-    expect(customWrapper.vm.colspan).toBe(colspanWithIndexColumn - 1)
-  })
+  // it('changes colspan when indexColumn is switched', () => {
+  //   const colspanWithIndexColumn = customWrapper.vm.colspan
+  //   customWrapper.setProps({ indexColumn: false })
+  //   expect(customWrapper.vm.colspan).toBe(colspanWithIndexColumn - 1)
+  // })
   it('table filter works correctly', () => {
     customWrapper.setData({ tableFilterVal: 'Yiorgos' })
     expect(customWrapper.vm.sortedItems.length).toBe(1)

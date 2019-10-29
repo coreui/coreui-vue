@@ -562,7 +562,6 @@ export declare class CTable extends Vue {
   fields: Array<any>
   itemsPerPage: number
   activePage: number
-  indexColumn: boolean
   filterRow: boolean
   pagination: [boolean, object]
   addTableClasses: [string, Array<any>, object]

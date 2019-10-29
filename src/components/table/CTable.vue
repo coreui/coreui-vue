@@ -47,7 +47,6 @@
       <table :class="tableClasses">
         <thead>
           <tr>
-            <th v-if="indexColumn" style="width:40px"></th>
             <template v-for="(name, index) in columnNames">
               <th
                 @click="changeSort(rawColumnNames[index], index)"
@@ -74,7 +73,6 @@
           </tr>
 
           <tr v-if="columnFilter" class="table-sm">
-            <th v-if="indexColumn"></th>
             <template v-for="(colName, index) in rawColumnNames" >
               <th :class="headerClass(index)" :key="index">
                 <slot :name="`${rawColumnNames[index]}-filter`">
@@ -102,16 +100,6 @@
               @click="rowClicked(item, itemIndex + firstItemIndex)"
               :key="itemIndex"
             >
-                <slot
-                  v-if="indexColumn"
-                  name="index-column"
-                  :pageIndex="itemIndex"
-                  :index="firstItemIndex + itemIndex"
-                >
-                  <td>
-                    {{ firstItemIndex + itemIndex + 1 }}
-                  </td>
-                </slot>
               <template v-for="(colName, index) in rawColumnNames" >
                 <slot
                   v-if="$scopedSlots[colName]"
@@ -165,9 +153,8 @@
         </tbody>
 
 
-        <tfoot v-if="footer && currentItems.length > 3">
+        <tfoot v-if="footer && currentItems.length > 0">
           <tr>
-            <th v-if="indexColumn" style="width:40px"></th>
             <template v-for="(name, index) in columnNames">
               <th
                 @click="changeSort(rawColumnNames[index], index)"
@@ -240,7 +227,6 @@ export default {
       default: 10
     },
     activePage: Number,    
-    indexColumn: Boolean,
     columnFilter: Boolean,
     pagination: [Boolean, Object],
     addTableClasses: [String, Array, Object],
@@ -375,7 +361,7 @@ export default {
       return {'position-relative pr-4' : this.sortable }
     },
     colspan () {
-      return this.rawColumnNames.length + (this.indexColumn ? 1 : 0)
+      return this.rawColumnNames.length
     },
     isFiltered () {
       return this.tableFilterVal || Object.values(this.columnFilterVal).join('')
