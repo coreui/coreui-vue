@@ -297,9 +297,7 @@ export declare class CHeader extends Vue {
   withSubheader: boolean
 }
 
-export declare class CHeaderBrand extends Vue {
-  wrappedInLink: [object, string]
-}
+export declare class CHeaderBrand extends Vue {}
 
 export declare class CHeaderNav extends Vue {}
 
