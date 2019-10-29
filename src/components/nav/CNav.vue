@@ -8,25 +8,26 @@
 export default {
   name: 'CNav',
   props: {
+    variant: {
+      type: String,
+      validator: val => ['', 'tabs', 'pills'].includes(val)
+    },
     fill: Boolean,
     justified: Boolean,
-    tabs: Boolean,
-    pills: Boolean,
     vertical: Boolean,
     inCard: Boolean
   },
   computed: {
     navClasses () {
-      const hasTabs = this.tabs && !this.pills
       return {
-        'nav' : true,
-        'nav-tabs': hasTabs,
-        'nav-pills': this.pills,
+        'nav': true,
+        'nav-tabs': this.variant === 'tabs',
+        'nav-pills': this.variant === 'pills',
         'flex-column': this.vertical,
         'nav-fill': this.fill,
         'nav-justified': this.justified,
-        'card-header-tabs': this.inCard && hasTabs,
-        'card-header-pills': this.inCard && this.pills
+        'card-header-tabs': this.inCard && this.variant === 'tabs',
+        'card-header-pills': this.inCard && this.variant === 'pills'
       }
     }
   },

@@ -29,8 +29,7 @@ export declare class CButton extends CLink {
   block: boolean
   pill: boolean
   square: boolean
-  ghost: boolean
-  outline: boolean
+  variant: string
   size: string
   color: string
   type: string
@@ -396,8 +395,7 @@ export declare class CModal extends Vue {
 export declare class CNav extends Vue {
   fill: boolean
   justified: boolean
-  tabs: boolean
-  pills: boolean
+  variant: string
   vertical: boolean
   inCard: boolean
 }

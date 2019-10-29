@@ -7,8 +7,10 @@ const btnProps = {
   block: Boolean,
   pill: Boolean,
   square: Boolean,
-  ghost: Boolean,
-  outline: Boolean,
+  variant: {
+    type: String,
+    validator: val => ['', 'ghost', 'outline'].includes(val)
+  },
   size: {
     type: String,
     validator: value => ['', 'sm', 'lg'].includes(value)
@@ -34,10 +36,11 @@ function isToggle (props) {
 }
 
 function computeClasses (props) {
+  const outlineSuffix = props.variant === 'outline' ? 'outline-' : ''
   return {
-    [`btn-${props.outline ? 'outline-' : ''}${props.color}`]: props.color,
+    [`btn-${outlineSuffix}${props.color}`]: props.color,
     [`btn-${props.size}`]: Boolean(props.size),
-    [`btn-ghost-${props.color}`]: props.ghost,
+    [`btn-ghost-${props.color}`]: props.variant === 'ghost',
     'btn-block': props.block,
     'btn-pill': props.pill,
     'btn-square': props.square && !props.pill,

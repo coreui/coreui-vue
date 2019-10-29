@@ -6,7 +6,7 @@ import CNavItem from '../CNavItem'
 const ComponentName = 'CNav'
 const wrapper = mount(Component, {
   propsData: {
-    tabs: true,
+    variant: 'tabs',
   },
   slots: {
     default: 'CNav items'
@@ -21,7 +21,7 @@ const customWrapper = mount(Component, {
   propsData: {
     fill: true,
     justified: true,
-    pills: true,
+    variant: 'pills',
     vertical: true,
     inCard: true
   },

@@ -23,7 +23,7 @@ exports[`CButton renders correctly toggle button 1`] = `
 <button
   aria-pressed="true"
   autocomplete="off"
-  class="btn btn-outline-info btn-lg btn-ghost-info btn-block btn-square active"
+  class="btn btn-outline-info btn-lg btn-block btn-square active"
   type="input"
 >
   <template>
