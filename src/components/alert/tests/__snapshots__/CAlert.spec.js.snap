@@ -6,6 +6,7 @@ exports[`CAlert renders correctly 1`] = `
   aria-atomic="true"
   aria-live="polite"
   class="alert alert-dismissible"
+  name="fade"
   role="alert"
 >
   <button

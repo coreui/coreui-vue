@@ -28,7 +28,10 @@ export default {
       type: [Boolean, Number],
       default: true
     },
-    fade: Boolean,
+    fade: {
+      type: Boolean,
+      default: true
+    }
   },
   data () {
     return {
