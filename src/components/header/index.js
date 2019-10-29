@@ -2,7 +2,7 @@ import CHeader from './CHeader'
 import CHeaderBrand from './CHeaderBrand'
 import CHeaderNav from './CHeaderNav'
 import CHeaderNavItem from './CHeaderNavItem'
-// import CHeaderNavLink from './CHeaderNavLink'
+import CHeaderNavLink from './CHeaderNavLink'
 import CSubheader from './CSubheader'
 
 export {
@@ -10,6 +10,6 @@ export {
   CHeaderBrand,
   CHeaderNav,
   CHeaderNavItem,
-  // CHeaderNavLink,
+  CHeaderNavLink,
   CSubheader
 }

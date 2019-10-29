@@ -301,11 +301,9 @@ export declare class CHeaderBrand extends Vue {}
 
 export declare class CHeaderNav extends Vue {}
 
-export declare class CHeaderNavItem extends CLink {
-  onlyLink: boolean
-}
+export declare class CHeaderNavItem extends CLink {}
 
-export declare class CHeaderNavLink extends CLink { }
+export declare class CHeaderNavLink extends CLink {}
 
 export declare class CSubheader extends CLink {
   tag: string
