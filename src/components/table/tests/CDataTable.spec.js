@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
-import Component from '../CTable'
+import Component from '../CDataTable'
 
-const ComponentName = 'CTable'
+const ComponentName = 'CDataTable'
 const defaultWrapper = mount(Component)
 
 const items = [

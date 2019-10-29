@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CTable renders correctly 1`] = `
+exports[`CDataTable renders correctly 1`] = `
 <div>
   <!---->
     
@@ -68,7 +68,7 @@ exports[`CTable renders correctly 1`] = `
 </div>
 `;
 
-exports[`CTable renders correctly 2`] = `
+exports[`CDataTable renders correctly 2`] = `
 <div>
   <div
     class="row my-2 mx-0"

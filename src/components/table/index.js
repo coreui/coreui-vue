@@ -1,5 +1,5 @@
-import CTable from './CTable'
+import CDataTable from './CDataTable'
 
 export {
-  CTable
+  CDataTable
 }

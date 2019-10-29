@@ -213,7 +213,7 @@ import { arrowTop, ban } from '@coreui/icons'
 const CIcon = Object.assign({}, CIconRaw, { icons : { arrowTop, ban }})
 
 export default {
-  name: 'CTable',
+  name: 'CDataTable',
   components: {
     CPagination,
     CSpinner,

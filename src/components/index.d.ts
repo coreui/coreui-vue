@@ -557,7 +557,7 @@ export declare class CSwitch extends Vue {
   type: string
 }
 
-export declare class CTable extends Vue {
+export declare class CDataTable extends Vue {
   items: Array<any>
   fields: Array<any>
   itemsPerPage: number
