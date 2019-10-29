@@ -152,8 +152,7 @@ export default {
       }
     },
     hide (e) {
-      this.$emit('update:show', false)
-      this.$emit('hide', e)
+      this.$emit('update:show', false, e)
     },
     toggle (newVal) {
       setTimeout(() => { this.visible = newVal }, 0)

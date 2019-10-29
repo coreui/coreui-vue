@@ -100,8 +100,7 @@
       },
       size: {
         type: String,
-        default: 'md',
-        validator: val => ['sm', 'md', 'lg'].includes(val)
+        validator: val => ['', 'sm', 'lg'].includes(val)
       },
       align: {
         type: String,
@@ -159,7 +158,8 @@
         return ['page-item', { 'disabled': this.activePage === this.pages }]
       },
       computedClasses () {
-        return `pagination pagination-${this.size} justify-content-${this.align}`
+        const sizeClass = this.size ? `pagination-${this.size}` : ''
+        return `pagination ${sizeClass} justify-content-${this.align}`
       },
       showDots () {
         return this.dots && this.limit > 4 && this.limit < this.pages

@@ -18355,6 +18355,7 @@ var script$B = {
   //   }
   // },
   computed: {
+    selectedItem: function selectedItem() {},
     // classesComputedProps mixin
     // haveCustomSize () {
     //   return ['sm','lg'].includes(this.size)
@@ -18495,7 +18496,6 @@ var __vue_render__$e = function() {
                       {
                         class: _vm.inputClasses,
                         attrs: { id: _vm.safeId },
-                        domProps: { value: _vm.state },
                         on: {
                           input: function($event) {
                             return _vm.onSelect($event)
@@ -18536,12 +18536,14 @@ var __vue_render__$e = function() {
                                 _vm._b(
                                   {
                                     key: key,
-                                    class: option.class,
                                     attrs: {
                                       disabled: option.disabled,
                                       "data-key": key
                                     },
-                                    domProps: { value: option.value }
+                                    domProps: {
+                                      value: option.value,
+                                      selected: option.value === _vm.value
+                                    }
                                   },
                                   "option",
                                   option.attrs,
@@ -18560,7 +18562,10 @@ var __vue_render__$e = function() {
                                 {
                                   key: key,
                                   attrs: { "data-key": key },
-                                  domProps: { value: String(option) }
+                                  domProps: {
+                                    value: option,
+                                    selected: option === _vm.value
+                                  }
                                 },
                                 [
                                   _vm._v(
@@ -20064,21 +20069,13 @@ var script$L = {
 
     var props = _ref.props,
         data = _ref.data,
-        slots = _ref.slots;
-    var childNodes = slots().default;
-
-    if (props.fluid) {
-      childNodes = [h('div', {
-        staticClass: 'container-fluid'
-      }, childNodes)];
-    }
-
+        children = _ref.children;
     return h(props.tag, a(data, {
       staticClass: 'jumbotron',
       class: (_class = {
         'jumbotron-fluid': props.fluid
       }, _defineProperty(_class, "text-".concat(props.textColor), Boolean(props.textColor)), _defineProperty(_class, "bg-".concat(props.color), Boolean(props.color)), _defineProperty(_class, "border-".concat(props.borderColor), Boolean(props.borderColor)), _defineProperty(_class, 'border', Boolean(props.borderColor)), _class)
-    }), childNodes);
+    }), children);
   }
 };
 
@@ -20481,8 +20478,7 @@ var script$P = {
       }
     },
     hide: function hide(e) {
-      this.$emit('update:show', false);
-      this.$emit('hide', e);
+      this.$emit('update:show', false, e);
     },
     toggle: function toggle(newVal) {
       var _this = this;
@@ -21388,9 +21384,8 @@ var script$W = {
     },
     size: {
       type: String,
-      default: 'md',
       validator: function validator(val) {
-        return ['sm', 'md', 'lg'].includes(val);
+        return ['', 'sm', 'lg'].includes(val);
       }
     },
     align: {
@@ -21455,7 +21450,8 @@ var script$W = {
       }];
     },
     computedClasses: function computedClasses() {
-      return "pagination pagination-".concat(this.size, " justify-content-").concat(this.align);
+      var sizeClass = this.size ? "pagination-".concat(this.size) : '';
+      return "pagination ".concat(sizeClass, " justify-content-").concat(this.align);
     },
     showDots: function showDots() {
       return this.dots && this.limit > 4 && this.limit < this.pages;
