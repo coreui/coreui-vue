@@ -9,7 +9,7 @@ export declare class CAlert extends Vue {
 export declare class CBadge extends CLink {
   tag: string
   color: string
-  pill: boolean
+  shape: string
 }
 
 export declare class CBreadcrumb extends Vue {
@@ -27,8 +27,7 @@ export declare class CBreadcrumbRouter extends Vue {
 
 export declare class CButton extends CLink {
   block: boolean
-  pill: boolean
-  square: boolean
+  shape: string
   variant: string
   size: string
   color: string

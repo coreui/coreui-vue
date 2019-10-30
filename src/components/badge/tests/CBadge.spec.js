@@ -7,7 +7,7 @@ const customWrapper = mount(Component, {
   propsData: {
     color: 'success',
     active: true,
-    pill: true,
+    shape: 'pill',
     disabled: true,
     href: 'someLink'
   },

@@ -5,8 +5,10 @@ import CLink, { propsFactory as linkPropsFactory } from '../link/CLink'
 
 const btnProps = {
   block: Boolean,
-  pill: Boolean,
-  square: Boolean,
+  shape: {
+    type: String,
+    validator: shape => ['','pill', 'square'].includes(shape)
+  },
   variant: {
     type: String,
     validator: val => ['', 'ghost', 'outline'].includes(val)
@@ -42,8 +44,8 @@ function computeClasses (props) {
     [`btn-${props.size}`]: Boolean(props.size),
     [`btn-ghost-${props.color}`]: props.variant === 'ghost',
     'btn-block': props.block,
-    'btn-pill': props.pill,
-    'btn-square': props.square && !props.pill,
+    'btn-pill': props.shape === 'pill',
+    'btn-square': props.shape === 'square',
     'disabled': props.disabled,
     'active': props.pressed
   }

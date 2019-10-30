@@ -8,7 +8,10 @@ const props = Object.assign(linkProps, {
     default: 'span'
   },
   color: String,
-  pill: Boolean
+  shape: {
+    type: String,
+    validator: shape => ['', 'pill'].includes(shape)
+  }
 })
 
 export default {
@@ -21,7 +24,7 @@ export default {
       staticClass: 'badge',
       class: {
         [`badge-${props.color}`]: props.color,
-        'badge-pill': props.pill,
+        'badge-pill': props.shape === 'pill',
         'active': props.active,
         'disabled': props.disabled
       },
