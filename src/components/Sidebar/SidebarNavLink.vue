@@ -1,14 +1,20 @@
 <template>
   <a :class="classList" v-bind="attributes" tabindex="-1" v-on:click.stop.prevent v-if="isDisabled">
-    <i :class="classIcon"></i> <span>{{name}}</span>
+    <slot name="icon"><i :class="classIcon"></i></slot>
+    {{name}}
+    <slot name="append-icon"></slot>
     <b-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</b-badge>
   </a>
   <a :href="url" :class="classList" v-bind="attributes" v-else-if="isExternalLink">
-    <i :class="classIcon"></i> {{name}}
+    <slot name="icon"><i :class="classIcon"></i></slot>
+    {{name}}
+    <slot name="append-icon"></slot>
     <b-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</b-badge>
   </a>
   <router-link :to="url" :class="classList" v-bind="attributes" v-else>
-    <i :class="classIcon"></i> {{name}}
+    <slot name="icon"><i :class="classIcon"></i></slot>
+    {{name}}
+    <slot name="append-icon"></slot>
     <b-badge v-if="badge && badge.text" :variant="badge.variant">{{badge.text}}</b-badge>
   </router-link>
 </template>
