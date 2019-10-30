@@ -2,13 +2,13 @@
 
 exports[`CCallout renders correctly 1`] = `
 <div
-  class="callout "
+  class="c-callout "
 />
 `;
 
 exports[`CCallout renders correctly 2`] = `
 <div
-  class="callout callout-success"
+  class="c-callout c-callout-success"
 >
   Callout
 </div>

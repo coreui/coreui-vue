@@ -1,5 +1,5 @@
-<template functional>
-  <div :class="`callout ${props.color ? 'callout-' + props.color : ''}`">
+<template>
+  <div :class="`c-callout ${color ? 'c-callout-' + color : ''}`">
     <slot></slot>
   </div>
 </template>
