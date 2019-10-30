@@ -2,14 +2,14 @@
 
 exports[`CToaster renders correctly 1`] = `
 <div
-  class="toaster"
+  class="toaster d-flex flex-column-reverse"
   style="z-index: 1100; min-width: 350px; position: fixed; top: 0px; right: 0px;"
 />
 `;
 
 exports[`CToaster renders correctly custom wrapper 1`] = `
 <div
-  class="toaster"
+  class="toaster d-flex flex-column-reverse"
   style="z-index: 1100; min-width: 350px; position: fixed; top: 0px; left: 0px;"
 >
   <div

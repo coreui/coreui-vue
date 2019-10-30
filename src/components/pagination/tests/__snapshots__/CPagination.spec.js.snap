@@ -5,7 +5,7 @@ exports[`CPagination renders correctly 1`] = `
   aria-label="pagination"
 >
   <ul
-    class="pagination pagination-md justify-content-start"
+    class="pagination  justify-content-start"
   >
     <li
       class="page-item disabled"

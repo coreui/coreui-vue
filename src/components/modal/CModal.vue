@@ -14,14 +14,7 @@
                 <h5 class="modal-title">
                   {{title}}
                 </h5>
-                <button
-                  type="button"
-                  class="close"
-                  aria-label="Close"
-                  @click="hide($event)"
-                >
-                  <span>&times;</span>
-                </button>
+                <CButtonClose @click="hide($event)"/>
               </slot>
             </header>
           </slot>
@@ -62,8 +55,13 @@
 </template>
 
 <script>
+import CButtonClose from '../button/CButtonClose'
+
 export default {
   name: 'CModal',
+  components: {
+    CButtonClose
+  },
   props: {
     show: Boolean,
     centered: Boolean,

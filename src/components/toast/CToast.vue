@@ -36,13 +36,13 @@ import CButtonClose from '../button/CButtonClose'
 export default {
   name: 'CToast',
   mixins: [ toastMixin ],
+  components: {
+    CButtonClose
+  },
   props: {
     show: Boolean,
     headerHtml: String,
     bodyHtml: String
-  },
-  components: {
-    CButtonClose
   },
   inject: {
     toaster: {

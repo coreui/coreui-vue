@@ -21,7 +21,10 @@ export default {
   },
   mixins: [ toastMixin ],
   props: {
-    reverse: Boolean
+    reverse: {
+      type: Boolean,
+      default: true
+    }
   },
   computed: {
     toasterClasses () {

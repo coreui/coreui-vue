@@ -36,11 +36,11 @@ describe(ComponentName, () => {
   it('hides on backdrop click when closeOnBackdrop prop is true', () => {
     const click = () => customWrapper.find('.modal').trigger('click')
     click()
-    expect(customWrapper.emitted().hide).not.toBeTruthy()
+    expect(customWrapper.emitted()['update:show']).not.toBeTruthy()
 
     customWrapper.setProps({ closeOnBackdrop: true })
     click()
-    expect(customWrapper.emitted().hide).toBeTruthy()
+    expect(customWrapper.emitted()['update:show']).toBeTruthy()
   })
   it('doesnt animate when fade prop is set to false', () => {
     defaultWrapper.setProps({ fade: false })

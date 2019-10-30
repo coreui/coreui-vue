@@ -30,9 +30,7 @@ exports[`CModal renders correctly 1`] = `
             class="close"
             type="button"
           >
-            <span>
-              ×
-            </span>
+            ×
           </button>
         </header>
          
@@ -99,9 +97,7 @@ exports[`CModal renders correctly 2`] = `
             class="close"
             type="button"
           >
-            <span>
-              ×
-            </span>
+            ×
           </button>
         </header>
          
