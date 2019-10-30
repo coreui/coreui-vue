@@ -579,8 +579,7 @@ export declare class CDataTable extends Vue {
 export declare class CTabs extends Vue {
   fill: boolean
   justified: boolean
-  pills: boolean
-  tabs: boolean
+  variant: string
   fade: boolean
   vertical: [boolean, object]
   addNavWrapperClasses: [string, Array<any>, object]

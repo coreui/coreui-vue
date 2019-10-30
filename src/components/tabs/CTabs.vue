@@ -48,10 +48,10 @@ export default {
   props: {
     fill: Boolean,
     justified: Boolean,
-    pills: Boolean,
-    tabs: {
-      type: Boolean,
-      default: true
+    variant: {
+      type: String,
+      default: 'tabs',
+      validator: val => ['', 'tabs', 'pills'].includes(val)
     },
     fade: {
       type: Boolean,
@@ -81,9 +81,9 @@ export default {
       return [
         this.addNavClasses,
         {
-          'nav' : true,
-          'nav-tabs': this.tabs && !this.pills,
-          'nav-pills': this.pills,
+          'nav': true,
+          'nav-tabs': this.variant === 'tabs',
+          'nav-pills': this.variant === 'pills',
           'flex-column': this.vertical,
           'nav-fill': this.fill,
           'nav-justified': this.justified,

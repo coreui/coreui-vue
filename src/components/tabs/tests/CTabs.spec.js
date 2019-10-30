@@ -10,7 +10,7 @@ const defaultWrapper = mount(CTabs)
 //   propsData: {
 //     fill: true,
 //     justified: true,
-//     pills: true,
+//     variant: 'pills',
 //     fade: true,
 //     vertical: true,
 //     addNavWrapperClasses: 'additional-nav-wrapper-class',
@@ -33,7 +33,7 @@ const App = Vue.extend({
         props: {
           fill: true,
           justified: true,
-          pills: true,
+          variant: 'pills',
           fade: true,
           vertical: { navs: 'col-sm-3', content: 'col-sm-9' },
           addNavWrapperClasses: 'additional-nav-wrapper-class',
