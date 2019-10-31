@@ -11,7 +11,7 @@ const customWrapper = mount(Component, {
     height: 200,
     block: true,
     fluidGrow: true,
-    rounded: 'right',
+    shape: 'rounded-right',
     // thumbnail: true,
     align: 'right',
     placeholderColor: 'red'
@@ -37,7 +37,7 @@ describe(ComponentName, () => {
   })
   it('changes rounding properly', () => {
     expect(customWrapper.classes().includes('rounded-right')).toBe(true)
-    customWrapper.setProps({ rounded: true})
+    customWrapper.setProps({ shape: 'rounded'})
     expect(customWrapper.classes().includes('rounded')).toBe(true)
   })
 })

@@ -26,22 +26,8 @@ export default {
     height: [Number, String],
     block: Boolean,
     fluid: Boolean,
-    // Gives fluid images class `w-100` to make them grow to fit container
     fluidGrow: Boolean,
-    // rounded can be:
-    //   false: no rounding of corners
-    //   true: slightly rounded corners
-    //   'top': top corners rounded
-    //   'right': right corners rounded
-    //   'bottom': bottom corners rounded
-    //   'left': left corners rounded
-    //   'circle': circle/oval
-    rounded: {
-      type: [Boolean, String],
-      validator: val => {
-        return ['', false, true, 'top','right','bottom','left','circle'].includes(val)
-      }
-    },
+    shape: String,
     thumbnail: Boolean,
     align: {
       type: String,
@@ -69,14 +55,14 @@ export default {
     },
     imageClasses () {
       return [
-        //animationClass is rendered in CImgLazy
+        //animationClasses is rendered in CImgLazy
         this.animationClasses,
         this.alignClass,
         {
           'img-thumbnail': this.thumbnail,
           'img-fluid': this.fluid || this.fluidGrow,
           'w-100': this.fluidGrow,
-          [`rounded${this.rounded===true?'':'-'+this.rounded}`]: this.rounded,
+          [`${this.shape}`]: this.shape,
           'd-block': this.block
         }
       ]
