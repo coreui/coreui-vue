@@ -47,8 +47,8 @@ exports[`CPagination renders correctly 1`] = `
       class="active page-item"
     >
       <a
-        aria-label="Go to page 1"
-        class="page-link"
+        aria-label="Current page 1"
+        class="page-link c-page-link-number"
         href="#"
         target="_self"
       >
@@ -62,7 +62,7 @@ exports[`CPagination renders correctly 1`] = `
     >
       <a
         aria-label="Go to page 2"
-        class="page-link"
+        class="page-link c-page-link-number"
         href="#"
         target="_self"
       >
@@ -76,7 +76,7 @@ exports[`CPagination renders correctly 1`] = `
     >
       <a
         aria-label="Go to page 3"
-        class="page-link"
+        class="page-link c-page-link-number"
         href="#"
         target="_self"
       >
@@ -90,7 +90,7 @@ exports[`CPagination renders correctly 1`] = `
     >
       <a
         aria-label="Go to page 4"
-        class="page-link"
+        class="page-link c-page-link-number"
         href="#"
         target="_self"
       >
@@ -162,7 +162,7 @@ exports[`CPagination renders correctly 2`] = `
     >
       <a
         aria-label="Go to page 6"
-        class="page-link"
+        class="page-link c-page-link-number"
         href="#"
         target="_self"
       >
@@ -176,7 +176,7 @@ exports[`CPagination renders correctly 2`] = `
     >
       <a
         aria-label="Go to page 7"
-        class="page-link"
+        class="page-link c-page-link-number"
         href="#"
         target="_self"
       >
@@ -190,7 +190,7 @@ exports[`CPagination renders correctly 2`] = `
     >
       <a
         aria-label="Go to page 8"
-        class="page-link"
+        class="page-link c-page-link-number"
         href="#"
         target="_self"
       >
@@ -203,8 +203,8 @@ exports[`CPagination renders correctly 2`] = `
       class="active page-item"
     >
       <a
-        aria-label="Go to page 9"
-        class="page-link"
+        aria-label="Current page 9"
+        class="page-link c-page-link-number"
         href="#"
         target="_self"
       >
@@ -218,7 +218,7 @@ exports[`CPagination renders correctly 2`] = `
     >
       <a
         aria-label="Go to page 10"
-        class="page-link"
+        class="page-link c-page-link-number"
         href="#"
         target="_self"
       >
@@ -232,7 +232,7 @@ exports[`CPagination renders correctly 2`] = `
     >
       <a
         aria-label="Go to page 11"
-        class="page-link"
+        class="page-link c-page-link-number"
         href="#"
         target="_self"
       >
@@ -246,7 +246,7 @@ exports[`CPagination renders correctly 2`] = `
     >
       <a
         aria-label="Go to page 12"
-        class="page-link"
+        class="page-link c-page-link-number"
         href="#"
         target="_self"
       >

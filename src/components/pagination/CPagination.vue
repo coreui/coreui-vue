@@ -37,9 +37,9 @@
         :class="[{ 'active': activePage === item }, 'page-item']"
       >
         <CLink
-          class="page-link"
-          @click="setPage(item)"
-          :aria-label="`Go to page ${item}`"
+          class="page-link c-page-link-number"
+          @click="setPage(item, $event)"
+          :aria-label="activePage === item ? `Current page ${item}` : `Go to page ${item}`"
         >
           {{item}}
         </CLink>
@@ -199,17 +199,22 @@
       }
     },
     methods: {
-      setPage (number) {
+      setPage (number, e = false) {
         if (number !== this.activePage) {
           this.$emit('update:activePage', number)
+          if (e) {
+            const items = this.$el.getElementsByClassName('c-page-link-number')
+            const focused = Number(e.target.innerHTML)
+            this.$nextTick(() => {
+              for (let i = 0; i < items.length; i++) {
+                if (Number(items[i].innerHTML) === focused) {
+                  items[i].focus()
+                }
+              }
+            })
+          }
         }
       }
     }
   }
 </script>
-
-<style>
-  .page-link:focus {
-    box-shadow: none;
-  }
-</style>
