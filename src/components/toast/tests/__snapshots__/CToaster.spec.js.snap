@@ -18,6 +18,7 @@ exports[`CToaster renders correctly custom wrapper 1`] = `
     aria-live="assertive"
     class="toast"
     role="alert"
+    style=""
   >
     <!---->
      

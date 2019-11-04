@@ -16,15 +16,14 @@ export default {
   functional: true,
   name: 'CCardImg',
   props,
-  render (h, { props, data, children }) {
+  render (h, { props, data }) {
     const haveClassSuffix = props.variant !== 'full'
     return h(
       CImg,
       mergeData(data, {
         class: `card-img${haveClassSuffix ? `-${props.variant}` : ''}`,
         props
-      }),
-      children
+      })
     )
   }
 }

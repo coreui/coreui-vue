@@ -58,12 +58,13 @@ export default {
     }
   },
   watch: {
-    show: {
-      immediate: true,
-      handler (val) {
-        val ? this.display() : this.close()
-      }
+    show (val) {
+      val ? this.display() : this.close()
     }
+  },
+  //needed not to be called in show watcher to allow SSR
+  mounted () {
+    this.show ? this.display() : this.close()
   },
   computed: {
     toastClasses () {

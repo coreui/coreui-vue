@@ -13,11 +13,11 @@ export default {
     },
     switcher: {
       type: Boolean,
-      default: true,
+      default: true
     },
     tag: {
       type: String,
-      default: 'div',
+      default: 'div'
     }
   },
 

@@ -1,7 +1,7 @@
 <template>
   <ol class="breadcrumb">
     <li
-      v-for="(item, index) in this.items.slice(0, -1)"
+      v-for="(item, index) in linkItems"
       :key="index"
       :class="[item.addClasses, sharedClasses, addLinkClasses]"
       role="presentation"
@@ -10,7 +10,8 @@
         {{item.text}}
       </CLink>
     </li>
-    <li 
+    <li
+      v-if="lastItem"
       :class="['active', lastItem.addClasses, sharedClasses, addLastItemClasses]"
       role="presentation"
     >
@@ -30,17 +31,17 @@ export default {
     CLink
   },
   props: {
-    items: {
-      type: Array,
-      required: true
-    },
+    items: Array,
     addClasses: [String, Array, Object],
     addLinkClasses: [String, Array, Object],
     addLastItemClasses: [String, Array, Object]
   },
   computed: {
     lastItem () {
-      return this.items[this.items.length -1]
+      return this.items ? this.items[this.items.length -1] : null
+    },
+    linkItems () {
+      return this.items ? this.items.slice(0, -1) : []
     },
     sharedClasses () {
       return [this.addClasses, 'breadcrumb-item']
