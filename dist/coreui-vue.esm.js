@@ -2181,7 +2181,10 @@ var script$1 = {
       type: [Boolean, Number],
       default: true
     },
-    fade: Boolean
+    fade: {
+      type: Boolean,
+      default: true
+    }
   },
   data: function data() {
     return {
@@ -2485,7 +2488,12 @@ var props$1 = Object.assign(props, {
     default: 'span'
   },
   color: String,
-  pill: Boolean
+  shape: {
+    type: String,
+    validator: function validator(shape) {
+      return ['', 'pill'].includes(shape);
+    }
+  }
 });
 var script$3 = {
   functional: true,
@@ -2500,7 +2508,7 @@ var script$3 = {
     var tag = !props.href && !props.to ? props.tag : CLink;
     var componentData = {
       staticClass: 'badge',
-      class: (_class = {}, _defineProperty(_class, "badge-".concat(props.color), props.color), _defineProperty(_class, 'badge-pill', props.pill), _defineProperty(_class, 'active', props.active), _defineProperty(_class, 'disabled', props.disabled), _class),
+      class: (_class = {}, _defineProperty(_class, "badge-".concat(props.color), props.color), _defineProperty(_class, 'badge-pill', props.shape === 'pill'), _defineProperty(_class, 'active', props.active), _defineProperty(_class, 'disabled', props.disabled), _class),
       props: props
     };
     return h(tag, a(data, componentData), children);
@@ -2537,24 +2545,103 @@ const __vue_script__$3 = script$3;
     undefined
   );
 
-//
+// `IsArray` abstract operation
+// https://tc39.github.io/ecma262/#sec-isarray
+var isArray$4 = Array.isArray || function isArray(arg) {
+  return classofRaw(arg) == 'Array';
+};
+
+var createProperty = function (object, key, value) {
+  var propertyKey = toPrimitive(key);
+  if (propertyKey in object) objectDefineProperty.f(object, propertyKey, createPropertyDescriptor(0, value));
+  else object[propertyKey] = value;
+};
+
+var userAgent = getBuiltIn('navigator', 'userAgent') || '';
+
+var process$1 = global_1.process;
+var versions = process$1 && process$1.versions;
+var v8 = versions && versions.v8;
+var match, version;
+
+if (v8) {
+  match = v8.split('.');
+  version = match[0] + match[1];
+} else if (userAgent) {
+  match = userAgent.match(/Chrome\/(\d+)/);
+  if (match) version = match[1];
+}
+
+var v8Version = version && +version;
+
+var SPECIES = wellKnownSymbol('species');
+
+var arrayMethodHasSpeciesSupport = function (METHOD_NAME) {
+  // We can't use this feature detection in V8 since it causes
+  // deoptimization and serious performance degradation
+  // https://github.com/zloirock/core-js/issues/677
+  return v8Version >= 51 || !fails(function () {
+    var array = [];
+    var constructor = array.constructor = {};
+    constructor[SPECIES] = function () {
+      return { foo: 1 };
+    };
+    return array[METHOD_NAME](Boolean).foo !== 1;
+  });
+};
+
+var SPECIES$1 = wellKnownSymbol('species');
+var nativeSlice = [].slice;
+var max$2 = Math.max;
+
+// `Array.prototype.slice` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.slice
+// fallback for not array-like ES3 strings and DOM objects
+_export({ target: 'Array', proto: true, forced: !arrayMethodHasSpeciesSupport('slice') }, {
+  slice: function slice(start, end) {
+    var O = toIndexedObject(this);
+    var length = toLength(O.length);
+    var k = toAbsoluteIndex(start, length);
+    var fin = toAbsoluteIndex(end === undefined ? length : end, length);
+    // inline `ArraySpeciesCreate` for usage native `Array#slice` where it's possible
+    var Constructor, result, n;
+    if (isArray$4(O)) {
+      Constructor = O.constructor;
+      // cross-realm fallback
+      if (typeof Constructor == 'function' && (Constructor === Array || isArray$4(Constructor.prototype))) {
+        Constructor = undefined;
+      } else if (isObject(Constructor)) {
+        Constructor = Constructor[SPECIES$1];
+        if (Constructor === null) Constructor = undefined;
+      }
+      if (Constructor === Array || Constructor === undefined) {
+        return nativeSlice.call(O, k, fin);
+      }
+    }
+    result = new (Constructor === undefined ? Array : Constructor)(max$2(fin - k, 0));
+    for (n = 0; k < fin; k++, n++) if (k in O) createProperty(result, n, O[k]);
+    result.length = n;
+    return result;
+  }
+});
+
 var script$4 = {
   name: 'CBreadcrumb',
   components: {
     CLink: CLink
   },
   props: {
-    items: {
-      type: Array,
-      required: true
-    },
+    items: Array,
     addClasses: [String, Array, Object],
     addLinkClasses: [String, Array, Object],
     addLastItemClasses: [String, Array, Object]
   },
   computed: {
     lastItem: function lastItem() {
-      return this.items[this.items.length - 1];
+      return this.items ? this.items[this.items.length - 1] : null;
+    },
+    linkItems: function linkItems() {
+      return this.items ? this.items.slice(0, -1) : [];
     },
     sharedClasses: function sharedClasses() {
       return [this.addClasses, 'breadcrumb-item'];
@@ -2574,7 +2661,7 @@ var __vue_render__$1 = function() {
     "ol",
     { staticClass: "breadcrumb" },
     [
-      _vm._l(this.items.slice(0, -1), function(item, index) {
+      _vm._l(_vm.linkItems, function(item, index) {
         return _c(
           "li",
           {
@@ -2598,19 +2685,25 @@ var __vue_render__$1 = function() {
         )
       }),
       _vm._v(" "),
-      _c(
-        "li",
-        {
-          class: [
-            "active",
-            _vm.lastItem.addClasses,
-            _vm.sharedClasses,
-            _vm.addLastItemClasses
-          ],
-          attrs: { role: "presentation" }
-        },
-        [_c("span", { domProps: { textContent: _vm._s(_vm.lastItem.text) } })]
-      ),
+      _vm.lastItem
+        ? _c(
+            "li",
+            {
+              class: [
+                "active",
+                _vm.lastItem.addClasses,
+                _vm.sharedClasses,
+                _vm.addLastItemClasses
+              ],
+              attrs: { role: "presentation" }
+            },
+            [
+              _c("span", {
+                domProps: { textContent: _vm._s(_vm.lastItem.text) }
+              })
+            ]
+          )
+        : _vm._e(),
       _vm._v(" "),
       _vm._t("default")
     ],
@@ -2668,13 +2761,7 @@ var bindContext$1 = function (fn, that, length) {
   };
 };
 
-// `IsArray` abstract operation
-// https://tc39.github.io/ecma262/#sec-isarray
-var isArray$4 = Array.isArray || function isArray(arg) {
-  return classofRaw(arg) == 'Array';
-};
-
-var SPECIES = wellKnownSymbol('species');
+var SPECIES$2 = wellKnownSymbol('species');
 
 // `ArraySpeciesCreate` abstract operation
 // https://tc39.github.io/ecma262/#sec-arrayspeciescreate
@@ -2685,7 +2772,7 @@ var arraySpeciesCreate = function (originalArray, length) {
     // cross-realm fallback
     if (typeof C == 'function' && (C === Array || isArray$4(C.prototype))) C = undefined;
     else if (isObject(C)) {
-      C = C[SPECIES];
+      C = C[SPECIES$2];
       if (C === null) C = undefined;
     }
   } return new (C === undefined ? Array : C)(length === 0 ? 0 : length);
@@ -2749,39 +2836,6 @@ var arrayIteration = {
   // `Array.prototype.findIndex` method
   // https://tc39.github.io/ecma262/#sec-array.prototype.findIndex
   findIndex: createMethod$6(6)
-};
-
-var userAgent = getBuiltIn('navigator', 'userAgent') || '';
-
-var process$1 = global_1.process;
-var versions = process$1 && process$1.versions;
-var v8 = versions && versions.v8;
-var match, version;
-
-if (v8) {
-  match = v8.split('.');
-  version = match[0] + match[1];
-} else if (userAgent) {
-  match = userAgent.match(/Chrome\/(\d+)/);
-  if (match) version = match[1];
-}
-
-var v8Version = version && +version;
-
-var SPECIES$1 = wellKnownSymbol('species');
-
-var arrayMethodHasSpeciesSupport = function (METHOD_NAME) {
-  // We can't use this feature detection in V8 since it causes
-  // deoptimization and serious performance degradation
-  // https://github.com/zloirock/core-js/issues/677
-  return v8Version >= 51 || !fails(function () {
-    var array = [];
-    var constructor = array.constructor = {};
-    constructor[SPECIES$1] = function () {
-      return { foo: 1 };
-    };
-    return array[METHOD_NAME](Boolean).foo !== 1;
-  });
 };
 
 var $filter = arrayIteration.filter;
@@ -2885,12 +2939,6 @@ __vue_render__$2._withStripped = true;
     undefined
   );
 
-var createProperty = function (object, key, value) {
-  var propertyKey = toPrimitive(key);
-  if (propertyKey in object) objectDefineProperty.f(object, propertyKey, createPropertyDescriptor(0, value));
-  else object[propertyKey] = value;
-};
-
 var IS_CONCAT_SPREADABLE = wellKnownSymbol('isConcatSpreadable');
 var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
 var MAXIMUM_ALLOWED_INDEX_EXCEEDED = 'Maximum allowed index exceeded';
@@ -2958,10 +3006,18 @@ function pickByKeys(originalObject, keys) {
 
 var btnProps = {
   block: Boolean,
-  pill: Boolean,
-  square: Boolean,
-  ghost: Boolean,
-  outline: Boolean,
+  shape: {
+    type: String,
+    validator: function validator(shape) {
+      return ['', 'pill', 'square'].includes(shape);
+    }
+  },
+  variant: {
+    type: String,
+    validator: function validator(val) {
+      return ['', 'ghost', 'outline'].includes(val);
+    }
+  },
   size: {
     type: String,
     validator: function validator(value) {
@@ -2991,7 +3047,8 @@ function isToggle(props) {
 function computeClasses(props) {
   var _ref;
 
-  return _ref = {}, _defineProperty(_ref, "btn-".concat(props.outline ? 'outline-' : '').concat(props.color), props.color), _defineProperty(_ref, "btn-".concat(props.size), Boolean(props.size)), _defineProperty(_ref, "btn-ghost-".concat(props.color), props.ghost), _defineProperty(_ref, 'btn-block', props.block), _defineProperty(_ref, 'btn-pill', props.pill), _defineProperty(_ref, 'btn-square', props.square && !props.pill), _defineProperty(_ref, 'disabled', props.disabled), _defineProperty(_ref, 'active', props.pressed), _ref;
+  var outlineSuffix = props.variant === 'outline' ? 'outline-' : '';
+  return _ref = {}, _defineProperty(_ref, "btn-".concat(outlineSuffix).concat(props.color), props.color), _defineProperty(_ref, "btn-".concat(props.size), Boolean(props.size)), _defineProperty(_ref, "btn-ghost-".concat(props.color), props.variant === 'ghost'), _defineProperty(_ref, 'btn-block', props.block), _defineProperty(_ref, 'btn-pill', props.shape === 'pill'), _defineProperty(_ref, 'btn-square', props.shape === 'square'), _defineProperty(_ref, 'disabled', props.disabled), _defineProperty(_ref, 'active', props.pressed), _ref;
 }
 
 function computePassedProps(props) {
@@ -3201,13 +3258,13 @@ var script$9 = {
 const __vue_script__$9 = script$9;
 
 /* template */
-var __vue_render__$3 = function(_h, _vm) {
-  var _c = _vm._c;
+var __vue_render__$3 = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
   return _c(
     "div",
-    {
-      class: "callout " + (_vm.props.color ? "callout-" + _vm.props.color : "")
-    },
+    { class: "c-callout " + (_vm.color ? "c-callout-" + _vm.color : "") },
     [_vm._t("default")],
     2
   )
@@ -3222,7 +3279,7 @@ __vue_render__$3._withStripped = true;
   /* module identifier */
   const __vue_module_identifier__$9 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$9 = true;
+  const __vue_is_functional_template__$9 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -3553,22 +3610,8 @@ var script$b = {
     height: [Number, String],
     block: Boolean,
     fluid: Boolean,
-    // Gives fluid images class `w-100` to make them grow to fit container
     fluidGrow: Boolean,
-    // rounded can be:
-    //   false: no rounding of corners
-    //   true: slightly rounded corners
-    //   'top': top corners rounded
-    //   'right': right corners rounded
-    //   'bottom': bottom corners rounded
-    //   'left': left corners rounded
-    //   'circle': circle/oval
-    rounded: {
-      type: [Boolean, String],
-      validator: function validator(val) {
-        return ['', false, true, 'top', 'right', 'bottom', 'left', 'circle'].includes(val);
-      }
-    },
+    shape: String,
     thumbnail: Boolean,
     align: {
       type: String,
@@ -3600,12 +3643,12 @@ var script$b = {
     imageClasses: function imageClasses() {
       var _ref;
 
-      return [//animationClass is rendered in CImgLazy
+      return [//animationClasses is rendered in CImgLazy
       this.animationClasses, this.alignClass, (_ref = {
         'img-thumbnail': this.thumbnail,
         'img-fluid': this.fluid || this.fluidGrow,
         'w-100': this.fluidGrow
-      }, _defineProperty(_ref, "rounded".concat(this.rounded === true ? '' : '-' + this.rounded), this.rounded), _defineProperty(_ref, 'd-block', this.block), _ref)];
+      }, _defineProperty(_ref, "".concat(this.shape), this.shape), _defineProperty(_ref, 'd-block', this.block), _ref)];
     }
   }
 };
@@ -3957,7 +4000,8 @@ var props$3 = Object.assign(sharedCardProps, {
   headerHtml: String,
   bodyHtml: String,
   footerHtml: String,
-  bodyWrapper: Boolean
+  bodyWrapper: Boolean,
+  accentColor: String
 });
 var script$g = {
   functional: true,
@@ -4001,7 +4045,7 @@ var script$g = {
 
     return h(props.tag || 'div', a(data, {
       staticClass: 'card',
-      class: (_class = {}, _defineProperty(_class, "text-".concat(props.align), Boolean(props.align)), _defineProperty(_class, "bg-".concat(props.color), Boolean(props.color)), _defineProperty(_class, "border-".concat(props.borderColor), Boolean(props.borderColor)), _defineProperty(_class, "text-".concat(props.textColor), Boolean(props.textColor)), _class)
+      class: (_class = {}, _defineProperty(_class, "card-accent-".concat(props.accentColor), props.accentColor), _defineProperty(_class, "text-".concat(props.align), props.align), _defineProperty(_class, "bg-".concat(props.color), props.color), _defineProperty(_class, "border-".concat(props.borderColor), props.borderColor), _defineProperty(_class, "text-".concat(props.textColor), props.textColor), _class)
     }), [header, main, footer]);
   }
 };
@@ -4099,13 +4143,12 @@ var script$i = {
   props: props$4,
   render: function render(h, _ref) {
     var props = _ref.props,
-        data = _ref.data,
-        children = _ref.children;
+        data = _ref.data;
     var haveClassSuffix = props.variant !== 'full';
     return h(CImg, a(data, {
       class: "card-img".concat(haveClassSuffix ? "-".concat(props.variant) : ''),
       props: props
-    }), children);
+    }));
   }
 };
 
@@ -4367,41 +4410,6 @@ const __vue_script__$n = script$n;
     undefined,
     undefined
   );
-
-var SPECIES$2 = wellKnownSymbol('species');
-var nativeSlice = [].slice;
-var max$2 = Math.max;
-
-// `Array.prototype.slice` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.slice
-// fallback for not array-like ES3 strings and DOM objects
-_export({ target: 'Array', proto: true, forced: !arrayMethodHasSpeciesSupport('slice') }, {
-  slice: function slice(start, end) {
-    var O = toIndexedObject(this);
-    var length = toLength(O.length);
-    var k = toAbsoluteIndex(start, length);
-    var fin = toAbsoluteIndex(end === undefined ? length : end, length);
-    // inline `ArraySpeciesCreate` for usage native `Array#slice` where it's possible
-    var Constructor, result, n;
-    if (isArray$4(O)) {
-      Constructor = O.constructor;
-      // cross-realm fallback
-      if (typeof Constructor == 'function' && (Constructor === Array || isArray$4(Constructor.prototype))) {
-        Constructor = undefined;
-      } else if (isObject(Constructor)) {
-        Constructor = Constructor[SPECIES$2];
-        if (Constructor === null) Constructor = undefined;
-      }
-      if (Constructor === Array || Constructor === undefined) {
-        return nativeSlice.call(O, k, fin);
-      }
-    }
-    result = new (Constructor === undefined ? Array : Constructor)(max$2(fin - k, 0));
-    for (n = 0; k < fin; k++, n++) if (k in O) createProperty(result, n, O[k]);
-    result.length = n;
-    return result;
-  }
-});
 
 //
 //
@@ -19796,25 +19804,12 @@ __vue_render__$g._withStripped = true;
     undefined
   );
 
+//
+//
+//
+//
 var script$H = {
-  name: 'CHeaderBrand',
-  inheritAttrs: false,
-  components: {
-    CLink: CLink
-  },
-  props: {
-    wrappedInLink: [String, Object]
-  },
-  computed: {
-    linkProps: function linkProps() {
-      return this.getObject(this.wrappedInLink, 'href');
-    }
-  },
-  methods: {
-    getObject: function getObject(prop, key) {
-      return _typeof(prop) === 'object' ? prop : _defineProperty({}, "".concat(key), prop);
-    }
-  }
+  name: 'CHeaderBrand'
 };
 
 /* script */
@@ -19825,17 +19820,7 @@ var __vue_render__$h = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return _vm.wrappedInLink
-    ? _c("CLink", _vm._b({}, "CLink", _vm.linkProps, false), [
-        _c(
-          "img",
-          _vm._b({ staticClass: "c-header-brand" }, "img", _vm.$attrs, false)
-        )
-      ])
-    : _c(
-        "img",
-        _vm._b({ staticClass: "c-header-brand" }, "img", _vm.$attrs, false)
-      )
+  return _c("img", { staticClass: "c-header-brand" })
 };
 var __vue_staticRenderFns__$h = [];
 __vue_render__$h._withStripped = true;
@@ -19914,15 +19899,13 @@ __vue_render__$i._withStripped = true;
   );
 
 //
-var props$a = Object.assign({
-  onlyLink: Boolean
-}, props);
+//
+//
+//
+//
+//
 var script$J = {
-  name: 'CHeaderNavItem',
-  components: {
-    CLink: CLink
-  },
-  props: props$a
+  name: 'CHeaderNavItem'
 };
 
 /* script */
@@ -19933,36 +19916,7 @@ var __vue_render__$j = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return !_vm.onlyLink
-    ? _c(
-        "li",
-        { staticClass: "c-header-nav-item" },
-        [
-          _c(
-            "CLink",
-            _vm._b(
-              { staticClass: "c-header-nav-link" },
-              "CLink",
-              _vm.$props,
-              false
-            ),
-            [_vm._t("default")],
-            2
-          )
-        ],
-        1
-      )
-    : _c(
-        "CLink",
-        _vm._b(
-          { staticClass: "c-header-nav-link" },
-          "CLink",
-          Object.assign({}, _vm.$props, { onlyLink: null }),
-          false
-        ),
-        [_vm._t("default")],
-        2
-      )
+  return _c("li", { staticClass: "c-header-nav-item" }, [_vm._t("default")], 2)
 };
 var __vue_staticRenderFns__$j = [];
 __vue_render__$j._withStripped = true;
@@ -19993,19 +19947,12 @@ __vue_render__$j._withStripped = true;
   );
 
 //
-//
-//
-//
-//
-//
 var script$K = {
-  name: 'CSubheader',
-  props: {
-    tag: {
-      type: String,
-      default: 'div'
-    }
-  }
+  name: 'CHeaderNavLink',
+  components: {
+    CLink: CLink
+  },
+  props: props
 };
 
 /* script */
@@ -20017,8 +19964,8 @@ var __vue_render__$k = function() {
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
   return _c(
-    _vm.tag,
-    { tag: "component", staticClass: "c-subheader" },
+    "CLink",
+    _vm._b({ staticClass: "c-header-nav-link" }, "CLink", _vm.$props, false),
     [_vm._t("default")],
     2
   )
@@ -20040,7 +19987,7 @@ __vue_render__$k._withStripped = true;
   
 
   
-  var CSubheader = normalizeComponent_1(
+  var CHeaderNavLink = normalizeComponent_1(
     { render: __vue_render__$k, staticRenderFns: __vue_staticRenderFns__$k },
     __vue_inject_styles__$K,
     __vue_script__$K,
@@ -20051,7 +19998,66 @@ __vue_render__$k._withStripped = true;
     undefined
   );
 
+//
+//
+//
+//
+//
+//
 var script$L = {
+  name: 'CSubheader',
+  props: {
+    tag: {
+      type: String,
+      default: 'div'
+    }
+  }
+};
+
+/* script */
+const __vue_script__$L = script$L;
+
+/* template */
+var __vue_render__$l = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c(
+    _vm.tag,
+    { tag: "component", staticClass: "c-subheader" },
+    [_vm._t("default")],
+    2
+  )
+};
+var __vue_staticRenderFns__$l = [];
+__vue_render__$l._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$L = undefined;
+  /* scoped */
+  const __vue_scope_id__$L = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$L = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$L = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CSubheader = normalizeComponent_1(
+    { render: __vue_render__$l, staticRenderFns: __vue_staticRenderFns__$l },
+    __vue_inject_styles__$L,
+    __vue_script__$L,
+    __vue_scope_id__$L,
+    __vue_is_functional_template__$L,
+    __vue_module_identifier__$L,
+    undefined,
+    undefined
+  );
+
+var script$M = {
   functional: true,
   name: 'CJumbotron',
   props: {
@@ -20080,18 +20086,18 @@ var script$L = {
 };
 
 /* script */
-const __vue_script__$L = script$L;
+const __vue_script__$M = script$M;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$L = undefined;
+  const __vue_inject_styles__$M = undefined;
   /* scoped */
-  const __vue_scope_id__$L = undefined;
+  const __vue_scope_id__$M = undefined;
   /* module identifier */
-  const __vue_module_identifier__$L = undefined;
+  const __vue_module_identifier__$M = undefined;
   /* functional template */
-  const __vue_is_functional_template__$L = undefined;
+  const __vue_is_functional_template__$M = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -20100,16 +20106,16 @@ const __vue_script__$L = script$L;
   
   var CJumbotron = normalizeComponent_1(
     {},
-    __vue_inject_styles__$L,
-    __vue_script__$L,
-    __vue_scope_id__$L,
-    __vue_is_functional_template__$L,
-    __vue_module_identifier__$L,
+    __vue_inject_styles__$M,
+    __vue_script__$M,
+    __vue_scope_id__$M,
+    __vue_is_functional_template__$M,
+    __vue_module_identifier__$M,
     undefined,
     undefined
   );
 
-var script$M = {
+var script$N = {
   functional: true,
   name: 'CListGroup',
   props: {
@@ -20140,18 +20146,18 @@ var script$M = {
 };
 
 /* script */
-const __vue_script__$M = script$M;
+const __vue_script__$N = script$N;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$M = undefined;
+  const __vue_inject_styles__$N = undefined;
   /* scoped */
-  const __vue_scope_id__$M = undefined;
+  const __vue_scope_id__$N = undefined;
   /* module identifier */
-  const __vue_module_identifier__$M = undefined;
+  const __vue_module_identifier__$N = undefined;
   /* functional template */
-  const __vue_is_functional_template__$M = undefined;
+  const __vue_is_functional_template__$N = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -20160,16 +20166,16 @@ const __vue_script__$M = script$M;
   
   var CListGroup = normalizeComponent_1(
     {},
-    __vue_inject_styles__$M,
-    __vue_script__$M,
-    __vue_scope_id__$M,
-    __vue_is_functional_template__$M,
-    __vue_module_identifier__$M,
+    __vue_inject_styles__$N,
+    __vue_script__$N,
+    __vue_scope_id__$N,
+    __vue_is_functional_template__$N,
+    __vue_module_identifier__$N,
     undefined,
     undefined
   );
 
-var props$b = Object.assign({
+var props$a = Object.assign({
   tag: {
     type: String,
     default: 'li'
@@ -20177,10 +20183,10 @@ var props$b = Object.assign({
   action: Boolean,
   color: String
 }, propsFactory());
-var script$N = {
+var script$O = {
   functional: true,
   name: 'CListGroupItem',
-  props: props$b,
+  props: props$a,
   render: function render(h, _ref) {
     var _class;
 
@@ -20215,18 +20221,18 @@ var script$N = {
 };
 
 /* script */
-const __vue_script__$N = script$N;
+const __vue_script__$O = script$O;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$N = undefined;
+  const __vue_inject_styles__$O = undefined;
   /* scoped */
-  const __vue_scope_id__$N = undefined;
+  const __vue_scope_id__$O = undefined;
   /* module identifier */
-  const __vue_module_identifier__$N = undefined;
+  const __vue_module_identifier__$O = undefined;
   /* functional template */
-  const __vue_is_functional_template__$N = undefined;
+  const __vue_is_functional_template__$O = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -20235,16 +20241,16 @@ const __vue_script__$N = script$N;
   
   var CListGroupItem = normalizeComponent_1(
     {},
-    __vue_inject_styles__$N,
-    __vue_script__$N,
-    __vue_scope_id__$N,
-    __vue_is_functional_template__$N,
-    __vue_module_identifier__$N,
+    __vue_inject_styles__$O,
+    __vue_script__$O,
+    __vue_scope_id__$O,
+    __vue_is_functional_template__$O,
+    __vue_module_identifier__$O,
     undefined,
     undefined
   );
 
-var script$O = {
+var script$P = {
   name: 'CMedia',
   components: {
     CImg: CImg
@@ -20289,10 +20295,10 @@ var script$O = {
 };
 
 /* script */
-const __vue_script__$O = script$O;
+const __vue_script__$P = script$P;
 
 /* template */
-var __vue_render__$l = function() {
+var __vue_render__$m = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -20311,17 +20317,17 @@ var __vue_render__$l = function() {
     _c("div", { class: _vm.mediaBodyClasses }, [_vm._t("default")], 2)
   ])
 };
-var __vue_staticRenderFns__$l = [];
-__vue_render__$l._withStripped = true;
+var __vue_staticRenderFns__$m = [];
+__vue_render__$m._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$O = undefined;
+  const __vue_inject_styles__$P = undefined;
   /* scoped */
-  const __vue_scope_id__$O = undefined;
+  const __vue_scope_id__$P = undefined;
   /* module identifier */
-  const __vue_module_identifier__$O = undefined;
+  const __vue_module_identifier__$P = undefined;
   /* functional template */
-  const __vue_is_functional_template__$O = false;
+  const __vue_is_functional_template__$P = false;
   /* style inject */
   
   /* style inject SSR */
@@ -20329,81 +20335,21 @@ __vue_render__$l._withStripped = true;
 
   
   var CMedia = normalizeComponent_1(
-    { render: __vue_render__$l, staticRenderFns: __vue_staticRenderFns__$l },
-    __vue_inject_styles__$O,
-    __vue_script__$O,
-    __vue_scope_id__$O,
-    __vue_is_functional_template__$O,
-    __vue_module_identifier__$O,
+    { render: __vue_render__$m, staticRenderFns: __vue_staticRenderFns__$m },
+    __vue_inject_styles__$P,
+    __vue_script__$P,
+    __vue_scope_id__$P,
+    __vue_is_functional_template__$P,
+    __vue_module_identifier__$P,
     undefined,
     undefined
   );
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var script$P = {
+var script$Q = {
   name: 'CModal',
+  components: {
+    CButtonClose: CButtonClose
+  },
   props: {
     show: Boolean,
     centered: Boolean,
@@ -20499,10 +20445,10 @@ var script$P = {
 };
 
 /* script */
-const __vue_script__$P = script$P;
+const __vue_script__$Q = script$Q;
 
 /* template */
-var __vue_render__$m = function() {
+var __vue_render__$n = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -20538,19 +20484,13 @@ var __vue_render__$m = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "close",
-                          attrs: { type: "button", "aria-label": "Close" },
-                          on: {
-                            click: function($event) {
-                              return _vm.hide($event)
-                            }
+                      _c("CButtonClose", {
+                        on: {
+                          click: function($event) {
+                            return _vm.hide($event)
                           }
-                        },
-                        [_c("span", [_vm._v("×")])]
-                      )
+                        }
+                      })
                     ])
                   ],
                   2
@@ -20611,17 +20551,17 @@ var __vue_render__$m = function() {
       : _vm._e()
   ])
 };
-var __vue_staticRenderFns__$m = [];
-__vue_render__$m._withStripped = true;
+var __vue_staticRenderFns__$n = [];
+__vue_render__$n._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$P = undefined;
+  const __vue_inject_styles__$Q = undefined;
   /* scoped */
-  const __vue_scope_id__$P = undefined;
+  const __vue_scope_id__$Q = undefined;
   /* module identifier */
-  const __vue_module_identifier__$P = undefined;
+  const __vue_module_identifier__$Q = undefined;
   /* functional template */
-  const __vue_is_functional_template__$P = false;
+  const __vue_is_functional_template__$Q = false;
   /* style inject */
   
   /* style inject SSR */
@@ -20629,12 +20569,12 @@ __vue_render__$m._withStripped = true;
 
   
   var CModal = normalizeComponent_1(
-    { render: __vue_render__$m, staticRenderFns: __vue_staticRenderFns__$m },
-    __vue_inject_styles__$P,
-    __vue_script__$P,
-    __vue_scope_id__$P,
-    __vue_is_functional_template__$P,
-    __vue_module_identifier__$P,
+    { render: __vue_render__$n, staticRenderFns: __vue_staticRenderFns__$n },
+    __vue_inject_styles__$Q,
+    __vue_script__$Q,
+    __vue_scope_id__$Q,
+    __vue_is_functional_template__$Q,
+    __vue_module_identifier__$Q,
     undefined,
     undefined
   );
@@ -20667,28 +20607,31 @@ addToUnscopables('fill');
 //
 //
 //
-var script$Q = {
+var script$R = {
   name: 'CNav',
   props: {
+    variant: {
+      type: String,
+      validator: function validator(val) {
+        return ['', 'tabs', 'pills'].includes(val);
+      }
+    },
     fill: Boolean,
     justified: Boolean,
-    tabs: Boolean,
-    pills: Boolean,
     vertical: Boolean,
     inCard: Boolean
   },
   computed: {
     navClasses: function navClasses() {
-      var hasTabs = this.tabs && !this.pills;
       return {
         'nav': true,
-        'nav-tabs': hasTabs,
-        'nav-pills': this.pills,
+        'nav-tabs': this.variant === 'tabs',
+        'nav-pills': this.variant === 'pills',
         'flex-column': this.vertical,
         'nav-fill': this.fill,
         'nav-justified': this.justified,
-        'card-header-tabs': this.inCard && hasTabs,
-        'card-header-pills': this.inCard && this.pills
+        'card-header-tabs': this.inCard && this.variant === 'tabs',
+        'card-header-pills': this.inCard && this.variant === 'pills'
       };
     }
   },
@@ -20718,10 +20661,10 @@ var script$Q = {
 };
 
 /* script */
-const __vue_script__$Q = script$Q;
+const __vue_script__$R = script$R;
 
 /* template */
-var __vue_render__$n = function() {
+var __vue_render__$o = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -20732,17 +20675,17 @@ var __vue_render__$n = function() {
     2
   )
 };
-var __vue_staticRenderFns__$n = [];
-__vue_render__$n._withStripped = true;
+var __vue_staticRenderFns__$o = [];
+__vue_render__$o._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$Q = undefined;
+  const __vue_inject_styles__$R = undefined;
   /* scoped */
-  const __vue_scope_id__$Q = undefined;
+  const __vue_scope_id__$R = undefined;
   /* module identifier */
-  const __vue_module_identifier__$Q = undefined;
+  const __vue_module_identifier__$R = undefined;
   /* functional template */
-  const __vue_is_functional_template__$Q = false;
+  const __vue_is_functional_template__$R = false;
   /* style inject */
   
   /* style inject SSR */
@@ -20750,18 +20693,18 @@ __vue_render__$n._withStripped = true;
 
   
   var CNav = normalizeComponent_1(
-    { render: __vue_render__$n, staticRenderFns: __vue_staticRenderFns__$n },
-    __vue_inject_styles__$Q,
-    __vue_script__$Q,
-    __vue_scope_id__$Q,
-    __vue_is_functional_template__$Q,
-    __vue_module_identifier__$Q,
+    { render: __vue_render__$o, staticRenderFns: __vue_staticRenderFns__$o },
+    __vue_inject_styles__$R,
+    __vue_script__$R,
+    __vue_scope_id__$R,
+    __vue_is_functional_template__$R,
+    __vue_module_identifier__$R,
     undefined,
     undefined
   );
 
 //
-var script$R = {
+var script$S = {
   name: 'CNavItem',
   components: {
     CLink: CLink
@@ -20775,10 +20718,10 @@ var script$R = {
 };
 
 /* script */
-const __vue_script__$R = script$R;
+const __vue_script__$S = script$S;
 
 /* template */
-var __vue_render__$o = function() {
+var __vue_render__$p = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -20801,17 +20744,17 @@ var __vue_render__$o = function() {
     1
   )
 };
-var __vue_staticRenderFns__$o = [];
-__vue_render__$o._withStripped = true;
+var __vue_staticRenderFns__$p = [];
+__vue_render__$p._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$R = undefined;
+  const __vue_inject_styles__$S = undefined;
   /* scoped */
-  const __vue_scope_id__$R = undefined;
+  const __vue_scope_id__$S = undefined;
   /* module identifier */
-  const __vue_module_identifier__$R = undefined;
+  const __vue_module_identifier__$S = undefined;
   /* functional template */
-  const __vue_is_functional_template__$R = false;
+  const __vue_is_functional_template__$S = false;
   /* style inject */
   
   /* style inject SSR */
@@ -20819,17 +20762,17 @@ __vue_render__$o._withStripped = true;
 
   
   var CNavItem = normalizeComponent_1(
-    { render: __vue_render__$o, staticRenderFns: __vue_staticRenderFns__$o },
-    __vue_inject_styles__$R,
-    __vue_script__$R,
-    __vue_scope_id__$R,
-    __vue_is_functional_template__$R,
-    __vue_module_identifier__$R,
+    { render: __vue_render__$p, staticRenderFns: __vue_staticRenderFns__$p },
+    __vue_inject_styles__$S,
+    __vue_script__$S,
+    __vue_scope_id__$S,
+    __vue_is_functional_template__$S,
+    __vue_module_identifier__$S,
     undefined,
     undefined
   );
 
-var props$c = {
+var props$b = {
   tag: {
     type: String,
     default: 'nav'
@@ -20848,10 +20791,10 @@ var props$c = {
   },
   sticky: Boolean
 };
-var script$S = {
+var script$T = {
   name: 'CNavbar',
   functional: true,
-  props: props$c,
+  props: props$b,
   render: function render(h, _ref) {
     var _ref2;
 
@@ -20867,56 +20810,6 @@ var script$S = {
       attrs: {
         role: props.tag === 'nav' ? null : 'navigation'
       }
-    }), children);
-  }
-};
-
-/* script */
-const __vue_script__$S = script$S;
-
-/* template */
-
-  /* style */
-  const __vue_inject_styles__$S = undefined;
-  /* scoped */
-  const __vue_scope_id__$S = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$S = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$S = undefined;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var CNavbar = normalizeComponent_1(
-    {},
-    __vue_inject_styles__$S,
-    __vue_script__$S,
-    __vue_scope_id__$S,
-    __vue_is_functional_template__$S,
-    __vue_module_identifier__$S,
-    undefined,
-    undefined
-  );
-
-var props$d = Object.assign(propsFactory(), {
-  tag: String
-});
-var script$T = {
-  name: 'CNavbarBrand',
-  functional: true,
-  props: props$d,
-  render: function render(h, _ref) {
-    var props = _ref.props,
-        data = _ref.data,
-        children = _ref.children;
-    var isLink = Boolean(props.to || props.href);
-    var tag = isLink ? CLink : props.tag || 'div';
-    return h(tag, a(data, {
-      staticClass: 'navbar-brand',
-      props: isLink ? props : null
     }), children);
   }
 };
@@ -20940,7 +20833,7 @@ const __vue_script__$T = script$T;
   
 
   
-  var CNavbarBrand = normalizeComponent_1(
+  var CNavbar = normalizeComponent_1(
     {},
     __vue_inject_styles__$T,
     __vue_script__$T,
@@ -20951,21 +20844,22 @@ const __vue_script__$T = script$T;
     undefined
   );
 
+var props$c = Object.assign(propsFactory(), {
+  tag: String
+});
 var script$U = {
-  name: 'CNavbarNav',
+  name: 'CNavbarBrand',
   functional: true,
-  props: {
-    tag: {
-      type: String,
-      default: 'ul'
-    }
-  },
+  props: props$c,
   render: function render(h, _ref) {
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
-    return h(props.tag, a(data, {
-      staticClass: 'navbar-nav'
+    var isLink = Boolean(props.to || props.href);
+    var tag = isLink ? CLink : props.tag || 'div';
+    return h(tag, a(data, {
+      staticClass: 'navbar-brand',
+      props: isLink ? props : null
     }), children);
   }
 };
@@ -20989,7 +20883,7 @@ const __vue_script__$U = script$U;
   
 
   
-  var CNavbarNav = normalizeComponent_1(
+  var CNavbarBrand = normalizeComponent_1(
     {},
     __vue_inject_styles__$U,
     __vue_script__$U,
@@ -21000,13 +20894,62 @@ const __vue_script__$U = script$U;
     undefined
   );
 
-//
-//
-//
-//
-//
-//
 var script$V = {
+  name: 'CNavbarNav',
+  functional: true,
+  props: {
+    tag: {
+      type: String,
+      default: 'ul'
+    }
+  },
+  render: function render(h, _ref) {
+    var props = _ref.props,
+        data = _ref.data,
+        children = _ref.children;
+    return h(props.tag, a(data, {
+      staticClass: 'navbar-nav'
+    }), children);
+  }
+};
+
+/* script */
+const __vue_script__$V = script$V;
+
+/* template */
+
+  /* style */
+  const __vue_inject_styles__$V = undefined;
+  /* scoped */
+  const __vue_scope_id__$V = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$V = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$V = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CNavbarNav = normalizeComponent_1(
+    {},
+    __vue_inject_styles__$V,
+    __vue_script__$V,
+    __vue_scope_id__$V,
+    __vue_is_functional_template__$V,
+    __vue_module_identifier__$V,
+    undefined,
+    undefined
+  );
+
+//
+//
+//
+//
+//
+//
+var script$W = {
   name: 'CNavbarText',
   props: {
     tag: {
@@ -21017,10 +20960,10 @@ var script$V = {
 };
 
 /* script */
-const __vue_script__$V = script$V;
+const __vue_script__$W = script$W;
 
 /* template */
-var __vue_render__$p = function() {
+var __vue_render__$q = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -21031,17 +20974,17 @@ var __vue_render__$p = function() {
     2
   )
 };
-var __vue_staticRenderFns__$p = [];
-__vue_render__$p._withStripped = true;
+var __vue_staticRenderFns__$q = [];
+__vue_render__$q._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$V = undefined;
+  const __vue_inject_styles__$W = undefined;
   /* scoped */
-  const __vue_scope_id__$V = undefined;
+  const __vue_scope_id__$W = undefined;
   /* module identifier */
-  const __vue_module_identifier__$V = undefined;
+  const __vue_module_identifier__$W = undefined;
   /* functional template */
-  const __vue_is_functional_template__$V = false;
+  const __vue_is_functional_template__$W = false;
   /* style inject */
   
   /* style inject SSR */
@@ -21049,12 +20992,12 @@ __vue_render__$p._withStripped = true;
 
   
   var CNavbarText = normalizeComponent_1(
-    { render: __vue_render__$p, staticRenderFns: __vue_staticRenderFns__$p },
-    __vue_inject_styles__$V,
-    __vue_script__$V,
-    __vue_scope_id__$V,
-    __vue_is_functional_template__$V,
-    __vue_module_identifier__$V,
+    { render: __vue_render__$q, staticRenderFns: __vue_staticRenderFns__$q },
+    __vue_inject_styles__$W,
+    __vue_script__$W,
+    __vue_scope_id__$W,
+    __vue_is_functional_template__$W,
+    __vue_module_identifier__$W,
     undefined,
     undefined
   );
@@ -21368,7 +21311,7 @@ defineIterator$1(String, 'String', function (iterated) {
   return { value: point, done: false };
 });
 
-var script$W = {
+var script$X = {
   name: 'CPagination',
   components: {
     CLink: CLink
@@ -21500,20 +21443,32 @@ var script$W = {
   },
   methods: {
     setPage: function setPage(number) {
+      var e = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
       if (number !== this.activePage) {
         this.$emit('update:activePage', number);
+
+        if (e) {
+          var items = this.$el.getElementsByClassName('c-page-link-number');
+          var focused = Number(e.target.innerHTML);
+          this.$nextTick(function () {
+            for (var i = 0; i < items.length; i++) {
+              if (Number(items[i].innerHTML) === focused) {
+                items[i].focus();
+              }
+            }
+          });
+        }
       }
     }
   }
 };
 
-var css$2 = "\n.page-link:focus {\n  -webkit-box-shadow: none;\n          box-shadow: none;\n}\n";
-styleInject(css$2);
-
 /* script */
-const __vue_script__$W = script$W;
+const __vue_script__$X = script$X;
+
 /* template */
-var __vue_render__$q = function() {
+var __vue_render__$r = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -21606,11 +21561,16 @@ var __vue_render__$q = function() {
               _c(
                 "CLink",
                 {
-                  staticClass: "page-link",
-                  attrs: { "aria-label": "Go to page " + item },
+                  staticClass: "page-link c-page-link-number",
+                  attrs: {
+                    "aria-label":
+                      _vm.activePage === item
+                        ? "Current page " + item
+                        : "Go to page " + item
+                  },
                   on: {
                     click: function($event) {
-                      return _vm.setPage(item)
+                      return _vm.setPage(item, $event)
                     }
                   }
                 },
@@ -21698,17 +21658,17 @@ var __vue_render__$q = function() {
     )
   ])
 };
-var __vue_staticRenderFns__$q = [];
-__vue_render__$q._withStripped = true;
+var __vue_staticRenderFns__$r = [];
+__vue_render__$r._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$W = undefined;
+  const __vue_inject_styles__$X = undefined;
   /* scoped */
-  const __vue_scope_id__$W = undefined;
+  const __vue_scope_id__$X = undefined;
   /* module identifier */
-  const __vue_module_identifier__$W = undefined;
+  const __vue_module_identifier__$X = undefined;
   /* functional template */
-  const __vue_is_functional_template__$W = false;
+  const __vue_is_functional_template__$X = false;
   /* style inject */
   
   /* style inject SSR */
@@ -21716,12 +21676,12 @@ __vue_render__$q._withStripped = true;
 
   
   var CPagination = normalizeComponent_1(
-    { render: __vue_render__$q, staticRenderFns: __vue_staticRenderFns__$q },
-    __vue_inject_styles__$W,
-    __vue_script__$W,
-    __vue_scope_id__$W,
-    __vue_is_functional_template__$W,
-    __vue_module_identifier__$W,
+    { render: __vue_render__$r, staticRenderFns: __vue_staticRenderFns__$r },
+    __vue_inject_styles__$X,
+    __vue_script__$X,
+    __vue_scope_id__$X,
+    __vue_is_functional_template__$X,
+    __vue_module_identifier__$X,
     undefined,
     undefined
   );
@@ -21866,7 +21826,7 @@ _export({ target: 'Number', proto: true, forced: FORCED$2 }, {
   }
 });
 
-var props$e = {
+var props$d = {
   height: String,
   // These props can be inherited via the child CProgressBar(s)
   color: String,
@@ -21888,9 +21848,9 @@ var props$e = {
   }
 };
 
-var script$X = {
+var script$Y = {
   name: 'CProgressBar',
-  props: props$e,
+  props: props$d,
   inject: {
     progress: {
       default: undefined
@@ -21906,7 +21866,7 @@ var script$X = {
     props: function props() {
       var _this = this;
 
-      return Object.keys(props$e).reduce(function (computedProps, key) {
+      return Object.keys(props$d).reduce(function (computedProps, key) {
         var propIsDirectlyDeclared = _this.directlyDeclaredProps.includes(key);
 
         var parentPropExists = _this.injectedProps[key] !== undefined;
@@ -21930,7 +21890,7 @@ var script$X = {
       return Math.round(100 * p * this.props.value / this.props.max) / p;
     },
     computedValue: function computedValue() {
-      return this.props.value.toFixed(props$e.precision);
+      return this.props.value.toFixed(props$d.precision);
     },
     text: function text() {
       if (this.props.showPercentage) {
@@ -21943,10 +21903,10 @@ var script$X = {
 };
 
 /* script */
-const __vue_script__$X = script$X;
+const __vue_script__$Y = script$Y;
 
 /* template */
-var __vue_render__$r = function() {
+var __vue_render__$s = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -21963,71 +21923,6 @@ var __vue_render__$r = function() {
       }
     },
     [_vm._t("default", [_vm._v(_vm._s(_vm.text))])],
-    2
-  )
-};
-var __vue_staticRenderFns__$r = [];
-__vue_render__$r._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$X = undefined;
-  /* scoped */
-  const __vue_scope_id__$X = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$X = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$X = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var CProgressBar = normalizeComponent_1(
-    { render: __vue_render__$r, staticRenderFns: __vue_staticRenderFns__$r },
-    __vue_inject_styles__$X,
-    __vue_script__$X,
-    __vue_scope_id__$X,
-    __vue_is_functional_template__$X,
-    __vue_module_identifier__$X,
-    undefined,
-    undefined
-  );
-
-//
-var script$Y = {
-  name: 'CProgress',
-  components: {
-    CProgressBar: CProgressBar
-  },
-  props: props$e,
-  provide: function provide() {
-    var _this = this;
-
-    var progress = {};
-    Object.defineProperty(progress, 'props', {
-      get: function get() {
-        return _this._props;
-      }
-    });
-    return {
-      progress: progress
-    };
-  }
-};
-
-/* script */
-const __vue_script__$Y = script$Y;
-
-/* template */
-var __vue_render__$s = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c(
-    "div",
-    { staticClass: "progress", style: { height: _vm.height } },
-    [_vm._t("default", [_c("CProgressBar", { attrs: { value: _vm.value } })])],
     2
   )
 };
@@ -22048,13 +21943,78 @@ __vue_render__$s._withStripped = true;
   
 
   
-  var CProgress = normalizeComponent_1(
+  var CProgressBar = normalizeComponent_1(
     { render: __vue_render__$s, staticRenderFns: __vue_staticRenderFns__$s },
     __vue_inject_styles__$Y,
     __vue_script__$Y,
     __vue_scope_id__$Y,
     __vue_is_functional_template__$Y,
     __vue_module_identifier__$Y,
+    undefined,
+    undefined
+  );
+
+//
+var script$Z = {
+  name: 'CProgress',
+  components: {
+    CProgressBar: CProgressBar
+  },
+  props: props$d,
+  provide: function provide() {
+    var _this = this;
+
+    var progress = {};
+    Object.defineProperty(progress, 'props', {
+      get: function get() {
+        return _this._props;
+      }
+    });
+    return {
+      progress: progress
+    };
+  }
+};
+
+/* script */
+const __vue_script__$Z = script$Z;
+
+/* template */
+var __vue_render__$t = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c(
+    "div",
+    { staticClass: "progress", style: { height: _vm.height } },
+    [_vm._t("default", [_c("CProgressBar", { attrs: { value: _vm.value } })])],
+    2
+  )
+};
+var __vue_staticRenderFns__$t = [];
+__vue_render__$t._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$Z = undefined;
+  /* scoped */
+  const __vue_scope_id__$Z = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$Z = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$Z = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CProgress = normalizeComponent_1(
+    { render: __vue_render__$t, staticRenderFns: __vue_staticRenderFns__$t },
+    __vue_inject_styles__$Z,
+    __vue_script__$Z,
+    __vue_scope_id__$Z,
+    __vue_is_functional_template__$Z,
+    __vue_module_identifier__$Z,
     undefined,
     undefined
   );
@@ -22447,7 +22407,7 @@ if ( module.exports) {
 }
 });
 
-var script$Z = {
+var script$_ = {
   name: 'CRenderFunction',
   props: {
     contentToRender: Array
@@ -22488,18 +22448,18 @@ var script$Z = {
 };
 
 /* script */
-const __vue_script__$Z = script$Z;
+const __vue_script__$_ = script$_;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$Z = undefined;
+  const __vue_inject_styles__$_ = undefined;
   /* scoped */
-  const __vue_scope_id__$Z = undefined;
+  const __vue_scope_id__$_ = undefined;
   /* module identifier */
-  const __vue_module_identifier__$Z = undefined;
+  const __vue_module_identifier__$_ = undefined;
   /* functional template */
-  const __vue_is_functional_template__$Z = undefined;
+  const __vue_is_functional_template__$_ = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -22508,11 +22468,11 @@ const __vue_script__$Z = script$Z;
   
   var CRenderFunction = normalizeComponent_1(
     {},
-    __vue_inject_styles__$Z,
-    __vue_script__$Z,
-    __vue_scope_id__$Z,
-    __vue_is_functional_template__$Z,
-    __vue_module_identifier__$Z,
+    __vue_inject_styles__$_,
+    __vue_script__$_,
+    __vue_scope_id__$_,
+    __vue_is_functional_template__$_,
+    __vue_module_identifier__$_,
     undefined,
     undefined
   );
@@ -23833,7 +23793,7 @@ PerfectScrollbar.prototype.removePsClasses = function removePsClasses () {
 };
 
 // this component is a refector of vue-perfect-scrollbar component https://github.com/lecion/vue-perfect-scrollbar
-var script$_ = {
+var script$$ = {
   name: 'CScrollbar',
   props: {
     settings: {
@@ -23900,21 +23860,21 @@ var script$_ = {
   }
 };
 
-var css$3 = "/*\n * Container style\n */\n.ps {\n  overflow: hidden !important;\n  overflow-anchor: none;\n  -ms-overflow-style: none;\n  touch-action: auto;\n  -ms-touch-action: auto;\n}\n\n/*\n * Scrollbar rail styles\n */\n.ps__rail-x {\n  display: none;\n  opacity: 0;\n  transition: background-color .2s linear, opacity .2s linear;\n  -webkit-transition: background-color .2s linear, opacity .2s linear;\n  height: 15px;\n  /* there must be 'bottom' or 'top' for ps__rail-x */\n  bottom: 0px;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps__rail-y {\n  display: none;\n  opacity: 0;\n  transition: background-color .2s linear, opacity .2s linear;\n  -webkit-transition: background-color .2s linear, opacity .2s linear;\n  width: 15px;\n  /* there must be 'right' or 'left' for ps__rail-y */\n  right: 0;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps--active-x > .ps__rail-x,\n.ps--active-y > .ps__rail-y {\n  display: block;\n  background-color: transparent;\n}\n.ps:hover > .ps__rail-x,\n.ps:hover > .ps__rail-y,\n.ps--focus > .ps__rail-x,\n.ps--focus > .ps__rail-y,\n.ps--scrolling-x > .ps__rail-x,\n.ps--scrolling-y > .ps__rail-y {\n  opacity: 0.6;\n}\n.ps .ps__rail-x:hover,\n.ps .ps__rail-y:hover,\n.ps .ps__rail-x:focus,\n.ps .ps__rail-y:focus,\n.ps .ps__rail-x.ps--clicking,\n.ps .ps__rail-y.ps--clicking {\n  background-color: #eee;\n  opacity: 0.9;\n}\n\n/*\n * Scrollbar thumb styles\n */\n.ps__thumb-x {\n  background-color: #aaa;\n  border-radius: 6px;\n  transition: background-color .2s linear, height .2s ease-in-out;\n  -webkit-transition: background-color .2s linear, height .2s ease-in-out;\n  height: 6px;\n  /* there must be 'bottom' for ps__thumb-x */\n  bottom: 2px;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps__thumb-y {\n  background-color: #aaa;\n  border-radius: 6px;\n  transition: background-color .2s linear, width .2s ease-in-out;\n  -webkit-transition: background-color .2s linear, width .2s ease-in-out;\n  width: 6px;\n  /* there must be 'right' for ps__thumb-y */\n  right: 2px;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps__rail-x:hover > .ps__thumb-x,\n.ps__rail-x:focus > .ps__thumb-x,\n.ps__rail-x.ps--clicking .ps__thumb-x {\n  background-color: #999;\n  height: 11px;\n}\n.ps__rail-y:hover > .ps__thumb-y,\n.ps__rail-y:focus > .ps__thumb-y,\n.ps__rail-y.ps--clicking .ps__thumb-y {\n  background-color: #999;\n  width: 11px;\n}\n\n/* MS supports */\n@supports (-ms-overflow-style: none) {\n.ps {\n    overflow: auto !important;\n}\n}\n@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {\n.ps {\n    overflow: auto !important;\n}\n}\n";
-styleInject(css$3);
+var css$2 = "/*\n * Container style\n */\n.ps {\n  overflow: hidden !important;\n  overflow-anchor: none;\n  -ms-overflow-style: none;\n  touch-action: auto;\n  -ms-touch-action: auto;\n}\n\n/*\n * Scrollbar rail styles\n */\n.ps__rail-x {\n  display: none;\n  opacity: 0;\n  transition: background-color .2s linear, opacity .2s linear;\n  -webkit-transition: background-color .2s linear, opacity .2s linear;\n  height: 15px;\n  /* there must be 'bottom' or 'top' for ps__rail-x */\n  bottom: 0px;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps__rail-y {\n  display: none;\n  opacity: 0;\n  transition: background-color .2s linear, opacity .2s linear;\n  -webkit-transition: background-color .2s linear, opacity .2s linear;\n  width: 15px;\n  /* there must be 'right' or 'left' for ps__rail-y */\n  right: 0;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps--active-x > .ps__rail-x,\n.ps--active-y > .ps__rail-y {\n  display: block;\n  background-color: transparent;\n}\n.ps:hover > .ps__rail-x,\n.ps:hover > .ps__rail-y,\n.ps--focus > .ps__rail-x,\n.ps--focus > .ps__rail-y,\n.ps--scrolling-x > .ps__rail-x,\n.ps--scrolling-y > .ps__rail-y {\n  opacity: 0.6;\n}\n.ps .ps__rail-x:hover,\n.ps .ps__rail-y:hover,\n.ps .ps__rail-x:focus,\n.ps .ps__rail-y:focus,\n.ps .ps__rail-x.ps--clicking,\n.ps .ps__rail-y.ps--clicking {\n  background-color: #eee;\n  opacity: 0.9;\n}\n\n/*\n * Scrollbar thumb styles\n */\n.ps__thumb-x {\n  background-color: #aaa;\n  border-radius: 6px;\n  transition: background-color .2s linear, height .2s ease-in-out;\n  -webkit-transition: background-color .2s linear, height .2s ease-in-out;\n  height: 6px;\n  /* there must be 'bottom' for ps__thumb-x */\n  bottom: 2px;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps__thumb-y {\n  background-color: #aaa;\n  border-radius: 6px;\n  transition: background-color .2s linear, width .2s ease-in-out;\n  -webkit-transition: background-color .2s linear, width .2s ease-in-out;\n  width: 6px;\n  /* there must be 'right' for ps__thumb-y */\n  right: 2px;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps__rail-x:hover > .ps__thumb-x,\n.ps__rail-x:focus > .ps__thumb-x,\n.ps__rail-x.ps--clicking .ps__thumb-x {\n  background-color: #999;\n  height: 11px;\n}\n.ps__rail-y:hover > .ps__thumb-y,\n.ps__rail-y:focus > .ps__thumb-y,\n.ps__rail-y.ps--clicking .ps__thumb-y {\n  background-color: #999;\n  width: 11px;\n}\n\n/* MS supports */\n@supports (-ms-overflow-style: none) {\n.ps {\n    overflow: auto !important;\n}\n}\n@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {\n.ps {\n    overflow: auto !important;\n}\n}\n";
+styleInject(css$2);
 
 /* script */
-const __vue_script__$_ = script$_;
+const __vue_script__$$ = script$$;
 /* template */
 
   /* style */
-  const __vue_inject_styles__$_ = undefined;
+  const __vue_inject_styles__$$ = undefined;
   /* scoped */
-  const __vue_scope_id__$_ = undefined;
+  const __vue_scope_id__$$ = undefined;
   /* module identifier */
-  const __vue_module_identifier__$_ = undefined;
+  const __vue_module_identifier__$$ = undefined;
   /* functional template */
-  const __vue_is_functional_template__$_ = undefined;
+  const __vue_is_functional_template__$$ = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -23923,11 +23883,11 @@ const __vue_script__$_ = script$_;
   
   var CScrollbar = normalizeComponent_1(
     {},
-    __vue_inject_styles__$_,
-    __vue_script__$_,
-    __vue_scope_id__$_,
-    __vue_is_functional_template__$_,
-    __vue_module_identifier__$_,
+    __vue_inject_styles__$$,
+    __vue_script__$$,
+    __vue_scope_id__$$,
+    __vue_is_functional_template__$$,
+    __vue_module_identifier__$$,
     undefined,
     undefined
   );
@@ -23938,7 +23898,7 @@ const __vue_script__$_ = script$_;
 //
 //
 //
-var script$$ = {
+var script$10 = {
   name: 'CSidebar',
   props: {
     fixed: {
@@ -24031,10 +23991,10 @@ var script$$ = {
 };
 
 /* script */
-const __vue_script__$$ = script$$;
+const __vue_script__$10 = script$10;
 
 /* template */
-var __vue_render__$t = function() {
+var __vue_render__$u = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -24045,17 +24005,17 @@ var __vue_render__$t = function() {
     2
   )
 };
-var __vue_staticRenderFns__$t = [];
-__vue_render__$t._withStripped = true;
+var __vue_staticRenderFns__$u = [];
+__vue_render__$u._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$$ = undefined;
+  const __vue_inject_styles__$10 = undefined;
   /* scoped */
-  const __vue_scope_id__$$ = undefined;
+  const __vue_scope_id__$10 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$$ = undefined;
+  const __vue_module_identifier__$10 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$$ = false;
+  const __vue_is_functional_template__$10 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -24063,17 +24023,17 @@ __vue_render__$t._withStripped = true;
 
   
   var CSidebar = normalizeComponent_1(
-    { render: __vue_render__$t, staticRenderFns: __vue_staticRenderFns__$t },
-    __vue_inject_styles__$$,
-    __vue_script__$$,
-    __vue_scope_id__$$,
-    __vue_is_functional_template__$$,
-    __vue_module_identifier__$$,
+    { render: __vue_render__$u, staticRenderFns: __vue_staticRenderFns__$u },
+    __vue_inject_styles__$10,
+    __vue_script__$10,
+    __vue_scope_id__$10,
+    __vue_is_functional_template__$10,
+    __vue_module_identifier__$10,
     undefined,
     undefined
   );
 
-var script$10 = {
+var script$11 = {
   name: 'CSidebarBrand',
   components: {
     CLink: CLink
@@ -24103,10 +24063,10 @@ var script$10 = {
 };
 
 /* script */
-const __vue_script__$10 = script$10;
+const __vue_script__$11 = script$11;
 
 /* template */
-var __vue_render__$u = function() {
+var __vue_render__$v = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -24163,17 +24123,17 @@ var __vue_render__$u = function() {
     2
   )
 };
-var __vue_staticRenderFns__$u = [];
-__vue_render__$u._withStripped = true;
+var __vue_staticRenderFns__$v = [];
+__vue_render__$v._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$10 = undefined;
+  const __vue_inject_styles__$11 = undefined;
   /* scoped */
-  const __vue_scope_id__$10 = undefined;
+  const __vue_scope_id__$11 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$10 = undefined;
+  const __vue_module_identifier__$11 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$10 = false;
+  const __vue_is_functional_template__$11 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -24181,18 +24141,18 @@ __vue_render__$u._withStripped = true;
 
   
   var CSidebarBrand = normalizeComponent_1(
-    { render: __vue_render__$u, staticRenderFns: __vue_staticRenderFns__$u },
-    __vue_inject_styles__$10,
-    __vue_script__$10,
-    __vue_scope_id__$10,
-    __vue_is_functional_template__$10,
-    __vue_module_identifier__$10,
+    { render: __vue_render__$v, staticRenderFns: __vue_staticRenderFns__$v },
+    __vue_inject_styles__$11,
+    __vue_script__$11,
+    __vue_scope_id__$11,
+    __vue_is_functional_template__$11,
+    __vue_module_identifier__$11,
     undefined,
     undefined
   );
 
 //
-var script$11 = {
+var script$12 = {
   name: 'CSidebarClose',
   components: {
     CButtonClose: CButtonClose
@@ -24200,10 +24160,10 @@ var script$11 = {
 };
 
 /* script */
-const __vue_script__$11 = script$11;
+const __vue_script__$12 = script$12;
 
 /* template */
-var __vue_render__$v = function() {
+var __vue_render__$w = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -24227,54 +24187,6 @@ var __vue_render__$v = function() {
     )
   ])
 };
-var __vue_staticRenderFns__$v = [];
-__vue_render__$v._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$11 = undefined;
-  /* scoped */
-  const __vue_scope_id__$11 = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$11 = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$11 = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var CSidebarClose = normalizeComponent_1(
-    { render: __vue_render__$v, staticRenderFns: __vue_staticRenderFns__$v },
-    __vue_inject_styles__$11,
-    __vue_script__$11,
-    __vue_scope_id__$11,
-    __vue_is_functional_template__$11,
-    __vue_module_identifier__$11,
-    undefined,
-    undefined
-  );
-
-//
-//
-//
-//
-//
-//
-var script$12 = {
-  name: 'CSidebarFooter'
-};
-
-/* script */
-const __vue_script__$12 = script$12;
-
-/* template */
-var __vue_render__$w = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c("div", { staticClass: "c-sidebar-footer" }, [_vm._t("default")], 2)
-};
 var __vue_staticRenderFns__$w = [];
 __vue_render__$w._withStripped = true;
 
@@ -24292,7 +24204,7 @@ __vue_render__$w._withStripped = true;
   
 
   
-  var CSidebarFooter = normalizeComponent_1(
+  var CSidebarClose = normalizeComponent_1(
     { render: __vue_render__$w, staticRenderFns: __vue_staticRenderFns__$w },
     __vue_inject_styles__$12,
     __vue_script__$12,
@@ -24310,7 +24222,7 @@ __vue_render__$w._withStripped = true;
 //
 //
 var script$13 = {
-  name: 'CSidebarForm'
+  name: 'CSidebarFooter'
 };
 
 /* script */
@@ -24321,7 +24233,7 @@ var __vue_render__$x = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return _c("div", { staticClass: "c-sidebar-form" }, [_vm._t("default")], 2)
+  return _c("div", { staticClass: "c-sidebar-footer" }, [_vm._t("default")], 2)
 };
 var __vue_staticRenderFns__$x = [];
 __vue_render__$x._withStripped = true;
@@ -24340,7 +24252,7 @@ __vue_render__$x._withStripped = true;
   
 
   
-  var CSidebarForm = normalizeComponent_1(
+  var CSidebarFooter = normalizeComponent_1(
     { render: __vue_render__$x, staticRenderFns: __vue_staticRenderFns__$x },
     __vue_inject_styles__$13,
     __vue_script__$13,
@@ -24358,7 +24270,7 @@ __vue_render__$x._withStripped = true;
 //
 //
 var script$14 = {
-  name: 'CSidebarHeader'
+  name: 'CSidebarForm'
 };
 
 /* script */
@@ -24369,7 +24281,7 @@ var __vue_render__$y = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return _c("div", { staticClass: "c-sidebar-header" }, [_vm._t("default")], 2)
+  return _c("div", { staticClass: "c-sidebar-form" }, [_vm._t("default")], 2)
 };
 var __vue_staticRenderFns__$y = [];
 __vue_render__$y._withStripped = true;
@@ -24388,7 +24300,7 @@ __vue_render__$y._withStripped = true;
   
 
   
-  var CSidebarHeader = normalizeComponent_1(
+  var CSidebarForm = normalizeComponent_1(
     { render: __vue_render__$y, staticRenderFns: __vue_staticRenderFns__$y },
     __vue_inject_styles__$14,
     __vue_script__$14,
@@ -24405,10 +24317,8 @@ __vue_render__$y._withStripped = true;
 //
 //
 //
-//
-//
 var script$15 = {
-  name: 'CSidebarMinimizer'
+  name: 'CSidebarHeader'
 };
 
 /* script */
@@ -24419,10 +24329,7 @@ var __vue_render__$z = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return _c("button", {
-    staticClass: "c-sidebar-minimizer",
-    attrs: { type: "button" }
-  })
+  return _c("div", { staticClass: "c-sidebar-header" }, [_vm._t("default")], 2)
 };
 var __vue_staticRenderFns__$z = [];
 __vue_render__$z._withStripped = true;
@@ -24441,7 +24348,7 @@ __vue_render__$z._withStripped = true;
   
 
   
-  var CSidebarMinimizer = normalizeComponent_1(
+  var CSidebarHeader = normalizeComponent_1(
     { render: __vue_render__$z, staticRenderFns: __vue_staticRenderFns__$z },
     __vue_inject_styles__$15,
     __vue_script__$15,
@@ -24453,7 +24360,60 @@ __vue_render__$z._withStripped = true;
   );
 
 //
+//
+//
+//
+//
+//
+//
+//
 var script$16 = {
+  name: 'CSidebarMinimizer'
+};
+
+/* script */
+const __vue_script__$16 = script$16;
+
+/* template */
+var __vue_render__$A = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("button", {
+    staticClass: "c-sidebar-minimizer",
+    attrs: { type: "button" }
+  })
+};
+var __vue_staticRenderFns__$A = [];
+__vue_render__$A._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$16 = undefined;
+  /* scoped */
+  const __vue_scope_id__$16 = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$16 = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$16 = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CSidebarMinimizer = normalizeComponent_1(
+    { render: __vue_render__$A, staticRenderFns: __vue_staticRenderFns__$A },
+    __vue_inject_styles__$16,
+    __vue_script__$16,
+    __vue_scope_id__$16,
+    __vue_is_functional_template__$16,
+    __vue_module_identifier__$16,
+    undefined,
+    undefined
+  );
+
+//
+var script$17 = {
   name: 'CSidebarNav',
   components: {
     CScrollbar: CScrollbar
@@ -24476,13 +24436,13 @@ var script$16 = {
   }
 };
 
-var css$4 = "\n.c-scroll-area[data-v-ffb43714] {\n  height: 100%;\n}\n";
-styleInject(css$4);
+var css$3 = "\n.c-scroll-area[data-v-ffb43714] {\n  height: 100%;\n}\n";
+styleInject(css$3);
 
 /* script */
-const __vue_script__$16 = script$16;
+const __vue_script__$17 = script$17;
 /* template */
-var __vue_render__$A = function() {
+var __vue_render__$B = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -24500,59 +24460,13 @@ var __vue_render__$A = function() {
     2
   )
 };
-var __vue_staticRenderFns__$A = [];
-__vue_render__$A._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$16 = undefined;
-  /* scoped */
-  const __vue_scope_id__$16 = "data-v-ffb43714";
-  /* module identifier */
-  const __vue_module_identifier__$16 = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$16 = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var CSidebarNav = normalizeComponent_1(
-    { render: __vue_render__$A, staticRenderFns: __vue_staticRenderFns__$A },
-    __vue_inject_styles__$16,
-    __vue_script__$16,
-    __vue_scope_id__$16,
-    __vue_is_functional_template__$16,
-    __vue_module_identifier__$16,
-    undefined,
-    undefined
-  );
-
-//
-//
-//
-//
-var script$17 = {
-  name: 'CSidebarNavDivider'
-};
-
-/* script */
-const __vue_script__$17 = script$17;
-
-/* template */
-var __vue_render__$B = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c("li", { staticClass: "c-sidebar-nav-divider" })
-};
 var __vue_staticRenderFns__$B = [];
 __vue_render__$B._withStripped = true;
 
   /* style */
   const __vue_inject_styles__$17 = undefined;
   /* scoped */
-  const __vue_scope_id__$17 = undefined;
+  const __vue_scope_id__$17 = "data-v-ffb43714";
   /* module identifier */
   const __vue_module_identifier__$17 = undefined;
   /* functional template */
@@ -24563,13 +24477,59 @@ __vue_render__$B._withStripped = true;
   
 
   
-  var CSidebarNavDivider = normalizeComponent_1(
+  var CSidebarNav = normalizeComponent_1(
     { render: __vue_render__$B, staticRenderFns: __vue_staticRenderFns__$B },
     __vue_inject_styles__$17,
     __vue_script__$17,
     __vue_scope_id__$17,
     __vue_is_functional_template__$17,
     __vue_module_identifier__$17,
+    undefined,
+    undefined
+  );
+
+//
+//
+//
+//
+var script$18 = {
+  name: 'CSidebarNavDivider'
+};
+
+/* script */
+const __vue_script__$18 = script$18;
+
+/* template */
+var __vue_render__$C = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("li", { staticClass: "c-sidebar-nav-divider" })
+};
+var __vue_staticRenderFns__$C = [];
+__vue_render__$C._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$18 = undefined;
+  /* scoped */
+  const __vue_scope_id__$18 = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$18 = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$18 = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CSidebarNavDivider = normalizeComponent_1(
+    { render: __vue_render__$C, staticRenderFns: __vue_staticRenderFns__$C },
+    __vue_inject_styles__$18,
+    __vue_script__$18,
+    __vue_scope_id__$18,
+    __vue_is_functional_template__$18,
+    __vue_module_identifier__$18,
     undefined,
     undefined
   );
@@ -24587,7 +24547,7 @@ __vue_render__$B._withStripped = true;
 //
 //
 // import CIcon from '@coreui/icons/vue'
-var script$18 = {
+var script$19 = {
   name: 'CSidebarNavDropdown',
   // components: {
   //   CIcon
@@ -24669,10 +24629,10 @@ var script$18 = {
 };
 
 /* script */
-const __vue_script__$18 = script$18;
+const __vue_script__$19 = script$19;
 
 /* template */
-var __vue_render__$C = function() {
+var __vue_render__$D = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -24703,17 +24663,17 @@ var __vue_render__$C = function() {
     )
   ])
 };
-var __vue_staticRenderFns__$C = [];
-__vue_render__$C._withStripped = true;
+var __vue_staticRenderFns__$D = [];
+__vue_render__$D._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$18 = undefined;
+  const __vue_inject_styles__$19 = undefined;
   /* scoped */
-  const __vue_scope_id__$18 = undefined;
+  const __vue_scope_id__$19 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$18 = undefined;
+  const __vue_module_identifier__$19 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$18 = false;
+  const __vue_is_functional_template__$19 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -24721,31 +24681,31 @@ __vue_render__$C._withStripped = true;
 
   
   var CSidebarNavDropdown = normalizeComponent_1(
-    { render: __vue_render__$C, staticRenderFns: __vue_staticRenderFns__$C },
-    __vue_inject_styles__$18,
-    __vue_script__$18,
-    __vue_scope_id__$18,
-    __vue_is_functional_template__$18,
-    __vue_module_identifier__$18,
+    { render: __vue_render__$D, staticRenderFns: __vue_staticRenderFns__$D },
+    __vue_inject_styles__$19,
+    __vue_script__$19,
+    __vue_scope_id__$19,
+    __vue_is_functional_template__$19,
+    __vue_module_identifier__$19,
     undefined,
     undefined
   );
 
-var props$f = Object.assign(props, {
+var props$e = Object.assign(props, {
   name: String,
   icon: [String, Object],
   badge: Object,
   addLinkClasses: [String, Array, Object],
   label: Boolean
 });
-var script$19 = {
+var script$1a = {
   name: 'CSidebarNavLink',
   components: {
     CLink: CLink,
     CBadge: CBadge // CIcon
 
   },
-  props: props$f,
+  props: props$e,
   computed: {
     linkProps: function linkProps() {
       var _this = this;
@@ -24786,10 +24746,10 @@ var script$19 = {
 };
 
 /* script */
-const __vue_script__$19 = script$19;
+const __vue_script__$1a = script$1a;
 
 /* template */
-var __vue_render__$D = function() {
+var __vue_render__$E = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -24838,59 +24798,6 @@ var __vue_render__$D = function() {
     1
   )
 };
-var __vue_staticRenderFns__$D = [];
-__vue_render__$D._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$19 = undefined;
-  /* scoped */
-  const __vue_scope_id__$19 = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$19 = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$19 = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var CSidebarNavLink = normalizeComponent_1(
-    { render: __vue_render__$D, staticRenderFns: __vue_staticRenderFns__$D },
-    __vue_inject_styles__$19,
-    __vue_script__$19,
-    __vue_scope_id__$19,
-    __vue_is_functional_template__$19,
-    __vue_module_identifier__$19,
-    undefined,
-    undefined
-  );
-
-//
-//
-//
-//
-//
-//
-var script$1a = {
-  name: 'CSidebarNavTitle'
-};
-
-/* script */
-const __vue_script__$1a = script$1a;
-
-/* template */
-var __vue_render__$E = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c(
-    "li",
-    { staticClass: "c-sidebar-nav-title" },
-    [_vm._t("default")],
-    2
-  )
-};
 var __vue_staticRenderFns__$E = [];
 __vue_render__$E._withStripped = true;
 
@@ -24908,7 +24815,7 @@ __vue_render__$E._withStripped = true;
   
 
   
-  var CSidebarNavTitle = normalizeComponent_1(
+  var CSidebarNavLink = normalizeComponent_1(
     { render: __vue_render__$E, staticRenderFns: __vue_staticRenderFns__$E },
     __vue_inject_styles__$1a,
     __vue_script__$1a,
@@ -24919,7 +24826,60 @@ __vue_render__$E._withStripped = true;
     undefined
   );
 
+//
+//
+//
+//
+//
+//
 var script$1b = {
+  name: 'CSidebarNavTitle'
+};
+
+/* script */
+const __vue_script__$1b = script$1b;
+
+/* template */
+var __vue_render__$F = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c(
+    "li",
+    { staticClass: "c-sidebar-nav-title" },
+    [_vm._t("default")],
+    2
+  )
+};
+var __vue_staticRenderFns__$F = [];
+__vue_render__$F._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$1b = undefined;
+  /* scoped */
+  const __vue_scope_id__$1b = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$1b = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$1b = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CSidebarNavTitle = normalizeComponent_1(
+    { render: __vue_render__$F, staticRenderFns: __vue_staticRenderFns__$F },
+    __vue_inject_styles__$1b,
+    __vue_script__$1b,
+    __vue_scope_id__$1b,
+    __vue_is_functional_template__$1b,
+    __vue_module_identifier__$1b,
+    undefined,
+    undefined
+  );
+
+var script$1c = {
   name: 'CSpinner',
   functional: true,
   props: {
@@ -24949,18 +24909,18 @@ var script$1b = {
 };
 
 /* script */
-const __vue_script__$1b = script$1b;
+const __vue_script__$1c = script$1c;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$1b = undefined;
+  const __vue_inject_styles__$1c = undefined;
   /* scoped */
-  const __vue_scope_id__$1b = undefined;
+  const __vue_scope_id__$1c = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1b = undefined;
+  const __vue_module_identifier__$1c = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1b = undefined;
+  const __vue_is_functional_template__$1c = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -24969,11 +24929,11 @@ const __vue_script__$1b = script$1b;
   
   var CSpinner = normalizeComponent_1(
     {},
-    __vue_inject_styles__$1b,
-    __vue_script__$1b,
-    __vue_scope_id__$1b,
-    __vue_is_functional_template__$1b,
-    __vue_module_identifier__$1b,
+    __vue_inject_styles__$1c,
+    __vue_script__$1c,
+    __vue_scope_id__$1c,
+    __vue_is_functional_template__$1c,
+    __vue_module_identifier__$1c,
     undefined,
     undefined
   );
@@ -24997,7 +24957,7 @@ const __vue_script__$1b = script$1b;
 //
 //
 //
-var script$1c = {
+var script$1d = {
   name: 'CSwitch',
   inheritAttrs: false,
   props: {
@@ -25067,10 +25027,10 @@ var script$1c = {
 };
 
 /* script */
-const __vue_script__$1c = script$1c;
+const __vue_script__$1d = script$1d;
 
 /* template */
-var __vue_render__$F = function() {
+var __vue_render__$G = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -25096,17 +25056,17 @@ var __vue_render__$F = function() {
     })
   ])
 };
-var __vue_staticRenderFns__$F = [];
-__vue_render__$F._withStripped = true;
+var __vue_staticRenderFns__$G = [];
+__vue_render__$G._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1c = undefined;
+  const __vue_inject_styles__$1d = undefined;
   /* scoped */
-  const __vue_scope_id__$1c = undefined;
+  const __vue_scope_id__$1d = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1c = undefined;
+  const __vue_module_identifier__$1d = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1c = false;
+  const __vue_is_functional_template__$1d = false;
   /* style inject */
   
   /* style inject SSR */
@@ -25114,12 +25074,12 @@ __vue_render__$F._withStripped = true;
 
   
   var CSwitch = normalizeComponent_1(
-    { render: __vue_render__$F, staticRenderFns: __vue_staticRenderFns__$F },
-    __vue_inject_styles__$1c,
-    __vue_script__$1c,
-    __vue_scope_id__$1c,
-    __vue_is_functional_template__$1c,
-    __vue_module_identifier__$1c,
+    { render: __vue_render__$G, staticRenderFns: __vue_staticRenderFns__$G },
+    __vue_inject_styles__$1d,
+    __vue_script__$1d,
+    __vue_scope_id__$1d,
+    __vue_is_functional_template__$1d,
+    __vue_module_identifier__$1d,
     undefined,
     undefined
   );
@@ -26945,8 +26905,8 @@ var CIcon = Object.assign({}, coreuiIconsVue_common_1, {
     ban: ban
   }
 });
-var script$1d = {
-  name: 'CTable',
+var script$1e = {
+  name: 'CDataTable',
   components: {
     CPagination: CPagination,
     CSpinner: CSpinner,
@@ -26960,15 +26920,12 @@ var script$1d = {
       default: 10
     },
     activePage: Number,
-    indexColumn: Boolean,
-    columnFilter: Boolean,
     pagination: [Boolean, Object],
     addTableClasses: [String, Array, Object],
     responsive: {
       type: Boolean,
       default: true
     },
-    sortable: Boolean,
     size: String,
     dark: Boolean,
     striped: Boolean,
@@ -26977,49 +26934,92 @@ var script$1d = {
     border: Boolean,
     outlined: Boolean,
     itemsPerPageSelect: Boolean,
-    tableFilter: Boolean,
-    footer: Boolean,
-    defaultSorter: {
+    sorter: [Boolean, String],
+    tableFilter: [Boolean, String],
+    columnFilter: [Boolean, String],
+    sorterValue: {
       type: Object,
       default: function _default() {
         return {};
       }
     },
-    defaultTableFilter: String,
-    defaultColumnFilter: Object,
+    tableFilterValue: String,
+    columnFilterValue: Object,
+    footer: Boolean,
     loading: Boolean,
     clickableRows: Boolean
   },
   data: function data() {
     return {
-      tableFilterVal: this.defaultTableFilter,
-      columnFilterVal: this.defaultColumnFilter || {},
-      sorter: {
-        column: this.defaultSorter.column || null,
-        asc: this.defaultSorter.asc === false ? false : true
+      tableFilterState: this.tableFilterValue,
+      columnFilterState: {},
+      sorterState: {
+        column: undefined,
+        asc: true
       },
       page: this.activePage || 1,
       perPageItems: this.itemsPerPage,
       passedItems: this.items || []
     };
   },
+  watch: {
+    sorterValue: {
+      immediate: true,
+      handler: function handler(val) {
+        this.sorterState.column = val.column;
+        this.sorterState.asc = val.asc === false ? false : true;
+      }
+    },
+    tableFilterValue: function tableFilterValue(val) {
+      this.tableFilterState = val;
+    },
+    columnFilterValue: {
+      immediate: true,
+      handler: function handler(val) {
+        this.columnFilterState = Object.assign({}, val);
+      } // const state = this.columnFilterState
+      // const currentColumns = Object.keys(state)
+      // Object.keys(val).forEach(colName => {
+      //   if (!currentColumns.includes(colName)) {
+      //     this.setColumnFilter(colName, val[colName] || '')
+      //   }
+      // })
+      // currentColumns.forEach(colName => state[colName] = val[colName] || '')
+
+    },
+    items: function items(val, oldVal) {
+      if (val.length !== oldVal.length || JSON.stringify(val) !== JSON.stringify(oldVal)) {
+        this.passedItems = val;
+      }
+    },
+    totalPages: {
+      immediate: true,
+      handler: function handler(val) {
+        this.$emit('pages-change', val);
+      }
+    }
+  },
   computed: {
     columnFiltered: function columnFiltered() {
       var _this = this;
 
       var items = this.passedItems.slice();
-      Object.entries(this.columnFilterVal).forEach(function (_ref) {
-        var _ref2 = _slicedToArray(_ref, 2),
-            key = _ref2[0],
-            value = _ref2[1];
 
-        if (value && _this.rawColumnNames.includes(key)) {
-          var columnFilter = String(value).toLowerCase();
-          items = items.filter(function (item) {
-            return String(item[key]).toLowerCase().includes(columnFilter);
-          });
-        }
-      });
+      if (this.columnFilter === true) {
+        Object.entries(this.columnFilterState).forEach(function (_ref) {
+          var _ref2 = _slicedToArray(_ref, 2),
+              key = _ref2[0],
+              value = _ref2[1];
+
+          if (value && _this.rawColumnNames.includes(key)) {
+            var columnFilter = String(value).toLowerCase();
+            items = items.filter(function (item) {
+              return String(item[key]).toLowerCase().includes(columnFilter);
+            });
+          }
+        });
+      }
+
       return items;
     },
     filterableCols: function filterableCols() {
@@ -27034,8 +27034,8 @@ var script$1d = {
 
       var items = this.columnFiltered.slice();
 
-      if (this.tableFilterVal) {
-        var filter = this.tableFilterVal.toLowerCase();
+      if (this.tableFilter === true && this.tableFilterState) {
+        var filter = this.tableFilterState.toLowerCase();
 
         var hasFilter = function hasFilter(item) {
           return String(item).toLowerCase().includes(filter);
@@ -27051,14 +27051,14 @@ var script$1d = {
       return items;
     },
     sortedItems: function sortedItems() {
-      var col = this.sorter.column;
+      var col = this.sorterState.column;
 
-      if (!col || !this.rawColumnNames.includes(col)) {
+      if (!col || this.sorter !== true || !this.rawColumnNames.includes(col)) {
         return this.tableFiltered;
       } //if values in column are to be sorted by numeric value they all have to be type number
 
 
-      var flip = this.sorter.asc ? 1 : -1;
+      var flip = this.sorterState.asc ? 1 : -1;
       return this.tableFiltered.slice().sort(function (a, b) {
         return a[col] > b[col] ? 1 * flip : b[col] > a[col] ? -1 * flip : 0;
       });
@@ -27112,28 +27112,15 @@ var script$1d = {
     },
     sortingIconStyles: function sortingIconStyles() {
       return {
-        'position-relative pr-4': this.sortable
+        'position-relative pr-4': this.sorter
       };
     },
     colspan: function colspan() {
-      return this.rawColumnNames.length + (this.indexColumn ? 1 : 0);
-    },
-    isFiltered: function isFiltered() {
-      return this.tableFilterVal || Object.values(this.columnFilterVal).join('');
-    }
-  },
-  watch: {
-    items: function items(val, oldVal) {
-      if (val.length !== oldVal.length || JSON.stringify(val) !== JSON.stringify(oldVal)) {
-        this.passedItems = val;
-      }
-    },
-    totalPages: {
-      immediate: true,
-      handler: function handler(val) {
-        this.$emit('pages-change', val);
-      }
-    }
+      return this.rawColumnNames.length;
+    } // isFiltered () {
+    //   return this.tableFilterState || Object.values(this.columnFilterState).join('')
+    // }
+
   },
   methods: {
     changeSort: function changeSort(column, index) {
@@ -27142,17 +27129,30 @@ var script$1d = {
       } //if column changed or sort was descending change asc to true
 
 
-      this.sorter.asc = this.sorter.column !== column || !this.sorter.asc;
-      this.sorter.column = column;
+      var state = this.sorterState;
+      state.asc = state.column !== column || !state.asc;
+      state.column = column;
+      this.$emit('update:sorter-value', this.sorterState);
     },
-    addColumnFilter: function addColumnFilter(colName, value) {
-      this.$set(this.columnFilterVal, colName, value);
+    columnFilterEvent: function columnFilterEvent(colName, value, type) {
+      this.setColumnFilter(colName, value);
+      var e = type === 'input' ? 'column-filter-input' : 'update:column-filter-value';
+      this.$emit(e, this.columnFilterState);
+    },
+    setColumnFilter: function setColumnFilter(colName, value) {
+      this.$set(this.columnFilterState, colName, value);
+    },
+    tableFilterChange: function tableFilterChange(value) {
+      var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'input';
+      this.tableFilterState = value;
+      var e = type === 'input' ? 'table-filter-input' : 'update:table-filter-value';
+      this.$emit(e, this.tableFilterState);
     },
     // clear () {
-    //   this.tableFilterVal = ''
-    //   this.columnFilterVal = {}
-    //   this.sorter.column = ''
-    //   this.sorter.asc = true
+    //   this.tableFilterState = ''
+    //   this.columnFilterState = {}
+    //   this.sorterState.column = ''
+    //   this.sorterState.asc = true
     //   const inputs = this.$el.getElementsByClassName('table-filter')
     //   for (let input of inputs) {
     //     input.value = ''
@@ -27177,7 +27177,7 @@ var script$1d = {
       return classes;
     },
     isSortable: function isSortable(index) {
-      return this.sortable && (!this.fields || this.fields[index].sortable !== false);
+      return this.sorter && (!this.fields || this.fields[index].sorter !== false);
     },
     headerClass: function headerClass(index) {
       var fields = this.fields;
@@ -27200,8 +27200,8 @@ var script$1d = {
       this.$emit('row-clicked', item, index);
     },
     getIconState: function getIconState(index) {
-      var direction = this.sorter.asc ? 'asc' : 'desc';
-      return this.rawColumnNames[index] === this.sorter.column ? direction : 0;
+      var direction = this.sorterState.asc ? 'asc' : 'desc';
+      return this.rawColumnNames[index] === this.sorterState.column ? direction : 0;
     },
     iconClasses: function iconClasses(index) {
       var state = this.getIconState(index);
@@ -27217,13 +27217,13 @@ var script$1d = {
   }
 };
 
-var css$5 = "\n.transparent[data-v-69b35d27] {\r\n  opacity: 0.4;\n}\n.icon-transition[data-v-69b35d27] {\r\n  -webkit-transition: transform 0.3s;\r\n  -webkit-transition: -webkit-transform 0.3s;\r\n  transition: -webkit-transform 0.3s;\r\n  transition: transform 0.3s;\r\n  transition: transform 0.3s, -webkit-transform 0.3s;\n}\n.arrow-position[data-v-69b35d27] {\r\n  right: 0;\r\n  top: 50%;\r\n  -webkit-transform: translateY(-50%);\r\n          transform: translateY(-50%);\n}\n.rotate-icon[data-v-69b35d27] {\r\n  -webkit-transform: translateY(-50%) rotate(-180deg);\r\n          transform: translateY(-50%) rotate(-180deg);\n}\r\n";
-styleInject(css$5);
+var css$4 = "\n.transparent[data-v-77d26ece] {\r\n  opacity: 0.4;\n}\n.icon-transition[data-v-77d26ece] {\r\n  -webkit-transition: transform 0.3s;\r\n  -webkit-transition: -webkit-transform 0.3s;\r\n  transition: -webkit-transform 0.3s;\r\n  transition: transform 0.3s;\r\n  transition: transform 0.3s, -webkit-transform 0.3s;\n}\n.arrow-position[data-v-77d26ece] {\r\n  right: 0;\r\n  top: 50%;\r\n  -webkit-transform: translateY(-50%);\r\n          transform: translateY(-50%);\n}\n.rotate-icon[data-v-77d26ece] {\r\n  -webkit-transform: translateY(-50%) rotate(-180deg);\r\n          transform: translateY(-50%) rotate(-180deg);\n}\r\n";
+styleInject(css$4);
 
 /* script */
-const __vue_script__$1d = script$1d;
+const __vue_script__$1e = script$1e;
 /* template */
-var __vue_render__$G = function() {
+var __vue_render__$H = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -27239,10 +27239,16 @@ var __vue_render__$G = function() {
                   _c("input", {
                     staticClass: "form-control table-filter",
                     attrs: { type: "text", placeholder: "type string..." },
-                    domProps: { value: _vm.tableFilterVal },
+                    domProps: { value: _vm.tableFilterState },
                     on: {
                       input: function($event) {
-                        _vm.tableFilterVal = $event.target.value;
+                        return _vm.tableFilterChange($event.target.value)
+                      },
+                      change: function($event) {
+                        return _vm.tableFilterChange(
+                          $event.target.value,
+                          "change"
+                        )
                       }
                     }
                   })
@@ -27328,10 +27334,6 @@ var __vue_render__$G = function() {
                 _c(
                   "tr",
                   [
-                    _vm.indexColumn
-                      ? _c("th", { staticStyle: { width: "40px" } })
-                      : _vm._e(),
-                    _vm._v(" "),
                     _vm._l(_vm.columnNames, function(name, index) {
                       return [
                         _c(
@@ -27385,8 +27387,6 @@ var __vue_render__$G = function() {
                       "tr",
                       { staticClass: "table-sm" },
                       [
-                        _vm.indexColumn ? _c("th") : _vm._e(),
-                        _vm._v(" "),
                         _vm._l(_vm.rawColumnNames, function(colName, index) {
                           return [
                             _c(
@@ -27395,17 +27395,25 @@ var __vue_render__$G = function() {
                               [
                                 _vm._t(_vm.rawColumnNames[index] + "-filter", [
                                   !_vm.fields ||
-                                  !_vm.fields[index].filterable !== false
+                                  _vm.fields[index].filter !== false
                                     ? _c("input", {
                                         staticClass: "w-100 table-filter",
                                         domProps: {
-                                          value: _vm.columnFilterVal[colName]
+                                          value: _vm.columnFilterState[colName]
                                         },
                                         on: {
                                           input: function($event) {
-                                            return _vm.addColumnFilter(
+                                            return _vm.columnFilterEvent(
                                               colName,
-                                              $event.target.value
+                                              $event.target.value,
+                                              "input"
+                                            )
+                                          },
+                                          change: function($event) {
+                                            return _vm.columnFilterEvent(
+                                              colName,
+                                              $event.target.value,
+                                              "change"
                                             )
                                           }
                                         }
@@ -27448,27 +27456,6 @@ var __vue_render__$G = function() {
                           }
                         },
                         [
-                          _vm.indexColumn
-                            ? _vm._t(
-                                "index-column",
-                                [
-                                  _c("td", [
-                                    _vm._v(
-                                      "\n                  " +
-                                        _vm._s(
-                                          _vm.firstItemIndex + itemIndex + 1
-                                        ) +
-                                        "\n                "
-                                    )
-                                  ])
-                                ],
-                                {
-                                  pageIndex: itemIndex,
-                                  index: _vm.firstItemIndex + itemIndex
-                                }
-                              )
-                            : _vm._e(),
-                          _vm._v(" "),
                           _vm._l(_vm.rawColumnNames, function(colName, index) {
                             return [
                               _vm.$scopedSlots[colName]
@@ -27562,15 +27549,11 @@ var __vue_render__$G = function() {
                 2
               ),
               _vm._v(" "),
-              _vm.footer && _vm.currentItems.length > 3
+              _vm.footer && _vm.currentItems.length > 0
                 ? _c("tfoot", [
                     _c(
                       "tr",
                       [
-                        _vm.indexColumn
-                          ? _c("th", { staticStyle: { width: "40px" } })
-                          : _vm._e(),
-                        _vm._v(" "),
                         _vm._l(_vm.columnNames, function(name, index) {
                           return [
                             _c(
@@ -27700,67 +27683,25 @@ var __vue_render__$G = function() {
     2
   )
 };
-var __vue_staticRenderFns__$G = [];
-__vue_render__$G._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$1d = undefined;
-  /* scoped */
-  const __vue_scope_id__$1d = "data-v-69b35d27";
-  /* module identifier */
-  const __vue_module_identifier__$1d = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$1d = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var CTable = normalizeComponent_1(
-    { render: __vue_render__$G, staticRenderFns: __vue_staticRenderFns__$G },
-    __vue_inject_styles__$1d,
-    __vue_script__$1d,
-    __vue_scope_id__$1d,
-    __vue_is_functional_template__$1d,
-    __vue_module_identifier__$1d,
-    undefined,
-    undefined
-  );
-
-var script$1e = {
-  name: 'CTab',
-  props: {
-    titleHtml: String,
-    active: Boolean,
-    disabled: Boolean
-  },
-  render: function render(h) {
-    return h(false);
-  }
-};
-
-/* script */
-const __vue_script__$1e = script$1e;
-
-/* template */
+var __vue_staticRenderFns__$H = [];
+__vue_render__$H._withStripped = true;
 
   /* style */
   const __vue_inject_styles__$1e = undefined;
   /* scoped */
-  const __vue_scope_id__$1e = undefined;
+  const __vue_scope_id__$1e = "data-v-77d26ece";
   /* module identifier */
   const __vue_module_identifier__$1e = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1e = undefined;
+  const __vue_is_functional_template__$1e = false;
   /* style inject */
   
   /* style inject SSR */
   
 
   
-  var CTab = normalizeComponent_1(
-    {},
+  var CDataTable = normalizeComponent_1(
+    { render: __vue_render__$H, staticRenderFns: __vue_staticRenderFns__$H },
     __vue_inject_styles__$1e,
     __vue_script__$1e,
     __vue_scope_id__$1e,
@@ -27771,24 +27712,14 @@ const __vue_script__$1e = script$1e;
   );
 
 var script$1f = {
-  name: 'CTabNav',
-  props: Object.assign(propsFactory(), {
+  name: 'CTab',
+  props: {
     titleHtml: String,
-    customTitleSlot: Function
-  }),
+    active: Boolean,
+    disabled: Boolean
+  },
   render: function render(h) {
-    return h('li', {
-      staticClass: 'nav-item'
-    }, [h(CLink, {
-      staticClass: 'nav-link',
-      class: {
-        'active': this.active
-      },
-      props: this.props,
-      domProps: this.titleHtml ? {
-        innerHTML: this.titleHtml
-      } : null
-    }, this.customTitleSlot ? this.customTitleSlot() : null)]);
+    return h(false);
   }
 };
 
@@ -27811,7 +27742,7 @@ const __vue_script__$1f = script$1f;
   
 
   
-  var CTabNav = normalizeComponent_1(
+  var CTab = normalizeComponent_1(
     {},
     __vue_inject_styles__$1f,
     __vue_script__$1f,
@@ -27823,12 +27754,24 @@ const __vue_script__$1f = script$1f;
   );
 
 var script$1g = {
-  name: 'CTabContent',
-  props: {
-    content: Function
-  },
+  name: 'CTabNav',
+  props: Object.assign(propsFactory(), {
+    titleHtml: String,
+    customTitleSlot: Function
+  }),
   render: function render(h) {
-    return h('div', this.content ? this.content() : '');
+    return h('li', {
+      staticClass: 'nav-item'
+    }, [h(CLink, {
+      staticClass: 'nav-link',
+      class: {
+        'active': this.active
+      },
+      props: this.props,
+      domProps: this.titleHtml ? {
+        innerHTML: this.titleHtml
+      } : null
+    }, this.customTitleSlot ? this.customTitleSlot() : null)]);
   }
 };
 
@@ -27851,7 +27794,7 @@ const __vue_script__$1g = script$1g;
   
 
   
-  var CTabContent = normalizeComponent_1(
+  var CTabNav = normalizeComponent_1(
     {},
     __vue_inject_styles__$1g,
     __vue_script__$1g,
@@ -27863,6 +27806,46 @@ const __vue_script__$1g = script$1g;
   );
 
 var script$1h = {
+  name: 'CTabContent',
+  props: {
+    content: Function
+  },
+  render: function render(h) {
+    return h('div', this.content ? this.content() : '');
+  }
+};
+
+/* script */
+const __vue_script__$1h = script$1h;
+
+/* template */
+
+  /* style */
+  const __vue_inject_styles__$1h = undefined;
+  /* scoped */
+  const __vue_scope_id__$1h = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$1h = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$1h = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var CTabContent = normalizeComponent_1(
+    {},
+    __vue_inject_styles__$1h,
+    __vue_script__$1h,
+    __vue_scope_id__$1h,
+    __vue_is_functional_template__$1h,
+    __vue_module_identifier__$1h,
+    undefined,
+    undefined
+  );
+
+var script$1i = {
   name: 'CTabs',
   components: {
     CTabNav: CTabNav,
@@ -27871,10 +27854,12 @@ var script$1h = {
   props: {
     fill: Boolean,
     justified: Boolean,
-    pills: Boolean,
-    tabs: {
-      type: Boolean,
-      default: true
+    variant: {
+      type: String,
+      default: 'tabs',
+      validator: function validator(val) {
+        return ['', 'tabs', 'pills'].includes(val);
+      }
     },
     fade: {
       type: Boolean,
@@ -27905,8 +27890,8 @@ var script$1h = {
     navClasses: function navClasses() {
       return [this.addNavClasses, {
         'nav': true,
-        'nav-tabs': this.tabs && !this.pills,
-        'nav-pills': this.pills,
+        'nav-tabs': this.variant === 'tabs',
+        'nav-pills': this.variant === 'pills',
         'flex-column': this.vertical,
         'nav-fill': this.fill,
         'nav-justified': this.justified,
@@ -27964,13 +27949,13 @@ var script$1h = {
   }
 };
 
-var css$6 = "\n.fade-enter-active, .fade-leave-active {\n  -webkit-transition: opacity .3s;\n  transition: opacity .3s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n";
-styleInject(css$6);
+var css$5 = "\n.fade-enter-active, .fade-leave-active {\n  -webkit-transition: opacity .3s;\n  transition: opacity .3s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n";
+styleInject(css$5);
 
 /* script */
-const __vue_script__$1h = script$1h;
+const __vue_script__$1i = script$1i;
 /* template */
-var __vue_render__$H = function() {
+var __vue_render__$I = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -28053,17 +28038,17 @@ var __vue_render__$H = function() {
     2
   )
 };
-var __vue_staticRenderFns__$H = [];
-__vue_render__$H._withStripped = true;
+var __vue_staticRenderFns__$I = [];
+__vue_render__$I._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1h = undefined;
+  const __vue_inject_styles__$1i = undefined;
   /* scoped */
-  const __vue_scope_id__$1h = undefined;
+  const __vue_scope_id__$1i = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1h = undefined;
+  const __vue_module_identifier__$1i = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1h = false;
+  const __vue_is_functional_template__$1i = false;
   /* style inject */
   
   /* style inject SSR */
@@ -28071,12 +28056,12 @@ __vue_render__$H._withStripped = true;
 
   
   var CTabs = normalizeComponent_1(
-    { render: __vue_render__$H, staticRenderFns: __vue_staticRenderFns__$H },
-    __vue_inject_styles__$1h,
-    __vue_script__$1h,
-    __vue_scope_id__$1h,
-    __vue_is_functional_template__$1h,
-    __vue_module_identifier__$1h,
+    { render: __vue_render__$I, staticRenderFns: __vue_staticRenderFns__$I },
+    __vue_inject_styles__$1i,
+    __vue_script__$1i,
+    __vue_scope_id__$1i,
+    __vue_is_functional_template__$1i,
+    __vue_module_identifier__$1i,
     undefined,
     undefined
   );
@@ -28152,16 +28137,16 @@ var toastMixin = {
   }
 };
 
-var script$1i = {
+var script$1j = {
   name: 'CToast',
   mixins: [toastMixin],
+  components: {
+    CButtonClose: CButtonClose
+  },
   props: {
     show: Boolean,
     headerHtml: String,
     bodyHtml: String
-  },
-  components: {
-    CButtonClose: CButtonClose
   },
   inject: {
     toaster: {
@@ -28177,12 +28162,13 @@ var script$1i = {
     };
   },
   watch: {
-    show: {
-      immediate: true,
-      handler: function handler(val) {
-        val ? this.display() : this.close();
-      }
+    show: function show(val) {
+      val ? this.display() : this.close();
     }
+  },
+  //needed not to be called in show watcher to allow SSR
+  mounted: function mounted() {
+    this.show ? this.display() : this.close();
   },
   computed: {
     toastClasses: function toastClasses() {
@@ -28277,13 +28263,13 @@ var script$1i = {
   }
 };
 
-var css$7 = "\n.toast[data-v-3efd806c] {\n  opacity: 1;\n}\n.toast.full[data-v-3efd806c] {\n  max-width: 100%;\n}\n.toast[data-v-3efd806c]:last-child {\n  margin-bottom: 0.75rem;\n}\n.fade-enter-active[data-v-3efd806c] {\n  -webkit-transition: opacity .5s;\n  transition: opacity .5s;\n}\n.fade-leave-active[data-v-3efd806c] {\n  -webkit-transition: opacity 2s;\n  transition: opacity 2s;\n}\n.fade-enter[data-v-3efd806c], .fade-leave-to[data-v-3efd806c] {\n  opacity: 0;\n}\n";
-styleInject(css$7);
+var css$6 = "\n.toast[data-v-fd61e04c] {\n  opacity: 1;\n}\n.toast.full[data-v-fd61e04c] {\n  max-width: 100%;\n}\n.toast[data-v-fd61e04c]:last-child {\n  margin-bottom: 0.75rem;\n}\n.fade-enter-active[data-v-fd61e04c] {\n  -webkit-transition: opacity .5s;\n  transition: opacity .5s;\n}\n.fade-leave-active[data-v-fd61e04c] {\n  -webkit-transition: opacity 2s;\n  transition: opacity 2s;\n}\n.fade-enter[data-v-fd61e04c], .fade-leave-to[data-v-fd61e04c] {\n  opacity: 0;\n}\n";
+styleInject(css$6);
 
 /* script */
-const __vue_script__$1i = script$1i;
+const __vue_script__$1j = script$1j;
 /* template */
-var __vue_render__$I = function() {
+var __vue_render__$J = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -28349,17 +28335,17 @@ var __vue_render__$I = function() {
     ]
   )
 };
-var __vue_staticRenderFns__$I = [];
-__vue_render__$I._withStripped = true;
+var __vue_staticRenderFns__$J = [];
+__vue_render__$J._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1i = undefined;
+  const __vue_inject_styles__$1j = undefined;
   /* scoped */
-  const __vue_scope_id__$1i = "data-v-3efd806c";
+  const __vue_scope_id__$1j = "data-v-fd61e04c";
   /* module identifier */
-  const __vue_module_identifier__$1i = undefined;
+  const __vue_module_identifier__$1j = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1i = false;
+  const __vue_is_functional_template__$1j = false;
   /* style inject */
   
   /* style inject SSR */
@@ -28367,17 +28353,17 @@ __vue_render__$I._withStripped = true;
 
   
   var CToast = normalizeComponent_1(
-    { render: __vue_render__$I, staticRenderFns: __vue_staticRenderFns__$I },
-    __vue_inject_styles__$1i,
-    __vue_script__$1i,
-    __vue_scope_id__$1i,
-    __vue_is_functional_template__$1i,
-    __vue_module_identifier__$1i,
+    { render: __vue_render__$J, staticRenderFns: __vue_staticRenderFns__$J },
+    __vue_inject_styles__$1j,
+    __vue_script__$1j,
+    __vue_scope_id__$1j,
+    __vue_is_functional_template__$1j,
+    __vue_module_identifier__$1j,
     undefined,
     undefined
   );
 
-var script$1j = {
+var script$1k = {
   name: 'CToaster',
   provide: function provide() {
     var _this = this;
@@ -28394,7 +28380,10 @@ var script$1j = {
   },
   mixins: [toastMixin],
   props: {
-    reverse: Boolean
+    reverse: {
+      type: Boolean,
+      default: true
+    }
   },
   computed: {
     toasterClasses: function toasterClasses() {
@@ -28406,10 +28395,10 @@ var script$1j = {
 };
 
 /* script */
-const __vue_script__$1j = script$1j;
+const __vue_script__$1k = script$1k;
 
 /* template */
-var __vue_render__$J = function() {
+var __vue_render__$K = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -28420,17 +28409,17 @@ var __vue_render__$J = function() {
     2
   )
 };
-var __vue_staticRenderFns__$J = [];
-__vue_render__$J._withStripped = true;
+var __vue_staticRenderFns__$K = [];
+__vue_render__$K._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1j = undefined;
+  const __vue_inject_styles__$1k = undefined;
   /* scoped */
-  const __vue_scope_id__$1j = undefined;
+  const __vue_scope_id__$1k = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1j = undefined;
+  const __vue_module_identifier__$1k = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1j = false;
+  const __vue_is_functional_template__$1k = false;
   /* style inject */
   
   /* style inject SSR */
@@ -28438,17 +28427,17 @@ __vue_render__$J._withStripped = true;
 
   
   var CToaster = normalizeComponent_1(
-    { render: __vue_render__$J, staticRenderFns: __vue_staticRenderFns__$J },
-    __vue_inject_styles__$1j,
-    __vue_script__$1j,
-    __vue_scope_id__$1j,
-    __vue_is_functional_template__$1j,
-    __vue_module_identifier__$1j,
+    { render: __vue_render__$K, staticRenderFns: __vue_staticRenderFns__$K },
+    __vue_inject_styles__$1k,
+    __vue_script__$1k,
+    __vue_scope_id__$1k,
+    __vue_is_functional_template__$1k,
+    __vue_module_identifier__$1k,
     undefined,
     undefined
   );
 
-var script$1k = {
+var script$1l = {
   name: 'CToggler',
   functional: true,
   props: {
@@ -28479,18 +28468,18 @@ var script$1k = {
 };
 
 /* script */
-const __vue_script__$1k = script$1k;
+const __vue_script__$1l = script$1l;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$1k = undefined;
+  const __vue_inject_styles__$1l = undefined;
   /* scoped */
-  const __vue_scope_id__$1k = undefined;
+  const __vue_scope_id__$1l = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1k = undefined;
+  const __vue_module_identifier__$1l = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1k = undefined;
+  const __vue_is_functional_template__$1l = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -28499,16 +28488,16 @@ const __vue_script__$1k = script$1k;
   
   var CToggler = normalizeComponent_1(
     {},
-    __vue_inject_styles__$1k,
-    __vue_script__$1k,
-    __vue_scope_id__$1k,
-    __vue_is_functional_template__$1k,
-    __vue_module_identifier__$1k,
+    __vue_inject_styles__$1l,
+    __vue_script__$1l,
+    __vue_scope_id__$1l,
+    __vue_is_functional_template__$1l,
+    __vue_module_identifier__$1l,
     undefined,
     undefined
   );
 
-var script$1l = {
+var script$1m = {
   name: 'CWidgetProgress',
   components: {
     CProgress: CProgress
@@ -28527,10 +28516,10 @@ var script$1l = {
 };
 
 /* script */
-const __vue_script__$1l = script$1l;
+const __vue_script__$1m = script$1m;
 
 /* template */
-var __vue_render__$K = function() {
+var __vue_render__$L = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -28567,17 +28556,17 @@ var __vue_render__$K = function() {
     ]
   )
 };
-var __vue_staticRenderFns__$K = [];
-__vue_render__$K._withStripped = true;
+var __vue_staticRenderFns__$L = [];
+__vue_render__$L._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1l = undefined;
+  const __vue_inject_styles__$1m = undefined;
   /* scoped */
-  const __vue_scope_id__$1l = undefined;
+  const __vue_scope_id__$1m = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1l = undefined;
+  const __vue_module_identifier__$1m = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1l = false;
+  const __vue_is_functional_template__$1m = false;
   /* style inject */
   
   /* style inject SSR */
@@ -28585,12 +28574,12 @@ __vue_render__$K._withStripped = true;
 
   
   var CWidgetProgress = normalizeComponent_1(
-    { render: __vue_render__$K, staticRenderFns: __vue_staticRenderFns__$K },
-    __vue_inject_styles__$1l,
-    __vue_script__$1l,
-    __vue_scope_id__$1l,
-    __vue_is_functional_template__$1l,
-    __vue_module_identifier__$1l,
+    { render: __vue_render__$L, staticRenderFns: __vue_staticRenderFns__$L },
+    __vue_inject_styles__$1m,
+    __vue_script__$1m,
+    __vue_scope_id__$1m,
+    __vue_is_functional_template__$1m,
+    __vue_module_identifier__$1m,
     undefined,
     undefined
   );
@@ -28622,7 +28611,7 @@ __vue_render__$K._withStripped = true;
 //
 //
 //
-var script$1m = {
+var script$1n = {
   name: 'CWidgetIcon',
   props: {
     header: String,
@@ -28636,10 +28625,10 @@ var script$1m = {
 };
 
 /* script */
-const __vue_script__$1m = script$1m;
+const __vue_script__$1n = script$1n;
 
 /* template */
-var __vue_render__$L = function() {
+var __vue_render__$M = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -28683,17 +28672,17 @@ var __vue_render__$L = function() {
     )
   ])
 };
-var __vue_staticRenderFns__$L = [];
-__vue_render__$L._withStripped = true;
+var __vue_staticRenderFns__$M = [];
+__vue_render__$M._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1m = undefined;
+  const __vue_inject_styles__$1n = undefined;
   /* scoped */
-  const __vue_scope_id__$1m = undefined;
+  const __vue_scope_id__$1n = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1m = undefined;
+  const __vue_module_identifier__$1n = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1m = false;
+  const __vue_is_functional_template__$1n = false;
   /* style inject */
   
   /* style inject SSR */
@@ -28701,12 +28690,12 @@ __vue_render__$L._withStripped = true;
 
   
   var CWidgetIcon = normalizeComponent_1(
-    { render: __vue_render__$L, staticRenderFns: __vue_staticRenderFns__$L },
-    __vue_inject_styles__$1m,
-    __vue_script__$1m,
-    __vue_scope_id__$1m,
-    __vue_is_functional_template__$1m,
-    __vue_module_identifier__$1m,
+    { render: __vue_render__$M, staticRenderFns: __vue_staticRenderFns__$M },
+    __vue_inject_styles__$1n,
+    __vue_script__$1n,
+    __vue_scope_id__$1n,
+    __vue_is_functional_template__$1n,
+    __vue_module_identifier__$1n,
     undefined,
     undefined
   );
@@ -28743,7 +28732,7 @@ __vue_render__$L._withStripped = true;
 //
 //
 //
-var script$1n = {
+var script$1o = {
   name: 'CWidgetBrand',
   props: {
     color: String,
@@ -28756,10 +28745,10 @@ var script$1n = {
 };
 
 /* script */
-const __vue_script__$1n = script$1n;
+const __vue_script__$1o = script$1o;
 
 /* template */
-var __vue_render__$M = function() {
+var __vue_render__$N = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -28818,17 +28807,17 @@ var __vue_render__$M = function() {
     2
   )
 };
-var __vue_staticRenderFns__$M = [];
-__vue_render__$M._withStripped = true;
+var __vue_staticRenderFns__$N = [];
+__vue_render__$N._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1n = undefined;
+  const __vue_inject_styles__$1o = undefined;
   /* scoped */
-  const __vue_scope_id__$1n = undefined;
+  const __vue_scope_id__$1o = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1n = undefined;
+  const __vue_module_identifier__$1o = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1n = false;
+  const __vue_is_functional_template__$1o = false;
   /* style inject */
   
   /* style inject SSR */
@@ -28836,17 +28825,17 @@ __vue_render__$M._withStripped = true;
 
   
   var CWidgetBrand = normalizeComponent_1(
-    { render: __vue_render__$M, staticRenderFns: __vue_staticRenderFns__$M },
-    __vue_inject_styles__$1n,
-    __vue_script__$1n,
-    __vue_scope_id__$1n,
-    __vue_is_functional_template__$1n,
-    __vue_module_identifier__$1n,
+    { render: __vue_render__$N, staticRenderFns: __vue_staticRenderFns__$N },
+    __vue_inject_styles__$1o,
+    __vue_script__$1o,
+    __vue_scope_id__$1o,
+    __vue_is_functional_template__$1o,
+    __vue_module_identifier__$1o,
     undefined,
     undefined
   );
 
-var script$1o = {
+var script$1p = {
   name: 'CWidgetProgressIcon',
   components: {
     CProgress: CProgress
@@ -28864,10 +28853,10 @@ var script$1o = {
 };
 
 /* script */
-const __vue_script__$1o = script$1o;
+const __vue_script__$1p = script$1p;
 
 /* template */
-var __vue_render__$N = function() {
+var __vue_render__$O = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -28915,17 +28904,17 @@ var __vue_render__$N = function() {
     ]
   )
 };
-var __vue_staticRenderFns__$N = [];
-__vue_render__$N._withStripped = true;
+var __vue_staticRenderFns__$O = [];
+__vue_render__$O._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1o = undefined;
+  const __vue_inject_styles__$1p = undefined;
   /* scoped */
-  const __vue_scope_id__$1o = undefined;
+  const __vue_scope_id__$1p = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1o = undefined;
+  const __vue_module_identifier__$1p = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1o = false;
+  const __vue_is_functional_template__$1p = false;
   /* style inject */
   
   /* style inject SSR */
@@ -28933,12 +28922,12 @@ __vue_render__$N._withStripped = true;
 
   
   var CWidgetProgressIcon = normalizeComponent_1(
-    { render: __vue_render__$N, staticRenderFns: __vue_staticRenderFns__$N },
-    __vue_inject_styles__$1o,
-    __vue_script__$1o,
-    __vue_scope_id__$1o,
-    __vue_is_functional_template__$1o,
-    __vue_module_identifier__$1o,
+    { render: __vue_render__$O, staticRenderFns: __vue_staticRenderFns__$O },
+    __vue_inject_styles__$1p,
+    __vue_script__$1p,
+    __vue_scope_id__$1p,
+    __vue_is_functional_template__$1p,
+    __vue_module_identifier__$1p,
     undefined,
     undefined
   );
@@ -28954,7 +28943,7 @@ __vue_render__$N._withStripped = true;
 //
 //
 //
-var script$1p = {
+var script$1q = {
   name: 'CWidgetDropdown',
   props: {
     color: String,
@@ -28964,10 +28953,10 @@ var script$1p = {
 };
 
 /* script */
-const __vue_script__$1p = script$1p;
+const __vue_script__$1q = script$1q;
 
 /* template */
-var __vue_render__$O = function() {
+var __vue_render__$P = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -28995,17 +28984,17 @@ var __vue_render__$O = function() {
     2
   )
 };
-var __vue_staticRenderFns__$O = [];
-__vue_render__$O._withStripped = true;
+var __vue_staticRenderFns__$P = [];
+__vue_render__$P._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1p = undefined;
+  const __vue_inject_styles__$1q = undefined;
   /* scoped */
-  const __vue_scope_id__$1p = undefined;
+  const __vue_scope_id__$1q = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1p = undefined;
+  const __vue_module_identifier__$1q = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1p = false;
+  const __vue_is_functional_template__$1q = false;
   /* style inject */
   
   /* style inject SSR */
@@ -29013,12 +29002,12 @@ __vue_render__$O._withStripped = true;
 
   
   var CWidgetDropdown = normalizeComponent_1(
-    { render: __vue_render__$O, staticRenderFns: __vue_staticRenderFns__$O },
-    __vue_inject_styles__$1p,
-    __vue_script__$1p,
-    __vue_scope_id__$1p,
-    __vue_is_functional_template__$1p,
-    __vue_module_identifier__$1p,
+    { render: __vue_render__$P, staticRenderFns: __vue_staticRenderFns__$P },
+    __vue_inject_styles__$1q,
+    __vue_script__$1q,
+    __vue_scope_id__$1q,
+    __vue_is_functional_template__$1q,
+    __vue_module_identifier__$1q,
     undefined,
     undefined
   );
@@ -29043,7 +29032,7 @@ __vue_render__$O._withStripped = true;
 //
 //
 //
-var script$1q = {
+var script$1r = {
   name: 'CWidgetHeaderDetails',
   props: {
     color: String,
@@ -29055,10 +29044,10 @@ var script$1q = {
 };
 
 /* script */
-const __vue_script__$1q = script$1q;
+const __vue_script__$1r = script$1r;
 
 /* template */
-var __vue_render__$P = function() {
+var __vue_render__$Q = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -29103,17 +29092,17 @@ var __vue_render__$P = function() {
     ]
   )
 };
-var __vue_staticRenderFns__$P = [];
-__vue_render__$P._withStripped = true;
+var __vue_staticRenderFns__$Q = [];
+__vue_render__$Q._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1q = undefined;
+  const __vue_inject_styles__$1r = undefined;
   /* scoped */
-  const __vue_scope_id__$1q = undefined;
+  const __vue_scope_id__$1r = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1q = undefined;
+  const __vue_module_identifier__$1r = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1q = false;
+  const __vue_is_functional_template__$1r = false;
   /* style inject */
   
   /* style inject SSR */
@@ -29121,12 +29110,12 @@ __vue_render__$P._withStripped = true;
 
   
   var CWidgetHeaderDetails = normalizeComponent_1(
-    { render: __vue_render__$P, staticRenderFns: __vue_staticRenderFns__$P },
-    __vue_inject_styles__$1q,
-    __vue_script__$1q,
-    __vue_scope_id__$1q,
-    __vue_is_functional_template__$1q,
-    __vue_module_identifier__$1q,
+    { render: __vue_render__$Q, staticRenderFns: __vue_staticRenderFns__$Q },
+    __vue_inject_styles__$1r,
+    __vue_script__$1r,
+    __vue_scope_id__$1r,
+    __vue_is_functional_template__$1r,
+    __vue_module_identifier__$1r,
     undefined,
     undefined
   );
@@ -29148,7 +29137,7 @@ __vue_render__$P._withStripped = true;
 //
 //
 //
-var script$1r = {
+var script$1s = {
   name: 'CWidgetSimple',
   props: {
     header: String,
@@ -29157,10 +29146,10 @@ var script$1r = {
 };
 
 /* script */
-const __vue_script__$1r = script$1r;
+const __vue_script__$1s = script$1s;
 
 /* template */
-var __vue_render__$Q = function() {
+var __vue_render__$R = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -29191,17 +29180,17 @@ var __vue_render__$Q = function() {
     )
   ])
 };
-var __vue_staticRenderFns__$Q = [];
-__vue_render__$Q._withStripped = true;
+var __vue_staticRenderFns__$R = [];
+__vue_render__$R._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1r = undefined;
+  const __vue_inject_styles__$1s = undefined;
   /* scoped */
-  const __vue_scope_id__$1r = undefined;
+  const __vue_scope_id__$1s = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1r = undefined;
+  const __vue_module_identifier__$1s = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1r = false;
+  const __vue_is_functional_template__$1s = false;
   /* style inject */
   
   /* style inject SSR */
@@ -29209,12 +29198,12 @@ __vue_render__$Q._withStripped = true;
 
   
   var CWidgetSimple = normalizeComponent_1(
-    { render: __vue_render__$Q, staticRenderFns: __vue_staticRenderFns__$Q },
-    __vue_inject_styles__$1r,
-    __vue_script__$1r,
-    __vue_scope_id__$1r,
-    __vue_is_functional_template__$1r,
-    __vue_module_identifier__$1r,
+    { render: __vue_render__$R, staticRenderFns: __vue_staticRenderFns__$R },
+    __vue_inject_styles__$1s,
+    __vue_script__$1s,
+    __vue_scope_id__$1s,
+    __vue_is_functional_template__$1s,
+    __vue_module_identifier__$1s,
     undefined,
     undefined
   );
@@ -29268,6 +29257,7 @@ var Components = /*#__PURE__*/Object.freeze({
 	CHeaderBrand: CHeaderBrand,
 	CHeaderNav: CHeaderNav,
 	CHeaderNavItem: CHeaderNavItem,
+	CHeaderNavLink: CHeaderNavLink,
 	CSubheader: CSubheader,
 	CImg: CImg,
 	CJumbotron: CJumbotron,
@@ -29300,7 +29290,7 @@ var Components = /*#__PURE__*/Object.freeze({
 	CSidebarNavTitle: CSidebarNavTitle,
 	CSpinner: CSpinner,
 	CSwitch: CSwitch,
-	CTable: CTable,
+	CDataTable: CDataTable,
 	CTab: CTab,
 	CTabs: CTabs,
 	CToast: CToast,
@@ -30045,4 +30035,4 @@ var CoreuiVue = {
 }; // Export library
 
 export default CoreuiVue;
-export { CAlert, CBadge, CBreadcrumb, CBreadcrumbRouter, CButton, CButtonClose, CButtonGroup, CButtonToolbar, CCallout, CCard, CCardBody, CCardFooter, CCardGroup, CCardHeader, CCardImg, CCardImgOverlay, CCardLink, CCardSubtitle, CCardText, CCardTitle, CCarousel, CCarouselItem, CCol, CCollapse, CContainer, CDropdown, CDropdownDivider, CDropdownHeader, CDropdownItem, CEmbed, CEmitRootEvent, CFooter, CForm, CFormGroup, CHeader, CHeaderBrand, CHeaderNav, CHeaderNavItem, CImg, CInput, CInputCheckbox, CInputFile, CInputRadio, CJumbotron, CLink, CListGroup, CListGroupItem, CMedia, CModal, CNav, CNavItem, CNavbar, CNavbarBrand, CNavbarNav, CNavbarText, CPagination, CPopover, CProgress, CProgressBar, CRenderFunction, CRow, CScrollbar, CSelect, CSidebar, CSidebarBrand, CSidebarClose, CSidebarFooter, CSidebarForm, CSidebarHeader, CSidebarMinimizer, CSidebarNav, CSidebarNavDivider, CSidebarNavDropdown, CSidebarNavLink, CSidebarNavTitle, CSpinner, CSubheader, CSwitch, CTab, CTable, CTabs, CTextarea, CToast, CToaster, CToggler, CTooltip, CWidgetBrand, CWidgetDropdown, CWidgetHeaderDetails, CWidgetIcon, CWidgetProgress, CWidgetProgressIcon, CWidgetSimple };
+export { CAlert, CBadge, CBreadcrumb, CBreadcrumbRouter, CButton, CButtonClose, CButtonGroup, CButtonToolbar, CCallout, CCard, CCardBody, CCardFooter, CCardGroup, CCardHeader, CCardImg, CCardImgOverlay, CCardLink, CCardSubtitle, CCardText, CCardTitle, CCarousel, CCarouselItem, CCol, CCollapse, CContainer, CDataTable, CDropdown, CDropdownDivider, CDropdownHeader, CDropdownItem, CEmbed, CEmitRootEvent, CFooter, CForm, CFormGroup, CHeader, CHeaderBrand, CHeaderNav, CHeaderNavItem, CHeaderNavLink, CImg, CInput, CInputCheckbox, CInputFile, CInputRadio, CJumbotron, CLink, CListGroup, CListGroupItem, CMedia, CModal, CNav, CNavItem, CNavbar, CNavbarBrand, CNavbarNav, CNavbarText, CPagination, CPopover, CProgress, CProgressBar, CRenderFunction, CRow, CScrollbar, CSelect, CSidebar, CSidebarBrand, CSidebarClose, CSidebarFooter, CSidebarForm, CSidebarHeader, CSidebarMinimizer, CSidebarNav, CSidebarNavDivider, CSidebarNavDropdown, CSidebarNavLink, CSidebarNavTitle, CSpinner, CSubheader, CSwitch, CTab, CTabs, CTextarea, CToast, CToaster, CToggler, CTooltip, CWidgetBrand, CWidgetDropdown, CWidgetHeaderDetails, CWidgetIcon, CWidgetProgress, CWidgetProgressIcon, CWidgetSimple };

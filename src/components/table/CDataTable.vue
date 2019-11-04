@@ -10,8 +10,9 @@
           class="form-control table-filter"
           type="text"
           placeholder="type string..."
-          @input="tableFilterVal = $event.target.value"
-          :value="tableFilterVal"
+          @input="tableFilterChange($event.target.value)"
+          @change="tableFilterChange($event.target.value, 'change')"
+          :value="tableFilterState"
         >
       </div>
 
@@ -77,10 +78,11 @@
               <th :class="headerClass(index)" :key="index">
                 <slot :name="`${rawColumnNames[index]}-filter`">
                   <input
-                    v-if="!fields || !fields[index].filterable !== false"
+                    v-if="!fields || fields[index].filter !== false"
                     class="w-100 table-filter"
-                    @input="addColumnFilter(colName, $event.target.value)"
-                    :value="columnFilterVal[colName]"
+                    @input="columnFilterEvent(colName, $event.target.value, 'input')"
+                    @change="columnFilterEvent(colName, $event.target.value, 'change')"
+                    :value="columnFilterState[colName]"
                   />
                 </slot>
               </th>
@@ -227,14 +229,12 @@ export default {
       default: 10
     },
     activePage: Number,    
-    columnFilter: Boolean,
     pagination: [Boolean, Object],
     addTableClasses: [String, Array, Object],
     responsive: {
       type: Boolean,
       default: true
     },
-    sortable: Boolean,
     size: String,
     dark: Boolean,
     striped: Boolean,
@@ -243,41 +243,85 @@ export default {
     border: Boolean,
     outlined: Boolean,
     itemsPerPageSelect: Boolean,
-    tableFilter: Boolean,
-    footer: Boolean,
-    defaultSorter: {
+    sorter: [Boolean, String],
+    tableFilter: [Boolean, String],
+    columnFilter: [Boolean, String],
+    sorterValue: {
       type: Object,
       default: () => { return {} }
     },
-    defaultTableFilter: String,
-    defaultColumnFilter: Object,
+    tableFilterValue: String,
+    columnFilterValue: Object,
+    footer: Boolean,
     loading: Boolean,
     clickableRows: Boolean
   },
   data () {
     return {
-      tableFilterVal: this.defaultTableFilter,
-      columnFilterVal: this.defaultColumnFilter || {},
-      sorter: {
-        column: this.defaultSorter.column || null,
-        asc: this.defaultSorter.asc === false ? false : true
+      tableFilterState: this.tableFilterValue,
+      columnFilterState: {},
+      sorterState: {
+        column: undefined,
+        asc: true
       },
       page: this.activePage || 1,
       perPageItems: this.itemsPerPage,
       passedItems: this.items || []
     }
   },
+  watch: {
+    sorterValue: {
+      immediate: true,
+      handler (val) {
+        this.sorterState.column = val.column
+        this.sorterState.asc = val.asc === false ? false : true
+      }
+    },
+    tableFilterValue (val) {
+      this.tableFilterState = val
+    },
+    columnFilterValue: {
+      immediate: true,
+      handler (val) {
+        this.columnFilterState = Object.assign({}, val) 
+      }
+      // const state = this.columnFilterState
+      // const currentColumns = Object.keys(state)
+      // Object.keys(val).forEach(colName => {
+      //   if (!currentColumns.includes(colName)) {
+      //     this.setColumnFilter(colName, val[colName] || '')
+      //   }
+      // })
+      // currentColumns.forEach(colName => state[colName] = val[colName] || '')
+    },
+    items (val, oldVal) {
+      if (
+        val.length !== oldVal.length ||
+        JSON.stringify(val) !== JSON.stringify(oldVal)
+      ) {
+        this.passedItems = val
+      }
+    },
+    totalPages: {
+      immediate: true,
+      handler (val) {
+        this.$emit('pages-change', val)
+      }
+    }
+  },
   computed: {
     columnFiltered () {
       let items = this.passedItems.slice()
-      Object.entries(this.columnFilterVal).forEach(([key, value]) => {
-        if (value && this.rawColumnNames.includes(key)) {
-          const columnFilter = String(value).toLowerCase()
-          items = items.filter(item => {
-            return String(item[key]).toLowerCase().includes(columnFilter)
-          })
-        }
-      })
+      if (this.columnFilter === true) {
+        Object.entries(this.columnFilterState).forEach(([key, value]) => {
+          if (value && this.rawColumnNames.includes(key)) {
+            const columnFilter = String(value).toLowerCase()
+            items = items.filter(item => {
+              return String(item[key]).toLowerCase().includes(columnFilter)
+            })
+          }
+        })
+      }
       return items
     },
     filterableCols () {
@@ -287,8 +331,8 @@ export default {
     },
     tableFiltered () {
       let items = this.columnFiltered.slice()
-      if (this.tableFilterVal) {
-        const filter = this.tableFilterVal.toLowerCase()
+      if (this.tableFilter === true && this.tableFilterState) {
+        const filter = this.tableFilterState.toLowerCase()
         const hasFilter = (item) => String(item).toLowerCase().includes(filter)
         items = items.filter(item => {
           return this.filterableCols.filter(key => hasFilter(item[key])).length
@@ -297,12 +341,12 @@ export default {
       return items
     },
     sortedItems () {
-      const col = this.sorter.column
-      if (!col || !this.rawColumnNames.includes(col)) {
+      const col = this.sorterState.column
+      if (!col || this.sorter !== true || !this.rawColumnNames.includes(col)) {
         return this.tableFiltered
       }
       //if values in column are to be sorted by numeric value they all have to be type number
-      const flip = this.sorter.asc ? 1 : -1
+      const flip = this.sorterState.asc ? 1 : -1
       return this.tableFiltered.slice().sort((a,b) => {
         return (a[col] > b[col]) ? 1 * flip : ((b[col] > a[col]) ? -1 * flip : 0)
       })
@@ -358,30 +402,14 @@ export default {
       ]
     },
     sortingIconStyles () {
-      return {'position-relative pr-4' : this.sortable }
+      return {'position-relative pr-4' : this.sorter }
     },
     colspan () {
       return this.rawColumnNames.length
     },
-    isFiltered () {
-      return this.tableFilterVal || Object.values(this.columnFilterVal).join('')
-    }
-  },
-  watch: {
-    items (val, oldVal) {
-      if (
-        val.length !== oldVal.length ||
-        JSON.stringify(val) !== JSON.stringify(oldVal)
-      ) {
-        this.passedItems = val
-      }
-    },
-    totalPages: {
-      immediate: true,
-      handler (val) {
-        this.$emit('pages-change', val)
-      }
-    }
+    // isFiltered () {
+    //   return this.tableFilterState || Object.values(this.columnFilterState).join('')
+    // }
   },
   methods: {
     changeSort (column, index) {
@@ -389,17 +417,29 @@ export default {
         return
       }
       //if column changed or sort was descending change asc to true
-      this.sorter.asc = this.sorter.column !== column || !this.sorter.asc
-      this.sorter.column = column
+      const state = this.sorterState
+      state.asc = state.column !== column || !state.asc
+      state.column = column
+      this.$emit('update:sorter-value', this.sorterState)
     },
-    addColumnFilter (colName, value) {
-      this.$set(this.columnFilterVal, colName, value)
+    columnFilterEvent (colName, value, type) {
+      this.setColumnFilter(colName, value)
+      const e = type === 'input' ? 'column-filter-input' : 'update:column-filter-value'
+      this.$emit(e, this.columnFilterState)
+    },
+    setColumnFilter (colName, value) {
+      this.$set(this.columnFilterState, colName, value)
+    },
+    tableFilterChange (value, type = 'input') {
+      this.tableFilterState = value
+      const e = type === 'input' ? 'table-filter-input' : 'update:table-filter-value'
+      this.$emit(e, this.tableFilterState)
     },
     // clear () {
-    //   this.tableFilterVal = ''
-    //   this.columnFilterVal = {}
-    //   this.sorter.column = ''
-    //   this.sorter.asc = true
+    //   this.tableFilterState = ''
+    //   this.columnFilterState = {}
+    //   this.sorterState.column = ''
+    //   this.sorterState.asc = true
     //   const inputs = this.$el.getElementsByClassName('table-filter')
     //   for (let input of inputs) {
     //     input.value = ''
@@ -424,7 +464,7 @@ export default {
       return classes
     },
     isSortable (index) {
-      return this.sortable && (!this.fields || this.fields[index].sortable !== false)
+      return this.sorter && (!this.fields || this.fields[index].sorter !== false)
     },
     headerClass (index) {
       const fields = this.fields
@@ -444,8 +484,8 @@ export default {
       this.$emit('row-clicked', item, index)
     },
     getIconState (index) {
-      const direction = this.sorter.asc ? 'asc' : 'desc'
-      return this.rawColumnNames[index] === this.sorter.column ? direction : 0
+      const direction = this.sorterState.asc ? 'asc' : 'desc'
+      return this.rawColumnNames[index] === this.sorterState.column ? direction : 0
     },
     iconClasses (index) {
       const state = this.getIconState(index)

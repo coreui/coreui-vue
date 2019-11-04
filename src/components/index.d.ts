@@ -560,7 +560,6 @@ export declare class CDataTable extends Vue {
   pagination: [boolean, object]
   addTableClasses: [string, Array<any>, object]
   responsive: boolean
-  sorting: boolean
   small: boolean
   dark: boolean
   striped: boolean
@@ -570,9 +569,12 @@ export declare class CDataTable extends Vue {
   outlined: boolean
   optionsRow: [boolean, string]
   footer: boolean
-  defaultSorter: object
-  defaultTableFilter: string
-  defaultColumnFilter: object
+  sorter: [boolean, string]
+  columnFilter: [boolean, string]
+  tableFilter: [boolean, string]
+  sorterValue: object
+  tableFilterValue: string
+  columnFilterValue: object
   loading: boolean
 }
 

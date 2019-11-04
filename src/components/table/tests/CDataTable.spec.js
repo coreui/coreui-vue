@@ -11,7 +11,7 @@ const items = [
   {username: 'Yiorgos Avraamu', registered: '2012/01/01', role: 'Member', status: 'Active'},
   {
     username: 'Friderik Dávid', 
-    registered: '2012/01/21', 
+    registered: '2012/01/21',
     role: 'Staff', 
     status: 'Active',
     _cellClasses: { registered: 'custom-cell-class' }
@@ -32,7 +32,7 @@ const customWrapper = mount(Component, {
     tableFilter: true,
     itemsPerPageSelect: true,
     addTableClasses: 'additional-table-class',
-    sortable: true,
+    sorter: true,
     small: false,
     dark: true,
     striped: true,
@@ -42,8 +42,8 @@ const customWrapper = mount(Component, {
     outlined: true,
     columnFilter: true,
     footer: true,
-    defaultSorter: { column: 'username', asc: false },
-    defaultColumnFilter: { registered: '2012' },
+    sorterValue: { column: 'username', asc: false },
+    columnFilterValue: { registered: '2012' },
     pagination: true
   }
 })
@@ -81,9 +81,9 @@ describe(ComponentName, () => {
   //   expect(customWrapper.vm.colspan).toBe(colspanWithIndexColumn - 1)
   // })
   it('table filter works correctly', () => {
-    customWrapper.setData({ tableFilterVal: 'Yiorgos' })
+    customWrapper.setProps({ tableFilterValue: 'Yiorgos' })
     expect(customWrapper.vm.sortedItems.length).toBe(1)
-    customWrapper.setData({ tableFilterVal: null })
+    customWrapper.setProps({ tableFilterValue: null })
   })
   it('shows loading layer when loading prop is set', () => {
     customWrapper.setProps({ loading: true })
