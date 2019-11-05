@@ -8,6 +8,7 @@ import CSidebarMinimizer from './CSidebarMinimizer'
 import CSidebarNav from './CSidebarNav'
 import CSidebarNavDivider from './CSidebarNavDivider'
 import CSidebarNavDropdown from './CSidebarNavDropdown'
+import CSidebarNavItem from './CSidebarNavItem'
 import CSidebarNavLink from './CSidebarNavLink'
 import CSidebarNavTitle from './CSidebarNavTitle'
 
@@ -22,6 +23,7 @@ export {
   CSidebarNav,
   CSidebarNavDivider,
   CSidebarNavDropdown,
+  CSidebarNavItem,
   CSidebarNavLink,
   CSidebarNavTitle
 }
