@@ -491,46 +491,31 @@ export declare class CSidebarHeader extends Vue {}
 
 export declare class CSidebarMinimizer extends Vue {}
 
-export declare class CSidebarNav extends Vue {
-  navItems: Array<any>
-}
+export declare class CSidebarNav extends Vue {}
 
 export declare class CSidebarNavDivider extends Vue {}
 
 export declare class CSidebarNavDropdown extends Vue {
   name: string
   route: string
-  icon: string
+  icon: [string, object]
+  fontIcon: string
   show: boolean
 }
 
-export declare class CSidebarNavItem extends Vue {
-  item: object
-}
-
-export declare class CSidebarNavItems extends Vue {
-  items: Array<any>
-}
-
-export declare class CSidebarNavLabel extends Vue {
-  name: string
-  url: string
-  icon: string
-}
+export declare class CSidebarNavItem extends Vue {}
 
 export declare class CSidebarNavLink extends CLink {
   name: string
-  icon: [string, Array<any>, object]
+  icon: [string, object]
+  fontIcon: string
   badge: object
   url: string
+  label: boolean
+  inNavItem: boolean
 }
 
-export declare class CSidebarNavTitle extends Vue {
-  name: string
-  wrapper: object
-}
-
-export declare class CSidebarNavToggler extends Vue {}
+export declare class CSidebarNavTitle extends Vue {}
 
 export declare class CSpinner extends Vue {
   grow: boolean

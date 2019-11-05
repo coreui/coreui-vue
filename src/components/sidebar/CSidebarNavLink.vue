@@ -1,5 +1,5 @@
 <template>
-  <li class="c-sidebar-nav-item">
+  <li v-if="inNavItem" class="c-sidebar-nav-item">
     <CLink
       :class="linkClasses"
       v-bind="computedLinkProps"
@@ -17,19 +17,37 @@
       </slot>
     </CLink>
   </li>
+  <CLink v-else>
+    <slot>
+      <CIcon v-if="icon" v-bind="computedIcon"/>
+      <i v-if="fontIcon" :class="['c-sidebar-nav-icon', fontIcon]"></i>
+      {{name}}
+      <CBadge
+        v-if="badge"
+        v-bind="Object.assign({}, badge, { text: null })"
+      >
+        {{badge.text}}
+      </CBadge>
+    </slot>
+  </CLink>
 </template>
 
 <script>
 import CLink, { props as linkProps } from '../link/CLink'
 import CBadge from '../badge/CBadge'
-// import CIcon from '@coreui/icons/vue'
+import CIcon from '@coreui/icons-vue/CIcon.vue'
 
 const props = Object.assign(linkProps, {
   name: String,
   icon: [String, Object],
+  fontIcon: String,
   badge: Object,
   addLinkClasses: [String, Array, Object],
-  label: Boolean
+  label: Boolean,
+  inNavItem: {
+    type: Boolean,
+    default: true
+  }
 })
 
 export default {
@@ -37,7 +55,7 @@ export default {
   components: {
     CLink, 
     CBadge,
-    // CIcon
+    CIcon
   },
   props,
   computed: {
@@ -66,7 +84,7 @@ export default {
           this.icon
         )
       } else {
-        return { customClasses: [this.icon, 'c-sidebar-nav-icon']}
+        return { customClasses: 'c-sidebar-nav-icon', name: this.icon }
       }
     }
   },

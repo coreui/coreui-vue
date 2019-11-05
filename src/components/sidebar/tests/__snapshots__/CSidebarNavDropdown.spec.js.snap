@@ -2,14 +2,18 @@
 
 exports[`CSidebarNavDropdown renders correctly 1`] = `
 <li
-  class="c-sidebar-nav-item c-sidebar-nav-dropdown"
+  class="c-sidebar-nav-dropdown"
 >
   <a
-    class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle"
+    class="c-sidebar-nav-dropdown-toggle"
   >
-    <cicon
-      customclasses="cui-settings,c-sidebar-nav-icon"
+    <svg
+      class="c-sidebar-nav-icon"
+      viewBox="0 0 64 64"
+      xmlns="http://www.w3.org/2000/svg"
     />
+     
+    <!---->
     
     
   

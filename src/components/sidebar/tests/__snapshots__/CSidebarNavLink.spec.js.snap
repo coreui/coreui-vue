@@ -10,8 +10,10 @@ exports[`CSidebarNavLink.vue renders correctly 1`] = `
     href="#"
     target="_self"
   >
-    <cicon
-      customclasses="cui-settings,c-sidebar-nav-icon"
+    <svg
+      class="c-sidebar-nav-icon"
+      viewBox="0 0 64 64"
+      xmlns="http://www.w3.org/2000/svg"
     />
     
       test link
@@ -37,8 +39,10 @@ exports[`CSidebarNavLink.vue renders correctly in label mode 1`] = `
     href="#"
     target="_self"
   >
-    <cicon
-      customclasses="cui-settings,c-sidebar-nav-icon"
+    <svg
+      class="c-sidebar-nav-icon"
+      viewBox="0 0 64 64"
+      xmlns="http://www.w3.org/2000/svg"
     />
     
       test link
