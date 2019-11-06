@@ -462,15 +462,15 @@ export declare class CScrollbar extends Vue {
 export declare class CSidebar extends Vue {
   fixed: boolean
   unfoldable: boolean
+  overlaid: boolean
   breakpoint: [string, boolean]
   minimize: boolean
   show: [boolean, string]
+  size: string
   hideOnMobileClick: boolean
   aside: boolean
   colorScheme: string
   dropdownMode: string
-  size: string
-  overlaid: boolean
 }
 
 export declare class CSidebarBrand extends Vue { 
