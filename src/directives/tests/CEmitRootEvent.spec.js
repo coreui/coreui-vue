@@ -44,7 +44,7 @@ const generateWrapper = (config) => {
           'CButton', 
           {
             props: {
-              variant: 'success'
+              color: 'success'
             },
             directives: [config]
           }, 

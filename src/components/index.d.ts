@@ -219,15 +219,13 @@ export declare class CInputRadio extends formSharedProps {
   addInputClasses: [string, Array<any>, object]
   addLabelClasses: [string, Array<any>, object]
 
-  checked: [boolean, string, number]
+  checked: boolean
   value: [string, number, boolean]
   custom: boolean
   inline: boolean
 }
 
-export declare class CInputCheckbox extends CInputRadio {
-  checked: boolean
-}
+export declare class CInputCheckbox extends CInputRadio {}
 
 export declare class CSelect extends formSharedProps {
   appendHtml: string
@@ -451,7 +449,7 @@ export declare class CProgress extends Vue {
 export declare class CProgressBar extends CProgress {}
 
 export declare class CRenderFunction extends Vue {
-  items: array
+  contentToRender: Array<any>
 }
 export declare class CScrollbar extends Vue {
   settings: object
