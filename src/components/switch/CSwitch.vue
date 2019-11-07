@@ -23,10 +23,9 @@ export default {
   inheritAttrs: false,
   props: {
     color: String,
-    outline: {
-      type: [Boolean, String],
-      default: undefined,
-      validator: value => [false, true, '', 'alt'].includes(value)
+    variant: {
+      type: String,
+      validator: value => ['', 'outline', 'opposite', '3d'].includes(value)
     },
     size: {
       type: String,
@@ -34,7 +33,7 @@ export default {
     },
     shape: {
       type: String,
-      validator: value => ['','3d', 'pill'].includes(value)
+      validator: value => ['','pill', 'square'].includes(value)
     },
     checked: Boolean,
     value: {
@@ -64,14 +63,15 @@ export default {
   },
   computed: {
     classList () {
-      const outlineString = this.outline ? '-outline' : ''
-      const outlinedAltString = this.outline === 'alt' ? '-alt' : ''
+      const havePrefix = ['opposite', 'outline'].includes(this.variant)
+      const colorPrefix = havePrefix ? `-${this.variant}` : ''
       return [
         'c-switch form-check-label',
-        `c-switch${outlineString}-${this.color}${outlinedAltString}`,
         {
           [`c-switch-${this.size}`]: this.size,
           [`c-switch-${this.shape}`]: this.shape,
+          'c-switch-3d': this.variant === '3d', 
+          [`c-switch${colorPrefix}-${this.color}`]: this.color,
           'c-switch-label': this.labelOn || this.labelOff
         }
       ]

@@ -20,7 +20,7 @@ const customWrapper = mount(Component, {
     color: 'info',
     outline: 'alt',
     size: 'lg',
-    shape:'3d',
+    shape: 'pill',
     name:'myName',
     id:'myId',
     checked: true,
