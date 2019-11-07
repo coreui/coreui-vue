@@ -575,25 +575,10 @@ exports[`CDataTable renders correctly 2`] = `
              
             <svg
               class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position rotate-icon"
-              viewBox="0 0 24 24"
+              viewBox="0 0 64 64"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
-            >
-              
-
-
-              <title>
-                arrow-top
-              </title>
-              
-
-              <path
-                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
-              />
-              
-
-
-            </svg>
+            />
           </th>
           <th
             class="position-relative pr-4"
@@ -607,25 +592,10 @@ exports[`CDataTable renders correctly 2`] = `
              
             <svg
               class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
-              viewBox="0 0 24 24"
+              viewBox="0 0 64 64"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
-            >
-              
-
-
-              <title>
-                arrow-top
-              </title>
-              
-
-              <path
-                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
-              />
-              
-
-
-            </svg>
+            />
           </th>
           <th
             class="position-relative pr-4"
@@ -639,25 +609,10 @@ exports[`CDataTable renders correctly 2`] = `
              
             <svg
               class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
-              viewBox="0 0 24 24"
+              viewBox="0 0 64 64"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
-            >
-              
-
-
-              <title>
-                arrow-top
-              </title>
-              
-
-              <path
-                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
-              />
-              
-
-
-            </svg>
+            />
           </th>
           <th
             class="position-relative pr-4"
@@ -671,25 +626,10 @@ exports[`CDataTable renders correctly 2`] = `
              
             <svg
               class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
-              viewBox="0 0 24 24"
+              viewBox="0 0 64 64"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
-            >
-              
-
-
-              <title>
-                arrow-top
-              </title>
-              
-
-              <path
-                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
-              />
-              
-
-
-            </svg>
+            />
           </th>
           <th
             class="position-relative pr-4"
@@ -703,25 +643,10 @@ exports[`CDataTable renders correctly 2`] = `
              
             <svg
               class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
-              viewBox="0 0 24 24"
+              viewBox="0 0 64 64"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
-            >
-              
-
-
-              <title>
-                arrow-top
-              </title>
-              
-
-              <path
-                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
-              />
-              
-
-
-            </svg>
+            />
           </th>
         </tr>
       </tfoot>
