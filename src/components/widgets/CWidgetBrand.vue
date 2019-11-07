@@ -16,7 +16,7 @@
             {{rightFooter}}
           </div>
         </div>
-        <div class="vr"></div>
+        <div class="c-vr"></div>
         <div class="col">
           <div v-if="leftHeader" class="text-value-lg">
             {{leftHeader}}

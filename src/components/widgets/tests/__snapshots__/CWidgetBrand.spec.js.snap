@@ -32,7 +32,7 @@ exports[`CWidgetBrand matches custom props snapshot 1`] = `
     </div>
      
     <div
-      class="vr"
+      class="c-vr"
     />
      
     <div
@@ -78,7 +78,7 @@ exports[`CWidgetBrand matches default props snapshot 1`] = `
     </div>
      
     <div
-      class="vr"
+      class="c-vr"
     />
      
     <div
