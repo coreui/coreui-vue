@@ -8,6 +8,10 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import __vue_normalize__ from 'C:apkicoreui-vue
+ode_modulesollup-plugin-vueuntime
+ormalize.js';
+
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 function unwrapExports (x) {
@@ -208,7 +212,7 @@ var shared = createCommonjsModule(function (module) {
 (module.exports = function (key, value) {
   return sharedStore[key] || (sharedStore[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.3.4',
+  version: '3.4.0',
   mode:  'global',
   copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
 });
@@ -2054,91 +2058,6 @@ var script = {
   }
 };
 
-function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
-/* server only */
-, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
-  if (typeof shadowMode !== 'boolean') {
-    createInjectorSSR = createInjector;
-    createInjector = shadowMode;
-    shadowMode = false;
-  } // Vue.extend constructor export interop.
-
-
-  var options = typeof script === 'function' ? script.options : script; // render functions
-
-  if (template && template.render) {
-    options.render = template.render;
-    options.staticRenderFns = template.staticRenderFns;
-    options._compiled = true; // functional template
-
-    if (isFunctionalTemplate) {
-      options.functional = true;
-    }
-  } // scopedId
-
-
-  if (scopeId) {
-    options._scopeId = scopeId;
-  }
-
-  var hook;
-
-  if (moduleIdentifier) {
-    // server build
-    hook = function hook(context) {
-      // 2.3 injection
-      context = context || // cached call
-      this.$vnode && this.$vnode.ssrContext || // stateful
-      this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext; // functional
-      // 2.2 with runInNewContext: true
-
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__;
-      } // inject component styles
-
-
-      if (style) {
-        style.call(this, createInjectorSSR(context));
-      } // register component module identifier for async chunk inference
-
-
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier);
-      }
-    }; // used by ssr in case component is cached and beforeCreate
-    // never gets called
-
-
-    options._ssrRegister = hook;
-  } else if (style) {
-    hook = shadowMode ? function () {
-      style.call(this, createInjectorShadow(this.$root.$options.shadowRoot));
-    } : function (context) {
-      style.call(this, createInjector(context));
-    };
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // register for functional component in vue file
-      var originalRender = options.render;
-
-      options.render = function renderWithStyleInjection(h, context) {
-        hook.call(context);
-        return originalRender(h, context);
-      };
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate;
-      options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
-    }
-  }
-
-  return script;
-}
-
-var normalizeComponent_1 = normalizeComponent;
-
 /* script */
 const __vue_script__ = script;
 
@@ -2156,15 +2075,19 @@ const __vue_script__ = script;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CButtonClose = normalizeComponent_1(
+  var CButtonClose = __vue_normalize__(
     {},
     __vue_inject_styles__,
     __vue_script__,
     __vue_scope_id__,
     __vue_is_functional_template__,
     __vue_module_identifier__,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -2323,15 +2246,19 @@ __vue_render__._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CAlert = normalizeComponent_1(
+  var CAlert = __vue_normalize__(
     { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
     __vue_inject_styles__$1,
     __vue_script__$1,
     __vue_scope_id__$1,
     __vue_is_functional_template__$1,
     __vue_module_identifier__$1,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -2469,15 +2396,19 @@ const __vue_script__$2 = script$2;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CLink = normalizeComponent_1(
+  var CLink = __vue_normalize__(
     {},
     __vue_inject_styles__$2,
     __vue_script__$2,
     __vue_scope_id__$2,
     __vue_is_functional_template__$2,
     __vue_module_identifier__$2,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -2532,15 +2463,19 @@ const __vue_script__$3 = script$3;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CBadge = normalizeComponent_1(
+  var CBadge = __vue_normalize__(
     {},
     __vue_inject_styles__$3,
     __vue_script__$3,
     __vue_scope_id__$3,
     __vue_is_functional_template__$3,
     __vue_module_identifier__$3,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -2568,8 +2503,11 @@ if (v8) {
   match = v8.split('.');
   version = match[0] + match[1];
 } else if (userAgent) {
-  match = userAgent.match(/Chrome\/(\d+)/);
-  if (match) version = match[1];
+  match = userAgent.match(/Edge\/(\d+)/);
+  if (!match || match[1] >= 74) {
+    match = userAgent.match(/Chrome\/(\d+)/);
+    if (match) version = match[1];
+  }
 }
 
 var v8Version = version && +version;
@@ -2725,15 +2663,19 @@ __vue_render__$1._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CBreadcrumb = normalizeComponent_1(
+  var CBreadcrumb = __vue_normalize__(
     { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
     __vue_inject_styles__$4,
     __vue_script__$4,
     __vue_scope_id__$4,
     __vue_is_functional_template__$4,
     __vue_module_identifier__$4,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -2926,15 +2868,19 @@ __vue_render__$2._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CBreadcrumbRouter = normalizeComponent_1(
+  var CBreadcrumbRouter = __vue_normalize__(
     { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
     __vue_inject_styles__$5,
     __vue_script__$5,
     __vue_scope_id__$5,
     __vue_is_functional_template__$5,
     __vue_module_identifier__$5,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -2943,7 +2889,10 @@ var IS_CONCAT_SPREADABLE = wellKnownSymbol('isConcatSpreadable');
 var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
 var MAXIMUM_ALLOWED_INDEX_EXCEEDED = 'Maximum allowed index exceeded';
 
-var IS_CONCAT_SPREADABLE_SUPPORT = !fails(function () {
+// We can't use this feature detection in V8 since it causes
+// deoptimization and serious performance degradation
+// https://github.com/zloirock/core-js/issues/679
+var IS_CONCAT_SPREADABLE_SUPPORT = v8Version >= 51 || !fails(function () {
   var array = [];
   array[IS_CONCAT_SPREADABLE] = false;
   return array.concat()[0] !== array;
@@ -3118,15 +3067,19 @@ const __vue_script__$6 = script$6;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CButton = normalizeComponent_1(
+  var CButton = __vue_normalize__(
     {},
     __vue_inject_styles__$6,
     __vue_script__$6,
     __vue_scope_id__$6,
     __vue_is_functional_template__$6,
     __vue_module_identifier__$6,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -3173,15 +3126,19 @@ const __vue_script__$7 = script$7;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CButtonGroup = normalizeComponent_1(
+  var CButtonGroup = __vue_normalize__(
     {},
     __vue_inject_styles__$7,
     __vue_script__$7,
     __vue_scope_id__$7,
     __vue_is_functional_template__$7,
     __vue_module_identifier__$7,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -3228,15 +3185,19 @@ const __vue_script__$8 = script$8;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CButtonToolbar = normalizeComponent_1(
+  var CButtonToolbar = __vue_normalize__(
     {},
     __vue_inject_styles__$8,
     __vue_script__$8,
     __vue_scope_id__$8,
     __vue_is_functional_template__$8,
     __vue_module_identifier__$8,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -3284,15 +3245,19 @@ __vue_render__$3._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CCallout = normalizeComponent_1(
+  var CCallout = __vue_normalize__(
     { render: __vue_render__$3, staticRenderFns: __vue_staticRenderFns__$3 },
     __vue_inject_styles__$9,
     __vue_script__$9,
     __vue_scope_id__$9,
     __vue_is_functional_template__$9,
     __vue_module_identifier__$9,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -3570,15 +3535,19 @@ __vue_render__$4._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CCarousel = normalizeComponent_1(
+  var CCarousel = __vue_normalize__(
     { render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 },
     __vue_inject_styles__$a,
     __vue_script__$a,
     __vue_scope_id__$a,
     __vue_is_functional_template__$a,
     __vue_module_identifier__$a,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -3696,15 +3665,19 @@ __vue_render__$5._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CImg = normalizeComponent_1(
+  var CImg = __vue_normalize__(
     { render: __vue_render__$5, staticRenderFns: __vue_staticRenderFns__$5 },
     __vue_inject_styles__$b,
     __vue_script__$b,
     __vue_scope_id__$b,
     __vue_is_functional_template__$b,
     __vue_module_identifier__$b,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -3821,15 +3794,19 @@ __vue_render__$6._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CCarouselItem = normalizeComponent_1(
+  var CCarouselItem = __vue_normalize__(
     { render: __vue_render__$6, staticRenderFns: __vue_staticRenderFns__$6 },
     __vue_inject_styles__$c,
     __vue_script__$c,
     __vue_scope_id__$c,
     __vue_is_functional_template__$c,
     __vue_module_identifier__$c,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -3885,15 +3862,19 @@ const __vue_script__$d = script$d;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CCardHeader = normalizeComponent_1(
+  var CCardHeader = __vue_normalize__(
     {},
     __vue_inject_styles__$d,
     __vue_script__$d,
     __vue_scope_id__$d,
     __vue_is_functional_template__$d,
     __vue_module_identifier__$d,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -3932,15 +3913,19 @@ const __vue_script__$e = script$e;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CCardBody = normalizeComponent_1(
+  var CCardBody = __vue_normalize__(
     {},
     __vue_inject_styles__$e,
     __vue_script__$e,
     __vue_scope_id__$e,
     __vue_is_functional_template__$e,
     __vue_module_identifier__$e,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -3983,15 +3968,19 @@ const __vue_script__$f = script$f;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CCardFooter = normalizeComponent_1(
+  var CCardFooter = __vue_normalize__(
     {},
     __vue_inject_styles__$f,
     __vue_script__$f,
     __vue_scope_id__$f,
     __vue_is_functional_template__$f,
     __vue_module_identifier__$f,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -4067,15 +4056,19 @@ const __vue_script__$g = script$g;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CCard = normalizeComponent_1(
+  var CCard = __vue_normalize__(
     {},
     __vue_inject_styles__$g,
     __vue_script__$g,
     __vue_scope_id__$g,
     __vue_is_functional_template__$g,
     __vue_module_identifier__$g,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -4115,15 +4108,19 @@ const __vue_script__$h = script$h;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CCardGroup = normalizeComponent_1(
+  var CCardGroup = __vue_normalize__(
     {},
     __vue_inject_styles__$h,
     __vue_script__$h,
     __vue_scope_id__$h,
     __vue_is_functional_template__$h,
     __vue_module_identifier__$h,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -4169,15 +4166,19 @@ const __vue_script__$i = script$i;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CCardImg = normalizeComponent_1(
+  var CCardImg = __vue_normalize__(
     {},
     __vue_inject_styles__$i,
     __vue_script__$i,
     __vue_scope_id__$i,
     __vue_is_functional_template__$i,
     __vue_module_identifier__$i,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -4215,15 +4216,19 @@ const __vue_script__$j = script$j;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CCardImgOverlay = normalizeComponent_1(
+  var CCardImgOverlay = __vue_normalize__(
     {},
     __vue_inject_styles__$j,
     __vue_script__$j,
     __vue_scope_id__$j,
     __vue_is_functional_template__$j,
     __vue_module_identifier__$j,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -4260,15 +4265,19 @@ const __vue_script__$k = script$k;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CCardLink = normalizeComponent_1(
+  var CCardLink = __vue_normalize__(
     {},
     __vue_inject_styles__$k,
     __vue_script__$k,
     __vue_scope_id__$k,
     __vue_is_functional_template__$k,
     __vue_module_identifier__$k,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -4306,15 +4315,19 @@ const __vue_script__$l = script$l;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CCardSubtitle = normalizeComponent_1(
+  var CCardSubtitle = __vue_normalize__(
     {},
     __vue_inject_styles__$l,
     __vue_script__$l,
     __vue_scope_id__$l,
     __vue_is_functional_template__$l,
     __vue_module_identifier__$l,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -4352,15 +4365,19 @@ const __vue_script__$m = script$m;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CCardText = normalizeComponent_1(
+  var CCardText = __vue_normalize__(
     {},
     __vue_inject_styles__$m,
     __vue_script__$m,
     __vue_scope_id__$m,
     __vue_is_functional_template__$m,
     __vue_module_identifier__$m,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -4398,15 +4415,19 @@ const __vue_script__$n = script$n;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CCardTitle = normalizeComponent_1(
+  var CCardTitle = __vue_normalize__(
     {},
     __vue_inject_styles__$n,
     __vue_script__$n,
     __vue_scope_id__$n,
     __vue_is_functional_template__$n,
     __vue_module_identifier__$n,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -4535,15 +4556,19 @@ __vue_render__$7._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CCollapse = normalizeComponent_1(
+  var CCollapse = __vue_normalize__(
     { render: __vue_render__$7, staticRenderFns: __vue_staticRenderFns__$7 },
     __vue_inject_styles__$o,
     __vue_script__$o,
     __vue_scope_id__$o,
     __vue_is_functional_template__$o,
     __vue_module_identifier__$o,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -16043,16 +16068,16 @@ var mixin_1 = mixin;
 
 var coreuiUtilities = createCommonjsModule(function (module, exports) {
 /*!
-  * CoreUI v3.0.0-beta.0 (https://coreui.io)
+  * CoreUI v3.0.0-beta.1 (https://coreui.io)
   * Copyright 2019 Łukasz Holeczek
   * Licensed under MIT (https://coreui.io)
   */
 (function (global, factory) {
    factory(exports) ;
-}(commonjsGlobal, function (exports) {
+}(commonjsGlobal, (function (exports) {
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.0): classes.js
+   * CoreUI Utilities (v3.0.0-beta.1): classes.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16065,7 +16090,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.0): deep-objects-merge.js
+   * CoreUI Utilities (v3.0.0-beta.1): deep-objects-merge.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16086,7 +16111,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.0): get-css-custom-properties.js
+   * CoreUI Utilities (v3.0.0-beta.1): get-css-custom-properties.js
    * Licensed under MIT (https://coreui.io/license)
    * @returns {string} css custom property name
    * --------------------------------------------------------------------------
@@ -16129,7 +16154,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.0): get-style.js
+   * CoreUI Utilities (v3.0.0-beta.1): get-style.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16162,7 +16187,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.0): get-color.js
+   * CoreUI Utilities (v3.0.0-beta.1): get-color.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16179,7 +16204,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.0): hex-to-rgb.js
+   * CoreUI Utilities (v3.0.0-beta.1): hex-to-rgb.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16215,7 +16240,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.0): hex-to-rgba.js
+   * CoreUI Utilities (v3.0.0-beta.1): hex-to-rgba.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16255,7 +16280,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI (v3.0.0-beta.0): rgb-to-hex.js
+   * CoreUI (v3.0.0-beta.1): rgb-to-hex.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16295,7 +16320,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));
 
 });
 
@@ -16536,15 +16561,19 @@ __vue_render__$8._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CDropdown = normalizeComponent_1(
+  var CDropdown = __vue_normalize__(
     { render: __vue_render__$8, staticRenderFns: __vue_staticRenderFns__$8 },
     __vue_inject_styles__$p,
     __vue_script__$p,
     __vue_scope_id__$p,
     __vue_is_functional_template__$p,
     __vue_module_identifier__$p,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -16587,15 +16616,19 @@ const __vue_script__$q = script$q;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CDropdownHeader = normalizeComponent_1(
+  var CDropdownHeader = __vue_normalize__(
     {},
     __vue_inject_styles__$q,
     __vue_script__$q,
     __vue_scope_id__$q,
     __vue_is_functional_template__$q,
     __vue_module_identifier__$q,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -16638,15 +16671,19 @@ const __vue_script__$r = script$r;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CDropdownDivider = normalizeComponent_1(
+  var CDropdownDivider = __vue_normalize__(
     {},
     __vue_inject_styles__$r,
     __vue_script__$r,
     __vue_scope_id__$r,
     __vue_is_functional_template__$r,
     __vue_module_identifier__$r,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -16686,15 +16723,19 @@ const __vue_script__$s = script$s;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CDropdownItem = normalizeComponent_1(
+  var CDropdownItem = __vue_normalize__(
     {},
     __vue_inject_styles__$s,
     __vue_script__$s,
     __vue_scope_id__$s,
     __vue_is_functional_template__$s,
     __vue_module_identifier__$s,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -16755,15 +16796,19 @@ const __vue_script__$t = script$t;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CEmbed = normalizeComponent_1(
+  var CEmbed = __vue_normalize__(
     {},
     __vue_inject_styles__$t,
     __vue_script__$t,
     __vue_scope_id__$t,
     __vue_is_functional_template__$t,
     __vue_module_identifier__$t,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -16853,15 +16898,19 @@ __vue_render__$9._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CFooter = normalizeComponent_1(
+  var CFooter = __vue_normalize__(
     { render: __vue_render__$9, staticRenderFns: __vue_staticRenderFns__$9 },
     __vue_inject_styles__$u,
     __vue_script__$u,
     __vue_scope_id__$u,
     __vue_is_functional_template__$u,
     __vue_module_identifier__$u,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -16903,15 +16952,19 @@ const __vue_script__$v = script$v;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CForm = normalizeComponent_1(
+  var CForm = __vue_normalize__(
     {},
     __vue_inject_styles__$v,
     __vue_script__$v,
     __vue_scope_id__$v,
     __vue_is_functional_template__$v,
     __vue_module_identifier__$v,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -17197,15 +17250,19 @@ __vue_render__$a._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CFormGroup = normalizeComponent_1(
+  var CFormGroup = __vue_normalize__(
     { render: __vue_render__$a, staticRenderFns: __vue_staticRenderFns__$a },
     __vue_inject_styles__$w,
     __vue_script__$w,
     __vue_scope_id__$w,
     __vue_is_functional_template__$w,
     __vue_module_identifier__$w,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -17795,15 +17852,19 @@ __vue_render__$b._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CInput = normalizeComponent_1(
+  var CInput = __vue_normalize__(
     { render: __vue_render__$b, staticRenderFns: __vue_staticRenderFns__$b },
     __vue_inject_styles__$x,
     __vue_script__$x,
     __vue_scope_id__$x,
     __vue_is_functional_template__$x,
     __vue_module_identifier__$x,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -17996,15 +18057,19 @@ __vue_render__$c._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CInputCheckbox = normalizeComponent_1(
+  var CInputCheckbox = __vue_normalize__(
     { render: __vue_render__$c, staticRenderFns: __vue_staticRenderFns__$c },
     __vue_inject_styles__$y,
     __vue_script__$y,
     __vue_scope_id__$y,
     __vue_is_functional_template__$y,
     __vue_module_identifier__$y,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -18264,15 +18329,19 @@ __vue_render__$d._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CInputFile = normalizeComponent_1(
+  var CInputFile = __vue_normalize__(
     { render: __vue_render__$d, staticRenderFns: __vue_staticRenderFns__$d },
     __vue_inject_styles__$z,
     __vue_script__$z,
     __vue_scope_id__$z,
     __vue_is_functional_template__$z,
     __vue_module_identifier__$z,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -18300,15 +18369,19 @@ const __vue_script__$A = script$A;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CInputRadio = normalizeComponent_1(
+  var CInputRadio = __vue_normalize__(
     {},
     __vue_inject_styles__$A,
     __vue_script__$A,
     __vue_scope_id__$A,
     __vue_is_functional_template__$A,
     __vue_module_identifier__$A,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -18636,15 +18709,19 @@ __vue_render__$e._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CSelect = normalizeComponent_1(
+  var CSelect = __vue_normalize__(
     { render: __vue_render__$e, staticRenderFns: __vue_staticRenderFns__$e },
     __vue_inject_styles__$B,
     __vue_script__$B,
     __vue_scope_id__$B,
     __vue_is_functional_template__$B,
     __vue_module_identifier__$B,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -18920,15 +18997,19 @@ __vue_render__$f._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CTextarea = normalizeComponent_1(
+  var CTextarea = __vue_normalize__(
     { render: __vue_render__$f, staticRenderFns: __vue_staticRenderFns__$f },
     __vue_inject_styles__$C,
     __vue_script__$C,
     __vue_scope_id__$C,
     __vue_is_functional_template__$C,
     __vue_module_identifier__$C,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -18970,15 +19051,19 @@ const __vue_script__$D = script$D;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CContainer = normalizeComponent_1(
+  var CContainer = __vue_normalize__(
     {},
     __vue_inject_styles__$D,
     __vue_script__$D,
     __vue_scope_id__$D,
     __vue_is_functional_template__$D,
     __vue_module_identifier__$D,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -19039,15 +19124,19 @@ const __vue_script__$E = script$E;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CRow = normalizeComponent_1(
+  var CRow = __vue_normalize__(
     {},
     __vue_inject_styles__$E,
     __vue_script__$E,
     __vue_scope_id__$E,
     __vue_is_functional_template__$E,
     __vue_module_identifier__$E,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -19715,15 +19804,19 @@ const __vue_script__$F = script$F;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CCol = normalizeComponent_1(
+  var CCol = __vue_normalize__(
     {},
     __vue_inject_styles__$F,
     __vue_script__$F,
     __vue_scope_id__$F,
     __vue_is_functional_template__$F,
     __vue_module_identifier__$F,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -19791,15 +19884,19 @@ __vue_render__$g._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CHeader = normalizeComponent_1(
+  var CHeader = __vue_normalize__(
     { render: __vue_render__$g, staticRenderFns: __vue_staticRenderFns__$g },
     __vue_inject_styles__$G,
     __vue_script__$G,
     __vue_scope_id__$G,
     __vue_is_functional_template__$G,
     __vue_module_identifier__$G,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -19837,15 +19934,19 @@ __vue_render__$h._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CHeaderBrand = normalizeComponent_1(
+  var CHeaderBrand = __vue_normalize__(
     { render: __vue_render__$h, staticRenderFns: __vue_staticRenderFns__$h },
     __vue_inject_styles__$H,
     __vue_script__$H,
     __vue_scope_id__$H,
     __vue_is_functional_template__$H,
     __vue_module_identifier__$H,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -19885,15 +19986,19 @@ __vue_render__$i._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CHeaderNav = normalizeComponent_1(
+  var CHeaderNav = __vue_normalize__(
     { render: __vue_render__$i, staticRenderFns: __vue_staticRenderFns__$i },
     __vue_inject_styles__$I,
     __vue_script__$I,
     __vue_scope_id__$I,
     __vue_is_functional_template__$I,
     __vue_module_identifier__$I,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -19933,15 +20038,19 @@ __vue_render__$j._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CHeaderNavItem = normalizeComponent_1(
+  var CHeaderNavItem = __vue_normalize__(
     { render: __vue_render__$j, staticRenderFns: __vue_staticRenderFns__$j },
     __vue_inject_styles__$J,
     __vue_script__$J,
     __vue_scope_id__$J,
     __vue_is_functional_template__$J,
     __vue_module_identifier__$J,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -19985,15 +20094,19 @@ __vue_render__$k._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CHeaderNavLink = normalizeComponent_1(
+  var CHeaderNavLink = __vue_normalize__(
     { render: __vue_render__$k, staticRenderFns: __vue_staticRenderFns__$k },
     __vue_inject_styles__$K,
     __vue_script__$K,
     __vue_scope_id__$K,
     __vue_is_functional_template__$K,
     __vue_module_identifier__$K,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -20044,15 +20157,19 @@ __vue_render__$l._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CSubheader = normalizeComponent_1(
+  var CSubheader = __vue_normalize__(
     { render: __vue_render__$l, staticRenderFns: __vue_staticRenderFns__$l },
     __vue_inject_styles__$L,
     __vue_script__$L,
     __vue_scope_id__$L,
     __vue_is_functional_template__$L,
     __vue_module_identifier__$L,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -20102,15 +20219,19 @@ const __vue_script__$M = script$M;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CJumbotron = normalizeComponent_1(
+  var CJumbotron = __vue_normalize__(
     {},
     __vue_inject_styles__$M,
     __vue_script__$M,
     __vue_scope_id__$M,
     __vue_is_functional_template__$M,
     __vue_module_identifier__$M,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -20162,15 +20283,19 @@ const __vue_script__$N = script$N;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CListGroup = normalizeComponent_1(
+  var CListGroup = __vue_normalize__(
     {},
     __vue_inject_styles__$N,
     __vue_script__$N,
     __vue_scope_id__$N,
     __vue_is_functional_template__$N,
     __vue_module_identifier__$N,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -20237,15 +20362,19 @@ const __vue_script__$O = script$O;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CListGroupItem = normalizeComponent_1(
+  var CListGroupItem = __vue_normalize__(
     {},
     __vue_inject_styles__$O,
     __vue_script__$O,
     __vue_scope_id__$O,
     __vue_is_functional_template__$O,
     __vue_module_identifier__$O,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -20332,15 +20461,19 @@ __vue_render__$m._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CMedia = normalizeComponent_1(
+  var CMedia = __vue_normalize__(
     { render: __vue_render__$m, staticRenderFns: __vue_staticRenderFns__$m },
     __vue_inject_styles__$P,
     __vue_script__$P,
     __vue_scope_id__$P,
     __vue_is_functional_template__$P,
     __vue_module_identifier__$P,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -20566,15 +20699,19 @@ __vue_render__$n._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CModal = normalizeComponent_1(
+  var CModal = __vue_normalize__(
     { render: __vue_render__$n, staticRenderFns: __vue_staticRenderFns__$n },
     __vue_inject_styles__$Q,
     __vue_script__$Q,
     __vue_scope_id__$Q,
     __vue_is_functional_template__$Q,
     __vue_module_identifier__$Q,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -20690,15 +20827,19 @@ __vue_render__$o._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CNav = normalizeComponent_1(
+  var CNav = __vue_normalize__(
     { render: __vue_render__$o, staticRenderFns: __vue_staticRenderFns__$o },
     __vue_inject_styles__$R,
     __vue_script__$R,
     __vue_scope_id__$R,
     __vue_is_functional_template__$R,
     __vue_module_identifier__$R,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -20759,15 +20900,19 @@ __vue_render__$p._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CNavItem = normalizeComponent_1(
+  var CNavItem = __vue_normalize__(
     { render: __vue_render__$p, staticRenderFns: __vue_staticRenderFns__$p },
     __vue_inject_styles__$S,
     __vue_script__$S,
     __vue_scope_id__$S,
     __vue_is_functional_template__$S,
     __vue_module_identifier__$S,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -20831,15 +20976,19 @@ const __vue_script__$T = script$T;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CNavbar = normalizeComponent_1(
+  var CNavbar = __vue_normalize__(
     {},
     __vue_inject_styles__$T,
     __vue_script__$T,
     __vue_scope_id__$T,
     __vue_is_functional_template__$T,
     __vue_module_identifier__$T,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -20881,15 +21030,19 @@ const __vue_script__$U = script$U;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CNavbarBrand = normalizeComponent_1(
+  var CNavbarBrand = __vue_normalize__(
     {},
     __vue_inject_styles__$U,
     __vue_script__$U,
     __vue_scope_id__$U,
     __vue_is_functional_template__$U,
     __vue_module_identifier__$U,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -20930,15 +21083,19 @@ const __vue_script__$V = script$V;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CNavbarNav = normalizeComponent_1(
+  var CNavbarNav = __vue_normalize__(
     {},
     __vue_inject_styles__$V,
     __vue_script__$V,
     __vue_scope_id__$V,
     __vue_is_functional_template__$V,
     __vue_module_identifier__$V,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -20989,15 +21146,19 @@ __vue_render__$q._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CNavbarText = normalizeComponent_1(
+  var CNavbarText = __vue_normalize__(
     { render: __vue_render__$q, staticRenderFns: __vue_staticRenderFns__$q },
     __vue_inject_styles__$W,
     __vue_script__$W,
     __vue_scope_id__$W,
     __vue_is_functional_template__$W,
     __vue_module_identifier__$W,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -21122,6 +21283,7 @@ var test$2 = [1, 2];
 // https://bugs.webkit.org/show_bug.cgi?id=188794
 _export({ target: 'Array', proto: true, forced: String(test$2) === String(test$2.reverse()) }, {
   reverse: function reverse() {
+    // eslint-disable-next-line no-self-assign
     if (isArray$4(this)) this.length = this.length;
     return nativeReverse.call(this);
   }
@@ -21673,15 +21835,19 @@ __vue_render__$r._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CPagination = normalizeComponent_1(
+  var CPagination = __vue_normalize__(
     { render: __vue_render__$r, staticRenderFns: __vue_staticRenderFns__$r },
     __vue_inject_styles__$X,
     __vue_script__$X,
     __vue_scope_id__$X,
     __vue_is_functional_template__$X,
     __vue_module_identifier__$X,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -21941,15 +22107,19 @@ __vue_render__$s._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CProgressBar = normalizeComponent_1(
+  var CProgressBar = __vue_normalize__(
     { render: __vue_render__$s, staticRenderFns: __vue_staticRenderFns__$s },
     __vue_inject_styles__$Y,
     __vue_script__$Y,
     __vue_scope_id__$Y,
     __vue_is_functional_template__$Y,
     __vue_module_identifier__$Y,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -22006,15 +22176,19 @@ __vue_render__$t._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CProgress = normalizeComponent_1(
+  var CProgress = __vue_normalize__(
     { render: __vue_render__$t, staticRenderFns: __vue_staticRenderFns__$t },
     __vue_inject_styles__$Z,
     __vue_script__$Z,
     __vue_scope_id__$Z,
     __vue_is_functional_template__$Z,
     __vue_module_identifier__$Z,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -22464,15 +22638,19 @@ const __vue_script__$_ = script$_;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CRenderFunction = normalizeComponent_1(
+  var CRenderFunction = __vue_normalize__(
     {},
     __vue_inject_styles__$_,
     __vue_script__$_,
     __vue_scope_id__$_,
     __vue_is_functional_template__$_,
     __vue_module_identifier__$_,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -23879,15 +24057,19 @@ const __vue_script__$$ = script$$;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CScrollbar = normalizeComponent_1(
+  var CScrollbar = __vue_normalize__(
     {},
     __vue_inject_styles__$$,
     __vue_script__$$,
     __vue_scope_id__$$,
     __vue_is_functional_template__$$,
     __vue_module_identifier__$$,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -23964,15 +24146,42 @@ var script$10 = {
   watch: {
     show: function show(val) {
       this.open = val;
+    },
+    open: function open(val, oldVal) {
+      var backdrop = document.getElementsByClassName('c-sidebar-backdrop')[0];
+
+      if (val === true) {
+        backdrop.className = 'c-sidebar-backdrop c-show';
+      } else if (oldVal === true) {
+        backdrop.className = 'c-sidebar-backdrop d-none';
+      }
     }
+  },
+  mounted: function mounted() {
+    var backdrop = document.createElement('div');
+
+    if (this.open === true) {
+      backdrop.className = 'c-sidebar-backdrop c-show';
+    } else {
+      backdrop.className = 'c-sidebar-backdrop d-none';
+    }
+
+    document.body.appendChild(backdrop);
+    backdrop.addEventListener('click', this.closeSidebar);
+  },
+  beforeDestroy: function beforeDestroy() {
+    var backdrop = document.getElementsByClassName('c-sidebar-backdrop')[0];
+    backdrop.removeEventListener('click', this.closeSidebar);
+    document.body.removeChild(backdrop);
   },
   computed: {
     sidebarClasses: function sidebarClasses() {
       var _ref;
 
+      var haveResponsiveClass = this.breakpoint && this.open === 'responsive';
       return ['c-sidebar', "c-sidebar-".concat(this.colorScheme), (_ref = {
         'c-sidebar-show': this.open === true
-      }, _defineProperty(_ref, "c-sidebar-".concat(this.breakpoint, "-show"), this.open === 'responsive'), _defineProperty(_ref, 'c-sidebar-fixed', this.fixed), _defineProperty(_ref, 'c-sidebar-right', this.aside), _defineProperty(_ref, 'c-sidebar-minimized', this.minimize && !this.unfoldable), _defineProperty(_ref, 'c-sidebar-unfoldable', this.minimize && this.unfoldable), _defineProperty(_ref, 'c-sidebar-overlaid', this.overlaid), _defineProperty(_ref, "c-sidebar-".concat(this.size), this.size), _ref)];
+      }, _defineProperty(_ref, "c-sidebar-".concat(this.breakpoint, "-show"), haveResponsiveClass), _defineProperty(_ref, 'c-sidebar-fixed', this.fixed), _defineProperty(_ref, 'c-sidebar-right', this.aside), _defineProperty(_ref, 'c-sidebar-minimized', this.minimize && !this.unfoldable), _defineProperty(_ref, 'c-sidebar-unfoldable', this.minimize && this.unfoldable), _defineProperty(_ref, 'c-sidebar-overlaid', this.overlaid), _defineProperty(_ref, "c-sidebar-".concat(this.size), this.size), _ref)];
     }
   },
   methods: {
@@ -23980,9 +24189,12 @@ var script$10 = {
       var hiddingElementClicked = event.target.tagName === 'A';
 
       if (hiddingElementClicked && this.hideOnMobileClick && this.isOnMobile()) {
-        this.open = 'responsive';
-        this.$emit('update:show', 'responsive');
+        this.closeSidebar();
       }
+    },
+    closeSidebar: function closeSidebar() {
+      this.open = 'responsive';
+      this.$emit('update:show', 'responsive');
     },
     isOnMobile: function isOnMobile() {
       return Boolean(getComputedStyle(this.$el).getPropertyValue('--is-mobile'));
@@ -24020,15 +24232,19 @@ __vue_render__$u._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CSidebar = normalizeComponent_1(
+  var CSidebar = __vue_normalize__(
     { render: __vue_render__$u, staticRenderFns: __vue_staticRenderFns__$u },
     __vue_inject_styles__$10,
     __vue_script__$10,
     __vue_scope_id__$10,
     __vue_is_functional_template__$10,
     __vue_module_identifier__$10,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -24138,15 +24354,19 @@ __vue_render__$v._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CSidebarBrand = normalizeComponent_1(
+  var CSidebarBrand = __vue_normalize__(
     { render: __vue_render__$v, staticRenderFns: __vue_staticRenderFns__$v },
     __vue_inject_styles__$11,
     __vue_script__$11,
     __vue_scope_id__$11,
     __vue_is_functional_template__$11,
     __vue_module_identifier__$11,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -24202,15 +24422,19 @@ __vue_render__$w._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CSidebarClose = normalizeComponent_1(
+  var CSidebarClose = __vue_normalize__(
     { render: __vue_render__$w, staticRenderFns: __vue_staticRenderFns__$w },
     __vue_inject_styles__$12,
     __vue_script__$12,
     __vue_scope_id__$12,
     __vue_is_functional_template__$12,
     __vue_module_identifier__$12,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -24250,15 +24474,19 @@ __vue_render__$x._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CSidebarFooter = normalizeComponent_1(
+  var CSidebarFooter = __vue_normalize__(
     { render: __vue_render__$x, staticRenderFns: __vue_staticRenderFns__$x },
     __vue_inject_styles__$13,
     __vue_script__$13,
     __vue_scope_id__$13,
     __vue_is_functional_template__$13,
     __vue_module_identifier__$13,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -24298,15 +24526,19 @@ __vue_render__$y._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CSidebarForm = normalizeComponent_1(
+  var CSidebarForm = __vue_normalize__(
     { render: __vue_render__$y, staticRenderFns: __vue_staticRenderFns__$y },
     __vue_inject_styles__$14,
     __vue_script__$14,
     __vue_scope_id__$14,
     __vue_is_functional_template__$14,
     __vue_module_identifier__$14,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -24346,15 +24578,19 @@ __vue_render__$z._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CSidebarHeader = normalizeComponent_1(
+  var CSidebarHeader = __vue_normalize__(
     { render: __vue_render__$z, staticRenderFns: __vue_staticRenderFns__$z },
     __vue_inject_styles__$15,
     __vue_script__$15,
     __vue_scope_id__$15,
     __vue_is_functional_template__$15,
     __vue_module_identifier__$15,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -24399,15 +24635,19 @@ __vue_render__$A._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CSidebarMinimizer = normalizeComponent_1(
+  var CSidebarMinimizer = __vue_normalize__(
     { render: __vue_render__$A, staticRenderFns: __vue_staticRenderFns__$A },
     __vue_inject_styles__$16,
     __vue_script__$16,
     __vue_scope_id__$16,
     __vue_is_functional_template__$16,
     __vue_module_identifier__$16,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -24475,15 +24715,19 @@ __vue_render__$B._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CSidebarNav = normalizeComponent_1(
+  var CSidebarNav = __vue_normalize__(
     { render: __vue_render__$B, staticRenderFns: __vue_staticRenderFns__$B },
     __vue_inject_styles__$17,
     __vue_script__$17,
     __vue_scope_id__$17,
     __vue_is_functional_template__$17,
     __vue_module_identifier__$17,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -24521,15 +24765,19 @@ __vue_render__$C._withStripped = true;
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CSidebarNavDivider = normalizeComponent_1(
+  var CSidebarNavDivider = __vue_normalize__(
     { render: __vue_render__$C, staticRenderFns: __vue_staticRenderFns__$C },
     __vue_inject_styles__$18,
     __vue_script__$18,
     __vue_scope_id__$18,
     __vue_is_functional_template__$18,
     __vue_module_identifier__$18,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -24546,12 +24794,115 @@ __vue_render__$C._withStripped = true;
 //
 //
 //
-// import CIcon from '@coreui/icons/vue'
+//
+//
+
 var script$19 = {
+  name: 'CIcon',
+  props: {
+    name: String,
+    content: [String, Array],
+    size: {
+      type: String,
+      validator: size => ['sm', 'lg', 'xl', 'custom-size'].includes(size)
+    },
+    customClasses: [String, Array, Object],
+    src: String
+  },
+  computed: {
+    iconName () {
+      const iconNameIsKebabCase = this.name && this.name.includes('-');
+      return iconNameIsKebabCase ? this.toCamelCase(this.name) : this.name
+    },
+    code () {
+      if (this.content) {
+        return this.content
+      } else if (this.$root.$options.icons) {
+        return this.$root.$options.icons[this.iconName]
+      }
+      return undefined
+    },
+    icon () {
+      if (Array.isArray(this.code)) {
+        const coordinates = this.code.length > 1 ? this.code[0] : '64 64';
+        const svgContent = this.code.length > 1 ? this.code[1] : this.code[0];
+        return { coordinates, svgContent }
+      }
+      return { coordinates: '64 64', svgContent: this.code }
+    },
+    viewBox () {
+      return this.$attrs.viewBox || `0 0 ${ this.icon.coordinates }`
+    },
+    computedSize () {
+      return this.$attrs.width || this.$attrs.height ? 'custom-size' : this.size
+    },
+    computedClasses () {
+      return this.customClasses ||  
+             ['c-icon', { [`c-icon-${this.computedSize}`]: this.computedSize }]
+    }
+  },
+  methods: {
+    toCamelCase (str) {
+      return str.replace(/([-_][a-z0-9])/ig, ($1) => {
+        return $1.toUpperCase().replace('-', '')
+      })
+    }
+  }
+};
+
+/* script */
+const __vue_script__$19 = script$19;
+
+/* template */
+var __vue_render__$D = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return !_vm.src
+    ? _c("svg", {
+        class: _vm.computedClasses,
+        attrs: { xmlns: "http://www.w3.org/2000/svg", viewBox: _vm.viewBox },
+        domProps: { innerHTML: _vm._s(_vm.icon.svgContent) }
+      })
+    : _c("img", { attrs: { src: _vm.src } })
+};
+var __vue_staticRenderFns__$D = [];
+__vue_render__$D._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$19 = undefined;
+  /* scoped */
+  const __vue_scope_id__$19 = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$19 = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$19 = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var CIcon = __vue_normalize__(
+    { render: __vue_render__$D, staticRenderFns: __vue_staticRenderFns__$D },
+    __vue_inject_styles__$19,
+    __vue_script__$19,
+    __vue_scope_id__$19,
+    __vue_is_functional_template__$19,
+    __vue_module_identifier__$19,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+var script$1a = {
   name: 'CSidebarNavDropdown',
-  // components: {
-  //   CIcon
-  // },
+  components: {
+    CIcon: CIcon
+  },
   props: {
     name: String,
     route: {
@@ -24561,6 +24912,7 @@ var script$19 = {
       }
     },
     icon: [String, Object],
+    fontIcon: String,
     show: Boolean
   },
   data: function data() {
@@ -24600,7 +24952,7 @@ var script$19 = {
       return ['c-sidebar-nav-icon', this.icon];
     },
     dropdownClasses: function dropdownClasses() {
-      return ['c-sidebar-nav-item c-sidebar-nav-dropdown', {
+      return ['c-sidebar-nav-dropdown', {
         'c-show': this.open
       }];
     },
@@ -24611,7 +24963,8 @@ var script$19 = {
         }, this.icon);
       } else {
         return {
-          customClasses: [this.icon, 'c-sidebar-nav-icon']
+          customClasses: 'c-sidebar-nav-icon',
+          name: this.icon
         };
       }
     }
@@ -24629,10 +24982,10 @@ var script$19 = {
 };
 
 /* script */
-const __vue_script__$19 = script$19;
+const __vue_script__$1a = script$1a;
 
 /* template */
-var __vue_render__$D = function() {
+var __vue_render__$E = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -24640,12 +24993,16 @@ var __vue_render__$D = function() {
     _c(
       "a",
       {
-        staticClass: "c-sidebar-nav-link c-sidebar-nav-dropdown-toggle",
+        staticClass: "c-sidebar-nav-dropdown-toggle",
         on: { click: _vm.handleClick }
       },
       [
         _vm.icon
           ? _c("CIcon", _vm._b({}, "CIcon", _vm.computedIcon, false))
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.fontIcon
+          ? _c("i", { class: ["c-sidebar-nav-icon", _vm.fontIcon] })
           : _vm._e(),
         _vm._v("\n    " + _vm._s(_vm.name) + "\n  ")
       ],
@@ -24663,30 +25020,86 @@ var __vue_render__$D = function() {
     )
   ])
 };
-var __vue_staticRenderFns__$D = [];
-__vue_render__$D._withStripped = true;
+var __vue_staticRenderFns__$E = [];
+__vue_render__$E._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$19 = undefined;
+  const __vue_inject_styles__$1a = undefined;
   /* scoped */
-  const __vue_scope_id__$19 = undefined;
+  const __vue_scope_id__$1a = undefined;
   /* module identifier */
-  const __vue_module_identifier__$19 = undefined;
+  const __vue_module_identifier__$1a = undefined;
   /* functional template */
-  const __vue_is_functional_template__$19 = false;
+  const __vue_is_functional_template__$1a = false;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CSidebarNavDropdown = normalizeComponent_1(
-    { render: __vue_render__$D, staticRenderFns: __vue_staticRenderFns__$D },
-    __vue_inject_styles__$19,
-    __vue_script__$19,
-    __vue_scope_id__$19,
-    __vue_is_functional_template__$19,
-    __vue_module_identifier__$19,
+  var CSidebarNavDropdown = __vue_normalize__(
+    { render: __vue_render__$E, staticRenderFns: __vue_staticRenderFns__$E },
+    __vue_inject_styles__$1a,
+    __vue_script__$1a,
+    __vue_scope_id__$1a,
+    __vue_is_functional_template__$1a,
+    __vue_module_identifier__$1a,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+//
+//
+//
+//
+//
+//
+var script$1b = {
+  name: 'CSidebarNavItem'
+};
+
+/* script */
+const __vue_script__$1b = script$1b;
+
+/* template */
+var __vue_render__$F = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("li", { staticClass: "c-sidebar-nav-item" }, [_vm._t("default")], 2)
+};
+var __vue_staticRenderFns__$F = [];
+__vue_render__$F._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$1b = undefined;
+  /* scoped */
+  const __vue_scope_id__$1b = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$1b = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$1b = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var CSidebarNavItem = __vue_normalize__(
+    { render: __vue_render__$F, staticRenderFns: __vue_staticRenderFns__$F },
+    __vue_inject_styles__$1b,
+    __vue_script__$1b,
+    __vue_scope_id__$1b,
+    __vue_is_functional_template__$1b,
+    __vue_module_identifier__$1b,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -24694,16 +25107,21 @@ __vue_render__$D._withStripped = true;
 var props$e = Object.assign(props, {
   name: String,
   icon: [String, Object],
+  fontIcon: String,
   badge: Object,
   addLinkClasses: [String, Array, Object],
-  label: Boolean
+  label: Boolean,
+  inNavItem: {
+    type: Boolean,
+    default: true
+  }
 });
-var script$1a = {
+var script$1c = {
   name: 'CSidebarNavLink',
   components: {
     CLink: CLink,
-    CBadge: CBadge // CIcon
-
+    CBadge: CBadge,
+    CIcon: CIcon
   },
   props: props$e,
   computed: {
@@ -24733,7 +25151,8 @@ var script$1a = {
         }, this.icon);
       } else {
         return {
-          customClasses: [this.icon, 'c-sidebar-nav-icon']
+          customClasses: 'c-sidebar-nav-icon',
+          name: this.icon
         };
       }
     }
@@ -24746,38 +25165,74 @@ var script$1a = {
 };
 
 /* script */
-const __vue_script__$1a = script$1a;
+const __vue_script__$1c = script$1c;
 
 /* template */
-var __vue_render__$E = function() {
+var __vue_render__$G = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return _c(
-    "li",
-    { staticClass: "c-sidebar-nav-item" },
-    [
-      _c(
+  return _vm.inNavItem
+    ? _c(
+        "li",
+        { staticClass: "c-sidebar-nav-item" },
+        [
+          _c(
+            "CLink",
+            _vm._b(
+              {
+                class: _vm.linkClasses,
+                nativeOn: {
+                  click: function($event) {
+                    return _vm.click($event)
+                  }
+                }
+              },
+              "CLink",
+              _vm.computedLinkProps,
+              false
+            ),
+            [
+              _vm._t("default", [
+                _vm.icon
+                  ? _c("CIcon", _vm._b({}, "CIcon", _vm.computedIcon, false))
+                  : _vm._e(),
+                _vm._v("\n      " + _vm._s(_vm.name) + "\n      "),
+                _vm.badge
+                  ? _c(
+                      "CBadge",
+                      _vm._b(
+                        {},
+                        "CBadge",
+                        Object.assign({}, _vm.badge, { text: null }),
+                        false
+                      ),
+                      [
+                        _vm._v(
+                          "\n        " + _vm._s(_vm.badge.text) + "\n      "
+                        )
+                      ]
+                    )
+                  : _vm._e()
+              ])
+            ],
+            2
+          )
+        ],
+        1
+      )
+    : _c(
         "CLink",
-        _vm._b(
-          {
-            class: _vm.linkClasses,
-            nativeOn: {
-              click: function($event) {
-                return _vm.click($event)
-              }
-            }
-          },
-          "CLink",
-          _vm.computedLinkProps,
-          false
-        ),
         [
           _vm._t("default", [
             _vm.icon
               ? _c("CIcon", _vm._b({}, "CIcon", _vm.computedIcon, false))
               : _vm._e(),
-            _vm._v("\n      " + _vm._s(_vm.name) + "\n      "),
+            _vm._v(" "),
+            _vm.fontIcon
+              ? _c("i", { class: ["c-sidebar-nav-icon", _vm.fontIcon] })
+              : _vm._e(),
+            _vm._v("\n    " + _vm._s(_vm.name) + "\n    "),
             _vm.badge
               ? _c(
                   "CBadge",
@@ -24787,41 +25242,42 @@ var __vue_render__$E = function() {
                     Object.assign({}, _vm.badge, { text: null }),
                     false
                   ),
-                  [_vm._v("\n        " + _vm._s(_vm.badge.text) + "\n      ")]
+                  [_vm._v("\n      " + _vm._s(_vm.badge.text) + "\n    ")]
                 )
               : _vm._e()
           ])
         ],
         2
       )
-    ],
-    1
-  )
 };
-var __vue_staticRenderFns__$E = [];
-__vue_render__$E._withStripped = true;
+var __vue_staticRenderFns__$G = [];
+__vue_render__$G._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1a = undefined;
+  const __vue_inject_styles__$1c = undefined;
   /* scoped */
-  const __vue_scope_id__$1a = undefined;
+  const __vue_scope_id__$1c = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1a = undefined;
+  const __vue_module_identifier__$1c = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1a = false;
+  const __vue_is_functional_template__$1c = false;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CSidebarNavLink = normalizeComponent_1(
-    { render: __vue_render__$E, staticRenderFns: __vue_staticRenderFns__$E },
-    __vue_inject_styles__$1a,
-    __vue_script__$1a,
-    __vue_scope_id__$1a,
-    __vue_is_functional_template__$1a,
-    __vue_module_identifier__$1a,
+  var CSidebarNavLink = __vue_normalize__(
+    { render: __vue_render__$G, staticRenderFns: __vue_staticRenderFns__$G },
+    __vue_inject_styles__$1c,
+    __vue_script__$1c,
+    __vue_scope_id__$1c,
+    __vue_is_functional_template__$1c,
+    __vue_module_identifier__$1c,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -24832,15 +25288,15 @@ __vue_render__$E._withStripped = true;
 //
 //
 //
-var script$1b = {
+var script$1d = {
   name: 'CSidebarNavTitle'
 };
 
 /* script */
-const __vue_script__$1b = script$1b;
+const __vue_script__$1d = script$1d;
 
 /* template */
-var __vue_render__$F = function() {
+var __vue_render__$H = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -24851,35 +25307,39 @@ var __vue_render__$F = function() {
     2
   )
 };
-var __vue_staticRenderFns__$F = [];
-__vue_render__$F._withStripped = true;
+var __vue_staticRenderFns__$H = [];
+__vue_render__$H._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1b = undefined;
+  const __vue_inject_styles__$1d = undefined;
   /* scoped */
-  const __vue_scope_id__$1b = undefined;
+  const __vue_scope_id__$1d = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1b = undefined;
+  const __vue_module_identifier__$1d = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1b = false;
+  const __vue_is_functional_template__$1d = false;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CSidebarNavTitle = normalizeComponent_1(
-    { render: __vue_render__$F, staticRenderFns: __vue_staticRenderFns__$F },
-    __vue_inject_styles__$1b,
-    __vue_script__$1b,
-    __vue_scope_id__$1b,
-    __vue_is_functional_template__$1b,
-    __vue_module_identifier__$1b,
+  var CSidebarNavTitle = __vue_normalize__(
+    { render: __vue_render__$H, staticRenderFns: __vue_staticRenderFns__$H },
+    __vue_inject_styles__$1d,
+    __vue_script__$1d,
+    __vue_scope_id__$1d,
+    __vue_is_functional_template__$1d,
+    __vue_module_identifier__$1d,
+    false,
+    undefined,
     undefined,
     undefined
   );
 
-var script$1c = {
+var script$1e = {
   name: 'CSpinner',
   functional: true,
   props: {
@@ -24909,31 +25369,35 @@ var script$1c = {
 };
 
 /* script */
-const __vue_script__$1c = script$1c;
+const __vue_script__$1e = script$1e;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$1c = undefined;
+  const __vue_inject_styles__$1e = undefined;
   /* scoped */
-  const __vue_scope_id__$1c = undefined;
+  const __vue_scope_id__$1e = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1c = undefined;
+  const __vue_module_identifier__$1e = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1c = undefined;
+  const __vue_is_functional_template__$1e = undefined;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CSpinner = normalizeComponent_1(
+  var CSpinner = __vue_normalize__(
     {},
-    __vue_inject_styles__$1c,
-    __vue_script__$1c,
-    __vue_scope_id__$1c,
-    __vue_is_functional_template__$1c,
-    __vue_module_identifier__$1c,
+    __vue_inject_styles__$1e,
+    __vue_script__$1e,
+    __vue_scope_id__$1e,
+    __vue_is_functional_template__$1e,
+    __vue_module_identifier__$1e,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -24957,16 +25421,15 @@ const __vue_script__$1c = script$1c;
 //
 //
 //
-var script$1d = {
+var script$1f = {
   name: 'CSwitch',
   inheritAttrs: false,
   props: {
     color: String,
-    outline: {
-      type: [Boolean, String],
-      default: undefined,
+    variant: {
+      type: String,
       validator: function validator(value) {
-        return [false, true, '', 'alt'].includes(value);
+        return ['', 'outline', 'opposite', '3d'].includes(value);
       }
     },
     size: {
@@ -24978,7 +25441,7 @@ var script$1d = {
     shape: {
       type: String,
       validator: function validator(value) {
-        return ['', '3d', 'pill'].includes(value);
+        return ['', 'pill', 'square'].includes(value);
       }
     },
     checked: Boolean,
@@ -25013,9 +25476,9 @@ var script$1d = {
     classList: function classList() {
       var _ref;
 
-      var outlineString = this.outline ? '-outline' : '';
-      var outlinedAltString = this.outline === 'alt' ? '-alt' : '';
-      return ['c-switch form-check-label', "c-switch".concat(outlineString, "-").concat(this.color).concat(outlinedAltString), (_ref = {}, _defineProperty(_ref, "c-switch-".concat(this.size), this.size), _defineProperty(_ref, "c-switch-".concat(this.shape), this.shape), _defineProperty(_ref, 'c-switch-label', this.labelOn || this.labelOff), _ref)];
+      var havePrefix = ['opposite', 'outline'].includes(this.variant);
+      var colorPrefix = havePrefix ? "-".concat(this.variant) : '';
+      return ['c-switch form-check-label', (_ref = {}, _defineProperty(_ref, "c-switch-".concat(this.size), this.size), _defineProperty(_ref, "c-switch-".concat(this.shape), this.shape), _defineProperty(_ref, 'c-switch-3d', this.variant === '3d'), _defineProperty(_ref, "c-switch".concat(colorPrefix, "-").concat(this.color), this.color), _defineProperty(_ref, 'c-switch-label', this.labelOn || this.labelOff), _ref)];
     }
   },
   methods: {
@@ -25027,10 +25490,10 @@ var script$1d = {
 };
 
 /* script */
-const __vue_script__$1d = script$1d;
+const __vue_script__$1f = script$1f;
 
 /* template */
-var __vue_render__$G = function() {
+var __vue_render__$I = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -25056,30 +25519,34 @@ var __vue_render__$G = function() {
     })
   ])
 };
-var __vue_staticRenderFns__$G = [];
-__vue_render__$G._withStripped = true;
+var __vue_staticRenderFns__$I = [];
+__vue_render__$I._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1d = undefined;
+  const __vue_inject_styles__$1f = undefined;
   /* scoped */
-  const __vue_scope_id__$1d = undefined;
+  const __vue_scope_id__$1f = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1d = undefined;
+  const __vue_module_identifier__$1f = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1d = false;
+  const __vue_is_functional_template__$1f = false;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CSwitch = normalizeComponent_1(
-    { render: __vue_render__$G, staticRenderFns: __vue_staticRenderFns__$G },
-    __vue_inject_styles__$1d,
-    __vue_script__$1d,
-    __vue_scope_id__$1d,
-    __vue_is_functional_template__$1d,
-    __vue_module_identifier__$1d,
+  var CSwitch = __vue_normalize__(
+    { render: __vue_render__$I, staticRenderFns: __vue_staticRenderFns__$I },
+    __vue_inject_styles__$1f,
+    __vue_script__$1f,
+    __vue_scope_id__$1f,
+    __vue_is_functional_template__$1f,
+    __vue_module_identifier__$1f,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -25123,1790 +25590,16 @@ _export({ target: 'Array', proto: true, forced: FORCED$3 }, {
   }
 });
 
-var coreuiIconsVue_common = createCommonjsModule(function (module) {
-module.exports =
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "fae3");
-/******/ })
-/************************************************************************/
-/******/ ({
-
-/***/ "02f4":
-/***/ (function(module, exports, __webpack_require__) {
-
-var toInteger = __webpack_require__("4588");
-var defined = __webpack_require__("be13");
-// true  -> String#at
-// false -> String#codePointAt
-module.exports = function (TO_STRING) {
-  return function (that, pos) {
-    var s = String(defined(that));
-    var i = toInteger(pos);
-    var l = s.length;
-    var a, b;
-    if (i < 0 || i >= l) return TO_STRING ? '' : undefined;
-    a = s.charCodeAt(i);
-    return a < 0xd800 || a > 0xdbff || i + 1 === l || (b = s.charCodeAt(i + 1)) < 0xdc00 || b > 0xdfff
-      ? TO_STRING ? s.charAt(i) : a
-      : TO_STRING ? s.slice(i, i + 2) : (a - 0xd800 << 10) + (b - 0xdc00) + 0x10000;
-  };
-};
-
-
-/***/ }),
-
-/***/ "0390":
-/***/ (function(module, exports, __webpack_require__) {
-
-var at = __webpack_require__("02f4")(true);
-
- // `AdvanceStringIndex` abstract operation
-// https://tc39.github.io/ecma262/#sec-advancestringindex
-module.exports = function (S, index, unicode) {
-  return index + (unicode ? at(S, index).length : 1);
-};
-
-
-/***/ }),
-
-/***/ "07e3":
-/***/ (function(module, exports) {
-
-var hasOwnProperty = {}.hasOwnProperty;
-module.exports = function (it, key) {
-  return hasOwnProperty.call(it, key);
-};
-
-
-/***/ }),
-
-/***/ "0bfb":
-/***/ (function(module, exports, __webpack_require__) {
-
-// 21.2.5.3 get RegExp.prototype.flags
-var anObject = __webpack_require__("cb7c");
-module.exports = function () {
-  var that = anObject(this);
-  var result = '';
-  if (that.global) result += 'g';
-  if (that.ignoreCase) result += 'i';
-  if (that.multiline) result += 'm';
-  if (that.unicode) result += 'u';
-  if (that.sticky) result += 'y';
-  return result;
-};
-
-
-/***/ }),
-
-/***/ "1bc3":
-/***/ (function(module, exports, __webpack_require__) {
-
-// 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__("f772");
-// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-// and the second argument - flag - preferred type is a string
-module.exports = function (it, S) {
-  if (!isObject(it)) return it;
-  var fn, val;
-  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  throw TypeError("Can't convert object to primitive value");
-};
-
-
-/***/ }),
-
-/***/ "1ec9":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__("f772");
-var document = __webpack_require__("e53d").document;
-// typeof document.createElement is 'object' in old IE
-var is = isObject(document) && isObject(document.createElement);
-module.exports = function (it) {
-  return is ? document.createElement(it) : {};
-};
-
-
-/***/ }),
-
-/***/ "214f":
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__("b0c5");
-var redefine = __webpack_require__("2aba");
-var hide = __webpack_require__("32e9");
-var fails = __webpack_require__("79e5");
-var defined = __webpack_require__("be13");
-var wks = __webpack_require__("2b4c");
-var regexpExec = __webpack_require__("520a");
-
-var SPECIES = wks('species');
-
-var REPLACE_SUPPORTS_NAMED_GROUPS = !fails(function () {
-  // #replace needs built-in support for named groups.
-  // #match works fine because it just return the exec results, even if it has
-  // a "grops" property.
-  var re = /./;
-  re.exec = function () {
-    var result = [];
-    result.groups = { a: '7' };
-    return result;
-  };
-  return ''.replace(re, '$<a>') !== '7';
-});
-
-var SPLIT_WORKS_WITH_OVERWRITTEN_EXEC = (function () {
-  // Chrome 51 has a buggy "split" implementation when RegExp#exec !== nativeExec
-  var re = /(?:)/;
-  var originalExec = re.exec;
-  re.exec = function () { return originalExec.apply(this, arguments); };
-  var result = 'ab'.split(re);
-  return result.length === 2 && result[0] === 'a' && result[1] === 'b';
-})();
-
-module.exports = function (KEY, length, exec) {
-  var SYMBOL = wks(KEY);
-
-  var DELEGATES_TO_SYMBOL = !fails(function () {
-    // String methods call symbol-named RegEp methods
-    var O = {};
-    O[SYMBOL] = function () { return 7; };
-    return ''[KEY](O) != 7;
-  });
-
-  var DELEGATES_TO_EXEC = DELEGATES_TO_SYMBOL ? !fails(function () {
-    // Symbol-named RegExp methods call .exec
-    var execCalled = false;
-    var re = /a/;
-    re.exec = function () { execCalled = true; return null; };
-    if (KEY === 'split') {
-      // RegExp[@@split] doesn't call the regex's exec method, but first creates
-      // a new one. We need to return the patched regex when creating the new one.
-      re.constructor = {};
-      re.constructor[SPECIES] = function () { return re; };
-    }
-    re[SYMBOL]('');
-    return !execCalled;
-  }) : undefined;
-
-  if (
-    !DELEGATES_TO_SYMBOL ||
-    !DELEGATES_TO_EXEC ||
-    (KEY === 'replace' && !REPLACE_SUPPORTS_NAMED_GROUPS) ||
-    (KEY === 'split' && !SPLIT_WORKS_WITH_OVERWRITTEN_EXEC)
-  ) {
-    var nativeRegExpMethod = /./[SYMBOL];
-    var fns = exec(
-      defined,
-      SYMBOL,
-      ''[KEY],
-      function maybeCallNative(nativeMethod, regexp, str, arg2, forceStringMethod) {
-        if (regexp.exec === regexpExec) {
-          if (DELEGATES_TO_SYMBOL && !forceStringMethod) {
-            // The native String method already delegates to @@method (this
-            // polyfilled function), leasing to infinite recursion.
-            // We avoid it by directly calling the native @@method method.
-            return { done: true, value: nativeRegExpMethod.call(regexp, str, arg2) };
-          }
-          return { done: true, value: nativeMethod.call(str, regexp, arg2) };
-        }
-        return { done: false };
-      }
-    );
-    var strfn = fns[0];
-    var rxfn = fns[1];
-
-    redefine(String.prototype, KEY, strfn);
-    hide(RegExp.prototype, SYMBOL, length == 2
-      // 21.2.5.8 RegExp.prototype[@@replace](string, replaceValue)
-      // 21.2.5.11 RegExp.prototype[@@split](string, limit)
-      ? function (string, arg) { return rxfn.call(string, this, arg); }
-      // 21.2.5.6 RegExp.prototype[@@match](string)
-      // 21.2.5.9 RegExp.prototype[@@search](string)
-      : function (string) { return rxfn.call(string, this); }
-    );
-  }
-};
-
-
-/***/ }),
-
-/***/ "230e":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__("d3f4");
-var document = __webpack_require__("7726").document;
-// typeof document.createElement is 'object' in old IE
-var is = isObject(document) && isObject(document.createElement);
-module.exports = function (it) {
-  return is ? document.createElement(it) : {};
-};
-
-
-/***/ }),
-
-/***/ "23c6":
-/***/ (function(module, exports, __webpack_require__) {
-
-// getting tag from 19.1.3.6 Object.prototype.toString()
-var cof = __webpack_require__("2d95");
-var TAG = __webpack_require__("2b4c")('toStringTag');
-// ES3 wrong here
-var ARG = cof(function () { return arguments; }()) == 'Arguments';
-
-// fallback for IE11 Script Access Denied error
-var tryGet = function (it, key) {
-  try {
-    return it[key];
-  } catch (e) { /* empty */ }
-};
-
-module.exports = function (it) {
-  var O, T, B;
-  return it === undefined ? 'Undefined' : it === null ? 'Null'
-    // @@toStringTag case
-    : typeof (T = tryGet(O = Object(it), TAG)) == 'string' ? T
-    // builtinTag case
-    : ARG ? cof(O)
-    // ES3 arguments fallback
-    : (B = cof(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : B;
-};
-
-
-/***/ }),
-
-/***/ "294c":
-/***/ (function(module, exports) {
-
-module.exports = function (exec) {
-  try {
-    return !!exec();
-  } catch (e) {
-    return true;
-  }
-};
-
-
-/***/ }),
-
-/***/ "2aba":
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__("7726");
-var hide = __webpack_require__("32e9");
-var has = __webpack_require__("69a8");
-var SRC = __webpack_require__("ca5a")('src');
-var $toString = __webpack_require__("fa5b");
-var TO_STRING = 'toString';
-var TPL = ('' + $toString).split(TO_STRING);
-
-__webpack_require__("8378").inspectSource = function (it) {
-  return $toString.call(it);
-};
-
-(module.exports = function (O, key, val, safe) {
-  var isFunction = typeof val == 'function';
-  if (isFunction) has(val, 'name') || hide(val, 'name', key);
-  if (O[key] === val) return;
-  if (isFunction) has(val, SRC) || hide(val, SRC, O[key] ? '' + O[key] : TPL.join(String(key)));
-  if (O === global) {
-    O[key] = val;
-  } else if (!safe) {
-    delete O[key];
-    hide(O, key, val);
-  } else if (O[key]) {
-    O[key] = val;
-  } else {
-    hide(O, key, val);
-  }
-// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
-})(Function.prototype, TO_STRING, function toString() {
-  return typeof this == 'function' && this[SRC] || $toString.call(this);
-});
-
-
-/***/ }),
-
-/***/ "2b4c":
-/***/ (function(module, exports, __webpack_require__) {
-
-var store = __webpack_require__("5537")('wks');
-var uid = __webpack_require__("ca5a");
-var Symbol = __webpack_require__("7726").Symbol;
-var USE_SYMBOL = typeof Symbol == 'function';
-
-var $exports = module.exports = function (name) {
-  return store[name] || (store[name] =
-    USE_SYMBOL && Symbol[name] || (USE_SYMBOL ? Symbol : uid)('Symbol.' + name));
-};
-
-$exports.store = store;
-
-
-/***/ }),
-
-/***/ "2d00":
-/***/ (function(module, exports) {
-
-module.exports = false;
-
-
-/***/ }),
-
-/***/ "2d95":
-/***/ (function(module, exports) {
-
-var toString = {}.toString;
-
-module.exports = function (it) {
-  return toString.call(it).slice(8, -1);
-};
-
-
-/***/ }),
-
-/***/ "2fdb":
-/***/ (function(module, exports, __webpack_require__) {
-// 21.1.3.7 String.prototype.includes(searchString, position = 0)
-
-var $export = __webpack_require__("5ca1");
-var context = __webpack_require__("d2c8");
-var INCLUDES = 'includes';
-
-$export($export.P + $export.F * __webpack_require__("5147")(INCLUDES), 'String', {
-  includes: function includes(searchString /* , position = 0 */) {
-    return !!~context(this, searchString, INCLUDES)
-      .indexOf(searchString, arguments.length > 1 ? arguments[1] : undefined);
-  }
-});
-
-
-/***/ }),
-
-/***/ "32e9":
-/***/ (function(module, exports, __webpack_require__) {
-
-var dP = __webpack_require__("86cc");
-var createDesc = __webpack_require__("4630");
-module.exports = __webpack_require__("9e1e") ? function (object, key, value) {
-  return dP.f(object, key, createDesc(1, value));
-} : function (object, key, value) {
-  object[key] = value;
-  return object;
-};
-
-
-/***/ }),
-
-/***/ "35e8":
-/***/ (function(module, exports, __webpack_require__) {
-
-var dP = __webpack_require__("d9f6");
-var createDesc = __webpack_require__("aebd");
-module.exports = __webpack_require__("8e60") ? function (object, key, value) {
-  return dP.f(object, key, createDesc(1, value));
-} : function (object, key, value) {
-  object[key] = value;
-  return object;
-};
-
-
-/***/ }),
-
-/***/ "454f":
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__("46a7");
-var $Object = __webpack_require__("584a").Object;
-module.exports = function defineProperty(it, key, desc) {
-  return $Object.defineProperty(it, key, desc);
-};
-
-
-/***/ }),
-
-/***/ "4588":
-/***/ (function(module, exports) {
-
-// 7.1.4 ToInteger
-var ceil = Math.ceil;
-var floor = Math.floor;
-module.exports = function (it) {
-  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
-};
-
-
-/***/ }),
-
-/***/ "4630":
-/***/ (function(module, exports) {
-
-module.exports = function (bitmap, value) {
-  return {
-    enumerable: !(bitmap & 1),
-    configurable: !(bitmap & 2),
-    writable: !(bitmap & 4),
-    value: value
-  };
-};
-
-
-/***/ }),
-
-/***/ "46a7":
-/***/ (function(module, exports, __webpack_require__) {
-
-var $export = __webpack_require__("63b6");
-// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-$export($export.S + $export.F * !__webpack_require__("8e60"), 'Object', { defineProperty: __webpack_require__("d9f6").f });
-
-
-/***/ }),
-
-/***/ "4bf8":
-/***/ (function(module, exports, __webpack_require__) {
-
-// 7.1.13 ToObject(argument)
-var defined = __webpack_require__("be13");
-module.exports = function (it) {
-  return Object(defined(it));
-};
-
-
-/***/ }),
-
-/***/ "5147":
-/***/ (function(module, exports, __webpack_require__) {
-
-var MATCH = __webpack_require__("2b4c")('match');
-module.exports = function (KEY) {
-  var re = /./;
-  try {
-    '/./'[KEY](re);
-  } catch (e) {
-    try {
-      re[MATCH] = false;
-      return !'/./'[KEY](re);
-    } catch (f) { /* empty */ }
-  } return true;
-};
-
-
-/***/ }),
-
-/***/ "520a":
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var regexpFlags = __webpack_require__("0bfb");
-
-var nativeExec = RegExp.prototype.exec;
-// This always refers to the native implementation, because the
-// String#replace polyfill uses ./fix-regexp-well-known-symbol-logic.js,
-// which loads this file before patching the method.
-var nativeReplace = String.prototype.replace;
-
-var patchedExec = nativeExec;
-
-var LAST_INDEX = 'lastIndex';
-
-var UPDATES_LAST_INDEX_WRONG = (function () {
-  var re1 = /a/,
-      re2 = /b*/g;
-  nativeExec.call(re1, 'a');
-  nativeExec.call(re2, 'a');
-  return re1[LAST_INDEX] !== 0 || re2[LAST_INDEX] !== 0;
-})();
-
-// nonparticipating capturing group, copied from es5-shim's String#split patch.
-var NPCG_INCLUDED = /()??/.exec('')[1] !== undefined;
-
-var PATCH = UPDATES_LAST_INDEX_WRONG || NPCG_INCLUDED;
-
-if (PATCH) {
-  patchedExec = function exec(str) {
-    var re = this;
-    var lastIndex, reCopy, match, i;
-
-    if (NPCG_INCLUDED) {
-      reCopy = new RegExp('^' + re.source + '$(?!\\s)', regexpFlags.call(re));
-    }
-    if (UPDATES_LAST_INDEX_WRONG) lastIndex = re[LAST_INDEX];
-
-    match = nativeExec.call(re, str);
-
-    if (UPDATES_LAST_INDEX_WRONG && match) {
-      re[LAST_INDEX] = re.global ? match.index + match[0].length : lastIndex;
-    }
-    if (NPCG_INCLUDED && match && match.length > 1) {
-      // Fix browsers whose `exec` methods don't consistently return `undefined`
-      // for NPCG, like IE8. NOTE: This doesn' work for /(.?)?/
-      // eslint-disable-next-line no-loop-func
-      nativeReplace.call(match[0], reCopy, function () {
-        for (i = 1; i < arguments.length - 2; i++) {
-          if (arguments[i] === undefined) match[i] = undefined;
-        }
-      });
-    }
-
-    return match;
-  };
-}
-
-module.exports = patchedExec;
-
-
-/***/ }),
-
-/***/ "5537":
-/***/ (function(module, exports, __webpack_require__) {
-
-var core = __webpack_require__("8378");
-var global = __webpack_require__("7726");
-var SHARED = '__core-js_shared__';
-var store = global[SHARED] || (global[SHARED] = {});
-
-(module.exports = function (key, value) {
-  return store[key] || (store[key] = value !== undefined ? value : {});
-})('versions', []).push({
-  version: core.version,
-  mode: __webpack_require__("2d00") ? 'pure' : 'global',
-  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
-});
-
-
-/***/ }),
-
-/***/ "584a":
-/***/ (function(module, exports) {
-
-var core = module.exports = { version: '2.6.9' };
-if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
-
-
-/***/ }),
-
-/***/ "5ca1":
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__("7726");
-var core = __webpack_require__("8378");
-var hide = __webpack_require__("32e9");
-var redefine = __webpack_require__("2aba");
-var ctx = __webpack_require__("9b43");
-var PROTOTYPE = 'prototype';
-
-var $export = function (type, name, source) {
-  var IS_FORCED = type & $export.F;
-  var IS_GLOBAL = type & $export.G;
-  var IS_STATIC = type & $export.S;
-  var IS_PROTO = type & $export.P;
-  var IS_BIND = type & $export.B;
-  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] || (global[name] = {}) : (global[name] || {})[PROTOTYPE];
-  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
-  var expProto = exports[PROTOTYPE] || (exports[PROTOTYPE] = {});
-  var key, own, out, exp;
-  if (IS_GLOBAL) source = name;
-  for (key in source) {
-    // contains in native
-    own = !IS_FORCED && target && target[key] !== undefined;
-    // export native or passed
-    out = (own ? target : source)[key];
-    // bind timers to global for call from export context
-    exp = IS_BIND && own ? ctx(out, global) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
-    // extend global
-    if (target) redefine(target, key, out, type & $export.U);
-    // export
-    if (exports[key] != out) hide(exports, key, exp);
-    if (IS_PROTO && expProto[key] != out) expProto[key] = out;
-  }
-};
-global.core = core;
-// type bitmap
-$export.F = 1;   // forced
-$export.G = 2;   // global
-$export.S = 4;   // static
-$export.P = 8;   // proto
-$export.B = 16;  // bind
-$export.W = 32;  // wrap
-$export.U = 64;  // safe
-$export.R = 128; // real proto method for `library`
-module.exports = $export;
-
-
-/***/ }),
-
-/***/ "5f1b":
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var classof = __webpack_require__("23c6");
-var builtinExec = RegExp.prototype.exec;
-
- // `RegExpExec` abstract operation
-// https://tc39.github.io/ecma262/#sec-regexpexec
-module.exports = function (R, S) {
-  var exec = R.exec;
-  if (typeof exec === 'function') {
-    var result = exec.call(R, S);
-    if (typeof result !== 'object') {
-      throw new TypeError('RegExp exec method returned something other than an Object or null');
-    }
-    return result;
-  }
-  if (classof(R) !== 'RegExp') {
-    throw new TypeError('RegExp#exec called on incompatible receiver');
-  }
-  return builtinExec.call(R, S);
-};
-
-
-/***/ }),
-
-/***/ "626a":
-/***/ (function(module, exports, __webpack_require__) {
-
-// fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__("2d95");
-// eslint-disable-next-line no-prototype-builtins
-module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
-  return cof(it) == 'String' ? it.split('') : Object(it);
-};
-
-
-/***/ }),
-
-/***/ "63b6":
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__("e53d");
-var core = __webpack_require__("584a");
-var ctx = __webpack_require__("d864");
-var hide = __webpack_require__("35e8");
-var has = __webpack_require__("07e3");
-var PROTOTYPE = 'prototype';
-
-var $export = function (type, name, source) {
-  var IS_FORCED = type & $export.F;
-  var IS_GLOBAL = type & $export.G;
-  var IS_STATIC = type & $export.S;
-  var IS_PROTO = type & $export.P;
-  var IS_BIND = type & $export.B;
-  var IS_WRAP = type & $export.W;
-  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
-  var expProto = exports[PROTOTYPE];
-  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE];
-  var key, own, out;
-  if (IS_GLOBAL) source = name;
-  for (key in source) {
-    // contains in native
-    own = !IS_FORCED && target && target[key] !== undefined;
-    if (own && has(exports, key)) continue;
-    // export native or passed
-    out = own ? target[key] : source[key];
-    // prevent global pollution for namespaces
-    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
-    // bind timers to global for call from export context
-    : IS_BIND && own ? ctx(out, global)
-    // wrap global constructors for prevent change them in library
-    : IS_WRAP && target[key] == out ? (function (C) {
-      var F = function (a, b, c) {
-        if (this instanceof C) {
-          switch (arguments.length) {
-            case 0: return new C();
-            case 1: return new C(a);
-            case 2: return new C(a, b);
-          } return new C(a, b, c);
-        } return C.apply(this, arguments);
-      };
-      F[PROTOTYPE] = C[PROTOTYPE];
-      return F;
-    // make static versions for prototype methods
-    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
-    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
-    if (IS_PROTO) {
-      (exports.virtual || (exports.virtual = {}))[key] = out;
-      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
-      if (type & $export.R && expProto && !expProto[key]) hide(expProto, key, out);
-    }
-  }
-};
-// type bitmap
-$export.F = 1;   // forced
-$export.G = 2;   // global
-$export.S = 4;   // static
-$export.P = 8;   // proto
-$export.B = 16;  // bind
-$export.W = 32;  // wrap
-$export.U = 64;  // safe
-$export.R = 128; // real proto method for `library`
-module.exports = $export;
-
-
-/***/ }),
-
-/***/ "6762":
-/***/ (function(module, exports, __webpack_require__) {
-
-// https://github.com/tc39/Array.prototype.includes
-var $export = __webpack_require__("5ca1");
-var $includes = __webpack_require__("c366")(true);
-
-$export($export.P, 'Array', {
-  includes: function includes(el /* , fromIndex = 0 */) {
-    return $includes(this, el, arguments.length > 1 ? arguments[1] : undefined);
-  }
-});
-
-__webpack_require__("9c6c")('includes');
-
-
-/***/ }),
-
-/***/ "6821":
-/***/ (function(module, exports, __webpack_require__) {
-
-// to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__("626a");
-var defined = __webpack_require__("be13");
-module.exports = function (it) {
-  return IObject(defined(it));
-};
-
-
-/***/ }),
-
-/***/ "69a8":
-/***/ (function(module, exports) {
-
-var hasOwnProperty = {}.hasOwnProperty;
-module.exports = function (it, key) {
-  return hasOwnProperty.call(it, key);
-};
-
-
-/***/ }),
-
-/***/ "6a99":
-/***/ (function(module, exports, __webpack_require__) {
-
-// 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__("d3f4");
-// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-// and the second argument - flag - preferred type is a string
-module.exports = function (it, S) {
-  if (!isObject(it)) return it;
-  var fn, val;
-  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
-  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  throw TypeError("Can't convert object to primitive value");
-};
-
-
-/***/ }),
-
-/***/ "7726":
-/***/ (function(module, exports) {
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math
-  ? window : typeof self != 'undefined' && self.Math == Math ? self
-  // eslint-disable-next-line no-new-func
-  : Function('return this')();
-if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
-
-
-/***/ }),
-
-/***/ "77f1":
-/***/ (function(module, exports, __webpack_require__) {
-
-var toInteger = __webpack_require__("4588");
-var max = Math.max;
-var min = Math.min;
-module.exports = function (index, length) {
-  index = toInteger(index);
-  return index < 0 ? max(index + length, 0) : min(index, length);
-};
-
-
-/***/ }),
-
-/***/ "794b":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = !__webpack_require__("8e60") && !__webpack_require__("294c")(function () {
-  return Object.defineProperty(__webpack_require__("1ec9")('div'), 'a', { get: function () { return 7; } }).a != 7;
-});
-
-
-/***/ }),
-
-/***/ "79aa":
-/***/ (function(module, exports) {
-
-module.exports = function (it) {
-  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
-  return it;
-};
-
-
-/***/ }),
-
-/***/ "79e5":
-/***/ (function(module, exports) {
-
-module.exports = function (exec) {
-  try {
-    return !!exec();
-  } catch (e) {
-    return true;
-  }
-};
-
-
-/***/ }),
-
-/***/ "7f7f":
-/***/ (function(module, exports, __webpack_require__) {
-
-var dP = __webpack_require__("86cc").f;
-var FProto = Function.prototype;
-var nameRE = /^\s*function ([^ (]*)/;
-var NAME = 'name';
-
-// 19.2.4.2 name
-NAME in FProto || __webpack_require__("9e1e") && dP(FProto, NAME, {
-  configurable: true,
-  get: function () {
-    try {
-      return ('' + this).match(nameRE)[1];
-    } catch (e) {
-      return '';
-    }
-  }
-});
-
-
-/***/ }),
-
-/***/ "8378":
-/***/ (function(module, exports) {
-
-var core = module.exports = { version: '2.6.9' };
-if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
-
-
-/***/ }),
-
-/***/ "85f2":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("454f");
-
-/***/ }),
-
-/***/ "86cc":
-/***/ (function(module, exports, __webpack_require__) {
-
-var anObject = __webpack_require__("cb7c");
-var IE8_DOM_DEFINE = __webpack_require__("c69a");
-var toPrimitive = __webpack_require__("6a99");
-var dP = Object.defineProperty;
-
-exports.f = __webpack_require__("9e1e") ? Object.defineProperty : function defineProperty(O, P, Attributes) {
-  anObject(O);
-  P = toPrimitive(P, true);
-  anObject(Attributes);
-  if (IE8_DOM_DEFINE) try {
-    return dP(O, P, Attributes);
-  } catch (e) { /* empty */ }
-  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
-  if ('value' in Attributes) O[P] = Attributes.value;
-  return O;
-};
-
-
-/***/ }),
-
-/***/ "8e60":
-/***/ (function(module, exports, __webpack_require__) {
-
-// Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__("294c")(function () {
-  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
-});
-
-
-/***/ }),
-
-/***/ "9b43":
-/***/ (function(module, exports, __webpack_require__) {
-
-// optional / simple context binding
-var aFunction = __webpack_require__("d8e8");
-module.exports = function (fn, that, length) {
-  aFunction(fn);
-  if (that === undefined) return fn;
-  switch (length) {
-    case 1: return function (a) {
-      return fn.call(that, a);
-    };
-    case 2: return function (a, b) {
-      return fn.call(that, a, b);
-    };
-    case 3: return function (a, b, c) {
-      return fn.call(that, a, b, c);
-    };
-  }
-  return function (/* ...args */) {
-    return fn.apply(that, arguments);
-  };
-};
-
-
-/***/ }),
-
-/***/ "9c6c":
-/***/ (function(module, exports, __webpack_require__) {
-
-// 22.1.3.31 Array.prototype[@@unscopables]
-var UNSCOPABLES = __webpack_require__("2b4c")('unscopables');
-var ArrayProto = Array.prototype;
-if (ArrayProto[UNSCOPABLES] == undefined) __webpack_require__("32e9")(ArrayProto, UNSCOPABLES, {});
-module.exports = function (key) {
-  ArrayProto[UNSCOPABLES][key] = true;
-};
-
-
-/***/ }),
-
-/***/ "9def":
-/***/ (function(module, exports, __webpack_require__) {
-
-// 7.1.15 ToLength
-var toInteger = __webpack_require__("4588");
-var min = Math.min;
-module.exports = function (it) {
-  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
-};
-
-
-/***/ }),
-
-/***/ "9e1e":
-/***/ (function(module, exports, __webpack_require__) {
-
-// Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__("79e5")(function () {
-  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
-});
-
-
-/***/ }),
-
-/***/ "a481":
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var anObject = __webpack_require__("cb7c");
-var toObject = __webpack_require__("4bf8");
-var toLength = __webpack_require__("9def");
-var toInteger = __webpack_require__("4588");
-var advanceStringIndex = __webpack_require__("0390");
-var regExpExec = __webpack_require__("5f1b");
-var max = Math.max;
-var min = Math.min;
-var floor = Math.floor;
-var SUBSTITUTION_SYMBOLS = /\$([$&`']|\d\d?|<[^>]*>)/g;
-var SUBSTITUTION_SYMBOLS_NO_NAMED = /\$([$&`']|\d\d?)/g;
-
-var maybeToString = function (it) {
-  return it === undefined ? it : String(it);
-};
-
-// @@replace logic
-__webpack_require__("214f")('replace', 2, function (defined, REPLACE, $replace, maybeCallNative) {
-  return [
-    // `String.prototype.replace` method
-    // https://tc39.github.io/ecma262/#sec-string.prototype.replace
-    function replace(searchValue, replaceValue) {
-      var O = defined(this);
-      var fn = searchValue == undefined ? undefined : searchValue[REPLACE];
-      return fn !== undefined
-        ? fn.call(searchValue, O, replaceValue)
-        : $replace.call(String(O), searchValue, replaceValue);
-    },
-    // `RegExp.prototype[@@replace]` method
-    // https://tc39.github.io/ecma262/#sec-regexp.prototype-@@replace
-    function (regexp, replaceValue) {
-      var res = maybeCallNative($replace, regexp, this, replaceValue);
-      if (res.done) return res.value;
-
-      var rx = anObject(regexp);
-      var S = String(this);
-      var functionalReplace = typeof replaceValue === 'function';
-      if (!functionalReplace) replaceValue = String(replaceValue);
-      var global = rx.global;
-      if (global) {
-        var fullUnicode = rx.unicode;
-        rx.lastIndex = 0;
-      }
-      var results = [];
-      while (true) {
-        var result = regExpExec(rx, S);
-        if (result === null) break;
-        results.push(result);
-        if (!global) break;
-        var matchStr = String(result[0]);
-        if (matchStr === '') rx.lastIndex = advanceStringIndex(S, toLength(rx.lastIndex), fullUnicode);
-      }
-      var accumulatedResult = '';
-      var nextSourcePosition = 0;
-      for (var i = 0; i < results.length; i++) {
-        result = results[i];
-        var matched = String(result[0]);
-        var position = max(min(toInteger(result.index), S.length), 0);
-        var captures = [];
-        // NOTE: This is equivalent to
-        //   captures = result.slice(1).map(maybeToString)
-        // but for some reason `nativeSlice.call(result, 1, result.length)` (called in
-        // the slice polyfill when slicing native arrays) "doesn't work" in safari 9 and
-        // causes a crash (https://pastebin.com/N21QzeQA) when trying to debug it.
-        for (var j = 1; j < result.length; j++) captures.push(maybeToString(result[j]));
-        var namedCaptures = result.groups;
-        if (functionalReplace) {
-          var replacerArgs = [matched].concat(captures, position, S);
-          if (namedCaptures !== undefined) replacerArgs.push(namedCaptures);
-          var replacement = String(replaceValue.apply(undefined, replacerArgs));
-        } else {
-          replacement = getSubstitution(matched, S, position, captures, namedCaptures, replaceValue);
-        }
-        if (position >= nextSourcePosition) {
-          accumulatedResult += S.slice(nextSourcePosition, position) + replacement;
-          nextSourcePosition = position + matched.length;
-        }
-      }
-      return accumulatedResult + S.slice(nextSourcePosition);
-    }
-  ];
-
-    // https://tc39.github.io/ecma262/#sec-getsubstitution
-  function getSubstitution(matched, str, position, captures, namedCaptures, replacement) {
-    var tailPos = position + matched.length;
-    var m = captures.length;
-    var symbols = SUBSTITUTION_SYMBOLS_NO_NAMED;
-    if (namedCaptures !== undefined) {
-      namedCaptures = toObject(namedCaptures);
-      symbols = SUBSTITUTION_SYMBOLS;
-    }
-    return $replace.call(replacement, symbols, function (match, ch) {
-      var capture;
-      switch (ch.charAt(0)) {
-        case '$': return '$';
-        case '&': return matched;
-        case '`': return str.slice(0, position);
-        case "'": return str.slice(tailPos);
-        case '<':
-          capture = namedCaptures[ch.slice(1, -1)];
-          break;
-        default: // \d\d?
-          var n = +ch;
-          if (n === 0) return match;
-          if (n > m) {
-            var f = floor(n / 10);
-            if (f === 0) return match;
-            if (f <= m) return captures[f - 1] === undefined ? ch.charAt(1) : captures[f - 1] + ch.charAt(1);
-            return match;
-          }
-          capture = captures[n - 1];
-      }
-      return capture === undefined ? '' : capture;
-    });
-  }
-});
-
-
-/***/ }),
-
-/***/ "aae3":
-/***/ (function(module, exports, __webpack_require__) {
-
-// 7.2.8 IsRegExp(argument)
-var isObject = __webpack_require__("d3f4");
-var cof = __webpack_require__("2d95");
-var MATCH = __webpack_require__("2b4c")('match');
-module.exports = function (it) {
-  var isRegExp;
-  return isObject(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : cof(it) == 'RegExp');
-};
-
-
-/***/ }),
-
-/***/ "aebd":
-/***/ (function(module, exports) {
-
-module.exports = function (bitmap, value) {
-  return {
-    enumerable: !(bitmap & 1),
-    configurable: !(bitmap & 2),
-    writable: !(bitmap & 4),
-    value: value
-  };
-};
-
-
-/***/ }),
-
-/***/ "b0c5":
-/***/ (function(module, exports, __webpack_require__) {
-
-var regexpExec = __webpack_require__("520a");
-__webpack_require__("5ca1")({
-  target: 'RegExp',
-  proto: true,
-  forced: regexpExec !== /./.exec
-}, {
-  exec: regexpExec
-});
-
-
-/***/ }),
-
-/***/ "be13":
-/***/ (function(module, exports) {
-
-// 7.2.1 RequireObjectCoercible(argument)
-module.exports = function (it) {
-  if (it == undefined) throw TypeError("Can't call method on  " + it);
-  return it;
-};
-
-
-/***/ }),
-
-/***/ "c366":
-/***/ (function(module, exports, __webpack_require__) {
-
-// false -> Array#indexOf
-// true  -> Array#includes
-var toIObject = __webpack_require__("6821");
-var toLength = __webpack_require__("9def");
-var toAbsoluteIndex = __webpack_require__("77f1");
-module.exports = function (IS_INCLUDES) {
-  return function ($this, el, fromIndex) {
-    var O = toIObject($this);
-    var length = toLength(O.length);
-    var index = toAbsoluteIndex(fromIndex, length);
-    var value;
-    // Array#includes uses SameValueZero equality algorithm
-    // eslint-disable-next-line no-self-compare
-    if (IS_INCLUDES && el != el) while (length > index) {
-      value = O[index++];
-      // eslint-disable-next-line no-self-compare
-      if (value != value) return true;
-    // Array#indexOf ignores holes, Array#includes - not
-    } else for (;length > index; index++) if (IS_INCLUDES || index in O) {
-      if (O[index] === el) return IS_INCLUDES || index || 0;
-    } return !IS_INCLUDES && -1;
-  };
-};
-
-
-/***/ }),
-
-/***/ "c69a":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = !__webpack_require__("9e1e") && !__webpack_require__("79e5")(function () {
-  return Object.defineProperty(__webpack_require__("230e")('div'), 'a', { get: function () { return 7; } }).a != 7;
-});
-
-
-/***/ }),
-
-/***/ "ca5a":
-/***/ (function(module, exports) {
-
-var id = 0;
-var px = Math.random();
-module.exports = function (key) {
-  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
-};
-
-
-/***/ }),
-
-/***/ "cb7c":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__("d3f4");
-module.exports = function (it) {
-  if (!isObject(it)) throw TypeError(it + ' is not an object!');
-  return it;
-};
-
-
-/***/ }),
-
-/***/ "d2c8":
-/***/ (function(module, exports, __webpack_require__) {
-
-// helper for String#{startsWith, endsWith, includes}
-var isRegExp = __webpack_require__("aae3");
-var defined = __webpack_require__("be13");
-
-module.exports = function (that, searchString, NAME) {
-  if (isRegExp(searchString)) throw TypeError('String#' + NAME + " doesn't accept regex!");
-  return String(defined(that));
-};
-
-
-/***/ }),
-
-/***/ "d3f4":
-/***/ (function(module, exports) {
-
-module.exports = function (it) {
-  return typeof it === 'object' ? it !== null : typeof it === 'function';
-};
-
-
-/***/ }),
-
-/***/ "d864":
-/***/ (function(module, exports, __webpack_require__) {
-
-// optional / simple context binding
-var aFunction = __webpack_require__("79aa");
-module.exports = function (fn, that, length) {
-  aFunction(fn);
-  if (that === undefined) return fn;
-  switch (length) {
-    case 1: return function (a) {
-      return fn.call(that, a);
-    };
-    case 2: return function (a, b) {
-      return fn.call(that, a, b);
-    };
-    case 3: return function (a, b, c) {
-      return fn.call(that, a, b, c);
-    };
-  }
-  return function (/* ...args */) {
-    return fn.apply(that, arguments);
-  };
-};
-
-
-/***/ }),
-
-/***/ "d8e8":
-/***/ (function(module, exports) {
-
-module.exports = function (it) {
-  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
-  return it;
-};
-
-
-/***/ }),
-
-/***/ "d9f6":
-/***/ (function(module, exports, __webpack_require__) {
-
-var anObject = __webpack_require__("e4ae");
-var IE8_DOM_DEFINE = __webpack_require__("794b");
-var toPrimitive = __webpack_require__("1bc3");
-var dP = Object.defineProperty;
-
-exports.f = __webpack_require__("8e60") ? Object.defineProperty : function defineProperty(O, P, Attributes) {
-  anObject(O);
-  P = toPrimitive(P, true);
-  anObject(Attributes);
-  if (IE8_DOM_DEFINE) try {
-    return dP(O, P, Attributes);
-  } catch (e) { /* empty */ }
-  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
-  if ('value' in Attributes) O[P] = Attributes.value;
-  return O;
-};
-
-
-/***/ }),
-
-/***/ "e4ae":
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__("f772");
-module.exports = function (it) {
-  if (!isObject(it)) throw TypeError(it + ' is not an object!');
-  return it;
-};
-
-
-/***/ }),
-
-/***/ "e53d":
-/***/ (function(module, exports) {
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math
-  ? window : typeof self != 'undefined' && self.Math == Math ? self
-  // eslint-disable-next-line no-new-func
-  : Function('return this')();
-if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
-
-
-/***/ }),
-
-/***/ "f6fd":
-/***/ (function(module, exports) {
-
-// document.currentScript polyfill by Adam Miller
-
-// MIT license
-
-(function(document){
-  var currentScript = "currentScript",
-      scripts = document.getElementsByTagName('script'); // Live NodeList collection
-
-  // If browser needs currentScript polyfill, add get currentScript() to the document object
-  if (!(currentScript in document)) {
-    Object.defineProperty(document, currentScript, {
-      get: function(){
-
-        // IE 6-10 supports script readyState
-        // IE 10+ support stack trace
-        try { throw new Error(); }
-        catch (err) {
-
-          // Find the second match for the "at" string to get file src url from stack.
-          // Specifically works with the format of stack traces in IE.
-          var i, res = ((/.*at [^\(]*\((.*):.+:.+\)$/ig).exec(err.stack) || [false])[1];
-
-          // For all scripts on the page, if src matches or if ready state is interactive, return the script tag
-          for(i in scripts){
-            if(scripts[i].src == res || scripts[i].readyState == "interactive"){
-              return scripts[i];
-            }
-          }
-
-          // If no match, return null
-          return null;
-        }
-      }
-    });
-  }
-})(document);
-
-
-/***/ }),
-
-/***/ "f772":
-/***/ (function(module, exports) {
-
-module.exports = function (it) {
-  return typeof it === 'object' ? it !== null : typeof it === 'function';
-};
-
-
-/***/ }),
-
-/***/ "fa5b":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("5537")('native-function-to-string', Function.toString);
-
-
-/***/ }),
-
-/***/ "fae3":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-__webpack_require__.r(__webpack_exports__);
-
-// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
-// This file is imported into lib/wc client bundles.
-
-if (typeof window !== 'undefined') {
-  {
-    __webpack_require__("f6fd");
-  }
-
-  var i;
-  if ((i = window.document.currentScript) && (i = i.src.match(/(.+\/)[^/]+\.js(\?.*)?$/))) {
-    __webpack_require__.p = i[1]; // eslint-disable-line
-  }
-}
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"6d8e4675-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./CIcon.vue?vue&type=template&id=017f04da&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.name || _vm.content)?_c('svg',{class:_vm.computedClasses,attrs:{"xmlns":"http://www.w3.org/2000/svg","viewBox":_vm.viewBox},domProps:{"innerHTML":_vm._s(_vm.icon.svgContent)}}):_c(_vm.fontIconTag,{tag:"component",class:_vm.computedClasses})};
-var staticRenderFns = [];
-
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.replace.js
-var es6_regexp_replace = __webpack_require__("a481");
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js
-var define_property = __webpack_require__("85f2");
-var define_property_default = /*#__PURE__*/__webpack_require__.n(define_property);
-
-// CONCATENATED MODULE: ./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    define_property_default()(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
-var es6_function_name = __webpack_require__("7f7f");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es7.array.includes.js
-var es7_array_includes = __webpack_require__("6762");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.string.includes.js
-var es6_string_includes = __webpack_require__("2fdb");
-
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./CIcon.vue?vue&type=script&lang=js&
-
-
-
-
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ var lib_vue_loader_options_CIconvue_type_script_lang_js_ = ({
-  name: 'CIcon',
-  //This object contains icons added before component registration
-  icons: {},
-  props: {
-    name: String,
-    content: [String, Array],
-    // fill: String,
-    // background: String,
-    size: {
-      type: String,
-      validator: function validator(size) {
-        return ['sm', 'lg', 'xl', 'custom-size'].includes(size);
-      }
-    },
-    customClasses: [String, Array, Object],
-    fontIconTag: {
-      type: String,
-      default: 'i'
-    }
-  },
-  computed: {
-    iconName: function iconName() {
-      var iconNameIsKebabCase = this.name && this.name.includes('-');
-      return iconNameIsKebabCase ? this.toCamelCase(this.name) : this.name;
-    },
-    code: function code() {
-      return this.content || this.$options.icons[this.iconName];
-    },
-    icon: function icon() {
-      if (Array.isArray(this.code)) {
-        var coordinates = this.code.length > 1 ? this.code[0] : '64 64';
-        var svgContent = this.code.length > 1 ? this.code[1] : this.code[0];
-        return {
-          coordinates: coordinates,
-          svgContent: svgContent
-        };
-      }
-
-      return {
-        coordinates: '64 64',
-        svgContent: this.code
-      };
-    },
-    viewBox: function viewBox() {
-      return this.$attrs.viewBox || "0 0 ".concat(this.icon.coordinates);
-    },
-    // style () {
-    //   return {
-    //     fill: this.fill || 'currentColor',
-    //     background: this.background
-    //   }
-    // },
-    computedSize: function computedSize() {
-      return this.$attrs.width || this.$attrs.height ? 'custom-size' : this.size;
-    },
-    computedClasses: function computedClasses() {
-      return this.customClasses || ['c-icon', _defineProperty({}, "c-icon-".concat(this.computedSize), this.computedSize)];
-    }
-  },
-  methods: {
-    toCamelCase: function toCamelCase(str) {
-      return str.replace(/([-_][a-z0-9])/ig, function ($1) {
-        return $1.toUpperCase().replace('-', '');
-      });
-    }
-  }
-});
-// CONCATENATED MODULE: ./CIcon.vue?vue&type=script&lang=js&
- /* harmony default export */ var CIconvue_type_script_lang_js_ = (lib_vue_loader_options_CIconvue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode /* vue-cli only */
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports;
-
-  // render functions
-  if (render) {
-    options.render = render;
-    options.staticRenderFns = staticRenderFns;
-    options._compiled = true;
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true;
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId;
-  }
-
-  var hook;
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__;
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context);
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier);
-      }
-    };
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook;
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot); }
-      : injectStyles;
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook;
-      // register for functioal component in vue file
-      var originalRender = options.render;
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context);
-        return originalRender(h, context)
-      };
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate;
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook];
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
-
-// CONCATENATED MODULE: ./CIcon.vue
-
-
-
-
-
-/* normalize component */
-
-var component = normalizeComponent(
-  CIconvue_type_script_lang_js_,
-  render,
-  staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-);
-
-/* harmony default export */ var CIcon = (component.exports);
-// CONCATENATED MODULE: ./index.js
-
-
-var CIconPlugin = {
-  install: function install(Vue, customIconSet) {
-    CIcon.icons = customIconSet;
-    Vue.component('CIcon', CIcon);
-  }
-};
-
-// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib-no-default.js
-/* concated harmony reexport CIcon */__webpack_require__.d(__webpack_exports__, "CIcon", function() { return CIcon; });
-/* concated harmony reexport CIconPlugin */__webpack_require__.d(__webpack_exports__, "CIconPlugin", function() { return CIconPlugin; });
-
-
-
-
-/***/ })
-
-/******/ });
-
-});
-
-unwrapExports(coreuiIconsVue_common);
-var coreuiIconsVue_common_1 = coreuiIconsVue_common.CIcon;
-
 const arrowTop = ["24 24","\r\r<title>arrow-top</title>\r<path d='M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z'></path>\r\r"];
 
 const ban = ["24 24","\r\r<title>ban</title>\r<path d='M19.955 4.045c-2.036-2.036-4.848-3.295-7.955-3.295-6.213 0-11.25 5.037-11.25 11.25 0 3.107 1.259 5.919 3.295 7.955v0c2.036 2.036 4.848 3.295 7.955 3.295 6.213 0 11.25-5.037 11.25-11.25 0-3.107-1.259-5.919-3.295-7.955v0zM12 2.25c0.003 0 0.006 0 0.009 0 2.431 0 4.653 0.894 6.356 2.37l-0.012-0.010-13.743 13.743c-1.466-1.691-2.36-3.913-2.36-6.344 0-0.003 0-0.006 0-0.009v0c0-5.376 4.374-9.75 9.75-9.75zM12 21.75c-0.002 0-0.005 0-0.008 0-2.419 0-4.632-0.885-6.332-2.349l0.013 0.011 13.739-13.739c1.453 1.687 2.338 3.9 2.338 6.319 0 0.003 0 0.006 0 0.009v-0c0 5.376-4.374 9.75-9.75 9.75z'></path>\r\r"];
 
-var CIcon = Object.assign({}, coreuiIconsVue_common_1, {
+var script$1g = {
+  name: 'CDataTable',
   icons: {
     arrowTop: arrowTop,
     ban: ban
-  }
-});
-var script$1e = {
-  name: 'CDataTable',
+  },
   components: {
     CPagination: CPagination,
     CSpinner: CSpinner,
@@ -27217,13 +25910,13 @@ var script$1e = {
   }
 };
 
-var css$4 = "\n.transparent[data-v-77d26ece] {\r\n  opacity: 0.4;\n}\n.icon-transition[data-v-77d26ece] {\r\n  -webkit-transition: transform 0.3s;\r\n  -webkit-transition: -webkit-transform 0.3s;\r\n  transition: -webkit-transform 0.3s;\r\n  transition: transform 0.3s;\r\n  transition: transform 0.3s, -webkit-transform 0.3s;\n}\n.arrow-position[data-v-77d26ece] {\r\n  right: 0;\r\n  top: 50%;\r\n  -webkit-transform: translateY(-50%);\r\n          transform: translateY(-50%);\n}\n.rotate-icon[data-v-77d26ece] {\r\n  -webkit-transform: translateY(-50%) rotate(-180deg);\r\n          transform: translateY(-50%) rotate(-180deg);\n}\r\n";
+var css$4 = "\n.transparent[data-v-22ab8620] {\r\n  opacity: 0.4;\n}\n.icon-transition[data-v-22ab8620] {\r\n  -webkit-transition: transform 0.3s;\r\n  -webkit-transition: -webkit-transform 0.3s;\r\n  transition: -webkit-transform 0.3s;\r\n  transition: transform 0.3s;\r\n  transition: transform 0.3s, -webkit-transform 0.3s;\n}\n.arrow-position[data-v-22ab8620] {\r\n  right: 0;\r\n  top: 50%;\r\n  -webkit-transform: translateY(-50%);\r\n          transform: translateY(-50%);\n}\n.rotate-icon[data-v-22ab8620] {\r\n  -webkit-transform: translateY(-50%) rotate(-180deg);\r\n          transform: translateY(-50%) rotate(-180deg);\n}\r\n";
 styleInject(css$4);
 
 /* script */
-const __vue_script__$1e = script$1e;
+const __vue_script__$1g = script$1g;
 /* template */
-var __vue_render__$H = function() {
+var __vue_render__$J = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -27367,7 +26060,10 @@ var __vue_render__$H = function() {
                                   [
                                     _c("CIcon", {
                                       class: _vm.iconClasses(index),
-                                      attrs: { width: "18", name: "arrowTop" }
+                                      attrs: {
+                                        width: "18",
+                                        content: _vm.$options.icons.arrowTop
+                                      }
                                     })
                                   ],
                                   { state: _vm.getIconState(index) }
@@ -27533,7 +26229,10 @@ var __vue_render__$H = function() {
                                     ),
                                     _c("CIcon", {
                                       staticClass: "text-danger mb-2",
-                                      attrs: { width: "30", name: "ban" }
+                                      attrs: {
+                                        width: "30",
+                                        content: _vm.$options.icons.ban
+                                      }
                                     })
                                   ],
                                   1
@@ -27683,35 +26382,39 @@ var __vue_render__$H = function() {
     2
   )
 };
-var __vue_staticRenderFns__$H = [];
-__vue_render__$H._withStripped = true;
+var __vue_staticRenderFns__$J = [];
+__vue_render__$J._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1e = undefined;
+  const __vue_inject_styles__$1g = undefined;
   /* scoped */
-  const __vue_scope_id__$1e = "data-v-77d26ece";
+  const __vue_scope_id__$1g = "data-v-22ab8620";
   /* module identifier */
-  const __vue_module_identifier__$1e = undefined;
+  const __vue_module_identifier__$1g = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1e = false;
+  const __vue_is_functional_template__$1g = false;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CDataTable = normalizeComponent_1(
-    { render: __vue_render__$H, staticRenderFns: __vue_staticRenderFns__$H },
-    __vue_inject_styles__$1e,
-    __vue_script__$1e,
-    __vue_scope_id__$1e,
-    __vue_is_functional_template__$1e,
-    __vue_module_identifier__$1e,
+  var CDataTable = __vue_normalize__(
+    { render: __vue_render__$J, staticRenderFns: __vue_staticRenderFns__$J },
+    __vue_inject_styles__$1g,
+    __vue_script__$1g,
+    __vue_scope_id__$1g,
+    __vue_is_functional_template__$1g,
+    __vue_module_identifier__$1g,
+    false,
+    undefined,
     undefined,
     undefined
   );
 
-var script$1f = {
+var script$1h = {
   name: 'CTab',
   props: {
     titleHtml: String,
@@ -27724,36 +26427,40 @@ var script$1f = {
 };
 
 /* script */
-const __vue_script__$1f = script$1f;
+const __vue_script__$1h = script$1h;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$1f = undefined;
+  const __vue_inject_styles__$1h = undefined;
   /* scoped */
-  const __vue_scope_id__$1f = undefined;
+  const __vue_scope_id__$1h = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1f = undefined;
+  const __vue_module_identifier__$1h = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1f = undefined;
+  const __vue_is_functional_template__$1h = undefined;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CTab = normalizeComponent_1(
+  var CTab = __vue_normalize__(
     {},
-    __vue_inject_styles__$1f,
-    __vue_script__$1f,
-    __vue_scope_id__$1f,
-    __vue_is_functional_template__$1f,
-    __vue_module_identifier__$1f,
+    __vue_inject_styles__$1h,
+    __vue_script__$1h,
+    __vue_scope_id__$1h,
+    __vue_is_functional_template__$1h,
+    __vue_module_identifier__$1h,
+    false,
+    undefined,
     undefined,
     undefined
   );
 
-var script$1g = {
+var script$1i = {
   name: 'CTabNav',
   props: Object.assign(propsFactory(), {
     titleHtml: String,
@@ -27776,36 +26483,40 @@ var script$1g = {
 };
 
 /* script */
-const __vue_script__$1g = script$1g;
+const __vue_script__$1i = script$1i;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$1g = undefined;
+  const __vue_inject_styles__$1i = undefined;
   /* scoped */
-  const __vue_scope_id__$1g = undefined;
+  const __vue_scope_id__$1i = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1g = undefined;
+  const __vue_module_identifier__$1i = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1g = undefined;
+  const __vue_is_functional_template__$1i = undefined;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CTabNav = normalizeComponent_1(
+  var CTabNav = __vue_normalize__(
     {},
-    __vue_inject_styles__$1g,
-    __vue_script__$1g,
-    __vue_scope_id__$1g,
-    __vue_is_functional_template__$1g,
-    __vue_module_identifier__$1g,
+    __vue_inject_styles__$1i,
+    __vue_script__$1i,
+    __vue_scope_id__$1i,
+    __vue_is_functional_template__$1i,
+    __vue_module_identifier__$1i,
+    false,
+    undefined,
     undefined,
     undefined
   );
 
-var script$1h = {
+var script$1j = {
   name: 'CTabContent',
   props: {
     content: Function
@@ -27816,36 +26527,40 @@ var script$1h = {
 };
 
 /* script */
-const __vue_script__$1h = script$1h;
+const __vue_script__$1j = script$1j;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$1h = undefined;
+  const __vue_inject_styles__$1j = undefined;
   /* scoped */
-  const __vue_scope_id__$1h = undefined;
+  const __vue_scope_id__$1j = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1h = undefined;
+  const __vue_module_identifier__$1j = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1h = undefined;
+  const __vue_is_functional_template__$1j = undefined;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CTabContent = normalizeComponent_1(
+  var CTabContent = __vue_normalize__(
     {},
-    __vue_inject_styles__$1h,
-    __vue_script__$1h,
-    __vue_scope_id__$1h,
-    __vue_is_functional_template__$1h,
-    __vue_module_identifier__$1h,
+    __vue_inject_styles__$1j,
+    __vue_script__$1j,
+    __vue_scope_id__$1j,
+    __vue_is_functional_template__$1j,
+    __vue_module_identifier__$1j,
+    false,
+    undefined,
     undefined,
     undefined
   );
 
-var script$1i = {
+var script$1k = {
   name: 'CTabs',
   components: {
     CTabNav: CTabNav,
@@ -27953,9 +26668,9 @@ var css$5 = "\n.fade-enter-active, .fade-leave-active {\n  -webkit-transition: o
 styleInject(css$5);
 
 /* script */
-const __vue_script__$1i = script$1i;
+const __vue_script__$1k = script$1k;
 /* template */
-var __vue_render__$I = function() {
+var __vue_render__$K = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -28038,30 +26753,34 @@ var __vue_render__$I = function() {
     2
   )
 };
-var __vue_staticRenderFns__$I = [];
-__vue_render__$I._withStripped = true;
+var __vue_staticRenderFns__$K = [];
+__vue_render__$K._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1i = undefined;
+  const __vue_inject_styles__$1k = undefined;
   /* scoped */
-  const __vue_scope_id__$1i = undefined;
+  const __vue_scope_id__$1k = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1i = undefined;
+  const __vue_module_identifier__$1k = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1i = false;
+  const __vue_is_functional_template__$1k = false;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CTabs = normalizeComponent_1(
-    { render: __vue_render__$I, staticRenderFns: __vue_staticRenderFns__$I },
-    __vue_inject_styles__$1i,
-    __vue_script__$1i,
-    __vue_scope_id__$1i,
-    __vue_is_functional_template__$1i,
-    __vue_module_identifier__$1i,
+  var CTabs = __vue_normalize__(
+    { render: __vue_render__$K, staticRenderFns: __vue_staticRenderFns__$K },
+    __vue_inject_styles__$1k,
+    __vue_script__$1k,
+    __vue_scope_id__$1k,
+    __vue_is_functional_template__$1k,
+    __vue_module_identifier__$1k,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -28137,7 +26856,7 @@ var toastMixin = {
   }
 };
 
-var script$1j = {
+var script$1l = {
   name: 'CToast',
   mixins: [toastMixin],
   components: {
@@ -28173,8 +26892,8 @@ var script$1j = {
   computed: {
     toastClasses: function toastClasses() {
       return ['toast', {
-        'd-none': !this.isShowed && !this.hidding,
-        'full': this.props.position.includes('full')
+        'show': this.isShowed || this.hidding,
+        'toast-full': this.props.position.includes('full')
       }];
     },
     directlyDeclaredProps: function directlyDeclaredProps() {
@@ -28263,13 +26982,13 @@ var script$1j = {
   }
 };
 
-var css$6 = "\n.toast[data-v-fd61e04c] {\n  opacity: 1;\n}\n.toast.full[data-v-fd61e04c] {\n  max-width: 100%;\n}\n.toast[data-v-fd61e04c]:last-child {\n  margin-bottom: 0.75rem;\n}\n.fade-enter-active[data-v-fd61e04c] {\n  -webkit-transition: opacity .5s;\n  transition: opacity .5s;\n}\n.fade-leave-active[data-v-fd61e04c] {\n  -webkit-transition: opacity 2s;\n  transition: opacity 2s;\n}\n.fade-enter[data-v-fd61e04c], .fade-leave-to[data-v-fd61e04c] {\n  opacity: 0;\n}\n";
+var css$6 = "\n.fade-enter-active[data-v-9fd8f11c] {\n  -webkit-transition: opacity .5s;\n  transition: opacity .5s;\n}\n.fade-leave-active[data-v-9fd8f11c] {\n  -webkit-transition: opacity 2s;\n  transition: opacity 2s;\n}\n.fade-enter[data-v-9fd8f11c], .fade-leave-to[data-v-9fd8f11c] {\n  opacity: 0;\n}\n";
 styleInject(css$6);
 
 /* script */
-const __vue_script__$1j = script$1j;
+const __vue_script__$1l = script$1l;
 /* template */
-var __vue_render__$J = function() {
+var __vue_render__$L = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -28335,35 +27054,39 @@ var __vue_render__$J = function() {
     ]
   )
 };
-var __vue_staticRenderFns__$J = [];
-__vue_render__$J._withStripped = true;
+var __vue_staticRenderFns__$L = [];
+__vue_render__$L._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1j = undefined;
+  const __vue_inject_styles__$1l = undefined;
   /* scoped */
-  const __vue_scope_id__$1j = "data-v-fd61e04c";
+  const __vue_scope_id__$1l = "data-v-9fd8f11c";
   /* module identifier */
-  const __vue_module_identifier__$1j = undefined;
+  const __vue_module_identifier__$1l = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1j = false;
+  const __vue_is_functional_template__$1l = false;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CToast = normalizeComponent_1(
-    { render: __vue_render__$J, staticRenderFns: __vue_staticRenderFns__$J },
-    __vue_inject_styles__$1j,
-    __vue_script__$1j,
-    __vue_scope_id__$1j,
-    __vue_is_functional_template__$1j,
-    __vue_module_identifier__$1j,
+  var CToast = __vue_normalize__(
+    { render: __vue_render__$L, staticRenderFns: __vue_staticRenderFns__$L },
+    __vue_inject_styles__$1l,
+    __vue_script__$1l,
+    __vue_scope_id__$1l,
+    __vue_is_functional_template__$1l,
+    __vue_module_identifier__$1l,
+    false,
+    undefined,
     undefined,
     undefined
   );
 
-var script$1k = {
+var script$1m = {
   name: 'CToaster',
   provide: function provide() {
     var _this = this;
@@ -28388,17 +27111,17 @@ var script$1k = {
   computed: {
     toasterClasses: function toasterClasses() {
       return ['toaster', {
-        'd-flex flex-column-reverse': this.reverse
+        'toaster-reverse': !this.reverse
       }];
     }
   }
 };
 
 /* script */
-const __vue_script__$1k = script$1k;
+const __vue_script__$1m = script$1m;
 
 /* template */
-var __vue_render__$K = function() {
+var __vue_render__$M = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -28409,35 +27132,39 @@ var __vue_render__$K = function() {
     2
   )
 };
-var __vue_staticRenderFns__$K = [];
-__vue_render__$K._withStripped = true;
+var __vue_staticRenderFns__$M = [];
+__vue_render__$M._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1k = undefined;
+  const __vue_inject_styles__$1m = undefined;
   /* scoped */
-  const __vue_scope_id__$1k = undefined;
+  const __vue_scope_id__$1m = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1k = undefined;
+  const __vue_module_identifier__$1m = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1k = false;
+  const __vue_is_functional_template__$1m = false;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CToaster = normalizeComponent_1(
-    { render: __vue_render__$K, staticRenderFns: __vue_staticRenderFns__$K },
-    __vue_inject_styles__$1k,
-    __vue_script__$1k,
-    __vue_scope_id__$1k,
-    __vue_is_functional_template__$1k,
-    __vue_module_identifier__$1k,
+  var CToaster = __vue_normalize__(
+    { render: __vue_render__$M, staticRenderFns: __vue_staticRenderFns__$M },
+    __vue_inject_styles__$1m,
+    __vue_script__$1m,
+    __vue_scope_id__$1m,
+    __vue_is_functional_template__$1m,
+    __vue_module_identifier__$1m,
+    false,
+    undefined,
     undefined,
     undefined
   );
 
-var script$1l = {
+var script$1n = {
   name: 'CToggler',
   functional: true,
   props: {
@@ -28468,36 +27195,40 @@ var script$1l = {
 };
 
 /* script */
-const __vue_script__$1l = script$1l;
+const __vue_script__$1n = script$1n;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$1l = undefined;
+  const __vue_inject_styles__$1n = undefined;
   /* scoped */
-  const __vue_scope_id__$1l = undefined;
+  const __vue_scope_id__$1n = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1l = undefined;
+  const __vue_module_identifier__$1n = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1l = undefined;
+  const __vue_is_functional_template__$1n = undefined;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CToggler = normalizeComponent_1(
+  var CToggler = __vue_normalize__(
     {},
-    __vue_inject_styles__$1l,
-    __vue_script__$1l,
-    __vue_scope_id__$1l,
-    __vue_is_functional_template__$1l,
-    __vue_module_identifier__$1l,
+    __vue_inject_styles__$1n,
+    __vue_script__$1n,
+    __vue_scope_id__$1n,
+    __vue_is_functional_template__$1n,
+    __vue_module_identifier__$1n,
+    false,
+    undefined,
     undefined,
     undefined
   );
 
-var script$1m = {
+var script$1o = {
   name: 'CWidgetProgress',
   components: {
     CProgress: CProgress
@@ -28516,10 +27247,10 @@ var script$1m = {
 };
 
 /* script */
-const __vue_script__$1m = script$1m;
+const __vue_script__$1o = script$1o;
 
 /* template */
-var __vue_render__$L = function() {
+var __vue_render__$N = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -28556,30 +27287,34 @@ var __vue_render__$L = function() {
     ]
   )
 };
-var __vue_staticRenderFns__$L = [];
-__vue_render__$L._withStripped = true;
+var __vue_staticRenderFns__$N = [];
+__vue_render__$N._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1m = undefined;
+  const __vue_inject_styles__$1o = undefined;
   /* scoped */
-  const __vue_scope_id__$1m = undefined;
+  const __vue_scope_id__$1o = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1m = undefined;
+  const __vue_module_identifier__$1o = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1m = false;
+  const __vue_is_functional_template__$1o = false;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CWidgetProgress = normalizeComponent_1(
-    { render: __vue_render__$L, staticRenderFns: __vue_staticRenderFns__$L },
-    __vue_inject_styles__$1m,
-    __vue_script__$1m,
-    __vue_scope_id__$1m,
-    __vue_is_functional_template__$1m,
-    __vue_module_identifier__$1m,
+  var CWidgetProgress = __vue_normalize__(
+    { render: __vue_render__$N, staticRenderFns: __vue_staticRenderFns__$N },
+    __vue_inject_styles__$1o,
+    __vue_script__$1o,
+    __vue_scope_id__$1o,
+    __vue_is_functional_template__$1o,
+    __vue_module_identifier__$1o,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -28611,7 +27346,7 @@ __vue_render__$L._withStripped = true;
 //
 //
 //
-var script$1n = {
+var script$1p = {
   name: 'CWidgetIcon',
   props: {
     header: String,
@@ -28625,10 +27360,10 @@ var script$1n = {
 };
 
 /* script */
-const __vue_script__$1n = script$1n;
+const __vue_script__$1p = script$1p;
 
 /* template */
-var __vue_render__$M = function() {
+var __vue_render__$O = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -28672,30 +27407,34 @@ var __vue_render__$M = function() {
     )
   ])
 };
-var __vue_staticRenderFns__$M = [];
-__vue_render__$M._withStripped = true;
+var __vue_staticRenderFns__$O = [];
+__vue_render__$O._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1n = undefined;
+  const __vue_inject_styles__$1p = undefined;
   /* scoped */
-  const __vue_scope_id__$1n = undefined;
+  const __vue_scope_id__$1p = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1n = undefined;
+  const __vue_module_identifier__$1p = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1n = false;
+  const __vue_is_functional_template__$1p = false;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CWidgetIcon = normalizeComponent_1(
-    { render: __vue_render__$M, staticRenderFns: __vue_staticRenderFns__$M },
-    __vue_inject_styles__$1n,
-    __vue_script__$1n,
-    __vue_scope_id__$1n,
-    __vue_is_functional_template__$1n,
-    __vue_module_identifier__$1n,
+  var CWidgetIcon = __vue_normalize__(
+    { render: __vue_render__$O, staticRenderFns: __vue_staticRenderFns__$O },
+    __vue_inject_styles__$1p,
+    __vue_script__$1p,
+    __vue_scope_id__$1p,
+    __vue_is_functional_template__$1p,
+    __vue_module_identifier__$1p,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -28732,7 +27471,7 @@ __vue_render__$M._withStripped = true;
 //
 //
 //
-var script$1o = {
+var script$1q = {
   name: 'CWidgetBrand',
   props: {
     color: String,
@@ -28745,10 +27484,10 @@ var script$1o = {
 };
 
 /* script */
-const __vue_script__$1o = script$1o;
+const __vue_script__$1q = script$1q;
 
 /* template */
-var __vue_render__$N = function() {
+var __vue_render__$P = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -28786,7 +27525,7 @@ var __vue_render__$N = function() {
               : _vm._e()
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "vr" }),
+          _c("div", { staticClass: "c-vr" }),
           _vm._v(" "),
           _c("div", { staticClass: "col" }, [
             _vm.leftHeader
@@ -28807,35 +27546,39 @@ var __vue_render__$N = function() {
     2
   )
 };
-var __vue_staticRenderFns__$N = [];
-__vue_render__$N._withStripped = true;
+var __vue_staticRenderFns__$P = [];
+__vue_render__$P._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1o = undefined;
+  const __vue_inject_styles__$1q = undefined;
   /* scoped */
-  const __vue_scope_id__$1o = undefined;
+  const __vue_scope_id__$1q = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1o = undefined;
+  const __vue_module_identifier__$1q = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1o = false;
+  const __vue_is_functional_template__$1q = false;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CWidgetBrand = normalizeComponent_1(
-    { render: __vue_render__$N, staticRenderFns: __vue_staticRenderFns__$N },
-    __vue_inject_styles__$1o,
-    __vue_script__$1o,
-    __vue_scope_id__$1o,
-    __vue_is_functional_template__$1o,
-    __vue_module_identifier__$1o,
+  var CWidgetBrand = __vue_normalize__(
+    { render: __vue_render__$P, staticRenderFns: __vue_staticRenderFns__$P },
+    __vue_inject_styles__$1q,
+    __vue_script__$1q,
+    __vue_scope_id__$1q,
+    __vue_is_functional_template__$1q,
+    __vue_module_identifier__$1q,
+    false,
+    undefined,
     undefined,
     undefined
   );
 
-var script$1p = {
+var script$1r = {
   name: 'CWidgetProgressIcon',
   components: {
     CProgress: CProgress
@@ -28853,10 +27596,10 @@ var script$1p = {
 };
 
 /* script */
-const __vue_script__$1p = script$1p;
+const __vue_script__$1r = script$1r;
 
 /* template */
-var __vue_render__$O = function() {
+var __vue_render__$Q = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -28904,30 +27647,34 @@ var __vue_render__$O = function() {
     ]
   )
 };
-var __vue_staticRenderFns__$O = [];
-__vue_render__$O._withStripped = true;
+var __vue_staticRenderFns__$Q = [];
+__vue_render__$Q._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1p = undefined;
+  const __vue_inject_styles__$1r = undefined;
   /* scoped */
-  const __vue_scope_id__$1p = undefined;
+  const __vue_scope_id__$1r = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1p = undefined;
+  const __vue_module_identifier__$1r = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1p = false;
+  const __vue_is_functional_template__$1r = false;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CWidgetProgressIcon = normalizeComponent_1(
-    { render: __vue_render__$O, staticRenderFns: __vue_staticRenderFns__$O },
-    __vue_inject_styles__$1p,
-    __vue_script__$1p,
-    __vue_scope_id__$1p,
-    __vue_is_functional_template__$1p,
-    __vue_module_identifier__$1p,
+  var CWidgetProgressIcon = __vue_normalize__(
+    { render: __vue_render__$Q, staticRenderFns: __vue_staticRenderFns__$Q },
+    __vue_inject_styles__$1r,
+    __vue_script__$1r,
+    __vue_scope_id__$1r,
+    __vue_is_functional_template__$1r,
+    __vue_module_identifier__$1r,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -28943,7 +27690,7 @@ __vue_render__$O._withStripped = true;
 //
 //
 //
-var script$1q = {
+var script$1s = {
   name: 'CWidgetDropdown',
   props: {
     color: String,
@@ -28953,10 +27700,10 @@ var script$1q = {
 };
 
 /* script */
-const __vue_script__$1q = script$1q;
+const __vue_script__$1s = script$1s;
 
 /* template */
-var __vue_render__$P = function() {
+var __vue_render__$R = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -28984,30 +27731,34 @@ var __vue_render__$P = function() {
     2
   )
 };
-var __vue_staticRenderFns__$P = [];
-__vue_render__$P._withStripped = true;
+var __vue_staticRenderFns__$R = [];
+__vue_render__$R._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1q = undefined;
+  const __vue_inject_styles__$1s = undefined;
   /* scoped */
-  const __vue_scope_id__$1q = undefined;
+  const __vue_scope_id__$1s = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1q = undefined;
+  const __vue_module_identifier__$1s = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1q = false;
+  const __vue_is_functional_template__$1s = false;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CWidgetDropdown = normalizeComponent_1(
-    { render: __vue_render__$P, staticRenderFns: __vue_staticRenderFns__$P },
-    __vue_inject_styles__$1q,
-    __vue_script__$1q,
-    __vue_scope_id__$1q,
-    __vue_is_functional_template__$1q,
-    __vue_module_identifier__$1q,
+  var CWidgetDropdown = __vue_normalize__(
+    { render: __vue_render__$R, staticRenderFns: __vue_staticRenderFns__$R },
+    __vue_inject_styles__$1s,
+    __vue_script__$1s,
+    __vue_scope_id__$1s,
+    __vue_is_functional_template__$1s,
+    __vue_module_identifier__$1s,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -29032,7 +27783,7 @@ __vue_render__$P._withStripped = true;
 //
 //
 //
-var script$1r = {
+var script$1t = {
   name: 'CWidgetHeaderDetails',
   props: {
     color: String,
@@ -29044,10 +27795,10 @@ var script$1r = {
 };
 
 /* script */
-const __vue_script__$1r = script$1r;
+const __vue_script__$1t = script$1t;
 
 /* template */
-var __vue_render__$Q = function() {
+var __vue_render__$S = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -29092,30 +27843,34 @@ var __vue_render__$Q = function() {
     ]
   )
 };
-var __vue_staticRenderFns__$Q = [];
-__vue_render__$Q._withStripped = true;
+var __vue_staticRenderFns__$S = [];
+__vue_render__$S._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1r = undefined;
+  const __vue_inject_styles__$1t = undefined;
   /* scoped */
-  const __vue_scope_id__$1r = undefined;
+  const __vue_scope_id__$1t = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1r = undefined;
+  const __vue_module_identifier__$1t = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1r = false;
+  const __vue_is_functional_template__$1t = false;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CWidgetHeaderDetails = normalizeComponent_1(
-    { render: __vue_render__$Q, staticRenderFns: __vue_staticRenderFns__$Q },
-    __vue_inject_styles__$1r,
-    __vue_script__$1r,
-    __vue_scope_id__$1r,
-    __vue_is_functional_template__$1r,
-    __vue_module_identifier__$1r,
+  var CWidgetHeaderDetails = __vue_normalize__(
+    { render: __vue_render__$S, staticRenderFns: __vue_staticRenderFns__$S },
+    __vue_inject_styles__$1t,
+    __vue_script__$1t,
+    __vue_scope_id__$1t,
+    __vue_is_functional_template__$1t,
+    __vue_module_identifier__$1t,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -29137,7 +27892,7 @@ __vue_render__$Q._withStripped = true;
 //
 //
 //
-var script$1s = {
+var script$1u = {
   name: 'CWidgetSimple',
   props: {
     header: String,
@@ -29146,10 +27901,10 @@ var script$1s = {
 };
 
 /* script */
-const __vue_script__$1s = script$1s;
+const __vue_script__$1u = script$1u;
 
 /* template */
-var __vue_render__$R = function() {
+var __vue_render__$T = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -29180,30 +27935,34 @@ var __vue_render__$R = function() {
     )
   ])
 };
-var __vue_staticRenderFns__$R = [];
-__vue_render__$R._withStripped = true;
+var __vue_staticRenderFns__$T = [];
+__vue_render__$T._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1s = undefined;
+  const __vue_inject_styles__$1u = undefined;
   /* scoped */
-  const __vue_scope_id__$1s = undefined;
+  const __vue_scope_id__$1u = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1s = undefined;
+  const __vue_module_identifier__$1u = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1s = false;
+  const __vue_is_functional_template__$1u = false;
   /* style inject */
   
   /* style inject SSR */
   
+  /* style inject shadow dom */
+  
 
   
-  var CWidgetSimple = normalizeComponent_1(
-    { render: __vue_render__$R, staticRenderFns: __vue_staticRenderFns__$R },
-    __vue_inject_styles__$1s,
-    __vue_script__$1s,
-    __vue_scope_id__$1s,
-    __vue_is_functional_template__$1s,
-    __vue_module_identifier__$1s,
+  var CWidgetSimple = __vue_normalize__(
+    { render: __vue_render__$T, staticRenderFns: __vue_staticRenderFns__$T },
+    __vue_inject_styles__$1u,
+    __vue_script__$1u,
+    __vue_scope_id__$1u,
+    __vue_is_functional_template__$1u,
+    __vue_module_identifier__$1u,
+    false,
+    undefined,
     undefined,
     undefined
   );
@@ -29212,9 +27971,9 @@ __vue_render__$R._withStripped = true;
 
 var Components = /*#__PURE__*/Object.freeze({
 	__proto__: null,
-	CListGroup: CListGroup,
-	CListGroupItem: CListGroupItem,
+	CIcon: CIcon,
 	CAlert: CAlert,
+	CBadge: CBadge,
 	CBreadcrumb: CBreadcrumb,
 	CBreadcrumbRouter: CBreadcrumbRouter,
 	CButton: CButton,
@@ -29262,7 +28021,8 @@ var Components = /*#__PURE__*/Object.freeze({
 	CImg: CImg,
 	CJumbotron: CJumbotron,
 	CLink: CLink,
-	CBadge: CBadge,
+	CListGroup: CListGroup,
+	CListGroupItem: CListGroupItem,
 	CMedia: CMedia,
 	CModal: CModal,
 	CNav: CNav,
@@ -29286,6 +28046,7 @@ var Components = /*#__PURE__*/Object.freeze({
 	CSidebarNav: CSidebarNav,
 	CSidebarNavDivider: CSidebarNavDivider,
 	CSidebarNavDropdown: CSidebarNavDropdown,
+	CSidebarNavItem: CSidebarNavItem,
 	CSidebarNavLink: CSidebarNavLink,
 	CSidebarNavTitle: CSidebarNavTitle,
 	CSpinner: CSpinner,
@@ -30035,4 +28796,4 @@ var CoreuiVue = {
 }; // Export library
 
 export default CoreuiVue;
-export { CAlert, CBadge, CBreadcrumb, CBreadcrumbRouter, CButton, CButtonClose, CButtonGroup, CButtonToolbar, CCallout, CCard, CCardBody, CCardFooter, CCardGroup, CCardHeader, CCardImg, CCardImgOverlay, CCardLink, CCardSubtitle, CCardText, CCardTitle, CCarousel, CCarouselItem, CCol, CCollapse, CContainer, CDataTable, CDropdown, CDropdownDivider, CDropdownHeader, CDropdownItem, CEmbed, CEmitRootEvent, CFooter, CForm, CFormGroup, CHeader, CHeaderBrand, CHeaderNav, CHeaderNavItem, CHeaderNavLink, CImg, CInput, CInputCheckbox, CInputFile, CInputRadio, CJumbotron, CLink, CListGroup, CListGroupItem, CMedia, CModal, CNav, CNavItem, CNavbar, CNavbarBrand, CNavbarNav, CNavbarText, CPagination, CPopover, CProgress, CProgressBar, CRenderFunction, CRow, CScrollbar, CSelect, CSidebar, CSidebarBrand, CSidebarClose, CSidebarFooter, CSidebarForm, CSidebarHeader, CSidebarMinimizer, CSidebarNav, CSidebarNavDivider, CSidebarNavDropdown, CSidebarNavLink, CSidebarNavTitle, CSpinner, CSubheader, CSwitch, CTab, CTabs, CTextarea, CToast, CToaster, CToggler, CTooltip, CWidgetBrand, CWidgetDropdown, CWidgetHeaderDetails, CWidgetIcon, CWidgetProgress, CWidgetProgressIcon, CWidgetSimple };
+export { CAlert, CBadge, CBreadcrumb, CBreadcrumbRouter, CButton, CButtonClose, CButtonGroup, CButtonToolbar, CCallout, CCard, CCardBody, CCardFooter, CCardGroup, CCardHeader, CCardImg, CCardImgOverlay, CCardLink, CCardSubtitle, CCardText, CCardTitle, CCarousel, CCarouselItem, CCol, CCollapse, CContainer, CDataTable, CDropdown, CDropdownDivider, CDropdownHeader, CDropdownItem, CEmbed, CEmitRootEvent, CFooter, CForm, CFormGroup, CHeader, CHeaderBrand, CHeaderNav, CHeaderNavItem, CHeaderNavLink, CIcon, CImg, CInput, CInputCheckbox, CInputFile, CInputRadio, CJumbotron, CLink, CListGroup, CListGroupItem, CMedia, CModal, CNav, CNavItem, CNavbar, CNavbarBrand, CNavbarNav, CNavbarText, CPagination, CPopover, CProgress, CProgressBar, CRenderFunction, CRow, CScrollbar, CSelect, CSidebar, CSidebarBrand, CSidebarClose, CSidebarFooter, CSidebarForm, CSidebarHeader, CSidebarMinimizer, CSidebarNav, CSidebarNavDivider, CSidebarNavDropdown, CSidebarNavItem, CSidebarNavLink, CSidebarNavTitle, CSpinner, CSubheader, CSwitch, CTab, CTabs, CTextarea, CToast, CToaster, CToggler, CTooltip, CWidgetBrand, CWidgetDropdown, CWidgetHeaderDetails, CWidgetIcon, CWidgetProgress, CWidgetProgressIcon, CWidgetSimple };
