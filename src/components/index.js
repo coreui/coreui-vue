@@ -32,3 +32,6 @@ export * from './tabs'
 export * from './toast'
 export * from './toggler'
 export * from './widgets'
+
+import { CIcon } from '@coreui/icons-vue/index.js'
+export { CIcon }

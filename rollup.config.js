@@ -2,7 +2,7 @@ import { camelCase } from 'lodash';
 import path from 'path';
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
-import filesize from 'rollup-plugin-filesize';
+// import filesize from 'rollup-plugin-filesize';
 import json from 'rollup-plugin-json';
 import license from 'rollup-plugin-license';
 import postcss from 'rollup-plugin-postcss'
@@ -76,7 +76,7 @@ function genConfig(name) {
       commonjs({
         namedExports: {
           '@coreui/coreui/dist/js/coreui-utilities.js': ['deepObjectsMerge', 'getStyle'],
-          '@coreui/icons/vue': ['CIcon']
+          // '@coreui/icons/vue': ['CIcon']
         }
       }),
       postcss(),
@@ -99,7 +99,7 @@ function genConfig(name) {
           ['@vue/app', { modules: false }]
         ]
       }),
-      filesize()
+      // filesize()
     ].concat(opts.plugins || []),
     output: {
       exports: 'named',

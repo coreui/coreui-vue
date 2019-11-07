@@ -59,6 +59,7 @@
   "dependencies": {
     "@coreui/coreui": "3.0.0-beta.0",
     "@coreui/icons": "coreui/coreui-icons#v1-alpha",
+    "@coreui/icons-vue": "coreui/coreui-icons-vue#1.0.0-alpha.0",
     "clone": "^2.1.2",
     "perfect-scrollbar": "^1.4.0",
     "popper.js": "^1.16.0",

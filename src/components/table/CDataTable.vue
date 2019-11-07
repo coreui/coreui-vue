@@ -210,7 +210,7 @@
 <script>
 import CSpinner from '../spinner/CSpinner'
 import CPagination from '../pagination/CPagination'
-import { CIcon as CIconRaw} from '@coreui/icons/vue'
+import { CIcon as CIconRaw } from '@coreui/icons-vue/index.js'
 import { arrowTop, ban } from '@coreui/icons'
 const CIcon = Object.assign({}, CIconRaw, { icons : { arrowTop, ban }})
 
