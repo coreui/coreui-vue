@@ -30,7 +30,7 @@ export default {
     toasterClasses () {
       return [
         'toaster',
-        { 'd-flex flex-column-reverse': this.reverse }
+        { 'toaster-reverse': !this.reverse }
       ]
     }
   }

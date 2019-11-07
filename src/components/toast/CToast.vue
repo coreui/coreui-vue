@@ -71,8 +71,8 @@ export default {
       return [
         'toast',
         {
-          'd-none': !this.isShowed && !this.hidding,
-          'full': this.props.position.includes('full'),
+          'show': this.isShowed || this.hidding,
+          'toast-full': this.props.position.includes('full'),
         }
       ]
     },
@@ -152,15 +152,6 @@ export default {
 </script>
 
 <style scoped>
-  .toast {
-    opacity: 1;
-  }
-  .toast.full {
-    max-width: 100%;
-  }
-  .toast:last-child {
-    margin-bottom: 0.75rem;
-  }
   .fade-enter-active {
     transition: opacity .5s;
   }
