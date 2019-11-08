@@ -1,6 +1,6 @@
 <template>
   <CFormGroup
-    v-bind="{appendHtml, prependHtml, validFeedback, invalidFeedback,
+    v-bind="{append, prepend, validFeedback, invalidFeedback,
         tooltipFeedback, description, wrapperClasses, class: computedClasses}"
   >
     <template #label>
@@ -23,14 +23,8 @@
       />
     </template>
 
-
-    <template
-      v-for="slot in ['prepend', 'append', 'label-after-input',
-                      'valid-feedback', 'invalid-feedback','description']"
-      #[slot]
-    >
-      <slot :name="slot">
-      </slot>
+    <template v-for="slot in $options.slots" #[slot]>
+      <slot :name="slot"></slot>
     </template>
   </CFormGroup>
 </template>
@@ -43,6 +37,16 @@ const mixins = Object.values(allFormMixins)
 
 export default {
   name: 'CInput',
+  slots: [
+    'prepend', 
+    'prepend-content', 
+    'append-content', 
+    'append', 
+    'label-after-input',
+    'valid-feedback', 
+    'invalid-feedback',
+    'description'
+  ],
   inheritAttrs: false,
   components: { CFormGroup },
   mixins,
@@ -54,8 +58,8 @@ export default {
   //   tooltipFeedback: Boolean,
   //   description: String,
 
-  //   appendHtml: String,
-  //   prependHtml: String,
+  //   append: String,
+  //   prepend: String,
 
   //   label: String,
   //   wasValidated: Boolean,
@@ -156,10 +160,12 @@ export default {
     // haveInputGroup () {
     //   return Boolean(
     //     this.tooltipFeedback || 
-    //     this.appendHtml ||
-    //     this.prependHtml || 
+    //     this.append ||
+    //     this.prepend || 
     //     this.$slots.append || 
-    //     this.$slots.prepend
+    //     this.$slots.prepend || 
+    //     this.$slots['append-content'] ||
+    //     this.$slots['prepend-content']
     //   )
     // },
     // haveWrapper () {

@@ -5,8 +5,8 @@ const ComponentName = 'CFormGroup'
 const customWrapper = mount(Component, {
   propsData: {
     wrapperClasses: 'additional-wrapper-class',
-    appendHtml: 'appended',
-    prependHtml: 'prepended',
+    append: 'appended',
+    prepend: 'prepended',
     validFeedback: 'input is valid',
     invalidFeedback: 'input is invalid',
     tooltipFeedback: true,

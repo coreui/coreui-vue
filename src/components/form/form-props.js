@@ -6,8 +6,8 @@ const formGroupAlwaysSharedProps = {
 }
 const formGroupSharedProps = Object.assign(
   {}, formGroupAlwaysSharedProps,{
-  appendHtml: String,
-  prependHtml: String
+  append: String,
+  prepend: String
 })
 
 export const formGroupProps = Object.assign(

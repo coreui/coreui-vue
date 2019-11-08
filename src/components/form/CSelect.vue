@@ -1,7 +1,7 @@
 <template>
   <CFormGroup
     v-bind="{
-      appendHtml, prependHtml, validFeedback, invalidFeedback,
+      append, prepend, validFeedback, invalidFeedback,
       tooltipFeedback, description, wrapperClasses, class: computedClasses
     }"
   >
@@ -72,6 +72,8 @@ export default {
   components: { CFormGroup },
   slots: [
     'prepend',
+    'prepend-content',
+    'append-content',
     'append',
     'label-after-input',
     'valid-feedback',
@@ -87,8 +89,8 @@ export default {
   //   tooltipFeedback: Boolean,
   //   description: String,
 
-  //   appendHtml: String,
-  //   prependHtml: String,
+  //   append: String,
+  //   prepend: String,
 
   //   label: String,
   //   wasValidated: Boolean,
@@ -190,10 +192,12 @@ export default {
     // haveInputGroup () {
     //   return Boolean(
     //     this.tooltipFeedback || 
-    //     this.appendHtml ||
-    //     this.prependHtml || 
+    //     this.append ||
+    //     this.prepend || 
     //     this.$slots.append || 
-    //     this.$slots.prepend
+    //     this.$slots.prepend || 
+    //     this.$slots['append-content'] ||
+    //     this.$slots['prepend-content']
     //   )
     // },
     // haveWrapper () {

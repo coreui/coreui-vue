@@ -2,7 +2,6 @@
 
 exports[`CFormGroup renders correctly 1`] = `
 <div
-  class=""
   role="group"
 >
    

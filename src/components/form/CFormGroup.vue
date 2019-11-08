@@ -1,55 +1,47 @@
-<template functional>
-  <div 
-    :class="[data.class, data.staticClass]"
-    :style="[data.style, data.staticStyle]"
-    role="group"
-  >
-    <template v-if="props.wrapperClasses">
+<template>
+  <div role="group">
+    <template v-if="wrapperClasses">
       <slot name="label"></slot>
-      <div :class="props.wrapperClasses">
+      <div :class="wrapperClasses">
         <div
-          v-if="props.prependHtml || $slots.prepend"
+          v-if="prepend || $slots.prepend|| $slots['prepend-content']"
           class="input-group-prepend"
         >
           <slot name="prepend">
-            <span
-              class="input-group-text"
-              v-html="props.prependHtml"
-            ></span>
+            <span class="input-group-text"><slot name="prepend-content">{{prepend}}</slot></span>
           </slot>
         </div>
         <slot name="input"></slot>
         <slot name="label-after-input"></slot>
         <div
-          v-if="props.appendHtml || $slots.append"
+          v-if="append || $slots.append || $slots['append-content']"
           class="input-group-append"
         >
           <slot name="append">
-            <span
-              class="input-group-text"
-              v-html="props.appendHtml"
-            ></span>
+            <span class="input-group-text">
+              <slot name="append-content">{{append}}</slot>
+            </span>
           </slot>
         </div>
         <slot name="valid-feedback">
           <div
-            v-if="props.validFeedback"
-            :class="props.tooltipFeedback ? 'valid-tooltip' : 'valid-feedback'"
-            v-text="props.validFeedback"
+            v-if="validFeedback"
+            :class="tooltipFeedback ? 'valid-tooltip' : 'valid-feedback'"
+            v-text="validFeedback"
           ></div>
         </slot>
         <slot name="invalid-feedback">
           <div
-            v-if="props.invalidFeedback"
-            :class="props.tooltipFeedback ? 'invalid-tooltip' : 'invalid-feedback'"
-            v-text="props.invalidFeedback"
+            v-if="invalidFeedback"
+            :class="tooltipFeedback ? 'invalid-tooltip' : 'invalid-feedback'"
+            v-text="invalidFeedback"
           ></div>
         </slot>
         <slot name="description">
           <small
-            v-if="props.description"
+            v-if="description"
             class="form-text text-muted w-100"
-            v-text="props.description"
+            v-text="description"
           ></small>
         </slot>
       </div>
@@ -57,48 +49,44 @@
     <template v-else>
       <slot name="label"></slot>
       <div
-        v-if="props.prependHtml || $slots.prepend"
+        v-if="prepend || $slots.prepend || $slots['prepend-content']"
         class="input-group-prepend"
       >
         <slot name="prepend">
-          <span
-            class="input-group-text"
-            v-html="props.prependHtml"
-          ></span>
+          <span class="input-group-text"><slot name="prepend-content">{{prepend}}</slot></span>
         </slot>
       </div>
       <slot name="input"></slot>
       <slot name="label-after-input"></slot>
       <div
-        v-if="props.appendHtml || $slots.append"
+        v-if="append || $slots.append || $slots['append-content']"
         class="input-group-append"
       >
         <slot name="append">
-          <span
-            class="input-group-text"
-            v-html="props.appendHtml"
-          ></span>
+          <span class="input-group-text">
+            <slot name="append-content">{{append}}</slot>
+          </span>
         </slot>
       </div>
       <slot name="valid-feedback">
         <div
-          v-if="props.validFeedback"
-          :class="props.tooltipFeedback ? 'valid-tooltip' : 'valid-feedback'"
-          v-text="props.validFeedback"
+          v-if="validFeedback"
+          :class="tooltipFeedback ? 'valid-tooltip' : 'valid-feedback'"
+          v-text="validFeedback"
         ></div>
       </slot>
       <slot name="invalid-feedback">
         <div
-          v-if="props.invalidFeedback"
-          :class="props.tooltipFeedback ? 'invalid-tooltip' : 'invalid-feedback'"
-          v-text="props.invalidFeedback"
+          v-if="invalidFeedback"
+          :class="tooltipFeedback ? 'invalid-tooltip' : 'invalid-feedback'"
+          v-text="invalidFeedback"
         ></div>
       </slot>
       <slot name="description">
         <small
-          v-if="props.description"
+          v-if="description"
           class="form-text text-muted w-100"
-          v-text="props.description"
+          v-text="description"
         ></small>
       </slot>
     </template>
@@ -117,8 +105,8 @@ export default {
   //   tooltipFeedback: Boolean,
   //   description: String,
 
-  //   appendHtml: String,
-  //   prependHtml: String,
+  //   append: String,
+  //   prepend: String,
 
   //   wrapperClasses: [String, Array, Object],
   // },

@@ -186,15 +186,15 @@ export declare class CInputFile extends formSharedProps {
 }
 
 export declare class CFormGroup extends formSharedProps {
-  appendHtml: string
-  prependHtml: string
+  append: string
+  prepend: string
   wrapperClasses: [string, Array<any>, object]
 }
 
 export declare class CInput extends formSharedProps {
   type: string
-  appendHtml: string
-  prependHtml: string
+  append: string
+  prepend: string
   readonly: boolean
   plaintext: boolean
   value: string
@@ -210,8 +210,8 @@ export declare class CInput extends formSharedProps {
 }
 
 export declare class CInputRadio extends formSharedProps {
-  appendHtml: string
-  prependHtml: string
+  append: string
+  prepend: string
 
   label: string
   wasValidated: boolean
@@ -228,8 +228,8 @@ export declare class CInputRadio extends formSharedProps {
 export declare class CInputCheckbox extends CInputRadio {}
 
 export declare class CSelect extends formSharedProps {
-  appendHtml: string
-  prependHtml: string
+  append: string
+  prepend: string
 
   label: string
   wasValidated: boolean
@@ -248,8 +248,8 @@ export declare class CSelect extends formSharedProps {
 }
 
 export declare class CTextarea extends formSharedProps {
-  appendHtml: string
-  prependHtml: string
+  append: string
+  prepend: string
   readonly: boolean
   plaintext: boolean
   value: string

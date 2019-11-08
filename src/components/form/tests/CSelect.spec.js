@@ -38,8 +38,8 @@ const customWrapper = mount(Component, {
     custom: true,
     inline: true,
     size: 'lg',
-    appendHtml: 'appended',
-    prependHtml: 'prepended'
+    append: 'appended',
+    prepend: 'prepended'
   }
 })
 
