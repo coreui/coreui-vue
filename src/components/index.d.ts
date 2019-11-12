@@ -619,14 +619,6 @@ export declare class CWidgetDropdown extends Vue {
   text: string
 }
 
-export declare class CWidgetHeaderDetails extends Vue {
-  color: string
-  rightHeader: string
-  rightFooter: string
-  leftHeader: string
-  leftFooter: string
-}
-
 export declare class CWidgetIcon extends Vue {
   header: string
   text: string
