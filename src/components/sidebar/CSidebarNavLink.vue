@@ -7,6 +7,7 @@
     >
       <slot>
         <CIcon v-if="icon" v-bind="computedIcon"/>
+        <i v-if="fontIcon" :class="['c-sidebar-nav-icon', fontIcon]"/>
         {{name}}
         <CBadge
           v-if="badge"
@@ -20,7 +21,7 @@
   <CLink v-else>
     <slot>
       <CIcon v-if="icon" v-bind="computedIcon"/>
-      <i v-if="fontIcon" :class="['c-sidebar-nav-icon', fontIcon]"></i>
+      <i v-if="fontIcon" :class="['c-sidebar-nav-icon', fontIcon]"/>
       {{name}}
       <CBadge
         v-if="badge"
@@ -37,7 +38,7 @@ import CLink, { props as linkProps } from '../link/CLink'
 import CBadge from '../badge/CBadge'
 import CIcon from '@coreui/icons-vue/CIcon.vue'
 
-const props = Object.assign(linkProps, {
+const props = Object.assign({}, linkProps, {
   name: String,
   icon: [String, Object],
   fontIcon: String,
