@@ -217,7 +217,6 @@ export declare class CInputRadio extends formSharedProps {
   addLabelClasses: [string, Array<any>, object]
 
   checked: boolean
-  value: [string, number, boolean]
   custom: boolean
   inline: boolean
 }
@@ -521,7 +520,6 @@ export declare class CSwitch extends Vue {
   size: string
   shape: string
   checked: boolean
-  value: [string, number, boolean]
   labelOn: string
   labelOff: string
   type: string

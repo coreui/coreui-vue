@@ -58,7 +58,6 @@ exports[`CInputCheckbox renders correctly basic checkbox 1`] = `
     class="form-check-input"
     id="some_id"
     type="checkbox"
-    value=""
   />
    
   <label

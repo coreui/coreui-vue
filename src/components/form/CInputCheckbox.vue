@@ -7,7 +7,6 @@
         :id="safeId"
         :type="$options.type"
         :class="inputClasses"
-        :value="value"
         :checked="state"
         @change="onChange($event)"
       />
@@ -60,10 +59,6 @@ export default {
     // addLabelClasses: [String, Array, Object],
     
     // checked: [Boolean, String, Number],
-    // value: {
-    //   type: [String, Number, Boolean],
-    //   default: undefined
-    // },
     // custom: Boolean,
     // inline: Boolean
   // },

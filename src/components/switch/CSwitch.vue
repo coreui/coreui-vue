@@ -4,7 +4,6 @@
       v-bind="$attrs"
       :type="type"
       :checked="state"
-      :value="value"
       class="c-switch-input form-check-input"
       @change="onChange"
     >
@@ -36,10 +35,6 @@ export default {
       validator: value => ['','pill', 'square'].includes(value)
     },
     checked: Boolean,
-    value: {
-      type: [String, Number, Boolean],
-      default: undefined
-    },
     labelOn: String,
     labelOff: String,
     type: {

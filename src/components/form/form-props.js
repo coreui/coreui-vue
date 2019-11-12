@@ -78,10 +78,6 @@ export const selectProps = Object.assign(
 export const inputCheckboxProps = Object.assign(
   {}, formGroupAlwaysSharedProps, universalProps, {
   checked: Boolean,
-  value: {
-    type: [String, Number, Boolean],
-    default: undefined
-  },
   custom: Boolean,
   inline: Boolean
 })
