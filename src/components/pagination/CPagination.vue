@@ -9,7 +9,7 @@
           aria-label="Go to first page"
           :aria-disabled="activePage === 1"
         >
-          <span v-html="firstButtonHtml"></span>
+          <slot name="first-button">&laquo;</slot>
         </CLink>
       </li>
       <li v-if="arrows" :class="backArrowsClasses">
@@ -20,7 +20,7 @@
           aria-label="Go to previous page"
           :aria-disabled="activePage === 1"
         >
-          <span v-html="previousButtonHtml"></span>
+          <slot name="previous-button">&lsaquo;</slot>
         </CLink>
       </li>
       <li
@@ -63,7 +63,7 @@
           aria-label="Go to next page"
           :aria-disabled="activePage === pages"
         >
-          <span v-html="nextButtonHtml"></span>
+          <slot name="next-button">&rsaquo;</slot>
         </CLink>
       </li>
       <li v-if="doubleArrows" :class="nextArrowsClasses">
@@ -74,7 +74,7 @@
           aria-label="Go to last page"
           :aria-disabled="activePage === pages"
         >
-          <span v-html="lastButtonHtml"></span>
+          <slot name="last-button">&raquo;</slot>
         </CLink>
       </li>
     </ul>
@@ -122,22 +122,6 @@
       doubleArrows: {
         type: Boolean,
         default: true
-      },
-      firstButtonHtml: {
-        type: String,
-        default: '&laquo;'
-      },
-      previousButtonHtml: {
-        type: String,
-        default: '&lsaquo;'
-      },
-      nextButtonHtml: {
-        type: String,
-        default: '&rsaquo;'
-      },
-      lastButtonHtml: {
-        type: String,
-        default: '&raquo;'
       }
     },
     watch: {

@@ -9,11 +9,11 @@
       :style="computedStyles"
     >
       <div 
-        v-if="headerHtml !== undefined || $slots.header" 
+        v-if="header !== undefined || $slots.header" 
         class="toast-header"
       >
         <slot name="header">
-          <strong class="mr-auto" v-html="headerHtml"></strong>
+          <strong class="mr-auto">{{header}}</strong>
         </slot>
         <CButtonClose
           v-if="props.closeButton"
@@ -21,10 +21,9 @@
           class="ml-2 mb-1"
         />
       </div>
-      <div v-if="$slots.default" class="toast-body">
+      <div class="toast-body">
         <slot></slot>
       </div>
-      <div v-else class="toast-body" v-html="bodyHtml"></div>
     </div>
   </transition>
 </template>
@@ -41,8 +40,7 @@ export default {
   },
   props: {
     show: Boolean,
-    headerHtml: String,
-    bodyHtml: String
+    header: String
   },
   inject: {
     toaster: {

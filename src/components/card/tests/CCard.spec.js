@@ -8,10 +8,7 @@ const wrapper = mount(Component, {
       align: 'left',
       color: 'success',
       textColor: 'white',
-      borderColor: 'solid',
-      headerHtml: 'header',
-      footerHtml: 'footer',
-      bodyHtml: 'body'
+      borderColor: 'solid'
     }
   }
 })
@@ -31,14 +28,7 @@ const slotWrapper = mount(Component, {
   }
 })
 
-const noBodyCard = mount(Component, {
-  context: {
-    props: {
-      headerHtml: 'header',
-      footerHtml: 'footer'
-    }
-  }
-})
+const noBodyCard = mount(Component, {})
 
 describe(ComponentName, () => {
   it('has a name', () => {

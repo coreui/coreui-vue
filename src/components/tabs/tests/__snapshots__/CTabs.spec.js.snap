@@ -72,8 +72,10 @@ exports[`CTabs renders correctly 2`] = `
         class="nav-item"
       >
         <a
-          class="nav-link"
+          aria-disabled="true"
+          class="nav-link disabled"
           href="#"
+          tabindex="-1"
           target="_self"
         >
           tab 4

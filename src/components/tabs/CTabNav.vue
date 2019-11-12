@@ -4,9 +4,17 @@ import CLink, { propsFactory as linkPropsFactory } from '../link/CLink'
 export default {
   name: 'CTabNav',
   props: Object.assign(linkPropsFactory(), {
-    titleHtml: String,
+    title: String,
     customTitleSlot: Function
   }),
+  computed: {
+    linkProps () {
+      return Object.keys(linkPropsFactory()).reduce((props, key) => {
+        props[key] = this[key]
+        return props
+      }, {})
+    }
+  },
   render (h) {
     return h(
       'li',
@@ -18,11 +26,9 @@ export default {
           CLink,
           {
             staticClass: 'nav-link',
-            class: { 'active': this.active },
-            props: this.props,
-            domProps: this.titleHtml ? { innerHTML: this.titleHtml } : null
+            props: this.linkProps,
           },
-          this.customTitleSlot ? this.customTitleSlot() : null
+          this.customTitleSlot ? this.customTitleSlot() : this.title
         )
       ]
     )

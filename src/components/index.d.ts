@@ -61,9 +61,6 @@ declare class CardSharedClasses extends Vue {
 }
 
 export declare class CCard extends CardSharedClasses {
-  headerHtml: string
-  bodyHtml: string
-  footerHtml: string
   bodyWrapper: boolean
   accentColor: string
 }
@@ -427,10 +424,6 @@ export declare class CPagination extends Vue {
   dots: boolean
   arrows: boolean
   doubleArrows: boolean
-  firstButtonHtml: string
-  previousButtonHtml: string
-  nextButtonHtml: string
-  lastButtonHtml: string
   responsive: boolean
 }
 
@@ -575,7 +568,7 @@ export declare class CTabs extends Vue {
 }
 
 export declare class CTab extends Vue {
-  titleHtml: string 
+  title: string 
   active: boolean
   disabled: boolean
 }
@@ -589,8 +582,7 @@ declare class ToastProps extends Vue {
 
 export declare class CToast extends ToastProps {
   show: boolean
-  headerHtml: string
-  bodyHtml: string
+  header: string
 }
 
 export declare class CToaster extends ToastProps {

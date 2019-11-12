@@ -20,7 +20,7 @@ export default {
           }
         ]
       }),
-      children || [h('div', { domProps: { innerHTML: props.footerHtml } })]
+      children
     )
   }
 }

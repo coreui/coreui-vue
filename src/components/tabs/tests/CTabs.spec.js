@@ -44,9 +44,9 @@ const App = Vue.extend({
         }
       }, 
       [
-        h('CTab', { props: { active: true, titleHtml: 'tab1' }}, ['tab1 content']),
-        h('CTab', { props: { titleHtml: 'tab2' }}, ['tab2 content']),
-        h('CTab', { props: { titleHtml: 'tab3' }}),
+        h('CTab', { props: { active: true, title: 'tab1' }}, ['tab1 content']),
+        h('CTab', { props: { title: 'tab2' }}, ['tab2 content']),
+        h('CTab', { props: { title: 'tab3' }}),
         h(
           'CTab',
           { props: { disabled: true }, scopedSlots: { title: () => 'tab 4' }},

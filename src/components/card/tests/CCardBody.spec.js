@@ -8,10 +8,7 @@ const wrapper = mount(Component, {
       align: 'left',
       color: 'primary',
       textColor: 'white',
-      borderColor: 'solid',
-      titleHtml: 'title',
-      subtitleHtml: 'subtitle',
-      bodyHtml: 'body content'
+      borderColor: 'solid'
     }
   }
 })

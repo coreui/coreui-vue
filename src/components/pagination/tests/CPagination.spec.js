@@ -2,7 +2,15 @@ import { mount } from '@vue/test-utils'
 import Component from '../CPagination'
 
 const ComponentName = 'CPagination'
-const defaultWrapper = mount(Component)
+const wrapper = mount(Component,{
+  slots: {
+    'first-button': 'Go to first',
+    'previous-button': 'Go to previous',
+    'next-button': 'Go to next',
+    'last-button': 'Go to last',
+  }
+})
+
 const customWrapper = mount(Component, {
   propsData: {
     activePage: 9,
@@ -13,7 +21,8 @@ const customWrapper = mount(Component, {
     dots: false,
     arrows: false,
     doubleArrows: false
-  }
+  },
+
 })
 
 describe(ComponentName, () => {
@@ -21,7 +30,7 @@ describe(ComponentName, () => {
     expect(Component.name).toMatch(ComponentName)
   })
   it('renders correctly', () => {
-    expect(defaultWrapper.element).toMatchSnapshot()
+    expect(wrapper.element).toMatchSnapshot()
   })
   it('renders correctly', () => {
     expect(customWrapper.element).toMatchSnapshot()
@@ -31,11 +40,11 @@ describe(ComponentName, () => {
     expect(customWrapper.emitted()['update:activePage']).toBeTruthy()
   })
   it('emits update:activePage event when inactive item is clicked', () => {
-    const links = defaultWrapper.findAll('.page-link')
+    const links = wrapper.findAll('.page-link')
     links.at(2).trigger('click')
-    expect(defaultWrapper.emitted()['update:activePage']).not.toBeTruthy()
+    expect(wrapper.emitted()['update:activePage']).not.toBeTruthy()
 
     links.at(4).trigger('click')
-    expect(defaultWrapper.emitted()['update:activePage']).toBeTruthy()
+    expect(wrapper.emitted()['update:activePage']).toBeTruthy()
   })
 })

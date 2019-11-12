@@ -18,9 +18,7 @@ exports[`CPagination renders correctly 1`] = `
         tabindex="-1"
         target="_self"
       >
-        <span>
-          «
-        </span>
+        Go to first
       </a>
     </li>
      
@@ -35,9 +33,7 @@ exports[`CPagination renders correctly 1`] = `
         tabindex="-1"
         target="_self"
       >
-        <span>
-          ‹
-        </span>
+        Go to previous
       </a>
     </li>
      
@@ -120,9 +116,7 @@ exports[`CPagination renders correctly 1`] = `
         href="#"
         target="_self"
       >
-        <span>
-          ›
-        </span>
+        Go to next
       </a>
     </li>
      
@@ -135,9 +129,7 @@ exports[`CPagination renders correctly 1`] = `
         href="#"
         target="_self"
       >
-        <span>
-          »
-        </span>
+        Go to last
       </a>
     </li>
   </ul>

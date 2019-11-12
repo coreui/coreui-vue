@@ -2,7 +2,7 @@
 import { mergeData } from 'vue-functional-data-merge'
 import CLink, { props as linkProps } from '../link/CLink'
 
-const props = Object.assign(linkProps, {
+const props = Object.assign({}, linkProps, {
   tag: {
     type: String,
     default: 'span'

@@ -6,7 +6,7 @@
           v-for="(tab, key) in ctabInstances"
           @click.native="tabClick(tab)"
           v-bind="tab.$attrs"
-          :title-html="tab.titleHtml"
+          :title="tab.title"
           :custom-title-slot="tab.$scopedSlots.title"
           :active="tab === activeTab"
           :disabled="tab.disabled"

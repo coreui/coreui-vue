@@ -674,9 +674,7 @@ exports[`CDataTable renders correctly 2`] = `
           tabindex="-1"
           target="_self"
         >
-          <span>
-            «
-          </span>
+          «
         </a>
       </li>
        
@@ -691,9 +689,7 @@ exports[`CDataTable renders correctly 2`] = `
           tabindex="-1"
           target="_self"
         >
-          <span>
-            ‹
-          </span>
+          ‹
         </a>
       </li>
        
@@ -727,9 +723,7 @@ exports[`CDataTable renders correctly 2`] = `
           tabindex="-1"
           target="_self"
         >
-          <span>
-            ›
-          </span>
+          ›
         </a>
       </li>
        
@@ -744,9 +738,7 @@ exports[`CDataTable renders correctly 2`] = `
           tabindex="-1"
           target="_self"
         >
-          <span>
-            »
-          </span>
+          »
         </a>
       </li>
     </ul>
