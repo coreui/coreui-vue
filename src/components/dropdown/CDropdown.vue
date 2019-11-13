@@ -196,6 +196,7 @@ export default {
 
     togglerAttrs () {
       return {
+        'type': 'button',
         'aria-expanded': this.visible ? 'true' : 'false',
         'aria-haspopup': 'true',
       }

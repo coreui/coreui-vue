@@ -8,6 +8,7 @@ exports[`CDropdown renders correctly 1`] = `
     aria-expanded="false"
     aria-haspopup="true"
     class="btn dropdown-toggle"
+    type="button"
   >
     Dropdown
   </button>
@@ -30,6 +31,7 @@ exports[`CDropdown renders correctly inNav 1`] = `
     class="additional-toggler-class nav-link bg-success"
     href="#"
     target="_self"
+    type="button"
   >
     Dropdown button
   </a>
@@ -58,6 +60,7 @@ exports[`CDropdown renders custom wrapper correctly 1`] = `
     aria-expanded="true"
     aria-haspopup="true"
     class="dropdown-toggle dropdown-toggle-split additional-toggler-class btn btn-lg btn-success"
+    type="button"
   />
    
   <div
