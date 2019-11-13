@@ -21,7 +21,7 @@
         class="col-sm-6 p-0"
         :class="{ 'offset-sm-6': !tableFilter }"
       >
-        <div class="form-inline float-sm-right">
+        <div class="form-inline justify-content-sm-end">
           <label class="mr-2">Items per page:</label>
           <select
             class="form-control"

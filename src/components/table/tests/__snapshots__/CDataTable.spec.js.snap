@@ -93,7 +93,7 @@ exports[`CDataTable renders correctly 2`] = `
       class="col-sm-6 p-0"
     >
       <div
-        class="form-inline float-sm-right"
+        class="form-inline justify-content-sm-end"
       >
         <label
           class="mr-2"

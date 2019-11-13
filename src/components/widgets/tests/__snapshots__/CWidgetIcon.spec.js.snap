@@ -5,10 +5,10 @@ exports[`CWidgetIcon matches custom props snapshot 1`] = `
   class="card"
 >
   <div
-    class="card-body clearfix d-flex align-items-center p-0"
+    class="card-body d-flex align-items-center p-0"
   >
     <div
-      class="float-left mr-3 text-white bg-success p-4"
+      class="mr-3 text-white bg-success p-4"
     />
      
     <div>
@@ -37,10 +37,10 @@ exports[`CWidgetIcon matches default props snapshot 1`] = `
   class="card"
 >
   <div
-    class="card-body clearfix d-flex align-items-center p-3"
+    class="card-body d-flex align-items-center p-3"
   >
     <div
-      class="float-left mr-3 text-white bg-undefined p-3"
+      class="mr-3 text-white bg-undefined p-3"
     />
      
     <div>

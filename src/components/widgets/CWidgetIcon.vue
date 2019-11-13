@@ -1,11 +1,11 @@
 <template>
   <div class="card">
     <div
-      class="card-body clearfix d-flex align-items-center"
+      class="card-body d-flex align-items-center"
       :class="iconPadding ? 'p-3' : 'p-0'"
     >
       <div
-        class="float-left mr-3 text-white"
+        class="mr-3 text-white"
         :class="[`bg-${color}`, iconPadding ? 'p-3' : 'p-4']"
       >
         <slot></slot>
