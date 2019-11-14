@@ -491,6 +491,7 @@ export declare class CSidebarNavDropdown extends Vue {
   icon: [string, object]
   fontIcon: string
   show: boolean
+  items: Array<object>
 }
 
 export declare class CSidebarNavItem extends CLink {

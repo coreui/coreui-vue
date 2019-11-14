@@ -6,18 +6,24 @@
       {{name}}
     </a>
     <ul class="c-sidebar-nav-dropdown-items" @click="itemClicked">
-      <slot></slot>
+      <slot>
+        <template v-for="(item, key) in items">
+          <CSidebarNavItem v-bind="item" :key="key"/>
+        </template>
+      </slot>
     </ul>
   </li>
 </template>
 
 <script>
 import CIcon from '@coreui/icons-vue/CIcon.vue'
+import CSidebarNavItem from './CSidebarNavItem'
 
 export default {
   name:'CSidebarNavDropdown',
   components: {
-    CIcon
+    CIcon,
+    CSidebarNavItem
   },
   props: {
     name: String,
@@ -27,7 +33,8 @@ export default {
     },
     icon: [String, Object],
     fontIcon: String,
-    show: Boolean
+    show: Boolean,
+    items: Array
   },
   data () {
     return {
