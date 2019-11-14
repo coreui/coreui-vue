@@ -442,6 +442,7 @@ export declare class CProgressBar extends CProgress {}
 
 export declare class CRenderFunction extends Vue {
   contentToRender: Array<any>
+  flat: boolean
 }
 export declare class CScrollbar extends Vue {
   settings: object
