@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
-import Component from '../CSidebarNavLink'
+import Component from '../CSidebarNavItem'
 
-const ComponentName = 'CSidebarNavLink'
+const ComponentName = 'CSidebarNavItem'
 const wrapper = mount(Component, {
   attachToDocument: true,
   propsData: {

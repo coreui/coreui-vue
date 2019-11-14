@@ -493,16 +493,13 @@ export declare class CSidebarNavDropdown extends Vue {
   show: boolean
 }
 
-export declare class CSidebarNavItem extends Vue {}
-
-export declare class CSidebarNavLink extends CLink {
+export declare class CSidebarNavItem extends CLink {
   name: string
   icon: [string, object]
   fontIcon: string
   badge: object
-  url: string
+  addLinkClasses: string
   label: boolean
-  inNavItem: boolean
 }
 
 export declare class CSidebarNavTitle extends Vue {}

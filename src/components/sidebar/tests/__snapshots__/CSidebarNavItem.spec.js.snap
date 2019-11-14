@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CSidebarNavLink.vue renders correctly 1`] = `
+exports[`CSidebarNavItem.vue renders correctly 1`] = `
 <li
   class="c-sidebar-nav-item"
   id="link"
@@ -31,7 +31,7 @@ exports[`CSidebarNavLink.vue renders correctly 1`] = `
 </li>
 `;
 
-exports[`CSidebarNavLink.vue renders correctly in label mode 1`] = `
+exports[`CSidebarNavItem.vue renders correctly in label mode 1`] = `
 <li
   class="c-sidebar-nav-item"
   id="link"
