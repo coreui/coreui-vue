@@ -23,8 +23,11 @@ export default {
   },
   methods: {
     convertItem (item) {
+      if (typeof item === 'string') {
+        return item
+      }
       let newItem = []
-      newItem[0] = item._component || 'div'
+      newItem[0] = item._name || 'div'
       newItem[1] = {}
       newItem[1].props = this.getProps(item)
 

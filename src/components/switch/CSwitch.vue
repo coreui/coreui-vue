@@ -58,15 +58,13 @@ export default {
   },
   computed: {
     classList () {
-      const havePrefix = ['opposite', 'outline'].includes(this.variant)
-      const colorPrefix = havePrefix ? `-${this.variant}` : ''
+      const variant = this.variant ? `-${this.variant}` : ''
       return [
         'c-switch form-check-label',
         {
           [`c-switch-${this.size}`]: this.size,
           [`c-switch-${this.shape}`]: this.shape,
-          'c-switch-3d': this.variant === '3d', 
-          [`c-switch${colorPrefix}-${this.color}`]: this.color,
+          [`c-switch${variant}-${this.color}`]: this.color,
           'c-switch-label': this.labelOn || this.labelOff
         }
       ]
