@@ -64,15 +64,4 @@ describe(ComponentName, () => {
   //     done()
   //   }, 25)
   // })
-  it('properly changes position', () => {
-    const stylesIncludes = (string) => {
-      return JSON.stringify(customWrapper.vm.computedStyles).includes(string)
-    }
-
-    customWrapper.setProps({ position: 'top-left'})
-    expect(stylesIncludes('"top":0')).toBe(true)
-
-    customWrapper.setProps({ position: 'top-full'})
-    expect(stylesIncludes('"right":0,"left":0')).toBe(true)
-  })
 })

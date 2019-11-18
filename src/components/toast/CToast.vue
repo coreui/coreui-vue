@@ -6,7 +6,6 @@
       role="alert"
       aria-live="assertive"
       aria-atomic="true"
-      :style="computedStyles"
     >
       <div 
         v-if="header !== undefined || $slots.header" 
@@ -29,16 +28,16 @@
 </template>
 
 <script>
-import toastMixin from './toast-mixin'
+import { props } from './toast-props'
 import CButtonClose from '../button/CButtonClose'
 
 export default {
   name: 'CToast',
-  mixins: [ toastMixin ],
   components: {
     CButtonClose
   },
   props: {
+    ...props,
     show: Boolean,
     header: String
   },
@@ -69,8 +68,7 @@ export default {
       return [
         'toast',
         {
-          'show': this.isShowed || this.hidding,
-          'toast-full': this.props.position.includes('full'),
+          'show': this.isShowed,
         }
       ]
     },
@@ -81,7 +79,7 @@ export default {
       return this.toaster && this.toaster.props ? this.toaster.props : {}
     },
     props () {
-      return Object.keys(toastMixin.props).reduce((computedProps, key) => {
+      return Object.keys(props).reduce((computedProps, key) => {
         const propIsDirectlyDeclared = this.directlyDeclaredProps.includes(key)
         const parentPropExists = this.injectedProps[key] !== undefined
         const propIsInherited = parentPropExists && !propIsDirectlyDeclared

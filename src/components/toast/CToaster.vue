@@ -1,14 +1,11 @@
 <template>
-  <div
-    :class="toasterClasses"
-    :style="computedStyles"
-  >
+  <div :class="toasterClasses">
     <slot></slot>
   </div>
 </template>
 
 <script>
-import toastMixin from './toast-mixin'
+import { props } from './toast-props'
 
 export default {
   name: 'CToaster',
@@ -19,18 +16,25 @@ export default {
     })
     return { toaster }
   },
-  mixins: [ toastMixin ],
   props: {
-    reverse: {
-      type: Boolean,
-      default: true
+    ...props,
+    position: {
+      type: String,
+      default: 'top-right',
+      validator: position => {
+        return [
+          '', 'static', 'top-right', 'top-left', 'top-center', 'top-full',
+          'bottom-right', 'bottom-left', 'bottom-center', 'bottom-full'
+        ].includes(position)
+      }
     }
   },
   computed: {
     toasterClasses () {
+      const hasFixedPosition = this.position && this.position !== 'static'
       return [
         'toaster',
-        { 'toaster-reverse': !this.reverse }
+        { [`toaster-${this.position}`]: hasFixedPosition }
       ]
     }
   }
