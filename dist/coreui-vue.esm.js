@@ -212,7 +212,7 @@ var shared = createCommonjsModule(function (module) {
 (module.exports = function (key, value) {
   return sharedStore[key] || (sharedStore[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.4.0',
+  version: '3.4.1',
   mode:  'global',
   copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
 });
@@ -2413,7 +2413,7 @@ const __vue_script__$2 = script$2;
     undefined
   );
 
-var props$1 = Object.assign(props, {
+var props$1 = Object.assign({}, props, {
   tag: {
     type: String,
     default: 'span'
@@ -3826,7 +3826,7 @@ var sharedCardProps = {
 
 var script$d = {
   functional: true,
-  name: 'CCardHeader',
+  name: 'CCardBody',
   props: sharedCardProps,
   render: function render(h, _ref) {
     var _ref2;
@@ -3834,14 +3834,10 @@ var script$d = {
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
-    return h(props.tag || 'header', a(data, {
-      staticClass: 'card-header',
-      class: [(_ref2 = {}, _defineProperty(_ref2, "text-".concat(props.align), Boolean(props.align)), _defineProperty(_ref2, "bg-".concat(props.color), Boolean(props.color)), _defineProperty(_ref2, "border-".concat(props.borderColor), Boolean(props.borderColor)), _defineProperty(_ref2, "text-".concat(props.textColor), Boolean(props.textColor)), _ref2)]
-    }), children || [h('div', {
-      domProps: {
-        innerHTML: props.headerHtml
-      }
-    })]);
+    return h(props.tag || 'div', a(data, {
+      staticClass: 'card-body',
+      class: [(_ref2 = {}, _defineProperty(_ref2, "bg-".concat(props.color), Boolean(props.color)), _defineProperty(_ref2, "border-".concat(props.borderColor), Boolean(props.borderColor)), _defineProperty(_ref2, "text-".concat(props.textColor), Boolean(props.textColor)), _defineProperty(_ref2, "text-".concat(props.align), Boolean(props.align)), _ref2)]
+    }), [children]);
   }
 };
 
@@ -3866,7 +3862,7 @@ const __vue_script__$d = script$d;
   
 
   
-  var CCardHeader = __vue_normalize__(
+  var CCardBody = __vue_normalize__(
     {},
     __vue_inject_styles__$d,
     __vue_script__$d,
@@ -3879,20 +3875,26 @@ const __vue_script__$d = script$d;
     undefined
   );
 
+var props$3 = Object.assign(sharedCardProps, {
+  bodyWrapper: Boolean,
+  accentColor: String
+});
 var script$e = {
   functional: true,
-  name: 'CCardBody',
-  props: sharedCardProps,
+  name: 'CCard',
+  props: props$3,
   render: function render(h, _ref) {
-    var _ref2;
+    var _class;
 
     var props = _ref.props,
         data = _ref.data,
-        children = _ref.children;
+        slots = _ref.slots;
+    var slot = slots().default;
+    var content = props.bodyWrapper ? h(CCardBody, slot) : slot;
     return h(props.tag || 'div', a(data, {
-      staticClass: 'card-body',
-      class: [(_ref2 = {}, _defineProperty(_ref2, "bg-".concat(props.color), Boolean(props.color)), _defineProperty(_ref2, "border-".concat(props.borderColor), Boolean(props.borderColor)), _defineProperty(_ref2, "text-".concat(props.textColor), Boolean(props.textColor)), _defineProperty(_ref2, "text-".concat(props.align), Boolean(props.align)), _ref2)]
-    }), [children]);
+      staticClass: 'card',
+      class: (_class = {}, _defineProperty(_class, "card-accent-".concat(props.accentColor), props.accentColor), _defineProperty(_class, "text-".concat(props.align), props.align), _defineProperty(_class, "bg-".concat(props.color), props.color), _defineProperty(_class, "border-".concat(props.borderColor), props.borderColor), _defineProperty(_class, "text-".concat(props.textColor), props.textColor), _class)
+    }), [content]);
   }
 };
 
@@ -3917,7 +3919,7 @@ const __vue_script__$e = script$e;
   
 
   
-  var CCardBody = __vue_normalize__(
+  var CCard = __vue_normalize__(
     {},
     __vue_inject_styles__$e,
     __vue_script__$e,
@@ -3943,11 +3945,7 @@ var script$f = {
     return h(props.tag || 'footer', a(data, {
       staticClass: 'card-footer',
       class: [(_ref2 = {}, _defineProperty(_ref2, "text-".concat(props.align), Boolean(props.align)), _defineProperty(_ref2, "bg-".concat(props.color), Boolean(props.color)), _defineProperty(_ref2, "border-".concat(props.borderColor), Boolean(props.borderColor)), _defineProperty(_ref2, "text-".concat(props.textColor), Boolean(props.textColor)), _ref2)]
-    }), children || [h('div', {
-      domProps: {
-        innerHTML: props.footerHtml
-      }
-    })]);
+    }), children);
   }
 };
 
@@ -3985,57 +3983,21 @@ const __vue_script__$f = script$f;
     undefined
   );
 
-var props$3 = Object.assign(sharedCardProps, {
-  headerHtml: String,
-  bodyHtml: String,
-  footerHtml: String,
-  bodyWrapper: Boolean,
-  accentColor: String
-});
 var script$g = {
   functional: true,
-  name: 'CCard',
-  props: props$3,
+  name: 'CCardGroup',
+  props: {
+    tag: String,
+    deck: Boolean,
+    columns: Boolean
+  },
   render: function render(h, _ref) {
-    var _class;
-
     var props = _ref.props,
         data = _ref.data,
-        slots = _ref.slots;
-    var header = h(false);
-    var main = slots().default;
-    var footer = h(false);
-
-    if (props.headerHtml) {
-      header = h(CCardHeader, {
-        domProps: {
-          innerHTML: props.headerHtml
-        }
-      });
-    }
-
-    if (main === undefined && props.bodyHtml) {
-      main = h(CCardBody, {
-        domProps: {
-          innerHTML: props.bodyHtml
-        }
-      });
-    } else if (props.bodyWrapper) {
-      main = h(CCardBody, main);
-    }
-
-    if (props.footerHtml) {
-      footer = h(CCardFooter, {
-        domProps: {
-          innerHTML: props.footerHtml
-        }
-      });
-    }
-
+        children = _ref.children;
     return h(props.tag || 'div', a(data, {
-      staticClass: 'card',
-      class: (_class = {}, _defineProperty(_class, "card-accent-".concat(props.accentColor), props.accentColor), _defineProperty(_class, "text-".concat(props.align), props.align), _defineProperty(_class, "bg-".concat(props.color), props.color), _defineProperty(_class, "border-".concat(props.borderColor), props.borderColor), _defineProperty(_class, "text-".concat(props.textColor), props.textColor), _class)
-    }), [header, main, footer]);
+      staticClass: "card-".concat(props.columns ? 'columns' : props.deck ? 'deck' : 'group')
+    }), children);
   }
 };
 
@@ -4060,7 +4022,7 @@ const __vue_script__$g = script$g;
   
 
   
-  var CCard = __vue_normalize__(
+  var CCardGroup = __vue_normalize__(
     {},
     __vue_inject_styles__$g,
     __vue_script__$g,
@@ -4075,18 +4037,17 @@ const __vue_script__$g = script$g;
 
 var script$h = {
   functional: true,
-  name: 'CCardGroup',
-  props: {
-    tag: String,
-    deck: Boolean,
-    columns: Boolean
-  },
+  name: 'CCardHeader',
+  props: sharedCardProps,
   render: function render(h, _ref) {
+    var _ref2;
+
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
-    return h(props.tag || 'div', a(data, {
-      staticClass: "card-".concat(props.columns ? 'columns' : props.deck ? 'deck' : 'group')
+    return h(props.tag || 'header', a(data, {
+      staticClass: 'card-header',
+      class: [(_ref2 = {}, _defineProperty(_ref2, "text-".concat(props.align), Boolean(props.align)), _defineProperty(_ref2, "bg-".concat(props.color), Boolean(props.color)), _defineProperty(_ref2, "border-".concat(props.borderColor), Boolean(props.borderColor)), _defineProperty(_ref2, "text-".concat(props.textColor), Boolean(props.textColor)), _ref2)]
     }), children);
   }
 };
@@ -4112,7 +4073,7 @@ const __vue_script__$h = script$h;
   
 
   
-  var CCardGroup = __vue_normalize__(
+  var CCardHeader = __vue_normalize__(
     {},
     __vue_inject_styles__$h,
     __vue_script__$h,
@@ -16068,7 +16029,7 @@ var mixin_1 = mixin;
 
 var coreuiUtilities = createCommonjsModule(function (module, exports) {
 /*!
-  * CoreUI v3.0.0-beta.1 (https://coreui.io)
+  * CoreUI v3.0.0-beta.2 (https://coreui.io)
   * Copyright 2019 Łukasz Holeczek
   * Licensed under MIT (https://coreui.io)
   */
@@ -16077,7 +16038,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 }(commonjsGlobal, (function (exports) {
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.1): classes.js
+   * CoreUI Utilities (v3.0.0-beta.2): classes.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16090,7 +16051,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.1): deep-objects-merge.js
+   * CoreUI Utilities (v3.0.0-beta.2): deep-objects-merge.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16111,7 +16072,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.1): get-css-custom-properties.js
+   * CoreUI Utilities (v3.0.0-beta.2): get-css-custom-properties.js
    * Licensed under MIT (https://coreui.io/license)
    * @returns {string} css custom property name
    * --------------------------------------------------------------------------
@@ -16154,7 +16115,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.1): get-style.js
+   * CoreUI Utilities (v3.0.0-beta.2): get-style.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16187,7 +16148,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.1): get-color.js
+   * CoreUI Utilities (v3.0.0-beta.2): get-color.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16204,7 +16165,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.1): hex-to-rgb.js
+   * CoreUI Utilities (v3.0.0-beta.2): hex-to-rgb.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16240,7 +16201,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.1): hex-to-rgba.js
+   * CoreUI Utilities (v3.0.0-beta.2): hex-to-rgba.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16280,7 +16241,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI (v3.0.0-beta.1): rgb-to-hex.js
+   * CoreUI (v3.0.0-beta.2): rgb-to-hex.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16463,6 +16424,7 @@ var script$p = {
     },
     togglerAttrs: function togglerAttrs() {
       return {
+        'type': 'button',
         'aria-expanded': this.visible ? 'true' : 'false',
         'aria-haspopup': 'true'
       };
@@ -16976,8 +16938,8 @@ var formGroupAlwaysSharedProps = {
   description: String
 };
 var formGroupSharedProps = Object.assign({}, formGroupAlwaysSharedProps, {
-  appendHtml: String,
-  prependHtml: String
+  append: String,
+  prepend: String
 });
 var formGroupProps = Object.assign({}, formGroupSharedProps, {
   wrapperClasses: [String, Array, Object]
@@ -17037,10 +16999,6 @@ var selectProps = Object.assign({}, formGroupSharedProps, props$8, {
 
 var inputCheckboxProps = Object.assign({}, formGroupAlwaysSharedProps, universalProps, {
   checked: Boolean,
-  value: {
-    type: [String, Number, Boolean],
-    default: undefined
-  },
   custom: Boolean,
   inline: Boolean
 });
@@ -17054,8 +17012,8 @@ var script$w = {
   //   invalidFeedback: String,
   //   tooltipFeedback: Boolean,
   //   description: String,
-  //   appendHtml: String,
-  //   prependHtml: String,
+  //   append: String,
+  //   prepend: String,
   //   wrapperClasses: [String, Array, Object],
   // },
 
@@ -17065,36 +17023,40 @@ var script$w = {
 const __vue_script__$w = script$w;
 
 /* template */
-var __vue_render__$a = function(_h, _vm) {
-  var _c = _vm._c;
+var __vue_render__$a = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
   return _c(
     "div",
-    {
-      class: [_vm.data.class, _vm.data.staticClass],
-      style: [_vm.data.style, _vm.data.staticStyle],
-      attrs: { role: "group" }
-    },
+    { attrs: { role: "group" } },
     [
-      _vm.props.wrapperClasses
+      _vm.wrapperClasses
         ? [
             _vm._t("label"),
             _vm._v(" "),
             _c(
               "div",
-              { class: _vm.props.wrapperClasses },
+              { class: _vm.wrapperClasses },
               [
-                _vm.props.prependHtml || _vm.$slots.prepend
+                _vm.prepend ||
+                _vm.$slots.prepend ||
+                _vm.$slots["prepend-content"]
                   ? _c(
                       "div",
                       { staticClass: "input-group-prepend" },
                       [
                         _vm._t("prepend", [
-                          _c("span", {
-                            staticClass: "input-group-text",
-                            domProps: {
-                              innerHTML: _vm._s(_vm.props.prependHtml)
-                            }
-                          })
+                          _c(
+                            "span",
+                            { staticClass: "input-group-text" },
+                            [
+                              _vm._t("prepend-content", [
+                                _vm._v(_vm._s(_vm.prepend))
+                              ])
+                            ],
+                            2
+                          )
                         ])
                       ],
                       2
@@ -17105,18 +17067,22 @@ var __vue_render__$a = function(_h, _vm) {
                 _vm._v(" "),
                 _vm._t("label-after-input"),
                 _vm._v(" "),
-                _vm.props.appendHtml || _vm.$slots.append
+                _vm.append || _vm.$slots.append || _vm.$slots["append-content"]
                   ? _c(
                       "div",
                       { staticClass: "input-group-append" },
                       [
                         _vm._t("append", [
-                          _c("span", {
-                            staticClass: "input-group-text",
-                            domProps: {
-                              innerHTML: _vm._s(_vm.props.appendHtml)
-                            }
-                          })
+                          _c(
+                            "span",
+                            { staticClass: "input-group-text" },
+                            [
+                              _vm._t("append-content", [
+                                _vm._v(_vm._s(_vm.append))
+                              ])
+                            ],
+                            2
+                          )
                         ])
                       ],
                       2
@@ -17124,36 +17090,32 @@ var __vue_render__$a = function(_h, _vm) {
                   : _vm._e(),
                 _vm._v(" "),
                 _vm._t("valid-feedback", [
-                  _vm.props.validFeedback
+                  _vm.validFeedback
                     ? _c("div", {
-                        class: _vm.props.tooltipFeedback
+                        class: _vm.tooltipFeedback
                           ? "valid-tooltip"
                           : "valid-feedback",
-                        domProps: {
-                          textContent: _vm._s(_vm.props.validFeedback)
-                        }
+                        domProps: { textContent: _vm._s(_vm.validFeedback) }
                       })
                     : _vm._e()
                 ]),
                 _vm._v(" "),
                 _vm._t("invalid-feedback", [
-                  _vm.props.invalidFeedback
+                  _vm.invalidFeedback
                     ? _c("div", {
-                        class: _vm.props.tooltipFeedback
+                        class: _vm.tooltipFeedback
                           ? "invalid-tooltip"
                           : "invalid-feedback",
-                        domProps: {
-                          textContent: _vm._s(_vm.props.invalidFeedback)
-                        }
+                        domProps: { textContent: _vm._s(_vm.invalidFeedback) }
                       })
                     : _vm._e()
                 ]),
                 _vm._v(" "),
                 _vm._t("description", [
-                  _vm.props.description
+                  _vm.description
                     ? _c("small", {
                         staticClass: "form-text text-muted w-100",
-                        domProps: { textContent: _vm._s(_vm.props.description) }
+                        domProps: { textContent: _vm._s(_vm.description) }
                       })
                     : _vm._e()
                 ])
@@ -17164,16 +17126,22 @@ var __vue_render__$a = function(_h, _vm) {
         : [
             _vm._t("label"),
             _vm._v(" "),
-            _vm.props.prependHtml || _vm.$slots.prepend
+            _vm.prepend || _vm.$slots.prepend || _vm.$slots["prepend-content"]
               ? _c(
                   "div",
                   { staticClass: "input-group-prepend" },
                   [
                     _vm._t("prepend", [
-                      _c("span", {
-                        staticClass: "input-group-text",
-                        domProps: { innerHTML: _vm._s(_vm.props.prependHtml) }
-                      })
+                      _c(
+                        "span",
+                        { staticClass: "input-group-text" },
+                        [
+                          _vm._t("prepend-content", [
+                            _vm._v(_vm._s(_vm.prepend))
+                          ])
+                        ],
+                        2
+                      )
                     ])
                   ],
                   2
@@ -17184,16 +17152,20 @@ var __vue_render__$a = function(_h, _vm) {
             _vm._v(" "),
             _vm._t("label-after-input"),
             _vm._v(" "),
-            _vm.props.appendHtml || _vm.$slots.append
+            _vm.append || _vm.$slots.append || _vm.$slots["append-content"]
               ? _c(
                   "div",
                   { staticClass: "input-group-append" },
                   [
                     _vm._t("append", [
-                      _c("span", {
-                        staticClass: "input-group-text",
-                        domProps: { innerHTML: _vm._s(_vm.props.appendHtml) }
-                      })
+                      _c(
+                        "span",
+                        { staticClass: "input-group-text" },
+                        [
+                          _vm._t("append-content", [_vm._v(_vm._s(_vm.append))])
+                        ],
+                        2
+                      )
                     ])
                   ],
                   2
@@ -17201,32 +17173,32 @@ var __vue_render__$a = function(_h, _vm) {
               : _vm._e(),
             _vm._v(" "),
             _vm._t("valid-feedback", [
-              _vm.props.validFeedback
+              _vm.validFeedback
                 ? _c("div", {
-                    class: _vm.props.tooltipFeedback
+                    class: _vm.tooltipFeedback
                       ? "valid-tooltip"
                       : "valid-feedback",
-                    domProps: { textContent: _vm._s(_vm.props.validFeedback) }
+                    domProps: { textContent: _vm._s(_vm.validFeedback) }
                   })
                 : _vm._e()
             ]),
             _vm._v(" "),
             _vm._t("invalid-feedback", [
-              _vm.props.invalidFeedback
+              _vm.invalidFeedback
                 ? _c("div", {
-                    class: _vm.props.tooltipFeedback
+                    class: _vm.tooltipFeedback
                       ? "invalid-tooltip"
                       : "invalid-feedback",
-                    domProps: { textContent: _vm._s(_vm.props.invalidFeedback) }
+                    domProps: { textContent: _vm._s(_vm.invalidFeedback) }
                   })
                 : _vm._e()
             ]),
             _vm._v(" "),
             _vm._t("description", [
-              _vm.props.description
+              _vm.description
                 ? _c("small", {
                     staticClass: "form-text text-muted w-100",
-                    domProps: { textContent: _vm._s(_vm.props.description) }
+                    domProps: { textContent: _vm._s(_vm.description) }
                   })
                 : _vm._e()
             ])
@@ -17245,7 +17217,7 @@ __vue_render__$a._withStripped = true;
   /* module identifier */
   const __vue_module_identifier__$w = undefined;
   /* functional template */
-  const __vue_is_functional_template__$w = true;
+  const __vue_is_functional_template__$w = false;
   /* style inject */
   
   /* style inject SSR */
@@ -17496,7 +17468,7 @@ var wrapperComputedProps = {
       return Boolean(this.horizontal);
     },
     haveInputGroup: function haveInputGroup() {
-      return Boolean(this.tooltipFeedback || this.appendHtml || this.prependHtml || this.$slots.append || this.$slots.prepend);
+      return Boolean(this.tooltipFeedback || this.append || this.prepend || this.$slots.append || this.$slots.prepend || this.$slots['append-content'] || this.$slots['prepend-content']);
     },
     haveWrapper: function haveWrapper() {
       return this.haveInputGroup || Boolean(this.addWrapperClasses || this.isHorizontal);
@@ -17574,6 +17546,7 @@ var allFormMixins = /*#__PURE__*/Object.freeze({
 var mixins = Object.values(allFormMixins);
 var script$x = {
   name: 'CInput',
+  slots: ['prepend', 'prepend-content', 'append-content', 'append', 'label-after-input', 'valid-feedback', 'invalid-feedback', 'description'],
   inheritAttrs: false,
   components: {
     CFormGroup: CFormGroup
@@ -17586,8 +17559,8 @@ var script$x = {
   //   invalidFeedback: String,
   //   tooltipFeedback: Boolean,
   //   description: String,
-  //   appendHtml: String,
-  //   prependHtml: String,
+  //   append: String,
+  //   prepend: String,
   //   label: String,
   //   wasValidated: Boolean,
   //   isValid: {
@@ -17681,10 +17654,12 @@ var script$x = {
     // haveInputGroup () {
     //   return Boolean(
     //     this.tooltipFeedback || 
-    //     this.appendHtml ||
-    //     this.prependHtml || 
+    //     this.append ||
+    //     this.prepend || 
     //     this.$slots.append || 
-    //     this.$slots.prepend
+    //     this.$slots.prepend || 
+    //     this.$slots['append-content'] ||
+    //     this.$slots['prepend-content']
     //   )
     // },
     // haveWrapper () {
@@ -17798,25 +17773,15 @@ var __vue_render__$b = function() {
               },
               proxy: true
             },
-            _vm._l(
-              [
-                "prepend",
-                "append",
-                "label-after-input",
-                "valid-feedback",
-                "invalid-feedback",
-                "description"
-              ],
-              function(slot) {
-                return {
-                  key: slot,
-                  fn: function() {
-                    return [_vm._t(slot)]
-                  },
-                  proxy: true
-                }
+            _vm._l(_vm.$options.slots, function(slot) {
+              return {
+                key: slot,
+                fn: function() {
+                  return [_vm._t(slot)]
+                },
+                proxy: true
               }
-            )
+            })
           ],
           null,
           true
@@ -17824,8 +17789,8 @@ var __vue_render__$b = function() {
       },
       "CFormGroup",
       {
-        appendHtml: _vm.appendHtml,
-        prependHtml: _vm.prependHtml,
+        append: _vm.append,
+        prepend: _vm.prepend,
         validFeedback: _vm.validFeedback,
         invalidFeedback: _vm.invalidFeedback,
         tooltipFeedback: _vm.tooltipFeedback,
@@ -17891,10 +17856,6 @@ var script$y = {
   // addInputClasses: [String, Array, Object],
   // addLabelClasses: [String, Array, Object],
   // checked: [Boolean, String, Number],
-  // value: {
-  //   type: [String, Number, Boolean],
-  //   default: undefined
-  // },
   // custom: Boolean,
   // inline: Boolean
   // },
@@ -17973,7 +17934,7 @@ var __vue_render__$c = function() {
                       {
                         class: _vm.inputClasses,
                         attrs: { id: _vm.safeId, type: _vm.$options.type },
-                        domProps: { value: _vm.value, checked: _vm.state },
+                        domProps: { checked: _vm.state },
                         on: {
                           change: function($event) {
                             return _vm.onChange($event)
@@ -18393,7 +18354,7 @@ var script$B = {
   components: {
     CFormGroup: CFormGroup
   },
-  slots: ['prepend', 'append', 'label-after-input', 'valid-feedback', 'invalid-feedback', 'description'],
+  slots: ['prepend', 'prepend-content', 'append-content', 'append', 'label-after-input', 'valid-feedback', 'invalid-feedback', 'description'],
   mixins: mixins$2,
   props: selectProps,
   // Html props: disabled, required don't use multiple
@@ -18402,8 +18363,8 @@ var script$B = {
   //   invalidFeedback: String,
   //   tooltipFeedback: Boolean,
   //   description: String,
-  //   appendHtml: String,
-  //   prependHtml: String,
+  //   append: String,
+  //   prepend: String,
   //   label: String,
   //   wasValidated: Boolean,
   //   isValid: {
@@ -18495,10 +18456,12 @@ var script$B = {
     // haveInputGroup () {
     //   return Boolean(
     //     this.tooltipFeedback || 
-    //     this.appendHtml ||
-    //     this.prependHtml || 
+    //     this.append ||
+    //     this.prepend || 
     //     this.$slots.append || 
-    //     this.$slots.prepend
+    //     this.$slots.prepend || 
+    //     this.$slots['append-content'] ||
+    //     this.$slots['prepend-content']
     //   )
     // },
     // haveWrapper () {
@@ -18681,8 +18644,8 @@ var __vue_render__$e = function() {
       },
       "CFormGroup",
       {
-        appendHtml: _vm.appendHtml,
-        prependHtml: _vm.prependHtml,
+        append: _vm.append,
+        prepend: _vm.prepend,
         validFeedback: _vm.validFeedback,
         invalidFeedback: _vm.invalidFeedback,
         tooltipFeedback: _vm.tooltipFeedback,
@@ -18729,6 +18692,7 @@ __vue_render__$e._withStripped = true;
 var mixins$3 = Object.values(allFormMixins);
 var script$C = {
   name: 'CTextarea',
+  slots: ['prepend', 'prepend-content', 'append-content', 'append', 'label-after-input', 'valid-feedback', 'invalid-feedback', 'description'],
   inheritAttrs: false,
   components: {
     CFormGroup: CFormGroup
@@ -18741,8 +18705,8 @@ var script$C = {
   //   invalidFeedback: String,
   //   tooltipFeedback: Boolean,
   //   description: String,
-  //   appendHtml: String,
-  //   prependHtml: String,
+  //   append: String,
+  //   prepend: String,
   //   label: String,
   //   wasValidated: Boolean,
   //   isValid: {
@@ -18831,10 +18795,12 @@ var script$C = {
     // haveInputGroup () {
     //   return Boolean(
     //     this.tooltipFeedback || 
-    //     this.appendHtml ||
-    //     this.prependHtml || 
+    //     this.append ||
+    //     this.prepend || 
     //     this.$slots.append || 
-    //     this.$slots.prepend
+    //     this.$slots.prepend || 
+    //     this.$slots['append-content'] ||
+    //     this.$slots['prepend-content']
     //   )
     // },
     // haveWrapper () {
@@ -18943,25 +18909,15 @@ var __vue_render__$f = function() {
               },
               proxy: true
             },
-            _vm._l(
-              [
-                "prepend",
-                "append",
-                "label-after-input",
-                "valid-feedback",
-                "invalid-feedback",
-                "description"
-              ],
-              function(slot) {
-                return {
-                  key: slot,
-                  fn: function() {
-                    return [_vm._t(slot)]
-                  },
-                  proxy: true
-                }
+            _vm._l(_vm.$options.slots, function(slot) {
+              return {
+                key: slot,
+                fn: function() {
+                  return [_vm._t(slot)]
+                },
+                proxy: true
               }
-            )
+            })
           ],
           null,
           true
@@ -18969,8 +18925,8 @@ var __vue_render__$f = function() {
       },
       "CFormGroup",
       {
-        appendHtml: _vm.appendHtml,
-        prependHtml: _vm.prependHtml,
+        append: _vm.append,
+        prepend: _vm.prepend,
         validFeedback: _vm.validFeedback,
         invalidFeedback: _vm.invalidFeedback,
         tooltipFeedback: _vm.tooltipFeedback,
@@ -21515,22 +21471,6 @@ var script$X = {
     doubleArrows: {
       type: Boolean,
       default: true
-    },
-    firstButtonHtml: {
-      type: String,
-      default: '&laquo;'
-    },
-    previousButtonHtml: {
-      type: String,
-      default: '&lsaquo;'
-    },
-    nextButtonHtml: {
-      type: String,
-      default: '&rsaquo;'
-    },
-    lastButtonHtml: {
-      type: String,
-      default: '&raquo;'
     }
   },
   watch: {
@@ -21659,11 +21599,8 @@ var __vue_render__$r = function() {
                       }
                     }
                   },
-                  [
-                    _c("span", {
-                      domProps: { innerHTML: _vm._s(_vm.firstButtonHtml) }
-                    })
-                  ]
+                  [_vm._t("first-button", [_vm._v("«")])],
+                  2
                 )
               ],
               1
@@ -21690,11 +21627,8 @@ var __vue_render__$r = function() {
                       }
                     }
                   },
-                  [
-                    _c("span", {
-                      domProps: { innerHTML: _vm._s(_vm.previousButtonHtml) }
-                    })
-                  ]
+                  [_vm._t("previous-button", [_vm._v("‹")])],
+                  2
                 )
               ],
               1
@@ -21774,11 +21708,8 @@ var __vue_render__$r = function() {
                       }
                     }
                   },
-                  [
-                    _c("span", {
-                      domProps: { innerHTML: _vm._s(_vm.nextButtonHtml) }
-                    })
-                  ]
+                  [_vm._t("next-button", [_vm._v("›")])],
+                  2
                 )
               ],
               1
@@ -21805,11 +21736,8 @@ var __vue_render__$r = function() {
                       }
                     }
                   },
-                  [
-                    _c("span", {
-                      domProps: { innerHTML: _vm._s(_vm.lastButtonHtml) }
-                    })
-                  ]
+                  [_vm._t("last-button", [_vm._v("»")])],
+                  2
                 )
               ],
               1
@@ -22192,6 +22120,53 @@ __vue_render__$t._withStripped = true;
     undefined,
     undefined
   );
+
+// `FlattenIntoArray` abstract operation
+// https://tc39.github.io/proposal-flatMap/#sec-FlattenIntoArray
+var flattenIntoArray = function (target, original, source, sourceLen, start, depth, mapper, thisArg) {
+  var targetIndex = start;
+  var sourceIndex = 0;
+  var mapFn = mapper ? bindContext$1(mapper, thisArg, 3) : false;
+  var element;
+
+  while (sourceIndex < sourceLen) {
+    if (sourceIndex in source) {
+      element = mapFn ? mapFn(source[sourceIndex], sourceIndex, original) : source[sourceIndex];
+
+      if (depth > 0 && isArray$4(element)) {
+        targetIndex = flattenIntoArray(target, original, element, toLength(element.length), targetIndex, depth - 1) - 1;
+      } else {
+        if (targetIndex >= 0x1FFFFFFFFFFFFF) throw TypeError('Exceed the acceptable array length');
+        target[targetIndex] = element;
+      }
+
+      targetIndex++;
+    }
+    sourceIndex++;
+  }
+  return targetIndex;
+};
+
+var flattenIntoArray_1 = flattenIntoArray;
+
+// `Array.prototype.flat` method
+// https://github.com/tc39/proposal-flatMap
+_export({ target: 'Array', proto: true }, {
+  flat: function flat(/* depthArg = 1 */) {
+    var depthArg = arguments.length ? arguments[0] : undefined;
+    var O = toObject(this);
+    var sourceLen = toLength(O.length);
+    var A = arraySpeciesCreate(O, 0);
+    A.length = flattenIntoArray_1(A, O, O, sourceLen, 0, depthArg === undefined ? 1 : toInteger(depthArg));
+    return A;
+  }
+});
+
+// this method was added to unscopables after implementation
+// in popular engines, so it's moved to a separate module
+
+
+addToUnscopables('flat');
 
 function _arrayWithoutHoles(arr) {
   if (isArray$3(arr)) {
@@ -22584,15 +22559,68 @@ if ( module.exports) {
 var script$_ = {
   name: 'CRenderFunction',
   props: {
-    contentToRender: Array
+    contentToRender: Array,
+    flat: Boolean
   },
   computed: {
-    content: function content() {
+    copiedContent: function copiedContent() {
       return clone_1(this.contentToRender);
+    },
+    content: function content() {
+      if (!this.flat) {
+        return this.copiedContent;
+      } else {
+        return this.convertedContent[0];
+      }
+    },
+    convertedContent: function convertedContent() {
+      var _this = this;
+
+      return this.copiedContent.map(function (item) {
+        return _this.convertItem(item);
+      });
     }
   },
+  methods: {
+    convertItem: function convertItem(item) {
+      var _this2 = this;
+
+      if (typeof item === 'string') {
+        return item;
+      }
+
+      var newItem = [];
+      newItem[0] = item._name || 'div';
+      newItem[1] = {};
+      newItem[1].props = this.getProps(item);
+      this.$options.renderFunctionOptions.forEach(function (option) {
+        //on option doesn't work, possible to use only nativeOn
+        if (item["_".concat(option)]) {
+          newItem[1][option] = item["_".concat(option)];
+        }
+      });
+
+      if (item._children) {
+        newItem[2] = item._children.map(function (item) {
+          return _this2.convertItem(item);
+        });
+      }
+
+      return newItem;
+    },
+    getProps: function getProps(item) {
+      return Object.keys(item).reduce(function (itemProps, key) {
+        if (!key.includes('_')) {
+          itemProps[key] = item[key];
+        }
+
+        return itemProps;
+      }, {});
+    }
+  },
+  renderFunctionOptions: ['attrs', 'directives', 'on', 'nativeOn', 'class', 'style', 'domProps', 'scopedSlots', 'slot', 'key', 'ref', 'refInFor'],
   render: function render(h) {
-    var _this = this;
+    var _this3 = this;
 
     var computeRenderFunction = function computeRenderFunction(renderFunction) {
       return renderFunction.map(function (item) {
@@ -22604,7 +22632,7 @@ var script$_ = {
               var el = computeRenderFunction(child);
               return h.apply(void 0, _toConsumableArray(el));
             } else if (child.slot) {
-              return _this.$scopedSlots[child.slot]();
+              return _this3.$scopedSlots[child.slot]();
             }
           });
         }
@@ -24898,10 +24926,156 @@ __vue_render__$D._withStripped = true;
     undefined
   );
 
+var props$e = Object.assign({}, props, {
+  name: String,
+  icon: [String, Object],
+  fontIcon: String,
+  badge: Object,
+  addLinkClasses: [String, Array, Object],
+  label: Boolean
+});
 var script$1a = {
+  name: 'CSidebarNavItem',
+  components: {
+    CLink: CLink,
+    CBadge: CBadge,
+    CIcon: CIcon
+  },
+  props: props$e,
+  computed: {
+    linkProps: function linkProps() {
+      var _this = this;
+
+      return Object.keys(props).reduce(function (props, key) {
+        props[key] = _this[key];
+        return props;
+      }, {});
+    },
+    addedLinkProps: function addedLinkProps() {
+      return this.$options.propsData.exact === undefined ? {
+        exact: true
+      } : {};
+    },
+    computedLinkProps: function computedLinkProps() {
+      return Object.assign(this.linkProps, this.addedLinkProps);
+    },
+    linkClasses: function linkClasses() {
+      return [this.label ? 'c-sidebar-nav-label' : 'c-sidebar-nav-link', this.addLinkClasses];
+    },
+    computedIcon: function computedIcon() {
+      if (_typeof(this.icon) === 'object') {
+        return Object.assign({
+          customClasses: 'c-sidebar-nav-icon'
+        }, this.icon);
+      } else {
+        return {
+          customClasses: 'c-sidebar-nav-icon',
+          name: this.icon
+        };
+      }
+    }
+  },
+  methods: {
+    click: function click(e) {
+      this.$emit('link-clicked', e);
+    }
+  }
+};
+
+/* script */
+const __vue_script__$1a = script$1a;
+
+/* template */
+var __vue_render__$E = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c(
+    "li",
+    { staticClass: "c-sidebar-nav-item" },
+    [
+      _vm._t("default", [
+        _c(
+          "CLink",
+          _vm._b(
+            {
+              class: _vm.linkClasses,
+              nativeOn: {
+                click: function($event) {
+                  return _vm.click($event)
+                }
+              }
+            },
+            "CLink",
+            _vm.computedLinkProps,
+            false
+          ),
+          [
+            _vm.icon
+              ? _c("CIcon", _vm._b({}, "CIcon", _vm.computedIcon, false))
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.fontIcon
+              ? _c("i", { class: ["c-sidebar-nav-icon", _vm.fontIcon] })
+              : _vm._e(),
+            _vm._v("\n      " + _vm._s(_vm.name) + "\n      "),
+            _vm.badge
+              ? _c(
+                  "CBadge",
+                  _vm._b(
+                    {},
+                    "CBadge",
+                    Object.assign({}, _vm.badge, { text: null }),
+                    false
+                  ),
+                  [_vm._v("\n        " + _vm._s(_vm.badge.text) + "\n      ")]
+                )
+              : _vm._e()
+          ],
+          1
+        )
+      ])
+    ],
+    2
+  )
+};
+var __vue_staticRenderFns__$E = [];
+__vue_render__$E._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$1a = undefined;
+  /* scoped */
+  const __vue_scope_id__$1a = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$1a = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$1a = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var CSidebarNavItem = __vue_normalize__(
+    { render: __vue_render__$E, staticRenderFns: __vue_staticRenderFns__$E },
+    __vue_inject_styles__$1a,
+    __vue_script__$1a,
+    __vue_scope_id__$1a,
+    __vue_is_functional_template__$1a,
+    __vue_module_identifier__$1a,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+var script$1b = {
   name: 'CSidebarNavDropdown',
   components: {
-    CIcon: CIcon
+    CIcon: CIcon,
+    CSidebarNavItem: CSidebarNavItem
   },
   props: {
     name: String,
@@ -24913,7 +25087,8 @@ var script$1a = {
     },
     icon: [String, Object],
     fontIcon: String,
-    show: Boolean
+    show: Boolean,
+    items: Array
   },
   data: function data() {
     return {
@@ -24982,10 +25157,10 @@ var script$1a = {
 };
 
 /* script */
-const __vue_script__$1a = script$1a;
+const __vue_script__$1b = script$1b;
 
 /* template */
-var __vue_render__$E = function() {
+var __vue_render__$F = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -25015,62 +25190,21 @@ var __vue_render__$E = function() {
         staticClass: "c-sidebar-nav-dropdown-items",
         on: { click: _vm.itemClicked }
       },
-      [_vm._t("default")],
+      [
+        _vm._t("default", [
+          _vm._l(_vm.items, function(item, key) {
+            return [
+              _c(
+                "CSidebarNavItem",
+                _vm._b({ key: key }, "CSidebarNavItem", item, false)
+              )
+            ]
+          })
+        ])
+      ],
       2
     )
   ])
-};
-var __vue_staticRenderFns__$E = [];
-__vue_render__$E._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$1a = undefined;
-  /* scoped */
-  const __vue_scope_id__$1a = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$1a = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$1a = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-  /* style inject shadow dom */
-  
-
-  
-  var CSidebarNavDropdown = __vue_normalize__(
-    { render: __vue_render__$E, staticRenderFns: __vue_staticRenderFns__$E },
-    __vue_inject_styles__$1a,
-    __vue_script__$1a,
-    __vue_scope_id__$1a,
-    __vue_is_functional_template__$1a,
-    __vue_module_identifier__$1a,
-    false,
-    undefined,
-    undefined,
-    undefined
-  );
-
-//
-//
-//
-//
-//
-//
-var script$1b = {
-  name: 'CSidebarNavItem'
-};
-
-/* script */
-const __vue_script__$1b = script$1b;
-
-/* template */
-var __vue_render__$F = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c("li", { staticClass: "c-sidebar-nav-item" }, [_vm._t("default")], 2)
 };
 var __vue_staticRenderFns__$F = [];
 __vue_render__$F._withStripped = true;
@@ -25091,7 +25225,7 @@ __vue_render__$F._withStripped = true;
   
 
   
-  var CSidebarNavItem = __vue_normalize__(
+  var CSidebarNavDropdown = __vue_normalize__(
     { render: __vue_render__$F, staticRenderFns: __vue_staticRenderFns__$F },
     __vue_inject_styles__$1b,
     __vue_script__$1b,
@@ -25104,64 +25238,14 @@ __vue_render__$F._withStripped = true;
     undefined
   );
 
-var props$e = Object.assign(props, {
-  name: String,
-  icon: [String, Object],
-  fontIcon: String,
-  badge: Object,
-  addLinkClasses: [String, Array, Object],
-  label: Boolean,
-  inNavItem: {
-    type: Boolean,
-    default: true
-  }
-});
+//
+//
+//
+//
+//
+//
 var script$1c = {
-  name: 'CSidebarNavLink',
-  components: {
-    CLink: CLink,
-    CBadge: CBadge,
-    CIcon: CIcon
-  },
-  props: props$e,
-  computed: {
-    linkProps: function linkProps() {
-      var _this = this;
-
-      return Object.keys(props).reduce(function (props, key) {
-        props[key] = _this[key];
-        return props;
-      }, {});
-    },
-    addedLinkProps: function addedLinkProps() {
-      return this.$options.propsData.exact === undefined ? {
-        exact: true
-      } : {};
-    },
-    computedLinkProps: function computedLinkProps() {
-      return Object.assign(this.linkProps, this.addedLinkProps);
-    },
-    linkClasses: function linkClasses() {
-      return [this.label ? 'c-sidebar-nav-label' : 'c-sidebar-nav-link', this.addLinkClasses];
-    },
-    computedIcon: function computedIcon() {
-      if (_typeof(this.icon) === 'object') {
-        return Object.assign({
-          customClasses: 'c-sidebar-nav-icon'
-        }, this.icon);
-      } else {
-        return {
-          customClasses: 'c-sidebar-nav-icon',
-          name: this.icon
-        };
-      }
-    }
-  },
-  methods: {
-    click: function click(e) {
-      this.$emit('link-clicked', e);
-    }
-  }
+  name: 'CSidebarNavTitle'
 };
 
 /* script */
@@ -25172,83 +25256,12 @@ var __vue_render__$G = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return _vm.inNavItem
-    ? _c(
-        "li",
-        { staticClass: "c-sidebar-nav-item" },
-        [
-          _c(
-            "CLink",
-            _vm._b(
-              {
-                class: _vm.linkClasses,
-                nativeOn: {
-                  click: function($event) {
-                    return _vm.click($event)
-                  }
-                }
-              },
-              "CLink",
-              _vm.computedLinkProps,
-              false
-            ),
-            [
-              _vm._t("default", [
-                _vm.icon
-                  ? _c("CIcon", _vm._b({}, "CIcon", _vm.computedIcon, false))
-                  : _vm._e(),
-                _vm._v("\n      " + _vm._s(_vm.name) + "\n      "),
-                _vm.badge
-                  ? _c(
-                      "CBadge",
-                      _vm._b(
-                        {},
-                        "CBadge",
-                        Object.assign({}, _vm.badge, { text: null }),
-                        false
-                      ),
-                      [
-                        _vm._v(
-                          "\n        " + _vm._s(_vm.badge.text) + "\n      "
-                        )
-                      ]
-                    )
-                  : _vm._e()
-              ])
-            ],
-            2
-          )
-        ],
-        1
-      )
-    : _c(
-        "CLink",
-        [
-          _vm._t("default", [
-            _vm.icon
-              ? _c("CIcon", _vm._b({}, "CIcon", _vm.computedIcon, false))
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.fontIcon
-              ? _c("i", { class: ["c-sidebar-nav-icon", _vm.fontIcon] })
-              : _vm._e(),
-            _vm._v("\n    " + _vm._s(_vm.name) + "\n    "),
-            _vm.badge
-              ? _c(
-                  "CBadge",
-                  _vm._b(
-                    {},
-                    "CBadge",
-                    Object.assign({}, _vm.badge, { text: null }),
-                    false
-                  ),
-                  [_vm._v("\n      " + _vm._s(_vm.badge.text) + "\n    ")]
-                )
-              : _vm._e()
-          ])
-        ],
-        2
-      )
+  return _c(
+    "li",
+    { staticClass: "c-sidebar-nav-title" },
+    [_vm._t("default")],
+    2
+  )
 };
 var __vue_staticRenderFns__$G = [];
 __vue_render__$G._withStripped = true;
@@ -25269,7 +25282,7 @@ __vue_render__$G._withStripped = true;
   
 
   
-  var CSidebarNavLink = __vue_normalize__(
+  var CSidebarNavTitle = __vue_normalize__(
     { render: __vue_render__$G, staticRenderFns: __vue_staticRenderFns__$G },
     __vue_inject_styles__$1c,
     __vue_script__$1c,
@@ -25282,64 +25295,7 @@ __vue_render__$G._withStripped = true;
     undefined
   );
 
-//
-//
-//
-//
-//
-//
 var script$1d = {
-  name: 'CSidebarNavTitle'
-};
-
-/* script */
-const __vue_script__$1d = script$1d;
-
-/* template */
-var __vue_render__$H = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c(
-    "li",
-    { staticClass: "c-sidebar-nav-title" },
-    [_vm._t("default")],
-    2
-  )
-};
-var __vue_staticRenderFns__$H = [];
-__vue_render__$H._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$1d = undefined;
-  /* scoped */
-  const __vue_scope_id__$1d = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$1d = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$1d = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-  /* style inject shadow dom */
-  
-
-  
-  var CSidebarNavTitle = __vue_normalize__(
-    { render: __vue_render__$H, staticRenderFns: __vue_staticRenderFns__$H },
-    __vue_inject_styles__$1d,
-    __vue_script__$1d,
-    __vue_scope_id__$1d,
-    __vue_is_functional_template__$1d,
-    __vue_module_identifier__$1d,
-    false,
-    undefined,
-    undefined,
-    undefined
-  );
-
-var script$1e = {
   name: 'CSpinner',
   functional: true,
   props: {
@@ -25369,18 +25325,18 @@ var script$1e = {
 };
 
 /* script */
-const __vue_script__$1e = script$1e;
+const __vue_script__$1d = script$1d;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$1e = undefined;
+  const __vue_inject_styles__$1d = undefined;
   /* scoped */
-  const __vue_scope_id__$1e = undefined;
+  const __vue_scope_id__$1d = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1e = undefined;
+  const __vue_module_identifier__$1d = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1e = undefined;
+  const __vue_is_functional_template__$1d = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -25391,11 +25347,11 @@ const __vue_script__$1e = script$1e;
   
   var CSpinner = __vue_normalize__(
     {},
-    __vue_inject_styles__$1e,
-    __vue_script__$1e,
-    __vue_scope_id__$1e,
-    __vue_is_functional_template__$1e,
-    __vue_module_identifier__$1e,
+    __vue_inject_styles__$1d,
+    __vue_script__$1d,
+    __vue_scope_id__$1d,
+    __vue_is_functional_template__$1d,
+    __vue_module_identifier__$1d,
     false,
     undefined,
     undefined,
@@ -25420,8 +25376,7 @@ const __vue_script__$1e = script$1e;
 //
 //
 //
-//
-var script$1f = {
+var script$1e = {
   name: 'CSwitch',
   inheritAttrs: false,
   props: {
@@ -25445,10 +25400,6 @@ var script$1f = {
       }
     },
     checked: Boolean,
-    value: {
-      type: [String, Number, Boolean],
-      default: undefined
-    },
     labelOn: String,
     labelOff: String,
     type: {
@@ -25476,9 +25427,8 @@ var script$1f = {
     classList: function classList() {
       var _ref;
 
-      var havePrefix = ['opposite', 'outline'].includes(this.variant);
-      var colorPrefix = havePrefix ? "-".concat(this.variant) : '';
-      return ['c-switch form-check-label', (_ref = {}, _defineProperty(_ref, "c-switch-".concat(this.size), this.size), _defineProperty(_ref, "c-switch-".concat(this.shape), this.shape), _defineProperty(_ref, 'c-switch-3d', this.variant === '3d'), _defineProperty(_ref, "c-switch".concat(colorPrefix, "-").concat(this.color), this.color), _defineProperty(_ref, 'c-switch-label', this.labelOn || this.labelOff), _ref)];
+      var variant = this.variant ? "-".concat(this.variant) : '';
+      return ['c-switch form-check-label', (_ref = {}, _defineProperty(_ref, "c-switch-".concat(this.size), this.size), _defineProperty(_ref, "c-switch-".concat(this.shape), this.shape), _defineProperty(_ref, "c-switch".concat(variant, "-").concat(this.color), this.color), _defineProperty(_ref, 'c-switch-label', this.labelOn || this.labelOff), _ref)];
     }
   },
   methods: {
@@ -25490,10 +25440,10 @@ var script$1f = {
 };
 
 /* script */
-const __vue_script__$1f = script$1f;
+const __vue_script__$1e = script$1e;
 
 /* template */
-var __vue_render__$I = function() {
+var __vue_render__$H = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -25504,7 +25454,7 @@ var __vue_render__$I = function() {
         {
           staticClass: "c-switch-input form-check-input",
           attrs: { type: _vm.type },
-          domProps: { checked: _vm.state, value: _vm.value },
+          domProps: { checked: _vm.state },
           on: { change: _vm.onChange }
         },
         "input",
@@ -25519,17 +25469,17 @@ var __vue_render__$I = function() {
     })
   ])
 };
-var __vue_staticRenderFns__$I = [];
-__vue_render__$I._withStripped = true;
+var __vue_staticRenderFns__$H = [];
+__vue_render__$H._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1f = undefined;
+  const __vue_inject_styles__$1e = undefined;
   /* scoped */
-  const __vue_scope_id__$1f = undefined;
+  const __vue_scope_id__$1e = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1f = undefined;
+  const __vue_module_identifier__$1e = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1f = false;
+  const __vue_is_functional_template__$1e = false;
   /* style inject */
   
   /* style inject SSR */
@@ -25539,12 +25489,12 @@ __vue_render__$I._withStripped = true;
 
   
   var CSwitch = __vue_normalize__(
-    { render: __vue_render__$I, staticRenderFns: __vue_staticRenderFns__$I },
-    __vue_inject_styles__$1f,
-    __vue_script__$1f,
-    __vue_scope_id__$1f,
-    __vue_is_functional_template__$1f,
-    __vue_module_identifier__$1f,
+    { render: __vue_render__$H, staticRenderFns: __vue_staticRenderFns__$H },
+    __vue_inject_styles__$1e,
+    __vue_script__$1e,
+    __vue_scope_id__$1e,
+    __vue_is_functional_template__$1e,
+    __vue_module_identifier__$1e,
     false,
     undefined,
     undefined,
@@ -25564,8 +25514,8 @@ _export({ target: 'Array', proto: true, forced: ES3_STRINGS || SLOPPY_METHOD }, 
   }
 });
 
-var nativeSort = [].sort;
-var test$3 = [1, 2, 3];
+var test$3 = [];
+var nativeSort = test$3.sort;
 
 // IE8-
 var FAILS_ON_UNDEFINED = fails(function () {
@@ -25590,15 +25540,15 @@ _export({ target: 'Array', proto: true, forced: FORCED$3 }, {
   }
 });
 
-const arrowTop = ["24 24","\r\r<title>arrow-top</title>\r<path d='M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z'></path>\r\r"];
+const cilArrowTop = ["24 24","<path d='M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z'></path>"];
 
-const ban = ["24 24","\r\r<title>ban</title>\r<path d='M19.955 4.045c-2.036-2.036-4.848-3.295-7.955-3.295-6.213 0-11.25 5.037-11.25 11.25 0 3.107 1.259 5.919 3.295 7.955v0c2.036 2.036 4.848 3.295 7.955 3.295 6.213 0 11.25-5.037 11.25-11.25 0-3.107-1.259-5.919-3.295-7.955v0zM12 2.25c0.003 0 0.006 0 0.009 0 2.431 0 4.653 0.894 6.356 2.37l-0.012-0.010-13.743 13.743c-1.466-1.691-2.36-3.913-2.36-6.344 0-0.003 0-0.006 0-0.009v0c0-5.376 4.374-9.75 9.75-9.75zM12 21.75c-0.002 0-0.005 0-0.008 0-2.419 0-4.632-0.885-6.332-2.349l0.013 0.011 13.739-13.739c1.453 1.687 2.338 3.9 2.338 6.319 0 0.003 0 0.006 0 0.009v-0c0 5.376-4.374 9.75-9.75 9.75z'></path>\r\r"];
+const cilBan = ["24 24","<path d='M19.955 4.045c-2.036-2.036-4.848-3.295-7.955-3.295-6.213 0-11.25 5.037-11.25 11.25 0 3.107 1.259 5.919 3.295 7.955v0c2.036 2.036 4.848 3.295 7.955 3.295 6.213 0 11.25-5.037 11.25-11.25 0-3.107-1.259-5.919-3.295-7.955v0zM12 2.25c0.003 0 0.006 0 0.009 0 2.431 0 4.653 0.894 6.356 2.37l-0.012-0.010-13.743 13.743c-1.466-1.691-2.36-3.913-2.36-6.344 0-0.003 0-0.006 0-0.009v0c0-5.376 4.374-9.75 9.75-9.75zM12 21.75c-0.002 0-0.005 0-0.008 0-2.419 0-4.632-0.885-6.332-2.349l0.013 0.011 13.739-13.739c1.453 1.687 2.338 3.9 2.338 6.319 0 0.003 0 0.006 0 0.009v-0c0 5.376-4.374 9.75-9.75 9.75z'></path>"];
 
-var script$1g = {
+var script$1f = {
   name: 'CDataTable',
   icons: {
-    arrowTop: arrowTop,
-    ban: ban
+    cilArrowTop: cilArrowTop,
+    cilBan: cilBan
   },
   components: {
     CPagination: CPagination,
@@ -25910,13 +25860,13 @@ var script$1g = {
   }
 };
 
-var css$4 = "\n.transparent[data-v-22ab8620] {\r\n  opacity: 0.4;\n}\n.icon-transition[data-v-22ab8620] {\r\n  -webkit-transition: transform 0.3s;\r\n  -webkit-transition: -webkit-transform 0.3s;\r\n  transition: -webkit-transform 0.3s;\r\n  transition: transform 0.3s;\r\n  transition: transform 0.3s, -webkit-transform 0.3s;\n}\n.arrow-position[data-v-22ab8620] {\r\n  right: 0;\r\n  top: 50%;\r\n  -webkit-transform: translateY(-50%);\r\n          transform: translateY(-50%);\n}\n.rotate-icon[data-v-22ab8620] {\r\n  -webkit-transform: translateY(-50%) rotate(-180deg);\r\n          transform: translateY(-50%) rotate(-180deg);\n}\r\n";
+var css$4 = "\n.transparent[data-v-6fbaf243] {\r\n  opacity: 0.4;\n}\n.icon-transition[data-v-6fbaf243] {\r\n  -webkit-transition: transform 0.3s;\r\n  -webkit-transition: -webkit-transform 0.3s;\r\n  transition: -webkit-transform 0.3s;\r\n  transition: transform 0.3s;\r\n  transition: transform 0.3s, -webkit-transform 0.3s;\n}\n.arrow-position[data-v-6fbaf243] {\r\n  right: 0;\r\n  top: 50%;\r\n  -webkit-transform: translateY(-50%);\r\n          transform: translateY(-50%);\n}\n.rotate-icon[data-v-6fbaf243] {\r\n  -webkit-transform: translateY(-50%) rotate(-180deg);\r\n          transform: translateY(-50%) rotate(-180deg);\n}\r\n";
 styleInject(css$4);
 
 /* script */
-const __vue_script__$1g = script$1g;
+const __vue_script__$1f = script$1f;
 /* template */
-var __vue_render__$J = function() {
+var __vue_render__$I = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -25956,54 +25906,58 @@ var __vue_render__$J = function() {
                     class: { "offset-sm-6": !_vm.tableFilter }
                   },
                   [
-                    _c("div", { staticClass: "form-inline float-sm-right" }, [
-                      _c("label", { staticClass: "mr-2" }, [
-                        _vm._v("Items per page:")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "form-control",
-                          on: { change: _vm.paginationChange }
-                        },
-                        [
-                          _c(
-                            "option",
-                            {
-                              attrs: {
-                                value: "",
-                                selected: "",
-                                disabled: "",
-                                hidden: ""
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n            " +
-                                  _vm._s(_vm.perPageItems) +
-                                  "\n          "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _vm._l([5, 10, 20, 50], function(number, key) {
-                            return _c(
+                    _c(
+                      "div",
+                      { staticClass: "form-inline justify-content-sm-end" },
+                      [
+                        _c("label", { staticClass: "mr-2" }, [
+                          _vm._v("Items per page:")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            staticClass: "form-control",
+                            on: { change: _vm.paginationChange }
+                          },
+                          [
+                            _c(
                               "option",
-                              { key: key, attrs: { val: number } },
+                              {
+                                attrs: {
+                                  value: "",
+                                  selected: "",
+                                  disabled: "",
+                                  hidden: ""
+                                }
+                              },
                               [
                                 _vm._v(
                                   "\n            " +
-                                    _vm._s(number) +
+                                    _vm._s(_vm.perPageItems) +
                                     "\n          "
                                 )
                               ]
-                            )
-                          })
-                        ],
-                        2
-                      )
-                    ])
+                            ),
+                            _vm._v(" "),
+                            _vm._l([5, 10, 20, 50], function(number, key) {
+                              return _c(
+                                "option",
+                                { key: key, attrs: { val: number } },
+                                [
+                                  _vm._v(
+                                    "\n            " +
+                                      _vm._s(number) +
+                                      "\n          "
+                                  )
+                                ]
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      ]
+                    )
                   ]
                 )
               : _vm._e()
@@ -26062,7 +26016,7 @@ var __vue_render__$J = function() {
                                       class: _vm.iconClasses(index),
                                       attrs: {
                                         width: "18",
-                                        content: _vm.$options.icons.arrowTop
+                                        content: _vm.$options.icons.cilArrowTop
                                       }
                                     })
                                   ],
@@ -26231,7 +26185,7 @@ var __vue_render__$J = function() {
                                       staticClass: "text-danger mb-2",
                                       attrs: {
                                         width: "30",
-                                        content: _vm.$options.icons.ban
+                                        content: _vm.$options.icons.cilBan
                                       }
                                     })
                                   ],
@@ -26288,7 +26242,8 @@ var __vue_render__$J = function() {
                                           class: _vm.iconClasses(index),
                                           attrs: {
                                             width: "18",
-                                            name: "arrowTop"
+                                            content:
+                                              _vm.$options.icons.cilArrowTop
                                           }
                                         })
                                       ],
@@ -26382,17 +26337,17 @@ var __vue_render__$J = function() {
     2
   )
 };
-var __vue_staticRenderFns__$J = [];
-__vue_render__$J._withStripped = true;
+var __vue_staticRenderFns__$I = [];
+__vue_render__$I._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1g = undefined;
+  const __vue_inject_styles__$1f = undefined;
   /* scoped */
-  const __vue_scope_id__$1g = "data-v-22ab8620";
+  const __vue_scope_id__$1f = "data-v-6fbaf243";
   /* module identifier */
-  const __vue_module_identifier__$1g = undefined;
+  const __vue_module_identifier__$1f = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1g = false;
+  const __vue_is_functional_template__$1f = false;
   /* style inject */
   
   /* style inject SSR */
@@ -26402,7 +26357,53 @@ __vue_render__$J._withStripped = true;
 
   
   var CDataTable = __vue_normalize__(
-    { render: __vue_render__$J, staticRenderFns: __vue_staticRenderFns__$J },
+    { render: __vue_render__$I, staticRenderFns: __vue_staticRenderFns__$I },
+    __vue_inject_styles__$1f,
+    __vue_script__$1f,
+    __vue_scope_id__$1f,
+    __vue_is_functional_template__$1f,
+    __vue_module_identifier__$1f,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+var script$1g = {
+  name: 'CTab',
+  props: {
+    title: String,
+    active: Boolean,
+    disabled: Boolean
+  },
+  render: function render(h) {
+    return h(false);
+  }
+};
+
+/* script */
+const __vue_script__$1g = script$1g;
+
+/* template */
+
+  /* style */
+  const __vue_inject_styles__$1g = undefined;
+  /* scoped */
+  const __vue_scope_id__$1g = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$1g = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$1g = undefined;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var CTab = __vue_normalize__(
+    {},
     __vue_inject_styles__$1g,
     __vue_script__$1g,
     __vue_scope_id__$1g,
@@ -26415,14 +26416,28 @@ __vue_render__$J._withStripped = true;
   );
 
 var script$1h = {
-  name: 'CTab',
-  props: {
-    titleHtml: String,
-    active: Boolean,
-    disabled: Boolean
+  name: 'CTabNav',
+  props: Object.assign(propsFactory(), {
+    title: String,
+    customTitleSlot: Function
+  }),
+  computed: {
+    linkProps: function linkProps() {
+      var _this = this;
+
+      return Object.keys(propsFactory()).reduce(function (props, key) {
+        props[key] = _this[key];
+        return props;
+      }, {});
+    }
   },
   render: function render(h) {
-    return h(false);
+    return h('li', {
+      staticClass: 'nav-item'
+    }, [h(CLink, {
+      staticClass: 'nav-link',
+      props: this.linkProps
+    }, this.customTitleSlot ? this.customTitleSlot() : this.title)]);
   }
 };
 
@@ -26447,7 +26462,7 @@ const __vue_script__$1h = script$1h;
   
 
   
-  var CTab = __vue_normalize__(
+  var CTabNav = __vue_normalize__(
     {},
     __vue_inject_styles__$1h,
     __vue_script__$1h,
@@ -26461,24 +26476,12 @@ const __vue_script__$1h = script$1h;
   );
 
 var script$1i = {
-  name: 'CTabNav',
-  props: Object.assign(propsFactory(), {
-    titleHtml: String,
-    customTitleSlot: Function
-  }),
+  name: 'CTabContent',
+  props: {
+    content: Function
+  },
   render: function render(h) {
-    return h('li', {
-      staticClass: 'nav-item'
-    }, [h(CLink, {
-      staticClass: 'nav-link',
-      class: {
-        'active': this.active
-      },
-      props: this.props,
-      domProps: this.titleHtml ? {
-        innerHTML: this.titleHtml
-      } : null
-    }, this.customTitleSlot ? this.customTitleSlot() : null)]);
+    return h('div', this.content ? this.content() : '');
   }
 };
 
@@ -26503,7 +26506,7 @@ const __vue_script__$1i = script$1i;
   
 
   
-  var CTabNav = __vue_normalize__(
+  var CTabContent = __vue_normalize__(
     {},
     __vue_inject_styles__$1i,
     __vue_script__$1i,
@@ -26517,50 +26520,6 @@ const __vue_script__$1i = script$1i;
   );
 
 var script$1j = {
-  name: 'CTabContent',
-  props: {
-    content: Function
-  },
-  render: function render(h) {
-    return h('div', this.content ? this.content() : '');
-  }
-};
-
-/* script */
-const __vue_script__$1j = script$1j;
-
-/* template */
-
-  /* style */
-  const __vue_inject_styles__$1j = undefined;
-  /* scoped */
-  const __vue_scope_id__$1j = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$1j = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$1j = undefined;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-  /* style inject shadow dom */
-  
-
-  
-  var CTabContent = __vue_normalize__(
-    {},
-    __vue_inject_styles__$1j,
-    __vue_script__$1j,
-    __vue_scope_id__$1j,
-    __vue_is_functional_template__$1j,
-    __vue_module_identifier__$1j,
-    false,
-    undefined,
-    undefined,
-    undefined
-  );
-
-var script$1k = {
   name: 'CTabs',
   components: {
     CTabNav: CTabNav,
@@ -26668,9 +26627,9 @@ var css$5 = "\n.fade-enter-active, .fade-leave-active {\n  -webkit-transition: o
 styleInject(css$5);
 
 /* script */
-const __vue_script__$1k = script$1k;
+const __vue_script__$1j = script$1j;
 /* template */
-var __vue_render__$K = function() {
+var __vue_render__$J = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -26689,7 +26648,7 @@ var __vue_render__$K = function() {
                 {
                   key: key,
                   attrs: {
-                    "title-html": tab.titleHtml,
+                    title: tab.title,
                     "custom-title-slot": tab.$scopedSlots.title,
                     active: tab === _vm.activeTab,
                     disabled: tab.disabled
@@ -26753,17 +26712,17 @@ var __vue_render__$K = function() {
     2
   )
 };
-var __vue_staticRenderFns__$K = [];
-__vue_render__$K._withStripped = true;
+var __vue_staticRenderFns__$J = [];
+__vue_render__$J._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1k = undefined;
+  const __vue_inject_styles__$1j = undefined;
   /* scoped */
-  const __vue_scope_id__$1k = undefined;
+  const __vue_scope_id__$1j = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1k = undefined;
+  const __vue_module_identifier__$1j = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1k = false;
+  const __vue_is_functional_template__$1j = false;
   /* style inject */
   
   /* style inject SSR */
@@ -26773,100 +26732,392 @@ __vue_render__$K._withStripped = true;
 
   
   var CTabs = __vue_normalize__(
-    { render: __vue_render__$K, staticRenderFns: __vue_staticRenderFns__$K },
-    __vue_inject_styles__$1k,
-    __vue_script__$1k,
-    __vue_scope_id__$1k,
-    __vue_is_functional_template__$1k,
-    __vue_module_identifier__$1k,
+    { render: __vue_render__$J, staticRenderFns: __vue_staticRenderFns__$J },
+    __vue_inject_styles__$1j,
+    __vue_script__$1j,
+    __vue_scope_id__$1j,
+    __vue_is_functional_template__$1j,
+    __vue_module_identifier__$1j,
     false,
     undefined,
     undefined,
     undefined
   );
 
-var toastMixin = {
-  props: {
-    position: {
-      type: String,
-      default: 'top-right',
-      validator: function validator(position) {
-        return ['', 'static', 'top-right', 'top-left', 'top-center', 'top-full', 'bottom-right', 'bottom-left', 'bottom-center', 'bottom-full'].includes(position);
-      }
-    },
-    autohide: {
-      type: [Number, Boolean],
-      validator: function validator(val) {
-        return typeof val === 'number' || val === false;
-      }
-    },
-    closeButton: {
-      type: Boolean,
-      default: true
-    },
-    fade: {
-      type: Boolean,
-      default: true
-    }
-  },
-  computed: {
-    computedStyles: function computedStyles() {
-      var position = this.props ? this.props.position : this.position;
+var nativeGetOwnPropertyNames$2 = objectGetOwnPropertyNames.f;
 
-      if (position !== 'static' && !this.toaster) {
-        return [{
-          'z-index': 1100
-        }, {
-          'min-width': '350px'
-        }, {
-          position: 'fixed'
-        }, this.getVerticalPosition(this.position), this.getHorizontalPosition(this.position)];
-      }
-    }
-  },
-  methods: {
-    getVerticalPosition: function getVerticalPosition(position) {
-      return position.includes('bottom') ? {
-        bottom: 0
-      } : {
-        top: 0
-      };
-    },
-    getHorizontalPosition: function getHorizontalPosition(position) {
-      if (position.includes('right')) {
-        return {
-          right: 0
-        };
-      } else if (position.includes('center')) {
-        return {
-          left: '50%',
-          transform: 'translateX(-50%)'
-        };
-      } else if (position.includes('full')) {
-        return {
-          right: 0,
-          left: 0
-        };
-      } else {
-        return {
-          left: 0
-        };
-      }
-    }
+var toString$4 = {}.toString;
+
+var windowNames$1 = typeof window == 'object' && window && Object.getOwnPropertyNames
+  ? Object.getOwnPropertyNames(window) : [];
+
+var getWindowNames$1 = function (it) {
+  try {
+    return nativeGetOwnPropertyNames$2(it);
+  } catch (error) {
+    return windowNames$1.slice();
   }
 };
 
-var script$1l = {
+// fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
+var f$c = function getOwnPropertyNames(it) {
+  return windowNames$1 && toString$4.call(it) == '[object Window]'
+    ? getWindowNames$1(it)
+    : nativeGetOwnPropertyNames$2(toIndexedObject(it));
+};
+
+var objectGetOwnPropertyNamesExternal$1 = {
+	f: f$c
+};
+
+var f$d = wellKnownSymbol;
+
+var wrappedWellKnownSymbol$1 = {
+	f: f$d
+};
+
+var defineProperty$8 = objectDefineProperty.f;
+
+var defineWellKnownSymbol$1 = function (NAME) {
+  var Symbol = path.Symbol || (path.Symbol = {});
+  if (!has(Symbol, NAME)) defineProperty$8(Symbol, NAME, {
+    value: wrappedWellKnownSymbol$1.f(NAME)
+  });
+};
+
+var $forEach$2 = arrayIteration.forEach;
+
+var HIDDEN$1 = sharedKey('hidden');
+var SYMBOL$1 = 'Symbol';
+var PROTOTYPE$3 = 'prototype';
+var TO_PRIMITIVE$1 = wellKnownSymbol('toPrimitive');
+var setInternalState$4 = internalState.set;
+var getInternalState$4 = internalState.getterFor(SYMBOL$1);
+var ObjectPrototype$4 = Object[PROTOTYPE$3];
+var $Symbol$1 = global_1.Symbol;
+var $stringify = getBuiltIn('JSON', 'stringify');
+var nativeGetOwnPropertyDescriptor$3 = objectGetOwnPropertyDescriptor.f;
+var nativeDefineProperty$3 = objectDefineProperty.f;
+var nativeGetOwnPropertyNames$3 = objectGetOwnPropertyNamesExternal$1.f;
+var nativePropertyIsEnumerable$3 = objectPropertyIsEnumerable.f;
+var AllSymbols$1 = shared('symbols');
+var ObjectPrototypeSymbols$1 = shared('op-symbols');
+var StringToSymbolRegistry$1 = shared('string-to-symbol-registry');
+var SymbolToStringRegistry$1 = shared('symbol-to-string-registry');
+var WellKnownSymbolsStore$1 = shared('wks');
+var QObject$1 = global_1.QObject;
+// Don't use setters in Qt Script, https://github.com/zloirock/core-js/issues/173
+var USE_SETTER$1 = !QObject$1 || !QObject$1[PROTOTYPE$3] || !QObject$1[PROTOTYPE$3].findChild;
+
+// fallback for old Android, https://code.google.com/p/v8/issues/detail?id=687
+var setSymbolDescriptor$1 = descriptors && fails(function () {
+  return objectCreate(nativeDefineProperty$3({}, 'a', {
+    get: function () { return nativeDefineProperty$3(this, 'a', { value: 7 }).a; }
+  })).a != 7;
+}) ? function (O, P, Attributes) {
+  var ObjectPrototypeDescriptor = nativeGetOwnPropertyDescriptor$3(ObjectPrototype$4, P);
+  if (ObjectPrototypeDescriptor) delete ObjectPrototype$4[P];
+  nativeDefineProperty$3(O, P, Attributes);
+  if (ObjectPrototypeDescriptor && O !== ObjectPrototype$4) {
+    nativeDefineProperty$3(ObjectPrototype$4, P, ObjectPrototypeDescriptor);
+  }
+} : nativeDefineProperty$3;
+
+var wrap$1 = function (tag, description) {
+  var symbol = AllSymbols$1[tag] = objectCreate($Symbol$1[PROTOTYPE$3]);
+  setInternalState$4(symbol, {
+    type: SYMBOL$1,
+    tag: tag,
+    description: description
+  });
+  if (!descriptors) symbol.description = description;
+  return symbol;
+};
+
+var isSymbol$1 = nativeSymbol && typeof $Symbol$1.iterator == 'symbol' ? function (it) {
+  return typeof it == 'symbol';
+} : function (it) {
+  return Object(it) instanceof $Symbol$1;
+};
+
+var $defineProperty$1 = function defineProperty(O, P, Attributes) {
+  if (O === ObjectPrototype$4) $defineProperty$1(ObjectPrototypeSymbols$1, P, Attributes);
+  anObject(O);
+  var key = toPrimitive(P, true);
+  anObject(Attributes);
+  if (has(AllSymbols$1, key)) {
+    if (!Attributes.enumerable) {
+      if (!has(O, HIDDEN$1)) nativeDefineProperty$3(O, HIDDEN$1, createPropertyDescriptor(1, {}));
+      O[HIDDEN$1][key] = true;
+    } else {
+      if (has(O, HIDDEN$1) && O[HIDDEN$1][key]) O[HIDDEN$1][key] = false;
+      Attributes = objectCreate(Attributes, { enumerable: createPropertyDescriptor(0, false) });
+    } return setSymbolDescriptor$1(O, key, Attributes);
+  } return nativeDefineProperty$3(O, key, Attributes);
+};
+
+var $defineProperties$1 = function defineProperties(O, Properties) {
+  anObject(O);
+  var properties = toIndexedObject(Properties);
+  var keys = objectKeys(properties).concat($getOwnPropertySymbols$1(properties));
+  $forEach$2(keys, function (key) {
+    if (!descriptors || $propertyIsEnumerable$1.call(properties, key)) $defineProperty$1(O, key, properties[key]);
+  });
+  return O;
+};
+
+var $create$1 = function create(O, Properties) {
+  return Properties === undefined ? objectCreate(O) : $defineProperties$1(objectCreate(O), Properties);
+};
+
+var $propertyIsEnumerable$1 = function propertyIsEnumerable(V) {
+  var P = toPrimitive(V, true);
+  var enumerable = nativePropertyIsEnumerable$3.call(this, P);
+  if (this === ObjectPrototype$4 && has(AllSymbols$1, P) && !has(ObjectPrototypeSymbols$1, P)) return false;
+  return enumerable || !has(this, P) || !has(AllSymbols$1, P) || has(this, HIDDEN$1) && this[HIDDEN$1][P] ? enumerable : true;
+};
+
+var $getOwnPropertyDescriptor$1 = function getOwnPropertyDescriptor(O, P) {
+  var it = toIndexedObject(O);
+  var key = toPrimitive(P, true);
+  if (it === ObjectPrototype$4 && has(AllSymbols$1, key) && !has(ObjectPrototypeSymbols$1, key)) return;
+  var descriptor = nativeGetOwnPropertyDescriptor$3(it, key);
+  if (descriptor && has(AllSymbols$1, key) && !(has(it, HIDDEN$1) && it[HIDDEN$1][key])) {
+    descriptor.enumerable = true;
+  }
+  return descriptor;
+};
+
+var $getOwnPropertyNames$1 = function getOwnPropertyNames(O) {
+  var names = nativeGetOwnPropertyNames$3(toIndexedObject(O));
+  var result = [];
+  $forEach$2(names, function (key) {
+    if (!has(AllSymbols$1, key) && !has(hiddenKeys, key)) result.push(key);
+  });
+  return result;
+};
+
+var $getOwnPropertySymbols$1 = function getOwnPropertySymbols(O) {
+  var IS_OBJECT_PROTOTYPE = O === ObjectPrototype$4;
+  var names = nativeGetOwnPropertyNames$3(IS_OBJECT_PROTOTYPE ? ObjectPrototypeSymbols$1 : toIndexedObject(O));
+  var result = [];
+  $forEach$2(names, function (key) {
+    if (has(AllSymbols$1, key) && (!IS_OBJECT_PROTOTYPE || has(ObjectPrototype$4, key))) {
+      result.push(AllSymbols$1[key]);
+    }
+  });
+  return result;
+};
+
+// `Symbol` constructor
+// https://tc39.github.io/ecma262/#sec-symbol-constructor
+if (!nativeSymbol) {
+  $Symbol$1 = function Symbol() {
+    if (this instanceof $Symbol$1) throw TypeError('Symbol is not a constructor');
+    var description = !arguments.length || arguments[0] === undefined ? undefined : String(arguments[0]);
+    var tag = uid(description);
+    var setter = function (value) {
+      if (this === ObjectPrototype$4) setter.call(ObjectPrototypeSymbols$1, value);
+      if (has(this, HIDDEN$1) && has(this[HIDDEN$1], tag)) this[HIDDEN$1][tag] = false;
+      setSymbolDescriptor$1(this, tag, createPropertyDescriptor(1, value));
+    };
+    if (descriptors && USE_SETTER$1) setSymbolDescriptor$1(ObjectPrototype$4, tag, { configurable: true, set: setter });
+    return wrap$1(tag, description);
+  };
+
+  redefine($Symbol$1[PROTOTYPE$3], 'toString', function toString() {
+    return getInternalState$4(this).tag;
+  });
+
+  objectPropertyIsEnumerable.f = $propertyIsEnumerable$1;
+  objectDefineProperty.f = $defineProperty$1;
+  objectGetOwnPropertyDescriptor.f = $getOwnPropertyDescriptor$1;
+  objectGetOwnPropertyNames.f = objectGetOwnPropertyNamesExternal$1.f = $getOwnPropertyNames$1;
+  objectGetOwnPropertySymbols.f = $getOwnPropertySymbols$1;
+
+  if (descriptors) {
+    // https://github.com/tc39/proposal-Symbol-description
+    nativeDefineProperty$3($Symbol$1[PROTOTYPE$3], 'description', {
+      configurable: true,
+      get: function description() {
+        return getInternalState$4(this).description;
+      }
+    });
+    {
+      redefine(ObjectPrototype$4, 'propertyIsEnumerable', $propertyIsEnumerable$1, { unsafe: true });
+    }
+  }
+
+  wrappedWellKnownSymbol$1.f = function (name) {
+    return wrap$1(wellKnownSymbol(name), name);
+  };
+}
+
+_export({ global: true, wrap: true, forced: !nativeSymbol, sham: !nativeSymbol }, {
+  Symbol: $Symbol$1
+});
+
+$forEach$2(objectKeys(WellKnownSymbolsStore$1), function (name) {
+  defineWellKnownSymbol$1(name);
+});
+
+_export({ target: SYMBOL$1, stat: true, forced: !nativeSymbol }, {
+  // `Symbol.for` method
+  // https://tc39.github.io/ecma262/#sec-symbol.for
+  'for': function (key) {
+    var string = String(key);
+    if (has(StringToSymbolRegistry$1, string)) return StringToSymbolRegistry$1[string];
+    var symbol = $Symbol$1(string);
+    StringToSymbolRegistry$1[string] = symbol;
+    SymbolToStringRegistry$1[symbol] = string;
+    return symbol;
+  },
+  // `Symbol.keyFor` method
+  // https://tc39.github.io/ecma262/#sec-symbol.keyfor
+  keyFor: function keyFor(sym) {
+    if (!isSymbol$1(sym)) throw TypeError(sym + ' is not a symbol');
+    if (has(SymbolToStringRegistry$1, sym)) return SymbolToStringRegistry$1[sym];
+  },
+  useSetter: function () { USE_SETTER$1 = true; },
+  useSimple: function () { USE_SETTER$1 = false; }
+});
+
+_export({ target: 'Object', stat: true, forced: !nativeSymbol, sham: !descriptors }, {
+  // `Object.create` method
+  // https://tc39.github.io/ecma262/#sec-object.create
+  create: $create$1,
+  // `Object.defineProperty` method
+  // https://tc39.github.io/ecma262/#sec-object.defineproperty
+  defineProperty: $defineProperty$1,
+  // `Object.defineProperties` method
+  // https://tc39.github.io/ecma262/#sec-object.defineproperties
+  defineProperties: $defineProperties$1,
+  // `Object.getOwnPropertyDescriptor` method
+  // https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptors
+  getOwnPropertyDescriptor: $getOwnPropertyDescriptor$1
+});
+
+_export({ target: 'Object', stat: true, forced: !nativeSymbol }, {
+  // `Object.getOwnPropertyNames` method
+  // https://tc39.github.io/ecma262/#sec-object.getownpropertynames
+  getOwnPropertyNames: $getOwnPropertyNames$1,
+  // `Object.getOwnPropertySymbols` method
+  // https://tc39.github.io/ecma262/#sec-object.getownpropertysymbols
+  getOwnPropertySymbols: $getOwnPropertySymbols$1
+});
+
+// Chrome 38 and 39 `Object.getOwnPropertySymbols` fails on primitives
+// https://bugs.chromium.org/p/v8/issues/detail?id=3443
+_export({ target: 'Object', stat: true, forced: fails(function () { objectGetOwnPropertySymbols.f(1); }) }, {
+  getOwnPropertySymbols: function getOwnPropertySymbols(it) {
+    return objectGetOwnPropertySymbols.f(toObject(it));
+  }
+});
+
+// `JSON.stringify` method behavior with symbols
+// https://tc39.github.io/ecma262/#sec-json.stringify
+if ($stringify) {
+  var FORCED_JSON_STRINGIFY = !nativeSymbol || fails(function () {
+    var symbol = $Symbol$1();
+    // MS Edge converts symbol values to JSON as {}
+    return $stringify([symbol]) != '[null]'
+      // WebKit converts symbol values to JSON as null
+      || $stringify({ a: symbol }) != '{}'
+      // V8 throws on boxed symbols
+      || $stringify(Object(symbol)) != '{}';
+  });
+
+  _export({ target: 'JSON', stat: true, forced: FORCED_JSON_STRINGIFY }, {
+    // eslint-disable-next-line no-unused-vars
+    stringify: function stringify(it, replacer, space) {
+      var args = [it];
+      var index = 1;
+      var $replacer;
+      while (arguments.length > index) args.push(arguments[index++]);
+      $replacer = replacer;
+      if (!isObject(replacer) && it === undefined || isSymbol$1(it)) return; // IE8 returns string on undefined
+      if (!isArray$4(replacer)) replacer = function (key, value) {
+        if (typeof $replacer == 'function') value = $replacer.call(this, key, value);
+        if (!isSymbol$1(value)) return value;
+      };
+      args[1] = replacer;
+      return $stringify.apply(null, args);
+    }
+  });
+}
+
+// `Symbol.prototype[@@toPrimitive]` method
+// https://tc39.github.io/ecma262/#sec-symbol.prototype-@@toprimitive
+if (!$Symbol$1[PROTOTYPE$3][TO_PRIMITIVE$1]) {
+  createNonEnumerableProperty($Symbol$1[PROTOTYPE$3], TO_PRIMITIVE$1, $Symbol$1[PROTOTYPE$3].valueOf);
+}
+// `Symbol.prototype[@@toStringTag]` property
+// https://tc39.github.io/ecma262/#sec-symbol.prototype-@@tostringtag
+setToStringTag$1($Symbol$1, SYMBOL$1);
+
+hiddenKeys[HIDDEN$1] = true;
+
+var nativeGetOwnPropertyDescriptor$4 = objectGetOwnPropertyDescriptor.f;
+
+
+var FAILS_ON_PRIMITIVES$1 = fails(function () { nativeGetOwnPropertyDescriptor$4(1); });
+var FORCED$4 = !descriptors || FAILS_ON_PRIMITIVES$1;
+
+// `Object.getOwnPropertyDescriptor` method
+// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptor
+_export({ target: 'Object', stat: true, forced: FORCED$4, sham: !descriptors }, {
+  getOwnPropertyDescriptor: function getOwnPropertyDescriptor(it, key) {
+    return nativeGetOwnPropertyDescriptor$4(toIndexedObject(it), key);
+  }
+});
+
+// `Object.getOwnPropertyDescriptors` method
+// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptors
+_export({ target: 'Object', stat: true, sham: !descriptors }, {
+  getOwnPropertyDescriptors: function getOwnPropertyDescriptors(object) {
+    var O = toIndexedObject(object);
+    var getOwnPropertyDescriptor = objectGetOwnPropertyDescriptor.f;
+    var keys = ownKeys(O);
+    var result = {};
+    var index = 0;
+    var key, descriptor;
+    while (keys.length > index) {
+      descriptor = getOwnPropertyDescriptor(O, key = keys[index++]);
+      if (descriptor !== undefined) createProperty(result, key, descriptor);
+    }
+    return result;
+  }
+});
+
+var props$f = {
+  autohide: {
+    type: [Number, Boolean],
+    validator: function validator(val) {
+      return typeof val === 'number' || val === false;
+    }
+  },
+  closeButton: {
+    type: Boolean,
+    default: true
+  },
+  fade: {
+    type: Boolean,
+    default: true
+  }
+};
+
+function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+var script$1k = {
   name: 'CToast',
-  mixins: [toastMixin],
   components: {
     CButtonClose: CButtonClose
   },
-  props: {
+  props: _objectSpread({}, props$f, {
     show: Boolean,
-    headerHtml: String,
-    bodyHtml: String
-  },
+    header: String
+  }),
   inject: {
     toaster: {
       default: false
@@ -26892,8 +27143,7 @@ var script$1l = {
   computed: {
     toastClasses: function toastClasses() {
       return ['toast', {
-        'show': this.isShowed || this.hidding,
-        'toast-full': this.props.position.includes('full')
+        'show': this.isShowed
       }];
     },
     directlyDeclaredProps: function directlyDeclaredProps() {
@@ -26905,7 +27155,7 @@ var script$1l = {
     props: function props() {
       var _this = this;
 
-      return Object.keys(toastMixin.props).reduce(function (computedProps, key) {
+      return Object.keys(props$f).reduce(function (computedProps, key) {
         var propIsDirectlyDeclared = _this.directlyDeclaredProps.includes(key);
 
         var parentPropExists = _this.injectedProps[key] !== undefined;
@@ -26982,13 +27232,13 @@ var script$1l = {
   }
 };
 
-var css$6 = "\n.fade-enter-active[data-v-9fd8f11c] {\n  -webkit-transition: opacity .5s;\n  transition: opacity .5s;\n}\n.fade-leave-active[data-v-9fd8f11c] {\n  -webkit-transition: opacity 2s;\n  transition: opacity 2s;\n}\n.fade-enter[data-v-9fd8f11c], .fade-leave-to[data-v-9fd8f11c] {\n  opacity: 0;\n}\n";
+var css$6 = "\n.fade-enter-active[data-v-3ad37d33] {\n  -webkit-transition: opacity .5s;\n  transition: opacity .5s;\n}\n.fade-leave-active[data-v-3ad37d33] {\n  -webkit-transition: opacity 2s;\n  transition: opacity 2s;\n}\n.fade-enter[data-v-3ad37d33], .fade-leave-to[data-v-3ad37d33] {\n  opacity: 0;\n}\n";
 styleInject(css$6);
 
 /* script */
-const __vue_script__$1l = script$1l;
+const __vue_script__$1k = script$1k;
 /* template */
-var __vue_render__$L = function() {
+var __vue_render__$K = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -27008,7 +27258,6 @@ var __vue_render__$L = function() {
             }
           ],
           class: _vm.toastClasses,
-          style: _vm.computedStyles,
           attrs: {
             role: "alert",
             "aria-live": "assertive",
@@ -27016,16 +27265,15 @@ var __vue_render__$L = function() {
           }
         },
         [
-          _vm.headerHtml !== undefined || _vm.$slots.header
+          _vm.header !== undefined || _vm.$slots.header
             ? _c(
                 "div",
                 { staticClass: "toast-header" },
                 [
                   _vm._t("header", [
-                    _c("strong", {
-                      staticClass: "mr-auto",
-                      domProps: { innerHTML: _vm._s(_vm.headerHtml) }
-                    })
+                    _c("strong", { staticClass: "mr-auto" }, [
+                      _vm._v(_vm._s(_vm.header))
+                    ])
                   ]),
                   _vm._v(" "),
                   _vm.props.closeButton
@@ -27043,28 +27291,23 @@ var __vue_render__$L = function() {
               )
             : _vm._e(),
           _vm._v(" "),
-          _vm.$slots.default
-            ? _c("div", { staticClass: "toast-body" }, [_vm._t("default")], 2)
-            : _c("div", {
-                staticClass: "toast-body",
-                domProps: { innerHTML: _vm._s(_vm.bodyHtml) }
-              })
+          _c("div", { staticClass: "toast-body" }, [_vm._t("default")], 2)
         ]
       )
     ]
   )
 };
-var __vue_staticRenderFns__$L = [];
-__vue_render__$L._withStripped = true;
+var __vue_staticRenderFns__$K = [];
+__vue_render__$K._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1l = undefined;
+  const __vue_inject_styles__$1k = undefined;
   /* scoped */
-  const __vue_scope_id__$1l = "data-v-9fd8f11c";
+  const __vue_scope_id__$1k = "data-v-3ad37d33";
   /* module identifier */
-  const __vue_module_identifier__$1l = undefined;
+  const __vue_module_identifier__$1k = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1l = false;
+  const __vue_is_functional_template__$1k = false;
   /* style inject */
   
   /* style inject SSR */
@@ -27074,19 +27317,22 @@ __vue_render__$L._withStripped = true;
 
   
   var CToast = __vue_normalize__(
-    { render: __vue_render__$L, staticRenderFns: __vue_staticRenderFns__$L },
-    __vue_inject_styles__$1l,
-    __vue_script__$1l,
-    __vue_scope_id__$1l,
-    __vue_is_functional_template__$1l,
-    __vue_module_identifier__$1l,
+    { render: __vue_render__$K, staticRenderFns: __vue_staticRenderFns__$K },
+    __vue_inject_styles__$1k,
+    __vue_script__$1k,
+    __vue_scope_id__$1k,
+    __vue_is_functional_template__$1k,
+    __vue_module_identifier__$1k,
     false,
     undefined,
     undefined,
     undefined
   );
 
-var script$1m = {
+function ownKeys$2(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$2(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$2(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+var script$1l = {
   name: 'CToaster',
   provide: function provide() {
     var _this = this;
@@ -27101,48 +27347,44 @@ var script$1m = {
       toaster: toaster
     };
   },
-  mixins: [toastMixin],
-  props: {
-    reverse: {
-      type: Boolean,
-      default: true
+  props: _objectSpread$1({}, props$f, {
+    position: {
+      type: String,
+      default: 'top-right',
+      validator: function validator(position) {
+        return ['', 'static', 'top-right', 'top-left', 'top-center', 'top-full', 'bottom-right', 'bottom-left', 'bottom-center', 'bottom-full'].includes(position);
+      }
     }
-  },
+  }),
   computed: {
     toasterClasses: function toasterClasses() {
-      return ['toaster', {
-        'toaster-reverse': !this.reverse
-      }];
+      var hasFixedPosition = this.position && this.position !== 'static';
+      return ['toaster', _defineProperty({}, "toaster-".concat(this.position), hasFixedPosition)];
     }
   }
 };
 
 /* script */
-const __vue_script__$1m = script$1m;
+const __vue_script__$1l = script$1l;
 
 /* template */
-var __vue_render__$M = function() {
+var __vue_render__$L = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
-  return _c(
-    "div",
-    { class: _vm.toasterClasses, style: _vm.computedStyles },
-    [_vm._t("default")],
-    2
-  )
+  return _c("div", { class: _vm.toasterClasses }, [_vm._t("default")], 2)
 };
-var __vue_staticRenderFns__$M = [];
-__vue_render__$M._withStripped = true;
+var __vue_staticRenderFns__$L = [];
+__vue_render__$L._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1m = undefined;
+  const __vue_inject_styles__$1l = undefined;
   /* scoped */
-  const __vue_scope_id__$1m = undefined;
+  const __vue_scope_id__$1l = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1m = undefined;
+  const __vue_module_identifier__$1l = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1m = false;
+  const __vue_is_functional_template__$1l = false;
   /* style inject */
   
   /* style inject SSR */
@@ -27152,19 +27394,19 @@ __vue_render__$M._withStripped = true;
 
   
   var CToaster = __vue_normalize__(
-    { render: __vue_render__$M, staticRenderFns: __vue_staticRenderFns__$M },
-    __vue_inject_styles__$1m,
-    __vue_script__$1m,
-    __vue_scope_id__$1m,
-    __vue_is_functional_template__$1m,
-    __vue_module_identifier__$1m,
+    { render: __vue_render__$L, staticRenderFns: __vue_staticRenderFns__$L },
+    __vue_inject_styles__$1l,
+    __vue_script__$1l,
+    __vue_scope_id__$1l,
+    __vue_is_functional_template__$1l,
+    __vue_module_identifier__$1l,
     false,
     undefined,
     undefined,
     undefined
   );
 
-var script$1n = {
+var script$1m = {
   name: 'CToggler',
   functional: true,
   props: {
@@ -27195,18 +27437,18 @@ var script$1n = {
 };
 
 /* script */
-const __vue_script__$1n = script$1n;
+const __vue_script__$1m = script$1m;
 
 /* template */
 
   /* style */
-  const __vue_inject_styles__$1n = undefined;
+  const __vue_inject_styles__$1m = undefined;
   /* scoped */
-  const __vue_scope_id__$1n = undefined;
+  const __vue_scope_id__$1m = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1n = undefined;
+  const __vue_module_identifier__$1m = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1n = undefined;
+  const __vue_is_functional_template__$1m = undefined;
   /* style inject */
   
   /* style inject SSR */
@@ -27217,18 +27459,18 @@ const __vue_script__$1n = script$1n;
   
   var CToggler = __vue_normalize__(
     {},
-    __vue_inject_styles__$1n,
-    __vue_script__$1n,
-    __vue_scope_id__$1n,
-    __vue_is_functional_template__$1n,
-    __vue_module_identifier__$1n,
+    __vue_inject_styles__$1m,
+    __vue_script__$1m,
+    __vue_scope_id__$1m,
+    __vue_is_functional_template__$1m,
+    __vue_module_identifier__$1m,
     false,
     undefined,
     undefined,
     undefined
   );
 
-var script$1o = {
+var script$1n = {
   name: 'CWidgetProgress',
   components: {
     CProgress: CProgress
@@ -27247,10 +27489,10 @@ var script$1o = {
 };
 
 /* script */
-const __vue_script__$1o = script$1o;
+const __vue_script__$1n = script$1n;
 
 /* template */
-var __vue_render__$N = function() {
+var __vue_render__$M = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -27287,6 +27529,126 @@ var __vue_render__$N = function() {
     ]
   )
 };
+var __vue_staticRenderFns__$M = [];
+__vue_render__$M._withStripped = true;
+
+  /* style */
+  const __vue_inject_styles__$1n = undefined;
+  /* scoped */
+  const __vue_scope_id__$1n = undefined;
+  /* module identifier */
+  const __vue_module_identifier__$1n = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$1n = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+  /* style inject shadow dom */
+  
+
+  
+  var CWidgetProgress = __vue_normalize__(
+    { render: __vue_render__$M, staticRenderFns: __vue_staticRenderFns__$M },
+    __vue_inject_styles__$1n,
+    __vue_script__$1n,
+    __vue_scope_id__$1n,
+    __vue_is_functional_template__$1n,
+    __vue_module_identifier__$1n,
+    false,
+    undefined,
+    undefined,
+    undefined
+  );
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var script$1o = {
+  name: 'CWidgetIcon',
+  props: {
+    header: String,
+    text: String,
+    iconPadding: {
+      type: Boolean,
+      default: true
+    },
+    color: String
+  }
+};
+
+/* script */
+const __vue_script__$1o = script$1o;
+
+/* template */
+var __vue_render__$N = function() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("div", { staticClass: "card" }, [
+    _c(
+      "div",
+      {
+        staticClass: "card-body d-flex align-items-center",
+        class: _vm.iconPadding ? "p-3" : "p-0"
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "mr-3 text-white",
+            class: ["bg-" + _vm.color, _vm.iconPadding ? "p-3" : "p-4"]
+          },
+          [_vm._t("default")],
+          2
+        ),
+        _vm._v(" "),
+        _c("div", [
+          _vm.header
+            ? _c("div", { class: "text-value text-" + _vm.color }, [
+                _vm._v("\n        " + _vm._s(_vm.header) + "\n      ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.text
+            ? _c(
+                "div",
+                {
+                  staticClass:
+                    "text-muted text-uppercase font-weight-bold small"
+                },
+                [_vm._v("\n        " + _vm._s(_vm.text) + "\n      ")]
+              )
+            : _vm._e()
+        ])
+      ]
+    )
+  ])
+};
 var __vue_staticRenderFns__$N = [];
 __vue_render__$N._withStripped = true;
 
@@ -27306,7 +27668,7 @@ __vue_render__$N._withStripped = true;
   
 
   
-  var CWidgetProgress = __vue_normalize__(
+  var CWidgetIcon = __vue_normalize__(
     { render: __vue_render__$N, staticRenderFns: __vue_staticRenderFns__$N },
     __vue_inject_styles__$1o,
     __vue_script__$1o,
@@ -27346,132 +27708,12 @@ __vue_render__$N._withStripped = true;
 //
 //
 //
+//
+//
+//
+//
+//
 var script$1p = {
-  name: 'CWidgetIcon',
-  props: {
-    header: String,
-    text: String,
-    iconPadding: {
-      type: Boolean,
-      default: true
-    },
-    color: String
-  }
-};
-
-/* script */
-const __vue_script__$1p = script$1p;
-
-/* template */
-var __vue_render__$O = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c("div", { staticClass: "card" }, [
-    _c(
-      "div",
-      {
-        staticClass: "card-body clearfix d-flex align-items-center",
-        class: _vm.iconPadding ? "p-3" : "p-0"
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "float-left mr-3 text-white",
-            class: ["bg-" + _vm.color, _vm.iconPadding ? "p-3" : "p-4"]
-          },
-          [_vm._t("default")],
-          2
-        ),
-        _vm._v(" "),
-        _c("div", [
-          _vm.header
-            ? _c("div", { class: "text-value text-" + _vm.color }, [
-                _vm._v("\n        " + _vm._s(_vm.header) + "\n      ")
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.text
-            ? _c(
-                "div",
-                {
-                  staticClass:
-                    "text-muted text-uppercase font-weight-bold small"
-                },
-                [_vm._v("\n        " + _vm._s(_vm.text) + "\n      ")]
-              )
-            : _vm._e()
-        ])
-      ]
-    )
-  ])
-};
-var __vue_staticRenderFns__$O = [];
-__vue_render__$O._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$1p = undefined;
-  /* scoped */
-  const __vue_scope_id__$1p = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$1p = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$1p = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-  /* style inject shadow dom */
-  
-
-  
-  var CWidgetIcon = __vue_normalize__(
-    { render: __vue_render__$O, staticRenderFns: __vue_staticRenderFns__$O },
-    __vue_inject_styles__$1p,
-    __vue_script__$1p,
-    __vue_scope_id__$1p,
-    __vue_is_functional_template__$1p,
-    __vue_module_identifier__$1p,
-    false,
-    undefined,
-    undefined,
-    undefined
-  );
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var script$1q = {
   name: 'CWidgetBrand',
   props: {
     color: String,
@@ -27484,10 +27726,10 @@ var script$1q = {
 };
 
 /* script */
-const __vue_script__$1q = script$1q;
+const __vue_script__$1p = script$1p;
 
 /* template */
-var __vue_render__$P = function() {
+var __vue_render__$O = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -27546,17 +27788,17 @@ var __vue_render__$P = function() {
     2
   )
 };
-var __vue_staticRenderFns__$P = [];
-__vue_render__$P._withStripped = true;
+var __vue_staticRenderFns__$O = [];
+__vue_render__$O._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1q = undefined;
+  const __vue_inject_styles__$1p = undefined;
   /* scoped */
-  const __vue_scope_id__$1q = undefined;
+  const __vue_scope_id__$1p = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1q = undefined;
+  const __vue_module_identifier__$1p = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1q = false;
+  const __vue_is_functional_template__$1p = false;
   /* style inject */
   
   /* style inject SSR */
@@ -27566,19 +27808,19 @@ __vue_render__$P._withStripped = true;
 
   
   var CWidgetBrand = __vue_normalize__(
-    { render: __vue_render__$P, staticRenderFns: __vue_staticRenderFns__$P },
-    __vue_inject_styles__$1q,
-    __vue_script__$1q,
-    __vue_scope_id__$1q,
-    __vue_is_functional_template__$1q,
-    __vue_module_identifier__$1q,
+    { render: __vue_render__$O, staticRenderFns: __vue_staticRenderFns__$O },
+    __vue_inject_styles__$1p,
+    __vue_script__$1p,
+    __vue_scope_id__$1p,
+    __vue_is_functional_template__$1p,
+    __vue_module_identifier__$1p,
     false,
     undefined,
     undefined,
     undefined
   );
 
-var script$1r = {
+var script$1q = {
   name: 'CWidgetProgressIcon',
   components: {
     CProgress: CProgress
@@ -27596,10 +27838,10 @@ var script$1r = {
 };
 
 /* script */
-const __vue_script__$1r = script$1r;
+const __vue_script__$1q = script$1q;
 
 /* template */
-var __vue_render__$Q = function() {
+var __vue_render__$P = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -27647,17 +27889,17 @@ var __vue_render__$Q = function() {
     ]
   )
 };
-var __vue_staticRenderFns__$Q = [];
-__vue_render__$Q._withStripped = true;
+var __vue_staticRenderFns__$P = [];
+__vue_render__$P._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1r = undefined;
+  const __vue_inject_styles__$1q = undefined;
   /* scoped */
-  const __vue_scope_id__$1r = undefined;
+  const __vue_scope_id__$1q = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1r = undefined;
+  const __vue_module_identifier__$1q = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1r = false;
+  const __vue_is_functional_template__$1q = false;
   /* style inject */
   
   /* style inject SSR */
@@ -27667,12 +27909,12 @@ __vue_render__$Q._withStripped = true;
 
   
   var CWidgetProgressIcon = __vue_normalize__(
-    { render: __vue_render__$Q, staticRenderFns: __vue_staticRenderFns__$Q },
-    __vue_inject_styles__$1r,
-    __vue_script__$1r,
-    __vue_scope_id__$1r,
-    __vue_is_functional_template__$1r,
-    __vue_module_identifier__$1r,
+    { render: __vue_render__$P, staticRenderFns: __vue_staticRenderFns__$P },
+    __vue_inject_styles__$1q,
+    __vue_script__$1q,
+    __vue_scope_id__$1q,
+    __vue_is_functional_template__$1q,
+    __vue_module_identifier__$1q,
     false,
     undefined,
     undefined,
@@ -27690,7 +27932,7 @@ __vue_render__$Q._withStripped = true;
 //
 //
 //
-var script$1s = {
+var script$1r = {
   name: 'CWidgetDropdown',
   props: {
     color: String,
@@ -27700,10 +27942,10 @@ var script$1s = {
 };
 
 /* script */
-const __vue_script__$1s = script$1s;
+const __vue_script__$1r = script$1r;
 
 /* template */
-var __vue_render__$R = function() {
+var __vue_render__$Q = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -27731,17 +27973,17 @@ var __vue_render__$R = function() {
     2
   )
 };
-var __vue_staticRenderFns__$R = [];
-__vue_render__$R._withStripped = true;
+var __vue_staticRenderFns__$Q = [];
+__vue_render__$Q._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1s = undefined;
+  const __vue_inject_styles__$1r = undefined;
   /* scoped */
-  const __vue_scope_id__$1s = undefined;
+  const __vue_scope_id__$1r = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1s = undefined;
+  const __vue_module_identifier__$1r = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1s = false;
+  const __vue_is_functional_template__$1r = false;
   /* style inject */
   
   /* style inject SSR */
@@ -27751,12 +27993,12 @@ __vue_render__$R._withStripped = true;
 
   
   var CWidgetDropdown = __vue_normalize__(
-    { render: __vue_render__$R, staticRenderFns: __vue_staticRenderFns__$R },
-    __vue_inject_styles__$1s,
-    __vue_script__$1s,
-    __vue_scope_id__$1s,
-    __vue_is_functional_template__$1s,
-    __vue_module_identifier__$1s,
+    { render: __vue_render__$Q, staticRenderFns: __vue_staticRenderFns__$Q },
+    __vue_inject_styles__$1r,
+    __vue_script__$1r,
+    __vue_scope_id__$1r,
+    __vue_is_functional_template__$1r,
+    __vue_module_identifier__$1r,
     false,
     undefined,
     undefined,
@@ -27780,119 +28022,7 @@ __vue_render__$R._withStripped = true;
 //
 //
 //
-//
-//
-//
-var script$1t = {
-  name: 'CWidgetHeaderDetails',
-  props: {
-    color: String,
-    rightHeader: String,
-    rightFooter: String,
-    leftHeader: String,
-    leftFooter: String
-  }
-};
-
-/* script */
-const __vue_script__$1t = script$1t;
-
-/* template */
-var __vue_render__$S = function() {
-  var _vm = this;
-  var _h = _vm.$createElement;
-  var _c = _vm._self._c || _h;
-  return _c(
-    "div",
-    { staticClass: "card", class: "bg-" + _vm.color + " text-white" },
-    [
-      _c(
-        "div",
-        { staticClass: "card-header" },
-        [
-          _c("div", { staticClass: "font-weight-bold" }, [
-            _vm.rightHeader
-              ? _c("span", [_vm._v(_vm._s(_vm.rightHeader))])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.leftHeader
-              ? _c("span", { staticClass: "float-right" }, [
-                  _vm._v(_vm._s(_vm.leftHeader))
-                ])
-              : _vm._e()
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _c("span", [
-              _vm.rightFooter
-                ? _c("small", [_vm._v(_vm._s(_vm.rightFooter))])
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "float-right" }, [
-              _vm.leftFooter
-                ? _c("small", [_vm._v(_vm._s(_vm.leftFooter))])
-                : _vm._e()
-            ])
-          ]),
-          _vm._v(" "),
-          _vm._t("default")
-        ],
-        2
-      )
-    ]
-  )
-};
-var __vue_staticRenderFns__$S = [];
-__vue_render__$S._withStripped = true;
-
-  /* style */
-  const __vue_inject_styles__$1t = undefined;
-  /* scoped */
-  const __vue_scope_id__$1t = undefined;
-  /* module identifier */
-  const __vue_module_identifier__$1t = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$1t = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-  /* style inject shadow dom */
-  
-
-  
-  var CWidgetHeaderDetails = __vue_normalize__(
-    { render: __vue_render__$S, staticRenderFns: __vue_staticRenderFns__$S },
-    __vue_inject_styles__$1t,
-    __vue_script__$1t,
-    __vue_scope_id__$1t,
-    __vue_is_functional_template__$1t,
-    __vue_module_identifier__$1t,
-    false,
-    undefined,
-    undefined,
-    undefined
-  );
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var script$1u = {
+var script$1s = {
   name: 'CWidgetSimple',
   props: {
     header: String,
@@ -27901,10 +28031,10 @@ var script$1u = {
 };
 
 /* script */
-const __vue_script__$1u = script$1u;
+const __vue_script__$1s = script$1s;
 
 /* template */
-var __vue_render__$T = function() {
+var __vue_render__$R = function() {
   var _vm = this;
   var _h = _vm.$createElement;
   var _c = _vm._self._c || _h;
@@ -27935,17 +28065,17 @@ var __vue_render__$T = function() {
     )
   ])
 };
-var __vue_staticRenderFns__$T = [];
-__vue_render__$T._withStripped = true;
+var __vue_staticRenderFns__$R = [];
+__vue_render__$R._withStripped = true;
 
   /* style */
-  const __vue_inject_styles__$1u = undefined;
+  const __vue_inject_styles__$1s = undefined;
   /* scoped */
-  const __vue_scope_id__$1u = undefined;
+  const __vue_scope_id__$1s = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1u = undefined;
+  const __vue_module_identifier__$1s = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1u = false;
+  const __vue_is_functional_template__$1s = false;
   /* style inject */
   
   /* style inject SSR */
@@ -27955,12 +28085,12 @@ __vue_render__$T._withStripped = true;
 
   
   var CWidgetSimple = __vue_normalize__(
-    { render: __vue_render__$T, staticRenderFns: __vue_staticRenderFns__$T },
-    __vue_inject_styles__$1u,
-    __vue_script__$1u,
-    __vue_scope_id__$1u,
-    __vue_is_functional_template__$1u,
-    __vue_module_identifier__$1u,
+    { render: __vue_render__$R, staticRenderFns: __vue_staticRenderFns__$R },
+    __vue_inject_styles__$1s,
+    __vue_script__$1s,
+    __vue_scope_id__$1s,
+    __vue_is_functional_template__$1s,
+    __vue_module_identifier__$1s,
     false,
     undefined,
     undefined,
@@ -28047,7 +28177,6 @@ var Components = /*#__PURE__*/Object.freeze({
 	CSidebarNavDivider: CSidebarNavDivider,
 	CSidebarNavDropdown: CSidebarNavDropdown,
 	CSidebarNavItem: CSidebarNavItem,
-	CSidebarNavLink: CSidebarNavLink,
 	CSidebarNavTitle: CSidebarNavTitle,
 	CSpinner: CSpinner,
 	CSwitch: CSwitch,
@@ -28062,7 +28191,6 @@ var Components = /*#__PURE__*/Object.freeze({
 	CWidgetBrand: CWidgetBrand,
 	CWidgetProgressIcon: CWidgetProgressIcon,
 	CWidgetDropdown: CWidgetDropdown,
-	CWidgetHeaderDetails: CWidgetHeaderDetails,
 	CWidgetSimple: CWidgetSimple
 });
 
@@ -28796,4 +28924,4 @@ var CoreuiVue = {
 }; // Export library
 
 export default CoreuiVue;
-export { CAlert, CBadge, CBreadcrumb, CBreadcrumbRouter, CButton, CButtonClose, CButtonGroup, CButtonToolbar, CCallout, CCard, CCardBody, CCardFooter, CCardGroup, CCardHeader, CCardImg, CCardImgOverlay, CCardLink, CCardSubtitle, CCardText, CCardTitle, CCarousel, CCarouselItem, CCol, CCollapse, CContainer, CDataTable, CDropdown, CDropdownDivider, CDropdownHeader, CDropdownItem, CEmbed, CEmitRootEvent, CFooter, CForm, CFormGroup, CHeader, CHeaderBrand, CHeaderNav, CHeaderNavItem, CHeaderNavLink, CIcon, CImg, CInput, CInputCheckbox, CInputFile, CInputRadio, CJumbotron, CLink, CListGroup, CListGroupItem, CMedia, CModal, CNav, CNavItem, CNavbar, CNavbarBrand, CNavbarNav, CNavbarText, CPagination, CPopover, CProgress, CProgressBar, CRenderFunction, CRow, CScrollbar, CSelect, CSidebar, CSidebarBrand, CSidebarClose, CSidebarFooter, CSidebarForm, CSidebarHeader, CSidebarMinimizer, CSidebarNav, CSidebarNavDivider, CSidebarNavDropdown, CSidebarNavItem, CSidebarNavLink, CSidebarNavTitle, CSpinner, CSubheader, CSwitch, CTab, CTabs, CTextarea, CToast, CToaster, CToggler, CTooltip, CWidgetBrand, CWidgetDropdown, CWidgetHeaderDetails, CWidgetIcon, CWidgetProgress, CWidgetProgressIcon, CWidgetSimple };
+export { CAlert, CBadge, CBreadcrumb, CBreadcrumbRouter, CButton, CButtonClose, CButtonGroup, CButtonToolbar, CCallout, CCard, CCardBody, CCardFooter, CCardGroup, CCardHeader, CCardImg, CCardImgOverlay, CCardLink, CCardSubtitle, CCardText, CCardTitle, CCarousel, CCarouselItem, CCol, CCollapse, CContainer, CDataTable, CDropdown, CDropdownDivider, CDropdownHeader, CDropdownItem, CEmbed, CEmitRootEvent, CFooter, CForm, CFormGroup, CHeader, CHeaderBrand, CHeaderNav, CHeaderNavItem, CHeaderNavLink, CIcon, CImg, CInput, CInputCheckbox, CInputFile, CInputRadio, CJumbotron, CLink, CListGroup, CListGroupItem, CMedia, CModal, CNav, CNavItem, CNavbar, CNavbarBrand, CNavbarNav, CNavbarText, CPagination, CPopover, CProgress, CProgressBar, CRenderFunction, CRow, CScrollbar, CSelect, CSidebar, CSidebarBrand, CSidebarClose, CSidebarFooter, CSidebarForm, CSidebarHeader, CSidebarMinimizer, CSidebarNav, CSidebarNavDivider, CSidebarNavDropdown, CSidebarNavItem, CSidebarNavTitle, CSpinner, CSubheader, CSwitch, CTab, CTabs, CTextarea, CToast, CToaster, CToggler, CTooltip, CWidgetBrand, CWidgetDropdown, CWidgetIcon, CWidgetProgress, CWidgetProgressIcon, CWidgetSimple };
