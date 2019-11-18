@@ -65,7 +65,7 @@
                 >
                   <CIcon
                     width="18"
-                    :content="$options.icons.arrowTop"
+                    :content="$options.icons.cilArrowTop"
                     :class="iconClasses(index)"
                   />
                 </slot>
@@ -144,7 +144,7 @@
                   <h2>{{ passedItems.length ? 'No filtering results ' : 'No items'}}
                     <CIcon
                       width="30"
-                      :content="$options.icons.ban"
+                      :content="$options.icons.cilBan"
                       class="text-danger mb-2"
                     />
                   </h2>
@@ -174,7 +174,7 @@
                 >
                   <CIcon
                     width="18"
-                    name="arrowTop"
+                    :content="$options.icons.cilArrowTop"
                     :class="iconClasses(index)"
                   />
                 </slot>
@@ -211,11 +211,11 @@
 import CSpinner from '../spinner/CSpinner'
 import CPagination from '../pagination/CPagination'
 import { CIcon } from '@coreui/icons-vue/index.js'
-import { arrowTop, ban } from '@coreui/icons'
+import { cilArrowTop, cilBan } from '@coreui/icons'
 
 export default {
   name: 'CDataTable',
-  icons: { arrowTop, ban },
+  icons: { cilArrowTop, cilBan },
   components: {
     CPagination,
     CSpinner,
