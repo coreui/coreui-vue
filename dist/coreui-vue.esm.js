@@ -1165,7 +1165,7 @@ var shared$1 = createCommonjsModule(function (module) {
 (module.exports = function (key, value) {
   return sharedStore$1[key] || (sharedStore$1[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.3.4',
+  version: '3.4.1',
   mode:  'pure' ,
   copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
 });
@@ -16029,7 +16029,7 @@ var mixin_1 = mixin;
 
 var coreuiUtilities = createCommonjsModule(function (module, exports) {
 /*!
-  * CoreUI v3.0.0-beta.2 (https://coreui.io)
+  * CoreUI v3.0.0-beta.3 (https://coreui.io)
   * Copyright 2019 Łukasz Holeczek
   * Licensed under MIT (https://coreui.io)
   */
@@ -16038,7 +16038,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 }(commonjsGlobal, (function (exports) {
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.2): classes.js
+   * CoreUI Utilities (v3.0.0-beta.3): classes.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16051,7 +16051,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.2): deep-objects-merge.js
+   * CoreUI Utilities (v3.0.0-beta.3): deep-objects-merge.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16072,7 +16072,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.2): get-css-custom-properties.js
+   * CoreUI Utilities (v3.0.0-beta.3): get-css-custom-properties.js
    * Licensed under MIT (https://coreui.io/license)
    * @returns {string} css custom property name
    * --------------------------------------------------------------------------
@@ -16115,7 +16115,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.2): get-style.js
+   * CoreUI Utilities (v3.0.0-beta.3): get-style.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16148,7 +16148,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.2): get-color.js
+   * CoreUI Utilities (v3.0.0-beta.3): get-color.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16165,7 +16165,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.2): hex-to-rgb.js
+   * CoreUI Utilities (v3.0.0-beta.3): hex-to-rgb.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16201,7 +16201,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v3.0.0-beta.2): hex-to-rgba.js
+   * CoreUI Utilities (v3.0.0-beta.3): hex-to-rgba.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -16241,7 +16241,7 @@ var coreuiUtilities = createCommonjsModule(function (module, exports) {
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI (v3.0.0-beta.2): rgb-to-hex.js
+   * CoreUI (v3.0.0-beta.3): rgb-to-hex.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -19156,8 +19156,11 @@ if (v8$1) {
   match$1 = v8$1.split('.');
   version$2 = match$1[0] + match$1[1];
 } else if (userAgent$1) {
-  match$1 = userAgent$1.match(/Chrome\/(\d+)/);
-  if (match$1) version$2 = match$1[1];
+  match$1 = userAgent$1.match(/Edge\/(\d+)/);
+  if (!match$1 || match$1[1] >= 74) {
+    match$1 = userAgent$1.match(/Chrome\/(\d+)/);
+    if (match$1) version$2 = match$1[1];
+  }
 }
 
 var v8Version$1 = version$2 && +version$2;
@@ -19182,7 +19185,10 @@ var IS_CONCAT_SPREADABLE$1 = wellKnownSymbol$1('isConcatSpreadable');
 var MAX_SAFE_INTEGER$1 = 0x1FFFFFFFFFFFFF;
 var MAXIMUM_ALLOWED_INDEX_EXCEEDED$1 = 'Maximum allowed index exceeded';
 
-var IS_CONCAT_SPREADABLE_SUPPORT$1 = !fails$1(function () {
+// We can't use this feature detection in V8 since it causes
+// deoptimization and serious performance degradation
+// https://github.com/zloirock/core-js/issues/679
+var IS_CONCAT_SPREADABLE_SUPPORT$1 = v8Version$1 >= 51 || !fails$1(function () {
   var array = [];
   array[IS_CONCAT_SPREADABLE$1] = false;
   return array.concat()[0] !== array;
@@ -19337,8 +19343,7 @@ var setInternalState$2 = internalState$1.set;
 var getInternalState$2 = internalState$1.getterFor(SYMBOL);
 var ObjectPrototype$2 = Object[PROTOTYPE$2];
 var $Symbol = global_1$1.Symbol;
-var JSON$1 = global_1$1.JSON;
-var nativeJSONStringify = JSON$1 && JSON$1.stringify;
+var $stringify = getBuiltIn$1('JSON', 'stringify');
 var nativeGetOwnPropertyDescriptor$2 = objectGetOwnPropertyDescriptor$1.f;
 var nativeDefineProperty$2 = objectDefineProperty$1.f;
 var nativeGetOwnPropertyNames$1 = objectGetOwnPropertyNamesExternal.f;
@@ -19556,30 +19561,35 @@ _export$1({ target: 'Object', stat: true, forced: fails$1(function () { objectGe
 
 // `JSON.stringify` method behavior with symbols
 // https://tc39.github.io/ecma262/#sec-json.stringify
-JSON$1 && _export$1({ target: 'JSON', stat: true, forced: !nativeSymbol$1 || fails$1(function () {
-  var symbol = $Symbol();
-  // MS Edge converts symbol values to JSON as {}
-  return nativeJSONStringify([symbol]) != '[null]'
-    // WebKit converts symbol values to JSON as null
-    || nativeJSONStringify({ a: symbol }) != '{}'
-    // V8 throws on boxed symbols
-    || nativeJSONStringify(Object(symbol)) != '{}';
-}) }, {
-  stringify: function stringify(it) {
-    var args = [it];
-    var index = 1;
-    var replacer, $replacer;
-    while (arguments.length > index) args.push(arguments[index++]);
-    $replacer = replacer = args[1];
-    if (!isObject$1(replacer) && it === undefined || isSymbol(it)) return; // IE8 returns string on undefined
-    if (!isArray(replacer)) replacer = function (key, value) {
-      if (typeof $replacer == 'function') value = $replacer.call(this, key, value);
-      if (!isSymbol(value)) return value;
-    };
-    args[1] = replacer;
-    return nativeJSONStringify.apply(JSON$1, args);
-  }
-});
+if ($stringify) {
+  var FORCED_JSON_STRINGIFY = !nativeSymbol$1 || fails$1(function () {
+    var symbol = $Symbol();
+    // MS Edge converts symbol values to JSON as {}
+    return $stringify([symbol]) != '[null]'
+      // WebKit converts symbol values to JSON as null
+      || $stringify({ a: symbol }) != '{}'
+      // V8 throws on boxed symbols
+      || $stringify(Object(symbol)) != '{}';
+  });
+
+  _export$1({ target: 'JSON', stat: true, forced: FORCED_JSON_STRINGIFY }, {
+    // eslint-disable-next-line no-unused-vars
+    stringify: function stringify(it, replacer, space) {
+      var args = [it];
+      var index = 1;
+      var $replacer;
+      while (arguments.length > index) args.push(arguments[index++]);
+      $replacer = replacer;
+      if (!isObject$1(replacer) && it === undefined || isSymbol(it)) return; // IE8 returns string on undefined
+      if (!isArray(replacer)) replacer = function (key, value) {
+        if (typeof $replacer == 'function') value = $replacer.call(this, key, value);
+        if (!isSymbol(value)) return value;
+      };
+      args[1] = replacer;
+      return $stringify.apply(null, args);
+    }
+  });
+}
 
 // `Symbol.prototype[@@toPrimitive]` method
 // https://tc39.github.io/ecma262/#sec-symbol.prototype-@@toprimitive
@@ -25860,7 +25870,7 @@ var script$1f = {
   }
 };
 
-var css$4 = "\n.transparent[data-v-6fbaf243] {\r\n  opacity: 0.4;\n}\n.icon-transition[data-v-6fbaf243] {\r\n  -webkit-transition: transform 0.3s;\r\n  -webkit-transition: -webkit-transform 0.3s;\r\n  transition: -webkit-transform 0.3s;\r\n  transition: transform 0.3s;\r\n  transition: transform 0.3s, -webkit-transform 0.3s;\n}\n.arrow-position[data-v-6fbaf243] {\r\n  right: 0;\r\n  top: 50%;\r\n  -webkit-transform: translateY(-50%);\r\n          transform: translateY(-50%);\n}\n.rotate-icon[data-v-6fbaf243] {\r\n  -webkit-transform: translateY(-50%) rotate(-180deg);\r\n          transform: translateY(-50%) rotate(-180deg);\n}\r\n";
+var css$4 = "\n.transparent[data-v-12527458] {\r\n  opacity: 0.4;\n}\n.icon-transition[data-v-12527458] {\r\n  -webkit-transition: transform 0.3s;\r\n  -webkit-transition: -webkit-transform 0.3s;\r\n  transition: -webkit-transform 0.3s;\r\n  transition: transform 0.3s;\r\n  transition: transform 0.3s, -webkit-transform 0.3s;\n}\n.arrow-position[data-v-12527458] {\r\n  right: 0;\r\n  top: 50%;\r\n  -webkit-transform: translateY(-50%);\r\n          transform: translateY(-50%);\n}\n.rotate-icon[data-v-12527458] {\r\n  -webkit-transform: translateY(-50%) rotate(-180deg);\r\n          transform: translateY(-50%) rotate(-180deg);\n}\r\n";
 styleInject(css$4);
 
 /* script */
@@ -26343,7 +26353,7 @@ __vue_render__$I._withStripped = true;
   /* style */
   const __vue_inject_styles__$1f = undefined;
   /* scoped */
-  const __vue_scope_id__$1f = "data-v-6fbaf243";
+  const __vue_scope_id__$1f = "data-v-12527458";
   /* module identifier */
   const __vue_module_identifier__$1f = undefined;
   /* functional template */
@@ -26795,7 +26805,7 @@ var setInternalState$4 = internalState.set;
 var getInternalState$4 = internalState.getterFor(SYMBOL$1);
 var ObjectPrototype$4 = Object[PROTOTYPE$3];
 var $Symbol$1 = global_1.Symbol;
-var $stringify = getBuiltIn('JSON', 'stringify');
+var $stringify$1 = getBuiltIn('JSON', 'stringify');
 var nativeGetOwnPropertyDescriptor$3 = objectGetOwnPropertyDescriptor.f;
 var nativeDefineProperty$3 = objectDefineProperty.f;
 var nativeGetOwnPropertyNames$3 = objectGetOwnPropertyNamesExternal$1.f;
@@ -27016,18 +27026,18 @@ _export({ target: 'Object', stat: true, forced: fails(function () { objectGetOwn
 
 // `JSON.stringify` method behavior with symbols
 // https://tc39.github.io/ecma262/#sec-json.stringify
-if ($stringify) {
-  var FORCED_JSON_STRINGIFY = !nativeSymbol || fails(function () {
+if ($stringify$1) {
+  var FORCED_JSON_STRINGIFY$1 = !nativeSymbol || fails(function () {
     var symbol = $Symbol$1();
     // MS Edge converts symbol values to JSON as {}
-    return $stringify([symbol]) != '[null]'
+    return $stringify$1([symbol]) != '[null]'
       // WebKit converts symbol values to JSON as null
-      || $stringify({ a: symbol }) != '{}'
+      || $stringify$1({ a: symbol }) != '{}'
       // V8 throws on boxed symbols
-      || $stringify(Object(symbol)) != '{}';
+      || $stringify$1(Object(symbol)) != '{}';
   });
 
-  _export({ target: 'JSON', stat: true, forced: FORCED_JSON_STRINGIFY }, {
+  _export({ target: 'JSON', stat: true, forced: FORCED_JSON_STRINGIFY$1 }, {
     // eslint-disable-next-line no-unused-vars
     stringify: function stringify(it, replacer, space) {
       var args = [it];
@@ -27041,7 +27051,7 @@ if ($stringify) {
         if (!isSymbol$1(value)) return value;
       };
       args[1] = replacer;
-      return $stringify.apply(null, args);
+      return $stringify$1.apply(null, args);
     }
   });
 }

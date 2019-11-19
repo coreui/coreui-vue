@@ -1,7 +1,7 @@
 {
   "name": "@coreui/vue",
   "description": "CoreUI Vue Bootstrap 4 layout components",
-  "version": "3.0.0-alpha.8",
+  "version": "3.0.0-beta.0",
   "license": "MIT",
   "main": "dist/coreui-vue.common.js",
   "types": "src/index.d.ts",
@@ -57,7 +57,7 @@
     "clear_jest": "jest --clearCache"
   },
   "dependencies": {
-    "@coreui/coreui": "3.0.0-beta.2",
+    "@coreui/coreui": "3.0.0-beta.3",
     "@coreui/icons": "coreui/coreui-icons#1.0.0-beta.1",
     "@coreui/icons-vue": "coreui/coreui-icons-vue#1.0.0-alpha.1",
     "clone": "^2.1.2",
@@ -82,7 +82,7 @@
     "lodash": "^4.17.15",
     "node-sass": "^4.13.0",
     "node-sass-magic-importer": "^5.3.2",
-    "rollup": "^1.27.1",
+    "rollup": "^1.27.2",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-filesize": "^6.2.1",
