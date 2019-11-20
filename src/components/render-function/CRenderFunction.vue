@@ -1,5 +1,5 @@
 <script>
-import clone from 'clone'
+import clonedeep from 'lodash.clonedeep'
 export default {
   name: 'CRenderFunction',
   props: {
@@ -8,7 +8,7 @@ export default {
   },
   computed: {
     copiedContent () {
-      return clone(this.contentToRender)
+      return clonedeep(this.contentToRender)
     },
     content () {
       if (!this.flat) {
