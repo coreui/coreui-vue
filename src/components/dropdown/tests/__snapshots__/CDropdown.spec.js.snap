@@ -31,7 +31,6 @@ exports[`CDropdown renders correctly inNav 1`] = `
     class="additional-toggler-class nav-link bg-success"
     href="#"
     target="_self"
-    type="button"
   >
     Dropdown button
   </a>
