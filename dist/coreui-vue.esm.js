@@ -2079,7 +2079,7 @@ const __vue_script__ = script;
   
 
   
-  var CButtonClose = __vue_normalize__(
+  const __vue_component__ = __vue_normalize__(
     {},
     __vue_inject_styles__,
     __vue_script__,
@@ -2095,7 +2095,7 @@ const __vue_script__ = script;
 var script$1 = {
   name: 'CAlert',
   components: {
-    CButtonClose: CButtonClose
+    CButtonClose: __vue_component__
   },
   props: {
     color: String,
@@ -2250,7 +2250,7 @@ __vue_render__._withStripped = true;
   
 
   
-  var CAlert = __vue_normalize__(
+  const __vue_component__$1 = __vue_normalize__(
     { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
     __vue_inject_styles__$1,
     __vue_script__$1,
@@ -2400,7 +2400,7 @@ const __vue_script__$2 = script$2;
   
 
   
-  var CLink = __vue_normalize__(
+  const __vue_component__$2 = __vue_normalize__(
     {},
     __vue_inject_styles__$2,
     __vue_script__$2,
@@ -2436,7 +2436,7 @@ var script$3 = {
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
-    var tag = !props.href && !props.to ? props.tag : CLink;
+    var tag = !props.href && !props.to ? props.tag : __vue_component__$2;
     var componentData = {
       staticClass: 'badge',
       class: (_class = {}, _defineProperty(_class, "badge-".concat(props.color), props.color), _defineProperty(_class, 'badge-pill', props.shape === 'pill'), _defineProperty(_class, 'active', props.active), _defineProperty(_class, 'disabled', props.disabled), _class),
@@ -2467,7 +2467,7 @@ const __vue_script__$3 = script$3;
   
 
   
-  var CBadge = __vue_normalize__(
+  const __vue_component__$3 = __vue_normalize__(
     {},
     __vue_inject_styles__$3,
     __vue_script__$3,
@@ -2566,7 +2566,7 @@ _export({ target: 'Array', proto: true, forced: !arrayMethodHasSpeciesSupport('s
 var script$4 = {
   name: 'CBreadcrumb',
   components: {
-    CLink: CLink
+    CLink: __vue_component__$2
   },
   props: {
     items: Array,
@@ -2667,7 +2667,7 @@ __vue_render__$1._withStripped = true;
   
 
   
-  var CBreadcrumb = __vue_normalize__(
+  const __vue_component__$4 = __vue_normalize__(
     { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
     __vue_inject_styles__$4,
     __vue_script__$4,
@@ -2807,7 +2807,7 @@ _export({ target: 'Array', proto: true, forced: !arrayMethodHasSpeciesSupport('m
 var script$5 = {
   name: 'CBreadcrumbRouter',
   components: {
-    CBreadcrumb: CBreadcrumb
+    CBreadcrumb: __vue_component__$4
   },
   props: {
     addClasses: [String, Array, Object],
@@ -2872,7 +2872,7 @@ __vue_render__$2._withStripped = true;
   
 
   
-  var CBreadcrumbRouter = __vue_normalize__(
+  const __vue_component__$5 = __vue_normalize__(
     { render: __vue_render__$2, staticRenderFns: __vue_staticRenderFns__$2 },
     __vue_inject_styles__$5,
     __vue_script__$5,
@@ -3046,7 +3046,7 @@ var script$6 = {
       attrs: computeAttrs(props, data, isButton, toggle),
       on: on
     };
-    return h(isButton ? 'button' : CLink, a(data, componentData), children);
+    return h(isButton ? 'button' : __vue_component__$2, a(data, componentData), children);
   }
 };
 
@@ -3071,7 +3071,7 @@ const __vue_script__$6 = script$6;
   
 
   
-  var CButton = __vue_normalize__(
+  const __vue_component__$6 = __vue_normalize__(
     {},
     __vue_inject_styles__$6,
     __vue_script__$6,
@@ -3130,7 +3130,7 @@ const __vue_script__$7 = script$7;
   
 
   
-  var CButtonGroup = __vue_normalize__(
+  const __vue_component__$7 = __vue_normalize__(
     {},
     __vue_inject_styles__$7,
     __vue_script__$7,
@@ -3189,7 +3189,7 @@ const __vue_script__$8 = script$8;
   
 
   
-  var CButtonToolbar = __vue_normalize__(
+  const __vue_component__$8 = __vue_normalize__(
     {},
     __vue_inject_styles__$8,
     __vue_script__$8,
@@ -3249,7 +3249,7 @@ __vue_render__$3._withStripped = true;
   
 
   
-  var CCallout = __vue_normalize__(
+  const __vue_component__$9 = __vue_normalize__(
     { render: __vue_render__$3, staticRenderFns: __vue_staticRenderFns__$3 },
     __vue_inject_styles__$9,
     __vue_script__$9,
@@ -3539,7 +3539,7 @@ __vue_render__$4._withStripped = true;
   
 
   
-  var CCarousel = __vue_normalize__(
+  const __vue_component__$a = __vue_normalize__(
     { render: __vue_render__$4, staticRenderFns: __vue_staticRenderFns__$4 },
     __vue_inject_styles__$a,
     __vue_script__$a,
@@ -3669,7 +3669,7 @@ __vue_render__$5._withStripped = true;
   
 
   
-  var CImg = __vue_normalize__(
+  const __vue_component__$b = __vue_normalize__(
     { render: __vue_render__$5, staticRenderFns: __vue_staticRenderFns__$5 },
     __vue_inject_styles__$b,
     __vue_script__$b,
@@ -3685,7 +3685,7 @@ __vue_render__$5._withStripped = true;
 var script$c = {
   name: 'CCarouselItem',
   components: {
-    CImg: CImg
+    CImg: __vue_component__$b
   },
   props: {
     image: [String, Object],
@@ -3798,7 +3798,7 @@ __vue_render__$6._withStripped = true;
   
 
   
-  var CCarouselItem = __vue_normalize__(
+  const __vue_component__$c = __vue_normalize__(
     { render: __vue_render__$6, staticRenderFns: __vue_staticRenderFns__$6 },
     __vue_inject_styles__$c,
     __vue_script__$c,
@@ -3862,7 +3862,7 @@ const __vue_script__$d = script$d;
   
 
   
-  var CCardBody = __vue_normalize__(
+  const __vue_component__$d = __vue_normalize__(
     {},
     __vue_inject_styles__$d,
     __vue_script__$d,
@@ -3890,7 +3890,7 @@ var script$e = {
         data = _ref.data,
         slots = _ref.slots;
     var slot = slots().default;
-    var content = props.bodyWrapper ? h(CCardBody, slot) : slot;
+    var content = props.bodyWrapper ? h(__vue_component__$d, slot) : slot;
     return h(props.tag || 'div', a(data, {
       staticClass: 'card',
       class: (_class = {}, _defineProperty(_class, "card-accent-".concat(props.accentColor), props.accentColor), _defineProperty(_class, "text-".concat(props.align), props.align), _defineProperty(_class, "bg-".concat(props.color), props.color), _defineProperty(_class, "border-".concat(props.borderColor), props.borderColor), _defineProperty(_class, "text-".concat(props.textColor), props.textColor), _class)
@@ -3919,7 +3919,7 @@ const __vue_script__$e = script$e;
   
 
   
-  var CCard = __vue_normalize__(
+  const __vue_component__$e = __vue_normalize__(
     {},
     __vue_inject_styles__$e,
     __vue_script__$e,
@@ -3970,7 +3970,7 @@ const __vue_script__$f = script$f;
   
 
   
-  var CCardFooter = __vue_normalize__(
+  const __vue_component__$f = __vue_normalize__(
     {},
     __vue_inject_styles__$f,
     __vue_script__$f,
@@ -4022,7 +4022,7 @@ const __vue_script__$g = script$g;
   
 
   
-  var CCardGroup = __vue_normalize__(
+  const __vue_component__$g = __vue_normalize__(
     {},
     __vue_inject_styles__$g,
     __vue_script__$g,
@@ -4073,7 +4073,7 @@ const __vue_script__$h = script$h;
   
 
   
-  var CCardHeader = __vue_normalize__(
+  const __vue_component__$h = __vue_normalize__(
     {},
     __vue_inject_styles__$h,
     __vue_script__$h,
@@ -4094,7 +4094,7 @@ var props$4 = Object.assign({
       return ['', 'top', 'bottom', 'full'].includes(val);
     }
   }
-}, CImg.props);
+}, __vue_component__$b.props);
 var script$i = {
   functional: true,
   name: 'CCardImg',
@@ -4103,7 +4103,7 @@ var script$i = {
     var props = _ref.props,
         data = _ref.data;
     var haveClassSuffix = props.variant !== 'full';
-    return h(CImg, a(data, {
+    return h(__vue_component__$b, a(data, {
       class: "card-img".concat(haveClassSuffix ? "-".concat(props.variant) : ''),
       props: props
     }));
@@ -4131,7 +4131,7 @@ const __vue_script__$i = script$i;
   
 
   
-  var CCardImg = __vue_normalize__(
+  const __vue_component__$i = __vue_normalize__(
     {},
     __vue_inject_styles__$i,
     __vue_script__$i,
@@ -4181,7 +4181,7 @@ const __vue_script__$j = script$j;
   
 
   
-  var CCardImgOverlay = __vue_normalize__(
+  const __vue_component__$j = __vue_normalize__(
     {},
     __vue_inject_styles__$j,
     __vue_script__$j,
@@ -4202,7 +4202,7 @@ var script$k = {
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
-    return h(CLink, a(data, {
+    return h(__vue_component__$2, a(data, {
       staticClass: 'card-link',
       props: props
     }), children);
@@ -4230,7 +4230,7 @@ const __vue_script__$k = script$k;
   
 
   
-  var CCardLink = __vue_normalize__(
+  const __vue_component__$k = __vue_normalize__(
     {},
     __vue_inject_styles__$k,
     __vue_script__$k,
@@ -4280,7 +4280,7 @@ const __vue_script__$l = script$l;
   
 
   
-  var CCardSubtitle = __vue_normalize__(
+  const __vue_component__$l = __vue_normalize__(
     {},
     __vue_inject_styles__$l,
     __vue_script__$l,
@@ -4330,7 +4330,7 @@ const __vue_script__$m = script$m;
   
 
   
-  var CCardText = __vue_normalize__(
+  const __vue_component__$m = __vue_normalize__(
     {},
     __vue_inject_styles__$m,
     __vue_script__$m,
@@ -4380,7 +4380,7 @@ const __vue_script__$n = script$n;
   
 
   
-  var CCardTitle = __vue_normalize__(
+  const __vue_component__$n = __vue_normalize__(
     {},
     __vue_inject_styles__$n,
     __vue_script__$n,
@@ -4521,7 +4521,7 @@ __vue_render__$7._withStripped = true;
   
 
   
-  var CCollapse = __vue_normalize__(
+  const __vue_component__$o = __vue_normalize__(
     { render: __vue_render__$7, staticRenderFns: __vue_staticRenderFns__$7 },
     __vue_inject_styles__$o,
     __vue_script__$o,
@@ -16410,7 +16410,7 @@ var script$p = {
       }];
     },
     togglerTag: function togglerTag() {
-      return this.inNav ? CLink : 'button';
+      return this.inNav ? __vue_component__$2 : 'button';
     },
     splittedToggler: function splittedToggler() {
       return this.split && !this.inNav;
@@ -16527,7 +16527,7 @@ __vue_render__$8._withStripped = true;
   
 
   
-  var CDropdown = __vue_normalize__(
+  const __vue_component__$p = __vue_normalize__(
     { render: __vue_render__$8, staticRenderFns: __vue_staticRenderFns__$8 },
     __vue_inject_styles__$p,
     __vue_script__$p,
@@ -16582,7 +16582,7 @@ const __vue_script__$q = script$q;
   
 
   
-  var CDropdownHeader = __vue_normalize__(
+  const __vue_component__$q = __vue_normalize__(
     {},
     __vue_inject_styles__$q,
     __vue_script__$q,
@@ -16637,7 +16637,7 @@ const __vue_script__$r = script$r;
   
 
   
-  var CDropdownDivider = __vue_normalize__(
+  const __vue_component__$r = __vue_normalize__(
     {},
     __vue_inject_styles__$r,
     __vue_script__$r,
@@ -16658,7 +16658,7 @@ var script$s = {
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
-    return h(CLink, a(data, {
+    return h(__vue_component__$2, a(data, {
       props: props,
       staticClass: 'dropdown-item',
       attrs: {
@@ -16689,7 +16689,7 @@ const __vue_script__$s = script$s;
   
 
   
-  var CDropdownItem = __vue_normalize__(
+  const __vue_component__$s = __vue_normalize__(
     {},
     __vue_inject_styles__$s,
     __vue_script__$s,
@@ -16762,7 +16762,7 @@ const __vue_script__$t = script$t;
   
 
   
-  var CEmbed = __vue_normalize__(
+  const __vue_component__$t = __vue_normalize__(
     {},
     __vue_inject_styles__$t,
     __vue_script__$t,
@@ -16864,7 +16864,7 @@ __vue_render__$9._withStripped = true;
   
 
   
-  var CFooter = __vue_normalize__(
+  const __vue_component__$u = __vue_normalize__(
     { render: __vue_render__$9, staticRenderFns: __vue_staticRenderFns__$9 },
     __vue_inject_styles__$u,
     __vue_script__$u,
@@ -16918,7 +16918,7 @@ const __vue_script__$v = script$v;
   
 
   
-  var CForm = __vue_normalize__(
+  const __vue_component__$v = __vue_normalize__(
     {},
     __vue_inject_styles__$v,
     __vue_script__$v,
@@ -17226,7 +17226,7 @@ __vue_render__$a._withStripped = true;
   
 
   
-  var CFormGroup = __vue_normalize__(
+  const __vue_component__$w = __vue_normalize__(
     { render: __vue_render__$a, staticRenderFns: __vue_staticRenderFns__$a },
     __vue_inject_styles__$w,
     __vue_script__$w,
@@ -17549,7 +17549,7 @@ var script$x = {
   slots: ['prepend', 'prepend-content', 'append-content', 'append', 'label-after-input', 'valid-feedback', 'invalid-feedback', 'description'],
   inheritAttrs: false,
   components: {
-    CFormGroup: CFormGroup
+    CFormGroup: __vue_component__$w
   },
   mixins: mixins,
   props: inputProps,
@@ -17821,7 +17821,7 @@ __vue_render__$b._withStripped = true;
   
 
   
-  var CInput = __vue_normalize__(
+  const __vue_component__$x = __vue_normalize__(
     { render: __vue_render__$b, staticRenderFns: __vue_staticRenderFns__$b },
     __vue_inject_styles__$x,
     __vue_script__$x,
@@ -17838,7 +17838,7 @@ var script$y = {
   name: 'CInputCheckbox',
   inheritAttrs: false,
   components: {
-    CFormGroup: CFormGroup
+    CFormGroup: __vue_component__$w
   },
   mixins: [safeId, validationComputedProps],
   props: inputCheckboxProps,
@@ -18022,7 +18022,7 @@ __vue_render__$c._withStripped = true;
   
 
   
-  var CInputCheckbox = __vue_normalize__(
+  const __vue_component__$y = __vue_normalize__(
     { render: __vue_render__$c, staticRenderFns: __vue_staticRenderFns__$c },
     __vue_inject_styles__$y,
     __vue_script__$y,
@@ -18042,7 +18042,7 @@ var script$z = {
   name: 'CInputFile',
   inheritAttrs: false,
   components: {
-    CFormGroup: CFormGroup
+    CFormGroup: __vue_component__$w
   },
   mixins: mixins$1,
   props: inputFileProps,
@@ -18294,7 +18294,7 @@ __vue_render__$d._withStripped = true;
   
 
   
-  var CInputFile = __vue_normalize__(
+  const __vue_component__$z = __vue_normalize__(
     { render: __vue_render__$d, staticRenderFns: __vue_staticRenderFns__$d },
     __vue_inject_styles__$z,
     __vue_script__$z,
@@ -18309,7 +18309,7 @@ __vue_render__$d._withStripped = true;
 
 var script$A = {
   name: 'CInputRadio',
-  extends: CInputCheckbox,
+  extends: __vue_component__$y,
   type: 'radio'
 };
 
@@ -18334,7 +18334,7 @@ const __vue_script__$A = script$A;
   
 
   
-  var CInputRadio = __vue_normalize__(
+  const __vue_component__$A = __vue_normalize__(
     {},
     __vue_inject_styles__$A,
     __vue_script__$A,
@@ -18352,7 +18352,7 @@ var script$B = {
   name: 'CSelect',
   inheritAttrs: false,
   components: {
-    CFormGroup: CFormGroup
+    CFormGroup: __vue_component__$w
   },
   slots: ['prepend', 'prepend-content', 'append-content', 'append', 'label-after-input', 'valid-feedback', 'invalid-feedback', 'description'],
   mixins: mixins$2,
@@ -18676,7 +18676,7 @@ __vue_render__$e._withStripped = true;
   
 
   
-  var CSelect = __vue_normalize__(
+  const __vue_component__$B = __vue_normalize__(
     { render: __vue_render__$e, staticRenderFns: __vue_staticRenderFns__$e },
     __vue_inject_styles__$B,
     __vue_script__$B,
@@ -18695,7 +18695,7 @@ var script$C = {
   slots: ['prepend', 'prepend-content', 'append-content', 'append', 'label-after-input', 'valid-feedback', 'invalid-feedback', 'description'],
   inheritAttrs: false,
   components: {
-    CFormGroup: CFormGroup
+    CFormGroup: __vue_component__$w
   },
   mixins: mixins$3,
   props: textareaProps,
@@ -18957,7 +18957,7 @@ __vue_render__$f._withStripped = true;
   
 
   
-  var CTextarea = __vue_normalize__(
+  const __vue_component__$C = __vue_normalize__(
     { render: __vue_render__$f, staticRenderFns: __vue_staticRenderFns__$f },
     __vue_inject_styles__$C,
     __vue_script__$C,
@@ -19011,7 +19011,7 @@ const __vue_script__$D = script$D;
   
 
   
-  var CContainer = __vue_normalize__(
+  const __vue_component__$D = __vue_normalize__(
     {},
     __vue_inject_styles__$D,
     __vue_script__$D,
@@ -19084,7 +19084,7 @@ const __vue_script__$E = script$E;
   
 
   
-  var CRow = __vue_normalize__(
+  const __vue_component__$E = __vue_normalize__(
     {},
     __vue_inject_styles__$E,
     __vue_script__$E,
@@ -19774,7 +19774,7 @@ const __vue_script__$F = script$F;
   
 
   
-  var CCol = __vue_normalize__(
+  const __vue_component__$F = __vue_normalize__(
     {},
     __vue_inject_styles__$F,
     __vue_script__$F,
@@ -19854,7 +19854,7 @@ __vue_render__$g._withStripped = true;
   
 
   
-  var CHeader = __vue_normalize__(
+  const __vue_component__$G = __vue_normalize__(
     { render: __vue_render__$g, staticRenderFns: __vue_staticRenderFns__$g },
     __vue_inject_styles__$G,
     __vue_script__$G,
@@ -19904,7 +19904,7 @@ __vue_render__$h._withStripped = true;
   
 
   
-  var CHeaderBrand = __vue_normalize__(
+  const __vue_component__$H = __vue_normalize__(
     { render: __vue_render__$h, staticRenderFns: __vue_staticRenderFns__$h },
     __vue_inject_styles__$H,
     __vue_script__$H,
@@ -19956,7 +19956,7 @@ __vue_render__$i._withStripped = true;
   
 
   
-  var CHeaderNav = __vue_normalize__(
+  const __vue_component__$I = __vue_normalize__(
     { render: __vue_render__$i, staticRenderFns: __vue_staticRenderFns__$i },
     __vue_inject_styles__$I,
     __vue_script__$I,
@@ -20008,7 +20008,7 @@ __vue_render__$j._withStripped = true;
   
 
   
-  var CHeaderNavItem = __vue_normalize__(
+  const __vue_component__$J = __vue_normalize__(
     { render: __vue_render__$j, staticRenderFns: __vue_staticRenderFns__$j },
     __vue_inject_styles__$J,
     __vue_script__$J,
@@ -20025,7 +20025,7 @@ __vue_render__$j._withStripped = true;
 var script$K = {
   name: 'CHeaderNavLink',
   components: {
-    CLink: CLink
+    CLink: __vue_component__$2
   },
   props: props
 };
@@ -20064,7 +20064,7 @@ __vue_render__$k._withStripped = true;
   
 
   
-  var CHeaderNavLink = __vue_normalize__(
+  const __vue_component__$K = __vue_normalize__(
     { render: __vue_render__$k, staticRenderFns: __vue_staticRenderFns__$k },
     __vue_inject_styles__$K,
     __vue_script__$K,
@@ -20127,7 +20127,7 @@ __vue_render__$l._withStripped = true;
   
 
   
-  var CSubheader = __vue_normalize__(
+  const __vue_component__$L = __vue_normalize__(
     { render: __vue_render__$l, staticRenderFns: __vue_staticRenderFns__$l },
     __vue_inject_styles__$L,
     __vue_script__$L,
@@ -20189,7 +20189,7 @@ const __vue_script__$M = script$M;
   
 
   
-  var CJumbotron = __vue_normalize__(
+  const __vue_component__$M = __vue_normalize__(
     {},
     __vue_inject_styles__$M,
     __vue_script__$M,
@@ -20253,7 +20253,7 @@ const __vue_script__$N = script$N;
   
 
   
-  var CListGroup = __vue_normalize__(
+  const __vue_component__$N = __vue_normalize__(
     {},
     __vue_inject_styles__$N,
     __vue_script__$N,
@@ -20284,7 +20284,7 @@ var script$O = {
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
-    var tag = props.href || props.to ? CLink : props.tag;
+    var tag = props.href || props.to ? __vue_component__$2 : props.tag;
     var isAction = Boolean(props.action || props.href || props.to || props.tag === 'button');
     var attrs = {};
     var itemProps = {};
@@ -20332,7 +20332,7 @@ const __vue_script__$O = script$O;
   
 
   
-  var CListGroupItem = __vue_normalize__(
+  const __vue_component__$O = __vue_normalize__(
     {},
     __vue_inject_styles__$O,
     __vue_script__$O,
@@ -20348,7 +20348,7 @@ const __vue_script__$O = script$O;
 var script$P = {
   name: 'CMedia',
   components: {
-    CImg: CImg
+    CImg: __vue_component__$b
   },
   props: {
     addAsideMargin: {
@@ -20431,7 +20431,7 @@ __vue_render__$m._withStripped = true;
   
 
   
-  var CMedia = __vue_normalize__(
+  const __vue_component__$P = __vue_normalize__(
     { render: __vue_render__$m, staticRenderFns: __vue_staticRenderFns__$m },
     __vue_inject_styles__$P,
     __vue_script__$P,
@@ -20447,7 +20447,7 @@ __vue_render__$m._withStripped = true;
 var script$Q = {
   name: 'CModal',
   components: {
-    CButtonClose: CButtonClose
+    CButtonClose: __vue_component__
   },
   props: {
     show: Boolean,
@@ -20669,7 +20669,7 @@ __vue_render__$n._withStripped = true;
   
 
   
-  var CModal = __vue_normalize__(
+  const __vue_component__$Q = __vue_normalize__(
     { render: __vue_render__$n, staticRenderFns: __vue_staticRenderFns__$n },
     __vue_inject_styles__$Q,
     __vue_script__$Q,
@@ -20797,7 +20797,7 @@ __vue_render__$o._withStripped = true;
   
 
   
-  var CNav = __vue_normalize__(
+  const __vue_component__$R = __vue_normalize__(
     { render: __vue_render__$o, staticRenderFns: __vue_staticRenderFns__$o },
     __vue_inject_styles__$R,
     __vue_script__$R,
@@ -20814,7 +20814,7 @@ __vue_render__$o._withStripped = true;
 var script$S = {
   name: 'CNavItem',
   components: {
-    CLink: CLink
+    CLink: __vue_component__$2
   },
   props: props,
   data: function data() {
@@ -20870,7 +20870,7 @@ __vue_render__$p._withStripped = true;
   
 
   
-  var CNavItem = __vue_normalize__(
+  const __vue_component__$S = __vue_normalize__(
     { render: __vue_render__$p, staticRenderFns: __vue_staticRenderFns__$p },
     __vue_inject_styles__$S,
     __vue_script__$S,
@@ -20946,7 +20946,7 @@ const __vue_script__$T = script$T;
   
 
   
-  var CNavbar = __vue_normalize__(
+  const __vue_component__$T = __vue_normalize__(
     {},
     __vue_inject_styles__$T,
     __vue_script__$T,
@@ -20971,7 +20971,7 @@ var script$U = {
         data = _ref.data,
         children = _ref.children;
     var isLink = Boolean(props.to || props.href);
-    var tag = isLink ? CLink : props.tag || 'div';
+    var tag = isLink ? __vue_component__$2 : props.tag || 'div';
     return h(tag, a(data, {
       staticClass: 'navbar-brand',
       props: isLink ? props : null
@@ -21000,7 +21000,7 @@ const __vue_script__$U = script$U;
   
 
   
-  var CNavbarBrand = __vue_normalize__(
+  const __vue_component__$U = __vue_normalize__(
     {},
     __vue_inject_styles__$U,
     __vue_script__$U,
@@ -21053,7 +21053,7 @@ const __vue_script__$V = script$V;
   
 
   
-  var CNavbarNav = __vue_normalize__(
+  const __vue_component__$V = __vue_normalize__(
     {},
     __vue_inject_styles__$V,
     __vue_script__$V,
@@ -21116,7 +21116,7 @@ __vue_render__$q._withStripped = true;
   
 
   
-  var CNavbarText = __vue_normalize__(
+  const __vue_component__$W = __vue_normalize__(
     { render: __vue_render__$q, staticRenderFns: __vue_staticRenderFns__$q },
     __vue_inject_styles__$W,
     __vue_script__$W,
@@ -21442,7 +21442,7 @@ defineIterator$1(String, 'String', function (iterated) {
 var script$X = {
   name: 'CPagination',
   components: {
-    CLink: CLink
+    CLink: __vue_component__$2
   },
   props: {
     activePage: {
@@ -21777,7 +21777,7 @@ __vue_render__$r._withStripped = true;
   
 
   
-  var CPagination = __vue_normalize__(
+  const __vue_component__$X = __vue_normalize__(
     { render: __vue_render__$r, staticRenderFns: __vue_staticRenderFns__$r },
     __vue_inject_styles__$X,
     __vue_script__$X,
@@ -22049,7 +22049,7 @@ __vue_render__$s._withStripped = true;
   
 
   
-  var CProgressBar = __vue_normalize__(
+  const __vue_component__$Y = __vue_normalize__(
     { render: __vue_render__$s, staticRenderFns: __vue_staticRenderFns__$s },
     __vue_inject_styles__$Y,
     __vue_script__$Y,
@@ -22066,7 +22066,7 @@ __vue_render__$s._withStripped = true;
 var script$Z = {
   name: 'CProgress',
   components: {
-    CProgressBar: CProgressBar
+    CProgressBar: __vue_component__$Y
   },
   props: props$d,
   provide: function provide() {
@@ -22118,7 +22118,7 @@ __vue_render__$t._withStripped = true;
   
 
   
-  var CProgress = __vue_normalize__(
+  const __vue_component__$Z = __vue_normalize__(
     { render: __vue_render__$t, staticRenderFns: __vue_staticRenderFns__$t },
     __vue_inject_styles__$Z,
     __vue_script__$Z,
@@ -22307,263 +22307,1755 @@ function _toConsumableArray(arr) {
   return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
 }
 
-var clone_1 = createCommonjsModule(function (module) {
-var clone = (function() {
-
-function _instanceof(obj, type) {
-  return type != null && obj instanceof type;
-}
-
-var nativeMap;
-try {
-  nativeMap = Map;
-} catch(_) {
-  // maybe a reference error because no `Map`. Give it a dummy value that no
-  // value will ever be an instanceof.
-  nativeMap = function() {};
-}
-
-var nativeSet;
-try {
-  nativeSet = Set;
-} catch(_) {
-  nativeSet = function() {};
-}
-
-var nativePromise;
-try {
-  nativePromise = Promise;
-} catch(_) {
-  nativePromise = function() {};
-}
-
+var lodash_clonedeep = createCommonjsModule(function (module, exports) {
 /**
- * Clones (copies) an Object using deep copying.
- *
- * This function supports circular references by default, but if you are certain
- * there are no circular references in your object, you can save some CPU time
- * by calling clone(obj, false).
- *
- * Caution: if `circular` is false and `parent` contains circular references,
- * your program may enter an infinite loop and crash.
- *
- * @param `parent` - the object to be cloned
- * @param `circular` - set to true if the object to be cloned may contain
- *    circular references. (optional - true by default)
- * @param `depth` - set to a number if the object is only to be cloned to
- *    a particular depth. (optional - defaults to Infinity)
- * @param `prototype` - sets the prototype to be used when cloning an object.
- *    (optional - defaults to parent prototype).
- * @param `includeNonEnumerable` - set to true if the non-enumerable properties
- *    should be cloned as well. Non-enumerable properties on the prototype
- *    chain will be ignored. (optional - false by default)
-*/
-function clone(parent, circular, depth, prototype, includeNonEnumerable) {
-  if (typeof circular === 'object') {
-    depth = circular.depth;
-    prototype = circular.prototype;
-    includeNonEnumerable = circular.includeNonEnumerable;
-    circular = circular.circular;
-  }
-  // maintain two arrays for circular references, where corresponding parents
-  // and children have the same index
-  var allParents = [];
-  var allChildren = [];
-
-  var useBuffer = typeof Buffer != 'undefined';
-
-  if (typeof circular == 'undefined')
-    circular = true;
-
-  if (typeof depth == 'undefined')
-    depth = Infinity;
-
-  // recurse this function so we don't reset allParents and allChildren
-  function _clone(parent, depth) {
-    // cloning null always returns null
-    if (parent === null)
-      return null;
-
-    if (depth === 0)
-      return parent;
-
-    var child;
-    var proto;
-    if (typeof parent != 'object') {
-      return parent;
-    }
-
-    if (_instanceof(parent, nativeMap)) {
-      child = new nativeMap();
-    } else if (_instanceof(parent, nativeSet)) {
-      child = new nativeSet();
-    } else if (_instanceof(parent, nativePromise)) {
-      child = new nativePromise(function (resolve, reject) {
-        parent.then(function(value) {
-          resolve(_clone(value, depth - 1));
-        }, function(err) {
-          reject(_clone(err, depth - 1));
-        });
-      });
-    } else if (clone.__isArray(parent)) {
-      child = [];
-    } else if (clone.__isRegExp(parent)) {
-      child = new RegExp(parent.source, __getRegExpFlags(parent));
-      if (parent.lastIndex) child.lastIndex = parent.lastIndex;
-    } else if (clone.__isDate(parent)) {
-      child = new Date(parent.getTime());
-    } else if (useBuffer && Buffer.isBuffer(parent)) {
-      if (Buffer.allocUnsafe) {
-        // Node.js >= 4.5.0
-        child = Buffer.allocUnsafe(parent.length);
-      } else {
-        // Older Node.js versions
-        child = new Buffer(parent.length);
-      }
-      parent.copy(child);
-      return child;
-    } else if (_instanceof(parent, Error)) {
-      child = Object.create(parent);
-    } else {
-      if (typeof prototype == 'undefined') {
-        proto = Object.getPrototypeOf(parent);
-        child = Object.create(proto);
-      }
-      else {
-        child = Object.create(prototype);
-        proto = prototype;
-      }
-    }
-
-    if (circular) {
-      var index = allParents.indexOf(parent);
-
-      if (index != -1) {
-        return allChildren[index];
-      }
-      allParents.push(parent);
-      allChildren.push(child);
-    }
-
-    if (_instanceof(parent, nativeMap)) {
-      parent.forEach(function(value, key) {
-        var keyChild = _clone(key, depth - 1);
-        var valueChild = _clone(value, depth - 1);
-        child.set(keyChild, valueChild);
-      });
-    }
-    if (_instanceof(parent, nativeSet)) {
-      parent.forEach(function(value) {
-        var entryChild = _clone(value, depth - 1);
-        child.add(entryChild);
-      });
-    }
-
-    for (var i in parent) {
-      var attrs;
-      if (proto) {
-        attrs = Object.getOwnPropertyDescriptor(proto, i);
-      }
-
-      if (attrs && attrs.set == null) {
-        continue;
-      }
-      child[i] = _clone(parent[i], depth - 1);
-    }
-
-    if (Object.getOwnPropertySymbols) {
-      var symbols = Object.getOwnPropertySymbols(parent);
-      for (var i = 0; i < symbols.length; i++) {
-        // Don't need to worry about cloning a symbol because it is a primitive,
-        // like a number or string.
-        var symbol = symbols[i];
-        var descriptor = Object.getOwnPropertyDescriptor(parent, symbol);
-        if (descriptor && !descriptor.enumerable && !includeNonEnumerable) {
-          continue;
-        }
-        child[symbol] = _clone(parent[symbol], depth - 1);
-        if (!descriptor.enumerable) {
-          Object.defineProperty(child, symbol, {
-            enumerable: false
-          });
-        }
-      }
-    }
-
-    if (includeNonEnumerable) {
-      var allPropertyNames = Object.getOwnPropertyNames(parent);
-      for (var i = 0; i < allPropertyNames.length; i++) {
-        var propertyName = allPropertyNames[i];
-        var descriptor = Object.getOwnPropertyDescriptor(parent, propertyName);
-        if (descriptor && descriptor.enumerable) {
-          continue;
-        }
-        child[propertyName] = _clone(parent[propertyName], depth - 1);
-        Object.defineProperty(child, propertyName, {
-          enumerable: false
-        });
-      }
-    }
-
-    return child;
-  }
-
-  return _clone(parent, depth);
-}
-
-/**
- * Simple flat clone using prototype, accepts only objects, usefull for property
- * override on FLAT configuration object (no nested props).
- *
- * USE WITH CAUTION! This may not behave as you wish if you do not know how this
- * works.
+ * lodash (Custom Build) <https://lodash.com/>
+ * Build: `lodash modularize exports="npm" -o ./`
+ * Copyright jQuery Foundation and other contributors <https://jquery.org/>
+ * Released under MIT license <https://lodash.com/license>
+ * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+ * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  */
-clone.clonePrototype = function clonePrototype(parent) {
-  if (parent === null)
-    return null;
 
-  var c = function () {};
-  c.prototype = parent;
-  return new c();
-};
+/** Used as the size to enable large array optimizations. */
+var LARGE_ARRAY_SIZE = 200;
 
-// private utility functions
+/** Used to stand-in for `undefined` hash values. */
+var HASH_UNDEFINED = '__lodash_hash_undefined__';
 
-function __objToStr(o) {
-  return Object.prototype.toString.call(o);
+/** Used as references for various `Number` constants. */
+var MAX_SAFE_INTEGER = 9007199254740991;
+
+/** `Object#toString` result references. */
+var argsTag = '[object Arguments]',
+    arrayTag = '[object Array]',
+    boolTag = '[object Boolean]',
+    dateTag = '[object Date]',
+    errorTag = '[object Error]',
+    funcTag = '[object Function]',
+    genTag = '[object GeneratorFunction]',
+    mapTag = '[object Map]',
+    numberTag = '[object Number]',
+    objectTag = '[object Object]',
+    promiseTag = '[object Promise]',
+    regexpTag = '[object RegExp]',
+    setTag = '[object Set]',
+    stringTag = '[object String]',
+    symbolTag = '[object Symbol]',
+    weakMapTag = '[object WeakMap]';
+
+var arrayBufferTag = '[object ArrayBuffer]',
+    dataViewTag = '[object DataView]',
+    float32Tag = '[object Float32Array]',
+    float64Tag = '[object Float64Array]',
+    int8Tag = '[object Int8Array]',
+    int16Tag = '[object Int16Array]',
+    int32Tag = '[object Int32Array]',
+    uint8Tag = '[object Uint8Array]',
+    uint8ClampedTag = '[object Uint8ClampedArray]',
+    uint16Tag = '[object Uint16Array]',
+    uint32Tag = '[object Uint32Array]';
+
+/**
+ * Used to match `RegExp`
+ * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
+ */
+var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
+
+/** Used to match `RegExp` flags from their coerced string values. */
+var reFlags = /\w*$/;
+
+/** Used to detect host constructors (Safari). */
+var reIsHostCtor = /^\[object .+?Constructor\]$/;
+
+/** Used to detect unsigned integer values. */
+var reIsUint = /^(?:0|[1-9]\d*)$/;
+
+/** Used to identify `toStringTag` values supported by `_.clone`. */
+var cloneableTags = {};
+cloneableTags[argsTag] = cloneableTags[arrayTag] =
+cloneableTags[arrayBufferTag] = cloneableTags[dataViewTag] =
+cloneableTags[boolTag] = cloneableTags[dateTag] =
+cloneableTags[float32Tag] = cloneableTags[float64Tag] =
+cloneableTags[int8Tag] = cloneableTags[int16Tag] =
+cloneableTags[int32Tag] = cloneableTags[mapTag] =
+cloneableTags[numberTag] = cloneableTags[objectTag] =
+cloneableTags[regexpTag] = cloneableTags[setTag] =
+cloneableTags[stringTag] = cloneableTags[symbolTag] =
+cloneableTags[uint8Tag] = cloneableTags[uint8ClampedTag] =
+cloneableTags[uint16Tag] = cloneableTags[uint32Tag] = true;
+cloneableTags[errorTag] = cloneableTags[funcTag] =
+cloneableTags[weakMapTag] = false;
+
+/** Detect free variable `global` from Node.js. */
+var freeGlobal = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
+
+/** Detect free variable `self`. */
+var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root = freeGlobal || freeSelf || Function('return this')();
+
+/** Detect free variable `exports`. */
+var freeExports =  exports && !exports.nodeType && exports;
+
+/** Detect free variable `module`. */
+var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
+
+/** Detect the popular CommonJS extension `module.exports`. */
+var moduleExports = freeModule && freeModule.exports === freeExports;
+
+/**
+ * Adds the key-value `pair` to `map`.
+ *
+ * @private
+ * @param {Object} map The map to modify.
+ * @param {Array} pair The key-value pair to add.
+ * @returns {Object} Returns `map`.
+ */
+function addMapEntry(map, pair) {
+  // Don't return `map.set` because it's not chainable in IE 11.
+  map.set(pair[0], pair[1]);
+  return map;
 }
-clone.__objToStr = __objToStr;
 
-function __isDate(o) {
-  return typeof o === 'object' && __objToStr(o) === '[object Date]';
+/**
+ * Adds `value` to `set`.
+ *
+ * @private
+ * @param {Object} set The set to modify.
+ * @param {*} value The value to add.
+ * @returns {Object} Returns `set`.
+ */
+function addSetEntry(set, value) {
+  // Don't return `set.add` because it's not chainable in IE 11.
+  set.add(value);
+  return set;
 }
-clone.__isDate = __isDate;
 
-function __isArray(o) {
-  return typeof o === 'object' && __objToStr(o) === '[object Array]';
+/**
+ * A specialized version of `_.forEach` for arrays without support for
+ * iteratee shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns `array`.
+ */
+function arrayEach(array, iteratee) {
+  var index = -1,
+      length = array ? array.length : 0;
+
+  while (++index < length) {
+    if (iteratee(array[index], index, array) === false) {
+      break;
+    }
+  }
+  return array;
 }
-clone.__isArray = __isArray;
 
-function __isRegExp(o) {
-  return typeof o === 'object' && __objToStr(o) === '[object RegExp]';
+/**
+ * Appends the elements of `values` to `array`.
+ *
+ * @private
+ * @param {Array} array The array to modify.
+ * @param {Array} values The values to append.
+ * @returns {Array} Returns `array`.
+ */
+function arrayPush(array, values) {
+  var index = -1,
+      length = values.length,
+      offset = array.length;
+
+  while (++index < length) {
+    array[offset + index] = values[index];
+  }
+  return array;
 }
-clone.__isRegExp = __isRegExp;
 
-function __getRegExpFlags(re) {
-  var flags = '';
-  if (re.global) flags += 'g';
-  if (re.ignoreCase) flags += 'i';
-  if (re.multiline) flags += 'm';
-  return flags;
+/**
+ * A specialized version of `_.reduce` for arrays without support for
+ * iteratee shorthands.
+ *
+ * @private
+ * @param {Array} [array] The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @param {*} [accumulator] The initial value.
+ * @param {boolean} [initAccum] Specify using the first element of `array` as
+ *  the initial value.
+ * @returns {*} Returns the accumulated value.
+ */
+function arrayReduce(array, iteratee, accumulator, initAccum) {
+  var index = -1,
+      length = array ? array.length : 0;
+
+  if (initAccum && length) {
+    accumulator = array[++index];
+  }
+  while (++index < length) {
+    accumulator = iteratee(accumulator, array[index], index, array);
+  }
+  return accumulator;
 }
-clone.__getRegExpFlags = __getRegExpFlags;
 
-return clone;
-})();
+/**
+ * The base implementation of `_.times` without support for iteratee shorthands
+ * or max array length checks.
+ *
+ * @private
+ * @param {number} n The number of times to invoke `iteratee`.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {Array} Returns the array of results.
+ */
+function baseTimes(n, iteratee) {
+  var index = -1,
+      result = Array(n);
 
-if ( module.exports) {
-  module.exports = clone;
+  while (++index < n) {
+    result[index] = iteratee(index);
+  }
+  return result;
 }
+
+/**
+ * Gets the value at `key` of `object`.
+ *
+ * @private
+ * @param {Object} [object] The object to query.
+ * @param {string} key The key of the property to get.
+ * @returns {*} Returns the property value.
+ */
+function getValue(object, key) {
+  return object == null ? undefined : object[key];
+}
+
+/**
+ * Checks if `value` is a host object in IE < 9.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
+ */
+function isHostObject(value) {
+  // Many host objects are `Object` objects that can coerce to strings
+  // despite having improperly defined `toString` methods.
+  var result = false;
+  if (value != null && typeof value.toString != 'function') {
+    try {
+      result = !!(value + '');
+    } catch (e) {}
+  }
+  return result;
+}
+
+/**
+ * Converts `map` to its key-value pairs.
+ *
+ * @private
+ * @param {Object} map The map to convert.
+ * @returns {Array} Returns the key-value pairs.
+ */
+function mapToArray(map) {
+  var index = -1,
+      result = Array(map.size);
+
+  map.forEach(function(value, key) {
+    result[++index] = [key, value];
+  });
+  return result;
+}
+
+/**
+ * Creates a unary function that invokes `func` with its argument transformed.
+ *
+ * @private
+ * @param {Function} func The function to wrap.
+ * @param {Function} transform The argument transform.
+ * @returns {Function} Returns the new function.
+ */
+function overArg(func, transform) {
+  return function(arg) {
+    return func(transform(arg));
+  };
+}
+
+/**
+ * Converts `set` to an array of its values.
+ *
+ * @private
+ * @param {Object} set The set to convert.
+ * @returns {Array} Returns the values.
+ */
+function setToArray(set) {
+  var index = -1,
+      result = Array(set.size);
+
+  set.forEach(function(value) {
+    result[++index] = value;
+  });
+  return result;
+}
+
+/** Used for built-in method references. */
+var arrayProto = Array.prototype,
+    funcProto = Function.prototype,
+    objectProto = Object.prototype;
+
+/** Used to detect overreaching core-js shims. */
+var coreJsData = root['__core-js_shared__'];
+
+/** Used to detect methods masquerading as native. */
+var maskSrcKey = (function() {
+  var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
+  return uid ? ('Symbol(src)_1.' + uid) : '';
+}());
+
+/** Used to resolve the decompiled source of functions. */
+var funcToString = funcProto.toString;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var objectToString = objectProto.toString;
+
+/** Used to detect if a method is native. */
+var reIsNative = RegExp('^' +
+  funcToString.call(hasOwnProperty).replace(reRegExpChar, '\\$&')
+  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
+);
+
+/** Built-in value references. */
+var Buffer = moduleExports ? root.Buffer : undefined,
+    Symbol = root.Symbol,
+    Uint8Array = root.Uint8Array,
+    getPrototype = overArg(Object.getPrototypeOf, Object),
+    objectCreate = Object.create,
+    propertyIsEnumerable = objectProto.propertyIsEnumerable,
+    splice = arrayProto.splice;
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeGetSymbols = Object.getOwnPropertySymbols,
+    nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined,
+    nativeKeys = overArg(Object.keys, Object);
+
+/* Built-in method references that are verified to be native. */
+var DataView = getNative(root, 'DataView'),
+    Map = getNative(root, 'Map'),
+    Promise = getNative(root, 'Promise'),
+    Set = getNative(root, 'Set'),
+    WeakMap = getNative(root, 'WeakMap'),
+    nativeCreate = getNative(Object, 'create');
+
+/** Used to detect maps, sets, and weakmaps. */
+var dataViewCtorString = toSource(DataView),
+    mapCtorString = toSource(Map),
+    promiseCtorString = toSource(Promise),
+    setCtorString = toSource(Set),
+    weakMapCtorString = toSource(WeakMap);
+
+/** Used to convert symbols to primitives and strings. */
+var symbolProto = Symbol ? Symbol.prototype : undefined,
+    symbolValueOf = symbolProto ? symbolProto.valueOf : undefined;
+
+/**
+ * Creates a hash object.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function Hash(entries) {
+  var index = -1,
+      length = entries ? entries.length : 0;
+
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
+}
+
+/**
+ * Removes all key-value entries from the hash.
+ *
+ * @private
+ * @name clear
+ * @memberOf Hash
+ */
+function hashClear() {
+  this.__data__ = nativeCreate ? nativeCreate(null) : {};
+}
+
+/**
+ * Removes `key` and its value from the hash.
+ *
+ * @private
+ * @name delete
+ * @memberOf Hash
+ * @param {Object} hash The hash to modify.
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function hashDelete(key) {
+  return this.has(key) && delete this.__data__[key];
+}
+
+/**
+ * Gets the hash value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf Hash
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function hashGet(key) {
+  var data = this.__data__;
+  if (nativeCreate) {
+    var result = data[key];
+    return result === HASH_UNDEFINED ? undefined : result;
+  }
+  return hasOwnProperty.call(data, key) ? data[key] : undefined;
+}
+
+/**
+ * Checks if a hash value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf Hash
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function hashHas(key) {
+  var data = this.__data__;
+  return nativeCreate ? data[key] !== undefined : hasOwnProperty.call(data, key);
+}
+
+/**
+ * Sets the hash `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf Hash
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the hash instance.
+ */
+function hashSet(key, value) {
+  var data = this.__data__;
+  data[key] = (nativeCreate && value === undefined) ? HASH_UNDEFINED : value;
+  return this;
+}
+
+// Add methods to `Hash`.
+Hash.prototype.clear = hashClear;
+Hash.prototype['delete'] = hashDelete;
+Hash.prototype.get = hashGet;
+Hash.prototype.has = hashHas;
+Hash.prototype.set = hashSet;
+
+/**
+ * Creates an list cache object.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function ListCache(entries) {
+  var index = -1,
+      length = entries ? entries.length : 0;
+
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
+}
+
+/**
+ * Removes all key-value entries from the list cache.
+ *
+ * @private
+ * @name clear
+ * @memberOf ListCache
+ */
+function listCacheClear() {
+  this.__data__ = [];
+}
+
+/**
+ * Removes `key` and its value from the list cache.
+ *
+ * @private
+ * @name delete
+ * @memberOf ListCache
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function listCacheDelete(key) {
+  var data = this.__data__,
+      index = assocIndexOf(data, key);
+
+  if (index < 0) {
+    return false;
+  }
+  var lastIndex = data.length - 1;
+  if (index == lastIndex) {
+    data.pop();
+  } else {
+    splice.call(data, index, 1);
+  }
+  return true;
+}
+
+/**
+ * Gets the list cache value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf ListCache
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function listCacheGet(key) {
+  var data = this.__data__,
+      index = assocIndexOf(data, key);
+
+  return index < 0 ? undefined : data[index][1];
+}
+
+/**
+ * Checks if a list cache value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf ListCache
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function listCacheHas(key) {
+  return assocIndexOf(this.__data__, key) > -1;
+}
+
+/**
+ * Sets the list cache `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf ListCache
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the list cache instance.
+ */
+function listCacheSet(key, value) {
+  var data = this.__data__,
+      index = assocIndexOf(data, key);
+
+  if (index < 0) {
+    data.push([key, value]);
+  } else {
+    data[index][1] = value;
+  }
+  return this;
+}
+
+// Add methods to `ListCache`.
+ListCache.prototype.clear = listCacheClear;
+ListCache.prototype['delete'] = listCacheDelete;
+ListCache.prototype.get = listCacheGet;
+ListCache.prototype.has = listCacheHas;
+ListCache.prototype.set = listCacheSet;
+
+/**
+ * Creates a map cache object to store key-value pairs.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function MapCache(entries) {
+  var index = -1,
+      length = entries ? entries.length : 0;
+
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
+}
+
+/**
+ * Removes all key-value entries from the map.
+ *
+ * @private
+ * @name clear
+ * @memberOf MapCache
+ */
+function mapCacheClear() {
+  this.__data__ = {
+    'hash': new Hash,
+    'map': new (Map || ListCache),
+    'string': new Hash
+  };
+}
+
+/**
+ * Removes `key` and its value from the map.
+ *
+ * @private
+ * @name delete
+ * @memberOf MapCache
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function mapCacheDelete(key) {
+  return getMapData(this, key)['delete'](key);
+}
+
+/**
+ * Gets the map value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf MapCache
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function mapCacheGet(key) {
+  return getMapData(this, key).get(key);
+}
+
+/**
+ * Checks if a map value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf MapCache
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function mapCacheHas(key) {
+  return getMapData(this, key).has(key);
+}
+
+/**
+ * Sets the map `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf MapCache
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the map cache instance.
+ */
+function mapCacheSet(key, value) {
+  getMapData(this, key).set(key, value);
+  return this;
+}
+
+// Add methods to `MapCache`.
+MapCache.prototype.clear = mapCacheClear;
+MapCache.prototype['delete'] = mapCacheDelete;
+MapCache.prototype.get = mapCacheGet;
+MapCache.prototype.has = mapCacheHas;
+MapCache.prototype.set = mapCacheSet;
+
+/**
+ * Creates a stack cache object to store key-value pairs.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function Stack(entries) {
+  this.__data__ = new ListCache(entries);
+}
+
+/**
+ * Removes all key-value entries from the stack.
+ *
+ * @private
+ * @name clear
+ * @memberOf Stack
+ */
+function stackClear() {
+  this.__data__ = new ListCache;
+}
+
+/**
+ * Removes `key` and its value from the stack.
+ *
+ * @private
+ * @name delete
+ * @memberOf Stack
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function stackDelete(key) {
+  return this.__data__['delete'](key);
+}
+
+/**
+ * Gets the stack value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf Stack
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function stackGet(key) {
+  return this.__data__.get(key);
+}
+
+/**
+ * Checks if a stack value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf Stack
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function stackHas(key) {
+  return this.__data__.has(key);
+}
+
+/**
+ * Sets the stack `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf Stack
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the stack cache instance.
+ */
+function stackSet(key, value) {
+  var cache = this.__data__;
+  if (cache instanceof ListCache) {
+    var pairs = cache.__data__;
+    if (!Map || (pairs.length < LARGE_ARRAY_SIZE - 1)) {
+      pairs.push([key, value]);
+      return this;
+    }
+    cache = this.__data__ = new MapCache(pairs);
+  }
+  cache.set(key, value);
+  return this;
+}
+
+// Add methods to `Stack`.
+Stack.prototype.clear = stackClear;
+Stack.prototype['delete'] = stackDelete;
+Stack.prototype.get = stackGet;
+Stack.prototype.has = stackHas;
+Stack.prototype.set = stackSet;
+
+/**
+ * Creates an array of the enumerable property names of the array-like `value`.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @param {boolean} inherited Specify returning inherited property names.
+ * @returns {Array} Returns the array of property names.
+ */
+function arrayLikeKeys(value, inherited) {
+  // Safari 8.1 makes `arguments.callee` enumerable in strict mode.
+  // Safari 9 makes `arguments.length` enumerable in strict mode.
+  var result = (isArray(value) || isArguments(value))
+    ? baseTimes(value.length, String)
+    : [];
+
+  var length = result.length,
+      skipIndexes = !!length;
+
+  for (var key in value) {
+    if ((inherited || hasOwnProperty.call(value, key)) &&
+        !(skipIndexes && (key == 'length' || isIndex(key, length)))) {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+/**
+ * Assigns `value` to `key` of `object` if the existing value is not equivalent
+ * using [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+ * for equality comparisons.
+ *
+ * @private
+ * @param {Object} object The object to modify.
+ * @param {string} key The key of the property to assign.
+ * @param {*} value The value to assign.
+ */
+function assignValue(object, key, value) {
+  var objValue = object[key];
+  if (!(hasOwnProperty.call(object, key) && eq(objValue, value)) ||
+      (value === undefined && !(key in object))) {
+    object[key] = value;
+  }
+}
+
+/**
+ * Gets the index at which the `key` is found in `array` of key-value pairs.
+ *
+ * @private
+ * @param {Array} array The array to inspect.
+ * @param {*} key The key to search for.
+ * @returns {number} Returns the index of the matched value, else `-1`.
+ */
+function assocIndexOf(array, key) {
+  var length = array.length;
+  while (length--) {
+    if (eq(array[length][0], key)) {
+      return length;
+    }
+  }
+  return -1;
+}
+
+/**
+ * The base implementation of `_.assign` without support for multiple sources
+ * or `customizer` functions.
+ *
+ * @private
+ * @param {Object} object The destination object.
+ * @param {Object} source The source object.
+ * @returns {Object} Returns `object`.
+ */
+function baseAssign(object, source) {
+  return object && copyObject(source, keys(source), object);
+}
+
+/**
+ * The base implementation of `_.clone` and `_.cloneDeep` which tracks
+ * traversed objects.
+ *
+ * @private
+ * @param {*} value The value to clone.
+ * @param {boolean} [isDeep] Specify a deep clone.
+ * @param {boolean} [isFull] Specify a clone including symbols.
+ * @param {Function} [customizer] The function to customize cloning.
+ * @param {string} [key] The key of `value`.
+ * @param {Object} [object] The parent object of `value`.
+ * @param {Object} [stack] Tracks traversed objects and their clone counterparts.
+ * @returns {*} Returns the cloned value.
+ */
+function baseClone(value, isDeep, isFull, customizer, key, object, stack) {
+  var result;
+  if (customizer) {
+    result = object ? customizer(value, key, object, stack) : customizer(value);
+  }
+  if (result !== undefined) {
+    return result;
+  }
+  if (!isObject(value)) {
+    return value;
+  }
+  var isArr = isArray(value);
+  if (isArr) {
+    result = initCloneArray(value);
+    if (!isDeep) {
+      return copyArray(value, result);
+    }
+  } else {
+    var tag = getTag(value),
+        isFunc = tag == funcTag || tag == genTag;
+
+    if (isBuffer(value)) {
+      return cloneBuffer(value, isDeep);
+    }
+    if (tag == objectTag || tag == argsTag || (isFunc && !object)) {
+      if (isHostObject(value)) {
+        return object ? value : {};
+      }
+      result = initCloneObject(isFunc ? {} : value);
+      if (!isDeep) {
+        return copySymbols(value, baseAssign(result, value));
+      }
+    } else {
+      if (!cloneableTags[tag]) {
+        return object ? value : {};
+      }
+      result = initCloneByTag(value, tag, baseClone, isDeep);
+    }
+  }
+  // Check for circular references and return its corresponding clone.
+  stack || (stack = new Stack);
+  var stacked = stack.get(value);
+  if (stacked) {
+    return stacked;
+  }
+  stack.set(value, result);
+
+  if (!isArr) {
+    var props = isFull ? getAllKeys(value) : keys(value);
+  }
+  arrayEach(props || value, function(subValue, key) {
+    if (props) {
+      key = subValue;
+      subValue = value[key];
+    }
+    // Recursively populate clone (susceptible to call stack limits).
+    assignValue(result, key, baseClone(subValue, isDeep, isFull, customizer, key, value, stack));
+  });
+  return result;
+}
+
+/**
+ * The base implementation of `_.create` without support for assigning
+ * properties to the created object.
+ *
+ * @private
+ * @param {Object} prototype The object to inherit from.
+ * @returns {Object} Returns the new object.
+ */
+function baseCreate(proto) {
+  return isObject(proto) ? objectCreate(proto) : {};
+}
+
+/**
+ * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
+ * `keysFunc` and `symbolsFunc` to get the enumerable property names and
+ * symbols of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {Function} keysFunc The function to get the keys of `object`.
+ * @param {Function} symbolsFunc The function to get the symbols of `object`.
+ * @returns {Array} Returns the array of property names and symbols.
+ */
+function baseGetAllKeys(object, keysFunc, symbolsFunc) {
+  var result = keysFunc(object);
+  return isArray(object) ? result : arrayPush(result, symbolsFunc(object));
+}
+
+/**
+ * The base implementation of `getTag`.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the `toStringTag`.
+ */
+function baseGetTag(value) {
+  return objectToString.call(value);
+}
+
+/**
+ * The base implementation of `_.isNative` without bad shim checks.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a native function,
+ *  else `false`.
+ */
+function baseIsNative(value) {
+  if (!isObject(value) || isMasked(value)) {
+    return false;
+  }
+  var pattern = (isFunction(value) || isHostObject(value)) ? reIsNative : reIsHostCtor;
+  return pattern.test(toSource(value));
+}
+
+/**
+ * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ */
+function baseKeys(object) {
+  if (!isPrototype(object)) {
+    return nativeKeys(object);
+  }
+  var result = [];
+  for (var key in Object(object)) {
+    if (hasOwnProperty.call(object, key) && key != 'constructor') {
+      result.push(key);
+    }
+  }
+  return result;
+}
+
+/**
+ * Creates a clone of  `buffer`.
+ *
+ * @private
+ * @param {Buffer} buffer The buffer to clone.
+ * @param {boolean} [isDeep] Specify a deep clone.
+ * @returns {Buffer} Returns the cloned buffer.
+ */
+function cloneBuffer(buffer, isDeep) {
+  if (isDeep) {
+    return buffer.slice();
+  }
+  var result = new buffer.constructor(buffer.length);
+  buffer.copy(result);
+  return result;
+}
+
+/**
+ * Creates a clone of `arrayBuffer`.
+ *
+ * @private
+ * @param {ArrayBuffer} arrayBuffer The array buffer to clone.
+ * @returns {ArrayBuffer} Returns the cloned array buffer.
+ */
+function cloneArrayBuffer(arrayBuffer) {
+  var result = new arrayBuffer.constructor(arrayBuffer.byteLength);
+  new Uint8Array(result).set(new Uint8Array(arrayBuffer));
+  return result;
+}
+
+/**
+ * Creates a clone of `dataView`.
+ *
+ * @private
+ * @param {Object} dataView The data view to clone.
+ * @param {boolean} [isDeep] Specify a deep clone.
+ * @returns {Object} Returns the cloned data view.
+ */
+function cloneDataView(dataView, isDeep) {
+  var buffer = isDeep ? cloneArrayBuffer(dataView.buffer) : dataView.buffer;
+  return new dataView.constructor(buffer, dataView.byteOffset, dataView.byteLength);
+}
+
+/**
+ * Creates a clone of `map`.
+ *
+ * @private
+ * @param {Object} map The map to clone.
+ * @param {Function} cloneFunc The function to clone values.
+ * @param {boolean} [isDeep] Specify a deep clone.
+ * @returns {Object} Returns the cloned map.
+ */
+function cloneMap(map, isDeep, cloneFunc) {
+  var array = isDeep ? cloneFunc(mapToArray(map), true) : mapToArray(map);
+  return arrayReduce(array, addMapEntry, new map.constructor);
+}
+
+/**
+ * Creates a clone of `regexp`.
+ *
+ * @private
+ * @param {Object} regexp The regexp to clone.
+ * @returns {Object} Returns the cloned regexp.
+ */
+function cloneRegExp(regexp) {
+  var result = new regexp.constructor(regexp.source, reFlags.exec(regexp));
+  result.lastIndex = regexp.lastIndex;
+  return result;
+}
+
+/**
+ * Creates a clone of `set`.
+ *
+ * @private
+ * @param {Object} set The set to clone.
+ * @param {Function} cloneFunc The function to clone values.
+ * @param {boolean} [isDeep] Specify a deep clone.
+ * @returns {Object} Returns the cloned set.
+ */
+function cloneSet(set, isDeep, cloneFunc) {
+  var array = isDeep ? cloneFunc(setToArray(set), true) : setToArray(set);
+  return arrayReduce(array, addSetEntry, new set.constructor);
+}
+
+/**
+ * Creates a clone of the `symbol` object.
+ *
+ * @private
+ * @param {Object} symbol The symbol object to clone.
+ * @returns {Object} Returns the cloned symbol object.
+ */
+function cloneSymbol(symbol) {
+  return symbolValueOf ? Object(symbolValueOf.call(symbol)) : {};
+}
+
+/**
+ * Creates a clone of `typedArray`.
+ *
+ * @private
+ * @param {Object} typedArray The typed array to clone.
+ * @param {boolean} [isDeep] Specify a deep clone.
+ * @returns {Object} Returns the cloned typed array.
+ */
+function cloneTypedArray(typedArray, isDeep) {
+  var buffer = isDeep ? cloneArrayBuffer(typedArray.buffer) : typedArray.buffer;
+  return new typedArray.constructor(buffer, typedArray.byteOffset, typedArray.length);
+}
+
+/**
+ * Copies the values of `source` to `array`.
+ *
+ * @private
+ * @param {Array} source The array to copy values from.
+ * @param {Array} [array=[]] The array to copy values to.
+ * @returns {Array} Returns `array`.
+ */
+function copyArray(source, array) {
+  var index = -1,
+      length = source.length;
+
+  array || (array = Array(length));
+  while (++index < length) {
+    array[index] = source[index];
+  }
+  return array;
+}
+
+/**
+ * Copies properties of `source` to `object`.
+ *
+ * @private
+ * @param {Object} source The object to copy properties from.
+ * @param {Array} props The property identifiers to copy.
+ * @param {Object} [object={}] The object to copy properties to.
+ * @param {Function} [customizer] The function to customize copied values.
+ * @returns {Object} Returns `object`.
+ */
+function copyObject(source, props, object, customizer) {
+  object || (object = {});
+
+  var index = -1,
+      length = props.length;
+
+  while (++index < length) {
+    var key = props[index];
+
+    var newValue = customizer
+      ? customizer(object[key], source[key], key, object, source)
+      : undefined;
+
+    assignValue(object, key, newValue === undefined ? source[key] : newValue);
+  }
+  return object;
+}
+
+/**
+ * Copies own symbol properties of `source` to `object`.
+ *
+ * @private
+ * @param {Object} source The object to copy symbols from.
+ * @param {Object} [object={}] The object to copy symbols to.
+ * @returns {Object} Returns `object`.
+ */
+function copySymbols(source, object) {
+  return copyObject(source, getSymbols(source), object);
+}
+
+/**
+ * Creates an array of own enumerable property names and symbols of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names and symbols.
+ */
+function getAllKeys(object) {
+  return baseGetAllKeys(object, keys, getSymbols);
+}
+
+/**
+ * Gets the data for `map`.
+ *
+ * @private
+ * @param {Object} map The map to query.
+ * @param {string} key The reference key.
+ * @returns {*} Returns the map data.
+ */
+function getMapData(map, key) {
+  var data = map.__data__;
+  return isKeyable(key)
+    ? data[typeof key == 'string' ? 'string' : 'hash']
+    : data.map;
+}
+
+/**
+ * Gets the native function at `key` of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {string} key The key of the method to get.
+ * @returns {*} Returns the function if it's native, else `undefined`.
+ */
+function getNative(object, key) {
+  var value = getValue(object, key);
+  return baseIsNative(value) ? value : undefined;
+}
+
+/**
+ * Creates an array of the own enumerable symbol properties of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of symbols.
+ */
+var getSymbols = nativeGetSymbols ? overArg(nativeGetSymbols, Object) : stubArray;
+
+/**
+ * Gets the `toStringTag` of `value`.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the `toStringTag`.
+ */
+var getTag = baseGetTag;
+
+// Fallback for data views, maps, sets, and weak maps in IE 11,
+// for data views in Edge < 14, and promises in Node.js.
+if ((DataView && getTag(new DataView(new ArrayBuffer(1))) != dataViewTag) ||
+    (Map && getTag(new Map) != mapTag) ||
+    (Promise && getTag(Promise.resolve()) != promiseTag) ||
+    (Set && getTag(new Set) != setTag) ||
+    (WeakMap && getTag(new WeakMap) != weakMapTag)) {
+  getTag = function(value) {
+    var result = objectToString.call(value),
+        Ctor = result == objectTag ? value.constructor : undefined,
+        ctorString = Ctor ? toSource(Ctor) : undefined;
+
+    if (ctorString) {
+      switch (ctorString) {
+        case dataViewCtorString: return dataViewTag;
+        case mapCtorString: return mapTag;
+        case promiseCtorString: return promiseTag;
+        case setCtorString: return setTag;
+        case weakMapCtorString: return weakMapTag;
+      }
+    }
+    return result;
+  };
+}
+
+/**
+ * Initializes an array clone.
+ *
+ * @private
+ * @param {Array} array The array to clone.
+ * @returns {Array} Returns the initialized clone.
+ */
+function initCloneArray(array) {
+  var length = array.length,
+      result = array.constructor(length);
+
+  // Add properties assigned by `RegExp#exec`.
+  if (length && typeof array[0] == 'string' && hasOwnProperty.call(array, 'index')) {
+    result.index = array.index;
+    result.input = array.input;
+  }
+  return result;
+}
+
+/**
+ * Initializes an object clone.
+ *
+ * @private
+ * @param {Object} object The object to clone.
+ * @returns {Object} Returns the initialized clone.
+ */
+function initCloneObject(object) {
+  return (typeof object.constructor == 'function' && !isPrototype(object))
+    ? baseCreate(getPrototype(object))
+    : {};
+}
+
+/**
+ * Initializes an object clone based on its `toStringTag`.
+ *
+ * **Note:** This function only supports cloning values with tags of
+ * `Boolean`, `Date`, `Error`, `Number`, `RegExp`, or `String`.
+ *
+ * @private
+ * @param {Object} object The object to clone.
+ * @param {string} tag The `toStringTag` of the object to clone.
+ * @param {Function} cloneFunc The function to clone values.
+ * @param {boolean} [isDeep] Specify a deep clone.
+ * @returns {Object} Returns the initialized clone.
+ */
+function initCloneByTag(object, tag, cloneFunc, isDeep) {
+  var Ctor = object.constructor;
+  switch (tag) {
+    case arrayBufferTag:
+      return cloneArrayBuffer(object);
+
+    case boolTag:
+    case dateTag:
+      return new Ctor(+object);
+
+    case dataViewTag:
+      return cloneDataView(object, isDeep);
+
+    case float32Tag: case float64Tag:
+    case int8Tag: case int16Tag: case int32Tag:
+    case uint8Tag: case uint8ClampedTag: case uint16Tag: case uint32Tag:
+      return cloneTypedArray(object, isDeep);
+
+    case mapTag:
+      return cloneMap(object, isDeep, cloneFunc);
+
+    case numberTag:
+    case stringTag:
+      return new Ctor(object);
+
+    case regexpTag:
+      return cloneRegExp(object);
+
+    case setTag:
+      return cloneSet(object, isDeep, cloneFunc);
+
+    case symbolTag:
+      return cloneSymbol(object);
+  }
+}
+
+/**
+ * Checks if `value` is a valid array-like index.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
+ * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+ */
+function isIndex(value, length) {
+  length = length == null ? MAX_SAFE_INTEGER : length;
+  return !!length &&
+    (typeof value == 'number' || reIsUint.test(value)) &&
+    (value > -1 && value % 1 == 0 && value < length);
+}
+
+/**
+ * Checks if `value` is suitable for use as unique object key.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
+ */
+function isKeyable(value) {
+  var type = typeof value;
+  return (type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean')
+    ? (value !== '__proto__')
+    : (value === null);
+}
+
+/**
+ * Checks if `func` has its source masked.
+ *
+ * @private
+ * @param {Function} func The function to check.
+ * @returns {boolean} Returns `true` if `func` is masked, else `false`.
+ */
+function isMasked(func) {
+  return !!maskSrcKey && (maskSrcKey in func);
+}
+
+/**
+ * Checks if `value` is likely a prototype object.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a prototype, else `false`.
+ */
+function isPrototype(value) {
+  var Ctor = value && value.constructor,
+      proto = (typeof Ctor == 'function' && Ctor.prototype) || objectProto;
+
+  return value === proto;
+}
+
+/**
+ * Converts `func` to its source code.
+ *
+ * @private
+ * @param {Function} func The function to process.
+ * @returns {string} Returns the source code.
+ */
+function toSource(func) {
+  if (func != null) {
+    try {
+      return funcToString.call(func);
+    } catch (e) {}
+    try {
+      return (func + '');
+    } catch (e) {}
+  }
+  return '';
+}
+
+/**
+ * This method is like `_.clone` except that it recursively clones `value`.
+ *
+ * @static
+ * @memberOf _
+ * @since 1.0.0
+ * @category Lang
+ * @param {*} value The value to recursively clone.
+ * @returns {*} Returns the deep cloned value.
+ * @see _.clone
+ * @example
+ *
+ * var objects = [{ 'a': 1 }, { 'b': 2 }];
+ *
+ * var deep = _.cloneDeep(objects);
+ * console.log(deep[0] === objects[0]);
+ * // => false
+ */
+function cloneDeep(value) {
+  return baseClone(value, true, true);
+}
+
+/**
+ * Performs a
+ * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+ * comparison between two values to determine if they are equivalent.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to compare.
+ * @param {*} other The other value to compare.
+ * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+ * @example
+ *
+ * var object = { 'a': 1 };
+ * var other = { 'a': 1 };
+ *
+ * _.eq(object, object);
+ * // => true
+ *
+ * _.eq(object, other);
+ * // => false
+ *
+ * _.eq('a', 'a');
+ * // => true
+ *
+ * _.eq('a', Object('a'));
+ * // => false
+ *
+ * _.eq(NaN, NaN);
+ * // => true
+ */
+function eq(value, other) {
+  return value === other || (value !== value && other !== other);
+}
+
+/**
+ * Checks if `value` is likely an `arguments` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an `arguments` object,
+ *  else `false`.
+ * @example
+ *
+ * _.isArguments(function() { return arguments; }());
+ * // => true
+ *
+ * _.isArguments([1, 2, 3]);
+ * // => false
+ */
+function isArguments(value) {
+  // Safari 8.1 makes `arguments.callee` enumerable in strict mode.
+  return isArrayLikeObject(value) && hasOwnProperty.call(value, 'callee') &&
+    (!propertyIsEnumerable.call(value, 'callee') || objectToString.call(value) == argsTag);
+}
+
+/**
+ * Checks if `value` is classified as an `Array` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an array, else `false`.
+ * @example
+ *
+ * _.isArray([1, 2, 3]);
+ * // => true
+ *
+ * _.isArray(document.body.children);
+ * // => false
+ *
+ * _.isArray('abc');
+ * // => false
+ *
+ * _.isArray(_.noop);
+ * // => false
+ */
+var isArray = Array.isArray;
+
+/**
+ * Checks if `value` is array-like. A value is considered array-like if it's
+ * not a function and has a `value.length` that's an integer greater than or
+ * equal to `0` and less than or equal to `Number.MAX_SAFE_INTEGER`.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+ * @example
+ *
+ * _.isArrayLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isArrayLike(document.body.children);
+ * // => true
+ *
+ * _.isArrayLike('abc');
+ * // => true
+ *
+ * _.isArrayLike(_.noop);
+ * // => false
+ */
+function isArrayLike(value) {
+  return value != null && isLength(value.length) && !isFunction(value);
+}
+
+/**
+ * This method is like `_.isArrayLike` except that it also checks if `value`
+ * is an object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an array-like object,
+ *  else `false`.
+ * @example
+ *
+ * _.isArrayLikeObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isArrayLikeObject(document.body.children);
+ * // => true
+ *
+ * _.isArrayLikeObject('abc');
+ * // => false
+ *
+ * _.isArrayLikeObject(_.noop);
+ * // => false
+ */
+function isArrayLikeObject(value) {
+  return isObjectLike(value) && isArrayLike(value);
+}
+
+/**
+ * Checks if `value` is a buffer.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.3.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
+ * @example
+ *
+ * _.isBuffer(new Buffer(2));
+ * // => true
+ *
+ * _.isBuffer(new Uint8Array(2));
+ * // => false
+ */
+var isBuffer = nativeIsBuffer || stubFalse;
+
+/**
+ * Checks if `value` is classified as a `Function` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a function, else `false`.
+ * @example
+ *
+ * _.isFunction(_);
+ * // => true
+ *
+ * _.isFunction(/abc/);
+ * // => false
+ */
+function isFunction(value) {
+  // The use of `Object#toString` avoids issues with the `typeof` operator
+  // in Safari 8-9 which returns 'object' for typed array and other constructors.
+  var tag = isObject(value) ? objectToString.call(value) : '';
+  return tag == funcTag || tag == genTag;
+}
+
+/**
+ * Checks if `value` is a valid array-like length.
+ *
+ * **Note:** This method is loosely based on
+ * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+ * @example
+ *
+ * _.isLength(3);
+ * // => true
+ *
+ * _.isLength(Number.MIN_VALUE);
+ * // => false
+ *
+ * _.isLength(Infinity);
+ * // => false
+ *
+ * _.isLength('3');
+ * // => false
+ */
+function isLength(value) {
+  return typeof value == 'number' &&
+    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+}
+
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject(value) {
+  var type = typeof value;
+  return !!value && (type == 'object' || type == 'function');
+}
+
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return !!value && typeof value == 'object';
+}
+
+/**
+ * Creates an array of the own enumerable property names of `object`.
+ *
+ * **Note:** Non-object values are coerced to objects. See the
+ * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
+ * for more details.
+ *
+ * @static
+ * @since 0.1.0
+ * @memberOf _
+ * @category Object
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of property names.
+ * @example
+ *
+ * function Foo() {
+ *   this.a = 1;
+ *   this.b = 2;
+ * }
+ *
+ * Foo.prototype.c = 3;
+ *
+ * _.keys(new Foo);
+ * // => ['a', 'b'] (iteration order is not guaranteed)
+ *
+ * _.keys('hi');
+ * // => ['0', '1']
+ */
+function keys(object) {
+  return isArrayLike(object) ? arrayLikeKeys(object) : baseKeys(object);
+}
+
+/**
+ * This method returns a new empty array.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.13.0
+ * @category Util
+ * @returns {Array} Returns the new empty array.
+ * @example
+ *
+ * var arrays = _.times(2, _.stubArray);
+ *
+ * console.log(arrays);
+ * // => [[], []]
+ *
+ * console.log(arrays[0] === arrays[1]);
+ * // => false
+ */
+function stubArray() {
+  return [];
+}
+
+/**
+ * This method returns `false`.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.13.0
+ * @category Util
+ * @returns {boolean} Returns `false`.
+ * @example
+ *
+ * _.times(2, _.stubFalse);
+ * // => [false, false]
+ */
+function stubFalse() {
+  return false;
+}
+
+module.exports = cloneDeep;
 });
 
 var script$_ = {
@@ -22574,7 +24066,7 @@ var script$_ = {
   },
   computed: {
     copiedContent: function copiedContent() {
-      return clone_1(this.contentToRender);
+      return lodash_clonedeep(this.contentToRender);
     },
     content: function content() {
       if (!this.flat) {
@@ -22680,7 +24172,7 @@ const __vue_script__$_ = script$_;
   
 
   
-  var CRenderFunction = __vue_normalize__(
+  const __vue_component__$_ = __vue_normalize__(
     {},
     __vue_inject_styles__$_,
     __vue_script__$_,
@@ -24099,7 +25591,7 @@ const __vue_script__$$ = script$$;
   
 
   
-  var CScrollbar = __vue_normalize__(
+  const __vue_component__$$ = __vue_normalize__(
     {},
     __vue_inject_styles__$$,
     __vue_script__$$,
@@ -24274,7 +25766,7 @@ __vue_render__$u._withStripped = true;
   
 
   
-  var CSidebar = __vue_normalize__(
+  const __vue_component__$10 = __vue_normalize__(
     { render: __vue_render__$u, staticRenderFns: __vue_staticRenderFns__$u },
     __vue_inject_styles__$10,
     __vue_script__$10,
@@ -24290,7 +25782,7 @@ __vue_render__$u._withStripped = true;
 var script$11 = {
   name: 'CSidebarBrand',
   components: {
-    CLink: CLink
+    CLink: __vue_component__$2
   },
   props: {
     img: [String, Object],
@@ -24396,7 +25888,7 @@ __vue_render__$v._withStripped = true;
   
 
   
-  var CSidebarBrand = __vue_normalize__(
+  const __vue_component__$11 = __vue_normalize__(
     { render: __vue_render__$v, staticRenderFns: __vue_staticRenderFns__$v },
     __vue_inject_styles__$11,
     __vue_script__$11,
@@ -24413,7 +25905,7 @@ __vue_render__$v._withStripped = true;
 var script$12 = {
   name: 'CSidebarClose',
   components: {
-    CButtonClose: CButtonClose
+    CButtonClose: __vue_component__
   }
 };
 
@@ -24464,7 +25956,7 @@ __vue_render__$w._withStripped = true;
   
 
   
-  var CSidebarClose = __vue_normalize__(
+  const __vue_component__$12 = __vue_normalize__(
     { render: __vue_render__$w, staticRenderFns: __vue_staticRenderFns__$w },
     __vue_inject_styles__$12,
     __vue_script__$12,
@@ -24516,7 +26008,7 @@ __vue_render__$x._withStripped = true;
   
 
   
-  var CSidebarFooter = __vue_normalize__(
+  const __vue_component__$13 = __vue_normalize__(
     { render: __vue_render__$x, staticRenderFns: __vue_staticRenderFns__$x },
     __vue_inject_styles__$13,
     __vue_script__$13,
@@ -24568,7 +26060,7 @@ __vue_render__$y._withStripped = true;
   
 
   
-  var CSidebarForm = __vue_normalize__(
+  const __vue_component__$14 = __vue_normalize__(
     { render: __vue_render__$y, staticRenderFns: __vue_staticRenderFns__$y },
     __vue_inject_styles__$14,
     __vue_script__$14,
@@ -24620,7 +26112,7 @@ __vue_render__$z._withStripped = true;
   
 
   
-  var CSidebarHeader = __vue_normalize__(
+  const __vue_component__$15 = __vue_normalize__(
     { render: __vue_render__$z, staticRenderFns: __vue_staticRenderFns__$z },
     __vue_inject_styles__$15,
     __vue_script__$15,
@@ -24677,7 +26169,7 @@ __vue_render__$A._withStripped = true;
   
 
   
-  var CSidebarMinimizer = __vue_normalize__(
+  const __vue_component__$16 = __vue_normalize__(
     { render: __vue_render__$A, staticRenderFns: __vue_staticRenderFns__$A },
     __vue_inject_styles__$16,
     __vue_script__$16,
@@ -24694,7 +26186,7 @@ __vue_render__$A._withStripped = true;
 var script$17 = {
   name: 'CSidebarNav',
   components: {
-    CScrollbar: CScrollbar
+    CScrollbar: __vue_component__$$
   },
   inject: {
     state: {
@@ -24757,7 +26249,7 @@ __vue_render__$B._withStripped = true;
   
 
   
-  var CSidebarNav = __vue_normalize__(
+  const __vue_component__$17 = __vue_normalize__(
     { render: __vue_render__$B, staticRenderFns: __vue_staticRenderFns__$B },
     __vue_inject_styles__$17,
     __vue_script__$17,
@@ -24807,7 +26299,7 @@ __vue_render__$C._withStripped = true;
   
 
   
-  var CSidebarNavDivider = __vue_normalize__(
+  const __vue_component__$18 = __vue_normalize__(
     { render: __vue_render__$C, staticRenderFns: __vue_staticRenderFns__$C },
     __vue_inject_styles__$18,
     __vue_script__$18,
@@ -24923,7 +26415,7 @@ __vue_render__$D._withStripped = true;
   
 
   
-  var CIcon = __vue_normalize__(
+  const __vue_component__$19 = __vue_normalize__(
     { render: __vue_render__$D, staticRenderFns: __vue_staticRenderFns__$D },
     __vue_inject_styles__$19,
     __vue_script__$19,
@@ -24947,9 +26439,9 @@ var props$e = Object.assign({}, props, {
 var script$1a = {
   name: 'CSidebarNavItem',
   components: {
-    CLink: CLink,
-    CBadge: CBadge,
-    CIcon: CIcon
+    CLink: __vue_component__$2,
+    CBadge: __vue_component__$3,
+    CIcon: __vue_component__$19
   },
   props: props$e,
   computed: {
@@ -25068,7 +26560,7 @@ __vue_render__$E._withStripped = true;
   
 
   
-  var CSidebarNavItem = __vue_normalize__(
+  const __vue_component__$1a = __vue_normalize__(
     { render: __vue_render__$E, staticRenderFns: __vue_staticRenderFns__$E },
     __vue_inject_styles__$1a,
     __vue_script__$1a,
@@ -25084,8 +26576,8 @@ __vue_render__$E._withStripped = true;
 var script$1b = {
   name: 'CSidebarNavDropdown',
   components: {
-    CIcon: CIcon,
-    CSidebarNavItem: CSidebarNavItem
+    CIcon: __vue_component__$19,
+    CSidebarNavItem: __vue_component__$1a
   },
   props: {
     name: String,
@@ -25235,7 +26727,7 @@ __vue_render__$F._withStripped = true;
   
 
   
-  var CSidebarNavDropdown = __vue_normalize__(
+  const __vue_component__$1b = __vue_normalize__(
     { render: __vue_render__$F, staticRenderFns: __vue_staticRenderFns__$F },
     __vue_inject_styles__$1b,
     __vue_script__$1b,
@@ -25292,7 +26784,7 @@ __vue_render__$G._withStripped = true;
   
 
   
-  var CSidebarNavTitle = __vue_normalize__(
+  const __vue_component__$1c = __vue_normalize__(
     { render: __vue_render__$G, staticRenderFns: __vue_staticRenderFns__$G },
     __vue_inject_styles__$1c,
     __vue_script__$1c,
@@ -25355,7 +26847,7 @@ const __vue_script__$1d = script$1d;
   
 
   
-  var CSpinner = __vue_normalize__(
+  const __vue_component__$1d = __vue_normalize__(
     {},
     __vue_inject_styles__$1d,
     __vue_script__$1d,
@@ -25498,7 +26990,7 @@ __vue_render__$H._withStripped = true;
   
 
   
-  var CSwitch = __vue_normalize__(
+  const __vue_component__$1e = __vue_normalize__(
     { render: __vue_render__$H, staticRenderFns: __vue_staticRenderFns__$H },
     __vue_inject_styles__$1e,
     __vue_script__$1e,
@@ -25561,9 +27053,9 @@ var script$1f = {
     cilBan: cilBan
   },
   components: {
-    CPagination: CPagination,
-    CSpinner: CSpinner,
-    CIcon: CIcon
+    CPagination: __vue_component__$X,
+    CSpinner: __vue_component__$1d,
+    CIcon: __vue_component__$19
   },
   props: {
     items: Array,
@@ -26366,7 +27858,7 @@ __vue_render__$I._withStripped = true;
   
 
   
-  var CDataTable = __vue_normalize__(
+  const __vue_component__$1f = __vue_normalize__(
     { render: __vue_render__$I, staticRenderFns: __vue_staticRenderFns__$I },
     __vue_inject_styles__$1f,
     __vue_script__$1f,
@@ -26412,7 +27904,7 @@ const __vue_script__$1g = script$1g;
   
 
   
-  var CTab = __vue_normalize__(
+  const __vue_component__$1g = __vue_normalize__(
     {},
     __vue_inject_styles__$1g,
     __vue_script__$1g,
@@ -26444,7 +27936,7 @@ var script$1h = {
   render: function render(h) {
     return h('li', {
       staticClass: 'nav-item'
-    }, [h(CLink, {
+    }, [h(__vue_component__$2, {
       staticClass: 'nav-link',
       props: this.linkProps
     }, this.customTitleSlot ? this.customTitleSlot() : this.title)]);
@@ -26472,7 +27964,7 @@ const __vue_script__$1h = script$1h;
   
 
   
-  var CTabNav = __vue_normalize__(
+  const __vue_component__$1h = __vue_normalize__(
     {},
     __vue_inject_styles__$1h,
     __vue_script__$1h,
@@ -26516,7 +28008,7 @@ const __vue_script__$1i = script$1i;
   
 
   
-  var CTabContent = __vue_normalize__(
+  const __vue_component__$1i = __vue_normalize__(
     {},
     __vue_inject_styles__$1i,
     __vue_script__$1i,
@@ -26532,8 +28024,8 @@ const __vue_script__$1i = script$1i;
 var script$1j = {
   name: 'CTabs',
   components: {
-    CTabNav: CTabNav,
-    CTabContent: CTabContent
+    CTabNav: __vue_component__$1h,
+    CTabContent: __vue_component__$1i
   },
   props: {
     fill: Boolean,
@@ -26741,7 +28233,7 @@ __vue_render__$J._withStripped = true;
   
 
   
-  var CTabs = __vue_normalize__(
+  const __vue_component__$1j = __vue_normalize__(
     { render: __vue_render__$J, staticRenderFns: __vue_staticRenderFns__$J },
     __vue_inject_styles__$1j,
     __vue_script__$1j,
@@ -27122,7 +28614,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 var script$1k = {
   name: 'CToast',
   components: {
-    CButtonClose: CButtonClose
+    CButtonClose: __vue_component__
   },
   props: _objectSpread({}, props$f, {
     show: Boolean,
@@ -27326,7 +28818,7 @@ __vue_render__$K._withStripped = true;
   
 
   
-  var CToast = __vue_normalize__(
+  const __vue_component__$1k = __vue_normalize__(
     { render: __vue_render__$K, staticRenderFns: __vue_staticRenderFns__$K },
     __vue_inject_styles__$1k,
     __vue_script__$1k,
@@ -27403,7 +28895,7 @@ __vue_render__$L._withStripped = true;
   
 
   
-  var CToaster = __vue_normalize__(
+  const __vue_component__$1l = __vue_normalize__(
     { render: __vue_render__$L, staticRenderFns: __vue_staticRenderFns__$L },
     __vue_inject_styles__$1l,
     __vue_script__$1l,
@@ -27467,7 +28959,7 @@ const __vue_script__$1m = script$1m;
   
 
   
-  var CToggler = __vue_normalize__(
+  const __vue_component__$1m = __vue_normalize__(
     {},
     __vue_inject_styles__$1m,
     __vue_script__$1m,
@@ -27483,7 +28975,7 @@ const __vue_script__$1m = script$1m;
 var script$1n = {
   name: 'CWidgetProgress',
   components: {
-    CProgress: CProgress
+    CProgress: __vue_component__$Z
   },
   props: {
     header: String,
@@ -27558,7 +29050,7 @@ __vue_render__$M._withStripped = true;
   
 
   
-  var CWidgetProgress = __vue_normalize__(
+  const __vue_component__$1n = __vue_normalize__(
     { render: __vue_render__$M, staticRenderFns: __vue_staticRenderFns__$M },
     __vue_inject_styles__$1n,
     __vue_script__$1n,
@@ -27678,7 +29170,7 @@ __vue_render__$N._withStripped = true;
   
 
   
-  var CWidgetIcon = __vue_normalize__(
+  const __vue_component__$1o = __vue_normalize__(
     { render: __vue_render__$N, staticRenderFns: __vue_staticRenderFns__$N },
     __vue_inject_styles__$1o,
     __vue_script__$1o,
@@ -27817,7 +29309,7 @@ __vue_render__$O._withStripped = true;
   
 
   
-  var CWidgetBrand = __vue_normalize__(
+  const __vue_component__$1p = __vue_normalize__(
     { render: __vue_render__$O, staticRenderFns: __vue_staticRenderFns__$O },
     __vue_inject_styles__$1p,
     __vue_script__$1p,
@@ -27833,7 +29325,7 @@ __vue_render__$O._withStripped = true;
 var script$1q = {
   name: 'CWidgetProgressIcon',
   components: {
-    CProgress: CProgress
+    CProgress: __vue_component__$Z
   },
   props: {
     header: String,
@@ -27918,7 +29410,7 @@ __vue_render__$P._withStripped = true;
   
 
   
-  var CWidgetProgressIcon = __vue_normalize__(
+  const __vue_component__$1q = __vue_normalize__(
     { render: __vue_render__$P, staticRenderFns: __vue_staticRenderFns__$P },
     __vue_inject_styles__$1q,
     __vue_script__$1q,
@@ -28002,7 +29494,7 @@ __vue_render__$Q._withStripped = true;
   
 
   
-  var CWidgetDropdown = __vue_normalize__(
+  const __vue_component__$1r = __vue_normalize__(
     { render: __vue_render__$Q, staticRenderFns: __vue_staticRenderFns__$Q },
     __vue_inject_styles__$1r,
     __vue_script__$1r,
@@ -28094,7 +29586,7 @@ __vue_render__$R._withStripped = true;
   
 
   
-  var CWidgetSimple = __vue_normalize__(
+  const __vue_component__$1s = __vue_normalize__(
     { render: __vue_render__$R, staticRenderFns: __vue_staticRenderFns__$R },
     __vue_inject_styles__$1s,
     __vue_script__$1s,
@@ -28111,97 +29603,97 @@ __vue_render__$R._withStripped = true;
 
 var Components = /*#__PURE__*/Object.freeze({
 	__proto__: null,
-	CIcon: CIcon,
-	CAlert: CAlert,
-	CBadge: CBadge,
-	CBreadcrumb: CBreadcrumb,
-	CBreadcrumbRouter: CBreadcrumbRouter,
-	CButton: CButton,
-	CButtonClose: CButtonClose,
-	CButtonGroup: CButtonGroup,
-	CButtonToolbar: CButtonToolbar,
-	CCallout: CCallout,
-	CCarousel: CCarousel,
-	CCarouselItem: CCarouselItem,
-	CCard: CCard,
-	CCardBody: CCardBody,
-	CCardFooter: CCardFooter,
-	CCardHeader: CCardHeader,
-	CCardGroup: CCardGroup,
-	CCardImg: CCardImg,
-	CCardImgOverlay: CCardImgOverlay,
-	CCardLink: CCardLink,
-	CCardSubtitle: CCardSubtitle,
-	CCardText: CCardText,
-	CCardTitle: CCardTitle,
-	CCollapse: CCollapse,
-	CDropdown: CDropdown,
-	CDropdownHeader: CDropdownHeader,
-	CDropdownDivider: CDropdownDivider,
-	CDropdownItem: CDropdownItem,
-	CEmbed: CEmbed,
-	CFooter: CFooter,
-	CForm: CForm,
-	CFormGroup: CFormGroup,
-	CInput: CInput,
-	CInputCheckbox: CInputCheckbox,
-	CInputFile: CInputFile,
-	CInputRadio: CInputRadio,
-	CSelect: CSelect,
-	CTextarea: CTextarea,
-	CContainer: CContainer,
-	CRow: CRow,
-	CCol: CCol,
-	CHeader: CHeader,
-	CHeaderBrand: CHeaderBrand,
-	CHeaderNav: CHeaderNav,
-	CHeaderNavItem: CHeaderNavItem,
-	CHeaderNavLink: CHeaderNavLink,
-	CSubheader: CSubheader,
-	CImg: CImg,
-	CJumbotron: CJumbotron,
-	CLink: CLink,
-	CListGroup: CListGroup,
-	CListGroupItem: CListGroupItem,
-	CMedia: CMedia,
-	CModal: CModal,
-	CNav: CNav,
-	CNavItem: CNavItem,
-	CNavbar: CNavbar,
-	CNavbarBrand: CNavbarBrand,
-	CNavbarNav: CNavbarNav,
-	CNavbarText: CNavbarText,
-	CPagination: CPagination,
-	CProgress: CProgress,
-	CProgressBar: CProgressBar,
-	CRenderFunction: CRenderFunction,
-	CScrollbar: CScrollbar,
-	CSidebar: CSidebar,
-	CSidebarBrand: CSidebarBrand,
-	CSidebarClose: CSidebarClose,
-	CSidebarFooter: CSidebarFooter,
-	CSidebarForm: CSidebarForm,
-	CSidebarHeader: CSidebarHeader,
-	CSidebarMinimizer: CSidebarMinimizer,
-	CSidebarNav: CSidebarNav,
-	CSidebarNavDivider: CSidebarNavDivider,
-	CSidebarNavDropdown: CSidebarNavDropdown,
-	CSidebarNavItem: CSidebarNavItem,
-	CSidebarNavTitle: CSidebarNavTitle,
-	CSpinner: CSpinner,
-	CSwitch: CSwitch,
-	CDataTable: CDataTable,
-	CTab: CTab,
-	CTabs: CTabs,
-	CToast: CToast,
-	CToaster: CToaster,
-	CToggler: CToggler,
-	CWidgetProgress: CWidgetProgress,
-	CWidgetIcon: CWidgetIcon,
-	CWidgetBrand: CWidgetBrand,
-	CWidgetProgressIcon: CWidgetProgressIcon,
-	CWidgetDropdown: CWidgetDropdown,
-	CWidgetSimple: CWidgetSimple
+	CIcon: __vue_component__$19,
+	CAlert: __vue_component__$1,
+	CBadge: __vue_component__$3,
+	CBreadcrumb: __vue_component__$4,
+	CBreadcrumbRouter: __vue_component__$5,
+	CButton: __vue_component__$6,
+	CButtonClose: __vue_component__,
+	CButtonGroup: __vue_component__$7,
+	CButtonToolbar: __vue_component__$8,
+	CCallout: __vue_component__$9,
+	CCarousel: __vue_component__$a,
+	CCarouselItem: __vue_component__$c,
+	CCard: __vue_component__$e,
+	CCardBody: __vue_component__$d,
+	CCardFooter: __vue_component__$f,
+	CCardHeader: __vue_component__$h,
+	CCardGroup: __vue_component__$g,
+	CCardImg: __vue_component__$i,
+	CCardImgOverlay: __vue_component__$j,
+	CCardLink: __vue_component__$k,
+	CCardSubtitle: __vue_component__$l,
+	CCardText: __vue_component__$m,
+	CCardTitle: __vue_component__$n,
+	CCollapse: __vue_component__$o,
+	CDropdown: __vue_component__$p,
+	CDropdownHeader: __vue_component__$q,
+	CDropdownDivider: __vue_component__$r,
+	CDropdownItem: __vue_component__$s,
+	CEmbed: __vue_component__$t,
+	CFooter: __vue_component__$u,
+	CForm: __vue_component__$v,
+	CFormGroup: __vue_component__$w,
+	CInput: __vue_component__$x,
+	CInputCheckbox: __vue_component__$y,
+	CInputFile: __vue_component__$z,
+	CInputRadio: __vue_component__$A,
+	CSelect: __vue_component__$B,
+	CTextarea: __vue_component__$C,
+	CContainer: __vue_component__$D,
+	CRow: __vue_component__$E,
+	CCol: __vue_component__$F,
+	CHeader: __vue_component__$G,
+	CHeaderBrand: __vue_component__$H,
+	CHeaderNav: __vue_component__$I,
+	CHeaderNavItem: __vue_component__$J,
+	CHeaderNavLink: __vue_component__$K,
+	CSubheader: __vue_component__$L,
+	CImg: __vue_component__$b,
+	CJumbotron: __vue_component__$M,
+	CLink: __vue_component__$2,
+	CListGroup: __vue_component__$N,
+	CListGroupItem: __vue_component__$O,
+	CMedia: __vue_component__$P,
+	CModal: __vue_component__$Q,
+	CNav: __vue_component__$R,
+	CNavItem: __vue_component__$S,
+	CNavbar: __vue_component__$T,
+	CNavbarBrand: __vue_component__$U,
+	CNavbarNav: __vue_component__$V,
+	CNavbarText: __vue_component__$W,
+	CPagination: __vue_component__$X,
+	CProgress: __vue_component__$Z,
+	CProgressBar: __vue_component__$Y,
+	CRenderFunction: __vue_component__$_,
+	CScrollbar: __vue_component__$$,
+	CSidebar: __vue_component__$10,
+	CSidebarBrand: __vue_component__$11,
+	CSidebarClose: __vue_component__$12,
+	CSidebarFooter: __vue_component__$13,
+	CSidebarForm: __vue_component__$14,
+	CSidebarHeader: __vue_component__$15,
+	CSidebarMinimizer: __vue_component__$16,
+	CSidebarNav: __vue_component__$17,
+	CSidebarNavDivider: __vue_component__$18,
+	CSidebarNavDropdown: __vue_component__$1b,
+	CSidebarNavItem: __vue_component__$1a,
+	CSidebarNavTitle: __vue_component__$1c,
+	CSpinner: __vue_component__$1d,
+	CSwitch: __vue_component__$1e,
+	CDataTable: __vue_component__$1f,
+	CTab: __vue_component__$1g,
+	CTabs: __vue_component__$1j,
+	CToast: __vue_component__$1k,
+	CToaster: __vue_component__$1l,
+	CToggler: __vue_component__$1m,
+	CWidgetProgress: __vue_component__$1n,
+	CWidgetIcon: __vue_component__$1o,
+	CWidgetBrand: __vue_component__$1p,
+	CWidgetProgressIcon: __vue_component__$1q,
+	CWidgetDropdown: __vue_component__$1r,
+	CWidgetSimple: __vue_component__$1s
 });
 
 /**!
@@ -28934,4 +30426,4 @@ var CoreuiVue = {
 }; // Export library
 
 export default CoreuiVue;
-export { CAlert, CBadge, CBreadcrumb, CBreadcrumbRouter, CButton, CButtonClose, CButtonGroup, CButtonToolbar, CCallout, CCard, CCardBody, CCardFooter, CCardGroup, CCardHeader, CCardImg, CCardImgOverlay, CCardLink, CCardSubtitle, CCardText, CCardTitle, CCarousel, CCarouselItem, CCol, CCollapse, CContainer, CDataTable, CDropdown, CDropdownDivider, CDropdownHeader, CDropdownItem, CEmbed, CEmitRootEvent, CFooter, CForm, CFormGroup, CHeader, CHeaderBrand, CHeaderNav, CHeaderNavItem, CHeaderNavLink, CIcon, CImg, CInput, CInputCheckbox, CInputFile, CInputRadio, CJumbotron, CLink, CListGroup, CListGroupItem, CMedia, CModal, CNav, CNavItem, CNavbar, CNavbarBrand, CNavbarNav, CNavbarText, CPagination, CPopover, CProgress, CProgressBar, CRenderFunction, CRow, CScrollbar, CSelect, CSidebar, CSidebarBrand, CSidebarClose, CSidebarFooter, CSidebarForm, CSidebarHeader, CSidebarMinimizer, CSidebarNav, CSidebarNavDivider, CSidebarNavDropdown, CSidebarNavItem, CSidebarNavTitle, CSpinner, CSubheader, CSwitch, CTab, CTabs, CTextarea, CToast, CToaster, CToggler, CTooltip, CWidgetBrand, CWidgetDropdown, CWidgetIcon, CWidgetProgress, CWidgetProgressIcon, CWidgetSimple };
+export { __vue_component__$1 as CAlert, __vue_component__$3 as CBadge, __vue_component__$4 as CBreadcrumb, __vue_component__$5 as CBreadcrumbRouter, __vue_component__$6 as CButton, __vue_component__ as CButtonClose, __vue_component__$7 as CButtonGroup, __vue_component__$8 as CButtonToolbar, __vue_component__$9 as CCallout, __vue_component__$e as CCard, __vue_component__$d as CCardBody, __vue_component__$f as CCardFooter, __vue_component__$g as CCardGroup, __vue_component__$h as CCardHeader, __vue_component__$i as CCardImg, __vue_component__$j as CCardImgOverlay, __vue_component__$k as CCardLink, __vue_component__$l as CCardSubtitle, __vue_component__$m as CCardText, __vue_component__$n as CCardTitle, __vue_component__$a as CCarousel, __vue_component__$c as CCarouselItem, __vue_component__$F as CCol, __vue_component__$o as CCollapse, __vue_component__$D as CContainer, __vue_component__$1f as CDataTable, __vue_component__$p as CDropdown, __vue_component__$r as CDropdownDivider, __vue_component__$q as CDropdownHeader, __vue_component__$s as CDropdownItem, __vue_component__$t as CEmbed, CEmitRootEvent, __vue_component__$u as CFooter, __vue_component__$v as CForm, __vue_component__$w as CFormGroup, __vue_component__$G as CHeader, __vue_component__$H as CHeaderBrand, __vue_component__$I as CHeaderNav, __vue_component__$J as CHeaderNavItem, __vue_component__$K as CHeaderNavLink, __vue_component__$19 as CIcon, __vue_component__$b as CImg, __vue_component__$x as CInput, __vue_component__$y as CInputCheckbox, __vue_component__$z as CInputFile, __vue_component__$A as CInputRadio, __vue_component__$M as CJumbotron, __vue_component__$2 as CLink, __vue_component__$N as CListGroup, __vue_component__$O as CListGroupItem, __vue_component__$P as CMedia, __vue_component__$Q as CModal, __vue_component__$R as CNav, __vue_component__$S as CNavItem, __vue_component__$T as CNavbar, __vue_component__$U as CNavbarBrand, __vue_component__$V as CNavbarNav, __vue_component__$W as CNavbarText, __vue_component__$X as CPagination, CPopover, __vue_component__$Z as CProgress, __vue_component__$Y as CProgressBar, __vue_component__$_ as CRenderFunction, __vue_component__$E as CRow, __vue_component__$$ as CScrollbar, __vue_component__$B as CSelect, __vue_component__$10 as CSidebar, __vue_component__$11 as CSidebarBrand, __vue_component__$12 as CSidebarClose, __vue_component__$13 as CSidebarFooter, __vue_component__$14 as CSidebarForm, __vue_component__$15 as CSidebarHeader, __vue_component__$16 as CSidebarMinimizer, __vue_component__$17 as CSidebarNav, __vue_component__$18 as CSidebarNavDivider, __vue_component__$1b as CSidebarNavDropdown, __vue_component__$1a as CSidebarNavItem, __vue_component__$1c as CSidebarNavTitle, __vue_component__$1d as CSpinner, __vue_component__$L as CSubheader, __vue_component__$1e as CSwitch, __vue_component__$1g as CTab, __vue_component__$1j as CTabs, __vue_component__$C as CTextarea, __vue_component__$1k as CToast, __vue_component__$1l as CToaster, __vue_component__$1m as CToggler, CTooltip, __vue_component__$1p as CWidgetBrand, __vue_component__$1r as CWidgetDropdown, __vue_component__$1o as CWidgetIcon, __vue_component__$1n as CWidgetProgress, __vue_component__$1q as CWidgetProgressIcon, __vue_component__$1s as CWidgetSimple };
