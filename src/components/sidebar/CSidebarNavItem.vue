@@ -25,14 +25,28 @@ import CLink, { props as linkProps } from '../link/CLink'
 import CBadge from '../badge/CBadge'
 import CIcon from '@coreui/icons-vue/CIcon.vue'
 
-const props = Object.assign({}, linkProps, {
-  name: String,
-  icon: [String, Object],
-  fontIcon: String,
-  badge: Object,
-  addLinkClasses: [String, Array, Object],
-  label: Boolean
-})
+const props = Object.assign(
+  {}, 
+  linkProps, 
+  {
+    exact: {
+      type: Boolean,
+      default: true
+    },
+    activeClass: {
+      type: String,
+      default: 'c-active'
+    }
+  },
+  {
+    name: String,
+    icon: [String, Object],
+    fontIcon: String,
+    badge: Object,
+    addLinkClasses: [String, Array, Object],
+    label: Boolean
+  }
+)
 
 export default {
   name: 'CSidebarNavItem',
@@ -43,17 +57,11 @@ export default {
   },
   props,
   computed: {
-    linkProps () {
+    computedLinkProps () {
       return Object.keys(linkProps).reduce((props, key) => {
         props[key] = this[key]
         return props
       }, {})
-    },
-    addedLinkProps () {
-      return this.$options.propsData.exact === undefined ? { exact: true } : {}
-    },
-    computedLinkProps () {
-      return Object.assign(this.linkProps, this.addedLinkProps)
     },
     linkClasses () {
       return [
