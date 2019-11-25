@@ -1,8 +1,8 @@
 <template>
-  <transition :name="props.fade ? 'fade' : null" appear> 
+  <transition :name="props.fade ? 'fade' : null" :appear="true"> 
     <div
-      v-show="isShowed"
-      :class="toastClasses"
+      v-if="isShowed"
+      class="toast"
       role="alert"
       aria-live="assertive"
       aria-atomic="true"
@@ -48,30 +48,21 @@ export default {
   },
   data () {
     return {
-      isShowed: false,
+      isShowed: this.show,
       hidding: false,
       timeout: null,
       hiddingTimeout: null
     }
   },
   watch: {
-    show (val) {
-      val ? this.display() : this.close()
+    show: {
+      immediate: true,
+      handler (val) {
+        val ? this.display() : this.close()
+      }
     }
   },
-  //needed not to be called in show watcher to allow SSR
-  mounted () {
-    this.show ? this.display() : this.close()
-  },
   computed: {
-    toastClasses () {
-      return [
-        'toast',
-        {
-          'show': this.isShowed,
-        }
-      ]
-    },
     directlyDeclaredProps () {
       return Object.keys(this.$options.propsData)
     },
@@ -94,8 +85,9 @@ export default {
       this.$nextTick(() => {
         if (this.props.autohide) {
           this.setAutohide()
+        } else if (this.hidding === true) {
+          this.finishHidding()
         }
-        this.finishHidding()
       })
     },
     close (restoreOnHover = false) {
@@ -148,6 +140,9 @@ export default {
 </script>
 
 <style scoped>
+  .toast {
+    opacity: inherit;
+  }
   .fade-enter-active {
     transition: opacity .5s;
   }

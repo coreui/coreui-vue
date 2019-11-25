@@ -2,13 +2,12 @@
 
 exports[`CToast renders correctly 1`] = `
 <div
-  appear=""
+  appear="true"
   aria-atomic="true"
   aria-live="assertive"
-  class="toast show"
+  class="toast"
   position="static"
   role="alert"
-  style=""
 >
   <!---->
    
@@ -20,14 +19,13 @@ exports[`CToast renders correctly 1`] = `
 
 exports[`CToast renders correctly custom wrapper 1`] = `
 <div
-  appear=""
+  appear="true"
   aria-atomic="true"
   aria-live="assertive"
-  class="toast show"
+  class="toast"
   name="fade"
   position="bottom-center"
   role="alert"
-  style=""
 >
   <div
     class="toast-header"

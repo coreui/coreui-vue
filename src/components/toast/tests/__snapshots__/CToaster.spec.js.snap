@@ -11,12 +11,11 @@ exports[`CToaster renders correctly custom wrapper 1`] = `
   class="toaster toaster-top-left"
 >
   <div
-    appear=""
+    appear="true"
     aria-atomic="true"
     aria-live="assertive"
-    class="toast show"
+    class="toast"
     role="alert"
-    style=""
   >
     <!---->
      
