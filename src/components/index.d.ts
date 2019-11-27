@@ -302,6 +302,14 @@ export declare class CSubheader extends CLink {
   tag: string
 }
 
+export declare class CIcon extends Vue {
+  name: string
+  content: [string, Array<string>]
+  size: string
+  customClasses: [string, Array<any>, object]
+  src: string
+}
+
 export declare class CImg extends Vue {
   src: string
   alt: string
@@ -646,3 +654,5 @@ export declare class CWidgetSimple extends Vue {
   header: string
   text: string
 }
+
+

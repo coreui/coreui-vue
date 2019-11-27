@@ -3054,7 +3054,7 @@ function computeClasses(props) {
   var _ref;
 
   var outlineSuffix = props.variant === 'outline' ? 'outline-' : '';
-  return _ref = {}, _defineProperty(_ref, "btn-".concat(outlineSuffix).concat(props.color), props.color), _defineProperty(_ref, "btn-".concat(props.size), Boolean(props.size)), _defineProperty(_ref, "btn-ghost-".concat(props.color), props.variant === 'ghost'), _defineProperty(_ref, 'btn-block', props.block), _defineProperty(_ref, 'btn-pill', props.shape === 'pill'), _defineProperty(_ref, 'btn-square', props.shape === 'square'), _defineProperty(_ref, 'disabled', props.disabled), _defineProperty(_ref, 'active', props.pressed), _ref;
+  return _ref = {}, _defineProperty(_ref, "btn-".concat(outlineSuffix).concat(props.color), props.color), _defineProperty(_ref, "btn-".concat(props.size), props.size), _defineProperty(_ref, "btn-ghost-".concat(props.color), props.variant === 'ghost'), _defineProperty(_ref, 'btn-block', props.block), _defineProperty(_ref, 'btn-pill', props.shape === 'pill'), _defineProperty(_ref, 'btn-square', props.shape === 'square'), _defineProperty(_ref, 'disabled', props.disabled), _defineProperty(_ref, 'active', props.pressed), _ref;
 }
 
 function computePassedProps(props) {
@@ -3154,7 +3154,7 @@ var script$7 = {
         data = _ref.data,
         children = _ref.children;
     return h('div', a(data, {
-      class: [!props.vertical ? 'btn-group' : 'btn-group-vertical', _defineProperty({}, "btn-group-".concat(props.size), Boolean(props.size))],
+      class: [!props.vertical ? 'btn-group' : 'btn-group-vertical', _defineProperty({}, "btn-group-".concat(props.size), props.size)],
       attrs: {
         role: 'group'
       }
@@ -3491,7 +3491,7 @@ var script$a = {
   }
 };
 
-var css$1 = "\n.carousel-inner, .carousel-item {\n  height: inherit;\n}\n";
+var css$1 = "\n.carousel-inner[data-v-0cb37076], .carousel-item[data-v-0cb37076] {\n  height: inherit;\n}\n";
 styleInject(css$1);
 
 /* script */
@@ -3567,7 +3567,7 @@ __vue_render__$4._withStripped = true;
   /* style */
   const __vue_inject_styles__$a = undefined;
   /* scoped */
-  const __vue_scope_id__$a = undefined;
+  const __vue_scope_id__$a = "data-v-0cb37076";
   /* module identifier */
   const __vue_module_identifier__$a = undefined;
   /* functional template */
@@ -3865,7 +3865,7 @@ var script$d = {
         children = _ref.children;
     return h(props.tag || 'div', a(data, {
       staticClass: 'card-body',
-      class: [(_ref2 = {}, _defineProperty(_ref2, "bg-".concat(props.color), Boolean(props.color)), _defineProperty(_ref2, "border-".concat(props.borderColor), Boolean(props.borderColor)), _defineProperty(_ref2, "text-".concat(props.textColor), Boolean(props.textColor)), _defineProperty(_ref2, "text-".concat(props.align), Boolean(props.align)), _ref2)]
+      class: [(_ref2 = {}, _defineProperty(_ref2, "bg-".concat(props.color), props.color), _defineProperty(_ref2, "border-".concat(props.borderColor), props.borderColor), _defineProperty(_ref2, "text-".concat(props.textColor), props.textColor), _defineProperty(_ref2, "text-".concat(props.align), props.align), _ref2)]
     }), [children]);
   }
 };
@@ -3965,7 +3965,7 @@ var script$f = {
         children = _ref.children;
     return h(props.tag || 'footer', a(data, {
       staticClass: 'card-footer',
-      class: [(_ref2 = {}, _defineProperty(_ref2, "text-".concat(props.align), Boolean(props.align)), _defineProperty(_ref2, "bg-".concat(props.color), Boolean(props.color)), _defineProperty(_ref2, "border-".concat(props.borderColor), Boolean(props.borderColor)), _defineProperty(_ref2, "text-".concat(props.textColor), Boolean(props.textColor)), _ref2)]
+      class: [(_ref2 = {}, _defineProperty(_ref2, "text-".concat(props.align), props.align), _defineProperty(_ref2, "bg-".concat(props.color), props.color), _defineProperty(_ref2, "border-".concat(props.borderColor), props.borderColor), _defineProperty(_ref2, "text-".concat(props.textColor), props.textColor), _ref2)]
     }), children);
   }
 };
@@ -4060,7 +4060,7 @@ var script$h = {
         children = _ref.children;
     return h(props.tag || 'header', a(data, {
       staticClass: 'card-header',
-      class: [(_ref2 = {}, _defineProperty(_ref2, "text-".concat(props.align), Boolean(props.align)), _defineProperty(_ref2, "bg-".concat(props.color), Boolean(props.color)), _defineProperty(_ref2, "border-".concat(props.borderColor), Boolean(props.borderColor)), _defineProperty(_ref2, "text-".concat(props.textColor), Boolean(props.textColor)), _ref2)]
+      class: [(_ref2 = {}, _defineProperty(_ref2, "text-".concat(props.align), props.align), _defineProperty(_ref2, "bg-".concat(props.color), props.color), _defineProperty(_ref2, "border-".concat(props.borderColor), props.borderColor), _defineProperty(_ref2, "text-".concat(props.textColor), props.textColor), _ref2)]
     }), children);
   }
 };
@@ -20052,7 +20052,7 @@ var script$M = {
       staticClass: 'jumbotron',
       class: (_class = {
         'jumbotron-fluid': props.fluid
-      }, _defineProperty(_class, "text-".concat(props.textColor), Boolean(props.textColor)), _defineProperty(_class, "bg-".concat(props.color), Boolean(props.color)), _defineProperty(_class, "border-".concat(props.borderColor), Boolean(props.borderColor)), _defineProperty(_class, 'border', Boolean(props.borderColor)), _class)
+      }, _defineProperty(_class, "text-".concat(props.textColor), props.textColor), _defineProperty(_class, "bg-".concat(props.color), props.color), _defineProperty(_class, "border-".concat(props.borderColor), props.borderColor), _defineProperty(_class, 'border', props.borderColor), _class)
     }), children);
   }
 };
@@ -20186,7 +20186,7 @@ var script$O = {
       attrs: attrs,
       props: itemProps,
       staticClass: 'list-group-item',
-      class: (_class = {}, _defineProperty(_class, "list-group-item-".concat(props.color), Boolean(props.color)), _defineProperty(_class, 'list-group-item-action', isAction), _defineProperty(_class, 'active', props.active), _defineProperty(_class, 'disabled', props.disabled), _class)
+      class: (_class = {}, _defineProperty(_class, "list-group-item-".concat(props.color), props.color), _defineProperty(_class, 'list-group-item-action', isAction), _defineProperty(_class, 'active', props.active), _defineProperty(_class, 'disabled', props.disabled), _class)
     };
     return h(tag, a(data, componentData), children);
   }
@@ -20370,15 +20370,15 @@ var script$Q = {
         'fade': this.fade,
         'show': this.visible,
         'd-block': this.visible || this.isTransitioning
-      }, "modal-".concat(this.color), Boolean(this.color))];
+      }, "modal-".concat(this.color), this.color)];
     },
     dialogClasses: function dialogClasses() {
       return [this.addDialogClasses, 'modal-dialog', _defineProperty({
         'modal-dialog-centered': this.centered
-      }, "modal-".concat(this.size), Boolean(this.size))];
+      }, "modal-".concat(this.size), this.size)];
     },
     contentClasses: function contentClasses() {
-      return [this.addContentClasses, 'modal-content', _defineProperty({}, "border-".concat(this.borderColor), Boolean(this.borderColor))];
+      return [this.addContentClasses, 'modal-content', _defineProperty({}, "border-".concat(this.borderColor), this.borderColor)];
     },
     btnClasses: function btnClasses() {
       return ["btn btn-".concat(this.color || 'primary')];
@@ -20778,7 +20778,7 @@ var script$T = {
       staticClass: 'navbar',
       class: [props.light ? 'navbar-light' : 'navbar-dark', (_ref2 = {
         'sticky-top': props.sticky
-      }, _defineProperty(_ref2, "bg-".concat(props.color), Boolean(props.color)), _defineProperty(_ref2, "fixed-".concat(props.fixed), Boolean(props.fixed)), _defineProperty(_ref2, "navbar-expand".concat(expandClassSuffix), Boolean(props.expandable)), _ref2)],
+      }, _defineProperty(_ref2, "bg-".concat(props.color), props.color), _defineProperty(_ref2, "fixed-".concat(props.fixed), props.fixed), _defineProperty(_ref2, "navbar-expand".concat(expandClassSuffix), props.expandable), _ref2)],
       attrs: {
         role: props.tag === 'nav' ? null : 'navigation'
       }
@@ -26003,11 +26003,9 @@ var script$17 = {
   }
 };
 
-var css$3 = "\n.c-scroll-area[data-v-ffb43714] {\n  height: 100%;\n}\n";
-styleInject(css$3);
-
 /* script */
 const __vue_script__$17 = script$17;
+
 /* template */
 var __vue_render__$B = function() {
   var _vm = this;
@@ -26016,7 +26014,7 @@ var __vue_render__$B = function() {
   return _c(
     "CScrollbar",
     {
-      staticClass: "c-scroll-area c-sidebar-nav",
+      staticClass: "c-sidebar-nav h-100",
       attrs: {
         settings: _vm.psSettings,
         switcher: !_vm.state.minimize,
@@ -26033,7 +26031,7 @@ __vue_render__$B._withStripped = true;
   /* style */
   const __vue_inject_styles__$17 = undefined;
   /* scoped */
-  const __vue_scope_id__$17 = "data-v-ffb43714";
+  const __vue_scope_id__$17 = undefined;
   /* module identifier */
   const __vue_module_identifier__$17 = undefined;
   /* functional template */
@@ -26595,7 +26593,7 @@ var script$1d = {
         'aria-hidden': 'false',
         'aria-label': 'Loading'
       },
-      class: ["spinner-".concat(type), (_ref2 = {}, _defineProperty(_ref2, "spinner-".concat(type, "-").concat(props.size), props.size), _defineProperty(_ref2, "text-".concat(props.color), Boolean(props.color)), _ref2)]
+      class: ["spinner-".concat(type), (_ref2 = {}, _defineProperty(_ref2, "spinner-".concat(type, "-").concat(props.size), props.size), _defineProperty(_ref2, "text-".concat(props.color), props.color), _ref2)]
     }));
   }
 };
@@ -27128,8 +27126,8 @@ var script$1f = {
   }
 };
 
-var css$4 = "\n.transparent[data-v-12527458] {\r\n  opacity: 0.4;\n}\n.icon-transition[data-v-12527458] {\r\n  -webkit-transition: transform 0.3s;\r\n  -webkit-transition: -webkit-transform 0.3s;\r\n  transition: -webkit-transform 0.3s;\r\n  transition: transform 0.3s;\r\n  transition: transform 0.3s, -webkit-transform 0.3s;\n}\n.arrow-position[data-v-12527458] {\r\n  right: 0;\r\n  top: 50%;\r\n  -webkit-transform: translateY(-50%);\r\n          transform: translateY(-50%);\n}\n.rotate-icon[data-v-12527458] {\r\n  -webkit-transform: translateY(-50%) rotate(-180deg);\r\n          transform: translateY(-50%) rotate(-180deg);\n}\r\n";
-styleInject(css$4);
+var css$3 = "\n.transparent[data-v-12527458] {\r\n  opacity: 0.4;\n}\n.icon-transition[data-v-12527458] {\r\n  -webkit-transition: transform 0.3s;\r\n  -webkit-transition: -webkit-transform 0.3s;\r\n  transition: -webkit-transform 0.3s;\r\n  transition: transform 0.3s;\r\n  transition: transform 0.3s, -webkit-transform 0.3s;\n}\n.arrow-position[data-v-12527458] {\r\n  right: 0;\r\n  top: 50%;\r\n  -webkit-transform: translateY(-50%);\r\n          transform: translateY(-50%);\n}\n.rotate-icon[data-v-12527458] {\r\n  -webkit-transform: translateY(-50%) rotate(-180deg);\r\n          transform: translateY(-50%) rotate(-180deg);\n}\r\n";
+styleInject(css$3);
 
 /* script */
 const __vue_script__$1f = script$1f;
@@ -27875,8 +27873,8 @@ var script$1j = {
   }
 };
 
-var css$5 = "\n.fade-enter-active, .fade-leave-active {\n  -webkit-transition: opacity .3s;\n  transition: opacity .3s;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n";
-styleInject(css$5);
+var css$4 = "\n.fade-enter-active[data-v-cc1e3f94], .fade-leave-active[data-v-cc1e3f94] {\n  -webkit-transition: opacity .3s;\n  transition: opacity .3s;\n}\n.fade-enter[data-v-cc1e3f94], .fade-leave-to[data-v-cc1e3f94] {\n  opacity: 0;\n}\n";
+styleInject(css$4);
 
 /* script */
 const __vue_script__$1j = script$1j;
@@ -27970,7 +27968,7 @@ __vue_render__$J._withStripped = true;
   /* style */
   const __vue_inject_styles__$1j = undefined;
   /* scoped */
-  const __vue_scope_id__$1j = undefined;
+  const __vue_scope_id__$1j = "data-v-cc1e3f94";
   /* module identifier */
   const __vue_module_identifier__$1j = undefined;
   /* functional template */
@@ -28474,8 +28472,8 @@ var script$1k = {
   }
 };
 
-var css$6 = "\n.toast[data-v-5b350eb1] {\n  opacity: inherit;\n}\n.fade-enter-active[data-v-5b350eb1] {\n  -webkit-transition: opacity .5s;\n  transition: opacity .5s;\n}\n.fade-leave-active[data-v-5b350eb1] {\n  -webkit-transition: opacity 2s;\n  transition: opacity 2s;\n}\n.fade-enter[data-v-5b350eb1], .fade-leave-to[data-v-5b350eb1] {\n  opacity: 0;\n}\n";
-styleInject(css$6);
+var css$5 = "\n.toast[data-v-5b350eb1] {\n  opacity: inherit;\n}\n.fade-enter-active[data-v-5b350eb1] {\n  -webkit-transition: opacity .5s;\n  transition: opacity .5s;\n}\n.fade-leave-active[data-v-5b350eb1] {\n  -webkit-transition: opacity 2s;\n  transition: opacity 2s;\n}\n.fade-enter[data-v-5b350eb1], .fade-leave-to[data-v-5b350eb1] {\n  opacity: 0;\n}\n";
+styleInject(css$5);
 
 /* script */
 const __vue_script__$1k = script$1k;

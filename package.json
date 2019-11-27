@@ -7,10 +7,20 @@
   "types": "src/index.d.ts",
   "files": [
     "src",
-    "dist/*.js"
+    "dist",
+    "babel.config.js",
+    "jest.config.js",
+    "jest.setup.js",
+    "rollup.config.js",
+    "vue.config.js"
   ],
   "sideEffects": [
-    "*.css"
+    "./src/components/toast/CToast.vue",
+    "./src/components/scrollbar/CScrollbar.vue",
+    "./src/components/alert/CAlert.vue",
+    "./src/components/table/CDataTable.vue",
+    "./src/components/tabs/CTabs.vue",
+    "./src/components/toast/CCarousel.vue"
   ],
   "homepage": "https://coreui.io",
   "author": {
