@@ -41,7 +41,7 @@ function computeClasses (props) {
   const outlineSuffix = props.variant === 'outline' ? 'outline-' : ''
   return {
     [`btn-${outlineSuffix}${props.color}`]: props.color,
-    [`btn-${props.size}`]: Boolean(props.size),
+    [`btn-${props.size}`]: props.size,
     [`btn-ghost-${props.color}`]: props.variant === 'ghost',
     'btn-block': props.block,
     'btn-pill': props.shape === 'pill',
@@ -80,7 +80,7 @@ export default {
     const on = {
       click () {
         if (toggle && listeners && listeners['update:pressed']) {
-          // Send .sync updates to any "pressed" prop (if .sync listeners)
+          // Send .sync updates to "pressed" prop (if .sync listener is set)
           listeners['update:pressed'](!props.pressed)
         }
       }

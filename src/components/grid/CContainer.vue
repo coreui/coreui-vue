@@ -6,11 +6,14 @@ export default {
   name: 'CContainer',
   props: {
     fluid: Boolean,
-    tag: String
+    tag: {
+      type: String,
+      default: 'div'
+    }
   },
   render (h, { props, data, children }) {
     return h(
-      props.tag || 'div',
+      props.tag,
       mergeData(data, {
         class: {
           'container': !props.fluid,

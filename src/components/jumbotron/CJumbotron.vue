@@ -12,7 +12,7 @@ export default {
     fluid: Boolean,
     color: String,
     borderColor: String,
-    textColor: String,
+    textColor: String
   },
   render (h, { props, data, children }) {
     return h(
@@ -21,10 +21,10 @@ export default {
         staticClass: 'jumbotron',
         class: {
           'jumbotron-fluid': props.fluid,
-          [`text-${props.textColor}`]: Boolean(props.textColor),
-          [`bg-${props.color}`]: Boolean(props.color),
-          [`border-${props.borderColor}`]: Boolean(props.borderColor),
-          'border': Boolean(props.borderColor)
+          [`text-${props.textColor}`]: props.textColor,
+          [`bg-${props.color}`]: props.color,
+          [`border-${props.borderColor}`]: props.borderColor,
+          'border': props.borderColor
         }
       }),
       children

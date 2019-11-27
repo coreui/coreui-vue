@@ -44,7 +44,7 @@ export default {
       props: itemProps,
       staticClass: 'list-group-item',
       class: {
-        [`list-group-item-${props.color}`]: Boolean(props.color),
+        [`list-group-item-${props.color}`]: props.color,
         'list-group-item-action': isAction,
         'active': props.active,
         'disabled': props.disabled

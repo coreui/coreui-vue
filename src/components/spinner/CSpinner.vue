@@ -26,7 +26,7 @@ export default {
           `spinner-${type}`,
           {
             [`spinner-${type}-${props.size}`]: props.size,
-            [`text-${props.color}`]: Boolean(props.color)
+            [`text-${props.color}`]: props.color
           }
         ]
       })

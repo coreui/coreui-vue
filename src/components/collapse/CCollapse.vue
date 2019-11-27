@@ -52,7 +52,7 @@ export default {
         this.turn()
         const height = Number(this.collapsing.slice(0,-2))
         const current = this.$el.offsetHeight
-        const time =  val ?  (height - current) / height :  current / height
+        const time = (val ? height - current : current) / height
         this.setFinishTimer(this.duration * time)
       }
     },

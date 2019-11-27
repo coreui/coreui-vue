@@ -22,7 +22,10 @@
       />
     </template>
 
-    <template v-for="slot in $options.slots" #[slot]>
+    <template 
+      v-for="slot in $options.slots" 
+      #[slot]
+    >
       <slot :name="slot"></slot>
     </template>
   </CFormGroup>
@@ -78,7 +81,7 @@ export default {
 
   //   readonly: Boolean,
   //   plaintext: Boolean,
-  //   value: String,
+  //   value: [String, Number],
   //   lazy: {
   //     type: [Boolean, Number],
   //     default: 400

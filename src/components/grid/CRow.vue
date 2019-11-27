@@ -2,7 +2,10 @@
 import { mergeData } from 'vue-functional-data-merge'
 
 const props = {
-  tag: String,
+  tag: {
+    type: String,
+    default: 'div'
+  },
   gutters: {
     type: Boolean,
     default: true
@@ -24,13 +27,13 @@ export default {
   props,
   render (h, { props, data, children }) {
     return h(
-      props.tag || 'div',
+      props.tag,
       mergeData(data, {
         staticClass: props.form ? 'form-row' : 'row',
         class: {
           'no-gutters': !props.gutters,
           [`align-items-${props.alignVertical}`]: props.alignVertical,
-          [`justify-content-${props.alignHorizontal}`]: props.alignHorizontal,
+          [`justify-content-${props.alignHorizontal}`]: props.alignHorizontal
         }
       }),
       children

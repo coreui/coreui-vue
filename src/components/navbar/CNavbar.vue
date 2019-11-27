@@ -33,9 +33,9 @@ export default {
           props.light ? 'navbar-light' : 'navbar-dark',
           {
             'sticky-top': props.sticky,
-            [`bg-${props.color}`]: Boolean(props.color),
-            [`fixed-${props.fixed}`]: Boolean(props.fixed),
-            [`navbar-expand${expandClassSuffix}`]: Boolean(props.expandable)
+            [`bg-${props.color}`]: props.color,
+            [`fixed-${props.fixed}`]: props.fixed,
+            [`navbar-expand${expandClassSuffix}`]: props.expandable
           }
         ],
         attrs: {

@@ -79,4 +79,4 @@ export default {
 }
 </script>
 
-<style src="perfect-scrollbar/css/perfect-scrollbar.css"></style>
+<style scoped src="perfect-scrollbar/css/perfect-scrollbar.css"></style>

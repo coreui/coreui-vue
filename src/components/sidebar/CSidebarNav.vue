@@ -1,6 +1,6 @@
 <template>
   <CScrollbar
-    class="c-scroll-area c-sidebar-nav"
+    class="c-sidebar-nav h-100"
     :settings="psSettings"
     :switcher="!state.minimize"
     tag="ul"
@@ -36,8 +36,3 @@ export default {
 }
 </script>
 
-<style scoped>
-  .c-scroll-area {
-    height: 100%;
-  }
-</style>

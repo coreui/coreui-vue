@@ -2,7 +2,10 @@
 import CLink, { propsFactory } from '../link/CLink'
 import { mergeData } from 'vue-functional-data-merge'
 
-const props = Object.assign(propsFactory(), { tag: String })
+const props = Object.assign(
+  propsFactory(), 
+  { tag: { type: String, default: 'div' } }
+)
 
 export default {
   name: 'CNavbarBrand',
@@ -10,7 +13,7 @@ export default {
   props,
   render(h, { props, data, children }) {
     const isLink = Boolean(props.to || props.href)
-    const tag = isLink ? CLink : props.tag || 'div'
+    const tag = isLink ? CLink : props.tag
     return h(
       tag,
       mergeData(data, {

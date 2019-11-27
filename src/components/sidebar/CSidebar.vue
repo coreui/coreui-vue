@@ -104,7 +104,7 @@ export default {
           'c-sidebar-minimized': this.minimize && !this.unfoldable,
           'c-sidebar-unfoldable': this.minimize && this.unfoldable,
           'c-sidebar-overlaid': this.overlaid,
-          [`c-sidebar-${this.size}`]: this.size,
+          [`c-sidebar-${this.size}`]: this.size
         }
       ]
     }

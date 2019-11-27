@@ -5,11 +5,14 @@ export default {
   functional: true,
   name: 'CCardTitle',
   props: {
-    tag: String
+    tag: {
+      type: String,
+      default: 'h4'
+    }
   },
   render (h, { props, data, children }) {
     return h(
-      props.tag || 'h4',
+      props.tag,
       mergeData(data, {
         staticClass: 'card-title'
       }),

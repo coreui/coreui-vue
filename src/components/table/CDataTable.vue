@@ -114,7 +114,7 @@
                   :class="cellClass(item, colName, index)"
                   :key="index"
                 >
-                  {{String(item[colName])}}
+                  {{ String(item[colName]) }}
                 </td>
               </template>
             </tr>
@@ -141,7 +141,8 @@
             <td :colspan="colspan">
               <slot name="no-items-view">
                 <div class="text-center my-5">
-                  <h2>{{ passedItems.length ? 'No filtering results ' : 'No items'}}
+                  <h2>
+                    {{ passedItems.length ? 'No filtering results ' : 'No items' }}
                     <CIcon
                       width="30"
                       :content="$options.icons.cilBan"
@@ -285,14 +286,6 @@ export default {
       handler (val) {
         this.columnFilterState = Object.assign({}, val) 
       }
-      // const state = this.columnFilterState
-      // const currentColumns = Object.keys(state)
-      // Object.keys(val).forEach(colName => {
-      //   if (!currentColumns.includes(colName)) {
-      //     this.setColumnFilter(colName, val[colName] || '')
-      //   }
-      // })
-      // currentColumns.forEach(colName => state[colName] = val[colName] || '')
     },
     items (val, oldVal) {
       if (
@@ -406,10 +399,7 @@ export default {
     },
     colspan () {
       return this.rawColumnNames.length
-    },
-    // isFiltered () {
-    //   return this.tableFilterState || Object.values(this.columnFilterState).join('')
-    // }
+    }
   },
   methods: {
     changeSort (column, index) {
@@ -435,16 +425,6 @@ export default {
       const e = type === 'input' ? 'table-filter-input' : 'update:table-filter-value'
       this.$emit(e, this.tableFilterState)
     },
-    // clear () {
-    //   this.tableFilterState = ''
-    //   this.columnFilterState = {}
-    //   this.sorterState.column = ''
-    //   this.sorterState.asc = true
-    //   const inputs = this.$el.getElementsByClassName('table-filter')
-    //   for (let input of inputs) {
-    //     input.value = ''
-    //   }
-    // },
     pretifyName (name) {
       return name.replace(/[-_.]/g, ' ')
         .replace(/ +/g, ' ')
@@ -504,6 +484,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
 .transparent {
   opacity: 0.4;

@@ -4,15 +4,19 @@ export default {
   functional: true,
   name: 'CCardGroup',
   props: {
-    tag: String,
+    tag: {
+      type: String,
+      default: 'div'
+    },
     deck:  Boolean,
     columns: Boolean
   },
   render (h, { props, data, children }) {
+    const type = props.columns ? 'columns' : props.deck ? 'deck' : 'group'
     return h(
-      props.tag || 'div',
+      props.tag,
       mergeData(data, {
-        staticClass: `card-${props.columns ? 'columns' : props.deck ? 'deck' : 'group'}`
+        staticClass: `card-${type}`
       }),
       children
     )

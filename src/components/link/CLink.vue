@@ -32,7 +32,7 @@ export function propsFactory () {
       type: String,
       default: 'a'
     },
-    to: [String, Object],
+    to: [String, Object]
   }
 }
 

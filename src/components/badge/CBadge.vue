@@ -2,17 +2,21 @@
 import { mergeData } from 'vue-functional-data-merge'
 import CLink, { props as linkProps } from '../link/CLink'
 
-const props = Object.assign({}, linkProps, {
-  tag: {
-    type: String,
-    default: 'span'
-  },
-  color: String,
-  shape: {
-    type: String,
-    validator: shape => ['', 'pill'].includes(shape)
+const props = Object.assign(
+  {}, 
+  linkProps, 
+  {
+    tag: {
+      type: String,
+      default: 'span'
+    },
+    color: String,
+    shape: {
+      type: String,
+      validator: shape => ['', 'pill'].includes(shape)
+    }
   }
-})
+)
 
 export default {
   functional: true,

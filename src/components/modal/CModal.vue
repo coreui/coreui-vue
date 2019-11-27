@@ -92,7 +92,7 @@ export default {
     return {
       visible: this.show,
       isTransitioning: false,
-      timeout: null,
+      timeout: null
     }
   },
   computed: {
@@ -111,7 +111,7 @@ export default {
           'fade': this.fade,
           'show': this.visible,
           'd-block': this.visible || this.isTransitioning,
-          [`modal-${this.color}`]: Boolean(this.color)
+          [`modal-${this.color}`]: this.color
         }
       ]
     },
@@ -121,7 +121,7 @@ export default {
         'modal-dialog',
         {
           'modal-dialog-centered': this.centered,
-          [`modal-${this.size}`]: Boolean(this.size),
+          [`modal-${this.size}`]: this.size
         }
       ]
     },
@@ -130,7 +130,7 @@ export default {
         this.addContentClasses,
         'modal-content',
         {
-          [`border-${this.borderColor}`]: Boolean(this.borderColor),
+          [`border-${this.borderColor}`]: this.borderColor
         }
       ]
     },

@@ -12,11 +12,11 @@
     </li>
     <li
       v-if="lastItem"
-      :class="['active', lastItem.addClasses, sharedClasses, addLastItemClasses]"
+      :class="lastItemClasses"
       role="presentation"
     >
-     <!-- span added to enable text styling through classes -->
-     <span v-text="lastItem.text"></span>
+      <!-- span added to enable text styling through classes -->
+      <span v-text="lastItem.text"></span>
     </li>
     <slot></slot>
   </ol>
@@ -45,6 +45,14 @@ export default {
     },
     sharedClasses () {
       return [this.addClasses, 'breadcrumb-item']
+    },
+    lastItemClasses () {
+      return [
+        'active', 
+        this.lastItem.addClasses, 
+        this.sharedClasses, 
+        this.addLastItemClasses
+      ]
     }
   }
 }

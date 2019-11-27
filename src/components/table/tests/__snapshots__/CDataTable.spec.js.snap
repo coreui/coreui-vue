@@ -28,7 +28,8 @@ exports[`CDataTable renders correctly 1`] = `
               class="text-center my-5"
             >
               <h2>
-                No items
+                
+                  No items
                   
                 <svg
                   class="text-danger mb-2 c-icon c-icon-custom-size"

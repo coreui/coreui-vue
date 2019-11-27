@@ -16,7 +16,7 @@ export default {
       mergeData(data, {
         class: [
           !props.vertical ? 'btn-group' : 'btn-group-vertical',
-          { [`btn-group-${props.size}`] : Boolean(props.size) }
+          { [`btn-group-${props.size}`] : props.size }
         ],
         attrs: {
           role: 'group'

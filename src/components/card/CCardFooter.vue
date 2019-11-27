@@ -13,10 +13,10 @@ export default {
         staticClass: 'card-footer',
         class: [
           {
-            [`text-${props.align}`]: Boolean(props.align),
-            [`bg-${props.color}`]: Boolean(props.color),
-            [`border-${props.borderColor}`]: Boolean(props.borderColor),
-            [`text-${props.textColor}`]: Boolean(props.textColor)
+            [`text-${props.align}`]: props.align,
+            [`bg-${props.color}`]: props.color,
+            [`border-${props.borderColor}`]: props.borderColor,
+            [`text-${props.textColor}`]: props.textColor
           }
         ]
       }),

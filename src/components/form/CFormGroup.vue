@@ -8,7 +8,9 @@
           class="input-group-prepend"
         >
           <slot name="prepend">
-            <span class="input-group-text"><slot name="prepend-content">{{prepend}}</slot></span>
+            <span class="input-group-text">
+              <slot name="prepend-content">{{prepend}}</slot>
+            </span>
           </slot>
         </div>
         <slot name="input"></slot>
@@ -53,7 +55,9 @@
         class="input-group-prepend"
       >
         <slot name="prepend">
-          <span class="input-group-text"><slot name="prepend-content">{{prepend}}</slot></span>
+          <span class="input-group-text">
+            <slot name="prepend-content">{{prepend}}</slot>
+          </span>
         </slot>
       </div>
       <slot name="input"></slot>

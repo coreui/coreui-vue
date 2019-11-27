@@ -27,21 +27,22 @@ export default {
       'xl': '-xl'
     }
     Object.keys(suffixes).forEach((key) => {
-      if (props[key] === true) {
+      const prop = props[key]
+      if (prop === true) {
         classes.push(`col${suffixes[key]}`)
 
-      } else if (typeof props[key] === 'number' || typeof props[key] === 'string') {
-        classes.push(`col${suffixes[key]}-${props[key]}`)
+      } else if (typeof prop === 'number' || typeof prop === 'string') {
+        classes.push(`col${suffixes[key]}-${prop}`)
         
-      } else if (typeof props[key] === 'object') {
-        if (props[key].size) {
-          classes.push(`col${suffixes[key]}-${props[key].size}`)
+      } else if (typeof prop === 'object') {
+        if (prop.size) {
+          classes.push(`col${suffixes[key]}-${prop.size}`)
         }
-        if (props[key].offset) {
-          classes.push(`offset${suffixes[key]}-${props[key].offset}`)
+        if (prop.offset) {
+          classes.push(`offset${suffixes[key]}-${prop.offset}`)
         }
-        if (props[key].order) {
-          classes.push(`order${suffixes[key]}-${props[key].order}`)
+        if (prop.order) {
+          classes.push(`order${suffixes[key]}-${prop.order}`)
         }
       }
     })

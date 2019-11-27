@@ -54,7 +54,10 @@
       </select>
     </template>
 
-    <template v-for="slot in $options.slots" #[slot]>
+    <template 
+      v-for="slot in $options.slots" 
+      #[slot]
+    >
       <slot :name="slot"></slot>
     </template>
   </CFormGroup>

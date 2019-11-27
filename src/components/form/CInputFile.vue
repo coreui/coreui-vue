@@ -32,8 +32,7 @@
 
 
     <template
-      v-for="slot in ['label-after-input','valid-feedback',
-                              'invalid-feedback','description']"
+      v-for="slot in $options.slots"
       #[slot]
     >
       <slot :name="slot"></slot>
@@ -43,15 +42,20 @@
 
 <script>
 import * as allFormMixins from './form-mixins'
-const mixins = Object.values(allFormMixins).filter((i, key) => key !== 'watchValue')
 import { inputFileProps as props } from './form-props'
 import CFormGroup from './CFormGroup'
+const mixins = Object.values(allFormMixins).filter((i, key) => {
+  return key !== 'watchValue'
+})
 
 export default {
   name: 'CInputFile',
   inheritAttrs: false,
   components: { CFormGroup },
   mixins,
+  slots: [
+    'label-after-input','valid-feedback','invalid-feedback','description'
+  ],
   props,
   // {
     // validFeedback: String,

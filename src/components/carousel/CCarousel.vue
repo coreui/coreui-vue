@@ -110,7 +110,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .carousel-inner, .carousel-item {
     height: inherit;
   }

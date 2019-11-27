@@ -5,10 +5,13 @@ const formGroupAlwaysSharedProps = {
   description: String
 }
 const formGroupSharedProps = Object.assign(
-  {}, formGroupAlwaysSharedProps,{
-  append: String,
-  prepend: String
-})
+  {}, 
+  formGroupAlwaysSharedProps,
+  {
+    append: String,
+    prepend: String
+  }
+)
 
 export const formGroupProps = Object.assign(
   {}, formGroupSharedProps, { wrapperClasses: [String, Array, Object] }
@@ -24,14 +27,18 @@ const universalProps = {
   addInputClasses: [String, Array, Object],
   addLabelClasses: [String, Array, Object]
 }
-const props = Object.assign({}, universalProps, {
-  horizontal: [Boolean, Object],
-  size: {
-    type: String,
-    validator: str => ['','sm','lg'].includes(str)
-  },
-  addWrapperClasses: [String, Array, Object]
-})
+const props = Object.assign(
+  {}, 
+  universalProps, 
+  {
+    horizontal: [Boolean, Object],
+    size: {
+      type: String,
+      validator: str => ['','sm','lg'].includes(str)
+    },
+    addWrapperClasses: [String, Array, Object]
+  }
+)
 const textInputsProps = {
   readonly: Boolean,
   plaintext: Boolean,
@@ -44,11 +51,15 @@ const textInputsProps = {
 
 // Html props: disabled, required, accept, id, placeholder
 export const inputFileProps = Object.assign(
-  {}, formGroupAlwaysSharedProps, props, {
-  custom: Boolean,
-  placeholder: String,
-  multiple: Boolean
-})
+  {}, 
+  formGroupAlwaysSharedProps, 
+  props, 
+  {
+    custom: Boolean,
+    placeholder: String,
+    multiple: Boolean
+  }
+)
 
 // Html props: disabled, required, rows, cols, placeholder, id
 export const textareaProps = Object.assign(
@@ -57,28 +68,41 @@ export const textareaProps = Object.assign(
 
 // HTML props: disabled, required, placeholder, id
 export const inputProps = Object.assign(
-  {}, formGroupSharedProps, props, textInputsProps, {
-  type: {
-    type: String,
-    default: 'text'
+  {}, 
+  formGroupSharedProps, 
+  props, 
+  textInputsProps, 
+  {
+    type: {
+      type: String,
+      default: 'text'
+    }
   }
-})
+)
 
 // Html props: disabled, id required don't use multiple
 export const selectProps = Object.assign(
-  {}, formGroupSharedProps, props, {
-  options: Array,
-  value: [String, Number, Boolean, Array],
-  plaintext: Boolean,
-  placeholder: String,
-  custom: Boolean
-})
+  {}, 
+  formGroupSharedProps, 
+  props, 
+  {
+    options: Array,
+    value: [String, Number, Boolean, Array],
+    plaintext: Boolean,
+    placeholder: String,
+    custom: Boolean
+  }
+)
 
 // Html props: id, disabled, required
 export const inputCheckboxProps = Object.assign(
-  {}, formGroupAlwaysSharedProps, universalProps, {
-  checked: Boolean,
-  custom: Boolean,
-  inline: Boolean
-})
+  {}, 
+  formGroupAlwaysSharedProps, 
+  universalProps, 
+  {
+    checked: Boolean,
+    custom: Boolean,
+    inline: Boolean
+  }
+)
 

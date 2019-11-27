@@ -5,11 +5,14 @@ export default {
   functional: true,
   name: 'CCardText',
   props: {
-    tag: String
+    tag: {
+      type: String,
+      default: 'p'
+    }
   },
   render (h, { props, data, children }) {
     return h(
-      props.tag || 'p',
+      props.tag,
       mergeData(data, {
         staticClass: 'card-text'
       }),

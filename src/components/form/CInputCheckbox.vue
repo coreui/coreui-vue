@@ -58,7 +58,7 @@ export default {
     // addInputClasses: [String, Array, Object],
     // addLabelClasses: [String, Array, Object],
     
-    // checked: [Boolean, String, Number],
+    // checked: Boolean,
     // custom: Boolean,
     // inline: Boolean
   // },

@@ -18,7 +18,7 @@
         <CProgress
           :color="!inverse ? color : ''"
           :value="value"
-          :class="inverse ? 'progress-white' : ''"
+          :class="{ 'progress-white' : inverse }"
           class="progress-xs my-3 mb-0"
         />
       </slot>

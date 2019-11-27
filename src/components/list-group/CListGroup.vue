@@ -19,7 +19,7 @@ export default {
       staticClass: 'list-group',
       class: { 
         'list-group-flush': !hor && props.flush,
-        [`list-group-horizontal${horizontalClassSuffix}`]: hor,
+        [`list-group-horizontal${horizontalClassSuffix}`]: hor
       },
       attrs: {
         role: data.attrs ? data.attrs.role || 'list-items' : 'list-items'

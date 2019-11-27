@@ -5,11 +5,14 @@ export default {
   functional: true,
   name: 'CCardSubtitle',
   props: {
-    tag: String
+    tag: {
+      type: String,
+      default: 'h6'
+    }
   },
   render (h, { props, data, children }) {
     return h(
-      props.tag || 'h6',
+      props.tag,
       mergeData(data, {
         staticClass: 'card-subtitle'
       }),

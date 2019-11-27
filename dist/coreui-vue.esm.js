@@ -2648,6 +2648,9 @@ var script$4 = {
     },
     sharedClasses: function sharedClasses() {
       return [this.addClasses, 'breadcrumb-item'];
+    },
+    lastItemClasses: function lastItemClasses() {
+      return ['active', this.lastItem.addClasses, this.sharedClasses, this.addLastItemClasses];
     }
   }
 };
@@ -2691,15 +2694,7 @@ var __vue_render__$1 = function() {
       _vm.lastItem
         ? _c(
             "li",
-            {
-              class: [
-                "active",
-                _vm.lastItem.addClasses,
-                _vm.sharedClasses,
-                _vm.addLastItemClasses
-              ],
-              attrs: { role: "presentation" }
-            },
+            { class: _vm.lastItemClasses, attrs: { role: "presentation" } },
             [
               _c("span", {
                 domProps: { textContent: _vm._s(_vm.lastItem.text) }
@@ -3091,7 +3086,7 @@ var script$6 = {
     var on = {
       click: function click() {
         if (toggle && listeners && listeners['update:pressed']) {
-          // Send .sync updates to any "pressed" prop (if .sync listeners)
+          // Send .sync updates to "pressed" prop (if .sync listener is set)
           listeners['update:pressed'](!props.pressed);
         }
       }
@@ -4004,7 +3999,10 @@ var script$g = {
   functional: true,
   name: 'CCardGroup',
   props: {
-    tag: String,
+    tag: {
+      type: String,
+      default: 'div'
+    },
     deck: Boolean,
     columns: Boolean
   },
@@ -4012,8 +4010,9 @@ var script$g = {
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
-    return h(props.tag || 'div', a(data, {
-      staticClass: "card-".concat(props.columns ? 'columns' : props.deck ? 'deck' : 'group')
+    var type = props.columns ? 'columns' : props.deck ? 'deck' : 'group';
+    return h(props.tag, a(data, {
+      staticClass: "card-".concat(type)
     }), children);
   }
 };
@@ -4153,13 +4152,16 @@ var script$j = {
   functional: true,
   name: 'CCardImgOverlay',
   props: {
-    tag: String
+    tag: {
+      type: String,
+      default: 'div'
+    }
   },
   render: function render(h, _ref) {
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
-    return h(props.tag || 'div', a(data, {
+    return h(props.tag, a(data, {
       staticClass: 'card-img-overlay'
     }), children);
   }
@@ -4244,13 +4246,16 @@ var script$l = {
   functional: true,
   name: 'CCardSubtitle',
   props: {
-    tag: String
+    tag: {
+      type: String,
+      default: 'h6'
+    }
   },
   render: function render(h, _ref) {
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
-    return h(props.tag || 'h6', a(data, {
+    return h(props.tag, a(data, {
       staticClass: 'card-subtitle'
     }), children);
   }
@@ -4290,13 +4295,16 @@ var script$m = {
   functional: true,
   name: 'CCardText',
   props: {
-    tag: String
+    tag: {
+      type: String,
+      default: 'p'
+    }
   },
   render: function render(h, _ref) {
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
-    return h(props.tag || 'p', a(data, {
+    return h(props.tag, a(data, {
       staticClass: 'card-text'
     }), children);
   }
@@ -4336,13 +4344,16 @@ var script$n = {
   functional: true,
   name: 'CCardTitle',
   props: {
-    tag: String
+    tag: {
+      type: String,
+      default: 'h4'
+    }
   },
   render: function render(h, _ref) {
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
-    return h(props.tag || 'h4', a(data, {
+    return h(props.tag, a(data, {
       staticClass: 'card-title'
     }), children);
   }
@@ -4430,7 +4441,7 @@ var script$o = {
         this.turn();
         var height = Number(this.collapsing.slice(0, -2));
         var current = this.$el.offsetHeight;
-        var time = val ? (height - current) / height : current / height;
+        var time = (val ? height - current : current) / height;
         this.setFinishTimer(this.duration * time);
       }
     },
@@ -17526,7 +17537,7 @@ var script$x = {
   //   addWrapperClasses: [String, Array, Object],
   //   readonly: Boolean,
   //   plaintext: Boolean,
-  //   value: String,
+  //   value: [String, Number],
   //   lazy: {
   //     type: [Boolean, Number],
   //     default: 400
@@ -17800,7 +17811,7 @@ var script$y = {
   // },
   // addInputClasses: [String, Array, Object],
   // addLabelClasses: [String, Array, Object],
-  // checked: [Boolean, String, Number],
+  // checked: Boolean,
   // custom: Boolean,
   // inline: Boolean
   // },
@@ -17986,6 +17997,7 @@ var script$z = {
     CFormGroup: CFormGroup
   },
   mixins: mixins$1,
+  slots: ['label-after-input', 'valid-feedback', 'invalid-feedback', 'description'],
   props: inputFileProps,
   // {
   // validFeedback: String,
@@ -18181,23 +18193,15 @@ var __vue_render__$d = function() {
               },
               proxy: true
             },
-            _vm._l(
-              [
-                "label-after-input",
-                "valid-feedback",
-                "invalid-feedback",
-                "description"
-              ],
-              function(slot) {
-                return {
-                  key: slot,
-                  fn: function() {
-                    return [_vm._t(slot)]
-                  },
-                  proxy: true
-                }
+            _vm._l(_vm.$options.slots, function(slot) {
+              return {
+                key: slot,
+                fn: function() {
+                  return [_vm._t(slot)]
+                },
+                proxy: true
               }
-            )
+            })
           ],
           null,
           true
@@ -18652,7 +18656,7 @@ var script$C = {
   //   addWrapperClasses: [String, Array, Object],
   //   readonly: Boolean,
   //   plaintext: Boolean,
-  //   value: String,
+  //   value: [String, Number],
   //   lazy: {
   //     type: [Boolean, Number],
   //     default: 400
@@ -18900,13 +18904,16 @@ var script$D = {
   name: 'CContainer',
   props: {
     fluid: Boolean,
-    tag: String
+    tag: {
+      type: String,
+      default: 'div'
+    }
   },
   render: function render(h, _ref) {
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
-    return h(props.tag || 'div', a(data, {
+    return h(props.tag, a(data, {
       class: {
         'container': !props.fluid,
         'container-fluid': props.fluid
@@ -18946,7 +18953,10 @@ const __vue_script__$D = script$D;
   );
 
 var props$9 = {
-  tag: String,
+  tag: {
+    type: String,
+    default: 'div'
+  },
   gutters: {
     type: Boolean,
     default: true
@@ -18975,7 +18985,7 @@ var script$E = {
     var props = _ref.props,
         data = _ref.data,
         children = _ref.children;
-    return h(props.tag || 'div', a(data, {
+    return h(props.tag, a(data, {
       staticClass: props.form ? 'form-row' : 'row',
       class: (_class = {
         'no-gutters': !props.gutters
@@ -19646,21 +19656,23 @@ var script$F = {
       'xl': '-xl'
     };
     Object.keys(suffixes).forEach(function (key) {
-      if (props[key] === true) {
+      var prop = props[key];
+
+      if (prop === true) {
         classes.push("col".concat(suffixes[key]));
-      } else if (typeof props[key] === 'number' || typeof props[key] === 'string') {
-        classes.push("col".concat(suffixes[key], "-").concat(props[key]));
-      } else if (_typeof(props[key]) === 'object') {
-        if (props[key].size) {
-          classes.push("col".concat(suffixes[key], "-").concat(props[key].size));
+      } else if (typeof prop === 'number' || typeof prop === 'string') {
+        classes.push("col".concat(suffixes[key], "-").concat(prop));
+      } else if (_typeof(prop) === 'object') {
+        if (prop.size) {
+          classes.push("col".concat(suffixes[key], "-").concat(prop.size));
         }
 
-        if (props[key].offset) {
-          classes.push("offset".concat(suffixes[key], "-").concat(props[key].offset));
+        if (prop.offset) {
+          classes.push("offset".concat(suffixes[key], "-").concat(prop.offset));
         }
 
-        if (props[key].order) {
-          classes.push("order".concat(suffixes[key], "-").concat(props[key].order));
+        if (prop.order) {
+          classes.push("order".concat(suffixes[key], "-").concat(prop.order));
         }
       }
     });
@@ -20817,7 +20829,10 @@ const __vue_script__$T = script$T;
   );
 
 var props$c = Object.assign(propsFactory(), {
-  tag: String
+  tag: {
+    type: String,
+    default: 'div'
+  }
 });
 var script$U = {
   name: 'CNavbarBrand',
@@ -20828,7 +20843,7 @@ var script$U = {
         data = _ref.data,
         children = _ref.children;
     var isLink = Boolean(props.to || props.href);
-    var tag = isLink ? CLink : props.tag || 'div';
+    var tag = isLink ? CLink : props.tag;
     return h(tag, a(data, {
       staticClass: 'navbar-brand',
       props: isLink ? props : null
@@ -25397,7 +25412,7 @@ var script$$ = {
   }
 };
 
-var css$2 = "/*\n * Container style\n */\n.ps {\n  overflow: hidden !important;\n  overflow-anchor: none;\n  -ms-overflow-style: none;\n  touch-action: auto;\n  -ms-touch-action: auto;\n}\n\n/*\n * Scrollbar rail styles\n */\n.ps__rail-x {\n  display: none;\n  opacity: 0;\n  transition: background-color .2s linear, opacity .2s linear;\n  -webkit-transition: background-color .2s linear, opacity .2s linear;\n  height: 15px;\n  /* there must be 'bottom' or 'top' for ps__rail-x */\n  bottom: 0px;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps__rail-y {\n  display: none;\n  opacity: 0;\n  transition: background-color .2s linear, opacity .2s linear;\n  -webkit-transition: background-color .2s linear, opacity .2s linear;\n  width: 15px;\n  /* there must be 'right' or 'left' for ps__rail-y */\n  right: 0;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps--active-x > .ps__rail-x,\n.ps--active-y > .ps__rail-y {\n  display: block;\n  background-color: transparent;\n}\n.ps:hover > .ps__rail-x,\n.ps:hover > .ps__rail-y,\n.ps--focus > .ps__rail-x,\n.ps--focus > .ps__rail-y,\n.ps--scrolling-x > .ps__rail-x,\n.ps--scrolling-y > .ps__rail-y {\n  opacity: 0.6;\n}\n.ps .ps__rail-x:hover,\n.ps .ps__rail-y:hover,\n.ps .ps__rail-x:focus,\n.ps .ps__rail-y:focus,\n.ps .ps__rail-x.ps--clicking,\n.ps .ps__rail-y.ps--clicking {\n  background-color: #eee;\n  opacity: 0.9;\n}\n\n/*\n * Scrollbar thumb styles\n */\n.ps__thumb-x {\n  background-color: #aaa;\n  border-radius: 6px;\n  transition: background-color .2s linear, height .2s ease-in-out;\n  -webkit-transition: background-color .2s linear, height .2s ease-in-out;\n  height: 6px;\n  /* there must be 'bottom' for ps__thumb-x */\n  bottom: 2px;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps__thumb-y {\n  background-color: #aaa;\n  border-radius: 6px;\n  transition: background-color .2s linear, width .2s ease-in-out;\n  -webkit-transition: background-color .2s linear, width .2s ease-in-out;\n  width: 6px;\n  /* there must be 'right' for ps__thumb-y */\n  right: 2px;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps__rail-x:hover > .ps__thumb-x,\n.ps__rail-x:focus > .ps__thumb-x,\n.ps__rail-x.ps--clicking .ps__thumb-x {\n  background-color: #999;\n  height: 11px;\n}\n.ps__rail-y:hover > .ps__thumb-y,\n.ps__rail-y:focus > .ps__thumb-y,\n.ps__rail-y.ps--clicking .ps__thumb-y {\n  background-color: #999;\n  width: 11px;\n}\n\n/* MS supports */\n@supports (-ms-overflow-style: none) {\n.ps {\n    overflow: auto !important;\n}\n}\n@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {\n.ps {\n    overflow: auto !important;\n}\n}\n";
+var css$2 = "/*\n * Container style\n */\n.ps[data-v-04e4a57a] {\n  overflow: hidden !important;\n  overflow-anchor: none;\n  -ms-overflow-style: none;\n  touch-action: auto;\n  -ms-touch-action: auto;\n}\n\n/*\n * Scrollbar rail styles\n */\n.ps__rail-x[data-v-04e4a57a] {\n  display: none;\n  opacity: 0;\n  transition: background-color .2s linear, opacity .2s linear;\n  -webkit-transition: background-color .2s linear, opacity .2s linear;\n  height: 15px;\n  /* there must be 'bottom' or 'top' for ps__rail-x */\n  bottom: 0px;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps__rail-y[data-v-04e4a57a] {\n  display: none;\n  opacity: 0;\n  transition: background-color .2s linear, opacity .2s linear;\n  -webkit-transition: background-color .2s linear, opacity .2s linear;\n  width: 15px;\n  /* there must be 'right' or 'left' for ps__rail-y */\n  right: 0;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps--active-x > .ps__rail-x[data-v-04e4a57a],\n.ps--active-y > .ps__rail-y[data-v-04e4a57a] {\n  display: block;\n  background-color: transparent;\n}\n.ps:hover > .ps__rail-x[data-v-04e4a57a],\n.ps:hover > .ps__rail-y[data-v-04e4a57a],\n.ps--focus > .ps__rail-x[data-v-04e4a57a],\n.ps--focus > .ps__rail-y[data-v-04e4a57a],\n.ps--scrolling-x > .ps__rail-x[data-v-04e4a57a],\n.ps--scrolling-y > .ps__rail-y[data-v-04e4a57a] {\n  opacity: 0.6;\n}\n.ps .ps__rail-x[data-v-04e4a57a]:hover,\n.ps .ps__rail-y[data-v-04e4a57a]:hover,\n.ps .ps__rail-x[data-v-04e4a57a]:focus,\n.ps .ps__rail-y[data-v-04e4a57a]:focus,\n.ps .ps__rail-x.ps--clicking[data-v-04e4a57a],\n.ps .ps__rail-y.ps--clicking[data-v-04e4a57a] {\n  background-color: #eee;\n  opacity: 0.9;\n}\n\n/*\n * Scrollbar thumb styles\n */\n.ps__thumb-x[data-v-04e4a57a] {\n  background-color: #aaa;\n  border-radius: 6px;\n  transition: background-color .2s linear, height .2s ease-in-out;\n  -webkit-transition: background-color .2s linear, height .2s ease-in-out;\n  height: 6px;\n  /* there must be 'bottom' for ps__thumb-x */\n  bottom: 2px;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps__thumb-y[data-v-04e4a57a] {\n  background-color: #aaa;\n  border-radius: 6px;\n  transition: background-color .2s linear, width .2s ease-in-out;\n  -webkit-transition: background-color .2s linear, width .2s ease-in-out;\n  width: 6px;\n  /* there must be 'right' for ps__thumb-y */\n  right: 2px;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps__rail-x:hover > .ps__thumb-x[data-v-04e4a57a],\n.ps__rail-x:focus > .ps__thumb-x[data-v-04e4a57a],\n.ps__rail-x.ps--clicking .ps__thumb-x[data-v-04e4a57a] {\n  background-color: #999;\n  height: 11px;\n}\n.ps__rail-y:hover > .ps__thumb-y[data-v-04e4a57a],\n.ps__rail-y:focus > .ps__thumb-y[data-v-04e4a57a],\n.ps__rail-y.ps--clicking .ps__thumb-y[data-v-04e4a57a] {\n  background-color: #999;\n  width: 11px;\n}\n\n/* MS supports */\n@supports (-ms-overflow-style: none) {\n.ps[data-v-04e4a57a] {\n    overflow: auto !important;\n}\n}\n@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {\n.ps[data-v-04e4a57a] {\n    overflow: auto !important;\n}\n}\n";
 styleInject(css$2);
 
 /* script */
@@ -25407,7 +25422,7 @@ const __vue_script__$$ = script$$;
   /* style */
   const __vue_inject_styles__$$ = undefined;
   /* scoped */
-  const __vue_scope_id__$$ = undefined;
+  const __vue_scope_id__$$ = "data-v-04e4a57a";
   /* module identifier */
   const __vue_module_identifier__$$ = undefined;
   /* functional template */
@@ -26886,15 +26901,7 @@ var script$1f = {
       immediate: true,
       handler: function handler(val) {
         this.columnFilterState = Object.assign({}, val);
-      } // const state = this.columnFilterState
-      // const currentColumns = Object.keys(state)
-      // Object.keys(val).forEach(colName => {
-      //   if (!currentColumns.includes(colName)) {
-      //     this.setColumnFilter(colName, val[colName] || '')
-      //   }
-      // })
-      // currentColumns.forEach(colName => state[colName] = val[colName] || '')
-
+      }
     },
     items: function items(val, oldVal) {
       if (val.length !== oldVal.length || JSON.stringify(val) !== JSON.stringify(oldVal)) {
@@ -27026,10 +27033,7 @@ var script$1f = {
     },
     colspan: function colspan() {
       return this.rawColumnNames.length;
-    } // isFiltered () {
-    //   return this.tableFilterState || Object.values(this.columnFilterState).join('')
-    // }
-
+    }
   },
   methods: {
     changeSort: function changeSort(column, index) {
@@ -27057,16 +27061,6 @@ var script$1f = {
       var e = type === 'input' ? 'table-filter-input' : 'update:table-filter-value';
       this.$emit(e, this.tableFilterState);
     },
-    // clear () {
-    //   this.tableFilterState = ''
-    //   this.columnFilterState = {}
-    //   this.sorterState.column = ''
-    //   this.sorterState.asc = true
-    //   const inputs = this.$el.getElementsByClassName('table-filter')
-    //   for (let input of inputs) {
-    //     input.value = ''
-    //   }
-    // },
     pretifyName: function pretifyName(name) {
       return name.replace(/[-_.]/g, ' ').replace(/ +/g, ' ').replace(/([a-z0-9])([A-Z])/g, '$1 $2').split(' ').map(function (word) {
         return word.charAt(0).toUpperCase() + word.slice(1);
@@ -27126,7 +27120,7 @@ var script$1f = {
   }
 };
 
-var css$3 = "\n.transparent[data-v-12527458] {\r\n  opacity: 0.4;\n}\n.icon-transition[data-v-12527458] {\r\n  -webkit-transition: transform 0.3s;\r\n  -webkit-transition: -webkit-transform 0.3s;\r\n  transition: -webkit-transform 0.3s;\r\n  transition: transform 0.3s;\r\n  transition: transform 0.3s, -webkit-transform 0.3s;\n}\n.arrow-position[data-v-12527458] {\r\n  right: 0;\r\n  top: 50%;\r\n  -webkit-transform: translateY(-50%);\r\n          transform: translateY(-50%);\n}\n.rotate-icon[data-v-12527458] {\r\n  -webkit-transform: translateY(-50%) rotate(-180deg);\r\n          transform: translateY(-50%) rotate(-180deg);\n}\r\n";
+var css$3 = "\n.transparent[data-v-062f36d4] {\r\n  opacity: 0.4;\n}\n.icon-transition[data-v-062f36d4] {\r\n  -webkit-transition: transform 0.3s;\r\n  -webkit-transition: -webkit-transform 0.3s;\r\n  transition: -webkit-transform 0.3s;\r\n  transition: transform 0.3s;\r\n  transition: transform 0.3s, -webkit-transform 0.3s;\n}\n.arrow-position[data-v-062f36d4] {\r\n  right: 0;\r\n  top: 50%;\r\n  -webkit-transform: translateY(-50%);\r\n          transform: translateY(-50%);\n}\n.rotate-icon[data-v-062f36d4] {\r\n  -webkit-transform: translateY(-50%) rotate(-180deg);\r\n          transform: translateY(-50%) rotate(-180deg);\n}\r\n";
 styleInject(css$3);
 
 /* script */
@@ -27441,11 +27435,13 @@ var __vue_render__$I = function() {
                                   "h2",
                                   [
                                     _vm._v(
-                                      _vm._s(
-                                        _vm.passedItems.length
-                                          ? "No filtering results "
-                                          : "No items"
-                                      ) + "\n                  "
+                                      "\n                  " +
+                                        _vm._s(
+                                          _vm.passedItems.length
+                                            ? "No filtering results "
+                                            : "No items"
+                                        ) +
+                                        "\n                  "
                                     ),
                                     _c("CIcon", {
                                       staticClass: "text-danger mb-2",
@@ -27609,7 +27605,7 @@ __vue_render__$I._withStripped = true;
   /* style */
   const __vue_inject_styles__$1f = undefined;
   /* scoped */
-  const __vue_scope_id__$1f = "data-v-12527458";
+  const __vue_scope_id__$1f = "data-v-062f36d4";
   /* module identifier */
   const __vue_module_identifier__$1f = undefined;
   /* functional template */
@@ -28735,7 +28731,7 @@ var __vue_render__$M = function() {
           _vm._t("default", [
             _c("CProgress", {
               staticClass: "progress-xs my-3 mb-0",
-              class: _vm.inverse ? "progress-white" : "",
+              class: { "progress-white": _vm.inverse },
               attrs: { color: !_vm.inverse ? _vm.color : "", value: _vm.value }
             })
           ]),
@@ -29089,7 +29085,7 @@ var __vue_render__$P = function() {
           _vm._t("progress", [
             _c("CProgress", {
               staticClass: "progress-xs my-3 mb-0",
-              class: _vm.inverse ? "progress-white" : "",
+              class: { "progress-white": _vm.inverse },
               attrs: { color: !_vm.inverse ? _vm.color : "", value: _vm.value }
             })
           ])
