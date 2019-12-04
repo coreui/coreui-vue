@@ -1,18 +1,13 @@
 {
   "name": "@coreui/vue",
   "description": "CoreUI Vue Bootstrap 4 layout components",
-  "version": "3.0.0-beta.2",
+  "version": "3.0.0-beta.3",
   "license": "MIT",
   "main": "dist/coreui-vue.common.js",
   "types": "src/index.d.ts",
   "files": [
     "src",
-    "dist",
-    "babel.config.js",
-    "jest.config.js",
-    "jest.setup.js",
-    "rollup.config.js",
-    "vue.config.js"
+    "dist"
   ],
   "sideEffects": [
     "./src/components/toast/CToast.vue",
@@ -24,15 +19,15 @@
   ],
   "homepage": "https://coreui.io",
   "author": {
-    "name": "Łukasz Holeczek",
-    "url": "http://holeczek.pl",
-    "github": "https://github.com/mrholek",
-    "twitter": "https://twitter.com/lukaszholeczek"
+    "name": "CoreUI",
+    "url": "https://coreui.io",
+    "github": "https://github.com/coreui",
+    "twitter": "https://twitter.com/core_ui"
   },
   "contributors": [
     {
-      "name": "Andrzej Kopański",
-      "url": "https://github.com/xidedix"
+      "name": "CoreUI Team",
+      "url": "https://github.com/orgs/coreui/people"
     }
   ],
   "repository": {
@@ -60,19 +55,18 @@
   },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "npm-run-all build:default build:es",
+    "build": "npm-run-all build:default",
     "build:default": "vue-cli-service build --target lib --name coreui-vue ./src/index.js",
     "build:es": "rollup -c --environment TARGET:esm",
     "lint": "vue-cli-service lint --ignore-pattern **/*spec.js",
     "test": "vue-cli-service test:unit",
     "test:coverage": "vue-cli-service test:unit --coverage --collectCoverageFrom=src/**/*.{js,vue} --collectCoverageFrom=!**/index*",
-    "test:e2e": "vue-cli-service test:e2e",
     "clear_jest": "jest --clearCache"
   },
   "dependencies": {
     "@coreui/coreui": "3.0.0-beta.3",
     "@coreui/icons": "coreui/coreui-icons#1.0.0-beta.1",
-    "@coreui/icons-vue": "coreui/coreui-icons-vue#1.0.0-alpha.1",
+    "@coreui/icons-vue": "^1.0.2",
     "lodash.clonedeep": "^4.5.0",
     "perfect-scrollbar": "^1.4.0",
     "popper.js": "^1.16.0",
@@ -82,25 +76,25 @@
     "vue-functional-data-merge": "^3.1.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.0.5",
-    "@vue/cli-plugin-eslint": "^4.0.5",
-    "@vue/cli-plugin-unit-jest": "^4.0.5",
-    "@vue/cli-service": "^4.0.5",
-    "@vue/test-utils": "^1.0.0-beta.29",
+    "@vue/cli-plugin-babel": "^4.1.1",
+    "@vue/cli-plugin-eslint": "^4.1.1",
+    "@vue/cli-plugin-unit-jest": "^4.1.1",
+    "@vue/cli-service": "^4.1.1",
+    "@vue/test-utils": "1.0.0-beta.29",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9",
-    "core-js": "^3.4.1",
-    "eslint": "^6.6.0",
+    "core-js": "^3.4.7",
+    "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.0.1",
     "node-sass": "^4.13.0",
     "node-sass-magic-importer": "^5.3.2",
     "npm-run-all": "^4.1.5",
-    "rollup": "^1.27.3",
+    "rollup": "^1.27.8",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-filesize": "^6.2.1",
     "rollup-plugin-json": "^4.0.0",
-    "rollup-plugin-license": "^0.12.1",
+    "rollup-plugin-license": "^0.13.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-replace": "^2.2.0",
