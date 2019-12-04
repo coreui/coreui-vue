@@ -1,52 +1,73 @@
-# @coreui/vue
+# Introduction
 
 [![Npm badge](https://img.shields.io/npm/v/@coreui/vue.svg)][npm]
 [![NPM downloads][npm-download]][npm]
-![Rollup badge](https://img.shields.io/badge/Rollup-^0.59.4-ff69b4.svg)
-![Jest](https://img.shields.io/badge/Jest-^23.6.0-blue.svg)
-![Vue](https://img.shields.io/badge/Vue-^2.5.17-brightgreen.svg)
+![Jest](https://img.shields.io/badge/Jest-^24.9.0-blue.svg)
+![Vue](https://img.shields.io/badge/Vue-^2.6.10-brightgreen.svg)
 
 [npm]: https://www.npmjs.com/package/@coreui/vue
 [npm-download]: https://img.shields.io/npm/dm/@coreui/vue.svg?style=flat-square
 
-> A [@coreui/vue](https://coreui.io/vue) `v3` library project
+> A [@coreui/vue](https://coreui.io/vue) `v3` components library project
 
-for use with [CoreUI](https://coreui.io/vue/) `v3-alpha` Open Source Bootstrap Admin Template
+## Over 90 bootstrap based Vue.js components and directives!
+Check out template build on top of this library: [CoreUI](https://coreui.io/vue/) Open Source Bootstrap Admin Template
 
 ## Installation
 ```
 npm install @coreui/vue
 ```
-@coreui/vue can be used as a module in both CommonJS and ES modular environments.
+</br>
 
-When in non-modular environment, @coreui/vue will register all the components to vue by itself.</p>
-
-### ES6
+### Registering components
 ```js
-//
-// You can register a component manually
-//
-import { CSwitch } from '@coreui/vue';
+// Installing whole package
+import CoreuiVue from '@coreui/vue';
+Vue.use(CoreuiVue);
+
+// Registering a single component
+import { CSwitch, CButton } from '@coreui/vue';
+
+// globally
+Vue.component('CButton', CButton)
 
 export default {
   ...
+  // locally
   components: {
     CSwitch
   },
   ...
-};
-
-//
-// or register the whole module with vue
-//
-import ModuleLibrary from '@coreui/vue';
-
-// Install this library
-Vue.use(ModuleLibrary);
+}
 ```
-## Credits
+</br>
 
-A lot of components were build based on Bootstrap-Vue library (https://bootstrap-vue.js.org/)
+### Registering directives
+```js
+// Registering single directives
+import { CEmitRootEvent, CTooltip } from '@coreui/vue';
+
+// globally
+Vue.directive('c-emit-root-event', CEmitRootEvent)
+
+export default {
+  ...
+  // locally
+  directives: {
+    'c-tooltip': CTooltip
+  },
+  ...
+}
+```
+</br>
+
+### Optimization
+Components are imported from CommonJS module by default, if you want to use only specific components you can import them from source to enable treeshaking.
+
+```js
+// Import components this way to allow tree shaking
+import { CDataTable } from '@coreui/vue/src';
+```
 
 ## Changelog
 
@@ -54,4 +75,8 @@ See the GitHub [release history](https://github.com/coreui/coreui-vue/releases).
 
 ## Contributing
 
-See [CONTRIBUTING.md](.github/CONTRIBUTING.md).
+See [CONTRIBUTING.md](https://github.com/coreui/coreui-vue/blob/v3-next/CONTRIBUTING.md).
+
+## Credits
+
+Some design ideas and solutions in this library are inspired by [Bootstrap-Vue library](https://bootstrap-vue.js.org/)
