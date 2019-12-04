@@ -211,7 +211,7 @@
 <script>
 import CSpinner from '../spinner/CSpinner'
 import CPagination from '../pagination/CPagination'
-import CIcon from '@coreui/icons-vue/CIcon.vue'
+import CIcon from '@coreui/icons-vue/src/CIconRaw.vue'
 import { cilArrowTop, cilBan } from '@coreui/icons'
 
 export default {

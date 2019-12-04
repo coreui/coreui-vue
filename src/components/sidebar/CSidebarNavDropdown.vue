@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import CIcon from '@coreui/icons-vue/CIcon.vue'
+import CIcon from '@coreui/icons-vue/src/CIconRaw.vue'
 import CSidebarNavItem from './CSidebarNavItem'
 
 export default {

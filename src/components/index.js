@@ -33,5 +33,5 @@ export * from './toast'
 export * from './toggler'
 export * from './widgets'
 
-import CIcon from '@coreui/icons-vue/CIcon.vue'
+import CIcon from '@coreui/icons-vue/src/CIconRaw.vue'
 export { CIcon }

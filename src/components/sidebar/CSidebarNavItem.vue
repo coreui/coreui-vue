@@ -23,7 +23,7 @@
 <script>
 import CLink, { props as linkProps } from '../link/CLink'
 import CBadge from '../badge/CBadge'
-import CIcon from '@coreui/icons-vue/CIcon.vue'
+import CIcon from '@coreui/icons-vue/src/CIconRaw.vue'
 
 const props = Object.assign(
   {}, 
