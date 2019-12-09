@@ -64,7 +64,7 @@
     "clear_jest": "jest --clearCache"
   },
   "dependencies": {
-    "@coreui/coreui": "3.0.0-beta.3",
+    "@coreui/coreui-utils": "coreui/coreui-utils#ba52b40",
     "@coreui/icons": "coreui/coreui-icons#1.0.0-beta.1",
     "@coreui/icons-vue": "^1.0.2",
     "lodash.clonedeep": "^4.5.0",

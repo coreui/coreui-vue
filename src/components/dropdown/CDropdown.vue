@@ -35,7 +35,7 @@
 import CLink from '../link/CLink'
 import Popper from 'popper.js'
 import { mixin as clickaway } from 'vue-clickaway2'
-import { deepObjectsMerge } from '@coreui/coreui/dist/js/coreui-utilities'
+import { deepObjectsMerge } from '@coreui/coreui-utils/src/index.js'
 
 export default {
   name: 'CDropdown',
@@ -60,7 +60,10 @@ export default {
       validator: val => ['', 'sm', 'lg'].includes(val)
     },
     split: Boolean,
-    offset: Number,
+    offset: {
+      type: Number,
+      default: 0
+    },
     placement: {
       type: String,
       validator: position => {
@@ -146,7 +149,7 @@ export default {
       return {
         placement: this.placement,
         modifiers: {
-          offset: { offset: this.offset || 0 },
+          offset: { offset: this.offset },
           flip: { enabled: this.flip }
         }
       }

@@ -119,4 +119,11 @@ describe(ComponentName, () => {
     toggle()
     expect(customWrapper.vm.visible).toBe(false)
   })
+  it('generates popper config properly', () => {
+    const modifiers = () => customWrapper.vm.computedPopperConfig.modifiers
+    expect(modifiers().offset.offset).toBe(20)
+    customWrapper.setProps({ popperConfig: {modifiers:{offset:{ offset:22 }}}})
+    expect(modifiers().offset.offset).toBe(22)
+    expect(modifiers().flip.enabled).toBe(false)
+  }) 
 })
