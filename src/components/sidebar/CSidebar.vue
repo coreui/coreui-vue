@@ -99,7 +99,7 @@ export default {
         {
           'c-sidebar-show': this.open === true,
           [`c-sidebar-${this.breakpoint}-show`]: haveResponsiveClass,
-          'c-sidebar-fixed': this.fixed,
+          'c-sidebar-fixed': this.fixed && !this.overlaid,
           'c-sidebar-right': this.aside,
           'c-sidebar-minimized': this.minimize && !this.unfoldable,
           'c-sidebar-unfoldable': this.minimize && this.unfoldable,
