@@ -1,26 +1,25 @@
 # CoreUI Vue components library
-![NPM](https://img.shields.io/badge/npm-3.0.0--beta.2-brightgreen)
+![NPM](https://img.shields.io/npm/v/@coreui/vue/latest?style=flat&color=brightgreen)
 ![Downloads](https://img.shields.io/npm/dm/@coreui/vue.svg?style=flat-square)
 ![Jest](https://img.shields.io/badge/Jest-^24.9.0-blue.svg)
 ![Vue](https://img.shields.io/badge/Vue-^2.6.10-brightgreen.svg)
 
-
 > A @coreui/vue `v3` components library project
 
 ## Over 90 bootstrap based Vue.js components and directives!
-#### For library guide please visit our [Documentation site](https://coreui.io/vue/docs)
 
-Check out demo of components usage: [CoreUI Vue Admin Template](https://coreui.io/vue/demo/3.0-beta.1/#)
+### For library guide please visit our [Documentation site »](https://coreui.io/vue/docs)
 
-Check out our [official website](https://coreui.io/vue) and [other products](https://coreui.io)
+Check out demo of components usage: [CoreUI Vue Admin Template »](https://coreui.io/vue/demo/3.0-beta.1/#)
 
 ## Installation
-```
+
+```shell
 npm install @coreui/vue
 ```
-</br>
 
 ### Registering components
+
 ```js
 // Installing whole package
 import CoreuiVue from '@coreui/vue';
@@ -41,9 +40,9 @@ export default {
   ...
 }
 ```
-</br>
 
 ### Registering directives
+
 ```js
 // Registering single directives
 import { CEmitRootEvent, CTooltip } from '@coreui/vue';
@@ -60,9 +59,9 @@ export default {
   ...
 }
 ```
-</br>
 
 ### Optimization
+
 Components are imported from CommonJS module by default, if you want to use only specific components you can import them from source to enable treeshaking.
 
 ```js
