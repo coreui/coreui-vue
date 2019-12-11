@@ -1,8 +1,12 @@
 # CoreUI Vue components library
-![NPM](https://img.shields.io/npm/v/@coreui/vue/latest?style=flat&color=brightgreen)
+[![NPM][npm-coreui-vue-badge-latest]][npm-coreui-vue]
 ![Downloads](https://img.shields.io/npm/dm/@coreui/vue.svg?style=flat-square)
-![Jest](https://img.shields.io/badge/Jest-^24.9.0-blue.svg)
-![Vue](https://img.shields.io/badge/Vue-^2.6.10-brightgreen.svg)  
+![Jest](https://img.shields.io/badge/Jest-^24.9.0-blue.svg?style=flat-square)
+![Vue](https://img.shields.io/badge/Vue-^2.6.10-brightgreen.svg?style=flat-square)  
+
+[npm-coreui-vue]: https://www.npmjs.com/package/@coreui/vue
+[npm-coreui-vue-badge-latest]: https://img.shields.io/npm/v/@coreui/vue/latest?style=flat-square&color=brightgreen  
+
 
 > A @coreui/vue `v3` components library project
 
