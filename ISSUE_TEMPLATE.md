@@ -1,4 +1,4 @@
-Before opening an issue:
+# Before opening an issue
 
 - [Search for duplicate or closed issues](https://github.com/coreui/coreui-vue/issues?q=is%3Aissue+is%3Aclosed)
 - Read the [contributing guidelines](https://github.com/coreui/coreui-vue/blob/v3-next/CONTRIBUTING.md)
