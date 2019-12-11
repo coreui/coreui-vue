@@ -1,7 +1,7 @@
 {
   "name": "@coreui/vue",
   "description": "CoreUI Vue Bootstrap 4 layout components",
-  "version": "3.0.0-beta.3",
+  "version": "3.0.0-beta.4",
   "license": "MIT",
   "main": "dist/coreui-vue.common.js",
   "types": "src/index.d.ts",
@@ -61,7 +61,8 @@
     "lint": "vue-cli-service lint --ignore-pattern **/*spec.js",
     "test": "vue-cli-service test:unit",
     "test:coverage": "vue-cli-service test:unit --coverage --collectCoverageFrom=src/**/*.{js,vue} --collectCoverageFrom=!**/index*",
-    "clear_jest": "jest --clearCache"
+    "clearCache": "jest --clearCache",
+    "release": "npm-run-all clearCache lint build test:coverage"
   },
   "dependencies": {
     "@coreui/utils": "^1.0.0",
