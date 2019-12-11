@@ -1,34 +1,25 @@
-## CoreUI v3 for Vue.js
-
-> A [@coreui/vue](https://coreui.io/vue) `v3` components library project.  
-
-[![npm-coreui-vue-next][npm-coreui-vue-next]][npm]
-[![Npm badge](https://img.shields.io/npm/v/@coreui/vue.svg)][npm]
-[![NPM downloads][npm-download]][npm]
+# CoreUI Vue components library
+![NPM](https://img.shields.io/npm/v/@coreui/vue/latest?style=flat&color=brightgreen)
+![Downloads](https://img.shields.io/npm/dm/@coreui/vue.svg?style=flat-square)
 ![Jest](https://img.shields.io/badge/Jest-^24.9.0-blue.svg)
 ![Vue](https://img.shields.io/badge/Vue-^2.6.10-brightgreen.svg)  
 
-[npm]: https://www.npmjs.com/package/@coreui/vue
-[npm-download]: https://img.shields.io/npm/dm/@coreui/vue.svg?style=flat-square
-[npm-coreui-vue-next]: https://img.shields.io/npm/v/@coreui/vue/next.png?style=flat-square
+> A @coreui/vue `v3` components library project
 
-### Introduction
+## Over 90 bootstrap based Vue.js components and directives!
 
-#### Over 90 bootstrap based Vue.js components and directives!
+### For library guide please visit our [Documentation site »](https://coreui.io/vue/docs)
 
-[Explore CoreUI v3 for Vue.js docs »](https://coreui.io/vue/docs)
+Check out demo of components usage: [CoreUI Vue Admin Template »](https://coreui.io/vue/demo/3.0-beta.1/#)
 
-Check out template build on top of this library: [CoreUI Open Source Bootstrap Admin Template »](https://coreui.io/vue/)
+## Installation
 
----
-
-### Installation
-
-```bash
-npm install @coreui/vue@next
+```shell
+npm install @coreui/vue
 ```
 
 ### Registering components
+
 ```js
 // Installing whole package
 import CoreuiVue from '@coreui/vue';
