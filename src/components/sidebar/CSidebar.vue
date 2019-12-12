@@ -110,8 +110,8 @@ export default {
     }
   },
   methods: {
-    sidebarClick (event) {
-      const hiddingElementClicked = event.target.tagName === 'A'
+    sidebarClick (e) {
+      const hiddingElementClicked = e.target.className.includes('c-sidebar-nav-link')
       if (
         hiddingElementClicked &&
         this.hideOnMobileClick &&
