@@ -8,17 +8,10 @@ const radioWrapper = mount(Component, {
   }
 })
 
-const wrapper = mount(Component, {
-  propsData: {
-    id:'myId',
-    checked: false,
-  }
-})
-
 const customWrapper = mount(Component, {
   propsData: {
     color: 'info',
-    outline: 'alt',
+    variant: 'opposite',
     size: 'lg',
     shape: 'pill',
     name:'myName',

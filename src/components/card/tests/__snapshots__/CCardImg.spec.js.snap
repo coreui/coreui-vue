@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCardImg renders correctly 1`] = `
+<svg
+  class="card-img"
+  style="background-color: transparent;"
+/>
+`;
+
+exports[`CCardImg renders correctly with variant 1`] = `
+<svg
+  class="card-img-undefined"
+  style="background-color: transparent;"
+/>
+`;

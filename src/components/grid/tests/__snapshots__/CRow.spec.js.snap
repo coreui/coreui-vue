@@ -8,7 +8,7 @@ exports[`CRow renders correctly 1`] = `
 
 exports[`CRow renders correctly 2`] = `
 <header
-  class="row no-gutters align-items-center justify-content-start"
+  class="form-row no-gutters align-items-center justify-content-start"
 >
   <template>
     CRow content

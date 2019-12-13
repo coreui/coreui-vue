@@ -33,5 +33,12 @@ exports[`CLink .vue renders correctly 2`] = `
   >
     href-a
   </a>
+  <a
+    class=""
+    href="/a"
+    target="_self"
+  >
+    href-a
+  </a>
 </main>
 `;

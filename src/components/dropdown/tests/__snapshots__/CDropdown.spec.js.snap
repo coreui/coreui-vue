@@ -25,17 +25,11 @@ exports[`CDropdown renders correctly inNav 1`] = `
 <li
   class="dropleft nav-item"
 >
-  <a
-    aria-expanded="false"
-    aria-haspopup="true"
-    class="additional-toggler-class nav-link bg-success"
-    href="#"
-    target="_self"
+  <div
+    class="toggler"
   >
     Dropdown button
-  </a>
-   
-  <!---->
+  </div>
    
   <div
     class="additional-menu-class dropdown-menu"

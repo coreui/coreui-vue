@@ -60,7 +60,7 @@
     "build:es": "rollup -c --environment TARGET:esm",
     "lint": "vue-cli-service lint --ignore-pattern **/*spec.js",
     "test": "vue-cli-service test:unit",
-    "test:coverage": "vue-cli-service test:unit --coverage --collectCoverageFrom=src/**/*.{js,vue} --collectCoverageFrom=!**/index*",
+    "test:coverage": "vue-cli-service test:unit --coverage",
     "clearCache": "jest --clearCache",
     "release": "npm-run-all clearCache lint build test:coverage"
   },

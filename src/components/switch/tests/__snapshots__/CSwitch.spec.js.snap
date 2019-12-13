@@ -17,7 +17,7 @@ exports[`CSwitch renders correctly 1`] = `
 
 exports[`CSwitch renders correctly 2`] = `
 <label
-  class="c-switch form-check-label c-switch-lg c-switch-pill c-switch-info"
+  class="c-switch form-check-label c-switch-lg c-switch-pill c-switch-opposite-info"
 >
   <input
     class="c-switch-input form-check-input"
@@ -25,7 +25,6 @@ exports[`CSwitch renders correctly 2`] = `
     dataon="dataOn"
     id="myId"
     name="myName"
-    outline="alt"
     required="required"
     type="checkbox"
     value="checked"

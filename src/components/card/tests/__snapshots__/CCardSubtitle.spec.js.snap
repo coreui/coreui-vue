@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCardSubtitle renders correctly 1`] = `
+<h6
+  class="card-subtitle"
+/>
+`;

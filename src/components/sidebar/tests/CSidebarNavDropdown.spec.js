@@ -8,14 +8,14 @@ const router = new VueRouter()
 
 const ComponentName = 'CSidebarNavDropdown'
 
-const wrapperMounting = (mode) => mount(
+const wrapperMounting = (mode, icon = 'cui-settings') => mount(
   CSidebarNavDropdown,
   { 
     localVue, 
     router, 
     propsData: { 
       route: '/somePath' ,
-      icon: 'cui-settings'
+      icon
     },
     provide: {
       dropdownMode: mode
@@ -23,7 +23,7 @@ const wrapperMounting = (mode) => mount(
   }
 )
 
-const wrapper = wrapperMounting('openActive')
+const wrapper = wrapperMounting('openActive', { name: 'cui-settings' })
 const wrapperCloseMode = wrapperMounting('close')
 const wrapperCloseInactiveMode = wrapperMounting('closeInactive')
 

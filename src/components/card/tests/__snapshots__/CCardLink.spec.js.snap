@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CCardLink renders correctly 1`] = `
+<a
+  class="card-link"
+  href="#"
+  target="_self"
+/>
+`;

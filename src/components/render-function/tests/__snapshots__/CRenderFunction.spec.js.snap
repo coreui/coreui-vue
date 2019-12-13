@@ -1,11 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CRenderFunction renders correctly 1`] = `<!---->`;
+exports[`CRenderFunction not rendering anything without contentToRender 1`] = `<!---->`;
 
-exports[`CRenderFunction renders correctly 2`] = `
+exports[`CRenderFunction renders correctly 1`] = `
 <div>
   <div>
     textslot content
   </div>
 </div>
+`;
+
+exports[`CRenderFunction renders correctly with flat structure 1`] = `
+<p
+  class="class"
+>
+  1st level child
+  <div
+    class="class"
+  />
+</p>
 `;
