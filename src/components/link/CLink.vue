@@ -49,10 +49,8 @@ function clickHandlerFactory ({ disabled, tag, href, suppliedHandler }) {
       e.stopPropagation()
       // Kill the event loop attached to this specific EventTarget.
       e.stopImmediatePropagation()
-    } else {
-      if (typeof suppliedHandler === 'function') {
-        suppliedHandler(...arguments)
-      }
+    } else if (typeof suppliedHandler === 'function') {
+      suppliedHandler(...arguments)
     }
 
     if ((tag !== 'router-link' && href === '#') || disabled) {

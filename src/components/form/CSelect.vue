@@ -129,9 +129,6 @@ export default {
   //   }
   // },
   computed: {
-    selectedItem () {
-
-    },
     // classesComputedProps mixin
     // haveCustomSize () {
     //   return ['sm','lg'].includes(this.size)
