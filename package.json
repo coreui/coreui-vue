@@ -58,21 +58,21 @@
     "build": "npm-run-all build:default",
     "build:default": "vue-cli-service build --target lib --name coreui-vue ./src/index.js",
     "build:es": "rollup -c --environment TARGET:esm",
-    "lint": "vue-cli-service lint --ignore-pattern **/*spec.js",
+    "lint": "vue-cli-service lint",
     "test": "vue-cli-service test:unit",
     "test:coverage": "vue-cli-service test:unit --coverage",
     "clearCache": "jest --clearCache",
     "release": "npm-run-all clearCache lint build test:coverage"
   },
   "dependencies": {
-    "@coreui/utils": "^1.0.0",
     "@coreui/icons": "^1.0.0",
     "@coreui/icons-vue": "^1.0.2",
+    "@coreui/utils": "^1.0.0",
     "lodash.clonedeep": "^4.5.0",
     "perfect-scrollbar": "^1.4.0",
     "popper.js": "^1.16.0",
     "tooltip.js": "^1.3.3",
-    "vue": "^2.6.10",
+    "vue": "^2.6.11",
     "vue-clickaway2": "^2.3.1",
     "vue-functional-data-merge": "^3.1.0"
   },
@@ -90,7 +90,7 @@
     "node-sass": "^4.13.0",
     "node-sass-magic-importer": "^5.3.2",
     "npm-run-all": "^4.1.5",
-    "rollup": "^1.27.11",
+    "rollup": "^1.27.13",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-filesize": "^6.2.1",
@@ -103,7 +103,7 @@
     "rollup-plugin-vue": "4.7.2",
     "sass-loader": "^8.0.0",
     "vue-router": "^3.1.3",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
     "root": true,
