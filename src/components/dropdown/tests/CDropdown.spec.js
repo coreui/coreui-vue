@@ -45,7 +45,6 @@ const customWrapper = mount(Component, {
 
 const navWrapper = mount(Component, {
   propsData: {
-    togglerText: 'Dropdown button',
     addMenuClasses: 'additional-menu-class',
     addTogglerClasses: 'additional-toggler-class',
     inNav: true,
@@ -56,7 +55,8 @@ const navWrapper = mount(Component, {
     flip: false
   },
   slots: {
-    default: 'CDropdown subcomponents'
+    default: 'CDropdown subcomponents',
+    toggler: '<div class="toggler">Dropdown button</div>'
   }
 })
 
@@ -125,5 +125,18 @@ describe(ComponentName, () => {
     customWrapper.setProps({ popperConfig: {modifiers:{offset:{ offset:22 }}}})
     expect(modifiers().offset.offset).toBe(22)
     expect(modifiers().flip.enabled).toBe(false)
-  }) 
+  })
+  it('opens then toggler is passed by slot', () => {
+    const toggle = () => {
+      jest.useFakeTimers()
+      navWrapper.find('.toggler').trigger('click')
+      jest.runAllTimers()
+    }
+
+    expect(navWrapper.vm.visible).toBe(false)
+    toggle()
+    expect(navWrapper.vm.visible).toBe(true)
+    toggle()
+    expect(navWrapper.vm.visible).toBe(false)
+  })
 })

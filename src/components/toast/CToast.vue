@@ -49,9 +49,8 @@ export default {
   data () {
     return {
       isShowed: this.show,
-      hidding: false,
-      timeout: null,
-      hiddingTimeout: null
+      hideTimeout: null,
+      closeTimeout: null
     }
   },
   watch: {
@@ -85,41 +84,29 @@ export default {
       this.$nextTick(() => {
         if (this.props.autohide) {
           this.setAutohide()
-        } else if (this.hidding === true) {
-          this.finishHidding()
         }
       })
     },
-    close (restoreOnHover = false) {
-      if (this.isShowed === false) {
-        return
-      }
-      
+    close () {
       this.isShowed = false
       this.$emit('update:show', false)
-      this.$el.removeEventListener('mouseout', this.onHoverOut)
       this.$el.removeEventListener('mouseover', this.onHover)
-
-      if (this.props.fade) {
-        this.setHiddingMode(restoreOnHover)
-      }
-    },
-    setHiddingMode (restoreOnHover) {
-      this.hidding = true
-      if (restoreOnHover) {
-        this.$el.addEventListener('mouseover', this.restoreHiddingToast)
-      }
-      clearTimeout(this.timeout)
-      this.hiddingTimeout = setTimeout(this.finishHidding, 1500)
-    },
-    finishHidding () {
       this.$el.removeEventListener('mouseover', this.restoreHiddingToast)
-      this.hidding = false
-      clearTimeout(this.hiddingTimeout)
+      this.$el.removeEventListener('mouseout', this.onHoverOut)
+    },
+    setHiddingMode () {
+      this.isShowed = false
+      this.$el.removeEventListener('mouseover', this.onHover)
+      this.closeTimeout = setTimeout(() => this.close(), 1500)
+      this.$el.addEventListener('mouseover', this.restoreHiddingToast)
+    },
+    restoreHiddingToast () {
+      clearTimeout(this.closeTimeout)
+      this.display()
     },
     onHover () {
       this.$el.removeEventListener('mouseover', this.onHover)
-      clearTimeout(this.timeout)
+      clearTimeout(this.hideTimeout)
       this.$el.addEventListener('mouseout', this.onHoverOut)
     },
     onHoverOut () {
@@ -127,13 +114,10 @@ export default {
       this.setAutohide()
     },
     setAutohide () {
-      this.timeout = setTimeout(() => {
-        this.close(true)
+      this.hideTimeout = setTimeout(() => {
+        this.setHiddingMode()
       }, this.props.autohide)
       this.$el.addEventListener('mouseover', this.onHover)
-    },
-    restoreHiddingToast () {
-      this.display()
     }
   }
 }

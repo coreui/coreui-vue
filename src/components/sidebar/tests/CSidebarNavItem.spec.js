@@ -22,7 +22,7 @@ const wrapperLabel = mount(Component, {
   propsData: {
     name: 'test link',
     label: true,
-    icon: 'cui-settings',
+    icon: { name: 'cui-settings' },
     badge: {
       color: 'success',
       text: 'NEW'

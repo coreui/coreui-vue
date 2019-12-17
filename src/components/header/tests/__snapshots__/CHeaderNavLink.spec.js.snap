@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CHeaderNavLink .vue renders correctly 1`] = `
+<a
+  class="c-header-nav-link"
+  href="#"
+  target="_self"
+/>
+`;

@@ -44,3 +44,13 @@ exports[`CBreadcrumb renders correctly 1`] = `
    
 </ol>
 `;
+
+exports[`CBreadcrumb renders correctly with slot content 1`] = `
+<ol
+  class="breadcrumb"
+>
+   
+  <!---->
+   default slot content
+</ol>
+`;

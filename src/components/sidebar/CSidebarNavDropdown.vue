@@ -68,9 +68,6 @@ export default {
     }
   },
   computed: {
-    classIcon () {
-      return ['c-sidebar-nav-icon', this.icon]
-    },
     dropdownClasses () {
       return [
         'c-sidebar-nav-dropdown',

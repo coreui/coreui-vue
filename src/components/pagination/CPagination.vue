@@ -183,21 +183,25 @@
       }
     },
     methods: {
-      setPage (number, e = false) {
-        if (number !== this.activePage) {
-          this.$emit('update:activePage', number)
-          if (e) {
-            const items = this.$el.getElementsByClassName('c-page-link-number')
-            const focused = Number(e.target.innerHTML)
-            this.$nextTick(() => {
-              for (let i = 0; i < items.length; i++) {
-                if (Number(items[i].innerHTML) === focused) {
-                  items[i].focus()
-                }
-              }
-            })
-          }
+      setPage (number, e = null) {
+        if (number === this.activePage) {
+          return
         }
+        this.$emit('update:activePage', number)
+        if (e) {
+          this.changeFocus(e)
+        }
+      },
+      changeFocus (e) {
+        const items = this.$el.getElementsByClassName('c-page-link-number')
+        const focused = Number(e.target.innerHTML)
+        this.$nextTick(() => {
+          for (let i = 0; i < items.length; i++) {
+            if (Number(items[i].innerHTML) === focused) {
+              items[i].focus()
+            }
+          }
+        })
       }
     }
   }

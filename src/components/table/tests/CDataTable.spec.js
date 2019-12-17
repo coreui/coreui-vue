@@ -26,7 +26,7 @@ const customWrapper = mount(Component, {
       'registered',
       { key: 'role', _style:'width:20%;' },
       { key: 'status', _style:'width:20%;' },
-      { key: 'show_details' , label:'', _style:'width:1%', sortable: false, filterable: false },
+      { key: 'show_details' , label:'', _style:'width:1%', sorter: false, filter: false },
     ],
 
     tableFilter: true,
@@ -43,7 +43,7 @@ const customWrapper = mount(Component, {
     columnFilter: true,
     footer: true,
     sorterValue: { column: 'username', asc: false },
-    columnFilterValue: { registered: '2012' },
+    columnFilterValue: { registered: '2012', 'non_existing': 'smh' },
     pagination: true
   }
 })
@@ -107,8 +107,25 @@ describe(ComponentName, () => {
     customWrapper.setProps({ items: newItems })
     expect(customWrapper.vm.sortedItems.length).toBe(4)
   })
-  it('correctly filter by column on input', () => {
-    customWrapper.findAll('tr').at(1).find('input').setValue('Estavan')
-    expect(customWrapper.vm.sortedItems[0].username).toMatch('Estavan')
+  it('correctly filter by table filter after input or change event', () => {
+    const input = customWrapper.find('input')
+    const firstUsername = () => customWrapper.vm.sortedItems[0].username
+    input.setValue('Estavan')
+    expect(firstUsername()).toMatch('Estavan')
+    input.element.value = "Chetan"
+    input.trigger('change')
+    expect(firstUsername()).toMatch('Chetan')
+  })
+  it('triggers proper events on column input change', () => {
+    const input = customWrapper.findAll('tr').at(1).find('input')
+    const changeEmmited = () => customWrapper.emitted()['update:column-filter-value']
+    const inputEmmited = () => customWrapper.emitted()['column-filter-input']
+
+    expect(changeEmmited()).not.toBeTruthy()
+    expect(inputEmmited()).not.toBeTruthy()
+    input.trigger('change')
+    expect(changeEmmited()).toBeTruthy()
+    input.trigger('input')
+    expect(inputEmmited()).toBeTruthy()
   })
 })

@@ -15,8 +15,7 @@ const customWrapper = mount(Component, {
     show: true,
     position: 'bottom-center',
     header: 'title',
-    autohide: 10,
-    closeButton: true
+    autohide: 1000
   },
   slots: {
     default: 'CToast body'
@@ -33,35 +32,43 @@ describe(ComponentName, () => {
   it('renders correctly custom wrapper', () => {
     expect(customWrapper.element).toMatchSnapshot()
   })
-  it('closes by watcher correctly', () => {
-    wrapper.setProps({ show: false })
-    wrapper.vm.$nextTick(() => expect(wrapper.vm.isShowed).toBe(false))
-  })
+
   it('closes by watcher correctly', () => {
     wrapper.setProps({ show: false })
     expect(wrapper.vm.isShowed).toBe(false)
   })
-  it('closes by close button correctly', () => {
-    customWrapper.find('.close').trigger('click')
-    expect(customWrapper.vm.isShowed).toBe(false)
-  })
-  // it('autohiding works correctly', (done) => {
-  //   customWrapper.vm.display()
-  //   setTimeout(() => {
-  //     customWrapper.trigger('mouseover')
-  //     customWrapper.trigger('mouseout')
-  //   }, 9)
-
-  //   setTimeout(() => {
-  //     expect(customWrapper.vm.isShowed).toBe(true)
-  //   }, 18)
-
-  //   setTimeout(() => {
-  //     expect(customWrapper.vm.isShowed).toBe(false)
-  //     customWrapper.trigger('mouseover')
-  //     customWrapper.trigger('mouseout')
-  //     expect(customWrapper.vm.isShowed).toBe(true)
-  //     done()
-  //   }, 25)
+  // it('closes by close button correctly', () => {
+  //   wrapper.find('.close').trigger('click')
+  //   expect(wrapper.vm.isShowed).toBe(false)
   // })
+  it('autohiding works correctly', (done) => {
+    setTimeout(() => {
+      customWrapper.find('div').trigger('mouseover')
+      customWrapper.find('div').trigger('mouseout')
+    }, 900)
+
+    setTimeout(() => {
+      expect(customWrapper.vm.isShowed).toBe(true)
+    }, 1100)
+
+    setTimeout(() => {
+      expect(customWrapper.vm.closeTimeout).toBeTruthy()
+      expect(customWrapper.vm.isShowed).toBe(false)
+      customWrapper.vm.restoreHiddingToast()
+      expect(customWrapper.vm.isShowed).toBe(true)
+    }, 2000)
+
+    setTimeout(() => {
+      expect(customWrapper.emitted()['update:show']).toBeTruthy()
+      done()
+    }, 4600)
+
+
+  })
+    // it('closes by watcher correctly', () => {
+    //   wrapper.vm.$nextTick(() => {
+    //     wrapper.find('.close').trigger('click')
+    //     expect(wrapper.vm.isShowed).toBe(false)
+    //   })
+    // })
 })

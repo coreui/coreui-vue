@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils'
 import Component from '../CPagination'
 
 const ComponentName = 'CPagination'
-const wrapper = mount(Component,{
+const wrapper = mount(Component, {
   slots: {
     'first-button': 'Go to first',
     'previous-button': 'Go to previous',
@@ -46,5 +46,13 @@ describe(ComponentName, () => {
 
     links.at(4).trigger('click')
     expect(wrapper.emitted()['update:activePage']).toBeTruthy()
+  })
+  it('calls focus function when clicked on numeric item', () => {
+    const spy = jest.spyOn(wrapper.vm, 'changeFocus')
+    const links = wrapper.findAll('.page-link')
+    links.at(7).trigger('click')
+    expect(spy).not.toBeCalled()
+    links.at(4).trigger('click')
+    expect(spy).toBeCalled()
   })
 })

@@ -7,7 +7,8 @@ const wrapper = mount(CSidebar,
   {
     propsData: {
       aside: true,
-      colorScheme: 'light'
+      colorScheme: 'light',
+      size: 'lg'
     },
     attrs: {
       id: 'sidebar'
@@ -31,7 +32,8 @@ const App = Vue.extend({
         'a',
         {
           attrs: { 
-            href: '/some-path' ,
+            href: '/some-path',
+            class: 'c-sidebar-nav-link'
           }
         },
         ['link']
@@ -45,7 +47,7 @@ const App = Vue.extend({
 })
 
 const sidebarWrapper = mount(App, { attachToDocument: true })
-// const sidebarComponent = sidebarWrapper.vm.$children[0]
+const sidebarComponent = sidebarWrapper.vm.$children[0]
 
 describe(`${ComponentName} .vue`, () => {
   it('has a name', () => {
@@ -57,67 +59,39 @@ describe(`${ComponentName} .vue`, () => {
   it('renders correctly', () => {
     expect(sidebarWrapper.element).toMatchSnapshot()
   })
+  it('close sidebar on CSidebarNavLink click when in mobile width', () => {
+    //for isOnMobileFunction be be called
+    sidebarWrapper.find('a').trigger('click')
 
-  // it('switches state on c-sidebar-toggle root event', () => {
-  //   const spy = jest.spyOn(sidebarComponent, 'switchState')
-  //   expect(spy).not.toBeCalled()
-  //   sidebarWrapper.vm.$root.$emit('c-sidebar-toggle')
-  //   expect(spy).toBeCalled()
-  // })
-  // it('switches state on c-sidebar-toggle root event on mobile', () => {
-  //   sidebarComponent.bodyWidth = 300
-  //   const spy = jest.spyOn(sidebarComponent, 'switchState')
-  //   spy.mockClear()
-
-  //   expect(spy).not.toBeCalled()
-  //   sidebarWrapper.vm.$root.$emit('c-sidebar-toggle')
-  //   expect(spy).toBeCalled()
-  // })
-  // it('hides sidebar on click in certain cases', () => {
-  //   const spy = jest.spyOn(sidebarComponent, 'switchState')
-  //   spy.mockClear()
-  //   sidebarWrapper.find('.c-sidebar').trigger('click')
-  //   expect(spy).not.toBeCalled()
-  //   sidebarWrapper.find('a').trigger('click')
-  //   expect(spy).toBeCalled()
-
-  //   //reopen sidebar
-  //   sidebarComponent.mobileOpen = true
-  //   sidebarWrapper.find('.view').trigger('click')
-  //   expect(spy).toBeCalledTimes(2)
-
-  // })
-  // it('hides sidebar on click in certain cases', () => {
-  //   const spy = jest.spyOn(sidebarComponent, 'switchState')
-  //   spy.mockClear()
-  //   sidebarWrapper.find('.c-sidebar').trigger('click')
-  //   expect(spy).not.toBeCalled()
-  //   sidebarWrapper.find('a').trigger('click')
-  //   expect(spy).toBeCalled()
-
-  //   sidebarWrapper.trigger('click')
-  // })
-  // it('does not invoke state switch on mobileClick when sidebar is hidden', () => {
-  //   const spy = jest.spyOn(sidebarComponent, 'switchState')
-  //   spy.mockClear()
-  //   sidebarWrapper.find('a').trigger('click')
-  //   expect(spy).not.toBeCalled()
-  // })
-  // it('watches for prop changes', () => {
-  //   sidebarWrapper.setData({ props: {
-  //     minimize: true,
-  //     show: false,
-  //     showOnMobile: true
-  //   }})
-  //   expect(sidebarComponent.minimized).toBe(true)
-  //   expect(sidebarComponent.open).toBe(false)
-  //   expect(sidebarComponent.mobileOpen).toBe(true)
-  // })
-  // it('does not call mobileClick when sidebar is in desktop mode', () => {
-  //   sidebarComponent.bodyWidth = 1300
-  //   const spy = jest.spyOn(sidebarComponent, 'switchState')
-  //   spy.mockClear()
-  //   sidebarWrapper.find('a').trigger('click')
-  //   expect(spy).not.toBeCalled()
-  // })
+    sidebarComponent.isOnMobile = () => sidebarComponent.bodyWidth < 768
+    sidebarComponent.bodyWidth = 1300
+    sidebarWrapper.find('a').trigger('click')
+    expect(sidebarComponent.open).toBe(true)
+    sidebarComponent.bodyWidth = 200
+    sidebarWrapper.find('a').trigger('click')
+    expect(sidebarComponent.open).toBe('responsive')
+  })
+  it('watches for prop changes', () => {
+    sidebarWrapper.setData({
+      props: {
+        show: false,
+      }
+    })
+    expect(sidebarComponent.open).toBe(false)
+    sidebarWrapper.setData({
+      props: {
+        show: true,
+      }
+    })
+    expect(sidebarComponent.open).toBe(true)
+  })
+  it('properly destroys sidebar', () => {
+    const currentBackdropNumber = () => {
+      return document.getElementsByClassName('c-sidebar-backdrop').length
+    }
+    expect(currentBackdropNumber()).toBe(2)
+    sidebarWrapper.destroy()
+    wrapper.destroy()
+    expect(currentBackdropNumber()).toBe(0)
+  })
 })

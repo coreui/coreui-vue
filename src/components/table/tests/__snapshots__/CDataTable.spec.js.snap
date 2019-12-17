@@ -232,7 +232,7 @@ exports[`CDataTable renders correctly 2`] = `
           </th>
           <th
             class="position-relative pr-4"
-            style="cursor: pointer; width: 1%;"
+            style="width: 1%;"
           >
             <div
               class="d-inline"
@@ -240,16 +240,7 @@ exports[`CDataTable renders correctly 2`] = `
               
             </div>
              
-            <svg
-              class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
-              viewBox="0 0 24 24"
-              width="18"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
-              />
-            </svg>
+            <!---->
           </th>
         </tr>
          
@@ -287,9 +278,7 @@ exports[`CDataTable renders correctly 2`] = `
           <th
             class=""
           >
-            <input
-              class="w-100 table-filter"
-            />
+            <!---->
           </th>
         </tr>
       </thead>
@@ -584,7 +573,7 @@ exports[`CDataTable renders correctly 2`] = `
           </th>
           <th
             class="position-relative pr-4"
-            style="cursor: pointer; width: 1%;"
+            style="width: 1%;"
           >
             <div
               class="d-inline"
@@ -592,16 +581,7 @@ exports[`CDataTable renders correctly 2`] = `
               
             </div>
              
-            <svg
-              class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
-              viewBox="0 0 24 24"
-              width="18"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
-              />
-            </svg>
+            <!---->
           </th>
         </tr>
       </tfoot>
