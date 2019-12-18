@@ -62,7 +62,8 @@
     "test": "vue-cli-service test:unit",
     "test:coverage": "vue-cli-service test:unit --coverage",
     "clearCache": "jest --clearCache",
-    "release": "npm-run-all clearCache lint build test:coverage"
+    "release": "npm-run-all clearCache lint build test:coverage",
+    "auto-changelog": "auto-changelog --template changelog-template.hbs --commit-limit false --package"
   },
   "dependencies": {
     "@coreui/icons": "^1.0.0",
@@ -82,6 +83,7 @@
     "@vue/cli-plugin-unit-jest": "^4.1.1",
     "@vue/cli-service": "^4.1.1",
     "@vue/test-utils": "1.0.0-beta.29",
+    "auto-changelog": "^1.16.2",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9",
     "core-js": "^3.5.0",
