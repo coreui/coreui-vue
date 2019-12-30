@@ -271,6 +271,9 @@ export default {
     }
   },
   watch: {
+    itemsPerPage (val) {
+      this.perPageItems = val
+    },
     sorterValue: {
       immediate: true,
       handler (val) {
