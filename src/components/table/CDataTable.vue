@@ -305,16 +305,14 @@ export default {
   computed: {
     columnFiltered () {
       let items = this.passedItems.slice()
-      if (this.columnFilter === true) {
-        Object.entries(this.columnFilterState).forEach(([key, value]) => {
-          if (value && this.rawColumnNames.includes(key)) {
-            const columnFilter = String(value).toLowerCase()
-            items = items.filter(item => {
-              return String(item[key]).toLowerCase().includes(columnFilter)
-            })
-          }
-        })
-      }
+      Object.entries(this.columnFilterState).forEach(([key, value]) => {
+        if (value && this.rawColumnNames.includes(key)) {
+          const columnFilter = String(value).toLowerCase()
+          items = items.filter(item => {
+            return String(item[key]).toLowerCase().includes(columnFilter)
+          })
+        }
+      })
       return items
     },
     filterableCols () {
@@ -324,7 +322,7 @@ export default {
     },
     tableFiltered () {
       let items = this.columnFiltered.slice()
-      if (this.tableFilter === true && this.tableFilterState) {
+      if (this.tableFilterState) {
         const filter = this.tableFilterState.toLowerCase()
         const hasFilter = (item) => String(item).toLowerCase().includes(filter)
         items = items.filter(item => {
@@ -335,7 +333,7 @@ export default {
     },
     sortedItems () {
       const col = this.sorterState.column
-      if (!col || this.sorter !== true || !this.rawColumnNames.includes(col)) {
+      if (!col || !this.rawColumnNames.includes(col)) {
         return this.tableFiltered
       }
       //if values in column are to be sorted by numeric value they all have to be type number
