@@ -87,15 +87,15 @@ function generateAttributes (content) {
         const key = name + '/' + propName
         const kebabKey = toKebabCase(name) + '/' + propName
         const type = prop.split(':')[1].trim()
-        const description = ''
+        const description = 'For API documentation please visit https://coreui.io/vue/docs'
 
         attributes[kebabKey] = {
+          description,
           type,
-          description
         }
         attributes[key] = {
+          description,
           type,
-          description
         }
       })
     }
