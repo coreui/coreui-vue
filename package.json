@@ -130,5 +130,9 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 9"
-  ]
+  ],
+  "vetur": {
+    "tags": "dist/vetur/coreui-tags.json",
+    "attributes": "dist/vetur/coreui-attributes.json"
+  }
 }

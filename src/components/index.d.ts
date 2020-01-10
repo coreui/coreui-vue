@@ -324,14 +324,6 @@ export declare class CImg extends Vue {
   placeholderColor: string
 }
 
-export declare class CImgLazy extends CImg {
-  loadInitially: boolean
-  loadOffset: number
-  fade: boolean
-  fadeOffset: number
-  fadeTime: number
-}
-
 export declare class CJumbotron extends Vue {
   tag: string
   fluid: boolean
