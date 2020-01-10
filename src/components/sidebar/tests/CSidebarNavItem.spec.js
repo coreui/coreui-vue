@@ -43,10 +43,4 @@ describe(`${ComponentName}.vue`, () => {
   it('renders correctly in label mode', () => {
     expect(wrapperLabel.element).toMatchSnapshot()
   })
-  it('emits link-clicked event when clicked', () => {
-    // cannot trigger native click
-    // wrapper.find('a').trigger('click')
-    wrapper.vm.click()
-    expect(wrapper.emitted()['link-clicked']).toBeTruthy()
-  })
 })

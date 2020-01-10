@@ -4,7 +4,6 @@
       <CLink
         :class="linkClasses"
         v-bind="computedLinkProps"
-        @click.native="click"
       >
         <CIcon v-if="icon" v-bind="computedIcon"/>
         <i v-if="fontIcon" :class="['c-sidebar-nav-icon', fontIcon]"/>
@@ -78,11 +77,6 @@ export default {
       } else {
         return { customClasses: 'c-sidebar-nav-icon', name: this.icon }
       }
-    }
-  },
-  methods: {
-    click (e) {
-      this.$emit('link-clicked', e)
     }
   }
 }
