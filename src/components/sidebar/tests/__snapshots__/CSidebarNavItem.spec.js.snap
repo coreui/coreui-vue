@@ -16,7 +16,7 @@ exports[`CSidebarNavItem.vue renders correctly 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <title>
-        cuiSettings
+        Cui Settings
       </title>
       undefined
     </svg>
@@ -52,7 +52,7 @@ exports[`CSidebarNavItem.vue renders correctly in label mode 1`] = `
       xmlns="http://www.w3.org/2000/svg"
     >
       <title>
-        cuiSettings
+        Cui Settings
       </title>
       undefined
     </svg>

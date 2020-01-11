@@ -75,7 +75,7 @@ function generateTags (content) {
       description: ''
     }
   })
-  return JSON.stringify(tags)
+  return JSON.stringify(tags, null, 2)
 }
 
 function generateAttributes (content) {
@@ -100,7 +100,7 @@ function generateAttributes (content) {
       })
     }
   })
-  return JSON.stringify(attributes)
+  return JSON.stringify(attributes, null, 2)
 }
 
 function toKebabCase (str) {
