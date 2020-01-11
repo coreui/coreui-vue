@@ -75,16 +75,6 @@ describe(ComponentName, () => {
     customWrapper.setProps({ fields: undefined })
     expect(customWrapper.vm.columnNames[0]).toBe('Username')
   })
-  // it('changes colspan when indexColumn is switched', () => {
-  //   const colspanWithIndexColumn = customWrapper.vm.colspan
-  //   customWrapper.setProps({ indexColumn: false })
-  //   expect(customWrapper.vm.colspan).toBe(colspanWithIndexColumn - 1)
-  // })
-  it('table filter works correctly', () => {
-    customWrapper.setProps({ tableFilterValue: 'Yiorgos' })
-    expect(customWrapper.vm.sortedItems.length).toBe(1)
-    customWrapper.setProps({ tableFilterValue: null })
-  })
   it('shows loading layer when loading prop is set', () => {
     customWrapper.setProps({ loading: true })
     expect(customWrapper.contains('.spinner-border')).toBe(true)
@@ -107,15 +97,6 @@ describe(ComponentName, () => {
     customWrapper.setProps({ items: newItems })
     expect(customWrapper.vm.sortedItems.length).toBe(4)
   })
-  it('correctly filter by table filter after input or change event', () => {
-    const input = customWrapper.find('input')
-    const firstUsername = () => customWrapper.vm.sortedItems[0].username
-    input.setValue('Estavan')
-    expect(firstUsername()).toMatch('Estavan')
-    input.element.value = "Chetan"
-    input.trigger('change')
-    expect(firstUsername()).toMatch('Chetan')
-  })
   it('triggers proper events on column input change', () => {
     const input = customWrapper.findAll('tr').at(1).find('input')
     const changeEmmited = () => customWrapper.emitted()['update:column-filter-value']
@@ -128,4 +109,29 @@ describe(ComponentName, () => {
     input.trigger('input')
     expect(inputEmmited()).toBeTruthy()
   })
+  it('correctly filter by table filter after input or change event', () => {
+    const input = customWrapper.find('input')
+    const firstUsername = () => customWrapper.vm.sortedItems[0].username
+    input.setValue('Estavan')
+    expect(firstUsername()).toMatch('Estavan')
+    input.element.value = "Chetan"
+    input.trigger('change')
+    expect(firstUsername()).toMatch('Chetan')
+  })
+  it('table filter works correctly', () => {
+    customWrapper.setProps({tableFilterValue: 'Yiorgos', tableFilter: false})
+    expect(customWrapper.vm.sortedItems.length).toBe(1)
+  })
+  it('changes pagination number correctly', () => {
+    customWrapper.setProps({
+      itemsPerPage: 13
+    })
+    expect(customWrapper.vm.perPageItems).toBe(13)
+  })
+  // it('Sets table filter data correctly', () => {
+  //   customWrapper.setProps({
+  //     tableFilter: { label: 'label'}
+  //   })
+  //   expect(customWrapper.vm.tableFilterData.label).toBe('label')
+  // })
 })

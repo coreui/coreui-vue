@@ -544,7 +544,7 @@ export declare class CDataTable extends Vue {
   footer: boolean
   sorter: [boolean, string]
   columnFilter: [boolean, string]
-  tableFilter: [boolean, string]
+  tableFilter: [boolean, object]
   sorterValue: object
   tableFilterValue: string
   columnFilterValue: object

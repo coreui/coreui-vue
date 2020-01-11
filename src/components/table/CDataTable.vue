@@ -5,11 +5,11 @@
         class="col-sm-6 form-inline p-0"
         v-if="tableFilter"
       >
-        <label class="mr-2">Filter:</label>
+        <label class="mr-2">{{tableFilterData.label}}</label>
         <input
           class="form-control table-filter"
           type="text"
-          placeholder="type string..."
+          :placeholder="tableFilterData.placeholder"
           @input="tableFilterChange($event.target.value)"
           @change="tableFilterChange($event.target.value, 'change')"
           :value="tableFilterState"
@@ -245,7 +245,7 @@ export default {
     outlined: Boolean,
     itemsPerPageSelect: Boolean,
     sorter: [Boolean, String],
-    tableFilter: [Boolean, String],
+    tableFilter: [Boolean, Object],
     columnFilter: [Boolean, String],
     sorterValue: {
       type: Object,
@@ -400,6 +400,12 @@ export default {
     },
     colspan () {
       return this.rawColumnNames.length
+    },
+    tableFilterData () {
+      return {
+        label: this.tableFilter.label || 'Filter:',
+        placeholder: this.tableFilter.placeholder || 'type string...'
+      }
     }
   },
   methods: {
