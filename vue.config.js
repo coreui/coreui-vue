@@ -6,5 +6,9 @@ module.exports = {
   },
   css: {
     extract: false
-  }
+  },
+  transpileDependencies: [
+    '@coreui/icons',
+    '@coreui/utils'
+  ]
 }
