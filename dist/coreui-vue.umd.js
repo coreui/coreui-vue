@@ -12998,15 +12998,25 @@ function CIconRawvue_type_script_lang_js_defineProperty(obj, key, value) { if (k
       }
     },
     customClasses: [String, Array, Object],
-    src: String
+    src: String,
+    title: String
   },
   computed: {
     iconName: function iconName() {
       var iconNameIsKebabCase = this.name && this.name.includes('-');
       return iconNameIsKebabCase ? this.toCamelCase(this.name) : this.name;
     },
+    titleString: function titleString() {
+      if (this.title) {
+        return this.title;
+      } else if (this.iconName) {
+        return this.generateTitle(this.iconName);
+      }
+
+      return 'icon';
+    },
     titleCode: function titleCode() {
-      return this.iconName ? "<title>".concat(this.iconName, "</title>") : '';
+      return "<title>".concat(this.titleString, "</title>");
     },
     code: function code() {
       if (this.content) {
@@ -13036,6 +13046,16 @@ function CIconRawvue_type_script_lang_js_defineProperty(obj, key, value) { if (k
       return str.replace(/([-_][a-z0-9])/ig, function ($1) {
         return $1.toUpperCase().replace('-', '');
       });
+    },
+    generateTitle: function generateTitle(title) {
+      return this.getValidTitle(title).replace(/([a-z0-9])([A-Z])/g, '$1 $2');
+    },
+    getValidTitle: function getValidTitle(title) {
+      if (['cil', 'cib', 'cif', 'cis'].includes(title.substring(0, 3))) {
+        return title.slice(3);
+      } else {
+        return title.charAt(0).toUpperCase() + title.slice(1);
+      }
     }
   }
 });
