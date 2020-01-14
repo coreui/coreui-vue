@@ -11,42 +11,45 @@ const items = [
   {username: 'Yiorgos Avraamu', registered: '2012/01/01', role: 'Member', status: 'Active'},
   {
     username: 'Friderik Dávid', 
-    registered: '2012/01/21',
+    registered: '2011/01/21',
     role: 'Staff', 
     status: 'Active',
     _cellClasses: { registered: 'custom-cell-class' }
   },
 ]
+const customWrapper = createCustomWrapper()
 
-const customWrapper = mount(Component, {
-  propsData: {
-    items,
-    fields: [
-      { key: 'username', _style:'width:40%', _classes: 'user-custom-class' },
-      'registered',
-      { key: 'role', _style:'width:20%;' },
-      { key: 'status', _style:'width:20%;' },
-      { key: 'show_details' , label:'', _style:'width:1%', sorter: false, filter: false },
-    ],
+function createCustomWrapper () {
+  return mount(Component, {
+    propsData: {
+      items,
+      fields: [
+        { key: 'username', _style:'width:40%', _classes: 'user-custom-class' },
+        'registered',
+        { key: 'role', _style:'width:20%;' },
+        { key: 'status', _style:'width:20%;' },
+        { key: 'show_details' , label:'', _style:'width:1%', sorter: false, filter: false },
+      ],
 
-    tableFilter: true,
-    itemsPerPageSelect: true,
-    addTableClasses: 'additional-table-class',
-    sorter: true,
-    small: false,
-    dark: true,
-    striped: true,
-    fixed: false,
-    hover: true,
-    border: true,
-    outlined: true,
-    columnFilter: true,
-    footer: true,
-    sorterValue: { column: 'username', asc: false },
-    columnFilterValue: { registered: '2012', 'non_existing': 'smh' },
-    pagination: true
-  }
-})
+      tableFilter: true,
+      itemsPerPageSelect: true,
+      addTableClasses: 'additional-table-class',
+      sorter: true,
+      small: false,
+      dark: true,
+      striped: true,
+      fixed: false,
+      hover: true,
+      border: true,
+      outlined: true,
+      columnFilter: true,
+      footer: true,
+      sorterValue: { column: 'username', asc: false },
+      columnFilterValue: { registered: '2012', 'non_existing': 'smh' },
+      pagination: true
+    }
+  })
+}
 
 describe(ComponentName, () => {
   it('has a name', () => {
@@ -90,31 +93,36 @@ describe(ComponentName, () => {
   })
   it('correctly updates items', () => {
     //test if watcher is not fired by coverage
-    customWrapper.setProps({ items: items.slice() })
-    expect(customWrapper.vm.sortedItems.length).toBe(5)
+    const localWrapper = createCustomWrapper()
+    localWrapper.setProps({ items: items.slice() })
+    expect(localWrapper.vm.sortedItems.length).toBe(4)
 
-    const newItems = items.slice(0, 4)
-    customWrapper.setProps({ items: newItems })
-    expect(customWrapper.vm.sortedItems.length).toBe(4)
+    const newItems = items.slice(0, 2)
+    localWrapper.setProps({ items: newItems })
+    expect(localWrapper.vm.sortedItems.length).toBe(2)
   })
-  it('triggers proper events on column input change', () => {
-    const input = customWrapper.findAll('tr').at(1).find('input')
-    const changeEmmited = () => customWrapper.emitted()['update:column-filter-value']
-    const inputEmmited = () => customWrapper.emitted()['column-filter-input']
-
-    expect(changeEmmited()).not.toBeTruthy()
-    expect(inputEmmited()).not.toBeTruthy()
-    input.trigger('change')
-    expect(changeEmmited()).toBeTruthy()
+  it('updates column filter on events depending on lazy modifier', () => {
+    const localWrapper = createCustomWrapper()
+    const input = localWrapper.findAll('tr').at(1).find('input')
+    const updateEmmited = () => localWrapper.emitted()['update:column-filter-value']
+    localWrapper.setProps({ columnFilter: { lazy: true } })
     input.trigger('input')
-    expect(inputEmmited()).toBeTruthy()
+    expect(updateEmmited()).not.toBeTruthy()
+    localWrapper.setProps({ columnFilter: true })
+    input.trigger('input')
+    expect(updateEmmited()).toBeTruthy()
   })
-  it('correctly filter by table filter after input or change event', () => {
-    const input = customWrapper.find('input')
-    const firstUsername = () => customWrapper.vm.sortedItems[0].username
-    input.setValue('Estavan')
+  it('updates table filter on events depending on lazy modifier', () => {
+    const localWrapper = createCustomWrapper()
+    const input = localWrapper.find('input')
+    const firstUsername = () => localWrapper.vm.sortedItems[0].username
+    input.element.value = "Estavan"
+    input.trigger('input')
     expect(firstUsername()).toMatch('Estavan')
+    localWrapper.setProps({ tableFilter: { lazy: true } })
     input.element.value = "Chetan"
+    input.trigger('input')
+    expect(firstUsername()).toMatch('Estavan')
     input.trigger('change')
     expect(firstUsername()).toMatch('Chetan')
   })
@@ -128,10 +136,41 @@ describe(ComponentName, () => {
     })
     expect(customWrapper.vm.perPageItems).toBe(13)
   })
-  // it('Sets table filter data correctly', () => {
-  //   customWrapper.setProps({
-  //     tableFilter: { label: 'label'}
-  //   })
-  //   expect(customWrapper.vm.tableFilterData.label).toBe('label')
-  // })
+  it('Disable component sorting and filtering when using \'external\' keys', () => {
+    const localWrapper = createCustomWrapper()
+    localWrapper.setProps({
+      tableFilterValue: 'Yiorgos'
+    })
+    expect(localWrapper.vm.sortedItems.length).toBe(1)
+    localWrapper.setProps({
+      tableFilter: { external: true }
+    })
+    expect(localWrapper.vm.sortedItems.length).toBe(4)
+
+    localWrapper.setProps({
+      columnFilter: { external: true },
+    })
+    expect(localWrapper.vm.sortedItems.length).toBe(5)
+
+    expect(localWrapper.vm.sortedItems[0].username).toBe('Yiorgos Avraamu')
+    localWrapper.setProps({
+      sorter: { external: true }
+    })
+    expect(localWrapper.vm.sortedItems[0].username).toBe('Estavan Lykos')
+  })
+  it('Sorter reset mechanism is working properly', () => {
+    const localWrapper = createCustomWrapper()
+    const click = (clickCount = 1) => {
+      for (let i = 0; i < clickCount; i++) {
+        localWrapper.find('tr').findAll('th').at(2).trigger('click')
+      }
+    }
+    localWrapper.setProps({
+      sorter: { resetable : true }
+    })
+    click(3)
+    expect(localWrapper.vm.sorterState.column).toBe(undefined)
+    click(2)
+    expect(localWrapper.vm.sorterState.asc).toBe(false)
+  })
 })

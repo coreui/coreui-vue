@@ -10,7 +10,7 @@
           class="form-control table-filter"
           type="text"
           :placeholder="tableFilterData.placeholder"
-          @input="tableFilterChange($event.target.value)"
+          @input="tableFilterChange($event.target.value, 'input')"
           @change="tableFilterChange($event.target.value, 'change')"
           :value="tableFilterState"
         >
@@ -62,6 +62,7 @@
                   v-if="isSortable(index)"
                   name="sorting-icon"
                   :state="getIconState(index)"
+                  :classes="iconClasses(index)"
                 >
                   <CIcon
                     width="18"
@@ -244,9 +245,9 @@ export default {
     border: Boolean,
     outlined: Boolean,
     itemsPerPageSelect: Boolean,
-    sorter: [Boolean, String],
+    sorter: [Boolean, Object],
     tableFilter: [Boolean, Object],
-    columnFilter: [Boolean, String],
+    columnFilter: [Boolean, Object],
     sorterValue: {
       type: Object,
       default: () => { return {} }
@@ -308,9 +309,12 @@ export default {
   computed: {
     columnFiltered () {
       let items = this.passedItems.slice()
+      if (this.columnFilter && this.columnFilter.external) {
+        return items
+      }
       Object.entries(this.columnFilterState).forEach(([key, value]) => {
-        if (value && this.rawColumnNames.includes(key)) {
-          const columnFilter = String(value).toLowerCase()
+        const columnFilter = String(value).toLowerCase()
+        if (columnFilter && this.rawColumnNames.includes(key)) {
           items = items.filter(item => {
             return String(item[key]).toLowerCase().includes(columnFilter)
           })
@@ -325,18 +329,19 @@ export default {
     },
     tableFiltered () {
       let items = this.columnFiltered.slice()
-      if (this.tableFilterState) {
-        const filter = this.tableFilterState.toLowerCase()
-        const hasFilter = (item) => String(item).toLowerCase().includes(filter)
-        items = items.filter(item => {
-          return this.filterableCols.filter(key => hasFilter(item[key])).length
-        })
+      if (!this.tableFilterState || (this.tableFilter && this.tableFilter.external)) {
+        return items
       }
+      const filter = this.tableFilterState.toLowerCase()
+      const hasFilter = (item) => String(item).toLowerCase().includes(filter)
+      items = items.filter(item => {
+        return this.filterableCols.filter(key => hasFilter(item[key])).length
+      })
       return items
     },
     sortedItems () {
       const col = this.sorterState.column
-      if (!col || !this.rawColumnNames.includes(col)) {
+      if (!col || !this.rawColumnNames.includes(col) || this.sorter.external) {
         return this.tableFiltered
       }
       //if values in column are to be sorted by numeric value they all have to be type number
@@ -410,27 +415,35 @@ export default {
   },
   methods: {
     changeSort (column, index) {
-      if (column && !this.isSortable(index)) {
+      if (!this.isSortable(index)) {
         return
       }
       //if column changed or sort was descending change asc to true
       const state = this.sorterState
-      state.asc = state.column !== column || !state.asc
-      state.column = column
+      const columnRepeated = state.column === column 
+      if (!this.sorter || !this.sorter.resetable) {
+        state.column = column 
+      } else {
+        state.column = columnRepeated && state.asc === false ? undefined : column
+      }
+      state.asc = !(columnRepeated && state.asc)
       this.$emit('update:sorter-value', this.sorterState)
     },
     columnFilterEvent (colName, value, type) {
-      this.setColumnFilter(colName, value)
-      const e = type === 'input' ? 'column-filter-input' : 'update:column-filter-value'
-      this.$emit(e, this.columnFilterState)
-    },
-    setColumnFilter (colName, value) {
+      const isLazy = this.columnFilter && this.columnFilter.lazy === true
+      if (isLazy && type === 'input' || !isLazy && type === 'change') {
+        return
+      }
       this.$set(this.columnFilterState, colName, value)
+      this.$emit('update:column-filter-value', this.tableFilterState)
     },
-    tableFilterChange (value, type = 'input') {
+    tableFilterChange (value, type) {
+      const isLazy = this.tableFilter && this.tableFilter.lazy === true
+      if (isLazy && type === 'input' || !isLazy && type === 'change') {
+        return
+      }
       this.tableFilterState = value
-      const e = type === 'input' ? 'table-filter-input' : 'update:table-filter-value'
-      this.$emit(e, this.tableFilterState)
+      this.$emit('update:table-filter-value', this.tableFilterState)
     },
     pretifyName (name) {
       return name.replace(/[-_.]/g, ' ')
@@ -507,7 +520,7 @@ export default {
   transform: translateY(-50%);
 }
 .rotate-icon {
-  -ms-transform: translateY(-50%)  rotate(-180deg);
+  -ms-transform: translateY(-50%) rotate(-180deg);
   transform: translateY(-50%) rotate(-180deg);
 }
 </style>
