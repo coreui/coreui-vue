@@ -12,12 +12,10 @@ exports[`CSidebarNavItem.vue renders correctly 1`] = `
   >
     <svg
       class="c-sidebar-nav-icon"
+      role="img"
       viewBox="0 0 64 64"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <title>
-        Cui Settings
-      </title>
       undefined
     </svg>
      
@@ -48,12 +46,10 @@ exports[`CSidebarNavItem.vue renders correctly in label mode 1`] = `
   >
     <svg
       class="c-sidebar-nav-icon"
+      role="img"
       viewBox="0 0 64 64"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <title>
-        Cui Settings
-      </title>
       undefined
     </svg>
      

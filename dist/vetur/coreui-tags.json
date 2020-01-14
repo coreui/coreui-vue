@@ -1144,8 +1144,6 @@
       "fade",
       "backdrop",
       "close-on-backdrop",
-      "add-modal-classes",
-      "add-dialog-classes",
       "add-content-classes"
     ],
     "description": ""
@@ -1161,8 +1159,6 @@
       "fade",
       "backdrop",
       "close-on-backdrop",
-      "add-modal-classes",
-      "add-dialog-classes",
       "add-content-classes"
     ],
     "description": ""

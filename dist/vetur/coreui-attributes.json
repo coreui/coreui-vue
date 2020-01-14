@@ -2551,22 +2551,6 @@
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
   },
-  "c-modal/add-modal-classes": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
-  },
-  "CModal/add-modal-classes": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
-  },
-  "c-modal/add-dialog-classes": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
-  },
-  "CModal/add-dialog-classes": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
-  },
   "c-modal/add-content-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "[string, Array<any>, object]"
@@ -3705,19 +3689,19 @@
   },
   "c-data-table/sorter": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, string]"
+    "type": "[boolean, object]"
   },
   "CDataTable/sorter": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, string]"
+    "type": "[boolean, object]"
   },
   "c-data-table/column-filter": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, string]"
+    "type": "[boolean, object]"
   },
   "CDataTable/column-filter": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, string]"
+    "type": "[boolean, object]"
   },
   "c-data-table/table-filter": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
