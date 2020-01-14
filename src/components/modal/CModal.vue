@@ -84,8 +84,6 @@ export default {
       type: Boolean,
       default: true
     },
-    addModalClasses: [String, Array, Object],
-    addDialogClasses: [String, Array, Object],
     addContentClasses: [String, Array, Object]
   },
   data () {
@@ -106,7 +104,6 @@ export default {
     modalClasses () {
       return [
         'modal overflow-auto',
-        this.addModalClasses,
         {
           'fade': this.fade,
           'show': this.visible,
@@ -117,7 +114,6 @@ export default {
     },
     dialogClasses () {
       return [
-        this.addDialogClasses,
         'modal-dialog',
         {
           'modal-dialog-centered': this.centered,

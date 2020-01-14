@@ -379,8 +379,6 @@ export declare class CModal extends Vue {
   fade: boolean
   backdrop: boolean
   closeOnBackdrop: boolean
-  addModalClasses: [string, Array<any>, object]
-  addDialogClasses: [string, Array<any>, object]
   addContentClasses: [string, Array<any>, object]
 }
 

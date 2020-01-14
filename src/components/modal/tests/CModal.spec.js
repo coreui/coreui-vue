@@ -14,8 +14,6 @@ const customWrapper = mount(Component, {
     fade: true,
     backdrop: true,
     closeOnBackdrop: false,
-    addModalClasses: 'additional-modal-class',
-    addDialogClasses: 'additional-dialog-class',
     addContentClasses: 'additional-content-class'
   },
   slots: {

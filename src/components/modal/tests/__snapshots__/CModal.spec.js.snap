@@ -70,12 +70,12 @@ exports[`CModal renders correctly 1`] = `
 exports[`CModal renders correctly 2`] = `
 <div>
   <div
-    class="modal overflow-auto additional-modal-class fade show d-block modal-success"
+    class="modal overflow-auto fade show d-block modal-success"
     role="dialog"
     tabindex="-1"
   >
     <div
-      class="additional-dialog-class modal-dialog modal-dialog-centered modal-lg"
+      class="modal-dialog modal-dialog-centered modal-lg"
       role="document"
     >
       <div
