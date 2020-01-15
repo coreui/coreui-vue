@@ -169,7 +169,7 @@ describe(ComponentName, () => {
       sorter: { resetable : true }
     })
     click(3)
-    expect(localWrapper.vm.sorterState.column).toBe(undefined)
+    expect(localWrapper.vm.sorterState.column).toBe(null)
     click(2)
     expect(localWrapper.vm.sorterState.asc).toBe(false)
   })

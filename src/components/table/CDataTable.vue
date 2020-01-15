@@ -263,7 +263,7 @@ export default {
       tableFilterState: this.tableFilterValue,
       columnFilterState: {},
       sorterState: {
-        column: undefined,
+        column: null,
         asc: true
       },
       page: this.activePage || 1,
@@ -424,7 +424,7 @@ export default {
       if (!this.sorter || !this.sorter.resetable) {
         state.column = column 
       } else {
-        state.column = columnRepeated && state.asc === false ? undefined : column
+        state.column = columnRepeated && state.asc === false ? null : column
       }
       state.asc = !(columnRepeated && state.asc)
       this.$emit('update:sorter-value', this.sorterState)
@@ -435,7 +435,7 @@ export default {
         return
       }
       this.$set(this.columnFilterState, colName, value)
-      this.$emit('update:column-filter-value', this.tableFilterState)
+      this.$emit('update:column-filter-value', this.columnFilterState)
     },
     tableFilterChange (value, type) {
       const isLazy = this.tableFilter && this.tableFilter.lazy === true
