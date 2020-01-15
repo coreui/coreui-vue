@@ -21,8 +21,25 @@ Check out demo of components usage: [CoreUI Vue Admin Template »](https://coreu
 
 ## Installation
 
+Before installation you need to install [node and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) on your machine.
 ```shell
 npm install @coreui/vue
+```
+
+### Styling
+
+Components are styled using @coreui/coreui CSS library, but you can use them also with bootstrap CSS library. That is possible because @coreui/coreui library is compatible with bootstrap, it just extends its functionalities. The only exception is custom CoreUI components, which don't exist in the Bootstrap ecosystem (template components, callout, switch).
+
+Styles have to be imported separately! Import [CoreUI](https://github.com/coreui/coreui) CSS library (recommended), or [Bootstrap](https://bootstrap-vue.js.org/) library
+
+Installation:
+```shell
+npm install @coreui/coreui
+```
+
+Basic usage:
+```scss
+@import "~@coreui/coreui/scss/coreui";
 ```
 
 ### Registering components
@@ -75,6 +92,10 @@ Components are imported from CommonJS module by default, if you want to use only
 // Import components this way to allow tree shaking
 import { CDataTable } from '@coreui/vue/src';
 ```
+
+### Code autocompletion
+
+If you are using [VS Code](https://code.visualstudio.com/) editor with Vetur plugin installed, then the editor would display hints for our library (component names and prop names).
 
 ### Changelog
 
