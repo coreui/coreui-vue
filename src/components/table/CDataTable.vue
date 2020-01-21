@@ -278,8 +278,8 @@ export default {
     sorterValue: {
       immediate: true,
       handler (val) {
-        this.sorterState.column = val.column
-        this.sorterState.asc = val.asc === false ? false : true
+        const asc = val.asc === false ? false : true
+        this.sorterState = Object.assign({}, { asc, column: val.column })
       }
     },
     tableFilterValue (val) {
