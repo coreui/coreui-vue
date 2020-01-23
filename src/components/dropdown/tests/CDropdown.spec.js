@@ -6,7 +6,7 @@ const localVue = new createLocalVue()
 localVue.use(VueRouter)
 const router = new VueRouter()
 
-//needed for popper.js
+//needed for @popperjs/core
 global.document.createRange = () => ({
   setStart: () => {},
   setEnd: () => {},
@@ -34,7 +34,7 @@ const customWrapper = mount(Component, {
     color: 'success',
     size: 'lg',
     split: true,
-    offset: 20,
+    offset: [20, 0],
     placement: 'right-end',
     flip: false,
   },
@@ -50,9 +50,8 @@ const navWrapper = mount(Component, {
     inNav: true,
     caret: false,
     color: 'success',
-    offset: 20,
     placement: 'left',
-    flip: false
+    customPopperOptions: {}
   },
   slots: {
     default: 'CDropdown subcomponents',
@@ -118,13 +117,6 @@ describe(ComponentName, () => {
     expect(customWrapper.vm.visible).toBe(false)
     toggle()
     expect(customWrapper.vm.visible).toBe(false)
-  })
-  it('generates popper config properly', () => {
-    const modifiers = () => customWrapper.vm.computedPopperConfig.modifiers
-    expect(modifiers().offset.offset).toBe(20)
-    customWrapper.setProps({ popperConfig: {modifiers:{offset:{ offset:22 }}}})
-    expect(modifiers().offset.offset).toBe(22)
-    expect(modifiers().flip.enabled).toBe(false)
   })
   it('opens then toggler is passed by slot', () => {
     const toggle = () => {

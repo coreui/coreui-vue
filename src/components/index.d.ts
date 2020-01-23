@@ -133,10 +133,10 @@ export declare class CDropdown extends Vue {
   color: string
   size: string
   split: boolean
-  offset: number
+  offset: [number, number]
   placement: string
   flip: boolean
-  popperConfig: object
+  customPopperOptions: object
 }
 
 export declare class CDropdownDivider extends Vue {

@@ -33,9 +33,8 @@
 
 <script>
 import CLink from '../link/CLink'
-import Popper from 'popper.js'
+import { createPopper } from '@popperjs/core'
 import { mixin as clickaway } from 'vue-clickaway2'
-import { deepObjectsMerge } from '@coreui/utils/src/index.js'
 
 export default {
   name: 'CDropdown',
@@ -60,10 +59,6 @@ export default {
       validator: val => ['', 'sm', 'lg'].includes(val)
     },
     split: Boolean,
-    offset: {
-      type: Number,
-      default: 0
-    },
     placement: {
       type: String,
       validator: position => {
@@ -76,11 +71,15 @@ export default {
       },
       default: 'bottom-start'
     },
+    offset: {
+      type: Array,
+      default: () => [0, 0]
+    },
     flip: {
       type: Boolean,
       default: true
     },
-    popperConfig: Object
+    customPopperOptions: Object
   },
   data () {
     return {
@@ -135,28 +134,38 @@ export default {
         return
       }
       this.$nextTick(() => {
-        this._popper = new Popper(
+        this._popper = createPopper(
           this.$el.firstElementChild, 
           this.$refs.menu, 
-          this.computedPopperConfig
+          this.customPopperOptions || this.defaultPopperOptions
         )
       })
       
     }
   },
   computed: {
-    generatedPopperConfig () {
+    defaultPopperOptions () {
       return {
         placement: this.placement,
-        modifiers: {
-          offset: { offset: this.offset },
-          flip: { enabled: this.flip }
-        }
+        modifiers: [
+          {
+            name: 'offset',
+            options: {
+              offset: this.offset
+            }
+          },
+          {
+            name: 'flip',
+            enabled: this.flip
+          },
+          {
+            name: 'preventOverflow',
+            options: {
+              padding: 10
+            },
+          },
+        ]
       }
-    },
-
-    computedPopperConfig () {
-      return deepObjectsMerge(this.generatedPopperConfig, this.popperConfig || {})
     },
 
     carretClass () {

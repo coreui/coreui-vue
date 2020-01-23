@@ -58,8 +58,10 @@ exports[`CDropdown renders custom wrapper correctly 1`] = `
    
   <div
     class="additional-menu-class dropdown-menu show"
-    style="position: absolute; transform: translate3d(NaNpx, NaNpx, 0); top: 0px; left: 0px; will-change: transform;"
-    x-placement="right-end"
+    data-popper-escaped=""
+    data-popper-placement="right-end"
+    data-popper-reference-hidden=""
+    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 20px);"
   >
     CDropdown subcomponents
   </div>
