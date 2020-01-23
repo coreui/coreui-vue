@@ -14,15 +14,15 @@ export declare class CBadge extends CLink {
 
 export declare class CBreadcrumb extends Vue {
   items: Array<any>
-  addClasses: [string, Array<any>, object]
-  addLinkClasses: [string, Array<any>, object]
-  addLastItemClasses: [string, Array<any>, object]
+  addClasses: string | Array<any> | object
+  addLinkClasses: string | Array<any> | object
+  addLastItemClasses: string | Array<any> | object
 }
 
 export declare class CBreadcrumbRouter extends Vue {
-  addClasses: [string, Array<any>, object]
-  addLinkClasses: [string, Array<any>, object]
-  addLastItemClasses: [string, Array<any>, object]
+  addClasses: string | Array<any> | object
+  addLinkClasses: string | Array<any> | object
+  addLastItemClasses: string | Array<any> | object
 }
 
 export declare class CButton extends CLink {
@@ -36,7 +36,7 @@ export declare class CButton extends CLink {
 }
 
 export declare class CButtonClose extends Vue {
-  buttonClasses: [string, Array<any>, object]
+  buttonClasses: string | Array<any> | object
 }
 
 export declare class CButtonGroup extends Vue {
@@ -104,12 +104,12 @@ export declare class CCarousel extends Vue {
   animate: boolean
   indicators: boolean
   arrows: boolean
-  indicatorClasses: [string, Array<any>, object]
+  indicatorClasses: string | Array<any> | object
   height: string
 }
 
 export declare class CCarouselItem extends Vue {
-  image: [string, object]
+  image: string | object
   captionHeader: string
   captionText: string
   active: boolean
@@ -126,8 +126,8 @@ export declare class CDropdown extends Vue {
   togglerText: string
   show: boolean
   disabled: boolean
-  addMenuClasses: [string, Array<any>, object]
-  addTogglerClasses: [string, Array<any>, object]
+  addMenuClasses: string | Array<any> | object
+  addTogglerClasses: string | Array<any> | object
   inNav: boolean
   caret: boolean
   color: string
@@ -170,12 +170,12 @@ declare class formSharedProps extends Vue {
 export declare class CInputFile extends formSharedProps {
   label: string
   wasValidated: boolean
-  isValid: [boolean, ()=>{}]
-  addInputClasses: [string, Array<any>, object]
-  addLabelClasses: [string, Array<any>, object]
-  horizontal: [boolean, object]
+  isValid: boolean | Function
+  addInputClasses: string | Array<any> | object
+  addLabelClasses: string | Array<any> | object
+  horizontal: boolean | object
   size: string
-  addWrapperClasses: [string, Array<any>, object]
+  addWrapperClasses: string | Array<any> | object
 
   custom: boolean
   placeholder: string
@@ -185,7 +185,7 @@ export declare class CInputFile extends formSharedProps {
 export declare class CFormGroup extends formSharedProps {
   append: string
   prepend: string
-  wrapperClasses: [string, Array<any>, object]
+  wrapperClasses: string | Array<any> | object
 }
 
 export declare class CInput extends formSharedProps {
@@ -195,15 +195,15 @@ export declare class CInput extends formSharedProps {
   readonly: boolean
   plaintext: boolean
   value: string
-  lazy: [boolean, number]
+  lazy: boolean | number
   label: string
   wasValidated: boolean
-  isValid: [boolean, ()=>{}]
-  addInputClasses: [string, Array<any>, object]
-  addLabelClasses: [string, Array<any>, object]
-  horizontal: [boolean, object]
+  isValid: boolean | Function
+  addInputClasses: string | Array<any> | object
+  addLabelClasses: string | Array<any> | object
+  horizontal: boolean | object
   size: string
-  addWrapperClasses: [string, Array<any>, object]
+  addWrapperClasses: string | Array<any> | object
 }
 
 export declare class CInputRadio extends formSharedProps {
@@ -212,9 +212,9 @@ export declare class CInputRadio extends formSharedProps {
 
   label: string
   wasValidated: boolean
-  isValid: [boolean, ()=>{}]
-  addInputClasses: [string, Array<any>, object]
-  addLabelClasses: [string, Array<any>, object]
+  isValid: boolean | Function
+  addInputClasses: string | Array<any> | object
+  addLabelClasses: string | Array<any> | object
 
   checked: boolean
   custom: boolean
@@ -229,15 +229,15 @@ export declare class CSelect extends formSharedProps {
 
   label: string
   wasValidated: boolean
-  isValid: [boolean, ()=>{}]
-  addInputClasses: [string, Array<any>, object]
-  addLabelClasses: [string, Array<any>, object]
-  horizontal: [boolean, object]
+  isValid: boolean | Function
+  addInputClasses: string | Array<any> | object
+  addLabelClasses: string | Array<any> | object
+  horizontal: boolean | object
   size: string
-  addWrapperClasses: [string, Array<any>, object]
+  addWrapperClasses: string | Array<any> | object
 
   options: Array<any>
-  value: [string, number, boolean, Array<any>]
+  value: string | number | boolean | Array<any>
   plaintext: boolean
   placeholder: string
   custom: boolean
@@ -249,24 +249,24 @@ export declare class CTextarea extends formSharedProps {
   readonly: boolean
   plaintext: boolean
   value: string
-  lazy: [boolean, number]
+  lazy: boolean | number
   label: string
   wasValidated: boolean
-  isValid: [boolean, ()=>{}]
-  addInputClasses: [string, Array<any>, object]
-  addLabelClasses: [string, Array<any>, object]
-  horizontal: [boolean, object]
+  isValid: boolean | Function
+  addInputClasses: string | Array<any> | object
+  addLabelClasses: string | Array<any> | object
+  horizontal: boolean | object
   size: string
-  addWrapperClasses: [string, Array<any>, object]
+  addWrapperClasses: string | Array<any> | object
 }
 
 export declare class CCol extends Vue {
-  col: [ boolean, string, number, object ]
-  xs: [ boolean, string, number, object ]
-  sm: [ boolean, string, number, object ]
-  md: [ boolean, string, number, object ]
-  lg: [ boolean, string, number, object ]
-  xl: [ boolean, string, number, object ]
+  col:  boolean | string | number | object 
+  xs:  boolean | string | number | object 
+  sm:  boolean | string | number | object 
+  md:  boolean | string | number | object 
+  lg:  boolean | string | number | object 
+  xl:  boolean | string | number | object 
   tag: string
 }
 
@@ -304,21 +304,21 @@ export declare class CSubheader extends CLink {
 
 export declare class CIcon extends Vue {
   name: string
-  content: [string, Array<string>]
+  content: string | Array<string>
   size: string
-  customClasses: [string, Array<any>, object]
+  customClasses: string | Array<any> | object
   src: string
 }
 
 export declare class CImg extends Vue {
   src: string
   alt: string
-  width: [number, string]
-  height: [number, string]
+  width: number | string
+  height: number | string
   block: boolean
   fluid: boolean
   fluidGrow: boolean
-  rounded: [boolean, string]
+  rounded: boolean | string
   thumbnail: boolean
   align: string
   placeholderColor: string
@@ -340,18 +340,18 @@ export declare class CLink extends Vue {
   active: boolean
   activeClass: string
   append: boolean
-  event: [string, Array<any>]
+  event: string | Array<any>
   exact: boolean
   exactActiveClass: string
   replace: boolean
   routerTag: string
-  to: [string, object]
+  to: string | object
 }
 
 export declare class CListGroup extends Vue {
   tag: string
   flush: boolean
-  horizontal: [string, boolean]
+  horizontal: string | boolean
 }
 
 export declare class CListGroupitem extends CLink {
@@ -362,8 +362,8 @@ export declare class CListGroupitem extends CLink {
 
 export declare class CMedia extends Vue {
   addAsideMargin: boolean
-  addAsideClasses: [string, Array<any>, object]
-  addBodyClasses: [string, Array<any>, object]
+  addAsideClasses: string | Array<any> | object
+  addBodyClasses: string | Array<any> | object
   asideRight: boolean
   asideImageProps: object
   asideVerticalPosition: string
@@ -379,7 +379,7 @@ export declare class CModal extends Vue {
   fade: boolean
   backdrop: boolean
   closeOnBackdrop: boolean
-  addContentClasses: [string, Array<any>, object]
+  addContentClasses: string | Array<any> | object
 }
 
 export declare class CNav extends Vue {
@@ -396,7 +396,7 @@ export declare class CNavbar extends Vue {
   tag: string
   light: boolean
   color: string
-  expandable: [boolean, string]
+  expandable: boolean | string
   fixed: string
   sticky: boolean
 }
@@ -438,10 +438,27 @@ export declare class CProgress extends Vue {
 
 export declare class CProgressBar extends CProgress {}
 
+type ContentFlat = [NodeFlat]
+declare interface NodeFlat {
+  _name: string;
+  _children?: Array<string | NodeFlat>;
+  [key: string]: any;
+}
+
+type ContentNotFlat = [
+  string,
+  object,
+  NodeNotFlat
+]
+declare interface NodeNotFlat extends Array<ContentNotFlat | string | { slot: string }> { }
+
+type ContentToRender = ContentFlat | ContentNotFlat
+
 export declare class CRenderFunction extends Vue {
-  contentToRender: Array<any>
+  contentToRender: ContentToRender
   flat: boolean
 }
+
 export declare class CScrollbar extends Vue {
   settings: object
   switcher: boolean
@@ -452,9 +469,9 @@ export declare class CSidebar extends Vue {
   fixed: boolean
   unfoldable: boolean
   overlaid: boolean
-  breakpoint: [string, boolean]
+  breakpoint: string | boolean
   minimize: boolean
-  show: [boolean, string]
+  show: boolean | string
   size: string
   hideOnMobileClick: boolean
   aside: boolean
@@ -463,10 +480,10 @@ export declare class CSidebar extends Vue {
 }
 
 export declare class CSidebarBrand extends Vue { 
-  img: [object, string]
-  imgMinimized: [object, string]
-  imgFull: [object, string]
-  wrappedInLink: [object, string]
+  img: object | string
+  imgMinimized: object | string
+  imgFull: object | string
+  wrappedInLink: object | string
 }
 
 
@@ -487,7 +504,7 @@ export declare class CSidebarNavDivider extends Vue {}
 export declare class CSidebarNavDropdown extends Vue {
   name: string
   route: string
-  icon: [string, object]
+  icon: string | object
   fontIcon: string
   show: boolean
   items: Array<object>
@@ -495,7 +512,7 @@ export declare class CSidebarNavDropdown extends Vue {
 
 export declare class CSidebarNavItem extends CLink {
   name: string
-  icon: [string, object]
+  icon: string | object
   fontIcon: string
   badge: object
   addLinkClasses: string
@@ -513,7 +530,7 @@ export declare class CSpinner extends Vue {
 
 export declare class CSwitch extends Vue {
   color: string
-  outline: [boolean, string]
+  outline: boolean | string
   size: string
   shape: string
   checked: boolean
@@ -528,8 +545,8 @@ export declare class CDataTable extends Vue {
   itemsPerPage: number
   activePage: number
   filterRow: boolean
-  pagination: [boolean, object]
-  addTableClasses: [string, Array<any>, object]
+  pagination: boolean | object
+  addTableClasses: string | Array<any> | object
   responsive: boolean
   small: boolean
   dark: boolean
@@ -538,11 +555,11 @@ export declare class CDataTable extends Vue {
   hover: boolean
   border: boolean
   outlined: boolean
-  optionsRow: [boolean, string]
+  optionsRow: boolean | string
   footer: boolean
-  sorter: [boolean, object]
-  columnFilter: [boolean, object]
-  tableFilter: [boolean, object]
+  sorter: boolean | object
+  columnFilter: boolean | object
+  tableFilter: boolean | object
   sorterValue: object
   tableFilterValue: string
   columnFilterValue: object
@@ -554,12 +571,12 @@ export declare class CTabs extends Vue {
   justified: boolean
   variant: string
   fade: boolean
-  vertical: [boolean, object]
-  addNavWrapperClasses: [string, Array<any>, object]
-  addNavClasses: [string, Array<any>, object]
-  addTabsWrapperClasses: [string, Array<any>, object]
-  addTabsClasses: [string, Array<any>, object]
-  addTabClasses: [string, Array<any>, object]
+  vertical: boolean | object
+  addNavWrapperClasses: string | Array<any> | object
+  addNavClasses: string | Array<any> | object
+  addTabsWrapperClasses: string | Array<any> | object
+  addTabsClasses: string | Array<any> | object
+  addTabClasses: string | Array<any> | object
 }
 
 export declare class CTab extends Vue {
@@ -596,7 +613,7 @@ export declare class CTreeGenerator extends Vue {
 }
 
 export declare class CTreeGeneratorItem extends Vue {
-  item: [string, object]
+  item: string | object
   name: string
   components: object
 }
@@ -607,7 +624,7 @@ export declare class CWidgetBrand extends Vue {
   rightFooter: string
   leftHeader: string
   leftFooter: string
-  addHeaderClasses: [string, Array<any>, object]
+  addHeaderClasses: string | Array<any> | object
 }
 
 export declare class CWidgetDropdown extends Vue {
