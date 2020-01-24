@@ -4,7 +4,8 @@ const classes = getTypesClasses(types)
 
 function getTypesClasses (types) {
   let classes = {}
-  const rawClasses = types.replace(/(\r|\n)/ig, '').match(/(.*?class).*?(})/g)
+  const rawClasses = types.replace(/(\n|\r)/ig, '')
+                          .match(/(export declare|declare class).*?(})/g)
   rawClasses.forEach(rawClass => {
     const name = rawClass.match(/(?<=class\s+).*?(?=\s+extends)/gs)[0]
 
