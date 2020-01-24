@@ -1,5 +1,16 @@
-import safeIdMixin from '../../mixins/safe-id'
-export const safeId = safeIdMixin
+import { makeUid } from '@coreui/utils/src'
+
+export const safeId = {
+  computed: {
+    safeId () {
+      if (this.id || this.$attrs.id) {
+        return this.id || this.$attrs.id
+      }
+      return makeUid()
+    }
+  }
+}
+
 export const wrapperComputedProps = {
   computed: {
     isHorizontal () {

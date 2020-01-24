@@ -69,7 +69,7 @@
   "dependencies": {
     "@coreui/icons": "^1.0.0",
     "@coreui/icons-vue": "^1.1.2",
-    "@coreui/utils": "^1.0.0",
+    "@coreui/utils": "^1.2.1",
     "@popperjs/core": "^2.0.0",
     "lodash.clonedeep": "^4.5.0",
     "perfect-scrollbar": "^1.4.0",

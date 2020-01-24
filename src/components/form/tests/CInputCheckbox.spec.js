@@ -47,6 +47,6 @@ describe(ComponentName, () => {
     expect(emittedValues).toEqual([true, false])
   })
   it('generates safe id when no id is passed', () => {
-    expect(autoIdWrapper.vm.safeId.includes('_safe_id_')).toBe(true)
+    expect(autoIdWrapper.vm.safeId.includes('uid-')).toBe(true)
   })
 })
