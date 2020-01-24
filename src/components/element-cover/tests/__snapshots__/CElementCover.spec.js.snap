@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CElementCover renders correctly with custom content 1`] = `
+<div>
+  <div
+    class="first"
+  />
+  <div
+    style="top: 0px; bottom: 0px; left: 0px; right: 0px; position: absolute;"
+  >
+    <div
+      style="position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);"
+    >
+      <div
+        aria-hidden="false"
+        aria-label="Loading"
+        class="spinner-grow spinner-grow-lg text-primary"
+        role="status"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CElementCover renders correctly with default spinner 1`] = `
+<div
+  style="top: 0px; bottom: 0px; left: 0px; right: 0px; position: absolute;"
+>
+  <div
+    style="position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);"
+  >
+    <div
+      aria-hidden="false"
+      aria-label="Loading"
+      class="spinner-grow spinner-grow-lg text-primary"
+      role="status"
+    />
+  </div>
+</div>
+`;

@@ -188,14 +188,15 @@
       </table>
 
       <slot name="loading" v-if="loading">
-        <div style="position:absolute;left:0;top:0;bottom:0;right:0;background-color:rgb(255,255,255,0.4);">
-          <div style="position:absolute;bottom:50%;left:50%;transform:translateX(-50%);">
-            <CSpinner color="success"/>
-          </div>
-        </div>
+        <CElementCover 
+          :boundaries="[
+            { sides: ['top'], tag: 'TD' },
+            { sides: ['bottom'], tag: 'TBODY' }
+          ]"
+        />
       </slot>
-
     </div>
+    
     <slot name="under-table"/>
 
 
@@ -210,7 +211,7 @@
 </template>
 
 <script>
-import CSpinner from '../spinner/CSpinner'
+import CElementCover from '../element-cover/CElementCover'
 import CPagination from '../pagination/CPagination'
 import CIcon from '@coreui/icons-vue/src/CIconRaw.vue'
 import { cilArrowTop, cilBan } from '@coreui/icons'
@@ -220,7 +221,7 @@ export default {
   icons: { cilArrowTop, cilBan },
   components: {
     CPagination,
-    CSpinner,
+    CElementCover,
     CIcon
   },
   props: {

@@ -149,6 +149,13 @@ export declare class CDropdownHeader extends Vue {
 
 export declare class CDropdownItem extends CLink {}
 
+export declare class CElementCover extends Vue {
+  boundaries: Array<{side: string[], tag?: string, class?: string}>
+  centeringWrapper: boolean
+  opacity: number
+}
+
+
 export declare class CEmbed extends Vue {
   type: string
   ratio: string

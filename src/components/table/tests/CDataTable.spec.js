@@ -80,7 +80,7 @@ describe(ComponentName, () => {
   })
   it('shows loading layer when loading prop is set', () => {
     customWrapper.setProps({ loading: true })
-    expect(customWrapper.contains('.spinner-border')).toBe(true)
+    expect(customWrapper.contains('.spinner-grow')).toBe(true)
     customWrapper.setProps({ loading: false })
   })
   it('emits event when items per page changes', () => {
