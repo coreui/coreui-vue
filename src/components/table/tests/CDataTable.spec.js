@@ -173,4 +173,16 @@ describe(ComponentName, () => {
     click(2)
     expect(localWrapper.vm.sorterState.asc).toBe(false)
   })
+  it('Properly sets itemsPerPageSelect options', () => {
+    const localWrapper = createCustomWrapper()
+
+    localWrapper.setProps({
+      itemsPerPageSelect: {
+        label: 'new label',
+        values: [10, 25, 50]
+      }
+    })
+    expect(localWrapper.vm.paginationSelect.label).toBe('new label')
+    expect(localWrapper.vm.paginationSelect.values[1]).toBe(25)
+  })
 })

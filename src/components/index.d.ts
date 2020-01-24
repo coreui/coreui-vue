@@ -563,7 +563,9 @@ export declare class CDataTable extends Vue {
   border: boolean
   outlined: boolean
   optionsRow: boolean | string
+  header: boolean
   footer: boolean
+  itemsPerPageSelect: boolean | { label?: string, values?: number[] }
   sorter: boolean | object
   columnFilter: boolean | object
   tableFilter: boolean | object

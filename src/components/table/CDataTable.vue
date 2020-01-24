@@ -22,7 +22,7 @@
         :class="{ 'offset-sm-6': !tableFilter }"
       >
         <div class="form-inline justify-content-sm-end">
-          <label class="mr-2">Items per page:</label>
+          <label class="mr-2">{{paginationSelect.label}}</label>
           <select
             class="form-control"
             @change="paginationChange"
@@ -31,7 +31,7 @@
               {{perPageItems}}
             </option>
             <option
-              v-for="(number, key) in [5,10,20,50]"
+              v-for="(number, key) in paginationSelect.values"
               :val="number"
               :key="key"
             >
@@ -47,7 +47,7 @@
     <div :class="`position-relative ${responsive ? 'table-responsive' : '' }`">
       <table :class="tableClasses">
         <thead>
-          <tr>
+          <tr v-if="header">
             <template v-for="(name, index) in columnNames">
               <th
                 @click="changeSort(rawColumnNames[index], index)"
@@ -245,7 +245,7 @@ export default {
     hover: Boolean,
     border: Boolean,
     outlined: Boolean,
-    itemsPerPageSelect: Boolean,
+    itemsPerPageSelect: [Boolean, Object],
     sorter: [Boolean, Object],
     tableFilter: [Boolean, Object],
     columnFilter: [Boolean, Object],
@@ -255,6 +255,10 @@ export default {
     },
     tableFilterValue: String,
     columnFilterValue: Object,
+    header: {
+      type: Boolean,
+      default: true
+    },
     footer: Boolean,
     loading: Boolean,
     clickableRows: Boolean
@@ -411,6 +415,12 @@ export default {
       return {
         label: this.tableFilter.label || 'Filter:',
         placeholder: this.tableFilter.placeholder || 'type string...'
+      }
+    },
+    paginationSelect () {
+      return {
+        label: this.itemsPerPageSelect.label || 'Items per page:',
+        values: this.itemsPerPageSelect.values || [5, 10, 20, 50]
       }
     }
   },
