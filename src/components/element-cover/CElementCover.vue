@@ -1,6 +1,6 @@
 <template>
   <div :style="outerContainerStyles">
-    <div v-if="centeringWrapper" :style="centeringStyles">
+    <div v-if="centered" :style="centeringStyles">
       <slot>
         <CSpinner grow size="lg" color="primary"/>
       </slot>
@@ -18,7 +18,7 @@ export default {
   name: 'CElementCover',
   props: {
     boundaries: Array,
-    centeringWrapper: {
+    centered: {
       type: Boolean,
       default: true
     },

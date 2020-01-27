@@ -151,7 +151,7 @@ export declare class CDropdownItem extends CLink {}
 
 export declare class CElementCover extends Vue {
   boundaries: Array<{side: string[], tag?: string, class?: string}>
-  centeringWrapper: boolean
+  centered: boolean
   opacity: number
 }
 
