@@ -13,6 +13,7 @@
     <template #input>
       <input
         v-bind="$attrs"
+        v-on="listeners"
         :id="safeId"
         :type="type"
         :class="inputClasses"
@@ -155,6 +156,10 @@ export default {
     //   }
     // }
 
+    listeners () {
+      const { input, change, ...listeners } = this.$listeners; // eslint-disable-line no-unused-vars
+      return listeners;
+    },
 
     //wrapperComputedProps mixin
     // isHorizontal () {
