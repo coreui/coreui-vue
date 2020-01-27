@@ -113,11 +113,11 @@
   },
   "c-badge/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "CBadge/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "c-badge/exact": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -153,11 +153,11 @@
   },
   "c-badge/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "CBadge/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "c-breadcrumb/items": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -169,51 +169,51 @@
   },
   "c-breadcrumb/add-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CBreadcrumb/add-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-breadcrumb/add-link-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CBreadcrumb/add-link-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-breadcrumb/add-last-item-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CBreadcrumb/add-last-item-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-breadcrumb-router/add-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CBreadcrumbRouter/add-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-breadcrumb-router/add-link-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CBreadcrumbRouter/add-link-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-breadcrumb-router/add-last-item-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CBreadcrumbRouter/add-last-item-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-button/block": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -329,11 +329,11 @@
   },
   "c-button/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "CButton/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "c-button/exact": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -369,19 +369,19 @@
   },
   "c-button/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "CButton/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "c-button-close/button-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CButtonClose/button-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-button-group/vertical": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -617,19 +617,19 @@
   },
   "c-card-img/width": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[number, string]"
+    "type": "number | string"
   },
   "CCardImg/width": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[number, string]"
+    "type": "number | string"
   },
   "c-card-img/height": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[number, string]"
+    "type": "number | string"
   },
   "CCardImg/height": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[number, string]"
+    "type": "number | string"
   },
   "c-card-img/block": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -657,11 +657,11 @@
   },
   "c-card-img/rounded": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, string]"
+    "type": "boolean | string"
   },
   "CCardImg/rounded": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, string]"
+    "type": "boolean | string"
   },
   "c-card-img/thumbnail": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -753,11 +753,11 @@
   },
   "c-card-link/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "CCardLink/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "c-card-link/exact": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -793,11 +793,11 @@
   },
   "c-card-link/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "CCardLink/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "c-card-subtitle/tag": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -881,11 +881,11 @@
   },
   "c-carousel/indicator-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CCarousel/indicator-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-carousel/height": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -897,11 +897,11 @@
   },
   "c-carousel-item/image": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "CCarouselItem/image": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "c-carousel-item/caption-header": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -985,19 +985,19 @@
   },
   "c-dropdown/add-menu-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CDropdown/add-menu-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-dropdown/add-toggler-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CDropdown/add-toggler-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-dropdown/in-nav": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -1041,11 +1041,11 @@
   },
   "c-dropdown/offset": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "number"
+    "type": "[number, number]"
   },
   "CDropdown/offset": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "number"
+    "type": "[number, number]"
   },
   "c-dropdown/placement": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -1063,11 +1063,11 @@
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
   },
-  "c-dropdown/popper-config": {
+  "c-dropdown/custom-popper-options": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "object"
   },
-  "CDropdown/popper-config": {
+  "CDropdown/custom-popper-options": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "object"
   },
@@ -1145,11 +1145,11 @@
   },
   "c-dropdown-item/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "CDropdownItem/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "c-dropdown-item/exact": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -1185,11 +1185,35 @@
   },
   "c-dropdown-item/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "CDropdownItem/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
+  },
+  "c-element-cover/boundaries": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "Array<{"
+  },
+  "CElementCover/boundaries": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "Array<{"
+  },
+  "c-element-cover/side": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string[],"
+  },
+  "CElementCover/side": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string[],"
+  },
+  "c-element-cover/query": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CElementCover/query": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
   },
   "c-embed/type": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -1249,11 +1273,75 @@
   },
   "c-input-file/is-valid": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, ()=>{"
+    "type": "boolean | Function"
   },
   "CInputFile/is-valid": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, ()=>{"
+    "type": "boolean | Function"
+  },
+  "c-input-file/add-input-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "CInputFile/add-input-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "c-input-file/add-label-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "CInputFile/add-label-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "c-input-file/horizontal": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | object"
+  },
+  "CInputFile/horizontal": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | object"
+  },
+  "c-input-file/size": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CInputFile/size": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-input-file/add-wrapper-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "CInputFile/add-wrapper-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "c-input-file/custom": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CInputFile/custom": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-input-file/placeholder": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CInputFile/placeholder": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-input-file/multiple": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CInputFile/multiple": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
   },
   "c-input-file/valid-feedback": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -1286,6 +1374,30 @@
   "CInputFile/description": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
+  },
+  "c-form-group/append": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CFormGroup/append": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-form-group/prepend": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CFormGroup/prepend": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-form-group/wrapper-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "CFormGroup/wrapper-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
   },
   "c-form-group/valid-feedback": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -1369,11 +1481,11 @@
   },
   "c-input/lazy": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, number]"
+    "type": "boolean | number"
   },
   "CInput/lazy": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, number]"
+    "type": "boolean | number"
   },
   "c-input/label": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -1393,11 +1505,51 @@
   },
   "c-input/is-valid": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, ()=>{"
+    "type": "boolean | Function"
   },
   "CInput/is-valid": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, ()=>{"
+    "type": "boolean | Function"
+  },
+  "c-input/add-input-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "CInput/add-input-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "c-input/add-label-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "CInput/add-label-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "c-input/horizontal": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | object"
+  },
+  "CInput/horizontal": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | object"
+  },
+  "c-input/size": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CInput/size": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-input/add-wrapper-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "CInput/add-wrapper-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
   },
   "c-input/valid-feedback": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -1431,6 +1583,86 @@
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
+  "c-input-radio/append": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CInputRadio/append": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-input-radio/prepend": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CInputRadio/prepend": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-input-radio/label": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CInputRadio/label": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-input-radio/was-validated": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CInputRadio/was-validated": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-input-radio/is-valid": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | Function"
+  },
+  "CInputRadio/is-valid": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | Function"
+  },
+  "c-input-radio/add-input-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "CInputRadio/add-input-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "c-input-radio/add-label-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "CInputRadio/add-label-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "c-input-radio/checked": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CInputRadio/checked": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-input-radio/custom": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CInputRadio/custom": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-input-radio/inline": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CInputRadio/inline": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
   "c-input-radio/valid-feedback": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
@@ -1462,6 +1694,86 @@
   "CInputRadio/description": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
+  },
+  "c-input-checkbox/append": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CInputCheckbox/append": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-input-checkbox/prepend": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CInputCheckbox/prepend": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-input-checkbox/label": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CInputCheckbox/label": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-input-checkbox/was-validated": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CInputCheckbox/was-validated": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-input-checkbox/is-valid": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | Function"
+  },
+  "CInputCheckbox/is-valid": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | Function"
+  },
+  "c-input-checkbox/add-input-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "CInputCheckbox/add-input-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "c-input-checkbox/add-label-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "CInputCheckbox/add-label-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "c-input-checkbox/checked": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CInputCheckbox/checked": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-input-checkbox/custom": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CInputCheckbox/custom": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-input-checkbox/inline": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CInputCheckbox/inline": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
   },
   "c-input-checkbox/valid-feedback": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -1529,11 +1841,91 @@
   },
   "c-select/is-valid": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, ()=>{"
+    "type": "boolean | Function"
   },
   "CSelect/is-valid": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, ()=>{"
+    "type": "boolean | Function"
+  },
+  "c-select/add-input-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "CSelect/add-input-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "c-select/add-label-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "CSelect/add-label-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "c-select/horizontal": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | object"
+  },
+  "CSelect/horizontal": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | object"
+  },
+  "c-select/size": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CSelect/size": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-select/add-wrapper-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "CSelect/add-wrapper-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "c-select/options": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "Array<any>"
+  },
+  "CSelect/options": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "Array<any>"
+  },
+  "c-select/value": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | number | boolean | Array<any>"
+  },
+  "CSelect/value": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | number | boolean | Array<any>"
+  },
+  "c-select/plaintext": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CSelect/plaintext": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-select/placeholder": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CSelect/placeholder": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-select/custom": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CSelect/custom": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
   },
   "c-select/valid-feedback": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -1567,6 +1959,118 @@
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
+  "c-textarea/append": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CTextarea/append": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-textarea/prepend": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CTextarea/prepend": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-textarea/readonly": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CTextarea/readonly": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-textarea/plaintext": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CTextarea/plaintext": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-textarea/value": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CTextarea/value": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-textarea/lazy": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | number"
+  },
+  "CTextarea/lazy": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | number"
+  },
+  "c-textarea/label": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CTextarea/label": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-textarea/was-validated": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CTextarea/was-validated": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-textarea/is-valid": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | Function"
+  },
+  "CTextarea/is-valid": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | Function"
+  },
+  "c-textarea/add-input-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "CTextarea/add-input-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "c-textarea/add-label-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "CTextarea/add-label-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "c-textarea/horizontal": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | object"
+  },
+  "CTextarea/horizontal": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | object"
+  },
+  "c-textarea/size": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CTextarea/size": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-textarea/add-wrapper-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
+  "CTextarea/add-wrapper-classes": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any> | object"
+  },
   "c-textarea/valid-feedback": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
@@ -1596,6 +2100,62 @@
     "type": "string"
   },
   "CTextarea/description": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-col/col": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | string | number | object"
+  },
+  "CCol/col": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | string | number | object"
+  },
+  "c-col/xs": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | string | number | object"
+  },
+  "CCol/xs": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | string | number | object"
+  },
+  "c-col/sm": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | string | number | object"
+  },
+  "CCol/sm": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | string | number | object"
+  },
+  "c-col/md": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | string | number | object"
+  },
+  "CCol/md": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | string | number | object"
+  },
+  "c-col/lg": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | string | number | object"
+  },
+  "CCol/lg": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | string | number | object"
+  },
+  "c-col/xl": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | string | number | object"
+  },
+  "CCol/xl": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean | string | number | object"
+  },
+  "c-col/tag": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CCol/tag": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
@@ -1745,11 +2305,11 @@
   },
   "c-header-nav-item/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "CHeaderNavItem/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "c-header-nav-item/exact": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -1785,11 +2345,11 @@
   },
   "c-header-nav-item/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "CHeaderNavItem/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "c-header-nav-link/href": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -1849,11 +2409,11 @@
   },
   "c-header-nav-link/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "CHeaderNavLink/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "c-header-nav-link/exact": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -1889,11 +2449,11 @@
   },
   "c-header-nav-link/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "CHeaderNavLink/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "c-subheader/tag": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -1961,11 +2521,11 @@
   },
   "c-subheader/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "CSubheader/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "c-subheader/exact": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -2001,11 +2561,11 @@
   },
   "c-subheader/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "CSubheader/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "c-icon/name": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -2017,11 +2577,11 @@
   },
   "c-icon/content": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<string>]"
+    "type": "string | Array<string>"
   },
   "CIcon/content": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<string>]"
+    "type": "string | Array<string>"
   },
   "c-icon/size": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -2033,11 +2593,11 @@
   },
   "c-icon/custom-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CIcon/custom-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-icon/src": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -2065,19 +2625,19 @@
   },
   "c-img/width": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[number, string]"
+    "type": "number | string"
   },
   "CImg/width": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[number, string]"
+    "type": "number | string"
   },
   "c-img/height": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[number, string]"
+    "type": "number | string"
   },
   "CImg/height": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[number, string]"
+    "type": "number | string"
   },
   "c-img/block": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -2105,11 +2665,11 @@
   },
   "c-img/rounded": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, string]"
+    "type": "boolean | string"
   },
   "CImg/rounded": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, string]"
+    "type": "boolean | string"
   },
   "c-img/thumbnail": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -2233,11 +2793,11 @@
   },
   "c-link/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "CLink/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "c-link/exact": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -2273,11 +2833,11 @@
   },
   "c-link/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "CLink/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "c-list-group/tag": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -2297,11 +2857,11 @@
   },
   "c-list-group/horizontal": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, boolean]"
+    "type": "string | boolean"
   },
   "CListGroup/horizontal": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, boolean]"
+    "type": "string | boolean"
   },
   "c-list-groupitem/tag": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -2385,11 +2945,11 @@
   },
   "c-list-groupitem/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "CListGroupitem/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "c-list-groupitem/exact": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -2425,11 +2985,11 @@
   },
   "c-list-groupitem/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "CListGroupitem/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "c-media/add-aside-margin": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -2441,19 +3001,19 @@
   },
   "c-media/add-aside-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CMedia/add-aside-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-media/add-body-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CMedia/add-body-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-media/aside-right": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -2553,11 +3113,11 @@
   },
   "c-modal/add-content-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CModal/add-content-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-nav/fill": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -2657,11 +3217,11 @@
   },
   "c-nav-item/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "CNavItem/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "c-nav-item/exact": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -2697,11 +3257,11 @@
   },
   "c-nav-item/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "CNavItem/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "c-navbar/tag": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -2729,11 +3289,11 @@
   },
   "c-navbar/expandable": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, string]"
+    "type": "boolean | string"
   },
   "CNavbar/expandable": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, string]"
+    "type": "boolean | string"
   },
   "c-navbar/fixed": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -2817,11 +3377,11 @@
   },
   "c-navbar-brand/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "CNavbarBrand/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "c-navbar-brand/exact": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -2857,11 +3417,11 @@
   },
   "c-navbar-brand/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "CNavbarBrand/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "c-navbar-text/tag": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -3097,11 +3657,11 @@
   },
   "c-render-function/content-to-render": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "Array<any>"
+    "type": "ContentToRender"
   },
   "CRenderFunction/content-to-render": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "Array<any>"
+    "type": "ContentToRender"
   },
   "c-render-function/flat": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -3161,11 +3721,11 @@
   },
   "c-sidebar/breakpoint": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, boolean]"
+    "type": "string | boolean"
   },
   "CSidebar/breakpoint": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, boolean]"
+    "type": "string | boolean"
   },
   "c-sidebar/minimize": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -3177,11 +3737,11 @@
   },
   "c-sidebar/show": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, string]"
+    "type": "boolean | string"
   },
   "CSidebar/show": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, string]"
+    "type": "boolean | string"
   },
   "c-sidebar/size": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -3225,35 +3785,35 @@
   },
   "c-sidebar-brand/img": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[object, string]"
+    "type": "object | string"
   },
   "CSidebarBrand/img": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[object, string]"
+    "type": "object | string"
   },
   "c-sidebar-brand/img-minimized": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[object, string]"
+    "type": "object | string"
   },
   "CSidebarBrand/img-minimized": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[object, string]"
+    "type": "object | string"
   },
   "c-sidebar-brand/img-full": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[object, string]"
+    "type": "object | string"
   },
   "CSidebarBrand/img-full": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[object, string]"
+    "type": "object | string"
   },
   "c-sidebar-brand/wrapped-in-link": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[object, string]"
+    "type": "object | string"
   },
   "CSidebarBrand/wrapped-in-link": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[object, string]"
+    "type": "object | string"
   },
   "c-sidebar-nav-dropdown/name": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -3273,11 +3833,11 @@
   },
   "c-sidebar-nav-dropdown/icon": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "CSidebarNavDropdown/icon": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "c-sidebar-nav-dropdown/font-icon": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -3313,11 +3873,11 @@
   },
   "c-sidebar-nav-item/icon": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "CSidebarNavItem/icon": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "c-sidebar-nav-item/font-icon": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -3409,11 +3969,11 @@
   },
   "c-sidebar-nav-item/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "CSidebarNavItem/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>]"
+    "type": "string | Array<any>"
   },
   "c-sidebar-nav-item/exact": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -3449,11 +4009,11 @@
   },
   "c-sidebar-nav-item/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "CSidebarNavItem/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "c-spinner/grow": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -3497,11 +4057,11 @@
   },
   "c-switch/outline": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, string]"
+    "type": "boolean | string"
   },
   "CSwitch/outline": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, string]"
+    "type": "boolean | string"
   },
   "c-switch/size": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -3593,19 +4153,19 @@
   },
   "c-data-table/pagination": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, object]"
+    "type": "boolean | object"
   },
   "CDataTable/pagination": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, object]"
+    "type": "boolean | object"
   },
   "c-data-table/add-table-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CDataTable/add-table-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-data-table/responsive": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -3673,11 +4233,19 @@
   },
   "c-data-table/options-row": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, string]"
+    "type": "boolean | string"
   },
   "CDataTable/options-row": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, string]"
+    "type": "boolean | string"
+  },
+  "c-data-table/header": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CDataTable/header": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
   },
   "c-data-table/footer": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -3687,61 +4255,13 @@
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
   },
-  "c-data-table/sorter": {
+  "c-data-table/items-per-page-select": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, object]"
+    "type": "boolean | { label?"
   },
-  "CDataTable/sorter": {
+  "CDataTable/items-per-page-select": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, object]"
-  },
-  "c-data-table/column-filter": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, object]"
-  },
-  "CDataTable/column-filter": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, object]"
-  },
-  "c-data-table/table-filter": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, object]"
-  },
-  "CDataTable/table-filter": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, object]"
-  },
-  "c-data-table/sorter-value": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "object"
-  },
-  "CDataTable/sorter-value": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "object"
-  },
-  "c-data-table/table-filter-value": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "string"
-  },
-  "CDataTable/table-filter-value": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "string"
-  },
-  "c-data-table/column-filter-value": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "object"
-  },
-  "CDataTable/column-filter-value": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "object"
-  },
-  "c-data-table/loading": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "boolean"
-  },
-  "CDataTable/loading": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "boolean"
+    "type": "boolean | { label?"
   },
   "c-tabs/fill": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -3777,51 +4297,51 @@
   },
   "c-tabs/vertical": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, object]"
+    "type": "boolean | object"
   },
   "CTabs/vertical": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[boolean, object]"
+    "type": "boolean | object"
   },
   "c-tabs/add-nav-wrapper-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CTabs/add-nav-wrapper-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-tabs/add-nav-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CTabs/add-nav-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-tabs/add-tabs-wrapper-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CTabs/add-tabs-wrapper-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-tabs/add-tabs-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CTabs/add-tabs-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-tabs/add-tab-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CTabs/add-tab-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-tab/title": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -3977,11 +4497,11 @@
   },
   "c-tree-generator-item/item": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "CTreeGeneratorItem/item": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, object]"
+    "type": "string | object"
   },
   "c-tree-generator-item/name": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -4041,11 +4561,11 @@
   },
   "c-widget-brand/add-header-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "CWidgetBrand/add-header-classes": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "[string, Array<any>, object]"
+    "type": "string | Array<any> | object"
   },
   "c-widget-dropdown/color": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
