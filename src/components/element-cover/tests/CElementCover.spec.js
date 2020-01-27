@@ -16,11 +16,11 @@ const App = localVue.extend({
           boundaries: [
             {
               sides: ['top', 'left'],
-              class: 'first'
+              query: '.first'
             },
             {
               sides: ['bottom'],
-              tag: 'non-existing'
+              query: 'non-existing'
             },
             {
               sides: ['bottom']

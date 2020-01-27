@@ -190,8 +190,8 @@
       <slot name="loading" v-if="loading">
         <CElementCover 
           :boundaries="[
-            { sides: ['top'], tag: 'TD' },
-            { sides: ['bottom'], tag: 'TBODY' }
+            { sides: ['top'], query: 'td' },
+            { sides: ['bottom'], query: 'tbody' }
           ]"
         />
       </slot>

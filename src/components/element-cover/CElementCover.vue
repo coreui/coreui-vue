@@ -67,25 +67,17 @@ export default {
     setOffsets () {
       const parent = this.$el.parentElement
       this.parentCoords = parent.getBoundingClientRect()
-      this.boundaries.forEach(cover => {
-        const element = this.getElement(parent, cover.tag, cover.class)
-        if (!element || !cover.sides) {
+      this.boundaries.forEach(({sides, query}) => {
+        const element = parent.querySelector(query)
+        if (!element || !sides) {
           return
         }
-        cover.sides.forEach(side => {
-          const sideMargin = Math.abs(element[side] - this.parentCoords[side])
+        const coords = element.getBoundingClientRect()
+        sides.forEach(side => {
+          const sideMargin = Math.abs(coords[side] - this.parentCoords[side])
           this.containerCoords[side] = sideMargin + 'px'
         })
       })
-    },
-    getElement (node, tag, styleClass) {
-      let element = null
-      if (styleClass) {
-        element = node.getElementsByClassName(styleClass)[0]
-      } else if (tag) {
-        element = node.getElementsByTagName(tag)[0]
-      }
-      return element ? element.getBoundingClientRect() : null
     }
   }
 }
