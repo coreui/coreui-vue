@@ -15,6 +15,7 @@
     <template #input>
       <input
         v-bind="$attrs"
+        v-on="listeners"
         :id="safeId"
         :class="inputClasses"
         :multiple="multiple"

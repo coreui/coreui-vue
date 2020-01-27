@@ -13,6 +13,7 @@
     <template #input>
       <textarea
         v-bind="$attrs"
+        v-on="listeners"
         :id="safeId"
         :class="inputClasses"
         :readonly="readonly || plaintext"
@@ -33,7 +34,7 @@
 
 <script>
 import CFormGroup from './CFormGroup'
-import { textareaProps as props} from './form-props'
+import { textareaProps as props } from './form-props'
 import * as allFormMixins from './form-mixins'
 const mixins = Object.values(allFormMixins)
 

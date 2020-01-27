@@ -3,6 +3,7 @@
                        description, class: computedClasses}">
     <template #input>
       <input
+        v-on="listeners"
         v-bind="$attrs"
         :id="safeId"
         :type="$options.type"
@@ -33,7 +34,7 @@
 </template>
 
 <script>
-import { safeId, validationComputedProps } from './form-mixins'
+import { sharedComputedProps } from './form-mixins'
 import { inputCheckboxProps as props } from './form-props'
 import CFormGroup from './CFormGroup'
 
@@ -41,7 +42,7 @@ export default {
   name: 'CInputCheckbox',
   inheritAttrs: false,
   components: { CFormGroup },
-  mixins: [safeId, validationComputedProps],
+  mixins: [sharedComputedProps],
   props,
   // {
     // validFeedback: String,

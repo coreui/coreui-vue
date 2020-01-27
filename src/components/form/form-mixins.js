@@ -1,12 +1,27 @@
 import { makeUid } from '@coreui/utils/src'
 
-export const safeId = {
+export const sharedComputedProps = {
   computed: {
-    safeId () {
+    computedIsValid() {
+      if (typeof this.isValid === 'function') {
+        return this.isValid(this.state)
+      }
+      return this.isValid
+    },
+    validationClass() {
+      if (typeof this.computedIsValid === 'boolean') {
+        return this.computedIsValid ? 'is-valid' : 'is-invalid'
+      }
+    },
+    safeId() {
       if (this.id || this.$attrs.id) {
         return this.id || this.$attrs.id
       }
       return makeUid()
+    },
+    listeners () {
+      const { input, change, ...listeners } = this.$listeners // eslint-disable-line no-unused-vars
+      return listeners
     }
   }
 }
@@ -40,22 +55,6 @@ export const wrapperComputedProps = {
             [`input-group-${this.size}`]: this.haveCustomSize
           }
         ]
-      }
-    }
-  }
-}
-
-export const validationComputedProps = {
-  computed: {
-    computedIsValid () {
-      if (typeof this.isValid === 'function') {
-        return this.isValid(this.state)
-      }
-      return this.isValid
-    },
-    validationClass () {
-      if (typeof this.computedIsValid === 'boolean') {
-        return this.computedIsValid ? 'is-valid' : 'is-invalid'
       }
     }
   }

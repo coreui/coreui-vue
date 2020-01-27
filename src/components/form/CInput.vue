@@ -156,11 +156,6 @@ export default {
     //   }
     // }
 
-    listeners () {
-      const { input, change, ...listeners } = this.$listeners; // eslint-disable-line no-unused-vars
-      return listeners;
-    },
-
     //wrapperComputedProps mixin
     // isHorizontal () {
     //   return Boolean(this.horizontal)
