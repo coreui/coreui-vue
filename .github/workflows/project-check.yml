@@ -1,11 +1,8 @@
-name: Node CI
+name: Project check
 
 on: 
   push:
   pull_request:
-  schedule:
-    # build runs everyday at 6AM UTC
-    - cron: '0 6 * * *'
 
 jobs:
   build:
