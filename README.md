@@ -19,6 +19,8 @@
 
 Check out demo of components usage: [CoreUI Vue Admin Template »](https://coreui.io/vue/demo/3.0-beta.1/#)
 
+![Template](https://coreui.io/images/github/vue-free-template-3.gif)
+
 ## Installation
 
 Before installation you need to install [node and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) on your machine.
