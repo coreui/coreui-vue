@@ -162,8 +162,8 @@ export default {
             name: 'preventOverflow',
             options: {
               padding: 10
-            },
-          },
+            }
+          }
         ]
       }
     },

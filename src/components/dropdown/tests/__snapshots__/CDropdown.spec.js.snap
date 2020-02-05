@@ -61,7 +61,7 @@ exports[`CDropdown renders custom wrapper correctly 1`] = `
     data-popper-escaped=""
     data-popper-placement="right-end"
     data-popper-reference-hidden=""
-    style="position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 0px);"
+    style="position: absolute; left: 0px; top: 0px; margin: 0px; transform: translate(0px, 20px);"
   >
     CDropdown subcomponents
   </div>
