@@ -111,13 +111,8 @@ export default {
   },
   methods: {
     sidebarClick (e) {
-      const hiddingElementClicked = e.target.className.includes('c-sidebar-nav-link')
-      if (
-        hiddingElementClicked &&
-        this.hideOnMobileClick &&
-        this.isOnMobile()
-      ) {
-        this.closeSidebar()
+      if (this.hideOnMobileClick && this.isOnMobile()) {
+        e.target.closest('a.c-sidebar-nav-link') ? this.closeSidebar() : null
       }
     },
     closeSidebar () {
