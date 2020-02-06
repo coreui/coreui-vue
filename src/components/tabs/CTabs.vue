@@ -4,7 +4,7 @@
       <ul :class="navClasses">
         <CTabNav
           v-for="(tab, key) in ctabInstances"
-          @click.native="tabClick(tab)"
+          @click.native="tabClick(tab, key)"
           v-bind="tab.$attrs"
           :title="tab.title"
           :custom-title-slot="tab.$scopedSlots.title"
@@ -130,9 +130,10 @@ export default {
     this.defaultSlotNodes = this.$slots.default
   },
   methods: {
-    tabClick (tab) {
+    tabClick (tab, key) {
       if (!tab.disabled) {
         this.activatedTab = tab
+        this.$emit('update:show', key)
       }
     }
   }
