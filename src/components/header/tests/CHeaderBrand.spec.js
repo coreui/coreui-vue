@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils'
-import Component from '../CSidebarBrand'
-const ComponentName = 'CSidebarBrand'
+import Component from '../CHeaderBrand'
+
+const ComponentName = 'CHeaderBrand'
 const wrapper = mount(Component)
 const linkWrapper = mount(Component, {
   propsData: {
@@ -8,7 +9,7 @@ const linkWrapper = mount(Component, {
   }
 })
 
-describe(ComponentName, () => {
+describe(`${ComponentName} .vue`, () => {
   it('has a name', () => {
     expect(Component.name).toMatch(ComponentName)
   })
