@@ -15,7 +15,7 @@ export function propsFactory () {
     //these are router-link component props (default active class changed)
     activeClass: {
       type: String,
-      default: 'active'
+      default: 'router-link-active'
     },
     append: Boolean,
     event: {
@@ -25,7 +25,7 @@ export function propsFactory () {
     exact: Boolean,
     exactActiveClass: {
       type: String,
-      default: 'active'
+      default: 'router-link-exact-active'
     },
     replace: Boolean,
     routerTag: {

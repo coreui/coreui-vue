@@ -18,6 +18,12 @@ exports[`CSidebar .vue renders correctly 2`] = `
     >
       link
     </a>
+    <a
+      class="c-sidebar-nav-dropdown"
+      href="/some-path"
+    >
+      link
+    </a>
   </div>
   <div
     class="view"

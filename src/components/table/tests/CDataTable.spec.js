@@ -5,13 +5,13 @@ const ComponentName = 'CDataTable'
 const defaultWrapper = mount(Component)
 
 const items = [
-  {username: 'Estavan Lykos', registered: '2012/02/01', role: 'Staff', status: 'Banned'},
-  {username: 'Chetan Mohamed', registered: '2012/02/01', role: 'Admin', status: 'Inactive'},
-  {username: 'Derick Maximinus', registered: '2012/03/01', role: 'Member', status: 'Pending'},
-  {username: 'Yiorgos Avraamu', registered: '2012/01/01', role: 'Member', status: 'Active'},
+  {username: 'Estavan Lykos', registered: 2014, role: 'Staff', status: 'Banned'},
+  {username: 'Chetan Mohamed', registered: 2011, role: 'Admin', status: 'Inactive'},
+  {username: 'Derick Maximinus', registered: 212, role: 'Member', status: 'Pending'},
+  {username: 'Yiorgos Avraamu', registered: 2013, role: 'Member', status: 'Active'},
   {
     username: 'Friderik Dávid', 
-    registered: '2011/01/21',
+    registered: 1999,
     role: 'Staff', 
     status: 'Active',
     _cellClasses: { registered: 'custom-cell-class' }
@@ -45,7 +45,7 @@ function createCustomWrapper () {
       columnFilter: true,
       footer: true,
       sorterValue: { column: 'username', asc: false },
-      columnFilterValue: { registered: '2012', 'non_existing': 'smh' },
+      columnFilterValue: { registered: '2', 'non_existing': 'smh' },
       pagination: true
     }
   })
@@ -68,6 +68,9 @@ describe(ComponentName, () => {
 
     customWrapper.find('tr').findAll('th').at(3).trigger('click')
     expect(customWrapper.vm.sortedItems[0].status).toBe('Pending')
+
+    customWrapper.find('tr').findAll('th').at(1).trigger('click')
+    expect(customWrapper.vm.sortedItems[0].registered).toBe(212)
   })
   it('doesnt change sorter when clicked on not sortable column', () => {
     const oldSorterColumn = customWrapper.vm.sorter.column
@@ -91,15 +94,12 @@ describe(ComponentName, () => {
     customWrapper.find('tbody').find('tr').trigger('click')
     expect(customWrapper.emitted()['row-clicked']).toBeTruthy()
   })
-  it('correctly updates items', () => {
-    //test if watcher is not fired by coverage
+  it('correctly triggers items update', () => {
     const localWrapper = createCustomWrapper()
+    //set to cover branch, could not detect if computed prop is changed
     localWrapper.setProps({ items: items.slice() })
-    expect(localWrapper.vm.sortedItems.length).toBe(4)
-
-    const newItems = items.slice(0, 2)
-    localWrapper.setProps({ items: newItems })
-    expect(localWrapper.vm.sortedItems.length).toBe(2)
+    localWrapper.setProps({ items: null })
+    expect(localWrapper.vm.columnFiltered.length).toBe(0)
   })
   it('updates column filter on events depending on lazy modifier', () => {
     const localWrapper = createCustomWrapper()

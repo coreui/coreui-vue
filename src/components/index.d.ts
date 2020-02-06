@@ -315,6 +315,7 @@ export declare class CIcon extends Vue {
   size: string
   customClasses: string | Array<any> | object
   src: string
+  use: string
 }
 
 export declare class CImg extends Vue {

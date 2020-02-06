@@ -298,11 +298,12 @@ export default {
     },
     items (val, oldVal) {
       if (
-        val.length !== oldVal.length ||
-        JSON.stringify(val) !== JSON.stringify(oldVal)
+        val && oldVal && val.length === oldVal.length && 
+        JSON.stringify(val) === JSON.stringify(oldVal)
       ) {
-        this.passedItems = val
+        return
       }
+      this.passedItems = val || []
     },
     totalPages: {
       immediate: true,
@@ -313,7 +314,7 @@ export default {
   },
   computed: {
     columnFiltered () {
-      let items = this.passedItems.slice()
+      let items = this.passedItems
       if (this.columnFilter && this.columnFilter.external) {
         return items
       }
@@ -333,7 +334,7 @@ export default {
       })
     },
     tableFiltered () {
-      let items = this.columnFiltered.slice()
+      let items = this.columnFiltered
       if (!this.tableFilterState || (this.tableFilter && this.tableFilter.external)) {
         return items
       }
@@ -349,10 +350,15 @@ export default {
       if (!col || !this.rawColumnNames.includes(col) || this.sorter.external) {
         return this.tableFiltered
       }
+
       //if values in column are to be sorted by numeric value they all have to be type number
       const flip = this.sorterState.asc ? 1 : -1
-      return this.tableFiltered.slice().sort((a,b) => {
-        return (a[col] > b[col]) ? 1 * flip : ((b[col] > a[col]) ? -1 * flip : 0)
+      return this.tableFiltered.slice().sort((item , item2) => {
+        const value  = item[col]
+        const value2 = item2[col]
+        const a = typeof value === 'number' ? value : String(value)
+        const b = typeof value2 === 'number' ? value2 : String(value2)
+        return a > b ? 1 * flip : b > a ? -1 * flip : 0
       })
     },
     firstItemIndex () {

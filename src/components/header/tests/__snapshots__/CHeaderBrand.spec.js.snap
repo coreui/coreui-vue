@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CHeaderBrand .vue renders correctly as div 1`] = `
+<div
+  class="c-header-brand"
+/>
+`;
+
+exports[`CHeaderBrand .vue renders correctly as link 1`] = `
+<a
+  class="c-header-brand"
+  href="https://coreui.io"
+  target="_self"
+/>
+`;

@@ -27,7 +27,7 @@ const btnProps = {
     default: null
   }
 }
-export const props = Object.assign(linkPropsFactory(), btnProps)
+const props = Object.assign(linkPropsFactory(), btnProps)
 
 // Helper functons to minimize runtime memory footprint when lots of buttons on page(TODO: check it)
 function isLink (props) {
