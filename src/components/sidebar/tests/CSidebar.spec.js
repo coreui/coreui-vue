@@ -37,7 +37,16 @@ const App = Vue.extend({
           }
         },
         ['link']
-      )
+      ),
+      h(
+        'a', {
+          attrs: {
+            href: '/some-path',
+            class: 'c-sidebar-nav-dropdown'
+          }
+        },
+        ['link']
+      ),
     ])
     const View = h('div', { attrs: { class: 'view' }}, ['content'])
     return h('div', [
@@ -60,15 +69,19 @@ describe(`${ComponentName} .vue`, () => {
     expect(sidebarWrapper.element).toMatchSnapshot()
   })
   it('close sidebar on CSidebarNavLink click when in mobile width', () => {
-    //for isOnMobileFunction be be called
-    sidebarWrapper.find('a').trigger('click')
-
+    //cover branch, css vars not included in tests yet
+    sidebarComponent.isOnMobile()
+    //for isOnMobileFunction be called
     sidebarComponent.isOnMobile = () => sidebarComponent.bodyWidth < 768
+    const sidebarClick = (className) => {
+      sidebarWrapper.find(`a.c-sidebar-nav-${className}`).trigger('click')
+    }
     sidebarComponent.bodyWidth = 1300
-    sidebarWrapper.find('a').trigger('click')
-    expect(sidebarComponent.open).toBe(true)
+    sidebarClick('link')
     sidebarComponent.bodyWidth = 200
-    sidebarWrapper.find('a').trigger('click')
+    sidebarClick('dropdown')
+    expect(sidebarComponent.open).toBe(true)
+    sidebarClick('link')
     expect(sidebarComponent.open).toBe('responsive')
   })
   it('watches for prop changes', () => {
