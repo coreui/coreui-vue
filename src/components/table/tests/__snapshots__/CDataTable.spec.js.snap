@@ -74,7 +74,7 @@ exports[`CDataTable renders correctly 2`] = `
       </label>
        
       <input
-        class="form-control table-filter"
+        class="form-control"
         placeholder="type string..."
         type="text"
       />
@@ -256,28 +256,28 @@ exports[`CDataTable renders correctly 2`] = `
             class="user-custom-class"
           >
             <input
-              class="w-100 table-filter"
+              class="form-control form-control-sm"
             />
           </th>
           <th
             class=""
           >
             <input
-              class="w-100 table-filter"
+              class="form-control form-control-sm"
             />
           </th>
           <th
             class=""
           >
             <input
-              class="w-100 table-filter"
+              class="form-control form-control-sm"
             />
           </th>
           <th
             class=""
           >
             <input
-              class="w-100 table-filter"
+              class="form-control form-control-sm"
             />
           </th>
           <th

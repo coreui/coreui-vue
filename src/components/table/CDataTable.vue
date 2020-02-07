@@ -7,7 +7,7 @@
       >
         <label class="mr-2">{{tableFilterData.label}}</label>
         <input
-          class="form-control table-filter"
+          class="form-control"
           type="text"
           :placeholder="tableFilterData.placeholder"
           @input="tableFilterChange($event.target.value, 'input')"
@@ -80,7 +80,7 @@
                 <slot :name="`${rawColumnNames[index]}-filter`">
                   <input
                     v-if="!fields || fields[index].filter !== false"
-                    class="w-100 table-filter"
+                    class="form-control form-control-sm"
                     @input="columnFilterEvent(colName, $event.target.value, 'input')"
                     @change="columnFilterEvent(colName, $event.target.value, 'change')"
                     :value="columnFilterState[colName]"
@@ -523,6 +523,10 @@ export default {
 </script>
 
 <style scoped>
+thead tr:not(:last-child) th {
+  border-bottom: 1px;
+}
+
 .transparent {
   opacity: 0.4;
 }
