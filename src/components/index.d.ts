@@ -587,12 +587,11 @@ export declare class CTabs extends Vue {
   addTabsWrapperClasses: string | Array<any> | object
   addTabsClasses: string | Array<any> | object
   addTabClasses: string | Array<any> | object
+  activeTab: number
 }
 
-export declare class CTab extends Vue {
-  title: string 
-  active: boolean
-  disabled: boolean
+export declare class CTab extends CLink {
+  title: string
 }
 
 declare class ToastProps extends Vue {

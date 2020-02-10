@@ -23,7 +23,6 @@ const defaultWrapper = mount(CTabs)
 //     default: [CTab, CTab, customTab]
 //   }
 // })
-
 const App = Vue.extend({
   components: { CTabs, CTab },
   render (h) {
@@ -44,8 +43,8 @@ const App = Vue.extend({
         }
       }, 
       [
-        h('CTab', { props: { active: true, title: 'tab1' }}, ['tab1 content']),
-        h('CTab', { props: { title: 'tab2' }}, ['tab2 content']),
+        h('CTab', { props: { title: 'tab1' }}, ['tab1 content']),
+        h('CTab', { props: { active: true, title: 'tab2' }}, ['tab2 content']),
         h('CTab', { props: { title: 'tab3' }}),
         h(
           'CTab',
@@ -63,6 +62,7 @@ const App = Vue.extend({
 })
 
 const customWrapper = mount(App)
+const tabsComponent = customWrapper.vm.$children[0]
 
 describe(ComponentName, () => {
   it('has a name', () => {
@@ -79,10 +79,14 @@ describe(ComponentName, () => {
     tabs.at(3).trigger('click')
     expect(customWrapper.find('.tab-pane').text()).toBe('tab1 content')
   })
-  it('changes tab on click', () => {
+  it('changes active tab corectly', () => {
     const tabs = customWrapper.findAll('.nav-item')
     tabs.at(2).trigger('click')
-    expect(customWrapper.find('.tab-pane').text()).toBe('')
+    expect(tabsComponent.activeTabIndex).toBe(2)
+    defaultWrapper.setProps({
+      activeTab: 1
+    })
+    expect(defaultWrapper.vm.activeTabIndex).toBe(1)
   })
   it('properly changes vertical classes', () => {
     defaultWrapper.setProps({ vertical: true })

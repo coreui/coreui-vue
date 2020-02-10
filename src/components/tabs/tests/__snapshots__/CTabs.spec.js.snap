@@ -17,11 +17,8 @@ exports[`CTabs renders correctly 1`] = `
   >
     <div
       class="tab-content"
-    >
-      <!---->
-    </div>
+    />
   </div>
-   
 </div>
 `;
 
@@ -39,7 +36,7 @@ exports[`CTabs renders correctly 2`] = `
         class="nav-item"
       >
         <a
-          class="nav-link active"
+          class="nav-link"
           href="#"
           target="_self"
         >
@@ -50,7 +47,7 @@ exports[`CTabs renders correctly 2`] = `
         class="nav-item"
       >
         <a
-          class="nav-link"
+          class="nav-link active"
           href="#"
           target="_self"
         >
@@ -81,6 +78,9 @@ exports[`CTabs renders correctly 2`] = `
           tab 4
         </a>
       </li>
+      <div>
+        ignored element
+      </div>
     </ul>
   </div>
    
@@ -91,21 +91,38 @@ exports[`CTabs renders correctly 2`] = `
       class="additional-tabs-class tab-content pl-3 p-0"
     >
       <div
+        class="additional-tab-class tab-pane"
+        mode="out-in"
+        name="fade"
+        style="display: none;"
+      >
+        tab1 content
+      </div>
+      <div
         class="additional-tab-class tab-pane active"
         mode="out-in"
         name="fade"
       >
-        tab1 content
+        tab2 content
+      </div>
+      <div
+        class="additional-tab-class tab-pane"
+        mode="out-in"
+        name="fade"
+        style="display: none;"
+      />
+      <div
+        class="additional-tab-class tab-pane"
+        mode="out-in"
+        name="fade"
+        style="display: none;"
+      >
+        disabled tab
+      </div>
+      <div>
+        ignored element
       </div>
     </div>
-  </div>
-   
-  <!---->
-  <!---->
-  <!---->
-  <!---->
-  <div>
-    ignored element
   </div>
 </div>
 `;

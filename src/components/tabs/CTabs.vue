@@ -1,49 +1,43 @@
 <template>
   <div :class="wrapperClasses">
     <div :class="navWrapperClasses">
-      <ul :class="navClasses">
-        <CTabNav
-          v-for="(tab, key) in ctabInstances"
-          @click.native="tabClick(tab, key)"
-          v-bind="tab.$attrs"
-          :title="tab.title"
-          :custom-title-slot="tab.$scopedSlots.title"
-          :active="tab === activeTab"
-          :disabled="tab.disabled"
-          :key="key"
-        />
-      </ul>
+      <CDistributor 
+        tag="ul" 
+        :class="navClasses" 
+        :header="true"
+        :changeTabTo="changeTabTo"
+      >
+        <slot></slot>
+      </CDistributor>
     </div>
     <div :class="[addTabsWrapperClasses, gridClasses.content]">
-      <div :class="tabsClasses">
-        <transition :name="fade ? 'fade' : ''" mode="out-in">
-          <KeepAlive>
-            <template v-for="(tab, key) in ctabInstances">
-              <CTabContent
-                v-if="activeTab === tab"
-                :content="tab.$scopedSlots.default"
-                :key="key"
-                :class="[addTabClasses, 'tab-pane active']"
-              />
-            </template>
-          </KeepAlive>
-        </transition>
-      </div>
+      <CDistributor
+        :class="tabsClasses" 
+        :addClasses="addTabClasses"
+      >
+        <slot></slot>
+      </CDistributor>
     </div>
-    <!-- needed to instantiate CTab components, shouldn't render anything -->
-    <slot></slot>
   </div>
 </template>
 
 <script>
-import CTabNav from './CTabNav'
-import CTabContent from './CTabContent'
+import CDistributor from './CDistributor'
 
 export default {
   name: 'CTabs',
   components: {
-    CTabNav,
-    CTabContent
+    CDistributor
+  },
+  provide () {
+    const tabs = {}
+    Object.defineProperty(tabs, 'activeTab', {
+      get: () => this.activeTabIndex
+    })
+    Object.defineProperty(tabs, 'fade', {
+      get: () => this.fade
+    })
+    return { tabs }
   },
   props: {
     fill: Boolean,
@@ -62,12 +56,17 @@ export default {
     addNavClasses: [String, Array, Object],
     addTabsWrapperClasses: [String, Array, Object],
     addTabsClasses: [String, Array, Object],
-    addTabClasses: [String, Array, Object]
+    addTabClasses: [String, Array, Object],
+    activeTab: Number
   },
   data () {
     return {
-      defaultSlotNodes: null,
-      activatedTab: null
+      activeTabIndex: this.activeTab
+    }
+  },
+  watch: {
+    activeTab (val) {
+      this.activeTabIndex = val
     }
   },
   computed: {
@@ -100,51 +99,21 @@ export default {
         }
       ]
     },
-    activeTab () {
-      return this.activatedTab || this.ctabInstances.filter(el => el.active)[0]
-    },
     gridClasses () {
       if (this.vertical === true) {
         return { navs: 'col-sm-4', content: 'col-sm-8'}
       } else {
         return this.vertical || {}
       }
-    },
-    ctabInstances () {
-      if (this.defaultSlotNodes) {
-        return this.defaultSlotNodes.map(node => {
-          const instance = node.componentInstance
-          if (instance && instance.$options._componentTag === 'CTab') {
-            return instance
-          }
-        }).filter(el => el)
-      } else {
-        return []
-      }
     }
   },
-  mounted () {
-    this.defaultSlotNodes = this.$slots.default
-  },
-  updated () {
-    this.defaultSlotNodes = this.$slots.default
-  },
   methods: {
-    tabClick (tab, key) {
-      if (!tab.disabled) {
-        this.activatedTab = tab
-        this.$emit('update:show', key)
-      }
+    changeTabTo (tab) {
+      this.activeTabIndex = tab
+      this.$emit('update:activeTab', tab)
     }
   }
 }
 </script>
 
-<style scoped>
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .3s;
-  }
-  .fade-enter, .fade-leave-to {
-    opacity: 0;
-  }
-</style>
+
