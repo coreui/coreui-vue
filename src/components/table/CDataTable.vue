@@ -353,11 +353,11 @@ export default {
 
       //if values in column are to be sorted by numeric value they all have to be type number
       const flip = this.sorterState.asc ? 1 : -1
-      return this.tableFiltered.slice().sort((item , item2) => {
+      return this.tableFiltered.slice().sort((item, item2) => {
         const value  = item[col]
         const value2 = item2[col]
-        const a = typeof value === 'number' ? value : String(value)
-        const b = typeof value2 === 'number' ? value2 : String(value2)
+        const a = typeof value === 'number' ? value : String(value).toLowerCase()
+        const b = typeof value2 === 'number' ? value2 : String(value2).toLowerCase()
         return a > b ? 1 * flip : b > a ? -1 * flip : 0
       })
     },
