@@ -17,12 +17,14 @@ export default {
   getTooltipConfig (binding) {
     const props = binding.value
     const title = props.content || props
+    const html = props.html === false ? false : true
     // const modifiersTriggers = String(Object.keys(binding.modifiers)).replace(',',' ')
     const closeOnClickOutside = props.closeOnClickOutside === false ? false : true
+    const popperOptions = props.popperOptions || { modifiers: { preventOverflow: { boundariesElement: 'offsetParent' }}}
     return {
       title,
       trigger: 'hover',
-      html: true,
+      html,
       placement: props.placement || 'top',
       delay: props.delay || 0,
       offset: props.offset || 0,
@@ -32,7 +34,7 @@ export default {
       boundariesElement: document.getElementById(props.boundaries) || props.boundaries,
       container: props.appendToBody ? document.body : false,
       closeOnClickOutside,
-      popperOptions: props.popperOptions
+      popperOptions
     }
   },
   getTemplate () {

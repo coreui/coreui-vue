@@ -30,10 +30,7 @@ const modifiersTooltip = {
     content: 'modifiersTooltip',
     active: true,
     appendToBody: true,
-  },
-  modifiers: {
-    click: true,
-    hover: true
+    html: false
   }
 }
 

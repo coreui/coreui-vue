@@ -23,6 +23,7 @@ export default {
     // const modifiersTriggers = String(Object.keys(binding.modifiers)).replace(',',' ')
     const closeOnClickOutside = props.closeOnClickOutside === false ? false : true
     const html = props.html === false ? false : true
+    const popperOptions = props.popperOptions || { modifiers: { preventOverflow: { boundariesElement: 'offsetParent' }}}
     return {
       title,
       trigger: 'click',
@@ -36,7 +37,7 @@ export default {
       boundariesElement: document.getElementById(props.boundaries) || props.boundaries,
       container: props.appendToBody ? document.body : false,
       closeOnClickOutside,
-      popperOptions: props.popperOptions
+      popperOptions
     }
   },
   getTemplate (header) {
