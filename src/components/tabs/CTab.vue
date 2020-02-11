@@ -31,16 +31,13 @@ const props = Object.assign(propsFactory(), {
 
 export default {
   name: 'CTab',
-  inject: ['distributed', 'tabs'],
+  inject: ['distributed', 'tabs', 'initialTab'],
   components: {
     CLink
   },
   beforeMount () {
     this.index = Array.from(this.$parent.$children).indexOf(this)
-    if (
-      this.active && this.distributed.header 
-      && typeof this.tabs.activeTab !== 'number'
-    ) {
+    if (this.active && this.distributed.header && this.initialTab === undefined) {
       this.distributed.changeTabTo(this.index)
     }
   },

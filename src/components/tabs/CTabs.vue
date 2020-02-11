@@ -37,7 +37,7 @@ export default {
     Object.defineProperty(tabs, 'fade', {
       get: () => this.fade
     })
-    return { tabs }
+    return { tabs, initialTab: this.activeTab }
   },
   props: {
     fill: Boolean,
@@ -61,12 +61,12 @@ export default {
   },
   data () {
     return {
-      activeTabIndex: this.activeTab
+      activeTabIndex: this.activeTab || 0
     }
   },
   watch: {
     activeTab (val) {
-      this.activeTabIndex = val
+      this.activeTabIndex = val || 0
     }
   },
   computed: {

@@ -87,6 +87,10 @@ describe(ComponentName, () => {
       activeTab: 1
     })
     expect(defaultWrapper.vm.activeTabIndex).toBe(1)
+    defaultWrapper.setProps({
+      activeTab: null
+    })
+    expect(defaultWrapper.vm.activeTabIndex).toBe(0)
   })
   it('properly changes vertical classes', () => {
     defaultWrapper.setProps({ vertical: true })
