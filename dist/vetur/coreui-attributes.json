@@ -2607,6 +2607,14 @@
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
+  "c-icon/use": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CIcon/use": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
   "c-img/src": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
@@ -4343,6 +4351,14 @@
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string | Array<any> | object"
   },
+  "c-tabs/active-tab": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "number"
+  },
+  "CTabs/active-tab": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "number"
+  },
   "c-tab/title": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
@@ -4350,6 +4366,38 @@
   "CTab/title": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
+  },
+  "c-tab/href": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CTab/href": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-tab/rel": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CTab/rel": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-tab/target": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CTab/target": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-tab/disabled": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CTab/disabled": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
   },
   "c-tab/active": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -4359,13 +4407,69 @@
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
   },
-  "c-tab/disabled": {
+  "c-tab/active-class": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CTab/active-class": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-tab/append": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
   },
-  "CTab/disabled": {
+  "CTab/append": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
+  },
+  "c-tab/event": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any>"
+  },
+  "CTab/event": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any>"
+  },
+  "c-tab/exact": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CTab/exact": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-tab/exact-active-class": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CTab/exact-active-class": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-tab/replace": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CTab/replace": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-tab/router-tag": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CTab/router-tag": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-tab/to": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | object"
+  },
+  "CTab/to": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | object"
   },
   "c-toast/show": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",

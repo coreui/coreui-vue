@@ -5,7 +5,7 @@
 [![Downloads](https://img.shields.io/npm/dm/@coreui/vue.svg?style=flat-square)][coreui]
 [![Build](https://img.shields.io/github/workflow/status/coreui/coreui-vue/Node%20CI/v3-next?style=flat-square)][coreui]
 [![License](https://img.shields.io/npm/l/@coreui/vue?style=flat-square)][coreui]
-[![Coverage](https://img.shields.io/badge/test%20coverage%203.0.0--beta.10%20version-100%25-yellowgreen)][coreui]
+[![Coverage](https://img.shields.io/badge/test%20coverage%203.0.0--beta.11%20version-100%25-yellowgreen)][coreui]
 
 [npm-coreui-vue]: https://www.npmjs.com/package/@coreui/vue
 [npm-coreui-vue-badge-latest]: https://img.shields.io/npm/v/@coreui/vue/latest?style=flat-square&color=brightgreen  

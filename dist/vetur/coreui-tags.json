@@ -1103,7 +1103,8 @@
       "content",
       "size",
       "custom-classes",
-      "src"
+      "src",
+      "use"
     ],
     "description": ""
   },
@@ -1113,7 +1114,8 @@
       "content",
       "size",
       "custom-classes",
-      "src"
+      "src",
+      "use"
     ],
     "description": ""
   },
@@ -1856,7 +1858,8 @@
       "add-nav-classes",
       "add-tabs-wrapper-classes",
       "add-tabs-classes",
-      "add-tab-classes"
+      "add-tab-classes",
+      "active-tab"
     ],
     "description": ""
   },
@@ -1871,23 +1874,46 @@
       "add-nav-classes",
       "add-tabs-wrapper-classes",
       "add-tabs-classes",
-      "add-tab-classes"
+      "add-tab-classes",
+      "active-tab"
     ],
     "description": ""
   },
   "CTab": {
     "attributes": [
       "title",
+      "href",
+      "rel",
+      "target",
+      "disabled",
       "active",
-      "disabled"
+      "active-class",
+      "append",
+      "event",
+      "exact",
+      "exact-active-class",
+      "replace",
+      "router-tag",
+      "to"
     ],
     "description": ""
   },
   "c-tab": {
     "attributes": [
       "title",
+      "href",
+      "rel",
+      "target",
+      "disabled",
       "active",
-      "disabled"
+      "active-class",
+      "append",
+      "event",
+      "exact",
+      "exact-active-class",
+      "replace",
+      "router-tag",
+      "to"
     ],
     "description": ""
   },
