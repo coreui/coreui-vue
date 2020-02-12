@@ -39,6 +39,9 @@ import { mixin as clickaway } from 'vue-clickaway2'
 export default {
   name: 'CDropdown',
   mixins: [ clickaway ],
+  components: {
+    CLink
+  },
   props: {
     togglerText: {
       type: String,
