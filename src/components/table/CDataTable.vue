@@ -297,10 +297,7 @@ export default {
       }
     },
     items (val, oldVal) {
-      if (
-        val && oldVal && val.length === oldVal.length && 
-        JSON.stringify(val) === JSON.stringify(oldVal)
-      ) {
+      if (val && oldVal && this.objectsAreIdentical(val, oldVal)) {
         return
       }
       this.passedItems = val || []
@@ -309,6 +306,15 @@ export default {
       immediate: true,
       handler (val) {
         this.$emit('pages-change', val)
+      }
+    },
+    sortedItems: {
+      immediate: true,
+      handler (val, oldVal) {
+        if (val && oldVal && this.objectsAreIdentical(val, oldVal)) {
+          return
+        }
+        this.$emit('filtered-items-change', val)
       }
     }
   },
@@ -517,6 +523,10 @@ export default {
     paginationChange (e) {
       this.$emit('pagination-change', Number(e.target.value))
       this.perPageItems = Number(e.target.value)
+    },
+    objectsAreIdentical (obj1, obj2) {
+      return obj1.length === obj2.length && 
+             JSON.stringify(obj1) === JSON.stringify(obj2)
     }
   }
 }
