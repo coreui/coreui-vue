@@ -17,10 +17,11 @@ export default {
   components: {
     CLink
   },
+  inject: { nav: { default: {} }},
   props,
-  data () {
-    return {
-      isActive: this.disabled ? null : this.active
+  computed: {
+    isActive () {
+      return this.nav.active ? this.nav.active === this : this.active
     }
   }
 }
