@@ -671,4 +671,10 @@ export declare class CWidgetSimple extends Vue {
   text: string
 }
 
+export declare class CWrapper extends Vue {
+  fluid: boolean
+  tag: string
+}
+
+
 
