@@ -66,29 +66,17 @@ export default {
     show (val) {
       this.open = val
     },
-    open (val, oldVal) {
-      const backdrop = document.getElementsByClassName('c-sidebar-backdrop')[0]
-      if (val === true) {
-        backdrop.className = 'c-sidebar-backdrop c-show'
-      } else if (oldVal === true) {
-        backdrop.className = 'c-sidebar-backdrop d-none'
-      }
+    open (val) {
+      val === true ? this.createBackdrop() : this.removeBackdrop()
     }
   },
   mounted () {
-    const backdrop = document.createElement('div')
     if (this.open === true) {
-      backdrop.className = 'c-sidebar-backdrop c-show'
-    } else {
-      backdrop.className = 'c-sidebar-backdrop d-none'
+      this.createBackdrop()
     }
-    document.body.appendChild(backdrop)
-    backdrop.addEventListener('click', this.closeSidebar)
   },
   beforeDestroy () {
-    const backdrop = document.getElementsByClassName('c-sidebar-backdrop')[0]
-    backdrop.removeEventListener('click', this.closeSidebar)
-    document.body.removeChild(backdrop)
+    this.removeBackdrop()
   },
   computed: {
     sidebarClasses () {
@@ -116,11 +104,25 @@ export default {
       }
     },
     closeSidebar () {
-      this.open = 'responsive'
-      this.$emit('update:show', 'responsive')
+      this.open = this.overlaid ? false : 'responsive'
+      this.$emit('update:show', this.open)
     },
     isOnMobile () {
       return Boolean(getComputedStyle(this.$el).getPropertyValue('--is-mobile'))
+    },
+    createBackdrop () {
+      const backdrop = document.createElement('div')
+      backdrop.className = 'c-sidebar-backdrop c-show'
+      backdrop.id = this._uid + 'backdrop'
+      document.body.appendChild(backdrop)
+      backdrop.addEventListener('click', this.closeSidebar)
+    },
+    removeBackdrop () {
+      const backdrop = document.getElementById(this._uid + 'backdrop')
+      if (backdrop) {
+        backdrop.removeEventListener('click', this.closeSidebar)
+        document.body.removeChild(backdrop)
+      }
     }
   }
 }

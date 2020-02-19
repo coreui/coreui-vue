@@ -55,7 +55,8 @@ const App = Vue.extend({
   }
 })
 
-const sidebarWrapper = mount(App, { attachToDocument: true })
+const generateWrapper = () => mount(App, { attachToDocument: true })
+const sidebarWrapper = generateWrapper()
 const sidebarComponent = sidebarWrapper.vm.$children[0]
 
 describe(`${ComponentName} .vue`, () => {
@@ -84,6 +85,18 @@ describe(`${ComponentName} .vue`, () => {
     sidebarClick('link')
     expect(sidebarComponent.open).toBe('responsive')
   })
+  it('closes sidebar on backdrop click', () => {
+    const customWrapper = generateWrapper()
+    const customComponent = customWrapper.vm.$children[0]
+    customWrapper.setData({
+      props: {
+        overlaid: true,
+      }
+    })
+    expect(customComponent.open).toBe(true)
+    document.getElementById(customComponent._uid + 'backdrop').click()
+    expect(customComponent.open).toBe(false)
+  })
   it('watches for prop changes', () => {
     sidebarWrapper.setData({
       props: {
@@ -100,11 +113,11 @@ describe(`${ComponentName} .vue`, () => {
   })
   it('properly destroys sidebar', () => {
     const currentBackdropNumber = () => {
-      return document.getElementsByClassName('c-sidebar-backdrop').length
+      return document.getElementById(sidebarComponent._uid + 'backdrop')
     }
-    expect(currentBackdropNumber()).toBe(2)
+    expect(currentBackdropNumber()).not.toBe(null)
     sidebarWrapper.destroy()
     wrapper.destroy()
-    expect(currentBackdropNumber()).toBe(0)
+    expect(currentBackdropNumber()).toBe(null)
   })
 })
