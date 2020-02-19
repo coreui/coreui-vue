@@ -14,7 +14,7 @@
     "./src/components/scrollbar/CScrollbar.vue",
     "./src/components/alert/CAlert.vue",
     "./src/components/table/CDataTable.vue",
-    "./src/components/tabs/CTabs.vue",
+    "./src/components/tabs/CTab.vue",
     "./src/components/toast/CCarousel.vue"
   ],
   "homepage": "https://coreui.io",
