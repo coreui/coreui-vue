@@ -20,6 +20,8 @@ import CSidebarNavDropdown from './CSidebarNavDropdown'
 import CSidebarNavItem from './CSidebarNavItem'
 import CSidebarNavTitle from './CSidebarNavTitle'
 
+import CWrapper from './CWrapper'
+
 export {
   CFooter,
 
@@ -41,5 +43,7 @@ export {
   CSidebarNavDivider,
   CSidebarNavDropdown,
   CSidebarNavItem,
-  CSidebarNavTitle
+  CSidebarNavTitle,
+
+  CWrapper
 }

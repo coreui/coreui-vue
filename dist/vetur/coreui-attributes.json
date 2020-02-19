@@ -4830,5 +4830,21 @@
   "CWidgetSimple/text": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
+  },
+  "c-wrapper/fluid": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CWrapper/fluid": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-wrapper/tag": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CWrapper/tag": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
   }
 }

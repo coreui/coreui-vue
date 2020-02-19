@@ -2116,5 +2116,19 @@
       "text"
     ],
     "description": ""
+  },
+  "CWrapper": {
+    "attributes": [
+      "fluid",
+      "tag"
+    ],
+    "description": ""
+  },
+  "c-wrapper": {
+    "attributes": [
+      "fluid",
+      "tag"
+    ],
+    "description": ""
   }
 }

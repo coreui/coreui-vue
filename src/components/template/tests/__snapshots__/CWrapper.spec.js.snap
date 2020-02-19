@@ -2,6 +2,6 @@
 
 exports[`CWrapper.vue renders correctly 1`] = `
 <div
-  class="c-wrapper c-fixed-components"
+  class="c-wrapper"
 />
 `;
