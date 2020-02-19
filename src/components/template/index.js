@@ -1,3 +1,12 @@
+import CFooter from './CFooter'
+
+import CHeader from './CHeader'
+import CHeaderBrand from './CHeaderBrand'
+import CHeaderNav from './CHeaderNav'
+import CHeaderNavItem from './CHeaderNavItem'
+import CHeaderNavLink from './CHeaderNavLink'
+import CSubheader from './CSubheader'
+
 import CSidebar from './CSidebar'
 import CSidebarBrand from './CSidebarBrand'
 import CSidebarClose from './CSidebarClose'
@@ -12,6 +21,15 @@ import CSidebarNavItem from './CSidebarNavItem'
 import CSidebarNavTitle from './CSidebarNavTitle'
 
 export {
+  CFooter,
+
+  CHeader,
+  CHeaderBrand,
+  CHeaderNav,
+  CHeaderNavItem,
+  CHeaderNavLink,
+  CSubheader,
+
   CSidebar,
   CSidebarBrand,
   CSidebarClose,

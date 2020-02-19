@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
-import CSidebarNav from '../../sidebar/CSidebarNav'
-import CSidebar from '../../sidebar/CSidebar'
+import CSidebarNav from '../../template/CSidebarNav'
+import CSidebar from '../../template/CSidebar'
 import Component from '../CScrollbar'
 import Vue from 'vue'
 
