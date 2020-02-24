@@ -17,7 +17,7 @@
 
 ### For library guide please visit our [Documentation site »](https://coreui.io/vue/docs)
 
-Check out demo of components usage: [CoreUI Vue Admin Template »](https://coreui.io/vue/demo/3.0-beta.1/#)
+Check out demo of components usage: [CoreUI Vue Admin Template »](https://coreui.io/vue/demo)
 
 ![Template](https://coreui.io/images/github/vue-free-template-3.gif)
 
