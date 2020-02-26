@@ -2,7 +2,7 @@
   <component 
     :is="inNav ? 'li' : 'div'" 
     :class="computedDropdownClasses"
-    v-on-clickaway="hide"
+    v-c-clickaway="visible ? hide : null"
     @click="checkClick($event)"
   >
     <slot name="toggler">
@@ -34,11 +34,13 @@
 <script>
 import CLink from '../link/CLink'
 import { createPopper } from '@popperjs/core'
-import { mixin as clickaway } from 'vue-clickaway2'
+import { CClickaway } from '../../directives'
 
 export default {
   name: 'CDropdown',
-  mixins: [ clickaway ],
+  directives: {
+    CClickaway
+  },
   components: {
     CLink
   },

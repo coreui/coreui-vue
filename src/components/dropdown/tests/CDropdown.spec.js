@@ -6,24 +6,15 @@ const localVue = new createLocalVue()
 localVue.use(VueRouter)
 const router = new VueRouter()
 
-//needed for @popperjs/core
-global.document.createRange = () => ({
-  setStart: () => {},
-  setEnd: () => {},
-  commonAncestorContainer: {
-    nodeName: 'BODY',
-    ownerDocument: document,
-  },
-})
-
-const ComponentName = 'CDropdown'
 const wrapper = mount(Component, {
   router,
   localVue
 })
 
-const customWrapper = mount(Component, {
+const ComponentName = 'CDropdown'
 
+const generateWrapper = () => mount(Component, {
+  attachToDocument: true,
   propsData: {
     togglerText: 'Dropdown button',
     show: true,
@@ -43,7 +34,7 @@ const customWrapper = mount(Component, {
   }
 })
 
-const navWrapper = mount(Component, {
+const generateNavWrapper =  () => mount(Component, {
   propsData: {
     addMenuClasses: 'additional-menu-class',
     addTogglerClasses: 'additional-toggler-class',
@@ -68,31 +59,10 @@ describe(ComponentName, () => {
     expect(wrapper.element).toMatchSnapshot()
   })
   it('renders custom wrapper correctly', () => {
-    expect(customWrapper.element).toMatchSnapshot()
+    expect(generateWrapper().element).toMatchSnapshot()
   })
   it('renders correctly inNav', () => {
-    expect(navWrapper.element).toMatchSnapshot()
-  })
-  it('properly toggle dropdown', () => {
-    const toggle = () => {
-      jest.useFakeTimers()
-      wrapper.find('button').trigger('click')
-      jest.runAllTimers()
-    }
-    const hide = () => {
-      jest.useFakeTimers()
-      wrapper.vm.hide()
-      jest.runAllTimers()
-    }
-
-    expect(wrapper.vm.visible).toBe(false)
-    toggle()
-    expect(wrapper.vm.visible).toBe(true)
-    //mimics v-on-clickaway
-    hide()
-    expect(wrapper.vm.visible).toBe(false)
-    hide()
-    expect(wrapper.vm.visible).toBe(false)
+    expect(generateNavWrapper().element).toMatchSnapshot()
   })
   it('toggles when show prop is changed', () => {
     expect(wrapper.vm.visible).toBe(false)
@@ -104,25 +74,34 @@ describe(ComponentName, () => {
     wrapper.vm.$router.push('new-route-name')
     expect(wrapper.vm.visible).toBe(false)
   })
-  it('does not open when dropdown is disabled', () => {
+  it('close, but does not open on click when dropdown is disabled', () => {
+    const customWrapper = generateWrapper()
     const toggle = () => {
-      jest.useFakeTimers()
       customWrapper.find('.dropdown-toggle-split').trigger('click')
-      jest.runAllTimers()
     }
-    
+
     expect(customWrapper.vm.visible).toBe(true)
-    customWrapper.setProps({ disabled: true })
+    customWrapper.setProps({
+      disabled: true
+    })
     toggle()
     expect(customWrapper.vm.visible).toBe(false)
     toggle()
+    expect(customWrapper.vm.visible).toBe(false)
+  }) 
+  it('Closes dropdown on outside click', () => {
+    const customWrapper = generateWrapper()
+
+    expect(customWrapper.vm.visible).toBe(true)
+    customWrapper.vm.$el.getElementsByClassName('dropdown-menu')[0].click()
+    expect(customWrapper.vm.visible).toBe(true)
+    document.body.click()
     expect(customWrapper.vm.visible).toBe(false)
   })
   it('opens then toggler is passed by slot', () => {
+    const navWrapper = generateNavWrapper()
     const toggle = () => {
-      jest.useFakeTimers()
       navWrapper.find('.toggler').trigger('click')
-      jest.runAllTimers()
     }
 
     expect(navWrapper.vm.visible).toBe(false)
