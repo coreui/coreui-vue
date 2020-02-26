@@ -1,9 +1,11 @@
+import CClickaway from './CClickaway'
+import CEmitRootEvent from './CEmitRootEvent'
 import CPopover from './CPopover'
 import CTooltip from './CTooltip'
-import CEmitRootEvent from './CEmitRootEvent'
 
-export{
+export {
+  CClickaway,
+  CEmitRootEvent,
   CPopover,
-  CTooltip,
-  CEmitRootEvent
+  CTooltip
 }
