@@ -66,15 +66,18 @@ export default {
     show (val) {
       this.open = val
     },
-    open (val) {
-      val === true ? this.createBackdrop() : this.removeBackdrop()
+    open: {
+      immediate: true,
+      handler (val) {
+        val === true ? this.createBackdrop() : this.removeBackdrop()
+      }
     }
   },
-  mounted () {
-    if (this.open === true) {
-      this.createBackdrop()
-    }
-  },
+  // mounted () {
+  //   if (this.open === true) {
+  //     this.createBackdrop()
+  //   }
+  // },
   beforeDestroy () {
     this.removeBackdrop()
   },
@@ -110,16 +113,29 @@ export default {
     isOnMobile () {
       return Boolean(getComputedStyle(this.$el).getPropertyValue('--is-mobile'))
     },
+    sidebarCloseListener (e) {
+      if (
+        document.getElementById(this._uid + 'backdrop') &&
+        !this.$el.contains(e.target)
+      ) {
+        this.closeSidebar()
+      }
+    },
     createBackdrop () {
       const backdrop = document.createElement('div')
+      if (this.overlaid) {
+        document.addEventListener('click', this.sidebarCloseListener, true)
+      } else {
+        backdrop.addEventListener('click', this.closeSidebar)
+      }
       backdrop.className = 'c-sidebar-backdrop c-show'
       backdrop.id = this._uid + 'backdrop'
       document.body.appendChild(backdrop)
-      backdrop.addEventListener('click', this.closeSidebar)
     },
     removeBackdrop () {
       const backdrop = document.getElementById(this._uid + 'backdrop')
       if (backdrop) {
+        document.removeEventListener('click', this.sidebarCloseListener)
         backdrop.removeEventListener('click', this.closeSidebar)
         document.body.removeChild(backdrop)
       }

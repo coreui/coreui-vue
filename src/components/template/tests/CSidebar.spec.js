@@ -85,16 +85,24 @@ describe(`${ComponentName} .vue`, () => {
     sidebarClick('link')
     expect(sidebarComponent.open).toBe('responsive')
   })
-  it('closes sidebar on backdrop click', () => {
+  it('closes sidebar on outside click when overlaid', () => {
     const customWrapper = generateWrapper()
     const customComponent = customWrapper.vm.$children[0]
     customWrapper.setData({
       props: {
+        show: false
+      }
+    })
+    customWrapper.setData({
+      props: {
         overlaid: true,
+        show: true
       }
     })
     expect(customComponent.open).toBe(true)
-    document.getElementById(customComponent._uid + 'backdrop').click()
+    customComponent.$el.click()
+    expect(customComponent.open).toBe(true)
+    document.body.click()
     expect(customComponent.open).toBe(false)
   })
   it('watches for prop changes', () => {
