@@ -98,9 +98,9 @@
         >
           <template v-for="(item, itemIndex) in currentItems" >
             <tr
+              @click="rowClicked(item, itemIndex + firstItemIndex, $event)"
               :class="item._classes" 
               :tabindex="clickableRows ? 0 : null"
-              @click="rowClicked(item, itemIndex + firstItemIndex)"
               :key="itemIndex"
             >
               <template v-for="(colName, index) in rawColumnNames" >
@@ -121,6 +121,7 @@
             </tr>
             <tr
               v-if="$scopedSlots.details"
+              @click="rowClicked(item, itemIndex + firstItemIndex)"
               class="p-0"
               style="border:none !important"
               :key="'details' + itemIndex"
@@ -503,8 +504,17 @@ export default {
       }
       return style
     },
-    rowClicked (item, index) {
-      this.$emit('row-clicked', item, index)
+    rowClicked (item, index, e) {
+      this.$emit('row-clicked', item, index, this.getClickedColumnName(e))
+    },
+    getClickedColumnName (e) {
+      if (e) {
+        const children = Array.from(e.target.closest('tr').children)
+        const clickedCell = children.filter(child => child.contains(e.target))[0]
+        return this.rawColumnNames[children.indexOf(clickedCell)]
+      } else {
+        return 'details'
+      }
     },
     getIconState (index) {
       const direction = this.sorterState.asc ? 'asc' : 'desc'

@@ -329,7 +329,20 @@ exports[`CDataTable renders correctly 2`] = `
           </td>
         </tr>
          
-        <!---->
+        <tr
+          class="p-0"
+        >
+          <td
+            class="p-0"
+            colspan="5"
+          >
+            <div
+              class="details"
+            >
+              Details slot
+            </div>
+          </td>
+        </tr>
         <tr>
           <td
             class="user-custom-class"
@@ -368,7 +381,20 @@ exports[`CDataTable renders correctly 2`] = `
           </td>
         </tr>
          
-        <!---->
+        <tr
+          class="p-0"
+        >
+          <td
+            class="p-0"
+            colspan="5"
+          >
+            <div
+              class="details"
+            >
+              Details slot
+            </div>
+          </td>
+        </tr>
         <tr>
           <td
             class="user-custom-class"
@@ -407,7 +433,20 @@ exports[`CDataTable renders correctly 2`] = `
           </td>
         </tr>
          
-        <!---->
+        <tr
+          class="p-0"
+        >
+          <td
+            class="p-0"
+            colspan="5"
+          >
+            <div
+              class="details"
+            >
+              Details slot
+            </div>
+          </td>
+        </tr>
         <tr>
           <td
             class="user-custom-class"
@@ -446,7 +485,20 @@ exports[`CDataTable renders correctly 2`] = `
           </td>
         </tr>
          
-        <!---->
+        <tr
+          class="p-0"
+        >
+          <td
+            class="p-0"
+            colspan="5"
+          >
+            <div
+              class="details"
+            >
+              Details slot
+            </div>
+          </td>
+        </tr>
          
         <!---->
       </tbody>

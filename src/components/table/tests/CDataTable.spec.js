@@ -47,6 +47,9 @@ function createCustomWrapper () {
       sorterValue: { column: 'username', asc: false },
       columnFilterValue: { registered: '2', 'non_existing': 'smh' },
       pagination: true
+    },
+    slots: {
+      details: '<div class="details">Details slot</div>'
     }
   })
 }
@@ -90,9 +93,11 @@ describe(ComponentName, () => {
     customWrapper.findAll('option').at(2).setSelected()
     expect(customWrapper.emitted()['pagination-change'][0][0]).toBe(10)
   })
-  it('emits event when row is clicked', () => {
-    customWrapper.find('tbody').find('tr').trigger('click')
-    expect(customWrapper.emitted()['row-clicked']).toBeTruthy()
+  it('emits correct event when row is clicked', () => {
+    customWrapper.find('tbody').find('td').trigger('click')
+    expect(customWrapper.emitted()['row-clicked'][0][2]).toBe('username')
+    customWrapper.find('.details').trigger('click')
+    expect(customWrapper.emitted()['row-clicked'][1][2]).toBe('details')
   })
   it('correctly triggers items update', () => {
     const localWrapper = createCustomWrapper()
