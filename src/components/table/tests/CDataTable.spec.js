@@ -99,6 +99,10 @@ describe(ComponentName, () => {
     customWrapper.find('.details').trigger('click')
     expect(customWrapper.emitted()['row-clicked'][1][2]).toBe('details')
   })
+  it('emits page-change event when clicked on computedPage change', () => {
+    customWrapper.setData({ page: 2 })
+    expect(customWrapper.emitted()['page-change'][0][0]).toBe(2)
+  })
   it('correctly triggers items update', () => {
     const localWrapper = createCustomWrapper()
     //set to cover branch, could not detect if computed prop is changed

@@ -309,6 +309,9 @@ export default {
         this.$emit('pages-change', val)
       }
     },
+    computedPage (val) {
+      this.$emit('page-change', val)
+    },
     sortedItems: {
       immediate: true,
       handler (val, oldVal) {
