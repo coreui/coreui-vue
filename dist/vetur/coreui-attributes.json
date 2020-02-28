@@ -2871,131 +2871,131 @@
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string | boolean"
   },
-  "c-list-groupitem/tag": {
+  "c-list-group-item/tag": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
-  "CListGroupitem/tag": {
+  "CListGroupItem/tag": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
-  "c-list-groupitem/action": {
+  "c-list-group-item/action": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
   },
-  "CListGroupitem/action": {
+  "CListGroupItem/action": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
   },
-  "c-list-groupitem/color": {
+  "c-list-group-item/color": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
-  "CListGroupitem/color": {
+  "CListGroupItem/color": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
-  "c-list-groupitem/href": {
+  "c-list-group-item/href": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
-  "CListGroupitem/href": {
+  "CListGroupItem/href": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
-  "c-list-groupitem/rel": {
+  "c-list-group-item/rel": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
-  "CListGroupitem/rel": {
+  "CListGroupItem/rel": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
-  "c-list-groupitem/target": {
+  "c-list-group-item/target": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
-  "CListGroupitem/target": {
+  "CListGroupItem/target": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
-  "c-list-groupitem/disabled": {
+  "c-list-group-item/disabled": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
   },
-  "CListGroupitem/disabled": {
+  "CListGroupItem/disabled": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
   },
-  "c-list-groupitem/active": {
+  "c-list-group-item/active": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
   },
-  "CListGroupitem/active": {
+  "CListGroupItem/active": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
   },
-  "c-list-groupitem/active-class": {
+  "c-list-group-item/active-class": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
-  "CListGroupitem/active-class": {
+  "CListGroupItem/active-class": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
-  "c-list-groupitem/append": {
+  "c-list-group-item/append": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
   },
-  "CListGroupitem/append": {
+  "CListGroupItem/append": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
   },
-  "c-list-groupitem/event": {
+  "c-list-group-item/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string | Array<any>"
   },
-  "CListGroupitem/event": {
+  "CListGroupItem/event": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string | Array<any>"
   },
-  "c-list-groupitem/exact": {
+  "c-list-group-item/exact": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
   },
-  "CListGroupitem/exact": {
+  "CListGroupItem/exact": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
   },
-  "c-list-groupitem/exact-active-class": {
+  "c-list-group-item/exact-active-class": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
-  "CListGroupitem/exact-active-class": {
+  "CListGroupItem/exact-active-class": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
-  "c-list-groupitem/replace": {
+  "c-list-group-item/replace": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
   },
-  "CListGroupitem/replace": {
+  "CListGroupItem/replace": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
   },
-  "c-list-groupitem/router-tag": {
+  "c-list-group-item/router-tag": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
-  "CListGroupitem/router-tag": {
+  "CListGroupItem/router-tag": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
-  "c-list-groupitem/to": {
+  "c-list-group-item/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string | object"
   },
-  "CListGroupitem/to": {
+  "CListGroupItem/to": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string | object"
   },

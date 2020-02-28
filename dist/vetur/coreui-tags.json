@@ -1223,7 +1223,7 @@
     ],
     "description": ""
   },
-  "CListGroupitem": {
+  "CListGroupItem": {
     "attributes": [
       "tag",
       "action",
@@ -1244,7 +1244,7 @@
     ],
     "description": ""
   },
-  "c-list-groupitem": {
+  "c-list-group-item": {
     "attributes": [
       "tag",
       "action",
