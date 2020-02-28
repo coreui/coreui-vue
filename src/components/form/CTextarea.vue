@@ -100,6 +100,10 @@ export default {
   //   }
   // },
   computed: {
+    listeners () {
+      const { input, change, ...listeners } = this.$listeners // eslint-disable-line no-unused-vars
+      return listeners
+    }
     // classesComputedProps mixin
     // haveCustomSize () {
     //   return ['sm','lg'].includes(this.size)
