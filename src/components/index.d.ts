@@ -362,7 +362,7 @@ export declare class CListGroup extends Vue {
   horizontal: string | boolean
 }
 
-export declare class CListGroupitem extends CLink {
+export declare class CListGroupItem extends CLink {
   tag: string
   action: boolean
   color: string
