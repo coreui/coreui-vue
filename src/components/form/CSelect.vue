@@ -16,7 +16,7 @@
     <template #input>
       <select
         v-bind="$attrs"
-        v-on="listeners"
+        v-on="$listeners"
         :id="safeId"
         :class="inputClasses"
         @input="onSelect($event)"

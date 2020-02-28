@@ -153,6 +153,10 @@ export default {
     // },
     haveInputGroup () {
       return false
+    },
+    listeners () {
+      const { change, ...listeners } = this.$listeners // eslint-disable-line no-unused-vars
+      return listeners
     }
     // haveWrapper () {
     //   return this.haveInputGroup || Boolean(this.addWrapperClasses || this.isHorizontal)

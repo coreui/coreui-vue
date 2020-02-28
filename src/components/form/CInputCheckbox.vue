@@ -3,7 +3,7 @@
                        description, class: computedClasses}">
     <template #input>
       <input
-        v-on="listeners"
+        v-on="$listeners"
         v-bind="$attrs"
         :id="safeId"
         :type="$options.type"
