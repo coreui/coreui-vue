@@ -68,7 +68,7 @@ export default {
     title: String,
     size: {
       type: String,
-      validator: val => ['', 'sm', 'lg'].includes(val)
+      validator: val => ['', 'sm', 'lg', 'xl'].includes(val)
     },
     color: String,
     borderColor: String,
