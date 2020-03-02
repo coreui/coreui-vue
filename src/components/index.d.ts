@@ -297,7 +297,9 @@ export declare class CHeader extends Vue {
   withSubheader: boolean
 }
 
-export declare class CHeaderBrand extends Vue {}
+export declare class CHeaderBrand extends CLink {
+  tag: string
+}
 
 export declare class CHeaderNav extends Vue {}
 
@@ -487,11 +489,8 @@ export declare class CSidebar extends Vue {
   dropdownMode: string
 }
 
-export declare class CSidebarBrand extends Vue { 
-  img: object | string
-  imgMinimized: object | string
-  imgFull: object | string
-  wrappedInLink: object | string
+export declare class CSidebarBrand extends CLink { 
+  tag: string
 }
 
 
@@ -563,17 +562,19 @@ export declare class CDataTable extends Vue {
   hover: boolean
   border: boolean
   outlined: boolean
-  optionsRow: boolean | string
-  header: boolean
-  footer: boolean
   itemsPerPageSelect: boolean | { label?: string, values?: number[] }
-  sorter: boolean | object
-  columnFilter: boolean | object
-  tableFilter: boolean | object
-  sorterValue: object
+  sorter: boolean | { external?: boolean, resetable?: boolean }
+  columnFilter: boolean | { external?: boolean, lazy?: boolean}
+  tableFilter: boolean | { 
+    external?: boolean, lazy?: boolean, label?: string, placeholder?: string
+  }
+  sorterValue: { column?: string, asc?: boolean }
   tableFilterValue: string
   columnFilterValue: object
+  header: boolean
+  footer: boolean
   loading: boolean
+  clickableRows: boolean
 }
 
 export declare class CTabs extends Vue {
