@@ -42,6 +42,14 @@ const customWrapper = mount(Component, {
     prepend: 'prepended'
   }
 })
+const wrapperMultiple = mount(Component, {
+  propsData: {
+    options: ['Option 1', 'Option 2', 'Option 3'],
+  },
+  attrs: {
+    multiple: true
+  }
+})
 
 describe(ComponentName, () => {
   it('has a name', () => {
@@ -61,5 +69,11 @@ describe(ComponentName, () => {
     select.element.value = 'Option 2'
     select.trigger('input')
     expect(customWrapper.emitted()['update:value']).toBeTruthy()
+  })
+  it('not emit update event on multiple select', () => {
+    const select = wrapperMultiple.find('select')
+    select.element.value = 'Option 2'
+    select.trigger('input')
+    expect(wrapperMultiple.emitted()['update:value']).not.toBeTruthy()
   })
 })

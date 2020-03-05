@@ -220,6 +220,7 @@ export default {
 
   methods: {
     onSelect (e) {
+      if (this.$attrs.multiple !== undefined) return
       const optionIndex = e.target.selectedOptions[0].dataset.key
       const option = this.options[optionIndex]
       const value = option.value || option
