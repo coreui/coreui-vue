@@ -11,7 +11,7 @@ export default {
         props: this._props,
         staticClass: 'dropdown-item',
         attrs: { role: 'menuitem' },
-        on: { click: () => this.$parent.$emit('dropdown-item-click') }
+        on: { click: () => this.$parent.$emit('dropdown-close') }
       },
       this.$slots.default
     )

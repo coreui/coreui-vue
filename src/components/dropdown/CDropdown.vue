@@ -104,7 +104,7 @@ export default {
     }
   },
   mounted () {
-    this.$on('dropdown-item-click', this.hide)
+    this.$on('dropdown-close', this.hide)
   },
   methods: {
     checkClick (e) {
