@@ -1,20 +1,19 @@
 <script>
-import { mergeData } from 'vue-functional-data-merge'
 import CLink, { propsFactory } from '../link/CLink'
 
 export default {
-  functional: true,
   name: 'CDropdownItem',
   props: propsFactory(),
-  render (h, { props, data, children }) {
+  render (h) {
     return h(
       CLink,
-      mergeData(data, {
-        props,
+      {
+        props: this._props,
         staticClass: 'dropdown-item',
-        attrs: { role: 'menuitem' }
-      }),
-      children
+        attrs: { role: 'menuitem' },
+        on: { click: () => this.$parent.$emit('dropdown-item-click') }
+      },
+      this.$slots.default
     )
   }
 }
