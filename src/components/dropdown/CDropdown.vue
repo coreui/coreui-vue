@@ -101,10 +101,10 @@ export default {
         val ? this.createPopper() : this.removePopper()
         this.$emit('update:show', val)
       }
-    },
-    $route () {
-      this.visible = false
     }
+  },
+  mounted () {
+    this.$on('dropdown-item-click', this.hide)
   },
   methods: {
     checkClick (e) {

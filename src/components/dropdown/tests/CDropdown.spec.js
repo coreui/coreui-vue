@@ -1,16 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils'
 import Component from '../CDropdown'
-import VueRouter from 'vue-router'
-
-const localVue = new createLocalVue()
-localVue.use(VueRouter)
-const router = new VueRouter()
-
-const wrapper = mount(Component, {
-  router,
-  localVue
-})
-
+import CDropdownItem from '../CDropdownItem'
 const ComponentName = 'CDropdown'
 
 const generateWrapper = () => mount(Component, {
@@ -30,7 +20,7 @@ const generateWrapper = () => mount(Component, {
     flip: false,
   },
   slots: {
-    default: 'CDropdown subcomponents'
+    default: [CDropdownItem, CDropdownItem]
   }
 })
 
@@ -55,8 +45,8 @@ describe(ComponentName, () => {
   it('has a name', () => {
     expect(Component.name).toMatch(ComponentName)
   })
-  it('renders correctly', () => {
-    expect(wrapper.element).toMatchSnapshot()
+  it('renders basic wrapper correctly', () => {
+    expect(mount(Component).element).toMatchSnapshot()
   })
   it('renders custom wrapper correctly', () => {
     expect(generateWrapper().element).toMatchSnapshot()
@@ -65,13 +55,15 @@ describe(ComponentName, () => {
     expect(generateNavWrapper().element).toMatchSnapshot()
   })
   it('toggles when show prop is changed', () => {
+    const wrapper = generateWrapper()
+    expect(wrapper.vm.visible).toBe(true)
+    wrapper.setProps({ show: false })
     expect(wrapper.vm.visible).toBe(false)
-    wrapper.setProps({ show: true })
-    expect(wrapper.vm.visible).toBe(true)
   })
-  it('toggles when show prop is changed', () => {
+  it('hide when dropdown item is clicked', () => {
+    const wrapper = generateWrapper()
     expect(wrapper.vm.visible).toBe(true)
-    wrapper.vm.$router.push('new-route-name')
+    wrapper.vm.$children[0].$el.click()
     expect(wrapper.vm.visible).toBe(false)
   })
   it('close, but does not open on click when dropdown is disabled', () => {

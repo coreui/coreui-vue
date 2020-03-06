@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CDropdown renders correctly 1`] = `
+exports[`CDropdown renders basic wrapper correctly 1`] = `
 <div
   class="dropdown"
 >
@@ -59,7 +59,18 @@ exports[`CDropdown renders custom wrapper correctly 1`] = `
   <div
     class="additional-menu-class dropdown-menu show"
   >
-    CDropdown subcomponents
+    <a
+      class="dropdown-item"
+      href="#"
+      role="menuitem"
+      target="_self"
+    />
+    <a
+      class="dropdown-item"
+      href="#"
+      role="menuitem"
+      target="_self"
+    />
   </div>
 </div>
 `;

@@ -16,8 +16,6 @@ exports[`CDropdownItem renders correctly 2`] = `
   role="menuitem"
   target="_self"
 >
-  <template>
-    CDropdownItem content
-  </template>
+  CDropdownItem content
 </a>
 `;
