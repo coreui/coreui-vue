@@ -2247,6 +2247,118 @@
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
   },
+  "c-header-brand/tag": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CHeaderBrand/tag": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-header-brand/href": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CHeaderBrand/href": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-header-brand/rel": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CHeaderBrand/rel": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-header-brand/target": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CHeaderBrand/target": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-header-brand/disabled": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CHeaderBrand/disabled": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-header-brand/active": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CHeaderBrand/active": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-header-brand/active-class": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CHeaderBrand/active-class": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-header-brand/append": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CHeaderBrand/append": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-header-brand/event": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any>"
+  },
+  "CHeaderBrand/event": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any>"
+  },
+  "c-header-brand/exact": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CHeaderBrand/exact": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-header-brand/exact-active-class": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CHeaderBrand/exact-active-class": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-header-brand/replace": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CHeaderBrand/replace": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-header-brand/router-tag": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CHeaderBrand/router-tag": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-header-brand/to": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | object"
+  },
+  "CHeaderBrand/to": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | object"
+  },
   "c-header-nav-item/href": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
@@ -3791,37 +3903,117 @@
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "string"
   },
-  "c-sidebar-brand/img": {
+  "c-sidebar-brand/tag": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "object | string"
+    "type": "string"
   },
-  "CSidebarBrand/img": {
+  "CSidebarBrand/tag": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "object | string"
+    "type": "string"
   },
-  "c-sidebar-brand/img-minimized": {
+  "c-sidebar-brand/href": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "object | string"
+    "type": "string"
   },
-  "CSidebarBrand/img-minimized": {
+  "CSidebarBrand/href": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "object | string"
+    "type": "string"
   },
-  "c-sidebar-brand/img-full": {
+  "c-sidebar-brand/rel": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "object | string"
+    "type": "string"
   },
-  "CSidebarBrand/img-full": {
+  "CSidebarBrand/rel": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "object | string"
+    "type": "string"
   },
-  "c-sidebar-brand/wrapped-in-link": {
+  "c-sidebar-brand/target": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "object | string"
+    "type": "string"
   },
-  "CSidebarBrand/wrapped-in-link": {
+  "CSidebarBrand/target": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "object | string"
+    "type": "string"
+  },
+  "c-sidebar-brand/disabled": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CSidebarBrand/disabled": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-sidebar-brand/active": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CSidebarBrand/active": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-sidebar-brand/active-class": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CSidebarBrand/active-class": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-sidebar-brand/append": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CSidebarBrand/append": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-sidebar-brand/event": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any>"
+  },
+  "CSidebarBrand/event": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | Array<any>"
+  },
+  "c-sidebar-brand/exact": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CSidebarBrand/exact": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-sidebar-brand/exact-active-class": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CSidebarBrand/exact-active-class": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-sidebar-brand/replace": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "CSidebarBrand/replace": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "boolean"
+  },
+  "c-sidebar-brand/router-tag": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "CSidebarBrand/router-tag": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string"
+  },
+  "c-sidebar-brand/to": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | object"
+  },
+  "CSidebarBrand/to": {
+    "description": "For API documentation please visit https://coreui.io/vue/docs",
+    "type": "string | object"
   },
   "c-sidebar-nav-dropdown/name": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
@@ -4236,30 +4428,6 @@
     "type": "boolean"
   },
   "CDataTable/outlined": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "boolean"
-  },
-  "c-data-table/options-row": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "boolean | string"
-  },
-  "CDataTable/options-row": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "boolean | string"
-  },
-  "c-data-table/header": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "boolean"
-  },
-  "CDataTable/header": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "boolean"
-  },
-  "c-data-table/footer": {
-    "description": "For API documentation please visit https://coreui.io/vue/docs",
-    "type": "boolean"
-  },
-  "CDataTable/footer": {
     "description": "For API documentation please visit https://coreui.io/vue/docs",
     "type": "boolean"
   },

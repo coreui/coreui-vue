@@ -972,11 +972,41 @@
     "description": ""
   },
   "CHeaderBrand": {
-    "attributes": [],
+    "attributes": [
+      "tag",
+      "href",
+      "rel",
+      "target",
+      "disabled",
+      "active",
+      "active-class",
+      "append",
+      "event",
+      "exact",
+      "exact-active-class",
+      "replace",
+      "router-tag",
+      "to"
+    ],
     "description": ""
   },
   "c-header-brand": {
-    "attributes": [],
+    "attributes": [
+      "tag",
+      "href",
+      "rel",
+      "target",
+      "disabled",
+      "active",
+      "active-class",
+      "append",
+      "event",
+      "exact",
+      "exact-active-class",
+      "replace",
+      "router-tag",
+      "to"
+    ],
     "description": ""
   },
   "CHeaderNav": {
@@ -1605,19 +1635,39 @@
   },
   "CSidebarBrand": {
     "attributes": [
-      "img",
-      "img-minimized",
-      "img-full",
-      "wrapped-in-link"
+      "tag",
+      "href",
+      "rel",
+      "target",
+      "disabled",
+      "active",
+      "active-class",
+      "append",
+      "event",
+      "exact",
+      "exact-active-class",
+      "replace",
+      "router-tag",
+      "to"
     ],
     "description": ""
   },
   "c-sidebar-brand": {
     "attributes": [
-      "img",
-      "img-minimized",
-      "img-full",
-      "wrapped-in-link"
+      "tag",
+      "href",
+      "rel",
+      "target",
+      "disabled",
+      "active",
+      "active-class",
+      "append",
+      "event",
+      "exact",
+      "exact-active-class",
+      "replace",
+      "router-tag",
+      "to"
     ],
     "description": ""
   },
@@ -1816,9 +1866,6 @@
       "hover",
       "border",
       "outlined",
-      "options-row",
-      "header",
-      "footer",
       "items-per-page-select"
     ],
     "description": ""
@@ -1840,9 +1887,6 @@
       "hover",
       "border",
       "outlined",
-      "options-row",
-      "header",
-      "footer",
       "items-per-page-select"
     ],
     "description": ""

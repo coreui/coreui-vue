@@ -676,6 +676,3 @@ export declare class CWrapper extends Vue {
   fluid: boolean
   tag: string
 }
-
-
-
