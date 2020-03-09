@@ -11,7 +11,8 @@ export default {
         props: this._props,
         staticClass: 'dropdown-item',
         attrs: { role: 'menuitem' },
-        on: { 
+        on: {
+          //listeners added, due to component was previously functional for compatibility
           ...this.$listeners,
           click: (e) => {
             this.$parent.$emit('dropdown-close')
