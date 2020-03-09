@@ -23,7 +23,6 @@ jobs:
     - name: npm install, build, test:coverage and lint
       run: |
         npm i
-        npm update
         npm run release
       env:
         CI: true
