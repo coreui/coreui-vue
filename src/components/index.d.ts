@@ -575,6 +575,9 @@ export declare class CDataTable extends Vue {
   footer: boolean
   loading: boolean
   clickableRows: boolean
+  noItemsView: {
+    noItems?: string, noResults?: string
+  }
 }
 
 export declare class CTabs extends Vue {

@@ -145,7 +145,7 @@
               <slot name="no-items-view">
                 <div class="text-center my-5">
                   <h2>
-                    {{ passedItems.length ? 'No filtering results ' : 'No items' }}
+                    {{ noItemsText }}
                     <CIcon
                       width="30"
                       :content="$options.icons.cilBan"
@@ -263,7 +263,8 @@ export default {
     },
     footer: Boolean,
     loading: Boolean,
-    clickableRows: Boolean
+    clickableRows: Boolean,
+    noItemsView: Object
   },
   data () {
     return {
@@ -439,6 +440,13 @@ export default {
         label: this.itemsPerPageSelect.label || 'Items per page:',
         values: this.itemsPerPageSelect.values || [5, 10, 20, 50]
       }
+    },
+    noItemsText () {
+      const customValues = this.noItemsView || {}
+      if (this.passedItems.length) {
+        return customValues.noResults || 'No filtering results'
+      }
+      return customValues.noItems || 'No items'
     }
   },
   methods: {

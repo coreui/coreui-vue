@@ -46,7 +46,8 @@ function createCustomWrapper () {
       footer: true,
       sorterValue: { column: 'username', asc: false },
       columnFilterValue: { registered: '2', 'non_existing': 'smh' },
-      pagination: true
+      pagination: true,
+      noItemsView: { noResults: 'no results text', noItems: 'no items text'}
     },
     slots: {
       details: '<div class="details">Details slot</div>'
@@ -193,5 +194,16 @@ describe(ComponentName, () => {
     })
     expect(localWrapper.vm.paginationSelect.label).toBe('new label')
     expect(localWrapper.vm.paginationSelect.values[1]).toBe(25)
+  })
+  it('Properly sets no items view from prop', () => {
+    const localWrapper = createCustomWrapper()
+    localWrapper.setProps({
+      tableFilterValue: '12322'
+    })
+    expect(localWrapper.text()).toContain('no results text')
+    localWrapper.setProps({
+      items: []
+    })
+    expect(localWrapper.text()).toContain('no items text')
   })
 })
