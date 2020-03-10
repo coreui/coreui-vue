@@ -47,6 +47,7 @@
     <div :class="`position-relative ${responsive ? 'table-responsive' : '' }`">
       <table :class="tableClasses">
         <thead>
+          <slot name="thead-top"/>
           <tr v-if="header">
             <template v-for="(name, index) in columnNames">
               <th

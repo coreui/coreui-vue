@@ -11,6 +11,7 @@ exports[`CDataTable renders correctly 1`] = `
       class="table"
     >
       <thead>
+         
         <tr />
          
         <!---->
@@ -146,6 +147,7 @@ exports[`CDataTable renders correctly 2`] = `
       class="table additional-table-class table-dark table-striped table-hover table-bordered border"
     >
       <thead>
+         
         <tr>
           <th
             class="user-custom-class position-relative pr-4"
