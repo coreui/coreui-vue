@@ -544,6 +544,9 @@ export default {
     },
     paginationChange (e) {
       this.$emit('pagination-change', Number(e.target.value))
+      if (this.itemsPerPageSelect.external) {
+        return
+      }
       this.perPageItems = Number(e.target.value)
     },
     objectsAreIdentical (obj1, obj2) {

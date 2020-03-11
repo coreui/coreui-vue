@@ -188,11 +188,15 @@ describe(ComponentName, () => {
     localWrapper.setProps({
       itemsPerPageSelect: {
         label: 'new label',
-        values: [10, 25, 50]
+        values: [10, 25, 50],
+        external: true
       }
     })
     expect(localWrapper.vm.paginationSelect.label).toBe('new label')
     expect(localWrapper.vm.paginationSelect.values[1]).toBe(25)
+    localWrapper.find('select').setValue(25)
+    expect(localWrapper.emitted()['pagination-change'][0][0]).toBe(25)
+    expect(localWrapper.vm.perPageItems).not.toBe(25)
   })
   it('Properly sets no items view text', () => {
     const localWrapper = createCustomWrapper()

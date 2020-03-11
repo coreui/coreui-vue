@@ -562,7 +562,9 @@ export declare class CDataTable extends Vue {
   hover: boolean
   border: boolean
   outlined: boolean
-  itemsPerPageSelect: boolean | { label?: string, values?: number[] }
+  itemsPerPageSelect: boolean | {
+    label?: string, values?: number[], external?: boolean 
+  }
   sorter: boolean | { external?: boolean, resetable?: boolean }
   columnFilter: boolean | { external?: boolean, lazy?: boolean}
   tableFilter: boolean | { 
