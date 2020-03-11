@@ -37,7 +37,7 @@ describe(ComponentName, () => {
   })
   it('emits update:activePage event when number of pages change', () => {
     customWrapper.setProps({ pages: 6 })
-    expect(customWrapper.emitted()['update:activePage']).toBeTruthy()
+    expect(customWrapper.emitted()['update:activePage'][0]).toMatchObject([6, true])
   })
   it('emits update:activePage event when inactive item is clicked', () => {
     const links = wrapper.findAll('.page-link')
@@ -45,7 +45,7 @@ describe(ComponentName, () => {
     expect(wrapper.emitted()['update:activePage']).not.toBeTruthy()
 
     links.at(4).trigger('click')
-    expect(wrapper.emitted()['update:activePage']).toBeTruthy()
+    expect(wrapper.emitted()['update:activePage'][0]).toMatchObject([3, false])
   })
   it('calls focus function when clicked on numeric item', () => {
     const spy = jest.spyOn(wrapper.vm, 'changeFocus')

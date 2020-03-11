@@ -129,7 +129,7 @@
         immediate: true,
         handler (val) {
           if (val && val < this.activePage) {
-            this.$emit('update:activePage', val)
+            this.$emit('update:activePage', val, true)
           }
         }
       }
@@ -187,7 +187,7 @@
         if (number === this.activePage) {
           return
         }
-        this.$emit('update:activePage', number)
+        this.$emit('update:activePage', number, false)
         if (e) {
           this.changeFocus(e)
         }
