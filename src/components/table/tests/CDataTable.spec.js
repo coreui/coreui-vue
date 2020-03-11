@@ -46,8 +46,7 @@ function createCustomWrapper () {
       footer: true,
       sorterValue: { column: 'username', asc: false },
       columnFilterValue: { registered: '2', 'non_existing': 'smh' },
-      pagination: true,
-      noItemsView: { noResults: 'no results text', noItems: 'no items text'}
+      pagination: true
     },
     slots: {
       details: '<div class="details">Details slot</div>'
@@ -114,13 +113,13 @@ describe(ComponentName, () => {
   it('updates column filter on events depending on lazy modifier', () => {
     const localWrapper = createCustomWrapper()
     const input = localWrapper.findAll('tr').at(1).find('input')
-    const updateEmmited = () => localWrapper.emitted()['update:column-filter-value']
+    const updateEmitted = () => localWrapper.emitted()['update:column-filter-value']
     localWrapper.setProps({ columnFilter: { lazy: true } })
     input.trigger('input')
-    expect(updateEmmited()).not.toBeTruthy()
+    expect(updateEmitted()).not.toBeTruthy()
     localWrapper.setProps({ columnFilter: true })
     input.trigger('input')
-    expect(updateEmmited()).toBeTruthy()
+    expect(updateEmitted()).toBeTruthy()
   })
   it('updates table filter on events depending on lazy modifier', () => {
     const localWrapper = createCustomWrapper()
@@ -195,14 +194,28 @@ describe(ComponentName, () => {
     expect(localWrapper.vm.paginationSelect.label).toBe('new label')
     expect(localWrapper.vm.paginationSelect.values[1]).toBe(25)
   })
-  it('Properly sets no items view from prop', () => {
+  it('Properly sets no items view text', () => {
     const localWrapper = createCustomWrapper()
     localWrapper.setProps({
       tableFilterValue: '12322'
     })
+    expect(localWrapper.text()).toContain('No filtering results')
+    localWrapper.setProps({
+      noItemsView: {
+        noResults: 'no results text'
+      }
+    })
     expect(localWrapper.text()).toContain('no results text')
+
+
     localWrapper.setProps({
       items: []
+    })
+    expect(localWrapper.text()).toContain('No items')
+    localWrapper.setProps({
+      noItemsView: {
+        noItems: 'no items text'
+      }
     })
     expect(localWrapper.text()).toContain('no items text')
   })
