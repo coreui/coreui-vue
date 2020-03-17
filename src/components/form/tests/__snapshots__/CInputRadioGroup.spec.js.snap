@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CInputRadio renders correctly 1`] = `
+<div>
+  <div
+    class="custom-control custom-radio"
+    role="group"
+  >
+     
+    <!---->
+     
+    <input
+      class="custom-control-input"
+      id="id1"
+      name="custom"
+      type="radio"
+      value="option 1"
+    />
+     
+    <label
+      class="custom-control-label"
+      for="id1"
+    >
+      
+        label1
+      
+    </label>
+     
+    <!---->
+     
+    <!---->
+     
+    <!---->
+     
+    <!---->
+  </div>
+  <div
+    class="custom-control custom-radio"
+    role="group"
+  >
+     
+    <!---->
+     
+    <input
+      class="custom-control-input"
+      id="id2"
+      name="custom"
+      type="radio"
+      value="option 2"
+    />
+     
+    <label
+      class="custom-control-label"
+      for="id2"
+    >
+      
+        label2
+      
+    </label>
+     
+    <!---->
+     
+    <!---->
+     
+    <!---->
+     
+    <small
+      class="form-text text-muted w-100"
+    >
+      description
+    </small>
+  </div>
+</div>
+`;

@@ -4,6 +4,7 @@ import CInput from './CInput'
 import CInputCheckbox from './CInputCheckbox'
 import CInputFile from './CInputFile'
 import CInputRadio from './CInputRadio'
+import CInputRadioGroup from './CInputRadioGroup'
 import CSelect from './CSelect'
 import CTextarea from './CTextarea'
 
@@ -14,6 +15,7 @@ export {
   CInputCheckbox,
   CInputFile,
   CInputRadio,
+  CInputRadioGroup,
   CSelect,
   CTextarea
 }

@@ -228,6 +228,13 @@ export declare class CInputRadio extends formSharedProps {
   inline: boolean
 }
 
+export declare class CInputRadioGroup {
+  name?: string
+  options: [string | { label: string, value: string, props?: object }]
+  checked?: string
+  custom?: boolean
+}
+
 export declare class CInputCheckbox extends CInputRadio {}
 
 export declare class CSelect extends formSharedProps {
