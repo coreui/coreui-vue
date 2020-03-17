@@ -228,7 +228,7 @@ export declare class CInputRadio extends formSharedProps {
   inline: boolean
 }
 
-export declare class CInputRadioGroup {
+export declare class CInputRadioGroup extends Vue {
   name?: string
   options: [string | { label: string, value: string, props?: object }]
   checked?: string
