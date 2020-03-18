@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="{ 'form-inline': inline }">
     <CInputRadio
       v-for="({value, label, props}, key) in computedOptions"
       :key="key"
@@ -9,6 +9,7 @@
       :checked="checked === value"
       @change="change($event, value)"
       :custom="custom"
+      :inline="inline"
       v-bind="props"
     />
   </div>
@@ -28,7 +29,8 @@ export default {
     },
     checked: String,
     name: String,
-    custom: Boolean
+    custom: Boolean,
+    inline: Boolean
   },
   computed: {
     computedOptions () {

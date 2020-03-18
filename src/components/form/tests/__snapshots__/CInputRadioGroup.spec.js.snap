@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CInputRadio renders correctly 1`] = `
-<div>
+<div
+  class=""
+>
   <div
     class="custom-control custom-radio"
     role="group"

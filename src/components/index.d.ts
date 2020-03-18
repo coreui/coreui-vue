@@ -233,6 +233,7 @@ export declare class CInputRadioGroup extends Vue {
   options: [string | { label: string, value: string, props?: object }]
   checked?: string
   custom?: boolean
+  inline?: boolean
 }
 
 export declare class CInputCheckbox extends CInputRadio {}
