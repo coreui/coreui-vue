@@ -5,6 +5,7 @@ node_modules/
 coverage/
 
 # Generated code
+dist/
 
 ### Node ###
 # Logs
