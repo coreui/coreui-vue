@@ -34,7 +34,11 @@ export default {
       this.visible = val
     },
     visible (val) {
-      this.collapseController(val)
+      if (this.duration) {
+        this.collapseController(val)
+      } else {
+        this.reset()
+      }
     }
   },
   mounted () {
@@ -74,15 +78,15 @@ export default {
     },
     setFinishTimer (duration) {
       clearTimeout(this.heightWatcher)
-      const self = this
-      this.heightWatcher = setTimeout(() => {
-        self.collapsing = false
-        self.$el.style.display = self.visible ? '' : 'none'
-        self.$el.style.height = ''
-        self.$el.style.overflow = ''
-        self.$el.style.transition = ''
-        this.$emit('finish', self.visible)
-      }, duration)
+      this.heightWatcher = setTimeout(() => this.reset(), duration)
+    },
+    reset () {
+      this.collapsing = false
+      this.$el.style.display = this.visible ? '' : 'none'
+      this.$el.style.height = ''
+      this.$el.style.overflow = ''
+      this.$el.style.transition = ''
+      this.$emit('finish', this.visible)
     }
   }
 }
