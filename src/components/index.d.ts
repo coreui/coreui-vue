@@ -116,7 +116,7 @@ export declare class CCarouselItem extends Vue {
 }
 
 export declare class CCollapse extends Vue {
-  duration: number
+  duration: number | { show: number, hide: number }
   transition: string
   show: boolean
   navbar: boolean

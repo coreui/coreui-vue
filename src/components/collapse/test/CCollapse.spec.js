@@ -19,7 +19,7 @@ const customWrapper = mount(CCollapse, {
 const togglerWrapper = mount(CCollapse, {
   attachToDocument: true,
   propsData: {
-    duration: 500,
+    duration: 0,
     show: true,
     navbar: true
   },
@@ -71,5 +71,11 @@ describe(ComponentName, () => {
       const errors = e
     }
     expect(typeof errors).toBe('undefined')
+  })
+  it('do not set timer, but reset collapse when duration is set to 0', () => {
+    const spy = jest.spyOn(togglerWrapper.vm, 'setFinishTimer')
+    togglerWrapper.setProps({show: false})
+    expect(spy).not.toBeCalled()
+    expect(togglerWrapper.emitted().finish).toBeTruthy()
   })
 })

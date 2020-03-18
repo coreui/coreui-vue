@@ -7,7 +7,7 @@
 <script>
 const props = {
   duration: {
-    type: Number,
+    type: [Number, Object],
     default: 400
   },
   transition: {
@@ -34,7 +34,7 @@ export default {
       this.visible = val
     },
     visible (val) {
-      if (this.duration) {
+      if (this.toggleTime) {
         this.collapseController(val)
       } else {
         this.reset()
@@ -47,17 +47,23 @@ export default {
   beforeDestroy () {
     clearTimeout(this.heightWatcher)
   },
+  computed: {
+    toggleTime () {
+      return (this.visible ? this.duration.show : this.duration.hide) || this.duration
+    }
+  },
   methods: {
     collapseController (val) {
       if (this.collapsing === false) {
         val ? this.toggle(true) : this.toggle(false)
-        this.setFinishTimer(this.duration)
+        this.setFinishTimer(this.toggleTime)
       } else {
+        this.setTransition()
         this.turn()
         const height = Number(this.collapsing.slice(0,-2))
         const current = this.$el.offsetHeight
         const time = (val ? height - current : current) / height
-        this.setFinishTimer(this.duration * time)
+        this.setFinishTimer(this.toggleTime * time)
       }
     },
     turn () {
@@ -72,9 +78,12 @@ export default {
       this.collapsing = this.$el.scrollHeight + 'px'
       this.$el.style.height = val ? 0 : this.$el.scrollHeight + 'px'
       this.$el.style.overflow = 'hidden'
-      this.$el.style.transition = `all ${this.duration}ms ${this.transition}`
+      this.setTransition()
       const self = this
       setTimeout(() => { self.$el.style.height = val ? this.collapsing : 0 }, 0)
+    },
+    setTransition () {
+      this.$el.style.transition = `all ${this.toggleTime}ms ${this.transition}`
     },
     setFinishTimer (duration) {
       clearTimeout(this.heightWatcher)
