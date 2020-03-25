@@ -416,7 +416,7 @@ export default {
           [`table-${this.size}`]: this.size,
           'table-dark': this.dark,
           'table-striped': this.striped,
-          'b-table-fixed': this.fixed,
+          'table-fixed': this.fixed,
           'table-hover': this.hover,
           'table-bordered': this.border,
           'border': this.outlined
