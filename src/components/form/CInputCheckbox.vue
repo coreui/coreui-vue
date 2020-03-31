@@ -16,7 +16,7 @@
 
     <template #label-after-input>
       <slot name="label">
-        <label v-if="label" :for="safeId" :class="labelClasses">
+        <label v-if="label || custom" :for="safeId" :class="labelClasses">
           {{label}}
         </label>
       </slot>
