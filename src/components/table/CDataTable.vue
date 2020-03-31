@@ -122,7 +122,7 @@
             </tr>
             <tr
               v-if="$scopedSlots.details"
-              @click="rowClicked(item, itemIndex + firstItemIndex)"
+              @click="rowClicked(item, itemIndex + firstItemIndex, $event, true)"
               class="p-0"
               style="border:none !important"
               :key="'details' + itemIndex"
@@ -516,16 +516,18 @@ export default {
       }
       return style
     },
-    rowClicked (item, index, e) {
-      this.$emit('row-clicked', item, index, this.getClickedColumnName(e))
+    rowClicked (item, index, e, detailsClick = false) {
+      this.$emit(
+        'row-clicked', item, index, this.getClickedColumnName(e, detailsClick), e
+      )
     },
-    getClickedColumnName (e) {
-      if (e) {
+    getClickedColumnName (e, detailsClick) {
+      if (detailsClick) {
+        return 'details'
+      } else {
         const children = Array.from(e.target.closest('tr').children)
         const clickedCell = children.filter(child => child.contains(e.target))[0]
         return this.rawColumnNames[children.indexOf(clickedCell)]
-      } else {
-        return 'details'
       }
     },
     getIconState (index) {

@@ -98,6 +98,9 @@ describe(ComponentName, () => {
     expect(customWrapper.emitted()['row-clicked'][0][2]).toBe('username')
     customWrapper.find('.details').trigger('click')
     expect(customWrapper.emitted()['row-clicked'][1][2]).toBe('details')
+    expect(
+      customWrapper.emitted()['row-clicked'][1][3] instanceof Event
+    ).toBe(true)
   })
   it('emits page-change event when clicked on computedPage change', () => {
     customWrapper.setData({ page: 2 })
