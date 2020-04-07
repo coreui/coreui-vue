@@ -28,9 +28,7 @@ export default {
       staticClass: 'badge',
       class: {
         [`badge-${props.color}`]: props.color,
-        'badge-pill': props.shape === 'pill',
-        'active': props.active,
-        'disabled': props.disabled
+        'badge-pill': props.shape === 'pill'
       },
       props
     }
