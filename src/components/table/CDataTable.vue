@@ -57,7 +57,7 @@
                 :key="index"
               >
                 <slot :name="`${rawColumnNames[index]}-header`">
-                  <div class="d-inline">{{name}}</div>
+                  <div>{{name}}</div>
                 </slot>
                 <slot
                   v-if="isSortable(index)"
@@ -169,7 +169,7 @@
                 :key="index"
               >
                 <slot :name="`${rawColumnNames[index]}-header`">
-                  <div class="d-inline">{{name}}</div>
+                  <div>{{name}}</div>
                 </slot>
                 <slot
                   v-if="isSortable(index)"
@@ -507,7 +507,7 @@ export default {
       return fields && fields[index]._classes ? fields[index]._classes : ''
     },
     headerStyles (index) {
-      let style = ''
+      let style = 'vertical-align:middle;overflow:hidden;'
       if (this.isSortable(index)) {
         style += `cursor:pointer;`
       }
