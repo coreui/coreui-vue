@@ -188,6 +188,10 @@ export declare class CInputFile extends formSharedProps {
   placeholder: string
   multiple: boolean
 }
+export declare class CForm extends formSharedProps {
+  inline: boolean
+  wasValidated: boolean
+}
 
 export declare class CFormGroup extends formSharedProps {
   append: string
