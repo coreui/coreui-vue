@@ -43,4 +43,10 @@ describe(`${ComponentName}.vue`, () => {
   it('renders correctly in label mode', () => {
     expect(wrapperLabel.element).toMatchSnapshot()
   })
+  it('assign correct classes in case of custom icon size', () => {
+    wrapperLabel.setProps({ icon: { name: 'cui-settings', size: 'lg' }})
+    expect(wrapperLabel.find('svg').classes().join(',')).toBe(
+      'c-icon,c-icon-lg,c-sidebar-nav-icon'
+    )
+  })
 })
