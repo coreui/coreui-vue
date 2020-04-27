@@ -223,7 +223,7 @@ export default {
       if (this.$attrs.multiple !== undefined) return
       const optionIndex = e.target.selectedOptions[0].dataset.key
       const option = this.options[optionIndex]
-      const value = option.value || option
+      const value = option.value !== undefined ? option.value : option
       this.state = value
       this.$emit('update:value', value, e)
     }
