@@ -13,7 +13,6 @@ exports[`CSelect renders correctly 1`] = `
     id="some_id"
   >
     <option
-      disabled="disabled"
       hidden="hidden"
       selected="selected"
       value=""
@@ -143,7 +142,6 @@ exports[`CSelect renders correctly 3`] = `
       inline="true"
     >
       <option
-        disabled="disabled"
         hidden="hidden"
         selected="selected"
         value=""
