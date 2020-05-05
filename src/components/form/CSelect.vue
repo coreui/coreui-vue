@@ -25,7 +25,6 @@
           v-if="placeholder" 
           value="" 
           selected 
-          disabled
           hidden
         >
           {{placeholder}}
