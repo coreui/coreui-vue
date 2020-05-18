@@ -8,7 +8,7 @@ exports[`CSidebarNavDropdown renders correctly 1`] = `
     class="c-sidebar-nav-dropdown-toggle"
   >
     <svg
-      class="c-sidebar-nav-icon"
+      class="c-icon c-icon-lg c-sidebar-nav-icon"
       role="img"
       viewBox="0 0 64 64"
       xmlns="http://www.w3.org/2000/svg"

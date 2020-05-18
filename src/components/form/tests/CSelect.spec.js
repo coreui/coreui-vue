@@ -6,7 +6,7 @@ const wrapperPlaintext = mount(Component, {
   propsData: {
     id: 'some_id',
     plaintext: true,
-    options: ['Option 1', 'Option 2', { value: 'Option 3 '}],
+    options: ['Option 1', 'Option 2', { value: 'Option 3'}],
     placeholder: 'placeholder',
     size: 'lg'
   }
@@ -14,16 +14,17 @@ const wrapperPlaintext = mount(Component, {
 const customSimpleWrapper = mount(Component, {
   propsData: {
     id: 'some_id',
-    options: ['Option 1', 'Option 2', { value: 'Option 3 '}],
+    options: ['Option 1', 'Option 2', { value: 'Option 3'}],
     size: 'lg',
     custom: true
   }
 })
 const customWrapper = mount(Component, {
+  attachToDocument: true, 
   propsData: {
     label: 'label',
     id: 'some_id',
-    options: ['Option 1', 'Option 2', { value: 'Option 3 '}],
+    options: ['Option 1', 'Option 2', { value: 'Option 3'}],
     placeholder: 'placeholder',
     wasValidated: true,
     checked: true,
@@ -69,6 +70,10 @@ describe(ComponentName, () => {
     select.element.value = 'Option 2'
     select.trigger('input')
     expect(customWrapper.emitted()['update:value']).toBeTruthy()
+    const select2 = customSimpleWrapper.find('select')
+    select2.element.value = 'Option 3'
+    select2.trigger('input')
+    expect(customSimpleWrapper.emitted()['update:value']).toBeTruthy()
   })
   it('not emit update event on multiple select', () => {
     const select = wrapperMultiple.find('select')

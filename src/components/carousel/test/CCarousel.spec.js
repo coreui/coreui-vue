@@ -2,8 +2,8 @@ import { mount } from '@vue/test-utils'
 import Component from '../CCarousel'
 import CCarouselItem from '../CCarouselItem'
 
-const props = Object.assign({}, CCarouselItem.props, { active: { default: true}})
-const item = Object.assign({}, CCarouselItem, { props })
+// const props = Object.assign({}, CCarouselItem.props, { active: { default: true}})
+// const item = Object.assign({}, CCarouselItem, { props })
 
 const ComponentName = 'CCarousel'
 const defaultWrapper = mount(Component)
@@ -19,7 +19,10 @@ const createWrapper = () => {
       height: '200'
     },
     slots: {
-      default: [item, CCarouselItem, CCarouselItem]
+      default: ['<CCarouselItem :active="true"/>', CCarouselItem, CCarouselItem]
+    },
+    stubs: {
+      CCarouselItem
     }
   })
 }
@@ -61,7 +64,7 @@ describe(ComponentName, () => {
     const nextArrowClick = () => nextButton.trigger('click')
 
     jest.useFakeTimers()
-    customWrapper.setData({ waitingItem: null, transitioning: false })
+    customWrapper.setData({ transitioning: false })
 
     nextArrowClick()
     expect(customWrapper.vm.transitioning).toBe(true)

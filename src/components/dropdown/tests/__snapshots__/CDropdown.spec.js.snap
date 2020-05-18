@@ -59,17 +59,55 @@ exports[`CDropdown renders custom wrapper correctly 1`] = `
   <div
     class="additional-menu-class dropdown-menu show"
   >
-    <a
-      class="dropdown-item"
-      href="#"
-      role="menuitem"
-      target="_self"
+    <div
+      class="dropdown-header"
     />
     <a
       class="dropdown-item"
       href="#"
       role="menuitem"
       target="_self"
+    />
+    <div
+      class="dropdown-divider"
+      role="separator"
+    />
+  </div>
+</div>
+`;
+
+exports[`CDropdown renders dropdown with router links correctly 1`] = `
+<div
+  class="dropright show btn-group"
+>
+  <button
+    class="additional-toggler-class btn btn-lg btn-success"
+  >
+    Dropdown button
+  </button>
+   
+  <button
+    aria-expanded="true"
+    aria-haspopup="true"
+    class="dropdown-toggle dropdown-toggle-split additional-toggler-class btn btn-lg btn-success"
+    type="button"
+  />
+   
+  <div
+    class="additional-menu-class dropdown-menu show"
+  >
+    <div
+      class="dropdown-header"
+    />
+    <a
+      class="dropdown-item"
+      href="#"
+      role="menuitem"
+      target="_self"
+    />
+    <div
+      class="dropdown-divider"
+      role="separator"
     />
   </div>
 </div>

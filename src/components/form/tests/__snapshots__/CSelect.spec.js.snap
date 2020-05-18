@@ -40,10 +40,10 @@ exports[`CSelect renders correctly 1`] = `
     </option>
     <option
       data-key="2"
-      value="Option 3 "
+      value="Option 3"
     >
       
-          Option 3 
+          Option 3
         
     </option>
   </select>
@@ -90,10 +90,10 @@ exports[`CSelect renders correctly 2`] = `
     </option>
     <option
       data-key="2"
-      value="Option 3 "
+      value="Option 3"
     >
       
-          Option 3 
+          Option 3
         
     </option>
   </select>
@@ -169,10 +169,10 @@ exports[`CSelect renders correctly 3`] = `
       </option>
       <option
         data-key="2"
-        value="Option 3 "
+        value="Option 3"
       >
         
-          Option 3 
+          Option 3
         
       </option>
     </select>

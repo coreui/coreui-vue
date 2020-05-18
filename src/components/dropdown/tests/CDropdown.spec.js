@@ -1,30 +1,68 @@
 import { mount, createLocalVue } from '@vue/test-utils'
-import Component from '../CDropdown'
-import CDropdownItem from '../CDropdownItem'
+import {
+  CDropdown,
+  CDropdownItem,
+  CDropdownHeader,
+  CDropdownDivider
+} from '../index'
+import VueRouter from 'vue-router'
+
 const ComponentName = 'CDropdown'
 
-const generateWrapper = () => mount(Component, {
-  attachToDocument: true,
-  propsData: {
-    togglerText: 'Dropdown button',
-    show: true,
-    addMenuClasses: 'additional-menu-class',
-    addTogglerClasses: 'additional-toggler-class',
-    inNav: false,
-    caret: false,
-    color: 'success',
-    size: 'lg',
-    split: true,
-    offset: [20, 0],
-    placement: 'right-end',
-    flip: false,
+const localVue = new createLocalVue()
+localVue.use(VueRouter)
+const router = new VueRouter()
+
+const dropdownProps = {
+  togglerText: 'Dropdown button',
+  show: true,
+  addMenuClasses: 'additional-menu-class',
+  addTogglerClasses: 'additional-toggler-class',
+  inNav: false,
+  caret: false,
+  color: 'success',
+  size: 'lg',
+  split: true,
+  offset: [20, 0],
+  placement: 'right-end',
+  flip: false
+}
+
+const App = localVue.extend({
+  router,
+  components: {
+    CDropdown,
+    CDropdownItem,
+    CDropdownHeader,
+    CDropdownDivider
   },
-  slots: {
-    default: [CDropdownItem, CDropdownItem]
+  render (h) {
+    return h('CDropdown', { props: dropdownProps }, [
+      h('CDropdownHeader', ['header']),
+      h('CDropdownItem', { props: { to: '/buttons' } }, ['Router-link']),
+      h('CDropdownDivider'),
+      //router link item
+      h('CDropdownItem', { props: { to: '/dashboard' } }, ['Router-link'])
+    ])
   }
 })
 
-const generateNavWrapper =  () => mount(Component, {
+const generateAppWrapper =  () => mount(App, { localVue })
+
+
+const generateWrapper = () => mount(CDropdown, {
+  attachToDocument: true,
+  propsData: dropdownProps,
+  slots: {
+    default: [
+      CDropdownHeader,
+      CDropdownItem,
+      CDropdownDivider
+    ]
+  }
+})
+
+const generateNavWrapper =  () => mount(CDropdown, {
   propsData: {
     addMenuClasses: 'additional-menu-class',
     addTogglerClasses: 'additional-toggler-class',
@@ -43,12 +81,15 @@ const generateNavWrapper =  () => mount(Component, {
 
 describe(ComponentName, () => {
   it('has a name', () => {
-    expect(Component.name).toMatch(ComponentName)
+    expect(CDropdown.name).toMatch(ComponentName)
   })
   it('renders basic wrapper correctly', () => {
-    expect(mount(Component).element).toMatchSnapshot()
+    expect(mount(CDropdown).element).toMatchSnapshot()
   })
   it('renders custom wrapper correctly', () => {
+    expect(generateWrapper().element).toMatchSnapshot()
+  })
+  it('renders dropdown with router links correctly', () => {
     expect(generateWrapper().element).toMatchSnapshot()
   })
   it('renders correctly inNav', () => {
@@ -65,6 +106,13 @@ describe(ComponentName, () => {
     expect(wrapper.vm.visible).toBe(true)
     wrapper.vm.$children[0].$el.click()
     expect(wrapper.vm.visible).toBe(false)
+  })
+  it('hide when dropdown item - router link is clicked', () => {
+    const wrapper = generateAppWrapper()
+    const isVisible = () => wrapper.vm.$children[0].visible
+    expect(isVisible()).toBe(true)
+    wrapper.findAll('.dropdown-item').at(1).trigger('click')
+    expect(isVisible()).toBe(false)
   })
   it('close, but does not open on click when dropdown is disabled', () => {
     const customWrapper = generateWrapper()

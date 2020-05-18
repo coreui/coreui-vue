@@ -23,8 +23,8 @@ const wrapperMounting = (mode, icon = 'cui-settings') => mount(
   }
 )
 
-const wrapper = wrapperMounting('openActive', { name: 'cui-settings' })
-const wrapperCloseMode = wrapperMounting('close')
+const wrapper = wrapperMounting('openActive', { name: 'cui-settings', size: 'lg' })
+const wrapperCloseMode = wrapperMounting('close', { name: 'cui-settings'})
 const wrapperCloseInactiveMode = wrapperMounting('closeInactive')
 
 const routeChange = (wrapperToChangeRoute, route) => { 
