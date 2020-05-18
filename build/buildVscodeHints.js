@@ -10,7 +10,7 @@ function getTypesClasses (types) {
     const name = rawClass.match(/(?<=class\s+).*?(?=\s+extends)/gs)[0]
 
     const propsRaw = rawClass.substring(rawClass.indexOf('{') + 1, rawClass.indexOf('}'))
-    let props = propsRaw.match(/([a-zA-Z]+:).*?(?=[a-zA-Z]+:|$)/g)
+    let props = propsRaw.match(/([a-zA-Z?]+:).*?(?=[a-zA-Z?]+:|$)/g)
     if (props) {
       props = props.map(prop => prop.trim())
     }
