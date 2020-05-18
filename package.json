@@ -15,7 +15,9 @@
     "./src/components/alert/CAlert.vue",
     "./src/components/table/CDataTable.vue",
     "./src/components/tabs/CTab.vue",
-    "./src/components/toast/CCarousel.vue"
+    "./src/components/toast/CCarousel.vue",
+    "./src/directives/old-popover.css",
+    "./src/directives/old-tooltip.css"
   ],
   "homepage": "https://coreui.io",
   "author": {
@@ -89,6 +91,7 @@
     "core-js": "~3.6.5",
     "eslint": "~6.8.0",
     "eslint-plugin-vue": "~6.2.2",
+    "identity-obj-proxy": "^3.0.0",
     "node-sass": "~4.14.1",
     "node-sass-magic-importer": "~5.3.2",
     "npm-run-all": "~4.1.5",

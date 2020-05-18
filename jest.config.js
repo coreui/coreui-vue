@@ -15,5 +15,8 @@ module.exports = {
     'src/**/*.{js,vue}',
     '!src/index.umd.js',
     '!**/node_modules/**'
-  ]
+  ],
+  moduleNameMapper: {
+    '\\.(css|less)$': 'identity-obj-proxy'
+  }
 };

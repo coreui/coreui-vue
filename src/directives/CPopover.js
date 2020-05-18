@@ -1,4 +1,5 @@
 import Tooltip from 'tooltip.js'
+import './old-popover.css'
 
 export default {
   name: 'c-popover',
@@ -32,7 +33,7 @@ export default {
       delay: props.delay || 0,
       offset: props.offset || 0,
       arrowSelector: '.arrow',
-      innerSelector: '.popover-body',
+      innerSelector: '.popover-old-body',
       template: binding.def.getTemplate(props.header),
       boundariesElement: document.getElementById(props.boundaries) || props.boundaries,
       container: props.appendToBody ? document.body : false,
@@ -41,10 +42,10 @@ export default {
     }
   },
   getTemplate (header) {
-    return `<div class="popover bs-popover-auto fade show" role="tooltip">
+    return `<div class="popover-old bs-popover-old-auto fade show" role="tooltip">
               <div class="arrow"></div>
-              <h3 class="popover-header">${header || 'header'}</h3>
-              <div class="popover-body"></div>
+              <h3 class="popover-old-header">${header || 'header'}</h3>
+              <div class="popover-old-body"></div>
             </div>`
   }
 }

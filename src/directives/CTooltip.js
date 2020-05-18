@@ -1,4 +1,6 @@
 import Tooltip from 'tooltip.js'
+import './old-tooltip.css'
+
 export default {
   name: 'c-tooltip',
   inserted (el, binding) {
@@ -29,7 +31,7 @@ export default {
       delay: props.delay || 0,
       offset: props.offset || 0,
       arrowSelector: '.arrow',
-      innerSelector: '.tooltip-inner',
+      innerSelector: '.tooltip-old-inner',
       template: binding.def.getTemplate(),
       boundariesElement: document.getElementById(props.boundaries) || props.boundaries,
       container: props.appendToBody ? document.body : false,
@@ -38,9 +40,9 @@ export default {
     }
   },
   getTemplate () {
-    return `<div class="tooltip bs-tooltip-auto fade show" role="tooltip">
+    return `<div class="tooltip-old bs-tooltip-old-auto fade show" role="tooltip">
               <div class="arrow"></div>
-              <div class="tooltip-inner"></div>
+              <div class="tooltip-old-inner"></div>
             </div>`
   }
 }

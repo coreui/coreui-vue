@@ -82,7 +82,7 @@ describe(ComponentName, () => {
     expect(CTooltip.name).toBe(ComponentName)
   })
   it('is rendered when activated initially', () => {
-    expect(tooltipWrapper.find('.tooltip').isVisible()).toBe(true)
+    expect(tooltipWrapper.find('.tooltip-old').isVisible()).toBe(true)
   })
 
   it('destroys correctly', (done) => {
