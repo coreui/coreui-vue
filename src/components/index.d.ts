@@ -464,7 +464,7 @@ type ContentFlat = [NodeFlat]
 declare interface NodeFlat {
   _name: string;
   _children?: Array<string | NodeFlat>;
-  [key: string]?: any;
+  [key: string]: any;
 }
 
 type ContentNotFlat = [
