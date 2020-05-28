@@ -19,7 +19,7 @@
         v-on="$listeners"
         :id="safeId"
         :class="inputClasses"
-        @input="onSelect($event)"
+        @change="onSelect($event)"
       >
         <option 
           v-if="placeholder" 
