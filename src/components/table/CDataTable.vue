@@ -38,6 +38,11 @@
               {{number}}
             </option>
           </select>
+          <CIcon
+            v-if="cleaner"
+            v-bind="cleanerProps"
+            @click.native="clean" 
+          />
         </div>
       </div>
     </div>
@@ -216,11 +221,11 @@
 import CElementCover from '../element-cover/CElementCover'
 import CPagination from '../pagination/CPagination'
 import CIcon from '@coreui/icons-vue/src/CIconRaw.vue'
-import { cilArrowTop, cilBan } from '@coreui/icons'
+import { cilArrowTop, cilBan, cilFilterX } from '@coreui/icons'
 
 export default {
   name: 'CDataTable',
-  icons: { cilArrowTop, cilBan },
+  icons: { cilArrowTop, cilBan, cilFilterX },
   components: {
     CPagination,
     CElementCover,
@@ -264,7 +269,8 @@ export default {
     footer: Boolean,
     loading: Boolean,
     clickableRows: Boolean,
-    noItemsView: Object
+    noItemsView: Object,
+    cleaner: [Boolean, Object]
   },
   data () {
     return {
@@ -447,6 +453,18 @@ export default {
         return customValues.noResults || 'No filtering results'
       }
       return customValues.noItems || 'No items'
+    },
+    cleanerProps () {
+      if (typeof this.cleaner === 'object') {
+        return this.cleaner
+      }
+      const isFiltered = this.tableFilterState || 
+                         Object.keys(this.columnFilterState).length || 
+                         this.sorterState.column
+      return { 
+        content: this.$options.icons.cilFilterX,
+        class: `ml-2 ${isFiltered ? 'text-danger' : 'transparent'}`
+      }
     }
   },
   methods: {
@@ -554,6 +572,11 @@ export default {
     objectsAreIdentical (obj1, obj2) {
       return obj1.length === obj2.length && 
              JSON.stringify(obj1) === JSON.stringify(obj2)
+    },
+    clean() {
+      this.tableFilterState = ""
+      this.columnFilterState = {}
+      this.sorterState = { column: "", asc: true }
     }
   }
 }

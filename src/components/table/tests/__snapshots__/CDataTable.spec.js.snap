@@ -35,12 +35,14 @@ exports[`CDataTable renders correctly 1`] = `
                 <svg
                   class="text-danger mb-2 c-icon c-icon-custom-size"
                   role="img"
-                  viewBox="0 0 24 24"
+                  viewBox="0 0 512 512"
                   width="30"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M19.955 4.045c-2.036-2.036-4.848-3.295-7.955-3.295-6.213 0-11.25 5.037-11.25 11.25 0 3.107 1.259 5.919 3.295 7.955v0c2.036 2.036 4.848 3.295 7.955 3.295 6.213 0 11.25-5.037 11.25-11.25 0-3.107-1.259-5.919-3.295-7.955v0zM12 2.25c0.003 0 0.006 0 0.009 0 2.431 0 4.653 0.894 6.356 2.37l-0.012-0.010-13.743 13.743c-1.466-1.691-2.36-3.913-2.36-6.344 0-0.003 0-0.006 0-0.009v0c0-5.376 4.374-9.75 9.75-9.75zM12 21.75c-0.002 0-0.005 0-0.008 0-2.419 0-4.632-0.885-6.332-2.349l0.013 0.011 13.739-13.739c1.453 1.687 2.338 3.9 2.338 6.319 0 0.003 0 0.006 0 0.009v-0c0 5.376-4.374 9.75-9.75 9.75z"
+                    class="ci-primary"
+                    d="M425.706,86.294A240,240,0,0,0,86.294,425.705,240,240,0,0,0,425.706,86.294ZM256,48A207.1,207.1,0,0,1,391.528,98.345L98.345,391.528A207.1,207.1,0,0,1,48,256C48,141.309,141.309,48,256,48Zm0,416a207.084,207.084,0,0,1-134.986-49.887l293.1-293.1A207.084,207.084,0,0,1,464,256C464,370.691,370.691,464,256,464Z"
+                    fill="var(--ci-primary-color, currentColor)"
                   />
                 </svg>
               </h2>
@@ -136,6 +138,24 @@ exports[`CDataTable renders correctly 2`] = `
           
           </option>
         </select>
+         
+        <svg
+          class="c-icon ml-2 text-danger"
+          role="img"
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <polygon
+            class="ci-primary"
+            fill="var(--ci-primary-color, currentColor)"
+            points="40 16 40 53.828 109.024 136 150.815 136 76.896 48 459.51 48 304 242.388 304 401.373 241.373 464 240 464 240 368 208 368 208 496 254.627 496 336 414.627 336 253.612 496 53.612 496 16 40 16"
+          />
+          <polygon
+            class="ci-primary"
+            fill="var(--ci-primary-color, currentColor)"
+            points="166.403 248.225 226.864 187.763 204.237 165.135 143.775 225.597 83.313 165.135 60.687 187.763 121.148 248.225 60.687 308.687 83.313 331.314 143.775 270.852 204.237 331.314 226.864 308.687 166.403 248.225"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -160,12 +180,14 @@ exports[`CDataTable renders correctly 2`] = `
             <svg
               class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position rotate-icon"
               role="img"
-              viewBox="0 0 24 24"
+              viewBox="0 0 512 512"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
+              <polygon
+                class="ci-primary"
+                fill="var(--ci-primary-color, currentColor)"
+                points="390.624 150.625 256 16 121.376 150.625 144.004 173.252 240.001 77.254 240.001 495.236 272.001 495.236 272.001 77.257 367.996 173.252 390.624 150.625"
               />
             </svg>
           </th>
@@ -180,12 +202,14 @@ exports[`CDataTable renders correctly 2`] = `
             <svg
               class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
               role="img"
-              viewBox="0 0 24 24"
+              viewBox="0 0 512 512"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
+              <polygon
+                class="ci-primary"
+                fill="var(--ci-primary-color, currentColor)"
+                points="390.624 150.625 256 16 121.376 150.625 144.004 173.252 240.001 77.254 240.001 495.236 272.001 495.236 272.001 77.257 367.996 173.252 390.624 150.625"
               />
             </svg>
           </th>
@@ -200,12 +224,14 @@ exports[`CDataTable renders correctly 2`] = `
             <svg
               class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
               role="img"
-              viewBox="0 0 24 24"
+              viewBox="0 0 512 512"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
+              <polygon
+                class="ci-primary"
+                fill="var(--ci-primary-color, currentColor)"
+                points="390.624 150.625 256 16 121.376 150.625 144.004 173.252 240.001 77.254 240.001 495.236 272.001 495.236 272.001 77.257 367.996 173.252 390.624 150.625"
               />
             </svg>
           </th>
@@ -220,12 +246,14 @@ exports[`CDataTable renders correctly 2`] = `
             <svg
               class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
               role="img"
-              viewBox="0 0 24 24"
+              viewBox="0 0 512 512"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
+              <polygon
+                class="ci-primary"
+                fill="var(--ci-primary-color, currentColor)"
+                points="390.624 150.625 256 16 121.376 150.625 144.004 173.252 240.001 77.254 240.001 495.236 272.001 495.236 272.001 77.257 367.996 173.252 390.624 150.625"
               />
             </svg>
           </th>
@@ -508,12 +536,14 @@ exports[`CDataTable renders correctly 2`] = `
             <svg
               class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position rotate-icon"
               role="img"
-              viewBox="0 0 24 24"
+              viewBox="0 0 512 512"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
+              <polygon
+                class="ci-primary"
+                fill="var(--ci-primary-color, currentColor)"
+                points="390.624 150.625 256 16 121.376 150.625 144.004 173.252 240.001 77.254 240.001 495.236 272.001 495.236 272.001 77.257 367.996 173.252 390.624 150.625"
               />
             </svg>
           </th>
@@ -528,12 +558,14 @@ exports[`CDataTable renders correctly 2`] = `
             <svg
               class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
               role="img"
-              viewBox="0 0 24 24"
+              viewBox="0 0 512 512"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
+              <polygon
+                class="ci-primary"
+                fill="var(--ci-primary-color, currentColor)"
+                points="390.624 150.625 256 16 121.376 150.625 144.004 173.252 240.001 77.254 240.001 495.236 272.001 495.236 272.001 77.257 367.996 173.252 390.624 150.625"
               />
             </svg>
           </th>
@@ -548,12 +580,14 @@ exports[`CDataTable renders correctly 2`] = `
             <svg
               class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
               role="img"
-              viewBox="0 0 24 24"
+              viewBox="0 0 512 512"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
+              <polygon
+                class="ci-primary"
+                fill="var(--ci-primary-color, currentColor)"
+                points="390.624 150.625 256 16 121.376 150.625 144.004 173.252 240.001 77.254 240.001 495.236 272.001 495.236 272.001 77.257 367.996 173.252 390.624 150.625"
               />
             </svg>
           </th>
@@ -568,12 +602,14 @@ exports[`CDataTable renders correctly 2`] = `
             <svg
               class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
               role="img"
-              viewBox="0 0 24 24"
+              viewBox="0 0 512 512"
               width="18"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M18.311 7.061l-6.311-6.311-6.31 6.311 1.061 1.061 4.5-4.5v19.593h1.5v-19.593l4.5 4.5 1.061-1.061z"
+              <polygon
+                class="ci-primary"
+                fill="var(--ci-primary-color, currentColor)"
+                points="390.624 150.625 256 16 121.376 150.625 144.004 173.252 240.001 77.254 240.001 495.236 272.001 495.236 272.001 77.257 367.996 173.252 390.624 150.625"
               />
             </svg>
           </th>

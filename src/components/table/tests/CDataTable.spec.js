@@ -46,7 +46,8 @@ function createCustomWrapper () {
       footer: true,
       sorterValue: { column: 'username', asc: false },
       columnFilterValue: { registered: '2', 'non_existing': 'smh' },
-      pagination: true
+      pagination: true,
+      cleaner: true
     },
     slots: {
       details: '<div class="details">Details slot</div>'
@@ -225,5 +226,16 @@ describe(ComponentName, () => {
       }
     })
     expect(localWrapper.text()).toContain('no items text')
+  })
+  it('Cleaner works properly', () => {
+    const localWrapper = createCustomWrapper()
+    const icon = localWrapper.find('svg')
+    expect(icon.classes()).toContain('text-danger')
+    icon.trigger('click')
+    expect(icon.classes()).toContain('transparent')
+    localWrapper.setProps({
+      cleaner: {}
+    })
+    expect(icon.classes()).not.toContain('transparent')
   })
 })

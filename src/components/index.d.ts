@@ -592,6 +592,7 @@ export declare class CDataTable extends Vue {
   noItemsView?: {
     noItems?: string, noResults?: string
   }
+  cleaner: string | CIcon
 }
 
 export declare class CTabs extends Vue {
