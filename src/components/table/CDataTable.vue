@@ -13,6 +13,7 @@
           @input="tableFilterChange($event.target.value, 'input')"
           @change="tableFilterChange($event.target.value, 'change')"
           :value="tableFilterState"
+          aria-label="table filter input"
         >
       </div>
 
@@ -26,6 +27,7 @@
           <select
             class="form-control"
             @change="paginationChange"
+            aria-label="visible items amount change"
           >
             <option value="" selected disabled hidden>
               {{perPageItems}}
@@ -74,6 +76,7 @@
                     width="18"
                     :content="$options.icons.cilArrowTop"
                     :class="iconClasses(index)"
+                    aria-label="change column sorting"
                   />
                 </slot>
               </th>
@@ -90,6 +93,7 @@
                     @input="columnFilterEvent(colName, $event.target.value, 'input')"
                     @change="columnFilterEvent(colName, $event.target.value, 'change')"
                     :value="columnFilterState[colName]"
+                    :aria-label="`column name: ${colName} filter input`"
                   />
                 </slot>
               </th>
@@ -191,6 +195,7 @@
             </template>
           </tr>
         </tfoot>
+        <slot name="footer" :itemsAmount="currentItems.length"/>
         <slot name="caption"/>
       </table>
 
@@ -346,11 +351,6 @@ export default {
       })
       return items
     },
-    filterableCols () {
-      return this.rawColumnNames.filter(name => {
-        return this.generatedColumnNames.includes(name)
-      })
-    },
     tableFiltered () {
       let items = this.columnFiltered
       if (!this.tableFilterState || (this.tableFilter && this.tableFilter.external)) {
@@ -359,7 +359,7 @@ export default {
       const filter = this.tableFilterState.toLowerCase()
       const hasFilter = (item) => String(item).toLowerCase().includes(filter)
       items = items.filter(item => {
-        return this.filterableCols.filter(key => hasFilter(item[key])).length
+        return this.rawColumnNames.filter(key => hasFilter(item[key])).length
       })
       return items
     },

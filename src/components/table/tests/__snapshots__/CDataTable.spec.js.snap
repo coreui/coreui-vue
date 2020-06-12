@@ -52,7 +52,7 @@ exports[`CDataTable renders correctly 1`] = `
       </tbody>
        
       <!---->
-       
+        
     </table>
      
     <!---->
@@ -77,6 +77,7 @@ exports[`CDataTable renders correctly 2`] = `
       </label>
        
       <input
+        aria-label="table filter input"
         class="form-control"
         placeholder="type string..."
         type="text"
@@ -96,6 +97,7 @@ exports[`CDataTable renders correctly 2`] = `
         </label>
          
         <select
+          aria-label="visible items amount change"
           class="form-control"
         >
           <option
@@ -178,6 +180,7 @@ exports[`CDataTable renders correctly 2`] = `
             </div>
              
             <svg
+              aria-label="change column sorting"
               class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position rotate-icon"
               role="img"
               viewBox="0 0 512 512"
@@ -200,6 +203,7 @@ exports[`CDataTable renders correctly 2`] = `
             </div>
              
             <svg
+              aria-label="change column sorting"
               class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
               role="img"
               viewBox="0 0 512 512"
@@ -222,6 +226,7 @@ exports[`CDataTable renders correctly 2`] = `
             </div>
              
             <svg
+              aria-label="change column sorting"
               class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
               role="img"
               viewBox="0 0 512 512"
@@ -244,6 +249,7 @@ exports[`CDataTable renders correctly 2`] = `
             </div>
              
             <svg
+              aria-label="change column sorting"
               class="c-icon c-icon-custom-size icon-transition position-absolute arrow-position transparent"
               role="img"
               viewBox="0 0 512 512"
@@ -276,6 +282,7 @@ exports[`CDataTable renders correctly 2`] = `
             class="user-custom-class"
           >
             <input
+              aria-label="column name: username filter input"
               class="form-control form-control-sm"
             />
           </th>
@@ -283,6 +290,7 @@ exports[`CDataTable renders correctly 2`] = `
             class=""
           >
             <input
+              aria-label="column name: registered filter input"
               class="form-control form-control-sm"
             />
           </th>
@@ -290,6 +298,7 @@ exports[`CDataTable renders correctly 2`] = `
             class=""
           >
             <input
+              aria-label="column name: role filter input"
               class="form-control form-control-sm"
             />
           </th>
@@ -297,6 +306,7 @@ exports[`CDataTable renders correctly 2`] = `
             class=""
           >
             <input
+              aria-label="column name: status filter input"
               class="form-control form-control-sm"
             />
           </th>
@@ -625,7 +635,7 @@ exports[`CDataTable renders correctly 2`] = `
           </th>
         </tr>
       </tfoot>
-       
+        
     </table>
      
     <!---->
