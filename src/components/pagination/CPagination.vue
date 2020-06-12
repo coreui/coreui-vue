@@ -32,8 +32,8 @@
       </li>
 
       <li
-        v-for="(item, index) in items"
-        :key="index"
+        v-for="item in items"
+        :key="item"
         :class="[{ 'active': activePage === item }, 'page-item']"
       >
         <CLink
