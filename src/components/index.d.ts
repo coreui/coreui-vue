@@ -446,8 +446,7 @@ export declare class CPagination extends Vue {
   responsive?: boolean
 }
 
-export declare class CProgress extends Vue {
-  height?: string
+export declare class CProgressBar extends Vue {
   color?: string
   striped?: boolean
   animated?: boolean
@@ -458,7 +457,11 @@ export declare class CProgress extends Vue {
   value?: number
 }
 
-export declare class CProgressBar extends CProgress {}
+export declare class CProgress extends CProgressBar {
+  height?: string
+  size?: string
+}
+
 
 type ContentFlat = [NodeFlat]
 declare interface NodeFlat {

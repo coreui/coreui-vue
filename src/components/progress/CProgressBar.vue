@@ -12,28 +12,26 @@
 </template>
 
 <script>
-import props from './progress-props'
+import props from './shared-props'
+
 export default {
   name: 'CProgressBar',
   props,
   inject: {
     progress: {
-      default: undefined
+      default: { props: {} }
     }
   },
   computed: {
     directlyDeclaredProps () {
       return Object.keys(this.$options.propsData)
     },
-    injectedProps () {
-      return this.progress && this.progress.props ? this.progress.props : {}
-    },
     props () {
       return Object.keys(props).reduce((computedProps, key) => {
         const propIsDirectlyDeclared = this.directlyDeclaredProps.includes(key)
-        const parentPropExists = this.injectedProps[key] !== undefined
-        const propIsInherited = parentPropExists && !propIsDirectlyDeclared
-        computedProps[key] = propIsInherited ? this.injectedProps[key] : this[key]
+        const parentPropExists = this.progress.props[key] !== undefined
+        const isInherited = parentPropExists && !propIsDirectlyDeclared
+        computedProps[key] = isInherited ? this.progress.props[key] : this[key]
         return computedProps
       }, {})
     },

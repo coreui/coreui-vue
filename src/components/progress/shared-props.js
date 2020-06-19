@@ -1,6 +1,4 @@
 export default {
-  height: String,
-  // These props can be inherited via the child CProgressBar(s)
   color: String,
   striped: Boolean,
   animated: Boolean,

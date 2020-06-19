@@ -20,6 +20,7 @@ exports[`CProgress renders correctly 1`] = `
 exports[`CProgress renders correctly 2`] = `
 <div
   class="test"
+  style="height: 2rem;"
 >
   <div
     aria-valuemax="100"

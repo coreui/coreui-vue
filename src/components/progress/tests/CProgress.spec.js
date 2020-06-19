@@ -6,7 +6,9 @@ const defaultWrapper = mount(Component)
 const customWrapper = mount(Component, {
   propsData: {
     color: 'black',
-    value: 20
+    value: 20,
+    size: 'sm',
+    height: '2rem'
   },
   attrs: {
     class: 'test'
