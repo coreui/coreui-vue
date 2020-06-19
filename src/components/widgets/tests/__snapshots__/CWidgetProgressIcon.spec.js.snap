@@ -25,7 +25,7 @@ exports[`CWidgetProgressIcon matches custom props snapshot 1`] = `
     </small>
      
     <div
-      class="progress progress-xs my-3 mb-0 progress-white"
+      class="progress-xs my-3 mb-0 progress progress-white"
     >
       <div
         aria-valuemax="100"
@@ -56,7 +56,7 @@ exports[`CWidgetProgressIcon matches default props snapshot 1`] = `
     <!---->
      
     <div
-      class="progress progress-xs my-3 mb-0"
+      class="progress-xs my-3 mb-0 progress"
     >
       <div
         aria-valuemax="100"
