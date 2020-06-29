@@ -139,8 +139,10 @@ export default {
         return
       }
       this.$nextTick(() => {
+
         this._popper = createPopper(
-          this.$el.firstElementChild, 
+          //not first child because of split buttons
+          this.$el.children[this.$el.children.length - 2], 
           this.$refs.menu, 
           this.customPopperOptions || this.defaultPopperOptions
         )
