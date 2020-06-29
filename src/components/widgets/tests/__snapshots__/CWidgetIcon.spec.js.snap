@@ -29,6 +29,7 @@ exports[`CWidgetIcon matches custom props snapshot 1`] = `
       </div>
     </div>
   </div>
+   
 </div>
 `;
 
@@ -49,5 +50,6 @@ exports[`CWidgetIcon matches default props snapshot 1`] = `
       <!---->
     </div>
   </div>
+   
 </div>
 `;
