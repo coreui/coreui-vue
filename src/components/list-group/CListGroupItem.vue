@@ -10,7 +10,8 @@ const props = Object.assign(
       default: 'li'
     },
     action: Boolean,
-    color: String
+    color: String,
+    accent: String
   },
   linkPropsFactory()
 )
@@ -45,6 +46,7 @@ export default {
       staticClass: 'list-group-item',
       class: {
         [`list-group-item-${props.color}`]: props.color,
+        [`list-group-item-accent-${props.accent}`]: props.accent,
         'list-group-item-action': isAction,
         'active': props.active,
         'disabled': props.disabled

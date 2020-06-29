@@ -374,13 +374,17 @@ export declare class CListGroup extends Vue {
   tag?: string
   flush?: boolean
   horizontal?: string | boolean
+  accent?: boolean
 }
 
 export declare class CListGroupItem extends CLink {
   tag?: string
   action?: boolean
   color?: string
+  accent?: string
 }
+
+export declare class CListGroupItemDivider extends Vue {}
 
 export declare class CMedia extends Vue {
   addAsideMargin?: boolean

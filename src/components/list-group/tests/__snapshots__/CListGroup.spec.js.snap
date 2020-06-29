@@ -9,7 +9,7 @@ exports[`CListGroup renders correctly 1`] = `
 
 exports[`CListGroup renders correctly with flush option 1`] = `
 <ul
-  class="list-group list-group-flush"
+  class="list-group list-group-flush list-group-accent"
   role="list-items"
 >
   <template>

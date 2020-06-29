@@ -7,7 +7,8 @@ const customWrapper = mount(Component, {
   propsData: {
     tag: 'button',
     action: true,
-    color: 'success'
+    color: 'success',
+    accent: 'success'
   },
   slots: {
     default: 'CListGroupItem content'

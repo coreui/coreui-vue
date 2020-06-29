@@ -10,7 +10,8 @@ const wrapper = mount(Component, {
 
 const customWrapper = mount(Component, {
   propsData: {
-    flush: true
+    flush: true,
+    accent: true
   },
   slots: {
     default: 'CListGroup content'

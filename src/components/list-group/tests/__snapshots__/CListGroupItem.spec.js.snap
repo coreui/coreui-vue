@@ -8,7 +8,7 @@ exports[`CListGroupItem renders correctly 1`] = `
 
 exports[`CListGroupItem renders correctly 2`] = `
 <button
-  class="list-group-item list-group-item-success list-group-item-action"
+  class="list-group-item list-group-item-success list-group-item-accent-success list-group-item-action"
   type="button"
 >
   <template>
