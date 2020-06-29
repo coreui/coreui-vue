@@ -1,26 +1,40 @@
 <template>
   <div>
-    <div v-if="itemsPerPageSelect || tableFilter" class="row my-2 mx-0">
+    <div 
+      v-if="itemsPerPageSelect || haveFilterOption" 
+      class="row my-2 mx-0"
+    >
       <div
         class="col-sm-6 form-inline p-0"
-        v-if="tableFilter"
+        v-if="haveFilterOption"
       >
-        <label class="mr-2">{{tableFilterData.label}}</label>
-        <input
-          class="form-control"
-          type="text"
-          :placeholder="tableFilterData.placeholder"
-          @input="tableFilterChange($event.target.value, 'input')"
-          @change="tableFilterChange($event.target.value, 'change')"
-          :value="tableFilterState"
-          aria-label="table filter input"
-        >
+        <template v-if="tableFilter">
+          <label class="mr-2">{{tableFilterData.label}}</label>
+          <input
+            class="form-control"
+            type="text"
+            :placeholder="tableFilterData.placeholder"
+            @input="tableFilterChange($event.target.value, 'input')"
+            @change="tableFilterChange($event.target.value, 'change')"
+            :value="tableFilterState"
+            aria-label="table filter input"
+          >
+        </template>
+        <slot name="cleaner" :clean="clean" :isFiltered="isFiltered">
+          <template v-if="cleaner">
+            <CIcon
+              v-if="cleaner"
+              v-bind="cleanerProps"
+              @click.native="clean"
+            />
+          </template>
+        </slot>
       </div>
 
       <div
         v-if="itemsPerPageSelect"
         class="col-sm-6 p-0"
-        :class="{ 'offset-sm-6': !tableFilter }"
+        :class="{ 'offset-sm-6': !haveFilterOption }"
       >
         <div class="form-inline justify-content-sm-end">
           <label class="mr-2">{{paginationSelect.label}}</label>
@@ -40,11 +54,7 @@
               {{number}}
             </option>
           </select>
-          <CIcon
-            v-if="cleaner"
-            v-bind="cleanerProps"
-            @click.native="clean" 
-          />
+
         </div>
       </div>
     </div>
@@ -76,7 +86,7 @@
                     width="18"
                     :content="$options.icons.cilArrowTop"
                     :class="iconClasses(index)"
-                    aria-label="change column sorting"
+                    :aria-label="`change column: '${name}' sorting`"
                   />
                 </slot>
               </th>
@@ -88,12 +98,13 @@
               <th :class="headerClass(index)" :key="index">
                 <slot :name="`${rawColumnNames[index]}-filter`">
                   <input
-                    v-if="!fields || fields[index].filter !== false"
+                    v-if="itemsDataColumns.includes(colName) && 
+                          (!fields || fields[index].filter !== false)"
                     class="form-control form-control-sm"
                     @input="columnFilterEvent(colName, $event.target.value, 'input')"
                     @change="columnFilterEvent(colName, $event.target.value, 'change')"
                     :value="columnFilterState[colName]"
-                    :aria-label="`column name: ${colName} filter input`"
+                    :aria-label="`column name: '${colName}' filter input`"
                   />
                 </slot>
               </th>
@@ -275,7 +286,7 @@ export default {
     loading: Boolean,
     clickableRows: Boolean,
     noItemsView: Object,
-    cleaner: [Boolean, Object]
+    cleaner: Boolean
   },
   data () {
     return {
@@ -351,6 +362,11 @@ export default {
       })
       return items
     },
+    itemsDataColumns () {	
+      return this.rawColumnNames.filter(name => {	
+        return this.generatedColumnNames.includes(name)	
+      })	
+    },
     tableFiltered () {
       let items = this.columnFiltered
       if (!this.tableFilterState || (this.tableFilter && this.tableFilter.external)) {
@@ -359,7 +375,7 @@ export default {
       const filter = this.tableFilterState.toLowerCase()
       const hasFilter = (item) => String(item).toLowerCase().includes(filter)
       items = items.filter(item => {
-        return this.rawColumnNames.filter(key => hasFilter(item[key])).length
+        return this.itemsDataColumns.filter(key => hasFilter(item[key])).length
       })
       return items
     },
@@ -454,17 +470,21 @@ export default {
       }
       return customValues.noItems || 'No items'
     },
+    isFiltered () {
+      return this.tableFilterState || 
+             Object.values(this.columnFilterState).join('') || 
+             this.sorterState.column
+    },
     cleanerProps () {
-      if (typeof this.cleaner === 'object') {
-        return this.cleaner
-      }
-      const isFiltered = this.tableFilterState || 
-                         Object.keys(this.columnFilterState).length || 
-                         this.sorterState.column
       return { 
         content: this.$options.icons.cilFilterX,
-        class: `ml-2 ${isFiltered ? 'text-danger' : 'transparent'}`
+        class: `ml-2 ${this.isFiltered ? 'text-danger' : 'transparent'}`,
+        role: this.isFiltered ? 'button' : null,
+        tabindex: this.isFiltered ? 0 : null,
       }
+    },
+    haveFilterOption () {
+      return this.tableFilter || this.cleaner || this.$scopedSlots.cleaner
     }
   },
   methods: {
@@ -518,7 +538,9 @@ export default {
       return classes
     },
     isSortable (index) {
-      return this.sorter && (!this.fields || this.fields[index].sorter !== false)
+      return this.sorter && 
+             (!this.fields || this.fields[index].sorter !== false) && 
+             this.itemsDataColumns.includes(this.rawColumnNames[index])
     },
     headerClass (index) {
       const fields = this.fields

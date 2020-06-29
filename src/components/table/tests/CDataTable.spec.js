@@ -233,9 +233,5 @@ describe(ComponentName, () => {
     expect(icon.classes()).toContain('text-danger')
     icon.trigger('click')
     expect(icon.classes()).toContain('transparent')
-    localWrapper.setProps({
-      cleaner: {}
-    })
-    expect(icon.classes()).not.toContain('transparent')
   })
 })
