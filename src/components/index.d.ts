@@ -414,6 +414,7 @@ export declare class CNav extends Vue {
   variant?: string
   vertical?: boolean
   inCard?: boolean
+  tag?: boolean
 }
 
 export declare class CNavItem extends CLink {}

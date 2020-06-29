@@ -1,7 +1,7 @@
 <template>
-  <ul :class="navClasses" @click="onClick">
+  <component :is="tag || 'ul'" :class="navClasses" @click="onClick">
     <slot></slot>
-  </ul>
+  </component>
 </template>
 
 <script>
@@ -14,8 +14,9 @@ export default {
     },
     fill: Boolean,
     justified: Boolean,
-    vertical: Boolean,
-    inCard: Boolean
+    vertical: [Boolean, String],
+    inCard: Boolean,
+    tag: String
   },
   provide () {
     const nav = {}
@@ -31,10 +32,11 @@ export default {
   },
   computed: {
     navClasses () {
+      const verticalSuffix = this.vertical === true ? '' : '-' + this.vertical
       return {
         'nav': true,
         [`nav-${this.variant}`]: this.variant,
-        'flex-column': this.vertical,
+        [`flex${verticalSuffix}-column`]: this.vertical,
         'nav-fill': this.fill,
         'nav-justified': this.justified,
         [`card-header-${this.variant}`]: this.inCard && this.variant
