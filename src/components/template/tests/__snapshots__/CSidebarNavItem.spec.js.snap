@@ -6,7 +6,7 @@ exports[`CSidebarNavItem.vue renders correctly 1`] = `
   id="link"
 >
   <a
-    class="c-sidebar-nav-link"
+    class="c-sidebar-nav-link c-sidebar-nav-link-success"
     href="#"
     target="_self"
   >

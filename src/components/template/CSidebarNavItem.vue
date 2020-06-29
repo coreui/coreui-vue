@@ -43,7 +43,8 @@ const props = Object.assign(
     fontIcon: String,
     badge: Object,
     addLinkClasses: [String, Array, Object],
-    label: Boolean
+    label: Boolean,
+    color: String
   }
 )
 
@@ -65,6 +66,7 @@ export default {
     linkClasses () {
       return [
         this.label ? 'c-sidebar-nav-label' : 'c-sidebar-nav-link',
+        this.color && `c-sidebar-nav-link-${this.color}`,
         this.addLinkClasses
       ]
     },

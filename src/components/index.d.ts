@@ -539,6 +539,7 @@ export declare class CSidebarNavItem extends CLink {
   badge?: object
   addLinkClasses?: string
   label?: boolean
+  color?: string
 }
 
 export declare class CSidebarNavTitle extends Vue {}

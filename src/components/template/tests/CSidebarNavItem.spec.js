@@ -10,7 +10,8 @@ const wrapper = mount(Component, {
     badge: {
       color: 'success',
       text: 'NEW'
-    }
+    },
+    color: 'success'
   },
   attrs: {
     id: 'link'
