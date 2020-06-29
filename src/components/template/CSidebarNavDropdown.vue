@@ -77,10 +77,11 @@ export default {
     computedIcon () {
       if (typeof this.icon === 'object') {
         const key = this.icon.size ? 'class' : 'customClasses'
-        return Object.assign(
-          { [`${key}`]: 'c-sidebar-nav-icon' },
-          this.icon
-        )
+        return {
+          ...this.icon,
+          [`${key}`]: this.icon.customClasses || 
+                      ['c-sidebar-nav-icon', this.icon.className]
+        }
       } else {
         return { customClasses: 'c-sidebar-nav-icon', name: this.icon }
       }
