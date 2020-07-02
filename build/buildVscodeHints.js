@@ -5,16 +5,23 @@ const classes = getTypesClasses(types)
 function getTypesClasses (types) {
   let classes = {}
   const rawClasses = types.replace(/(\n|\r)/ig, '')
-                          .match(/(export declare|declare class).*?(})/g)
+                          .split('declare')
+                          .filter(rawClass => rawClass.includes('class'))
+
   rawClasses.forEach(rawClass => {
-    const name = rawClass.match(/(?<=class\s+).*?(?=\s+extends)/gs)[0]
+    const name = rawClass.match(/(?<=class\s+).*?(?=\s+)/gs)[0]
 
-    const propsRaw = rawClass.substring(rawClass.indexOf('{') + 1, rawClass.indexOf('}'))
+    const propsRaw = rawClass
+      .substring(rawClass.indexOf('{') + 1, rawClass.lastIndexOf('}'))
+      .replace(/{(()([^}]))+}/ig, 'custom')
+
+
     let props = propsRaw.match(/([a-zA-Z?]+:).*?(?=[a-zA-Z?]+:|$)/g)
-    if (props) {
-      props = props.map(prop => prop.trim())
-    }
 
+    if (props) {
+      props = props.map(prop => prop.trim().replace('?', ''))
+    }        
+    
     classes[name] = {
       isExported: rawClass.includes('export'),
       extend: rawClass.match(/(?<=extends\s+).*?(?=\s+{)/gs)[0],
@@ -24,7 +31,8 @@ function getTypesClasses (types) {
   Object.entries(classes).forEach(([key, value]) => {
     if (value.extend !== 'Vue') {
       const props = classes[key].props || []
-      classes[key].props = [...props, ...(classes[value.extend].props)]
+      const extend = classes[value.extend].props || []
+      classes[key].props = [...props, ...extend]
     }
   })
   return classes
