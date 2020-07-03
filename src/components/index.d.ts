@@ -601,7 +601,7 @@ export declare class CDataTable extends Vue {
   noItemsView?: {
     noItems?: string, noResults?: string
   }
-  cleaner: boolean
+  cleaner?: boolean
 }
 
 export declare class CTabs extends Vue {
