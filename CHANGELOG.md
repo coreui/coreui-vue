@@ -1,19 +1,24 @@
 # Changelog
 
+## [3.1.0](https://github.com/coreui/coreui-vue/compare/3.1.0...3.1.0)
+
+> 3 July 2020
 ## [3.1.0](https://github.com/coreui/coreui-vue/compare/3.0.12...3.1.0)
 
-> 2 July 2020
+> 3 July 2020
 
 ### Changed
 
+- chore: 3.1.0 version release: update dependencies and changelog [`b95424f`](https://github.com/coreui/coreui-vue/commit/b95424f5f401e0a6698ec1afa5b73ab787fb4f26)
 - feat: CDataTable: replace cleaner prop object with slot [`8976054`](https://github.com/coreui/coreui-vue/commit/89760547ca1a029588dbb8a8f18d05f1127f798a)
 - feat: CDataTable: add cleaner prop, update @coreui/icons [`cf58305`](https://github.com/coreui/coreui-vue/commit/cf583051863dfec9472bd2c449b4e29da6e3b355)
 - feat: CProgress: add size prop [`a056973`](https://github.com/coreui/coreui-vue/commit/a056973fbc22998b12b825d1f590f8df27ce108b)
 - fix: CDataTable: add aria-label attributes to inputs [`ede894f`](https://github.com/coreui/coreui-vue/commit/ede894f2fb695462e21ebe639c6cfebcddec1731)
 - feat: CListGroup: add accent functionality [`94256a1`](https://github.com/coreui/coreui-vue/commit/94256a16d98912f70007abc27956d0bbbb77c4b5)
+- chore: fix VSCode hints generator [`433a574`](https://github.com/coreui/coreui-vue/commit/433a574335701865a167a3f7817055d49e390140)
 - fix: CSidebarNavItem: fix icon computation [`02d5ffd`](https://github.com/coreui/coreui-vue/commit/02d5ffd2852a57af61f22afdf14ff10c31cc877a)
-- feat: CNav component: add tag prop and vertical breakpoint option [`9aa2400`](https://github.com/coreui/coreui-vue/commit/9aa2400218db0ae2d0e54f8184236ed7bce979ee)
 - feat: add CListGroupItemDivider wrapper component [`1a64352`](https://github.com/coreui/coreui-vue/commit/1a643520251c1630a001ad3c94d67acf8f37e2e6)
+- feat: CNav component: add tag prop and vertical breakpoint option [`9aa2400`](https://github.com/coreui/coreui-vue/commit/9aa2400218db0ae2d0e54f8184236ed7bce979ee)
 - feat: CSidebarNavItem: add color prop [`3bb6c1f`](https://github.com/coreui/coreui-vue/commit/3bb6c1f366d57aadd73853619361f8f8e7df2217)
 - chore: update eslint rules and snapshots [`833d98a`](https://github.com/coreui/coreui-vue/commit/833d98a1ee004e9adb7ac121c773ea149186d20a)
 - chore: update workflows [`04efc0f`](https://github.com/coreui/coreui-vue/commit/04efc0f56e2279ab4d8254f4bc1b6184a663f57b)
