@@ -36,7 +36,7 @@
                 <button
                   type="button"
                   :class="btnClasses"
-                  @click="hide($event)"
+                  @click="hide($event, true)"
                 >
                   OK
                 </button>
@@ -145,8 +145,8 @@ export default {
         this.hide(e)
       }
     },
-    hide (e) {
-      this.$emit('update:show', false, e)
+    hide (e, accept = false) {
+      this.$emit('update:show', false, e, accept)
     },
     toggle (newVal) {
       setTimeout(() => { this.visible = newVal }, 0)
