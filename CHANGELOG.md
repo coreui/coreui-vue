@@ -1,8 +1,14 @@
 # Changelog
 
-## [3.1.0](https://github.com/coreui/coreui-vue/compare/3.1.0...3.1.0)
+## [3.1.1](https://github.com/coreui/coreui-vue/compare/3.1.0...3.1.1)
 
-> 3 July 2020
+> 8 July 2020
+
+### Changed
+
+- chore: update changelog to 3.1.0 [`a504c71`](https://github.com/coreui/coreui-vue/commit/a504c71c8649bd9fd2241717ce55e17faf9aa323)
+- fix: CModal: 'update:show' event - add third argument 'accept' #92 [`a91e4fd`](https://github.com/coreui/coreui-vue/commit/a91e4fdcfce3d0f88e239526f81b50699b2900f1)
+
 ## [3.1.0](https://github.com/coreui/coreui-vue/compare/3.0.12...3.1.0)
 
 > 3 July 2020
