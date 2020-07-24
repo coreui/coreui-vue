@@ -41,7 +41,7 @@
           <select
             class="form-control"
             @change="paginationChange"
-            aria-label="visible items amount change"
+            aria-label="changes number of visible items"
           >
             <option value="" selected disabled hidden>
               {{perPageItems}}
@@ -98,8 +98,7 @@
               <th :class="headerClass(index)" :key="index">
                 <slot :name="`${rawColumnNames[index]}-filter`">
                   <input
-                    v-if="itemsDataColumns.includes(colName) && 
-                          (!fields || fields[index].filter !== false)"
+                    v-if="!fields || fields[index].filter !== false"
                     class="form-control form-control-sm"
                     @input="columnFilterEvent(colName, $event.target.value, 'input')"
                     @change="columnFilterEvent(colName, $event.target.value, 'change')"
