@@ -116,7 +116,7 @@ exports[`CDataTable renders correctly 2`] = `
         </label>
          
         <select
-          aria-label="visible items amount change"
+          aria-label="changes number of visible items"
           class="form-control"
         >
           <option

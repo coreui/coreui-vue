@@ -1,11 +1,20 @@
 # Changelog
 
+## [v3.1.2](https://github.com/coreui/coreui-vue/compare/3.1.1...v3.1.2)
+
+> 24 July 2020
+
+### Changed
+
+- fix: CDataTable disable auto removing  columnFilter #113 [`f2c6ebe`](https://github.com/coreui/coreui-vue/commit/f2c6ebe6fccbf9de9667351aabec76a3f04de0bd)
+
 ## [3.1.1](https://github.com/coreui/coreui-vue/compare/3.1.0...3.1.1)
 
 > 8 July 2020
 
 ### Changed
 
+- chore: 3.1.1 version release: update dependencies and changelog [`4fff8d2`](https://github.com/coreui/coreui-vue/commit/4fff8d27eb00382856f5a195f95da48c7ac62be3)
 - chore: update changelog to 3.1.0 [`a504c71`](https://github.com/coreui/coreui-vue/commit/a504c71c8649bd9fd2241717ce55e17faf9aa323)
 - fix: CModal: 'update:show' event - add third argument 'accept' #92 [`a91e4fd`](https://github.com/coreui/coreui-vue/commit/a91e4fdcfce3d0f88e239526f81b50699b2900f1)
 
@@ -161,23 +170,80 @@
 - fix: do not emit update:value in case of 'multiple' attribute #64 [`73d2b3f`](https://github.com/coreui/coreui-vue/commit/73d2b3f874dad7bb4e350da997dcb9de9af5e4bc)
 - refactor: change CDropdown closing event name [`26c2f7d`](https://github.com/coreui/coreui-vue/commit/26c2f7d4c492e5861716dbc48c1e8d3b31f85aa8)
 
-## [3.0.1](https://github.com/coreui/coreui-vue/compare/3.0.0...3.0.1)
+## [3.0.1](https://github.com/coreui/coreui-vue/compare/v3.0.0...3.0.1)
 
 > 28 February 2020
 
 ### Changed
 
+- chore: 3.0.0 release: update build files and dependencies, small fixes [`ea3731a`](https://github.com/coreui/coreui-vue/commit/ea3731ac1bc4634e35a9826ef783bc3fac4b75a8)
+- chore: 3.0.0-beta.9 release [`5f970c8`](https://github.com/coreui/coreui-vue/commit/5f970c8eb7eb62502371ddd4c42e3756b882c369)
+- chore: 3.0.0-beta.7 release [`131550e`](https://github.com/coreui/coreui-vue/commit/131550ec8cff2845617e1000bdbfa424e6b3d426)
+- chore: 3.0.0-beta.11 release: update build files and readme [`f185194`](https://github.com/coreui/coreui-vue/commit/f185194bed2665b9293731c15228d1b6303b5e08)
+- chore: 3.0.0-beta.8 release: [`a3c99a7`](https://github.com/coreui/coreui-vue/commit/a3c99a7e8c1de215abd6c8f96d13250410bb0fe3)
+- chore: change dependencies update rules, update dependencies [`7386b50`](https://github.com/coreui/coreui-vue/commit/7386b504d2145a970906d8049dac528b7b7224b9)
 - chore: 3.0.1 release -  update dependencies and build files [`b6f44c9`](https://github.com/coreui/coreui-vue/commit/b6f44c9dbb140d39cba89529962fdc399082e9c7)
+- chore: 3.0.0-beta.6 release [`01c98cf`](https://github.com/coreui/coreui-vue/commit/01c98cf649fcc7abd049691f904d207a48e7296b)
+- refactor: move utilities to external library @coreui/utils [`ab0ca35`](https://github.com/coreui/coreui-vue/commit/ab0ca359ef7e54aa9dd8e80bbe274a7a6ae25646)
+- feat: add CTabs activeTab prop, change animation logic [`2db4629`](https://github.com/coreui/coreui-vue/commit/2db46295acf31b7e6f98500531d025385614519e)
+- feat: CDataTable new functionalities: [`3ee6adf`](https://github.com/coreui/coreui-vue/commit/3ee6adfb47bcb376e114e40df0bbe94ca59e9611)
+- chore: 3.0.0-beta.10 release [`79d22d7`](https://github.com/coreui/coreui-vue/commit/79d22d732ea163ddc8c63e7680f4b5f28245c4e7)
+- feat: add CElementCover component [`a81f3bc`](https://github.com/coreui/coreui-vue/commit/a81f3bcd54b6c6d91cfeb43dc9626a0aec625f4a)
+- chore: update build files [`0b341bf`](https://github.com/coreui/coreui-vue/commit/0b341bf566851c7906b0cb19eb04d105b1708000)
+- fix: CDataTable: fix 'columnFilterValue' prop updating [`cc66554`](https://github.com/coreui/coreui-vue/commit/cc66554a44e1b40a4158c93914fbeb37b544a4f2)
+- fix: fix component typings [`a68b5ce`](https://github.com/coreui/coreui-vue/commit/a68b5ce5d04f3b395482fa074b8ae571320327c9)
+- refactor: CHeaderBrand, CSidebarBrand - tag render mechanism change [`657d0e9`](https://github.com/coreui/coreui-vue/commit/657d0e94984a7ed7826ce6508eebf4c1dd22e3b4)
+- feat: add VSCode intellisense hints [`64b229e`](https://github.com/coreui/coreui-vue/commit/64b229e5f9bb94427d54a6d7207999834de61959)
 - refactor: CDropdown: optimize dropdown hiding, update tests [`b295f71`](https://github.com/coreui/coreui-vue/commit/b295f7188742240bda3d1d86afa17ff13a34414d)
 - feat: CDataTable row-clicked event modification #59 [`2a89938`](https://github.com/coreui/coreui-vue/commit/2a899387e95fffeff47291fb3aff2b14d480e945)
+- feat: CDataTable - table filter custom label and placeholder possibility [`a9654d5`](https://github.com/coreui/coreui-vue/commit/a9654d5b8f5f5188346e4e1c458d35515efd15ca)
+- refactor: update popper to 2.0.0 version [`8df70d0`](https://github.com/coreui/coreui-vue/commit/8df70d017ab8697d1126960a837728b9a89fc090)
+- chore: update build files (cache issue) [`4b6a780`](https://github.com/coreui/coreui-vue/commit/4b6a780a3309e4c3b88b5708ea346e025c9f40fd)
+- fix: CSidebar: fix closing sidebar onBackdropClick [`0f6689a`](https://github.com/coreui/coreui-vue/commit/0f6689a44fa435b08d9ec3ae6f65568f86417866)
+- feat: add CWrapper template component [`2a2333d`](https://github.com/coreui/coreui-vue/commit/2a2333d6dd31ed611b3128fab894da0777f99afd)
+- fix: CDataTable - fix sorting function and items watcher [`32363a4`](https://github.com/coreui/coreui-vue/commit/32363a4a7fbeb54d1859299208672b568fddc73d)
+- feat: add event listeners to all wrapped form components [`97085df`](https://github.com/coreui/coreui-vue/commit/97085df370e609c57334866c079956885749a2a9)
+- chore: update dependencies, small refactors [`8228f2e`](https://github.com/coreui/coreui-vue/commit/8228f2ed764c299f14f9f6eb91b5fffa50dd56d0)
+- refactor: move all template components to 'template' folder [`93be1b4`](https://github.com/coreui/coreui-vue/commit/93be1b4ea110c58459f3225536efa3ccd5b84cce)
 - fix: always close overlaid sidebar on outside click [`1b43afa`](https://github.com/coreui/coreui-vue/commit/1b43afa0908b9e3a19f66ff85664db4c06261e62)
+- feat: CNav, CNavItem refactor: [`521325c`](https://github.com/coreui/coreui-vue/commit/521325c669faccc8e3de43f0e01411ea06ecdea4)
+- chore: CSidebar - update tests [`815ad60`](https://github.com/coreui/coreui-vue/commit/815ad60e1c1d0f312f28ecf69b68e6708eadc9b4)
 - feat: add CClickaway directive [`a78fd14`](https://github.com/coreui/coreui-vue/commit/a78fd1476e0c3ee4005131527e5c0bac5b65f11a)
+- chore: refactor workflows [`30abab4`](https://github.com/coreui/coreui-vue/commit/30abab4e3203d320b0f980ecd230ab7ad08fa4b5)
+- feat: CDataTable: add header prop and itemsPerPageSelect options [`6a27fb5`](https://github.com/coreui/coreui-vue/commit/6a27fb514c400b13456c6ca60d4ed6658b888abe)
+- refactor: CElementCover - change boundaries API [`60edfe9`](https://github.com/coreui/coreui-vue/commit/60edfe93b20a0bd37b0967a47553cd0a64bf8a2a)
+- fix: CDataTable: fix value props usage: [`5dc6003`](https://github.com/coreui/coreui-vue/commit/5dc6003f9a273dc01751e4b67f2201e4a78acc0c)
+- chore: update README file [`7fa3831`](https://github.com/coreui/coreui-vue/commit/7fa3831ef6e7f50519c48ac476d2bd8ddf7d8cd5)
+- fix: CDataTable - fix table styles, support dark mode [`8d934c3`](https://github.com/coreui/coreui-vue/commit/8d934c33e0e7947c5f71464a0c2d1f7f068771b0)
 - refactor: remove listners function from form-mixins [`149c6c6`](https://github.com/coreui/coreui-vue/commit/149c6c6c7a9fc79ad81a69b5e890f28aa529f6f8)
+- feat: CDataTable - add filtered-items-change event [`ea92ae7`](https://github.com/coreui/coreui-vue/commit/ea92ae74bacdf2ca2d09f3cdf09bb8933ab79d48)
+- fix: CTabs - unable posibility of undefined active tab [`2ced24b`](https://github.com/coreui/coreui-vue/commit/2ced24b5588e00d7e8c9ecdd42436f21868b4de1)
+- fix: CTooltip, CPopover: fix wrong default behavior on overflow [`041d345`](https://github.com/coreui/coreui-vue/commit/041d34542df737212287d70ccffb0e28d2bd6a9c)
+- chore: delete PR greetings [`0538188`](https://github.com/coreui/coreui-vue/commit/053818812f8a62397c8b1cec7c81a80ce855a2c3)
+- refactor: CModal: delete addModalClasses, addDialogClasses props [`cf69e75`](https://github.com/coreui/coreui-vue/commit/cf69e752ddf56d9d7f0ee622dfa5e2a72495eb4a)
+- chore: update contributing guide [`8e16845`](https://github.com/coreui/coreui-vue/commit/8e16845ee1f084097ec7c125f26320d06bbe0939)
+- refactor: CSidebarNavItem: remove item-clicked event [`8da5ef6`](https://github.com/coreui/coreui-vue/commit/8da5ef6502d1c26707ac2a8ef8153890ee4652e9)
+- refactor: add docs link to prop hints, add package.json script [`dc380d4`](https://github.com/coreui/coreui-vue/commit/dc380d4b6de6146b9efb0eea00e43810080584b3)
+- fix: CSidebar - fix checking if user clicked on sidebar nav link [`3296517`](https://github.com/coreui/coreui-vue/commit/32965170ef2030c738ea0f0d1c6f4fe9ba5afd1f)
 - fix: form components - add missing events [`7eaec17`](https://github.com/coreui/coreui-vue/commit/7eaec170d95e030e4bf29c338fbe5d3f7dcb03b8)
 - feat: CDataTable: add page-change event [`9161fd6`](https://github.com/coreui/coreui-vue/commit/9161fd601930766221949c255154b454c42e47a0)
+- refactor: change CElementCover component prop name, add export [`d1aeb80`](https://github.com/coreui/coreui-vue/commit/d1aeb809e3fb9c847a88df5280f2b81dd838308a)
+- fix: CDataTable: make item sorting case insensitive [`04930e0`](https://github.com/coreui/coreui-vue/commit/04930e0f0f1d96ebca465b92720b84e6d90056b3)
 - chore: update readme and issue template [`9779c01`](https://github.com/coreui/coreui-vue/commit/9779c01224f56b45fb5e92706debf86f08c5fa6f)
-- chore: update typings [`bdb4b64`](https://github.com/coreui/coreui-vue/commit/bdb4b643ca01b474be8a78c2e47c77c877f0cb74)
-- chore: update build worklow shield in README [`7aad5d4`](https://github.com/coreui/coreui-vue/commit/7aad5d4f18762dad5d936bbd395cc2d0973ddf78)
-- chore: update README [`ad9f36c`](https://github.com/coreui/coreui-vue/commit/ad9f36c5bff5f9466bf1ebc8653228d1af659eef)
+- refactor: CElementCover - rename centered prop to center [`98ff7be`](https://github.com/coreui/coreui-vue/commit/98ff7bee59a53a64d761a2599a6dbcc2d317423a)
+- fix: add external libraries transpilations [`405ea5f`](https://github.com/coreui/coreui-vue/commit/405ea5fe1a3e059f168e459dcf1725e3cfcd47ac)
 - chore: merge user pull request [`31315c6`](https://github.com/coreui/coreui-vue/commit/31315c667e99e4631a1d25890a51c44d4c9e074a)
+- chore: update typings [`bdb4b64`](https://github.com/coreui/coreui-vue/commit/bdb4b643ca01b474be8a78c2e47c77c877f0cb74)
+- fix: CDataTable - fix sorterValue watcher [`babc461`](https://github.com/coreui/coreui-vue/commit/babc461bcf84f9726b5e63a80f4d0da0453b94ed)
+- chore: delete greeting on first user issue/post [`0c57392`](https://github.com/coreui/coreui-vue/commit/0c57392a03d25545fa352e7a841553de3609e1b2)
+- chore: fix wrong version in package.json [`216f023`](https://github.com/coreui/coreui-vue/commit/216f02357078502af8310331ee89b58c1ebdf5a3)
+- refactor: CLink - change default activeClass and exactActiveClass values [`84aa264`](https://github.com/coreui/coreui-vue/commit/84aa2649cc3d5c224379d4e0dcef2003763441eb)
+- chore: update readme file [`5695826`](https://github.com/coreui/coreui-vue/commit/5695826e87ae50844b01f4294e0177b3c3c1f12e)
+- fix: register used CLink component in CDropdown [`e3fcf96`](https://github.com/coreui/coreui-vue/commit/e3fcf96c3f8e349651f05f13d7519bf381835f2e)
+- fix: fix vetur build script [`f2fa024`](https://github.com/coreui/coreui-vue/commit/f2fa02434e297adfbbd627708b22dcf410fbdcb5)
+- fix: add itemsPerPage prop watcher [`034696c`](https://github.com/coreui/coreui-vue/commit/034696cfb186f7154a4952c0e3f67b0febcc59ad)
+- chore: update README [`ad9f36c`](https://github.com/coreui/coreui-vue/commit/ad9f36c5bff5f9466bf1ebc8653228d1af659eef)
+- chore: update build worklow shield in README [`7aad5d4`](https://github.com/coreui/coreui-vue/commit/7aad5d4f18762dad5d936bbd395cc2d0973ddf78)
+- chore: add template gif to README [`8a7b836`](https://github.com/coreui/coreui-vue/commit/8a7b836440756bde39c00f4a1b55846dd43b6f97)
+- chore: change files with sideEffects [`d29483a`](https://github.com/coreui/coreui-vue/commit/d29483ab0e06d5c3dbb7f99237417f7be8e4fb34)
 
