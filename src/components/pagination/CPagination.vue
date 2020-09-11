@@ -100,7 +100,7 @@
       },
       size: {
         type: String,
-        validator: val => ['', 'sm', 'lg'].includes(val)
+        validator: val => ['', 'sm', 'md', 'lg'].includes(val)
       },
       align: {
         type: String,
