@@ -23,7 +23,4 @@ When suggesting a feature:
   - As much detail as possible for what we should add and why it's important to CoreUI for Vue.js
   - Relevant links to prior art, screenshots, or live demos whenever possible
 
-
-
 **Please use GitHub only when reporting a bug, all issues with the general "how to" questions will be automatically closed.**
-
