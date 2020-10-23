@@ -2,7 +2,16 @@ import { mount } from '@vue/test-utils'
 import Component from '../CModal'
 
 const ComponentName = 'CModal'
-const defaultWrapper = mount(Component)
+const defaultWrapper = mount(Component, { attachToDocument: true })
+const defaultWrapper2 = mount(Component, { 
+  propsData: {
+    show: true,
+    onKey: function(type, key){
+      return key===32
+    }
+  },
+  attachToDocument: true 
+})
 const customWrapper = mount(Component, {
   propsData: {
     show: true,
@@ -14,7 +23,7 @@ const customWrapper = mount(Component, {
     fade: true,
     backdrop: true,
     closeOnBackdrop: false,
-    addContentClasses: 'additional-content-class'
+    addContentClasses: 'additional-content-class',
   },
   slots: {
     default: 'CModal body'
@@ -57,5 +66,17 @@ describe(ComponentName, () => {
       expect(customWrapper.vm.isTransitioning).toBe(false)
     }, 200)
     jest.runAllTimers()
+  })
+  it('Close on default key -> ESC (modal donot show=true on mounted)', () => {
+    defaultWrapper.setProps(
+    { 
+      show: true, 
+    })
+    defaultWrapper.trigger('keydown.esc')
+    expect(defaultWrapper.emitted()['update:show']).toBeTruthy()
+  })
+  it('Close on key defined in onKey function (modal show=true on mounted)', () => {
+    defaultWrapper2.trigger('keydown.space')
+    expect(defaultWrapper2.emitted()['update:show']).toBeTruthy()
   })
 })
