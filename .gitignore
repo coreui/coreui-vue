@@ -1,5 +1,6 @@
 # Dependency directories
 node_modules/
+package-lock.json
 
 # Coverage directory
 coverage/
