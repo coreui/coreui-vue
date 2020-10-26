@@ -407,6 +407,7 @@ export declare class CModal extends Vue {
   backdrop?: boolean
   closeOnBackdrop?: boolean
   addContentClasses?: string | Array<any> | object
+  onKey?: Function
 }
 
 export declare class CNav extends Vue {
