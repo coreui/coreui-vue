@@ -11,6 +11,7 @@ export default {
     md: [ Boolean, String, Number, Object ],
     lg: [ Boolean, String, Number, Object ],
     xl: [ Boolean, String, Number, Object ],
+    xxl: [ Boolean, String, Number, Object ],
     tag: {
       type: String,
       default: 'div'
@@ -24,7 +25,8 @@ export default {
       'sm': '-sm', 
       'md': '-md', 
       'lg': '-lg', 
-      'xl': '-xl'
+      'xl': '-xl',
+      'xxl': '-xxl',
     }
     Object.keys(suffixes).forEach((key) => {
       const prop = props[key]

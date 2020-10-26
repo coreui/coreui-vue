@@ -286,6 +286,7 @@ export declare class CCol extends Vue {
   md?:  boolean | string | number | object 
   lg?:  boolean | string | number | object 
   xl?:  boolean | string | number | object 
+  xxl?:  boolean | string | number | object
   tag?: string
 }
 

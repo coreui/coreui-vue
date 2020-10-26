@@ -9,7 +9,8 @@ const customWrapper = mount(Component, {
     sm: 12,
     md: { size: 6, offset: 3, order: 1},
     lg: {},
-    xl: true
+    xl: true,
+    xxl: { size: 4, offset: 2, order: 1}
   },
   slots: {
     default: 'CCol content'

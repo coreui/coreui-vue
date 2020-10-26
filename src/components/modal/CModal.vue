@@ -84,7 +84,8 @@ export default {
       type: Boolean,
       default: true
     },
-    addContentClasses: [String, Array, Object]
+    addContentClasses: [String, Array, Object],
+    onKey: Function,
   },
   data () {
     return {
@@ -147,9 +148,26 @@ export default {
     },
     hide (e, accept = false) {
       this.$emit('update:show', false, e, accept)
+      if(this.visible){
+        window.removeEventListener("keydown", this.hideEsc ); 
+      }
+    },
+    hideEsc (event){
+      if(typeof this.onKey != 'undefined'){
+        if(this.onKey('', event.keyCode)!==false){
+          this.hide(event)
+        }
+      }else{
+        if(event.keyCode == '27'){
+          this.hide(event)
+        }
+      }
     },
     toggle (newVal) {
       setTimeout(() => { this.visible = newVal }, 0)
+      if(newVal){
+        window.addEventListener('keydown', this.hideEsc );
+      }
       if (this.fade) {
         this.isTransitioning = true
         clearTimeout(this.timeout)
@@ -157,6 +175,11 @@ export default {
           this.isTransitioning = false
         }, 150)
       }
+    }
+  },
+  mounted: function(){
+    if(this.show){
+      window.addEventListener('keydown', this.hideEsc );
     }
   }
 }
