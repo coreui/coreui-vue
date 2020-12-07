@@ -5,6 +5,7 @@ export default {
   name: 'c-tooltip',
   inserted (el, binding) {
     binding.def._tooltip = new Tooltip(el, binding.def.getTooltipConfig(binding))
+    el._c_tooltip = binding.def._tooltip
     if (binding.value.active) {
       binding.def._tooltip.show()
     }
@@ -14,14 +15,15 @@ export default {
     if (tooltip) {
       tooltip.dispose()
       tooltip = null
+      el._c_tooltip = null
     }
   },
   getTooltipConfig (binding) {
     const props = binding.value
     const title = props.content || props
-    const html = props.html === false ? false : true
+    const html = !!props.html !== false
     // const modifiersTriggers = String(Object.keys(binding.modifiers)).replace(',',' ')
-    const closeOnClickOutside = props.closeOnClickOutside === false ? false : true
+    const closeOnClickOutside = !!props.closeOnClickOutside !== false
     const popperOptions = props.popperOptions || { modifiers: { preventOverflow: { boundariesElement: 'offsetParent' }}}
     return {
       title,
@@ -44,5 +46,15 @@ export default {
               <div class="arrow"></div>
               <div class="tooltip-old-inner"></div>
             </div>`
+  },
+  update(el, binding, vnode) {
+    if (binding.value.content !== binding.oldValue.content  && el === vnode.elm) {
+      el._c_tooltip.hide()
+      vnode.context.$nextTick(() => {
+        const title = binding.value.content
+        el._c_tooltip.updateTitleContent(title)
+        el._c_tooltip.show()
+      })
+    }
   }
 }
