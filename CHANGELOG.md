@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.1.5](https://github.com/coreui/coreui-vue/compare/3.1.4...3.1.5)
+
+> 7 December 2020
+
+### Changed
+
+- chore: dependencies update [`dd02660`](https://github.com/coreui/coreui-vue/commit/dd02660767c8dc64bd9d50e77a70df685df3f2d3)
+- chore: project checks update [`599dc2e`](https://github.com/coreui/coreui-vue/commit/599dc2e09a012c234239b39424a77917404a356d)
+- fix(CTooltip): add missing updateTitle functionality [`ae9d901`](https://github.com/coreui/coreui-vue/commit/ae9d90113dab4253e84ee60bb729d7f9b1b0992a)
+
 ## [3.1.4](https://github.com/coreui/coreui-vue/compare/3.1.3...3.1.4)
 
 > 26 October 2020
