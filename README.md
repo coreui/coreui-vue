@@ -6,6 +6,7 @@
 [![Build](https://img.shields.io/github/workflow/status/coreui/coreui-vue/Project%20check?style=flat-square)][coreui]
 [![License](https://img.shields.io/npm/l/@coreui/vue?style=flat-square)][coreui]
 [![Coverage](https://img.shields.io/badge/test%20coverage%203.0.12%20version-100%25-yellowgreen)][coreui]
+![Daily project check](https://github.com/coreui/coreui-vue/workflows/Daily%20project%20check/badge.svg)
 
 [npm-coreui-vue]: https://www.npmjs.com/package/@coreui/vue
 [npm-coreui-vue-badge-latest]: https://img.shields.io/npm/v/@coreui/vue/latest?style=flat-square&color=brightgreen  
