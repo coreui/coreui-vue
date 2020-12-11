@@ -48,12 +48,10 @@ export default {
             </div>`
   },
   update(el, binding, vnode) {
-    if (binding.value.content !== binding.oldValue.content  && el === vnode.elm) {
-      el._c_tooltip.hide()
+    if ((binding.value.content !== binding.oldValue.content)  && el === vnode.elm) {
       vnode.context.$nextTick(() => {
         const title = binding.value.content
         el._c_tooltip.updateTitleContent(title)
-        el._c_tooltip.show()
       })
     }
   }

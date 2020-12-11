@@ -46,7 +46,8 @@ const generateWrapper = (config) => {
       directives: { CTooltip },
       data () {
         return {
-          button: true
+          button: true,
+          title: 'tooltip 1'
         }
       },
       mounted () {
@@ -84,6 +85,23 @@ describe(ComponentName, () => {
   it('is rendered when activated initially', () => {
     expect(tooltipWrapper.find('.tooltip-old').isVisible()).toBe(true)
   })
+
+  it('should update title content', done => {
+    // todo
+    const updatedContent = 'Updated tooltip';
+    const wrapper = tooltipWrapper.find('button')
+    const instance = wrapper.element._c_tooltip;
+    expect(
+      tooltipWrapper.find('.tooltip-old .tooltip-old-inner').element.textContent
+    ).toBe('tooltip');
+    instance.updateTitleContent(updatedContent);
+    instance.show();
+    expect(
+      tooltipWrapper.find('.tooltip-old .tooltip-old-inner').element.textContent
+    ).toBe(updatedContent);
+    instance.hide();
+    done();
+  });
 
   it('destroys correctly', (done) => {
     setTimeout(() => {
