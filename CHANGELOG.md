@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.1.6](https://github.com/coreui/coreui-vue/compare/3.1.5...3.1.6)
+
+> 11 December 2020
+
+### Changed
+
+- fix(CTooltip): tooltip shows up on title update [`6d1ba6c`](https://github.com/coreui/coreui-vue/commit/6d1ba6c4a0512466707ca07166e8525e0e650786)
+
 ## [3.1.5](https://github.com/coreui/coreui-vue/compare/3.1.4...3.1.5)
 
 > 7 December 2020
