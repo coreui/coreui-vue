@@ -12,12 +12,12 @@
         class="toast-header"
       >
         <slot name="header">
-          <strong class="mr-auto">{{header}}</strong>
+          <strong class="mfe-auto">{{header}}</strong>
         </slot>
         <CButtonClose
           v-if="props.closeButton"
           @click="close()"
-          class="ml-2 mb-1"
+          class="mfs-2 mb-1"
         />
       </div>
       <div class="toast-body">
