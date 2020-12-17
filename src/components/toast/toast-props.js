@@ -10,5 +10,9 @@ export const props = {
   fade: {
     type: Boolean,
     default: true
+  },
+  color: {
+    type: String,
+    default: ''
   }
 }

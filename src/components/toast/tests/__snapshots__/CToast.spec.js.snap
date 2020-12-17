@@ -22,7 +22,7 @@ exports[`CToast renders correctly custom wrapper 1`] = `
   appear="true"
   aria-atomic="true"
   aria-live="assertive"
-  class="toast"
+  class="toast toast-danger"
   name="fade"
   position="bottom-center"
   role="alert"
@@ -31,14 +31,14 @@ exports[`CToast renders correctly custom wrapper 1`] = `
     class="toast-header"
   >
     <strong
-      class="mr-auto"
+      class="mfe-auto"
     >
       title
     </strong>
      
     <button
       aria-label="Close"
-      class="ml-2 mb-1 close"
+      class="mfs-2 mb-1 close"
       type="button"
     >
       ×

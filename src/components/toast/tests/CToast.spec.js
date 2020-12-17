@@ -15,7 +15,8 @@ const customWrapper = mount(Component, {
     show: true,
     position: 'bottom-center',
     header: 'title',
-    autohide: 1000
+    autohide: 1000,
+    color: 'danger'
   },
   slots: {
     default: 'CToast body'

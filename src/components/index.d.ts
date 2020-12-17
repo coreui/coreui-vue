@@ -634,6 +634,7 @@ declare class ToastProps extends Vue {
 export declare class CToast extends ToastProps {
   show?: boolean
   header?: string
+  color?: string
 }
 
 export declare class CToaster extends ToastProps {

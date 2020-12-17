@@ -2,7 +2,7 @@
   <transition :name="props.fade ? 'fade' : null" :appear="true"> 
     <div
       v-if="isShowed"
-      class="toast"
+      :class="toastClasses"
       role="alert"
       aria-live="assertive"
       aria-atomic="true"
@@ -76,6 +76,12 @@ export default {
         computedProps[key] = propIsInherited ? this.injectedProps[key] : this[key]
         return computedProps
       }, {})
+    },
+    toastClasses () {
+      return [
+        'toast',
+        { [`toast-${this.color}`]: !!this.color }
+      ]
     }
   },
   methods: {
