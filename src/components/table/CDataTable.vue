@@ -159,7 +159,7 @@
               </td>
             </tr>
           </template>
-          <tr v-if="!currentItems.length">
+          <tr v-if="!currentItems.length && !loading">
             <td :colspan="colspan">
               <slot name="no-items-view">
                 <div class="text-center my-5">
