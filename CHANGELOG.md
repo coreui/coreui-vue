@@ -1,11 +1,23 @@
 # Changelog
 
+## [3.2.9](https://github.com/coreui/coreui-vue/compare/3.2.7...3.2.9)
+
+> 11 March 2021
+
+### Changed
+
+- chore: dependencies update [`58808fc`](https://github.com/coreui/coreui-vue/commit/58808fca45cd275ea12db7a0713746af521ee4ca)
+- chore(workflows): update [`bb86013`](https://github.com/coreui/coreui-vue/commit/bb86013f324c51b810ee1af39a86a1f1d662830a)
+- chore: merge user pull request #141 [`45483c5`](https://github.com/coreui/coreui-vue/commit/45483c5afabb7f41ce2c4dcfcd995d92b6e93167)
+- fix(CDataTable): fixed issue with loading/no-items-slot [`91024bc`](https://github.com/coreui/coreui-vue/commit/91024bc759c9b0b17ab28dd2739bd9a2b1023db3)
+
 ## [3.2.7](https://github.com/coreui/coreui-vue/compare/3.1.6...3.2.7)
 
 > 17 December 2020
 
 ### Changed
 
+- chore: 3.2.7 version release [`94bb062`](https://github.com/coreui/coreui-vue/commit/94bb062091ff4c7bf3d3e22de8237f3aa1640a7b)
 - fix(CToast): add missing color prop [`1401dee`](https://github.com/coreui/coreui-vue/commit/1401dee57c1e7fea8ee0c0a4045294931d402a0e)
 - chore: dependencies udate [`b54b77f`](https://github.com/coreui/coreui-vue/commit/b54b77fc718a83bd192beb2ef5b75c728ae9c0d9)
 - fix(CToast): rtl margins for header and CButtonClose [`0d0c6c0`](https://github.com/coreui/coreui-vue/commit/0d0c6c0168d7495e26cc36f506c65855900560d5)
