@@ -131,7 +131,7 @@
                   :index="itemIndex + firstItemIndex"
                 />
                 <td
-                  v-else
+                  v-if="!$scopedSlots[colName]"
                   :class="cellClass(item, colName, index)"
                   :key="index"
                 >
