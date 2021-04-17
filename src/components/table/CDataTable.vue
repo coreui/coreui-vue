@@ -9,7 +9,7 @@
         v-if="haveFilterOption"
       >
         <template v-if="tableFilter">
-          <label class="mr-2">{{tableFilterData.label}}</label>
+          <label class="mx-2">{{tableFilterData.label}}</label>
           <input
             class="form-control"
             type="text"
