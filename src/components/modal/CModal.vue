@@ -28,7 +28,7 @@
               <slot name="footer">
                 <button
                   type="button"
-                  class="btn btn-secondary" 
+                  class="btn btn-secondary"
                   @click="hide($event)"
                 >
                   Cancel
@@ -65,6 +65,7 @@ export default {
   props: {
     show: Boolean,
     centered: Boolean,
+    scrollable: Boolean,
     title: String,
     size: {
       type: String,
@@ -118,6 +119,7 @@ export default {
         'modal-dialog',
         {
           'modal-dialog-centered': this.centered,
+          'modal-dialog-scrollable': this.scrollable,
           [`modal-${this.size}`]: this.size
         }
       ]
@@ -149,7 +151,7 @@ export default {
     hide (e, accept = false) {
       this.$emit('update:show', false, e, accept)
       if(this.visible){
-        window.removeEventListener("keydown", this.hideEsc ); 
+        window.removeEventListener("keydown", this.hideEsc );
       }
     },
     hideEsc (event){
