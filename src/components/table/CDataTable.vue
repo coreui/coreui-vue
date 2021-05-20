@@ -140,6 +140,11 @@
                 </td>
               </template>
             </tr>
+            <tr 
+              v-if="$scopedSlots.details && striped"
+              :key="'details-striped' + itemIndex"
+              class="invisible"
+            ></tr>
             <tr
               v-if="$scopedSlots.details"
               @click="rowClicked(item, itemIndex + firstItemIndex, $event, true)"
