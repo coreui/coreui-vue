@@ -124,12 +124,13 @@
               :key="itemIndex"
             >
               <template v-for="(colName, index) in rawColumnNames" >
-                <slot
-                  v-if="$scopedSlots[colName]"
-                  :name="colName"
-                  :item="item"
-                  :index="itemIndex + firstItemIndex"
-                />
+                <template v-if="$scopedSlots[colName]">
+                  <slot
+                    :name="colName"
+                    :item="item"
+                    :index="itemIndex + firstItemIndex"
+                  />
+                </template>
                 <td
                   v-else
                   :class="cellClass(item, colName, index)"
