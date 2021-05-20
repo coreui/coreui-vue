@@ -71,7 +71,7 @@ exports[`CDataTable renders correctly 2`] = `
       class="col-sm-6 form-inline p-0"
     >
       <label
-        class="mr-2"
+        class="mfe-2"
       >
         Filter:
       </label>
@@ -84,7 +84,7 @@ exports[`CDataTable renders correctly 2`] = `
       />
        
       <svg
-        class="c-icon ml-2 text-danger"
+        class="c-icon mfs-2 text-danger"
         role="button"
         tabindex="0"
         viewBox="0 0 512 512"
@@ -110,7 +110,7 @@ exports[`CDataTable renders correctly 2`] = `
         class="form-inline justify-content-sm-end"
       >
         <label
-          class="mr-2"
+          class="mfe-2"
         >
           Items per page:
         </label>
@@ -361,6 +361,10 @@ exports[`CDataTable renders correctly 2`] = `
         </tr>
          
         <tr
+          class="invisible"
+        />
+         
+        <tr
           class="p-0"
         >
           <td
@@ -411,6 +415,10 @@ exports[`CDataTable renders correctly 2`] = `
               
           </td>
         </tr>
+         
+        <tr
+          class="invisible"
+        />
          
         <tr
           class="p-0"
@@ -465,6 +473,10 @@ exports[`CDataTable renders correctly 2`] = `
         </tr>
          
         <tr
+          class="invisible"
+        />
+         
+        <tr
           class="p-0"
         >
           <td
@@ -515,6 +527,10 @@ exports[`CDataTable renders correctly 2`] = `
               
           </td>
         </tr>
+         
+        <tr
+          class="invisible"
+        />
          
         <tr
           class="p-0"
