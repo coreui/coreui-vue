@@ -9,7 +9,7 @@
         v-if="haveFilterOption"
       >
         <template v-if="tableFilter">
-          <label class="mr-2">{{tableFilterData.label}}</label>
+          <label class="mfe-2">{{tableFilterData.label}}</label>
           <input
             class="form-control"
             type="text"
@@ -37,7 +37,7 @@
         :class="{ 'offset-sm-6': !haveFilterOption }"
       >
         <div class="form-inline justify-content-sm-end">
-          <label class="mr-2">{{paginationSelect.label}}</label>
+          <label class="mfe-2">{{paginationSelect.label}}</label>
           <select
             class="form-control"
             @change="paginationChange"
@@ -477,7 +477,7 @@ export default {
     cleanerProps () {
       return { 
         content: this.$options.icons.cilFilterX,
-        class: `ml-2 ${this.isFiltered ? 'text-danger' : 'transparent'}`,
+        class: `mfs-2 ${this.isFiltered ? 'text-danger' : 'transparent'}`,
         role: this.isFiltered ? 'button' : null,
         tabindex: this.isFiltered ? 0 : null,
       }
