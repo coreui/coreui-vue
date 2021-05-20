@@ -8,7 +8,7 @@
     <slot name="toggler">
       <component
         :is="togglerTag"
-        v-on="{ click: splittedToggler ? hide : toggle }"
+        v-on="{ click: splittedToggler ? splitButtonPress : toggle }"
         :class="computedTogglerClasses"
         v-bind="splittedToggler ? '' : togglerAttrs"
       >
@@ -118,6 +118,11 @@ export default {
 
     hide () {
       this.visible = false
+    },
+
+    splitButtonPress () {
+      this.visible = false
+        this.$emit('splitButtonPress')
     },
 
     toggle (e) {
