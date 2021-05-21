@@ -1,5 +1,28 @@
 # Changelog
 
+## [3.2.11](https://github.com/coreui/coreui-vue/compare/3.2.9...3.2.11)
+
+> 21 May 2021
+
+### Changed
+
+- chore: dependencies update [`da10ba8`](https://github.com/coreui/coreui-vue/commit/da10ba852759a3b7e96cd8ca848e91439d457c38)
+- test(CDataTable): snapshot update [`d1198cd`](https://github.com/coreui/coreui-vue/commit/d1198cd331038d366fc4bedb223c442310f900b0)
+- test(CDropdown): emits click on split button click [`807eba6`](https://github.com/coreui/coreui-vue/commit/807eba6771d4d8e37ec4dbe4c940491c3b937654)
+- Add new function to emit on splitButtonPress [`adba664`](https://github.com/coreui/coreui-vue/commit/adba664fdd16e623f2b40cae1ff9876bf75ef23c)
+- fix(CDataTable): rtl margins for labels and cleaner icon [`578a76c`](https://github.com/coreui/coreui-vue/commit/578a76cb1b18ca9292ea6be0b10633dc86dd3e39)
+- feat: additional dialog classes property for CModal.vue [`0253d98`](https://github.com/coreui/coreui-vue/commit/0253d98594528cf19d734bfdaee4d7b6edce7777)
+- chore: 3.2.11 version release [`f0c5210`](https://github.com/coreui/coreui-vue/commit/f0c5210816e9fa1b798c72ba6faac3bfe22d6907)
+- Fix RTL direction margin [`3b9ea32`](https://github.com/coreui/coreui-vue/commit/3b9ea32f3ab8751be8b52b3d6f1ac6d6d09ba0b7)
+- fix(CModal): add scrollable prop to index.d.ts [`f9d15ba`](https://github.com/coreui/coreui-vue/commit/f9d15bab5cb7fac519865af9c504098242687b28)
+
+
+### Fixed
+
+- feat(CDropdown): emit event on split dropdown button click - close #134 close #135 - thanks @rabrowne85 [`#134`](https://github.com/coreui/coreui-vue/issues/134) [`#135`](https://github.com/coreui/coreui-vue/issues/135)
+- fix(CDataTable): striped style not working with details slot [`#127`](https://github.com/coreui/coreui-vue/issues/127) [`#77`](https://github.com/coreui/coreui-vue/issues/77)
+- fix(CDataTable): v-else without v-if breaking Parcel - thanks @adamshaylor [`#143`](https://github.com/coreui/coreui-vue/issues/143) [`#144`](https://github.com/coreui/coreui-vue/issues/144)
+- Merge fix(CDataTable): rtl margins - closes #145 thanks @seddighi78 [`#145`](https://github.com/coreui/coreui-vue/issues/145)
 ## [3.2.9](https://github.com/coreui/coreui-vue/compare/3.2.7...3.2.9)
 
 > 11 March 2021
@@ -7,6 +30,7 @@
 ### Changed
 
 - chore: dependencies update [`58808fc`](https://github.com/coreui/coreui-vue/commit/58808fca45cd275ea12db7a0713746af521ee4ca)
+- chore: 3.2.9 version release [`9ffeb6a`](https://github.com/coreui/coreui-vue/commit/9ffeb6add72ed77a43fd8a4c16d4dc7792872b07)
 - chore(workflows): update [`bb86013`](https://github.com/coreui/coreui-vue/commit/bb86013f324c51b810ee1af39a86a1f1d662830a)
 - chore: merge user pull request #141 [`45483c5`](https://github.com/coreui/coreui-vue/commit/45483c5afabb7f41ce2c4dcfcd995d92b6e93167)
 - fix(CDataTable): fixed issue with loading/no-items-slot [`91024bc`](https://github.com/coreui/coreui-vue/commit/91024bc759c9b0b17ab28dd2739bd9a2b1023db3)
