@@ -128,7 +128,12 @@ describe(ComponentName, () => {
     expect(customWrapper.vm.visible).toBe(false)
     toggle()
     expect(customWrapper.vm.visible).toBe(false)
-  }) 
+  })
+  it('emits click on split button click', () => {
+    const wrapper = generateWrapper()
+    wrapper.vm.$el.getElementsByTagName('button')[0].click()
+    expect(wrapper.emitted()['click']).toBeTruthy()
+  })
   it('Closes dropdown on outside click', () => {
     const customWrapper = generateWrapper()
 
