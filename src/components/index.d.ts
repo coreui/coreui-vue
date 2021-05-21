@@ -399,6 +399,7 @@ export declare class CMedia extends Vue {
 export declare class CModal extends Vue {
   show?: boolean
   centered?: boolean
+  scrollable?: boolean
   title?: string
   size?: string
   color?: string
