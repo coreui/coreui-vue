@@ -12,13 +12,13 @@
 [npm-coreui-vue-badge-latest]: https://img.shields.io/npm/v/@coreui/vue/latest?style=flat-square&color=brightgreen  
 [coreui]: https://coreui.io/vue
 
-> A @coreui/vue `v3` components library project
+> A @coreui/vue `v4` components library project
 
 ## Over 90 bootstrap based Vue.js components and directives!
 
-### For library guide please visit our [Documentation site »](https://coreui.io/vue/docs)
+### For library guide please visit our [Documentation site »](https://coreui.io/vue/docs/)
 
-Check out demo of components usage: [CoreUI Vue Admin Template »](https://coreui.io/vue/demo)
+Check out demo of components usage: [CoreUI Vue Admin Template »](https://coreui.io/vue/demo/)
 
 ![Template](https://coreui.io/images/github/vue-free-template-3.gif)
 
@@ -49,14 +49,14 @@ Basic usage:
 
 ```js
 // Installing whole package
-import CoreuiVue from '@coreui/vue';
-Vue.use(CoreuiVue);
+import CoreuiVue from '@coreui/vue@next';
+app.use(CoreuiVue);
 
 // Registering a single component
 import { CSwitch, CButton } from '@coreui/vue';
 
 // globally
-Vue.component('CButton', CButton)
+app.component('CButton', CButton)
 
 export default {
   ...
@@ -72,10 +72,10 @@ export default {
 
 ```js
 // Registering single directives
-import { CEmitRootEvent, CTooltip } from '@coreui/vue';
+import { CPopover, CTooltip } from '@coreui/vue';
 
 // globally
-Vue.directive('c-emit-root-event', CEmitRootEvent)
+app.directive('c-tooltip', CTooltip)
 
 export default {
   ...
@@ -93,7 +93,7 @@ Components are imported from CommonJS module by default, if you want to use only
 
 ```js
 // Import components this way to allow tree shaking
-import { CDataTable } from '@coreui/vue/src';
+import { CAlert } from '@coreui/vue/src';
 ```
 
 ### Code autocompletion
@@ -106,8 +106,6 @@ See the GitHub [release history](https://github.com/coreui/coreui-vue/releases).
 
 ### Contributing
 
-See [CONTRIBUTING.md](https://github.com/coreui/coreui-vue/blob/master/CONTRIBUTING.md).
+See [CONTRIBUTING.md](https://github.com/coreui/coreui-vue/blob/v4/CONTRIBUTING.md).
 
-### Credits
 
-Some design ideas and solutions in this library are inspired by [Bootstrap-Vue library](https://bootstrap-vue.js.org/)
