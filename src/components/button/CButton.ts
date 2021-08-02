@@ -1,0 +1,91 @@
+import { defineComponent, h } from 'vue'
+import { Color, Shape } from '../props'
+
+export const CButton = defineComponent({
+  name: 'CButton',
+  props: {
+    /**
+     * Toggle the active state for the component.
+     */
+    active: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    /**
+     * Sets the color context of the component to one of CoreUI’s themed colors.
+     */
+    color: Color,
+    /**
+     * Component used for the root node. Either a string to use a HTML element or a component.
+     */
+    component: {
+      type: String,
+      default: 'button',
+      required: false,
+    },
+    /**
+     * Toggle the disabled state for the component.
+     */
+    disabled: {
+      type: Boolean,
+      required: false,
+    },
+    /**
+     * The href attribute specifies the URL of the page the link goes to.
+     */
+    href: {
+      type: String,
+      default: undefined,
+      required: false,
+    },
+    /**
+     * Select the shape of the component.
+     */
+    shape: Shape,
+    /**
+     * Size the component small or large.
+     */
+    size: {
+      type: String,
+      default: undefined,
+      required: false,
+      validator: (value: string) => {
+        return ['sm', 'lg'].includes(value)
+      },
+    },
+    /**
+     * Set the button variant to an outlined button or a ghost button.
+     */
+    variant: {
+      type: String,
+      default: undefined,
+      required: false,
+      validator: (value: string) => {
+        return ['ghost', 'outline'].includes(value)
+      },
+    },
+  },
+  setup(props, { slots, attrs }) {
+    return () =>
+      h(
+        props.component,
+        {
+          ...attrs,
+          class: [
+            'btn',
+            props.variant ? `btn-${props.variant}-${props.color}` : `btn-${props.color}`,
+            {
+              [`btn-${props.size}`]: props.size,
+              active: props.active,
+              disabled: props.disabled,
+            },
+            props.shape,
+          ],
+          disabled: props.disabled && props.component !== 'a',
+          ...(props.component === 'a' && props.disabled && { 'aria-disabled': true, tabIndex: -1 }),
+        },
+        slots.default && slots.default(),
+      )
+  },
+})

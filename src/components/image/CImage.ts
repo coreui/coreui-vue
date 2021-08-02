@@ -1,0 +1,57 @@
+import { defineComponent, h } from 'vue'
+
+const CImage = defineComponent({
+  name: 'CImage',
+  props: {
+    /**
+     * Set the horizontal aligment.
+     *
+     * @values 'start', 'center', 'end'
+     */
+    align: {
+      type: String,
+      default: undefined,
+      required: false,
+      validator: (value: string) => {
+        return ['start', 'center', 'end'].includes(value)
+      },
+    },
+    /**
+     * Make image responsive.
+     */
+    fluid: {
+      type: Boolean,
+      required: false,
+    },
+    /**
+     * Make image rounded.
+     */
+    rounded: {
+      type: Boolean,
+      required: false,
+    },
+    /**
+     * Give an image a rounded 1px border appearance.
+     */
+    thumbnail: {
+      type: Boolean,
+      required: false,
+    },
+  },
+  setup(props) {
+    return () =>
+      h('img', {
+        class: [
+          {
+            [`float-${props.align}`]:
+              props.align && (props.align === 'start' || props.align === 'end'),
+            'd-block mx-auto': props.align && props.align === 'center',
+            'img-fluid': props.fluid,
+            rounded: props.rounded,
+            'img-thumbnail': props.thumbnail,
+          },
+        ],
+      })
+  },
+})
+export { CImage }

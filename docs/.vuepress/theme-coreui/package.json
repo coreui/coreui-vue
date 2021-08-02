@@ -1,0 +1,52 @@
+{
+  "name": "@vuepress/theme-default",
+  "version": "2.0.0-beta.22",
+  "description": "Default theme of VuePress",
+  "keywords": [
+    "vuepress-theme",
+    "vuepress",
+    "theme",
+    "default"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "Evan You",
+  "main": "src/node/index.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf lib *.tsbuildinfo",
+    "copy": "cpx \"src/**/*.{d.ts,vue,scss}\" lib"
+  },
+  "dependencies": {
+    "@vuepress/client": "2.0.0-beta.21",
+    "@vuepress/core": "2.0.0-beta.22",
+    "@vuepress/plugin-active-header-links": "2.0.0-beta.22",
+    "@vuepress/plugin-back-to-top": "2.0.0-beta.22",
+    "@vuepress/plugin-container": "2.0.0-beta.22",
+    "@vuepress/plugin-git": "2.0.0-beta.22",
+    "@vuepress/plugin-medium-zoom": "2.0.0-beta.22",
+    "@vuepress/plugin-nprogress": "2.0.0-beta.22",
+    "@vuepress/plugin-palette": "2.0.0-beta.22",
+    "@vuepress/plugin-prismjs": "2.0.0-beta.22",
+    "@vuepress/plugin-theme-data": "2.0.0-beta.22",
+    "@vuepress/shared": "2.0.0-beta.21",
+    "@vuepress/utils": "2.0.0-beta.21",
+    "sass": "^1.35.1",
+    "sass-loader": "^12.1.0",
+    "vue": "^3.1.4",
+    "vue-router": "^4.0.10"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

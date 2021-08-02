@@ -1,0 +1,61 @@
+@import '@coreui/coreui/scss/coreui.scss';
+
+.table-of-contents {
+  .badge {
+    vertical-align: middle;
+  }
+}
+
+// .vuepress-toc {
+//   position: sticky;
+//   top: 5rem;
+//   right: 2rem;
+//   z-index: 2;
+//   height: calc(100vh - 7rem);
+//   overflow-y: auto;
+// }
+
+
+
+// stylelint-disable selector-max-type
+
+.toc {
+  @include media-breakpoint-up(lg) {
+    position: fixed;
+    top: 5rem;
+    right: 0;
+    z-index: 2;
+    height: subtract(100vh, 7rem);
+    overflow-y: auto;
+  }
+
+  nav {
+    @include font-size(.875rem);
+
+    ul {
+      padding-left: 0;
+      list-style: none;
+
+      ul {
+        padding-left: 1rem;
+        margin-top: .25rem;
+      }
+    }
+
+    li {
+      margin-bottom: .25rem;
+    }
+
+    a {
+      color: inherit;
+
+      &:not(:hover) {
+        text-decoration: none;
+      }
+
+      code {
+        font: inherit;
+      }
+    }
+  }
+}

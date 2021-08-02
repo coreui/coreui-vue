@@ -1,0 +1,105 @@
+{
+  "name": "@coreui/vue",
+  "description": "UI Components Library for Vue.js",
+  "version": "4.0.0-alpha.0",
+  "config": {
+    "version_short": "4.0"
+  },
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "changelog": "auto-changelog --template build/changelog-template.hbs --commit-limit false --package --backfill-limit 0 --starting-version v4.0.1",
+    "docs:api-generator": "vue-docgen -c build/docgen.config.js",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "lint": "eslint 'src/components/**/*.{js,ts,tsx}'",
+    "test": "jest --coverage",
+    "test:clear": "jest --clearCache"
+  },
+  "homepage": "https://coreui.io/vue/",
+  "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coreui/coreui-vue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/coreui/coreui-vue/issues"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@coreui/coreui": "^4.0.1",
+    "@coreui/icons": "^2.0.1",
+    "@coreui/icons-vue": "^1.3.5",
+    "@popperjs/core": "^2.9.1",
+    "@vue/server-renderer": "^3.0.10",
+    "vue-prism-component": "^2.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.14",
+    "@babel/plugin-syntax-jsx": "^7.12.13",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/preset-react": "^7.13.13",
+    "@babel/preset-typescript": "^7.13.0",
+    "@rollup/plugin-commonjs": "^19.0.2",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@types/jest": "^26.0.22",
+    "@typescript-eslint/eslint-plugin": "^4.25.0",
+    "@typescript-eslint/parser": "^4.25.0",
+    "@vue/compiler-sfc": "^3.0.10",
+    "@vue/test-utils": "^2.0.0-rc.4",
+    "@vuepress/plugin-toc": "^2.0.0-beta.22",
+    "auto-changelog": "^2.3.0",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-vue": "^7.10.0",
+    "jest": "^26.6.3",
+    "markdown-it-include": "^2.0.0",
+    "postcss": "^8.2.9",
+    "postcss-loader": "^5.2.0",
+    "prettier": "^2.3.0",
+    "requires": "^1.0.2",
+    "rollup": "^2.44.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-plugin-vue": "^6.0.0",
+    "ts-jest": "^26.5.4",
+    "typescript": "^4.2.3",
+    "vue": "^3.0.10",
+    "vue-docgen-cli": "^4.40.0",
+    "vue-jest": "^5.0.0-alpha.7",
+    "vue-router": "^4.0.5",
+    "vue-types": "^4.0.1",
+    "vuepress": "^2.0.0-beta.22"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.5"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "jsdom",
+    "moduleFileExtensions": [
+      "tsx",
+      "js",
+      "ts",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "vue-jest"
+    },
+    "testRegex": "/src/.*\\.(spec.tsx)$"
+  },
+  "standard": {
+    "ignore": [
+      "node_modules/",
+      "build/"
+    ]
+  }
+}
