@@ -4,7 +4,8 @@
       :class="modalClasses"
       tabindex="-1"
       role="dialog"
-      @click="modalClick($event)"
+      @mousedown="mouseDown($event)"
+      @mouseup="mouseUp($event)"
     >
       <div :class="dialogClasses" role="document">
         <div :class="contentClasses">
@@ -92,7 +93,8 @@ export default {
     return {
       visible: this.show,
       isTransitioning: false,
-      timeout: null
+      timeout: null,
+      mouseDownTarget: null
     }
   },
   computed: {
@@ -143,10 +145,13 @@ export default {
     }
   },
   methods: {
-    modalClick (e) {
-      if (e.target === this.$el.firstElementChild && this.closeOnBackdrop) {
+    mouseUp (e) {
+      if (e.target === this.$el.firstElementChild && this.mouseDownTarget === this.$el.firstElementChild && this.closeOnBackdrop) {
         this.hide(e)
       }
+    },
+    mouseDown (e) {
+      this.mouseDownTarget = e.target;
     },
     hide (e, accept = false) {
       this.$emit('update:show', false, e, accept)
