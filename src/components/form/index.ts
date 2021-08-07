@@ -1,7 +1,7 @@
 import { App } from 'vue'
 import { CForm } from './CForm'
 import { CFormCheck } from './CFormCheck'
-import { CFormControl } from './CFormControl'
+// import { CFormControl } from './CFormControl'
 import { CFormFeedback } from './CFormFeedback'
 import { CFormFloating } from './CFormFloating'
 import { CFormInput } from './CFormInput'
@@ -18,7 +18,7 @@ const CFormPlugin = {
   install: (app: App): void => {
     app.component(CForm.name, CForm)
     app.component(CFormCheck.name, CFormCheck)
-    app.component(CFormControl.name, CFormControl)
+    // app.component(CFormControl.name, CFormControl)
     app.component(CFormFeedback.name, CFormFeedback)
     app.component(CFormFloating.name, CFormFloating)
     app.component(CFormInput.name, CFormInput)
@@ -37,7 +37,7 @@ export {
   CFormPlugin,
   CForm,
   CFormCheck,
-  CFormControl,
+  // CFormControl,
   CFormFeedback,
   CFormFloating,
   CFormInput,
