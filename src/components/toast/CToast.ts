@@ -1,4 +1,4 @@
-import { defineComponent, h, provide, ref, RendererElement, Transition } from 'vue'
+import { defineComponent, h, onMounted, provide, ref, RendererElement, Transition } from 'vue'
 
 import { Color } from '../props'
 
@@ -42,6 +42,7 @@ const CToast = defineComponent({
     },
     key: {
       type: Number,
+      default: undefined,
       required: false,
     },
     /**
@@ -49,6 +50,7 @@ const CToast = defineComponent({
      */
     title: {
       type: String,
+      default: undefined,
       required: false,
     },
     /**
@@ -103,16 +105,14 @@ const CToast = defineComponent({
       }
     }
 
-    ;(() => {
+    onMounted(() => {
       if (props.autohide) {
         clearTimeout(timeout)
         timeout = window.setTimeout(() => {
           visible.value = false
         }, props.delay)
       }
-    })()
-
-    // autohide()
+    })
 
     return () =>
       h(
@@ -124,25 +124,24 @@ const CToast = defineComponent({
           onLeave: (el, done) => handleLeave(el, done),
           onAfterLeave: (el) => handleAfterLeave(el),
         },
-        [
+        () =>
           visible.value &&
-            h(
-              'div',
-              {
-                class: [
-                  'toast fade',
-                  {
-                    [`bg-${props.color}`]: props.color,
-                  },
-                ],
-                'aria-live': 'assertive',
-                'aria-atomic': true,
-                role: 'alert',
-                ref: 'toastRef',
-              },
-              slots.default && slots.default(),
-            ),
-        ],
+          h(
+            'div',
+            {
+              class: [
+                'toast fade',
+                {
+                  [`bg-${props.color}`]: props.color,
+                },
+              ],
+              'aria-live': 'assertive',
+              'aria-atomic': true,
+              role: 'alert',
+              ref: 'toastRef',
+            },
+            slots.default && slots.default(),
+          ),
       )
   },
 })
