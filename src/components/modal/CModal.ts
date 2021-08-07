@@ -152,35 +152,29 @@ const CModal = defineComponent({
     }
 
     const handleKeyUp = (event: KeyboardEvent) => {
-      if (
-        modalContentRef.value &&
-        !modalContentRef.value.contains(event.target as HTMLElement) &&
-        props.backdrop !== 'static'
-      ) {
-        if (event.key === 'Escape' && props.keyboard) {
-          return handleDismiss()
+      if (modalContentRef.value && !modalContentRef.value.contains(event.target as HTMLElement)) {
+        if (props.backdrop !== 'static' && event.key === 'Escape' && props.keyboard) {
+          handleDismiss()
         }
-      }
-      if (props.backdrop === 'static') {
-        modalRef.value.classList.add('modal-static')
-        setTimeout(() => {
-          modalRef.value.classList.remove('modal-static')
-        }, 300)
+        if (props.backdrop === 'static') {
+          modalRef.value.classList.add('modal-static')
+          setTimeout(() => {
+            modalRef.value.classList.remove('modal-static')
+          }, 300)
+        }
       }
     }
     const handleClickOutside = (event: Event) => {
-      if (
-        modalContentRef.value &&
-        !modalContentRef.value.contains(event.target as HTMLElement) &&
-        props.backdrop !== 'static'
-      ) {
-        handleDismiss()
-      }
-      if (props.backdrop === 'static') {
-        modalRef.value.classList.add('modal-static')
-        setTimeout(() => {
-          modalRef.value.classList.remove('modal-static')
-        }, 300)
+      if (modalContentRef.value && !modalContentRef.value.contains(event.target as HTMLElement)) {
+        if (props.backdrop !== 'static') {
+          handleDismiss()
+        }
+        if (props.backdrop === 'static') {
+          modalRef.value.classList.add('modal-static')
+          setTimeout(() => {
+            modalRef.value.classList.remove('modal-static')
+          }, 300)
+        }
       }
     }
 
