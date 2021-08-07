@@ -35,12 +35,11 @@ const CBackdrop = defineComponent({
           onEnter: (el, done) => handleEnter(el, done),
           onLeave: (el, done) => handleLeave(el, done),
         },
-        [
+        () =>
           props.visible &&
-            h('div', {
-              class: 'fade',
-            }),
-        ],
+          h('div', {
+            class: 'fade',
+          }),
       )
   },
 })
