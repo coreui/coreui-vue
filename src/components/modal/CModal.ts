@@ -193,43 +193,42 @@ const CModal = defineComponent({
           onLeave: (el, done) => handleLeave(el, done),
           onAfterLeave: (el) => handleAfterLeave(el),
         },
-        [
+        () =>
           props.visible &&
+          h(
+            'div',
+            {
+              class: [
+                'modal',
+                {
+                  ['fade']: props.transition,
+                },
+                attrs.class,
+              ],
+              ref: modalRef,
+            },
             h(
               'div',
               {
                 class: [
-                  'modal',
+                  'modal-dialog',
                   {
-                    ['fade']: props.transition,
+                    'modal-dialog-centered': props.alignment === 'center',
+                    [`modal-fullscreen-${props.fullscreen}-down`]:
+                      props.fullscreen && typeof props.fullscreen === 'string',
+                    'modal-fullscreen': props.fullscreen && typeof props.fullscreen === 'boolean',
+                    ['modal-dialog-scrollable']: props.scrollable,
+                    [`modal-${props.size}`]: props.size,
                   },
-                  attrs.class,
                 ],
-                ref: modalRef,
               },
               h(
                 'div',
-                {
-                  class: [
-                    'modal-dialog',
-                    {
-                      'modal-dialog-centered': props.alignment === 'center',
-                      [`modal-fullscreen-${props.fullscreen}-down`]:
-                        props.fullscreen && typeof props.fullscreen === 'string',
-                      'modal-fullscreen': props.fullscreen && typeof props.fullscreen === 'boolean',
-                      ['modal-dialog-scrollable']: props.scrollable,
-                      [`modal-${props.size}`]: props.size,
-                    },
-                  ],
-                },
-                h(
-                  'div',
-                  { class: ['modal-content', props.className], ref: modalContentRef },
-                  slots.default && slots.default(),
-                ),
+                { class: ['modal-content', props.className], ref: modalContentRef },
+                slots.default && slots.default(),
               ),
             ),
-        ],
+          ),
       ),
       props.backdrop &&
         h(CBackdrop, {
