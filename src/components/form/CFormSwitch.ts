@@ -94,7 +94,9 @@ const CFormSwitch = defineComponent({
                 ...(props.id && { for: props.id }),
                 class: 'form-check-label',
               },
-              props.label,
+              {
+                default: () => props.label,
+              },
             ),
         ],
       )
