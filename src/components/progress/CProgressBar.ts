@@ -50,7 +50,7 @@ const CProgressBar = defineComponent({
      */
     variant: {
       type: String,
-      default: 'primary',
+      default: undefined,
       require: false,
       validator: (value: string) => {
         return value === 'striped'
