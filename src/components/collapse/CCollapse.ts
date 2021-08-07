@@ -57,7 +57,7 @@ const CCollapse = defineComponent({
           onLeave: (el, done) => handleLeave(el, done),
           onAfterLeave: (el) => handleAfterLeave(el),
         },
-        [
+        () =>
           withDirectives(
             h(
               'div',
@@ -73,7 +73,6 @@ const CCollapse = defineComponent({
             ),
             [[vShow, props.visible]],
           ),
-        ],
       )
   },
 })
