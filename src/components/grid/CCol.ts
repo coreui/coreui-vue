@@ -1,4 +1,4 @@
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, PropType } from 'vue'
 
 type Span = 'auto' | number | string | boolean | null
 
@@ -28,7 +28,7 @@ const CCol = defineComponent({
      * @values 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }
      */
     xs: {
-      type: [Object as () => Col, Boolean],
+      type: [Boolean, Number, String, Object] as PropType<Col>,
       default: undefined,
       require: false,
     },
@@ -38,7 +38,7 @@ const CCol = defineComponent({
      * @values 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }
      */
     sm: {
-      type: [Object as () => Col, Boolean],
+      type: [Boolean, Number, String, Object] as PropType<Col>,
       default: undefined,
       require: false,
     },
@@ -48,7 +48,7 @@ const CCol = defineComponent({
      * @values 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }
      */
     md: {
-      type: [Object as () => Col, Boolean],
+      type: [Boolean, Number, String, Object] as PropType<Col>,
       default: undefined,
       require: false,
     },
@@ -58,7 +58,7 @@ const CCol = defineComponent({
      * @values 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }
      */
     lg: {
-      type: [Object as () => Col, Boolean],
+      type: [Boolean, Number, String, Object] as PropType<Col>,
       default: undefined,
       require: false,
     },
@@ -68,7 +68,7 @@ const CCol = defineComponent({
      * @values 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }
      */
     xl: {
-      type: [Object as () => Col, Boolean],
+      type: [Boolean, Number, String, Object] as PropType<Col>,
       default: undefined,
       require: false,
     },
@@ -78,7 +78,7 @@ const CCol = defineComponent({
      * @values 'auto' | number | string | boolean | { span: 'auto' | number | string | boolean } | { offset: number | string } | { order: 'first' | 'last' | number | string }
      */
     xxl: {
-      type: [Object as () => Col, Boolean],
+      type: [Boolean, Number, String, Object] as PropType<Col>,
       default: undefined,
       require: false,
     },
@@ -88,7 +88,6 @@ const CCol = defineComponent({
 
     BREAKPOINTS.forEach((bp) => {
       const breakpoint = props[bp]
-      delete props[bp]
 
       const infix = bp === 'xs' ? '' : `-${bp}`
 
