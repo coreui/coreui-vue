@@ -99,26 +99,27 @@ const CTable = defineComponent({
     },
   },
   setup(props, { slots }) {
-    const table = h(
-      'table',
-      {
-        class: [
-          'table',
-          {
-            [`align-${props.align}`]: props.align,
-            [`caption-${props.caption}`]: props.caption,
-            [`border-${props.borderColor}`]: props.borderColor,
-            'table-bordered': props.bordered,
-            'table-borderless': props.borderless,
-            [`table-${props.color}`]: props.color,
-            'table-hover': props.hover,
-            'table-sm': props.small,
-            'table-striped': props.striped,
-          },
-        ],
-      },
-      slots.default && slots.default(),
-    )
+    const table = () =>
+      h(
+        'table',
+        {
+          class: [
+            'table',
+            {
+              [`align-${props.align}`]: props.align,
+              [`caption-${props.caption}`]: props.caption,
+              [`border-${props.borderColor}`]: props.borderColor,
+              'table-bordered': props.bordered,
+              'table-borderless': props.borderless,
+              [`table-${props.color}`]: props.color,
+              'table-hover': props.hover,
+              'table-sm': props.small,
+              'table-striped': props.striped,
+            },
+          ],
+        },
+        slots.default && slots.default(),
+      )
     return () => [
       props.responsive
         ? h(
@@ -129,9 +130,9 @@ const CTable = defineComponent({
                   ? 'table-responsive'
                   : `table-responsive-${props.responsive}`,
             },
-            table,
+            table(),
           )
-        : table,
+        : table(),
     ]
   },
 })
