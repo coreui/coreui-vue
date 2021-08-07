@@ -57,11 +57,9 @@ const CContainer = defineComponent({
   },
   setup(props, { slots }) {
     const repsonsiveCLassNames: string[] = []
-    console.log(props)
 
     BREAKPOINTS.forEach((bp) => {
       const breakpoint = props[bp]
-      delete props[bp]
 
       breakpoint && repsonsiveCLassNames.push(`container-${bp}`)
     })
