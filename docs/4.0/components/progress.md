@@ -66,18 +66,18 @@ Add labels to your progress bars by placing text within the `<CProgressBar>`.
 We only set a `height` value on the `<CProgress>`, so if you change that value the inner `<CProgressBar>` will automatically resize accordingly.
 
 ::: demo
-<CProgress height="1" class="mb-3">
+<CProgress :height="1" class="mb-3">
   <CProgressBar :value="25"></CProgressBar>
 </CProgress>
-<CProgress height="20" class="mb-3">
+<CProgress :height="20" class="mb-3">
   <CProgressBar :value="25"></CProgressBar>
 </CProgress>
 :::
 ```vue
-<CProgress height="1" class="mb-3">
+<CProgress :height="1" class="mb-3">
   <CProgressBar :value="25"></CProgressBar>
 </CProgress>
-<CProgress height="20" class="mb-3">
+<CProgress :height="20" class="mb-3">
   <CProgressBar :value="25"></CProgressBar>
 </CProgress>
 ```

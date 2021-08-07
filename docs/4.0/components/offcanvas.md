@@ -97,7 +97,7 @@ There's no default placement for offcanvas components, so you must add one of th
 Try the top, right, and bottom examples out below.
 
 ::: demo
-<CButton color="primary" @click="() => { visibleTop = !visibleTop }">Toggle offcanvas</CButton>
+<CButton color="primary" @click="() => { visibleTop = !visibleTop }">Toggle top offcanvas</CButton>
 <COffcanvas placement="top" :visible="visibleTop" @dismiss="() => { visibleTop = !visibleTop }">
   <COffcanvasHeader>
     <COffcanvasTitle>Offcanvas</COffcanvasTitle>
@@ -111,7 +111,7 @@ Try the top, right, and bottom examples out below.
 :::
 ```vue
 <template>
-  <CButton color="primary" @click="() => { visibleTop = !visibleTop }">Toggle offcanvas</CButton>
+  <CButton color="primary" @click="() => { visibleTop = !visibleTop }">Toggle top offcanvas</CButton>
   <COffcanvas placement="top" :visible="visibleTop" @dismiss="() => { visibleTop = !visibleTop }">
     <COffcanvasHeader>
       <COffcanvasTitle>Offcanvas</COffcanvasTitle>
@@ -135,7 +135,7 @@ Try the top, right, and bottom examples out below.
 ```
 
 ::: demo
-<CButton color="primary" @click="() => { visibleEnd = !visibleEnd }">Toggle offcanvas</CButton>
+<CButton color="primary" @click="() => { visibleEnd = !visibleEnd }">Toggle right offcanvas</CButton>
 <COffcanvas placement="end" :visible="visibleEnd" @dismiss="() => { visibleEnd = !visibleEnd }">
   <COffcanvasHeader>
     <COffcanvasTitle>Offcanvas</COffcanvasTitle>
@@ -149,7 +149,7 @@ Try the top, right, and bottom examples out below.
 :::
 ```vue
 <template>
-  <CButton color="primary" @click="() => { visibleEnd = !visibleEnd }">Toggle offcanvas</CButton>
+  <CButton color="primary" @click="() => { visibleEnd = !visibleEnd }">Toggle right offcanvas</CButton>
   <COffcanvas placement="end" :visible="visibleEnd" @dismiss="() => { visibleEnd = !visibleEnd }">
     <COffcanvasHeader>
       <COffcanvasTitle>Offcanvas</COffcanvasTitle>
@@ -173,7 +173,7 @@ Try the top, right, and bottom examples out below.
 ```
 
 ::: demo
-<CButton color="primary" @click="() => { visibleBottom = !visibleBottom }">Toggle offcanvas</CButton>
+<CButton color="primary" @click="() => { visibleBottom = !visibleBottom }">Toggle bottom offcanvas</CButton>
 <COffcanvas placement="bottom" :visible="visibleBottom" @dismiss="() => { visibleBottom = !visibleBottom }">
   <COffcanvasHeader>
     <COffcanvasTitle>Offcanvas</COffcanvasTitle>
@@ -187,7 +187,7 @@ Try the top, right, and bottom examples out below.
 :::
 ```vue
 <template>
-  <CButton color="primary" @click="() => { visibleBottom = !visibleBottom }">Toggle offcanvas</CButton>
+  <CButton color="primary" @click="() => { visibleBottom = !visibleBottom }">Toggle bottom offcanvas</CButton>
   <COffcanvas placement="bottom" :visible="visibleBottom" @dismiss="() => { visibleBottom = !visibleBottom }">
     <COffcanvasHeader>
       <COffcanvasTitle>Offcanvas</COffcanvasTitle>

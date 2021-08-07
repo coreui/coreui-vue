@@ -132,7 +132,7 @@ Other than `<CFormInput>`, floating labels are only available on `<CFormSelect>`
 When working with the CoreUI for Bootstrap grid system, be sure to place form elements within column classes.
 
 ::: demo
-<CRow xs="{gutter: 2}">
+<CRow :xs="{gutter: 2}">
   <CCol md>
     <CFormFloating>
       <CFormInput type="email" id="floatingInputGrid" placeholder="name@example.com" value="email@example.com" />
@@ -153,7 +153,7 @@ When working with the CoreUI for Bootstrap grid system, be sure to place form el
 </CRow>
 :::
 ```vue
-<CRow xs="{gutter: 2}">
+<CRow :xs="{gutter: 2}">
   <CCol md>
     <CFormFloating>
       <CFormInput type="email" id="floatingInputGrid" placeholder="name@example.com" value="email@example.com" />

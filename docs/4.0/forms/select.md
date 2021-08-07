@@ -78,7 +78,7 @@ The `multiple` attribute is also supported:
 As is the `htmlSize` property:
 
 ::: demo
-<CFormSelect htmlSize="3" multiple aria-label="size 3 select example">
+<CFormSelect :htmlSize="3" multiple aria-label="size 3 select example">
   <option>Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>
@@ -86,7 +86,7 @@ As is the `htmlSize` property:
 </CFormSelect>
 :::
 ```vue
-<CFormSelect htmlSize="3" multiple aria-label="size 3 select example">
+<CFormSelect :htmlSize="3" multiple aria-label="size 3 select example">
   <option>Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>

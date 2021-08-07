@@ -36,24 +36,24 @@ Range inputs have implicit values for `min` and `max`—`0` and `100`, respectiv
 
 ::: demo
 <CFormLabel for="customRange2">Example range</CFormLabel>
-<CFormRange min="0" max="5" defaultValue="3" id="customRange2"/>
+<CFormRange :min="0" :max="5" defaultValue="3" id="customRange2"/>
 :::
 ```vue
 <CFormLabel for="customRange2">Example range</CFormLabel>
-<CFormRange min="0" max="5" defaultValue="3" id="customRange2"/> 
+<CFormRange :min="0" :max="5" defaultValue="3" id="customRange2"/> 
 ```
 
 ## Steps
 
-By default, range inputs "snap" to integer values. To change this, you can specify a `step` value. In the example below, we double the number of steps by using `step="0.5"`.
+By default, range inputs "snap" to integer values. To change this, you can specify a `step` value. In the example below, we double the number of steps by using `:step="0.5"`.
 
 ::: demo
 <CFormLabel for="customRange3">Example range</CFormLabel>
-<CFormRange min="0" max="5" step="0.5" defaultValue="3" id="customRange3"/> 
+<CFormRange :min="0" :max="5" :step="0.5" defaultValue="3" id="customRange3"/> 
 :::
 ```vue
 <CFormLabel for="customRange3">Example range</CFormLabel>
-<CFormRange min="0" max="5" step="0.5" defaultValue="3" id="customRange3"/> 
+<CFormRange :min="0" :max="5" :step="0.5" defaultValue="3" id="customRange3"/> 
 ```
 
 ## API
