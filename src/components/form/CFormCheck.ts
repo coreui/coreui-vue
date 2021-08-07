@@ -130,7 +130,9 @@ const CFormCheck = defineComponent({
             : 'form-check-label',
           ...(props.id && { for: props.id }),
         },
-        props.label,
+        {
+          default: () => props.label,
+        },
       )
     }
 
