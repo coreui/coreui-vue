@@ -49,7 +49,9 @@ const CNavLink = defineComponent({
           disabled: props.disabled,
           href: props.href,
         },
-        slots.default && slots.default(),
+        {
+          default: () => slots.default && slots.default(),
+        }
       )
   },
 })
