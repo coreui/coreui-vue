@@ -15,7 +15,11 @@ const CCardLink = defineComponent({
   },
   setup(props, { slots }) {
     return () =>
-      h(CLink, { class: 'card-link', href: props.href }, slots.default && slots.default())
+      h(
+        CLink,
+        { class: 'card-link', href: props.href },
+        { default: () => slots.default && slots.default() },
+      )
   },
 })
 
