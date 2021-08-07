@@ -59,7 +59,9 @@ const CPaginationItem = defineComponent({
                 component: component,
                 href: props.href,
               },
-              slots.default && slots.default(),
+              {
+                default: () => slots.default && slots.default(),
+              },
             )
           : h(component, { class: ['page-link'] }, slots.default && slots.default()),
       )
