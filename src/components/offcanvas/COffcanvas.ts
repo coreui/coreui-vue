@@ -104,22 +104,21 @@ const COffcanvas = defineComponent({
           onLeave: (el, done) => handleLeave(el, done),
           onAfterLeave: (el) => handleAfterLeave(el),
         },
-        [
+        () =>
           props.visible &&
-            h(
-              'div',
-              {
-                class: [
-                  'offcanvas',
-                  {
-                    [`offcanvas-${props.placement}`]: props.placement,
-                  },
-                ],
-                ref: offcanvasRef,
-              },
-              slots.default && slots.default(),
-            ),
-        ],
+          h(
+            'div',
+            {
+              class: [
+                'offcanvas',
+                {
+                  [`offcanvas-${props.placement}`]: props.placement,
+                },
+              ],
+              ref: offcanvasRef,
+            },
+            slots.default && slots.default(),
+          ),
       ),
       props.backdrop &&
         h(CBackdrop, {
