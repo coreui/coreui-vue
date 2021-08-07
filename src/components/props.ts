@@ -52,6 +52,7 @@ const Color = {
       'info',
       'dark',
       'light',
+      'link',
     ].includes(value)
   },
 }
