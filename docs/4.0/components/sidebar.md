@@ -1,91 +1,79 @@
 ---
-title: CSidebar
-description:
+title: Sidebar
+description: Vue Sidebar is a powerful and customizable responsive navigation component for any type of vertical navigation. Bootstrap Sidebar come with built-in support for branding, navigation, and more.
 ---
+
+## Supported content
+
+Sidebar come with built-in support for a handful of sub-components. Choose from the following as needed:
+
+- `<CSidebarHeader>` for optional header.
+- `<CSidebarBrand>` for your company, product, or project name.
+- `<CSidebarNav>` for a full-height and lightweight navigation (including support for dropdowns).
+- `<CSidebarFooter>` for optional footer.
+- `<CSidebarToggler>` for use with our minimizer plugin.
 
 ## Examples
 
-  <CSidebar class="sidebar-show sidebar-dark sidebar-fixed sidebar-self-hiding-xl">
-    <CSidebarBrand>Sidebar Brand</CSidebarBrand>
-    <CSidebarNav>
-      <CNavLink href="#" active="true">aaa</CNavLink>
-      <CNavGroup>
-        <template #togglerContent>
-          group
-        </template>
-        <CNavLink>
-          <CIconTestIcon/>
-          g1e1
-        </CNavLink>
-        <CNavLink active="true">
-          <CIconTestIcon/>
-          g1e2
-        </CNavLink>
-        <CNavLink>g1e3</CNavLink>
-        <CNavGroup>
-          <template #togglerContent>
-            group
-          </template>
-          <CNavLink>g2e1</CNavLink>
-          <CNavLink>g2e2</CNavLink>
-          <CNavLink>g2e3</CNavLink>
-          <CNavGroup toggler="group-3">
-            <CNavLink>g3e1</CNavLink>
-            <CNavLink>g3e2</CNavLink>
-            <CNavLink>g3e3</CNavLink>
-          </CNavGroup>
-        </CNavGroup>
-      </CNavGroup>
-      <CNavGroup toggler="group B">
-        <CNavLink>g-b1e1</CNavLink>
-        <CNavLink>g-b1e2</CNavLink>
-        <CNavLink>g-b1e3</CNavLink>
-        <CNavGroup toggler="group-B-1">
-          <CNavLink>g-b2e1</CNavLink>
-          <CNavLink>g-b2e2</CNavLink>
-          <CNavLink>g-b2e3</CNavLink>
-        </CNavGroup>
-        <CNavGroup toggler="group-B-2">
-          <CNavLink>g-b3e1</CNavLink>
-          <CNavLink>g-b3e2</CNavLink>
-          <CNavLink>g-b3e3</CNavLink>
-        </CNavGroup>
-      </CNavGroup>
-      <CNavLink>bbb</CNavLink>
-      <CCreateNavItem/>
-      <CNavLink href="#">Lorem ipsum</CNavLink>
-      <CNavLink href="#">Lorem ipsum</CNavLink>
-      <CNavLink href="#">Lorem ipsum</CNavLink>
-      <CNavLink href="#">Lorem ipsum</CNavLink>
-      <CNavLink href="#">Lorem ipsum</CNavLink>
-      <CNavLink href="#">Lorem ipsum</CNavLink>
-      <CNavLink href="#">Lorem ipsum</CNavLink>
-      <CNavLink href="#">Lorem ipsum</CNavLink>
-      <CNavLink href="#">Lorem ipsum</CNavLink>
-      <CNavLink href="#">Lorem ipsum</CNavLink>
-    </CSidebarNav>
-    <CSidebarToggler/>
-  </CSidebar>
-
+::: demo
+<CSidebar>
+  <CSidebarBrand>Sidebar Brand</CSidebarBrand>
+  <CSidebarNav>
+    <li class="nav-title">Nav Title</li>
+    <CNavItem href="#">
+      <CIcon  customClasses="nav-icon" name="cil-speedometer"/>
+      Nav item
+    </CNavItem>
+    <CNavItem href="#">
+        <CIcon  customClasses="nav-icon" name="cil-speedometer"/>
+        With badge
+        <CBadge color="primary ms-auto">NEW</CBadge>
+    </CNavItem>
+    <CNavGroup>
+      <template #togglerContent>
+        <CIcon  customClasses="nav-icon" name="cil-puzzle"/> Nav dropdown
+      </template>
+      <CNavItem href="#">
+        <CIcon  customClasses="nav-icon" name="cil-puzzle"/> Nav dropdown item
+      </CNavItem>
+      <CNavItem href="#">
+         <CIcon  customClasses="nav-icon" name="cil-puzzle"/> Nav dropdown item
+      </CNavItem>
+    </CNavGroup>
+  </CSidebarNav>
+  <CSidebarToggler/>
+</CSidebar>
+:::
 ```vue
-<CSidebar class="sidebar-show">
-    <CSidebarNav>
-      <CNavLink>aaa</CNavLink>
-      <CNavGroup toggler="group">
-        <CNavLink>g1</CNavLink>
-        <CNavLink>g2</CNavLink>
-        <CNavLink>g3</CNavLink>
-        <CNavGroup toggler="group-2">
-          <CNavLink>g1</CNavLink>
-          <CNavLink>g2</CNavLink>
-          <CNavLink>g3</CNavLink>
-        </CNavGroup>
-      </CNavGroup>
-      <CNavLink>bbb</CNavLink>
-      <CCreateNavItem items={navigation}/>
-      <CNavLink>ccc</CNavLink>
-    </CSidebarNav>
-  </CSidebar>
+<CSidebar>
+  <CSidebarBrand>Sidebar Brand</CSidebarBrand>
+  <CSidebarNav>
+    <li class="nav-title">Nav Title</li>
+    <CNavItem href="#">
+      <CIcon  customClasses="nav-icon" name="cil-speedometer"/>
+      Nav item
+    </CNavItem>
+    <CNavItem href="#">
+        <CIcon  customClasses="nav-icon" name="cil-speedometer"/>
+        With badge
+        <CBadge color="primary ms-auto">NEW</CBadge>
+    </CNavItem>
+    <CNavGroup>
+      <template #togglerContent>
+        <CIcon  customClasses="nav-icon" name="cil-puzzle"/> Nav dropdown
+      </template>
+      <CNavItem href="#">
+        <CIcon  customClasses="nav-icon" name="cil-puzzle"/> Nav dropdown item
+      </CNavItem>
+      <CNavItem href="#">
+         <CIcon  customClasses="nav-icon" name="cil-puzzle"/> Nav dropdown item
+      </CNavItem>
+    </CNavGroup>
+  </CSidebarNav>
+  <CSidebarToggler/>
+</CSidebar>
 ```
 
-## Additional content
+## API
+
+!!!include(./docs/api/sidebar/CSidebar.api.md)!!!

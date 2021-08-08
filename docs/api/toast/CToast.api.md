@@ -2,15 +2,15 @@
 
 #### Props
 
-| Prop name                | Description                                                                                                                                                                                             | Type    | Values | Default |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------ | ------- |
-| <code>autohide</code>    | Auto hide the toast.<br/>`@default` true                                                                                                                                                                | boolean | -      | true    |
-| <code>color</code>       | Sets the color context of the component to one of CoreUI’s themed colors.<br/>`@default` 'primary'<br/>`@value` 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light', string | Color   | -      |         |
-| <code>delay</code>       | Delay hiding the toast (ms).                                                                                                                                                                            | number  | -      | 5000    |
-| <code>dismissible</code> | Optionally add a close button to component and allow it to self dismiss.<br/>`@default` true                                                                                                            | boolean | -      | true    |
-| <code>key</code>         |                                                                                                                                                                                                         | number  | -      |         |
-| <code>title</code>       | Title node for your component.                                                                                                                                                                          | string  | -      |         |
-| <code>visible</code>     | Toggle the visibility of component.<br/>`@default` true                                                                                                                                                 | boolean | -      | true    |
+| Prop name                | Description                                                                                                                                                                                             | Type    | Values | Default   |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------ | --------- |
+| <code>autohide</code>    | Auto hide the toast.<br/>`@default` true                                                                                                                                                                | boolean | -      | true      |
+| <code>color</code>       | Sets the color context of the component to one of CoreUI’s themed colors.<br/>`@default` 'primary'<br/>`@value` 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light', string | Color   | -      |           |
+| <code>delay</code>       | Delay hiding the toast (ms).                                                                                                                                                                            | number  | -      | 5000      |
+| <code>dismissible</code> | Optionally add a close button to component and allow it to self dismiss.<br/>`@default` true                                                                                                            | boolean | -      | true      |
+| <code>key</code>         |                                                                                                                                                                                                         | number  | -      | undefined |
+| <code>title</code>       | Title node for your component.                                                                                                                                                                          | string  | -      | undefined |
+| <code>visible</code>     | Toggle the visibility of component.<br/>`@default` true                                                                                                                                                 | boolean | -      | true      |
 
 #### Events
 
