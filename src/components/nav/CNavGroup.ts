@@ -1,4 +1,4 @@
-import { defineComponent, h, Transition, ref, RendererElement, onMounted } from 'vue'
+import { defineComponent, h, onMounted, onUpdated, ref, RendererElement, Transition } from 'vue'
 
 const CNavGroup = defineComponent({
   name: 'CNavGroup',
@@ -8,19 +8,44 @@ const CNavGroup = defineComponent({
      */
     visible: {
       type: Boolean,
+      default: false,
       required: false,
     },
   },
-  setup(props, { slots }) {
+  emits: ['visibleChange'],
+  setup(props, { emit, slots }) {
     const visible = ref(props.visible)
     const navGroupRef = ref()
+
+    const visibleGroup = ref()
+
+    const handleVisibleChange = (visible: boolean, index: number) => {
+      if (visible) {
+        visibleGroup.value = index
+      } else {
+        if (visibleGroup.value === index) {
+          visibleGroup.value = 0
+        }
+      }
+    }
+
+    const isVisible = (index: number) => Boolean(visibleGroup.value === index)
 
     onMounted(() => {
       props.visible && navGroupRef.value.classList.add('show')
     })
 
+    onUpdated(() => {
+      visible.value = props.visible
+
+      if (visible.value === false) {
+        visibleGroup.value = undefined
+      }
+    })
+
     const handleTogglerClick = function () {
       visible.value = !visible.value
+      emit('visibleChange', visible.value)
     }
     const handleBeforeEnter = (el: RendererElement) => {
       el.style.height = '0px'
@@ -86,7 +111,13 @@ const CNavGroup = defineComponent({
                   {
                     class: 'nav-group-items',
                   },
-                  slots.default && slots.default(),
+                  slots.default &&
+                    slots.default().map((vnode, index) =>
+                      h(vnode, {
+                        onVisibleChange: (visible: boolean) => handleVisibleChange(visible, index),
+                        visible: isVisible(index),
+                      }),
+                    ),
                 ),
             },
           ),
