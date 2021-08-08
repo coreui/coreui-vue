@@ -1,25 +1,10 @@
-import { defineComponent, h } from "vue"
-
-const CSidebarFooterProps = {
-    /**
-     * A string of all className you want applied to the base component.
-     */
-    className: {
-        type: String,
-        required: false
-    } 
-}
+import { defineComponent, h } from 'vue'
 
 const CSidebarFooter = defineComponent({
   name: 'CSidebarFooter',
-  props: CSidebarFooterProps,
-    setup ( props, { slots }) {
-      return () =>  h(
-        'div', 
-        { class: ['sidebar-footer', props.className] },
-        slots.default && slots.default()
-      )
-    }
+  setup(_, { slots }) {
+    return () => h('div', { class: 'sidebar-footer' }, slots.default && slots.default())
+  },
 })
 
 export { CSidebarFooter }

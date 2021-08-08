@@ -1,82 +1,89 @@
-import { defineComponent, h } from "vue"
-
-
-const CSidebarProps = {
-     /**
-     * A string of all className you want applied to the base component.
-     */
-      className: {
-        type: String,
-        required: false
-    },
-    // hide?: boolean
-    narrow: {
-        type: Boolean,
-        required: false
-    },
-    /**
-        * Method called before the hide animation has started.
-        */
-    //onHide?: () => void,
-    /**
-        * Method called before the show animation has started.
-        */
-    //onShow?: () => void,
-
-    overlaid: {
-        type: String,
-        required: false
-    },
-    position: {
-        type: String,
-        validator: function(value:string) {
-            return ['fixed','sticky'].includes(value)
-        }
-    },
-    selfHiding: {
-        validator: function(value:any) {
-            if(typeof value === 'string'){
-                return ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'].includes(value)
-            }else if( typeof value === 'boolean' ){
-                return true
-            }else{
-                return false
-            }
-        }   
-    },
-    show: {
-        type: String,
-        required: false
-    },
-    unfoldable: {
-        type: String,
-        required: false
-    }    
-}
+import { defineComponent, h } from 'vue'
 
 const CSidebar = defineComponent({
   name: 'CSidebar',
-  props: CSidebarProps,
-    setup ( props, { slots }) {
-      return () =>  h(
-        'div', 
-        { 
-            class: [
-                'sidebar',
-                {
-                  'sidebar-narrow': props.narrow,
-                  'sidebar-overlaid': props.overlaid,
-                  [`sidebar-${props.position}`]: props.position,
-                  [`sidebar-self-hiding${typeof props.selfHiding !== 'boolean' && '-' + props.selfHiding}`]: props.selfHiding,
-                  'sidebar-narrow-unfoldable': props.unfoldable,
-                  'show': props.show,
-                },
-                props.className,
-            ],
+  props: {
+    /**
+     * Hide sidebar.
+     */
+    hide: Boolean,
+    /**
+     * Make sidebar narrow.
+     */
+    narrow: {
+      type: Boolean,
+      required: false,
+    },
+    /**
+     * Set sidebar to overlaid variant.
+     */
+    overlaid: {
+      type: Boolean,
+      required: false,
+    },
+    /**
+     * Place sidebar in non-static positions.
+     */
+    position: {
+      type: String,
+      default: undefined,
+      validator: (value: string) => {
+        return ['fixed'].includes(value)
+      },
+    },
+    /**
+     * Make any sidebar self hiding across all viewports or pick a maximum breakpoint with which to have a self hiding up to.
+     *
+     * @values 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'
+     */
+    selfHiding: {
+      type: [Boolean, String],
+      default: undefined,
+      validator: (value: boolean | string) => {
+        if (typeof value === 'string') {
+          return ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'].includes(value)
+        } else if (typeof value === 'boolean') {
+          return true
+        } else {
+          return false
+        }
+      },
+    },
+    /**
+     * Expand narrowed sidebar on hover.
+     */
+    unfoldable: {
+      type: String,
+      default: undefined,
+      required: false,
+    },
+    /**
+     * Toggle the visibility of sidebar component.
+     */
+    visible: Boolean,
+  },
+  setup(props, { slots }) {
+    return () =>
+      h(
+        'div',
+        {
+          class: [
+            'sidebar',
+            {
+              'sidebar-narrow': props.narrow,
+              'sidebar-overlaid': props.overlaid,
+              [`sidebar-${props.position}`]: props.position,
+              [`sidebar-self-hiding${
+                typeof props.selfHiding !== 'boolean' && '-' + props.selfHiding
+              }`]: props.selfHiding,
+              'sidebar-narrow-unfoldable': props.unfoldable,
+              show: props.visible,
+            },
+          ],
         },
-        slots.default && slots.default()
+        slots.default && slots.default(),
       )
-    }
+  },
 })
 
 export { CSidebar }

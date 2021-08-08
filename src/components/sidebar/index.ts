@@ -1,5 +1,4 @@
 import { App } from 'vue'
-import { CCreateNavItem } from './CCreateNavItem'
 import { CSidebar } from './CSidebar'
 import { CSidebarBrand } from './CSidebarBrand'
 import { CSidebarFooter } from './CSidebarFooter'
@@ -9,7 +8,6 @@ import { CSidebarToggler } from './CSidebarToggler'
 
 const CSidebarPlugin = {
   install: (app: App): void => {
-    app.component(CCreateNavItem.name, CCreateNavItem)
     app.component(CSidebar.name, CSidebar)
     app.component(CSidebarBrand.name, CSidebarBrand)
     app.component(CSidebarFooter.name, CSidebarFooter)
@@ -21,7 +19,6 @@ const CSidebarPlugin = {
 
 export {
   CSidebarPlugin,
-  CCreateNavItem,
   CSidebar,
   CSidebarBrand,
   CSidebarFooter,

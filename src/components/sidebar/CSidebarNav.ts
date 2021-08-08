@@ -1,27 +1,37 @@
-import { defineComponent, h } from "vue"
-
-const CSidebarNavProps = {
-    /**
-     * A string of all className you want applied to the base component.
-     */
-     className: {
-      type: String,
-      required: false
-  }
-}
+import { defineComponent, h, ref } from 'vue'
 
 const CSidebarNav = defineComponent({
   name: 'CSidebarNav',
-  props: CSidebarNavProps,
-    setup ( props, { slots }) { 
-      return () =>  h(
-        'ul', 
-        { 
-          class: ['sidebar-nav', props.className],
-        },
-        slots.default && slots.default()
-      )
+  setup(_, { slots }) {
+    const visibleGroup = ref()
+
+    const handleVisibleChange = (visible: boolean, index: number) => {
+      if (visible) {
+        visibleGroup.value = index
+      } else {
+        if (visibleGroup.value === index) {
+          visibleGroup.value = 0
+        }
+      }
     }
+
+    const isVisible = (index: number) => Boolean(visibleGroup.value === index)
+
+    return () =>
+      h(
+        'ul',
+        {
+          class: 'sidebar-nav',
+        },
+        slots.default &&
+          slots.default().map((vnode, index) =>
+            h(vnode, {
+              onVisibleChange: (visible: boolean) => handleVisibleChange(visible, index),
+              visible: isVisible(index),
+            }),
+          ),
+      )
+  },
 })
 
 export { CSidebarNav }
