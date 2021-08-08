@@ -1,18 +1,3 @@
-const Any: Object = {
-  validator: function (value: any) {
-    value
-    return true
-  },
-}
-const Value: Object = {
-  validator: function (value: any) {
-    if (typeof value === 'string' || typeof value === 'object' || typeof value === 'number') {
-      return true
-    } else {
-      return false
-    }
-  },
-}
 const Shape = {
   type: String,
   validator: (value: string): boolean => {
@@ -83,4 +68,4 @@ const Breakpoint = {
   },
 }
 
-export { Any, Value, Shape, Align, Color, TextColor, Breakpoint }
+export { Align, Breakpoint, Color, Shape, TextColor }

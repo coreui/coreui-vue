@@ -24,7 +24,6 @@ const CNavbarBrand = defineComponent({
   setup(props, { slots }) {
     return () =>
       h(
-        // TODO: check this line
         props.component ? props.component : props.href ? 'a' : 'span',
         {
           class: 'header-brand',
