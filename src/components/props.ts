@@ -13,9 +13,9 @@ const Value: Object = {
     }
   },
 }
-const Shape: Object = {
+const Shape = {
   type: String,
-  validator: function (value: string) {
+  validator: (value: string): boolean => {
     // The value must match one of these strings
     return [
       'rounded',
@@ -32,16 +32,16 @@ const Shape: Object = {
     ].includes(value)
   },
 }
-const Align: Object = {
+const Align = {
   type: String,
-  validator: function (value: string) {
+  validator: (value: string): boolean => {
     // The value must match one of these strings
     return ['', 'left', 'center', 'right'].includes(value)
   },
 }
 const Color = {
   type: String,
-  validator(value: string): boolean {
+  validator: (value: string): boolean => {
     // The value must match one of these strings
     return [
       'primary',
@@ -56,9 +56,9 @@ const Color = {
     ].includes(value)
   },
 }
-const TextColor: Object = {
+const TextColor = {
   type: String,
-  validator: function (value: string) {
+  validator: (value: string): boolean => {
     return [
       'primary',
       'secondary',
@@ -73,8 +73,8 @@ const TextColor: Object = {
     ].includes(value)
   },
 }
-const Breakpoint: Object = {
-  validator: function (value: any) {
+const Breakpoint = {
+  validator: (value: boolean | number): boolean => {
     if (typeof value == 'boolean' || typeof value == 'number') {
       return true
     } else {
