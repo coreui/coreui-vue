@@ -8,8 +8,9 @@ import {
   reactive,
   toRefs,
   watch,
+  PropType,
 } from 'vue'
-import { createPopper } from '@popperjs/core'
+import { createPopper, Placement } from '@popperjs/core'
 
 const CDropdown = defineComponent({
   name: 'CDropdown',
@@ -92,29 +93,9 @@ const CDropdown = defineComponent({
      * @default 'bottom-start'
      */
     placement: {
-      type: String,
+      type: String as PropType<Placement>,
       default: 'bottom-start',
       required: false,
-      validator: (value: string) => {
-        // The value must match one of these strings
-        return [
-          'auto',
-          'auto-start',
-          'auto-end',
-          'top-end',
-          'top',
-          'top-start',
-          'bottom-end',
-          'bottom',
-          'bottom-start',
-          'right-start',
-          'right',
-          'right-end',
-          'left-start',
-          'left',
-          'left-end',
-        ].includes(value)
-      },
     },
     /**
      * If you want to disable dynamic positioning set this property to `true`.
@@ -154,11 +135,10 @@ const CDropdown = defineComponent({
     },
   },
   setup(props, { slots }) {
-    const dropdownRef = ref(null)
-    const dropdownMenuRef = ref(null)
+    const dropdownRef = ref()
+    const dropdownMenuRef = ref()
     const placement = ref(props.placement)
     const popper = ref()
-    // const visible = ref()
 
     const config = reactive({
       alignment: props.alignment,
@@ -196,7 +176,6 @@ const CDropdown = defineComponent({
       }
 
       if (dropdownRef.value) {
-        // @ts-expect-error TODO: find solution
         popper.value = createPopper(dropdownRef.value, dropdownMenuRef.value, {
           placement: placement.value,
         })
@@ -233,13 +212,11 @@ const CDropdown = defineComponent({
     }
 
     const handleKeyup = (event: Event) => {
-      // @ts-expect-error TODO: find solution
       if (dropdownRef.value && !dropdownRef.value.contains(event.target as HTMLElement)) {
         hideMenu()
       }
     }
     const handleClickOutside = (event: Event) => {
-      // @ts-expect-error TODO: find solution
       if (dropdownRef.value && !dropdownRef.value.contains(event.target as HTMLElement)) {
         hideMenu()
       }
