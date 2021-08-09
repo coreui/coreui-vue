@@ -9,7 +9,7 @@
       <span class="meta-item-info">{{ lastUpdated }}</span>
     </div>
 
-    <div
+    <!-- <div
       v-if="contributors && contributors.length"
       class="meta-item contributors"
     >
@@ -22,7 +22,7 @@
           <template v-if="index !== contributors.length - 1">, </template>
         </template>
       </span>
-    </div>
+    </div> -->
   </footer>
 </template>
 

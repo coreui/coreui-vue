@@ -7,9 +7,9 @@
 
     <slot name="top" />
 
-    <ul class="sidebar-nav">
+    <CSidebarNav>
       <SidebarChild v-for="item in sidebarItems" :key="item.link || item.text" :item="item" />
-    </ul>
+    </CSidebarNav>
 
     <slot name="bottom" />
   </aside>
