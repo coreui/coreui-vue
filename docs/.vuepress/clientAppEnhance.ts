@@ -157,6 +157,15 @@ import { CTooltip, CPopover, CClickaway } from '../../src/directives'
 
 import '@coreui/coreui/scss/coreui.scss'
 
+import { 
+  CWidgetSimple,
+  CWidgetBrand,
+  CWidgetDropdown, 
+  CWidgetIcon,
+  CWidgetProgress,
+  CWidgetProgressIcon
+} from '../../src/components/widgets'
+
 //import CIcon from '@coreui/icons-vue/src/CIconRaw.vue'
 //import CIcon from '../../node_modules/@coreui/icons-vue/src/CIconRaw.vue'
 //import { CIcon, CIconTestIcon } from '../../src/components/icon'
@@ -295,6 +304,13 @@ const clientAppEnhance: ClientAppEnhance = ({ app }) => {
   app.component('CToastClose', CToastClose)
   app.component('CToaster', CToaster)
   app.component('CToastHeader', CToastHeader)
+
+  app.component('CWidgetSimple', CWidgetSimple)
+  app.component('CWidgetBrand', CWidgetBrand)
+  app.component('CWidgetDropdown', CWidgetDropdown)
+  app.component('CWidgetIcon', CWidgetIcon)
+  app.component('CWidgetProgress', CWidgetProgress)
+  app.component('CWidgetProgressIcon', CWidgetProgressIcon)
 
   app.directive('CTooltip', CTooltip)
   app.directive('CPopover', CPopover)
