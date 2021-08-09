@@ -182,6 +182,10 @@ export default defineUserConfig<DefaultThemeOptions>({
             link: `/${pkg.config.version_short}/components/card.md`,
           },
           {
+            text: 'Carousel',
+            link: `/${pkg.config.version_short}/components/carousel.md`,
+          },
+          {
             text: 'Close Button',
             link: `/${pkg.config.version_short}/components/close-button.md`,
           },
