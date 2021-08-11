@@ -37,7 +37,7 @@ Styles have to be imported separately! Import [CoreUI](https://github.com/coreui
 
 Installation:
 ```shell
-npm install @coreui/coreui
+npm install @coreui/coreui@3.4
 ```
 
 Basic usage:
