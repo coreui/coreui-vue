@@ -979,6 +979,19 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@coreui/chartjs@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@coreui/chartjs/-/chartjs-3.0.0.tgz#54b55d85de0f3146237b7d1d36b1bf33bc051735"
+  integrity sha512-udbvSxanTNltv94lqTMW8bLRXTtzk9G2SrmFdM/7HH+JSaLX2wdQpZ4VIJhyOCRGLCSKHktl29BnW1/uXQecAg==
+  dependencies:
+    "@coreui/coreui" "4.0.0"
+    chart.js "^3.4.0"
+
+"@coreui/coreui@4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@coreui/coreui/-/coreui-4.0.0.tgz#52ebe0197411a829ba48057ade61923e05859eec"
+  integrity sha512-8vH6fJrmvCR/Oy5v0E+/1AL3Ygb4jhQ7NXK2fMYWJyK13BePDm9muB3y6S0IdqkpBwjY3hHVwHyt2lJqJdesmQ==
+
 "@coreui/coreui@^4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@coreui/coreui/-/coreui-4.0.1.tgz#e5faf540aeea31b0cc8d428d73080a364e4bc6fd"
@@ -995,6 +1008,15 @@
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@coreui/icons/-/icons-2.0.1.tgz#778022fe2b366abf9594d142607026e4edc667f8"
   integrity sha512-gBfFRLPUt3Bv9EZbJRbT3sQRHrhH0c4dRbeE9GpWJgJY8kvE9+3Hf5xGK9XyQhFynHx4o2WQeMxsReQLddlK9w==
+
+"@coreui/vue-chartjs@^2.0.0-alpha.0":
+  version "2.0.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@coreui/vue-chartjs/-/vue-chartjs-2.0.0-alpha.0.tgz#e1685ab1d0a6e49d1c25e4d6b3ca275064686610"
+  integrity sha512-A9Z5uooElEyQPyn+GX0/my9OUMxtf8K5S+75ONTVc/m02YWE93UHZl1cEtbo+ooqyNiKHkGGL+iYGFUnpHQLrQ==
+  dependencies:
+    "@coreui/chartjs" "^3.0.0"
+    chart.js "^3.4.1"
+    vue "^3.0.10"
 
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"
@@ -2766,6 +2788,11 @@ character-parser@^2.2.0:
   integrity sha1-x84o821LzZdE5f/CxfzeHHMmH8A=
   dependencies:
     is-regex "^1.0.3"
+
+chart.js@^3.4.0, chart.js@^3.4.1:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-3.5.0.tgz#6eb075332d4ebbbb20a94e5a07a234052ed6c4fb"
+  integrity sha512-J1a4EAb1Gi/KbhwDRmoovHTRuqT8qdF0kZ4XgwxpGethJHUdDrkqyPYwke0a+BuvSeUxPf8Cos6AX2AB8H8GLA==
 
 "chokidar@>=3.0.0 <4.0.0", chokidar@^3.5.1, chokidar@^3.5.2:
   version "3.5.2"

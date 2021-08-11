@@ -5,11 +5,24 @@ import { CProgressBar } from './CProgressBar'
 const CProgress = defineComponent({
   name: 'CProgress',
   props: {
+    /**
+     * Sets the height of the component. If you set that value the inner <CProgressBar> will automatically resize accordingly.
+     *
+     * @default 'undefined'
+     */
     height: {
       type: Number,
       default: undefined,
       required: false,
     },
+    /**
+     * Makes progress bar thinner.
+     */
+    thin: Boolean,
+    /**
+     * Change the default color to white.
+     */
+    white: Boolean,
     ...CProgressBar.props,
   },
   setup(props, { slots }) {
@@ -17,7 +30,13 @@ const CProgress = defineComponent({
       h(
         'div',
         {
-          class: 'progress',
+          class: [
+            'progress',
+            {
+              'progress-thin': props.thin,
+              'progress-white': props.white,
+            },
+          ],
           ...(props.height, { style: `height: ${props.height}px` }),
         },
         props.value
