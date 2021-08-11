@@ -34,7 +34,7 @@ const CWidgetBrand = defineComponent({
                   },
                 ],
               },
-              slots.default && slots.default(),
+              () => slots.default && slots.default(),
             ),
             h(
               CCardBody,
@@ -51,8 +51,12 @@ const CWidgetBrand = defineComponent({
                       {},
                       {
                         default: () => [
-                          h(CCol, { class: 'fs-5 fw-semibold' }, value[0]),
-                          h(CCol, { class: 'text-uppercase text-medium-emphasis small' }, value[1]),
+                          h(CCol, { class: 'fs-5 fw-semibold' }, () => value[0]),
+                          h(
+                            CCol,
+                            { class: 'text-uppercase text-medium-emphasis small' },
+                            () => value[1],
+                          ),
                         ],
                       },
                     ),

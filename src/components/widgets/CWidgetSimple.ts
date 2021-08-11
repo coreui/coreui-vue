@@ -18,9 +18,7 @@ const CWidgetSimple = defineComponent({
   },
   setup(props, { slots }) {
     return () =>
-      h(
-        CCard,
-        {},
+      h(CCard, {}, () =>
         h(
           CCardBody,
           {

@@ -42,7 +42,7 @@ const CWidgetProgressIcon = defineComponent({
       require: false,
     },
     value: {
-      type: Number,
+      type: [Number, String],
       default: 0,
       require: false,
     },
@@ -59,55 +59,56 @@ const CWidgetProgressIcon = defineComponent({
           ],
           color: props.color,
         },
-        h(
-          CCardBody,
-          {
-            class: 'card-body',
-          },
-          () => [
-            slots.icon &&
-              h(
-                'div',
-                {
-                  class: [
-                    'text-end mb-4',
-                    props.inverse ? 'text-medium-emphasis-inverse' : 'text-medium-emphasis',
-                  ],
-                },
-                slots.icon && slots.icon(),
-              ),
-            props.value &&
-              h(
-                'div',
-                {
-                  class: 'fs-4 fw-semibold',
-                },
-                {
-                  default: () => props.value,
-                },
-              ),
-            props.title &&
-              h(
-                'div',
-                {
-                  class: [
-                    'text-uppercase fw-semibold small',
-                    props.inverse ? 'text-medium-emphasis-inverse' : 'text-medium-emphasis',
-                  ],
-                },
-                {
-                  default: () => props.title,
-                },
-              ),
-            h(CProgress, {
-              class: 'my-2',
-              color: props.progressColor,
-              height: 4,
-              value: props.progressValue,
-              white: props.inverse,
-            }),
-          ],
-        ),
+        () =>
+          h(
+            CCardBody,
+            {
+              class: 'card-body',
+            },
+            () => [
+              slots.icon &&
+                h(
+                  'div',
+                  {
+                    class: [
+                      'text-end mb-4',
+                      props.inverse ? 'text-medium-emphasis-inverse' : 'text-medium-emphasis',
+                    ],
+                  },
+                  slots.icon && slots.icon(),
+                ),
+              props.value &&
+                h(
+                  'div',
+                  {
+                    class: 'fs-4 fw-semibold',
+                  },
+                  {
+                    default: () => props.value,
+                  },
+                ),
+              props.title &&
+                h(
+                  'div',
+                  {
+                    class: [
+                      'text-uppercase fw-semibold small',
+                      props.inverse ? 'text-medium-emphasis-inverse' : 'text-medium-emphasis',
+                    ],
+                  },
+                  {
+                    default: () => props.title,
+                  },
+                ),
+              h(CProgress, {
+                class: 'my-2',
+                color: props.progressColor,
+                height: 4,
+                value: props.progressValue,
+                white: props.inverse,
+              }),
+            ],
+          ),
       )
   },
 })

@@ -30,7 +30,7 @@ const CWidgetDropdown = defineComponent({
             { [`bg-${props.color}`]: props.color, 'text-high-emphasis-inverse': props.color },
           ],
         },
-        [
+        () => [
           h(
             CCardBody,
             {

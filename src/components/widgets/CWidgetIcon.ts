@@ -27,7 +27,7 @@ const CWidgetIcon = defineComponent({
       require: false,
     },
     value: {
-      type: Number,
+      type: [Number, String],
       default: 0,
       require: false,
     },
@@ -44,7 +44,7 @@ const CWidgetIcon = defineComponent({
               {
                 class: [`d-flex align-items-center p-${props.padding}`],
               },
-              [
+              () => [
                 h(
                   'div',
                   {
@@ -77,7 +77,7 @@ const CWidgetIcon = defineComponent({
                 ]),
               ],
             ),
-            slots.footer && h(CCardFooter, {}, slots.footer && slots.footer()),
+            slots.footer && h(CCardFooter, {}, () => slots.footer && slots.footer()),
           ],
         },
       )
