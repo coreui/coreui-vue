@@ -793,17 +793,17 @@ description:
 <CRow>
   <CCol :xs="4">
     <CWidgetProgressIcon class="mb-3" value="87.500" progressColor="info" :progressValue="75" title="Visitors">
-      <template #icon><CIcon name="cil-people" height="36" class="my-4" /></template>
+      <template #icon><CIcon name="cil-people" height="36"/></template>
     </CWidgetProgressIcon>
   </CCol>
   <CCol :xs="4">
     <CWidgetProgressIcon class="mb-3" value="385" progressColor="success" :progressValue="75" title="New clients">
-      <template #icon><CIcon name="cil-user-follow" height="36" class="my-4" /></template>
+      <template #icon><CIcon name="cil-user-follow" height="36"/></template>
     </CWidgetProgressIcon>
   </CCol>
   <CCol :xs="4">
     <CWidgetProgressIcon class="mb-3" value="1238" progressColor="info" :progressValue="75" title="Product sold">
-      <template #icon><CIcon name="cil-basket" height="36" class="my-4" /></template>
+      <template #icon><CIcon name="cil-basket" height="36"/></template>
     </CWidgetProgressIcon>
   </CCol>
 </CRow> 
@@ -812,17 +812,17 @@ description:
 <CRow>
   <CCol :xs="4">
     <CWidgetProgressIcon class="mb-3" value="87.500" progressColor="info" :progressValue="75" title="Visitors">
-      <template #icon><CIcon name="cil-people" height="36" class="my-4" /></template>
+      <template #icon><CIcon name="cil-people" height="36"/></template>
     </CWidgetProgressIcon>
   </CCol>
   <CCol :xs="4">
     <CWidgetProgressIcon class="mb-3" value="385" progressColor="success" :progressValue="75" title="New clients">
-      <template #icon><CIcon name="cil-user-follow" height="36" class="my-4" /></template>
+      <template #icon><CIcon name="cil-user-follow" height="36"/></template>
     </CWidgetProgressIcon>
   </CCol>
   <CCol :xs="4">
     <CWidgetProgressIcon class="mb-3" value="1238" progressColor="info" :progressValue="75" title="Product sold">
-      <template #icon><CIcon name="cil-basket" height="36" class="my-4" /></template>
+      <template #icon><CIcon name="cil-basket" height="36"/></template>
     </CWidgetProgressIcon>
   </CCol>
 </CRow> 
@@ -832,17 +832,17 @@ description:
 <CRow>
   <CCol :xs="4">
     <CWidgetProgressIcon class="mb-3" value="87.500" inverse color="info" :progressValue="75" title="Visitors">
-      <template #icon><CIcon name="cil-people" height="36" class="my-4" /></template>
+      <template #icon><CIcon name="cil-people" height="36"/></template>
     </CWidgetProgressIcon>
   </CCol>
   <CCol :xs="4">
     <CWidgetProgressIcon class="mb-3" value="385" inverse color="success" :progressValue="75" title="New clients">
-      <template #icon><CIcon name="cil-user-follow" height="36" class="my-4" /></template>
+      <template #icon><CIcon name="cil-user-follow" height="36"/></template>
     </CWidgetProgressIcon>
   </CCol>
   <CCol :xs="4">
     <CWidgetProgressIcon class="mb-3" value="1238" inverse color="info" :progressValue="75" title="Product sold">
-      <template #icon><CIcon name="cil-basket" height="36" class="my-4" /></template>
+      <template #icon><CIcon name="cil-basket" height="36"/></template>
     </CWidgetProgressIcon>
   </CCol>
 </CRow> 
@@ -851,17 +851,17 @@ description:
 <CRow>
   <CCol :xs="4">
     <CWidgetProgressIcon class="mb-3" value="87.500" inverse color="info" :progressValue="75" title="Visitors">
-      <template #icon><CIcon name="cil-people" height="36" class="my-4" /></template>
+      <template #icon><CIcon name="cil-people" height="36"/></template>
     </CWidgetProgressIcon>
   </CCol>
   <CCol :xs="4">
     <CWidgetProgressIcon class="mb-3" value="385" inverse color="success" :progressValue="75" title="New clients">
-      <template #icon><CIcon name="cil-user-follow" height="36" class="my-4" /></template>
+      <template #icon><CIcon name="cil-user-follow" height="36"/></template>
     </CWidgetProgressIcon>
   </CCol>
   <CCol :xs="4">
     <CWidgetProgressIcon class="mb-3" value="1238" inverse color="info" :progressValue="75" title="Product sold">
-      <template #icon><CIcon name="cil-basket" height="36" class="my-4" /></template>
+      <template #icon><CIcon name="cil-basket" height="36"/></template>
     </CWidgetProgressIcon>
   </CCol>
 </CRow> 
