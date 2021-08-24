@@ -2,14 +2,14 @@ import { defineComponent, h } from 'vue'
 
 const CBreadcrumb = defineComponent({
   name: 'CBreadcrumb',
-  setup(_, { slots }) {
+  setup(_, { slots, attrs }) {
     return () =>
       h(
         'nav',
         {
           'aria-label': 'breadcrumb',
         },
-        h('ol', { class: 'breadcrumb' }, slots.default && slots.default()),
+        h('ol', { class: ['breadcrumb', attrs.class] }, slots.default && slots.default()),
       )
   },
 })
