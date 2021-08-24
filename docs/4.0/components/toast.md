@@ -338,10 +338,10 @@ Building on the above example, you can create different toast color schemes with
 
 ## API
 
-!!!include(./docs/api/toast/CToast.api.md)!!!
+!!!include(./docs/4.0/api/toast/CToast.api.md)!!!
 
-!!!include(./docs/api/toast/CToastClose.api.md)!!!
+!!!include(./docs/4.0/api/toast/CToastClose.api.md)!!!
 
-!!!include(./docs/api/toast/CToastHeader.api.md)!!!
+!!!include(./docs/4.0/api/toast/CToastHeader.api.md)!!!
 
-!!!include(./docs/api/toast/CToaster.api.md)!!!
+!!!include(./docs/4.0/api/toast/CToaster.api.md)!!!

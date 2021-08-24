@@ -71,4 +71,4 @@ Callout component is prepared for any length of text, as well as an optional ele
 
 ## API
 
-!!!include(./docs/api/callout/CCallout.api.md)!!!
+!!!include(./docs/4.0/api/callout/CCallout.api.md)!!!

@@ -227,4 +227,4 @@ Add `dark` property to the `CCarousel` for darker controls, indicators, and capt
 
 ## API
 
-!!!include(./docs/api/carousel/CCarousel.api.md)!!!
+!!!include(./docs/4.0/api/carousel/CCarousel.api.md)!!!

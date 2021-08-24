@@ -88,4 +88,4 @@ Fancy larger or smaller avatar? Add `size="xl"`, `size="lg"` or `size="sm"` for 
 
 ## API
 
-!!!include(./docs/api/avatar/CAvatar.api.md)!!!
+!!!include(./docs/4.0/api/avatar/CAvatar.api.md)!!!

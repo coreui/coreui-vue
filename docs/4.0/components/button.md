@@ -273,4 +273,4 @@ Additional utilities can be used to adjust the alignment of buttons when horizon
 
 ## API
 
-!!!include(./docs/api/button/CButton.api.md)!!!
+!!!include(./docs/4.0/api/button/CButton.api.md)!!!

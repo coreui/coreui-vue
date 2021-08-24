@@ -202,6 +202,6 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 
 ## API
 
-!!!include(./docs/api/form/CFormInput.api.md)!!!
+!!!include(./docs/4.0/api/form/CFormInput.api.md)!!!
 
-!!!include(./docs/api/form/CFormTextarea.api.md)!!!
+!!!include(./docs/4.0/api/form/CFormTextarea.api.md)!!!

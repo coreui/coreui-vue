@@ -105,4 +105,4 @@ Apply the `shape="rounded-pill"` prop to make badges rounded.
 
 ## API
 
-!!!include(./docs/api/badge/CBadge.api.md)!!!
+!!!include(./docs/4.0/api/badge/CBadge.api.md)!!!

@@ -224,6 +224,6 @@ Try the top, right, and bottom examples out below.
 
 ## API
 
-!!!include(./docs/api/offcanvas/COffcanvas.api.md)!!!
+!!!include(./docs/4.0/api/offcanvas/COffcanvas.api.md)!!!
 
-!!!include(./docs/api/offcanvas/COffcanvasTitle.api.md)!!!
+!!!include(./docs/4.0/api/offcanvas/COffcanvasTitle.api.md)!!!

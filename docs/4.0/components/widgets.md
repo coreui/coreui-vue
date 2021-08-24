@@ -1248,3 +1248,17 @@ description:
   </CCol>
 </CRow>
 ```
+
+## API
+
+!!!include(./docs/4.0/api/widgets/CWidgetStatsA.api.md)!!!
+
+!!!include(./docs/4.0/api/widgets/CWidgetStatsB.api.md)!!!
+
+!!!include(./docs/4.0/api/widgets/CWidgetStatsC.api.md)!!!
+
+!!!include(./docs/4.0/api/widgets/CWidgetStatsD.api.md)!!!
+
+!!!include(./docs/4.0/api/widgets/CWidgetStatsE.api.md)!!!
+
+!!!include(./docs/4.0/api/widgets/CWidgetStatsF.api.md)!!!

@@ -163,4 +163,4 @@ Use `<CContainer fluid>` for a full width container, spanning the entire width o
 ```
 ## API
 
-!!!include(./docs/api/grid/CContainer.api.md)!!!
+!!!include(./docs/4.0/api/grid/CContainer.api.md)!!!

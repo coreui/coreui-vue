@@ -243,6 +243,6 @@ Different variants of button, such at the various outlined styles, are supported
 
 ## API
 
-!!!include(./docs/api/form/CFormCheck.api.md)!!!
+!!!include(./docs/4.0/api/form/CFormCheck.api.md)!!!
 
-!!!include(./docs/api/form/CFormSwitch.api.md)!!!
+!!!include(./docs/4.0/api/form/CFormSwitch.api.md)!!!

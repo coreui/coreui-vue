@@ -997,8 +997,8 @@ Another override is the option to pop up a modal that covers the user viewport, 
 
 ## API
 
-!!!include(./docs/api/modal/CModal.api.md)!!!
+!!!include(./docs/4.0/api/modal/CModal.api.md)!!!
 
-!!!include(./docs/api/modal/CModalHeader.api.md)!!!
+!!!include(./docs/4.0/api/modal/CModalHeader.api.md)!!!
 
-!!!include(./docs/api/modal/CModalTitle.api.md)!!!
+!!!include(./docs/4.0/api/modal/CModalTitle.api.md)!!!

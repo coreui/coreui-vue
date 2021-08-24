@@ -990,8 +990,8 @@ With a toggler on the left and brand name on the right:
 
 ## API
 
-!!!include(./docs/api/navbar/CNavbar.api.md)!!!
+!!!include(./docs/4.0/api/navbar/CNavbar.api.md)!!!
 
-!!!include(./docs/api/navbar/CNavbarBrand.api.md)!!!
+!!!include(./docs/4.0/api/navbar/CNavbarBrand.api.md)!!!
 
-!!!include(./docs/api/navbar/CNavbarNav.api.md)!!!
+!!!include(./docs/4.0/api/navbar/CNavbarNav.api.md)!!!

@@ -539,4 +539,4 @@ Input groups include support for custom selects and custom file inputs. Browser 
 
 ## API
 
-!!!include(./docs/api/form/CInputGroup.api.md)!!!
+!!!include(./docs/4.0/api/form/CInputGroup.api.md)!!!

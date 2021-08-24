@@ -146,6 +146,6 @@ Alerts can also be easily dismissed. Just add the `dismissible` prop.
 
 ## API
 
-!!!include(./docs/api/alert/CAlert.api.md)!!!
+!!!include(./docs/4.0/api/alert/CAlert.api.md)!!!
 
-!!!include(./docs/api/alert/CAlertHeading.api.md)!!!
+!!!include(./docs/4.0/api/alert/CAlertHeading.api.md)!!!

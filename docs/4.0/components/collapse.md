@@ -153,4 +153,4 @@ A `<CButton>` can show and hide multiple elements.
 
 ## API
 
-!!!include(./docs/api/collapse/CCollapse.api.md)!!!
+!!!include(./docs/4.0/api/collapse/CCollapse.api.md)!!!

@@ -247,8 +247,8 @@ Add `flush` to remove the default `background-color`, some borders, and some rou
 
 ## API
 
-!!!include(./docs/api/accordion/CAccordion.api.md)!!!
+!!!include(./docs/4.0/api/accordion/CAccordion.api.md)!!!
 
-!!!include(./docs/api/accordion/CAccordionButton.api.md)!!!
+!!!include(./docs/4.0/api/accordion/CAccordionButton.api.md)!!!
 
-!!!include(./docs/api/accordion/CAccordionCollapse.api.md)!!!
+!!!include(./docs/4.0/api/accordion/CAccordionCollapse.api.md)!!!

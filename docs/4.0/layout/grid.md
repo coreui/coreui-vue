@@ -579,8 +579,8 @@ Use these row columns classes to quickly create basic grid layouts or to control
 
 ## API
 
-!!!include(./docs/api/grid/CContainer.api.md)!!!
+!!!include(./docs/4.0/api/grid/CContainer.api.md)!!!
 
-!!!include(./docs/api/grid/CRow.api.md)!!!
+!!!include(./docs/4.0/api/grid/CRow.api.md)!!!
 
-!!!include(./docs/api/grid/CCol.api.md)!!!
+!!!include(./docs/4.0/api/grid/CCol.api.md)!!!

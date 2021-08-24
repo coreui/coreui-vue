@@ -58,4 +58,4 @@ By default, range inputs "snap" to integer values. To change this, you can speci
 
 ## API
 
-!!!include(./docs/api/form/CFormRange.api.md)!!!
+!!!include(./docs/4.0/api/form/CFormRange.api.md)!!!

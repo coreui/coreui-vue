@@ -34,4 +34,4 @@ description: Vue footer component is an additional navigation used for displayin
 
 ## API
 
-!!!include(./docs/api/footer/CFooter.api.md)!!!
+!!!include(./docs/4.0/api/footer/CFooter.api.md)!!!

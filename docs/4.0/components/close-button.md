@@ -41,4 +41,4 @@ Change the default `<CCloseButton>` to be white with the `white` boolean propert
 
 ## API
 
-!!!include(./docs/api/close-button/CCloseButton.api.md)!!!
+!!!include(./docs/4.0/api/close-button/CCloseButton.api.md)!!!

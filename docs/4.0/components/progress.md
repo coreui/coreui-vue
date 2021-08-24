@@ -202,6 +202,6 @@ The striped gradient can also be animated. Add `animated` property to `<CProgres
 
 ## API
 
-!!!include(./docs/api/progress/CProgress.api.md)!!!
+!!!include(./docs/4.0/api/progress/CProgress.api.md)!!!
 
-!!!include(./docs/api/progress/CProgressBar.api.md)!!!
+!!!include(./docs/4.0/api/progress/CProgressBar.api.md)!!!

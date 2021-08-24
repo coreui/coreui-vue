@@ -76,4 +76,4 @@ Sidebar come with built-in support for a handful of sub-components. Choose from 
 
 ## API
 
-!!!include(./docs/api/sidebar/CSidebar.api.md)!!!
+!!!include(./docs/4.0/api/sidebar/CSidebar.api.md)!!!

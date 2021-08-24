@@ -163,6 +163,6 @@ Change the alignment of pagination components with [flexbox utilities](https://c
 
 ## API
 
-!!!include(./docs/api/pagination/CPagination.api.md)!!!
+!!!include(./docs/4.0/api/pagination/CPagination.api.md)!!!
 
-!!!include(./docs/api/pagination/CPaginationItem.api.md)!!!
+!!!include(./docs/4.0/api/pagination/CPaginationItem.api.md)!!!

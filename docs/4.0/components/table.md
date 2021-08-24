@@ -2222,16 +2222,16 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
 
 ## API
 
-!!!include(./docs/api/table/CTable.api.md)!!!
+!!!include(./docs/4.0/api/table/CTable.api.md)!!!
 
-!!!include(./docs/api/table/CTableBody.api.md)!!!
+!!!include(./docs/4.0/api/table/CTableBody.api.md)!!!
 
-!!!include(./docs/api/table/CTableDataCell.api.md)!!!
+!!!include(./docs/4.0/api/table/CTableDataCell.api.md)!!!
 
-!!!include(./docs/api/table/CTableFoot.api.md)!!!
+!!!include(./docs/4.0/api/table/CTableFoot.api.md)!!!
 
-!!!include(./docs/api/table/CTableHead.api.md)!!!
+!!!include(./docs/4.0/api/table/CTableHead.api.md)!!!
 
-!!!include(./docs/api/table/CTableHeaderCell.api.md)!!!
+!!!include(./docs/4.0/api/table/CTableHeaderCell.api.md)!!!
 
-!!!include(./docs/api/table/CTableRow.api.md)!!!
+!!!include(./docs/4.0/api/table/CTableRow.api.md)!!!

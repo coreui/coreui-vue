@@ -551,12 +551,12 @@ Add dropdown menus with a little extra HTML.
 
 ## API
 
-!!!include(./docs/api/nav/CNav.api.md)!!!
+!!!include(./docs/4.0/api/nav/CNav.api.md)!!!
 
-!!!include(./docs/api/nav/CNavGroup.api.md)!!!
+!!!include(./docs/4.0/api/nav/CNavGroup.api.md)!!!
 
-!!!include(./docs/api/nav/CNavItem.api.md)!!!
+!!!include(./docs/4.0/api/nav/CNavItem.api.md)!!!
 
 `CNavItem` and `CNavLink` have the same properties. If you set the `href` property on `CNavItem` then, `CNavLink` will be generated inside `CNavItem`.
 
-!!!include(./docs/api/nav/CNavLink.api.md)!!!
+!!!include(./docs/4.0/api/nav/CNavLink.api.md)!!!

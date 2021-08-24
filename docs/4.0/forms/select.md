@@ -117,4 +117,4 @@ Add the `disabled` boolean attribute on a select to give it a grayed out appeara
 
 ## API
 
-!!!include(./docs/api/form/CFormSelect.api.md)!!!
+!!!include(./docs/4.0/api/form/CFormSelect.api.md)!!!

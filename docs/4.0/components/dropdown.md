@@ -625,12 +625,12 @@ Put a form within a dropdown menu, or make it into a dropdown menu.
 
 ## API
 
-!!!include(./docs/api/dropdown/CDropdown.api.md)!!!
+!!!include(./docs/4.0/api/dropdown/CDropdown.api.md)!!!
 
-!!!include(./docs/api/dropdown/CDropdownHeader.api.md)!!!
+!!!include(./docs/4.0/api/dropdown/CDropdownHeader.api.md)!!!
 
-!!!include(./docs/api/dropdown/CDropdownItem.api.md)!!!
+!!!include(./docs/4.0/api/dropdown/CDropdownItem.api.md)!!!
 
-!!!include(./docs/api/dropdown/CDropdownMenu.api.md)!!!
+!!!include(./docs/4.0/api/dropdown/CDropdownMenu.api.md)!!!
 
-!!!include(./docs/api/dropdown/CDropdownToggle.api.md)!!!
+!!!include(./docs/4.0/api/dropdown/CDropdownToggle.api.md)!!!

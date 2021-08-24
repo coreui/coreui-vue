@@ -448,4 +448,4 @@ Create a set of buttons that appear vertically stacked rather than horizontally.
 
 ## API
 
-!!!include(./docs/api/button-group/CButtonGroup.api.md)!!!
+!!!include(./docs/4.0/api/button-group/CButtonGroup.api.md)!!!

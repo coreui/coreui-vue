@@ -122,8 +122,8 @@ Here's an example of all the sub-components included in a responsive light-theme
 
 ## API
 
-!!!include(./docs/api/header/CHeader.api.md)!!!
+!!!include(./docs/4.0/api/header/CHeader.api.md)!!!
 
-!!!include(./docs/api/header/CHeaderBrand.api.md)!!!
+!!!include(./docs/4.0/api/header/CHeaderBrand.api.md)!!!
 
-!!!include(./docs/api/header/CHeaderNav.api.md)!!!
+!!!include(./docs/4.0/api/header/CHeaderNav.api.md)!!!

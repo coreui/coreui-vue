@@ -68,4 +68,4 @@ Align images with the `align` property.
 
 ## API
 
-!!!include(./docs/api/image/CImage.api.md)!!!
+!!!include(./docs/4.0/api/image/CImage.api.md)!!!

@@ -1339,14 +1339,14 @@ Just like with card groups, card footers will automatically line up.
 
 ## API
 
-!!!include(./docs/api/card/CCard.api.md)!!!
+!!!include(./docs/4.0/api/card/CCard.api.md)!!!
 
-!!!include(./docs/api/card/CCardHeader.api.md)!!!
+!!!include(./docs/4.0/api/card/CCardHeader.api.md)!!!
 
-!!!include(./docs/api/card/CCardImage.api.md)!!!
+!!!include(./docs/4.0/api/card/CCardImage.api.md)!!!
 
-!!!include(./docs/api/card/CCardSubtitle.api.md)!!!
+!!!include(./docs/4.0/api/card/CCardSubtitle.api.md)!!!
 
-!!!include(./docs/api/card/CCardText.api.md)!!!
+!!!include(./docs/4.0/api/card/CCardText.api.md)!!!
 
-!!!include(./docs/api/card/CCardTitle.api.md)!!!
+!!!include(./docs/4.0/api/card/CCardTitle.api.md)!!!

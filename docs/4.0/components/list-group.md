@@ -305,6 +305,6 @@ Place CoreUI's checkboxes and radios within list group items and customize as ne
 
 ## API
 
-!!!include(./docs/api/list-group/CListGroup.api.md)!!!
+!!!include(./docs/4.0/api/list-group/CListGroup.api.md)!!!
 
-!!!include(./docs/api/list-group/CListGroupItem.api.md)!!!
+!!!include(./docs/4.0/api/list-group/CListGroupItem.api.md)!!!

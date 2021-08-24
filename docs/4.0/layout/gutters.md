@@ -252,8 +252,8 @@ In practice, here's how it looks. Note you can continue to use this with all oth
 
 ## API
 
-!!!include(./docs/api/grid/CContainer.api.md)!!!
+!!!include(./docs/4.0/api/grid/CContainer.api.md)!!!
 
-!!!include(./docs/api/grid/CRow.api.md)!!!
+!!!include(./docs/4.0/api/grid/CRow.api.md)!!!
 
-!!!include(./docs/api/grid/CCol.api.md)!!!
+!!!include(./docs/4.0/api/grid/CCol.api.md)!!!

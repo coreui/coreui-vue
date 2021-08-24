@@ -524,4 +524,4 @@ The `<CCol>` component can also be used outside a `<CRow>` to give an element a 
 
 ## API
 
-!!!include(./docs/api/grid/CCol.api.md)!!!
+!!!include(./docs/4.0/api/grid/CCol.api.md)!!!

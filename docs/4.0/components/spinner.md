@@ -140,4 +140,4 @@ Use spinners within buttons to indicate an action is currently processing or tak
 
 ## API
 
-!!!include(./docs/api/spinner/CSpinner.api.md)!!!
+!!!include(./docs/4.0/api/spinner/CSpinner.api.md)!!!

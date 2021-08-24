@@ -107,4 +107,4 @@ For more information, see the [WAI-ARIA Authoring Practices for the breadcrumb p
 
 ## API
 
-!!!include(./docs/api/breadcrumb/CBreadcrumbItem.api.md)!!!
+!!!include(./docs/4.0/api/breadcrumb/CBreadcrumbItem.api.md)!!!
