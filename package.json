@@ -14,7 +14,7 @@
   "scripts": {
     "build": "rollup -c",
     "changelog": "auto-changelog --template build/changelog-template.hbs --commit-limit false --package --backfill-limit 0 --starting-version v4.0.0-alpha.0",
-    "docs:api-generator": "vue-docgen -c build/docgen.config.js",
+    "docs:api": "vue-docgen -c build/docgen.config.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "lint": "eslint 'src/components/**/*.{js,ts,tsx}'",
