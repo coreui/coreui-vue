@@ -253,6 +253,10 @@ export default defineUserConfig<DefaultThemeOptions>({
             text: 'Toast',
             link: `/${pkg.config.version_short}/components/toast.md`,
           },
+          {
+            text: 'Widgets',
+            link: `/${pkg.config.version_short}/components/widgets.md`,
+          },
         ],
       },
       {
