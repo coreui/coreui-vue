@@ -22,6 +22,16 @@ const CWidgetStatsD = defineComponent({
       require: false,
     },
   },
+    /**
+   * Location for icon component, ex. `<CDropdown>`.
+   *
+   * @slot icon
+   */
+  /**
+   * Location for chart component.
+   *
+   * @slot chart
+   */
   setup(props, { slots }) {
     return () =>
       h(

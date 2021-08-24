@@ -39,7 +39,7 @@ const CWidgetStatsC = defineComponent({
       },
     }),
     /**
-     * Title node for your component. If you want to pass non-string value please use dedicated slot `<template #title>...</template>`
+     * Title for your component. If you want to pass non-string value please use dedicated slot `<template #title>...</template>`
      */
     title: {
       type: String,
@@ -47,7 +47,7 @@ const CWidgetStatsC = defineComponent({
       require: false,
     },
     /**
-     * Value node for your component. If you want to pass non-string value please use dedicated slot `<template #value>...</template>`
+     * Value for your component. If you want to pass non-string or non-number value please use dedicated slot `<template #value>...</template>`
      */
     value: {
       type: [Number, String],
@@ -55,6 +55,11 @@ const CWidgetStatsC = defineComponent({
       require: false,
     },
   },
+  /**
+   * Location for icon component.
+   *
+   * @slot icon
+   */
   setup(props, { slots }) {
     return () =>
       h(

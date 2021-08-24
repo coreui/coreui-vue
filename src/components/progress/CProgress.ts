@@ -6,7 +6,7 @@ const CProgress = defineComponent({
   name: 'CProgress',
   props: {
     /**
-     * Sets the height of the component. If you set that value the inner <CProgressBar> will automatically resize accordingly.
+     * Sets the height of the component. If you set that value the inner `<CProgressBar>` will automatically resize accordingly.
      *
      * @default 'undefined'
      */
