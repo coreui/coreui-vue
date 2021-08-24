@@ -10,6 +10,10 @@ const CProgress = defineComponent({
       default: undefined,
       required: false,
     },
+    /**
+     * Makes progress bar thinner.
+     */
+    thin: Boolean,
     ...CProgressBar.props,
   },
   setup(props, { slots }) {
@@ -17,7 +21,12 @@ const CProgress = defineComponent({
       h(
         'div',
         {
-          class: 'progress',
+          class: [
+            'progress',
+            {
+              'progress-thin': props.thin,
+            },
+          ],
           ...(props.height, { style: `height: ${props.height}px` }),
         },
         props.value
