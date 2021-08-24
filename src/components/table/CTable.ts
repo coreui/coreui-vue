@@ -98,7 +98,7 @@ const CTable = defineComponent({
       required: false,
     },
   },
-  setup(props, { slots }) {
+  setup(props, { slots, attrs }) {
     const table = () =>
       h(
         'table',
@@ -116,6 +116,7 @@ const CTable = defineComponent({
               'table-sm': props.small,
               'table-striped': props.striped,
             },
+            attrs.class,
           ],
         },
         slots.default && slots.default(),
