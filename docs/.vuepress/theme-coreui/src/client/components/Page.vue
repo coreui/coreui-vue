@@ -8,7 +8,11 @@
           <strong class="d-block h6 mb-2 pb-2 border-bottom">On this page</strong>
           <Toc />
         </div>
-        <div class="content"><Content /></div>
+        <!-- Show an image ad -->
+        <div class="content">
+          <div data-ea-publisher="coreui-io" data-ea-type="image"></div>
+          <Content />
+        </div>
       </div>
     </div>
 

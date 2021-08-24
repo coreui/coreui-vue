@@ -9,6 +9,18 @@ export default defineUserConfig<DefaultThemeOptions>({
   lang: 'en-US',
   title: 'CoreUI for Vue.js',
   description: 'UI Components Library for Vue.js (Vue 3)',
+  head: [
+    // ['link', { rel: 'icon', href: '/logo.png' }],
+    ['link', { rel: 'manifest', href: '/favicon/manifest.json' }],
+    // ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+    // ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+    // ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+    // ['link', { rel: 'apple-touch-icon', href: '/icons/apple-touch-icon-152x152.png' }],
+    // ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
+    // ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
+    // ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
+    ['script', {src: 'https://media.ethicalads.io/media/client/ethicalads.min.js'}]
+  ],
   extendsMarkdown: (md) => {
     md.use(require('markdown-it-include')),
     md.renderer.rules.table_open = function(tokens, idx) {
@@ -170,6 +182,10 @@ export default defineUserConfig<DefaultThemeOptions>({
             link: `/${pkg.config.version_short}/components/card.md`,
           },
           {
+            text: 'Carousel',
+            link: `/${pkg.config.version_short}/components/carousel.md`,
+          },
+          {
             text: 'Close Button',
             link: `/${pkg.config.version_short}/components/close-button.md`,
           },
@@ -220,6 +236,10 @@ export default defineUserConfig<DefaultThemeOptions>({
           {
             text: 'Progress',
             link: `/${pkg.config.version_short}/components/progress.md`,
+          },
+          {
+            text: 'Sidebar',
+            link: `/${pkg.config.version_short}/components/sidebar.md`,
           },
           {
             text: 'Spinner',

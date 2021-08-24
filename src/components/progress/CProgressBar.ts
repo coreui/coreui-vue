@@ -13,13 +13,12 @@ const CProgressBar = defineComponent({
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
      *
-     * @default 'primary'
      * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'
      */
     color: {
       type: String,
-      default: 'primary',
-      require: false,
+      default: undefined,
+      require: true,
       validator: (value: string) => {
         return [
           'primary',

@@ -18,14 +18,10 @@ Use the border spinners for a lightweight loading indicator.
 ## Basic usage
 
 ::: demo
-
-  <CSpinner/>
-
+<CSpinner/>
 :::
 ```vue
-
-  <CSpinner/>
-
+<CSpinner/>
 ```
 
 ### Colors
@@ -33,28 +29,24 @@ Use the border spinners for a lightweight loading indicator.
 The border spinner uses `currentColor` for its `border-color`. You can use any of our text color utilities on the standard spinner.
 
 ::: demo
-
-  <CSpinner color="primary"/>
-  <CSpinner color="secondary"/>
-  <CSpinner color="success"/>
-  <CSpinner color="danger"/>
-  <CSpinner color="warning"/>
-  <CSpinner color="info"/>
-  <CSpinner color="light"/>
-  <CSpinner color="dark"/>
-
+<CSpinner color="primary"/>
+<CSpinner color="secondary"/>
+<CSpinner color="success"/>
+<CSpinner color="danger"/>
+<CSpinner color="warning"/>
+<CSpinner color="info"/>
+<CSpinner color="light"/>
+<CSpinner color="dark"/>
 :::
 ```vue
-
-  <CSpinner color="primary"/>
-  <CSpinner color="secondary"/>
-  <CSpinner color="success"/>
-  <CSpinner color="danger"/>
-  <CSpinner color="warning"/>
-  <CSpinner color="info"/>
-  <CSpinner color="light"/>
-  <CSpinner color="dark"/>
-
+<CSpinner color="primary"/>
+<CSpinner color="secondary"/>
+<CSpinner color="success"/>
+<CSpinner color="danger"/>
+<CSpinner color="warning"/>
+<CSpinner color="info"/>
+<CSpinner color="light"/>
+<CSpinner color="dark"/>
 ```
 
 ## Growing spinner
@@ -62,14 +54,10 @@ The border spinner uses `currentColor` for its `border-color`. You can use any o
 If you don't fancy a border spinner, switch to the grow spinner. While it doesn't technically spin, it does repeatedly grow!
 
 ::: demo
-
-  <CSpinner variant="grow"/>
-
+<CSpinner variant="grow"/>
 :::
 ```vue
-
-  <CSpinner variant="grow"/>
-
+<CSpinner variant="grow"/>
 ```
 
 Once again, this spinner is built with `currentColor`, so you can easily change its appearance. Here it is in blue, along with the supported variants.

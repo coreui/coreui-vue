@@ -1,7 +1,7 @@
 {
   "name": "@coreui/vue",
   "description": "UI Components Library for Vue.js",
-  "version": "4.0.0-alpha.1",
+  "version": "4.0.0-alpha.2",
   "config": {
     "version_short": "4.0"
   },
@@ -44,6 +44,7 @@
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.15.0",
+    "@coreui/vue-chartjs": "^2.0.0-alpha.0",
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
     "@types/jest": "^27.0.1",

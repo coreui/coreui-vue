@@ -38,6 +38,7 @@ const Color = {
       'dark',
       'light',
       'link',
+      'transparent',
     ].includes(value)
   },
 }
