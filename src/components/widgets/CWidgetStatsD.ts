@@ -1,16 +1,21 @@
 import { defineComponent, h, PropType } from 'vue'
 
+import { Color } from '../props'
 import { CCard, CCardBody, CCardHeader } from './../card/'
 import { CCol } from './../grid/'
 
-const CWidgetBrand = defineComponent({
-  name: 'CWidgetBrand',
+const CWidgetStatsD = defineComponent({
+  name: 'CWidgetStatsD',
   props: {
-    color: {
-      type: String,
-      default: undefined,
-      require: false,
-    },
+    /**
+     * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
+     *
+     * @values 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
+     */
+    color: Color,
+    /**
+     * Values and titles for your component.
+     */
     values: {
       type: Array as PropType<number[] | string[]>,
       default: () => [],
@@ -34,7 +39,7 @@ const CWidgetBrand = defineComponent({
                   },
                 ],
               },
-              () => slots.default && slots.default(),
+              () => [slots.icon && slots.icon(), slots.chart && slots.chart()],
             ),
             h(
               CCardBody,
@@ -69,4 +74,4 @@ const CWidgetBrand = defineComponent({
   },
 })
 
-export { CWidgetBrand }
+export { CWidgetStatsD }

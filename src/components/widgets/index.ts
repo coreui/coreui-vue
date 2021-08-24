@@ -1,28 +1,28 @@
 import { App } from 'vue'
-import { CWidgetSimple } from './CWidgetSimple'
-import { CWidgetBrand } from './CWidgetBrand'
-import { CWidgetDropdown } from './CWidgetDropdown'
-import { CWidgetIcon } from './CWidgetIcon'
-import { CWidgetProgress } from './CWidgetProgress'
-import { CWidgetProgressIcon } from './CWidgetProgressIcon'
+import { CWidgetStatsA } from './CWidgetStatsA'
+import { CWidgetStatsB } from './CWidgetStatsB'
+import { CWidgetStatsC } from './CWidgetStatsC'
+import { CWidgetStatsD } from './CWidgetStatsD'
+import { CWidgetStatsE } from './CWidgetStatsE'
+import { CWidgetStatsF } from './CWidgetStatsF'
 
-const CWidgetsPlugin = {
+const CWidgetsStatsPlugin = {
   install: (app: App): void => {
-    app.component(CWidgetSimple.name, CWidgetSimple)
-    app.component(CWidgetBrand.name, CWidgetBrand)
-    app.component(CWidgetDropdown.name, CWidgetDropdown)
-    app.component(CWidgetIcon.name, CWidgetIcon)
-    app.component(CWidgetProgress.name, CWidgetProgress)
-    app.component(CWidgetProgressIcon.name, CWidgetProgressIcon)
+    app.component(CWidgetStatsA.name, CWidgetStatsA)
+    app.component(CWidgetStatsB.name, CWidgetStatsB)
+    app.component(CWidgetStatsC.name, CWidgetStatsC)
+    app.component(CWidgetStatsD.name, CWidgetStatsD)
+    app.component(CWidgetStatsE.name, CWidgetStatsE)
+    app.component(CWidgetStatsF.name, CWidgetStatsF)
   },
 }
 
 export {
-  CWidgetsPlugin,
-  CWidgetSimple,
-  CWidgetBrand,
-  CWidgetDropdown,
-  CWidgetIcon,
-  CWidgetProgress,
-  CWidgetProgressIcon,
+  CWidgetsStatsPlugin,
+  CWidgetStatsA,
+  CWidgetStatsB,
+  CWidgetStatsC,
+  CWidgetStatsD,
+  CWidgetStatsE,
+  CWidgetStatsF,
 }

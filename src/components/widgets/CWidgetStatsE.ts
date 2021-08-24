@@ -2,17 +2,23 @@ import { defineComponent, h } from 'vue'
 
 import { CCard, CCardBody } from './../card/'
 
-const CWidgetSimple = defineComponent({
-  name: 'CWidgetSimple',
+const CWidgetStatsE = defineComponent({
+  name: 'CWidgetStatsE',
   props: {
+    /**
+     * Title node for your component. If you want to pass non-string value please use dedicated slot `<template #title>...</template>`
+     */
     title: {
       type: String,
       default: undefined,
       require: false,
     },
+    /**
+     * Value node for your component. If you want to pass non-string value please use dedicated slot `<template #value>...</template>`
+     */
     value: {
       type: [Number, String],
-      default: undefined,
+      default: 0,
       require: false,
     },
   },
@@ -25,26 +31,27 @@ const CWidgetSimple = defineComponent({
             class: 'text-center',
           },
           () => [
-            props.title &&
+            (props.title || slots.title) &&
               h(
                 'div',
                 {
                   class: 'text-muted small text-uppercase font-weight-bold',
                 },
                 {
-                  default: () => props.title,
+                  default: () => (slots.title && slots.title()) || props.title,
                 },
               ),
-            props.value &&
+            (props.value || slots.value) &&
               h(
                 'div',
                 {
                   class: 'h2 py-3',
                 },
                 {
-                  default: () => props.value,
+                  default: () => (slots.value && slots.value()) || props.value,
                 },
               ),
+            slots.chart && slots.chart(),
             slots.default && slots.default(),
           ],
         ),
@@ -52,4 +59,4 @@ const CWidgetSimple = defineComponent({
   },
 })
 
-export { CWidgetSimple }
+export { CWidgetStatsE }

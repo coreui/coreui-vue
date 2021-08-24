@@ -1,46 +1,54 @@
 import { defineComponent, h } from 'vue'
+import { shape } from 'vue-types'
 
+import { Color } from '../props'
 import { CCard, CCardBody } from './../card'
 import { CProgress } from '../progress/CProgress'
 
-const CWidgetProgressIcon = defineComponent({
-  name: 'CWidgetProgressIcon',
+const CWidgetStatsC = defineComponent({
+  name: 'CWidgetStatsC',
   props: {
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
      *
      * @values 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
      */
-    color: {
-      type: String,
-      default: undefined,
-      require: false,
-    },
+    color: Color,
+    /**
+     * Colors have been inverted from their default dark shade.
+     */
     inverse: {
       type: Boolean,
       default: undefined,
       require: false,
     },
+    progress: shape({
+      /**
+       * Sets the color context of the progress bar to one of CoreUI’s themed colors
+       *
+       * @values 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
+       */
+      color: Color,
+      /**
+       * The percent to progress the ProgressBar (out of 100).
+       * @default 0
+       */
+      value: {
+        type: Number,
+        default: 0,
+      },
+    }),
     /**
-     * Sets the color context of the progress bar to one of CoreUI’s themed colors. [docs]
-     *
-     * @values 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
+     * Title node for your component. If you want to pass non-string value please use dedicated slot `<template #title>...</template>`
      */
-    progressColor: {
-      type: String,
-      default: undefined,
-      require: false,
-    },
-    progressValue: {
-      type: Number,
-      default: 0,
-      require: false,
-    },
     title: {
       type: String,
       default: undefined,
       require: false,
     },
+    /**
+     * Value node for your component. If you want to pass non-string value please use dedicated slot `<template #value>...</template>`
+     */
     value: {
       type: [Number, String],
       default: 0,
@@ -77,17 +85,17 @@ const CWidgetProgressIcon = defineComponent({
                   },
                   slots.icon && slots.icon(),
                 ),
-              props.value &&
+              (props.value || slots.value) &&
                 h(
                   'div',
                   {
                     class: 'fs-4 fw-semibold',
                   },
                   {
-                    default: () => props.value,
+                    default: () => (slots.value && slots.value()) || props.value,
                   },
                 ),
-              props.title &&
+              (props.title || slots.title) &&
                 h(
                   'div',
                   {
@@ -97,14 +105,14 @@ const CWidgetProgressIcon = defineComponent({
                     ],
                   },
                   {
-                    default: () => props.title,
+                    default: () => (slots.title && slots.title()) || props.title,
                   },
                 ),
               h(CProgress, {
                 class: 'my-2',
-                color: props.progressColor,
+                color: props.progress?.color,
                 height: 4,
-                value: props.progressValue,
+                value: props.progress?.value,
                 white: props.inverse,
               }),
             ],
@@ -113,4 +121,4 @@ const CWidgetProgressIcon = defineComponent({
   },
 })
 
-export { CWidgetProgressIcon }
+export { CWidgetStatsC }
