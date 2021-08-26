@@ -34,11 +34,10 @@ const CLink = defineComponent({
       required: false,
     },
   },
-  emits: ['onClick'],
+  emits: ['click'],
   setup(props, { slots, emit }) {
-    const onClick = (event: MouseEvent) => {
-      event.preventDefault()
-      emit('onClick', props.href)
+    const handleClick = () => {
+      emit('click', props.href)
     }
     return () =>
       h(
@@ -47,7 +46,9 @@ const CLink = defineComponent({
           class: [{ active: props.active, disabled: props.disabled }],
           ...(props.active && { 'aria-current': 'page' }),
           ...(props.component === 'a' && props.disabled && { 'aria-disabled': true, tabIndex: -1 }),
-          ...((props.component === 'a' || props.component === 'button') && { onClick: onClick }),
+          ...((props.component === 'a' || props.component === 'button') && {
+            onClick: handleClick,
+          }),
           href: props.href,
         },
         slots.default && slots.default(),
