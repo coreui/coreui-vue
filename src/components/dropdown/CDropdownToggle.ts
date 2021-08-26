@@ -116,6 +116,10 @@ const CDropdownToggle = defineComponent({
               class: ['nav-link', className],
               disabled: props.disabled,
               href: '#',
+              onClick: (event: Event) => {
+                event.preventDefault()
+                return toggleMenu()
+              },
               ref: dropdownRef,
             },
             { default: () => slots.default && slots.default() },
