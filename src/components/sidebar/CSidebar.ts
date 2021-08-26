@@ -50,6 +50,16 @@ const CSidebar = defineComponent({
       },
     },
     /**
+     * Size the component small, large, or extra large.
+     */
+    size: {
+      type: String,
+      default: undefined,
+      validator: (value: string) => {
+        return ['sm', 'lg', 'xl'].includes(value)
+      },
+    },
+    /**
      * Expand narrowed sidebar on hover.
      */
     unfoldable: {
@@ -60,7 +70,10 @@ const CSidebar = defineComponent({
     /**
      * Toggle the visibility of sidebar component.
      */
-    visible: Boolean,
+    visible: {
+      type: Boolean,
+      default: undefined,
+    },
   },
   setup(props, { slots }) {
     return () =>
@@ -76,8 +89,10 @@ const CSidebar = defineComponent({
               [`sidebar-self-hiding${
                 typeof props.selfHiding !== 'boolean' && '-' + props.selfHiding
               }`]: props.selfHiding,
+              [`sidebar-${props.size}`]: props.size,
               'sidebar-narrow-unfoldable': props.unfoldable,
-              show: props.visible,
+              show: props.visible === true,
+              hide: props.visible === false,
             },
           ],
         },
