@@ -16,8 +16,8 @@ const CNavGroup = defineComponent({
       required: false,
     },
   },
-  emits: ['visibleChange'],
-  setup(props, { emit, slots }) {
+  emits: ['visible-change'],
+  setup(props, { slots, emit }) {
     const visible = ref(props.visible)
     const navGroupRef = ref()
 
@@ -49,7 +49,7 @@ const CNavGroup = defineComponent({
 
     const handleTogglerClick = function () {
       visible.value = !visible.value
-      emit('visibleChange', visible.value)
+      emit('visible-change', visible.value)
     }
     const handleBeforeEnter = (el: RendererElement) => {
       el.style.height = '0px'
@@ -121,12 +121,17 @@ const CNavGroup = defineComponent({
                     ],
                   },
                   slots.default &&
-                    slots.default().map((vnode, index) =>
-                      h(vnode, {
-                        onVisibleChange: (visible: boolean) => handleVisibleChange(visible, index),
-                        visible: isVisible(index),
-                      }),
-                    ),
+                    slots.default().map((vnode, index) => {
+                      // @ts-expect-error name is defined in component
+                      if (vnode.type.name === 'CNavGroup') {
+                        return h(vnode, {
+                          onVisibleChange: (visible: boolean) =>
+                            handleVisibleChange(visible, index),
+                          visible: isVisible(index),
+                        })
+                      }
+                      return vnode
+                    }),
                 ),
             },
           ),
