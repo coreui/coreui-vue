@@ -24,7 +24,7 @@ const CAvatar = defineComponent({
       default: undefined,
       required: false,
       validator: (value: string) => {
-        return ['sm', 'lg', 'xl'].includes(value)
+        return ['sm', 'md', 'lg', 'xl'].includes(value)
       },
     },
     /**
