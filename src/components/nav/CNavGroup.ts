@@ -4,6 +4,10 @@ const CNavGroup = defineComponent({
   name: 'CNavGroup',
   props: {
     /**
+     * Make nav group more compact by cutting all `padding` in half.
+     */
+    compact: Boolean,
+    /**
      * Show nav group items.
      */
     visible: {
@@ -109,7 +113,12 @@ const CNavGroup = defineComponent({
                 h(
                   'ul',
                   {
-                    class: 'nav-group-items',
+                    class: [
+                      'nav-group-items',
+                      {
+                        compact: props.compact,
+                      },
+                    ],
                   },
                   slots.default &&
                     slots.default().map((vnode, index) =>
