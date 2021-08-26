@@ -41,12 +41,11 @@ import type {
 } from '../../shared'
 import { useThemeLocaleData } from '../composables'
 import { resolveEditLink } from '../utils'
-import NavLink from './NavLink.vue'
+import NavLink from './_NavLink.vue'
 
 const useEditNavLink = (): ComputedRef<null | NavLinkType> => {
   const themeLocale = useThemeLocaleData()
   const page = usePageData<DefaultThemePageData>()
-  console.log(page)
   const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
 
   return computed(() => {

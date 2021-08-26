@@ -1,21 +1,22 @@
-@use 'vars';
-@use 'vars-dark';
-@use 'normalize';
+@import '@coreui/coreui/scss/coreui.scss';
 
-@use 'arrow';
-@use 'badge';
-@use 'code';
-@use 'code-group';
-@use 'custom-container';
-@use 'demo';
-@use 'dropdown';
-@use 'home';
-@use 'layout';
-@use 'navbar';
-@use 'page';
-@use 'sidebar';
-@use 'sr-only';
-@use 'toc';
-@use 'transitions';
+@import 'demo';
+@import 'footer';
+@import 'layout';
+@import 'sidebar';
+@import 'toc';
 
-@use '@vuepress/plugin-palette/style';
+@import 'vars';
+@import 'vars-dark';
+@import 'normalize';
+
+@import 'arrow';
+@import 'code';
+@import 'code-group';
+@import 'custom-container';
+@import 'home';
+@import 'page';
+@import 'sr-only';
+@import 'transitions';
+
+@import '@vuepress/plugin-palette/style';

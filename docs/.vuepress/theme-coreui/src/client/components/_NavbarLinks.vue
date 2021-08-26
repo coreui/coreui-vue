@@ -17,8 +17,8 @@ import { isLinkHttp, isString } from '@vuepress/shared'
 import type { NavbarItem, NavbarGroup, ResolvedNavbarItem } from '../../shared'
 import { useNavLink, useThemeLocaleData } from '../composables'
 import { resolveRepoType } from '../utils'
-import DropdownLink from './DropdownLink.vue'
-import NavLink from './NavLink.vue'
+import DropdownLink from './_DropdownLink.vue'
+import NavLink from './_NavLink.vue'
 
 /**
  * Get navbar config of select language dropdown

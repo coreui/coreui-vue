@@ -111,9 +111,9 @@
 import { computed, onMounted, ref } from 'vue'
 import { useRouteLocale, useSiteLocaleData, withBase } from '@vuepress/client'
 import { useThemeLocaleData } from '../composables'
-import NavbarLinks from './NavbarLinks.vue'
+import NavbarLinks from './_NavbarLinks.vue'
 import ToggleDarkModeButton from './ToggleDarkModeButton.vue'
-import ToggleSidebarButton from './ToggleSidebarButton.vue'
+import ToggleSidebarButton from './_ToggleSidebarButton.vue'
 
 defineEmits(['toggle-sidebar'])
 

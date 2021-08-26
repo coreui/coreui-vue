@@ -6,10 +6,15 @@ import '@coreui/coreui/scss/coreui.scss'
 
 import {
   cibCoreuiC,
+  cibDiscourse,
+  cibGithub,
+  cibTwitter,
   cilArrowBottom,
   cilArrowRight,
   cilArrowTop,
   cilBasket,
+  cilCloudDownload,
+  cilMenu,
   cilOptions,
   cilPeople,
   cilPuzzle,
@@ -20,10 +25,15 @@ import {
 
 export const icons = {
   cibCoreuiC,
+  cibDiscourse,
+  cibGithub,
+  cibTwitter,
   cilArrowBottom,
   cilArrowRight,
   cilArrowTop,
   cilBasket,
+  cilCloudDownload,
+  cilMenu,
   cilOptions,
   cilPeople,
   cilPuzzle,

@@ -79,7 +79,7 @@ import { computed, defineComponent, ref, toRefs, watch } from 'vue'
 import type { PropType } from 'vue'
 import { useRoute } from 'vue-router'
 import type { NavGroup, NavItem } from '../../shared'
-import NavLink from './NavLink.vue'
+import NavLink from './_NavLink.vue'
 
 export default defineComponent({
   name: 'DropdownLink',

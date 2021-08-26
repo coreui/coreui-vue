@@ -1,17 +1,14 @@
 <template>
   <RouterLink
-    v-if="isRouterLink"
-    class="nav-link"
-    :class="{ 'router-link-active': isActive }"
+    custom
     :to="item.link"
-    :aria-label="linkAriaLabel"
-    v-bind="$attrs"
+    v-slot="{ href, route, navigate, isActive, isExactActive }"
   >
-    <slot name="before" />
-    {{ item.text }}
-    <slot name="after" />
+    <CNavLink :active="isActive" :href="href" @click="navigate">
+      {{ item.text }}
+    </CNavLink>
   </RouterLink>
-  <a
+  <!-- <a
     v-else
     class="nav-link external"
     :href="item.link"
@@ -24,7 +21,7 @@
     {{ item.text }}
     <OutboundLink v-if="isBlankTarget" />
     <slot name="after" />
-  </a>
+  </a> -->
 </template>
 
 <script lang="ts">
@@ -34,6 +31,7 @@ import { useRoute } from 'vue-router'
 import { useSiteData } from '@vuepress/client'
 import { isLinkHttp, isLinkMailto, isLinkTel } from '@vuepress/shared'
 import type { NavLink } from '../../shared'
+import { CNavLink } from './../../../../../../src'
 
 export default defineComponent({
   name: 'NavLink',
@@ -56,7 +54,7 @@ export default defineComponent({
     const hasHttpProtocol = computed(() => isLinkHttp(item.value.link))
     // if the link has non-http protocol
     const hasNonHttpProtocal = computed(
-      () => isLinkMailto(item.value.link) || isLinkTel(item.value.link)
+      () => isLinkMailto(item.value.link) || isLinkTel(item.value.link),
     )
     // resolve the `target` attr
     const linkTarget = computed(() => {
@@ -69,10 +67,7 @@ export default defineComponent({
     const isBlankTarget = computed(() => linkTarget.value === '_blank')
     // is `<RouterLink>` or not
     const isRouterLink = computed(
-      () =>
-        !hasHttpProtocol.value &&
-        !hasNonHttpProtocal.value &&
-        !isBlankTarget.value
+      () => !hasHttpProtocol.value && !hasNonHttpProtocal.value && !isBlankTarget.value,
     )
     // resolve the `rel` attr
     const linkRel = computed(() => {
@@ -82,9 +77,7 @@ export default defineComponent({
       return undefined
     })
     // resolve the `aria-label` attr
-    const linkAriaLabel = computed(
-      () => item.value.ariaLabel || item.value.text
-    )
+    const linkAriaLabel = computed(() => item.value.ariaLabel || item.value.text)
 
     // should be active when current route is a subpath of this link
     const shouldBeActiveInSubpath = computed(() => {
@@ -103,18 +96,19 @@ export default defineComponent({
     })
 
     // if this link is active
-    const isActive = computed(() => {
-      if (!isRouterLink.value) {
-        return false
-      }
-      if (item.value.activeMatch) {
-        return new RegExp(item.value.activeMatch).test(route.path)
-      }
-      return isActiveInSubpath.value
-    })
+    // const isActive = computed(() => {
+    //   if (!isRouterLink.value) {
+    //     return false
+    //   }
+    //   if (item.value.activeMatch) {
+    //     return new RegExp(item.value.activeMatch).test(route.path)
+    //   }
+    //   return isActiveInSubpath.value
+    // })
 
     return {
-      isActive,
+      CNavLink,
+      // isActive,
       isBlankTarget,
       isRouterLink,
       linkRel,

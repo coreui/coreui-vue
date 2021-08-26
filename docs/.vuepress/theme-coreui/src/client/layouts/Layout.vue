@@ -5,29 +5,65 @@
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
-    <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar">
-      <template #before>
-        <slot name="navbar-before" />
-      </template>
-      <template #after>
-        <slot name="navbar-after" />
-      </template>
-    </Navbar>
+    <Sidebar :visible="isSidebarOpen"/>
+    <div class="wrapper d-flex flex-column min-vh-100">
+      <Header @toggle-sidebar="toggleSidebar(!isSidebarOpen)"/>
+      <!-- <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar">
+        <template #before>
+          <slot name="navbar-before" />
+        </template>
+        <template #after>
+          <slot name="navbar-after" />
+        </template>
+      </Navbar> -->
+      <div class="body flex-grow-1 px-3">
+        <CContainer lg>
+          <Home v-if="frontmatter.home" />
+          <Transition
+            v-else
+            name="fade-slide-y"
+            mode="out-in"
+            @before-enter="onBeforeEnter"
+            @before-leave="onBeforeLeave"
+          >
+            <CRow>
+              <CCol :lg="9">
+                <Page :key="page.path">
+                  <template #top>
+                    <slot name="page-top" />
+                  </template>
+                  <template #bottom>
+                    <slot name="page-bottom" />
+                  </template>
+                </Page>
+              </CCol>
+              <CCol :lg="3">
+                <div class="docs-toc text-muted">
+                  <strong class="d-block h6 mb-2 pb-2 border-bottom">On this page</strong>
+                  <Toc />
+                </div>
+              </CCol>
+            </CRow>
+          </Transition>
+        </CContainer>
+      </div>
+      <Footer />
+    </div>
 
-    <div class="sidebar-mask" @click="toggleSidebar(false)" />
+    <!-- <div class="sidebar-mask" @click="toggleSidebar(false)" /> -->
 
-    <Sidebar>
+    <!-- <Sidebar>
       <template #top>
         <slot name="sidebar-top" />
       </template>
       <template #bottom>
         <slot name="sidebar-bottom" />
       </template>
-    </Sidebar>
+    </Sidebar> -->
 
-    <Home v-if="frontmatter.home" />
+    <!-- <Home v-if="frontmatter.home" /> -->
 
-    <Transition
+    <!-- <Transition
       v-else
       name="fade-slide-y"
       mode="out-in"
@@ -42,39 +78,30 @@
           <slot name="page-bottom" />
         </template>
       </Page>
-    </Transition>
+    </Transition> -->
   </div>
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  onMounted,
-  onUnmounted,
-  ref,
-  Transition,
-} from 'vue'
+import { computed, defineComponent, onMounted, onUnmounted, ref, Transition } from 'vue'
 import { useRouter } from 'vue-router'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import type { DefaultThemePageFrontmatter } from '../../shared'
+import Footer from '../components/Footer.vue'
+import Header from '../components/Header.vue'
 import Home from '../components/Home.vue'
 import Page from '../components/Page.vue'
-import Navbar from '../components/Navbar.vue'
 import Sidebar from '../components/Sidebar.vue'
-import {
-  useScrollPromise,
-  useSidebarItems,
-  useThemeLocaleData,
-} from '../composables'
+import { useScrollPromise, useSidebarItems, useThemeLocaleData } from '../composables'
 
 export default defineComponent({
   name: 'Layout',
 
   components: {
+    Footer,
+    Header,
     Home,
     Page,
-    Navbar,
     Sidebar,
     Transition,
   },
@@ -86,31 +113,15 @@ export default defineComponent({
 
     // navbar
     const shouldShowNavbar = computed(
-      () =>
-        frontmatter.value.navbar !== false && themeLocale.value.navbar !== false
+      () => frontmatter.value.navbar !== false && themeLocale.value.navbar !== false,
     )
 
     // sidebar
     const sidebarItems = useSidebarItems()
-    const isSidebarOpen = ref(false)
+    const isSidebarOpen = ref()
+
     const toggleSidebar = (to?: boolean): void => {
       isSidebarOpen.value = typeof to === 'boolean' ? to : !isSidebarOpen.value
-    }
-    const touchStart = { x: 0, y: 0 }
-    const onTouchStart = (e): void => {
-      touchStart.x = e.changedTouches[0].clientX
-      touchStart.y = e.changedTouches[0].clientY
-    }
-    const onTouchEnd = (e): void => {
-      const dx = e.changedTouches[0].clientX - touchStart.x
-      const dy = e.changedTouches[0].clientY - touchStart.y
-      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
-        if (dx > 0 && touchStart.x <= 80) {
-          toggleSidebar(true)
-        } else {
-          toggleSidebar(false)
-        }
-      }
     }
 
     // classes
@@ -141,13 +152,11 @@ export default defineComponent({
     const onBeforeLeave = scrollPromise.pending
 
     return {
+      isSidebarOpen,
       frontmatter,
       page,
       containerClass,
-      shouldShowNavbar,
       toggleSidebar,
-      onTouchStart,
-      onTouchEnd,
       onBeforeEnter,
       onBeforeLeave,
     }

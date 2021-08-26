@@ -10,12 +10,12 @@ description:
 <CRow>
   <CCol :xs="4">
     <CWidgetStatsA class="mb-3" color="primary">
-      <template #value>26K <span class="fs-6 fw-normal">(-12.4% <CIcon name="cil-arrow-bottom" />)</span></template>
+      <template #value>26K <span class="fs-6 fw-normal">(-12.4% <CIcon icon="cil-arrow-bottom" />)</span></template>
       <template #title>Users</template>
       <template #action>
         <CDropdown placement="bottom-end">
           <CDropdownToggle color="transparent" class="p-0 text-white" :caret="false">
-            <CIcon name="cil-options" class="text-high-emphasis-inverse" />
+            <CIcon icon="cil-options" class="text-high-emphasis-inverse" />
           </CDropdownToggle>
           <CDropdownMenu>
             <CDropdownItem href="#">Action</CDropdownItem>
@@ -89,12 +89,12 @@ description:
   <CCol :xs="4">
     <CWidgetStatsA class="mb-3" color="info">
       <template #value>$6.200</template>
-      <template #change>(40.9% <CIcon name="cil-arrow-top" />)</template>
+      <template #change>(40.9% <CIcon icon="cil-arrow-top" />)</template>
       <template #title>Income</template>
       <template #action>
         <CDropdown placement="bottom-end">
           <CDropdownToggle color="transparent" class="p-0 text-white" :caret="false">
-            <CIcon name="cil-options" class="text-high-emphasis-inverse" />
+            <CIcon icon="cil-options" class="text-high-emphasis-inverse" />
           </CDropdownToggle>
           <CDropdownMenu>
             <CDropdownItem href="#">Action</CDropdownItem>
@@ -167,12 +167,12 @@ description:
   <CCol :xs="4">
     <CWidgetStatsA class="mb-3" color="warning">
       <template #value>2.49%</template>
-      <template #change>(84.7% <CIcon name="cil-arrow-top" />)</template>
+      <template #change>(84.7% <CIcon icon="cil-arrow-top" />)</template>
       <template #title>Conversion Rate</template>
       <template #action>
         <CDropdown placement="bottom-end">
           <CDropdownToggle color="transparent" class="p-0 text-white" :caret="false">
-            <CIcon name="cil-options" class="text-high-emphasis-inverse" />
+            <CIcon icon="cil-options" class="text-high-emphasis-inverse" />
           </CDropdownToggle>
           <CDropdownMenu>
             <CDropdownItem href="#">Action</CDropdownItem>
@@ -232,12 +232,12 @@ description:
   <CCol :xs="4">
     <CWidgetStatsA class="mb-3" color="danger">
       <template #value>44K</template>
-      <template #change>(-23.6% <CIcon name="cil-arrow-bottom" />)</template>
+      <template #change>(-23.6% <CIcon icon="cil-arrow-bottom" />)</template>
       <template #title>Sessions</template>
       <template #action>
         <CDropdown placement="bottom-end">
           <CDropdownToggle color="transparent" class="p-0 text-white" :caret="false">
-            <CIcon name="cil-options" class="text-high-emphasis-inverse" />
+            <CIcon icon="cil-options" class="text-high-emphasis-inverse" />
           </CDropdownToggle>
           <CDropdownMenu>
             <CDropdownItem href="#">Action</CDropdownItem>
@@ -319,12 +319,12 @@ description:
 <CRow>
   <CCol :xs="4">
     <CWidgetStatsA class="mb-3" color="primary">
-      <template #value>26K <span class="fs-6 fw-normal">(-12.4% <CIcon name="cil-arrow-bottom" />)</span></template>
+      <template #value>26K <span class="fs-6 fw-normal">(-12.4% <CIcon icon="cil-arrow-bottom" />)</span></template>
       <template #title>Users</template>
       <template #action>
         <CDropdown placement="bottom-end">
           <CDropdownToggle color="transparent" class="p-0 text-white" :caret="false">
-            <CIcon name="cil-options" class="text-high-emphasis-inverse" />
+            <CIcon icon="cil-options" class="text-high-emphasis-inverse" />
           </CDropdownToggle>
           <CDropdownMenu>
             <CDropdownItem href="#">Action</CDropdownItem>
@@ -398,12 +398,12 @@ description:
   <CCol :xs="4">
     <CWidgetStatsA class="mb-3" color="info">
       <template #value>$6.200</template>
-      <template #change>(40.9% <CIcon name="cil-arrow-top" />)</template>
+      <template #change>(40.9% <CIcon icon="cil-arrow-top" />)</template>
       <template #title>Income</template>
       <template #action>
         <CDropdown placement="bottom-end">
           <CDropdownToggle color="transparent" class="p-0 text-white" :caret="false">
-            <CIcon name="cil-options" class="text-high-emphasis-inverse" />
+            <CIcon icon="cil-options" class="text-high-emphasis-inverse" />
           </CDropdownToggle>
           <CDropdownMenu>
             <CDropdownItem href="#">Action</CDropdownItem>
@@ -476,12 +476,12 @@ description:
   <CCol :xs="4">
     <CWidgetStatsA class="mb-3" color="warning">
       <template #value>2.49%</template>
-      <template #change>(84.7% <CIcon name="cil-arrow-top" />)</template>
+      <template #change>(84.7% <CIcon icon="cil-arrow-top" />)</template>
       <template #title>Conversion Rate</template>
       <template #action>
         <CDropdown placement="bottom-end">
           <CDropdownToggle color="transparent" class="p-0 text-white" :caret="false">
-            <CIcon name="cil-options" class="text-high-emphasis-inverse" />
+            <CIcon icon="cil-options" class="text-high-emphasis-inverse" />
           </CDropdownToggle>
           <CDropdownMenu>
             <CDropdownItem href="#">Action</CDropdownItem>
@@ -541,12 +541,12 @@ description:
   <CCol :xs="4">
     <CWidgetStatsA class="mb-3" color="danger">
       <template #value>44K</template>
-      <template #change>(-23.6% <CIcon name="cil-arrow-bottom" />)</template>
+      <template #change>(-23.6% <CIcon icon="cil-arrow-bottom" />)</template>
       <template #title>Sessions</template>
       <template #action>
         <CDropdown placement="bottom-end">
           <CDropdownToggle color="transparent" class="p-0 text-white" :caret="false">
-            <CIcon name="cil-options" class="text-high-emphasis-inverse" />
+            <CIcon icon="cil-options" class="text-high-emphasis-inverse" />
           </CDropdownToggle>
           <CDropdownMenu>
             <CDropdownItem href="#">Action</CDropdownItem>
@@ -761,18 +761,18 @@ description:
 <CRow>
   <CCol :xs="4">
     <CWidgetStatsC class="mb-3" value="87.500" :progress="{ color: 'info', value: 75 }" title="Visitors">
-      <template #icon><CIcon name="cil-people" height="36"/></template>
+      <template #icon><CIcon icon="cil-people" height="36"/></template>
       <template #title>Visitors</template>
     </CWidgetStatsC>
   </CCol>
   <CCol :xs="4">
     <CWidgetStatsC class="mb-3" value="385" :progress="{ color: 'success', value: 75 }" title="New clients">
-      <template #icon><CIcon name="cil-user-follow" height="36"/></template>
+      <template #icon><CIcon icon="cil-user-follow" height="36"/></template>
     </CWidgetStatsC>
   </CCol>
   <CCol :xs="4">
     <CWidgetStatsC class="mb-3" value="1238" :progress="{ color: 'info', value: 75 }" title="Product sold">
-      <template #icon><CIcon name="cil-basket" height="36"/></template>
+      <template #icon><CIcon icon="cil-basket" height="36"/></template>
     </CWidgetStatsC>
   </CCol>
 </CRow> 
@@ -781,18 +781,18 @@ description:
 <CRow>
   <CCol :xs="4">
     <CWidgetStatsC class="mb-3" value="87.500" :progress="{ color: 'info', value: 75 }" title="Visitors">
-      <template #icon><CIcon name="cil-people" height="36"/></template>
+      <template #icon><CIcon icon="cil-people" height="36"/></template>
       <template #title>Visitors</template>
     </CWidgetStatsC>
   </CCol>
   <CCol :xs="4">
     <CWidgetStatsC class="mb-3" value="385" :progress="{ color: 'success', value: 75 }" title="New clients">
-      <template #icon><CIcon name="cil-user-follow" height="36"/></template>
+      <template #icon><CIcon icon="cil-user-follow" height="36"/></template>
     </CWidgetStatsC>
   </CCol>
   <CCol :xs="4">
     <CWidgetStatsC class="mb-3" value="1238" :progress="{ color: 'info', value: 75 }" title="Product sold">
-      <template #icon><CIcon name="cil-basket" height="36"/></template>
+      <template #icon><CIcon icon="cil-basket" height="36"/></template>
     </CWidgetStatsC>
   </CCol>
 </CRow> 
@@ -802,17 +802,17 @@ description:
 <CRow>
   <CCol :xs="4">
     <CWidgetStatsC class="mb-3" value="87.500" inverse color="info" :progress="{ value: 75 }" title="Visitors">
-      <template #icon><CIcon name="cil-people" height="36"/></template>
+      <template #icon><CIcon icon="cil-people" height="36"/></template>
     </CWidgetStatsC>
   </CCol>
   <CCol :xs="4">
     <CWidgetStatsC class="mb-3" value="385" inverse color="success" :progress="{ value: 75 }" title="New clients">
-      <template #icon><CIcon name="cil-user-follow" height="36"/></template>
+      <template #icon><CIcon icon="cil-user-follow" height="36"/></template>
     </CWidgetStatsC>
   </CCol>
   <CCol :xs="4">
     <CWidgetStatsC class="mb-3" value="1238" inverse color="info" :progress="{ value: 75 }" title="Product sold">
-      <template #icon><CIcon name="cil-basket" height="36"/></template>
+      <template #icon><CIcon icon="cil-basket" height="36"/></template>
     </CWidgetStatsC>
   </CCol>
 </CRow> 
@@ -821,17 +821,17 @@ description:
 <CRow>
   <CCol :xs="4">
     <CWidgetStatsC class="mb-3" value="87.500" inverse color="info" :progress="{ value: 75 }" title="Visitors">
-      <template #icon><CIcon name="cil-people" height="36"/></template>
+      <template #icon><CIcon icon="cil-people" height="36"/></template>
     </CWidgetStatsC>
   </CCol>
   <CCol :xs="4">
     <CWidgetStatsC class="mb-3" value="385" inverse color="success" :progress="{ value: 75 }" title="New clients">
-      <template #icon><CIcon name="cil-user-follow" height="36"/></template>
+      <template #icon><CIcon icon="cil-user-follow" height="36"/></template>
     </CWidgetStatsC>
   </CCol>
   <CCol :xs="4">
     <CWidgetStatsC class="mb-3" value="1238" inverse color="info" :progress="{ value: 75 }" title="Product sold">
-      <template #icon><CIcon name="cil-basket" height="36"/></template>
+      <template #icon><CIcon icon="cil-basket" height="36"/></template>
     </CWidgetStatsC>
   </CCol>
 </CRow> 
@@ -843,7 +843,7 @@ description:
 <CRow>
   <CCol :xs="4">
     <CWidgetStatsD :values="[['89k', 'friends'],['459', 'feeds']]" style="--cui-card-cap-bg: #321fdb">
-      <template #icon><CIcon name="cib-coreui-c" height="52" class="my-4 text-white" /></template>
+      <template #icon><CIcon icon="cib-coreui-c" height="52" class="my-4 text-white" /></template>
       <template #chart>
         <CChart
           className="position-absolute w-100 h-100"
@@ -896,7 +896,7 @@ description:
 :::
 ```vue
 <CWidgetStatsD :values="[['89k', 'friends'],['459', 'feeds']]" style="--cui-card-cap-bg: #321fdb">
-  <CIcon name="cib-coreui-c" height="52" class="my-4 text-white" />
+  <CIcon icon="cib-coreui-c" height="52" class="my-4 text-white" />
 </CWidgetStatsD>   
 ```
 
@@ -1035,21 +1035,21 @@ description:
   <CCol :xs="4">
     <CWidgetStatsF color="primary" title="Title" value="$1.999,50">
       <template #icon>
-        <CIcon name="cil-settings" size="xl"/>
+        <CIcon icon="cil-settings" size="xl"/>
       </template>
     </CWidgetStatsF>
   </CCol>
   <CCol :xs="4">
     <CWidgetStatsF color="info" title="Title" value="$1.999,50">
       <template #icon>
-        <CIcon name="cil-settings" size="xl"/>
+        <CIcon icon="cil-settings" size="xl"/>
       </template>
     </CWidgetStatsF>
   </CCol>
   <CCol :xs="4">
     <CWidgetStatsF color="warning" title="Title" value="$1.999,50">
       <template #icon>
-        <CIcon name="cil-settings" size="xl"/>
+        <CIcon icon="cil-settings" size="xl"/>
       </template>
     </CWidgetStatsF>
   </CCol>
@@ -1060,21 +1060,21 @@ description:
   <CCol :xs="4">
     <CWidgetStatsF color="primary" title="Title" value="$1.999,50">
       <template #icon>
-        <CIcon name="cil-settings" size="xl"/>
+        <CIcon icon="cil-settings" size="xl"/>
       </template>
     </CWidgetStatsF>
   </CCol>
   <CCol :xs="4">
     <CWidgetStatsF color="info" title="Title" value="$1.999,50">
       <template #icon>
-        <CIcon name="cil-settings" size="xl"/>
+        <CIcon icon="cil-settings" size="xl"/>
       </template>
     </CWidgetStatsF>
   </CCol>
   <CCol :xs="4">
     <CWidgetStatsF color="warning" title="Title" value="$1.999,50">
       <template #icon>
-        <CIcon name="cil-settings" size="xl"/>
+        <CIcon icon="cil-settings" size="xl"/>
       </template>
     </CWidgetStatsF>
   </CCol>
@@ -1086,7 +1086,7 @@ description:
   <CCol :xs="4">
     <CWidgetStatsF color="primary" title="Title" value="$1.999,50">
       <template #icon>
-        <CIcon name="cil-settings" size="xl"/>
+        <CIcon icon="cil-settings" size="xl"/>
       </template>
       <template #footer>
         <CLink
@@ -1096,7 +1096,7 @@ description:
           target="_blank"
         >
           View more
-          <CIcon name="cil-arrow-right" class="ms-auto" width="16" />
+          <CIcon icon="cil-arrow-right" class="ms-auto" width="16" />
         </CLink>
       </template>  
     </CWidgetStatsF>
@@ -1104,7 +1104,7 @@ description:
   <CCol :xs="4">
     <CWidgetStatsF color="info" title="Title" value="$1.999,50">
       <template #icon>
-        <CIcon name="cil-settings" size="xl"/>
+        <CIcon icon="cil-settings" size="xl"/>
       </template>
       <template #footer>
         <CLink
@@ -1114,7 +1114,7 @@ description:
           target="_blank"
         >
           View more
-          <CIcon name="cil-arrow-right" class="ms-auto" width="16" />
+          <CIcon icon="cil-arrow-right" class="ms-auto" width="16" />
         </CLink>
       </template>  
     </CWidgetStatsF>
@@ -1122,7 +1122,7 @@ description:
   <CCol :xs="4">
     <CWidgetStatsF color="warning" title="Title" value="$1.999,50">
       <template #icon>
-        <CIcon name="cil-settings" size="xl"/>
+        <CIcon icon="cil-settings" size="xl"/>
       </template>
       <template #footer>
         <CLink
@@ -1132,7 +1132,7 @@ description:
           target="_blank"
         >
           View more
-          <CIcon name="cil-arrow-right" class="ms-auto" width="16" />
+          <CIcon icon="cil-arrow-right" class="ms-auto" width="16" />
         </CLink>
       </template>  
     </CWidgetStatsF>
@@ -1144,7 +1144,7 @@ description:
   <CCol :xs="4">
     <CWidgetStatsF color="primary" title="Title" value="$1.999,50">
       <template #icon>
-        <CIcon name="cil-settings" size="xl"/>
+        <CIcon icon="cil-settings" size="xl"/>
       </template>
       <template #footer>
         <CLink
@@ -1154,7 +1154,7 @@ description:
           target="_blank"
         >
           View more
-          <CIcon name="cil-arrow-right" class="ms-auto" width="16" />
+          <CIcon icon="cil-arrow-right" class="ms-auto" width="16" />
         </CLink>
       </template>  
     </CWidgetStatsF>
@@ -1162,7 +1162,7 @@ description:
   <CCol :xs="4">
     <CWidgetStatsF color="info" title="Title" value="$1.999,50">
       <template #icon>
-        <CIcon name="cil-settings" size="xl"/>
+        <CIcon icon="cil-settings" size="xl"/>
       </template>
       <template #footer>
         <CLink
@@ -1172,7 +1172,7 @@ description:
           target="_blank"
         >
           View more
-          <CIcon name="cil-arrow-right" class="ms-auto" width="16" />
+          <CIcon icon="cil-arrow-right" class="ms-auto" width="16" />
         </CLink>
       </template>  
     </CWidgetStatsF>
@@ -1180,7 +1180,7 @@ description:
   <CCol :xs="4">
     <CWidgetStatsF color="warning" title="Title" value="$1.999,50">
       <template #icon>
-        <CIcon name="cil-settings" size="xl"/>
+        <CIcon icon="cil-settings" size="xl"/>
       </template>
       <template #footer>
         <CLink
@@ -1190,7 +1190,7 @@ description:
           target="_blank"
         >
           View more
-          <CIcon name="cil-arrow-right" class="ms-auto" width="16" />
+          <CIcon icon="cil-arrow-right" class="ms-auto" width="16" />
         </CLink>
       </template>  
     </CWidgetStatsF>
@@ -1203,21 +1203,21 @@ description:
   <CCol :xs="4">
     <CWidgetStatsF color="primary" :padding="false" title="Title" value="$1.999,50">
       <template #icon>
-        <CIcon name="cil-settings" size="xl"/>
+        <CIcon icon="cil-settings" size="xl"/>
       </template>
     </CWidgetStatsF>
   </CCol>
   <CCol :xs="4">
     <CWidgetStatsF color="info" :padding="false" title="Title" value="$1.999,50">
       <template #icon>
-        <CIcon name="cil-settings" size="xl"/>
+        <CIcon icon="cil-settings" size="xl"/>
       </template>
     </CWidgetStatsF>
   </CCol>
   <CCol :xs="4">
     <CWidgetStatsF color="warning" :padding="false" title="Title" value="$1.999,50">
       <template #icon>
-        <CIcon name="cil-settings" size="xl"/>
+        <CIcon icon="cil-settings" size="xl"/>
       </template>
     </CWidgetStatsF>
   </CCol>
@@ -1228,21 +1228,21 @@ description:
   <CCol :xs="4">
     <CWidgetStatsF color="primary" :padding="false" title="Title" value="$1.999,50">
       <template #icon>
-        <CIcon name="cil-settings" size="xl"/>
+        <CIcon icon="cil-settings" size="xl"/>
       </template>
     </CWidgetStatsF>
   </CCol>
   <CCol :xs="4">
     <CWidgetStatsF color="info" :padding="false" title="Title" value="$1.999,50">
       <template #icon>
-        <CIcon name="cil-settings" size="xl"/>
+        <CIcon icon="cil-settings" size="xl"/>
       </template>
     </CWidgetStatsF>
   </CCol>
   <CCol :xs="4">
     <CWidgetStatsF color="warning" :padding="false" title="Title" value="$1.999,50">
       <template #icon>
-        <CIcon name="cil-settings" size="xl"/>
+        <CIcon icon="cil-settings" size="xl"/>
       </template>
     </CWidgetStatsF>
   </CCol>

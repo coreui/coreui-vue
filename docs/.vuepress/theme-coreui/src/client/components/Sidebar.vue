@@ -1,24 +1,19 @@
 <template>
-  <aside class="sidebar sidebar-lg sidebar-fixed sidebar-self-hiding-md border-end ps-xl-4 docs-sidebar elevation-0">
-    <div class="sidebar-brand justify-content-start ps-3">
+  <CSidebar position="fixed" selfHiding="md" size="lg" class="docs-sidebar elevation-0 border-end ps-xl-4">
+    <CSidebarBrand class="justify-content-start ps-3">
       <img :src="logo" alt="CoreUI for Vue.js logo" height="50" className="d-block mt-4 mb-5" />
-    </div>
+    </CSidebarBrand>
     <NavbarLinks />
-
-    <slot name="top" />
-
     <CSidebarNav>
       <SidebarChild v-for="item in sidebarItems" :key="item.link || item.text" :item="item" />
     </CSidebarNav>
-
-    <slot name="bottom" />
-  </aside>
+  </CSidebar>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useSidebarItems } from '../composables'
-import NavbarLinks from './NavbarLinks.vue'
+import NavbarLinks from './_NavbarLinks.vue'
 import { SidebarChild } from './SidebarChild'
 import logo from '../../assets/brand/coreui-vue.svg'
 
@@ -32,6 +27,7 @@ export default defineComponent({
 
   setup() {
     const sidebarItems = useSidebarItems()
+    console.log(sidebarItems.value)
     return {
       logo,
       sidebarItems,
@@ -39,16 +35,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style scoped>
-.sidebar {
-  --cui-sidebar-bg: #f0f4f7;
-  --cui-sidebar-brand-bg: transparent;
-  --cui-sidebar-brand-color: rgba(44, 56, 74, 0.95);
-  --cui-sidebar-nav-link-color: rgba(44, 56, 74, 0.95);
-  --cui-sidebar-nav-link-active-color: #321fdb;
-  --cui-sidebar-nav-link-hover-color: #321fdb;
-  --cui-sidebar-nav-group-bg: transparent;
-  --cui-sidebar-nav-group-toggle-show-color: #321fdb;
-}
-</style>

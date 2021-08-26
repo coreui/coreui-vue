@@ -50,7 +50,7 @@ import {
 } from '@vuepress/client'
 import { isArray } from '@vuepress/shared'
 import type { DefaultThemeHomePageFrontmatter } from '../../shared'
-import NavLink from './NavLink.vue'
+import NavLink from './_NavLink.vue'
 
 export default defineComponent({
   name: 'Home',

@@ -1,4 +1,5 @@
 ---
+title: Getting Started
 name: Introduction
 description: CoreUI for Vue.js is UI Component library written in TypeScript, and ready for your next Vue.js project. Learn how to include CoreUI for Vue.js in your project.
 menu: Getting started

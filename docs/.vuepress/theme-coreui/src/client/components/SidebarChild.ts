@@ -1,9 +1,11 @@
 import { h } from 'vue'
 import type { FunctionalComponent, VNode } from 'vue'
-import { useRoute } from 'vue-router'
+import { RouterLink, useRoute } from 'vue-router'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import type { ResolvedSidebarItem } from '../../shared'
-import NavLink from './NavLink.vue'
+
+import { CNavGroup, CNavItem } from './../../../../../../src'
+import { CIcon } from '@coreui/icons-vue'
 
 const normalizePath = (path: string): string =>
   decodeURI(path)
@@ -37,83 +39,66 @@ const isActiveItem = (route: RouteLocationNormalizedLoaded, item: ResolvedSideba
   return false
 }
 
-const renderItem = (item: ResolvedSidebarItem, props: VNode['props'], children): VNode => {
-  // if the item has link, render it as `<NavLink>`
-  if (item.link) {
-    return h('li', { class: 'nav-item' }, [
-      h(NavLink, {
-        ...props,
-        item,
-      }),
-    ])
-  }
-
-  // if the item only has text, render it as `<p>`
-  return h('li', { class: 'nav-item nav-group show', ...props }, [
-    h('a', { class: 'nav-link nav-group-toggle', innerHTML: `${item.icon} ${item.text}`, }, [
-      // h(
-      //   'svg',
-      //   {
-      //     version: '1.1',
-      //     xmlns: 'http://www.w3.org/2000/svg',
-      //     class: 'nav-icon text-primary',
-      //     width: '64',
-      //     height: '64',
-      //     viewBox: '0 0 64 64',
-      //     innerHTML: item.icon,
-      //   },
-      // ),
-      // item.text,
-    ]),
-    children,
-  ])
-}
-
-const renderChildren = (item: ResolvedSidebarItem, depth: number): VNode | null => {
-  if (!item.children?.length) {
-    return null
+const renderItem = (item: ResolvedSidebarItem): VNode => {
+  const route = useRoute()
+  if (item.children && !item.link.includes('.html')) {
+    return h(
+      RouterLink,
+      {
+        to: item.link,
+        custom: true,
+      },
+      {
+        default: (props) =>
+          h(
+            CNavGroup,
+            {
+              compact: true,
+              visible: item.children.some((child) => isActiveItem(route, child)),
+              href: props.href,
+            },
+            {
+              togglerContent: () => [
+                h(CIcon, {
+                  customClassName: 'nav-icon text-primary',
+                  icon: ['512 512', item.icon],
+                  height: 64,
+                  width: 64,
+                }),
+                item.text,
+              ],
+              default: () => item.children.map((child) => renderItem(child)),
+            },
+          ),
+      },
+    )
   }
 
   return h(
-    'ul',
+    RouterLink,
     {
-      class: [
-        'nav-group-items compact',
-        // {
-        //   'sidebar-sub-items': depth > 0,
-        // },
-      ],
+      to: item.link,
+      custom: true,
     },
-    item.children.map((child) =>
-      h(SidebarChild, {
-        item: child,
-        depth: depth + 1,
-      }),
-    ),
+    {
+      default: (props) =>
+        h(
+          CNavItem,
+          {
+            active: props.isActive,
+            href: item.link,
+          },
+          {
+            default: () => item.text,
+          },
+        ),
+    },
   )
 }
 
 export const SidebarChild: FunctionalComponent<{
   item: ResolvedSidebarItem
-  depth?: number
-}> = ({ item, depth = 0 }) => {
-  const route = useRoute()
-  const active = isActiveItem(route, item)
-
-  return [
-    renderItem(
-      item,
-      {
-        class: {
-          'nav-item nav-group show': depth === 0,
-          'nav-link': depth > 0,
-          active,
-        },
-      },
-      renderChildren(item, depth),
-    ),
-  ]
-}
+}> = ({ item }) => renderItem(item)
 
 SidebarChild.displayName = 'SidebarChild'
 
@@ -121,9 +106,5 @@ SidebarChild.props = {
   item: {
     type: Object,
     required: true,
-  },
-  depth: {
-    type: Number,
-    required: false,
   },
 }

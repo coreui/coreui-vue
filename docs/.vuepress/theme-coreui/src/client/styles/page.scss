@@ -1,14 +1,11 @@
 @import '_variables';
-@import '_wrapper';
 
 .page {
   padding-bottom: 2rem;
   display: block;
 }
 
-.page-meta {
-  @extend %wrapper;
-  padding-top: 1rem;
+.page-meta {  padding-top: 1rem;
   padding-bottom: 1rem;
   overflow: auto;
 
@@ -51,7 +48,6 @@
 }
 
 .page-nav {
-  @extend %wrapper;
   padding-top: 1rem;
   padding-bottom: 0;
 
