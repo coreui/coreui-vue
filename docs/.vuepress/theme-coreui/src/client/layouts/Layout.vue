@@ -8,14 +8,6 @@
     <Sidebar :visible="isSidebarOpen"/>
     <div class="wrapper d-flex flex-column min-vh-100">
       <Header @toggle-sidebar="toggleSidebar(!isSidebarOpen)"/>
-      <!-- <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar">
-        <template #before>
-          <slot name="navbar-before" />
-        </template>
-        <template #after>
-          <slot name="navbar-after" />
-        </template>
-      </Navbar> -->
       <div class="body flex-grow-1 px-3">
         <CContainer lg>
           <Home v-if="frontmatter.home" />

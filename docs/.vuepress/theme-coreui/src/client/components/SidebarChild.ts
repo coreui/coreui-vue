@@ -43,33 +43,23 @@ const renderItem = (item: ResolvedSidebarItem): VNode => {
   const route = useRoute()
   if (item.children && !item.link.includes('.html')) {
     return h(
-      RouterLink,
+      CNavGroup,
       {
-        to: item.link,
-        custom: true,
+        compact: true,
+        visible: item.children.some((child) => isActiveItem(route, child)),
+        // href: props.href,
       },
       {
-        default: (props) =>
-          h(
-            CNavGroup,
-            {
-              compact: true,
-              visible: item.children.some((child) => isActiveItem(route, child)),
-              href: props.href,
-            },
-            {
-              togglerContent: () => [
-                h(CIcon, {
-                  customClassName: 'nav-icon text-primary',
-                  icon: ['512 512', item.icon],
-                  height: 64,
-                  width: 64,
-                }),
-                item.text,
-              ],
-              default: () => item.children.map((child) => renderItem(child)),
-            },
-          ),
+        togglerContent: () => [
+          h(CIcon, {
+            customClassName: 'nav-icon text-primary',
+            icon: ['512 512', item.icon],
+            height: 64,
+            width: 64,
+          }),
+          item.text,
+        ],
+        default: () => item.children.map((child) => renderItem(child)),
       },
     )
   }

@@ -21,23 +21,34 @@ Sidebar come with built-in support for a handful of sub-components. Choose from 
   <CSidebarNav>
     <li class="nav-title">Nav Title</li>
     <CNavItem href="#">
-      <CIcon  customClasses="nav-icon" icon="cil-speedometer"/>
+      <CIcon  customClassName="nav-icon" icon="cil-speedometer"/>
       Nav item
     </CNavItem>
     <CNavItem href="#">
-        <CIcon  customClasses="nav-icon" icon="cil-speedometer"/>
-        With badge
-        <CBadge color="primary ms-auto">NEW</CBadge>
+      <CIcon  customClassName="nav-icon" icon="cil-speedometer"/>
+      With badge
+      <CBadge class="ms-auto" color="primary">NEW</CBadge>
     </CNavItem>
     <CNavGroup>
       <template #togglerContent>
-        <CIcon  customClasses="nav-icon" icon="cil-puzzle"/> Nav dropdown
+        <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown
       </template>
       <CNavItem href="#">
-        <CIcon  customClasses="nav-icon" icon="cil-puzzle"/> Nav dropdown item
+        <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown item
       </CNavItem>
       <CNavItem href="#">
-         <CIcon  customClasses="nav-icon" icon="cil-puzzle"/> Nav dropdown item
+         <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown item
+      </CNavItem>
+    </CNavGroup>
+    <CNavGroup>
+      <template #togglerContent>
+        <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown2
+      </template>
+      <CNavItem href="#">
+        <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown item
+      </CNavItem>
+      <CNavItem href="#">
+         <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown item
       </CNavItem>
     </CNavGroup>
   </CSidebarNav>
@@ -50,23 +61,23 @@ Sidebar come with built-in support for a handful of sub-components. Choose from 
   <CSidebarNav>
     <li class="nav-title">Nav Title</li>
     <CNavItem href="#">
-      <CIcon  customClasses="nav-icon" icon="cil-speedometer"/>
+      <CIcon  customClassName="nav-icon" icon="cil-speedometer"/>
       Nav item
     </CNavItem>
     <CNavItem href="#">
-        <CIcon  customClasses="nav-icon" icon="cil-speedometer"/>
+        <CIcon  customClassName="nav-icon" icon="cil-speedometer"/>
         With badge
         <CBadge color="primary ms-auto">NEW</CBadge>
     </CNavItem>
     <CNavGroup>
       <template #togglerContent>
-        <CIcon  customClasses="nav-icon" icon="cil-puzzle"/> Nav dropdown
+        <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown
       </template>
       <CNavItem href="#">
-        <CIcon  customClasses="nav-icon" icon="cil-puzzle"/> Nav dropdown item
+        <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown item
       </CNavItem>
       <CNavItem href="#">
-         <CIcon  customClasses="nav-icon" icon="cil-puzzle"/> Nav dropdown item
+         <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown item
       </CNavItem>
     </CNavGroup>
   </CSidebarNav>
