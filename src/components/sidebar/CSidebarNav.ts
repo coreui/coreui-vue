@@ -24,12 +24,16 @@ const CSidebarNav = defineComponent({
           class: 'sidebar-nav',
         },
         slots.default &&
-          slots.default().map((vnode, index) =>
-            h(vnode, {
-              onVisibleChange: (visible: boolean) => handleVisibleChange(visible, index),
-              visible: isVisible(index),
-            }),
-          ),
+          slots.default().map((vnode, index) => {
+            // @ts-expect-error name is defined in component
+            if (vnode.type.name === 'CNavGroup') {
+              return h(vnode, {
+                onVisibleChange: (visible: boolean) => handleVisibleChange(visible, index),
+                visible: isVisible(index),
+              })
+            }
+            return vnode
+          }),
       )
   },
 })

@@ -4,6 +4,11 @@ import { Color } from '../props'
 import { CCard, CCardBody, CCardHeader } from './../card/'
 import { CCol } from './../grid/'
 
+type Value = {
+  title?: string
+  value?: number | string
+}
+
 const CWidgetStatsD = defineComponent({
   name: 'CWidgetStatsD',
   props: {
@@ -17,12 +22,12 @@ const CWidgetStatsD = defineComponent({
      * Values and titles for your component.
      */
     values: {
-      type: Array as PropType<number[] | string[]>,
+      type: Array as PropType<Value[]>,
       default: () => [],
       require: false,
     },
   },
-    /**
+  /**
    * Location for icon component, ex. `<CDropdown>`.
    *
    * @slot icon
@@ -59,18 +64,18 @@ const CWidgetStatsD = defineComponent({
               {
                 default: () =>
                   props.values &&
-                  props.values.map((value: number | string, index: number) => [
+                  props.values.map((value: Value, index: number) => [
                     index % 2 !== 0 && h('div', { class: 'vr' }),
                     h(
                       CCol,
                       {},
                       {
                         default: () => [
-                          h(CCol, { class: 'fs-5 fw-semibold' }, () => value[0]),
+                          h(CCol, { class: 'fs-5 fw-semibold' }, () => value.value),
                           h(
                             CCol,
                             { class: 'text-uppercase text-medium-emphasis small' },
-                            () => value[1],
+                            () => value.title,
                           ),
                         ],
                       },
