@@ -51,7 +51,7 @@ const CNavLink = defineComponent({
         },
         {
           default: () => slots.default && slots.default(),
-        }
+        },
       )
   },
 })
