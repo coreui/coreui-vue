@@ -8,27 +8,26 @@ const CNavItem = defineComponent({
     ...CNavLink.props,
   },
   setup(props, { slots }) {
-    const children = () =>
-      props.href
-        ? h(
-            CNavLink,
-            {
-              active: props.active,
-              component: props.component,
-              disabled: props.disabled,
-              href: props.href,
-              to: props.to,
-            },
-            slots.default && slots.default(),
-          )
-        : slots.default && slots.default()
     return () =>
       h(
         'li',
         {
           class: 'nav-item',
         },
-        children(),
+        props.href
+          ? h(
+              CNavLink,
+              {
+                active: props.active,
+                component: props.component,
+                disabled: props.disabled,
+                href: props.href,
+              },
+              {
+                default: () => slots.default && slots.default(),
+              },
+            )
+          : slots.default && slots.default(),
       )
   },
 })
