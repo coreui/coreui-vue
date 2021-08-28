@@ -12,13 +12,13 @@
       </p>
 
       <p v-if="actions.length" class="actions">
-        <NavLink
+        <!-- <NavLink
           v-for="action in actions"
           :key="action.text"
           class="action-button"
           :class="[action.type]"
           :item="action"
-        />
+        /> -->
       </p>
     </header>
 
@@ -50,13 +50,13 @@ import {
 } from '@vuepress/client'
 import { isArray } from '@vuepress/shared'
 import type { DefaultThemeHomePageFrontmatter } from '../../shared'
-import NavLink from './_NavLink.vue'
+// import NavLink from './_NavLink.vue'
 
 export default defineComponent({
   name: 'Home',
 
   components: {
-    NavLink,
+    // NavLink,
   },
 
   setup() {

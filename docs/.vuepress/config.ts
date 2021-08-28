@@ -1,5 +1,6 @@
 import { defineUserConfig } from 'vuepress'
 import type { DefaultThemeOptions } from 'vuepress'
+import { permalink } from 'markdown-it-anchor'
 import pkg from '../../package.json'
 
 // const md = require('markdown-it')()
@@ -19,36 +20,50 @@ export default defineUserConfig<DefaultThemeOptions>({
     // ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
     // ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
     // ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
-    ['script', {src: 'https://media.ethicalads.io/media/client/ethicalads.min.js'}]
+    ['script', { src: 'https://media.ethicalads.io/media/client/ethicalads.min.js' }],
   ],
   extendsMarkdown: (md) => {
     md.use(require('markdown-it-include')),
-    md.renderer.rules.table_open = function(tokens, idx) {
-      return '<table class="table table-striped">'
-    }
+      (md.renderer.rules.table_open = function (tokens, idx) {
+        return '<table class="table table-striped">'
+      })
+  },
+  markdown: {
+    anchor: {
+      permalink: permalink.ariaHidden({
+        class: 'anchor-link',
+        placement: 'after'
+      })
+    },
   },
   plugins: [
     '@vuepress/plugin-toc',
-    ['@vuepress/container', {
-      type: 'demo',
-      render: function (tokens, idx) {    
-        if (tokens[idx].nesting === 1) {
-          return '<div class="docs-example border rounded-top p-4">\n';
-        } else {
-          return '</div>\n';
-        }
+    [
+      '@vuepress/container',
+      {
+        type: 'demo',
+        render: function (tokens, idx) {
+          if (tokens[idx].nesting === 1) {
+            return '<div class="docs-example border rounded-top p-4">\n'
+          } else {
+            return '</div>\n'
+          }
+        },
       },
-    }],
-    ['@vuepress/container', {
-      type: 'demo-dark',
-      render: function (tokens, idx) {    
-        if (tokens[idx].nesting === 1) {
-          return '<div class="docs-example rounded-top p-4 bg-dark">\n';
-        } else {
-          return '</div>\n';
-        }
+    ],
+    [
+      '@vuepress/container',
+      {
+        type: 'demo-dark',
+        render: function (tokens, idx) {
+          if (tokens[idx].nesting === 1) {
+            return '<div class="docs-example rounded-top p-4 bg-dark">\n'
+          } else {
+            return '</div>\n'
+          }
+        },
       },
-    }]
+    ],
   ],
   theme: path.resolve(__dirname, './theme-coreui'),
   themeConfig: {
@@ -61,8 +76,8 @@ export default defineUserConfig<DefaultThemeOptions>({
           {
             text: 'Introduction',
             link: `/${pkg.config.version_short}/getting-started/introduction.html`,
-          }
-        ]
+          },
+        ],
       },
       {
         text: 'Layout',
@@ -228,6 +243,10 @@ export default defineUserConfig<DefaultThemeOptions>({
             link: `/${pkg.config.version_short}/components/pagination.html`,
           },
           {
+            text: 'Popover',
+            link: `/${pkg.config.version_short}/components/popover.html`,
+          },
+          {
             text: 'Progress',
             link: `/${pkg.config.version_short}/components/progress.html`,
           },
@@ -248,26 +267,15 @@ export default defineUserConfig<DefaultThemeOptions>({
             link: `/${pkg.config.version_short}/components/toast.html`,
           },
           {
+            text: 'Tooltip',
+            link: `/${pkg.config.version_short}/components/tooltip.html`,
+          },
+          {
             text: 'Widgets',
             link: `/${pkg.config.version_short}/components/widgets.html`,
           },
         ],
       },
-      {
-        text: 'Directives',
-        icon: '<path fill="var(--ci-primary-color, currentColor)" d="M410.989,16H101.011L16,237.029V496H496V237.029Zm-288,32H240V240H49.143ZM184,272H328v40H184ZM464,464H48V272H152v72H360V272H464ZM272,240V48H389.012l73.845,192Z" class="ci-primary"></path>',
-        link: `/${pkg.config.version_short}/directives/`,
-        children: [
-          {
-            text: 'Popover',
-            link: `/${pkg.config.version_short}/directives/popover.html`,
-          },
-          {
-            text: 'Tooltip',
-            link: `/${pkg.config.version_short}/directives/tooltip.html`,
-          },
-        ]
-      }
     ],
   },
 })

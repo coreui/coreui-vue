@@ -1,23 +1,18 @@
 import type { Theme, ThemeConfig } from '@vuepress/core'
 import { path } from '@vuepress/utils'
-import type {
-  DefaultThemeLocaleOptions,
-  DefaultThemePluginsOptions,
-} from '../shared'
+import type { DefaultThemeLocaleOptions, DefaultThemePluginsOptions } from '../shared'
 import {
   assignDefaultLocaleOptions,
-  resolveActiveHeaderLinksPluginOptions,
-  resolveContainerPluginOptions,
-  resolveContainerPluginOptionsForDetails,
-  resolveContainerPluginOptionsForCodeGroup,
-  resolveContainerPluginOptionsForCodeGroupItem,
+  // resolveActiveHeaderLinksPluginOptions,
+  // resolveContainerPluginOptions,
+  // resolveContainerPluginOptionsForDetails,
+  // resolveContainerPluginOptionsForCodeGroup,
+  // resolveContainerPluginOptionsForCodeGroupItem,
   resolveGitPluginOptions,
-  resolveMediumZoomPluginOptions,
+  // resolveMediumZoomPluginOptions,
 } from './utils'
 
-export interface DefaultThemeOptions
-  extends ThemeConfig,
-    DefaultThemeLocaleOptions {
+export interface DefaultThemeOptions extends ThemeConfig, DefaultThemeLocaleOptions {
   /**
    * To avoid confusion with the root `plugins` option,
    * we use `themePlugins`
@@ -36,10 +31,7 @@ export const defaultTheme: Theme<DefaultThemeOptions> = ({
 
     layouts: path.resolve(__dirname, '../client/layouts'),
 
-    clientAppEnhanceFiles: path.resolve(
-      __dirname,
-      '../client/clientAppEnhance.ts'
-    ),
+    clientAppEnhanceFiles: path.resolve(__dirname, '../client/clientAppEnhance.ts'),
 
     clientAppSetupFiles: path.resolve(__dirname, '../client/clientAppSetup.ts'),
 
@@ -49,36 +41,24 @@ export const defaultTheme: Theme<DefaultThemeOptions> = ({
     plugins: [
       [
         '@vuepress/active-header-links',
-        resolveActiveHeaderLinksPluginOptions(themePlugins),
+        {
+          headerLinkSelector: 'a.sidebar-item',
+          headerAnchorSelector: '.anchor-link',
+        },
       ],
       ['@vuepress/back-to-top', themePlugins.backToTop !== false],
-      [
-        '@vuepress/container',
-        resolveContainerPluginOptions(themePlugins, localeOptions, 'tip'),
-      ],
-      [
-        '@vuepress/container',
-        resolveContainerPluginOptions(themePlugins, localeOptions, 'warning'),
-      ],
-      [
-        '@vuepress/container',
-        resolveContainerPluginOptions(themePlugins, localeOptions, 'danger'),
-      ],
-      [
-        '@vuepress/container',
-        resolveContainerPluginOptionsForDetails(themePlugins),
-      ],
-      [
-        '@vuepress/container',
-        resolveContainerPluginOptionsForCodeGroup(themePlugins),
-      ],
-      [
-        '@vuepress/container',
-        resolveContainerPluginOptionsForCodeGroupItem(themePlugins),
-      ],
+      // ['@vuepress/container', resolveContainerPluginOptions(themePlugins, localeOptions, 'tip')],
+      // [
+      //   '@vuepress/container',
+      //   resolveContainerPluginOptions(themePlugins, localeOptions, 'warning'),
+      // ],
+      // ['@vuepress/container', resolveContainerPluginOptions(themePlugins, localeOptions, 'danger')],
+      // ['@vuepress/container', resolveContainerPluginOptionsForDetails(themePlugins)],
+      // ['@vuepress/container', resolveContainerPluginOptionsForCodeGroup(themePlugins)],
+      // ['@vuepress/container', resolveContainerPluginOptionsForCodeGroupItem(themePlugins)],
       ['@vuepress/git', resolveGitPluginOptions(themePlugins, localeOptions)],
-      ['@vuepress/medium-zoom', resolveMediumZoomPluginOptions(themePlugins)],
-      ['@vuepress/nprogress', themePlugins.nprogress !== false],
+      // ['@vuepress/medium-zoom', resolveMediumZoomPluginOptions(themePlugins)],
+      // ['@vuepress/nprogress', themePlugins.nprogress !== false],
       ['@vuepress/palette', { preset: 'sass' }],
       ['@vuepress/prismjs', themePlugins.prismjs !== false],
       ['@vuepress/theme-data', { themeData: localeOptions }],

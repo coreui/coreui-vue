@@ -1,23 +1,23 @@
 {
-  "name": "@vuepress/theme-default",
-  "version": "2.0.0-beta.22",
-  "description": "Default theme of VuePress",
+  "name": "@vuepress/theme-coreui",
+  "version": "1.0.0",
+  "description": "CoreUI for Vue.js docs theme",
   "keywords": [
     "vuepress-theme",
     "vuepress",
     "theme",
     "default"
   ],
-  "homepage": "https://github.com/vuepress",
+  "homepage": "https://github.com/coreui",
   "bugs": {
-    "url": "https://github.com/vuepress/vuepress-next/issues"
+    "url": "https://github.com/coreui/coreui-vue/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuepress/vuepress-next.git"
+    "url": "git+https://github.com/coreui/coreui-vue.git"
   },
   "license": "MIT",
-  "author": "Evan You",
+  "author": "Lukasz Holeczek",
   "main": "src/node/index.ts",
   "files": [
     "lib"

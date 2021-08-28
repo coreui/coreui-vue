@@ -1,5 +1,6 @@
 @import '@coreui/coreui/scss/coreui.scss';
 
+@import 'anchor';
 @import 'demo';
 @import 'footer';
 @import 'layout';
@@ -8,15 +9,11 @@
 
 @import 'vars';
 @import 'vars-dark';
-@import 'normalize';
 
-@import 'arrow';
 @import 'code';
 @import 'code-group';
 @import 'custom-container';
-@import 'home';
 @import 'page';
-@import 'sr-only';
 @import 'transitions';
 
 @import '@vuepress/plugin-palette/style';

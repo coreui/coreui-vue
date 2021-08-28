@@ -4,9 +4,6 @@ name: Navbar
 description: Documentation and examples for the Vue navbar powerful, responsive navigation header component. Includes support for branding, links, dropdowns, and more.
 ---
 
-TODO: fix dropdowns
-
-
 ## Supported content
 
 `<CNavbar>` come with built-in support for a handful of sub-components. Choose from the following as needed:

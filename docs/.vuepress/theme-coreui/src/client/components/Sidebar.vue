@@ -4,33 +4,33 @@
       <img :src="logo" alt="CoreUI for Vue.js logo" height="50" className="d-block mt-4 mb-5" />
     </CSidebarBrand>
     <NavbarLinks />
-    <CSidebarNav>
+    <SidebarNav :items="sidebarItems" />
+    <!-- <CSidebarNav>
+      
       <SidebarChild v-for="item in sidebarItems" :key="item.link || item.text" :item="item" />
-    </CSidebarNav>
+    </CSidebarNav> -->
   </CSidebar>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useSidebarItems } from '../composables'
-import NavbarLinks from './_NavbarLinks.vue'
-import { SidebarChild } from './SidebarChild'
+import { SidebarNav } from './SidebarNav'
 import logo from '../../assets/brand/coreui-vue.svg'
 
 export default defineComponent({
   name: 'Sidebar',
 
   components: {
-    NavbarLinks,
-    SidebarChild,
+    SidebarNav,
   },
 
   setup() {
     const sidebarItems = useSidebarItems()
-    console.log(sidebarItems.value)
+    console.log(sidebarItems)
     return {
       logo,
-      sidebarItems,
+      sidebarItems
     }
   },
 })

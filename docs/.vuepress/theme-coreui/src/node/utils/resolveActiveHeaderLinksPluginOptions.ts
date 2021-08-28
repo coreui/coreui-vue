@@ -13,6 +13,6 @@ export const resolveActiveHeaderLinksPluginOptions = (
 
   return {
     headerLinkSelector: 'a.sidebar-item',
-    headerAnchorSelector: '.header-anchor',
+    headerAnchorSelector: '.anchor-link',
   }
 }

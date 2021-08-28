@@ -4,7 +4,7 @@ import { RouterLink, useRoute } from 'vue-router'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import type { ResolvedSidebarItem } from '../../shared'
 
-import { CNavGroup, CNavItem } from './../../../../../../src'
+import { CNavGroup, CNavItem, CSidebarNav } from './../../../../../../src'
 import { CIcon } from '@coreui/icons-vue'
 
 const normalizePath = (path: string): string =>
@@ -86,15 +86,36 @@ const renderItem = (item: ResolvedSidebarItem): VNode => {
   )
 }
 
-export const SidebarChild: FunctionalComponent<{
-  item: ResolvedSidebarItem
-}> = ({ item }) => renderItem(item)
+// export default defineComponent({
 
-SidebarChild.displayName = 'SidebarChild'
+// })
 
-SidebarChild.props = {
-  item: {
-    type: Object,
+export const SidebarNav = ({ items }) => {
+  console.log(items)
+
+  // setup() {
+  //   const sidebarItems = useSidebarItems()
+  //   console.log(sidebarItems)
+  //   return {
+  //     logo,
+  //     sidebarItems
+  //   }
+  // },
+
+  return h(
+    CSidebarNav,
+    {},
+    {
+      default: () => items.map((item) => renderItem(item)),
+    },
+  )
+}
+
+SidebarNav.displayName = 'SidebarNav'
+
+SidebarNav.props = {
+  items: {
+    type: Array,
     required: true,
   },
 }
