@@ -62,11 +62,7 @@ const CSidebar = defineComponent({
     /**
      * Expand narrowed sidebar on hover.
      */
-    unfoldable: {
-      type: String,
-      default: undefined,
-      required: false,
-    },
+    unfoldable: Boolean,
     /**
      * Toggle the visibility of sidebar component.
      */
