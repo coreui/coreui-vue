@@ -12,7 +12,7 @@ const CNavGroup = defineComponent({
      */
     visible: {
       type: Boolean,
-      default: false,
+      default: undefined,
       required: false,
     },
   },
@@ -127,7 +127,7 @@ const CNavGroup = defineComponent({
                         return h(vnode, {
                           onVisibleChange: (visible: boolean) =>
                             handleVisibleChange(visible, index),
-                          visible: isVisible(index),
+                          ...(visibleGroup.value && { visible: isVisible(index) }),
                         })
                       }
                       return vnode

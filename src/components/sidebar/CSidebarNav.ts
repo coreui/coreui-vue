@@ -29,7 +29,7 @@ const CSidebarNav = defineComponent({
             if (vnode.type.name === 'CNavGroup') {
               return h(vnode, {
                 onVisibleChange: (visible: boolean) => handleVisibleChange(visible, index),
-                visible: isVisible(index),
+                ...(visibleGroup.value && { visible: isVisible(index) }),
               })
             }
             return vnode
