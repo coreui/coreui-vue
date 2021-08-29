@@ -1,5 +1,5 @@
-import typescript from 'rollup-plugin-typescript2'
 import commonjs from '@rollup/plugin-commonjs'
+import typescript from '@rollup/plugin-typescript'
 // import external from 'rollup-plugin-peer-deps-external'
 import resolve from '@rollup/plugin-node-resolve'
 import vue from 'rollup-plugin-vue'
@@ -12,18 +12,12 @@ const plugins = [
     extensions: ['.ts', '.json', '.vue'],
   }),
   typescript({
-    rollupCommonJSResolveHack: true,
     exclude: ['**/__tests__/**'],
-    clean: true,
+    tsconfig: './tsconfig.json',
   }),
   commonjs({
     include: ['node_modules/**'],
   }),
-  // babel({
-  //   exclude: 'node_modules/**',
-  //   runtimeHelpers: true,
-  //   presets: [['@vue/app', { modules: false }]],
-  // }),
 ]
 
 const external = ['vue']

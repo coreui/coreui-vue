@@ -15,7 +15,7 @@
     "build": "rollup -c",
     "changelog": "auto-changelog --template build/changelog-template.hbs --commit-limit false --package --backfill-limit 0 --starting-version v4.0.0-alpha.0",
     "docs:api": "vue-docgen -c build/docgen.config.js",
-    "docs:dev": "vuepress dev docs",
+    "docs:dev": "vuepress dev docs --clean-cache",
     "docs:build": "vuepress build docs",
     "lint": "eslint 'src/components/**/*.{js,ts,tsx}'",
     "test": "jest --coverage",
@@ -31,26 +31,24 @@
     "url": "https://github.com/coreui/coreui-vue/issues"
   },
   "license": "MIT",
-  "dependencies": {
-    "@coreui/coreui": "^4.0.1",
-    "@coreui/icons": "^2.0.1",
-    "@coreui/icons-vue": "^2.0.0-alpha.2",
-    "@popperjs/core": "^2.9.3",
-    "@vue/server-renderer": "^3.2.5"
-  },
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/plugin-syntax-jsx": "^7.14.5",
     "@babel/preset-env": "^7.15.0",
-    "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.15.0",
-    "@coreui/vue-chartjs": "^2.0.0-alpha.0",
+    "@coreui/coreui": "^4.0.1",
+    "@coreui/icons": "^2.0.1",
+    "@coreui/icons-vue": "^2.0.0-beta.0",
+    "@coreui/vue-chartjs": "^2.0.0-beta.0",
+    "@popperjs/core": "^2.9.3",
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-typescript": "^8.2.5",
     "@types/jest": "^27.0.1",
     "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",
     "@vue/compiler-sfc": "^3.2.5",
+    "@vue/server-renderer": "^3.2.5",
     "@vue/test-utils": "^2.0.0-rc.4",
     "@vuepress/plugin-toc": "^2.0.0-beta.24",
     "auto-changelog": "^2.3.0",
@@ -67,11 +65,10 @@
     "requires": "^1.0.2",
     "rollup": "^2.56.3",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-typescript2": "^0.30.0",
     "rollup-plugin-vue": "^6.0.0",
     "ts-jest": "^27.0.5",
-    "typescript": "^4.3.5",
-    "vue": "^3.2.5",
+    "typescript": "^4.4.2",
+    "vue": "^3.2.6",
     "vue-docgen-cli": "^4.41.1",
     "vue-jest": "^5.0.0-alpha.7",
     "vue-prism-component": "^2.0.0",
@@ -80,7 +77,8 @@
     "vuepress": "^2.0.0-beta.24"
   },
   "peerDependencies": {
-    "vue": "^3.0.5"
+    "@coreui/coreui": "^4.0.1",
+    "vue": "^3.2.5"
   },
   "jest": {
     "preset": "ts-jest",
