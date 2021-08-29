@@ -4,6 +4,8 @@ import { RouterLink, useRoute } from 'vue-router'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import type { ResolvedSidebarItem } from '../../shared'
 
+import { withBase } from '@vuepress/client'
+
 import { CBadge, CNavGroup, CNavItem, CSidebarNav } from './../../../../../../src'
 import { CIcon } from '@coreui/icons-vue'
 
@@ -77,7 +79,7 @@ const renderItem = (item: ResolvedSidebarItem): VNode => {
           {
             active: props.isActive,
             disabled: item.disabled,
-            href: item.link,
+            href: withBase(item.link),
           },
           {
             default: () => [

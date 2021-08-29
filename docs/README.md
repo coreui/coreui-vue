@@ -1,12 +1,9 @@
 ---
+layout: Redirect
 lang: en-US
 title: Title of this page
 description: Description of this page
 ---
-
-<script>window.location.href = './4.0/getting-started/introduction.html';</script>
-
-
 ### Components:
 
 [ CAccordion ](./4.0/components/accordion.md)

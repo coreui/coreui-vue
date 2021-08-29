@@ -20,8 +20,7 @@ export default defineClientAppEnhance(({ app, router }) => {
 
   // compat with @vuepress/plugin-docsearch and @vuepress/plugin-search
   app.component('NavbarSearch', () => {
-    const SearchComponent =
-      app.component('Docsearch') || app.component('SearchBox')
+    const SearchComponent = app.component('Docsearch') || app.component('SearchBox')
     if (SearchComponent) {
       return h(SearchComponent)
     }
@@ -30,8 +29,9 @@ export default defineClientAppEnhance(({ app, router }) => {
 
   // handle scrollBehavior with transition
   const scrollBehavior = router.options.scrollBehavior!
-  router.options.scrollBehavior = async (...args) => {
+  ;(router.options.scrollBehavior = async (...args) => {
     await useScrollPromise().wait()
     return scrollBehavior(...args)
-  }
+  }),
+    router.addRoute({ path: '/', redirect: '/getting-started/introduction.html' })
 })
