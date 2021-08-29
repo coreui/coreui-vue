@@ -243,6 +243,15 @@ export default defineUserConfig<DefaultThemeOptions>({
             link: `/${pkg.config.version_short}/components/pagination.html`,
           },
           {
+            text: 'Placeholders',
+            link: `/${pkg.config.version_short}/components/placeholders.html`,
+            disabled: true,
+            badge: {
+              color: 'warning',
+              text: 'WIP v4.1',
+            }
+          },
+          {
             text: 'Popover',
             link: `/${pkg.config.version_short}/components/popover.html`,
           },

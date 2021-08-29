@@ -96,18 +96,6 @@ export default defineComponent({
       frontmatter.value.pageClass,
     ])
 
-    // close sidebar after navigation
-    let unregisterRouterHook
-    onMounted(() => {
-      const router = useRouter()
-      unregisterRouterHook = router.afterEach(() => {
-        toggleSidebar(false)
-      })
-    })
-    onUnmounted(() => {
-      unregisterRouterHook()
-    })
-
     // handle scrollBehavior with transition
     const scrollPromise = useScrollPromise()
     const onBeforeEnter = scrollPromise.resolve

@@ -1,7 +1,15 @@
 /**
  * Base nav item, displayed as text
  */
+
+type Badge = {
+  color: string,
+  text: string
+}
 export interface NavItem {
+  badge?: Badge
+  disabled?: boolean
+  icon?: string
   text: string
   ariaLabel?: string
 }

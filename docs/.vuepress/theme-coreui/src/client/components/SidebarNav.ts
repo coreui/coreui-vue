@@ -4,7 +4,7 @@ import { RouterLink, useRoute } from 'vue-router'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import type { ResolvedSidebarItem } from '../../shared'
 
-import { CNavGroup, CNavItem, CSidebarNav } from './../../../../../../src'
+import { CBadge, CNavGroup, CNavItem, CSidebarNav } from './../../../../../../src'
 import { CIcon } from '@coreui/icons-vue'
 
 const normalizePath = (path: string): string =>
@@ -76,19 +76,27 @@ const renderItem = (item: ResolvedSidebarItem): VNode => {
           CNavItem,
           {
             active: props.isActive,
+            disabled: item.disabled,
             href: item.link,
           },
           {
-            default: () => item.text,
+            default: () => [
+              item.text,
+              item.badge &&
+                h(
+                  CBadge,
+                  {
+                    class: 'ms-auto',
+                    color: item.badge.color,
+                  },
+                  item.badge.text,
+                ),
+            ],
           },
         ),
     },
   )
 }
-
-// export default defineComponent({
-
-// })
 
 export const SidebarNav = ({ items }) => {
   return h(
