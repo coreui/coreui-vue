@@ -5,10 +5,6 @@
     </CSidebarBrand>
     <NavbarLinks />
     <SidebarNav :items="sidebarItems" />
-    <!-- <CSidebarNav>
-      
-      <SidebarChild v-for="item in sidebarItems" :key="item.link || item.text" :item="item" />
-    </CSidebarNav> -->
   </CSidebar>
 </template>
 

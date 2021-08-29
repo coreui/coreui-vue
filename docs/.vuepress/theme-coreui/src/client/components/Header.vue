@@ -1,6 +1,6 @@
 <template>
   <CHeader class="mb-5">
-    <CHeaderToggler class="ms-md-3 d-lg-none" @click="$emit('toggle-sidebar')">
+    <CHeaderToggler class="ms-md-3" @click="$emit('toggle-sidebar')">
       <CIcon icon="cil-menu" size="lg" />
     </CHeaderToggler>
     <CHeaderNav class="ms-auto">

@@ -5,7 +5,7 @@
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
-    <Sidebar :visible="isSidebarOpen"/>
+    <Sidebar :visible="isSidebarOpen" @visible-change="(event) => isSidebarOpen = event" />
     <div class="wrapper d-flex flex-column min-vh-100">
       <Header @toggle-sidebar="toggleSidebar(!isSidebarOpen)"/>
       <div class="body flex-grow-1 px-3">
@@ -41,36 +41,6 @@
       </div>
       <Footer />
     </div>
-
-    <!-- <div class="sidebar-mask" @click="toggleSidebar(false)" /> -->
-
-    <!-- <Sidebar>
-      <template #top>
-        <slot name="sidebar-top" />
-      </template>
-      <template #bottom>
-        <slot name="sidebar-bottom" />
-      </template>
-    </Sidebar> -->
-
-    <!-- <Home v-if="frontmatter.home" /> -->
-
-    <!-- <Transition
-      v-else
-      name="fade-slide-y"
-      mode="out-in"
-      @before-enter="onBeforeEnter"
-      @before-leave="onBeforeLeave"
-    >
-      <Page :key="page.path">
-        <template #top>
-          <slot name="page-top" />
-        </template>
-        <template #bottom>
-          <slot name="page-bottom" />
-        </template>
-      </Page>
-    </Transition> -->
   </div>
 </template>
 
