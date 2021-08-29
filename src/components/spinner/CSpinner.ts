@@ -83,7 +83,7 @@ const CSpinner = defineComponent({
             `text-${props.color}`,
             props.size && `spinner-${props.variant}-${props.size}`,
           ],
-          role: status,
+          role: 'status',
         },
         h('span', { class: ['visually-hidden'] }, props.visuallyHiddenLabel),
       )
