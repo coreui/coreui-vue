@@ -8,7 +8,7 @@ const pkg = require('./../package.json')
 module.exports = {
   componentsRoot: 'src/components', // the folder where CLI will start searching for components.
   components: '**/[A-Z]*.ts', // the glob to define what files should be documented as components (relative to componentRoot)
-  outDir: `docs/${pkg.config.version_short}/api`, // folder to save components docs in (relative to the current working directry)
+  outDir: 'docs/api', // folder to save components docs in (relative to the current working directry)
   getDocFileName: (componentPath) =>
     componentPath.replace(/\.ts$/, '.md'), // specify the name of the input md file
   getDestFile: (file, config) =>
