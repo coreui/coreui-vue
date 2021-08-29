@@ -3,7 +3,6 @@
     <CSidebarBrand class="justify-content-start ps-3">
       <img :src="logo" alt="CoreUI for Vue.js logo" height="50" className="d-block mt-4 mb-5" />
     </CSidebarBrand>
-    <NavbarLinks />
     <SidebarNav :items="sidebarItems" />
   </CSidebar>
 </template>
