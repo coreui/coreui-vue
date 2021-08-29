@@ -32,7 +32,11 @@ const CTableRow = defineComponent({
      */
     color: Color,
   },
-  setup(props, { slots }) {
+  emits: ['click'],
+  setup(props, { emit, slots }) {
+    const handleClick = () => {
+      emit('click')
+    }
     return () =>
       h(
         'tr',
@@ -44,6 +48,7 @@ const CTableRow = defineComponent({
               [`table-${props.color}`]: props.color,
             },
           ],
+          onClick: handleClick,
         },
         slots.default && slots.default(),
       )

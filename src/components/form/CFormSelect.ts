@@ -39,7 +39,12 @@ const CFormSelect = defineComponent({
       required: false,
     },
   },
-  setup(props, { attrs, slots }) {
+  emits: ['change'],
+  setup(props, { attrs, emit, slots }) {
+    const handleChange = (event: Event) => {
+      const target = event.target as HTMLSelectElement
+      emit('change', Number(target.value))
+    }
     return () =>
       h(
         'select',
@@ -52,6 +57,7 @@ const CFormSelect = defineComponent({
             },
           ],
           size: props.htmlSize,
+          onChange: handleChange,
         },
         slots.default && slots.default(),
       )
