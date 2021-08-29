@@ -22,7 +22,6 @@ export default defineComponent({
 
   setup() {
     const sidebarItems = useSidebarItems()
-    console.log(sidebarItems)
     return {
       logo,
       sidebarItems

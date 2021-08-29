@@ -91,17 +91,6 @@ const renderItem = (item: ResolvedSidebarItem): VNode => {
 // })
 
 export const SidebarNav = ({ items }) => {
-  console.log(items)
-
-  // setup() {
-  //   const sidebarItems = useSidebarItems()
-  //   console.log(sidebarItems)
-  //   return {
-  //     logo,
-  //     sidebarItems
-  //   }
-  // },
-
   return h(
     CSidebarNav,
     {},
