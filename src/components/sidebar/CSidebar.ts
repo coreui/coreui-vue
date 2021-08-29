@@ -83,7 +83,7 @@ const CSidebar = defineComponent({
 
     const callback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting !== props.visible) {
+        if (entry.isIntersecting !== props.visible || typeof visible.value === 'undefined') {
           visible.value = entry.isIntersecting
           emit('visible-change', visible.value)
         }
