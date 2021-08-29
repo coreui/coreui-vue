@@ -115,9 +115,9 @@ const CWidgetStatsC = defineComponent({
                 ),
               h(CProgress, {
                 class: 'my-2',
-                color: props.progress?.color,
+                ...(props.progress && props.progress.color && { color: props.progress.color }),
                 height: 4,
-                value: props.progress?.value,
+                ...(props.progress && props.progress.value && { value: props.progress.value }),
                 white: props.inverse,
               }),
             ],
