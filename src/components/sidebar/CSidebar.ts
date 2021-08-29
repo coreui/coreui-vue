@@ -1,4 +1,4 @@
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, onMounted, ref } from 'vue'
 
 const CSidebar = defineComponent({
   name: 'CSidebar',
@@ -71,7 +71,31 @@ const CSidebar = defineComponent({
       default: undefined,
     },
   },
-  setup(props, { slots }) {
+  emits: ['visible-change'],
+  setup(props, { slots, emit }) {
+    const sidebarRef = ref()
+    const visible = ref()
+
+    const options = {
+      rootMargin: '0px',
+      threshold: 1.0,
+    }
+
+    const callback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting !== props.visible) {
+          visible.value = entry.isIntersecting
+          emit('visible-change', visible.value)
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(callback, options)
+
+    onMounted(() => {
+      observer.observe(sidebarRef.value)
+    })
+
     return () =>
       h(
         'div',
@@ -87,10 +111,11 @@ const CSidebar = defineComponent({
               }`]: props.selfHiding,
               [`sidebar-${props.size}`]: props.size,
               'sidebar-narrow-unfoldable': props.unfoldable,
-              show: props.visible === true,
-              hide: props.visible === false,
+              show: props.visible === true && visible.value === false,
+              hide: props.visible === false && visible.value === true,
             },
           ],
+          ref: sidebarRef,
         },
         slots.default && slots.default(),
       )
