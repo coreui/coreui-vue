@@ -46,7 +46,7 @@ export const CAlert = defineComponent({
   ],
   setup(props, { slots, emit }) {
     const visible = ref(props.visible)
-    const dismiss = () => {
+    const handleDismiss = () => {
       visible.value = false
       emit('dismiss')
     }
@@ -82,7 +82,7 @@ export const CAlert = defineComponent({
                 props.dismissible &&
                   h(CCloseButton, {
                     onClick: () => {
-                      dismiss()
+                      handleDismiss()
                     },
                   }),
               ],

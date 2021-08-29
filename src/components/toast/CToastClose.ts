@@ -14,6 +14,7 @@ const CToastClose = defineComponent({
     },
     ...CCloseButton.props,
   },
+  emits: ['dismiss'],
   setup(props, { slots, emit }) {
     const updateVisible = inject('updateVisible') as any
     const handleClose = () => {

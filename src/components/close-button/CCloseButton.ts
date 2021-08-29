@@ -18,7 +18,11 @@ export const CCloseButton = defineComponent({
       required: false,
     },
   },
-  setup(props) {
+  emits: ['click'],
+  setup(props, { emit }) {
+    const handleClick = () => {
+      emit('click')
+    }
     return () =>
       h('button', {
         class: [
@@ -31,6 +35,7 @@ export const CCloseButton = defineComponent({
         ],
         'aria-label': 'Close',
         disabled: props.disabled,
+        onClick: handleClick,
       })
   },
 })

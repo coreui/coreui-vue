@@ -7,7 +7,7 @@ const CToastHeader = defineComponent({
     /**
      * Automatically add a close button to the header.
      */
-    dismiss: {
+    close: {
       type: Boolean,
       require: false,
     },
@@ -22,7 +22,7 @@ const CToastHeader = defineComponent({
     return () =>
       h('div', { class: 'toast-header' }, [
         slots.default && slots.default(),
-        props.dismiss &&
+        props.close &&
           h(CToastClose, {
             onClose: () => handleClose(),
           }),
