@@ -63,17 +63,7 @@ const CFormInput = defineComponent({
       required: false,
     },
   },
-  emits: ['change', 'input'],
-  setup(props, { attrs, emit, slots }) {
-    const handleInput = (event: Event) => {
-      const target = event.target as HTMLInputElement
-      emit('input', target.value)
-    }
-
-    const handleChange = (event: Event) => {
-      const target = event.target as HTMLInputElement
-      emit('change', target.value)
-    }
+  setup(props, { attrs, slots }) {
     return () =>
       h(
         'input',
@@ -89,8 +79,6 @@ const CFormInput = defineComponent({
               'is-valid': props.valid,
             },
           ],
-          onChange: handleChange,
-          onInput: handleInput,
         },
         slots.default && slots.default(),
       )

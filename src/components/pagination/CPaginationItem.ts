@@ -36,11 +36,7 @@ const CPaginationItem = defineComponent({
       required: false,
     },
   },
-  emits: ['click'],
-  setup(props, { emit, slots }) {
-    const handleClick = () => {
-      emit('click')
-    }
+  setup(props, { slots }) {
     return () => {
       const component = props.component ? props.component : props.active ? 'span' : 'a'
       return h(
@@ -62,7 +58,6 @@ const CPaginationItem = defineComponent({
                 class: ['page-link'],
                 component: component,
                 href: props.href,
-                onClick: handleClick,
               },
               {
                 default: () => slots.default && slots.default(),

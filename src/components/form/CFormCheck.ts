@@ -97,7 +97,7 @@ const CFormCheck = defineComponent({
       required: false,
     },
   },
-  setup(props, { attrs }) {
+  setup(props, { slots, attrs }) {
     const formControl = () => {
       return h('input', {
         ...attrs,
@@ -131,14 +131,14 @@ const CFormCheck = defineComponent({
           ...(props.id && { for: props.id }),
         },
         {
-          default: () => props.label,
+          default: () => (slots.label && slots.label()) || props.label,
         },
       )
     }
 
     return () =>
       props.button
-        ? [formControl(), props.label && formLabel()]
+        ? [formControl(), (slots.label || props.label) && formLabel()]
         : props.label
         ? h(
             'div',

@@ -1,5 +1,7 @@
 import { defineComponent, h } from 'vue'
 
+import { Color } from '../props'
+
 const CProgressBar = defineComponent({
   name: 'CProgressBar',
   props: {
@@ -15,23 +17,7 @@ const CProgressBar = defineComponent({
      *
      * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'
      */
-    color: {
-      type: String,
-      default: undefined,
-      require: true,
-      validator: (value: string) => {
-        return [
-          'primary',
-          'secondary',
-          'success',
-          'danger',
-          'warning',
-          'info',
-          'dark',
-          'light',
-        ].includes(value)
-      },
-    },
+    color: Color,
     /**
      * The percent to progress the ProgressBar.
      *

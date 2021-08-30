@@ -59,6 +59,7 @@ const CBadge = defineComponent({
               [`text-${props.textColor}`]: props.textColor,
               [`badge-${props.size}`]: props.size,
             },
+            props.shape,
           ],
         },
         slots.default && slots.default(),
