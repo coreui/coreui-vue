@@ -1,4 +1,5 @@
-import { defineComponent, h, onBeforeUnmount, onMounted, ref } from 'vue'
+import { defineComponent, h, onBeforeUnmount, onMounted, onUpdated, ref, watch } from 'vue'
+import { CBackdrop } from '../backdrop'
 
 const CSidebar = defineComponent({
   name: 'CSidebar',
@@ -66,15 +67,21 @@ const CSidebar = defineComponent({
     /**
      * Toggle the visibility of sidebar component.
      */
-    visible: {
-      type: Boolean,
-      default: undefined,
-    },
+    visible: Boolean,
   },
   emits: ['visible-change'],
-  setup(props, { slots, emit }) {
+  setup(props, { attrs, slots, emit }) {
+    const mobile = ref()
+    const inViewport = ref()
     const sidebarRef = ref()
     const visible = ref()
+
+    const handleClick = (event: Event) => {
+      const target = event.target as HTMLElement
+      target.closest('a.nav-link:not(.nav-group-toggle)')
+        ? (visible.value = false)
+        : (visible.value = true)
+    }
 
     const options = {
       rootMargin: '0px',
@@ -86,22 +93,44 @@ const CSidebar = defineComponent({
     onMounted(() => {
       const callback = (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting !== props.visible || typeof visible.value === 'undefined') {
-            visible.value = entry.isIntersecting
-            emit('visible-change', visible.value)
-          }
+          inViewport.value = entry.isIntersecting
+          emit('visible-change', entry.isIntersecting)
         })
       }
 
       observer = new IntersectionObserver(callback, options)
       observer.observe(sidebarRef.value)
+
+      mobile.value = Boolean(getComputedStyle(sidebarRef.value).getPropertyValue('--cui-is-mobile'))
+    })
+
+    onUpdated(() => {
+      mobile.value = Boolean(getComputedStyle(sidebarRef.value).getPropertyValue('--cui-is-mobile'))
+
+      if (mobile.value) {
+        window.addEventListener('click', handleClick)
+      } else {
+        window.removeEventListener('click', handleClick)
+      }
     })
 
     onBeforeUnmount(() => {
       observer.disconnect()
     })
 
-    return () =>
+    watch(
+      () => props.visible,
+      () => {
+        if (props.visible === true && inViewport.value === false) {
+          visible.value = true
+        }
+        if (props.visible === false && inViewport.value === true) {
+          visible.value = false
+        }
+      },
+    )
+
+    return () => [
       h(
         'div',
         {
@@ -116,14 +145,24 @@ const CSidebar = defineComponent({
               }`]: props.selfHiding,
               [`sidebar-${props.size}`]: props.size,
               'sidebar-narrow-unfoldable': props.unfoldable,
-              show: props.visible === true && visible.value === false,
-              hide: props.visible === false && visible.value === true,
+              show: visible.value === true,
+              hide: visible.value === false,
             },
+            attrs.class,
           ],
           ref: sidebarRef,
         },
         slots.default && slots.default(),
-      )
+      ),
+      mobile.value &&
+        h(CBackdrop, {
+          class: 'sidebar-backdrop d-none',
+          visible: props.visible,
+          onClick: () => {
+            visible.value = false
+          },
+        }),
+    ]
   },
 })
 

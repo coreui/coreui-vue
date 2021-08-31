@@ -13,6 +13,9 @@ const CBackdrop = defineComponent({
     },
   },
   setup(props) {
+    const handleBeforeEnter = (el: RendererElement) => {
+      el.classList.remove('d-none')
+    }
     const handleEnter = (el: RendererElement, done: () => void) => {
       el.addEventListener('transitionend', () => {
         done()
@@ -28,12 +31,17 @@ const CBackdrop = defineComponent({
       })
       el.classList.remove('show')
     }
+    const handleAfterLeave = (el: RendererElement) => {
+      el.classList.add('d-none')
+    }
     return () =>
       h(
         Transition,
         {
+          onBeforeEnter: (el) => handleBeforeEnter(el),
           onEnter: (el, done) => handleEnter(el, done),
           onLeave: (el, done) => handleLeave(el, done),
+          onAfterLeave: (el) => handleAfterLeave(el),
         },
         () =>
           props.visible &&
