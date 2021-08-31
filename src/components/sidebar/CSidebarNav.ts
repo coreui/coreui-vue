@@ -28,8 +28,8 @@ const CSidebarNav = defineComponent({
             // @ts-expect-error name is defined in component
             if (vnode.type.name === 'CNavGroup') {
               return h(vnode, {
-                onVisibleChange: (visible: boolean) => handleVisibleChange(visible, index),
-                ...(visibleGroup.value && { visible: isVisible(index) }),
+                onVisibleChange: (visible: boolean) => handleVisibleChange(visible, index + 1),
+                ...(visibleGroup.value && { visible: isVisible(index + 1) }),
               })
             }
             return vnode
