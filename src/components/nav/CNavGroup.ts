@@ -10,11 +10,7 @@ const CNavGroup = defineComponent({
     /**
      * Show nav group items.
      */
-    visible: {
-      type: Boolean,
-      default: undefined,
-      required: false,
-    },
+    visible: Boolean,
   },
   emits: ['visible-change'],
   setup(props, { slots, emit }) {
@@ -37,6 +33,7 @@ const CNavGroup = defineComponent({
 
     onMounted(() => {
       props.visible && navGroupRef.value.classList.add('show')
+      emit('visible-change', visible.value)
     })
 
     onUpdated(() => {
@@ -126,8 +123,8 @@ const CNavGroup = defineComponent({
                       if (vnode.type.name === 'CNavGroup') {
                         return h(vnode, {
                           onVisibleChange: (visible: boolean) =>
-                            handleVisibleChange(visible, index),
-                          ...(visibleGroup.value && { visible: isVisible(index) }),
+                            handleVisibleChange(visible, index + 1),
+                          ...(visibleGroup.value && { visible: isVisible(index + 1) }),
                         })
                       }
                       return vnode
