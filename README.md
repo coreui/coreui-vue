@@ -25,7 +25,6 @@
 ## Table of contents
 
 - [Quick start](#quick-start)
-- [Status](#status)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Documentation](#documentation)
 - [Contributing](#contributing)
@@ -40,7 +39,7 @@
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/coreui/coreui-vue/archive/refs/tags/v4.0.0-alpha.2.zip)
+- [Download the latest release](https://github.com/coreui/coreui-vue/archive/refs/heads/v4.zip)
 - Clone the repo: `git clone https://github.com/coreui/coreui-vue.git`
 - Install with [npm](https://www.npmjs.com/): `npm install @coreui/vue@next`
 - Install with [yarn](https://yarnpkg.com/): `yarn add @coreui/vue@next`
@@ -49,7 +48,7 @@ Read the [Getting started page](https://coreui.io/vue/docs/4.0/getting-started/i
 
 ### Styling
 
-Components are styled using @coreui/coreui-vue CSS library, but you can use them also with bootstrap CSS library. That is possible because @coreui/coreui-vue library is compatible with bootstrap, it just extends its functionalities. The only exception is custom CoreUI components, which don't exist in the Bootstrap ecosystem (template components, callout, switch).
+Components are styled using @coreui/coreui CSS library, but you can use them also with bootstrap CSS library. That is possible because @coreui/coreui-vue library is compatible with bootstrap, it just extends its functionalities. The only exception is custom CoreUI components, which don't exist in the Bootstrap ecosystem (template components, callout, switch).
 
 Styles have to be imported separately! Import [CoreUI](https://github.com/coreui/coreui) CSS library (recommended), or [Bootstrap](https://getbootstrap.com/) library
 
@@ -124,19 +123,6 @@ import { CAlert } from '@coreui/vue/src';
 
 If you are using [VS Code](https://code.visualstudio.com/) editor with Vetur plugin installed, then the editor would display hints for our library (component names and prop names).
 
-## Status
-[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=CoreUI%20-%20Free%20Vue%20Admin%20Template%20&url=http://coreui.io/vue/&hashtags=bootstrap,admin,template,dashboard,panel,free,angular,react,vue)
-[![NPM][npm-coreui-vue-badge-latest]][npm-coreui-vue]
-[![Downloads](https://img.shields.io/npm/dm/@coreui/vue.svg?style=flat-square)][coreui]
-[![Build](https://img.shields.io/github/workflow/status/coreui/coreui-vue-vue/Project%20check?style=flat-square)][coreui]
-[![License](https://img.shields.io/npm/l/@coreui/vue?style=flat-square)][coreui]
-[![Coverage](https://img.shields.io/badge/test%20coverage%203.0.12%20version-100%25-yellowgreen)][coreui]
-![Daily project check](https://github.com/coreui/coreui-vue-vue/workflows/Daily%20project%20check/badge.svg)
-[![Build Status](https://github.com/coreui/coreui-vue/workflows/JS%20Tests/badge.svg?branch=main)](https://github.com/coreui/coreui-vue/actions?query=workflow%3AJS+Tests+branch%3Amain)
-[![npm version](https://img.shields.io/npm/v/@coreui/coreui-vue)](https://www.npmjs.com/package/@coreui/coreui-vue)
-[![peerDependencies Status](https://img.shields.io/david/peer/coreui/coreui-vue)](https://david-dm.org/coreui/coreui-vue?type=peer)
-[![devDependency Status](https://img.shields.io/david/dev/coreui/coreui-vue)](https://david-dm.org/coreui/coreui-vue?type=dev)
-[![Coverage Status](https://img.shields.io/coveralls/github/coreui/coreui-vue/main)](https://coveralls.io/github/coreui/coreui-vue?branch=main)
 
 ## Bugs and feature requests
 
