@@ -9,10 +9,16 @@ module.exports = {
     },
   },
   extends: [
-    'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
-    'plugin:prettier/recommended', // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+    // TODO: clean-up
+    'plugin:vue/vue3-essential',
     'eslint:recommended',
-    'plugin:vue/vue3-recommended',
+    '@vue/typescript/recommended',
+    '@vue/prettier',
+    '@vue/prettier/@typescript-eslint',
+    // 'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+    // 'plugin:prettier/recommended', // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+    // 'eslint:recommended',
+    // 'plugin:vue/vue3-recommended',
   ],
   // plugins: ['@typescript-eslint'],
   rules: {
