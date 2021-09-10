@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CDropdownMenu component renders correctly 1`] = `
+"<ul class=\\"dropdown-menu dropdown-menu-dark show dropdown-menu-lg-end\\" data-coreui-popper=\\"static\\">
+  <li>Default slot</li>
+</ul>"
+`;
+
+exports[`Loads and display CDropdownMenu component renders correctly 1`] = `"<div class=\\"dropdown-menu dropdown-menu-lg-end\\" data-coreui-popper=\\"static\\">Default slot</div>"`;

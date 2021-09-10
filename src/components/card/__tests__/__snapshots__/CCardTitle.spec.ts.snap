@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CCardTitle component renders correctly 1`] = `"<h2 class=\\"card-title\\">Default slot</h2>"`;
+
+exports[`Loads and display CCardTitle component renders correctly 1`] = `"<h5 class=\\"card-title\\">Default slot</h5>"`;

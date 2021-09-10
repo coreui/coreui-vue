@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CSpinner component renders correctly 1`] = `"<h4 class=\\"spinner-grow text-warning spinner-grow-sm\\" role=\\"status\\"><span class=\\"visually-hidden\\">visuallyHiddenLabel</span></h4>"`;
+
+exports[`Loads and display CSpinner component renders correctly 1`] = `"<div class=\\"spinner-border text-undefined\\" role=\\"status\\"><span class=\\"visually-hidden\\">Loading...</span></div>"`;

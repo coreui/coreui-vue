@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CHeaderNav component renders correctly 1`] = `"<div class=\\"header-nav\\" role=\\"navigation\\">Default slot</div>"`;
+
+exports[`Loads and display CHeaderNav component renders correctly 1`] = `"<ul class=\\"header-nav\\" role=\\"navigation\\">Default slot</ul>"`;

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CCarouselItem component renders correctly 1`] = `"<div class=\\"carousel-item active\\">Default slot</div>"`;
+
+exports[`Loads and display CCarouselItem component renders correctly 1`] = `"<div class=\\"carousel-item\\">Default slot</div>"`;

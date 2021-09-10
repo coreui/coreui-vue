@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CFormText component renders correctly 1`] = `"<p class=\\"form-text\\">Default slot</p>"`;
+
+exports[`Loads and display CFormText component renders correctly 1`] = `"<div class=\\"form-text\\">Default slot</div>"`;

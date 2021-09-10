@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CCardHeader component renders correctly 1`] = `"<span class=\\"card-header\\">Default slot</span>"`;
+
+exports[`Loads and display CCardHeader component renders correctly 1`] = `"<div class=\\"card-header\\">Default slot</div>"`;

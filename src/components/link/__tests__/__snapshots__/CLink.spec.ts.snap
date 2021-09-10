@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CLink component renders correctly 1`] = `"<div class=\\"active disabled\\" aria-current=\\"page\\" href=\\"/bazinga\\">Default slot</div>"`;
+
+exports[`Loads and display CLink component renders correctly 1`] = `"<a class=\\"disabled\\" aria-disabled=\\"true\\" tabindex=\\"-1\\">Default slot</a>"`;

@@ -18,7 +18,8 @@
     "docs:dev": "vuepress dev docs --clean-cache",
     "docs:build": "vuepress build docs",
     "lint": "eslint 'src/components/**/*.{js,ts,tsx}'",
-    "test": "jest -u",
+    "test": "jest",
+    "test:u": "jest -u",
     "test:clear": "jest --clearCache",
     "test:coverage": "jest --coverage"
   },

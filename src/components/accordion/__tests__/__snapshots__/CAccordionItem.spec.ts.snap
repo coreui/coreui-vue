@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loads and display CAccordionItem component renders correctly 1`] = `"<div class=\\"accordion-item\\">Default slot</div>"`;

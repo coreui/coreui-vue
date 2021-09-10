@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CTableDataCell component renders correctly 1`] = `"<td class=\\"align-middle table-active table-warning\\">Default slot</td>"`;
+
+exports[`Loads and display CTableDataCell component renders correctly 1`] = `"<td class=\\"\\">Default slot</td>"`;

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CNavbarToggler component renders correctly 1`] = `"<button class=\\"navbar-toggler\\">Default slot</button>"`;
+
+exports[`Loads and display CNavbarToggler component renders correctly 1`] = `"<button class=\\"navbar-toggler\\"><span class=\\"navbar-toggler-icon\\"></span></button>"`;

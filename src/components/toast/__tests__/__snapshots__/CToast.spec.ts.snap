@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CToast component renders correctly 1`] = `
+"<transition-stub>
+  <div class=\\"toast fade bg-warning\\" aria-live=\\"assertive\\" aria-atomic=\\"true\\" role=\\"alert\\">Default slot</div>
+</transition-stub>"
+`;
+
+exports[`Loads and display CToast component renders correctly 1`] = `
+"<transition-stub>
+  <div class=\\"toast fade\\" aria-live=\\"assertive\\" aria-atomic=\\"true\\" role=\\"alert\\">Default slot</div>
+</transition-stub>"
+`;

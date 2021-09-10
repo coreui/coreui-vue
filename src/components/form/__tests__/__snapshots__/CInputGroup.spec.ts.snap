@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CInputGroup component renders correctly 1`] = `"<div class=\\"input-group input-group-lg\\">Default slot</div>"`;
+
+exports[`Loads and display CInputGroup component renders correctly 1`] = `"<div class=\\"input-group\\">Default slot</div>"`;

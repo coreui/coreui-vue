@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CHeaderToggler component renders correctly 1`] = `"<button class=\\"header-toggler\\" type=\\"button\\" aria-label=\\"Toggle navigation\\"><span class=\\"header-toggler-icon\\"></span></button>"`;
+
+exports[`Loads and display CHeaderToggler component renders correctly 1`] = `"<button class=\\"header-toggler\\" type=\\"button\\" aria-label=\\"Toggle navigation\\">Default slot</button>"`;

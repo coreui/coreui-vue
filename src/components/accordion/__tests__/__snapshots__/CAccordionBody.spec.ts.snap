@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loads and display CAccordionBody component renders correctly 1`] = `"<div class=\\"accordion-body\\">Default slot</div>"`;

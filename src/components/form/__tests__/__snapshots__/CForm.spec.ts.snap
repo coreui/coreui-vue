@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CForm component renders correctly 1`] = `"<form class=\\"was-validated\\">Default slot</form>"`;
+
+exports[`Loads and display CForm component renders correctly 1`] = `"<form class=\\"\\">Default slot</form>"`;

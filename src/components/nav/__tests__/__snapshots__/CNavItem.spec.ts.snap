@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CNavItem component renders correctly 1`] = `
+"<li class=\\"nav-item\\">
+  <div class=\\"active disabled nav-link\\" aria-current=\\"page\\" href=\\"/bazinga\\">Default slot</div>
+</li>"
+`;
+
+exports[`Loads and display CNavItem component renders correctly 1`] = `"<li class=\\"nav-item\\">Default slot</li>"`;

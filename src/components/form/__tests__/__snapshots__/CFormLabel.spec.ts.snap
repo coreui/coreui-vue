@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CFormLabel component renders correctly 1`] = `"<label class=\\"bazinga\\">Default slot</label>"`;
+
+exports[`Loads and display CFormLabel component renders correctly 1`] = `"<label class=\\"form-label\\">Default slot</label>"`;

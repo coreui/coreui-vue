@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CTableBody component renders correctly 1`] = `"<tbody class=\\"table-warning\\">Default slot</tbody>"`;
+
+exports[`Loads and display CTableBody component renders correctly 1`] = `"<tbody class=\\"\\">Default slot</tbody>"`;

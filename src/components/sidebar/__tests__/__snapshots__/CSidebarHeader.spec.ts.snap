@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loads and display CSidebarHeader component renders correctly 1`] = `"<div class=\\"sidebar-header\\">Default slot</div>"`;

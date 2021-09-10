@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CCol component renders correctly 1`] = `"<div class=\\"col-xl col-lg-4 col-md-auto order-md-last offset-md-3\\">Default slot</div>"`;
+
+exports[`Loads and display CCol component renders correctly 1`] = `"<div class=\\"col\\">Default slot</div>"`;

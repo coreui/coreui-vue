@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loads and display CNavGroupItems component renders correctly 1`] = `"<ul class=\\"nav-group-items\\">Default slot</ul>"`;

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CProgressBar component renders correctly 1`] = `"<div class=\\"progress-bar bg-warning progress-bar-striped progress-bar-animated\\" role=\\"progressbar\\" style=\\"width: 75%;\\" aria-valuenow=\\"75\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\">Default slot</div>"`;
+
+exports[`Loads and display CProgressBar component renders correctly 1`] = `"<div class=\\"progress-bar bg-undefined\\" role=\\"progressbar\\" style=\\"width: 0%;\\" aria-valuenow=\\"0\\" aria-valuemin=\\"0\\" aria-valuemax=\\"100\\">Default slot</div>"`;

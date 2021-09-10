@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CNav component renders correctly 1`] = `"<div class=\\"nav nav-fill nav-pills\\" role=\\"navigation\\">Default slot</div>"`;
+
+exports[`Loads and display CNav component renders correctly 1`] = `"<ul class=\\"nav\\" role=\\"navigation\\">Default slot</ul>"`;

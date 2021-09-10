@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CTableRow component renders correctly 1`] = `"<tr class=\\"align-middle table-active table-warning\\">Default slot</tr>"`;
+
+exports[`Loads and display CTableRow component renders correctly 1`] = `"<tr class=\\"\\">Default slot</tr>"`;

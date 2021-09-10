@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CListGroup component renders correctly 1`] = `"<div class=\\"list-group list-group-flush list-group-horizontal-lg\\">Default slot</div>"`;
+
+exports[`Loads and display CListGroup component renders correctly 1`] = `"<ul class=\\"list-group\\">Default slot</ul>"`;

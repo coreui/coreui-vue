@@ -134,12 +134,9 @@ const CDropdownToggle = defineComponent({
               onClick: () => toggleMenu(),
               ref: dropdownRef,
             },
-            {
-              default: () =>
-                props.split
-                  ? h('span', { class: 'visually-hidden' }, 'Toggle Dropdown')
-                  : slots.default && slots.default(),
-            },
+            props.split
+              ? h('span', { class: 'visually-hidden' }, 'Toggle Dropdown')
+              : slots.default && slots.default(),
           )
   },
 })

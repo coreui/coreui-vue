@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loads and display CWidgetStatsF component renders correctly 1`] = `
+"<div class=\\"card\\">
+  <div class=\\"card-body d-flex align-items-center\\">
+    <div class=\\"me-3 text-white bg-warning p-3\\">default</div>
+    <div>
+      <div class=\\"fs-6 fw-semibold text-warning\\">75</div>
+      <div class=\\"text-medium-emphasis text-uppercase fw-semibold small\\">title</div>
+    </div>
+  </div>
+  <div class=\\"card-footer\\">footer</div>
+</div>"
+`;

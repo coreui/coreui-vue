@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CFooter component renders correctly 1`] = `"<div class=\\"footer footer-fixed\\">Default slot</div>"`;
+
+exports[`Loads and display CFooter component renders correctly 1`] = `"<div class=\\"footer\\">Default slot</div>"`;

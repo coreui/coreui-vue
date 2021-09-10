@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CCardSubtitle component renders correctly 1`] = `"<h4 class=\\"card-subtitle\\">Default slot</h4>"`;
+
+exports[`Loads and display CCardSubtitle component renders correctly 1`] = `"<h6 class=\\"card-subtitle\\">Default slot</h6>"`;

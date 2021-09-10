@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loads and display CAvatar component renders correctly 1`] = `
+"<div class=\\"avatar undefined\\">Default slot
+  <!---->
+</div>"
+`;
+
+exports[`Loads and display CAvatar component renders correctly 2`] = `"<div class=\\"avatar bg-warning avatar-md text-light rounded-bottom\\"><img src=\\"/bazinga\\" class=\\"avatar-img\\"><span class=\\"avatar-status bg-danger\\"></span></div>"`;
