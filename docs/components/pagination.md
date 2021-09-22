@@ -121,10 +121,10 @@ Fancy larger or smaller pagination? Add `size="lg"` or `size="sm"` for additiona
 
 ## Alignment
 
-Change the alignment of pagination components with [flexbox utilities](https://coreui.io/docs/utilities/flex/).
+Change the alignment of pagination components with `align` property.
 
 ::: demo
-<CPagination class="justify-content-center" aria-label="Page navigation example">
+<CPagination align="center" aria-label="Page navigation example">
   <CPaginationItem disabled>Previous</CPaginationItem>
   <CPaginationItem href="#">1</CPaginationItem>
   <CPaginationItem href="#">2</CPaginationItem>
@@ -133,7 +133,7 @@ Change the alignment of pagination components with [flexbox utilities](https://c
 </CPagination>
 :::
 ```vue
-<CPagination class="justify-content-center" aria-label="Page navigation example">
+<CPagination align="center" aria-label="Page navigation example">
   <CPaginationItem disabled>Previous</CPaginationItem>
   <CPaginationItem href="#">1</CPaginationItem>
   <CPaginationItem href="#">2</CPaginationItem>
@@ -143,7 +143,7 @@ Change the alignment of pagination components with [flexbox utilities](https://c
 ```
 
 ::: demo
-<CPagination class="justify-content-end" aria-label="Page navigation example">
+<CPagination align="end" aria-label="Page navigation example">
   <CPaginationItem disabled>Previous</CPaginationItem>
   <CPaginationItem href="#">1</CPaginationItem>
   <CPaginationItem href="#">2</CPaginationItem>
@@ -152,7 +152,7 @@ Change the alignment of pagination components with [flexbox utilities](https://c
 </CPagination>
 :::
 ```vue
-<CPagination class="justify-content-end" aria-label="Page navigation example">
+<CPagination align="end" aria-label="Page navigation example">
   <CPaginationItem disabled>Previous</CPaginationItem>
   <CPaginationItem href="#">1</CPaginationItem>
   <CPaginationItem href="#">2</CPaginationItem>

@@ -4,6 +4,19 @@ const CPagination = defineComponent({
   name: 'CPagination',
   props: {
     /**
+     * Set the alignment of pagination components.
+     *
+     * @values 'start', 'center', 'end'
+     */
+    align: {
+      type: String,
+      default: undefined,
+      required: false,
+      validator: (value: string) => {
+        return ['start', 'center', 'end'].includes(value)
+      },
+    },
+    /**
      * Size the component small or large.
      *
      * @values 'sm', 'lg'
@@ -24,7 +37,15 @@ const CPagination = defineComponent({
         {},
         h(
           'ul',
-          { class: ['pagination', { [`pagination-${props.size}`]: props.size }] },
+          {
+            class: [
+              'pagination',
+              {
+                [`justify-content-${props.align}`]: props.align,
+                [`pagination-${props.size}`]: props.size,
+              },
+            ],
+          },
           slots.default && slots.default(),
         ),
       )
