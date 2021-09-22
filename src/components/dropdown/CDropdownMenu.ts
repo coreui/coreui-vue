@@ -1,4 +1,4 @@
-import { defineComponent, h, inject, toRefs } from 'vue'
+import { defineComponent, h, inject, toRefs, Ref } from 'vue'
 
 const CDropdownMenu = defineComponent({
   name: 'CDropdownMenu',
@@ -15,7 +15,7 @@ const CDropdownMenu = defineComponent({
     },
   },
   setup(props, { slots }) {
-    const dropdownMenuRef = inject('dropdownMenuRef') as any
+    const dropdownMenuRef = inject('dropdownMenuRef') as Ref<HTMLElement>
     const config = inject('config') as any
 
     const { alignment, dark, popper, visible } = toRefs(config)

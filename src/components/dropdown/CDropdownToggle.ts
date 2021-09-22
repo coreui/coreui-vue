@@ -1,4 +1,4 @@
-import { defineComponent, h, inject } from 'vue'
+import { defineComponent, h, inject, Ref } from 'vue'
 
 import { Color, Shape } from '../props'
 
@@ -84,10 +84,10 @@ const CDropdownToggle = defineComponent({
     },
   },
   setup(props, { slots }) {
-    const dropdownRef = inject('dropdownRef') as any
+    const dropdownRef = inject('dropdownRef') as Ref<HTMLElement>
     const dropdownVariant = inject('variant') as string
-    const visible = inject('visible') as any
-    const toggleMenu = inject('toggleMenu') as any
+    const visible = inject('visible') as boolean
+    const toggleMenu = inject('toggleMenu') as () => void
     const className = [
       {
         'dropdown-toggle': props.caret,
