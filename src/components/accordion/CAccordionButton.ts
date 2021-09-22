@@ -1,21 +1,21 @@
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, inject, Ref } from 'vue'
 
 const CAccordionButton = defineComponent({
   name: 'CAccordionButton',
-  props: {
-    /**
-     * Set button state to collapsed.
-     */
-    collapsed: {
-      type: Boolean,
-      required: false,
-    },
-  },
-  setup(props, { slots }) {
+  setup(_, { slots }) {
+    const toggleVisibility = inject('toggleVisibility') as () => void
+    const visible = inject('visible') as Ref<boolean>
+
+    console.log(visible)
+
     return () =>
       h(
         'button',
-        { class: ['accordion-button', { ['collapsed']: props.collapsed }] },
+        {
+          'aria-expanded': !visible.value,
+          class: ['accordion-button', { ['collapsed']: !visible.value }],
+          onClick: () => toggleVisibility(),
+        },
         slots.default && slots.default(),
       )
   },

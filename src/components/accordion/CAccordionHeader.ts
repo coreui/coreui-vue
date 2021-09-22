@@ -1,9 +1,21 @@
 import { defineComponent, h } from 'vue'
+import { CAccordionButton } from './CAccordionButton'
 
 const CAccordionHeader = defineComponent({
   name: 'CAccordionHeader',
   setup(_, { slots }) {
-    return () => h('div', { class: ['accordion-header'] }, slots.default && slots.default())
+    return () =>
+      h(
+        'div',
+        { class: ['accordion-header'] },
+        h(
+          CAccordionButton,
+          {},
+          {
+            default: () => slots.default && slots.default(),
+          },
+        ),
+      )
   },
 })
 

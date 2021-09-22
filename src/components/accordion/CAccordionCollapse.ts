@@ -20,9 +20,7 @@ const CAccordionCollapse = defineComponent({
           class: 'accordion-collapse',
           visible: props.visible,
         },
-        {
-          default: () => slots.default && slots.default(),
-        },
+        slots.default && slots.default(),
       )
   },
 })
