@@ -1,4 +1,4 @@
-import { defineComponent, h, ref, RendererElement, Transition } from 'vue'
+import { defineComponent, h, provide, ref, RendererElement, Transition, watch } from 'vue'
 
 import { CBackdrop } from './../backdrop/CBackdrop'
 
@@ -106,10 +106,7 @@ const CModal = defineComponent({
     /**
      * Toggle the visibility of alert component.
      */
-    visible: {
-      type: Boolean,
-      required: false,
-    },
+    visible: Boolean,
   },
   emits: [
     /**
@@ -120,6 +117,15 @@ const CModal = defineComponent({
   setup(props, { slots, attrs, emit }) {
     const modalRef = ref()
     const modalContentRef = ref()
+    const visible = ref(props.visible)
+
+    watch(
+      () => props.visible,
+      () => {
+        visible.value = props.visible
+      },
+    )
+
     const handleEnter = (el: RendererElement, done: () => void) => {
       el.addEventListener('transitionend', () => {
         done()
@@ -149,6 +155,7 @@ const CModal = defineComponent({
 
     const handleDismiss = () => {
       emit('dismiss')
+      visible.value = false
     }
 
     const handleKeyUp = (event: KeyboardEvent) => {
@@ -178,6 +185,8 @@ const CModal = defineComponent({
       }
     }
 
+    provide('handleDismiss', handleDismiss)
+
     return () => [
       h(
         Transition,
@@ -188,7 +197,7 @@ const CModal = defineComponent({
           onAfterLeave: (el) => handleAfterLeave(el),
         },
         () =>
-          props.visible &&
+          visible.value &&
           h(
             'div',
             {
@@ -227,7 +236,7 @@ const CModal = defineComponent({
       props.backdrop &&
         h(CBackdrop, {
           class: 'modal-backdrop',
-          visible: props.visible,
+          visible: visible.value,
         }),
     ]
   },

@@ -1,4 +1,4 @@
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, inject } from 'vue'
 
 import { CCloseButton } from '../close-button/CCloseButton'
 
@@ -6,28 +6,20 @@ const CModalHeader = defineComponent({
   name: 'CModalHeader',
   props: {
     /**
-     * Add a close button component to the header which will call the provided handler when clicked.
+     * Add a close button component to the header.
      */
-    dismiss: {
+    closeButton: {
       type: Boolean,
       required: false,
-      default: false,
+      default: true,
     },
   },
-  emits: [
-    /**
-     * Event called before the dissmiss animation has started.
-     */
-    'dismiss',
-  ],
-  setup(props, { slots, emit }) {
-    const handleDismiss = function () {
-      emit('dismiss')
-    }
+  setup(props, { slots }) {
+    const handleDismiss = inject('handleDismiss') as () => void
     return () =>
       h('span', { class: 'modal-header' }, [
         slots.default && slots.default(),
-        props.dismiss && h(CCloseButton, { onClick: handleDismiss }, ''),
+        props.closeButton && h(CCloseButton, { onClick: () => handleDismiss() }, ''),
       ])
   },
 })
