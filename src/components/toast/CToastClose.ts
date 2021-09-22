@@ -16,7 +16,8 @@ const CToastClose = defineComponent({
   },
   emits: ['dismiss'],
   setup(props, { slots, emit }) {
-    const updateVisible = inject('updateVisible') as any
+    // eslint-disable-next-line no-unused-vars
+    const updateVisible = inject('updateVisible') as (visible: boolean) => void
     const handleClose = () => {
       emit('dismiss')
       updateVisible(false)
