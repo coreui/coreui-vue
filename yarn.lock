@@ -3822,6 +3822,11 @@ get-stream@^6.0.0:
   resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-6.0.1.tgz#a262d8eef67aced57c2852ad6167526a43cbf7b7"
   integrity sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==
 
+github-buttons@^2.14.3:
+  version "2.19.1"
+  resolved "https://registry.yarnpkg.com/github-buttons/-/github-buttons-2.19.1.tgz#9703755a4da1c5b229d3f1d875c2f787efa59bd5"
+  integrity sha512-us6ZC0bFYLfBq2CkZJJRpdPP5JlB6+kWFTdw8iK3E7yoMKdoLhDkqQHelJ+39UVR2zQbfXN5gNt3cVYp4fAuXA==
+
 glob-parent@^5.1.2, glob-parent@~5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.2.tgz#869832c58034fe68a4093c17dc15e8340d8401c4"
@@ -7066,6 +7071,13 @@ vue-eslint-parser@^7.10.0:
     esquery "^1.4.0"
     lodash "^4.17.21"
     semver "^6.3.0"
+
+vue-github-button@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/vue-github-button/-/vue-github-button-3.0.1.tgz#f3d43820a7c3ba754924e12df53ba071089a49cb"
+  integrity sha512-E6ZOIXdAFf9aj/SdKMTVry9RHcQ1TWUsU82l//awOX6q/1pLgb+z7hhaL5tPZDqgRmkDUuYDSb8mpS7NOX5PIQ==
+  dependencies:
+    github-buttons "^2.14.3"
 
 vue-inbrowser-compiler-utils@^4.41.2:
   version "4.41.2"
