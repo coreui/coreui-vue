@@ -2,9 +2,8 @@
 
 #### Props
 
-| Prop name              | Description | Type    | Values | Default |
-| ---------------------- | ----------- | ------- | ------ | ------- |
-| <code>active</code>    |             | boolean | -      | false   |
-| <code>direction</code> |             | string  | -      | 'next'  |
+| Prop name             | Description                                                        | Type            | Values | Default |
+| --------------------- | ------------------------------------------------------------------ | --------------- | ------ | ------- |
+| <code>interval</code> | The amount of time to delay between automatically cycling an item. | boolean\|number | -      | false   |
 
 ---

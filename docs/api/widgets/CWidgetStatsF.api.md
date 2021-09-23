@@ -10,4 +10,10 @@
 | <code>text</code>    | Helper text for your component. If you want to pass non-string value please use dedicated slot `<template #text>...</template>`          | string         | -                                                                                                         | undefined |
 | <code>value</code>   | Value for your component. If you want to pass non-string or non-number value please use dedicated slot `<template #value>...</template>` | number\|string | -                                                                                                         | 0         |
 
+#### Slots
+
+| Name | Description                  | Bindings |
+| ---- | ---------------------------- | -------- |
+| icon | Location for icon component. |          |
+
 ---

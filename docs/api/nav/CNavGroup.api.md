@@ -2,14 +2,15 @@
 
 #### Props
 
-| Prop name            | Description           | Type    | Values | Default |
-| -------------------- | --------------------- | ------- | ------ | ------- |
-| <code>visible</code> | Show nav group items. | boolean | -      | false   |
+| Prop name            | Description                                                   | Type    | Values | Default |
+| -------------------- | ------------------------------------------------------------- | ------- | ------ | ------- |
+| <code>compact</code> | Make nav group more compact by cutting all `padding` in half. | boolean | -      |         |
+| <code>visible</code> | Show nav group items.                                         | boolean | -      |         |
 
 #### Events
 
-| Event name                 | Properties | Description |
-| -------------------------- | ---------- | ----------- |
-| <code>visibleChange</code> |            |
+| Event name                  | Properties | Description |
+| --------------------------- | ---------- | ----------- |
+| <code>visible-change</code> |            |
 
 ---

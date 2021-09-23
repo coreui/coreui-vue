@@ -11,8 +11,8 @@
 
 #### Events
 
-| Event name           | Properties | Description |
-| -------------------- | ---------- | ----------- |
-| <code>onClick</code> |            |
+| Event name         | Properties | Description |
+| ------------------ | ---------- | ----------- |
+| <code>click</code> |            |
 
 ---
