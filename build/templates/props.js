@@ -24,7 +24,9 @@ const tmpl = (props) => {
     const n = pr.type?.name ?? ''
     const v = pr.values?.map(pv => `\`${pv}\``).join(', ') ?? '-'
     const d = pr.defaultValue?.value ?? ''
-    ret += `| <code>${mdclean(p)}</code> | ${mdclean(t)} | ${mdclean(n)} | ${mdclean(v)} | ${mdclean(d)} |\n`;
+    if (pr.description && !pr.description.includes('@ignore')) {
+      ret += `| <code>${mdclean(p)}</code> | ${mdclean(t)} | ${mdclean(n)} | ${mdclean(v)} | ${mdclean(d)} |\n`;
+    }
   });
   return ret;
 };
