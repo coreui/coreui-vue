@@ -1,13 +1,22 @@
-import { defineComponent, h, onBeforeUnmount, onMounted, onUpdated, ref, watch } from 'vue'
+import { defineComponent, h, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { CBackdrop } from '../backdrop'
+
+const isOnMobile = (element: HTMLDivElement) =>
+  Boolean(getComputedStyle(element).getPropertyValue('--cui-is-mobile'))
+
+const isVisible = (element: HTMLDivElement) => {
+  const rect = element.getBoundingClientRect()
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  )
+}
 
 const CSidebar = defineComponent({
   name: 'CSidebar',
   props: {
-    /**
-     * Hide sidebar.
-     */
-    hide: Boolean,
     /**
      * Make sidebar narrow.
      */
@@ -30,24 +39,6 @@ const CSidebar = defineComponent({
       default: undefined,
       validator: (value: string) => {
         return ['fixed'].includes(value)
-      },
-    },
-    /**
-     * Make any sidebar self hiding across all viewports or pick a maximum breakpoint with which to have a self hiding up to.
-     *
-     * @values 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'
-     */
-    selfHiding: {
-      type: [Boolean, String],
-      default: undefined,
-      validator: (value: boolean | string) => {
-        if (typeof value === 'string') {
-          return ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'].includes(value)
-        } else if (typeof value === 'boolean') {
-          return true
-        } else {
-          return false
-        }
       },
     },
     /**
@@ -74,61 +65,74 @@ const CSidebar = defineComponent({
     const mobile = ref()
     const inViewport = ref()
     const sidebarRef = ref()
-    const visible = ref()
+    const visible = ref(props.visible)
 
-    const handleClick = (event: Event) => {
-      const target = event.target as HTMLElement
-      target.closest('a.nav-link:not(.nav-group-toggle)')
-        ? (visible.value = false)
-        : (visible.value = true)
-    }
-
-    const options = {
-      rootMargin: '0px',
-      threshold: 1.0,
-    }
-
-    let observer: IntersectionObserver
-
-    onMounted(() => {
-      const callback = (entries: IntersectionObserverEntry[]) => {
-        entries.forEach((entry) => {
-          inViewport.value = entry.isIntersecting
-          emit('visible-change', entry.isIntersecting)
-        })
-      }
-
-      observer = new IntersectionObserver(callback, options)
-      observer.observe(sidebarRef.value)
-
-      mobile.value = Boolean(getComputedStyle(sidebarRef.value).getPropertyValue('--cui-is-mobile'))
-    })
-
-    onUpdated(() => {
-      mobile.value = Boolean(getComputedStyle(sidebarRef.value).getPropertyValue('--cui-is-mobile'))
-
-      if (mobile.value) {
-        window.addEventListener('click', handleClick)
-      } else {
-        window.removeEventListener('click', handleClick)
-      }
-    })
-
-    onBeforeUnmount(() => {
-      observer.disconnect()
+    watch(inViewport, () => {
+      emit('visible-change', inViewport.value)
     })
 
     watch(
       () => props.visible,
-      () => {
-        if (props.visible === true && inViewport.value === false) {
-          visible.value = true
-        }
-        if (props.visible === false && inViewport.value === true) {
-          visible.value = false
-        }
-      },
+      () => (visible.value = props.visible),
     )
+
+    watch(mobile, () => {
+      if (mobile.value && visible.value) visible.value = false
+    })
+
+    onMounted(() => {
+      mobile.value = isOnMobile(sidebarRef.value)
+      inViewport.value = isVisible(sidebarRef.value)
+
+      window.addEventListener('resize', () => handleResize())
+      window.addEventListener('mouseup', handleClickOutside)
+      window.addEventListener('keyup', handleKeyup)
+
+      sidebarRef.value.addEventListener('mouseup', handleOnClick)
+      sidebarRef.value.addEventListener('transitionend', () => {
+        inViewport.value = isVisible(sidebarRef.value)
+      })
+    })
+
+    onBeforeUnmount(() => {
+      window.removeEventListener('resize', () => handleResize())
+      window.removeEventListener('mouseup', handleClickOutside)
+      window.removeEventListener('keyup', handleKeyup)
+
+      sidebarRef.value.removeEventListener('mouseup', handleOnClick)
+      sidebarRef.value.removeEventListener('transitionend', () => {
+        inViewport.value = isVisible(sidebarRef.value)
+      })
+    })
+
+    const handleHide = () => {
+      visible.value = false
+    }
+
+    const handleResize = () => {
+      mobile.value = isOnMobile(sidebarRef.value)
+      inViewport.value = isVisible(sidebarRef.value)
+    }
+
+    const handleKeyup = (event: Event) => {
+      if (mobile.value && !sidebarRef.value.contains(event.target as HTMLElement)) {
+        handleHide()
+      }
+    }
+    const handleClickOutside = (event: Event) => {
+      if (mobile.value && !sidebarRef.value.contains(event.target as HTMLElement)) {
+        handleHide()
+      }
+    }
+
+    const handleOnClick = (event: Event) => {
+      const target = event.target as HTMLAnchorElement
+      target &&
+        target.classList.contains('nav-link') &&
+        !target.classList.contains('nav-group-toggle') &&
+        mobile.value &&
+        handleHide()
+    }
 
     return () => [
       h(
@@ -140,13 +144,10 @@ const CSidebar = defineComponent({
               'sidebar-narrow': props.narrow,
               'sidebar-overlaid': props.overlaid,
               [`sidebar-${props.position}`]: props.position,
-              [`sidebar-self-hiding${
-                typeof props.selfHiding !== 'boolean' && '-' + props.selfHiding
-              }`]: props.selfHiding,
               [`sidebar-${props.size}`]: props.size,
               'sidebar-narrow-unfoldable': props.unfoldable,
-              show: visible.value === true,
-              hide: visible.value === false,
+              show: visible.value === true && mobile.value,
+              hide: visible.value === false && !mobile.value,
             },
             attrs.class,
           ],
