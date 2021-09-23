@@ -1,8 +1,22 @@
 <template>
-  <CSidebar position="fixed" selfHiding="md" size="lg" class="docs-sidebar elevation-0 border-end ps-xl-4">
+  <CSidebar position="fixed" size="lg" class="docs-sidebar elevation-0 border-end ps-xl-4">
     <CSidebarBrand class="justify-content-start ps-3">
-      <img :src="logo" alt="CoreUI for Vue.js logo" height="50" className="d-block mt-4 mb-5" />
+      <img :src="logo" alt="CoreUI for Vue.js logo" height="50" class="d-block mt-4 mb-5" />
     </CSidebarBrand>
+    <CDropdown class="ms-3 me-5 mb-4">
+      <CDropdownToggle color="primary" variant="outline"> Vue.js </CDropdownToggle>
+      <CDropdownMenu class="w-100">
+        <CDropdownItem href="#" disabled>
+          Angular <span class="badge bg-warning float-end mt-1">Work in Progress</span>
+        </CDropdownItem>
+        <CDropdownItem href="https://coreui.io/docs/4.0/" target="_blank">
+          JavaScript / Vanilla JS
+        </CDropdownItem>
+        <CDropdownItem href="https://coreui.io/react/docs/4.0/" target="_blank">
+          React.js
+        </CDropdownItem>
+      </CDropdownMenu>
+    </CDropdown>
     <SidebarNav :items="sidebarItems" />
   </CSidebar>
 </template>
@@ -24,7 +38,7 @@ export default defineComponent({
     const sidebarItems = useSidebarItems()
     return {
       logo,
-      sidebarItems
+      sidebarItems,
     }
   },
 })

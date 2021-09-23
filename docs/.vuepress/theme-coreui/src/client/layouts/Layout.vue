@@ -45,8 +45,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, onUnmounted, ref, Transition } from 'vue'
-import { useRouter } from 'vue-router'
+import { computed, defineComponent, ref, Transition } from 'vue'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import type { DefaultThemePageFrontmatter } from '../../shared'
 import Footer from '../components/Footer.vue'
@@ -80,7 +79,7 @@ export default defineComponent({
 
     // sidebar
     const sidebarItems = useSidebarItems()
-    const isSidebarOpen = ref()
+    const isSidebarOpen = ref(true)
 
     const toggleSidebar = (to?: boolean): void => {
       isSidebarOpen.value = typeof to === 'boolean' ? to : !isSidebarOpen.value

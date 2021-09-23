@@ -91,7 +91,9 @@ const renderItem = (item: ResolvedSidebarItem): VNode => {
                     class: 'ms-auto',
                     color: item.badge.color,
                   },
-                  item.badge.text,
+                  {
+                    default: () => item.badge.text,
+                  },
                 ),
             ],
           },
