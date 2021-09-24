@@ -56,6 +56,12 @@ const TextColor = {
       'light',
       'white',
       'muted',
+      'text-high-emphasis',
+      'text-high-medium',
+      'text-disabled',
+      'text-high-emphasis-inverse',
+      'text-high-medium-inverse',
+      'text-disabled-inverse',
     ].includes(value)
   },
 }
