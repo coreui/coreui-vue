@@ -13,7 +13,10 @@ import {
   cilArrowRight,
   cilArrowTop,
   cilBasket,
+  cilBurn,
+  cilCheckCircle,
   cilCloudDownload,
+  cilInfo,
   cilMenu,
   cilOptions,
   cilPeople,
@@ -21,6 +24,7 @@ import {
   cilSettings,
   cilSpeedometer,
   cilUserFollow,
+  cilWarning,
 } from '@coreui/icons'
 
 export const icons = {
@@ -32,7 +36,10 @@ export const icons = {
   cilArrowRight,
   cilArrowTop,
   cilBasket,
+  cilBurn,
+  cilCheckCircle,
   cilCloudDownload,
+  cilInfo,
   cilMenu,
   cilOptions,
   cilPeople,
@@ -40,6 +47,7 @@ export const icons = {
   cilSettings,
   cilSpeedometer,
   cilUserFollow,
+  cilWarning,
 }
 
 const clientAppEnhance: ClientAppEnhance = ({ app }) => {

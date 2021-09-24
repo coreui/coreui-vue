@@ -78,7 +78,8 @@ Fancy larger or smaller avatar? Add `size="xl"`, `size="lg"` or `size="sm"` for 
 ## Avatars with status
 
 ::: demo
-<CAvatar :src="$withBase('avatars/1.jpg')" status="success"/>
+
+<CAvatar :src="$withBase('/images/avatars/1.jpg')" status="success"/>
 <CAvatar color="secondary" status="danger">CUI</CAvatar>
 :::
 ```vue
