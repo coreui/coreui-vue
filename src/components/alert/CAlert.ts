@@ -79,7 +79,7 @@ export const CAlert = defineComponent({
                 class: [
                   'alert',
                   props.variant === 'solid'
-                    ? `bg-${props.color} text-white`
+                    ? `bg-${props.color} text-white border-0`
                     : `alert-${props.color}`,
                   {
                     [`alert-${props.color}`]: props.color,
