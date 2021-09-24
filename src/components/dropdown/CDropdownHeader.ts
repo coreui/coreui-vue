@@ -5,8 +5,6 @@ const CDropdownHeader = defineComponent({
   props: {
     /**
      * Component used for the root node. Either a string to use a HTML element or a component.
-     *
-     * @default 'h6'
      */
     component: {
       type: String,

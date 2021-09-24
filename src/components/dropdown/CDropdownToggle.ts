@@ -21,8 +21,6 @@ const CDropdownToggle = defineComponent({
     color: Color,
     /**
      * Enables pseudo element caret on toggler.
-     *
-     * @default true
      */
     caret: {
       type: Boolean,
@@ -45,11 +43,13 @@ const CDropdownToggle = defineComponent({
       required: false,
     },
     /**
-     * Select the shape of the component.
+     * @values 'rounded', 'rounded-top', 'rounded-end', 'rounded-bottom', 'rounded-start', 'rounded-circle', 'rounded-pill', 'rounded-0', 'rounded-1', 'rounded-2', 'rounded-3'
      */
     shape: Shape,
     /**
      * Size the component small or large.
+     *
+     * @values 'sm', 'lg'
      */
     size: {
       type: String,
@@ -68,6 +68,8 @@ const CDropdownToggle = defineComponent({
     },
     /**
      * Set the button variant to an outlined button or a ghost button.
+     *
+     * @values 'ghost', 'outline'
      */
     variant: {
       type: String,
@@ -76,11 +78,6 @@ const CDropdownToggle = defineComponent({
       validator: (value: string) => {
         return ['ghost', 'outline'].includes(value)
       },
-    },
-    togglerVariant: {
-      type: String,
-      default: undefined,
-      required: false,
     },
   },
   setup(props, { slots }) {

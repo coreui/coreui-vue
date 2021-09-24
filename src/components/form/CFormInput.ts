@@ -48,7 +48,6 @@ const CFormInput = defineComponent({
      * Specifies the type of component.
      *
      * @values 'color' | 'file' | 'text' | string
-     * @default 'text'
      */
     type: {
       type: String,

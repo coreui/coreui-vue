@@ -5,8 +5,6 @@ const CListGroup = defineComponent({
   props: {
     /**
      * Component used for the root node. Either a string to use a HTML element or a component.
-     *
-     * @default 'ul'
      */
     component: {
       type: String,
@@ -23,7 +21,7 @@ const CListGroup = defineComponent({
     /**
      * Specify a layout type.
      *
-     * @value 'horizontal', 'horizontal-sm', 'horizontal-md', 'horizontal-lg', 'horizontal-xl', 'horizontal-xxl',
+     * @values 'horizontal', 'horizontal-sm', 'horizontal-md', 'horizontal-lg', 'horizontal-xl', 'horizontal-xxl',
      */
     layout: {
       type: String,

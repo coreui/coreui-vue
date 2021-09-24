@@ -60,7 +60,12 @@ const CSidebar = defineComponent({
      */
     visible: Boolean,
   },
-  emits: ['visible-change'],
+  emits: [
+    /**
+     * Event emitted after visibility of component changed.
+     */
+    'visible-change',
+  ],
   setup(props, { attrs, slots, emit }) {
     const mobile = ref()
     const inViewport = ref()

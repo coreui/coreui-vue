@@ -5,8 +5,6 @@ const CCardText = defineComponent({
   props: {
     /**
      * Component used for the root node. Either a string to use a HTML element or a component.
-     *
-     * @default 'p'
      */
     component: {
       type: String,

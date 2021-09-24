@@ -7,13 +7,13 @@ const CCard = defineComponent({
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
      *
-     * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
+     * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'
      */
     color: Color,
     /**
      * Sets the text color context of the component to one of CoreUI’s themed colors.
      *
-     * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | 'white' | 'muted' | string
+     * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light', 'white', 'muted', 'text-high-emphasis', 'text-high-medium', 'text-disabled', 'text-high-emphasis-inverse', 'text-high-medium-inverse', 'text-disabled-inverse'
      */
     textColor: TextColor,
   },

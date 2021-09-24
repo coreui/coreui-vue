@@ -45,7 +45,6 @@ const CFormSwitch = defineComponent({
      * Specifies the type of component.
      *
      * @values 'checkbox', 'radio'
-     * @default 'checkbox'
      */
     type: {
       type: String,

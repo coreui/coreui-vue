@@ -5,8 +5,6 @@ const CCardImage = defineComponent({
   props: {
     /**
      * Component used for the root node. Either a string to use a HTML element or a component.
-     *
-     * @default 'img'
      */
     component: {
       type: String,
@@ -14,7 +12,9 @@ const CCardImage = defineComponent({
       default: 'img',
     },
     /**
-     * Optionally orientate the image to the top, bottom, or make it overlaid across the card.
+     * Optionally orientate the image to the top, bottom.
+     *
+     * @values 'top', 'bottom'
      */
     orientation: {
       type: String,

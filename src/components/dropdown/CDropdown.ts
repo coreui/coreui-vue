@@ -16,6 +16,8 @@ const CDropdown = defineComponent({
   name: 'CDropdown',
   props: {
     /**
+     * Set aligment of dropdown menu.
+     *
      * @values { 'start' | 'end' | { xs: 'start' | 'end' } | { sm: 'start' | 'end' } | { md: 'start' | 'end' } | { lg: 'start' | 'end' } | { xl: 'start' | 'end'} | { xxl: 'start' | 'end'} }
      */
     alignment: {
@@ -49,27 +51,16 @@ const CDropdown = defineComponent({
       },
     },
     /**
-     * Enables pseudo element caret on toggler.
-     *
-     * @default true
-     */
-    caret: {
-      type: Boolean,
-      required: false,
-      default: true,
-    },
-    /**
      * Sets a darker color scheme to match a dark navbar.
      */
     dark: {
       type: Boolean,
       required: false,
     },
-
     /**
      * Sets a specified  direction and location of the dropdown menu.
      *
-     * @values 'dropup' | 'dropend' | 'dropstart'
+     * @values 'dropup', 'dropend', 'dropstart'
      */
     direction: {
       type: String,
@@ -89,8 +80,7 @@ const CDropdown = defineComponent({
     /**
      * Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property.
      *
-     * @values 'auto' | 'top-end' | 'top' | 'top-start' | 'bottom-end' | 'bottom' | 'bottom-start' | 'right-start' | 'right' | 'right-end' | 'left-start' | 'left' | 'left-end'
-     * @default 'bottom-start'
+     * @values 'auto', 'top-end', 'top', 'top-start', 'bottom-end', 'bottom', 'bottom-start', 'right-start', 'right', 'right-end', 'left-start', 'left', 'left-end'
      */
     placement: {
       type: String as PropType<Placement>,
@@ -115,6 +105,8 @@ const CDropdown = defineComponent({
     },
     /**
      * Set the dropdown variant to an btn-group, dropdown, input-group, and nav-item.
+     *
+     * @values 'btn-group', 'dropdown', 'input-group', 'nav-item'
      */
     variant: {
       type: String,
@@ -126,8 +118,6 @@ const CDropdown = defineComponent({
     },
     /**
      * Toggle the visibility of dropdown menu component.
-     *
-     * @default false
      */
     visible: {
       type: Boolean,

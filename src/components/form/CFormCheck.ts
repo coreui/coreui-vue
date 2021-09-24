@@ -14,13 +14,13 @@ const CFormCheck = defineComponent({
       /**
        * Sets the color context of the component to one of CoreUI’s themed colors.
        *
-       * @values 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
+       * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'
        */
       color: Color,
       /**
        * Select the shape of the component.
        *
-       * @values 'rounded' | 'rounded-top' | 'rounded-end' | 'rounded-bottom' | 'rounded-start' | 'rounded-circle' | 'rounded-pill' | 'rounded-0' | 'rounded-1' | 'rounded-2' | 'rounded-3' | string
+       * @values 'rounded', 'rounded-top', 'rounded-end', 'rounded-bottom', 'rounded-start', 'rounded-circle', 'rounded-pill', 'rounded-0', 'rounded-1', 'rounded-2', 'rounded-3'
        */
       shape: Shape,
       /**
@@ -82,7 +82,6 @@ const CFormCheck = defineComponent({
      * Specifies the type of component.
      *
      * @values 'checkbox', 'radio'
-     * @default 'checkbox'
      */
     type: {
       type: String,

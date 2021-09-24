@@ -14,6 +14,8 @@ export const CButton = defineComponent({
     },
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
+     *
+     * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'
      */
     color: Color,
     /**
@@ -41,10 +43,14 @@ export const CButton = defineComponent({
     },
     /**
      * Select the shape of the component.
+     *
+     * @values 'rounded', 'rounded-top', 'rounded-end', 'rounded-bottom', 'rounded-start', 'rounded-circle', 'rounded-pill', 'rounded-0', 'rounded-1', 'rounded-2', 'rounded-3'
      */
     shape: Shape,
     /**
      * Size the component small or large.
+     *
+     * @values 'sm', 'lg'
      */
     size: {
       type: String,
@@ -56,6 +62,8 @@ export const CButton = defineComponent({
     },
     /**
      * Set the button variant to an outlined button or a ghost button.
+     *
+     * @values 'ghost', 'outline'
      */
     variant: {
       type: String,

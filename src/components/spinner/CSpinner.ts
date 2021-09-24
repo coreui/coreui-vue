@@ -27,8 +27,6 @@ const CSpinner = defineComponent({
     },
     /**
      * Component used for the root node. Either a string to use a HTML element or a component.
-     *
-     * @default 'div'
      */
     component: {
       type: String,
@@ -51,7 +49,6 @@ const CSpinner = defineComponent({
     /**
      * Set the button variant to an outlined button or a ghost button.
      *
-     * @default 'border'
      * @values 'border', 'grow'
      */
     variant: {
@@ -64,8 +61,6 @@ const CSpinner = defineComponent({
     },
     /**
      * Set visually hidden label for accessibility purposes.
-     *
-     * @default 'Loading...'
      */
     visuallyHiddenLabel: {
       type: String,

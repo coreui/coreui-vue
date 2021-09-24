@@ -5,6 +5,8 @@ const CFooter = defineComponent({
   props: {
     /**
      * Place footer in non-static positions.
+     *
+     * @values 'fixed', 'sticky'
      */
     position: {
       type: String,

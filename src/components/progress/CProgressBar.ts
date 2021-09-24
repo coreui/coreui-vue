@@ -20,8 +20,6 @@ const CProgressBar = defineComponent({
     color: Color,
     /**
      * The percent to progress the ProgressBar.
-     *
-     * @default 0
      */
     value: {
       type: Number,

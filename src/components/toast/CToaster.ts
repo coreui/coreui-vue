@@ -7,7 +7,6 @@ const CToaster = defineComponent({
      * Describes the placement of component.
      *
      * @values 'top-start', 'top', 'top-end', 'middle-start', 'middle', 'middle-end', 'bottom-start', 'bottom', 'bottom-end'
-     * @default 'top-end'
      */
     placement: {
       type: String,

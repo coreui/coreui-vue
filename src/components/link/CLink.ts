@@ -34,7 +34,12 @@ const CLink = defineComponent({
       required: false,
     },
   },
-  emits: ['click'],
+  emits: [
+    /**
+     * Event called when the user clicks on the component.
+     */
+    'click',
+  ],
   setup(props, { slots, emit }) {
     const handleClick = () => {
       emit('click', props.href)

@@ -7,17 +7,19 @@ const CAvatar = defineComponent({
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
      *
-     * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
+     * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'
      */
     color: Color,
     /**
      * Select the shape of the component.
      *
-     * @type 'rounded' | 'rounded-top' | 'rounded-end' | 'rounded-bottom' | 'rounded-start' | 'rounded-circle' | 'rounded-pill' | 'rounded-0' | 'rounded-1' | 'rounded-2' | 'rounded-3' | string
+     * @values 'rounded', 'rounded-top', 'rounded-end', 'rounded-bottom', 'rounded-start', 'rounded-circle', 'rounded-pill', 'rounded-0', 'rounded-1', 'rounded-2', 'rounded-3'
      */
     shape: Shape,
     /**
      * Size the component small, large, or extra large.
+     *
+     * @values 'sm', 'md', 'lg', 'xl'
      */
     size: {
       type: String,
@@ -38,7 +40,7 @@ const CAvatar = defineComponent({
     /**
      * Sets the color context of the status indicator to one of CoreUI’s themed colors.
      *
-     * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
+     * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'
      */
     status: {
       type: String,
@@ -60,7 +62,7 @@ const CAvatar = defineComponent({
     /**
      * Sets the text color of the component to one of CoreUI’s themed colors.
      *
-     * @value 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | 'white' | 'muted' | string
+     * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light', 'white', 'muted', 'text-high-emphasis', 'text-high-medium', 'text-disabled', 'text-high-emphasis-inverse', 'text-high-medium-inverse', 'text-disabled-inverse'
      */
     textColor: TextColor,
   },

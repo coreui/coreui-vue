@@ -6,7 +6,7 @@ const CButtonGroup = defineComponent({
     /**
      * Size the component small or large.
      *
-     * @type {'sm' | 'lg'}
+     * @values 'sm', 'lg'
      */
     size: {
       type: String,

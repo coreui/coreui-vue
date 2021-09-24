@@ -15,7 +15,7 @@ const CWidgetStatsD = defineComponent({
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
      *
-     * @values 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
+     * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'
      */
     color: Color,
     /**

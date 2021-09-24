@@ -6,8 +6,6 @@ const COffcanvas = defineComponent({
   props: {
     /**
      * Apply a backdrop on body while offcanvas is open.
-     *
-     * @default true
      */
     backdrop: {
       type: Boolean,
@@ -16,8 +14,6 @@ const COffcanvas = defineComponent({
     },
     /**
      * Closes the offcanvas when escape key is pressed.
-     *
-     * @default true
      */
     keyboard: {
       type: Boolean,

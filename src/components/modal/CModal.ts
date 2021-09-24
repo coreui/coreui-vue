@@ -8,7 +8,6 @@ const CModal = defineComponent({
     /**
      * Align the modal in the center or top of the screen.
      *
-     * @default 'top'
      * @values 'top', 'center'
      */
     alignment: {
@@ -21,8 +20,7 @@ const CModal = defineComponent({
     /**
      * Apply a backdrop on body while offcanvas is open.
      *
-     * @default true
-     * @values boolean, 'static'
+     * @values 'static'
      */
     backdrop: {
       type: [Boolean, String],
@@ -59,8 +57,6 @@ const CModal = defineComponent({
     },
     /**
      * Closes the modal when escape key is pressed.
-     *
-     * @default true
      */
     keyboard: {
       type: Boolean,

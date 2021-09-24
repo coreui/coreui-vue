@@ -21,7 +21,7 @@ const CTable = defineComponent({
     /**
      * Sets the border color of the component to one of CoreUI’s themed colors.
      *
-     * @value 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
+     * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'
      */
     borderColor: Color,
     /**

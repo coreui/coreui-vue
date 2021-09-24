@@ -6,7 +6,7 @@ const CHeader = defineComponent({
     /**
      * Defines optional container wrapping children elements.
      *
-     * @values boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fluid'
+     * @values boolean, 'sm', 'md', 'lg', 'xl', 'xxl', 'fluid'
      */
     container: {
       type: [Boolean, String],
@@ -20,6 +20,8 @@ const CHeader = defineComponent({
     },
     /**
      * Place header in non-static positions.
+     *
+     * @values 'fixed', 'sticky'
      */
     position: {
       type: String,

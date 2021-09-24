@@ -11,7 +11,7 @@ const CWidgetStatsB = defineComponent({
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors
      *
-     * @values 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
+     * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'
      */
     color: Color,
     /**
@@ -26,12 +26,11 @@ const CWidgetStatsB = defineComponent({
       /**
        * Sets the color context of the progress bar to one of CoreUI’s themed colors
        *
-       * @values 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | string
+       * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'
        */
       color: Color,
       /**
        * The percent to progress the ProgressBar (out of 100).
-       * @default 0
        */
       value: {
         type: Number,

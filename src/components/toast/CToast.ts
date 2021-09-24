@@ -7,8 +7,6 @@ const CToast = defineComponent({
   props: {
     /**
      * Auto hide the toast.
-     *
-     * @default true
      */
     autohide: {
       type: Boolean,
@@ -18,8 +16,7 @@ const CToast = defineComponent({
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
      *
-     * @default 'primary'
-     * @value 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light', string
+     * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light', string
      */
     color: Color,
     /**
@@ -32,8 +29,6 @@ const CToast = defineComponent({
     },
     /**
      * Optionally add a close button to component and allow it to self dismiss.
-     *
-     * @default true
      */
     dismissible: {
       type: Boolean,
@@ -55,8 +50,6 @@ const CToast = defineComponent({
     },
     /**
      * Toggle the visibility of component.
-     *
-     * @default true
      */
     visible: {
       type: Boolean,

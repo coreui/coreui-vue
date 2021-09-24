@@ -14,7 +14,12 @@ const CToastClose = defineComponent({
     },
     ...CCloseButton.props,
   },
-  emits: ['dismiss'],
+  emits: [
+    /**
+     * Event called before the dissmiss animation has started.
+     */
+    'dismiss',
+  ],
   setup(props, { slots, emit }) {
     // eslint-disable-next-line no-unused-vars
     const updateVisible = inject('updateVisible') as (visible: boolean) => void

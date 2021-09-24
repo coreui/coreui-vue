@@ -17,8 +17,6 @@ const CFormControlProps = {
   },
   /**
    * Component used for the root node. Either a string to use a HTML element or a component.
-   *
-   * @default 'input'
    */
   component: {
     type: String,
@@ -49,7 +47,7 @@ const CFormControlProps = {
   /**
    * Size the component small or large.
    *
-   * @type 'sm' | 'lg'
+   * @values 'sm', 'lg'
    */
   size: {
     validator(value: string): boolean {
@@ -59,9 +57,6 @@ const CFormControlProps = {
   },
   /**
    * Specifies the type of component.
-   *
-   * @type 'color' | 'file' | 'text' | string
-   * @default 'text'
    */
   type: {
     type: String,

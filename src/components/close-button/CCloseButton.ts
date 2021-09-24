@@ -18,7 +18,13 @@ export const CCloseButton = defineComponent({
       required: false,
     },
   },
-  emits: ['click'],
+
+  emits: [
+    /**
+     * Event called when the user clicks on the component.
+     */
+    'click',
+  ],
   setup(props, { emit }) {
     const handleClick = () => {
       emit('click')
