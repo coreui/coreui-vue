@@ -34,8 +34,6 @@ const CCarousel = defineComponent({
     dark: Boolean,
     /**
      * index of the active item.
-     *
-     * @default 0
      */
     index: {
       type: Number,
@@ -69,7 +67,6 @@ const CCarousel = defineComponent({
      * Set type of the transition.
      *
      * @values 'crossfade', 'slide'
-     * @default 'slide'
      */
     transition: {
       type: String,
@@ -78,6 +75,14 @@ const CCarousel = defineComponent({
       validator: (value: string) => {
         return ['crossfade', 'slide'].includes(value)
       },
+    },
+    /**
+     * Set whether the carousel should cycle continuously or have hard stops.
+     */
+    wrap: {
+      type: Boolean,
+      default: true,
+      required: false,
     },
   },
   setup(props, { slots }) {
@@ -174,7 +179,14 @@ const CCarousel = defineComponent({
 
     onUpdated(() => {
       watch(animating, () => {
-        !animating.value && cycle()
+        if (props.wrap) {
+          !animating.value && cycle()
+          return
+        }
+
+        if (!props.wrap && state.active < state.items.length - 1) {
+          !animating.value && cycle()
+        }
       })
     })
 
