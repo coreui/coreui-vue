@@ -9,8 +9,8 @@
 
 #### Events
 
-| Event name         | Properties | Description |
-| ------------------ | ---------- | ----------- |
-| <code>click</code> |            |
+| Event name         | Properties | Description                                         |
+| ------------------ | ---------- | --------------------------------------------------- |
+| <code>click</code> |            | Event called when the user clicks on the component. |
 
 ---

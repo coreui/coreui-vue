@@ -2,8 +2,8 @@
 
 #### Props
 
-| Prop name             | Description                           | Type   | Values | Default   |
-| --------------------- | ------------------------------------- | ------ | ------ | --------- |
-| <code>position</code> | Place footer in non-static positions. | string | -      | undefined |
+| Prop name             | Description                           | Type   | Values                | Default |
+| --------------------- | ------------------------------------- | ------ | --------------------- | ------- |
+| <code>position</code> | Place footer in non-static positions. | string | `'fixed'`, `'sticky'` | -       |
 
 ---
