@@ -8,6 +8,8 @@ export const CAlert = defineComponent({
   props: {
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
+     *
+     * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'
      */
     color: Color,
     /**
@@ -20,6 +22,8 @@ export const CAlert = defineComponent({
     },
     /**
      * Set the alert variant to a solid.
+     *
+     * @values 'solid'
      */
     variant: {
       type: String,
