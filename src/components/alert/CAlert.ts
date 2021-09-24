@@ -1,4 +1,4 @@
-import { defineComponent, h, ref, Transition } from 'vue'
+import { defineComponent, h, ref, Transition, watch } from 'vue'
 
 import { Color } from '../props'
 import { CCloseButton } from '../close-button/CCloseButton'
@@ -46,6 +46,14 @@ export const CAlert = defineComponent({
   ],
   setup(props, { slots, emit }) {
     const visible = ref(props.visible)
+
+    watch(
+      () => props.visible,
+      () => {
+        visible.value = props.visible
+      },
+    )
+
     const handleDismiss = () => {
       visible.value = false
       emit('dismiss')
@@ -56,8 +64,10 @@ export const CAlert = defineComponent({
         Transition,
         {
           name: 'fade',
-          duration: 200,
-          enterActiveClass: 'fade show',
+          duration: 350,
+          enterFromClass: '',
+          enterActiveClass: 'fade',
+          enterToClass: 'fade show',
           leaveActiveClass: 'fade',
         },
         {
