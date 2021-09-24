@@ -17,6 +17,7 @@ const renderTags = (tags) => {
 };
 const tmpl = (props) => {
   let ret = '';
+  const replaceToString = /Color|TextColor|Shape/i;
   props.forEach(pr => {
     const p = pr.name
     let t = pr.description ?? ''
@@ -25,7 +26,7 @@ const tmpl = (props) => {
     const v = pr.values?.map(pv => `\`${pv}\``).join(', ') ?? '-'
     const d = pr.defaultValue?.value ?? ''
     if (pr.description && !pr.description.includes('@ignore')) {
-      ret += `| <code>${mdclean(p)}</code> | ${mdclean(t)} | ${mdclean(n)} | ${mdclean(v)} | ${mdclean(d)} |\n`;
+      ret += `| <code>${mdclean(p)}</code> | ${mdclean(t)} | ${mdclean(n.replace(replaceToString, 'string'))} | ${mdclean(v)} | ${mdclean(d.replace('undefined', '-'))} |\n`;
     }
   });
   return ret;
