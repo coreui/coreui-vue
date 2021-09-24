@@ -8,13 +8,11 @@ const CBadge = defineComponent({
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
      *
-     * @type 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light'
+     * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'
      */
     color: Color,
     /**
      * Component used for the root node. Either a string to use a HTML element or a component.
-     *
-     * @default 'span'
      */
     component: {
       type: String,
@@ -22,15 +20,28 @@ const CBadge = defineComponent({
       default: 'span',
     },
     /**
+     * Position badge in one of the corners of a link or button.
+     *
+     * @values 'top-start', 'top-end', 'bottom-end', 'botttom-start'
+     */
+    position: {
+      type: String,
+      default: undefined,
+      required: false,
+      validator: (value: string) => {
+        return ['top-start', 'top-end', 'bottom-end', 'botttom-start'].includes(value)
+      },
+    },
+    /**
      * Select the shape of the component.
      *
-     * @type 'rounded' | 'rounded-top' | 'rounded-end' | 'rounded-bottom' | 'rounded-start' | 'rounded-circle' | 'rounded-pill' | 'rounded-0' | 'rounded-1' | 'rounded-2' | 'rounded-3' | string
+     * @values 'rounded', 'rounded-top', 'rounded-end', 'rounded-bottom', 'rounded-start', 'rounded-circle', 'rounded-pill', 'rounded-0', 'rounded-1', 'rounded-2', 'rounded-3'
      */
     shape: Shape,
     /**
      * Size the component small.
      *
-     * @type 'sm'
+     * @values 'sm'
      */
     size: {
       type: String,
@@ -43,7 +54,7 @@ const CBadge = defineComponent({
     /**
      * Sets the text color of the component to one of CoreUI’s themed colors.
      *
-     * @value 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | 'white' | 'muted' | string
+     * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light', 'white', 'muted', 'text-high-emphasis', 'text-high-medium', 'text-disabled', 'text-high-emphasis-inverse', 'text-high-medium-inverse', 'text-disabled-inverse'
      */
     textColor: TextColor,
   },
@@ -56,8 +67,13 @@ const CBadge = defineComponent({
             'badge',
             {
               [`bg-${props.color}`]: props.color,
-              [`text-${props.textColor}`]: props.textColor,
+              'position-absolute translate-middle': props.position,
+              'top-0': props.position?.includes('top'),
+              'top-100': props.position?.includes('bottom'),
+              'start-100': props.position?.includes('end'),
+              'start-0': props.position?.includes('start'),
               [`badge-${props.size}`]: props.size,
+              [`text-${props.textColor}`]: props.textColor,
             },
             props.shape,
           ],

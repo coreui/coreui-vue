@@ -8,7 +8,7 @@ description: Vue badge component is small count and labeling component.
 
 Badge component scales to suit the size of the parent element by using relative font sizing and `em` units.
 
-## Basic usage
+### Basic usage
 
 ::: demo
 <h1>Example heading <CBadge color="secondary">New</CBadge></h1>
@@ -54,6 +54,83 @@ Unless the context is clear, consider including additional context with a visual
 <CButton color="primary">
   Profile <CBadge color="secondary">9</CBadge>
   <span class="visually-hidden">unread messages</span>
+</CButton>
+```
+
+### Positioned
+
+Use `position` prop to modify a component and position it in the corner of a link or button.
+
+::: demo
+<CButton color="primary" class="position-relative">
+  Profile
+  <CBadge color="danger" position="top-start" shape="rounded-pill">
+    99+ <span class="visually-hidden">unread messages</span>
+  </CBadge>
+</CButton>
+<CButton color="primary" class="position-relative ms-1">
+  Profile
+  <CBadge color="danger" position="top-end" shape="rounded-pill">
+    99+ <span class="visually-hidden">unread messages</span>
+  </CBadge>
+</CButton>
+<br/>
+<CButton color="primary" class="position-relative ">
+  Profile
+  <CBadge color="danger" position="bottom-start" shape="rounded-pill">
+    99+ <span class="visually-hidden">unread messages</span>
+  </CBadge>
+</CButton>
+<CButton color="primary" class="position-relative ms-1">
+  Profile
+  <CBadge color="danger" position="bottom-end" shape="rounded-pill">
+    99+ <span class="visually-hidden">unread messages</span>
+  </CBadge>
+</CButton>
+:::
+```vue
+<CButton color="primary" class="position-relative">
+  Profile
+  <CBadge color="danger" position="top-start" shape="rounded-pill">
+    99+ <span class="visually-hidden">unread messages</span>
+  </CBadge>
+</CButton>
+<CButton color="primary" class="position-relative">
+  Profile
+  <CBadge color="danger" position="top-end" shape="rounded-pill">
+    99+ <span class="visually-hidden">unread messages</span>
+  </CBadge>
+</CButton>
+<CButton color="primary" class="position-relative">
+  Profile
+  <CBadge color="danger" position="bottom-start" shape="rounded-pill">
+    99+ <span class="visually-hidden">unread messages</span>
+  </CBadge>
+</CButton>
+<CButton color="primary" class="position-relative">
+  Profile
+  <CBadge color="danger" position="bottom-end" shape="rounded-pill">
+    99+ <span class="visually-hidden">unread messages</span>
+  </CBadge>
+</CButton>
+```
+
+You can also create more generic indicators without a counter using a few more utilities.
+
+::: demo
+<CButton color="primary" class="position-relative">
+  Profile
+  <CBadge class="border border-light p-2" color="danger" position="top-end" shape="rounded-circle">
+    <span class="visually-hidden">New alerts</span>
+  </CBadge>
+</CButton>
+:::
+```vue
+<CButton color="primary" class="position-relative">
+  Profile
+  <CBadge class="border border-light p-2" color="danger" position="top-end" shape="rounded-circle">
+    <span class="visually-hidden">New alerts</span>
+  </CBadge>
 </CButton>
 ```
 
