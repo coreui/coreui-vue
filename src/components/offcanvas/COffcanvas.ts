@@ -1,4 +1,4 @@
-import { defineComponent, h, ref, RendererElement, Transition } from 'vue'
+import { defineComponent, h, ref, RendererElement, Transition, watch } from 'vue'
 import { CBackdrop } from '../backdrop'
 
 const COffcanvas = defineComponent({
@@ -34,6 +34,14 @@ const COffcanvas = defineComponent({
       },
     },
     /**
+     * Allow body scrolling while offcanvas is open
+     */
+    scroll: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
+    /**
      * Toggle the visibility of offcanvas component.
      */
     visible: {
@@ -49,6 +57,30 @@ const COffcanvas = defineComponent({
   ],
   setup(props, { slots, emit }) {
     const offcanvasRef = ref()
+    const visible = ref(props.visible)
+
+    watch(
+      () => props.visible,
+      () => {
+        visible.value = props.visible
+      },
+    )
+
+    watch(visible, () => {
+      if (visible.value) {
+        if (!props.scroll) {
+          document.body.style.overflow = 'hidden'
+          document.body.style.paddingRight = '0px'
+        }
+        return
+      }
+
+      if (!props.scroll) {
+        document.body.style.removeProperty('overflow')
+        document.body.style.removeProperty('padding-right')
+      }
+    })
+
     const handleEnter = (el: RendererElement, done: () => void) => {
       el.addEventListener('transitionend', () => {
         done()
@@ -75,6 +107,7 @@ const COffcanvas = defineComponent({
     }
 
     const handleDismiss = () => {
+      visible.value = false
       emit('dismiss')
     }
 
@@ -101,7 +134,7 @@ const COffcanvas = defineComponent({
           onAfterLeave: (el) => handleAfterLeave(el),
         },
         () =>
-          props.visible &&
+          visible.value &&
           h(
             'div',
             {
@@ -112,6 +145,7 @@ const COffcanvas = defineComponent({
                 },
               ],
               ref: offcanvasRef,
+              role: 'dialog',
             },
             slots.default && slots.default(),
           ),
@@ -119,7 +153,7 @@ const COffcanvas = defineComponent({
       props.backdrop &&
         h(CBackdrop, {
           class: 'modal-backdrop',
-          visible: props.visible,
+          visible: visible.value,
         }),
     ]
   },

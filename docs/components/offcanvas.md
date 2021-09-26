@@ -209,6 +209,93 @@ Try the top, right, and bottom examples out below.
   }
 </script>
 ```
+
+## Backdrop 
+
+Scrolling the `<body>` element is disabled when an offcanvas and its backdrop are visible. Use the `scroll` property to toggle `<body>` scrolling and `backdrop` to toggle the backdrop.
+
+::: demo
+<CButton color="primary" @click="() => { visibleScrolling = !visibleScrolling }">Enable body scrolling</CButton>
+<CButton color="primary" @click="() => { visibleWithBackdrop = !visibleWithBackdrop }">Enable backdrop (default)</CButton>
+<CButton color="primary" @click="() => { visibleWithBothOptions = !visibleWithBothOptions }">Enable both scrolling & backdrop</CButton>
+<COffcanvas :backdrop="false" placement="start" scroll :visible="visibleScrolling" @dismiss="() => { visibleScrolling = !visibleScrolling }">
+  <COffcanvasHeader>
+    <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+    <CCloseButton class="text-reset" @click="() => { visibleScrolling = false }"/>
+  </COffcanvasHeader>
+  <COffcanvasBody>
+    <p>Try scrolling the rest of the page to see this option in action.</p>
+  </COffcanvasBody>
+</COffcanvas>
+<COffcanvas placement="start" :visible="visibleWithBackdrop" @dismiss="() => { visibleWithBackdrop = !visibleWithBackdrop }">
+  <COffcanvasHeader>
+    <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+    <CCloseButton class="text-reset" @click="() => { visibleWithBackdrop = false }"/>
+  </COffcanvasHeader>
+  <COffcanvasBody>
+    <p>.....</p>
+  </COffcanvasBody>
+</COffcanvas>
+<COffcanvas placement="start" scroll :visible="visibleWithBothOptions" @dismiss="() => { visibleWithBothOptions = !visibleWithBothOptions }">
+  <COffcanvasHeader>
+    <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+    <CCloseButton class="text-reset" @click="() => { visibleWithBothOptions = false }"/>
+  </COffcanvasHeader>
+  <COffcanvasBody>
+    <p>Try scrolling the rest of the page to see this option in action.</p>
+  </COffcanvasBody>
+</COffcanvas>
+:::
+```vue
+<template>
+  <CButton color="primary" @click="() => { visibleScrolling = !visibleScrolling }">Enable body scrolling</CButton>
+  <CButton color="primary" @click="() => { visibleWithBackdrop = !visibleWithBackdrop }">Enable backdrop (default)</CButton>
+  <CButton color="primary" @click="() => { visibleWithBothOptions = !visibleWithBothOptions }">Enable both scrolling &amp; backdrop</CButton>
+  <COffcanvas :backdrop="false" placement="start" scroll :visible="visibleScrolling" @dismiss="() => { visibleScrolling = !visibleScrolling }">
+    <COffcanvasHeader>
+      <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+      <CCloseButton class="text-reset" @click="() => { visibleScrolling = false }"/>
+    </COffcanvasHeader>
+    <COffcanvasBody>
+      <p>Try scrolling the rest of the page to see this option in action.</p>
+    </COffcanvasBody>
+  </COffcanvas>
+  <COffcanvas placement="start" :visible="visibleWithBackdrop" @dismiss="() => { visibleWithBackdrop = !visibleWithBackdrop }">
+    <COffcanvasHeader>
+      <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+      <CCloseButton class="text-reset" @click="() => { visibleWithBackdrop = false }"/>
+    </COffcanvasHeader>
+    <COffcanvasBody>
+      <p>.....</p>
+    </COffcanvasBody>
+  </COffcanvas>
+  <COffcanvas placement="start" scroll :visible="visibleWithBothOptions" @dismiss="() => { visibleWithBothOptions = !visibleWithBothOptions }">
+    <COffcanvasHeader>
+      <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+      <CCloseButton class="text-reset" @click="() => { visibleWithBothOptions = false }"/>
+    </COffcanvasHeader>
+    <COffcanvasBody>
+      <p>Try scrolling the rest of the page to see this option in action.</p>
+    </COffcanvasBody>
+  </COffcanvas>
+</template>
+<script>
+  export default {
+    data() {
+      return { 
+        visibleScrolling: false,
+        visibleWithBackdrop: false,
+        visibleWithBothOptions: false,
+      }
+    }
+  }
+</script>
+```
+
+## Accessibility
+
+Since the offcanvas panel is conceptually a modal dialog, be sure to add `aria-labelledby="..."`—referencing the offcanvas title—to `<COffcanvas>`. Note that you don’t need to add `role="dialog"` since we already add it automatically.
+
 <script>
   export default {
     data() {
@@ -217,6 +304,9 @@ Try the top, right, and bottom examples out below.
         visibleTop: false,
         visibleEnd: false,
         visibleBottom: false,
+        visibleScrolling: false,
+        visibleWithBackdrop: false,
+        visibleWithBothOptions: false,
       }
     }
   }
