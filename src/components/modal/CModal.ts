@@ -220,6 +220,7 @@ const CModal = defineComponent({
                     [`modal-${props.size}`]: props.size,
                   },
                 ],
+                role: 'dialog',
               },
               h(
                 'div',
