@@ -7,13 +7,13 @@ const CWidgetStatsF = defineComponent({
   name: 'CWidgetStatsF',
   props: {
     /**
-     * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
+     * Sets the color context of the component to one of CoreUI’s themed colors.
      *
      * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'
      */
     color: Color,
     /**
-     * Set padding of your component. [docs]
+     * Set padding of your component.
      */
     padding: {
       type: Boolean,

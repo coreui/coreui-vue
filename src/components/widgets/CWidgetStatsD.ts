@@ -13,7 +13,7 @@ const CWidgetStatsD = defineComponent({
   name: 'CWidgetStatsD',
   props: {
     /**
-     * Sets the color context of the component to one of CoreUI’s themed colors. [docs]
+     * Sets the color context of the component to one of CoreUI’s themed colors.
      *
      * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'
      */
