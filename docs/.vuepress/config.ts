@@ -26,7 +26,7 @@ export default defineUserConfig<DefaultThemeOptions>({
   extendsMarkdown: (md) => {
     md.use(require('markdown-it-include')),
       (md.renderer.rules.table_open = function (tokens, idx) {
-        return '<table class="table table-striped">'
+        return '<table class="table table-striped table-api">'
       })
   },
   markdown: {
