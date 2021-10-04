@@ -44,9 +44,9 @@ export const CAlert = defineComponent({
   },
   emits: [
     /**
-     * Event called before the dissmiss animation has started.
+     * Callback fired when the component requests to be closed.
      */
-    'dismiss',
+    'close',
   ],
   setup(props, { slots, emit }) {
     const visible = ref(props.visible)
@@ -60,7 +60,7 @@ export const CAlert = defineComponent({
 
     const handleDismiss = () => {
       visible.value = false
-      emit('dismiss')
+      emit('close')
     }
 
     return () =>
