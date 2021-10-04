@@ -2,8 +2,8 @@
 
 #### Props
 
-| Prop name                | Description                                     | Type    | Values | Default |
-| ------------------------ | ----------------------------------------------- | ------- | ------ | ------- |
-| <code>closeButton</code> | Automatically add a close button to the header. | boolean | -      |         |
+| Prop name       | Description                                     | Type    | Values | Default |
+| --------------- | ----------------------------------------------- | ------- | ------ | ------- |
+| **closeButton** | Automatically add a close button to the header. | boolean | -      |         |
 
 ---

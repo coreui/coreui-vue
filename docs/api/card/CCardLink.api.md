@@ -2,8 +2,8 @@
 
 #### Props
 
-| Prop name         | Description                                                        | Type   | Values | Default |
-| ----------------- | ------------------------------------------------------------------ | ------ | ------ | ------- |
-| <code>href</code> | The href attribute specifies the URL of the page the link goes to. | string | -      | '#'     |
+| Prop name | Description                                                        | Type   | Values | Default |
+| --------- | ------------------------------------------------------------------ | ------ | ------ | ------- |
+| **href**  | The href attribute specifies the URL of the page the link goes to. | string | -      | '#'     |
 
 ---

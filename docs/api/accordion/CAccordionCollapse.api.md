@@ -2,8 +2,8 @@
 
 #### Props
 
-| Prop name            | Description                         | Type    | Values | Default |
-| -------------------- | ----------------------------------- | ------- | ------ | ------- |
-| <code>visible</code> | Toggle the visibility of component. | boolean | -      |         |
+| Prop name   | Description                         | Type    | Values | Default |
+| ----------- | ----------------------------------- | ------- | ------ | ------- |
+| **visible** | Toggle the visibility of component. | boolean | -      |         |
 
 ---

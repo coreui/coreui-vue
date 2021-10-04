@@ -2,8 +2,8 @@
 
 #### Props
 
-| Prop name            | Description   | Type           | Values | Default |
-| -------------------- | ------------- | -------------- | ------ | ------- |
-| <code>itemKey</code> | The item key. | number\|string | -      | -       |
+| Prop name   | Description   | Type           | Values | Default |
+| ----------- | ------------- | -------------- | ------ | ------- |
+| **itemKey** | The item key. | number\|string | -      | -       |
 
 ---
