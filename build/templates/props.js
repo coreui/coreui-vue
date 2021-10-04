@@ -26,7 +26,7 @@ const tmpl = (props) => {
     const v = pr.values?.map(pv => `\`${pv}\``).join(', ') ?? '-'
     const d = pr.defaultValue?.value ?? ''
     if (pr.description && !pr.description.includes('@ignore')) {
-      ret += `| <code>${mdclean(p)}</code> | ${mdclean(t)} | ${mdclean(n.replace(replaceToString, 'string'))} | ${mdclean(v)} | ${mdclean(d.replace('undefined', '-'))} |\n`;
+      ret += `| **${mdclean(p)}** | ${mdclean(t)} | ${mdclean(n.replace(replaceToString, 'string'))} | ${mdclean(v)} | ${mdclean(d.replace('undefined', '-'))} |\n`;
     }
   });
   return ret;
