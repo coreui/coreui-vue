@@ -106,9 +106,17 @@ const CModal = defineComponent({
   },
   emits: [
     /**
-     * Event called before the dissmiss animation has started.
+     * Callback fired when the component requests to be closed.
      */
-    'dismiss',
+    'close',
+    /**
+     * Callback fired when the component requests to be closed.
+     */
+    'close-prevented',
+    /**
+     * Callback fired when the modal is shown, its backdrop is static and a click outside the modal or an escape key press is performed with the keyboard option set to false.
+     */
+    'show',
   ],
   setup(props, { slots, attrs, emit }) {
     const modalRef = ref()
@@ -131,6 +139,7 @@ const CModal = defineComponent({
       setTimeout(() => {
         el.classList.add('show')
       }, 1)
+      emit('show')
     }
     const handleAfterEnter = () => {
       window.addEventListener('click', handleClickOutside)
@@ -150,7 +159,7 @@ const CModal = defineComponent({
     }
 
     const handleDismiss = () => {
-      emit('dismiss')
+      emit('close')
       visible.value = false
     }
 
@@ -161,6 +170,7 @@ const CModal = defineComponent({
         }
         if (props.backdrop === 'static') {
           modalRef.value.classList.add('modal-static')
+          emit('close-prevented')
           setTimeout(() => {
             modalRef.value.classList.remove('modal-static')
           }, 300)

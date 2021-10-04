@@ -1,4 +1,4 @@
-import { defineComponent, h, toRefs } from 'vue'
+import { defineComponent, h, ref, RendererElement, Transition, vShow, withDirectives } from 'vue'
 
 const CTabPane = defineComponent({
   name: 'CTabPane',
@@ -12,22 +12,66 @@ const CTabPane = defineComponent({
       required: false,
     },
   },
-  setup(props, { slots }) {
-    const { visible } = toRefs(props)
+  emits: [
+    /**
+     * Callback fired when the component requests to be hidden.
+     */
+    'hide',
+    /**
+     * Callback fired when the component requests to be shown.
+     */
+    'show',
+  ],
+  setup(props, { slots, emit }) {
+    const tabPaneRef = ref()
+    const firstRender = ref(true)
+
+    const handleEnter = (el: RendererElement, done: () => void) => {
+      firstRender.value = false
+      emit('show')
+      setTimeout(() => {
+        el.classList.add('show')
+      }, 1)
+      el.addEventListener('transitionend', () => {
+        done()
+      })
+    }
+
+    const handleLeave = (el: RendererElement, done: () => void) => {
+      firstRender.value = false
+      emit('hide')
+      el.classList.remove('show')
+      el.addEventListener('transitionend', () => {
+        done()
+      })
+    }
 
     return () =>
       h(
-        'div',
+        Transition,
         {
-          class: [
-            'tab-pane',
-            'fade',
-            {
-              'show active': visible.value,
-            },
-          ],
+          onEnter: (el, done) => handleEnter(el, done),
+          onLeave: (el, done) => handleLeave(el, done),
         },
-        slots.default && slots.default(),
+        () =>
+          withDirectives(
+            h(
+              'div',
+              {
+                class: [
+                  'tab-pane',
+                  'fade',
+                  {
+                    active: props.visible,
+                    show: firstRender.value && props.visible,
+                  },
+                ],
+                ref: tabPaneRef,
+              },
+              slots.default && slots.default(),
+            ),
+            [[vShow, props.visible]],
+          ),
       )
   },
 })

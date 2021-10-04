@@ -124,7 +124,17 @@ const CDropdown = defineComponent({
       required: false,
     },
   },
-  setup(props, { slots }) {
+  emits: [
+    /**
+     * Callback fired when the component requests to be hidden.
+     */
+    'hide',
+    /**
+     * Callback fired when the component requests to be shown.
+     */
+    'show',
+  ],
+  setup(props, { slots, emit }) {
     const dropdownRef = ref()
     const dropdownMenuRef = ref()
     const placement = ref(props.placement)
@@ -179,10 +189,6 @@ const CDropdown = defineComponent({
       popper.value = undefined
     }
 
-    // const togglePopper = () => {
-    //   visible.value ? initPopper() : destroyPopper()
-    // }
-
     const toggleMenu = function () {
       if (props.disabled === false) {
         if (visible.value === true) {
@@ -221,7 +227,10 @@ const CDropdown = defineComponent({
       window.removeEventListener('keyup', handleKeyup)
     })
 
-    watch(visible, () => props.popper && (visible.value ? initPopper() : destroyPopper()))
+    watch(visible, () => {
+      props.popper && (visible.value ? initPopper() : destroyPopper())
+      visible.value ? emit('show') : emit('hide')
+    })
 
     return () =>
       props.variant === 'input-group'

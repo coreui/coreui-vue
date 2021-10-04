@@ -59,9 +59,13 @@ const CToast = defineComponent({
   },
   emits: [
     /**
-     * Event called before the dissmiss animation has started.
+     * Callback fired when the component requests to be closed.
      */
-    'dismiss',
+    'close',
+    /**
+     * Callback fired when the component requests to be shown.
+     */
+    'show',
   ],
   setup(props, { slots, emit }) {
     const visible = ref(props.visible)
@@ -79,6 +83,11 @@ const CToast = defineComponent({
       setTimeout(() => {
         el.classList.add('show')
       }, 1)
+      if (props.key) {
+        emit('show', props.key)
+      } else {
+        emit('show')
+      }
     }
     const handleBeforeLeave = (el: RendererElement) => {
       el.classList.remove('show')
@@ -92,9 +101,9 @@ const CToast = defineComponent({
     const handleAfterLeave = (el: RendererElement) => {
       el.classList.add('hide')
       if (props.key) {
-        emit('dismiss', props.key)
+        emit('close', props.key)
       } else {
-        emit('dismiss')
+        emit('close')
       }
     }
 

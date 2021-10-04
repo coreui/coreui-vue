@@ -51,9 +51,13 @@ const COffcanvas = defineComponent({
   },
   emits: [
     /**
-     * Event called before the dissmiss animation has started.
+     * Callback fired when the component requests to be hidden.
      */
-    'dismiss',
+    'hide',
+    /**
+     * Callback fired when the component requests to be shown.
+     */
+    'show',
   ],
   setup(props, { slots, emit }) {
     const offcanvasRef = ref()
@@ -82,6 +86,7 @@ const COffcanvas = defineComponent({
     })
 
     const handleEnter = (el: RendererElement, done: () => void) => {
+      emit('show')
       el.addEventListener('transitionend', () => {
         done()
       })
@@ -108,19 +113,19 @@ const COffcanvas = defineComponent({
 
     const handleDismiss = () => {
       visible.value = false
-      emit('dismiss')
+      emit('hide')
     }
 
     const handleKeyUp = (event: KeyboardEvent) => {
       if (offcanvasRef.value && !offcanvasRef.value.contains(event.target as HTMLElement)) {
-        if (event.key === 'Escape' && props.keyboard) {
+        if (event.key === 'Escape' && props.keyboard && props.backdrop) {
           return handleDismiss()
         }
       }
     }
     const handleClickOutside = (event: Event) => {
       if (offcanvasRef.value && !offcanvasRef.value.contains(event.target as HTMLElement)) {
-        handleDismiss()
+        props.backdrop && handleDismiss()
       }
     }
 

@@ -62,6 +62,14 @@ const CSidebar = defineComponent({
   },
   emits: [
     /**
+     * Callback fired when the component requests to be hidden.
+     */
+    'hide',
+    /**
+     * Callback fired when the component requests to be shown.
+     */
+    'show',
+    /**
      * Event emitted after visibility of component changed.
      */
     'visible-change',
@@ -74,6 +82,7 @@ const CSidebar = defineComponent({
 
     watch(inViewport, () => {
       emit('visible-change', inViewport.value)
+      inViewport.value ? emit('show') : emit('hide')
     })
 
     watch(

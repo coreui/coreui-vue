@@ -11,12 +11,23 @@ const CCollapse = defineComponent({
       required: false,
     },
   },
-  setup(props, { slots }) {
+  emits: [
+    /**
+     * Callback fired when the component requests to be hidden.
+     */
+    'hide',
+    /**
+     * Callback fired when the component requests to be shown.
+     */
+    'show',
+  ],
+  setup(props, { slots, emit }) {
     const handleBeforeEnter = (el: RendererElement) => {
       el.classList.remove('collapse')
       el.classList.add('collapsing')
     }
     const handleEnter = (el: RendererElement, done: () => void) => {
+      emit('show')
       el.addEventListener('transitionend', () => {
         el.classList.add('collapse', 'show')
         done()
@@ -33,6 +44,7 @@ const CCollapse = defineComponent({
       el.style.height = `${el.scrollHeight}px`
     }
     const handleLeave = (el: RendererElement, done: () => void) => {
+      emit('hide')
       el.classList.remove('collapse', 'show')
       el.classList.add('collapsing')
       el.addEventListener('transitionend', () => {
