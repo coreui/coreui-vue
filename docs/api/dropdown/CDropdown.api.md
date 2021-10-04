@@ -14,4 +14,11 @@
 | <code>variant</code>   | Set the dropdown variant to an btn-group, dropdown, input-group, and nav-item.                                                                                       | string         | `'btn-group'`, `'dropdown'`, `'input-group'`, `'nav-item'`                                                                                                                                    | 'btn-group'    |
 | <code>visible</code>   | Toggle the visibility of dropdown menu component.                                                                                                                    | boolean        | -                                                                                                                                                                                             |                |
 
+#### Events
+
+| Event name        | Properties | Description                                              |
+| ----------------- | ---------- | -------------------------------------------------------- |
+| <code>hide</code> |            | Callback fired when the component requests to be hidden. |
+| <code>show</code> |            | Callback fired when the component requests to be shown.  |
+
 ---

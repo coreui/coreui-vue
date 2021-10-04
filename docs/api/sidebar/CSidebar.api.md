@@ -13,8 +13,10 @@
 
 #### Events
 
-| Event name                  | Properties | Description                                          |
-| --------------------------- | ---------- | ---------------------------------------------------- |
-| <code>visible-change</code> |            | Event emitted after visibility of component changed. |
+| Event name                  | Properties | Description                                              |
+| --------------------------- | ---------- | -------------------------------------------------------- |
+| <code>hide</code>           |            | Callback fired when the component requests to be hidden. |
+| <code>show</code>           |            | Callback fired when the component requests to be shown.  |
+| <code>visible-change</code> |            | Event emitted after visibility of component changed.     |
 
 ---

@@ -12,8 +12,9 @@
 
 #### Events
 
-| Event name           | Properties | Description                                             |
-| -------------------- | ---------- | ------------------------------------------------------- |
-| <code>dismiss</code> |            | Event called before the dissmiss animation has started. |
+| Event name        | Properties | Description                                              |
+| ----------------- | ---------- | -------------------------------------------------------- |
+| <code>hide</code> |            | Callback fired when the component requests to be hidden. |
+| <code>show</code> |            | Callback fired when the component requests to be shown.  |
 
 ---

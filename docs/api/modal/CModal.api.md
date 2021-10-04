@@ -17,8 +17,10 @@
 
 #### Events
 
-| Event name           | Properties | Description                                             |
-| -------------------- | ---------- | ------------------------------------------------------- |
-| <code>dismiss</code> |            | Event called before the dissmiss animation has started. |
+| Event name                   | Properties | Description                                                                                                                                                             |
+| ---------------------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <code>close</code>           |            | Callback fired when the component requests to be closed.                                                                                                                |
+| <code>close-prevented</code> |            | Callback fired when the component requests to be closed.                                                                                                                |
+| <code>show</code>            |            | Callback fired when the modal is shown, its backdrop is static and a click outside the modal or an escape key press is performed with the keyboard option set to false. |
 
 ---
