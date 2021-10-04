@@ -129,6 +129,7 @@ const CDropdownToggle = defineComponent({
               active: props.active,
               disabled: props.disabled,
               onClick: () => toggleMenu(),
+              ...(props.component === 'button' && { type: 'button' }),
               ref: dropdownRef,
             },
             {
