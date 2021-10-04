@@ -16,7 +16,7 @@ Sidebar come with built-in support for a handful of sub-components. Choose from 
 ## Examples
 
 ::: demo
-<CSidebar>
+<CSidebar visible>
   <CSidebarBrand>Sidebar Brand</CSidebarBrand>
   <CSidebarNav>
     <li class="nav-title">Nav Title</li>
@@ -56,7 +56,7 @@ Sidebar come with built-in support for a handful of sub-components. Choose from 
 </CSidebar>
 :::
 ```vue
-<CSidebar>
+<CSidebar visible>
   <CSidebarBrand>Sidebar Brand</CSidebarBrand>
   <CSidebarNav>
     <li class="nav-title">Nav Title</li>

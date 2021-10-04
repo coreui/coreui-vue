@@ -23,7 +23,7 @@ Toasts are as flexible as you need and have very little required markup. At a mi
 
 ::: demo
 <CToast :autohide="false">
-<CToastHeader close>
+<CToastHeader closeButton>
 <svg
       class="rounded me-2"
       width="20"
@@ -44,7 +44,7 @@ Toasts are as flexible as you need and have very little required markup. At a mi
 
 ```vue
 <CToast :autohide="false">
-  <CToastHeader close>
+  <CToastHeader closeButton>
     <svg
       class="rounded me-2"
       width="20"
@@ -67,7 +67,7 @@ Toasts are as flexible as you need and have very little required markup. At a mi
 <CButton color="primary" @click="createToast">Send a toast</CButton>
 <CToaster placement="top-end">
   <CToast v-for="(toast, index) in toasts">
-    <CToastHeader close>
+    <CToastHeader closeButton>
     <span class="me-auto fw-bold">{{toast.title}}</span>
     <small>7 min ago</small>
     </CToastHeader>
@@ -82,7 +82,7 @@ Toasts are as flexible as you need and have very little required markup. At a mi
   <CButton color="primary" @click="createToast">Send a toast</CButton>
   <CToaster placement="top-end">
     <CToast v-for="(toast, index) in toasts">
-      <CToastHeader close>
+      <CToastHeader closeButton>
       <span class="me-auto fw-bold">{{toast.title}}</span>
       <small>7 min ago</small>
       </CToastHeader>
@@ -137,7 +137,7 @@ Toasts are slightly translucent to blend in with what's below them.
 
 ::: demo-dark
 <CToast :autohide="false">
-<CToastHeader close>
+<CToastHeader closeButton>
 <svg
       class="rounded me-2"
       width="20"
@@ -158,7 +158,7 @@ Toasts are slightly translucent to blend in with what's below them.
 
 ```vue
 <CToast :autohide="false">
-  <CToastHeader close>
+  <CToastHeader closeButton>
     <svg
       class="rounded me-2"
       width="20"
@@ -184,7 +184,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
 ::: demo
 <CToaster>
 <CToast :autohide="false">
-<CToastHeader close>
+<CToastHeader closeButton>
 <svg
         class="rounded me-2"
         width="20"
@@ -202,7 +202,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
 <CToastBody>Hello, world! This is a toast message.</CToastBody>
 </CToast>
 <CToast :autohide="false">
-<CToastHeader close>
+<CToastHeader closeButton>
 <svg
         class="rounded me-2"
         width="20"
@@ -225,7 +225,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
 ```vue
 <CToaster>
   <CToast :autohide="false">
-    <CToastHeader close>
+    <CToastHeader closeButton>
       <svg
         class="rounded me-2"
         width="20"
@@ -243,7 +243,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
     <CToastBody>Hello, world! This is a toast message.</CToastBody>
   </CToast>
   <CToast :autohide="false">
-    <CToastHeader close>
+    <CToastHeader closeButton>
       <svg
         class="rounded me-2"
         width="20"

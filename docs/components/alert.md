@@ -34,11 +34,11 @@ Vue Alert is prepared for any length of text, as well as an optional close butto
 Click the button below to show an alert (hidden with inline styles to start), then dismiss (and destroy) it with the built-in close button.
 
 ::: demo
-<CAlert color="primary" :visible="liveExampleVisible" dismissible  @dismiss="() => { liveExampleVisible = false }">A simple primary alert—check it out!</CAlert>
+<CAlert color="primary" :visible="liveExampleVisible" dismissible @close="() => { liveExampleVisible = false }">A simple primary alert—check it out!</CAlert>
 <CButton color="primary" @click="() => { liveExampleVisible = true }">Show live alert</CButton>
 :::
 ```vue
-<CAlert color="primary" :visible="liveExampleVisible" dismissible  @dismiss="() => { liveExampleVisible = false }">A simple primary alert—check it out!</CAlert>
+<CAlert color="primary" :visible="liveExampleVisible" dismissible @close="() => { liveExampleVisible = false }">A simple primary alert—check it out!</CAlert>
 <CButton color="primary" @click="() => { liveExampleVisible = true }">Show live alert</CButton>
 ```
 
@@ -231,13 +231,13 @@ Use `variant="solid"` to change contextual colors to solid.
 Alerts can also be easily dismissed. Just add the `dismissible` prop.
 
 ::: demo
-<CAlert color="warning" dismissible @dismiss="alert">
+<CAlert color="warning" dismissible @close="alert">
   <strong>Go right ahead</strong> and click that dimiss over there on the right.
 </CAlert>
 :::
 
 ```vue
-<CAlert color="warning" dismissible @dismiss="alert">
+<CAlert color="warning" dismissible @close="alert">
   <strong>Go right ahead</strong> and click that dimiss over there on the right.
 </CAlert>
 

@@ -12,48 +12,44 @@ Navigation available in CoreUI for Vue share general markup and styles, from the
 The base `.nav` component is built with flexbox and provide a strong foundation for building all types of navigation components. It includes some style overrides (for working with lists), some link padding for larger hit areas, and basic disabled styling.
 
 ::: demo
-
-  <CNav>
-    <CNavItem>
-      <CNavLink href="#" active>
-        Active
-      </CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#" disabled>
-        Disabled
-      </CNavLink>
-    </CNavItem>
-  </CNav>
-
+<CNav>
+  <CNavItem>
+    <CNavLink href="#" active>
+      Active
+    </CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#" disabled>
+      Disabled
+    </CNavLink>
+  </CNavItem>
+</CNav>
 :::
 ```vue
-
-  <CNav>
-    <CNavItem>
-      <CNavLink href="#" active>
-        Active
-      </CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#">Link</CNavLink>
-    </CNavItem>
-    <CNavItem>
-      <CNavLink href="#" disabled>
-        Disabled
-      </CNavLink>
-    </CNavItem>
-  </CNav>
-
+<CNav>
+  <CNavItem>
+    <CNavLink href="#" active>
+      Active
+    </CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#" disabled>
+      Disabled
+    </CNavLink>
+  </CNavItem>
+</CNav>
 ```
 
 Classes are used throughout, so your markup can be super flexible. Use `<ul>`s like above, `<ol>` if the order of your items is important, or roll your own with a `<nav>` element. Because the .nav uses display: flex, the nav links behave the same as nav items would, but without the extra markup.
@@ -548,6 +544,286 @@ Add dropdown menus with a little extra HTML.
   </CNavItem>
 </CNav>
 ```
+
+
+## Tab panes
+
+Dynamic tabbed interfaces, as described in the [<abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel), require `role="tablist"`, `role="tab"`, `role="tabpanel"`, and additional `aria-` attributes in order to convey their structure, functionality and current state to users of assistive technologies (such as screen readers).
+
+Note that dynamic tabbed interfaces should not contain dropdown menus, as this causes both usability and accessibility issues. From a usability perspective, the fact that the currently displayed tab's trigger element is not immediately visible (as it's inside the closed dropdown menu) can cause confusion. From an accessibility point of view, there is currently no sensible way to map this sort of construct to a standard WAI ARIA pattern, meaning that it cannot be easily made understandable to users of assistive technologies.
+
+::: demo
+<CNav variant="tabs" role="tablist">
+  <CNavItem>
+    <CNavLink
+      href="javascript:void(0);"
+      :active="tabPaneActiveKey === 1"
+      @click="() => {tabPaneActiveKey = 1}"
+    >
+      Home
+    </CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink
+      href="javascript:void(0);"
+      :active="tabPaneActiveKey === 2"
+      @click="() => {tabPaneActiveKey = 2}"
+    >
+      Profile
+    </CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink
+      href="javascript:void(0);"
+      :active="tabPaneActiveKey === 3"
+      @click="() => {tabPaneActiveKey = 3}"
+    >
+      Contact
+    </CNavLink>
+  </CNavItem>
+</CNav>
+<CTabContent>
+  <CTabPane role="tabpanel" aria-labelledby="home-tab" :visible="tabPaneActiveKey === 1">
+    Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
+    aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
+    helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh
+    mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan
+    aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+  </CTabPane>
+  <CTabPane role="tabpanel" aria-labelledby="profile-tab" :visible="tabPaneActiveKey === 2">
+    Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
+    Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan
+    four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft
+    beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic,
+    assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero
+    magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit,
+    sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party
+    scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+  </CTabPane>
+  <CTabPane role="tabpanel" aria-labelledby="contact-tab" :visible="tabPaneActiveKey === 3">
+    Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic
+    lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork
+    tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie
+    helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.
+    Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro
+    mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog
+    stumptown. Pitchfork sustainable tofu synth chambray yr.
+  </CTabPane>
+</CTabContent>
+:::
+```vue
+<template>
+  <CNav variant="tabs" role="tablist">
+    <CNavItem>
+      <CNavLink
+        href="javascript:void(0);"
+        :active="tabPaneActiveKey === 1"
+        @click="() => {tabPaneActiveKey = 1}"
+      >
+        Home
+      </CNavLink>
+    </CNavItem>
+    <CNavItem>
+      <CNavLink
+        href="javascript:void(0);"
+        :active="tabPaneActiveKey === 2"
+        @click="() => {tabPaneActiveKey = 2}"
+      >
+        Profile
+      </CNavLink>
+    </CNavItem>
+    <CNavItem>
+      <CNavLink
+        href="javascript:void(0);"
+        :active="tabPaneActiveKey === 3"
+        @click="() => {tabPaneActiveKey = 3}"
+      >
+        Contact
+      </CNavLink>
+    </CNavItem>
+  </CNav>
+  <CTabContent>
+    <CTabPane role="tabpanel" aria-labelledby="home-tab" :visible="tabPaneActiveKey === 1">
+      Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
+      aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
+      helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh
+      mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan
+      aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+    </CTabPane>
+    <CTabPane role="tabpanel" aria-labelledby="profile-tab" :visible="tabPaneActiveKey === 2">
+      Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
+      Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan
+      four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft
+      beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic,
+      assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero
+      magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit,
+      sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party
+      scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+    </CTabPane>
+    <CTabPane role="tabpanel" aria-labelledby="contact-tab" :visible="tabPaneActiveKey === 3">
+      Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic
+      lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork
+      tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie
+      helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.
+      Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro
+      mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog
+      stumptown. Pitchfork sustainable tofu synth chambray yr.
+    </CTabPane>
+  </CTabContent>
+</template>
+<script>
+  export default {
+    data() {
+      return { 
+        tabPaneActiveKey: 1,
+      }
+    }
+  }
+</script>
+```
+
+The tabs also works with pills.
+
+::: demo
+<CNav variant="pills" role="tablist">
+  <CNavItem>
+    <CNavLink
+      href="javascript:void(0);"
+      :active="tabPanePillsActiveKey === 1"
+      @click="() => {tabPanePillsActiveKey = 1}"
+    >
+      Home
+    </CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink
+      href="javascript:void(0);"
+      :active="tabPanePillsActiveKey === 2"
+      @click="() => {tabPanePillsActiveKey = 2}"
+    >
+      Profile
+    </CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink
+      href="javascript:void(0);"
+      :active="tabPanePillsActiveKey === 3"
+      @click="() => {tabPanePillsActiveKey = 3}"
+    >
+      Contact
+    </CNavLink>
+  </CNavItem>
+</CNav>
+<CTabContent>
+  <CTabPane role="tabpanel" aria-labelledby="home-tab" :visible="tabPanePillsActiveKey === 1">
+    Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
+    aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
+    helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh
+    mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan
+    aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+  </CTabPane>
+  <CTabPane role="tabpanel" aria-labelledby="profile-tab" :visible="tabPanePillsActiveKey === 2">
+    Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
+    Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan
+    four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft
+    beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic,
+    assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero
+    magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit,
+    sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party
+    scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+  </CTabPane>
+  <CTabPane role="tabpanel" aria-labelledby="contact-tab" :visible="tabPanePillsActiveKey === 3">
+    Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic
+    lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork
+    tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie
+    helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.
+    Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro
+    mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog
+    stumptown. Pitchfork sustainable tofu synth chambray yr.
+  </CTabPane>
+</CTabContent>
+:::
+```vue
+<template>
+  <CNav variant="tabs" role="tablist">
+    <CNavItem>
+      <CNavLink
+        href="javascript:void(0);"
+        :active="tabPanePillsActiveKey === 1"
+        @click="() => {tabPanePillsActiveKey = 1}"
+      >
+        Home
+      </CNavLink>
+    </CNavItem>
+    <CNavItem>
+      <CNavLink
+        href="javascript:void(0);"
+        :active="tabPanePillsActiveKey === 2"
+        @click="() => {tabPanePillsActiveKey = 2}"
+      >
+        Profile
+      </CNavLink>
+    </CNavItem>
+    <CNavItem>
+      <CNavLink
+        href="javascript:void(0);"
+        :active="tabPanePillsActiveKey === 3"
+        @click="() => {tabPanePillsActiveKey = 3}"
+      >
+        Contact
+      </CNavLink>
+    </CNavItem>
+  </CNav>
+  <CTabContent>
+    <CTabPane role="tabpanel" aria-labelledby="home-tab" :visible="tabPanePillsActiveKey === 1">
+      Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
+      aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan
+      helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh
+      mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan
+      aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+    </CTabPane>
+    <CTabPane role="tabpanel" aria-labelledby="profile-tab" :visible="tabPanePillsActiveKey === 2">
+      Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
+      Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan
+      four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft
+      beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic,
+      assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero
+      magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit,
+      sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party
+      scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+    </CTabPane>
+    <CTabPane role="tabpanel" aria-labelledby="contact-tab" :visible="tabPanePillsActiveKey === 3">
+      Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic
+      lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork
+      tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie
+      helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.
+      Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro
+      mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog
+      stumptown. Pitchfork sustainable tofu synth chambray yr.
+    </CTabPane>
+  </CTabContent>
+</template>
+<script>
+  export default {
+    data() {
+      return { 
+        tabPanePillsActiveKey: 1,
+      }
+    }
+  }
+</script>
+```
+
+<script>
+  export default {
+    data() {
+      return { 
+        tabPaneActiveKey: 1,
+        tabPanePillsActiveKey: 1,
+      }
+    }
+  }
+</script>
 
 ## API
 

@@ -42,7 +42,7 @@ Toggle a working modal demo by clicking the button below. It will slide down and
 
 ::: demo
 <CButton color="primary" @click="() => { visibleLiveDemo = true }">Launch demo modal</CButton>
-<CModal :visible="visibleLiveDemo">
+<CModal :visible="visibleLiveDemo" @close="() => { visibleLiveDemo = false }">
   <CModalHeader>
     <CModalTitle>Modal title</CModalTitle>
   </CModalHeader>
@@ -58,7 +58,7 @@ Toggle a working modal demo by clicking the button below. It will slide down and
 ``` vue
 <template>
   <CButton color="primary" @click="() => { visibleLiveDemo = true }">Launch demo modal</CButton>
-  <CModal :visible="visibleLiveDemo" @dismiss="() => { visibleLiveDemo = false }">
+  <CModal :visible="visibleLiveDemo" @close="() => { visibleLiveDemo = false }">
     <CModalHeader>
       <CModalTitle>Modal title</CModalTitle>
     </CModalHeader>
@@ -89,7 +89,7 @@ If you set `backdrop` property to `static`, your modal will behave as though the
 
 ::: demo
 <CButton color="primary" @click="() => { visibleStaticBackdropDemo = true }">Launch static backdrop modal</CButton>
-<CModal backdrop="static" :visible="visibleStaticBackdropDemo" @dismiss="() => { visibleStaticBackdropDemo = false }">
+<CModal backdrop="static" :visible="visibleStaticBackdropDemo" @close="() => { visibleStaticBackdropDemo = false }">
   <CModalHeader>
     <CModalTitle>Modal title</CModalTitle>
   </CModalHeader>
@@ -105,7 +105,7 @@ If you set `backdrop` property to `static`, your modal will behave as though the
 ``` vue
 <template>
   <CButton color="primary" @click="() => { visibleStaticBackdropDemo = true }">Launch demo modal</CButton>
-  <CModal backdrop="static" :visible="visibleStaticBackdropDemo" @dismiss="() => { visibleStaticBackdropDemo = false }">
+  <CModal backdrop="static" :visible="visibleStaticBackdropDemo" @close="() => { visibleStaticBackdropDemo = false }">
     <CModalHeader>
       <CModalTitle>Modal title</CModalTitle>
     </CModalHeader>
@@ -135,7 +135,7 @@ When modals become too long for the user's viewport or device, they scroll indep
 
 ::: demo
 <CButton color="primary" @click="() => { visibleScrollingLongContentDemo = true }">Launch static backdrop modal</CButton>
-<CModal :visible="visibleScrollingLongContentDemo" @dismiss="() => { visibleScrollingLongContentDemo = false }">
+<CModal :visible="visibleScrollingLongContentDemo" @close="() => { visibleScrollingLongContentDemo = false }">
   <CModalHeader>
     <CModalTitle>Modal title</CModalTitle>
   </CModalHeader>
@@ -230,7 +230,7 @@ When modals become too long for the user's viewport or device, they scroll indep
 ``` vue
 <template>
   <CButton color="primary" @click="() => { visibleScrollingLongContentDemo = true }">Launch demo modal</CButton>
-  <CModal :visible="visibleScrollingLongContentDemo" @dismiss="() => { visibleScrollingLongContentDemo = false }">
+  <CModal :visible="visibleScrollingLongContentDemo" @close="() => { visibleScrollingLongContentDemo = false }">
     <CModalHeader>
       <CModalTitle>Modal title</CModalTitle>
     </CModalHeader>
@@ -337,7 +337,7 @@ You can also create a scrollable modal that allows scroll the modal body by addi
 
 ::: demo
 <CButton color="primary" @click="() => { visibleScrollableDemo = true }">Launch static backdrop modal</CButton>
-<CModal scrollable :visible="visibleScrollableDemo" @dismiss="() => { visibleScrollableDemo = false }">
+<CModal scrollable :visible="visibleScrollableDemo" @close="() => { visibleScrollableDemo = false }">
   <CModalHeader>
     <CModalTitle>Modal title</CModalTitle>
   </CModalHeader>
@@ -432,7 +432,7 @@ You can also create a scrollable modal that allows scroll the modal body by addi
 ``` vue
 <template>
   <CButton color="primary" @click="() => { visibleScrollableDemo = true }">Launch demo modal</CButton>
-  <CModal scrollable :visible="visibleScrollableDemo" @dismiss="() => { visibleScrollableDemo = false }">
+  <CModal scrollable :visible="visibleScrollableDemo" @close="() => { visibleScrollableDemo = false }">
     <CModalHeader>
       <CModalTitle>Modal title</CModalTitle>
     </CModalHeader>
@@ -541,7 +541,7 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
 
 ::: demo
 <CButton color="primary" @click="() => { visibleVerticallyCenteredDemo = true }">Vertically centered modal</CButton>
-<CModal alignment="center" :visible="visibleVerticallyCenteredDemo" @dismiss="() => { visibleVerticallyCenteredDemo = false }">
+<CModal alignment="center" :visible="visibleVerticallyCenteredDemo" @close="() => { visibleVerticallyCenteredDemo = false }">
   <CModalHeader>
     <CModalTitle>Modal title</CModalTitle>
   </CModalHeader>
@@ -559,7 +559,7 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
 ``` vue
 <template>
   <CButton color="primary" @click="() => { visibleVerticallyCenteredDemo = true }">Launch demo modal</CButton>
-  <CModal alignment="center" :visible="visibleVerticallyCenteredDemo" @dismiss="() => { visibleVerticallyCenteredDemo = false }">
+  <CModal alignment="center" :visible="visibleVerticallyCenteredDemo" @close="() => { visibleVerticallyCenteredDemo = false }">
     <CModalHeader>
       <CModalTitle>Modal title</CModalTitle>
     </CModalHeader>
@@ -587,7 +587,7 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
 
 ::: demo
 <CButton color="primary" @click="() => { visibleVerticallyCenteredScrollableDemo = true }">Vertically centered scrollable modal</CButton>
-<CModal alignment="center" scrollable :visible="visibleVerticallyCenteredScrollableDemo" @dismiss="() => { visibleVerticallyCenteredScrollableDemo = false }">
+<CModal alignment="center" scrollable :visible="visibleVerticallyCenteredScrollableDemo" @close="() => { visibleVerticallyCenteredScrollableDemo = false }">
   <CModalHeader>
     <CModalTitle>Modal title</CModalTitle>
   </CModalHeader>
@@ -605,7 +605,7 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
 ``` vue
 <template>
   <CButton color="primary" @click="() => { visibleVerticallyCenteredScrollableDemo = true }">Vertically centered scrollable modal</CButton>
-  <CModal alignment="center" scrollable :visible="visibleVerticallyCenteredScrollableDemo" @dismiss="() => { visibleVerticallyCenteredScrollableDemo = false }">
+  <CModal alignment="center" scrollable :visible="visibleVerticallyCenteredScrollableDemo" @close="() => { visibleVerticallyCenteredScrollableDemo = false }">
     <CModalHeader>
       <CModalTitle>Modal title</CModalTitle>
     </CModalHeader>
@@ -637,7 +637,7 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
 
 ::: demo
 <CButton color="primary" @click="() => { tooltipsAndPopoversDemo = true }">Launch demo modal</CButton>
-<CModal :visible="tooltipsAndPopoversDemo" @dismiss="() => { tooltipsAndPopoversDemo = false }">
+<CModal :visible="tooltipsAndPopoversDemo" @close="() => { tooltipsAndPopoversDemo = false }">
   <CModalHeader>
     <CModalTitle>Modal title</CModalTitle>
   </CModalHeader>
@@ -661,7 +661,7 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
 ``` vue
 <template>
   <CButton color="primary" @click="() => { tooltipsAndPopoversDemo = true }">Launch demo modal</CButton>
-  <CModal :visible="tooltipsAndPopoversDemo" @dismiss="() => { tooltipsAndPopoversDemo = false }">
+  <CModal :visible="tooltipsAndPopoversDemo" @close="() => { tooltipsAndPopoversDemo = false }">
     <CModalHeader>
       <CModalTitle>Modal title</CModalTitle>
     </CModalHeader>
@@ -734,7 +734,7 @@ Modals have three optional sizes, available via modifier classes to be placed on
 <CButton color="primary" @click="() => { xlDemo = true }">Extra large modal</CButton>
 <CButton color="primary" @click="() => { lgDemo = true }">Large modal</CButton>
 <CButton color="primary" @click="() => { smDemo = true }">Small modal</CButton>
-<CModal size="xl" :visible="xlDemo" @dismiss="() => { xlDemo = false }">
+<CModal size="xl" :visible="xlDemo" @close="() => { xlDemo = false }">
   <CModalHeader>
     <CModalTitle>Extra large modal</CModalTitle>
   </CModalHeader>
@@ -742,7 +742,7 @@ Modals have three optional sizes, available via modifier classes to be placed on
     ...
   </CModalBody>
 </CModal>
-<CModal size="lg" :visible="lgDemo" @dismiss="() => { lgDemo = false }">
+<CModal size="lg" :visible="lgDemo" @close="() => { lgDemo = false }">
   <CModalHeader>
     <CModalTitle>Large modal</CModalTitle>
   </CModalHeader>
@@ -750,7 +750,7 @@ Modals have three optional sizes, available via modifier classes to be placed on
     ...
   </CModalBody>
 </CModal>
-<CModal size="sm" :visible="smDemo" @dismiss="() => { smDemo = false }">
+<CModal size="sm" :visible="smDemo" @close="() => { smDemo = false }">
   <CModalHeader>
     <CModalTitle>Small modal</CModalTitle>
   </CModalHeader>
@@ -764,7 +764,7 @@ Modals have three optional sizes, available via modifier classes to be placed on
   <CButton color="primary" @click="() => { xlDemo = true }">Extra large modal</CButton>
   <CButton color="primary" @click="() => { lgDemo = true }">Large modal</CButton>
   <CButton color="primary" @click="() => { smDemo = true }">Small modal</CButton>
-  <CModal size="xl" :visible="xlDemo" @dismiss="() => { xlDemo = false }">
+  <CModal size="xl" :visible="xlDemo" @close="() => { xlDemo = false }">
     <CModalHeader>
       <CModalTitle>Extra large modal</CModalTitle>
     </CModalHeader>
@@ -772,7 +772,7 @@ Modals have three optional sizes, available via modifier classes to be placed on
       ...
     </CModalBody>
   </CModal>
-  <CModal size="lg" :visible="lgDemo" @dismiss="() => { lgDemo = false }">
+  <CModal size="lg" :visible="lgDemo" @close="() => { lgDemo = false }">
     <CModalHeader>
       <CModalTitle>Large modal</CModalTitle>
     </CModalHeader>
@@ -780,7 +780,7 @@ Modals have three optional sizes, available via modifier classes to be placed on
       ...
     </CModalBody>
   </CModal>
-  <CModal size="sm" :visible="smDemo" @dismiss="() => { smDemo = false }">
+  <CModal size="sm" :visible="smDemo" @close="() => { smDemo = false }">
     <CModalHeader>
       <CModalTitle>Small modal</CModalTitle>
     </CModalHeader>
@@ -848,7 +848,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
 <CButton color="primary" @click="() => { fullscreenLgDemo = true }">Full screen below lg</CButton>
 <CButton color="primary" @click="() => { fullscreenXlDemo = true }">Full screen below xl</CButton>
 <CButton color="primary" @click="() => { fullscreenXxlDemo = true }">Full screen below xxl</CButton>
-<CModal fullscreen :visible="fullscreenDemo" @dismiss="() => { fullscreenDemo = false }">
+<CModal fullscreen :visible="fullscreenDemo" @close="() => { fullscreenDemo = false }">
   <CModalHeader>
     <CModalTitle>Full screen</CModalTitle>
   </CModalHeader>
@@ -856,7 +856,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
     ...
   </CModalBody>
 </CModal>
-<CModal fullscreen="sm" :visible="fullscreenSmDemo" @dismiss="() => { fullscreenSmDemo = false }">
+<CModal fullscreen="sm" :visible="fullscreenSmDemo" @close="() => { fullscreenSmDemo = false }">
   <CModalHeader>
     <CModalTitle>Full screen below sm</CModalTitle>
   </CModalHeader>
@@ -864,7 +864,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
     ...
   </CModalBody>
 </CModal>
-<CModal fullscreen="md" :visible="fullscreenMdDemo" @dismiss="() => { fullscreenMdDemo = false }">
+<CModal fullscreen="md" :visible="fullscreenMdDemo" @close="() => { fullscreenMdDemo = false }">
   <CModalHeader>
     <CModalTitle>Full screen below md</CModalTitle>
   </CModalHeader>
@@ -872,7 +872,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
     ...
   </CModalBody>
 </CModal>
-<CModal fullscreen="lg" :visible="fullscreenLgDemo" @dismiss="() => { fullscreenLgDemo = false }">
+<CModal fullscreen="lg" :visible="fullscreenLgDemo" @close="() => { fullscreenLgDemo = false }">
   <CModalHeader>
     <CModalTitle>Full screen below lg</CModalTitle>
   </CModalHeader>
@@ -880,7 +880,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
     ...
   </CModalBody>
 </CModal>
-<CModal fullscreen="xl" :visible="fullscreenXlDemo" @dismiss="() => { fullscreenXlDemo = false }">
+<CModal fullscreen="xl" :visible="fullscreenXlDemo" @close="() => { fullscreenXlDemo = false }">
   <CModalHeader>
     <CModalTitle>Full screen below xl</CModalTitle>
   </CModalHeader>
@@ -888,7 +888,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
     ...
   </CModalBody>
 </CModal>
-<CModal fullscreen="xxl" :visible="fullscreenXxlDemo" @dismiss="() => { fullscreenXxlDemo = false }">
+<CModal fullscreen="xxl" :visible="fullscreenXxlDemo" @close="() => { fullscreenXxlDemo = false }">
   <CModalHeader>
     <CModalTitle>Full screen below xxl</CModalTitle>
   </CModalHeader>
@@ -905,7 +905,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
   <CButton color="primary" @click="() => { fullscreenLgDemo = true }">Full screen below lg</CButton>
   <CButton color="primary" @click="() => { fullscreenXlDemo = true }">Full screen below xl</CButton>
   <CButton color="primary" @click="() => { fullscreenXxlDemo = true }">Full screen below xxl</CButton>
-  <CModal fullscreen :visible="fullscreenDemo" @dismiss="() => { fullscreenDemo = false }">
+  <CModal fullscreen :visible="fullscreenDemo" @close="() => { fullscreenDemo = false }">
     <CModalHeader>
       <CModalTitle>Full screen</CModalTitle>
     </CModalHeader>
@@ -913,7 +913,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
       ...
     </CModalBody>
   </CModal>
-  <CModal fullscreen="sm" :visible="fullscreenSmDemo" @dismiss="() => { fullscreenSmDemo = false }">
+  <CModal fullscreen="sm" :visible="fullscreenSmDemo" @close="() => { fullscreenSmDemo = false }">
     <CModalHeader>
       <CModalTitle>Full screen below sm</CModalTitle>
     </CModalHeader>
@@ -921,7 +921,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
       ...
     </CModalBody>
   </CModal>
-  <CModal fullscreen="md" :visible="fullscreenMdDemo" @dismiss="() => { fullscreenMdDemo = false }">
+  <CModal fullscreen="md" :visible="fullscreenMdDemo" @close="() => { fullscreenMdDemo = false }">
     <CModalHeader>
       <CModalTitle>Full screen below md</CModalTitle>
     </CModalHeader>
@@ -929,7 +929,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
       ...
     </CModalBody>
   </CModal>
-  <CModal fullscreen="lg" :visible="fullscreenLgDemo" @dismiss="() => { fullscreenLgDemo = false }">
+  <CModal fullscreen="lg" :visible="fullscreenLgDemo" @close="() => { fullscreenLgDemo = false }">
     <CModalHeader>
       <CModalTitle>Full screen below lg</CModalTitle>
     </CModalHeader>
@@ -937,7 +937,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
       ...
     </CModalBody>
   </CModal>
-  <CModal fullscreen="xl" :visible="fullscreenXlDemo" @dismiss="() => { fullscreenXlDemo = false }">
+  <CModal fullscreen="xl" :visible="fullscreenXlDemo" @close="() => { fullscreenXlDemo = false }">
     <CModalHeader>
       <CModalTitle>Full screen below xl</CModalTitle>
     </CModalHeader>
@@ -945,7 +945,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
       ...
     </CModalBody>
   </CModal>
-  <CModal fullscreen="xxl" :visible="fullscreenXxlDemo" @dismiss="() => { fullscreenXxlDemo = false }">
+  <CModal fullscreen="xxl" :visible="fullscreenXxlDemo" @close="() => { fullscreenXxlDemo = false }">
     <CModalHeader>
       <CModalTitle>Full screen below xxl</CModalTitle>
     </CModalHeader>

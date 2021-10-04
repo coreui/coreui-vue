@@ -1,5 +1,5 @@
 ---
-title: Vue Popover Component
+title: Vue Popover Directive
 name: Popover
 description: Documentation and examples for adding Vue popovers, like those found in iOS, to any element on your site.
 ---

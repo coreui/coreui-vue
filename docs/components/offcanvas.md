@@ -49,7 +49,7 @@ Use the buttons below to show and hide an offcanvas component.
 
 ::: demo
 <CButton color="primary" @click="() => { visible = !visible }">Toggle offcanvas</CButton>
-<COffcanvas placement="start" :visible="visible" @dismiss="() => { visible = !visible }">
+<COffcanvas placement="start" :visible="visible" @hide="() => { visible = !visible }">
   <COffcanvasHeader>
     <COffcanvasTitle>Offcanvas</COffcanvasTitle>
     <CCloseButton class="text-reset" @click="() => { visible = false }"/>
@@ -63,7 +63,7 @@ Use the buttons below to show and hide an offcanvas component.
 ```vue
 <template>
   <CButton color="primary" @click="() => { visible = !visible }">Toggle offcanvas</CButton>
-  <COffcanvas placement="start" :visible="visible" @dismiss="() => { visible = !visible }">
+  <COffcanvas placement="start" :visible="visible" @hide="() => { visible = !visible }">
     <COffcanvasHeader>
       <COffcanvasTitle>Offcanvas</COffcanvasTitle>
       <CCloseButton class="text-reset" @click="() => { visible = false }"/>
@@ -98,7 +98,7 @@ Try the top, right, and bottom examples out below.
 
 ::: demo
 <CButton color="primary" @click="() => { visibleTop = !visibleTop }">Toggle top offcanvas</CButton>
-<COffcanvas placement="top" :visible="visibleTop" @dismiss="() => { visibleTop = !visibleTop }">
+<COffcanvas placement="top" :visible="visibleTop" @hide="() => { visibleTop = !visibleTop }">
   <COffcanvasHeader>
     <COffcanvasTitle>Offcanvas</COffcanvasTitle>
     <CCloseButton class="text-reset" @click="() => { visibleTop = false }"/>
@@ -112,7 +112,7 @@ Try the top, right, and bottom examples out below.
 ```vue
 <template>
   <CButton color="primary" @click="() => { visibleTop = !visibleTop }">Toggle top offcanvas</CButton>
-  <COffcanvas placement="top" :visible="visibleTop" @dismiss="() => { visibleTop = !visibleTop }">
+  <COffcanvas placement="top" :visible="visibleTop" @hide="() => { visibleTop = !visibleTop }">
     <COffcanvasHeader>
       <COffcanvasTitle>Offcanvas</COffcanvasTitle>
       <CCloseButton class="text-reset" @click="() => { visibleTop = false }"/>
@@ -136,7 +136,7 @@ Try the top, right, and bottom examples out below.
 
 ::: demo
 <CButton color="primary" @click="() => { visibleEnd = !visibleEnd }">Toggle right offcanvas</CButton>
-<COffcanvas placement="end" :visible="visibleEnd" @dismiss="() => { visibleEnd = !visibleEnd }">
+<COffcanvas placement="end" :visible="visibleEnd" @hide="() => { visibleEnd = !visibleEnd }">
   <COffcanvasHeader>
     <COffcanvasTitle>Offcanvas</COffcanvasTitle>
     <CCloseButton class="text-reset" @click="() => { visibleEnd = false }"/>
@@ -150,7 +150,7 @@ Try the top, right, and bottom examples out below.
 ```vue
 <template>
   <CButton color="primary" @click="() => { visibleEnd = !visibleEnd }">Toggle right offcanvas</CButton>
-  <COffcanvas placement="end" :visible="visibleEnd" @dismiss="() => { visibleEnd = !visibleEnd }">
+  <COffcanvas placement="end" :visible="visibleEnd" @hide="() => { visibleEnd = !visibleEnd }">
     <COffcanvasHeader>
       <COffcanvasTitle>Offcanvas</COffcanvasTitle>
       <CCloseButton class="text-reset" @click="() => { visibleEnd = false }"/>
@@ -174,7 +174,7 @@ Try the top, right, and bottom examples out below.
 
 ::: demo
 <CButton color="primary" @click="() => { visibleBottom = !visibleBottom }">Toggle bottom offcanvas</CButton>
-<COffcanvas placement="bottom" :visible="visibleBottom" @dismiss="() => { visibleBottom = !visibleBottom }">
+<COffcanvas placement="bottom" :visible="visibleBottom" @hide="() => { visibleBottom = !visibleBottom }">
   <COffcanvasHeader>
     <COffcanvasTitle>Offcanvas</COffcanvasTitle>
     <CCloseButton class="text-reset" @click="() => { visibleBottom = false }"/>
@@ -188,7 +188,7 @@ Try the top, right, and bottom examples out below.
 ```vue
 <template>
   <CButton color="primary" @click="() => { visibleBottom = !visibleBottom }">Toggle bottom offcanvas</CButton>
-  <COffcanvas placement="bottom" :visible="visibleBottom" @dismiss="() => { visibleBottom = !visibleBottom }">
+  <COffcanvas placement="bottom" :visible="visibleBottom" @hide="() => { visibleBottom = !visibleBottom }">
     <COffcanvasHeader>
       <COffcanvasTitle>Offcanvas</COffcanvasTitle>
       <CCloseButton class="text-reset" @click="() => { visibleBottom = false }"/>
@@ -218,7 +218,7 @@ Scrolling the `<body>` element is disabled when an offcanvas and its backdrop ar
 <CButton color="primary" @click="() => { visibleScrolling = !visibleScrolling }">Enable body scrolling</CButton>
 <CButton color="primary" @click="() => { visibleWithBackdrop = !visibleWithBackdrop }">Enable backdrop (default)</CButton>
 <CButton color="primary" @click="() => { visibleWithBothOptions = !visibleWithBothOptions }">Enable both scrolling & backdrop</CButton>
-<COffcanvas :backdrop="false" placement="start" scroll :visible="visibleScrolling" @dismiss="() => { visibleScrolling = !visibleScrolling }">
+<COffcanvas :backdrop="false" placement="start" scroll :visible="visibleScrolling" @hide="() => { visibleScrolling = !visibleScrolling }">
   <COffcanvasHeader>
     <COffcanvasTitle>Offcanvas</COffcanvasTitle>
     <CCloseButton class="text-reset" @click="() => { visibleScrolling = false }"/>
@@ -227,7 +227,7 @@ Scrolling the `<body>` element is disabled when an offcanvas and its backdrop ar
     <p>Try scrolling the rest of the page to see this option in action.</p>
   </COffcanvasBody>
 </COffcanvas>
-<COffcanvas placement="start" :visible="visibleWithBackdrop" @dismiss="() => { visibleWithBackdrop = !visibleWithBackdrop }">
+<COffcanvas placement="start" :visible="visibleWithBackdrop" @hide="() => { visibleWithBackdrop = !visibleWithBackdrop }">
   <COffcanvasHeader>
     <COffcanvasTitle>Offcanvas</COffcanvasTitle>
     <CCloseButton class="text-reset" @click="() => { visibleWithBackdrop = false }"/>
@@ -236,7 +236,7 @@ Scrolling the `<body>` element is disabled when an offcanvas and its backdrop ar
     <p>.....</p>
   </COffcanvasBody>
 </COffcanvas>
-<COffcanvas placement="start" scroll :visible="visibleWithBothOptions" @dismiss="() => { visibleWithBothOptions = !visibleWithBothOptions }">
+<COffcanvas placement="start" scroll :visible="visibleWithBothOptions" @hide="() => { visibleWithBothOptions = !visibleWithBothOptions }">
   <COffcanvasHeader>
     <COffcanvasTitle>Offcanvas</COffcanvasTitle>
     <CCloseButton class="text-reset" @click="() => { visibleWithBothOptions = false }"/>
@@ -251,7 +251,7 @@ Scrolling the `<body>` element is disabled when an offcanvas and its backdrop ar
   <CButton color="primary" @click="() => { visibleScrolling = !visibleScrolling }">Enable body scrolling</CButton>
   <CButton color="primary" @click="() => { visibleWithBackdrop = !visibleWithBackdrop }">Enable backdrop (default)</CButton>
   <CButton color="primary" @click="() => { visibleWithBothOptions = !visibleWithBothOptions }">Enable both scrolling &amp; backdrop</CButton>
-  <COffcanvas :backdrop="false" placement="start" scroll :visible="visibleScrolling" @dismiss="() => { visibleScrolling = !visibleScrolling }">
+  <COffcanvas :backdrop="false" placement="start" scroll :visible="visibleScrolling" @hide="() => { visibleScrolling = !visibleScrolling }">
     <COffcanvasHeader>
       <COffcanvasTitle>Offcanvas</COffcanvasTitle>
       <CCloseButton class="text-reset" @click="() => { visibleScrolling = false }"/>
@@ -260,7 +260,7 @@ Scrolling the `<body>` element is disabled when an offcanvas and its backdrop ar
       <p>Try scrolling the rest of the page to see this option in action.</p>
     </COffcanvasBody>
   </COffcanvas>
-  <COffcanvas placement="start" :visible="visibleWithBackdrop" @dismiss="() => { visibleWithBackdrop = !visibleWithBackdrop }">
+  <COffcanvas placement="start" :visible="visibleWithBackdrop" @hide="() => { visibleWithBackdrop = !visibleWithBackdrop }">
     <COffcanvasHeader>
       <COffcanvasTitle>Offcanvas</COffcanvasTitle>
       <CCloseButton class="text-reset" @click="() => { visibleWithBackdrop = false }"/>
@@ -269,7 +269,7 @@ Scrolling the `<body>` element is disabled when an offcanvas and its backdrop ar
       <p>.....</p>
     </COffcanvasBody>
   </COffcanvas>
-  <COffcanvas placement="start" scroll :visible="visibleWithBothOptions" @dismiss="() => { visibleWithBothOptions = !visibleWithBothOptions }">
+  <COffcanvas placement="start" scroll :visible="visibleWithBothOptions" @hide="() => { visibleWithBothOptions = !visibleWithBothOptions }">
     <COffcanvasHeader>
       <COffcanvasTitle>Offcanvas</COffcanvasTitle>
       <CCloseButton class="text-reset" @click="() => { visibleWithBothOptions = false }"/>
