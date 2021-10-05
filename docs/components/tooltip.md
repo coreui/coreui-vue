@@ -1,8 +1,12 @@
 ---
-title: Vue Tooltip Directive
+title: Vue Tooltip Component and Directive
 name: Tooltip
 description: Documentation and examples for adding Vue Tooltips.
 ---
+
+## Examples
+
+Hover over the links below to see tooltips:
 
 ::: demo
 <p class="text-medium-emphasis">
@@ -43,7 +47,56 @@ description: Documentation and examples for adding Vue Tooltips.
 </p>
 ```
 
+### Component
+
 Hover over the buttons below to see the four tooltips directions: top, right, bottom, and left. Directions are mirrored when using CoreUI in RTL.
+
+::: demo
+<CTooltip content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="top">
+  <template #toggler="{ on }">
+    <CButton color="secondary" v-on="on">Tooltip on top</CButton>
+  </template>
+</CTooltip>
+<CTooltip content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="right">
+  <template #toggler="{ on }">
+    <CButton color="secondary" v-on="on">Tooltip on right</CButton>
+  </template>
+</CTooltip>
+<CTooltip content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="bottom">
+  <template #toggler="{ on }">
+    <CButton color="secondary" v-on="on">Tooltip on bottom</CButton>
+  </template>
+</CTooltip>
+<CTooltip content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="left">
+  <template #toggler="{ on }">
+    <CButton color="secondary" v-on="on">Tooltip on left</CButton>
+  </template>
+</CTooltip>
+:::
+```vue
+<CTooltip content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="top">
+  <template #toggler="{ on }">
+    <CButton color="secondary" v-on="on">Tooltip on top</CButton>
+  </template>
+</CTooltip>
+<CTooltip content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="right">
+  <template #toggler="{ on }">
+    <CButton color="secondary" v-on="on">Tooltip on right</CButton>
+  </template>
+</CTooltip>
+<CTooltip content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="bottom">
+  <template #toggler="{ on }">
+    <CButton color="secondary" v-on="on">Tooltip on bottom</CButton>
+  </template>
+</CTooltip>
+<CTooltip content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="left">
+  <template #toggler="{ on }">
+    <CButton color="secondary" v-on="on">Tooltip on left</CButton>
+  </template>
+</CTooltip>
+```
+
+### Directive
 
 ::: demo
 <CButton color="secondary" v-c-tooltip="{content: 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.', placement: 'top'}">Tooltip on top</CButton>
@@ -57,3 +110,7 @@ Hover over the buttons below to see the four tooltips directions: top, right, bo
 <CButton color="secondary" v-c-tooltip="{content: 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.', placement: 'bottom'}">Tooltip on bottom</CButton>
 <CButton color="secondary" v-c-tooltip="{content: 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.', placement: 'left'}">Tooltip on left</CButton>
 ```
+
+## API
+
+!!!include(./docs/api/tooltip/CTooltip.api.md)!!!
