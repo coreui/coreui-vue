@@ -1,5 +1,11 @@
 ### CRow
 
+```jsx
+import { CRow } from '@coreui/vue'
+// or
+import CRow from '@coreui/vue/src/components/grid/CRow'
+```
+
 #### Props
 
 | Prop name | Description                                                         | Type                     | Values                                                                                                                                   | Default |
@@ -9,5 +15,3 @@
 | **lg**    | The number of columns/offset/order on large devices (<1200px).      | Object as () => BPObject | `{ cols: 'auto' \| number \| string } \| { gutter: number \| string } \| { gutterX: number \| string } \| { gutterY: number \| string }` | -       |
 | **xl**    | The number of columns/offset/order on X-Large devices (<1400px).    | Object as () => BPObject | `{ cols: 'auto' \| number \| string } \| { gutter: number \| string } \| { gutterX: number \| string } \| { gutterY: number \| string }` | -       |
 | **xxl**   | The number of columns/offset/order on XX-Large devices (≥1400px).   | Object as () => BPObject | `{ cols: 'auto' \| number \| string } \| { gutter: number \| string } \| { gutterX: number \| string } \| { gutterY: number \| string }` | -       |
-
----

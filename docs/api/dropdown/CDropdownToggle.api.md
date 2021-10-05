@@ -1,5 +1,11 @@
 ### CDropdownToggle
 
+```jsx
+import { CDropdownToggle } from '@coreui/vue'
+// or
+import CDropdownToggle from '@coreui/vue/src/components/dropdown/CDropdownToggle'
+```
+
 #### Props
 
 | Prop name     | Description                                                                                                                                                                                                   | Type    | Values                                                                                          | Default  |
@@ -12,5 +18,3 @@
 | **size**      | Size the component small or large.                                                                                                                                                                            | string  | `'sm'`, `'lg'`                                                                                  | -        |
 | **split**     | Similarly, create split button dropdowns with virtually the same markup as single button dropdowns, but with the addition of `.dropdown-toggle-split` className for proper spacing around the dropdown caret. | boolean | -                                                                                               |          |
 | **variant**   | Set the button variant to an outlined button or a ghost button.                                                                                                                                               | string  | `'ghost'`, `'outline'`                                                                          | -        |
-
----

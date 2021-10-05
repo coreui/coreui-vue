@@ -1,5 +1,11 @@
 ### CDropdown
 
+```jsx
+import { CDropdown } from '@coreui/vue'
+// or
+import CDropdown from '@coreui/vue/src/components/dropdown/CDropdown'
+```
+
 #### Props
 
 | Prop name     | Description                                                                                                                                                          | Type           | Values                                                                                                                                                                                        | Default        |
@@ -20,5 +26,3 @@
 | ---------- | -------------------------------------------------------- | ---------- |
 | **hide**   | Callback fired when the component requests to be hidden. |
 | **show**   | Callback fired when the component requests to be shown.  |
-
----

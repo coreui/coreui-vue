@@ -1,5 +1,11 @@
 ### CWidgetStatsB
 
+```jsx
+import { CWidgetStatsB } from '@coreui/vue'
+// or
+import CWidgetStatsB from '@coreui/vue/src/components/widgets/CWidgetStatsB'
+```
+
 #### Props
 
 | Prop name   | Description                                                                                                                              | Type           | Values                                                                                          | Default |
@@ -9,5 +15,3 @@
 | **text**    | Helper text for your component. If you want to pass non-string value please use dedicated slot `<template #text>...</template>`          | string         | -                                                                                               | -       |
 | **title**   | Title for your component. If you want to pass non-string value please use dedicated slot `<template #title>...</template>`               | string         | -                                                                                               | -       |
 | **value**   | Value for your component. If you want to pass non-string or non-number value please use dedicated slot `<template #value>...</template>` | number\|string | -                                                                                               | 0       |
-
----

@@ -1,5 +1,11 @@
 ### CWidgetStatsC
 
+```jsx
+import { CWidgetStatsC } from '@coreui/vue'
+// or
+import CWidgetStatsC from '@coreui/vue/src/components/widgets/CWidgetStatsC'
+```
+
 #### Props
 
 | Prop name   | Description                                                                                                                              | Type           | Values                                                                                          | Default |
@@ -14,5 +20,3 @@
 | Name | Description                  | Bindings |
 | ---- | ---------------------------- | -------- |
 | icon | Location for icon component. |          |
-
----

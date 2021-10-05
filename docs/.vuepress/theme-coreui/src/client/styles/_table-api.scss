@@ -21,6 +21,10 @@
   td:nth-child(5n) {
     width: 10%;
   }
+
+  & + h3 {
+    margin-top: 2rem;
+  }
 }
 
 .markdown + h3 {

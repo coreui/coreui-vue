@@ -1,5 +1,11 @@
 ### CAvatar
 
+```jsx
+import { CAvatar } from '@coreui/vue'
+// or
+import CAvatar from '@coreui/vue/src/components/avatar/CAvatar'
+```
+
 #### Props
 
 | Prop name     | Description                                                                      | Type   | Values                                                                                                                                                                                                                                                    | Default |
@@ -10,5 +16,3 @@
 | **src**       | The src attribute for the img element.                                           | string | -                                                                                                                                                                                                                                                         | -       |
 | **status**    | Sets the color context of the status indicator to one of CoreUI’s themed colors. | string | `'primary'`, `'secondary'`, `'success'`, `'danger'`, `'warning'`, `'info'`, `'dark'`, `'light'`                                                                                                                                                           | -       |
 | **textColor** | Sets the text color of the component to one of CoreUI’s themed colors.           | string | `'primary'`, `'secondary'`, `'success'`, `'danger'`, `'warning'`, `'info'`, `'dark'`, `'light'`, `'white'`, `'muted'`, `'high-emphasis'`, `'medium-emphasis'`, `'disabled'`, `'high-emphasis-inverse'`, `'medium-emphasis-inverse'`, `'disabled-inverse'` |         |
-
----

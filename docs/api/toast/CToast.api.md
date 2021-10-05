@@ -1,5 +1,11 @@
 ### CToast
 
+```jsx
+import { CToast } from '@coreui/vue'
+// or
+import CToast from '@coreui/vue/src/components/toast/CToast'
+```
+
 #### Props
 
 | Prop name       | Description                                                               | Type    | Values                                                                                                    | Default |
@@ -17,5 +23,3 @@
 | ---------- | -------------------------------------------------------- | ---------- |
 | **close**  | Callback fired when the component requests to be closed. |
 | **show**   | Callback fired when the component requests to be shown.  |
-
----

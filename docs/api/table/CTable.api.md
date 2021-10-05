@@ -1,5 +1,11 @@
 ### CTable
 
+```jsx
+import { CTable } from '@coreui/vue'
+// or
+import CTable from '@coreui/vue/src/components/table/CTable'
+```
+
 #### Props
 
 | Prop name       | Description                                                                                                              | Type            | Values                                                                                                    | Default |
@@ -14,5 +20,3 @@
 | **responsive**  | Make any table responsive across all viewports or pick a maximum breakpoint with which to have a responsive table up to. | boolean\|string | `boolean`, `'sm'`, `'md'`, `'lg'`, `'xl'`, `'xxl'`                                                        | -       |
 | **small**       | Make table more compact by cutting all cell `padding` in half.                                                           | boolean         | -                                                                                                         |         |
 | **striped**     | Add zebra-striping to any table row within the `<CTableBody>`.                                                           | boolean         | -                                                                                                         |         |
-
----

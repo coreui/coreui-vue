@@ -1,5 +1,11 @@
 ### CContainer
 
+```jsx
+import { CContainer } from '@coreui/vue'
+// or
+import CContainer from '@coreui/vue/src/components/grid/CContainer'
+```
+
 #### Props
 
 | Prop name | Description                                                         | Type    | Values | Default |
@@ -10,5 +16,3 @@
 | **xl**    | Set container 100% wide until X-large breakpoint.                   | boolean | -      |         |
 | **xxl**   | Set container 100% wide until XX-large breakpoint.                  | boolean | -      |         |
 | **fluid** | Set container 100% wide, spanning the entire width of the viewport. | boolean | -      |         |
-
----

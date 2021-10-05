@@ -1,5 +1,11 @@
 ### COffcanvas
 
+```jsx
+import { COffcanvas } from '@coreui/vue'
+// or
+import COffcanvas from '@coreui/vue/src/components/offcanvas/COffcanvas'
+```
+
 #### Props
 
 | Prop name     | Description                                         | Type    | Values                                  | Default |
@@ -16,5 +22,3 @@
 | ---------- | -------------------------------------------------------- | ---------- |
 | **hide**   | Callback fired when the component requests to be hidden. |
 | **show**   | Callback fired when the component requests to be shown.  |
-
----

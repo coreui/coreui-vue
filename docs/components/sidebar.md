@@ -1,5 +1,5 @@
 ---
-title: Sidebar
+title: Vue Sidebar Component
 description: Vue Sidebar is a powerful and customizable responsive navigation component for any type of vertical navigation. Bootstrap Sidebar come with built-in support for branding, navigation, and more.
 ---
 

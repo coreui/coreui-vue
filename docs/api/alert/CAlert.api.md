@@ -1,5 +1,11 @@
 ### CAlert
 
+```jsx
+import { CAlert } from '@coreui/vue'
+// or
+import CAlert from '@coreui/vue/src/components/alert/CAlert'
+```
+
 #### Props
 
 | Prop name       | Description                                                               | Type    | Values                                                                                          | Default |
@@ -14,5 +20,3 @@
 | Event name | Description                                              | Properties |
 | ---------- | -------------------------------------------------------- | ---------- |
 | **close**  | Callback fired when the component requests to be closed. |
-
----

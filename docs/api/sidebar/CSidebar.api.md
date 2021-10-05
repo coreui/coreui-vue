@@ -1,5 +1,11 @@
 ### CSidebar
 
+```jsx
+import { CSidebar } from '@coreui/vue'
+// or
+import CSidebar from '@coreui/vue/src/components/sidebar/CSidebar'
+```
+
 #### Props
 
 | Prop name      | Description                                      | Type    | Values | Default |
@@ -18,5 +24,3 @@
 | **hide**           | Callback fired when the component requests to be hidden. |
 | **show**           | Callback fired when the component requests to be shown.  |
 | **visible-change** | Event emitted after visibility of component changed.     |
-
----

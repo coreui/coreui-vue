@@ -1,5 +1,11 @@
 ### CFormInput
 
+```jsx
+import { CFormInput } from '@coreui/vue'
+// or
+import CFormInput from '@coreui/vue/src/components/form/CFormInput'
+```
+
 #### Props
 
 | Prop name     | Description                                                                                                                                                                 | Type    | Values                                  | Default |
@@ -11,5 +17,3 @@
 | **size**      | Size the component small or large.                                                                                                                                          | string  | `'sm' \| 'lg'`                          | -       |
 | **type**      | Specifies the type of component.                                                                                                                                            | string  | `'color' \| 'file' \| 'text' \| string` | 'text'  |
 | **valid**     | Set component validation state to valid.                                                                                                                                    | boolean | -                                       |         |
-
----

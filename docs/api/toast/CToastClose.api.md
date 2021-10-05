@@ -1,5 +1,11 @@
 ### CToastClose
 
+```jsx
+import { CToastClose } from '@coreui/vue'
+// or
+import CToastClose from '@coreui/vue/src/components/toast/CToastClose'
+```
+
 #### Props
 
 | Prop name     | Description                                                                             | Type   | Values | Default |
@@ -11,5 +17,3 @@
 | Event name  | Description                                             | Properties |
 | ----------- | ------------------------------------------------------- | ---------- |
 | **dismiss** | Event called before the dissmiss animation has started. |
-
----

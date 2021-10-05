@@ -1,5 +1,11 @@
 ### CFormSwitch
 
+```jsx
+import { CFormSwitch } from '@coreui/vue'
+// or
+import CFormSwitch from '@coreui/vue/src/components/form/CFormSwitch'
+```
+
 #### Props
 
 | Prop name   | Description                                                                                  | Type    | Values                  | Default    |
@@ -10,5 +16,3 @@
 | **size**    | Size the component large or extra large. Works only with `switch`.                           | string  | `'lg' \| 'xl'`          | -          |
 | **type**    | Specifies the type of component.                                                             | string  | `'checkbox'`, `'radio'` | 'checkbox' |
 | **valid**   | Set component validation state to valid.                                                     | boolean | -                       |            |
-
----

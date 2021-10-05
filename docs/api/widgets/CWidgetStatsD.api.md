@@ -1,5 +1,11 @@
 ### CWidgetStatsD
 
+```jsx
+import { CWidgetStatsD } from '@coreui/vue'
+// or
+import CWidgetStatsD from '@coreui/vue/src/components/widgets/CWidgetStatsD'
+```
+
 #### Props
 
 | Prop name  | Description                                                               | Type    | Values                                                                                          | Default  |
@@ -13,5 +19,3 @@
 | ----- | ----------------------------------------------- | -------- |
 | chart | Location for chart component.                   |          |
 | icon  | Location for icon component, ex. `<CDropdown>`. |          |
-
----

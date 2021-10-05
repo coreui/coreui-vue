@@ -9,7 +9,7 @@ const path = require('path')
 export default defineUserConfig<DefaultThemeOptions>({
   base: `/vue/docs/${pkg.config.version_short}/`,
   lang: 'en-US',
-  title: 'CoreUI for Vue.js',
+  title: 'Vue UI Components · CoreUI',
   description: 'UI Components Library for Vue.js (Vue 3)',
   head: [
     // ['link', { rel: 'icon', href: '/logo.png' }],
@@ -228,8 +228,8 @@ export default defineUserConfig<DefaultThemeOptions>({
             link: `/components/modal.html`,
           },
           {
-            text: 'Nav',
-            link: `/components/nav.html`,
+            text: 'Navs & Tabs',
+            link: `/components/navs-tabs.html`,
           },
           {
             text: 'Navbar',

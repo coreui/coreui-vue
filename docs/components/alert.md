@@ -1,5 +1,5 @@
 ---
-title: Alert
+title: Vue Alert Component
 description: Vue alert component gives contextual feedback information for common user operations. The alert component is delivered with a bunch of usable and adjustable alert messages.
 ---
 

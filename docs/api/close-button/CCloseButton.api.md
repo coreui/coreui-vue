@@ -1,5 +1,11 @@
 ### CCloseButton
 
+```jsx
+import { CCloseButton } from '@coreui/vue'
+// or
+import CCloseButton from '@coreui/vue/src/components/close-button/CCloseButton'
+```
+
 #### Props
 
 | Prop name    | Description                                  | Type    | Values | Default |
@@ -12,5 +18,3 @@
 | Event name | Description                                         | Properties |
 | ---------- | --------------------------------------------------- | ---------- |
 | **click**  | Event called when the user clicks on the component. |
-
----

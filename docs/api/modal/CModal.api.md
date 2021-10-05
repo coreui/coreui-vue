@@ -1,5 +1,11 @@
 ### CModal
 
+```jsx
+import { CModal } from '@coreui/vue'
+// or
+import CModal from '@coreui/vue/src/components/modal/CModal'
+```
+
 #### Props
 
 | Prop name      | Description                                                                                                                                                  | Type            | Values                                             | Default |
@@ -22,5 +28,3 @@
 | **close**           | Callback fired when the component requests to be closed.                                                                                                                |
 | **close-prevented** | Callback fired when the component requests to be closed.                                                                                                                |
 | **show**            | Callback fired when the modal is shown, its backdrop is static and a click outside the modal or an escape key press is performed with the keyboard option set to false. |
-
----

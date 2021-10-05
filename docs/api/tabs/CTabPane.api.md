@@ -1,5 +1,11 @@
 ### CTabPane
 
+```jsx
+import { CTabPane } from '@coreui/vue'
+// or
+import CTabPane from '@coreui/vue/src/components/tabs/CTabPane'
+```
+
 #### Props
 
 | Prop name   | Description                         | Type    | Values | Default |
@@ -12,5 +18,3 @@
 | ---------- | -------------------------------------------------------- | ---------- |
 | **hide**   | Callback fired when the component requests to be hidden. |
 | **show**   | Callback fired when the component requests to be shown.  |
-
----

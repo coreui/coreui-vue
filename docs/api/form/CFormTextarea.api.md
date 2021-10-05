@@ -1,5 +1,11 @@
 ### CFormTextarea
 
+```jsx
+import { CFormTextarea } from '@coreui/vue'
+// or
+import CFormTextarea from '@coreui/vue/src/components/form/CFormTextarea'
+```
+
 #### Props
 
 | Prop name     | Description                                                                                                                                                                 | Type    | Values | Default |
@@ -9,5 +15,3 @@
 | **plainText** | Render the component styled as plain text. Removes the default form field styling and preserve the correct margin and padding. Recommend to use only along side `readonly`. | boolean | -      |         |
 | **readonly**  | Toggle the readonly state for the component.                                                                                                                                | boolean | -      |         |
 | **valid**     | Set component validation state to valid.                                                                                                                                    | boolean | -      |         |
-
----

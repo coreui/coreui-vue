@@ -1,5 +1,11 @@
 ### CButton
 
+```jsx
+import { CButton } from '@coreui/vue'
+// or
+import CButton from '@coreui/vue/src/components/button/CButton'
+```
+
 #### Props
 
 | Prop name     | Description                                                                             | Type    | Values                                                                                                                                                                                 | Default  |
@@ -12,5 +18,3 @@
 | **shape**     | Select the shape of the component.                                                      | string  | `'rounded'`, `'rounded-top'`, `'rounded-end'`, `'rounded-bottom'`, `'rounded-start'`, `'rounded-circle'`, `'rounded-pill'`, `'rounded-0'`, `'rounded-1'`, `'rounded-2'`, `'rounded-3'` |          |
 | **size**      | Size the component small or large.                                                      | string  | `'sm'`, `'lg'`                                                                                                                                                                         | -        |
 | **variant**   | Set the button variant to an outlined button or a ghost button.                         | string  | `'ghost'`, `'outline'`                                                                                                                                                                 | -        |
-
----

@@ -281,6 +281,6 @@ Add `alwaysOpen` property to make accordion items stay open when another item is
 
 !!!include(./docs/api/accordion/CAccordion.api.md)!!!
 
-!!!include(./docs/api/accordion/CAccordionButton.api.md)!!!
+!!!include(./docs/api/accordion/CAccordionHeader.api.md)!!!
 
-!!!include(./docs/api/accordion/CAccordionCollapse.api.md)!!!
+!!!include(./docs/api/accordion/CAccordionBody.api.md)!!!

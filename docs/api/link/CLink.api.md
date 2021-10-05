@@ -1,5 +1,11 @@
 ### CLink
 
+```jsx
+import { CLink } from '@coreui/vue'
+// or
+import CLink from '@coreui/vue/src/components/link/CLink'
+```
+
 #### Props
 
 | Prop name     | Description                                                                             | Type    | Values | Default |
@@ -14,5 +20,3 @@
 | Event name | Description                                         | Properties |
 | ---------- | --------------------------------------------------- | ---------- |
 | **click**  | Event called when the user clicks on the component. |
-
----

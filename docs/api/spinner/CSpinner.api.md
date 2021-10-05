@@ -1,5 +1,11 @@
 ### CSpinner
 
+```jsx
+import { CSpinner } from '@coreui/vue'
+// or
+import CSpinner from '@coreui/vue/src/components/spinner/CSpinner'
+```
+
 #### Props
 
 | Prop name               | Description                                                                             | Type   | Values                                                                                          | Default      |
@@ -9,5 +15,3 @@
 | **size**                | Size the component small.                                                               | string | `'sm'`                                                                                          | -            |
 | **variant**             | Set the button variant to an outlined button or a ghost button.                         | string | `'border'`, `'grow'`                                                                            | 'border'     |
 | **visuallyHiddenLabel** | Set visually hidden label for accessibility purposes.                                   | string | -                                                                                               | 'Loading...' |
-
----

@@ -1,5 +1,11 @@
 ### CNavbar
 
+```jsx
+import { CNavbar } from '@coreui/vue'
+// or
+import CNavbar from '@coreui/vue/src/components/navbar/CNavbar'
+```
+
 #### Props
 
 | Prop name       | Description                                                                             | Type            | Values                                                                                                    | Default |
@@ -10,5 +16,3 @@
 | **container**   | Defines optional container wrapping children elements.                                  | boolean\|string | `boolean`, `'sm'`, `'md'`, `'lg'`, `'xl'`, `'xxl'`, `'fluid'`                                             | -       |
 | **expand**      | Defines the responsive breakpoint to determine when content collapses.                  | boolean\|string | `boolean`, `'sm'`, `'md'`, `'lg'`, `'xl'`, `'xxl'`                                                        | -       |
 | **placement**   | Place component in non-static positions.                                                | string          | `'fixed-top'`, `'fixed-bottom'`, `'sticky-top'`                                                           | -       |
-
----
