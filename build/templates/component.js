@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = (renderedUsage, doc, config, fileName, requiresMd, { isSubComponent, hasSubComponents }) => {
-  const { displayName, description, docsBlocks, tags, functional } = doc;
+  const { displayName, description, tags, functional } = doc;
   const { deprecated, author, since, version, see, link } = tags || {};
   const frontMatter = [];
   if (!config.outFile && deprecated) {
@@ -25,6 +25,12 @@ ${isSubComponent || hasSubComponents ? '#' : ''}### ${deprecated ? `~~${displayN
 ${deprecated ? `> **Deprecated** ${deprecated[0].description}\n` : ''}
 ${description ? '> ' + description : ''}
 
+\`\`\`jsx
+import { ${displayName} } from '@coreui/vue'
+// or
+import ${displayName} from '@coreui/vue/src/components/${fileName.replace('.ts', '')}'
+\`\`\`\n
+
 ${functional ? renderedUsage.functionalTag : ''}
 ${author ? author.map(a => `Author: ${a.description}\n`) : ''}
 ${since ? `Since: ${since[0].description}\n` : ''}
@@ -36,7 +42,6 @@ ${renderedUsage.props}
 ${renderedUsage.methods}
 ${renderedUsage.events}
 ${renderedUsage.slots}
-${docsBlocks ? '---\n' + docsBlocks.join('\n---\n') : ''}
 
 ${requiresMd.length
       ? '---\n' + requiresMd.map(component => component.content).join('\n---\n')
