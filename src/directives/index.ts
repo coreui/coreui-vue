@@ -1,4 +1,4 @@
-import { CTooltip } from './CTooltip'
-import { CPopover } from './CPopover'
+import vctooltip from './v-c-tooltip'
+import vcpopover from './v-c-popover'
 
-export { CTooltip, CPopover }
+export { vctooltip, vcpopover }

@@ -1,3 +1,4 @@
+import { DirectiveBinding } from 'vue'
 import { createPopper } from '@popperjs/core'
 
 const getUID = (prefix: string) => {
@@ -43,10 +44,10 @@ const togglePopoverElement = (popover: HTMLDivElement, el: HTMLElement, popperOp
   addPopoverElement(popover, el, popperOptions)
 }
 
-const CPopover = {
+export default {
   name: 'c-popover',
   uid: '',
-  mounted(el: HTMLElement, binding: any) {
+  mounted(el: HTMLElement, binding: DirectiveBinding): void {
     const value = binding.value
     const content = typeof value === 'string' ? value : value.content ? value.content : ''
     const header = value.header ? value.header : ''
@@ -69,7 +70,7 @@ const CPopover = {
     }
 
     const popoverUID = getUID('popover')
-    binding.dir.uid = popoverUID
+    binding.arg = popoverUID
     const popover = createPopoverElement(popoverUID, header, content)
 
     trigger.includes('click') &&
@@ -95,10 +96,8 @@ const CPopover = {
       })
     }
   },
-  unmounted(binding: any) {
-    const popover = document.getElementById(binding.dir.uid)
+  unmounted(binding: DirectiveBinding): void {
+    const popover = binding.arg && document.getElementById(binding.arg)
     popover && popover.remove()
   },
 }
-
-export { CPopover }

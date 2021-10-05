@@ -1,3 +1,4 @@
+import { DirectiveBinding } from 'vue'
 import { createPopper } from '@popperjs/core'
 
 const getUID = (prefix: string) => {
@@ -42,10 +43,10 @@ const toggleTooltipElement = (tooltip: HTMLDivElement, el: HTMLElement, popperOp
   addTooltipElement(tooltip, el, popperOptions)
 }
 
-const CTooltip = {
-  name: 'c-tooltip',
-  uid: '',
-  mounted(el: HTMLElement, binding: any) {
+export default {
+  mounted(el: HTMLElement, binding: DirectiveBinding): void {
+    console.log(binding)
+
     const value = binding.value
     const content = typeof value === 'string' ? value : value.content ? value.content : ''
     const trigger = value.trigger ? value.trigger : 'hover'
@@ -67,7 +68,7 @@ const CTooltip = {
     }
 
     const tooltipUID = getUID('tooltip')
-    binding.dir.uid = tooltipUID
+    binding.arg = tooltipUID
     const tooltip = createTooltipElement(tooltipUID, content)
 
     trigger.includes('click') &&
@@ -93,10 +94,8 @@ const CTooltip = {
       })
     }
   },
-  unmounted(binding: any) {
-    const tooltip = document.getElementById(binding.dir.uid)
+  beforeUnmount(binding: DirectiveBinding): void {
+    const tooltip = binding.arg && document.getElementById(binding.arg)
     tooltip && tooltip.remove()
   },
 }
-
-export { CTooltip }
