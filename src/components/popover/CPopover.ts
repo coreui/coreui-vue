@@ -97,13 +97,14 @@ const CPopover = defineComponent({
       })
     }
 
-    const handleToggle = () => {
+    const handleToggle = (event: Event) => {
+      togglerRef.value = event.target
       visible.value = !visible.value
     }
 
     const initPopper = () => {
       if (togglerRef.value) {
-        popper.value = createPopper(togglerRef.value.firstChild, popoverRef.value, {
+        popper.value = createPopper(togglerRef.value, popoverRef.value, {
           placement: props.placement,
           modifiers: [
             {
@@ -167,28 +168,16 @@ const CPopover = defineComponent({
             ),
         ),
       ),
-      h(
-        'span',
-        {
-          style: {
-            display: 'contents',
+      slots.toggler &&
+        slots.toggler({
+          on: {
+            click: (event: Event) => props.trigger.includes('click') && handleToggle(event),
+            blur: (event: Event) => props.trigger.includes('focus') && handleToggle(event),
+            focus: (event: Event) => props.trigger.includes('focus') && handleToggle(event),
+            mouseenter: (event: Event) => props.trigger.includes('hover') && handleToggle(event),
+            mouseleave: (event: Event) => props.trigger.includes('hover') && handleToggle(event),
           },
-          ref: togglerRef,
-        },
-        {
-          default: () =>
-            slots.toggler &&
-            slots.toggler({
-              on: {
-                click: () => props.trigger.includes('click') && handleToggle(),
-                blur: () => props.trigger.includes('focus') && handleToggle(),
-                focus: () => props.trigger.includes('focus') && handleToggle(),
-                mouseenter: () => props.trigger.includes('hover') && handleToggle(),
-                mouseleave: () => props.trigger.includes('hover') && handleToggle(),
-              },
-            }),
-        },
-      ),
+        }),
     ]
   },
 })
