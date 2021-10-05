@@ -1,6 +1,6 @@
 <template>
   <RawOutboundLink>
-    <span class="sr-only">{{ themeLocale.openInNewWindow }}</span>
+    <span class="visually-hidden">{{ themeLocale.openInNewWindow }}</span>
   </RawOutboundLink>
 </template>
 
