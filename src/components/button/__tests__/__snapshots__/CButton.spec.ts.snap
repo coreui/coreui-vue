@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize (number two) CButton component renders correctly 1`] = `"<a class=\\"btn btn-warning disabled\\" disabled=\\"false\\" aria-disabled=\\"true\\" tabindex=\\"-1\\">Default slot</a>"`;
+
+exports[`Customize CButton component renders correctly 1`] = `"<div class=\\"btn btn-outline-warning btn-lg active disabled rounded-pill\\" disabled=\\"true\\">Default slot</div>"`;
+
+exports[`Loads and display CButton component renders correctly 1`] = `"<button class=\\"btn btn-undefined\\">Default slot</button>"`;

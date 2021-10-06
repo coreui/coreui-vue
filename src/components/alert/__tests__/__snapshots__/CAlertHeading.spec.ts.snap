@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CAlertHeading component renders correctly 1`] = `"<h2 class=\\"alert-heading\\">Default slot</h2>"`;
+
+exports[`Loads and display CAlertHeading component renders correctly 1`] = `"<h4 class=\\"alert-heading\\">Default slot</h4>"`;

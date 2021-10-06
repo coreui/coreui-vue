@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize (two) CListGroupItem component renders correctly 1`] = `"<button class=\\"list-group-item list-group-item-action active disabled\\" active=\\"true\\" disabled=\\"\\" aria-current=\\"true\\" aria-disabled=\\"true\\">Default slot</button>"`;
+
+exports[`Customize CListGroupItem component renders correctly 1`] = `"<div class=\\"list-group-item list-group-item-warning active disabled\\" aria-current=\\"true\\" aria-disabled=\\"true\\">Default slot</div>"`;
+
+exports[`Loads and display CListGroupItem component renders correctly 1`] = `"<li class=\\"list-group-item\\">Default slot</li>"`;

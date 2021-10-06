@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loads and display CWidgetStatsD component renders correctly 1`] = `
+"<div class=\\"card\\">
+  <div class=\\"card-header position-relative d-flex justify-content-center align-items-center bg-warning\\">iconchart</div>
+  <div class=\\"card-body row text-center\\">
+    <!---->
+    <div class=\\"col\\">
+      <div class=\\"col fs-5 fw-semibold\\">bb</div>
+      <div class=\\"col text-uppercase text-medium-emphasis small\\">aa</div>
+    </div>
+    <div class=\\"vr\\"></div>
+    <div class=\\"col\\">
+      <div class=\\"col fs-5 fw-semibold\\">dd</div>
+      <div class=\\"col text-uppercase text-medium-emphasis small\\">cc</div>
+    </div>
+  </div>
+</div>"
+`;

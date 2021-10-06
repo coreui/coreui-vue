@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CPaginationItem component renders correctly 1`] = `"<li class=\\"page-item disabled\\"><a class=\\"page-link\\" href=\\"/bazinga\\">Default slot</a></li>"`;
+
+exports[`Loads and display CPaginationItem component renders correctly 1`] = `"<li class=\\"page-item\\"><a class=\\"page-link\\">Default slot</a></li>"`;

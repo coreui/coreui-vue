@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loads and display CWidgetStatsE component renders correctly 1`] = `
+"<div class=\\"card\\">
+  <div class=\\"card-body text-center\\">
+    <div class=\\"text-muted small text-uppercase font-weight-bold\\">title</div>
+    <div class=\\"h2 py-3\\">value</div>chartdefault
+  </div>
+</div>"
+`;

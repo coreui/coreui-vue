@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loads and display CCardLink component renders correctly 1`] = `"<a class=\\"card-link\\" href=\\"/bazinga\\">Default slot</a>"`;

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CCardText component renders correctly 1`] = `"<h4 class=\\"card-text\\">Default slot</h4>"`;
+
+exports[`Loads and display CCardText component renders correctly 1`] = `"<p class=\\"card-text\\">Default slot</p>"`;

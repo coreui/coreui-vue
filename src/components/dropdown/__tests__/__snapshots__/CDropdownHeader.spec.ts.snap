@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CDropdownHeader component renders correctly 1`] = `"<h2 class=\\"dropdown-header\\">Default slot</h2>"`;
+
+exports[`Loads and display CDropdownHeader component renders correctly 1`] = `"<h6 class=\\"dropdown-header\\">Default slot</h6>"`;

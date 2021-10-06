@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize (two) CFormFeedback component renders correctly 1`] = `"<h2 class=\\"invalid-feedback valid-feedback\\">Default slot</h2>"`;
+
+exports[`Customize CFormFeedback component renders correctly 1`] = `"<h2 class=\\"invalid-tooltip valid-tooltip\\">Default slot</h2>"`;
+
+exports[`Loads and display CFormFeedback component renders correctly 1`] = `"<div class=\\"\\">Default slot</div>"`;

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loads and display CSidebarToggler component renders correctly 1`] = `"<button class=\\"sidebar-toggler\\">Default slot</button>"`;

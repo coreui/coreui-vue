@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CTableHeaderCell component renders correctly 1`] = `"<th class=\\"table-warning\\">Default slot</th>"`;
+
+exports[`Loads and display CTableHeaderCell component renders correctly 1`] = `"<th class=\\"\\">Default slot</th>"`;

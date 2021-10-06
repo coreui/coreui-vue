@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CTabPane component renders correctly 1`] = `
+"<transition-stub>
+  <div class=\\"tab-pane fade active show\\">Default slot</div>
+</transition-stub>"
+`;
+
+exports[`Loads and display CTabPane component renders correctly 1`] = `
+"<transition-stub>
+  <div class=\\"tab-pane fade\\" style=\\"display: none;\\">Default slot</div>
+</transition-stub>"
+`;

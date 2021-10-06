@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loads and display CCardImageOverlay component renders correctly 1`] = `"<div class=\\"card-img-overlay\\">Default slot</div>"`;

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CRow component renders correctly 1`] = `"<div class=\\"row row-cols-md-4 g-md-10 gx-md-11 gy-md-12\\">Default slot</div>"`;
+
+exports[`Loads and display CRow component renders correctly 1`] = `"<div class=\\"row\\">Default slot</div>"`;

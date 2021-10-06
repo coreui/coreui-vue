@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize (two) CImage component renders correctly 1`] = `"<img class=\\"d-block mx-auto\\">"`;
+
+exports[`Customize CImage component renders correctly 1`] = `"<img class=\\"float-end img-fluid rounded img-thumbnail\\">"`;
+
+exports[`Loads and display CImage component renders correctly 1`] = `"<img class=\\"\\">"`;

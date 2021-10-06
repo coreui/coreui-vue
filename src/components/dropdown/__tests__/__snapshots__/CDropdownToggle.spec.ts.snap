@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CDropdownToggle component renders correctly 1`] = `"<a active=\\"true\\" class=\\"nav-link dropdown-toggle-split show active disabled\\" disabled=\\"true\\" href=\\"#\\">Default slot</a>"`;
+
+exports[`Loads and display CDropdownToggle component renders correctly 1`] = `"<button class=\\"dropdown-toggle dropdown-toggle-split show active disabled btn btn-outline-warning btn-lg rounded-pill\\" active=\\"true\\" disabled=\\"\\" type=\\"button\\"><span class=\\"visually-hidden\\">Toggle Dropdown</span></button>"`;

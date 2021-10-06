@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CProgress component renders correctly 1`] = `"<div class=\\"progress progress-thin progress-white\\" style=\\"height: 100px;\\">Default slot</div>"`;
+
+exports[`Loads and display CProgress component renders correctly 1`] = `"<div class=\\"progress\\" style=\\"\\">Default slot</div>"`;

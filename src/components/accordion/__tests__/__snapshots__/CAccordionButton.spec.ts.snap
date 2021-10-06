@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loads and display CAccordionButton component renders correctly 1`] = `"<button aria-expanded=\\"true\\" class=\\"accordion-button collapsed\\">Default slot</button>"`;

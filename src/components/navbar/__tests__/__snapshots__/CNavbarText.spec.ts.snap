@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loads and display CNavbarText component renders correctly 1`] = `"<span class=\\"navbar-text\\">Default slot</span>"`;

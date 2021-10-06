@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loads and display CHeaderDivider component renders correctly 1`] = `"<div class=\\"header-divider\\">Default slot</div>"`;

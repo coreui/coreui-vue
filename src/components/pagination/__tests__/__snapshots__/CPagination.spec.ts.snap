@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CPagination component renders correctly 1`] = `
+"<nav>
+  <ul class=\\"pagination pagination-lg\\">Default slot</ul>
+</nav>"
+`;
+
+exports[`Loads and display CPagination component renders correctly 1`] = `
+"<nav>
+  <ul class=\\"pagination\\">Default slot</ul>
+</nav>"
+`;

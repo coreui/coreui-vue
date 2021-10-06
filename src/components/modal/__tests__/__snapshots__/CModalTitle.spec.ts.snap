@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CModalTitle component renders correctly 1`] = `"<div class=\\"modal-title\\">Default slot</div>"`;
+
+exports[`Loads and display CModalTitle component renders correctly 1`] = `"<h5 class=\\"modal-title\\">Default slot</h5>"`;

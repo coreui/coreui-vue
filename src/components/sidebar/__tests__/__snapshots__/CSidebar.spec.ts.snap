@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CSidebar component renders correctly 1`] = `
+"<div class=\\"sidebar sidebar-narrow sidebar-overlaid sidebar-fixed sidebar-xl sidebar-narrow-unfoldable\\">Default slot</div>
+<!---->"
+`;
+
+exports[`Loads and display CSidebar component renders correctly 1`] = `
+"<div class=\\"sidebar hide\\">Default slot</div>
+<!---->"
+`;

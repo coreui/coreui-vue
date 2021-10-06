@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CCarousel component renders correctly 1`] = `
+"<div class=\\"carousel slide carousel-fade carousel-dark\\">
+  <div class=\\"carousel-indicators\\"></div>
+  <div class=\\"carousel-inner\\"></div><button type=\\"button\\" class=\\"carousel-control-prev\\" data-coreui-target=\\"\\"><span class=\\"carousel-control-prev-icon\\" ariahidden=\\"true\\"></span><span class=\\"visually-hidden\\">Previous</span></button><button type=\\"button\\" class=\\"carousel-control-next\\" data-coreui-target=\\"\\"><span class=\\"carousel-control-next-icon\\" ariahidden=\\"true\\"></span><span class=\\"visually-hidden\\">Next</span></button>
+</div>"
+`;
+
+exports[`Loads and display CCarousel component renders correctly 1`] = `
+"<div class=\\"carousel slide\\">
+  <!---->
+  <div class=\\"carousel-inner\\"></div>
+  <!---->
+</div>"
+`;

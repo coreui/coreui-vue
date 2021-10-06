@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CModalHeader component renders correctly 1`] = `"<span class=\\"modal-header\\">Default slot<button class=\\"btn btn-close\\" aria-label=\\"Close\\"></button></span>"`;
+
+exports[`Loads and display CModalHeader component renders correctly 1`] = `"<span class=\\"modal-header\\">Default slot<button class=\\"btn btn-close\\" aria-label=\\"Close\\"></button></span>"`;

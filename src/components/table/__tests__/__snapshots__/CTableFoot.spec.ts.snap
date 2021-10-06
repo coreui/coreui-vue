@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CTableFoot component renders correctly 1`] = `"<tfoot class=\\"table-warning\\">Default slot</tfoot>"`;
+
+exports[`Loads and display CTableFoot component renders correctly 1`] = `"<tfoot class=\\"\\">Default slot</tfoot>"`;

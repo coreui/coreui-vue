@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CFormSelect component renders correctly 1`] = `"<select class=\\"form-select form-select-lg\\" size=\\"200\\">Default slot</select>"`;
+
+exports[`Loads and display CFormSelect component renders correctly 1`] = `"<select class=\\"form-select\\">Default slot</select>"`;

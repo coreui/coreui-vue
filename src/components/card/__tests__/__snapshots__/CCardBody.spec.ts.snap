@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loads and display CCardBody component renders correctly 1`] = `"<div class=\\"card-body\\">Default slot</div>"`;

@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize COffcanvasTitle component renders correctly 1`] = `"<div class=\\"offcanvas-title\\">Default slot</div>"`;
+
+exports[`Loads and display COffcanvasTitle component renders correctly 1`] = `"<h5 class=\\"offcanvas-title\\">Default slot</h5>"`;

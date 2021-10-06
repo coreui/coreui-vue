@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CHeader component renders correctly 1`] = `
+"<div class=\\"header header-fixed\\">
+  <div class=\\"container-lg\\">Default slot</div>
+</div>"
+`;
+
+exports[`Loads and display CHeader component renders correctly 1`] = `"<div class=\\"header\\">Default slot</div>"`;

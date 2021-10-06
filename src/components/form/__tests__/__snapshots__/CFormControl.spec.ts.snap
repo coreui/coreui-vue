@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize (number two) CFormControl component renders correctly 1`] = `"<div class=\\"classNameParent\\">Default slot</div>"`;
+
+exports[`Customize CFormControl component renders correctly 1`] = `"<input class=\\"form-control-plaintext form-control-color form-control-lg bazinga\\" type=\\"color\\" attrbazinga=\\"attrbazinga\\">"`;
+
+exports[`Loads and display CFormControl component renders correctly 1`] = `"<input class=\\"form-control\\">"`;

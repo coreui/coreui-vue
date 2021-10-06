@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loads and display CAlert component renders correctly 1`] = `
+<transition-stub>
+  <div
+    class="alert alert-undefined"
+  >
+    <!---->
+    <!---->
+  </div>
+</transition-stub>
+`;
+
+exports[`Loads and display CAlert component renders correctly with slot 1`] = `
+<transition-stub
+  class="bazinga"
+>
+  <div
+    class="alert alert-success alert-success"
+  >
+    
+    Hello World!
+    
+    <!---->
+  </div>
+</transition-stub>
+`;

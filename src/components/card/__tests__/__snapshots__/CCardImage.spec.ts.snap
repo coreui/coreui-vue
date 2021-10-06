@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CCardImage component renders correctly 1`] = `"<a class=\\"card-img-bottom\\">Default slot</a>"`;
+
+exports[`Loads and display CCardImage component renders correctly 1`] = `"<img class=\\"card-img\\">"`;

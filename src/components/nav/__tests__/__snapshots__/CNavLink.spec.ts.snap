@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CNavLink component renders correctly 1`] = `"<div class=\\"active disabled nav-link\\" aria-current=\\"page\\" href=\\"/bazinga\\">Default slot</div>"`;
+
+exports[`Loads and display CNavLink component renders correctly 1`] = `"<a class=\\"nav-link\\">Default slot</a>"`;

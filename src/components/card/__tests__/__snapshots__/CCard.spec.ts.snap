@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CCard component renders correctly 1`] = `"<div class=\\"card bg-warning text-info\\">Default slot</div>"`;
+
+exports[`Loads and display CCard component renders correctly 1`] = `"<div class=\\"card\\">Default slot</div>"`;

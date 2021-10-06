@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Customize CTable component renders correctly 1`] = `
+"<div class=\\"table-responsive-lg\\">
+  <table class=\\"table align-center caption-top border-dark table-bordered table-borderless table-warning table-hover table-sm table-striped\\">Default slot</table>
+</div>"
+`;
+
+exports[`Loads and display CTable component renders correctly 1`] = `"<table class=\\"table\\">Default slot</table>"`;

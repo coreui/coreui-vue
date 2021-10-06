@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loads and display CBreadcrumb component renders correctly 1`] = `
+"<nav aria-label=\\"breadcrumb\\" class=\\"bazinga\\">
+  <ol class=\\"breadcrumb bazinga\\">Default slot</ol>
+</nav>"
+`;
