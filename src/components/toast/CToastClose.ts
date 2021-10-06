@@ -18,13 +18,13 @@ const CToastClose = defineComponent({
     /**
      * Event called before the dissmiss animation has started.
      */
-    'dismiss',
+    'close',
   ],
   setup(props, { slots, emit }) {
     // eslint-disable-next-line no-unused-vars
     const updateVisible = inject('updateVisible') as (visible: boolean) => void
     const handleClose = () => {
-      emit('dismiss')
+      emit('close')
       updateVisible(false)
     }
     return () =>
