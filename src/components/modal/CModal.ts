@@ -64,14 +64,6 @@ const CModal = defineComponent({
       required: false,
     },
     /**
-     * Does the modal dialog itself scroll, or does the whole dialog scroll within the window.
-     */
-    dismiss: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
-    /**
      * Create a scrollable modal that allows scrolling the modal body.
      */
     scrollable: {
