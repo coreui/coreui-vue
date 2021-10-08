@@ -45,8 +45,6 @@ const toggleTooltipElement = (tooltip: HTMLDivElement, el: HTMLElement, popperOp
 
 export default {
   mounted(el: HTMLElement, binding: DirectiveBinding): void {
-    console.log(binding)
-
     const value = binding.value
     const content = typeof value === 'string' ? value : value.content ? value.content : ''
     const trigger = value.trigger ? value.trigger : 'hover'

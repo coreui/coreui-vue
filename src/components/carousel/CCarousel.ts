@@ -98,8 +98,6 @@ const CCarousel = defineComponent({
       customInterval.value = value
     }
 
-    watch(customInterval, () => console.log(customInterval.value))
-
     provide('setAnimating', setAnimating)
     provide('setCustomInterval', setCustomInterval)
 

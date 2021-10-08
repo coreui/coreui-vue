@@ -6,8 +6,6 @@ const CAccordionButton = defineComponent({
     const toggleVisibility = inject('toggleVisibility') as () => void
     const visible = inject('visible') as Ref<boolean>
 
-    console.log(visible)
-
     return () =>
       h(
         'button',
