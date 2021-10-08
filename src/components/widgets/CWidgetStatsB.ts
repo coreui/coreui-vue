@@ -69,7 +69,7 @@ const CWidgetStatsB = defineComponent({
         {
           class: [
             {
-              ['high-emphasis-inverse']: props.inverse,
+              'text-high-emphasis-inverse': props.inverse,
             },
           ],
           color: props.color,
