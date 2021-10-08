@@ -4,20 +4,18 @@ import { CInputGroup as Component } from '../../../index'
 const ComponentName = 'CInputGroup'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-      
-  },
+  propsData: {},
   slots: {
-    default: 'Default slot'
+    default: 'Default slot',
   },
 })
 
 const customWrapper = mount(Component, {
   propsData: {
-    size: 'lg'
+    size: 'lg',
   },
   slots: {
-    default: 'Default slot'
+    default: 'Default slot',
   },
 })
 
@@ -27,7 +25,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.text()).toContain('Default slot')
     expect(defaultWrapper.classes('input-group')).toBe(true)
@@ -37,7 +35,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.text()).toContain('Default slot')
     expect(customWrapper.classes('input-group')).toBe(true)

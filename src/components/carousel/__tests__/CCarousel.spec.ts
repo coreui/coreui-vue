@@ -7,12 +7,8 @@ import { CCarousel as Component } from '../../../index'
 const ComponentName = 'CCarousel'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-      
-  },
-  slots: {
-
-  }
+  propsData: {},
+  slots: {},
 })
 
 const customWrapper = mount(Component, {
@@ -22,11 +18,9 @@ const customWrapper = mount(Component, {
     index: 1,
     indicators: true,
     interval: 3000,
-    transition: 'crossfade'
+    transition: 'crossfade',
   },
-  slots: {
-
-  }
+  slots: {},
 })
 
 describe(`Loads and display ${ComponentName} component`, () => {
@@ -35,7 +29,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.classes('carousel')).toBe(true)
     expect(defaultWrapper.classes('slide')).toBe(true)
@@ -45,7 +39,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.text()).toContain('PreviousNext')
     expect(customWrapper.classes('carousel')).toBe(true)

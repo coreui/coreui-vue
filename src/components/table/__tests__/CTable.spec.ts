@@ -4,11 +4,9 @@ import { CTable as Component } from '../../../index'
 const ComponentName = 'CTable'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-      
-  },
+  propsData: {},
   slots: {
-    default: 'Default slot'
+    default: 'Default slot',
   },
 })
 
@@ -26,7 +24,7 @@ const customWrapper = mount(Component, {
     striped: true,
   },
   slots: {
-    default: 'Default slot'
+    default: 'Default slot',
   },
 })
 
@@ -36,7 +34,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.find('table').text()).toContain('Default slot')
     expect(defaultWrapper.find('table').classes('table')).toBe(true)
@@ -46,7 +44,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.find('div').classes('table-responsive-lg')).toBe(true)
     expect(customWrapper.find('table').text()).toContain('Default slot')

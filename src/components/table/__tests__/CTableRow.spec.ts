@@ -4,11 +4,9 @@ import { CTableRow as Component } from '../../../index'
 const ComponentName = 'CTableRow'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-      
-  },
+  propsData: {},
   slots: {
-    default: 'Default slot'
+    default: 'Default slot',
   },
 })
 
@@ -16,10 +14,10 @@ const customWrapper = mount(Component, {
   propsData: {
     active: true,
     align: 'middle',
-    color: 'warning'
+    color: 'warning',
   },
   slots: {
-    default: 'Default slot'
+    default: 'Default slot',
   },
 })
 
@@ -29,7 +27,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.text()).toContain('Default slot')
   })
@@ -38,7 +36,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.text()).toContain('Default slot')
     expect(customWrapper.classes('align-middle')).toBe(true)

@@ -4,12 +4,8 @@ import { CImage as Component } from '../../../index'
 const ComponentName = 'CImage'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-      
-  },
-  slots: {
-
-  },
+  propsData: {},
+  slots: {},
 })
 
 const customWrapper = mount(Component, {
@@ -19,18 +15,14 @@ const customWrapper = mount(Component, {
     rounded: true,
     thumbnail: true,
   },
-  slots: {
-
-  },
+  slots: {},
 })
 
 const customWrapperTwo = mount(Component, {
   propsData: {
     align: 'center',
   },
-  slots: {
-
-  },
+  slots: {},
 })
 
 describe(`Loads and display ${ComponentName} component`, () => {
@@ -39,13 +31,13 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
 })
 
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.classes('float-end')).toBe(true)
     expect(customWrapper.classes('img-fluid')).toBe(true)
@@ -57,7 +49,7 @@ describe(`Customize ${ComponentName} component`, () => {
 describe(`Customize (two) ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapperTwo.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapperTwo.classes('d-block')).toBe(true)
     expect(customWrapperTwo.classes('mx-auto')).toBe(true)

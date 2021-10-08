@@ -5,11 +5,11 @@ const ComponentName = 'CBackdrop'
 
 const defaultWrapper = mount(Component, {
   propsData: {
-      visible: true
+    visible: true,
   },
   slots: {
     default: 'Default slot',
-  }
+  },
 })
 
 describe(`Loads and display ${ComponentName} component`, () => {
@@ -18,7 +18,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.find('div').classes('fade')).toBe(true)
   })

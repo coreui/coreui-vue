@@ -4,12 +4,8 @@ import { CSidebarNav as Component } from '../../../index'
 const ComponentName = 'CSidebarNav'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-      
-  },
-  slots: {
-
-  },
+  propsData: {},
+  slots: {},
 })
 
 describe(`Loads and display ${ComponentName} component`, () => {
@@ -18,7 +14,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.classes('sidebar-nav')).toBe(true)
   })

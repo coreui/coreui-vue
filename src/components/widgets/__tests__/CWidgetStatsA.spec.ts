@@ -7,12 +7,12 @@ const defaultWrapper = mount(Component, {
   propsData: {
     color: 'warning',
     title: 'title',
-    value: 75
+    value: 75,
   },
   slots: {
     action: 'action',
     chart: 'chart',
-    default: 'Default slot'
+    default: 'Default slot',
   },
 })
 
@@ -22,5 +22,5 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
 })

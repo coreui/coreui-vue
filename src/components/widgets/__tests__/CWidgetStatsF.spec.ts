@@ -9,12 +9,12 @@ const defaultWrapper = mount(Component, {
     padding: true,
     title: 'title',
     text: 'text',
-    value: 75
+    value: 75,
   },
   slots: {
     icon: 'icon',
     default: 'default',
-    footer: 'footer'
+    footer: 'footer',
   },
 })
 
@@ -24,5 +24,5 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
 })

@@ -4,11 +4,9 @@ import { CSpinner as Component } from '../../../index'
 const ComponentName = 'CSpinner'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-      
-  },
+  propsData: {},
   slots: {
-    default: 'Default slot'
+    default: 'Default slot',
   },
 })
 
@@ -21,7 +19,7 @@ const customWrapper = mount(Component, {
     visuallyHiddenLabel: 'visuallyHiddenLabel',
   },
   slots: {
-    default: 'Default slot'
+    default: 'Default slot',
   },
 })
 
@@ -31,7 +29,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.classes('spinner-border')).toBe(true)
     expect(defaultWrapper.classes('text-undefined')).toBe(true)
@@ -43,7 +41,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.classes('spinner-grow')).toBe(true)
     expect(customWrapper.classes('text-warning')).toBe(true)

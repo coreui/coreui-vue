@@ -4,20 +4,14 @@ import { CNavbarToggler as Component } from '../../../index'
 const ComponentName = 'CNavbarToggler'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-      
-  },
-  slots: {
-
-  },
+  propsData: {},
+  slots: {},
 })
 
 const customWrapper = mount(Component, {
-  propsData: {
-
-  },
+  propsData: {},
   slots: {
-    default: 'Default slot'
+    default: 'Default slot',
   },
 })
 
@@ -27,7 +21,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.classes('navbar-toggler')).toBe(true)
     expect(defaultWrapper.find('span').classes('navbar-toggler-icon')).toBe(true)
@@ -37,7 +31,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.text()).toContain('Default slot')
     expect(customWrapper.classes('navbar-toggler')).toBe(true)

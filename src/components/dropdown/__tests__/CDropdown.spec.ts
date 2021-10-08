@@ -4,17 +4,15 @@ import { CDropdown as Component } from '../../../index'
 const ComponentName = 'CDropdown'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-      
-  },
+  propsData: {},
   slots: {
     default: 'Default slot',
-  }
+  },
 })
 
 const customWrapper = mount(Component, {
   propsData: {
-    alignment: {lg: 'end'},
+    alignment: { lg: 'end' },
     dark: true,
     direction: 'dropend',
     disabled: true,
@@ -22,11 +20,11 @@ const customWrapper = mount(Component, {
     popper: false,
     trigger: 'mouseover',
     variant: 'nav-item',
-    visible: true
+    visible: true,
   },
   slots: {
     default: 'Default slot',
-  }
+  },
 })
 
 const customWrapperTwo = mount(Component, {
@@ -35,7 +33,7 @@ const customWrapperTwo = mount(Component, {
   },
   slots: {
     default: 'Default slot',
-  }
+  },
 })
 
 describe(`Loads and display ${ComponentName} component`, () => {
@@ -44,7 +42,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.text()).toContain('Default slot')
     expect(defaultWrapper.classes('btn-group')).toBe(true)
@@ -54,7 +52,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.text()).toContain('Default slot')
     expect(customWrapper.classes('nav-item')).toBe(true)
@@ -65,7 +63,7 @@ describe(`Customize ${ComponentName} component`, () => {
 describe(`Customize (variant number two) ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapperTwo.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapperTwo.text()).toContain('Default slot')
   })

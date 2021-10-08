@@ -4,9 +4,7 @@ import { CFormSelect as Component } from '../../../index'
 const ComponentName = 'CFormSelect'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-      
-  },
+  propsData: {},
   slots: {
     default: 'Default slot',
   },
@@ -24,14 +22,13 @@ const customWrapper = mount(Component, {
   },
 })
 
-
 describe(`Loads and display ${ComponentName} component`, () => {
   it('has a name', () => {
     expect(Component.name).toMatch(ComponentName)
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.text()).toContain('Default slot')
     expect(defaultWrapper.classes('form-select')).toBe(true)
@@ -41,7 +38,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.text()).toContain('Default slot')
     expect(customWrapper.classes('form-select')).toBe(true)

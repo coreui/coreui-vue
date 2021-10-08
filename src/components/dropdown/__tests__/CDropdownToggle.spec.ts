@@ -7,10 +7,10 @@ const defaultWrapper = mount(Component, {
   propsData: {
     active: true,
     disabled: true,
-    variant: 'outline',   
-    color: 'warning',  
+    variant: 'outline',
+    color: 'warning',
     size: 'lg',
-    shape: 'rounded-pill', 
+    shape: 'rounded-pill',
     split: true,
   },
   slots: {
@@ -21,9 +21,11 @@ const defaultWrapper = mount(Component, {
       dropdownRef: ref(),
       variant: 'input-group',
       visible: true,
-      toggleMenu: function(){ return true }
-    }
-  }
+      toggleMenu: function () {
+        return true
+      },
+    },
+  },
 })
 
 const customWrapper = mount(Component, {
@@ -45,9 +47,11 @@ const customWrapper = mount(Component, {
       dropdownRef: ref(),
       variant: 'nav-item',
       visible: true,
-      toggleMenu: function(){ return true }
-    }
-  }
+      toggleMenu: function () {
+        return true
+      },
+    },
+  },
 })
 
 describe(`Loads and display ${ComponentName} component`, () => {
@@ -56,7 +60,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.classes('btn')).toBe(true)
     expect(defaultWrapper.classes('dropdown-toggle')).toBe(true)
@@ -78,13 +82,13 @@ describe(`Loads and display ${ComponentName} component`, () => {
     defaultWrapper.trigger('click')
     expect(flag).toBe(true)
   })
-  */ 
+  */
 })
 
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.text()).toContain('Default slot')
     expect(customWrapper.classes('nav-link')).toBe(true)
@@ -93,6 +97,6 @@ describe(`Customize ${ComponentName} component`, () => {
     expect(customWrapper.classes('active')).toBe(true)
     expect(customWrapper.classes('disabled')).toBe(true)
     expect(customWrapper.attributes('disabled')).toBe('true')
-    expect(customWrapper.attributes('href')).toBe('#') 
+    expect(customWrapper.attributes('href')).toBe('#')
   })
 })

@@ -9,12 +9,10 @@ const defaultWrapper = mount(Component, {
       activeItemKey: 1,
     },
   },
-  propsData: {
-      
-  },
+  propsData: {},
   slots: {
     default: 'Default slot',
-  }
+  },
 })
 
 describe(`Loads and display ${ComponentName} component`, () => {
@@ -23,7 +21,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.text()).toContain('Default slot')
     expect(defaultWrapper.classes('accordion-item')).toBe(true)

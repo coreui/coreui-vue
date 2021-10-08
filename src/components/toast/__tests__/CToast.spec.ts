@@ -4,11 +4,9 @@ import { CToast as Component } from '../../../index'
 const ComponentName = 'CToast'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-      
-  },
+  propsData: {},
   slots: {
-    default: 'Default slot'
+    default: 'Default slot',
   },
 })
 
@@ -20,10 +18,10 @@ const customWrapper = mount(Component, {
     dismissible: false,
     key: 123,
     title: 'title',
-    visible: true
+    visible: true,
   },
   slots: {
-    default: 'Default slot'
+    default: 'Default slot',
   },
 })
 
@@ -33,7 +31,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.find('div').text()).toContain('Default slot')
     expect(defaultWrapper.find('div').classes('toast')).toBe(true)
@@ -47,7 +45,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.find('div').text()).toContain('Default slot')
     expect(customWrapper.find('div').classes('toast')).toBe(true)

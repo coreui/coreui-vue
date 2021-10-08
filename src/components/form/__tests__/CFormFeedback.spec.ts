@@ -4,9 +4,7 @@ import { CFormFeedback as Component } from '../../../index'
 const ComponentName = 'CFormFeedback'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-      
-  },
+  propsData: {},
   slots: {
     default: 'Default slot',
   },
@@ -17,7 +15,7 @@ const customWrapper = mount(Component, {
     component: 'h2',
     invalid: true,
     tooltip: true,
-    valid: true
+    valid: true,
   },
   slots: {
     default: 'Default slot',
@@ -25,16 +23,16 @@ const customWrapper = mount(Component, {
 })
 
 const customWrapperTwo = mount(Component, {
-    propsData: {
-      component: 'h2',
-      invalid: true,
-      tooltip: false,
-      valid: true
-    },
-    slots: {
-      default: 'Default slot',
-    },
-  })
+  propsData: {
+    component: 'h2',
+    invalid: true,
+    tooltip: false,
+    valid: true,
+  },
+  slots: {
+    default: 'Default slot',
+  },
+})
 
 describe(`Loads and display ${ComponentName} component`, () => {
   it('has a name', () => {
@@ -42,7 +40,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.text()).toContain('Default slot')
   })
@@ -51,7 +49,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.text()).toContain('Default slot')
     expect(customWrapper.classes('invalid-tooltip')).toBe(true)
@@ -62,7 +60,7 @@ describe(`Customize ${ComponentName} component`, () => {
 describe(`Customize (two) ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapperTwo.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapperTwo.text()).toContain('Default slot')
     expect(customWrapperTwo.classes('invalid-feedback')).toBe(true)

@@ -10,7 +10,7 @@ const defaultWrapper = mount(Component, {
   },
   slots: {
     chart: 'chart',
-    default: 'default'
+    default: 'default',
   },
 })
 
@@ -20,5 +20,5 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
 })

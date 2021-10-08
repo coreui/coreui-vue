@@ -5,11 +5,11 @@ const ComponentName = 'CBreadcrumb'
 
 const defaultWrapper = mount(Component, {
   propsData: {
-      class: 'bazinga'
+    class: 'bazinga',
   },
   slots: {
     default: 'Default slot',
-  }
+  },
 })
 
 describe(`Loads and display ${ComponentName} component`, () => {
@@ -18,7 +18,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.find('ol').text()).toContain('Default slot')
     expect(defaultWrapper.attributes('aria-label')).toBe('breadcrumb')

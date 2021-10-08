@@ -10,23 +10,21 @@ const updateVisible = (v: boolean) => {
 const defaultWrapper = mount(Component, {
   global: {
     provide: {
-      updateVisible: updateVisible
-    }
+      updateVisible: updateVisible,
+    },
   },
-  propsData: {
-      
-  },
+  propsData: {},
   slots: {
-    default: 'Default slot'
+    default: 'Default slot',
   },
 })
 
 const customWrapper = mount(Component, {
   propsData: {
-    closeButton: true
+    closeButton: true,
   },
   slots: {
-    default: 'Default slot'
+    default: 'Default slot',
   },
 })
 
@@ -36,7 +34,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.text()).toContain('Default slot')
     expect(defaultWrapper.classes('toast-header')).toBe(true)
@@ -46,7 +44,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.text()).toContain('Default slot')
     expect(customWrapper.classes('toast-header')).toBe(true)

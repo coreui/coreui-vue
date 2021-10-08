@@ -4,12 +4,8 @@ import { CFormCheck as Component } from '../../../index'
 const ComponentName = 'CFormCheck'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-      
-  },
-  slots: {
-
-  },
+  propsData: {},
+  slots: {},
 })
 
 const customLabelWrapper = mount(Component, {
@@ -19,17 +15,15 @@ const customLabelWrapper = mount(Component, {
       color: 'warning',
       shape: 'rounded-circle',
       size: 'lg',
-      variant: 'outline'
+      variant: 'outline',
     },
     id: 'uniqueid',
     inline: true,
     invalid: true,
     type: 'checkbox', // TODO: test other type
-    valid: true
+    valid: true,
   },
-  slots: {
-
-  },
+  slots: {},
 })
 
 const customLabelInSlotWrapper = mount(Component, {
@@ -38,16 +32,16 @@ const customLabelInSlotWrapper = mount(Component, {
       color: 'warning',
       shape: 'rounded-circle',
       size: 'lg',
-      variant: 'outline'
+      variant: 'outline',
     },
     id: 'uniqueid',
     inline: true,
     invalid: true,
     type: 'checkbox', // TODO: test other type
-    valid: true  
+    valid: true,
   },
   slots: {
-    label: 'some label'   
+    label: 'some label',
   },
 })
 
@@ -57,18 +51,16 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.classes('form-check-input')).toBe(true)
   })
 })
 
-
-
 describe(`Customize with label - ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customLabelWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customLabelWrapper.find('label').text()).toContain('some label')
     expect(customLabelWrapper.find('input').classes('btn-check')).toBe(true)
@@ -88,7 +80,7 @@ describe(`Customize with label - ${ComponentName} component`, () => {
 describe(`Customize with label in slot - ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customLabelInSlotWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customLabelInSlotWrapper.find('label').text()).toContain('some label')
     expect(customLabelInSlotWrapper.find('input').classes('btn-check')).toBe(true)

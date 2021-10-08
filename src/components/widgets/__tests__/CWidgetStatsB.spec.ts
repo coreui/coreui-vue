@@ -13,11 +13,9 @@ const defaultWrapper = mount(Component, {
     },
     text: 'text',
     title: 'title',
-    value: 75
+    value: 75,
   },
-  slots: {
-
-  },
+  slots: {},
 })
 
 describe(`Loads and display ${ComponentName} component`, () => {
@@ -26,5 +24,5 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
 })

@@ -6,11 +6,14 @@ const ComponentName = 'CWidgetStatsD'
 const defaultWrapper = mount(Component, {
   propsData: {
     color: 'warning',
-    values: [{title: 'aa', value: 'bb'},{title: 'cc', value: 'dd'}],
+    values: [
+      { title: 'aa', value: 'bb' },
+      { title: 'cc', value: 'dd' },
+    ],
   },
   slots: {
     icon: 'icon',
-    chart: 'chart'
+    chart: 'chart',
   },
 })
 
@@ -20,5 +23,5 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
 })

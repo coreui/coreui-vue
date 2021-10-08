@@ -4,12 +4,8 @@ import { CFormSwitch as Component } from '../../../index'
 const ComponentName = 'CFormSwitch'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-      
-  },
-  slots: {
-
-  },
+  propsData: {},
+  slots: {},
 })
 
 const customWrapper = mount(Component, {
@@ -19,13 +15,10 @@ const customWrapper = mount(Component, {
     label: 'some label',
     size: 'lg',
     type: 'radio',
-    valid: true
+    valid: true,
   },
-  slots: {
-
-  },
+  slots: {},
 })
-
 
 describe(`Loads and display ${ComponentName} component`, () => {
   it('has a name', () => {
@@ -33,7 +26,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.classes('form-check')).toBe(true)
     expect(defaultWrapper.classes('form-switch')).toBe(true)
@@ -44,7 +37,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.classes('form-check')).toBe(true)
     expect(customWrapper.classes('form-switch')).toBe(true)

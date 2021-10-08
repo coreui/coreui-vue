@@ -4,9 +4,7 @@ import { CFormControl as Component } from '../CFormControl'
 const ComponentName = 'CFormControl'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-      
-  },
+  propsData: {},
   slots: {
     default: 'Default slot',
   },
@@ -20,14 +18,14 @@ const customWrapper = mount(Component, {
     plainText: true,
     readonly: true,
     size: 'lg',
-    type: 'color'
+    type: 'color',
   },
   slots: {
     default: 'Default slot',
   },
   attrs: {
-    attrbazinga: 'attrbazinga'
-  }
+    attrbazinga: 'attrbazinga',
+  },
 })
 
 const customWrapperTwo = mount(Component, {
@@ -46,7 +44,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.text()).toContain('Default slot')
     expect(defaultWrapper.classes('form-control')).toBe(true)
@@ -56,7 +54,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.text()).toContain('Default slot')
     expect(customWrapper.classes('form-control-plaintext')).toBe(true)
@@ -71,7 +69,7 @@ describe(`Customize ${ComponentName} component`, () => {
 describe(`Customize (number two) ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapperTwo.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapperTwo.text()).toContain('Default slot')
     expect(customWrapperTwo.classes('classNameParent')).toBe(true)

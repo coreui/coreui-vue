@@ -4,20 +4,18 @@ import { CPagination as Component } from '../../../index'
 const ComponentName = 'CPagination'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-      
-  },
+  propsData: {},
   slots: {
-    default: 'Default slot'
+    default: 'Default slot',
   },
 })
 
 const customWrapper = mount(Component, {
   propsData: {
-    size: 'lg'
+    size: 'lg',
   },
   slots: {
-    default: 'Default slot'
+    default: 'Default slot',
   },
 })
 
@@ -27,7 +25,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.find('ul').text()).toContain('Default slot')
     expect(defaultWrapper.find('ul').classes('pagination')).toBe(true)
@@ -37,7 +35,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.find('ul').text()).toContain('Default slot')
     expect(customWrapper.find('ul').classes('pagination')).toBe(true)

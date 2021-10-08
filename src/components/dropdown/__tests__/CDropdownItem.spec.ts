@@ -4,12 +4,10 @@ import { CDropdownItem as Component } from '../../../index'
 const ComponentName = 'CDropdownItem'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-      
-  },
+  propsData: {},
   slots: {
     default: 'Default slot',
-  }
+  },
 })
 
 const customWrapper = mount(Component, {
@@ -17,11 +15,11 @@ const customWrapper = mount(Component, {
     active: true,
     component: 'div',
     disabled: true,
-    href: '/bazinga'
+    href: '/bazinga',
   },
   slots: {
     default: 'Default slot',
-  }
+  },
 })
 
 describe(`Loads and display ${ComponentName} component`, () => {
@@ -30,7 +28,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.text()).toContain('Default slot')
     expect(defaultWrapper.classes('dropdown-item')).toBe(true)
@@ -40,7 +38,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.text()).toContain('Default slot')
     expect(customWrapper.classes('dropdown-item')).toBe(true)

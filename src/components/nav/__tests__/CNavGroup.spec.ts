@@ -4,20 +4,17 @@ import { CNavGroup as Component } from '../../../index'
 const ComponentName = 'CNavGroup'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-
-  },
-  slots: {
-  },
+  propsData: {},
+  slots: {},
 })
 
 const customWrapper = mount(Component, {
   propsData: {
     compact: true,
-    visible: true
+    visible: true,
   },
   slots: {
-    togglerContent: 'togglerContent'
+    togglerContent: 'togglerContent',
   },
 })
 
@@ -27,7 +24,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.classes('nav-group')).toBe(true)
   })
@@ -36,7 +33,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.find('a').text()).toContain('togglerContent')
     expect(customWrapper.find('a').classes('nav-link')).toBe(true)

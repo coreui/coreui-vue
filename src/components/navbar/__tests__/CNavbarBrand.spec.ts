@@ -4,30 +4,28 @@ import { CNavbarBrand as Component } from '../../../index'
 const ComponentName = 'CNavbarBrand'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-      
-  },
+  propsData: {},
   slots: {
-    default: 'Default slot'
+    default: 'Default slot',
   },
 })
 
 const customWrapper = mount(Component, {
   propsData: {
     component: 'div',
-    href: '/bazinga'
+    href: '/bazinga',
   },
   slots: {
-    default: 'Default slot'
+    default: 'Default slot',
   },
 })
 
 const customWrapperTwo = mount(Component, {
   propsData: {
-    href: '/bazinga'
+    href: '/bazinga',
   },
   slots: {
-    default: 'Default slot'
+    default: 'Default slot',
   },
 })
 
@@ -37,7 +35,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.text()).toContain('Default slot')
     expect(defaultWrapper.classes('header-brand')).toBe(true)
@@ -47,7 +45,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.text()).toContain('Default slot')
     expect(customWrapper.classes('header-brand')).toBe(true)
@@ -58,7 +56,7 @@ describe(`Customize ${ComponentName} component`, () => {
 describe(`Customize (two) ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapperTwo.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapperTwo.text()).toContain('Default slot')
     expect(customWrapperTwo.classes('header-brand')).toBe(true)

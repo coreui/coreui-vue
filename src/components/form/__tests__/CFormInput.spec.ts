@@ -4,9 +4,7 @@ import { CFormInput as Component } from '../../../index'
 const ComponentName = 'CFormInput'
 
 const defaultWrapper = mount(Component, {
-  propsData: {
-      
-  },
+  propsData: {},
   slots: {
     default: 'Default slot',
   },
@@ -28,19 +26,19 @@ const customWrapper = mount(Component, {
 })
 
 const customWrapperTwo = mount(Component, {
-    propsData: {
-      disabled: true,
-      invalid: true,
-      plainText: false,
-      readonly: true,
-      size: 'lg',
-      type: 'color',
-      valid: true,
-    },
-    slots: {
-      default: 'Default slot',
-    },
-  })
+  propsData: {
+    disabled: true,
+    invalid: true,
+    plainText: false,
+    readonly: true,
+    size: 'lg',
+    type: 'color',
+    valid: true,
+  },
+  slots: {
+    default: 'Default slot',
+  },
+})
 
 describe(`Loads and display ${ComponentName} component`, () => {
   it('has a name', () => {
@@ -48,7 +46,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('renders correctly', () => {
     expect(defaultWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(defaultWrapper.text()).toContain('Default slot')
     expect(defaultWrapper.classes('form-control')).toBe(true)
@@ -58,7 +56,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapper.text()).toContain('Default slot')
     expect(customWrapper.classes('form-control-plaintext')).toBe(true)
@@ -72,7 +70,7 @@ describe(`Customize ${ComponentName} component`, () => {
 describe(`Customize (two) ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapperTwo.html()).toMatchSnapshot()
-  }) 
+  })
   it('contain slots and classes', () => {
     expect(customWrapperTwo.text()).toContain('Default slot')
     expect(customWrapperTwo.classes('form-control')).toBe(true)
@@ -82,4 +80,3 @@ describe(`Customize (two) ${ComponentName} component`, () => {
     expect(customWrapper.classes('is-valid')).toBe(true)
   })
 })
-
