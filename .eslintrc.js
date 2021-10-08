@@ -8,12 +8,14 @@ module.exports = {
       jsx: true,
     },
   },
+  env: {
+    jest: true
+  },
   extends: [
     '@vue/typescript/recommended',
     '@vue/prettier',
     '@vue/prettier/@typescript-eslint',
     'eslint:recommended',
-    'plugin:vue/vue3-essential',
     'plugin:vue/vue3-recommended',
   ],
   rules: {
