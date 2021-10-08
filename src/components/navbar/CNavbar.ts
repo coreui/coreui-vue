@@ -69,7 +69,7 @@ const CNavbar = defineComponent({
       type: String,
       default: undefined,
       required: false,
-      validator: (value: string) =>{
+      validator: (value: string) => {
         return ['fixed-top', 'fixed-bottom', 'sticky-top'].includes(value)
       },
     },

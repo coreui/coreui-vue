@@ -24,7 +24,7 @@ const CToastHeader = defineComponent({
         slots.default && slots.default(),
         props.closeButton &&
           h(CToastClose, {
-            onClose: () =>  emit('close'),
+            onClose: () => emit('close'),
           }),
       ])
   },
