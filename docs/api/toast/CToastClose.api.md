@@ -14,6 +14,6 @@ import CToastClose from '@coreui/vue/src/components/toast/CToastClose'
 
 #### Events
 
-| Event name  | Description                                             | Properties |
-| ----------- | ------------------------------------------------------- | ---------- |
-| **dismiss** | Event called before the dissmiss animation has started. |
+| Event name | Description                                             | Properties |
+| ---------- | ------------------------------------------------------- | ---------- |
+| **close**  | Event called before the dissmiss animation has started. |

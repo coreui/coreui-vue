@@ -1,7 +1,7 @@
-### CNavGroupItems
+### CTabContent
 
 ```jsx
-import { CNavGroupItems } from '@coreui/vue'
+import { CTabContent } from '@coreui/vue'
 // or
-import CNavGroupItems from '@coreui/vue/src/components/tabs/CTabContent'
+import CTabContent from '@coreui/vue/src/components/tabs/CTabContent'
 ```
