@@ -1,3 +1,4 @@
+import { watch } from '@vue/runtime-core'
 import { defineComponent, h, onMounted, onUpdated, ref, RendererElement, Transition } from 'vue'
 
 const CNavGroup = defineComponent({
@@ -44,26 +45,34 @@ const CNavGroup = defineComponent({
       }
     })
 
+    watch(visible, () => {
+      emit('visible-change', visible.value)
+    })
+
     const handleTogglerClick = function () {
       visible.value = !visible.value
-      emit('visible-change', visible.value)
     }
+
     const handleBeforeEnter = (el: RendererElement) => {
       el.style.height = '0px'
       navGroupRef.value.classList.add('show')
     }
+
     const handleEnter = (el: RendererElement, done: () => void) => {
       el.addEventListener('transitionend', () => {
         done()
       })
       el.style.height = `${el.scrollHeight}px`
     }
+
     const handleAfterEnter = (el: RendererElement) => {
       el.style.height = 'auto'
     }
+
     const handleBeforeLeave = (el: RendererElement) => {
       el.style.height = `${el.scrollHeight}px`
     }
+
     const handleLeave = (el: RendererElement, done: () => void) => {
       el.addEventListener('transitionend', () => {
         done()
@@ -72,6 +81,7 @@ const CNavGroup = defineComponent({
         el.style.height = '0px'
       }, 1)
     }
+
     const handleAfterLeave = () => {
       navGroupRef.value.classList.remove('show')
     }
