@@ -49,7 +49,6 @@ const renderItem = (item: ResolvedSidebarItem): VNode => {
       {
         compact: true,
         visible: item.children.some((child) => isActiveItem(route, child)),
-        // href: props.href,
       },
       {
         togglerContent: () => [
