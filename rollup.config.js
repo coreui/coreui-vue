@@ -47,15 +47,4 @@ export default [
     external,
     plugins: [...plugins, vue({ template: { optimizeSSR: true } })],
   },
-  // Browser build.
-  //   {
-  //     input: 'src/wrapper.js',
-  //     output: {
-  //       format: 'iife',
-  //       file: 'dist/library.js'
-  //     },
-  //     plugins: [
-  //       vue()
-  //     ]
-  //   }
 ]
