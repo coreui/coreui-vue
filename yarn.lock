@@ -926,19 +926,6 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@coreui/chartjs@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@coreui/chartjs/-/chartjs-3.0.0.tgz#54b55d85de0f3146237b7d1d36b1bf33bc051735"
-  integrity sha512-udbvSxanTNltv94lqTMW8bLRXTtzk9G2SrmFdM/7HH+JSaLX2wdQpZ4VIJhyOCRGLCSKHktl29BnW1/uXQecAg==
-  dependencies:
-    "@coreui/coreui" "4.0.0"
-    chart.js "^3.4.0"
-
-"@coreui/coreui@4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@coreui/coreui/-/coreui-4.0.0.tgz#52ebe0197411a829ba48057ade61923e05859eec"
-  integrity sha512-8vH6fJrmvCR/Oy5v0E+/1AL3Ygb4jhQ7NXK2fMYWJyK13BePDm9muB3y6S0IdqkpBwjY3hHVwHyt2lJqJdesmQ==
-
 "@coreui/coreui@^4.0.4":
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/@coreui/coreui/-/coreui-4.0.4.tgz#e4848efa0c9f2ff6fbbc4d45d5dd73c1f5690f37"
@@ -954,14 +941,10 @@
   resolved "https://registry.yarnpkg.com/@coreui/icons/-/icons-2.0.1.tgz#778022fe2b366abf9594d142607026e4edc667f8"
   integrity sha512-gBfFRLPUt3Bv9EZbJRbT3sQRHrhH0c4dRbeE9GpWJgJY8kvE9+3Hf5xGK9XyQhFynHx4o2WQeMxsReQLddlK9w==
 
-"@coreui/vue-chartjs@^2.0.0-beta.0":
-  version "2.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@coreui/vue-chartjs/-/vue-chartjs-2.0.0-beta.1.tgz#c6f48873c11b14c8d079893e259e71969acd0d16"
-  integrity sha512-x6Ol59LflBzABJAkO4GhsUtOWN7RPTR+ihaxFy2xkPUC7CJqIG7sRhAIipeuGTUmbIyCqxhYTWywmRua3NSCWQ==
-  dependencies:
-    "@coreui/chartjs" "^3.0.0"
-    chart.js "^3.4.1"
-    vue "^3.0.10"
+"@coreui/vue-chartjs@^2.0.0-rc.0":
+  version "2.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/@coreui/vue-chartjs/-/vue-chartjs-2.0.0-rc.0.tgz#e64573305e365f7c75e9d9f23bf8636fa21b8d27"
+  integrity sha512-PARsWhADqnySuiFngERZDLGUGRXfSSj/6hLFFykre0ywHn4+BJ9an3IABrh/CIEKqCFeWvzd+kt93wYpF4EK5g==
 
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"
@@ -2673,11 +2656,6 @@ character-parser@^2.2.0:
   integrity sha1-x84o821LzZdE5f/CxfzeHHMmH8A=
   dependencies:
     is-regex "^1.0.3"
-
-chart.js@^3.4.0, chart.js@^3.4.1:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-3.5.1.tgz#73e24d23a4134a70ccdb5e79a917f156b6f3644a"
-  integrity sha512-m5kzt72I1WQ9LILwQC4syla/LD/N413RYv2Dx2nnTkRS9iv/ey1xLTt0DnPc/eWV4zI+BgEgDYBIzbQhZHc/PQ==
 
 "chokidar@>=3.0.0 <4.0.0", chokidar@^3.5.1, chokidar@^3.5.2:
   version "3.5.2"
@@ -7148,7 +7126,7 @@ vue-types@^4.1.0:
   dependencies:
     is-plain-object "5.0.0"
 
-vue@^3.0.10, vue@^3.2.3, vue@^3.2.6:
+vue@^3.2.3, vue@^3.2.6:
   version "3.2.20"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.2.20.tgz#940f8aa8bf3e3be78243ca582bad41fcd45ae3e6"
   integrity sha512-81JjEP4OGk9oO8+CU0h2nFPGgJBm9mNa3kdCX2k6FuRdrWrC+CNe+tOnuIeTg8EWwQuI+wwdra5Q7vSzp7p4Iw==
