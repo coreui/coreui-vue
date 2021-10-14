@@ -1,0 +1,86 @@
+{
+  "name": "@coreui/vue",
+  "description": "UI Components Library for Vue.js",
+  "version": "4.0.0-rc.4",
+  "config": {
+    "version_short": "4.0"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "lint": "eslint 'src/components/**/*.{js,ts,tsx}'",
+    "test": "jest",
+    "test:u": "jest -u",
+    "test:clear": "jest --clearCache",
+    "test:coverage": "jest --coverage"
+  },
+  "homepage": "https://coreui.io/vue/",
+  "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coreui/coreui-vue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/coreui/coreui-vue/issues"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@popperjs/core": "^2.10.2",
+    "@rollup/plugin-commonjs": "^21.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.5",
+    "@rollup/plugin-typescript": "^8.2.5",
+    "@types/jest": "^27.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "@vue/compiler-sfc": "^3.2.20",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^8.0.0",
+    "@vue/test-utils": "^2.0.0-0",
+    "eslint": "^8.0.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^7.19.1",
+    "jest": "^27.2.5",
+    "prettier": "^2.4.1",
+    "rollup": "^2.58.0",
+    "rollup-plugin-vue": "^6.0.0",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.4.4",
+    "vue": "^3.2.20",
+    "vue-jest": "^5.0.0-0",
+    "vue-types": "^4.1.1"
+  },
+  "peerDependencies": {
+    "@coreui/coreui": "^4.0.4",
+    "vue": "^3.2.20"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "jsdom",
+    "moduleFileExtensions": [
+      "tsx",
+      "js",
+      "ts",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(ts)$": "ts-jest",
+      ".*\\.(vue)$": "vue-jest"
+    }
+  },
+  "standard": {
+    "ignore": [
+      "node_modules/",
+      "build/"
+    ]
+  },
+  "dependencies": {
+    "@rollup/plugin-babel": "^5.3.0"
+  }
+}

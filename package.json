@@ -1,114 +1,18 @@
 {
-  "name": "@coreui/vue",
-  "description": "UI Components Library for Vue.js",
-  "version": "4.0.0-rc.4",
-  "config": {
-    "version_short": "4.0"
-  },
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "src",
-    "dist"
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
   "scripts": {
-    "build": "rollup -c",
-    "changelog": "auto-changelog --template build/changelog-template.hbs --commit-limit false --package --backfill-limit 0 --starting-version v4.0.0-alpha.0",
-    "docs:api": "vue-docgen -c build/docgen.config.js",
-    "docs:dev": "vuepress dev docs --clean-cache",
-    "docs:build": "vuepress build docs",
-    "lint": "eslint 'src/components/**/*.{js,ts,tsx}'",
-    "test": "jest",
-    "test:u": "jest -u",
-    "test:clear": "jest --clearCache",
-    "test:coverage": "jest --coverage"
+    "docs:api": "lerna run --scope \"@coreui/vue-docs\" api --stream",
+    "docs:dev": "lerna run --scope \"@coreui/vue-docs\" dev --stream",
+    "docs:build": "lerna run --scope \"@coreui/vue-docs\" build --stream",
+    "docs:dist": "lerna run --scope \"@coreui/vue-docs\" dist --stream",
+    "lib:build": "lerna run --scope \"@coreui/vue\" build --stream",
+    "lib:lint": "lerna run --scope \"@coreui/vue\" lint --stream",
+    "lib:test": "lerna run --scope \"@coreui/vue\" test --stream"
   },
-  "homepage": "https://coreui.io/vue/",
-  "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/coreui/coreui-vue.git"
-  },
-  "bugs": {
-    "url": "https://github.com/coreui/coreui-vue/issues"
-  },
-  "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.15.8",
-    "@babel/plugin-proposal-optional-chaining": "^7.14.5",
-    "@babel/plugin-syntax-jsx": "^7.14.5",
-    "@babel/preset-env": "^7.15.8",
-    "@babel/preset-typescript": "^7.15.0",
-    "@coreui/coreui": "^4.0.4",
-    "@coreui/icons": "^2.0.1",
-    "@coreui/icons-vue": "^2.0.0-rc.0",
-    "@coreui/vue-chartjs": "^2.0.0-rc.0",
-    "@popperjs/core": "^2.10.2",
-    "@rollup/plugin-commonjs": "^21.0.0",
-    "@rollup/plugin-node-resolve": "^13.0.5",
-    "@rollup/plugin-typescript": "^8.2.5",
-    "@types/jest": "^27.0.2",
-    "@typescript-eslint/eslint-plugin": "^4.33.0",
-    "@typescript-eslint/parser": "^4.33.0",
-    "@vue/compiler-sfc": "^3.2.20",
-    "@vue/eslint-config-prettier": "^6.0.0",
-    "@vue/eslint-config-typescript": "^7.0.0",
-    "@vue/server-renderer": "^3.2.20",
-    "@vue/test-utils": "^2.0.0-0",
-    "@vuepress/plugin-toc": "^2.0.0-beta.24",
-    "auto-changelog": "^2.3.0",
-    "babel-loader": "^8.2.2",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-vue": "^7.19.1",
-    "jest": "^27.2.5",
-    "markdown-it-include": "^2.0.0",
-    "postcss": "^8.3.9",
-    "postcss-loader": "^6.1.1",
-    "prettier": "^2.4.1",
-    "requires": "^1.0.2",
-    "rollup": "^2.58.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-vue": "^6.0.0",
-    "ts-jest": "^27.0.5",
-    "typescript": "4.4.3",
-    "vue": "^3.2.6",
-    "vue-docgen-cli": "^4.41.2",
-    "vue-github-button": "^3.0.1",
-    "vue-jest": "^5.0.0-0",
-    "vue-prism-component": "^2.0.0",
-    "vue-router": "^4.0.11",
-    "vue-types": "^4.1.0",
-    "vuepress": "^2.0.0-beta.24"
-  },
-  "peerDependencies": {
-    "@coreui/coreui": "^4.0.4",
-    "vue": "^3.2.5"
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "jsdom",
-    "moduleFileExtensions": [
-      "tsx",
-      "js",
-      "ts",
-      "json",
-      "vue"
-    ],
-    "transform": {
-      ".*\\.(ts)$": "ts-jest",
-      ".*\\.(vue)$": "vue-jest"
-    }
-  },
-  "standard": {
-    "ignore": [
-      "node_modules/",
-      "build/"
-    ]
-  },
-  "dependencies": {
-    "@rollup/plugin-babel": "^5.3.0"
+    "lerna": "^4.0.0"
   }
 }
