@@ -1,9 +1,9 @@
 ### CCloseButton
 
 ```jsx
-import { CCloseButton } from "@coreui/vue";
+import { CCloseButton } from '@coreui/vue'
 // or
-import CCloseButton from "@coreui/vue/src/components/close-button/CCloseButton";
+import CCloseButton from '@coreui/vue/src/components/close-button/CCloseButton'
 ```
 
 #### Props

@@ -1,9 +1,9 @@
 ### CSpinner
 
 ```jsx
-import { CSpinner } from "@coreui/vue";
+import { CSpinner } from '@coreui/vue'
 // or
-import CSpinner from "@coreui/vue/src/components/spinner/CSpinner";
+import CSpinner from '@coreui/vue/src/components/spinner/CSpinner'
 ```
 
 #### Props

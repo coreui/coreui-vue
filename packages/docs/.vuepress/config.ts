@@ -14,13 +14,6 @@ export default defineUserConfig<DefaultThemeOptions>({
   head: [
     // ['link', { rel: 'icon', href: '/logo.png' }],
     ['link', { rel: 'manifest', href: '/favicon/manifest.json' }],
-    // ['meta', { name: 'theme-color', content: '#3eaf7c' }],
-    // ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-    // ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
-    // ['link', { rel: 'apple-touch-icon', href: '/icons/apple-touch-icon-152x152.png' }],
-    // ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
-    // ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
-    // ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
     ['script', { src: 'https://media.ethicalads.io/media/client/ethicalads.min.js' }],
   ],
   extendsMarkdown: (md) => {
@@ -196,6 +189,10 @@ export default defineUserConfig<DefaultThemeOptions>({
             link: `/components/carousel.html`,
           },
           {
+            text: 'Chart',
+            link: `/components/chart.html`,
+          },
+          {
             text: 'Close Button',
             link: `/components/close-button.html`,
           },
@@ -214,6 +211,10 @@ export default defineUserConfig<DefaultThemeOptions>({
           {
             text: 'Header',
             link: `/components/header.html`,
+          },
+          {
+            text: 'Icon',
+            link: `/components/icon.html`,
           },
           {
             text: 'Image',

@@ -1,9 +1,9 @@
 ### CCol
 
 ```jsx
-import { CCol } from "@coreui/vue";
+import { CCol } from '@coreui/vue'
 // or
-import CCol from "@coreui/vue/src/components/grid/CCol";
+import CCol from '@coreui/vue/src/components/grid/CCol'
 ```
 
 #### Props

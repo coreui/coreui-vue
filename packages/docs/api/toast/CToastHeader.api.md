@@ -1,9 +1,9 @@
 ### CToastHeader
 
 ```jsx
-import { CToastHeader } from "@coreui/vue";
+import { CToastHeader } from '@coreui/vue'
 // or
-import CToastHeader from "@coreui/vue/src/components/toast/CToastHeader";
+import CToastHeader from '@coreui/vue/src/components/toast/CToastHeader'
 ```
 
 #### Props

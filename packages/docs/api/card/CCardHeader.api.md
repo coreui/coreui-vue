@@ -1,9 +1,9 @@
 ### CCardHeader
 
 ```jsx
-import { CCardHeader } from "@coreui/vue";
+import { CCardHeader } from '@coreui/vue'
 // or
-import CCardHeader from "@coreui/vue/src/components/card/CCardHeader";
+import CCardHeader from '@coreui/vue/src/components/card/CCardHeader'
 ```
 
 #### Props

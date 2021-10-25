@@ -6,17 +6,22 @@ const pkg = require('./../package.json')
 // const templates = require('./docgen.templates')
 
 module.exports = {
-  componentsRoot: '../coreui-vue/src/components', // the folder where CLI will start searching for components.
+  componentsRoot: './../../packages', // the folder where CLI will start searching for components.
   components: [
     '**/[A-Z]*.ts',
+    '!**/[A-Z]*.d.ts',
     '!**/[A-Z]*.spec.ts'
   ],
   // the glob to define what files should be documented as components (relative to componentRoot)
-  outDir: 'docs/api', // folder to save components docs in (relative to the current working directry)
+  outDir: 'api', // folder to save components docs in (relative to the current working directry)
   getDocFileName: (componentPath) =>
     componentPath.replace(/\.ts$/, '.md'), // specify the name of the input md file
-  getDestFile: (file, config) =>
-    path.join(config.outDir, file).replace(/\.ts$/, '.api.md'), // specify the name of the output md file
+  getDestFile: (file, config) => {
+    return path.join(
+      config.outDir,
+      file.replace('coreui-vue/src/components', '')
+          .replace('coreui-vue-chartjs/src/', '')).replace(/\.ts$/, '.api.md') // specify the name of the output md file
+  },
   // templates,
   templates: {
     // global component template wrapping all others see #templates

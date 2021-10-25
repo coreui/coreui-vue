@@ -1,7 +1,7 @@
 ### CTabContent
 
 ```jsx
-import { CTabContent } from "@coreui/vue";
+import { CTabContent } from '@coreui/vue'
 // or
-import CTabContent from "@coreui/vue/src/components/tabs/CTabContent";
+import CTabContent from '@coreui/vue/src/components/tabs/CTabContent'
 ```

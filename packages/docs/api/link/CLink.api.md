@@ -1,9 +1,9 @@
 ### CLink
 
 ```jsx
-import { CLink } from "@coreui/vue";
+import { CLink } from '@coreui/vue'
 // or
-import CLink from "@coreui/vue/src/components/link/CLink";
+import CLink from '@coreui/vue/src/components/link/CLink'
 ```
 
 #### Props

@@ -1,7 +1,7 @@
 ### CToastBody
 
 ```jsx
-import { CToastBody } from "@coreui/vue";
+import { CToastBody } from '@coreui/vue'
 // or
-import CToastBody from "@coreui/vue/src/components/toast/CToastBody";
+import CToastBody from '@coreui/vue/src/components/toast/CToastBody'
 ```

@@ -1,9 +1,9 @@
 ### CCardTitle
 
 ```jsx
-import { CCardTitle } from "@coreui/vue";
+import { CCardTitle } from '@coreui/vue'
 // or
-import CCardTitle from "@coreui/vue/src/components/card/CCardTitle";
+import CCardTitle from '@coreui/vue/src/components/card/CCardTitle'
 ```
 
 #### Props

@@ -1,9 +1,9 @@
 ### CImage
 
 ```jsx
-import { CImage } from "@coreui/vue";
+import { CImage } from '@coreui/vue'
 // or
-import CImage from "@coreui/vue/src/components/image/CImage";
+import CImage from '@coreui/vue/src/components/image/CImage'
 ```
 
 #### Props

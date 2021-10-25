@@ -1,9 +1,9 @@
 ### CListGroupItem
 
 ```jsx
-import { CListGroupItem } from "@coreui/vue";
+import { CListGroupItem } from '@coreui/vue'
 // or
-import CListGroupItem from "@coreui/vue/src/components/list-group/CListGroupItem";
+import CListGroupItem from '@coreui/vue/src/components/list-group/CListGroupItem'
 ```
 
 #### Props

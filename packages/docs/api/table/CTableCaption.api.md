@@ -1,7 +1,7 @@
 ### CTableCaption
 
 ```jsx
-import { CTableCaption } from "@coreui/vue";
+import { CTableCaption } from '@coreui/vue'
 // or
-import CTableCaption from "@coreui/vue/src/components/table/CTableCaption";
+import CTableCaption from '@coreui/vue/src/components/table/CTableCaption'
 ```

@@ -1,9 +1,9 @@
 ### CHeaderBrand
 
 ```jsx
-import { CHeaderBrand } from "@coreui/vue";
+import { CHeaderBrand } from '@coreui/vue'
 // or
-import CHeaderBrand from "@coreui/vue/src/components/header/CHeaderBrand";
+import CHeaderBrand from '@coreui/vue/src/components/header/CHeaderBrand'
 ```
 
 #### Props

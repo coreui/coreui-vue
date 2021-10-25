@@ -1,9 +1,9 @@
 ### CFooter
 
 ```jsx
-import { CFooter } from "@coreui/vue";
+import { CFooter } from '@coreui/vue'
 // or
-import CFooter from "@coreui/vue/src/components/footer/CFooter";
+import CFooter from '@coreui/vue/src/components/footer/CFooter'
 ```
 
 #### Props

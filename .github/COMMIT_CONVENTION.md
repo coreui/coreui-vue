@@ -10,10 +10,10 @@ Appears under "Features" header, `compiler` subheader:
 feat(compiler): add 'comments' option
 ```
 
-Appears under "Bug Fixes" header, `v-model` subheader, with a link to issue #28:
+Appears under "Bug Fixes" header, `sidebar` subheader, with a link to issue #28:
 
 ```
-fix(v-model): handle events on blur
+fix(sidebar): handle events on blur
 
 close #28
 ```

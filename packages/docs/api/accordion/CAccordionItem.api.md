@@ -1,9 +1,9 @@
 ### CAccordionItem
 
 ```jsx
-import { CAccordionItem } from "@coreui/vue";
+import { CAccordionItem } from '@coreui/vue'
 // or
-import CAccordionItem from "@coreui/vue/src/components/accordion/CAccordionItem";
+import CAccordionItem from '@coreui/vue/src/components/accordion/CAccordionItem'
 ```
 
 #### Props

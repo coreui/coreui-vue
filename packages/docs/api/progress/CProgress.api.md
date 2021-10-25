@@ -1,9 +1,9 @@
 ### CProgress
 
 ```jsx
-import { CProgress } from "@coreui/vue";
+import { CProgress } from '@coreui/vue'
 // or
-import CProgress from "@coreui/vue/src/components/progress/CProgress";
+import CProgress from '@coreui/vue/src/components/progress/CProgress'
 ```
 
 #### Props

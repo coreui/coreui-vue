@@ -1,9 +1,9 @@
 ### CFormInput
 
 ```jsx
-import { CFormInput } from "@coreui/vue";
+import { CFormInput } from '@coreui/vue'
 // or
-import CFormInput from "@coreui/vue/src/components/form/CFormInput";
+import CFormInput from '@coreui/vue/src/components/form/CFormInput'
 ```
 
 #### Props

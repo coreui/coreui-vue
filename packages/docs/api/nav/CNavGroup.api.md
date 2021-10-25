@@ -1,9 +1,9 @@
 ### CNavGroup
 
 ```jsx
-import { CNavGroup } from "@coreui/vue";
+import { CNavGroup } from '@coreui/vue'
 // or
-import CNavGroup from "@coreui/vue/src/components/nav/CNavGroup";
+import CNavGroup from '@coreui/vue/src/components/nav/CNavGroup'
 ```
 
 #### Props

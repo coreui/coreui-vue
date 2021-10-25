@@ -1,9 +1,9 @@
 ### CNavbar
 
 ```jsx
-import { CNavbar } from "@coreui/vue";
+import { CNavbar } from '@coreui/vue'
 // or
-import CNavbar from "@coreui/vue/src/components/navbar/CNavbar";
+import CNavbar from '@coreui/vue/src/components/navbar/CNavbar'
 ```
 
 #### Props

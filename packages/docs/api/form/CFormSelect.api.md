@@ -1,9 +1,9 @@
 ### CFormSelect
 
 ```jsx
-import { CFormSelect } from "@coreui/vue";
+import { CFormSelect } from '@coreui/vue'
 // or
-import CFormSelect from "@coreui/vue/src/components/form/CFormSelect";
+import CFormSelect from '@coreui/vue/src/components/form/CFormSelect'
 ```
 
 #### Props

@@ -1,9 +1,9 @@
 ### CInputGroupText
 
 ```jsx
-import { CInputGroupText } from "@coreui/vue";
+import { CInputGroupText } from '@coreui/vue'
 // or
-import CInputGroupText from "@coreui/vue/src/components/form/CInputGroupText";
+import CInputGroupText from '@coreui/vue/src/components/form/CInputGroupText'
 ```
 
 #### Props

@@ -1,9 +1,9 @@
 ### CForm
 
 ```jsx
-import { CForm } from "@coreui/vue";
+import { CForm } from '@coreui/vue'
 // or
-import CForm from "@coreui/vue/src/components/form/CForm";
+import CForm from '@coreui/vue/src/components/form/CForm'
 ```
 
 #### Props

@@ -1,9 +1,9 @@
 ### CBadge
 
 ```jsx
-import { CBadge } from "@coreui/vue";
+import { CBadge } from '@coreui/vue'
 // or
-import CBadge from "@coreui/vue/src/components/badge/CBadge";
+import CBadge from '@coreui/vue/src/components/badge/CBadge'
 ```
 
 #### Props

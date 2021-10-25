@@ -1,9 +1,9 @@
 ### CBreadcrumbItem
 
 ```jsx
-import { CBreadcrumbItem } from "@coreui/vue";
+import { CBreadcrumbItem } from '@coreui/vue'
 // or
-import CBreadcrumbItem from "@coreui/vue/src/components/breadcrumb/CBreadcrumbItem";
+import CBreadcrumbItem from '@coreui/vue/src/components/breadcrumb/CBreadcrumbItem'
 ```
 
 #### Props

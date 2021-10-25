@@ -1,9 +1,9 @@
 ### CFormRange
 
 ```jsx
-import { CFormRange } from "@coreui/vue";
+import { CFormRange } from '@coreui/vue'
 // or
-import CFormRange from "@coreui/vue/src/components/form/CFormRange";
+import CFormRange from '@coreui/vue/src/components/form/CFormRange'
 ```
 
 #### Props

@@ -1,7 +1,7 @@
 ### CBreadcrumb
 
 ```jsx
-import { CBreadcrumb } from "@coreui/vue";
+import { CBreadcrumb } from '@coreui/vue'
 // or
-import CBreadcrumb from "@coreui/vue/src/components/breadcrumb/CBreadcrumb";
+import CBreadcrumb from '@coreui/vue/src/components/breadcrumb/CBreadcrumb'
 ```

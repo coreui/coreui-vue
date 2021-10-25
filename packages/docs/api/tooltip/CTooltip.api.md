@@ -1,9 +1,9 @@
 ### CTooltip
 
 ```jsx
-import { CTooltip } from "@coreui/vue";
+import { CTooltip } from '@coreui/vue'
 // or
-import CTooltip from "@coreui/vue/src/components/tooltip/CTooltip";
+import CTooltip from '@coreui/vue/src/components/tooltip/CTooltip'
 ```
 
 #### Props

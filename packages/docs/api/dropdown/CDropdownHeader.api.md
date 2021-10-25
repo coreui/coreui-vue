@@ -1,9 +1,9 @@
 ### CDropdownHeader
 
 ```jsx
-import { CDropdownHeader } from "@coreui/vue";
+import { CDropdownHeader } from '@coreui/vue'
 // or
-import CDropdownHeader from "@coreui/vue/src/components/dropdown/CDropdownHeader";
+import CDropdownHeader from '@coreui/vue/src/components/dropdown/CDropdownHeader'
 ```
 
 #### Props

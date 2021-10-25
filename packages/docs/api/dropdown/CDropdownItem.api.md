@@ -1,9 +1,9 @@
 ### CDropdownItem
 
 ```jsx
-import { CDropdownItem } from "@coreui/vue";
+import { CDropdownItem } from '@coreui/vue'
 // or
-import CDropdownItem from "@coreui/vue/src/components/dropdown/CDropdownItem";
+import CDropdownItem from '@coreui/vue/src/components/dropdown/CDropdownItem'
 ```
 
 #### Props

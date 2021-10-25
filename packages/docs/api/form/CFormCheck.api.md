@@ -1,9 +1,9 @@
 ### CFormCheck
 
 ```jsx
-import { CFormCheck } from "@coreui/vue";
+import { CFormCheck } from '@coreui/vue'
 // or
-import CFormCheck from "@coreui/vue/src/components/form/CFormCheck";
+import CFormCheck from '@coreui/vue/src/components/form/CFormCheck'
 ```
 
 #### Props

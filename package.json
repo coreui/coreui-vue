@@ -4,15 +4,36 @@
     "packages/*"
   ],
   "scripts": {
+    "charts:build": "lerna run --scope \"@coreui/vue-chartjs\" build --stream",
+    "charts:lint": "lerna run --scope \"@coreui/vue-chartjs\" lint --stream",
+    "charts:test": "lerna run --scope \"@coreui/vue-chartjs\" test --stream",
     "docs:api": "lerna run --scope \"@coreui/vue-docs\" api --stream",
     "docs:dev": "lerna run --scope \"@coreui/vue-docs\" dev --stream",
     "docs:build": "lerna run --scope \"@coreui/vue-docs\" build --stream",
     "docs:dist": "lerna run --scope \"@coreui/vue-docs\" dist --stream",
     "lib:build": "lerna run --scope \"@coreui/vue\" build --stream",
     "lib:lint": "lerna run --scope \"@coreui/vue\" lint --stream",
-    "lib:test": "lerna run --scope \"@coreui/vue\" test --stream"
+    "lib:test": "lerna run --scope \"@coreui/vue\" test --stream",
+    "lint": "eslint \"packages/**/src/components/**/*.{js,ts,tsx}\"",
+    "test": "jest --coverage",
+    "test:clear": "jest --clearCache",
+    "test:update": "jest --coverage --updateSnapshot"
   },
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "@types/jest": "^27.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "@vue/compiler-sfc": "^3.2.20",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^8.0.0",
+    "eslint": "7.32.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^7.20.0",
+    "jest": "^27.3.1",
+    "jest-canvas-mock": "^2.3.1",
+    "lerna": "^4.0.0",
+    "prettier": "^2.4.1",
+    "ts-jest": "^27.0.7",
+    "vue-jest": "^5.0.0-0"
   }
 }

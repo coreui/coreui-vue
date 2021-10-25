@@ -1,9 +1,9 @@
 ### CCardImage
 
 ```jsx
-import { CCardImage } from "@coreui/vue";
+import { CCardImage } from '@coreui/vue'
 // or
-import CCardImage from "@coreui/vue/src/components/card/CCardImage";
+import CCardImage from '@coreui/vue/src/components/card/CCardImage'
 ```
 
 #### Props

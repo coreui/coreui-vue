@@ -1,9 +1,9 @@
 ### CCallout
 
 ```jsx
-import { CCallout } from "@coreui/vue";
+import { CCallout } from '@coreui/vue'
 // or
-import CCallout from "@coreui/vue/src/components/callout/CCallout";
+import CCallout from '@coreui/vue/src/components/callout/CCallout'
 ```
 
 #### Props

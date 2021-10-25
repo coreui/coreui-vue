@@ -1,9 +1,9 @@
 ### CNavLink
 
 ```jsx
-import { CNavLink } from "@coreui/vue";
+import { CNavLink } from '@coreui/vue'
 // or
-import CNavLink from "@coreui/vue/src/components/nav/CNavLink";
+import CNavLink from '@coreui/vue/src/components/nav/CNavLink'
 ```
 
 #### Props

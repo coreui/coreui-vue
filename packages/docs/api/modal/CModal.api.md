@@ -1,9 +1,9 @@
 ### CModal
 
 ```jsx
-import { CModal } from "@coreui/vue";
+import { CModal } from '@coreui/vue'
 // or
-import CModal from "@coreui/vue/src/components/modal/CModal";
+import CModal from '@coreui/vue/src/components/modal/CModal'
 ```
 
 #### Props

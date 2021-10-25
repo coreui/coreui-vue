@@ -1,9 +1,9 @@
 ### CCollapse
 
 ```jsx
-import { CCollapse } from "@coreui/vue";
+import { CCollapse } from '@coreui/vue'
 // or
-import CCollapse from "@coreui/vue/src/components/collapse/CCollapse";
+import CCollapse from '@coreui/vue/src/components/collapse/CCollapse'
 ```
 
 #### Props

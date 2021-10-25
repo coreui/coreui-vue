@@ -1,9 +1,9 @@
 ### CTableRow
 
 ```jsx
-import { CTableRow } from "@coreui/vue";
+import { CTableRow } from '@coreui/vue'
 // or
-import CTableRow from "@coreui/vue/src/components/table/CTableRow";
+import CTableRow from '@coreui/vue/src/components/table/CTableRow'
 ```
 
 #### Props

@@ -1,7 +1,7 @@
 ### CSidebarBrand
 
 ```jsx
-import { CSidebarBrand } from "@coreui/vue";
+import { CSidebarBrand } from '@coreui/vue'
 // or
-import CSidebarBrand from "@coreui/vue/src/components/sidebar/CSidebarBrand";
+import CSidebarBrand from '@coreui/vue/src/components/sidebar/CSidebarBrand'
 ```

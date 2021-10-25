@@ -1,9 +1,9 @@
 ### CBackdrop
 
 ```jsx
-import { CBackdrop } from "@coreui/vue";
+import { CBackdrop } from '@coreui/vue'
 // or
-import CBackdrop from "@coreui/vue/src/components/backdrop/CBackdrop";
+import CBackdrop from '@coreui/vue/src/components/backdrop/CBackdrop'
 ```
 
 #### Props

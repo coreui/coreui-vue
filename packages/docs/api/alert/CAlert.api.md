@@ -1,9 +1,9 @@
 ### CAlert
 
 ```jsx
-import { CAlert } from "@coreui/vue";
+import { CAlert } from '@coreui/vue'
 // or
-import CAlert from "@coreui/vue/src/components/alert/CAlert";
+import CAlert from '@coreui/vue/src/components/alert/CAlert'
 ```
 
 #### Props

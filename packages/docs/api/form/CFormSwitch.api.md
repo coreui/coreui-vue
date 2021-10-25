@@ -1,9 +1,9 @@
 ### CFormSwitch
 
 ```jsx
-import { CFormSwitch } from "@coreui/vue";
+import { CFormSwitch } from '@coreui/vue'
 // or
-import CFormSwitch from "@coreui/vue/src/components/form/CFormSwitch";
+import CFormSwitch from '@coreui/vue/src/components/form/CFormSwitch'
 ```
 
 #### Props

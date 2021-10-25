@@ -1,9 +1,9 @@
 ### COffcanvas
 
 ```jsx
-import { COffcanvas } from "@coreui/vue";
+import { COffcanvas } from '@coreui/vue'
 // or
-import COffcanvas from "@coreui/vue/src/components/offcanvas/COffcanvas";
+import COffcanvas from '@coreui/vue/src/components/offcanvas/COffcanvas'
 ```
 
 #### Props

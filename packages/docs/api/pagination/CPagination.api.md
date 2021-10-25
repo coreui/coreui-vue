@@ -1,9 +1,9 @@
 ### CPagination
 
 ```jsx
-import { CPagination } from "@coreui/vue";
+import { CPagination } from '@coreui/vue'
 // or
-import CPagination from "@coreui/vue/src/components/pagination/CPagination";
+import CPagination from '@coreui/vue/src/components/pagination/CPagination'
 ```
 
 #### Props

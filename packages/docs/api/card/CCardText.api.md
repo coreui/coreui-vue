@@ -1,9 +1,9 @@
 ### CCardText
 
 ```jsx
-import { CCardText } from "@coreui/vue";
+import { CCardText } from '@coreui/vue'
 // or
-import CCardText from "@coreui/vue/src/components/card/CCardText";
+import CCardText from '@coreui/vue/src/components/card/CCardText'
 ```
 
 #### Props

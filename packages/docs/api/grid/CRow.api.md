@@ -1,9 +1,9 @@
 ### CRow
 
 ```jsx
-import { CRow } from "@coreui/vue";
+import { CRow } from '@coreui/vue'
 // or
-import CRow from "@coreui/vue/src/components/grid/CRow";
+import CRow from '@coreui/vue/src/components/grid/CRow'
 ```
 
 #### Props

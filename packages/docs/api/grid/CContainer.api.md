@@ -1,9 +1,9 @@
 ### CContainer
 
 ```jsx
-import { CContainer } from "@coreui/vue";
+import { CContainer } from '@coreui/vue'
 // or
-import CContainer from "@coreui/vue/src/components/grid/CContainer";
+import CContainer from '@coreui/vue/src/components/grid/CContainer'
 ```
 
 #### Props

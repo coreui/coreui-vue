@@ -1,9 +1,9 @@
 ### CCarousel
 
 ```jsx
-import { CCarousel } from "@coreui/vue";
+import { CCarousel } from '@coreui/vue'
 // or
-import CCarousel from "@coreui/vue/src/components/carousel/CCarousel";
+import CCarousel from '@coreui/vue/src/components/carousel/CCarousel'
 ```
 
 #### Props

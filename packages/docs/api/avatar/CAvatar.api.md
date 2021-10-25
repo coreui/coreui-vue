@@ -1,9 +1,9 @@
 ### CAvatar
 
 ```jsx
-import { CAvatar } from "@coreui/vue";
+import { CAvatar } from '@coreui/vue'
 // or
-import CAvatar from "@coreui/vue/src/components/avatar/CAvatar";
+import CAvatar from '@coreui/vue/src/components/avatar/CAvatar'
 ```
 
 #### Props

@@ -1,9 +1,9 @@
 ### COffcanvasTitle
 
 ```jsx
-import { COffcanvasTitle } from "@coreui/vue";
+import { COffcanvasTitle } from '@coreui/vue'
 // or
-import COffcanvasTitle from "@coreui/vue/src/components/offcanvas/COffcanvasTitle";
+import COffcanvasTitle from '@coreui/vue/src/components/offcanvas/COffcanvasTitle'
 ```
 
 #### Props

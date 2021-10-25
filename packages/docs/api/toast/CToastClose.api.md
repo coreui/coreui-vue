@@ -1,9 +1,9 @@
 ### CToastClose
 
 ```jsx
-import { CToastClose } from "@coreui/vue";
+import { CToastClose } from '@coreui/vue'
 // or
-import CToastClose from "@coreui/vue/src/components/toast/CToastClose";
+import CToastClose from '@coreui/vue/src/components/toast/CToastClose'
 ```
 
 #### Props

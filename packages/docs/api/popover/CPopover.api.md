@@ -1,9 +1,9 @@
 ### CPopover
 
 ```jsx
-import { CPopover } from "@coreui/vue";
+import { CPopover } from '@coreui/vue'
 // or
-import CPopover from "@coreui/vue/src/components/popover/CPopover";
+import CPopover from '@coreui/vue/src/components/popover/CPopover'
 ```
 
 #### Props

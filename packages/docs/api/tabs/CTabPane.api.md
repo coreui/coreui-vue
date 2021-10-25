@@ -1,9 +1,9 @@
 ### CTabPane
 
 ```jsx
-import { CTabPane } from "@coreui/vue";
+import { CTabPane } from '@coreui/vue'
 // or
-import CTabPane from "@coreui/vue/src/components/tabs/CTabPane";
+import CTabPane from '@coreui/vue/src/components/tabs/CTabPane'
 ```
 
 #### Props

@@ -1,9 +1,9 @@
 ### CTable
 
 ```jsx
-import { CTable } from "@coreui/vue";
+import { CTable } from '@coreui/vue'
 // or
-import CTable from "@coreui/vue/src/components/table/CTable";
+import CTable from '@coreui/vue/src/components/table/CTable'
 ```
 
 #### Props

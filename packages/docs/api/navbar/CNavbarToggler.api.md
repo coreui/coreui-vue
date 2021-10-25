@@ -1,7 +1,7 @@
 ### CNavbarToggler
 
 ```jsx
-import { CNavbarToggler } from "@coreui/vue";
+import { CNavbarToggler } from '@coreui/vue'
 // or
-import CNavbarToggler from "@coreui/vue/src/components/navbar/CNavbarToggler";
+import CNavbarToggler from '@coreui/vue/src/components/navbar/CNavbarToggler'
 ```

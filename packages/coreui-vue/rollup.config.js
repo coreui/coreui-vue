@@ -15,7 +15,7 @@ const plugins = [
     tsconfig: './tsconfig.json',
   }),
   commonjs({
-    include: ['node_modules/**'],
+    include: ['../../node_modules/**'],
   }),
 ]
 
@@ -26,7 +26,7 @@ export default [
   {
     input: 'src/index.ts',
     output: {
-      format: 'esm',
+      format: 'es',
       file: pkg.module,
       exports: 'named',
       sourcemap: true,

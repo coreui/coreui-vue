@@ -1,9 +1,9 @@
 ### CToaster
 
 ```jsx
-import { CToaster } from "@coreui/vue";
+import { CToaster } from '@coreui/vue'
 // or
-import CToaster from "@coreui/vue/src/components/toast/CToaster";
+import CToaster from '@coreui/vue/src/components/toast/CToaster'
 ```
 
 #### Props

@@ -1,9 +1,9 @@
 ### CFormTextarea
 
 ```jsx
-import { CFormTextarea } from "@coreui/vue";
+import { CFormTextarea } from '@coreui/vue'
 // or
-import CFormTextarea from "@coreui/vue/src/components/form/CFormTextarea";
+import CFormTextarea from '@coreui/vue/src/components/form/CFormTextarea'
 ```
 
 #### Props

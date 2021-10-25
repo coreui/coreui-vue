@@ -1,9 +1,9 @@
 ### CWidgetStatsD
 
 ```jsx
-import { CWidgetStatsD } from "@coreui/vue";
+import { CWidgetStatsD } from '@coreui/vue'
 // or
-import CWidgetStatsD from "@coreui/vue/src/components/widgets/CWidgetStatsD";
+import CWidgetStatsD from '@coreui/vue/src/components/widgets/CWidgetStatsD'
 ```
 
 #### Props

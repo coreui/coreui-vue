@@ -1,0 +1,68 @@
+{
+  "name": "@coreui/vue-chartjs",
+  "description": "Vue component wrapper for chart.js",
+  "version": "2.0.0-rc.0",
+  "license": "MIT",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "homepage": "https://coreui.io",
+  "author": {
+    "name": "CoreUI",
+    "url": "https://coreui.io",
+    "github": "https://github.com/coreui",
+    "twitter": "https://twitter.com/core_ui"
+  },
+  "contributors": [
+    {
+      "name": "CoreUI Team",
+      "url": "https://github.com/orgs/coreui/people"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coreui/coreui-vue-chartjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/coreui/coreui-vue-chartjs/issues"
+  },
+  "keywords": [
+    "coreui",
+    "chart.js",
+    "vue chart.js",
+    "coreui-vue",
+    "vue charts",
+    "vue chart components",
+    "layout",
+    "charts",
+    "vue chart.js implementation",
+    "component"
+  ],
+  "files": [
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "devDependencies": {
+    "@coreui/chartjs": "^3.0.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "@types/lodash": "^4.14.176",
+    "chart.js": "^3.6.0",
+    "lodash": "^4.17.21",
+    "rollup": "^2.58.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-vue": "^6.0.0",
+    "typescript": "^4.4.3",
+    "vue": "^3.2.20",
+    "vue-types": "^4.0.1"
+  },
+  "peerDependencies": {
+    "@coreui/chartjs": "^3.0.0",
+    "chart.js": "^3.4.1",
+    "vue": "^3.2.20"
+  }
+}

@@ -1,9 +1,9 @@
 ### CCardSubtitle
 
 ```jsx
-import { CCardSubtitle } from "@coreui/vue";
+import { CCardSubtitle } from '@coreui/vue'
 // or
-import CCardSubtitle from "@coreui/vue/src/components/card/CCardSubtitle";
+import CCardSubtitle from '@coreui/vue/src/components/card/CCardSubtitle'
 ```
 
 #### Props

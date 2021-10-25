@@ -1,9 +1,9 @@
 ### CTableHeaderCell
 
 ```jsx
-import { CTableHeaderCell } from "@coreui/vue";
+import { CTableHeaderCell } from '@coreui/vue'
 // or
-import CTableHeaderCell from "@coreui/vue/src/components/table/CTableHeaderCell";
+import CTableHeaderCell from '@coreui/vue/src/components/table/CTableHeaderCell'
 ```
 
 #### Props

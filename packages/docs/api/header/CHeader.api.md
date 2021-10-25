@@ -1,9 +1,9 @@
 ### CHeader
 
 ```jsx
-import { CHeader } from "@coreui/vue";
+import { CHeader } from '@coreui/vue'
 // or
-import CHeader from "@coreui/vue/src/components/header/CHeader";
+import CHeader from '@coreui/vue/src/components/header/CHeader'
 ```
 
 #### Props

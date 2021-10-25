@@ -1,9 +1,9 @@
 ### CTableBody
 
 ```jsx
-import { CTableBody } from "@coreui/vue";
+import { CTableBody } from '@coreui/vue'
 // or
-import CTableBody from "@coreui/vue/src/components/table/CTableBody";
+import CTableBody from '@coreui/vue/src/components/table/CTableBody'
 ```
 
 #### Props

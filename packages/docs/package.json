@@ -13,8 +13,8 @@
   "devDependencies": {
     "@coreui/chartjs": "^3.0.0",
     "@coreui/coreui": "^4.0.5",
-    "@coreui/icons": "^2.0.1",
-    "@coreui/icons-vue": "^2.0.0-rc.0",
+    "@coreui/icons": "^2.1.0",
+    "@coreui/icons-vue": "^2.0.0-rc.1",
     "@coreui/vue-chartjs": "^2.0.0-rc.0",
     "@vuepress/plugin-toc": "^2.0.0-beta.26",
     "markdown-it-include": "^2.0.0",

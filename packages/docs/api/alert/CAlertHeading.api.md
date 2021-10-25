@@ -1,9 +1,9 @@
 ### CAlertHeading
 
 ```jsx
-import { CAlertHeading } from "@coreui/vue";
+import { CAlertHeading } from '@coreui/vue'
 // or
-import CAlertHeading from "@coreui/vue/src/components/alert/CAlertHeading";
+import CAlertHeading from '@coreui/vue/src/components/alert/CAlertHeading'
 ```
 
 #### Props

@@ -13,6 +13,9 @@ module.exports = (renderedUsage, doc, config, fileName, requiresMd, { isSubCompo
       // show more than one level on subcomponents
       frontMatter.push('sidebarDepth: 2');
   }
+
+  const relativeFilename = fileName.replace('coreui-', '')
+
   return `${frontMatter.length && !isSubComponent
       ? `
 ---
@@ -25,10 +28,11 @@ ${isSubComponent || hasSubComponents ? '#' : ''}### ${deprecated ? `~~${displayN
 ${deprecated ? `> **Deprecated** ${deprecated[0].description}\n` : ''}
 ${description ? '> ' + description : ''}
 
+
 \`\`\`jsx
-import { ${displayName} } from '@coreui/vue'
+import { ${displayName} } from '@coreui/${fileName.replace('coreui-', '').split('/')[0]}'
 // or
-import ${displayName} from '@coreui/vue/src/components/${fileName.replace('.ts', '')}'
+import ${displayName} from '@coreui/${fileName.replace('coreui-', '').replace('.ts', '')}'
 \`\`\`\n
 
 ${functional ? renderedUsage.functionalTag : ''}

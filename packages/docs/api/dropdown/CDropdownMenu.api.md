@@ -1,9 +1,9 @@
 ### CDropdownMenu
 
 ```jsx
-import { CDropdownMenu } from "@coreui/vue";
+import { CDropdownMenu } from '@coreui/vue'
 // or
-import CDropdownMenu from "@coreui/vue/src/components/dropdown/CDropdownMenu";
+import CDropdownMenu from '@coreui/vue/src/components/dropdown/CDropdownMenu'
 ```
 
 #### Props

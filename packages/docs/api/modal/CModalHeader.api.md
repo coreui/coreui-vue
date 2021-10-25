@@ -1,9 +1,9 @@
 ### CModalHeader
 
 ```jsx
-import { CModalHeader } from "@coreui/vue";
+import { CModalHeader } from '@coreui/vue'
 // or
-import CModalHeader from "@coreui/vue/src/components/modal/CModalHeader";
+import CModalHeader from '@coreui/vue/src/components/modal/CModalHeader'
 ```
 
 #### Props

@@ -1,9 +1,9 @@
 ### CDropdownToggle
 
 ```jsx
-import { CDropdownToggle } from "@coreui/vue";
+import { CDropdownToggle } from '@coreui/vue'
 // or
-import CDropdownToggle from "@coreui/vue/src/components/dropdown/CDropdownToggle";
+import CDropdownToggle from '@coreui/vue/src/components/dropdown/CDropdownToggle'
 ```
 
 #### Props

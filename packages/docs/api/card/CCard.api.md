@@ -1,9 +1,9 @@
 ### CCard
 
 ```jsx
-import { CCard } from "@coreui/vue";
+import { CCard } from '@coreui/vue'
 // or
-import CCard from "@coreui/vue/src/components/card/CCard";
+import CCard from '@coreui/vue/src/components/card/CCard'
 ```
 
 #### Props

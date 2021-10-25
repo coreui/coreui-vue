@@ -1,9 +1,9 @@
 ### CFormFeedback
 
 ```jsx
-import { CFormFeedback } from "@coreui/vue";
+import { CFormFeedback } from '@coreui/vue'
 // or
-import CFormFeedback from "@coreui/vue/src/components/form/CFormFeedback";
+import CFormFeedback from '@coreui/vue/src/components/form/CFormFeedback'
 ```
 
 #### Props

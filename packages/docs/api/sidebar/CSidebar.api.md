@@ -1,9 +1,9 @@
 ### CSidebar
 
 ```jsx
-import { CSidebar } from "@coreui/vue";
+import { CSidebar } from '@coreui/vue'
 // or
-import CSidebar from "@coreui/vue/src/components/sidebar/CSidebar";
+import CSidebar from '@coreui/vue/src/components/sidebar/CSidebar'
 ```
 
 #### Props

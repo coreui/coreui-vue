@@ -1,9 +1,9 @@
 ### CAccordionCollapse
 
 ```jsx
-import { CAccordionCollapse } from "@coreui/vue";
+import { CAccordionCollapse } from '@coreui/vue'
 // or
-import CAccordionCollapse from "@coreui/vue/src/components/accordion/CAccordionCollapse";
+import CAccordionCollapse from '@coreui/vue/src/components/accordion/CAccordionCollapse'
 ```
 
 #### Props

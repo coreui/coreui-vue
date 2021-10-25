@@ -1,9 +1,9 @@
 ### CFormLabel
 
 ```jsx
-import { CFormLabel } from "@coreui/vue";
+import { CFormLabel } from '@coreui/vue'
 // or
-import CFormLabel from "@coreui/vue/src/components/form/CFormLabel";
+import CFormLabel from '@coreui/vue/src/components/form/CFormLabel'
 ```
 
 #### Props

@@ -89,11 +89,11 @@ included in the project:
 
    ```bash
    # Clone your fork of the repo into the current directory
-   git clone https://github.com/<your-username>/coreui.git
+   git clone https://github.com/<your-username>/coreui-react.git
    # Navigate to the newly cloned directory
    cd coreui
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream https://github.com/coreui/coreui.git
+   git remote add upstream https://github.com/coreui/coreui-vue.git
    ```
 
 2. If you cloned a while ago, get the latest changes from upstream:
@@ -165,12 +165,13 @@ Please use following commit message format.
 - When feasible, default color palettes should comply with [WCAG color contrast guidelines](http://www.w3.org/TR/WCAG20/#visual-audio-contrast).
 - Except in rare cases, don't remove default `:focus` styles (via e.g. `outline: none;`) without providing alternative styles. See [this A11Y Project post](http://a11yproject.com/posts/never-remove-css-outlines) for more details.
 
-### JS / TS / Vue
+### JS
 
 - No semicolons (in client-side JS)
 - 2 spaces (no tabs)
 - strict mode
 - "Attractive"
+- Don't use [jQuery event alias convenience methods](https://github.com/jquery/jquery/blob/master/src/event/alias.js) (such as `$().focus()`). Instead, use [`$().trigger(eventType, ...)`](http://api.jquery.com/trigger/) or [`$().on(eventType, ...)`](http://api.jquery.com/on/), depending on whether you're firing an event or listening for an event. (For example, `$().trigger('focus')` or `$().on('focus', function (event) { /* handle focus event */ })`) We do this to be compatible with custom builds of jQuery where the event aliases module has been excluded.
 
 ## License
 

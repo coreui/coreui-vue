@@ -1,9 +1,9 @@
 ### CProgressBar
 
 ```jsx
-import { CProgressBar } from "@coreui/vue";
+import { CProgressBar } from '@coreui/vue'
 // or
-import CProgressBar from "@coreui/vue/src/components/progress/CProgressBar";
+import CProgressBar from '@coreui/vue/src/components/progress/CProgressBar'
 ```
 
 #### Props

@@ -1,9 +1,9 @@
 ### CTableDataCell
 
 ```jsx
-import { CTableDataCell } from "@coreui/vue";
+import { CTableDataCell } from '@coreui/vue'
 // or
-import CTableDataCell from "@coreui/vue/src/components/table/CTableDataCell";
+import CTableDataCell from '@coreui/vue/src/components/table/CTableDataCell'
 ```
 
 #### Props

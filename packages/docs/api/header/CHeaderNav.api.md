@@ -1,9 +1,9 @@
 ### CHeaderNav
 
 ```jsx
-import { CHeaderNav } from "@coreui/vue";
+import { CHeaderNav } from '@coreui/vue'
 // or
-import CHeaderNav from "@coreui/vue/src/components/header/CHeaderNav";
+import CHeaderNav from '@coreui/vue/src/components/header/CHeaderNav'
 ```
 
 #### Props

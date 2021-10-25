@@ -1,9 +1,9 @@
 ### CButton
 
 ```jsx
-import { CButton } from "@coreui/vue";
+import { CButton } from '@coreui/vue'
 // or
-import CButton from "@coreui/vue/src/components/button/CButton";
+import CButton from '@coreui/vue/src/components/button/CButton'
 ```
 
 #### Props
