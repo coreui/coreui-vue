@@ -34,10 +34,9 @@ const CCollapse = defineComponent({
       })
       el.style.height = `${el.scrollHeight}px`
     }
-    // TODO: find solution how to remove height
     const handleAfterEnter = (el: RendererElement) => {
       el.classList.remove('collapsing')
-      el.style.height = 'auto'
+      el.style.removeProperty('height')
     }
     const handleBeforeLeave = (el: RendererElement) => {
       el.classList.add('show')
