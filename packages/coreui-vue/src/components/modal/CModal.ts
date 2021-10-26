@@ -29,9 +29,8 @@ const CModal = defineComponent({
     },
     /**
      * A string of all className you want applied to the modal content component.
-     * TODO: Consider if we should change this prop name to describe better its role.
      */
-    className: {
+    contentClassName: {
       type: String,
       default: undefined,
       required: false,
@@ -226,7 +225,7 @@ const CModal = defineComponent({
               },
               h(
                 'div',
-                { class: ['modal-content', props.className], ref: modalContentRef },
+                { class: ['modal-content', props.contentClassName], ref: modalContentRef },
                 slots.default && slots.default(),
               ),
             ),
