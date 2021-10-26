@@ -5,6 +5,10 @@ const CNavGroup = defineComponent({
   name: 'CNavGroup',
   props: {
     /**
+     * TODO: docs
+     */
+    active: Boolean,
+    /**
      * Make nav group more compact by cutting all `padding` in half.
      */
     compact: Boolean,
@@ -15,7 +19,7 @@ const CNavGroup = defineComponent({
   },
   emits: ['visible-change'],
   setup(props, { slots, emit }) {
-    const visible = ref(props.visible)
+    const visible = ref(props.active || props.visible)
     const navGroupRef = ref()
 
     const visibleGroup = ref()
@@ -33,7 +37,7 @@ const CNavGroup = defineComponent({
     const isVisible = (index: number) => Boolean(visibleGroup.value === index)
 
     onMounted(() => {
-      props.visible && navGroupRef.value.classList.add('show')
+      if (props.active || props.visible) navGroupRef.value.classList.add('show')
       emit('visible-change', visible.value)
     })
 
