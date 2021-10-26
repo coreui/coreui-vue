@@ -1,12 +1,12 @@
 import { h } from 'vue'
-import type { FunctionalComponent, VNode } from 'vue'
+import type { VNode } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import type { ResolvedSidebarItem } from '../../shared'
 
 import { withBase } from '@vuepress/client'
 
-import { CBadge, CNavGroup, CNavItem, CSidebarNav } from './../../../../../../coreui-vue/src/index'
+import { CBadge, CNavGroup, CNavItem, CSidebarNav } from '@coreui/vue/src/'
 import { CIcon } from '@coreui/icons-vue'
 
 const normalizePath = (path: string): string =>
@@ -47,8 +47,8 @@ const renderItem = (item: ResolvedSidebarItem): VNode => {
     return h(
       CNavGroup,
       {
+        active: item.children.some((child) => isActiveItem(route, child)),
         compact: true,
-        visible: item.children.some((child) => isActiveItem(route, child)),
       },
       {
         togglerContent: () => [
