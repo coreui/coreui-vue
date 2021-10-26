@@ -270,9 +270,7 @@ Alternatively, of implementing button sizing classes to each button in a group, 
 
 ## Nesting
 
-TODO: fix dropdown examples
-
-Put a `<CButtonGroup>` inside another `<CButtonGroup>` when you need dropdown menus combined with a series of buttons.
+Put a `<CDropdown>` inside `<CButtonGroup>` when you need dropdown menus combined with a series of buttons.
 
 ::: demo
 <CButtonGroup role="group" aria-label="Button group with nested dropdown">

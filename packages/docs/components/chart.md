@@ -233,6 +233,36 @@ Pie and doughnut charts are probably the most commonly used charts. They are div
 />
 ```
 
+::: demo
+<CChartPie
+  type="pie"
+  :data="{
+    labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
+    datasets: [
+      {
+        backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+        data: [40, 20, 80, 10],
+      },
+    ],
+  }"
+/>
+:::
+```vue
+<!-- use <CChart type="pie"> or <CChartPie> component -->
+<CChart
+  type="pie"
+  :data="{
+    labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
+    datasets: [
+      {
+        backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+        data: [40, 20, 80, 10],
+      },
+    ],
+  }"
+/>
+```
+
 ### Polar Area Chart
 
 Polar area charts are similar to pie charts, but each segment has the same angle - the radius of the segment differs depending on the value. [Polar Area Chart properties](https://www.chartjs.org/docs/latest/charts/polar.html#dataset-properties)

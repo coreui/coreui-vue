@@ -249,8 +249,6 @@ Opt into darker dropdowns to match a dark navbar or custom style by set `dark` p
 </CDropdown>
 ```
 
-TODO: navbar
-
 And putting it to use in a navbar:
 
 ::: demo

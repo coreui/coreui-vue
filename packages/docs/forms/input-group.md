@@ -246,8 +246,6 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
 
 ## Buttons with dropdowns
 
-TODO: fix toggler variant
-
 ::: demo
 <CInputGroup class="mb-3">
   <CDropdown variant="input-group"> 

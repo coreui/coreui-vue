@@ -8,17 +8,17 @@ import CModal from '@coreui/vue/src/components/modal/CModal'
 
 #### Props
 
-| Prop name      | Description                                                                                                                                                  | Type            | Values                                             | Default |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------- | -------------------------------------------------- | ------- |
-| **alignment**  | Align the modal in the center or top of the screen.                                                                                                          | string          | `'top'`, `'center'`                                | 'top'   |
-| **backdrop**   | Apply a backdrop on body while offcanvas is open.                                                                                                            | boolean\|string | `'static'`                                         | true    |
-| **className**  | A string of all className you want applied to the modal content component.<br>TODO: Consider if we should change this prop name to describe better its role. | string          | -                                                  | -       |
-| **fullscreen** | Set modal to covers the entire user viewport                                                                                                                 | boolean\|string | `boolean`, `'sm'`, `'md'`, `'lg'`, `'xl'`, `'xxl'` | -       |
-| **keyboard**   | Closes the modal when escape key is pressed.                                                                                                                 | boolean         | -                                                  | true    |
-| **scrollable** | Create a scrollable modal that allows scrolling the modal body.                                                                                              | boolean         | -                                                  |         |
-| **size**       | Size the component small, large, or extra large.                                                                                                             | string          | `'sm'`, `'lg'`, `'xl'`                             | -       |
-| **transition** | Remove animation to create modal that simply appear rather than fade in to view.                                                                             | boolean         | -                                                  | true    |
-| **visible**    | Toggle the visibility of alert component.                                                                                                                    | boolean         | -                                                  |         |
+| Prop name            | Description                                                                      | Type            | Values                                             | Default |
+| -------------------- | -------------------------------------------------------------------------------- | --------------- | -------------------------------------------------- | ------- |
+| **alignment**        | Align the modal in the center or top of the screen.                              | string          | `'top'`, `'center'`                                | 'top'   |
+| **backdrop**         | Apply a backdrop on body while offcanvas is open.                                | boolean\|string | `'static'`                                         | true    |
+| **contentClassName** | A string of all className you want applied to the modal content component.       | string          | -                                                  | -       |
+| **fullscreen**       | Set modal to covers the entire user viewport                                     | boolean\|string | `boolean`, `'sm'`, `'md'`, `'lg'`, `'xl'`, `'xxl'` | -       |
+| **keyboard**         | Closes the modal when escape key is pressed.                                     | boolean         | -                                                  | true    |
+| **scrollable**       | Create a scrollable modal that allows scrolling the modal body.                  | boolean         | -                                                  |         |
+| **size**             | Size the component small, large, or extra large.                                 | string          | `'sm'`, `'lg'`, `'xl'`                             | -       |
+| **transition**       | Remove animation to create modal that simply appear rather than fade in to view. | boolean         | -                                                  | true    |
+| **visible**          | Toggle the visibility of alert component.                                        | boolean         | -                                                  |         |
 
 #### Events
 
