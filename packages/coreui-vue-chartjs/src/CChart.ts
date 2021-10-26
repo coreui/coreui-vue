@@ -64,6 +64,7 @@ const CChart = defineComponent({
     plugins: {
       type: Array as PropType<Plugin[]>,
       default: undefined,
+      required: false,
     },
     /**
      * If true, will tear down and redraw chart on all updates.
@@ -144,7 +145,6 @@ const CChart = defineComponent({
     }
 
     const handleOnClick = (e: Event) => {
-      console.log(chart)
       if (!chart) return
 
       emit(
