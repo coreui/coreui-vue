@@ -55,8 +55,6 @@ describe('<CChart />', () => {
       }
     })
 
-    console.log(wrapper)
-
     expect(data).toStrictEqual({
       labels: ['red', 'blue'],
       datasets: [{ label: 'colors', data: [1, 2] }],
