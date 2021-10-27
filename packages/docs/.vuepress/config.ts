@@ -12,8 +12,8 @@ export default defineUserConfig<DefaultThemeOptions>({
   title: 'Vue UI Components · CoreUI',
   description: 'UI Components Library for Vue.js (Vue 3)',
   head: [
-    // ['link', { rel: 'icon', href: '/logo.png' }],
-    ['link', { rel: 'manifest', href: '/favicon/manifest.json' }],
+    ['link', { rel: 'icon', href: `/vue/docs/${pkg.config.version_short}/favicons/favicon-96x96.png` }],
+    // ['link', { rel: 'manifest', href: '/favicons/manifest.json' }],
     ['script', { src: 'https://media.ethicalads.io/media/client/ethicalads.min.js' }],
   ],
   extendsMarkdown: (md) => {
