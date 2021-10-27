@@ -1,5 +1,4 @@
-import { watch } from '@vue/runtime-core'
-import { defineComponent, h, onMounted, onUpdated, ref, RendererElement, Transition } from 'vue'
+import { defineComponent, h, onMounted, ref, RendererElement, Transition, watch } from 'vue'
 
 const CNavGroup = defineComponent({
   name: 'CNavGroup',
@@ -19,7 +18,7 @@ const CNavGroup = defineComponent({
   },
   emits: ['visible-change'],
   setup(props, { slots, emit }) {
-    const visible = ref(props.active || props.visible)
+    const visible = ref()
     const navGroupRef = ref()
 
     const visibleGroup = ref()
@@ -37,24 +36,29 @@ const CNavGroup = defineComponent({
     const isVisible = (index: number) => Boolean(visibleGroup.value === index)
 
     onMounted(() => {
+      visible.value = props.active || props.visible
       if (props.active || props.visible) navGroupRef.value.classList.add('show')
       emit('visible-change', visible.value)
     })
 
-    onUpdated(() => {
-      visible.value = props.visible
+    watch(
+      () => props.visible,
+      () => {
+        visible.value = props.visible
 
-      if (visible.value === false) {
-        visibleGroup.value = undefined
-      }
-    })
+        if (visible.value === false) {
+          visibleGroup.value = undefined
+        }
+      },
+    )
 
     watch(visible, () => {
       emit('visible-change', visible.value)
     })
 
-    const handleTogglerClick = function () {
+    const handleTogglerClick = () => {
       visible.value = !visible.value
+      emit('visible-change', visible.value)
     }
 
     const handleBeforeEnter = (el: RendererElement) => {
