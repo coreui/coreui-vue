@@ -1,31 +1,7 @@
 {
   "name": "@coreui/vue-chartjs",
-  "description": "Vue component wrapper for chart.js",
   "version": "2.0.0-rc.2",
-  "license": "MIT",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
-  "homepage": "https://coreui.io",
-  "author": {
-    "name": "CoreUI",
-    "url": "https://coreui.io",
-    "github": "https://github.com/coreui",
-    "twitter": "https://twitter.com/core_ui"
-  },
-  "contributors": [
-    {
-      "name": "CoreUI Team",
-      "url": "https://github.com/orgs/coreui/people"
-    }
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/coreui/coreui-vue-chartjs.git"
-  },
-  "bugs": {
-    "url": "https://github.com/coreui/coreui-vue-chartjs/issues"
-  },
+  "description": "Vue component wrapper for Chart.js",
   "keywords": [
     "coreui",
     "chart.js",
@@ -38,9 +14,22 @@
     "vue chart.js implementation",
     "component"
   ],
+  "homepage": "https://coreui.io/vue/",
+  "bugs": {
+    "url": "https://github.com/coreui/coreui-vue/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coreui/coreui-vue.git"
+  },
+  "license": "MIT",
+  "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "src",
-    "dist"
+    "dist/",
+    "src/"
   ],
   "scripts": {
     "build": "rollup -c"
