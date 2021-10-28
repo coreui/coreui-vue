@@ -4,7 +4,7 @@ const CNavGroup = defineComponent({
   name: 'CNavGroup',
   props: {
     /**
-     * TODO: docs
+     * Make nav group active and show items.
      */
     active: Boolean,
     /**
