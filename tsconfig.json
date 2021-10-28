@@ -21,8 +21,8 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "paths": {
-      "@coreui/vue-pro": ["./packages/coreui-vue/src"],
-      "@coreui/vue-pro/*": ["./packages/coreui-vue/src/*"],
+      "@coreui/vue": ["./packages/coreui-vue/src"],
+      "@coreui/vue/*": ["./packages/coreui-vue/src/*"],
       "@coreui/vue-chartjs": ["./packages/coreui-vue-chartjs/src"],
       "@coreui/vue-chartjs/*": ["./packages/coreui-vue-chartjs/src/*"]
     }
