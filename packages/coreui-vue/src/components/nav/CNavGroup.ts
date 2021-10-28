@@ -31,8 +31,8 @@ const CNavGroup = defineComponent({
     const isVisible = (index: number) => Boolean(visibleGroup.value === index)
 
     onMounted(() => {
-      visible.value = props.active || props.visible
-      if (props.active || props.visible) navGroupRef.value.classList.add('show')
+      visible.value = props.visible
+      props.visible && navGroupRef.value.classList.add('show')
       emit('visible-change', visible.value)
     })
 
