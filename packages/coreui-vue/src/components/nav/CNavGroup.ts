@@ -4,10 +4,6 @@ const CNavGroup = defineComponent({
   name: 'CNavGroup',
   props: {
     /**
-     * Make nav group active and show items.
-     */
-    active: Boolean,
-    /**
      * Make nav group more compact by cutting all `padding` in half.
      */
     compact: Boolean,
@@ -20,7 +16,6 @@ const CNavGroup = defineComponent({
   setup(props, { slots, emit }) {
     const visible = ref()
     const navGroupRef = ref()
-
     const visibleGroup = ref()
 
     const handleVisibleChange = (visible: boolean, index: number) => {
