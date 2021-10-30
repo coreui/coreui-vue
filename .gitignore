@@ -1,14 +1,16 @@
-.cache/
-.temp/
-cache/
+# Folders to ignore
 coverage/
 dist/
 node_modules/
-temp/
+
+# local env files
+.env.local
+.env.*.local
 
 # OS or Editor folders
 ._*
 .cache
+.temp
 .DS_Store
 .idea
 .project
@@ -17,6 +19,23 @@ temp/
 *.esproj
 *.sublime-project
 *.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 nbproject
 Thumbs.db
 /.vscode/
+
+# Numerous always-ignore extensions
+*.diff
+*.err
+*.log
+*.orig
+*.rej
+*.swo
+*.swp
+*.vi
+*.zip
+*~
