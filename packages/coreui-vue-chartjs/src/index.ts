@@ -1,111 +1,67 @@
-import { App, defineComponent, h, PropType } from 'vue'
-import { ChartData, ChartOptions, Plugin } from 'chart.js/auto'
-import { CChart } from './CChart'
-
-const CChartProps = {
-  customTooltips: {
-    type: Boolean,
-    default: true,
-    required: false,
-  },
-  data: {
-    type: [Object, Function] as PropType<ChartData | ((canvas: HTMLCanvasElement) => ChartData)>,
-    required: true,
-  },
-  height: {
-    type: Number,
-    default: 150,
-    required: false,
-  },
-  id: {
-    type: String,
-    default: undefined,
-    required: false,
-  },
-  options: {
-    type: Object as PropType<ChartOptions>,
-    default: undefined,
-    required: false,
-  },
-  plugins: {
-    type: Array as PropType<Plugin[]>,
-    default: undefined,
-    required: false,
-  },
-  redraw: Boolean,
-  width: {
-    type: Number,
-    default: 300,
-    required: false,
-  },
-  wrapper: {
-    type: Boolean,
-    default: true,
-    required: false,
-  },
-}
+import { App, defineComponent, h } from 'vue'
+import CChart from './CChart'
 
 const CChartBar = defineComponent({
+  extends: CChart,
   name: 'CChartBar',
-  props: CChartProps,
   setup(props) {
-    return () => h(CChart, { type: 'bar', ...props })
+    return () => h(CChart, { ...props, type: 'bar' })
   },
 })
 
 const CChartBubble = defineComponent({
+  extends: CChart,
   name: 'CChartBubble',
-  props: CChartProps,
   setup(props) {
-    return () => h(CChart, { type: 'bubble', ...props })
+    return () => h(CChart, { ...props, type: 'bubble' })
   },
 })
 
 const CChartDoughnut = defineComponent({
+  extends: CChart,
   name: 'CChartDoughnut',
-  props: CChartProps,
   setup(props) {
-    return () => h(CChart, { type: 'doughnut', ...props })
+    return () => h(CChart, { ...props, type: 'doughnut' })
   },
 })
 
 const CChartLine = defineComponent({
+  extends: CChart,
   name: 'CChartLine',
-  props: CChartProps,
   setup(props) {
-    return () => h(CChart, { type: 'line', ...props })
+    return () => h(CChart, { ...props, type: 'line' })
   },
 })
 
 const CChartPie = defineComponent({
+  extends: CChart,
   name: 'CChartPie',
-  props: CChartProps,
   setup(props) {
-    return () => h(CChart, { type: 'pie', ...props })
+    return () => h(CChart, { ...props, type: 'pie' })
   },
 })
 
 const CChartPolarArea = defineComponent({
+  extends: CChart,
   name: 'CChartPolarArea',
-  props: CChartProps,
   setup(props) {
-    return () => h(CChart, { type: 'polarArea', ...props })
+    return () => h(CChart, { ...props, type: 'polarArea' })
   },
 })
 
 const CChartRadar = defineComponent({
+  extends: CChart,
   name: 'CChartRadar',
-  props: CChartProps,
   setup(props) {
-    return () => h(CChart, { type: 'radar', ...props })
+    return () => h(CChart, { ...props, type: 'radar' })
   },
 })
 
 const CChartScatter = defineComponent({
+  extends: CChart,
   name: 'CChartScatter',
-  props: CChartProps,
   setup(props) {
-    return () => h(CChart, { type: 'scatter', ...props })
+    return () => h(CChart, { ...props, type: 'scatter' })
   },
 })
 

@@ -9,7 +9,7 @@ const plugins = [
   external(),
   resolve({
     dedupe: ['vue'],
-    extensions: ['.ts', '.json', '.vue'],
+    extensions: ['.js', '.ts', '.json', '.vue'],
   }),
   typescript({
     exclude: ['**/__tests__/**'],

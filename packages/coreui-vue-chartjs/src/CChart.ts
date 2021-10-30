@@ -256,4 +256,4 @@ const CChart = defineComponent({
   },
 })
 
-export { CChart }
+export default CChart
