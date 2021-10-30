@@ -10,13 +10,13 @@ menu: Getting started
 ### Npm
 
 ```bash
-npm install @coreui/vue@next
+npm install @coreui/vue
 ```
 
 ### Yarn
 
 ```bash
-yarn add @coreui/vue@next
+yarn add @coreui/vue
 ```
 
 ## Using components
