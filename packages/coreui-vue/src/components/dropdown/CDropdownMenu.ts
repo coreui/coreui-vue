@@ -16,6 +16,7 @@ const CDropdownMenu = defineComponent({
   },
   setup(props, { slots }) {
     const dropdownMenuRef = inject('dropdownMenuRef') as Ref<HTMLElement>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const config = inject('config') as any
 
     const { alignment, dark, popper, visible } = toRefs(config)

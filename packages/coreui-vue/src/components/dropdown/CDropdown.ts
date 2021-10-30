@@ -24,6 +24,7 @@ const CDropdown = defineComponent({
       type: [String, Object],
       default: undefined,
       required: false,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validator: (value: string | any) => {
         if (value === 'start' || value === 'end') {
           return true
