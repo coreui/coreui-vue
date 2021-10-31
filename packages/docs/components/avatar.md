@@ -19,14 +19,14 @@ description: Vue avatar component can be used to display circular user profile p
 ## Letter avatars
 
 ::: demo
-<CAvatar color="primary" textColor="white">CUI</CAvatar>
+<CAvatar color="primary" text-color="white">CUI</CAvatar>
 <CAvatar color="secondary">CUI</CAvatar>
-<CAvatar color="warning" textColor="white">CUI</CAvatar>
+<CAvatar color="warning" text-color="white">CUI</CAvatar>
 :::
 ```vue
-<CAvatar color="primary" textColor="white">CUI</CAvatar>
+<CAvatar color="primary" text-color="white">CUI</CAvatar>
 <CAvatar color="secondary">CUI</CAvatar>
-<CAvatar color="warning" textColor="white">CUI</CAvatar>
+<CAvatar color="warning" text-color="white">CUI</CAvatar>
 ```
 
 ## Rounded avatars
@@ -34,28 +34,28 @@ description: Vue avatar component can be used to display circular user profile p
 Use the `shape="rounded"` prop to make avatars squared with rounded corners.
 
 ::: demo
-<CAvatar color="primary" textColor="white" shape="rounded">CUI</CAvatar>
+<CAvatar color="primary" text-color="white" shape="rounded">CUI</CAvatar>
 <CAvatar color="secondary" shape="rounded">CUI</CAvatar>
-<CAvatar color="warning" textColor="white" shape="rounded">CUI</CAvatar>
+<CAvatar color="warning" text-color="white" shape="rounded">CUI</CAvatar>
 :::
 ```vue
-<CAvatar color="primary" textColor="white" shape="rounded">CUI</CAvatar>
+<CAvatar color="primary" text-color="white" shape="rounded">CUI</CAvatar>
 <CAvatar color="secondary" shape="rounded">CUI</CAvatar>
-<CAvatar color="warning" textColor="white" shape="rounded">CUI</CAvatar>
+<CAvatar color="warning" text-color="white" shape="rounded">CUI</CAvatar>
 ```
 ## Square avatars
 
 Use the `shape="rounded-0"` prop to make avatars squared.
 
 ::: demo
-<CAvatar color="primary" textColor="white" shape="rounded-0">CUI</CAvatar>
+<CAvatar color="primary" text-color="white" shape="rounded-0">CUI</CAvatar>
 <CAvatar color="secondary" shape="rounded-0">CUI</CAvatar>
-<CAvatar color="warning" textColor="white" shape="rounded-0">CUI</CAvatar>
+<CAvatar color="warning" text-color="white" shape="rounded-0">CUI</CAvatar>
 :::
 ```vue
-<CAvatar color="primary" textColor="white" shape="rounded-0">CUI</CAvatar>
+<CAvatar color="primary" text-color="white" shape="rounded-0">CUI</CAvatar>
 <CAvatar color="secondary" shape="rounded-0">CUI</CAvatar>
-<CAvatar color="warning" textColor="white" shape="rounded-0">CUI</CAvatar>
+<CAvatar color="warning" text-color="white" shape="rounded-0">CUI</CAvatar>
 ```
 
 ## Sizes

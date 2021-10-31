@@ -12,12 +12,12 @@ Browser default checkboxes and radios are replaced with the help of `<CFormCheck
 
 ::: demo
 <CFormCheck id="flexCheckDefault" label="Default checkbox"/>
-<CFormCheck id="flexCheckChecked" label="Checked checkbox" defaultChecked />
+<CFormCheck id="flexCheckChecked" label="Checked checkbox" checked />
 
 :::
 ```vue
 <CFormCheck id="flexCheckDefault" label="Default checkbox"/>
-<CFormCheck id="flexCheckChecked" label="Checked checkbox" defaultChecked />
+<CFormCheck id="flexCheckChecked" label="Checked checkbox" checked />
 ```
 
 ## Indeterminate
@@ -38,11 +38,11 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 
 ::: demo
 <CFormCheck label="Disabled checkbox" disabled/>
-<CFormCheck label="Disabled checked checkbox" defaultChecked disabled/>
+<CFormCheck label="Disabled checked checkbox" checked disabled/>
 :::
 ```vue
 <CFormCheck label="Disabled checkbox" disabled/>
-<CFormCheck label="Disabled checked checkbox" defaultChecked disabled/>
+<CFormCheck label="Disabled checked checkbox" checked disabled/>
 ```
 
 ## Radios
@@ -51,22 +51,22 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 
 ::: demo
 <CFormCheck type="radio" name="flexRadioDefault" id="flexRadioDefault1" label="Default radio"/>
-<CFormCheck type="radio" name="flexRadioDefault" id="flexRadioDefault2" label="Checked radio" defaultChecked/>
+<CFormCheck type="radio" name="flexRadioDefault" id="flexRadioDefault2" label="Checked radio" checked/>
 :::
 ```vue
 <CFormCheck type="radio" name="flexRadioDefault" id="flexRadioDefault1" label="Default radio"/>
-<CFormCheck type="radio" name="flexRadioDefault" id="flexRadioDefault2" label="Checked radio" defaultChecked/>
+<CFormCheck type="radio" name="flexRadioDefault" id="flexRadioDefault2" label="Checked radio" checked/>
 ```
 
 ### Disabled
 
 ::: demo
 <CFormCheck type="radio" name="flexRadioDisabled" id="flexRadioDisabled" label="Disabled radio" disabled/>
-<CFormCheck type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" label="Disabled checked radio" defaultChecked disabled/>
+<CFormCheck type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" label="Disabled checked radio" checked disabled/>
 :::
 ```vue
 <CFormCheck type="radio" name="flexRadioDisabled" id="flexRadioDisabled" label="Disabled radio" disabled/>
-<CFormCheck type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" label="Disabled checked radio" defaultChecked disabled/>
+<CFormCheck type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" label="Disabled checked radio" checked disabled/>
 ```
 
 ## Switches
@@ -75,15 +75,15 @@ A switch has the markup of a custom checkbox but uses the `switch` boolean prope
 
 ::: demo
 <CFormSwitch label="Default switch checkbox input" id="formSwitchCheckDefault"/>
-<CFormSwitch label="Checked switch checkbox input" id="formSwitchCheckChecked" defaultChecked/>
+<CFormSwitch label="Checked switch checkbox input" id="formSwitchCheckChecked" checked/>
 <CFormSwitch label="Disabled switch checkbox input" id="formSwitchCheckDisabled" disabled/>
-<CFormSwitch label="Disabled checked switch checkbox input" id="formSwitchCheckCheckedDisabled" defaultChecked disabled/>
+<CFormSwitch label="Disabled checked switch checkbox input" id="formSwitchCheckCheckedDisabled" checked disabled/>
 :::
 ```vue
 <CFormSwitch label="Default switch checkbox input" id="formSwitchCheckDefault"/>
-<CFormSwitch label="Checked switch checkbox input" id="formSwitchCheckChecked" defaultChecked/>
+<CFormSwitch label="Checked switch checkbox input" id="formSwitchCheckChecked" checked/>
 <CFormSwitch label="Disabled switch checkbox input" id="formSwitchCheckDisabled" disabled/>
-<CFormSwitch label="Disabled checked switch checkbox input" id="formSwitchCheckCheckedDisabled" defaultChecked disabled/>
+<CFormSwitch label="Disabled checked switch checkbox input" id="formSwitchCheckCheckedDisabled" checked disabled/>
 ```
 
 ### Sizes
@@ -113,12 +113,12 @@ By default, any number of checkboxes and radios that are immediate sibling will 
 ```
 
 ::: demo
-<CFormCheck type="radio" name="exampleRadios" id="exampleRadios1" value="option1" label="Default radio" defaultChecked/>
+<CFormCheck type="radio" name="exampleRadios" id="exampleRadios1" value="option1" label="Default radio" checked/>
 <CFormCheck type="radio" name="exampleRadios" id="exampleRadios2" value="option2" label="Second default radio"/>
 <CFormCheck type="radio" name="exampleRadios" id="exampleRadios3" value="option3" label="Disabled radio" disabled/>
 :::
 ```vue
-<CFormCheck type="radio" name="exampleRadios" id="exampleRadios1" value="option1" label="Default radio" defaultChecked/>
+<CFormCheck type="radio" name="exampleRadios" id="exampleRadios1" value="option1" label="Default radio" checked/>
 <CFormCheck type="radio" name="exampleRadios" id="exampleRadios2" value="option2" label="Second default radio"/>
 <CFormCheck type="radio" name="exampleRadios" id="exampleRadios3" value="option3" label="Disabled radio" disabled/>
 ```
@@ -184,10 +184,10 @@ Create button-like checkboxes and radio buttons by using `button` boolean proper
 ```
 
 ::: demo
-<CFormCheck :button="{ color: 'primary' }" id="btn-check-2" autoComplete="off" label="Checked" defaultChecked/>
+<CFormCheck :button="{ color: 'primary' }" id="btn-check-2" autoComplete="off" label="Checked" checked/>
 :::
 ```vue
-<CFormCheck :button="{ color: 'primary' }" id="btn-check-2" autoComplete="off" label="Checked" defaultChecked/>
+<CFormCheck :button="{ color: 'primary' }" id="btn-check-2" autoComplete="off" label="Checked" checked/>
 ```
 
 ::: demo
@@ -200,13 +200,13 @@ Create button-like checkboxes and radio buttons by using `button` boolean proper
 ### Radio toggle buttons
 
 ::: demo
-<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option1" autoComplete="off" label="Checked" defaultChecked/>
+<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option1" autoComplete="off" label="Checked" checked/>
 <CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option2" autoComplete="off" label="Radio"/>
 <CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option3" autoComplete="off" label="Radio" disabled/>
 <CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option4" autoComplete="off" label="Radio"/>
 :::
 ```vue
-<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option1" autoComplete="off" label="Checked" defaultChecked/>
+<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option1" autoComplete="off" label="Checked" checked/>
 <CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option2" autoComplete="off" label="Radio"/>
 <CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option3" autoComplete="off" label="Radio" disabled/>
 <CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option4" autoComplete="off" label="Radio"/>
@@ -221,10 +221,10 @@ Different variants of button, such at the various outlined styles, are supported
   <CFormCheck :button="{ color: 'primary', variant: 'outline' }" id="btn-check-outlined" autoComplete="off" label="Single toggle"/>
 </div>
 <div>
-  <CFormCheck :button="{ color: 'secondary', variant: 'outline' }" id="btn-check-2-outlined" autoComplete="off" label="Checked" defaultChecked/>
+  <CFormCheck :button="{ color: 'secondary', variant: 'outline' }" id="btn-check-2-outlined" autoComplete="off" label="Checked" checked/>
 </div>
 <div>
-  <CFormCheck :button="{ color: 'success', variant: 'outline' }" type="radio" name="options-outlined" id="success-outlined" autoComplete="off" label="Radio" defaultChecked/>
+  <CFormCheck :button="{ color: 'success', variant: 'outline' }" type="radio" name="options-outlined" id="success-outlined" autoComplete="off" label="Radio" checked/>
   <CFormCheck :button="{ color: 'danger', variant: 'outline' }" type="radio" name="options-outlined" id="danger-outlined" autoComplete="off" label="Radio"/>
 </div>
 :::
@@ -233,10 +233,10 @@ Different variants of button, such at the various outlined styles, are supported
   <CFormCheck :button="{ color: 'primary', variant: 'outline' }" id="btn-check-outlined" autoComplete="off" label="Single toggle"/>
 </div>
 <div>
-  <CFormCheck :button="{ color: 'secondary', variant: 'outline' }" id="btn-check-2-outlined" autoComplete="off" label="Checked" defaultChecked/>
+  <CFormCheck :button="{ color: 'secondary', variant: 'outline' }" id="btn-check-2-outlined" autoComplete="off" label="Checked" checked/>
 </div>
 <div>
-  <CFormCheck :button="{ color: 'success', variant: 'outline' }" type="radio" name="options-outlined" id="success-outlined" autoComplete="off" label="Radio" defaultChecked/>
+  <CFormCheck :button="{ color: 'success', variant: 'outline' }" type="radio" name="options-outlined" id="success-outlined" autoComplete="off" label="Radio" checked/>
   <CFormCheck :button="{ color: 'danger', variant: 'outline' }" type="radio" name="options-outlined" id="danger-outlined" autoComplete="off" label="Radio"/>
 </div>
 ```

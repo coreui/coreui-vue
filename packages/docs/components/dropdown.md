@@ -252,7 +252,7 @@ Opt into darker dropdowns to match a dark navbar or custom style by set `dark` p
 And putting it to use in a navbar:
 
 ::: demo
-<CNavbar expand="lg" colorScheme="dark" class="bg-dark">
+<CNavbar expand="lg" color-scheme="dark" class="bg-dark">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarNav>
@@ -271,7 +271,7 @@ And putting it to use in a navbar:
 </CNavbar>
 :::
 ```vue
-<CNavbar expand="lg" colorScheme="dark" class="bg-dark">
+<CNavbar expand="lg" color-scheme="dark" class="bg-dark">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarNav>

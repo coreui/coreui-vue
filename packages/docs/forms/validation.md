@@ -14,14 +14,14 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
 <CForm class="row g-3 needs-validation" noValidate :validated="validatedCustom01" @submit="handleSubmitCustom01">
   <CCol md="4">
     <CFormLabel for="validationCustom01">Email</CFormLabel>
-    <CFormInput id="validationCustom01" defaultValue="Mark" required/>
+    <CFormInput id="validationCustom01" value="Mark" required/>
     <CFormFeedback valid>
       Looks good!
     </CFormFeedback>
   </CCol>
   <CCol md="4">
     <CFormLabel for="validationCustom02">Email</CFormLabel>
-    <CFormInput id="validationCustom02" defaultValue="Otto" required/>
+    <CFormInput id="validationCustom02" value="Otto" required/>
     <CFormFeedback valid>
       Looks good!
     </CFormFeedback>
@@ -30,7 +30,7 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
     <CFormLabel for="validationCustomUsername">Username</CFormLabel>
     <CInputGroup class="has-validation">
       <CInputGroupText id="inputGroupPrepend">@</CInputGroupText>
-      <CFormInput id="validationCustomUsername" defaultValue="" aria-describedby="inputGroupPrepend" required/>
+      <CFormInput id="validationCustomUsername" value="" aria-describedby="inputGroupPrepend" required/>
       <CFormFeedback invalid>
       Please choose a username.
       </CFormFeedback>
@@ -75,14 +75,14 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
 <CForm class="row g-3 needs-validation" noValidate :validated="validatedCustom01" @submit="handleSubmitCustom01">
   <CCol md="4">
     <CFormLabel for="validationCustom01">Email</CFormLabel>
-    <CFormInput id="validationCustom01" defaultValue="Mark" required/>
+    <CFormInput id="validationCustom01" value="Mark" required/>
     <CFormFeedback valid>
       Looks good!
     </CFormFeedback>
   </CCol>
   <CCol md="4">
     <CFormLabel for="validationCustom02">Email</CFormLabel>
-    <CFormInput id="validationCustom02" defaultValue="Otto" required/>
+    <CFormInput id="validationCustom02" value="Otto" required/>
     <CFormFeedback valid>
       Looks good!
     </CFormFeedback>
@@ -91,7 +91,7 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
     <CFormLabel for="validationCustomUsername">Username</CFormLabel>
     <CInputGroup class="has-validation">
       <CInputGroupText id="inputGroupPrepend">@</CInputGroupText>
-      <CFormInput id="validationCustomUsername" defaultValue="" aria-describedby="inputGroupPrepend" required/>
+      <CFormInput id="validationCustomUsername" value="" aria-describedby="inputGroupPrepend" required/>
       <CFormFeedback invalid>
       Please choose a username.
       </CFormFeedback>
@@ -143,14 +143,14 @@ While these feedback styles cannot be styled with CSS, you can still customize t
 <CForm class="row g-3 needs-validation" :validated="validatedDefault01" @submit="handleSubmitDefault01">
   <CCol md="4">
     <CFormLabel for="validationDefault01">Email</CFormLabel>
-    <CFormInput id="validationDefault01" defaultValue="Mark" required/>
+    <CFormInput id="validationDefault01" value="Mark" required/>
     <CFormFeedback valid>
       Looks good!
     </CFormFeedback>
   </CCol>
   <CCol md="4">
     <CFormLabel for="validationDefault02">Email</CFormLabel>
-    <CFormInput id="validationDefault02" defaultValue="Otto" required/>
+    <CFormInput id="validationDefault02" value="Otto" required/>
     <CFormFeedback valid>
       Looks good!
     </CFormFeedback>
@@ -159,7 +159,7 @@ While these feedback styles cannot be styled with CSS, you can still customize t
     <CFormLabel for="validationDefaultUsername">Username</CFormLabel>
     <CInputGroup class="has-validation">
       <CInputGroupText id="inputGroupPrepend02">@</CInputGroupText>
-      <CFormInput id="validationDefaultUsername" defaultValue="" aria-describedby="inputGroupPrepend02" required/>
+      <CFormInput id="validationDefaultUsername" value="" aria-describedby="inputGroupPrepend02" required/>
       <CFormFeedback invalid>
       Please choose a username.
       </CFormFeedback>
@@ -204,14 +204,14 @@ While these feedback styles cannot be styled with CSS, you can still customize t
 <CForm class="row g-3 needs-validation" :validated="validatedDefault01" @submit="handleSubmitDefault01">
   <CCol md="4">
     <CFormLabel for="validationDefault01">Email</CFormLabel>
-    <CFormInput id="validationDefault01" defaultValue="Mark" required/>
+    <CFormInput id="validationDefault01" value="Mark" required/>
     <CFormFeedback valid>
       Looks good!
     </CFormFeedback>
   </CCol>
   <CCol md="4">
     <CFormLabel for="validationDefault02">Email</CFormLabel>
-    <CFormInput id="validationDefault02" defaultValue="Otto" required/>
+    <CFormInput id="validationDefault02" value="Otto" required/>
     <CFormFeedback valid>
       Looks good!
     </CFormFeedback>
@@ -220,7 +220,7 @@ While these feedback styles cannot be styled with CSS, you can still customize t
     <CFormLabel for="validationDefaultUsername">Username</CFormLabel>
     <CInputGroup class="has-validation">
       <CInputGroupText id="inputGroupPrepend02">@</CInputGroupText>
-      <CFormInput id="validationDefaultUsername" defaultValue="" aria-describedby="inputGroupPrepend02" required/>
+      <CFormInput id="validationDefaultUsername" value="" aria-describedby="inputGroupPrepend02" required/>
       <CFormFeedback invalid>
       Please choose a username.
       </CFormFeedback>
@@ -273,14 +273,14 @@ For invalid fields, ensure that the invalid feedback/error message is associated
 <CForm class="row g-3 needs-validation">
   <CCol md="4">
     <CFormLabel for="validationServer01">Email</CFormLabel>
-    <CFormInput id="validationServer01" defaultValue="Mark" valid required/>
+    <CFormInput id="validationServer01" value="Mark" valid required/>
     <CFormFeedback valid>
       Looks good!
     </CFormFeedback>
   </CCol>
   <CCol md="4">
     <CFormLabel for="validationServer02">Email</CFormLabel>
-    <CFormInput id="validationServer02" defaultValue="Otto" valid required/>
+    <CFormInput id="validationServer02" value="Otto" valid required/>
     <CFormFeedback valid>
       Looks good!
     </CFormFeedback>
@@ -289,7 +289,7 @@ For invalid fields, ensure that the invalid feedback/error message is associated
     <CFormLabel for="validationServerUsername">Username</CFormLabel>
     <CInputGroup class="has-validation">
       <CInputGroupText id="inputGroupPrepend03">@</CInputGroupText>
-      <CFormInput id="validationServerUsername" defaultValue="" aria-describedby="inputGroupPrepend03" invalid required/>
+      <CFormInput id="validationServerUsername" value="" aria-describedby="inputGroupPrepend03" invalid required/>
       <CFormFeedback invalid>
       Please choose a username.
       </CFormFeedback>
@@ -334,14 +334,14 @@ For invalid fields, ensure that the invalid feedback/error message is associated
 <CForm class="row g-3 needs-validation">
   <CCol md="4">
     <CFormLabel for="validationServer01">Email</CFormLabel>
-    <CFormInput id="validationServer01" defaultValue="Mark" valid required/>
+    <CFormInput id="validationServer01" value="Mark" valid required/>
     <CFormFeedback valid>
       Looks good!
     </CFormFeedback>
   </CCol>
   <CCol md="4">
     <CFormLabel for="validationServer02">Email</CFormLabel>
-    <CFormInput id="validationServer02" defaultValue="Otto" valid required/>
+    <CFormInput id="validationServer02" value="Otto" valid required/>
     <CFormFeedback valid>
       Looks good!
     </CFormFeedback>
@@ -350,7 +350,7 @@ For invalid fields, ensure that the invalid feedback/error message is associated
     <CFormLabel for="validationServerUsername">Username</CFormLabel>
     <CInputGroup class="has-validation">
       <CInputGroupText id="inputGroupPrepend03">@</CInputGroupText>
-      <CFormInput id="validationServerUsername" defaultValue="" aria-describedby="inputGroupPrepend03" invalid required/>
+      <CFormInput id="validationServerUsername" value="" aria-describedby="inputGroupPrepend03" invalid required/>
       <CFormFeedback invalid>
       Please choose a username.
       </CFormFeedback>
@@ -474,14 +474,14 @@ If your form layout allows it, you can swap the text for the tooltip to display 
 <CForm class="row g-3 needs-validation" noValidate :validated="validatedTooltip01" @submit="handleSubmitTooltip01">
   <CCol md="4" class="position-relative">
     <CFormLabel for="validationTooltip01">Email</CFormLabel>
-    <CFormInput id="validationTooltip01" defaultValue="Mark" required/>
+    <CFormInput id="validationTooltip01" value="Mark" required/>
     <CFormFeedback tooltip valid>
       Looks good!
     </CFormFeedback>
   </CCol>
   <CCol md="4" class="position-relative">
     <CFormLabel for="validationTooltip02">Email</CFormLabel>
-    <CFormInput id="validationTooltip02" defaultValue="Otto" required/>
+    <CFormInput id="validationTooltip02" value="Otto" required/>
     <CFormFeedback tooltip valid>
       Looks good!
     </CFormFeedback>
@@ -490,7 +490,7 @@ If your form layout allows it, you can swap the text for the tooltip to display 
     <CFormLabel for="validationTooltipUsername">Username</CFormLabel>
     <CInputGroup class="has-validation">
       <CInputGroupText id="inputGroupPrepend">@</CInputGroupText>
-      <CFormInput id="validationTooltipUsername" defaultValue="" aria-describedby="inputGroupPrepend" required/>
+      <CFormInput id="validationTooltipUsername" value="" aria-describedby="inputGroupPrepend" required/>
       <CFormFeedback tooltip invalid>
       Please choose a username.
       </CFormFeedback>
@@ -529,14 +529,14 @@ If your form layout allows it, you can swap the text for the tooltip to display 
 <CForm class="row g-3 needs-validation" noValidate :validated="validatedTooltip01" @submit="handleSubmitTooltip01">
   <CCol md="4" class="position-relative">
     <CFormLabel for="validationTooltip01">Email</CFormLabel>
-    <CFormInput id="validationTooltip01" defaultValue="Mark" required/>
+    <CFormInput id="validationTooltip01" value="Mark" required/>
     <CFormFeedback tooltip valid>
       Looks good!
     </CFormFeedback>
   </CCol>
   <CCol md="4" class="position-relative">
     <CFormLabel for="validationTooltip02">Email</CFormLabel>
-    <CFormInput id="validationTooltip02" defaultValue="Otto" required/>
+    <CFormInput id="validationTooltip02" value="Otto" required/>
     <CFormFeedback tooltip valid>
       Looks good!
     </CFormFeedback>
@@ -545,7 +545,7 @@ If your form layout allows it, you can swap the text for the tooltip to display 
     <CFormLabel for="validationTooltipUsername">Username</CFormLabel>
     <CInputGroup class="has-validation">
       <CInputGroupText id="inputGroupPrepend">@</CInputGroupText>
-      <CFormInput id="validationTooltipUsername" defaultValue="" aria-describedby="inputGroupPrepend" required/>
+      <CFormInput id="validationTooltipUsername" value="" aria-describedby="inputGroupPrepend" required/>
       <CFormFeedback tooltip invalid>
       Please choose a username.
       </CFormFeedback>

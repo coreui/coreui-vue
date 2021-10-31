@@ -57,36 +57,36 @@ Add the `disabled` boolean attribute on an input to give it a grayed out appeara
 ::: demo
 <CFormInput type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled/>
 <br/>
-<CFormInput type="text" placeholder="Disabled readonly input" aria-label="Disabled input example" disabled readOnly/>
+<CFormInput type="text" placeholder="Disabled readonly input" aria-label="Disabled input example" disabled readonly/>
 <br/>
 :::
 ```vue
 <CFormInput type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled/>
 <br/>
-<CFormInput type="text" placeholder="Disabled readonly input" aria-label="Disabled input example" disabled readOnly/>
+<CFormInput type="text" placeholder="Disabled readonly input" aria-label="Disabled input example" disabled readonly/>
 <br/>
 ```
 
 ## Readonly
 
-Add the `readOnly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
+Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
 
 ::: demo
-<CFormInput type="text" placeholder="Readonly input here..." aria-label="readonly input example" readOnly/>
+<CFormInput type="text" placeholder="Readonly input here..." aria-label="readonly input example" readonly/>
 :::
 ```vue
-<CFormInput type="text" placeholder="Readonly input here..." aria-label="readonly input example" readOnly/>
+<CFormInput type="text" placeholder="Readonly input here..." aria-label="readonly input example" readonly/>
 ```
 
 ## Readonly plain text
 
-If you want to have `<input readonly>` elements in your form styled as plain text, use the `plainText` boolean property to remove the default form field styling and preserve the correct margin and padding.
+If you want to have `<input readonly>` elements in your form styled as plain text, use the `plain-text` boolean property to remove the default form field styling and preserve the correct margin and padding.
 
 ::: demo
 <CRow class="mb-3">
   <CFormLabel for="staticEmail" class="col-sm-2 col-form-label">Email</CFormLabel>
   <div class="col-sm-10">
-    <CFormInput type="text" id="staticEmail" defaultValue="email@example.com" readOnly plainText/>
+    <CFormInput type="text" id="staticEmail" value="email@example.com" readonly plain-text/>
   </div>
 </CRow>
 <CRow class="mb-3">
@@ -100,7 +100,7 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 <CRow class="mb-3">
   <CFormLabel for="staticEmail" class="col-sm-2 col-form-label">Email</CFormLabel>
   <div class="col-sm-10">
-    <CFormInput type="text" id="staticEmail" defaultValue="email@example.com" readOnly plainText/>
+    <CFormInput type="text" id="staticEmail" value="email@example.com" readonly plain-text/>
   </div>
 </CRow>
 <CRow class="mb-3">
@@ -115,7 +115,7 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 <CForm class="row g-3">
   <div class="col-auto">
     <CFormLabel for="staticEmail2" class="visually-hidden">Email</CFormLabel>
-    <CFormInput type="text" id="staticEmail2" defaultValue="email@example.com" readOnly plainText/>
+    <CFormInput type="text" id="staticEmail2" value="email@example.com" readonly plain-text/>
   </div>
   <div class="col-auto">
     <CFormLabel for="inputPassword2" class="visually-hidden">Password</CFormLabel>
@@ -130,7 +130,7 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 <CForm class="row g-3">
   <div class="col-auto">
     <CFormLabel for="staticEmail2" class="visually-hidden">Email</CFormLabel>
-    <CFormInput type="text" id="staticEmail2" defaultValue="email@example.com" readOnly plainText/>
+    <CFormInput type="text" id="staticEmail2" value="email@example.com" readonly plain-text/>
   </div>
   <div class="col-auto">
     <CFormLabel for="inputPassword2" class="visually-hidden">Password</CFormLabel>
@@ -193,11 +193,11 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 
 ::: demo
 <CFormLabel for="exampleColorInput">Color picker</CFormLabel>
-<CFormInput type="color" id="exampleColorInput" defaultValue="#563d7c" title="Choose your color" />
+<CFormInput type="color" id="exampleColorInput" value="#563d7c" title="Choose your color" />
 :::
 ```vue
 <CFormLabel for="exampleColorInput">Color picker</CFormLabel>
-<CFormInput type="color" id="exampleColorInput" defaultValue="#563d7c" title="Choose your color" />
+<CFormInput type="color" id="exampleColorInput" value="#563d7c" title="Choose your color" />
 ```
 
 ## API

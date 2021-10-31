@@ -86,46 +86,31 @@ Combine button-like checkbox and radio toggle buttons into a seamless looking bu
 
 ::: demo
 <CButtonGroup role="group" aria-label="Basic checkbox toggle button group">
-  <CFormCheck :button="{variant: 'outline'}" id="btncheck1" autoComplete="off" label="Checkbox 1"/>
-  <CFormCheck :button="{variant: 'outline'}" id="btncheck2" autoComplete="off" label="Checkbox 2"/>
-  <CFormCheck :button="{variant: 'outline'}" id="btncheck3" autoComplete="off" label="Checkbox 3"/>
+  <CFormCheck :button="{color: 'primary', variant: 'outline'}" id="btncheck1" autocomplete="off" label="Checkbox 1"/>
+  <CFormCheck :button="{color: 'primary', variant: 'outline'}" id="btncheck2" autocomplete="off" label="Checkbox 2"/>
+  <CFormCheck :button="{color: 'primary', variant: 'outline'}" id="btncheck3" autocomplete="off" label="Checkbox 3"/>
 </CButtonGroup>
 :::
 ```vue
 <CButtonGroup role="group" aria-label="Basic checkbox toggle button group">
-  <CFormCheck :button="{variant: 'outline'}" id="btncheck1" autoComplete="off" label="Checkbox 1"/>
-  <CFormCheck :button="{variant: 'outline'}" id="btncheck2" autoComplete="off" label="Checkbox 2"/>
-  <CFormCheck :button="{variant: 'outline'}" id="btncheck3" autoComplete="off" label="Checkbox 3"/>
+  <CFormCheck :button="{color: 'primary', variant: 'outline'}" id="btncheck1" autocomplete="off" label="Checkbox 1"/>
+  <CFormCheck :button="{color: 'primary', variant: 'outline'}" id="btncheck2" autocomplete="off" label="Checkbox 2"/>
+  <CFormCheck :button="{color: 'primary', variant: 'outline'}" id="btncheck3" autocomplete="off" label="Checkbox 3"/>
 </CButtonGroup>
 ```
 
 ::: demo
 <CButtonGroup role="group" aria-label="Basic checkbox toggle button group">
-  <CFormCheck type="radio" :button="{variant: 'outline'}" name="btnradio" id="btnradio1" autoComplete="off" label="Radio 1"/>
-  <CFormCheck type="radio" :button="{variant: 'outline'}" name="btnradio" id="btnradio2" autoComplete="off" label="Radio 2"/>
-  <CFormCheck type="radio" :button="{variant: 'outline'}" name="btnradio" id="btnradio3" autoComplete="off" label="Radio 3"/>
+  <CFormCheck type="radio" :button="{color: 'primary', variant: 'outline'}" name="btnradio" id="btnradio1" autocomplete="off" label="Radio 1" checked/>
+  <CFormCheck type="radio" :button="{color: 'primary', variant: 'outline'}" name="btnradio" id="btnradio2" autocomplete="off" label="Radio 2"/>
+  <CFormCheck type="radio" :button="{color: 'primary', variant: 'outline'}" name="btnradio" id="btnradio3" autocomplete="off" label="Radio 3"/>
 </CButtonGroup>
 :::
 ```vue
 <CButtonGroup role="group" aria-label="Basic checkbox toggle button group">
-  <CFormCheck type="radio" :button="{variant: 'outline'}" name="btnradio" id="btnradio1" autoComplete="off" label="Radio 1"/>
-  <CFormCheck type="radio" :button="{variant: 'outline'}" name="btnradio" id="btnradio2" autoComplete="off" label="Radio 2"/>
-  <CFormCheck type="radio" :button="{variant: 'outline'}" name="btnradio" id="btnradio3" autoComplete="off" label="Radio 3"/>
-</CButtonGroup>
-```
-
-::: demo
-<CButtonGroup role="group" aria-label="Basic checkbox toggle button group">
-  <CFormCheck type="radio" :button="{variant: 'outline'}" name="btnradio" id="btnradio1" autoComplete="off" label="Radio 1"/>
-  <CFormCheck type="radio" :button="{variant: 'outline'}" name="btnradio" id="btnradio2" autoComplete="off" label="Radio 2"/>
-  <CFormCheck type="radio" :button="{variant: 'outline'}" name="btnradio" id="btnradio3" autoComplete="off" label="Radio 3"/>
-</CButtonGroup>
-:::
-```vue
-<CButtonGroup role="group" aria-label="Basic checkbox toggle button group">
-  <CFormCheck type="radio" :button="{variant: 'outline'}" name="btnradio" id="btnradio1" autoComplete="off" label="Radio 1"/>
-  <CFormCheck type="radio" :button="{variant: 'outline'}" name="btnradio" id="btnradio2" autoComplete="off" label="Radio 2"/>
-  <CFormCheck type="radio" :button="{variant: 'outline'}" name="btnradio" id="btnradio3" autoComplete="off" label="Radio 3"/>
+  <CFormCheck type="radio" :button="{color: 'primary', variant: 'outline'}" name="btnradio" id="btnradio1" autocomplete="off" label="Radio 1" checked/>
+  <CFormCheck type="radio" :button="{color: 'primary', variant: 'outline'}" name="btnradio" id="btnradio2" autocomplete="off" label="Radio 2"/>
+  <CFormCheck type="radio" :button="{color: 'primary', variant: 'outline'}" name="btnradio" id="btnradio3" autocomplete="off" label="Radio 3"/>
 </CButtonGroup>
 ```
 
@@ -431,16 +416,16 @@ Create a set of buttons that appear vertically stacked rather than horizontally.
 
 ::: demo
 <CButtonGroup vertical role="group" aria-label="Vertical button group">
-  <CFormCheck type="radio" :button="{ color: 'danger', variant: 'outline' }" name="vbtnradio" id="vbtnradio1" autoComplete="off" label="Radio 1" defaultChecked/>
-  <CFormCheck type="radio" :button="{ color: 'danger', variant: 'outline' }" name="vbtnradio" id="vbtnradio2" autoComplete="off" label="Radio 2"/>
-  <CFormCheck type="radio" :button="{ color: 'danger', variant: 'outline' }" name="vbtnradio" id="vbtnradio3" autoComplete="off" label="Radio 3"/>
+  <CFormCheck type="radio" :button="{ color: 'danger', variant: 'outline' }" name="vbtnradio" id="vbtnradio1" autocomplete="off" label="Radio 1" checked/>
+  <CFormCheck type="radio" :button="{ color: 'danger', variant: 'outline' }" name="vbtnradio" id="vbtnradio2" autocomplete="off" label="Radio 2"/>
+  <CFormCheck type="radio" :button="{ color: 'danger', variant: 'outline' }" name="vbtnradio" id="vbtnradio3" autocomplete="off" label="Radio 3"/>
 </CButtonGroup> 
 :::
 ```vue
 <CButtonGroup vertical role="group" aria-label="Vertical button group">
-  <CFormCheck type="radio" :button="{ color: 'danger', variant: 'outline' }" name="vbtnradio" id="vbtnradio1" autoComplete="off" label="Radio 1" defaultChecked/>
-  <CFormCheck type="radio" :button="{ color: 'danger', variant: 'outline' }" name="vbtnradio" id="vbtnradio2" autoComplete="off" label="Radio 2"/>
-  <CFormCheck type="radio" :button="{ color: 'danger', variant: 'outline' }" name="vbtnradio" id="vbtnradio3" autoComplete="off" label="Radio 3"/>
+  <CFormCheck type="radio" :button="{ color: 'danger', variant: 'outline' }" name="vbtnradio" id="vbtnradio1" autocomplete="off" label="Radio 1" checked/>
+  <CFormCheck type="radio" :button="{ color: 'danger', variant: 'outline' }" name="vbtnradio" id="vbtnradio2" autocomplete="off" label="Radio 2"/>
+  <CFormCheck type="radio" :button="{ color: 'danger', variant: 'outline' }" name="vbtnradio" id="vbtnradio3" autocomplete="off" label="Radio 3"/>
 </CButtonGroup>
 ```
 

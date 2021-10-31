@@ -176,7 +176,7 @@ At times, you maybe need to use margin or padding utilities to create that perfe
   <fieldset class="row mb-3">
     <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
     <CCol sm="10">
-      <CFormCheck type="radio" name="gridRadios" id="gridRadios1" value="option1" label="First radio" defaultChecked/>
+      <CFormCheck type="radio" name="gridRadios" id="gridRadios1" value="option1" label="First radio" checked/>
       <CFormCheck type="radio" name="gridRadios" id="gridRadios2" value="option2" label="Second radio"/>
       <CFormCheck type="radio" name="gridRadios" id="gridRadios3" value="option3" label="Third disabled radio" disabled/>
     </CCol>
@@ -206,7 +206,7 @@ At times, you maybe need to use margin or padding utilities to create that perfe
   <fieldset class="row mb-3">
     <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
     <CCol sm="10">
-      <CFormCheck type="radio" name="gridRadios" id="gridRadios1" value="option1" label="First radio" defaultChecked/>
+      <CFormCheck type="radio" name="gridRadios" id="gridRadios1" value="option1" label="First radio" checked/>
       <CFormCheck type="radio" name="gridRadios" id="gridRadios2" value="option2" label="Second radio"/>
       <CFormCheck type="radio" name="gridRadios" id="gridRadios3" value="option3" label="Third disabled radio" disabled/>
     </CCol>

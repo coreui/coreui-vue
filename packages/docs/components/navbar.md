@@ -20,7 +20,7 @@ Here's an example of all the sub-components included in a responsive light-theme
 ## Basic usage
 
 ::: demo
-<CNavbar expand="lg" colorScheme="light" class="bg-light">
+<CNavbar expand="lg" color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarToggler @click="visible = !visible"/>
@@ -58,7 +58,7 @@ Here's an example of all the sub-components included in a responsive light-theme
 </CNavbar>
 :::
 ```vue
-<CNavbar expand="lg" colorScheme="light" class="bg-light">
+<CNavbar expand="lg" color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarToggler @click="visible = !visible"/>
@@ -101,13 +101,13 @@ Here's an example of all the sub-components included in a responsive light-theme
 The `<CNavbarBrand>` can be applied to most elements, but an anchor works best, as some elements might require utility classes or custom styles.
 
 ::: demo
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
   </CContainer>
 </CNavbar>
 <br/>
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand class="mb-0 h1">Navbar</CNavbarBrand>
   </CContainer>
@@ -115,14 +115,14 @@ The `<CNavbarBrand>` can be applied to most elements, but an anchor works best, 
 :::
 ```vue
 // As a link
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
   </CContainer>
 </CNavbar>
 <br/>
 // As a heading
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand class="mb-0 h1">Navbar</CNavbarBrand>
   </CContainer>
@@ -132,7 +132,7 @@ The `<CNavbarBrand>` can be applied to most elements, but an anchor works best, 
 Adding images to the `<CNavbarBrand>` will likely always require custom styles or utilities to properly size. Here are some examples to demonstrate.
 
 ::: demo
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">
       <img :src="$withBase('/images/brand/coreui-signet.svg')" alt="" width="22" height="24"/>
@@ -142,7 +142,7 @@ Adding images to the `<CNavbarBrand>` will likely always require custom styles o
 :::
 ```vue
 // Just an image
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">
       <img src="/images/brand/coreui-signet.svg" alt="" width="22" height="24"/>
@@ -152,7 +152,7 @@ Adding images to the `<CNavbarBrand>` will likely always require custom styles o
 ```
 
 ::: demo
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">
       <img :src="$withBase('/images/brand/coreui-signet.svg')" alt="" width="22" height="24" class="d-inline-block align-top"/> CoreUI
@@ -162,7 +162,7 @@ Adding images to the `<CNavbarBrand>` will likely always require custom styles o
 :::
 ```vue
 // Image and text
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">
       <img src="/images/brand/coreui-signet.svg" alt="" width="22" height="24" class="d-inline-block align-top"/> CoreUI
@@ -176,7 +176,7 @@ Adding images to the `<CNavbarBrand>` will likely always require custom styles o
 `<CNavbar>` navigation is based on `<CNavbarNav>`. **Navigation in navbars will also grow to occupy as much horizontal space as possible** to keep your navbar contents securely aligned.
 
 ::: demo
-<CNavbar expand="lg" colorScheme="light" class="bg-light">
+<CNavbar expand="lg" color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
@@ -202,7 +202,7 @@ Adding images to the `<CNavbarBrand>` will likely always require custom styles o
 </CNavbar>
 :::
 ```vue
-<CNavbar expand="lg" colorScheme="light" class="bg-light">
+<CNavbar expand="lg" color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
@@ -231,7 +231,7 @@ Adding images to the `<CNavbarBrand>` will likely always require custom styles o
 And because we use classes for our navs, you can avoid the list-based approach entirely if you like.
 
 ::: demo
-<CNavbar expand="lg" colorScheme="light" class="bg-light">
+<CNavbar expand="lg" color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
@@ -249,7 +249,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
 </CNavbar>
 :::
 ```vue
-<CNavbar expand="lg" colorScheme="light" class="bg-light">
+<CNavbar expand="lg" color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
@@ -272,7 +272,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
 You can also use dropdowns in your navbar. Please note that `<CDropdown>` component requires `variant="nav-item"`.
 
 ::: demo
-<CNavbar expand="lg" colorScheme="light" class="bg-light">
+<CNavbar expand="lg" color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
@@ -304,7 +304,7 @@ You can also use dropdowns in your navbar. Please note that `<CDropdown>` compon
 </CNavbar>
 :::
 ```vue
-<CNavbar expand="lg" colorScheme="light" class="bg-light">
+<CNavbar expand="lg" color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
@@ -341,7 +341,7 @@ You can also use dropdowns in your navbar. Please note that `<CDropdown>` compon
 Place various form controls and components within a navbar:
 
 ::: demo
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CForm class="d-flex">
       <CFormInput type="search" class="me-2" placeholder="Search"/>
@@ -351,7 +351,7 @@ Place various form controls and components within a navbar:
 </CNavbar>
 :::
 ```vue
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CForm class="d-flex">
       <CFormInput type="search" class="me-2" placeholder="Search"/>
@@ -364,7 +364,7 @@ Place various form controls and components within a navbar:
 Immediate child elements of `<CNavbar>` use flex layout and will default to `justify-content: space-between`. Use additional [flex utilities](https://coreui.io/docs/4.0/utilities/flex/) as needed to adjust this behavior.
 
 ::: demo
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CForm class="d-flex">
@@ -375,7 +375,7 @@ Immediate child elements of `<CNavbar>` use flex layout and will default to `jus
 </CNavbar>
 :::
 ```vue
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CForm class="d-flex">
@@ -389,7 +389,7 @@ Immediate child elements of `<CNavbar>` use flex layout and will default to `jus
 Input groups work, too. If your navbar is an entire form, or mostly a form, you can use the `<CForm>` element as the container and save some HTML.
 
 ::: demo
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CForm class="container-fluid">
     <CInputGroup>
       <CInputGroupText id="basic-addon1">@</CInputGroupText>
@@ -399,7 +399,7 @@ Input groups work, too. If your navbar is an entire form, or mostly a form, you 
 </CNavbar>
 :::
 ```vue
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CForm class="container-fluid">
     <CInputGroup>
       <CInputGroupText id="basic-addon1">@</CInputGroupText>
@@ -412,7 +412,7 @@ Input groups work, too. If your navbar is an entire form, or mostly a form, you 
 Various buttons are supported as part of these navbar forms, too. This is also a great reminder that vertical alignment utilities can be used to align different sized elements.
 
 ::: demo
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CForm class="container-fluid justify-content-start">
     <CButton type="button" color="success" variant="outline" class="me-2">Main button</CButton>
     <CButton type="button" color="secondary" variant="outline" size="sm">Smaller button</CButton>
@@ -420,7 +420,7 @@ Various buttons are supported as part of these navbar forms, too. This is also a
 </CNavbar>
 :::
 ```vue
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CForm class="container-fluid justify-content-start">
     <CButton type="button" color="success" variant="outline" class="me-2">Main button</CButton>
     <CButton type="button" color="secondary" variant="outline" size="sm">Smaller button</CButton>
@@ -433,14 +433,14 @@ Various buttons are supported as part of these navbar forms, too. This is also a
 Navbars may contain bits of text with the help of `<CNavbarText>`. This class adjusts vertical alignment and horizontal spacing for strings of text.
 
 ::: demo
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarText>Navbar text with an inline element</CNavbarText>
   </CContainer>
 </CNavbar>
 :::
 ```vue
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarText>Navbar text with an inline element</CNavbarText>
   </CContainer>
@@ -449,10 +449,10 @@ Navbars may contain bits of text with the help of `<CNavbarText>`. This class ad
 
 ## Color schemes
 
-Theming the navbar has never been easier thanks to the combination of theming classes and `background-color` utilities. Set `colorScheme="light"` for use with light background colors, or `colorScheme="dark"` for dark background colors. Then, customize with `.bg-*` utilities.
+Theming the navbar has never been easier thanks to the combination of theming classes and `background-color` utilities. Set `color-scheme="light"` for use with light background colors, or `color-scheme="dark"` for dark background colors. Then, customize with `.bg-*` utilities.
 
 ::: demo
-<CNavbar expand="lg" colorScheme="dark" class="bg-dark">
+<CNavbar expand="lg" color-scheme="dark" class="bg-dark">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
@@ -489,7 +489,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
   </CContainer>
 </CNavbar>
 <br/>
-<CNavbar expand="lg" colorScheme="dark" class="bg-primary">
+<CNavbar expand="lg" color-scheme="dark" class="bg-primary">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
@@ -526,7 +526,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
   </CContainer>
 </CNavbar>
 <br/>
-<CNavbar expand="lg" colorScheme="light" style="background-color: #e3f2fd">
+<CNavbar expand="lg" color-scheme="light" style="background-color: #e3f2fd">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
@@ -564,7 +564,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
 </CNavbar>
 :::
 ```vue
-<CNavbar expand="lg" colorScheme="dark" class="bg-dark">
+<CNavbar expand="lg" color-scheme="dark" class="bg-dark">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
@@ -601,7 +601,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
   </CContainer>
 </CNavbar>
 <br/>
-<CNavbar expand="lg" colorScheme="dark" class="bg-primary">
+<CNavbar expand="lg" color-scheme="dark" class="bg-primary">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
@@ -638,7 +638,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
   </CContainer>
 </CNavbar>
 <br/>
-<CNavbar expand="lg" colorScheme="light" style={{backgroundColor: '#e3f2fd'}}>
+<CNavbar expand="lg" color-scheme="light" style={{backgroundColor: '#e3f2fd'}}>
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
@@ -682,7 +682,7 @@ Although it's not required, you can wrap a `<CNavbar>` in a `<CContainer>` to ce
 
 ::: demo
 <CContainer>
-  <CNavbar colorScheme="light" class="bg-light">
+  <CNavbar color-scheme="light" class="bg-light">
     <CContainer fluid>
       <CNavbarBrand href="#">Navbar</CNavbarBrand>
     </CContainer>
@@ -691,7 +691,7 @@ Although it's not required, you can wrap a `<CNavbar>` in a `<CContainer>` to ce
 :::
 ```vue
 <CContainer>
-  <CNavbar colorScheme="light" class="bg-light">
+  <CNavbar color-scheme="light" class="bg-light">
     <CContainer fluid>
       <CNavbarBrand href="#">Navbar</CNavbarBrand>
     </CContainer>
@@ -702,14 +702,14 @@ Although it's not required, you can wrap a `<CNavbar>` in a `<CContainer>` to ce
 Use any of the responsive containers to change how wide the content in your navbar is presented.
 
 ::: demo
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CContainer breakpoint="md">
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
   </CContainer>
 </CNavbar>
 :::
 ```vue
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CContainer breakpoint="md">
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
   </CContainer>
@@ -723,14 +723,14 @@ Use our `placement` properly to place navbars in non-static positions. Choose fr
 Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully supported in every browser](https://caniuse.com/css-sticky)**.
 
 ::: demo
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">Default</CNavbarBrand>
   </CContainer>
 </CNavbar>
 :::
 ```vue
-<CNavbar colorScheme="light" class="bg-light">
+<CNavbar color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">Default</CNavbarBrand>
   </CContainer>
@@ -738,14 +738,14 @@ Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully suppo
 ```
 
 ::: demo
-<CNavbar colorScheme="light" class="bg-light" placement="fixed-top">
+<CNavbar color-scheme="light" class="bg-light" placement="fixed-top">
   <CContainer fluid>
     <CNavbarBrand href="#">Fixed top</CNavbarBrand>
   </CContainer>
 </CNavbar>
 :::
 ```vue
-<CNavbar colorScheme="light" class="bg-light" placement="fixed-top">
+<CNavbar color-scheme="light" class="bg-light" placement="fixed-top">
   <CContainer fluid>
     <CNavbarBrand href="#">Fixed top</CNavbarBrand>
   </CContainer>
@@ -753,14 +753,14 @@ Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully suppo
 ```
 
 ::: demo
-<CNavbar colorScheme="light" class="bg-light" placement="fixed-bottom">
+<CNavbar color-scheme="light" class="bg-light" placement="fixed-bottom">
   <CContainer fluid>
     <CNavbarBrand href="#">Fixed bottom</CNavbarBrand>
   </CContainer>
 </CNavbar>
 :::
 ```vue
-<CNavbar colorScheme="light" class="bg-light" placement="fixed-bottom">
+<CNavbar color-scheme="light" class="bg-light" placement="fixed-bottom">
   <CContainer fluid>
     <CNavbarBrand href="#">Fixed bottom</CNavbarBrand>
   </CContainer>
@@ -768,14 +768,14 @@ Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully suppo
 ```
 
 ::: demo
-<CNavbar colorScheme="light" class="bg-light" placement="sticky-top">
+<CNavbar color-scheme="light" class="bg-light" placement="sticky-top">
   <CContainer fluid>
     <CNavbarBrand href="#">Sticky top</CNavbarBrand>
   </CContainer>
 </CNavbar>
 :::
 ```vue
-<CNavbar colorScheme="light" class="bg-light" placement="sticky-top">
+<CNavbar color-scheme="light" class="bg-light" placement="sticky-top">
   <CContainer fluid>
     <CNavbarBrand href="#">Sticky top</CNavbarBrand>
   </CContainer>
@@ -795,7 +795,7 @@ Navbar togglers are left-aligned by default, but should they follow a sibling el
 With no `<CNavbarBrand>` shown at the smallest breakpoint:
 
 ::: demo
-<CNavbar expand="lg" colorScheme="light" class="bg-light">
+<CNavbar expand="lg" color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
     <CCollapse class="navbar-collapse" :visible="visible">
@@ -824,7 +824,7 @@ With no `<CNavbarBrand>` shown at the smallest breakpoint:
 </CNavbar>
 :::
 ```vue
-<CNavbar expand="lg" colorScheme="light" class="bg-light">
+<CNavbar expand="lg" color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
     <CCollapse class="navbar-collapse" :visible="visible">
@@ -856,7 +856,7 @@ With no `<CNavbarBrand>` shown at the smallest breakpoint:
 With a brand name shown on the left and toggler on the right:
 
 ::: demo
-<CNavbar expand="lg" colorScheme="light" class="bg-light">
+<CNavbar expand="lg" color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
@@ -885,7 +885,7 @@ With a brand name shown on the left and toggler on the right:
 </CNavbar>
 :::
 ```vue
-<CNavbar expand="lg" colorScheme="light" class="bg-light">
+<CNavbar expand="lg" color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
@@ -917,7 +917,7 @@ With a brand name shown on the left and toggler on the right:
 With a toggler on the left and brand name on the right:
 
 ::: demo
-<CNavbar expand="lg" colorScheme="light" class="bg-light">
+<CNavbar expand="lg" color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
@@ -946,7 +946,7 @@ With a toggler on the left and brand name on the right:
 </CNavbar>
 :::
 ```vue  {() => {
-<CNavbar expand="lg" colorScheme="light" class="bg-light">
+<CNavbar expand="lg" color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>

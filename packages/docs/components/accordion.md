@@ -10,7 +10,7 @@ Click the accordions below to expand/collapse the accordion content.
 
 ::: demo
 <CAccordion>
-  <CAccordionItem :itemKey="1">
+  <CAccordionItem :item-key="1">
     <CAccordionHeader>
       Accordion Item #1
     </CAccordionHeader>
@@ -23,7 +23,7 @@ Click the accordions below to expand/collapse the accordion content.
       the <code>.accordion-body</code>, though the transition does limit overflow.
     </CAccordionBody>
   </CAccordionItem>
-  <CAccordionItem :itemKey="2">
+  <CAccordionItem :item-key="2">
     <CAccordionHeader>
       Accordion Item #2
     </CAccordionHeader>
@@ -36,7 +36,7 @@ Click the accordions below to expand/collapse the accordion content.
       the <code>.accordion-body</code>, though the transition does limit overflow.
     </CAccordionBody>
   </CAccordionItem>
-  <CAccordionItem :itemKey="3">
+  <CAccordionItem :item-key="3">
     <CAccordionHeader>
       Accordion Item #3
     </CAccordionHeader>
@@ -53,7 +53,7 @@ Click the accordions below to expand/collapse the accordion content.
 :::
 ```vue
 <CAccordion>
-  <CAccordionItem :itemKey="1">
+  <CAccordionItem :item-key="1">
     <CAccordionHeader>
       Accordion Item #1
     </CAccordionHeader>
@@ -66,7 +66,7 @@ Click the accordions below to expand/collapse the accordion content.
       the <code>.accordion-body</code>, though the transition does limit overflow.
     </CAccordionBody>
   </CAccordionItem>
-  <CAccordionItem :itemKey="2">
+  <CAccordionItem :item-key="2">
     <CAccordionHeader>
       Accordion Item #2
     </CAccordionHeader>
@@ -79,7 +79,7 @@ Click the accordions below to expand/collapse the accordion content.
       the <code>.accordion-body</code>, though the transition does limit overflow.
     </CAccordionBody>
   </CAccordionItem>
-  <CAccordionItem :itemKey="3">
+  <CAccordionItem :item-key="3">
     <CAccordionHeader>
       Accordion Item #3
     </CAccordionHeader>
@@ -188,11 +188,11 @@ Add `flush` to remove the default `background-color`, some borders, and some rou
 
 ### Always open
 
-Add `alwaysOpen` property to make accordion items stay open when another item is opened.
+Add `always-open` property to make accordion items stay open when another item is opened.
 
 :::demo
-<CAccordion :activeItemKey="2" alwaysOpen>
-  <CAccordionItem :itemKey="1">
+<CAccordion :active-item-key="2" always-open>
+  <CAccordionItem :item-key="1">
     <CAccordionHeader>
       Accordion Item #1
     </CAccordionHeader>
@@ -205,7 +205,7 @@ Add `alwaysOpen` property to make accordion items stay open when another item is
       the <code>.accordion-body</code>, though the transition does limit overflow.
     </CAccordionBody>
   </CAccordionItem>
-  <CAccordionItem :itemKey="2">
+  <CAccordionItem :item-key="2">
     <CAccordionHeader>
       Accordion Item #2
     </CAccordionHeader>
@@ -218,7 +218,7 @@ Add `alwaysOpen` property to make accordion items stay open when another item is
       the <code>.accordion-body</code>, though the transition does limit overflow.
     </CAccordionBody>
   </CAccordionItem>
-  <CAccordionItem :itemKey="3">
+  <CAccordionItem :item-key="3">
     <CAccordionHeader>
       Accordion Item #3
     </CAccordionHeader>
@@ -234,8 +234,8 @@ Add `alwaysOpen` property to make accordion items stay open when another item is
 </CAccordion>
 :::
 ```vue
-<CAccordion :activeItemKey="2" alwaysOpen>
-  <CAccordionItem :itemKey="1">
+<CAccordion :active-item-key="2" always-open>
+  <CAccordionItem :item-key="1">
     <CAccordionHeader>
       Accordion Item #1
     </CAccordionHeader>
@@ -248,7 +248,7 @@ Add `alwaysOpen` property to make accordion items stay open when another item is
       the <code>.accordion-body</code>, though the transition does limit overflow.
     </CAccordionBody>
   </CAccordionItem>
-  <CAccordionItem :itemKey="2">
+  <CAccordionItem :item-key="2">
     <CAccordionHeader>
       Accordion Item #2
     </CAccordionHeader>
@@ -261,7 +261,7 @@ Add `alwaysOpen` property to make accordion items stay open when another item is
       the <code>.accordion-body</code>, though the transition does limit overflow.
     </CAccordionBody>
   </CAccordionItem>
-  <CAccordionItem :itemKey="3">
+  <CAccordionItem :item-key="3">
     <CAccordionHeader>
       Accordion Item #3
     </CAccordionHeader>

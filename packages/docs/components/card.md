@@ -750,7 +750,7 @@ Use `color` property to change the appearance of a card.
   { color: 'light' },
   { color: 'dark', textColor: 'white' }
 ]">
-  <CCard :color="item.color" :textColor="item.textColor" class="mb-3" style="max-width: 18rem">
+  <CCard :color="item.color" :text-color="item.textColor" class="mb-3" style="max-width: 18rem">
     <CCardHeader>Header</CCardHeader>
     <CCardBody>
       <CCardTitle>{{item.color}} card title</CCardTitle>
@@ -770,7 +770,7 @@ Use `color` property to change the appearance of a card.
   { color: 'light' },
   { color: 'dark', textColor: 'white' }
 ]">
-  <CCard :color="item.color" :textColor="item.textColor" class="mb-3" style="max-width: 18rem">
+  <CCard :color="item.color" :text-color="item.textColor" class="mb-3" style="max-width: 18rem">
     <CCardHeader>Header</CCardHeader>
     <CCardBody>
       <CCardTitle>{{item.color}} card title</CCardTitle>
@@ -789,7 +789,7 @@ Use `color` property to change the appearance of a card.
 
 ### Border
 
-Use [border utilities](https://coreui.io/docs/utilities/borders/) to change just the `border-color` of a card. Note that you can set `textColor` property on the `<CCard>` or a subset of the card's contents as shown below.
+Use [border utilities](https://coreui.io/docs/utilities/borders/) to change just the `border-color` of a card. Note that you can set `text-color` property on the `<CCard>` or a subset of the card's contents as shown below.
 
 ::: demo
 <template v-for="(item) in [
@@ -802,7 +802,7 @@ Use [border utilities](https://coreui.io/docs/utilities/borders/) to change just
   { color: 'light'},
   { color: 'dark'}
 ]">
-  <CCard :textColor="item.textColor" class="mb-3" :class="'border-' + item.color" style="max-width: 18rem">
+  <CCard :text-color="item.textColor" class="mb-3" :class="'border-' + item.color" style="max-width: 18rem">
     <CCardHeader>Header</CCardHeader>
     <CCardBody>
       <CCardTitle>{{item.color}} card title</CCardTitle>
@@ -822,7 +822,7 @@ Use [border utilities](https://coreui.io/docs/utilities/borders/) to change just
   { color: 'light'},
   { color: 'dark'}
 ]">
-  <CCard :textColor="item.textColor" class="mb-3" :class="'border-' + item.color" style="max-width: 18rem">
+  <CCard :text-color="item.textColor" class="mb-3" :class="'border-' + item.color" style="max-width: 18rem">
     <CCardHeader>Header</CCardHeader>
     <CCardBody>
       <CCardTitle>{{item.color}} card title</CCardTitle>
@@ -845,7 +845,7 @@ Use [border utilities](https://coreui.io/docs/utilities/borders/) to change just
   { color: 'light'},
   { color: 'dark'}
 ]">
-  <CCard :textColor="item.textColor" class="mb-3 border-top-3" :class="'border-top-' + item.color" style="max-width: 18rem">
+  <CCard :text-color="item.textColor" class="mb-3 border-top-3" :class="'border-top-' + item.color" style="max-width: 18rem">
     <CCardHeader>Header</CCardHeader>
     <CCardBody>
       <CCardTitle>{{item.color}} card title</CCardTitle>
@@ -865,7 +865,7 @@ Use [border utilities](https://coreui.io/docs/utilities/borders/) to change just
   { color: 'light'},
   { color: 'dark'}
 ]">
-  <CCard :textColor="item.textColor" class="mb-3 border-top-3" :class="'border-top-' + item.color" style="max-width: 18rem">
+  <CCard :text-color="item.textColor" class="mb-3 border-top-3" :class="'border-top-' + item.color" style="max-width: 18rem">
     <CCardHeader>Header</CCardHeader>
     <CCardBody>
       <CCardTitle>{{item.color}} card title</CCardTitle>
