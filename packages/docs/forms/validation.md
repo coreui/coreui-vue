@@ -6,12 +6,12 @@ description: Provide valuable, actionable feedback to your users with HTML5 form
 
 ## Custom styles
 
-For custom CoreUI form validation messages, you'll need to add the `noValidate` boolean property to your `<CForm>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you. When attempting to submit, you'll see the `:invalid` and `:valid` styles applied to your form controls.
+For custom CoreUI form validation messages, you'll need to add the `novalidation` boolean property to your `<CForm>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you. When attempting to submit, you'll see the `:invalid` and `:valid` styles applied to your form controls.
 
 Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback. 
 
 ::: demo
-<CForm class="row g-3 needs-validation" noValidate :validated="validatedCustom01" @submit="handleSubmitCustom01">
+<CForm class="row g-3 needs-validation" novalidation :validated="validatedCustom01" @submit="handleSubmitCustom01">
   <CCol md="4">
     <CFormLabel for="validationCustom01">Email</CFormLabel>
     <CFormInput id="validationCustom01" value="Mark" required/>
@@ -72,7 +72,7 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
 </CForm>
 :::
 ```vue
-<CForm class="row g-3 needs-validation" noValidate :validated="validatedCustom01" @submit="handleSubmitCustom01">
+<CForm class="row g-3 needs-validation" novalidation :validated="validatedCustom01" @submit="handleSubmitCustom01">
   <CCol md="4">
     <CFormLabel for="validationCustom01">Email</CFormLabel>
     <CFormInput id="validationCustom01" value="Mark" required/>
@@ -471,7 +471,7 @@ Validation styles are available for the following form controls and components:
 If your form layout allows it, you can swap the text for the tooltip to display validation feedback in a styled tooltip. Be sure to have a parent with `position: relative` on it for tooltip positioning. In the example below, our column classes have this already, but your project may require an alternative setup.
 
 ::: demo
-<CForm class="row g-3 needs-validation" noValidate :validated="validatedTooltip01" @submit="handleSubmitTooltip01">
+<CForm class="row g-3 needs-validation" novalidation :validated="validatedTooltip01" @submit="handleSubmitTooltip01">
   <CCol md="4" class="position-relative">
     <CFormLabel for="validationTooltip01">Email</CFormLabel>
     <CFormInput id="validationTooltip01" value="Mark" required/>
@@ -526,7 +526,7 @@ If your form layout allows it, you can swap the text for the tooltip to display 
 </CForm>
 :::
 ```vue
-<CForm class="row g-3 needs-validation" noValidate :validated="validatedTooltip01" @submit="handleSubmitTooltip01">
+<CForm class="row g-3 needs-validation" novalidation :validated="validatedTooltip01" @submit="handleSubmitTooltip01">
   <CCol md="4" class="position-relative">
     <CFormLabel for="validationTooltip01">Email</CFormLabel>
     <CFormInput id="validationTooltip01" value="Mark" required/>
