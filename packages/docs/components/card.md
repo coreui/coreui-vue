@@ -20,7 +20,7 @@ Below is an example of a basic card with mixed content and a fixed width. Cards 
 
 ::: demo
 <CCard style="width: 18rem">
-  <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+  <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
   <CCardBody>
     <CCardTitle>Card title</CCardTitle>
     <CCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
@@ -30,7 +30,7 @@ Below is an example of a basic card with mixed content and a fixed width. Cards 
 :::
 ```vue
 <CCard style="width: 18rem">
-  <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+  <CCardImage orientation="top" src="/images/vue.jpg" />
   <CCardBody>
     <CCardTitle>Card title</CCardTitle>
     <CCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
@@ -96,7 +96,7 @@ Subtitles are managed by `<CCardSubtitle>` component. If the `<CCardTitle>` also
 
 ::: demo
 <CCard style="width: 18rem">
-  <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+  <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
   <CCardBody>
     <CCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
   </CCardBody>
@@ -104,7 +104,7 @@ Subtitles are managed by `<CCardSubtitle>` component. If the `<CCardTitle>` also
 :::
 ```vue
 <CCard style="width: 18rem">
-  <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+  <CCardImage orientation="top" src="/images/vue.jpg" />
   <CCardBody>
     <CCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
   </CCardBody>
@@ -181,7 +181,7 @@ Combine and match many content types to build the card you need, or throw everyt
 
 ::: demo
 <CCard style="width: 18rem">
-  <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+  <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
   <CCardBody>
     <CCardTitle>Card title</CCardTitle>
     <CCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
@@ -199,7 +199,7 @@ Combine and match many content types to build the card you need, or throw everyt
 :::
 ```vue
 <CCard style="width: 18rem">
-  <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+  <CCardImage orientation="top" src="/images/vue.jpg" />
   <CCardBody>
     <CCardTitle>Card title</CCardTitle>
     <CCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
@@ -634,7 +634,7 @@ Similar to headers and footers, cards can include top and bottom "image caps"—
 
 ::: demo
 <CCard class="mb-3">
-  <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+  <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
   <CCardBody>
     <CCardTitle>Card title</CCardTitle>
     <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -647,12 +647,12 @@ Similar to headers and footers, cards can include top and bottom "image caps"—
     <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
     <CCardText><small class="text-muted">Last updated 3 mins ago</small></CCardText>
   </CCardBody>
-    <CCardImage component="svg" orientation="bottom" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+    <CCardImage orientation="bottom" :src="$withBase('/images/vue.jpg')" />
 </CCard>
 :::
 ```vue
 <CCard class="mb-3">
-  <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+  <CCardImage orientation="top" src="/images/vue.jpg" />
   <CCardBody>
     <CCardTitle>Card title</CCardTitle>
     <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -665,7 +665,7 @@ Similar to headers and footers, cards can include top and bottom "image caps"—
     <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
     <CCardText><small class="text-muted">Last updated 3 mins ago</small></CCardText>
   </CCardBody>
-    <CCardImage component="svg" orientation="bottom" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+    <CCardImage orientation="bottom" src="/images/vue.jpg" />
 </CCard>
 ```
 
@@ -675,7 +675,7 @@ Adapt an image into a background and overlay your text. Depending on the image, 
 
 ::: demo
 <CCard class="mb-3 bg-dark text-white">
-  <CCardImage component="svg" class="docs-placeholder-img rounded-0" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image</text></CCardImage>
+  <CCardImage :src="$withBase('/images/vue.jpg')" />
   <CCardImageOverlay>
     <CCardTitle>Card title</CCardTitle>
     <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -685,7 +685,7 @@ Adapt an image into a background and overlay your text. Depending on the image, 
 :::
 ```vue
 <CCard class="mb-3 bg-dark text-white">
-  <CCardImage component="svg" class="docs-placeholder-img rounded-0" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image</text></CCardImage>
+  <CCardImage src="/images/vue.jpg" />
   <CCardImageOverlay>
     <CCardTitle>Card title</CCardTitle>
     <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -702,7 +702,7 @@ Using a combination of grid and utility classes, cards can be made horizontal in
 <CCard class="mb-3" style="max=width: 540px">
   <CRow class="g-0">
     <CCol :md="4">
-      <CCardImage component="svg" class="docs-placeholder-img rounded-0" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image</text></CCardImage>
+      <CCardImage class="rounded-0" :src="$withBase('/images/vue.jpg')" />
     </CCol>
     <CCol :md="8">
       <CCardBody>
@@ -718,7 +718,7 @@ Using a combination of grid and utility classes, cards can be made horizontal in
 <CCard class="mb-3" style="max=width: 540px">
   <CRow class="g-0">
     <CCol :md="4">
-      <CCardImage component="svg" class="docs-placeholder-img rounded-0" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image</text></CCardImage>
+      <CCardImage class="rounded-0" src="/images/vue.jpg" />
     </CCol>
     <CCol :md="8">
       <CCardBody>
@@ -886,7 +886,7 @@ Use card groups to render cards as a single, attached element with equal width a
 ::: demo
 <CCardGroup>
   <CCard>
-    <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+    <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -894,7 +894,7 @@ Use card groups to render cards as a single, attached element with equal width a
     </CCardBody>
   </CCard>
   <CCard>
-    <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+    <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This card has supporting text below as a natural lead-in to additional content.</CCardText>
@@ -902,7 +902,7 @@ Use card groups to render cards as a single, attached element with equal width a
     </CCardBody>
   </CCard>
   <CCard>
-    <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+    <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CCardText>
@@ -914,7 +914,7 @@ Use card groups to render cards as a single, attached element with equal width a
 ```vue
 <CCardGroup>
   <CCard>
-    <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+    <CCardImage orientation="top" src="/images/vue.jpg" />
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -922,7 +922,7 @@ Use card groups to render cards as a single, attached element with equal width a
     </CCardBody>
   </CCard>
   <CCard>
-    <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+    <CCardImage orientation="top" src="/images/vue.jpg" />
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This card has supporting text below as a natural lead-in to additional content.</CCardText>
@@ -930,7 +930,7 @@ Use card groups to render cards as a single, attached element with equal width a
     </CCardBody>
   </CCard>
   <CCard>
-    <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+    <CCardImage orientation="top" src="/images/vue.jpg" />
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CCardText>
@@ -945,7 +945,7 @@ When using card groups with footers, their content will automatically line up.
 ::: demo
 <CCardGroup>
   <CCard>
-    <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+    <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -953,7 +953,7 @@ When using card groups with footers, their content will automatically line up.
     <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
   </CCard>
   <CCard>
-    <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+    <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This card has supporting text below as a natural lead-in to additional content.</CCardText>
@@ -961,7 +961,7 @@ When using card groups with footers, their content will automatically line up.
     <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
   </CCard>
   <CCard>
-    <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+    <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CCardText>
@@ -973,7 +973,7 @@ When using card groups with footers, their content will automatically line up.
 ```vue
 <CCardGroup>
   <CCard>
-    <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+    <CCardImage orientation="top" src="/images/vue.jpg" />
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -981,7 +981,7 @@ When using card groups with footers, their content will automatically line up.
     <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
   </CCard>
   <CCard>
-    <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+    <CCardImage orientation="top" src="/images/vue.jpg" />
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This card has supporting text below as a natural lead-in to additional content.</CCardText>
@@ -989,7 +989,7 @@ When using card groups with footers, their content will automatically line up.
     <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
   </CCard>
   <CCard>
-    <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+    <CCardImage orientation="top" src="/images/vue.jpg" />
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CCardText>
@@ -1007,7 +1007,7 @@ Use the `CRow` component and set `:xs|sm|md|lg|xl|xxl="{ cols: * }"` property to
 <CRow :xs="{ cols: 1, gutter: 4}" :md="{ cols:2 }">
   <CCol xs>
     <CCard>
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1017,7 +1017,7 @@ Use the `CRow` component and set `:xs|sm|md|lg|xl|xxl="{ cols: * }"` property to
   </CCol>
   <CCol xs>
     <CCard>
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1027,7 +1027,7 @@ Use the `CRow` component and set `:xs|sm|md|lg|xl|xxl="{ cols: * }"` property to
   </CCol>
   <CCol xs>
     <CCard>
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1037,7 +1037,7 @@ Use the `CRow` component and set `:xs|sm|md|lg|xl|xxl="{ cols: * }"` property to
   </CCol>
   <CCol xs>
     <CCard>
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1051,7 +1051,7 @@ Use the `CRow` component and set `:xs|sm|md|lg|xl|xxl="{ cols: * }"` property to
 <CRow :xs="{ cols: 1, gutter: 4}" :md="{ cols:2 }">
   <CCol xs>
     <CCard>
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" src="/images/vue.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1061,7 +1061,7 @@ Use the `CRow` component and set `:xs|sm|md|lg|xl|xxl="{ cols: * }"` property to
   </CCol>
   <CCol xs>
     <CCard>
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" src="/images/vue.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1071,7 +1071,7 @@ Use the `CRow` component and set `:xs|sm|md|lg|xl|xxl="{ cols: * }"` property to
   </CCol>
   <CCol xs>
     <CCard>
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" src="/images/vue.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1081,7 +1081,7 @@ Use the `CRow` component and set `:xs|sm|md|lg|xl|xxl="{ cols: * }"` property to
   </CCol>
   <CCol xs>
     <CCard>
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" src="/images/vue.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1098,7 +1098,7 @@ Change it to `:md="{ cols: 3}"` and you'll see the fourth card wrap.
 <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3}">
   <CCol xs>
     <CCard>
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1108,7 +1108,7 @@ Change it to `:md="{ cols: 3}"` and you'll see the fourth card wrap.
   </CCol>
   <CCol xs>
     <CCard>
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1118,7 +1118,7 @@ Change it to `:md="{ cols: 3}"` and you'll see the fourth card wrap.
   </CCol>
   <CCol xs>
     <CCard>
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1128,7 +1128,7 @@ Change it to `:md="{ cols: 3}"` and you'll see the fourth card wrap.
   </CCol>
   <CCol xs>
     <CCard>
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1142,7 +1142,7 @@ Change it to `:md="{ cols: 3}"` and you'll see the fourth card wrap.
 <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3}">
   <CCol xs>
     <CCard>
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" src="/images/vue.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1152,7 +1152,7 @@ Change it to `:md="{ cols: 3}"` and you'll see the fourth card wrap.
   </CCol>
   <CCol xs>
     <CCard>
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" src="/images/vue.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1162,7 +1162,7 @@ Change it to `:md="{ cols: 3}"` and you'll see the fourth card wrap.
   </CCol>
   <CCol xs>
     <CCard>
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" src="/images/vue.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1172,7 +1172,7 @@ Change it to `:md="{ cols: 3}"` and you'll see the fourth card wrap.
   </CCol>
   <CCol xs>
     <CCard>
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" src="/images/vue.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1189,7 +1189,7 @@ When you need equal height, add `.h-100` to the cards. If you want equal heights
 <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3}">
   <CCol xs>
     <CCard class="h-100">
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1198,7 +1198,7 @@ When you need equal height, add `.h-100` to the cards. If you want equal heights
   </CCol>
   <CCol xs>
     <CCard class="h-100">
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This card has supporting text below as a natural lead-in to additional content.</CCardText>
@@ -1207,7 +1207,7 @@ When you need equal height, add `.h-100` to the cards. If you want equal heights
   </CCol>
   <CCol xs>
     <CCard class="h-100">
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CCardText>
@@ -1216,7 +1216,7 @@ When you need equal height, add `.h-100` to the cards. If you want equal heights
   </CCol>
   <CCol xs>
     <CCard class="h-100">
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1229,7 +1229,7 @@ When you need equal height, add `.h-100` to the cards. If you want equal heights
 <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3}">
   <CCol xs>
     <CCard class="h-100">
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" src="/images/vue.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1238,7 +1238,7 @@ When you need equal height, add `.h-100` to the cards. If you want equal heights
   </CCol>
   <CCol xs>
     <CCard class="h-100">
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" src="/images/vue.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This card has supporting text below as a natural lead-in to additional content.</CCardText>
@@ -1247,7 +1247,7 @@ When you need equal height, add `.h-100` to the cards. If you want equal heights
   </CCol>
   <CCol xs>
     <CCard class="h-100">
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" src="/images/vue.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CCardText>
@@ -1256,7 +1256,7 @@ When you need equal height, add `.h-100` to the cards. If you want equal heights
   </CCol>
   <CCol xs>
     <CCard class="h-100">
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" src="/images/vue.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1272,7 +1272,7 @@ Just like with card groups, card footers will automatically line up.
 <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3}">
   <CCol xs>
     <CCard class="h-100">
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1282,7 +1282,7 @@ Just like with card groups, card footers will automatically line up.
   </CCol>
   <CCol xs>
     <CCard class="h-100">
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This card has supporting text below as a natural lead-in to additional content.</CCardText>
@@ -1292,7 +1292,7 @@ Just like with card groups, card footers will automatically line up.
   </CCol>
   <CCol xs>
     <CCard class="h-100">
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CCardText>
@@ -1306,7 +1306,7 @@ Just like with card groups, card footers will automatically line up.
 <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 3}">
   <CCol xs>
     <CCard class="h-100">
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" src="/images/vue.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
@@ -1316,7 +1316,7 @@ Just like with card groups, card footers will automatically line up.
   </CCol>
   <CCol xs>
     <CCard class="h-100">
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" src="/images/vue.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This card has supporting text below as a natural lead-in to additional content.</CCardText>
@@ -1326,7 +1326,7 @@ Just like with card groups, card footers will automatically line up.
   </CCol>
   <CCol xs>
     <CCard class="h-100">
-      <CCardImage component="svg" orientation="top" class="docs-placeholder-img" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></CCardImage>
+      <CCardImage orientation="top" src="/images/vue.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CCardText>
