@@ -35,7 +35,10 @@ const CToast = defineComponent({
       default: true,
       required: false,
     },
-    key: {
+    /**
+     * index of the component.
+     */
+    index: {
       type: Number,
       default: undefined,
       required: false,
@@ -83,8 +86,8 @@ const CToast = defineComponent({
       setTimeout(() => {
         el.classList.add('show')
       }, 1)
-      if (props.key) {
-        emit('show', props.key)
+      if (props.index) {
+        emit('show', props.index)
       } else {
         emit('show')
       }
@@ -100,8 +103,8 @@ const CToast = defineComponent({
     }
     const handleAfterLeave = (el: RendererElement) => {
       el.classList.add('hide')
-      if (props.key) {
-        emit('close', props.key)
+      if (props.index) {
+        emit('close', props.index)
       } else {
         emit('close')
       }
