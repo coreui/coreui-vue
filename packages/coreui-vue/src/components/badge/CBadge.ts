@@ -22,14 +22,14 @@ const CBadge = defineComponent({
     /**
      * Position badge in one of the corners of a link or button.
      *
-     * @values 'top-start', 'top-end', 'bottom-end', 'botttom-start'
+     * @values 'top-start', 'top-end', 'bottom-end', 'bottom-start'
      */
     position: {
       type: String,
       default: undefined,
       required: false,
       validator: (value: string) => {
-        return ['top-start', 'top-end', 'bottom-end', 'botttom-start'].includes(value)
+        return ['top-start', 'top-end', 'bottom-end', 'bottom-start'].includes(value)
       },
     },
     /**
