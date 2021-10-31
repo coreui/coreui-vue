@@ -68,6 +68,8 @@ const CFormInput = defineComponent({
         'input',
         {
           type: props.type,
+          disabled: props.disabled,
+          readonly: props.readonly,
           ...attrs,
           class: [
             props.plainText ? 'form-control-plaintext' : 'form-control',
