@@ -24,7 +24,9 @@ const tmpl = (events) => {
 	events.forEach(evt => {
 		const { description = '', ...e } = evt
 		const readableProperties = e.properties ? `${formatProperties(e.properties)}` : ''
-		ret += `| **${mdclean(e.name)}** | ${mdclean(description)}| ${mdclean(readableProperties)}\n`
+		ret += `| **${mdclean(e.name.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    .map(x => x.toLowerCase())
+    .join('-'))}** | ${mdclean(description)}| ${mdclean(readableProperties)}\n`
 	})
 	return ret
 }
