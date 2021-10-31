@@ -788,7 +788,7 @@ Add `bordered` property for borders on all sides of the table and cells.
 [Border color utilities](https://coreui.io/docs/4.0/utilities/borders#border-color) can be added to change colors:
 
 ::: demo
-<CTable bordered borderColor="primary">
+<CTable bordered border-color="primary">
   <CTableHead>
     <CTableRow>
       <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -819,7 +819,7 @@ Add `bordered` property for borders on all sides of the table and cells.
 </CTable>
 :::
 ```vue
-<CTable bordered borderColor="primary">
+<CTable bordered border-color="primary">
   <CTableHead>
     <CTableRow>
       <CTableHeaderCell scope="col">#</CTableHeaderCell>
