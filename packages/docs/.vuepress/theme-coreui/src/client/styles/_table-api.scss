@@ -4,10 +4,13 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
-  td:nth-child(1n),
-  th:nth-child(1n) {
+  td:first-child,
+  th:first-child {
     width: 15%;
     padding-left: 1rem;
+  }
+  td:first-child {
+    white-space: nowrap;
   }
   td:nth-child(2n) {
     width: 55%;
