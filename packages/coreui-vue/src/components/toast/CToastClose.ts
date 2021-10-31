@@ -36,7 +36,7 @@ const CToastClose = defineComponent({
                 handleClose()
               },
             },
-            slots.default && slots.default(),
+            () => slots.default && slots.default(),
           )
         : h(CCloseButton, {
             ...props,
