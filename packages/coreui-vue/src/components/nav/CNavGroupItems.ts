@@ -1,5 +1,3 @@
-// TODO: Consider whether this component is needed
-
 import { defineComponent, h } from 'vue'
 
 const CNavGroupItems = defineComponent({
