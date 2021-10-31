@@ -99,7 +99,6 @@ Toasts are as flexible as you need and have very little required markup. At a mi
         toasts: []
       }
     },
-    
     methods: {
       createToast() {
         this.toasts.push({
