@@ -45,6 +45,8 @@ const CFormTextarea = defineComponent({
         'textarea',
         {
           ...attrs,
+          disabled: props.disabled,
+          readonly: props.readonly,
           class: [
             props.plainText ? 'form-control-plaintext' : 'form-control',
             {
