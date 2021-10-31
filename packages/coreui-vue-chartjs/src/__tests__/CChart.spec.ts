@@ -44,7 +44,7 @@ describe('<CChart />', () => {
   })
 
   it('should not pollute props', () => {
-    const wrapper = mount(CChart, {
+    mount(CChart, {
       propsData: {
         data: data,
         options: options,

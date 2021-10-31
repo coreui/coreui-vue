@@ -42,11 +42,10 @@ describe(`Customize ${ComponentName} component`, () => {
     expect(customWrapper.find('ul').classes('compact')).toBe(true)
     expect(customWrapper.classes('nav-group')).toBe(true)
   })
-  it('emit event visible-change on click nav-link', () => {
+  it('emit event visible-change on click nav-group-toggle', () => {
     let incrementEvent = customWrapper.emitted('visible-change')
-    expect(incrementEvent).toHaveLength(1)
-    customWrapper.find('.nav-link').trigger('click')
+    customWrapper.find('.nav-group-toggle').trigger('click')
     incrementEvent = customWrapper.emitted('visible-change')
-    expect(incrementEvent).toHaveLength(2)
+    expect(incrementEvent).toHaveLength(3)
   })
 })

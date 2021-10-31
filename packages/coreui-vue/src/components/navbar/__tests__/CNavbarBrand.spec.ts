@@ -38,7 +38,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('contain slots and classes', () => {
     expect(defaultWrapper.text()).toContain('Default slot')
-    expect(defaultWrapper.classes('header-brand')).toBe(true)
+    expect(defaultWrapper.classes('navbar-brand')).toBe(true)
   })
 })
 
@@ -48,7 +48,7 @@ describe(`Customize ${ComponentName} component`, () => {
   })
   it('contain slots and classes', () => {
     expect(customWrapper.text()).toContain('Default slot')
-    expect(customWrapper.classes('header-brand')).toBe(true)
+    expect(customWrapper.classes('navbar-brand')).toBe(true)
     expect(customWrapper.attributes('href')).toBe('/bazinga')
   })
 })
@@ -59,7 +59,7 @@ describe(`Customize (two) ${ComponentName} component`, () => {
   })
   it('contain slots and classes', () => {
     expect(customWrapperTwo.text()).toContain('Default slot')
-    expect(customWrapperTwo.classes('header-brand')).toBe(true)
+    expect(customWrapperTwo.classes('navbar-brand')).toBe(true)
     expect(customWrapperTwo.attributes('href')).toBe('/bazinga')
   })
 })

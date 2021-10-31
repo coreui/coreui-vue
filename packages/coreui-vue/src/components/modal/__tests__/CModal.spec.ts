@@ -17,7 +17,7 @@ const customWrapper = mount(Component, {
   propsData: {
     alignment: 'center',
     backdrop: false,
-    className: 'bazinga',
+    contentClassName: 'bazinga',
     fullscreen: 'lg',
     keyboard: true,
     scrollable: true,
