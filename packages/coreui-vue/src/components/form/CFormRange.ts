@@ -27,10 +27,6 @@ const CFormRange = defineComponent({
       default: undefined,
       required: false,
     },
-    //  /**
-    //   * Method called immediately after the `value` prop changes.
-    //   */
-    //  onChange?: ChangeEventHandler<HTMLInputElement>
     /**
      * Toggle the readonly state for the component.
      */
