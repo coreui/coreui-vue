@@ -122,7 +122,7 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
     <CFormInput type="password" id="inputPassword2" placeholder="Password"/>
   </div>
   <div class="col-auto">
-    <CButton type="submit" class="mb-3">Confirm identity</CButton>
+    <CButton type="submit" color="primary" class="mb-3">Confirm identity</CButton>
   </div>
 </CForm>
 :::
@@ -137,7 +137,7 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
     <CFormInput type="password" id="inputPassword2" placeholder="Password"/>
   </div>
   <div class="col-auto">
-    <CButton type="submit" class="mb-3">Confirm identity</CButton>
+    <CButton type="submit" color="primary" class="mb-3">Confirm identity</CButton>
   </div>
 </CForm>
 ```
