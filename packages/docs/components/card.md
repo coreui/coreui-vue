@@ -702,7 +702,7 @@ Using a combination of grid and utility classes, cards can be made horizontal in
 <CCard class="mb-3" style="max=width: 540px">
   <CRow class="g-0">
     <CCol :md="4">
-      <CCardImage class="rounded-0" :src="$withBase('/images/vue.jpg')" />
+      <CImage class="rounded-start" fluid :src="$withBase('/images/vue.jpg')" />
     </CCol>
     <CCol :md="8">
       <CCardBody>
