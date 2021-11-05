@@ -114,7 +114,8 @@ If you need a ghost variant of button, set `variant="ghost"` prop to remove all 
 <CButton color="dark" variant="ghost">Dark</CButton>
 ```
 
-CALLOUT: Some of the button styles use a relatively light foreground color, and should only be used on a dark background in order to have sufficient contrast.
+
+<CCallout color="info">Some of the button styles use a relatively light foreground color, and should only be used on a dark background in order to have sufficient contrast.</CCallout>
 
 ## Sizes
 
