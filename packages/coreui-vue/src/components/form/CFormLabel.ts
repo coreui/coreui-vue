@@ -12,12 +12,11 @@ const CFormLabel = defineComponent({
       required: false,
     },
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { slots }) {
     return () =>
       h(
         'label',
         {
-          ...attrs,
           class: props.customClassName ? props.customClassName : 'form-label',
         },
         slots.default && slots.default(),
