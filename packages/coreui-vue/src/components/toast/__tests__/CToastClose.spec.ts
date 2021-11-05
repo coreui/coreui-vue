@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { CToastClose as Component } from '../../../index'
+import { CButton, CToastClose as Component } from '../../../index'
 
 const ComponentName = 'CToastClose'
 
@@ -21,7 +21,7 @@ const defaultWrapper = mount(Component, {
 
 const customWrapper = mount(Component, {
   propsData: {
-    component: 'CButton',
+    component: CButton,
   },
   slots: {
     default: 'Default slot',

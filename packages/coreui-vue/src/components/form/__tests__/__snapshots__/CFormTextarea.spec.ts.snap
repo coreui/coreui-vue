@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Customize CFormTextarea component renders correctly 1`] = `"<textarea class=\\"form-control-plaintext is-invalid is-valid\\">Default slot</textarea>"`;
+exports[`Customize CFormTextarea component renders correctly 1`] = `"<textarea disabled=\\"\\" readonly=\\"\\" class=\\"form-control-plaintext is-invalid is-valid\\">Default slot</textarea>"`;
 
 exports[`Loads and display CFormTextarea component renders correctly 1`] = `"<textarea class=\\"form-control\\">Default slot</textarea>"`;
