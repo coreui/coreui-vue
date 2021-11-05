@@ -1,4 +1,10 @@
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, PropType } from 'vue'
+
+type Option = {
+  disabled?: boolean
+  label?: string
+  value?: string
+}
 
 const CFormSelect = defineComponent({
   name: 'CFormSelect',
@@ -27,6 +33,17 @@ const CFormSelect = defineComponent({
       require: false,
     },
     /**
+     * Options list of the select component. Available keys: `label`, `value`, `disabled`.
+     * Examples:
+     * - `:options="[{ value: 'js', label: 'JavaScript' }, { value: 'html', label: 'HTML', disabled: true }]"`
+     * - `:options="['js', 'html']"`
+     */
+    options: {
+      type: Array as PropType<Option[] | string[]>,
+      default: undefined,
+      required: false,
+    },
+    /**
      * Size the component small or large.
      *
      * @values 'sm' | 'lg'
@@ -49,7 +66,7 @@ const CFormSelect = defineComponent({
   },
   emits: [
     /**
-     * Event occurs when when a user changes the selected option of a <select> element.
+     * Event occurs when when a user changes the selected option of a `<select>` element.
      */
     'change',
     /**
@@ -84,7 +101,19 @@ const CFormSelect = defineComponent({
           onChange: (event: InputEvent) => handleChange(event),
           size: props.htmlSize,
         },
-        slots.default && slots.default(),
+        props.options
+          ? props.options.map((option: Option | string) => {
+              return h(
+                'option',
+                {
+                  ...(typeof option === 'object' &&
+                    option.disabled && { disabled: option.disabled }),
+                  ...(typeof option === 'object' && option.value && { value: option.value }),
+                },
+                typeof option === 'string' ? option : option.label,
+              )
+            })
+          : slots.default && slots.default(),
       )
   },
 })

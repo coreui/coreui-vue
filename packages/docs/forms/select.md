@@ -7,19 +7,31 @@ description: Vue select component. Customize the native `<select>`s with custom 
 ## Default
 
 ::: demo
-<CFormSelect aria-label="Default select example">
-  <option>Open this select menu</option>
-  <option value="1">One</option>
-  <option value="2">Two</option>
-  <option value="3">Three</option>
-</CFormSelect>
+<CFormSelect
+aria-label="Default select example"
+:options="[
+'Open this select menu',
+{ label: 'One', value: '1' },
+{ label: 'Two', value: '2' },
+{ label: 'Three', value: '3', disabled: true }]"></CFormSelect>
 :::
 ```vue
+<CFormSelect
+  aria-label="Default select example"
+  :options="[
+    'Open this select menu',
+    { label: 'One', value: '1' },
+    { label: 'Two', value: '2' },
+    { label: 'Three', value: '3', disabled: true }
+  ]">
+</CFormSelect>
+
+// You can also add options manually
 <CFormSelect aria-label="Default select example">
   <option>Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>
-  <option value="3">Three</option>
+  <option value="3" disabled>Three</option>
 </CFormSelect>
 ```
 
