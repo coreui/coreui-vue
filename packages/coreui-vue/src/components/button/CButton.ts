@@ -74,12 +74,11 @@ export const CButton = defineComponent({
       },
     },
   },
-  setup(props, { slots, attrs }) {
+  setup(props, { slots }) {
     return () =>
       h(
         props.component,
         {
-          ...attrs,
           class: [
             'btn',
             props.variant ? `btn-${props.variant}-${props.color}` : `btn-${props.color}`,
