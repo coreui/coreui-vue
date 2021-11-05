@@ -28,6 +28,14 @@ const CFormRange = defineComponent({
       required: false,
     },
     /**
+     * The default name for a value passed using v-model.
+     */
+    modelValue: {
+      type: String,
+      value: undefined,
+      required: false,
+    },
+    /**
      * Toggle the readonly state for the component.
      */
     readonly: {
@@ -53,15 +61,36 @@ const CFormRange = defineComponent({
       required: false,
     },
   },
-  setup(props, { attrs, slots }) {
+  emits: [
+    /**
+     * Event occurs when the value has been changed.
+     */
+    'change',
+    /**
+     * Emit the new value whenever there’s a change event.
+     */
+    'update:modelValue',
+  ],
+  setup(props, { emit, slots }) {
+    const handleChange = (event: InputEvent) => {
+      const target = event.target as HTMLInputElement
+      emit('change', target.value)
+      emit('update:modelValue', target.value)
+    }
+
     return () =>
       h(
         'input',
         {
           class: 'form-range',
+          disabled: props.disabled,
+          max: props.max,
+          min: props.min,
+          onChange: (event: InputEvent) => handleChange(event),
+          steps: props.steps,
+          readonly: props.readonly,
           type: 'range',
-          ...attrs,
-          ...props,
+          value: props.modelValue || props.value,
         },
         slots.default && slots.default(),
       )

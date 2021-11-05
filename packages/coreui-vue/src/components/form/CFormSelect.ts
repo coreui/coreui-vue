@@ -19,6 +19,14 @@ const CFormSelect = defineComponent({
       required: false,
     },
     /**
+     * The default name for a value passed using v-model.
+     */
+    modelValue: {
+      type: String,
+      default: undefined,
+      require: false,
+    },
+    /**
      * Size the component small or large.
      *
      * @values 'sm' | 'lg'
@@ -39,18 +47,41 @@ const CFormSelect = defineComponent({
       required: false,
     },
   },
-  setup(props, { attrs, slots }) {
+  emits: [
+    /**
+     * Event occurs when when a user changes the selected option of a <select> element.
+     */
+    'change',
+    /**
+     * Emit the new value whenever there’s a change event.
+     */
+    'update:modelValue',
+  ],
+  setup(props, { emit, slots }) {
+    const handleChange = (event: InputEvent) => {
+      const target = event.target as HTMLSelectElement
+
+      const selected = Array.from(target.options)
+        .filter((option) => option.selected)
+        .map((option) => option.value)
+
+      const value = target.multiple ? selected : selected[0]
+
+      emit('change', value)
+      emit('update:modelValue', value)
+    }
+
     return () =>
       h(
         'select',
         {
-          ...attrs,
           class: [
             'form-select',
             {
               [`form-select-${props.size}`]: props.size,
             },
           ],
+          onChange: (event: InputEvent) => handleChange(event),
           size: props.htmlSize,
         },
         slots.default && slots.default(),

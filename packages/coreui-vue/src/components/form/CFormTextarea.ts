@@ -18,6 +18,14 @@ const CFormTextarea = defineComponent({
       required: false,
     },
     /**
+     * The default name for a value passed using v-model.
+     */
+    modelValue: {
+      type: String,
+      default: undefined,
+      require: false,
+    },
+    /**
      * Render the component styled as plain text. Removes the default form field styling and preserve the correct margin and padding. Recommend to use only along side `readonly`.
      */
     plainText: {
@@ -39,12 +47,36 @@ const CFormTextarea = defineComponent({
       required: false,
     },
   },
-  setup(props, { attrs, slots }) {
+  emits: [
+    /**
+     * Event occurs when the element loses focus, after the content has been changed.
+     */
+    'change',
+    /**
+     * Event occurs immediately after the value of a component has changed.
+     */
+    'input',
+    /**
+     * Emit the new value whenever there’s an input or change event.
+     */
+    'update:modelValue',
+  ],
+  setup(props, { emit, slots }) {
+    const handleChange = (event: InputEvent) => {
+      const target = event.target as HTMLInputElement
+      emit('change', target.value)
+      emit('update:modelValue', target.value)
+    }
+    const handleInput = (event: InputEvent) => {
+      const target = event.target as HTMLInputElement
+      emit('input', target.value)
+      emit('update:modelValue', target.value)
+    }
+
     return () =>
       h(
         'textarea',
         {
-          ...attrs,
           disabled: props.disabled,
           readonly: props.readonly,
           class: [
@@ -54,6 +86,9 @@ const CFormTextarea = defineComponent({
               'is-valid': props.valid,
             },
           ],
+          onChange: (event: InputEvent) => handleChange(event),
+          onInput: (event: InputEvent) => handleInput(event),
+          value: props.modelValue,
         },
         slots.default && slots.default(),
       )

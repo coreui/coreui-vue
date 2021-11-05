@@ -1,9 +1,10 @@
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, onMounted, watch, ref } from 'vue'
 
 import { CFormLabel } from './CFormLabel'
 
 const CFormSwitch = defineComponent({
   name: 'CFormSwitch',
+  inheritAttrs: false,
   props: {
     /**
      * The id global attribute defines an identifier (ID) that must be unique in the whole document
@@ -26,6 +27,14 @@ const CFormSwitch = defineComponent({
     label: {
       type: String,
       default: undefined,
+      required: false,
+    },
+    /**
+     * The default name for a value passed using v-model.
+     */
+    modelValue: {
+      type: [Boolean, String],
+      value: undefined,
       required: false,
     },
     /**
@@ -59,7 +68,38 @@ const CFormSwitch = defineComponent({
       required: false,
     },
   },
-  setup(props, { attrs }) {
+  emits: [
+    /**
+     * Event occurs when the checked value has been changed.
+     */
+    'change',
+    /**
+     * Emit the new value whenever there’s a change event.
+     */
+    'update:modelValue',
+  ],
+  setup(props, { attrs, emit }) {
+    const checked = ref(attrs.checked)
+
+    onMounted(() => {
+      if (props.modelValue && typeof props.modelValue === 'boolean') {
+        console.log(props.modelValue)
+      }
+    })
+
+    watch(
+      () => props.modelValue,
+      () => {
+        if (typeof props.modelValue === 'boolean') checked.value = props.modelValue
+      },
+    )
+
+    const handleChange = (event: InputEvent) => {
+      const target = event.target as HTMLInputElement
+      emit('change', target.checked)
+      emit('update:modelValue', target.checked)
+    }
+
     return () =>
       h(
         'div',
@@ -76,8 +116,7 @@ const CFormSwitch = defineComponent({
         [
           h('input', {
             ...attrs,
-            id: props.id,
-            type: props.type,
+            checked: checked.value,
             class: [
               'form-check-input',
               {
@@ -85,6 +124,9 @@ const CFormSwitch = defineComponent({
                 'is-valid': props.valid,
               },
             ],
+            id: props.id,
+            onChange: (event: InputEvent) => handleChange(event),
+            type: props.type,
           }),
           props.label &&
             h(

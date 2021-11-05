@@ -1,4 +1,4 @@
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, onMounted, watch, ref } from 'vue'
 import { shape } from 'vue-types'
 
 import { Color, Shape } from '../props'
@@ -6,6 +6,7 @@ import { CFormLabel } from './CFormLabel'
 
 const CFormCheck = defineComponent({
   name: 'CFormCheck',
+  inheritAttrs: false,
   props: {
     /**
      * Create button-like checkboxes and radio buttons.
@@ -79,6 +80,14 @@ const CFormCheck = defineComponent({
       required: false,
     },
     /**
+     * The default name for a value passed using v-model.
+     */
+    modelValue: {
+      type: [Boolean, String],
+      value: undefined,
+      required: false,
+    },
+    /**
      * Specifies the type of component.
      *
      * @values 'checkbox', 'radio'
@@ -96,10 +105,42 @@ const CFormCheck = defineComponent({
       required: false,
     },
   },
-  setup(props, { slots, attrs }) {
+  emits: [
+    /**
+     * Event occurs when the checked value has been changed.
+     */
+    'change',
+    /**
+     * Emit the new value whenever there’s a change event.
+     */
+    'update:modelValue',
+  ],
+  setup(props, { attrs, emit, slots }) {
+    const checked = ref(attrs.checked)
+
+    onMounted(() => {
+      if (props.modelValue && typeof props.modelValue === 'boolean') {
+        console.log(props.modelValue)
+      }
+    })
+
+    watch(
+      () => props.modelValue,
+      () => {
+        if (typeof props.modelValue === 'boolean') checked.value = props.modelValue
+      },
+    )
+
+    const handleChange = (event: InputEvent) => {
+      const target = event.target as HTMLInputElement
+      emit('change', target.checked)
+      emit('update:modelValue', target.checked)
+    }
+
     const formControl = () => {
       return h('input', {
         ...attrs,
+        checked: checked.value,
         class: [
           props.button ? 'btn-check' : 'form-check-input',
           {
@@ -108,6 +149,7 @@ const CFormCheck = defineComponent({
           },
         ],
         id: props.id,
+        onChange: (event: InputEvent) => handleChange(event),
         type: props.type,
       })
     }
