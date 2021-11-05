@@ -1,4 +1,4 @@
-import { defineComponent, h, inject, resolveComponent } from 'vue'
+import { defineComponent, h, inject } from 'vue'
 import { CCloseButton } from '../close-button/CCloseButton'
 
 const CToastClose = defineComponent({
@@ -30,7 +30,7 @@ const CToastClose = defineComponent({
     return () =>
       props.component
         ? h(
-            resolveComponent(props.component),
+            props.component,
             {
               onClick: () => {
                 handleClose()
