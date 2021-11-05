@@ -30,7 +30,7 @@ const CCardImage = defineComponent({
       h(
         props.component,
         {
-          class: [props.orientation ? `card-img-${props.orientation}` : 'card-img'],
+          class: `card-img${props.orientation ? `-${props.orientation}` : ''}`,
         },
         slots.default && slots.default(),
       )
