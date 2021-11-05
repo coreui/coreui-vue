@@ -22,7 +22,7 @@ yarn add @coreui/vue
 ## Using components
 
 ```ts
-import { Alert } from '@coreui/vue';
+import { CAlert } from '@coreui/vue';
 ```
 
 ## Stylesheets
