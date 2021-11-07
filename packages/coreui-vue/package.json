@@ -42,15 +42,15 @@
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@rollup/plugin-typescript": "^8.3.0",
     "@vue/test-utils": "^2.0.0-0",
-    "rollup": "^2.58.3",
+    "rollup": "^2.59.0",
     "rollup-plugin-vue": "^6.0.0",
     "typescript": "^4.4.4",
-    "vue": "^3.2.20",
+    "vue": "^3.2.21",
     "vue-types": "^4.1.1"
   },
   "peerDependencies": {
     "@coreui/coreui": "^4.0.5",
-    "vue": "^3.2.20"
+    "vue": "^3.2.21"
   },
   "standard": {
     "ignore": [
