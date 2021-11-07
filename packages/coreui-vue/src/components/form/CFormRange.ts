@@ -74,7 +74,7 @@ const CFormRange = defineComponent({
   setup(props, { emit, slots }) {
     const handleChange = (event: InputEvent) => {
       const target = event.target as HTMLInputElement
-      emit('change', target.value)
+      emit('change', event)
       emit('update:modelValue', target.value)
     }
 

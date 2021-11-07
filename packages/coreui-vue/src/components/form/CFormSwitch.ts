@@ -96,7 +96,7 @@ const CFormSwitch = defineComponent({
 
     const handleChange = (event: InputEvent) => {
       const target = event.target as HTMLInputElement
-      emit('change', target.checked)
+      emit('change', event)
       emit('update:modelValue', target.checked)
     }
 

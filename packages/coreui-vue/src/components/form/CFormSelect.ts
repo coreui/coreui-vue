@@ -77,14 +77,11 @@ const CFormSelect = defineComponent({
   setup(props, { emit, slots }) {
     const handleChange = (event: InputEvent) => {
       const target = event.target as HTMLSelectElement
-
       const selected = Array.from(target.options)
         .filter((option) => option.selected)
         .map((option) => option.value)
-
       const value = target.multiple ? selected : selected[0]
-
-      emit('change', value)
+      emit('change', event)
       emit('update:modelValue', value)
     }
 
