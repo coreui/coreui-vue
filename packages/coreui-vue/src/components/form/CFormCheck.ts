@@ -58,6 +58,10 @@ const CFormCheck = defineComponent({
       required: false,
     },
     /**
+     * Input Checkbox indeterminate Property
+     */
+    indeterminate: Boolean,
+    /**
      * Group checkboxes or radios on the same horizontal row by adding.
      */
     inline: {
@@ -149,6 +153,7 @@ const CFormCheck = defineComponent({
           },
         ],
         id: props.id,
+        indeterminate: props.indeterminate,
         onChange: (event: InputEvent) => handleChange(event),
         type: props.type,
       })

@@ -22,14 +22,14 @@ Browser default checkboxes and radios are replaced with the help of `<CFormCheck
 
 ## Indeterminate
 
-Checkboxes can utilize the `:indeterminate` pseudo class when manually set via JavaScript (there is no available HTML attribute for specifying it).
+Checkboxes can utilize the `:indeterminate` pseudo-class when manually set via `indeterminate` property.
 
 ::: demo
-<CFormCheck id="flexCheckIndeterminate" label="Indeterminate checkbox" ref={checkboxRef} />
+<CFormCheck id="flexCheckIndeterminate" label="Indeterminate checkbox" indeterminate />
 
 :::
 ```vue
-<CFormCheck id="flexCheckIndeterminate" label="Indeterminate checkbox" ref={checkboxRef} />
+<CFormCheck id="flexCheckIndeterminate" label="Indeterminate checkbox" indeterminate />
 ```
 
 ### Disabled
