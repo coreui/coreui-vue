@@ -87,7 +87,7 @@ export const selectProps = Object.assign(
   props, 
   {
     options: Array,
-    value: [String, Number, Boolean, Array],
+    value: [String, Number, Boolean, Array, Event],
     plaintext: Boolean,
     placeholder: String,
     custom: Boolean

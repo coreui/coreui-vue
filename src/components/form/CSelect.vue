@@ -225,6 +225,7 @@ export default {
       const value = option.value !== undefined ? option.value : option
       this.state = value
       this.$emit('update:value', value, e)
+      this.$emit('input', value, e)
     }
   }
 }
