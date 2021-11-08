@@ -1,4 +1,4 @@
-import { defineComponent, h, onMounted, watch, ref } from 'vue'
+import { defineComponent, h } from 'vue'
 import { shape } from 'vue-types'
 
 import { Color, Shape } from '../props'
@@ -120,21 +120,6 @@ const CFormCheck = defineComponent({
     'update:modelValue',
   ],
   setup(props, { attrs, emit, slots }) {
-    const checked = ref(attrs.checked)
-
-    onMounted(() => {
-      if (props.modelValue && typeof props.modelValue === 'boolean') {
-        console.log(props.modelValue)
-      }
-    })
-
-    watch(
-      () => props.modelValue,
-      () => {
-        if (typeof props.modelValue === 'boolean') checked.value = props.modelValue
-      },
-    )
-
     const handleChange = (event: InputEvent) => {
       const target = event.target as HTMLInputElement
       emit('change', event)
@@ -143,8 +128,7 @@ const CFormCheck = defineComponent({
 
     const formControl = () => {
       return h('input', {
-        ...attrs,
-        checked: checked.value,
+        checked: props.modelValue,
         class: [
           props.button ? 'btn-check' : 'form-check-input',
           {
@@ -156,6 +140,7 @@ const CFormCheck = defineComponent({
         indeterminate: props.indeterminate,
         onChange: (event: InputEvent) => handleChange(event),
         type: props.type,
+        ...attrs,
       })
     }
     const formLabel = () => {

@@ -90,7 +90,7 @@ const CFormRange = defineComponent({
           steps: props.steps,
           readonly: props.readonly,
           type: 'range',
-          value: props.modelValue || props.value,
+          value: props.modelValue,
         },
         slots.default && slots.default(),
       )

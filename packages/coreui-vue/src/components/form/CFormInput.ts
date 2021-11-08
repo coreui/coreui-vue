@@ -85,11 +85,11 @@ const CFormInput = defineComponent({
     'update:modelValue',
   ],
   setup(props, { emit, slots }) {
-    const handleChange = (event: InputEvent) => {
-      const target = event.target as HTMLInputElement
-      emit('change', event)
-      emit('update:modelValue', target.value)
-    }
+    // const handleChange = (event: InputEvent) => {
+    //   const target = event.target as HTMLInputElement
+    //   emit('change', event)
+    //   emit('update:modelValue', target.value)
+    // }
     const handleInput = (event: InputEvent) => {
       const target = event.target as HTMLInputElement
       emit('input', event)
@@ -100,9 +100,6 @@ const CFormInput = defineComponent({
       h(
         'input',
         {
-          type: props.type,
-          disabled: props.disabled,
-          readonly: props.readonly,
           class: [
             props.plainText ? 'form-control-plaintext' : 'form-control',
             {
@@ -112,8 +109,11 @@ const CFormInput = defineComponent({
               'is-valid': props.valid,
             },
           ],
-          onChange: (event: InputEvent) => handleChange(event),
+          disabled: props.disabled,
+          // onChange: (event: InputEvent) => handleChange(event),
           onInput: (event: InputEvent) => handleInput(event),
+          readonly: props.readonly,
+          type: props.type,
           value: props.modelValue,
         },
         slots.default && slots.default(),
