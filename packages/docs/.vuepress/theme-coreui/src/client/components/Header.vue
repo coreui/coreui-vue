@@ -11,9 +11,6 @@
       <CIcon icon="cil-menu" size="lg" />
     </CHeaderToggler>
     <CHeaderNav class="ms-auto">
-      <CNavItem href="https://community.coreui.io/">
-        <CIcon icon="cib-discourse" size="xl" />
-      </CNavItem>
       <CNavItem href="https://github.com/coreui">
         <CIcon icon="cib-github" size="xl" />
       </CNavItem>
