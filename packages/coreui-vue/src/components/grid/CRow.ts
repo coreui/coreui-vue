@@ -81,7 +81,7 @@ const CRow = defineComponent({
     },
   },
   setup(props, { slots }) {
-    const repsonsiveCLassNames: string[] = []
+    const repsonsiveClassNames: string[] = []
 
     BREAKPOINTS.forEach((bp) => {
       const breakpoint = props[bp]
@@ -89,16 +89,16 @@ const CRow = defineComponent({
 
       if (typeof breakpoint === 'object') {
         if (breakpoint.cols) {
-          repsonsiveCLassNames.push(`row-cols${infix}-${breakpoint.cols}`)
+          repsonsiveClassNames.push(`row-cols${infix}-${breakpoint.cols}`)
         }
         if (typeof breakpoint.gutter === 'number') {
-          repsonsiveCLassNames.push(`g${infix}-${breakpoint.gutter}`)
+          repsonsiveClassNames.push(`g${infix}-${breakpoint.gutter}`)
         }
         if (typeof breakpoint.gutterX === 'number') {
-          repsonsiveCLassNames.push(`gx${infix}-${breakpoint.gutterX}`)
+          repsonsiveClassNames.push(`gx${infix}-${breakpoint.gutterX}`)
         }
         if (typeof breakpoint.gutterY === 'number') {
-          repsonsiveCLassNames.push(`gy${infix}-${breakpoint.gutterY}`)
+          repsonsiveClassNames.push(`gy${infix}-${breakpoint.gutterY}`)
         }
       }
     })
@@ -107,7 +107,7 @@ const CRow = defineComponent({
       h(
         'div',
         {
-          class: ['row', repsonsiveCLassNames],
+          class: ['row', repsonsiveClassNames],
         },
         slots.default && slots.default(),
       )

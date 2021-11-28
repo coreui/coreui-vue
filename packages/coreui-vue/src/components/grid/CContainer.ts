@@ -56,18 +56,18 @@ const CContainer = defineComponent({
     },
   },
   setup(props, { slots }) {
-    const repsonsiveCLassNames: string[] = []
+    const repsonsiveClassNames: string[] = []
 
     BREAKPOINTS.forEach((bp) => {
       const breakpoint = props[bp]
 
-      breakpoint && repsonsiveCLassNames.push(`container-${bp}`)
+      breakpoint && repsonsiveClassNames.push(`container-${bp}`)
     })
     return () =>
       h(
         'div',
         {
-          class: [repsonsiveCLassNames.length ? repsonsiveCLassNames : 'container'],
+          class: [repsonsiveClassNames.length ? repsonsiveClassNames : 'container'],
         },
         slots.default && slots.default(),
       )

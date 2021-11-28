@@ -84,7 +84,7 @@ const CCol = defineComponent({
     },
   },
   setup(props, { slots }) {
-    const repsonsiveCLassNames: string[] = []
+    const repsonsiveClassNames: string[] = []
 
     BREAKPOINTS.forEach((bp) => {
       const breakpoint = props[bp]
@@ -93,29 +93,29 @@ const CCol = defineComponent({
 
       if (breakpoint) {
         if (typeof breakpoint === 'number' || typeof breakpoint === 'string') {
-          repsonsiveCLassNames.push(`col${infix}-${breakpoint}`)
+          repsonsiveClassNames.push(`col${infix}-${breakpoint}`)
         }
 
         if (typeof breakpoint === 'boolean') {
-          repsonsiveCLassNames.push(`col${infix}`)
+          repsonsiveClassNames.push(`col${infix}`)
         }
       }
 
       if (breakpoint && typeof breakpoint === 'object') {
         if (typeof breakpoint.span === 'number' || typeof breakpoint.span === 'string') {
-          repsonsiveCLassNames.push(`col${infix}-${breakpoint.span}`)
+          repsonsiveClassNames.push(`col${infix}-${breakpoint.span}`)
         }
 
         if (typeof breakpoint.span === 'boolean') {
-          repsonsiveCLassNames.push(`col${infix}`)
+          repsonsiveClassNames.push(`col${infix}`)
         }
 
         if (typeof breakpoint.order === 'number' || typeof breakpoint.order === 'string') {
-          repsonsiveCLassNames.push(`order${infix}-${breakpoint.order}`)
+          repsonsiveClassNames.push(`order${infix}-${breakpoint.order}`)
         }
 
         if (typeof breakpoint.offset === 'number') {
-          repsonsiveCLassNames.push(`offset${infix}-${breakpoint.offset}`)
+          repsonsiveClassNames.push(`offset${infix}-${breakpoint.offset}`)
         }
       }
     })
@@ -124,7 +124,7 @@ const CCol = defineComponent({
       h(
         'div',
         {
-          class: [repsonsiveCLassNames.length ? repsonsiveCLassNames : 'col'],
+          class: [repsonsiveClassNames.length ? repsonsiveClassNames : 'col'],
         },
         slots.default && slots.default(),
       )
