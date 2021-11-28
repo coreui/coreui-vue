@@ -1,5 +1,6 @@
-import { defineComponent, h, ref, RendererElement, Transition, watch } from 'vue'
+import { defineComponent, h, ref, RendererElement, Transition, watch, withDirectives } from 'vue'
 import { CBackdrop } from '../backdrop'
+import { vVisible } from '../../directives/v-c-visible'
 
 const COffcanvas = defineComponent({
   name: 'COffcanvas',
@@ -139,25 +140,27 @@ const COffcanvas = defineComponent({
           onAfterLeave: (el) => handleAfterLeave(el),
         },
         () =>
-          visible.value &&
-          h(
-            'div',
-            {
-              class: [
-                'offcanvas',
-                {
-                  [`offcanvas-${props.placement}`]: props.placement,
-                },
-              ],
-              ref: offcanvasRef,
-              role: 'dialog',
-            },
-            slots.default && slots.default(),
+          withDirectives(
+            h(
+              'div',
+              {
+                class: [
+                  'offcanvas',
+                  {
+                    [`offcanvas-${props.placement}`]: props.placement,
+                  },
+                ],
+                ref: offcanvasRef,
+                role: 'dialog',
+              },
+              slots.default && slots.default(),
+            ),
+            [[vVisible, props.visible]],
           ),
       ),
       props.backdrop &&
         h(CBackdrop, {
-          class: 'modal-backdrop',
+          class: 'offcanvas-backdrop',
           visible: visible.value,
         }),
     ]

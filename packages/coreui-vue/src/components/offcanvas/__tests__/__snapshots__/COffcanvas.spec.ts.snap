@@ -4,7 +4,7 @@ exports[`Customize COffcanvas component renders correctly 1`] = `
 "<transition-stub>
   <div class=\\"offcanvas offcanvas-bottom\\" role=\\"dialog\\">Default slot</div>
 </transition-stub>
-<transition-stub class=\\"modal-backdrop\\">
+<transition-stub class=\\"offcanvas-backdrop\\">
   <div class=\\"fade\\"></div>
 </transition-stub>"
 `;
@@ -13,7 +13,7 @@ exports[`Loads and display COffcanvas component renders correctly 1`] = `
 "<transition-stub>
   <div class=\\"offcanvas offcanvas-end\\" role=\\"dialog\\">Default slot</div>
 </transition-stub>
-<transition-stub class=\\"modal-backdrop\\">
+<transition-stub class=\\"offcanvas-backdrop\\">
   <div class=\\"fade\\"></div>
 </transition-stub>"
 `;

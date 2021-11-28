@@ -47,6 +47,6 @@ describe(`Customize ${ComponentName} component`, () => {
     expect(customWrapper.text()).toContain('Default slot')
     expect(customWrapper.find('div').classes('offcanvas')).toBe(true)
     expect(customWrapper.find('div').classes('offcanvas-bottom')).toBe(true)
-    expect(customWrapper.find('.modal-backdrop').classes('modal-backdrop')).toBe(true)
+    expect(customWrapper.find('.offcanvas-backdrop').classes('offcanvas-backdrop')).toBe(true)
   })
 })
