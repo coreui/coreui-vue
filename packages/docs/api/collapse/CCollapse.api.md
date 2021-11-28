@@ -8,9 +8,10 @@ import CCollapse from '@coreui/vue/src/components/collapse/CCollapse'
 
 #### Props
 
-| Prop name   | Description                         | Type    | Values | Default |
-| ----------- | ----------------------------------- | ------- | ------ | ------- |
-| **visible** | Toggle the visibility of component. | boolean | -      |         |
+| Prop name      | Description                                                          | Type    | Values | Default |
+| -------------- | -------------------------------------------------------------------- | ------- | ------ | ------- |
+| **horizontal** | Set horizontal collapsing to transition the width instead of height. | boolean | -      |         |
+| **visible**    | Toggle the visibility of component.                                  | boolean | -      |         |
 
 #### Events
 

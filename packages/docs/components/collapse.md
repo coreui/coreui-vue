@@ -52,6 +52,46 @@ You can use a link or a button component.
 </script> 
 ```
 
+## Horizontal
+
+The collapse plugin also supports horizontal collapsing. Add the `horizontal` property to transition the `width` instead of `height` and set a `width` on the immediate child element.
+
+:::demo
+<CButton class="mb-3" color="primary" aria-expanded={visible} aria-controls="collapseWidthExample" @click="visibleHorizontal = !visibleHorizontal">Button</CButton>
+<div style="min-height: 120px">
+  <CCollapse horizontal :visible="visibleHorizontal">
+    <CCard style="width: 300px">
+      <CCardBody>
+        This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+      </CCardBody>
+    </CCard>
+  </CCollapse>
+</div>
+:::
+```vue
+<template>
+  <CButton class="mb-3" color="primary" aria-expanded={visible} aria-controls="collapseWidthExample" @click="visibleHorizontal = !visibleHorizontal">Button</CButton>
+  <div style="min-height: 120px">
+    <CCollapse horizontal :visible="visibleHorizontal">
+      <CCard style="width: 300px">
+        <CCardBody>
+          This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+        </CCardBody>
+      </CCard>
+    </CCollapse>
+  </div>
+</template>
+<script>
+  export default {
+    data() {
+      return { 
+        visibleHorizontal: false,
+      }
+    }
+  }
+</script>
+```
+
 ## Multiple targets
 
 A `<CButton>` can show and hide multiple elements.
@@ -144,6 +184,7 @@ A `<CButton>` can show and hide multiple elements.
     data() {
       return { 
         visible: false,
+        visibleHorizontal: false,
         visibleA: false,
         visibleB: false,
       }

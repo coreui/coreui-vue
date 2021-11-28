@@ -1,8 +1,16 @@
-import { defineComponent, h, Transition, withDirectives, vShow, RendererElement } from 'vue'
+import { defineComponent, h, Transition, ref, RendererElement, withDirectives } from 'vue'
+import { vVisible } from '../../directives/v-c-visible'
 
 const CCollapse = defineComponent({
   name: 'CCollapse',
   props: {
+    /**
+     * Set horizontal collapsing to transition the width instead of height.
+     */
+    horizontal: {
+      type: Boolean,
+      required: false,
+    },
     /**
      * Toggle the visibility of component.
      */
@@ -22,46 +30,68 @@ const CCollapse = defineComponent({
     'show',
   ],
   setup(props, { slots, emit }) {
-    const handleBeforeEnter = (el: RendererElement) => {
-      el.classList.remove('collapse')
-      el.classList.add('collapsing')
+    const collapsing = ref(false)
+    const show = ref(props.visible)
+
+    const handleBeforeEnter = () => {
+      collapsing.value = true
     }
+
     const handleEnter = (el: RendererElement, done: () => void) => {
       emit('show')
       el.addEventListener('transitionend', () => {
-        el.classList.add('collapse', 'show')
         done()
       })
-      el.style.height = `${el.scrollHeight}px`
+      setTimeout(() => {
+        if (props.horizontal) {
+          el.style.width = `${el.scrollWidth}px`
+          return
+        }
+        el.style.height = `${el.scrollHeight}px`
+      }, 1)
     }
+
     const handleAfterEnter = (el: RendererElement) => {
-      el.classList.remove('collapsing')
-      el.style.removeProperty('height')
+      show.value = true
+      collapsing.value = false
+      props.horizontal ? el.style.removeProperty('width') : el.style.removeProperty('height')
     }
+
     const handleBeforeLeave = (el: RendererElement) => {
-      el.classList.add('show')
+      collapsing.value = true
+      show.value = false
+      if (props.horizontal) {
+        el.style.width = `${el.scrollWidth}px`
+        return
+      }
       el.style.height = `${el.scrollHeight}px`
     }
+
     const handleLeave = (el: RendererElement, done: () => void) => {
       emit('hide')
-      el.classList.remove('collapse', 'show')
-      el.classList.add('collapsing')
       el.addEventListener('transitionend', () => {
         done()
       })
-      el.style.height = '0px'
+      setTimeout(() => {
+        if (props.horizontal) {
+          el.style.width = '0px'
+          return
+        }
+        el.style.height = '0px'
+      }, 1)
     }
+
     const handleAfterLeave = (el: RendererElement) => {
-      el.classList.remove('collapsing')
-      el.classList.add('collapse')
+      collapsing.value = false
+      props.horizontal ? el.style.removeProperty('width') : el.style.removeProperty('height')
     }
 
     return () =>
       h(
         Transition,
         {
-          name: 'fade',
-          onBeforeEnter: (el) => handleBeforeEnter(el),
+          css: false,
+          onBeforeEnter: () => handleBeforeEnter(),
           onEnter: (el, done) => handleEnter(el, done),
           onAfterEnter: (el) => handleAfterEnter(el),
           onBeforeLeave: (el) => handleBeforeLeave(el),
@@ -74,15 +104,13 @@ const CCollapse = defineComponent({
               'div',
               {
                 class: [
-                  'collapse',
-                  {
-                    show: props.visible,
-                  },
+                  collapsing.value ? 'collapsing' : 'collapse',
+                  { 'collapse-horizontal': props.horizontal, show: show.value },
                 ],
               },
               slots.default && slots.default(),
             ),
-            [[vShow, props.visible]],
+            [[vVisible, props.visible]],
           ),
       )
   },

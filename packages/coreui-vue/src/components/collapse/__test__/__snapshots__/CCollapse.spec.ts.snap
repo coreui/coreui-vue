@@ -2,7 +2,7 @@
 
 exports[`Loads and display CCollapse component renders correctly 1`] = `
 "<transition-stub>
-  <div class=\\"collapse\\" style=\\"display: none;\\">Default slot</div>
+  <div class=\\"collapse\\">Default slot</div>
 </transition-stub>"
 `;
 
