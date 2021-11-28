@@ -93,6 +93,8 @@ const CFormSelect = defineComponent({
             'form-select',
             {
               [`form-select-${props.size}`]: props.size,
+              'is-invalid': props.invalid,
+              'is-valid': props.valid,
             },
           ],
           onChange: (event: InputEvent) => handleChange(event),
