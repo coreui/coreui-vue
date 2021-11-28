@@ -945,7 +945,7 @@ With a toggler on the left and brand name on the right:
   </CContainer>
 </CNavbar>
 :::
-```vue  {() => {
+```vue
 <CNavbar expand="lg" color-scheme="light" class="bg-light">
   <CContainer fluid>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
@@ -975,11 +975,172 @@ With a toggler on the left and brand name on the right:
 </CNavbar>
 ```
 
+### External content
+
+Sometimes you want to use the collapse plugin to trigger a container element for content that structurally sits outside of the `<CNavbar>`.
+
+::: demo
+<CCollapse id="navbarToggleExternalContent" :visible="visibleExternalContent">
+  <div class="bg-dark p-4">
+    <h5 class="text-white h4">Collapsed content</h5>
+    <span class="text-medium-emphasis-inverse">Toggleable via the navbar brand.</span>
+  </div>
+</CCollapse>
+<CNavbar colorScheme="dark" class="bg-dark">
+  <CContainer fluid>
+    <CNavbarToggler
+      aria-controls="navbarToggleExternalContent"
+      aria-label="Toggle navigation"
+      @click="visibleExternalContent = !visibleExternalContent"
+    />
+  </CContainer>
+</CNavbar>
+:::
+```vue
+<template>
+  <CCollapse id="navbarToggleExternalContent" :visible="visibleExternalContent">
+    <div class="bg-dark p-4">
+      <h5 class="text-white h4">Collapsed content</h5>
+      <span class="text-medium-emphasis-inverse">Toggleable via the navbar brand.</span>
+    </div>
+  </CCollapse>
+  <CNavbar colorScheme="dark" class="bg-dark">
+    <CContainer fluid>
+      <CNavbarToggler
+        aria-controls="navbarToggleExternalContent"
+        aria-label="Toggle navigation"
+        @click="visibleExternalContent = !visibleExternalContent"
+      />
+    </CContainer>
+  </CNavbar>
+</template>
+<script>
+  export default {
+    data() {
+      return { 
+        visibleExternalContent: false,
+      }
+    }
+  }
+</script>
+```
+
+### Offcanvas
+
+Transform your expanding and collapsing navbar into an offcanvas drawer with the offcanvas plugin. We extend both the offcanvas default styles and use our `expand="*"` prop to create a dynamic and flexible navigation sidebar.
+
+In the example below, to create an offcanvas navbar that is always collapsed across all breakpoints, omit the `expand="*"` prop entirely.
+
+:::demo
+<CNavbar colorScheme="light" class="bg-light">
+  <CContainer fluid>
+    <CNavbarToggler
+      aria-controls="offcanvasNavbar"
+      aria-label="Toggle navigation"
+      @click="visibleOffcanvas = !visibleOffcanvas"
+    />
+    <COffcanvas id="offcanvasNavbar" placement="end" :visible="visibleOffcanvas" @hide="visibleOffcanvas = false">
+      <COffcanvasHeader>
+        <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+        <CCloseButton class="text-reset" @click="visibleOffcanvas = false" />
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        <CNavbarNav>
+          <CNavItem>
+            <CNavLink href="#" active>
+              Home
+            </CNavLink>
+          </CNavItem>
+          <CNavItem>
+            <CNavLink href="#">Link</CNavLink>
+          </CNavItem>
+          <CDropdown variant="nav-item" :popper="false">
+            <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
+            <CDropdownMenu>
+              <CDropdownItem href="#">Action</CDropdownItem>
+              <CDropdownItem href="#">Another action</CDropdownItem>
+              <CDropdownDivider />
+              <CDropdownItem href="#">Something else here</CDropdownItem>
+            </CDropdownMenu>
+          </CDropdown>
+          <CNavItem>
+            <CNavLink href="#" disabled>
+              Disabled
+            </CNavLink>
+          </CNavItem>
+        </CNavbarNav>
+        <CForm class="d-flex">
+          <CFormInput type="search" class="me-2" placeholder="Search" />
+          <CButton type="submit" color="success" variant="outline">
+            Search
+          </CButton>
+        </CForm>
+      </COffcanvasBody>
+    </COffcanvas>
+  </CContainer>
+</CNavbar>
+:::
+
+To create an offcanvas navbar that expands into a normal navbar at a specific breakpoint like `xxl`, use `expand="xxl"` property.
+
+:::demo
+<CNavbar colorScheme="light" class="bg-light" expand="xxl">
+  <CContainer fluid>
+    <CNavbarToggler
+      aria-controls="offcanvasNavbar2"
+      aria-label="Toggle navigation"
+      @click="visibleOffcanvas2 = !visibleOffcanvas2"
+    />
+    <COffcanvas id="offcanvasNavbar2" placement="end" :visible="visibleOffcanvas2" @hide="visibleOffcanvas2 = false">
+      <COffcanvasHeader>
+        <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+        <CCloseButton class="text-reset" @click="visibleOffcanvas2 = false" />
+      </COffcanvasHeader>
+      <COffcanvasBody>
+        <CNavbarNav>
+          <CNavItem>
+            <CNavLink href="#" active>
+              Home
+            </CNavLink>
+          </CNavItem>
+          <CNavItem>
+            <CNavLink href="#">Link</CNavLink>
+          </CNavItem>
+          <CDropdown variant="nav-item" :popper="false">
+            <CDropdownToggle color="secondary">Dropdown button</CDropdownToggle>
+            <CDropdownMenu>
+              <CDropdownItem href="#">Action</CDropdownItem>
+              <CDropdownItem href="#">Another action</CDropdownItem>
+              <CDropdownDivider />
+              <CDropdownItem href="#">Something else here</CDropdownItem>
+            </CDropdownMenu>
+          </CDropdown>
+          <CNavItem>
+            <CNavLink href="#" disabled>
+              Disabled
+            </CNavLink>
+          </CNavItem>
+        </CNavbarNav>
+        <CForm class="d-flex">
+          <CFormInput type="search" class="me-2" placeholder="Search" />
+          <CButton type="submit" color="success" variant="outline">
+            Search
+          </CButton>
+        </CForm>
+      </COffcanvasBody>
+    </COffcanvas>
+  </CContainer>
+</CNavbar>
+:::
+
 <script>
   export default {
     data() {
       return { 
         visible: true,
+        visibleExternalContent: false,
+        visibleOffcanvas: false,
+        visibleOffcanvas2: false,
       }
     }
   }
