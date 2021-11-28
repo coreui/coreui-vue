@@ -91,6 +91,7 @@ export const CButton = defineComponent({
           ],
           disabled: props.disabled && props.component !== 'a',
           ...(props.component === 'a' && props.disabled && { 'aria-disabled': true, tabIndex: -1 }),
+          ...(props.component === 'a' && props.href && { href: props.href }),
         },
         slots.default && slots.default(),
       )
