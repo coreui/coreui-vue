@@ -1,4 +1,5 @@
-import vctooltip from './v-c-tooltip'
+import vcplaceholder from './v-c-placeholder'
 import vcpopover from './v-c-popover'
+import vctooltip from './v-c-tooltip'
 
-export { vctooltip, vcpopover }
+export { vcplaceholder, vcpopover, vctooltip,  }

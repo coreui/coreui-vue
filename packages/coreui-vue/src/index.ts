@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { App } from 'vue'
 import * as Components from './components'
-import { vcpopover, vctooltip } from './directives'
+import { vcplaceholder, vcpopover, vctooltip } from './directives'
 
 const removeKeysFromObject = (object, keys) => {
   return Object.entries(object).reduce((obj, [key, value]) => {
@@ -30,6 +30,7 @@ const CoreuiVue = {
     //   app.directive(directive, Directives[directive])
     // }
 
+    app.directive('c-placeholder', vcplaceholder)
     app.directive('c-popover', vcpopover)
     app.directive('c-tooltip', vctooltip)
   },

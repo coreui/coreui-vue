@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loads and display CPlaceholder component renders correctly 1`] = `
+<span
+  class="placeholder"
+/>
+`;
+
+exports[`Loads and display CPlaceholder component renders correctly with slot 1`] = `
+<span
+  class="placeholder-glow bg-secondary placeholder-lg col-sm-7 bazinga"
+>
+  Hello World!
+</span>
+`;
