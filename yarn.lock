@@ -325,10 +325,10 @@
   resolved "https://registry.yarnpkg.com/@coreui/coreui/-/coreui-4.0.0.tgz#52ebe0197411a829ba48057ade61923e05859eec"
   integrity sha512-8vH6fJrmvCR/Oy5v0E+/1AL3Ygb4jhQ7NXK2fMYWJyK13BePDm9muB3y6S0IdqkpBwjY3hHVwHyt2lJqJdesmQ==
 
-"@coreui/coreui@^4.0.5":
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/@coreui/coreui/-/coreui-4.0.5.tgz#b2fd0d3ab4d0887ef42c628cbd6f1ecca3d4c62c"
-  integrity sha512-6T9ezeRUIalo4UhQ9/E4COzyFwUqEUYgJcFyuu394qtvMcdoxqSSYQL6LLs/TkaDBN5vdbdLtNDdIWe+/CWG+Q==
+"@coreui/coreui@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@coreui/coreui/-/coreui-4.1.0.tgz#24abbd88ead2fef0360a208ac752f2bb8e4a8f7d"
+  integrity sha512-2iMKPpxXquN3ZyL44s6Urvsnk03iw+KuJk/AKz5spSgKReUr7AM3WEiaTNFNo1/ZypB67pg0966tT22BSmgkGg==
 
 "@coreui/icons-vue@^2.0.0":
   version "2.0.0"
@@ -7589,9 +7589,9 @@ postcss-selector-parser@^6.0.2, postcss-selector-parser@^6.0.4:
     util-deprecate "^1.0.2"
 
 postcss-value-parser@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.1.0.tgz#443f6a20ced6481a2bda4fa8532a6e55d789a2cb"
-  integrity sha512-97DXOFbQJhk71ne5/Mt6cOu6yxsSfM0QGQyl0L25Gca4yGWEGJaig7l7gbCX623VqTBNGLRLaVUCnNkcedlRSQ==
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz#723c09920836ba6d3e5af019f92bc0971c02e514"
+  integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
 postcss@^8.1.10, postcss@^8.2.15, postcss@^8.3.11:
   version "8.4.4"

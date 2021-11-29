@@ -1,8 +1,8 @@
 {
   "name": "@coreui/vue-docs",
-  "version": "4.0.3",
+  "version": "4.1.0",
   "config": {
-    "version_short": "4.0"
+    "version_short": "4.1"
   },
   "scripts": {
     "api": "vue-docgen -c build/docgen.config.js",
@@ -12,7 +12,7 @@
   "license": "MIT",
   "devDependencies": {
     "@coreui/chartjs": "^3.0.0",
-    "@coreui/coreui": "^4.0.5",
+    "@coreui/coreui": "^4.1.0",
     "@coreui/icons": "^2.1.0",
     "@coreui/icons-vue": "^2.0.0",
     "@coreui/vue-chartjs": "^2.0.0-rc.0",

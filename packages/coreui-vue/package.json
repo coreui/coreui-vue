@@ -1,6 +1,6 @@
 {
   "name": "@coreui/vue",
-  "version": "4.0.3",
+  "version": "4.1.0",
   "description": "UI Components Library for Vue.js",
   "keywords": [
     "vue",
@@ -34,7 +34,7 @@
     "build": "rollup -c"
   },
   "config": {
-    "version_short": "4.0"
+    "version_short": "4.1"
   },
   "devDependencies": {
     "@popperjs/core": "^2.11.0",
@@ -49,7 +49,7 @@
     "vue-types": "^4.1.1"
   },
   "peerDependencies": {
-    "@coreui/coreui": "^4.0.5",
+    "@coreui/coreui": "^4.1.0",
     "vue": "^3.2.21"
   },
   "standard": {
