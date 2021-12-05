@@ -133,7 +133,7 @@ const CModal = defineComponent({
       emit('show')
     }
     const handleAfterEnter = () => {
-      window.addEventListener('click', handleClickOutside)
+      window.addEventListener('mousedown', handleMouseDown)
       window.addEventListener('keyup', handleKeyUp)
     }
     const handleLeave = (el: RendererElement, done: () => void) => {
@@ -144,7 +144,7 @@ const CModal = defineComponent({
       el.classList.remove('show')
     }
     const handleAfterLeave = (el: RendererElement) => {
-      window.removeEventListener('click', handleClickOutside)
+      window.removeEventListener('mousedown', handleMouseDown)
       window.removeEventListener('keyup', handleKeyUp)
       el.style.display = 'none'
     }
@@ -168,7 +168,12 @@ const CModal = defineComponent({
         }
       }
     }
-    const handleClickOutside = (event: Event) => {
+
+    const handleMouseDown = (event: Event) => {
+      window.addEventListener('mouseup', () => handleMouseUp(event))
+    }
+
+    const handleMouseUp = (event: Event) => {
       if (modalContentRef.value && !modalContentRef.value.contains(event.target as HTMLElement)) {
         if (props.backdrop !== 'static') {
           handleDismiss()
