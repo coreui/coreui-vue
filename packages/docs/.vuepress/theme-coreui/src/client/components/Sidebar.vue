@@ -6,13 +6,13 @@
     <CDropdown class="ms-3 me-5 mb-4">
       <CDropdownToggle color="primary" variant="outline"> Vue.js </CDropdownToggle>
       <CDropdownMenu class="w-100">
-        <CDropdownItem href="#" disabled>
-          Angular <span class="badge bg-warning float-end mt-1">Work in Progress</span>
+        <CDropdownItem href="https://coreui.io/angular/docs/4.0/" target="_blank">
+          Angular
         </CDropdownItem>
-        <CDropdownItem href="https://coreui.io/docs/4.0/" target="_blank">
+        <CDropdownItem href="https://coreui.io/docs/4.1/" target="_blank">
           JavaScript / Vanilla JS
         </CDropdownItem>
-        <CDropdownItem href="https://coreui.io/react/docs/4.0/" target="_blank">
+        <CDropdownItem href="https://coreui.io/react/docs/4.1/" target="_blank">
           React.js
         </CDropdownItem>
       </CDropdownMenu>
