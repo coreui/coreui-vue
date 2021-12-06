@@ -170,7 +170,7 @@ const CModal = defineComponent({
     }
 
     const handleMouseDown = (event: Event) => {
-      window.addEventListener('mouseup', () => handleMouseUp(event))
+      window.addEventListener('mouseup', () => handleMouseUp(event), { once: true })
     }
 
     const handleMouseUp = (event: Event) => {
