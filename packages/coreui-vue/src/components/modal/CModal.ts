@@ -142,6 +142,7 @@ const CModal = defineComponent({
       })
       document.body.classList.remove('modal-open')
       el.classList.remove('show')
+      el.style.display = 'none'
     }
     const handleAfterLeave = (el: RendererElement) => {
       window.removeEventListener('mousedown', handleMouseDown)
