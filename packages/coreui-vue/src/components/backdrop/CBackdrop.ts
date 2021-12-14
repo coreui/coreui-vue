@@ -30,6 +30,7 @@ const CBackdrop = defineComponent({
         done()
       })
       el.classList.remove('show')
+      el.style.visibility = 'hidden'
     }
     const handleAfterLeave = (el: RendererElement) => {
       el.classList.add('d-none')
