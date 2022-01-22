@@ -81,8 +81,6 @@ Toggle a working modal demo by clicking the button below. It will slide down and
   }
 </script>
 ```
-
-
 ### Static backdrop
 
 If you set `backdrop` property to `static`, your modal will behave as though the backdrop is static, meaning it will not close when clicking outside it. Click the button below to try it.

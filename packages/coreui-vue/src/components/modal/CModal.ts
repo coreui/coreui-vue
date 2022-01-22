@@ -100,7 +100,7 @@ const CModal = defineComponent({
       default: true,
       required: false,
     },
-    /*
+    /**
      * By default the component is unmounted after close animation, if you want to keep the component mounted set this property to false.
      */
     unmountOnClose: {
