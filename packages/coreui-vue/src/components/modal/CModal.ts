@@ -1,4 +1,14 @@
-import { defineComponent, h, provide, ref, RendererElement, Transition, watch } from 'vue'
+import {
+  defineComponent,
+  h,
+  provide,
+  ref,
+  RendererElement,
+  Transition,
+  vShow,
+  watch,
+  withDirectives,
+} from 'vue'
 
 import { CBackdrop } from './../backdrop/CBackdrop'
 
@@ -86,6 +96,14 @@ const CModal = defineComponent({
      * Remove animation to create modal that simply appear rather than fade in to view.
      */
     transition: {
+      type: Boolean,
+      default: true,
+      required: false,
+    },
+    /*
+     * By default the component is unmounted after close animation, if you want to keep the component mounted set this property to false.
+     */
+    unmountOnClose: {
       type: Boolean,
       default: true,
       required: false,
@@ -189,52 +207,57 @@ const CModal = defineComponent({
 
     provide('handleDismiss', handleDismiss)
 
+    const modal = () =>
+      h(
+        'div',
+        {
+          class: [
+            'modal',
+            {
+              ['fade']: props.transition,
+            },
+            attrs.class,
+          ],
+          ref: modalRef,
+        },
+        h(
+          'div',
+          {
+            class: [
+              'modal-dialog',
+              {
+                'modal-dialog-centered': props.alignment === 'center',
+                [`modal-fullscreen-${props.fullscreen}-down`]:
+                  props.fullscreen && typeof props.fullscreen === 'string',
+                'modal-fullscreen': props.fullscreen && typeof props.fullscreen === 'boolean',
+                ['modal-dialog-scrollable']: props.scrollable,
+                [`modal-${props.size}`]: props.size,
+              },
+            ],
+            role: 'dialog',
+          },
+          h(
+            'div',
+            { class: ['modal-content', props.contentClassName], ref: modalContentRef },
+            slots.default && slots.default(),
+          ),
+        ),
+      )
+
     return () => [
       h(
         Transition,
         {
+          css: false,
           onEnter: (el, done) => handleEnter(el, done),
           onAfterEnter: () => handleAfterEnter(),
           onLeave: (el, done) => handleLeave(el, done),
           onAfterLeave: (el) => handleAfterLeave(el),
         },
         () =>
-          visible.value &&
-          h(
-            'div',
-            {
-              class: [
-                'modal',
-                {
-                  ['fade']: props.transition,
-                },
-                attrs.class,
-              ],
-              ref: modalRef,
-            },
-            h(
-              'div',
-              {
-                class: [
-                  'modal-dialog',
-                  {
-                    'modal-dialog-centered': props.alignment === 'center',
-                    [`modal-fullscreen-${props.fullscreen}-down`]:
-                      props.fullscreen && typeof props.fullscreen === 'string',
-                    'modal-fullscreen': props.fullscreen && typeof props.fullscreen === 'boolean',
-                    ['modal-dialog-scrollable']: props.scrollable,
-                    [`modal-${props.size}`]: props.size,
-                  },
-                ],
-                role: 'dialog',
-              },
-              h(
-                'div',
-                { class: ['modal-content', props.contentClassName], ref: modalContentRef },
-                slots.default && slots.default(),
-              ),
-            ),
-          ),
+          props.unmountOnClose
+            ? visible.value && modal()
+            : withDirectives(modal(), [[vShow, visible.value]]),
       ),
       props.backdrop &&
         h(CBackdrop, {
