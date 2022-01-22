@@ -3,6 +3,7 @@ import { defineComponent, h, PropType } from 'vue'
 type Option = {
   disabled?: boolean
   label?: string
+  selected?: boolean
   value?: string
 }
 
@@ -28,9 +29,13 @@ const CFormSelect = defineComponent({
      * The default name for a value passed using v-model.
      */
     modelValue: {
-      type: String,
+      type: [String, Array] as PropType<string | string[]>,
       default: undefined,
       require: false,
+    },
+    multiple: {
+      type: Boolean,
+      required: false,
     },
     /**
      * Options list of the select component. Available keys: `label`, `value`, `disabled`.
@@ -80,9 +85,8 @@ const CFormSelect = defineComponent({
       const selected = Array.from(target.options)
         .filter((option) => option.selected)
         .map((option) => option.value)
-      const value = target.multiple ? selected : selected[0]
       emit('change', event)
-      emit('update:modelValue', value)
+      emit('update:modelValue', target.multiple ? selected : selected[0])
     }
 
     return () =>
@@ -97,17 +101,26 @@ const CFormSelect = defineComponent({
               'is-valid': props.valid,
             },
           ],
+          multiple: props.multiple,
           onChange: (event: InputEvent) => handleChange(event),
           size: props.htmlSize,
+          ...(props.modelValue && !props.multiple && { value: props.modelValue }),
         },
         props.options
           ? props.options.map((option: Option | string) => {
               return h(
                 'option',
                 {
-                  ...(typeof option === 'object' &&
-                    option.disabled && { disabled: option.disabled }),
-                  ...(typeof option === 'object' && option.value && { value: option.value }),
+                  ...(typeof option === 'object' && {
+                    ...(option.disabled && { disabled: option.disabled }),
+                    ...(option.selected && { selected: option.selected }),
+                    ...(option.value && {
+                      value: option.value,
+                      ...(props.modelValue &&
+                        props.multiple &&
+                        props.modelValue.includes(option.value) && { selected: true }),
+                    }),
+                  }),
                 },
                 typeof option === 'string' ? option : option.label,
               )
