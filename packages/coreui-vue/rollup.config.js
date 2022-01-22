@@ -30,6 +30,11 @@ export default [
       file: pkg.module,
       exports: 'named',
       sourcemap: true,
+      sourcemapPathTransform: (relativeSourcePath) => {
+        return relativeSourcePath
+          .replace('../../node_modules/', '../')
+          .replace('../packages/coreui-vue', '..')
+      },
     },
     external,
     plugins: [...plugins, vue()],
@@ -42,6 +47,11 @@ export default [
       file: pkg.main,
       exports: 'named',
       sourcemap: true,
+      sourcemapPathTransform: (relativeSourcePath) => {
+        return relativeSourcePath
+          .replace('../../node_modules/', '../')
+          .replace('../packages/coreui-vue', '..')
+      },
     },
     external,
     plugins: [...plugins, vue({ template: { optimizeSSR: true } })],
