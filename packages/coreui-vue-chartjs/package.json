@@ -1,6 +1,6 @@
 {
   "name": "@coreui/vue-chartjs",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Vue component wrapper for Chart.js",
   "keywords": [
     "coreui",
@@ -37,22 +37,22 @@
   "devDependencies": {
     "@coreui/chartjs": "^3.0.0",
     "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-node-resolve": "^13.1.3",
     "@rollup/plugin-typescript": "^8.3.0",
-    "@types/lodash": "^4.14.177",
+    "@types/lodash": "^4.14.178",
     "@vue/test-utils": "^2.0.0-0",
     "chart.js": "^3.6.2",
     "lodash": "^4.17.21",
-    "rollup": "^2.60.2",
+    "rollup": "^2.66.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-vue": "^6.0.0",
-    "typescript": "^4.5.2",
+    "typescript": "^4.5.5",
     "vue": "^3.2.24",
-    "vue-types": "^4.0.1"
+    "vue-types": "^4.1.1"
   },
   "peerDependencies": {
     "@coreui/chartjs": "^3.0.0",
-    "chart.js": "^3.4.1",
+    "chart.js": "^3.7.0",
     "vue": "^3.2.21"
   }
 }
