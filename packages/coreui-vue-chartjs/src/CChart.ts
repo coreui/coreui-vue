@@ -1,4 +1,14 @@
-import { defineComponent, h, onMounted, onUnmounted, onUpdated, PropType, ref, Ref } from 'vue'
+import {
+  computed,
+  defineComponent,
+  h,
+  onMounted,
+  onUnmounted,
+  onUpdated,
+  PropType,
+  ref,
+  Ref,
+} from 'vue'
 
 import Chart, { ChartData, ChartOptions, ChartType, Plugin } from 'chart.js/auto'
 import * as chartjs from 'chart.js'
@@ -118,13 +128,19 @@ const CChart = defineComponent({
   setup(props, { emit, slots }) {
     const canvasRef = ref<HTMLCanvasElement>()
     let chart: Chart | null
-
-    const computedData =
+    const computedData = computed(() =>
       typeof props.data === 'function'
         ? canvasRef.value
           ? props.data(canvasRef.value)
           : { datasets: [] }
-        : merge({}, props.data)
+        : merge({}, props.data),
+    )
+    // const computedData =
+    //   typeof props.data === 'function'
+    //     ? canvasRef.value
+    //       ? props.data(canvasRef.value)
+    //       : { datasets: [] }
+    //     : merge({}, props.data)
 
     const renderChart = () => {
       if (!canvasRef.value) return
@@ -138,7 +154,7 @@ const CChart = defineComponent({
 
       chart = new Chart(canvasRef.value, {
         type: props.type,
-        data: computedData,
+        data: computedData.value,
         options: props.options as ChartOptions,
         plugins: props.plugins,
       })
@@ -172,12 +188,12 @@ const CChart = defineComponent({
       }
 
       if (!chart.config.data) {
-        chart.config.data = computedData
+        chart.config.data = computedData.value
         chart.update()
         return
       }
 
-      const { datasets: newDataSets = [], ...newChartData } = computedData
+      const { datasets: newDataSets = [], ...newChartData } = computedData.value
       const { datasets: currentDataSets = [] } = chart.config.data
 
       // copy values
