@@ -135,12 +135,6 @@ const CChart = defineComponent({
           : { datasets: [] }
         : merge({}, props.data),
     )
-    // const computedData =
-    //   typeof props.data === 'function'
-    //     ? canvasRef.value
-    //       ? props.data(canvasRef.value)
-    //       : { datasets: [] }
-    //     : merge({}, props.data)
 
     const renderChart = () => {
       if (!canvasRef.value) return
