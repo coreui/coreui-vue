@@ -92,7 +92,7 @@ export default {
       })
     }
   },
-  beforeUnmount(binding: DirectiveBinding): void {
+  beforeUnmount(_el: HTMLElement, binding: DirectiveBinding): void {
     const tooltip = binding.arg && document.getElementById(binding.arg)
     tooltip && tooltip.remove()
   },
