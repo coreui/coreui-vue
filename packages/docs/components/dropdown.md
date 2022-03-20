@@ -19,7 +19,7 @@ Bind the dropdown's toggle and the dropdown menu inside `<CDropdown>`, or differ
 
 Here's how you can put them to work with either `<button>` elements:
 ::: demo
-<CDropdown color="secondary">
+<CDropdown>
   <CDropdownToggle color="primary">Dropdown Button</CDropdownToggle>
   <CDropdownMenu>
     <CDropdownItem href="#">Action</CDropdownItem>
@@ -29,7 +29,7 @@ Here's how you can put them to work with either `<button>` elements:
 </CDropdown>
 :::
 ```vue
-<CDropdown color="secondary">
+<CDropdown>
   <CDropdownToggle color="primary">Dropdown Button</CDropdownToggle>
   <CDropdownMenu>
     <CDropdownItem href="#">Action</CDropdownItem>
