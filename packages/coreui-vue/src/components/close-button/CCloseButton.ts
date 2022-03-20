@@ -18,7 +18,6 @@ export const CCloseButton = defineComponent({
       required: false,
     },
   },
-
   emits: [
     /**
      * Event called when the user clicks on the component.
@@ -27,6 +26,10 @@ export const CCloseButton = defineComponent({
   ],
   setup(props, { emit }) {
     const handleClick = () => {
+      if (props.disabled) {
+        return
+      }
+
       emit('click')
     }
     return () =>
