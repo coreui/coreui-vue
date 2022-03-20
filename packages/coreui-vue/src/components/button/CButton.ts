@@ -1,4 +1,4 @@
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, ref } from 'vue'
 import { Color, Shape } from '../props'
 
 export const CButton = defineComponent({
@@ -61,6 +61,20 @@ export const CButton = defineComponent({
       },
     },
     /**
+     * Specifies the type of button. Always specify the type attribute for the `<button>` element.
+     * Different browsers may use different default types for the `<button>` element.
+     *
+     * @values 'button', 'submit', 'reset'
+     */
+    type: {
+      type: String,
+      default: 'button',
+      required: false,
+      validator: (value: string) => {
+        return ['button', 'submit', 'reset'].includes(value)
+      },
+    },
+    /**
      * Set the button variant to an outlined button or a ghost button.
      *
      * @values 'ghost', 'outline'
@@ -74,7 +88,20 @@ export const CButton = defineComponent({
       },
     },
   },
-  setup(props, { slots }) {
+  emits: [
+    /**
+     * Event called when the user clicks on the button.
+     */
+    'click',
+  ],
+  setup(props, { emit, slots }) {
+    const handleClick = () => {
+      if (props.disabled) {
+        return
+      }
+
+      emit('click')
+    }
     return () =>
       h(
         props.component,
@@ -92,6 +119,8 @@ export const CButton = defineComponent({
           disabled: props.disabled && props.component !== 'a',
           ...(props.component === 'a' && props.disabled && { 'aria-disabled': true, tabIndex: -1 }),
           ...(props.component === 'a' && props.href && { href: props.href }),
+          ...(props.component === 'button' && { type: props.type }),
+          onClick: handleClick,
         },
         slots.default && slots.default(),
       )
