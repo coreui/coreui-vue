@@ -10,6 +10,7 @@ const CAccordionButton = defineComponent({
       h(
         'button',
         {
+          type: 'button',
           'aria-expanded': !visible.value,
           class: ['accordion-button', { ['collapsed']: !visible.value }],
           onClick: () => toggleVisibility(),
