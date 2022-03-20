@@ -1,4 +1,4 @@
-import { defineComponent, h, inject, toRefs, Ref } from 'vue'
+import { defineComponent, h, inject, onUnmounted, onUpdated, Ref } from 'vue'
 
 const CDropdownMenu = defineComponent({
   name: 'CDropdownMenu',
@@ -15,11 +15,13 @@ const CDropdownMenu = defineComponent({
     },
   },
   setup(props, { slots }) {
+    const dropdownToggleRef = inject('dropdownToggleRef') as Ref<HTMLElement>
     const dropdownMenuRef = inject('dropdownMenuRef') as Ref<HTMLElement>
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const config = inject('config') as any
+    const config = inject('config') as any // eslint-disable-line @typescript-eslint/no-explicit-any
+    const hideMenu = inject('hideMenu') as () => void
+    const visible = inject('visible') as Ref<boolean>
 
-    const { alignment, dark, popper, visible } = toRefs(config)
+    const { autoClose, alignment, dark, popper } = config
 
     // eslint-disable-next-line @typescript-eslint/ban-types
     const alignmentClassNames = (alignment: object | string) => {
@@ -35,16 +37,57 @@ const CDropdownMenu = defineComponent({
       return classNames
     }
 
+    const handleKeyup = (event: Event) => {
+      if (autoClose === false) {
+        return
+      }
+      if (!dropdownMenuRef.value?.contains(event.target as HTMLElement)) {
+        hideMenu()
+      }
+    }
+    const handleMouseUp = (event: Event) => {
+      if (dropdownToggleRef.value?.contains(event.target as HTMLElement)) {
+        return
+      }
+
+      if (autoClose === true) {
+        hideMenu()
+        return
+      }
+
+      if (autoClose === 'inside' && dropdownMenuRef.value?.contains(event.target as HTMLElement)) {
+        hideMenu()
+        return
+      }
+
+      if (
+        autoClose === 'outside' &&
+        !dropdownMenuRef.value?.contains(event.target as HTMLElement)
+      ) {
+        hideMenu()
+      }
+    }
+
+    onUpdated(() => {
+      visible.value && window.addEventListener('mouseup', handleMouseUp)
+      visible.value && window.addEventListener('keyup', handleKeyup)
+    })
+
+    onUnmounted(() => {
+      window.removeEventListener('mouseup', handleMouseUp)
+      window.removeEventListener('keyup', handleKeyup)
+    })
+
     return () =>
       h(
         props.component,
         {
           class: [
             'dropdown-menu',
-            { 'dropdown-menu-dark': dark.value, show: visible.value },
-            alignmentClassNames(alignment.value),
+            { 'dropdown-menu-dark': dark, show: visible.value },
+            alignmentClassNames(alignment),
           ],
-          ...((typeof alignment.value === 'object' || !popper.value) && {
+          ...((typeof alignment === 'object' || !popper) && {
             'data-coreui-popper': 'static',
           }),
           ref: dropdownMenuRef,

@@ -1,5 +1,5 @@
-import { defineComponent, h, inject, Ref } from 'vue'
-
+import { cloneVNode, defineComponent, h, inject, onMounted, Ref, ref } from 'vue'
+import { CButton } from '../button'
 import { Color, Shape } from '../props'
 
 const CDropdownToggle = defineComponent({
@@ -35,6 +35,10 @@ const CDropdownToggle = defineComponent({
       default: 'button',
       require: false,
     },
+    /**
+     * Create a custom toggler which accepts any content.
+     */
+    custom: Boolean,
     /**
      * Toggle the disabled state for the component.
      */
@@ -81,31 +85,37 @@ const CDropdownToggle = defineComponent({
     },
   },
   setup(props, { slots }) {
-    const dropdownRef = inject('dropdownRef') as Ref<HTMLElement>
+    const buttonRef = ref()
+    const dropdownToggleRef = inject('dropdownToggleRef') as Ref<HTMLElement>
     const dropdownVariant = inject('variant') as string
-    const visible = inject('visible') as boolean
+    const visible = inject('visible') as Ref<boolean>
     const toggleMenu = inject('toggleMenu') as () => void
     const className = [
       {
         'dropdown-toggle': props.caret,
         'dropdown-toggle-split': props.split,
-        show: visible,
+        show: visible.value,
         active: props.active,
         disabled: props.disabled,
       },
     ]
 
-    const buttonClassName = [
-      'btn',
-      props.variant ? `btn-${props.variant}-${props.color}` : `btn-${props.color}`,
-      {
-        [`btn-${props.size}`]: props.size,
-      },
-      props.shape,
-    ]
+    onMounted(() => {
+      if (buttonRef.value) {
+        dropdownToggleRef.value = buttonRef.value.$el
+      }
+    })
 
     return () =>
-      dropdownVariant === 'nav-item'
+      props.custom
+        ? slots.default &&
+          slots.default().map((slot) =>
+            cloneVNode(slot, {
+              onClick: () => toggleMenu(),
+              ref: dropdownToggleRef,
+            }),
+          )
+        : dropdownVariant === 'nav-item'
         ? h(
             'a',
             {
@@ -115,26 +125,32 @@ const CDropdownToggle = defineComponent({
               href: '#',
               onClick: (event: Event) => {
                 event.preventDefault()
-                return toggleMenu()
+                toggleMenu()
               },
-              ref: dropdownRef,
+              ref: dropdownToggleRef,
             },
             { default: () => slots.default && slots.default() },
           )
         : h(
-            // TODO: check how to use CButton component
-            props.component,
+            CButton,
             {
-              class: [...className, ...buttonClassName],
+              class: className,
               active: props.active,
+              color: props.color,
               disabled: props.disabled,
               onClick: () => toggleMenu(),
               ...(props.component === 'button' && { type: 'button' }),
-              ref: dropdownRef,
+              ref: (el) => {
+                buttonRef.value = el
+              },
+              shape: props.shape,
+              size: props.size,
+              variant: props.variant,
             },
-            props.split
-              ? h('span', { class: 'visually-hidden' }, 'Toggle Dropdown')
-              : slots.default && slots.default(),
+            () =>
+              props.split
+                ? h('span', { class: 'visually-hidden' }, 'Toggle Dropdown')
+                : slots.default && slots.default(),
           )
   },
 })

@@ -1,15 +1,4 @@
-import {
-  defineComponent,
-  h,
-  ref,
-  onUnmounted,
-  onMounted,
-  provide,
-  reactive,
-  toRefs,
-  watch,
-  PropType,
-} from 'vue'
+import { defineComponent, h, ref, provide, watch, PropType } from 'vue'
 import { createPopper, Placement } from '@popperjs/core'
 
 const CDropdown = defineComponent({
@@ -49,6 +38,20 @@ const CDropdown = defineComponent({
           }
           return false
         }
+      },
+    },
+    /**
+     * Configure the auto close behavior of the dropdown:
+     * - `true` - the dropdown will be closed by clicking outside or inside the dropdown menu.
+     * - `false` - the dropdown will be closed by clicking the toggle button and manually calling hide or toggle method. (Also will not be closed by pressing esc key)
+     * - `'inside'` - the dropdown will be closed (only) by clicking inside the dropdown menu.
+     * - `'outside'` - the dropdown will be closed (only) by clicking outside the dropdown menu.
+     */
+    autoClose: {
+      type: [Boolean, String],
+      default: true,
+      validator: (value: boolean | string) => {
+        return typeof value === 'boolean' || ['inside', 'outside'].includes(value)
       },
     },
     /**
@@ -136,25 +139,29 @@ const CDropdown = defineComponent({
     'show',
   ],
   setup(props, { slots, emit }) {
-    const dropdownRef = ref()
+    const dropdownToggleRef = ref()
     const dropdownMenuRef = ref()
     const placement = ref(props.placement)
     const popper = ref()
+    const visible = ref(props.visible)
 
-    const config = reactive({
+    watch(
+      () => props.visible,
+      () => {
+        visible.value = props.visible
+      },
+    )
+
+    provide('config', {
+      autoClose: props.autoClose,
       alignment: props.alignment,
       dark: props.dark,
       popper: props.popper,
-      visible: props.visible,
     })
-
-    const { visible } = toRefs(config)
-
-    provide('config', config)
 
     provide('variant', props.variant)
     provide('visible', visible)
-    provide('dropdownRef', dropdownRef)
+    provide('dropdownToggleRef', dropdownToggleRef)
     provide('dropdownMenuRef', dropdownMenuRef)
 
     if (props.direction === 'dropup') {
@@ -176,8 +183,8 @@ const CDropdown = defineComponent({
         return
       }
 
-      if (dropdownRef.value) {
-        popper.value = createPopper(dropdownRef.value, dropdownMenuRef.value, {
+      if (dropdownToggleRef.value) {
+        popper.value = createPopper(dropdownToggleRef.value, dropdownMenuRef.value, {
           placement: placement.value,
         })
       }
@@ -190,43 +197,30 @@ const CDropdown = defineComponent({
       popper.value = undefined
     }
 
-    const toggleMenu = function () {
-      if (props.disabled === false) {
-        if (visible.value === true) {
-          visible.value = false
-        } else {
-          visible.value = true
-        }
+    const toggleMenu = () => {
+      if (props.disabled) {
+        return
       }
+
+      if (visible.value === true) {
+        visible.value = false
+        return
+      }
+
+      visible.value = true
     }
 
     provide('toggleMenu', toggleMenu)
 
-    const hideMenu = function () {
-      if (props.disabled === false) {
-        visible.value = false
+    const hideMenu = () => {
+      if (props.disabled) {
+        return
       }
+
+      visible.value = false
     }
 
-    const handleKeyup = (event: Event) => {
-      if (dropdownRef.value && !dropdownRef.value.contains(event.target as HTMLElement)) {
-        hideMenu()
-      }
-    }
-    const handleClickOutside = (event: Event) => {
-      if (dropdownRef.value && !dropdownRef.value.contains(event.target as HTMLElement)) {
-        hideMenu()
-      }
-    }
-
-    onMounted(() => {
-      window.addEventListener('click', handleClickOutside)
-      window.addEventListener('keyup', handleKeyup)
-    })
-    onUnmounted(() => {
-      window.removeEventListener('click', handleClickOutside)
-      window.removeEventListener('keyup', handleKeyup)
-    })
+    provide('hideMenu', hideMenu)
 
     watch(visible, () => {
       props.popper && (visible.value ? initPopper() : destroyPopper())
