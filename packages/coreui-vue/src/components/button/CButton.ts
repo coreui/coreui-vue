@@ -1,4 +1,4 @@
-import { defineComponent, h, ref } from 'vue'
+import { defineComponent, h } from 'vue'
 import { Color, Shape } from '../props'
 
 export const CButton = defineComponent({
