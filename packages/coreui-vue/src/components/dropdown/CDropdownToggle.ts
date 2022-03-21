@@ -1,6 +1,7 @@
-import { cloneVNode, defineComponent, h, inject, onMounted, Ref, ref } from 'vue'
+import { cloneVNode, defineComponent, h, inject, onMounted, PropType, Ref, ref } from 'vue'
 import { CButton } from '../button'
 import { Color, Shape } from '../props'
+import { Triggers } from '../Types'
 
 const CDropdownToggle = defineComponent({
   name: 'CDropdownToggle',
@@ -71,6 +72,16 @@ const CDropdownToggle = defineComponent({
       required: false,
     },
     /**
+     * Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them.
+     *
+     * @type 'hover' | 'focus' | 'click'
+     */
+    trigger: {
+      type: String as PropType<Triggers>,
+      default: 'click',
+      required: false,
+    },
+    /**
      * Set the button variant to an outlined button or a ghost button.
      *
      * @values 'ghost', 'outline'
@@ -89,7 +100,8 @@ const CDropdownToggle = defineComponent({
     const dropdownToggleRef = inject('dropdownToggleRef') as Ref<HTMLElement>
     const dropdownVariant = inject('variant') as string
     const visible = inject('visible') as Ref<boolean>
-    const toggleMenu = inject('toggleMenu') as () => void
+    const toggleMenu = inject('toggleMenu') as (_visible?: boolean) => void
+
     const className = [
       {
         'dropdown-toggle': props.caret,
@@ -98,6 +110,18 @@ const CDropdownToggle = defineComponent({
         disabled: props.disabled,
       },
     ]
+
+    const triggers = {
+      ...((props.trigger === 'click' || props.trigger.includes('click')) &&
+        !props.disabled && {
+          onClick: () => toggleMenu(),
+        }),
+      ...((props.trigger === 'focus' || props.trigger.includes('focus')) &&
+        !props.disabled && {
+          onfocus: () => toggleMenu(true),
+          onblur: () => toggleMenu(false),
+        }),
+    }
 
     onMounted(() => {
       if (buttonRef.value) {
@@ -110,8 +134,8 @@ const CDropdownToggle = defineComponent({
         ? slots.default &&
           slots.default().map((slot) =>
             cloneVNode(slot, {
-              onClick: () => toggleMenu(),
               ref: dropdownToggleRef,
+              ...triggers,
             }),
           )
         : dropdownVariant === 'nav-item'
@@ -128,11 +152,8 @@ const CDropdownToggle = defineComponent({
               ],
               disabled: props.disabled,
               href: '#',
-              onClick: (event: Event) => {
-                event.preventDefault()
-                toggleMenu()
-              },
               ref: dropdownToggleRef,
+              ...triggers,
             },
             { default: () => slots.default && slots.default() },
           )
@@ -148,13 +169,13 @@ const CDropdownToggle = defineComponent({
               active: props.active,
               color: props.color,
               disabled: props.disabled,
-              onClick: () => toggleMenu(),
-              ...(props.component === 'button' && { type: 'button' }),
               ref: (el) => {
                 buttonRef.value = el
               },
               shape: props.shape,
               size: props.size,
+              ...triggers,
+              ...(props.component === 'button' && { type: 'button' }),
               variant: props.variant,
             },
             () =>

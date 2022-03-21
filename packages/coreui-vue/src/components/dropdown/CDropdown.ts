@@ -197,8 +197,13 @@ const CDropdown = defineComponent({
       popper.value = undefined
     }
 
-    const toggleMenu = () => {
+    const toggleMenu = (_visible?: boolean) => {
       if (props.disabled) {
+        return
+      }
+
+      if (typeof _visible == 'boolean') {
+        visible.value = _visible
         return
       }
 
