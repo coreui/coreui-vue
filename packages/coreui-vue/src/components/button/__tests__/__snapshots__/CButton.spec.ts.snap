@@ -4,4 +4,4 @@ exports[`Customize (number two) CButton component renders correctly 1`] = `"<a c
 
 exports[`Customize CButton component renders correctly 1`] = `"<div class=\\"btn btn-outline-warning btn-lg active disabled rounded-pill\\" disabled=\\"true\\">Default slot</div>"`;
 
-exports[`Loads and display CButton component renders correctly 1`] = `"<button class=\\"btn btn-undefined\\">Default slot</button>"`;
+exports[`Loads and display CButton component renders correctly 1`] = `"<button class=\\"btn btn-undefined\\" type=\\"button\\">Default slot</button>"`;

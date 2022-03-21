@@ -1,22 +1,20 @@
 import { mount } from '@vue/test-utils'
 import { CDropdownMenu as Component } from '../../../index'
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 
 const ComponentName = 'CDropdownMenu'
 
-const config = reactive({
+const config = {
   alignment: { lg: 'end' },
   dark: false,
   popper: true,
-  visible: false,
-})
+}
 
-const customConfig = reactive({
+const customConfig = {
   alignment: { lg: 'end' },
   dark: true,
   popper: false,
-  visible: true,
-})
+}
 
 const defaultWrapper = mount(Component, {
   propsData: {},
@@ -27,6 +25,7 @@ const defaultWrapper = mount(Component, {
     provide: {
       config: config,
       dropdownMenuRef: ref(),
+      visible: ref(false),
     },
   },
 })
@@ -42,6 +41,7 @@ const customWrapper = mount(Component, {
     provide: {
       config: customConfig,
       dropdownMenuRef: ref(),
+      visible: ref(true),
     },
   },
 })

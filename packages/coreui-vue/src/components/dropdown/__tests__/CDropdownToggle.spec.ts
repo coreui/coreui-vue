@@ -18,9 +18,9 @@ const defaultWrapper = mount(Component, {
   },
   global: {
     provide: {
-      dropdownRef: ref(),
+      dropdownToggleRef: ref(),
       variant: 'input-group',
-      visible: true,
+      visible: ref(true),
       toggleMenu: function () {
         return true
       },
@@ -44,9 +44,9 @@ const customWrapper = mount(Component, {
   },
   global: {
     provide: {
-      dropdownRef: ref(),
+      dropdownToggleRef: ref(),
       variant: 'nav-item',
-      visible: true,
+      visible: ref(true),
       toggleMenu: function () {
         return true
       },
@@ -71,7 +71,6 @@ describe(`Loads and display ${ComponentName} component`, () => {
     expect(defaultWrapper.classes('active')).toBe(true)
     expect(defaultWrapper.classes('disabled')).toBe(true)
     expect(defaultWrapper.attributes('disabled')).toBe('')
-    expect(defaultWrapper.attributes('active')).toBe('true')
     expect(defaultWrapper.find('span').classes('visually-hidden')).toBe(true)
     expect(defaultWrapper.find('span').text()).toContain('Toggle Dropdown')
   })
