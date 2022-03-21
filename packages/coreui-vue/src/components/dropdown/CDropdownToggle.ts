@@ -94,7 +94,6 @@ const CDropdownToggle = defineComponent({
       {
         'dropdown-toggle': props.caret,
         'dropdown-toggle-split': props.split,
-        show: visible.value,
         active: props.active,
         disabled: props.disabled,
       },
@@ -120,7 +119,13 @@ const CDropdownToggle = defineComponent({
             'a',
             {
               active: props.active,
-              class: ['nav-link', className],
+              class: [
+                'nav-link',
+                className,
+                {
+                  show: visible.value,
+                },
+              ],
               disabled: props.disabled,
               href: '#',
               onClick: (event: Event) => {
@@ -134,7 +139,12 @@ const CDropdownToggle = defineComponent({
         : h(
             CButton,
             {
-              class: className,
+              class: [
+                className,
+                {
+                  show: visible.value,
+                },
+              ],
               active: props.active,
               color: props.color,
               disabled: props.disabled,
