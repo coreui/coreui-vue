@@ -96,7 +96,7 @@ const CDropdownToggle = defineComponent({
     },
   },
   setup(props, { slots }) {
-    const buttonRef = ref()
+    const togglerRef = ref()
     const dropdownToggleRef = inject('dropdownToggleRef') as Ref<HTMLElement>
     const dropdownVariant = inject('variant') as string
     const visible = inject('visible') as Ref<boolean>
@@ -124,8 +124,8 @@ const CDropdownToggle = defineComponent({
     }
 
     onMounted(() => {
-      if (buttonRef.value) {
-        dropdownToggleRef.value = buttonRef.value.$el
+      if (togglerRef.value) {
+        dropdownToggleRef.value = togglerRef.value.$el
       }
     })
 
@@ -134,7 +134,9 @@ const CDropdownToggle = defineComponent({
         ? slots.default &&
           slots.default().map((slot) =>
             cloneVNode(slot, {
-              ref: dropdownToggleRef,
+              ref: (el) => {
+                togglerRef.value = el
+              },
               ...triggers,
             }),
           )
@@ -170,7 +172,7 @@ const CDropdownToggle = defineComponent({
               color: props.color,
               disabled: props.disabled,
               ref: (el) => {
-                buttonRef.value = el
+                togglerRef.value = el
               },
               shape: props.shape,
               size: props.size,
