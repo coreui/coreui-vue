@@ -1,4 +1,4 @@
-import { defineComponent, h, onMounted, watch, ref } from 'vue'
+import { defineComponent, h, watch, ref } from 'vue'
 
 import { CFormLabel } from './CFormLabel'
 
@@ -80,12 +80,6 @@ const CFormSwitch = defineComponent({
   ],
   setup(props, { attrs, emit }) {
     const checked = ref(attrs.checked)
-
-    onMounted(() => {
-      if (props.modelValue && typeof props.modelValue === 'boolean') {
-        console.log(props.modelValue)
-      }
-    })
 
     watch(
       () => props.modelValue,
