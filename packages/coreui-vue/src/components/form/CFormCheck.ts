@@ -128,6 +128,7 @@ const CFormCheck = defineComponent({
 
     const formControl = () => {
       return h('input', {
+        ...attrs,
         checked: props.modelValue,
         class: [
           props.button ? 'btn-check' : 'form-check-input',
@@ -140,7 +141,6 @@ const CFormCheck = defineComponent({
         indeterminate: props.indeterminate,
         onChange: (event: InputEvent) => handleChange(event),
         type: props.type,
-        ...attrs,
       })
     }
     const formLabel = () => {
@@ -181,6 +181,7 @@ const CFormCheck = defineComponent({
                   'is-invalid': props.invalid,
                   'is-valid': props.valid,
                 },
+                attrs.class,
               ],
             },
             [formControl(), props.label && formLabel()],
