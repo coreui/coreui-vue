@@ -112,15 +112,30 @@ const CDropdownToggle = defineComponent({
     ]
 
     const triggers = {
-      ...((props.trigger === 'click' || props.trigger.includes('click')) &&
-        !props.disabled && {
-          onClick: () => toggleMenu(),
-        }),
-      ...((props.trigger === 'focus' || props.trigger.includes('focus')) &&
-        !props.disabled && {
-          onfocus: () => toggleMenu(true),
-          onblur: () => toggleMenu(false),
-        }),
+      ...((props.trigger === 'click' || props.trigger.includes('click')) && {
+        onClick: () => {
+          if (props.disabled) {
+            return
+          }
+
+          toggleMenu()
+        },
+      }),
+      ...((props.trigger === 'focus' || props.trigger.includes('focus')) && {
+        onfocus: () => {
+          if (props.disabled) {
+            return
+          }
+
+          toggleMenu(true)
+        },
+        onblur: () => {
+          if (props.disabled) {
+            return
+          }
+          toggleMenu(false)
+        },
+      }),
     }
 
     onMounted(() => {
