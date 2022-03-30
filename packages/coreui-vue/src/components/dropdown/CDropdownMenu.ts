@@ -37,14 +37,16 @@ const CDropdownMenu = defineComponent({
       return classNames
     }
 
-    const handleKeyup = (event: Event) => {
+    const handleKeyup = (event: KeyboardEvent) => {
       if (autoClose === false) {
         return
       }
-      if (!dropdownMenuRef.value?.contains(event.target as HTMLElement)) {
+
+      if (event.key === 'Escape') {
         hideMenu()
       }
     }
+
     const handleMouseUp = (event: Event) => {
       if (dropdownToggleRef.value?.contains(event.target as HTMLElement)) {
         return
