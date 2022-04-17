@@ -115,6 +115,7 @@ const CToast = defineComponent({
         clearTimeout(timeout)
         timeout = window.setTimeout(() => {
           visible.value = false
+          emit('close')
         }, props.delay)
       }
     })
