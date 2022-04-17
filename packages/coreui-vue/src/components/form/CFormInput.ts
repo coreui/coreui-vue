@@ -1,8 +1,10 @@
 import { defineComponent, h } from 'vue'
+import { CFormControlWrapper } from './CFormControlWrapper'
 
 const CFormInput = defineComponent({
   name: 'CFormInput',
   props: {
+    ...CFormControlWrapper.props,
     /**
      * Toggle the disabled state for the component.
      */
@@ -84,12 +86,13 @@ const CFormInput = defineComponent({
      */
     'update:modelValue',
   ],
-  setup(props, { emit, slots }) {
+  setup(props, { attrs, emit, slots }) {
     const handleChange = (event: InputEvent) => {
       const target = event.target as HTMLInputElement
       emit('change', event)
       emit('update:modelValue', target.value)
     }
+
     const handleInput = (event: InputEvent) => {
       const target = event.target as HTMLInputElement
       emit('input', event)
@@ -98,25 +101,55 @@ const CFormInput = defineComponent({
 
     return () =>
       h(
-        'input',
+        CFormControlWrapper,
         {
-          class: [
-            props.plainText ? 'form-control-plaintext' : 'form-control',
-            {
-              'form-control-color': props.type === 'color',
-              [`form-control-${props.size}`]: props.size,
-              'is-invalid': props.invalid,
-              'is-valid': props.valid,
-            },
-          ],
-          disabled: props.disabled,
-          onChange: (event: InputEvent) => handleChange(event),
-          onInput: (event: InputEvent) => handleInput(event),
-          readonly: props.readonly,
-          type: props.type,
-          value: props.modelValue,
+          describedby: attrs['aria-describedby'],
+          feedback: props.feedback,
+          feedbackInvalid: props.feedbackInvalid,
+          feedbackValid: props.feedbackValid,
+          floatingLabel: props.floatingLabel,
+          id: props.id,
+          invalid: props.invalid,
+          label: props.label,
+          text: props.text,
+          tooltipFeedback: props.tooltipFeedback,
+          valid: props.valid,
         },
-        slots.default && slots.default(),
+        {
+          default: () =>
+            h(
+              'input',
+              {
+                ...attrs,
+                class: [
+                  props.plainText ? 'form-control-plaintext' : 'form-control',
+                  {
+                    'form-control-color': props.type === 'color',
+                    [`form-control-${props.size}`]: props.size,
+                    'is-invalid': props.invalid,
+                    'is-valid': props.valid,
+                  },
+                  attrs.class,
+                ],
+                disabled: props.disabled,
+                onChange: (event: InputEvent) => handleChange(event),
+                onInput: (event: InputEvent) => handleInput(event),
+                readonly: props.readonly,
+                type: props.type,
+                value: props.modelValue || attrs.value,
+              },
+              slots.default && slots.default(),
+            ),
+          ...(slots.feedback && { feedback: () => slots.feedback && slots.feedback() }),
+          ...(slots.feedbackInvalid && {
+            feedbackInvalid: () => slots.feedbackInvalid && slots.feedbackInvalid(),
+          }),
+          ...(slots.feedbackValid && {
+            feedbackValid: () => slots.feedbackInvalid && slots.feedbackInvalid(),
+          }),
+          ...(slots.label && { label: () => slots.label && slots.label() }),
+          ...(slots.text && { text: () => slots.text && slots.text() }),
+        },
       )
   },
 })

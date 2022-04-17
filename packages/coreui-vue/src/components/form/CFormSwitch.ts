@@ -1,4 +1,4 @@
-import { defineComponent, h, watch, ref } from 'vue'
+import { defineComponent, h } from 'vue'
 
 import { CFormLabel } from './CFormLabel'
 
@@ -79,15 +79,6 @@ const CFormSwitch = defineComponent({
     'update:modelValue',
   ],
   setup(props, { attrs, emit }) {
-    const checked = ref(attrs.checked)
-
-    watch(
-      () => props.modelValue,
-      () => {
-        if (typeof props.modelValue === 'boolean') checked.value = props.modelValue
-      },
-    )
-
     const handleChange = (event: InputEvent) => {
       const target = event.target as HTMLInputElement
       emit('change', event)
@@ -110,7 +101,7 @@ const CFormSwitch = defineComponent({
         [
           h('input', {
             ...attrs,
-            checked: checked.value,
+            ...(props.modelValue && { checked: props.modelValue }),
             class: [
               'form-check-input',
               {

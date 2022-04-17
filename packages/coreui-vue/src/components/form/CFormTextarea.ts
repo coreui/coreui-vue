@@ -1,8 +1,10 @@
 import { defineComponent, h } from 'vue'
+import { CFormControlWrapper } from './CFormControlWrapper'
 
 const CFormTextarea = defineComponent({
   name: 'CFormTextarea',
   props: {
+    ...CFormControlWrapper.props,
     /**
      * Toggle the disabled state for the component.
      */
@@ -61,7 +63,7 @@ const CFormTextarea = defineComponent({
      */
     'update:modelValue',
   ],
-  setup(props, { emit, slots }) {
+  setup(props, { attrs, emit, slots }) {
     const handleInput = (event: InputEvent) => {
       const target = event.target as HTMLInputElement
       emit('input', event)
@@ -70,21 +72,50 @@ const CFormTextarea = defineComponent({
 
     return () =>
       h(
-        'textarea',
+        CFormControlWrapper,
         {
-          disabled: props.disabled,
-          readonly: props.readonly,
-          class: [
-            props.plainText ? 'form-control-plaintext' : 'form-control',
-            {
-              'is-invalid': props.invalid,
-              'is-valid': props.valid,
-            },
-          ],
-          onInput: (event: InputEvent) => handleInput(event),
-          value: props.modelValue,
+          describedby: attrs['aria-describedby'],
+          feedback: props.feedback,
+          feedbackInvalid: props.feedbackInvalid,
+          feedbackValid: props.feedbackValid,
+          floatingLabel: props.floatingLabel,
+          id: props.id,
+          invalid: props.invalid,
+          label: props.label,
+          text: props.text,
+          tooltipFeedback: props.tooltipFeedback,
+          valid: props.valid,
         },
-        slots.default && slots.default(),
+        {
+          default: () =>
+            h(
+              'textarea',
+              {
+                ...attrs,
+                disabled: props.disabled,
+                readonly: props.readonly,
+                class: [
+                  props.plainText ? 'form-control-plaintext' : 'form-control',
+                  {
+                    'is-invalid': props.invalid,
+                    'is-valid': props.valid,
+                  },
+                ],
+                onInput: (event: InputEvent) => handleInput(event),
+                ...(props.modelValue && { value: props.modelValue }),
+              },
+              slots.default && slots.default(),
+            ),
+          ...(slots.feedback && { feedback: () => slots.feedback && slots.feedback() }),
+          ...(slots.feedbackInvalid && {
+            feedbackInvalid: () => slots.feedbackInvalid && slots.feedbackInvalid(),
+          }),
+          ...(slots.feedbackValid && {
+            feedbackValid: () => slots.feedbackInvalid && slots.feedbackInvalid(),
+          }),
+          ...(slots.label && { label: () => slots.label && slots.label() }),
+          ...(slots.text && { text: () => slots.text && slots.text() }),
+        },
       )
   },
 })

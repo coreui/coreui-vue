@@ -1,4 +1,5 @@
 import { defineComponent, h } from 'vue'
+import { CFormLabel } from './CFormLabel'
 
 const CFormRange = defineComponent({
   name: 'CFormRange',
@@ -9,7 +10,14 @@ const CFormRange = defineComponent({
     disabled: {
       type: Boolean,
       default: undefined,
-      required: false,
+    },
+    /**
+     * Add a caption for a component.
+     *
+     * @since 4.2.0
+     */
+    label: {
+      type: String,
     },
     /**
      * Specifies the maximum value for the component.
@@ -17,7 +25,6 @@ const CFormRange = defineComponent({
     max: {
       type: Number,
       default: undefined,
-      required: false,
     },
     /**
      * Specifies the minimum value for the component.
@@ -25,7 +32,6 @@ const CFormRange = defineComponent({
     min: {
       type: Number,
       default: undefined,
-      required: false,
     },
     /**
      * The default name for a value passed using v-model.
@@ -33,14 +39,12 @@ const CFormRange = defineComponent({
     modelValue: {
       type: String,
       value: undefined,
-      required: false,
     },
     /**
      * Toggle the readonly state for the component.
      */
     readonly: {
       type: Boolean,
-      required: false,
     },
     /**
      * Specifies the interval between legal numbers in the component.
@@ -48,7 +52,6 @@ const CFormRange = defineComponent({
     steps: {
       type: Number,
       default: undefined,
-      required: false,
     },
     /**
      * The `value` attribute of component.
@@ -58,7 +61,6 @@ const CFormRange = defineComponent({
     value: {
       type: Number,
       default: undefined,
-      required: false,
     },
   },
   emits: [
@@ -71,29 +73,41 @@ const CFormRange = defineComponent({
      */
     'update:modelValue',
   ],
-  setup(props, { emit, slots }) {
+  setup(props, { attrs, emit, slots }) {
     const handleChange = (event: InputEvent) => {
       const target = event.target as HTMLInputElement
       emit('change', event)
       emit('update:modelValue', target.value)
     }
 
-    return () =>
+    return () => [
+      props.label &&
+        h(
+          CFormLabel,
+          {
+            for: attrs.id,
+          },
+          {
+            default: () => (slots.label && slots.label()) || props.label,
+          },
+        ),
       h(
         'input',
         {
+          ...attrs,
           class: 'form-range',
           disabled: props.disabled,
           max: props.max,
           min: props.min,
           onChange: (event: InputEvent) => handleChange(event),
-          steps: props.steps,
           readonly: props.readonly,
+          steps: props.steps,
           type: 'range',
           value: props.modelValue,
         },
         slots.default && slots.default(),
-      )
+      ),
+    ]
   },
 })
 

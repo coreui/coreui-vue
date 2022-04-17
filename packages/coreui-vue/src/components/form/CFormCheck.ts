@@ -1,13 +1,16 @@
 import { defineComponent, h } from 'vue'
 import { shape } from 'vue-types'
 
-import { Color, Shape } from '../props'
+import { CFormControlValidation } from './CFormControlValidation'
 import { CFormLabel } from './CFormLabel'
+
+import { Color, Shape } from '../props'
 
 const CFormCheck = defineComponent({
   name: 'CFormCheck',
   inheritAttrs: false,
   props: {
+    ...CFormControlValidation.props,
     /**
      * Create button-like checkboxes and radio buttons.
      */
@@ -76,6 +79,17 @@ const CFormCheck = defineComponent({
       required: false,
     },
     /**
+     * Sets hit area to the full area of the component.
+     */
+    hitArea: {
+      type: String,
+      required: false,
+      validator: (value: string): boolean => {
+        // The value must match one of these strings
+        return ['full'].includes(value)
+      },
+    },
+    /**
      * The element represents a caption for a component.
      */
     label: {
@@ -126,39 +140,57 @@ const CFormCheck = defineComponent({
       emit('update:modelValue', target.checked)
     }
 
-    const formControl = () => {
-      return h('input', {
-        ...attrs,
-        checked: props.modelValue,
-        class: [
-          props.button ? 'btn-check' : 'form-check-input',
+    const className = [
+      'form-check',
+      {
+        'form-check-inline': props.inline,
+        'is-invalid': props.invalid,
+        'is-valid': props.valid,
+      },
+      attrs.class,
+    ]
+
+    const inputClassName = props.button
+      ? 'btn-check'
+      : [
+          'form-check-input',
           {
             'is-invalid': props.invalid,
             'is-valid': props.valid,
+            'me-2': props.hitArea,
           },
-        ],
+        ]
+
+    const labelClassName = props.button
+      ? [
+          'btn',
+          props.button.variant
+            ? `btn-${props.button.variant}-${props.button.color}`
+            : `btn-${props.button.color}`,
+          {
+            [`btn-${props.button.size}`]: props.button.size,
+          },
+          `${props.button.shape}`,
+        ]
+      : 'form-check-label'
+
+    const formControl = () => {
+      return h('input', {
+        ...attrs,
+        ...(props.modelValue && { checked: props.modelValue }),
+        class: inputClassName,
         id: props.id,
         indeterminate: props.indeterminate,
         onChange: (event: InputEvent) => handleChange(event),
         type: props.type,
       })
     }
+
     const formLabel = () => {
       return h(
         CFormLabel,
         {
-          customClassName: props.button
-            ? [
-                'btn',
-                props.button.variant
-                  ? `btn-${props.button.variant}-${props.button.color}`
-                  : `btn-${props.button.color}`,
-                {
-                  [`btn-${props.button.size}`]: props.button.size,
-                },
-                `${props.button.shape}`,
-              ]
-            : 'form-check-label',
+          customClassName: labelClassName,
           ...(props.id && { for: props.id }),
         },
         {
@@ -167,25 +199,41 @@ const CFormCheck = defineComponent({
       )
     }
 
+    const formValidation = () => {
+      return h(CFormControlValidation, {
+        describedby: attrs['aria-describedby'] as string,
+        feedback: props.feedback,
+        feedbackInvalid: props.feedbackInvalid,
+        feedbackValid: props.feedbackValid,
+        invalid: props.invalid,
+        tooltipFeedback: props.tooltipFeedback,
+        valid: props.valid,
+      })
+    }
+
     return () =>
       props.button
-        ? [formControl(), (slots.label || props.label) && formLabel()]
+        ? [formControl(), (slots.label || props.label) && formLabel(), formValidation()]
         : props.label
-        ? h(
-            'div',
-            {
-              class: [
-                'form-check',
+        ? props.hitArea
+          ? [
+              h(
+                CFormLabel,
                 {
-                  'form-check-inline': props.inline,
-                  'is-invalid': props.invalid,
-                  'is-valid': props.valid,
+                  customClassName: className,
+                  ...(props.id && { for: props.id }),
                 },
-                attrs.class,
-              ],
-            },
-            [formControl(), props.label && formLabel()],
-          )
+                [formControl(), props.label],
+              ),
+              formValidation(),
+            ]
+          : h(
+              'div',
+              {
+                class: className,
+              },
+              [formControl(), props.label && formLabel(), formValidation()],
+            )
         : formControl()
   },
 })
