@@ -14,8 +14,6 @@ module.exports = (renderedUsage, doc, config, fileName, requiresMd, { isSubCompo
       frontMatter.push('sidebarDepth: 2');
   }
 
-  const relativeFilename = fileName.replace('coreui-', '')
-
   return `${frontMatter.length && !isSubComponent
       ? `
 ---

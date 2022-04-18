@@ -303,6 +303,27 @@ Place CoreUI's checkboxes and radios within list group items and customize as ne
 </CListGroup>
 ```
 
+And if you want `<label>`s as the `.list-group-item` for large hit areas, you can do that, too.
+
+::: demo
+<CListGroup>
+  <CListGroupItem><CFormCheck hitArea="full" label="Cras justo odio"/></CListGroupItem>
+  <CListGroupItem><CFormCheck hitArea="full" label="Dapibus ac facilisis in" checked/></CListGroupItem>
+  <CListGroupItem><CFormCheck hitArea="full" label="Morbi leo risus" checked/></CListGroupItem>
+  <CListGroupItem><CFormCheck hitArea="full" label="orta ac consectetur ac"/></CListGroupItem>
+  <CListGroupItem><CFormCheck hitArea="full" label="Vestibulum at eros"/></CListGroupItem>
+</CListGroup>
+:::
+```vue
+<CListGroup>
+  <CListGroupItem><CFormCheck hitArea="full" label="Cras justo odio"/></CListGroupItem>
+  <CListGroupItem><CFormCheck hitArea="full" label="Dapibus ac facilisis in" checked/></CListGroupItem>
+  <CListGroupItem><CFormCheck hitArea="full" label="Morbi leo risus" checked/></CListGroupItem>
+  <CListGroupItem><CFormCheck hitArea="full" label="orta ac consectetur ac"/></CListGroupItem>
+  <CListGroupItem><CFormCheck hitArea="full" label="Vestibulum at eros"/></CListGroupItem>
+</CListGroup>
+```
+
 ## API
 
 !!!include(./api/list-group/CListGroup.api.md)!!!

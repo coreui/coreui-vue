@@ -2,8 +2,7 @@
 'use strict'
 
 const path = require('path')
-const pkg = require('./../package.json')
-// const templates = require('./docgen.templates')
+// const pkg = require('./../package.json')
 
 module.exports = {
   componentsRoot: './../../packages', // the folder where CLI will start searching for components.
@@ -12,7 +11,6 @@ module.exports = {
     '!**/[A-Z]*.d.ts',
     '!**/[A-Z]*.spec.ts'
   ],
-  // the glob to define what files should be documented as components (relative to componentRoot)
   outDir: 'api', // folder to save components docs in (relative to the current working directry)
   getDocFileName: (componentPath) =>
     componentPath.replace(/\.ts$/, '.md'), // specify the name of the input md file

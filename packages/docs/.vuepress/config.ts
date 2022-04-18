@@ -105,33 +105,49 @@ export default defineUserConfig<DefaultThemeOptions>({
         icon: `<rect width="288" height="32" x="112" y="152" fill="var(--ci-primary-color, currentColor)" class="ci-primary"></rect><rect width="288" height="32" x="112" y="240" fill="var(--ci-primary-color, currentColor)" class="ci-primary"></rect><rect width="152" height="32" x="112" y="328" fill="var(--ci-primary-color, currentColor)" class="ci-primary"></rect><path fill="var(--ci-primary-color, currentColor)" d="M480,48H32V464H480ZM448,432H64V80H448Z" class="ci-primary"></path>`,
         link: `/forms/`,
         children: [
+          // {
+          //   text: 'Overview',
+          //   link: `/forms/overview.html`,
+          // },
           {
-            text: 'Overview',
-            link: `/forms/overview.html`,
+            text: 'Checkbox',
+            link: `/forms/checkbox.html`,
           },
           {
-            text: 'Form control',
-            link: `/forms/form-control.html`,
+            text: 'Input',
+            link: `/forms/input.html`,
+          },
+          {
+            text: 'Input group',
+            link: `/forms/input-group.html`,
+          },
+          {
+            text: 'Radio',
+            link: `/forms/radio.html`,
+          },
+          // {
+          //   text: 'Checks & radios',
+          //   link: `/forms/checks-radios.html`,
+          // },
+          {
+            text: 'Range',
+            link: `/forms/range.html`,
           },
           {
             text: 'Select',
             link: `/forms/select.html`,
           },
           {
-            text: 'Checks & radios',
-            link: `/forms/checks-radios.html`,
+            text: 'Switch',
+            link: `/forms/switch.html`,
           },
           {
-            text: 'Range',
-            link: `/forms/range.html`,
+            text: 'Textarea',
+            link: `/forms/textarea.html`,
           },
           {
             text: 'Floating labels',
             link: `/forms/floating-labels.html`,
-          },
-          {
-            text: 'Input group',
-            link: `/forms/input-group.html`,
           },
           {
             text: 'Layout',

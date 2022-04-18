@@ -1,7 +1,7 @@
 ---
-title: Vue Checkbox & Radio Components
-name: Checks & radios
-description: Create consistent cross-browser and cross-device checkboxes and radios with our Vue checkbox, radio, and switch components.
+title: Vue Radio Component
+name: Radio
+description: Create consistent cross-browser and cross-device radios with our Vue radio component.
 ---
 
 ## Approach
@@ -177,39 +177,39 @@ Create button-like checkboxes and radio buttons by using `button` boolean proper
 ### Checkbox toggle buttons
 
 ::: demo
-<CFormCheck :button="{ color: 'primary' }" id="btn-check" autoComplete="off" label="Single toggle"/>
+<CFormCheck :button="{ color: 'primary' }" id="btn-check" autocomplete="off" label="Single toggle"/>
 :::
 ```vue
-<CFormCheck :button="{ color: 'primary' }" id="btn-check" autoComplete="off" label="Single toggle"/>
+<CFormCheck :button="{ color: 'primary' }" id="btn-check" autocomplete="off" label="Single toggle"/>
 ```
 
 ::: demo
-<CFormCheck :button="{ color: 'primary' }" id="btn-check-2" autoComplete="off" label="Checked" checked/>
+<CFormCheck :button="{ color: 'primary' }" id="btn-check-2" autocomplete="off" label="Checked" checked/>
 :::
 ```vue
-<CFormCheck :button="{ color: 'primary' }" id="btn-check-2" autoComplete="off" label="Checked" checked/>
+<CFormCheck :button="{ color: 'primary' }" id="btn-check-2" autocomplete="off" label="Checked" checked/>
 ```
 
 ::: demo
-<CFormCheck :button="{ color: 'primary' }" id="btn-check-3" autoComplete="off" label="Disabled" disabled/>
+<CFormCheck :button="{ color: 'primary' }" id="btn-check-3" autocomplete="off" label="Disabled" disabled/>
 :::
 ```vue
-<CFormCheck :button="{ color: 'primary' }" id="btn-check-3" autoComplete="off" label="Disabled" disabled/>
+<CFormCheck :button="{ color: 'primary' }" id="btn-check-3" autocomplete="off" label="Disabled" disabled/>
 ```
 
 ### Radio toggle buttons
 
 ::: demo
-<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option1" autoComplete="off" label="Checked" checked/>
-<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option2" autoComplete="off" label="Radio"/>
-<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option3" autoComplete="off" label="Radio" disabled/>
-<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option4" autoComplete="off" label="Radio"/>
+<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option1" autocomplete="off" label="Checked" checked/>
+<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option2" autocomplete="off" label="Radio"/>
+<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option3" autocomplete="off" label="Radio" disabled/>
+<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option4" autocomplete="off" label="Radio"/>
 :::
 ```vue
-<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option1" autoComplete="off" label="Checked" checked/>
-<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option2" autoComplete="off" label="Radio"/>
-<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option3" autoComplete="off" label="Radio" disabled/>
-<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option4" autoComplete="off" label="Radio"/>
+<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option1" autocomplete="off" label="Checked" checked/>
+<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option2" autocomplete="off" label="Radio"/>
+<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option3" autocomplete="off" label="Radio" disabled/>
+<CFormCheck :button="{ color: 'secondary' }" type="radio" name="options" id="option4" autocomplete="off" label="Radio"/>
 ```
 
 ### Outlined styles
@@ -218,26 +218,26 @@ Different variants of button, such at the various outlined styles, are supported
 
 ::: demo
 <div> 
-  <CFormCheck :button="{ color: 'primary', variant: 'outline' }" id="btn-check-outlined" autoComplete="off" label="Single toggle"/>
+  <CFormCheck :button="{ color: 'primary', variant: 'outline' }" id="btn-check-outlined" autocomplete="off" label="Single toggle"/>
 </div>
 <div>
-  <CFormCheck :button="{ color: 'secondary', variant: 'outline' }" id="btn-check-2-outlined" autoComplete="off" label="Checked" checked/>
+  <CFormCheck :button="{ color: 'secondary', variant: 'outline' }" id="btn-check-2-outlined" autocomplete="off" label="Checked" checked/>
 </div>
 <div>
-  <CFormCheck :button="{ color: 'success', variant: 'outline' }" type="radio" name="options-outlined" id="success-outlined" autoComplete="off" label="Radio" checked/>
-  <CFormCheck :button="{ color: 'danger', variant: 'outline' }" type="radio" name="options-outlined" id="danger-outlined" autoComplete="off" label="Radio"/>
+  <CFormCheck :button="{ color: 'success', variant: 'outline' }" type="radio" name="options-outlined" id="success-outlined" autocomplete="off" label="Radio" checked/>
+  <CFormCheck :button="{ color: 'danger', variant: 'outline' }" type="radio" name="options-outlined" id="danger-outlined" autocomplete="off" label="Radio"/>
 </div>
 :::
 ```vue
 <div> 
-  <CFormCheck :button="{ color: 'primary', variant: 'outline' }" id="btn-check-outlined" autoComplete="off" label="Single toggle"/>
+  <CFormCheck :button="{ color: 'primary', variant: 'outline' }" id="btn-check-outlined" autocomplete="off" label="Single toggle"/>
 </div>
 <div>
-  <CFormCheck :button="{ color: 'secondary', variant: 'outline' }" id="btn-check-2-outlined" autoComplete="off" label="Checked" checked/>
+  <CFormCheck :button="{ color: 'secondary', variant: 'outline' }" id="btn-check-2-outlined" autocomplete="off" label="Checked" checked/>
 </div>
 <div>
-  <CFormCheck :button="{ color: 'success', variant: 'outline' }" type="radio" name="options-outlined" id="success-outlined" autoComplete="off" label="Radio" checked/>
-  <CFormCheck :button="{ color: 'danger', variant: 'outline' }" type="radio" name="options-outlined" id="danger-outlined" autoComplete="off" label="Radio"/>
+  <CFormCheck :button="{ color: 'success', variant: 'outline' }" type="radio" name="options-outlined" id="success-outlined" autocomplete="off" label="Radio" checked/>
+  <CFormCheck :button="{ color: 'danger', variant: 'outline' }" type="radio" name="options-outlined" id="danger-outlined" autocomplete="off" label="Radio"/>
 </div>
 ```
 
