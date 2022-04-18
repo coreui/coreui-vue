@@ -83,7 +83,7 @@ const CChart = defineComponent({
     /**
      * Chart.js chart type.
      *
-     * @type {'line' | 'bar' | 'radar' | 'doughnut' | 'polarArea' | 'bubble' | 'pie' | 'scatter'}
+     * @type 'line' | 'bar' | 'radar' | 'doughnut' | 'polarArea' | 'bubble' | 'pie' | 'scatter'
      */
     type: {
       type: String as PropType<ChartType>,

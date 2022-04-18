@@ -11,23 +11,18 @@ const CFormSwitch = defineComponent({
      */
     id: {
       type: String,
-      default: undefined,
-      required: false,
     },
     /**
      * Set component validation state to invalid.
      */
     invalid: {
       type: Boolean,
-      required: false,
     },
     /**
      * The element represents a caption for a component.
      */
     label: {
       type: String,
-      default: undefined,
-      required: false,
     },
     /**
      * The default name for a value passed using v-model.
@@ -35,7 +30,6 @@ const CFormSwitch = defineComponent({
     modelValue: {
       type: [Boolean, String],
       value: undefined,
-      required: false,
     },
     /**
      * Size the component large or extra large. Works only with `switch`.
@@ -44,8 +38,6 @@ const CFormSwitch = defineComponent({
      */
     size: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['lg', 'xl'].includes(value)
       },
@@ -58,14 +50,12 @@ const CFormSwitch = defineComponent({
     type: {
       type: String,
       default: 'checkbox',
-      required: false,
     },
     /**
      * Set component validation state to valid.
      */
     valid: {
       type: Boolean,
-      required: false,
     },
   },
   emits: [

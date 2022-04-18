@@ -14,7 +14,7 @@ const CFormControlValidation = defineComponent({
     /**
      * Provide valuable, actionable feedback.
      *
-     * @since 4.2.0
+     * @since 4.3.0
      */
     feedback: {
       type: String,
@@ -22,7 +22,7 @@ const CFormControlValidation = defineComponent({
     /**
      * Provide valuable, actionable feedback.
      *
-     * @since 4.2.0
+     * @since 4.3.0
      */
     feedbackInvalid: {
       type: String,
@@ -30,7 +30,7 @@ const CFormControlValidation = defineComponent({
     /**
      * Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.
      *
-     * @since 4.2.0
+     * @since 4.3.0
      */
     feedbackValid: {
       type: String,
@@ -42,7 +42,7 @@ const CFormControlValidation = defineComponent({
     /**
      * Display validation feedback in a styled tooltip.
      *
-     * @since 4.2.0
+     * @since 4.3.0
      */
     tooltipFeedback: Boolean,
     /**

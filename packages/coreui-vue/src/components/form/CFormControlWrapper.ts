@@ -12,7 +12,7 @@ const CFormControlWrapper = defineComponent({
     /**
      * Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.
      *
-     * @since 4.2.0
+     * @since 4.3.0
      */
     floatingLabel: {
       type: String,
@@ -26,7 +26,7 @@ const CFormControlWrapper = defineComponent({
     /**
      * Add a caption for a component.
      *
-     * @since 4.2.0
+     * @since 4.3.0
      */
     label: {
       type: String,
@@ -34,7 +34,7 @@ const CFormControlWrapper = defineComponent({
     /**
      * Add helper text to the component.
      *
-     * @since 4.2.0
+     * @since 4.3.0
      */
     text: {
       type: String,

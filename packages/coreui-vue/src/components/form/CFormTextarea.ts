@@ -4,20 +4,61 @@ import { CFormControlWrapper } from './CFormControlWrapper'
 const CFormTextarea = defineComponent({
   name: 'CFormTextarea',
   props: {
-    ...CFormControlWrapper.props,
     /**
      * Toggle the disabled state for the component.
      */
     disabled: {
       type: Boolean,
-      required: false,
+    },
+    /**
+     * Provide valuable, actionable feedback.
+     *
+     * @since 4.3.0
+     */
+    feedback: {
+      type: String,
+    },
+    /**
+     * Provide valuable, actionable feedback.
+     *
+     * @since 4.3.0
+     */
+    feedbackInvalid: {
+      type: String,
+    },
+    /**
+     * Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.
+     *
+     * @since 4.3.0
+     */
+    feedbackValid: {
+      type: String,
+    },
+    /**
+     * Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.
+     *
+     * @since 4.3.0
+     */
+    floatingLabel: {
+      type: String,
+    },
+    /**
+     * The id global attribute defines an identifier (ID) that must be unique in the whole document.
+     */
+    id: {
+      type: String,
     },
     /**
      * Set component validation state to invalid.
      */
-    invalid: {
-      type: Boolean,
-      required: false,
+    invalid: Boolean,
+    /**
+     * Add a caption for a component.
+     *
+     * @since 4.3.0
+     */
+    label: {
+      type: String,
     },
     /**
      * The default name for a value passed using v-model.
@@ -25,29 +66,37 @@ const CFormTextarea = defineComponent({
     modelValue: {
       type: String,
       default: undefined,
-      require: false,
     },
     /**
      * Render the component styled as plain text. Removes the default form field styling and preserve the correct margin and padding. Recommend to use only along side `readonly`.
      */
     plainText: {
       type: Boolean,
-      required: false,
     },
     /**
      * Toggle the readonly state for the component.
      */
     readonly: {
       type: Boolean,
-      required: false,
     },
+    /**
+     * Add helper text to the component.
+     *
+     * @since 4.3.0
+     */
+    text: {
+      type: String,
+    },
+    /**
+     * Display validation feedback in a styled tooltip.
+     *
+     * @since 4.3.0
+     */
+    tooltipFeedback: Boolean,
     /**
      * Set component validation state to valid.
      */
-    valid: {
-      type: Boolean,
-      required: false,
-    },
+    valid: Boolean,
   },
   emits: [
     /**

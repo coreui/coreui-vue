@@ -11,7 +11,38 @@ type Option = {
 const CFormSelect = defineComponent({
   name: 'CFormSelect',
   props: {
-    ...CFormControlWrapper.props,
+    /**
+     * Provide valuable, actionable feedback.
+     *
+     * @since 4.3.0
+     */
+    feedback: {
+      type: String,
+    },
+    /**
+     * Provide valuable, actionable feedback.
+     *
+     * @since 4.3.0
+     */
+    feedbackInvalid: {
+      type: String,
+    },
+    /**
+     * Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.
+     *
+     * @since 4.3.0
+     */
+    feedbackValid: {
+      type: String,
+    },
+    /**
+     * Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.
+     *
+     * @since 4.3.0
+     */
+    floatingLabel: {
+      type: String,
+    },
     /**
      * Specifies the number of visible options in a drop-down list.
      */
@@ -21,11 +52,22 @@ const CFormSelect = defineComponent({
       required: false,
     },
     /**
+     * The id global attribute defines an identifier (ID) that must be unique in the whole document.
+     */
+    id: {
+      type: String,
+    },
+    /**
      * Set component validation state to invalid.
      */
-    invalid: {
-      type: Boolean,
-      required: false,
+    invalid: Boolean,
+    /**
+     * Add a caption for a component.
+     *
+     * @since 4.3.0
+     */
+    label: {
+      type: String,
     },
     /**
      * The default name for a value passed using v-model.
@@ -64,12 +106,23 @@ const CFormSelect = defineComponent({
       },
     },
     /**
+     * Add helper text to the component.
+     *
+     * @since 4.3.0
+     */
+    text: {
+      type: String,
+    },
+    /**
+     * Display validation feedback in a styled tooltip.
+     *
+     * @since 4.3.0
+     */
+    tooltipFeedback: Boolean,
+    /**
      * Set component validation state to valid.
      */
-    valid: {
-      type: Boolean,
-      required: false,
-    },
+    valid: Boolean,
   },
   emits: [
     /**

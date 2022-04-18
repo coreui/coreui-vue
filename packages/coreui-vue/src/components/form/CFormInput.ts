@@ -4,7 +4,6 @@ import { CFormControlWrapper } from './CFormControlWrapper'
 const CFormInput = defineComponent({
   name: 'CFormInput',
   props: {
-    ...CFormControlWrapper.props,
     /**
      * Toggle the disabled state for the component.
      */
@@ -12,12 +11,57 @@ const CFormInput = defineComponent({
       type: Boolean,
       required: false,
     },
+
+    // Inherited Props from CFormControlWrapper
+    /**
+     * Provide valuable, actionable feedback.
+     *
+     * @since 4.3.0
+     */
+    feedback: {
+      type: String,
+    },
+    /**
+     * Provide valuable, actionable feedback.
+     *
+     * @since 4.3.0
+     */
+    feedbackInvalid: {
+      type: String,
+    },
+    /**
+     * Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.
+     *
+     * @since 4.3.0
+     */
+    feedbackValid: {
+      type: String,
+    },
+    /**
+     * Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.
+     *
+     * @since 4.3.0
+     */
+    floatingLabel: {
+      type: String,
+    },
+    /**
+     * The id global attribute defines an identifier (ID) that must be unique in the whole document.
+     */
+    id: {
+      type: String,
+    },
     /**
      * Set component validation state to invalid.
      */
-    invalid: {
-      type: Boolean,
-      required: false,
+    invalid: Boolean,
+    /**
+     * Add a caption for a component.
+     *
+     * @since 4.3.0
+     */
+    label: {
+      type: String,
     },
     /**
      * The default name for a value passed using v-model.
@@ -25,7 +69,6 @@ const CFormInput = defineComponent({
     modelValue: {
       type: String,
       default: undefined,
-      require: false,
     },
     /**
      * Render the component styled as plain text. Removes the default form field styling and preserve the correct margin and padding. Recommend to use only along side `readonly`.
@@ -48,12 +91,24 @@ const CFormInput = defineComponent({
      */
     size: {
       type: String,
-      default: undefined,
-      require: false,
       validator: (value: string) => {
         return ['sm', 'lg'].includes(value)
       },
     },
+    /**
+     * Add helper text to the component.
+     *
+     * @since 4.3.0
+     */
+    text: {
+      type: String,
+    },
+    /**
+     * Display validation feedback in a styled tooltip.
+     *
+     * @since 4.3.0
+     */
+    tooltipFeedback: Boolean,
     /**
      * Specifies the type of component.
      *
@@ -62,15 +117,11 @@ const CFormInput = defineComponent({
     type: {
       type: String,
       default: 'text',
-      require: false,
     },
     /**
      * Set component validation state to valid.
      */
-    valid: {
-      type: Boolean,
-      required: false,
-    },
+    valid: Boolean,
   },
   emits: [
     /**
@@ -136,7 +187,7 @@ const CFormInput = defineComponent({
                 onInput: (event: InputEvent) => handleInput(event),
                 readonly: props.readonly,
                 type: props.type,
-                value: props.modelValue || attrs.value,
+                ...(props.modelValue && { value: props.modelValue }),
               },
               slots.default && slots.default(),
             ),
