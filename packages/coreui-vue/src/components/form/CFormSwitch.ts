@@ -86,6 +86,7 @@ const CFormSwitch = defineComponent({
       () => {
         if (typeof props.modelValue === 'boolean') checked.value = props.modelValue
       },
+      { immediate: true }
     )
 
     const handleChange = (event: InputEvent) => {
