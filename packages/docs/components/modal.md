@@ -23,7 +23,7 @@ Below is a static modal example (meaning its `position` and `display` have been 
 </CModal>
 :::
 ``` vue
-<CModal class="show d-block position-static" :backdrop="false" :keyboard="false" visible>
+<CModal :backdrop="false" :keyboard="false" visible>
   <CModalHeader>
     <CModalTitle>Modal title</CModalTitle>
   </CModalHeader>
