@@ -2,7 +2,7 @@
   "name": "@coreui/vue-docs",
   "version": "4.2.0",
   "config": {
-    "version_short": "4.1"
+    "version_short": "4.2"
   },
   "scripts": {
     "api": "vue-docgen -c build/docgen.config.js",
@@ -19,7 +19,6 @@
     "@vuepress/plugin-toc": "^2.0.0-beta.38",
     "markdown-it-include": "^2.0.0",
     "vue-docgen-cli": "^4.44.23",
-    "vue-github-button": "^3.0.1",
     "vuepress": "^2.0.0-beta.38"
   }
 }
