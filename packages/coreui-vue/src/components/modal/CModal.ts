@@ -14,6 +14,7 @@ import { CBackdrop } from './../backdrop/CBackdrop'
 
 const CModal = defineComponent({
   name: 'CModal',
+  inheritAttrs: false,
   props: {
     /**
      * Align the modal in the center or top of the screen.
@@ -159,6 +160,10 @@ const CModal = defineComponent({
         done()
       })
       document.body.classList.remove('modal-open')
+      if (document.body.className === '') {
+        document.body.removeAttribute('class')
+      }
+
       el.classList.remove('show')
     }
     const handleAfterLeave = (el: RendererElement) => {
