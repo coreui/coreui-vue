@@ -98,7 +98,6 @@ const COffcanvas = defineComponent({
     }
     const handleAfterEnter = () => {
       window.addEventListener('mousedown', handleMouseDown)
-      // window.addEventListener('click', handleClickOutside)
       window.addEventListener('keyup', handleKeyUp)
     }
     const handleLeave = (el: RendererElement, done: () => void) => {
