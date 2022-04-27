@@ -1,8 +1,8 @@
 {
   "name": "@coreui/vue-docs",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "config": {
-    "version_short": "4.2"
+    "version_short": "4.3"
   },
   "scripts": {
     "api": "vue-docgen -c build/docgen.config.js",
