@@ -1,6 +1,9 @@
 import { defineComponent, h, ref, RendererElement, Transition, watch, withDirectives } from 'vue'
+
 import { CBackdrop } from '../backdrop'
+
 import { vVisible } from '../../directives/v-c-visible'
+import { executeAfterTransition } from './../../utils/transition'
 
 const COffcanvas = defineComponent({
   name: 'COffcanvas',
@@ -88,9 +91,7 @@ const COffcanvas = defineComponent({
 
     const handleEnter = (el: RendererElement, done: () => void) => {
       emit('show')
-      el.addEventListener('transitionend', () => {
-        done()
-      })
+      executeAfterTransition(() => done(), el as HTMLElement)
       setTimeout(() => {
         el.style.visibility = 'visible'
         el.classList.add('show')
@@ -101,9 +102,7 @@ const COffcanvas = defineComponent({
       window.addEventListener('keyup', handleKeyUp)
     }
     const handleLeave = (el: RendererElement, done: () => void) => {
-      el.addEventListener('transitionend', () => {
-        done()
-      })
+      executeAfterTransition(() => done(), el as HTMLElement)
       window.removeEventListener('mousedown', handleMouseDown)
       window.removeEventListener('keyup', handleKeyUp)
       el.classList.remove('show')

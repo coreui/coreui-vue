@@ -1,5 +1,7 @@
 import { defineComponent, h, ref, RendererElement, Transition, vShow, withDirectives } from 'vue'
 
+import { executeAfterTransition } from './../../utils/transition'
+
 const CTabPane = defineComponent({
   name: 'CTabPane',
   props: {
@@ -30,20 +32,16 @@ const CTabPane = defineComponent({
       firstRender.value = false
       emit('show')
       setTimeout(() => {
+        executeAfterTransition(() => done(), el as HTMLElement)
         el.classList.add('show')
       }, 1)
-      el.addEventListener('transitionend', () => {
-        done()
-      })
     }
 
     const handleLeave = (el: RendererElement, done: () => void) => {
       firstRender.value = false
       emit('hide')
       el.classList.remove('show')
-      el.addEventListener('transitionend', () => {
-        done()
-      })
+      executeAfterTransition(() => done(), el as HTMLElement)
     }
 
     return () =>

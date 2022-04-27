@@ -1,5 +1,7 @@
 import { defineComponent, h, onMounted, provide, ref, RendererElement, Transition } from 'vue'
 
+import { executeAfterTransition } from './../../utils/transition'
+
 import { Color } from '../props'
 
 const CToast = defineComponent({
@@ -79,29 +81,31 @@ const CToast = defineComponent({
     }
     provide('updateVisible', updateVisible)
 
+    const handleBeforeEnter = (el: RendererElement) => {
+      el.classList.add('showing')
+    }
+
     const handleEnter = (el: RendererElement, done: () => void) => {
-      el.addEventListener('transitionend', () => {
-        done()
-      })
+      executeAfterTransition(() => done(), el as HTMLElement)
+      el.classList.add('show')
       setTimeout(() => {
-        el.classList.add('show')
+        el.classList.remove('showing')
       }, 1)
+
       if (props.index) {
         emit('show', props.index)
       } else {
         emit('show')
       }
     }
-    const handleBeforeLeave = (el: RendererElement) => {
-      el.classList.remove('show')
-    }
+
     const handleLeave = (el: RendererElement, done: () => void) => {
-      el.addEventListener('transitionend', () => {
-        done()
-      })
-      el.classList.remove('show')
+      executeAfterTransition(() => done(), el as HTMLElement)
+      el.classList.add('showing')
     }
+
     const handleAfterLeave = (el: RendererElement) => {
+      el.classList.remove('show')
       el.classList.add('hide')
       if (props.index) {
         emit('close', props.index)
@@ -125,8 +129,8 @@ const CToast = defineComponent({
         Transition,
         {
           appear: true,
+          onBeforeEnter: (el) => handleBeforeEnter(el),
           onEnter: (el, done) => handleEnter(el, done),
-          onBeforeLeave: (el) => handleBeforeLeave(el),
           onLeave: (el, done) => handleLeave(el, done),
           onAfterLeave: (el) => handleAfterLeave(el),
         },

@@ -1,5 +1,7 @@
 import { defineComponent, h, onMounted, ref, RendererElement, Transition, watch } from 'vue'
 
+import { executeAfterTransition } from './../../utils/transition'
+
 const CNavGroup = defineComponent({
   name: 'CNavGroup',
   props: {
@@ -62,9 +64,7 @@ const CNavGroup = defineComponent({
     }
 
     const handleEnter = (el: RendererElement, done: () => void) => {
-      el.addEventListener('transitionend', () => {
-        done()
-      })
+      executeAfterTransition(() => done(), el as HTMLElement)
       el.style.height = `${el.scrollHeight}px`
     }
 
@@ -77,9 +77,7 @@ const CNavGroup = defineComponent({
     }
 
     const handleLeave = (el: RendererElement, done: () => void) => {
-      el.addEventListener('transitionend', () => {
-        done()
-      })
+      executeAfterTransition(() => done(), el as HTMLElement)
       setTimeout(() => {
         el.style.height = '0px'
       }, 1)

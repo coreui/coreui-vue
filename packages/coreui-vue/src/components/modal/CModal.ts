@@ -12,6 +12,8 @@ import {
 
 import { CBackdrop } from './../backdrop/CBackdrop'
 
+import { executeAfterTransition } from './../../utils/transition'
+
 const CModal = defineComponent({
   name: 'CModal',
   inheritAttrs: false,
@@ -141,9 +143,7 @@ const CModal = defineComponent({
     )
 
     const handleEnter = (el: RendererElement, done: () => void) => {
-      el.addEventListener('transitionend', () => {
-        done()
-      })
+      executeAfterTransition(() => done(), el as HTMLElement)
       document.body.classList.add('modal-open')
       el.style.display = 'block'
       setTimeout(() => {
@@ -151,14 +151,14 @@ const CModal = defineComponent({
       }, 1)
       emit('show')
     }
+
     const handleAfterEnter = () => {
       window.addEventListener('mousedown', handleMouseDown)
       window.addEventListener('keyup', handleKeyUp)
     }
+
     const handleLeave = (el: RendererElement, done: () => void) => {
-      el.addEventListener('transitionend', () => {
-        done()
-      })
+      executeAfterTransition(() => done(), el as HTMLElement)
       document.body.classList.remove('modal-open')
       if (document.body.className === '') {
         document.body.removeAttribute('class')
@@ -166,6 +166,7 @@ const CModal = defineComponent({
 
       el.classList.remove('show')
     }
+
     const handleAfterLeave = (el: RendererElement) => {
       window.removeEventListener('mousedown', handleMouseDown)
       window.removeEventListener('keyup', handleKeyUp)
@@ -182,6 +183,7 @@ const CModal = defineComponent({
         if (props.backdrop !== 'static' && event.key === 'Escape' && props.keyboard) {
           handleDismiss()
         }
+
         if (props.backdrop === 'static') {
           modalRef.value.classList.add('modal-static')
           emit('close-prevented')
@@ -201,6 +203,7 @@ const CModal = defineComponent({
         if (props.backdrop !== 'static') {
           handleDismiss()
         }
+
         if (props.backdrop === 'static') {
           modalRef.value.classList.add('modal-static')
           setTimeout(() => {

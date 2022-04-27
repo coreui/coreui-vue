@@ -1,5 +1,7 @@
 import { defineComponent, h, Transition, ref, RendererElement, withDirectives } from 'vue'
+
 import { vVisible } from '../../directives/v-c-visible'
+import { executeAfterTransition } from './../../utils/transition'
 
 const CCollapse = defineComponent({
   name: 'CCollapse',
@@ -39,10 +41,9 @@ const CCollapse = defineComponent({
 
     const handleEnter = (el: RendererElement, done: () => void) => {
       emit('show')
-      el.addEventListener('transitionend', () => {
-        done()
-      })
+      // collapsing.value = true
       setTimeout(() => {
+        executeAfterTransition(() => done(), el as HTMLElement)
         if (props.horizontal) {
           el.style.width = `${el.scrollWidth}px`
           return
@@ -69,10 +70,8 @@ const CCollapse = defineComponent({
 
     const handleLeave = (el: RendererElement, done: () => void) => {
       emit('hide')
-      el.addEventListener('transitionend', () => {
-        done()
-      })
       setTimeout(() => {
+        executeAfterTransition(() => done(), el as HTMLElement)
         if (props.horizontal) {
           el.style.width = '0px'
           return
