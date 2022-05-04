@@ -95,12 +95,12 @@ export const CButton = defineComponent({
     'click',
   ],
   setup(props, { emit, slots }) {
-    const handleClick = () => {
+    const handleClick = (event: Event) => {
       if (props.disabled) {
         return
       }
 
-      emit('click')
+      emit('click', event)
     }
     return () =>
       h(

@@ -1,6 +1,8 @@
 import { defineComponent, h, PropType, ref, RendererElement, Teleport, Transition } from 'vue'
 import { createPopper, Placement } from '@popperjs/core'
 
+import { executeAfterTransition } from './../../utils/transition'
+
 const CTooltip = defineComponent({
   name: 'CTooltip',
   props: {
@@ -75,18 +77,16 @@ const CTooltip = defineComponent({
       emit('show')
       initPopper()
       el.classList.add('show')
-      el.addEventListener('transitionend', () => {
-        done()
-      })
+      executeAfterTransition(() => done(), el as HTMLElement)
     }
 
     const handleLeave = (el: RendererElement, done: () => void) => {
       emit('hide')
       el.classList.remove('show')
-      el.addEventListener('transitionend', () => {
+      executeAfterTransition(() => {
         done()
         destroyPopper()
-      })
+      }, el as HTMLElement)
     }
 
     const handleToggle = (event: Event) => {

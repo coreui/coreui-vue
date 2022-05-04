@@ -638,7 +638,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
   </CContainer>
 </CNavbar>
 <br/>
-<CNavbar expand="lg" color-scheme="light" style={{backgroundColor: '#e3f2fd'}}>
+<CNavbar expand="lg" color-scheme="light" style="background-color: #e3f2fd">
   <CContainer fluid>
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>

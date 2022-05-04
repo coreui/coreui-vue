@@ -1,4 +1,5 @@
 import { defineComponent, h } from 'vue'
+import { CFormControlWrapper } from './CFormControlWrapper'
 
 const CFormTextarea = defineComponent({
   name: 'CFormTextarea',
@@ -8,14 +9,56 @@ const CFormTextarea = defineComponent({
      */
     disabled: {
       type: Boolean,
-      required: false,
+    },
+    /**
+     * Provide valuable, actionable feedback.
+     *
+     * @since 4.3.0
+     */
+    feedback: {
+      type: String,
+    },
+    /**
+     * Provide valuable, actionable feedback.
+     *
+     * @since 4.3.0
+     */
+    feedbackInvalid: {
+      type: String,
+    },
+    /**
+     * Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.
+     *
+     * @since 4.3.0
+     */
+    feedbackValid: {
+      type: String,
+    },
+    /**
+     * Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.
+     *
+     * @since 4.3.0
+     */
+    floatingLabel: {
+      type: String,
+    },
+    /**
+     * The id global attribute defines an identifier (ID) that must be unique in the whole document.
+     */
+    id: {
+      type: String,
     },
     /**
      * Set component validation state to invalid.
      */
-    invalid: {
-      type: Boolean,
-      required: false,
+    invalid: Boolean,
+    /**
+     * Add a caption for a component.
+     *
+     * @since 4.3.0
+     */
+    label: {
+      type: String,
     },
     /**
      * The default name for a value passed using v-model.
@@ -23,29 +66,37 @@ const CFormTextarea = defineComponent({
     modelValue: {
       type: String,
       default: undefined,
-      require: false,
     },
     /**
      * Render the component styled as plain text. Removes the default form field styling and preserve the correct margin and padding. Recommend to use only along side `readonly`.
      */
     plainText: {
       type: Boolean,
-      required: false,
     },
     /**
      * Toggle the readonly state for the component.
      */
     readonly: {
       type: Boolean,
-      required: false,
     },
+    /**
+     * Add helper text to the component.
+     *
+     * @since 4.3.0
+     */
+    text: {
+      type: String,
+    },
+    /**
+     * Display validation feedback in a styled tooltip.
+     *
+     * @since 4.3.0
+     */
+    tooltipFeedback: Boolean,
     /**
      * Set component validation state to valid.
      */
-    valid: {
-      type: Boolean,
-      required: false,
-    },
+    valid: Boolean,
   },
   emits: [
     /**
@@ -61,7 +112,7 @@ const CFormTextarea = defineComponent({
      */
     'update:modelValue',
   ],
-  setup(props, { emit, slots }) {
+  setup(props, { attrs, emit, slots }) {
     const handleInput = (event: InputEvent) => {
       const target = event.target as HTMLInputElement
       emit('input', event)
@@ -70,21 +121,50 @@ const CFormTextarea = defineComponent({
 
     return () =>
       h(
-        'textarea',
+        CFormControlWrapper,
         {
-          disabled: props.disabled,
-          readonly: props.readonly,
-          class: [
-            props.plainText ? 'form-control-plaintext' : 'form-control',
-            {
-              'is-invalid': props.invalid,
-              'is-valid': props.valid,
-            },
-          ],
-          onInput: (event: InputEvent) => handleInput(event),
-          value: props.modelValue,
+          describedby: attrs['aria-describedby'],
+          feedback: props.feedback,
+          feedbackInvalid: props.feedbackInvalid,
+          feedbackValid: props.feedbackValid,
+          floatingLabel: props.floatingLabel,
+          id: props.id,
+          invalid: props.invalid,
+          label: props.label,
+          text: props.text,
+          tooltipFeedback: props.tooltipFeedback,
+          valid: props.valid,
         },
-        slots.default && slots.default(),
+        {
+          default: () =>
+            h(
+              'textarea',
+              {
+                ...attrs,
+                disabled: props.disabled,
+                readonly: props.readonly,
+                class: [
+                  props.plainText ? 'form-control-plaintext' : 'form-control',
+                  {
+                    'is-invalid': props.invalid,
+                    'is-valid': props.valid,
+                  },
+                ],
+                onInput: (event: InputEvent) => handleInput(event),
+                ...(props.modelValue && { value: props.modelValue }),
+              },
+              slots.default && slots.default(),
+            ),
+          ...(slots.feedback && { feedback: () => slots.feedback && slots.feedback() }),
+          ...(slots.feedbackInvalid && {
+            feedbackInvalid: () => slots.feedbackInvalid && slots.feedbackInvalid(),
+          }),
+          ...(slots.feedbackValid && {
+            feedbackValid: () => slots.feedbackInvalid && slots.feedbackInvalid(),
+          }),
+          ...(slots.label && { label: () => slots.label && slots.label() }),
+          ...(slots.text && { text: () => slots.text && slots.text() }),
+        },
       )
   },
 })
