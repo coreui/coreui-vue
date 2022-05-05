@@ -12,6 +12,8 @@ import {
 } from 'vue'
 
 const isVisible = (element: HTMLDivElement) => {
+  // check e ei not null to prevent error when leaving page
+  if ((element || "") === "") return false
   const rect = element.getBoundingClientRect()
   return (
     rect.top >= 0 &&
