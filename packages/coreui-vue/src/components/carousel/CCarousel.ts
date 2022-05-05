@@ -13,14 +13,17 @@ import {
 
 const isVisible = (element: HTMLDivElement) => {
   // check e ei not null to prevent error when leaving page
-  if ((element || "") === "") return false
-  const rect = element.getBoundingClientRect()
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  )
+  try {
+    const rect = element.getBoundingClientRect()
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    )
+  } catch(e:any) {
+    return false
+  }
 }
 
 const CCarousel = defineComponent({
