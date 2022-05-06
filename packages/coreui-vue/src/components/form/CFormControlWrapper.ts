@@ -42,64 +42,69 @@ const CFormControlWrapper = defineComponent({
   },
   setup(props, { slots }) {
     return () =>
-      props.floatingLabel
-        ? h(CFormFloating, [
-            slots.default && slots.default(),
-            h(
-              CFormLabel,
-              {
-                for: props.id,
-              },
-              {
-                default: () => (slots.label && slots.label()) || props.label || props.floatingLabel,
-              },
-            ),
-          ])
-        : [
-            (props.label || slots.label) &&
-              h(
-                CFormLabel,
-                {
-                  for: props.id,
-                },
-                {
-                  default: () => (slots.label && slots.label()) || props.label,
-                },
-              ),
-            slots.default && slots.default(),
-            (props.text || slots.text) &&
-              h(
-                CFormText,
-                {
-                  id: props.describedby,
-                },
-                {
-                  default: () => (slots.text && slots.text()) || props.text,
-                },
-              ),
-            h(
-              CFormControlValidation,
-              {
-                describedby: props.describedby,
-                feedback: props.feedback,
-                feedbackInvalid: props.feedbackInvalid,
-                feedbackValid: props.feedbackValid,
-                floatingLabel: props.floatingLabel,
-                invalid: props.invalid,
-                tooltipFeedback: props.tooltipFeedback,
-                valid: props.valid,
-              },
-              {
-                ...(slots.feedback && { feedback: () => slots.feedback && slots.feedback() }),
-                ...(slots.feedbackInvalid && {
-                  feedbackInvalid: () => slots.feedbackInvalid && slots.feedbackInvalid(),
-                }),
-                ...(slots.feedbackValid && {
-                  feedbackValid: () => slots.feedbackInvalid && slots.feedbackInvalid(),
-                }),
-              },
-            ),
-          ]
+      h(
+        "div",
+        [
+          props.floatingLabel
+            ? h(CFormFloating, [
+                slots.default && slots.default(),
+                h(
+                  CFormLabel,
+                  {
+                    for: props.id,
+                  },
+                  {
+                    default: () => (slots.label && slots.label()) || props.label || props.floatingLabel,
+                  },
+                ),
+              ])
+            : [
+                (props.label || slots.label) &&
+                  h(
+                    CFormLabel,
+                    {
+                      for: props.id,
+                    },
+                    {
+                      default: () => (slots.label && slots.label()) || props.label,
+                    },
+                  ),
+                slots.default && slots.default(),
+                (props.text || slots.text) &&
+                  h(
+                    CFormText,
+                    {
+                      id: props.describedby,
+                    },
+                    {
+                      default: () => (slots.text && slots.text()) || props.text,
+                    },
+                  ),
+                h(
+                  CFormControlValidation,
+                  {
+                    describedby: props.describedby,
+                    feedback: props.feedback,
+                    feedbackInvalid: props.feedbackInvalid,
+                    feedbackValid: props.feedbackValid,
+                    floatingLabel: props.floatingLabel,
+                    invalid: props.invalid,
+                    tooltipFeedback: props.tooltipFeedback,
+                    valid: props.valid,
+                  },
+                  {
+                    ...(slots.feedback && { feedback: () => slots.feedback && slots.feedback() }),
+                    ...(slots.feedbackInvalid && {
+                      feedbackInvalid: () => slots.feedbackInvalid && slots.feedbackInvalid(),
+                    }),
+                    ...(slots.feedbackValid && {
+                      feedbackValid: () => slots.feedbackInvalid && slots.feedbackInvalid(),
+                    }),
+                  },
+                ),
+              ]
+            ]
+          )
   },
 })
 
