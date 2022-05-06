@@ -140,6 +140,7 @@ const CFormTextarea = defineComponent({
             h(
               'textarea',
               {
+                id: props.id,
                 ...attrs,
                 disabled: props.disabled,
                 readonly: props.readonly,

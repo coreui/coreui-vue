@@ -165,6 +165,7 @@ const CFormSelect = defineComponent({
             h(
               'select',
               {
+                id: props.id,
                 ...attrs,
                 class: [
                   'form-select',

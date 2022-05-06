@@ -90,6 +90,7 @@ const CFormSwitch = defineComponent({
         },
         [
           h('input', {
+            id: props.id,
             ...attrs,
             ...(props.modelValue && { checked: props.modelValue }),
             class: [
