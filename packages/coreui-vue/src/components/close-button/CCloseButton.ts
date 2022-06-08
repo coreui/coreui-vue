@@ -34,6 +34,7 @@ export const CCloseButton = defineComponent({
     }
     return () =>
       h('button', {
+        type: 'button',
         class: [
           'btn',
           'btn-close',
