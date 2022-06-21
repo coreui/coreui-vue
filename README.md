@@ -204,4 +204,4 @@ See [the Releases section of our project](https://github.com/coreui/coreui-vue/r
 
 ## Copyright and license
 
-Copyright 2021 creativeLabs Łukasz Holeczek. Code released under the [MIT License](https://github.com/coreui/coreui-vue/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
+Copyright 2022 creativeLabs Łukasz Holeczek. Code released under the [MIT License](https://github.com/coreui/coreui-vue/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
