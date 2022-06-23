@@ -29,7 +29,6 @@
 - [Quick start](#quick-start)
 - [Components](#components)
 - [Status](#status)
-- [What's included](#whats-included)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Documentation](#documentation)
 - [Frameworks](#frameworks)
