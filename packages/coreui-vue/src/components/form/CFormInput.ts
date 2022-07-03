@@ -171,6 +171,7 @@ const CFormInput = defineComponent({
             h(
               'input',
               {
+                id: props.id,
                 ...attrs,
                 class: [
                   props.plainText ? 'form-control-plaintext' : 'form-control',

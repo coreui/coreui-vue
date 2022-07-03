@@ -43,7 +43,7 @@ const CFormControlWrapper = defineComponent({
   setup(props, { slots }) {
     return () =>
       props.floatingLabel
-        ? h(CFormFloating, [
+        ? h(CFormFloating, () => [
             slots.default && slots.default(),
             h(
               CFormLabel,
