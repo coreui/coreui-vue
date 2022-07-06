@@ -42,7 +42,7 @@ const CLink = defineComponent({
   ],
   setup(props, { slots, emit }) {
     const handleClick = (mouseEvent: MouseEvent) => {
-      emit('click', mouseEvent, props.href)
+      emit('click', props.href, mouseEvent)
     }
     return () =>
       h(
