@@ -402,6 +402,7 @@ For invalid fields, ensure that the invalid feedback/error message is associated
     <CFormCheck
       feedbackInvalid="You must agree before submitting."
       id="invalidCheck"
+      invalid
       label="Agree to terms and conditions"
       required
       type="checkbox"
@@ -480,6 +481,7 @@ For invalid fields, ensure that the invalid feedback/error message is associated
     <CFormCheck
       feedbackInvalid="You must agree before submitting."
       id="invalidCheck"
+      invalid
       label="Agree to terms and conditions"
       required
       type="checkbox"
