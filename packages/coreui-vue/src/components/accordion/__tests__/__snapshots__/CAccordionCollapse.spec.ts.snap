@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Loads and display CAccordionCollapse component renders correctly 1`] = `
-"<transition-stub class=\\"accordion-collapse\\">
-  <div class=\\"collapse show\\">Default slot</div>
-</transition-stub>"
-`;
