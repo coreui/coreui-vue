@@ -32,7 +32,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('contain slots and classes', () => {
     expect(defaultWrapper.text()).toContain('Default slot')
-    expect(defaultWrapper.classes('form-control')).toBe(true)
+    expect(defaultWrapper.find('textarea').classes('form-control')).toBe(true)
   })
 })
 
@@ -42,8 +42,8 @@ describe(`Customize ${ComponentName} component`, () => {
   })
   it('contain slots and classes', () => {
     expect(customWrapper.text()).toContain('Default slot')
-    expect(customWrapper.classes('form-control-plaintext')).toBe(true)
-    expect(customWrapper.classes('is-invalid')).toBe(true)
-    expect(customWrapper.classes('is-valid')).toBe(true)
+    expect(customWrapper.find('textarea').classes('form-control-plaintext')).toBe(true)
+    expect(customWrapper.find('textarea').classes('is-invalid')).toBe(true)
+    expect(customWrapper.find('textarea').classes('is-valid')).toBe(true)
   })
 })

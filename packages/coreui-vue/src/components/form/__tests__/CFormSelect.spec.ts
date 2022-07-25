@@ -31,7 +31,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('contain slots and classes', () => {
     expect(defaultWrapper.text()).toContain('Default slot')
-    expect(defaultWrapper.classes('form-select')).toBe(true)
+    expect(defaultWrapper.find('select').classes('form-select')).toBe(true)
   })
 })
 
@@ -41,8 +41,8 @@ describe(`Customize ${ComponentName} component`, () => {
   })
   it('contain slots and classes', () => {
     expect(customWrapper.text()).toContain('Default slot')
-    expect(customWrapper.classes('form-select')).toBe(true)
-    expect(customWrapper.classes('form-select-lg')).toBe(true)
-    expect(customWrapper.attributes('size')).toBe('200')
+    expect(customWrapper.find('select').classes('form-select')).toBe(true)
+    expect(customWrapper.find('select').classes('form-select-lg')).toBe(true)
+    expect(customWrapper.find('select').attributes('size')).toBe('200')
   })
 })

@@ -49,7 +49,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('contain slots and classes', () => {
     expect(defaultWrapper.text()).toContain('Default slot')
-    expect(defaultWrapper.classes('form-control')).toBe(true)
+    expect(defaultWrapper.find('input').classes('form-control')).toBe(true)
   })
 })
 
@@ -59,11 +59,11 @@ describe(`Customize ${ComponentName} component`, () => {
   })
   it('contain slots and classes', () => {
     expect(customWrapper.text()).toContain('Default slot')
-    expect(customWrapper.classes('form-control-plaintext')).toBe(true)
-    expect(customWrapper.classes('form-control-color')).toBe(true)
-    expect(customWrapper.classes('form-control-lg')).toBe(true)
-    expect(customWrapper.classes('is-invalid')).toBe(true)
-    expect(customWrapper.classes('is-valid')).toBe(true)
+    expect(customWrapper.find('input').classes('form-control-plaintext')).toBe(true)
+    expect(customWrapper.find('input').classes('form-control-color')).toBe(true)
+    expect(customWrapper.find('input').classes('form-control-lg')).toBe(true)
+    expect(customWrapper.find('input').classes('is-invalid')).toBe(true)
+    expect(customWrapper.find('input').classes('is-valid')).toBe(true)
   })
 })
 
@@ -73,10 +73,10 @@ describe(`Customize (two) ${ComponentName} component`, () => {
   })
   it('contain slots and classes', () => {
     expect(customWrapperTwo.text()).toContain('Default slot')
-    expect(customWrapperTwo.classes('form-control')).toBe(true)
-    expect(customWrapper.classes('form-control-color')).toBe(true)
-    expect(customWrapper.classes('form-control-lg')).toBe(true)
-    expect(customWrapper.classes('is-invalid')).toBe(true)
-    expect(customWrapper.classes('is-valid')).toBe(true)
+    expect(customWrapperTwo.find('input').classes('form-control')).toBe(true)
+    expect(customWrapper.find('input').classes('form-control-color')).toBe(true)
+    expect(customWrapper.find('input').classes('form-control-lg')).toBe(true)
+    expect(customWrapper.find('input').classes('is-invalid')).toBe(true)
+    expect(customWrapper.find('input').classes('is-valid')).toBe(true)
   })
 })
