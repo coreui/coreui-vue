@@ -132,16 +132,14 @@ const CFormCheck = defineComponent({
       attrs.class,
     ]
 
-    const inputClassName = props.button
-      ? 'btn-check'
-      : [
-          'form-check-input',
-          {
-            'is-invalid': props.invalid,
-            'is-valid': props.valid,
-            'me-2': props.hitArea,
-          },
-        ]
+    const inputClassName = [
+      props.button ? 'btn-check' : 'form-check-input',
+      {
+        'is-invalid': props.invalid,
+        'is-valid': props.valid,
+        'me-2': props.hitArea,
+      },
+    ]
 
     const formControl = () => {
       return h('input', {
