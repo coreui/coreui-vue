@@ -14,7 +14,6 @@ export default defineUserConfig<DefaultThemeOptions>({
   head: [
     ['link', { rel: 'icon', href: `/vue/docs/${pkg.config.version_short}/favicons/favicon-96x96.png` }],
     // ['link', { rel: 'manifest', href: '/favicons/manifest.json' }],
-    ['script', { src: 'https://media.ethicalads.io/media/client/ethicalads.min.js' }],
   ],
   extendsMarkdown: (md) => {
     md.use(require('markdown-it-include')),
@@ -295,6 +294,37 @@ export default defineUserConfig<DefaultThemeOptions>({
           {
             text: 'Widgets',
             link: `/components/widgets.html`,
+          },
+        ],
+      },
+      {
+        text: 'Templates',
+        link: '/templates/',
+        icon: '<path fill="var(--ci-primary-color, currentColor)" d="M472,232H424V120a24.028,24.028,0,0,0-24-24H40a24.028,24.028,0,0,0-24,24V366a24.028,24.028,0,0,0,24,24H212v50H152v32H304V440H244V390h92v58a24.027,24.027,0,0,0,24,24H472a24.027,24.027,0,0,0,24-24V256A24.027,24.027,0,0,0,472,232ZM336,256V358H48V128H392V232H360A24.027,24.027,0,0,0,336,256ZM464,440H368V264h96Z" class="ci-primary"/>',
+        children: [
+          {
+            text: 'Admin & Dashboard',
+            link: '/templates/admin-dashboard.html',
+            badge: {
+              color: 'success',
+              text: 'New',
+            }
+          },
+          {
+            text: 'Download',
+            link: '/templates/download.html',
+          },
+          {
+            text: 'Installation',
+            link: '/templates/installation.html',
+          },
+          {
+            text: 'Customize',
+            link: '/templates/customize.html',
+          },
+          {
+            text: 'Contents',
+            link: '/templates/contents.html',
           },
         ],
       },
