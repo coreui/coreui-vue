@@ -222,7 +222,7 @@ export default {
 
 ### CIcon
 
-```jsx
+```js
 import { CIcon } from '@coreui/icons-vue'
 ```
 
@@ -230,7 +230,7 @@ import { CIcon } from '@coreui/icons-vue'
 | --------------------- | ------------------------------------------------------------------------------------------------- | --------------------- | ------ | ------- |
 | **content**           | Use `:icon="..."` instead of<br/>`@deprecated` since version 3.0                                  | string\|array         | -      | -       |
 | **custom-class-name** | Use for replacing default CIcon component classes. Prop is overriding the 'size' prop.            | string\|array\|object | -      | -       |
-| **icon**              | Name of the icon placed in React object or SVG content.                                           | string \| string[]    | -      | -       |
+| **icon**              | Name of the icon placed in Vue object or SVG content.                                           | string \| string[]    | -      | -       |
 | **name**              | Use `icon="..."` instead of<br/>`@deprecated` since version 3.0                                   | string                | -      | -       |
 | **size**              | Size of the icon. Available sizes: 'sm', 'lg', 'xl', 'xxl', '3xl...9xl', 'custom', 'custom-size'. | string                | -      | -       |
 | **title**             | Title tag content.                                                                                | string                | -      | -       |

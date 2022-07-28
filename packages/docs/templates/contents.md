@@ -25,7 +25,7 @@ coreui-vue-admin-template/
 │   │   ├── buttons/
 │   │   ├── css/
 │   │   ├── icons/
-│   │   ├── notifications/
+│   │   └── notifications/
 │   ├── App.vue
 │   ├── _nav.js
 │   └── main.js
