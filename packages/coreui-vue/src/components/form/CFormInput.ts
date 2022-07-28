@@ -67,7 +67,7 @@ const CFormInput = defineComponent({
      * The default name for a value passed using v-model.
      */
     modelValue: {
-      type: String,
+      type: [File, String],
       default: undefined,
     },
     /**
