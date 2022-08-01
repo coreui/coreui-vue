@@ -5,9 +5,9 @@
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
-    <Sidebar :visible="isSidebarOpen" @visible-change="(event) => isSidebarOpen = event" />
+    <Sidebar :visible="isSidebarOpen" @visible-change="(event) => (isSidebarOpen = event)" />
     <div class="wrapper d-flex flex-column min-vh-100">
-      <Header @toggle-sidebar="toggleSidebar(!isSidebarOpen)"/>
+      <Header @toggle-sidebar="toggleSidebar(!isSidebarOpen)" />
       <div class="body flex-grow-1 px-3">
         <CContainer lg>
           <Home v-if="frontmatter.home" />
@@ -20,6 +20,33 @@
           >
             <CRow>
               <CCol :lg="9">
+                <div
+                  class="bg-info bg-opacity-10 border-start border-start-5 border-start-info p-4 pb-3 mb-5"
+                >
+                  <h3 class="mb-4">Support CoreUI Development</h3>
+                  <p>
+                    CoreUI is an MIT-licensed open source project and is completely free to use.
+                    However, the amount of effort needed to maintain and develop new features for
+                    the project is not sustainable without proper financial backing.
+                  </p>
+                  <p>You can support our Open Source software development in the following ways:</p>
+                  <ul>
+                    <li>
+                      Buy the <a href="https://coreui.io/pricing/?support=vue">CoreUI PRO</a>,
+                      and get access to PRO components, and dedicated support.
+                    </li>
+                    <li>
+                      <a href="https://opencollective.com/coreui" target="_blank"
+                        >Became a sponsor</a
+                      >, and get your logo on BACKERS.md/README.md files or each site of this
+                      documentation
+                    </li>
+                    <li>
+                      Give us a star ⭐️ on
+                      <a href="https://github.com/coreui/coreui-vue" target="_blank">Github</a>.
+                    </li>
+                  </ul>
+                </div>
                 <Page :key="page.path">
                   <template #top>
                     <slot name="page-top" />

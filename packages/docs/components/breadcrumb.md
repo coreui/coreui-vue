@@ -105,6 +105,50 @@ Since breadcrumbs provide navigation, it's useful to add a significant label suc
 
 For more information, see the [WAI-ARIA Authoring Practices for the breadcrumb pattern](https://www.w3.org/TR/wai-aria-practices/#breadcrumb).
 
+## Customizing
+
+### CSS variables
+
+Vue breadcrumbs use local CSS variables on `.breadcrumb` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+```sass
+--cui-breadcrumb-padding-x: #{$breadcrumb-padding-x};
+--cui-breadcrumb-padding-y: #{$breadcrumb-padding-y};
+--cui-breadcrumb-margin-bottom: #{$breadcrumb-margin-bottom};
+--cui-breadcrumb-font-size: #{$breadcrumb-font-size};
+--cui-breadcrumb-bg: #{$breadcrumb-bg};
+--cui-breadcrumb-border-radius: #{$breadcrumb-border-radius};
+--cui-breadcrumb-divider-color: #{$breadcrumb-divider-color};
+--cui-breadcrumb-item-padding-x: #{$breadcrumb-item-padding-x};
+--cui-breadcrumb-item-active-color: #{$breadcrumb-active-color};
+```
+
+#### How to use CSS variables
+
+```js
+const vars = { 
+  '--my-css-var': 10,
+  '--my-another-css-var': "red" 
+}
+return <CBreadcrumb :style="vars">...</CBreadcrumb>
+```
+
+### SASS variables
+
+```sass
+$breadcrumb-font-size:              null;
+$breadcrumb-padding-y:              0;
+$breadcrumb-padding-x:              0;
+$breadcrumb-item-padding-x:         .5rem;
+$breadcrumb-margin-bottom:          1rem;
+$breadcrumb-bg:                     unset;
+$breadcrumb-divider-color:          $gray-600;
+$breadcrumb-active-color:           $gray-600;
+$breadcrumb-divider:                quote("/");
+$breadcrumb-divider-flipped:        $breadcrumb-divider;
+$breadcrumb-border-radius:          null;
+```
+
 ## API
 
 !!!include(./api/breadcrumb/CBreadcrumbItem.api.md)!!!

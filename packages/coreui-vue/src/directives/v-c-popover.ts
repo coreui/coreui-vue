@@ -96,7 +96,7 @@ export default {
       })
     }
   },
-  unmounted(binding: DirectiveBinding): void {
+  unmounted(_el: HTMLElement, binding: DirectiveBinding): void {
     const popover = binding.arg && document.getElementById(binding.arg)
     popover && popover.remove()
   },

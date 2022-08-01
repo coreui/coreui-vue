@@ -1,11 +1,4 @@
 <template>
-  <CAlert color="light" class="d-flex align-items-baseline justify-content-center rounded-0 border-bottom mb-0">
-    <span class="me-3">
-      If you like this project and want to help us, please give us a star ⭐️ on Github. ➡️
-    </span>
-    <CButton color="dark" component="a" href="https://github.com/coreui/coreui-vue" size="sm" target="_blank" variant="outline"><CIcon icon="cib-github" /> Star</CButton>
-    <span class="ms-3">🙏</span>
-  </CAlert>
   <CHeader class="mb-5 elevation-0 border-bottom" position="sticky">
     <CHeaderToggler class="ms-md-3" @click="$emit('toggle-sidebar')">
       <CIcon icon="cil-menu" size="lg" />

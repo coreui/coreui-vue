@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Customize with label - CFormCheck component renders correctly 1`] = `"<input class=\\"btn-check is-invalid is-valid\\" id=\\"uniqueid\\" type=\\"checkbox\\"><label class=\\"btn btn-outline-warning btn-lg rounded-circle\\" for=\\"uniqueid\\">some label</label>"`;
+exports[`Customize with label - CFormCheck component renders correctly 1`] = `
+"<input class=\\"btn-check is-invalid is-valid\\" id=\\"uniqueid\\" type=\\"checkbox\\">
+<label class=\\"btn btn-outline-warning btn-lg rounded-circle\\" disabled=\\"false\\" for=\\"uniqueid\\">some label</label>"
+`;
 
-exports[`Customize with label in slot - CFormCheck component renders correctly 1`] = `"<input class=\\"btn-check is-invalid is-valid\\" id=\\"uniqueid\\" type=\\"checkbox\\"><label class=\\"btn btn-outline-warning btn-lg rounded-circle\\" for=\\"uniqueid\\">some label</label>"`;
+exports[`Customize with label in slot - CFormCheck component renders correctly 1`] = `
+"<input class=\\"btn-check is-invalid is-valid\\" id=\\"uniqueid\\" type=\\"checkbox\\">
+<label class=\\"btn btn-outline-warning btn-lg rounded-circle\\" disabled=\\"false\\" for=\\"uniqueid\\">some label</label>"
+`;
 
 exports[`Loads and display CFormCheck component renders correctly 1`] = `"<input class=\\"form-check-input\\" type=\\"checkbox\\">"`;

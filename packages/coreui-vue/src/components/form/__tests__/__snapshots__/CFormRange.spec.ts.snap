@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Customize CFormRange component renders correctly 1`] = `"<input class=\\"form-range\\" disabled=\\"\\" max=\\"400\\" min=\\"50\\" steps=\\"10\\" readonly=\\"\\" type=\\"range\\">"`;
+exports[`Customize CFormRange component renders correctly 1`] = `"<input class=\\"form-range\\" disabled=\\"\\" max=\\"400\\" min=\\"50\\" readonly=\\"\\" steps=\\"10\\" type=\\"range\\">"`;
 
 exports[`Loads and display CFormRange component renders correctly 1`] = `"<input class=\\"form-range\\" type=\\"range\\">"`;

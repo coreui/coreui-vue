@@ -113,6 +113,12 @@ const CFormTextarea = defineComponent({
     'update:modelValue',
   ],
   setup(props, { attrs, emit, slots }) {
+    const handleChange = (event: InputEvent) => {
+      const target = event.target as HTMLInputElement
+      emit('change', event)
+      emit('update:modelValue', target.value)
+    }
+
     const handleInput = (event: InputEvent) => {
       const target = event.target as HTMLInputElement
       emit('input', event)
@@ -151,6 +157,7 @@ const CFormTextarea = defineComponent({
                     'is-valid': props.valid,
                   },
                 ],
+                onChange: (event: InputEvent) => handleChange(event),
                 onInput: (event: InputEvent) => handleInput(event),
                 ...(props.modelValue && { value: props.modelValue }),
               },

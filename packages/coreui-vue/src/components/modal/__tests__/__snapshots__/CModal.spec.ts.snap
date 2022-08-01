@@ -7,8 +7,7 @@ exports[`Customize CModal component renders correctly 1`] = `
       <div class=\\"modal-content bazinga\\">Default slot</div>
     </div>
   </div>
-</transition-stub>
-<!---->"
+</transition-stub>"
 `;
 
 exports[`Loads and display CModal component renders correctly 1`] = `
