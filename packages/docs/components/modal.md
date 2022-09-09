@@ -103,17 +103,17 @@ If you set `backdrop` property to `static`, your modal will behave as though the
 ``` vue
 <template>
   <CButton color="primary" @click="() => { visibleStaticBackdropDemo = true }">Launch demo modal</CButton>
-  <CModal backdrop="static" :visible="visibleStaticBackdropDemo" @close="() => { visibleStaticBackdropDemo = false }">
-    <CModalHeader>
-      <CModalTitle>Modal title</CModalTitle>
-    </CModalHeader>
-    <CModalBody>Woohoo, you're reading this text in a modal!</CModalBody>
-    <CModalFooter>
-      <CButton color="secondary" @click="() => { visibleStaticBackdropDemo = false }">
-        Close
-      </CButton>
-      <CButton color="primary">Save changes</CButton>
-    </CModalFooter>
+  <CModal :backdrop="true" :show="visibleStaticBackdropDemo" @close="() => { visibleStaticBackdropDemo = false }">
+      Woohoo, you're reading this text in a modal!
+      <template #header>
+        <h6 class="modal-title">
+          <span class="align-middle">Modal title</span>
+        </h6>
+      </template>
+      <template #footer>
+        <CButton color="secondary" @click="() => { visibleStaticBackdropDemo = false }">Close</CButton>
+        <CButton color="primary">Save changes</CButton>
+      </template>
   </CModal>
 </template>
 <script>
