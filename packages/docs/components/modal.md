@@ -802,12 +802,12 @@ Modals have three optional sizes, available via modifier classes to be placed on
 
 ## Fullscreen Modal
 
-Another override is the option to pop up a modal that covers the user viewport, available via property `fullscrean`.
+Another override is the option to pop up a modal that covers the user viewport, available via property `fullscreen`.
 
 <table class="table">
   <thead>
     <tr>
-      <th>Property fullscrean</th>
+      <th>Property fullscreen</th>
       <th>Availability</th>
     </tr>
   </thead>
