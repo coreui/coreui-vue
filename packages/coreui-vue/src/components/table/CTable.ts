@@ -97,6 +97,15 @@ const CTable = defineComponent({
       type: Boolean,
       required: false,
     },
+    /**
+     * Add zebra-striping to any table column.
+     *
+     * @since 4.4.0
+     */
+    stripedColumns: {
+      type: Boolean,
+      required: false,
+    },
   },
   setup(props, { slots, attrs }) {
     const table = () =>
@@ -115,6 +124,7 @@ const CTable = defineComponent({
               'table-hover': props.hover,
               'table-sm': props.small,
               'table-striped': props.striped,
+              'table-striped-columns': props.stripedColumns,
             },
             attrs.class,
           ],

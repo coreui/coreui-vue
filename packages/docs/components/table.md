@@ -196,7 +196,7 @@ Use contextual classes to color tables, table rows or individual cells.
 
 ## Accented tables
 
-### striped rows
+### Striped rows
 
 Use `striped` property to add zebra-striping to any table row within the `<CTableBody>`.
 
@@ -233,6 +233,16 @@ Use `striped` property to add zebra-striping to any table row within the `<CTabl
 :::
 ```vue
 <CTable striped>
+  ...
+</CTable>
+```
+
+### Striped columns
+
+Use `stripedColumns` boolean property to add zebra-striping to any table column.
+
+::: demo
+<CTable stripedColumns>
   <CTableHead>
     <CTableRow>
       <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -256,10 +266,16 @@ Use `striped` property to add zebra-striping to any table row within the `<CTabl
     </CTableRow>
     <CTableRow>
       <CTableHeaderCell scope="row">3</CTableHeaderCell>
-      <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+      <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
       <CTableDataCell>@twitter</CTableDataCell>
     </CTableRow>
   </CTableBody>
+</CTable>
+:::
+
+```vue
+<CTable stripedColumns>
+  ...
 </CTable>
 ```
 
@@ -298,6 +314,12 @@ These classes can also be added to table variants:
 :::
 ```vue
 <CTable color="dark" striped>
+  ...
+</CTable>
+```
+
+::: demo
+<CTable color="dark" stripedColumns>
   <CTableHead>
     <CTableRow>
       <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -325,6 +347,11 @@ These classes can also be added to table variants:
       <CTableDataCell>@twitter</CTableDataCell>
     </CTableRow>
   </CTableBody>
+</CTable>
+:::
+```vue
+<CTable color="dark" stripedColumns>
+  ...
 </CTable>
 ```
 
@@ -361,6 +388,12 @@ These classes can also be added to table variants:
 :::
 ```vue
 <CTable color="success" striped>
+  ...
+</CTable>
+```
+
+::: demo
+<CTable color="success" stripedColumns>
   <CTableHead>
     <CTableRow>
       <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -388,6 +421,11 @@ These classes can also be added to table variants:
       <CTableDataCell>@twitter</CTableDataCell>
     </CTableRow>
   </CTableBody>
+</CTable>
+:::
+```vue
+<CTable color="success" striped>
+  ...
 </CTable>
 ```
 
