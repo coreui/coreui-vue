@@ -145,6 +145,8 @@ const CModal = defineComponent({
     const handleEnter = (el: RendererElement, done: () => void) => {
       executeAfterTransition(() => done(), el as HTMLElement)
       document.body.classList.add('modal-open')
+      document.body.style.overflow = 'hidden'
+      document.body.style.paddingRight = '0px'
       el.style.display = 'block'
       setTimeout(() => {
         el.classList.add('show')
@@ -160,6 +162,8 @@ const CModal = defineComponent({
     const handleLeave = (el: RendererElement, done: () => void) => {
       executeAfterTransition(() => done(), el as HTMLElement)
       document.body.classList.remove('modal-open')
+      document.body.style.removeProperty('overflow')
+      document.body.style.removeProperty('padding-right')
       if (document.body.className === '') {
         document.body.removeAttribute('class')
       }
