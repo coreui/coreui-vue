@@ -64,14 +64,14 @@ const CDropdown = defineComponent({
     /**
      * Sets a specified  direction and location of the dropdown menu.
      *
-     * @values 'dropup', 'dropend', 'dropstart'
+     * @values 'center', 'dropup', 'dropup-center', 'dropend', 'dropstart'
      */
     direction: {
       type: String,
       default: undefined,
       required: false,
       validator: (value: string) => {
-        return ['dropup', 'dropend', 'dropstart'].includes(value)
+        return ['center', 'dropup', 'dropup-center', 'dropend', 'dropstart'].includes(value)
       },
     },
     /**
@@ -164,15 +164,26 @@ const CDropdown = defineComponent({
     provide('dropdownToggleRef', dropdownToggleRef)
     provide('dropdownMenuRef', dropdownMenuRef)
 
+    if (props.direction === 'center') {
+      placement.value = 'bottom'
+    }
+
     if (props.direction === 'dropup') {
       placement.value = 'top-start'
     }
+
+    if (props.direction === 'dropup-center') {
+      placement.value = 'top'
+    }
+
     if (props.direction === 'dropend') {
       placement.value = 'right-start'
     }
+
     if (props.direction === 'dropstart') {
       placement.value = 'left-start'
     }
+
     if (props.alignment === 'end') {
       placement.value = 'bottom-end'
     }
@@ -240,7 +251,11 @@ const CDropdown = defineComponent({
             {
               class: [
                 props.variant === 'nav-item' ? 'nav-item dropdown' : props.variant,
-                props.direction,
+                props.direction === 'center'
+                  ? 'dropdown-center'
+                  : props.direction === 'dropup-center'
+                  ? 'dropup dropup-center'
+                  : props.direction,
               ],
             },
             slots.default && slots.default(),

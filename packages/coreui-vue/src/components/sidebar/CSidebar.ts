@@ -121,6 +121,7 @@ const CSidebar = defineComponent({
 
     const handleHide = () => {
       visible.value = false
+      emit('visible-change', false)
     }
 
     const handleResize = () => {
@@ -173,9 +174,7 @@ const CSidebar = defineComponent({
         h(CBackdrop, {
           class: 'sidebar-backdrop d-none',
           visible: props.visible,
-          onClick: () => {
-            visible.value = false
-          },
+          onClick: () => handleHide(),
         }),
     ]
   },

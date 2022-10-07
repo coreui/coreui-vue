@@ -299,6 +299,39 @@ And putting it to use in a navbar:
   </p>
 </CCallout>
 
+### Centered
+
+Make the dropdown menu centered below the toggle by adding `direction="center"` to the `<CDropdown>` component.
+
+::: demo
+<CDropdown color="secondary" direction="center">
+  <CDropdownToggle color="secondary">Centered dropdown</CDropdownToggle>
+  <CDropdownMenu>
+    <CDropdownItem href="#">Action</CDropdownItem>
+    <CDropdownItem href="#">Another action</CDropdownItem>
+    <CDropdownItem href="#">Something else here</CDropdownItem>
+    <CDropdownDivider/>
+    <CDropdownItem href="#">Separated link</CDropdownItem>
+  </CDropdownMenu>
+</CDropdown>
+:::
+```vue
+<CDropdown color="secondary" direction="center">
+  <CDropdownToggle color="secondary">Centered dropdown</CDropdownToggle>
+  <CDropdownMenu>
+    <CDropdownItem href="#">Action</CDropdownItem>
+    <CDropdownItem href="#">Another action</CDropdownItem>
+    <CDropdownItem href="#">Something else here</CDropdownItem>
+    <CDropdownDivider/>
+    <CDropdownItem href="#">Separated link</CDropdownItem>
+  </CDropdownMenu>
+</CDropdown>
+```
+
+### Dropup
+
+Trigger dropdown menus above elements by adding `direction="dropup"` to the `<CDropdown>` component.
+
 ::: demo
 <CDropdown color="secondary" direction="dropup">
   <CDropdownToggle color="secondary">Dropup</CDropdownToggle>
@@ -336,6 +369,35 @@ And putting it to use in a navbar:
 <CDropdown color="secondary" direction="dropup">
   <CButton color="secondary">Split dropup</CButton>
   <CDropdownToggle color="secondary" split/>
+  <CDropdownMenu>
+    <CDropdownItem href="#">Action</CDropdownItem>
+    <CDropdownItem href="#">Another action</CDropdownItem>
+    <CDropdownItem href="#">Something else here</CDropdownItem>
+    <CDropdownDivider/>
+    <CDropdownItem href="#">Separated link</CDropdownItem>
+  </CDropdownMenu>
+</CDropdown>
+```
+
+### Dropup centered
+
+Make the dropup menu centered above the toggle by adding `direction="dropup-center"` to the `<CDropdown>` component.
+
+::: demo
+<CDropdown color="secondary" direction="dropup-center">
+  <CDropdownToggle color="secondary">Centered dropup</CDropdownToggle>
+  <CDropdownMenu>
+    <CDropdownItem href="#">Action</CDropdownItem>
+    <CDropdownItem href="#">Another action</CDropdownItem>
+    <CDropdownItem href="#">Something else here</CDropdownItem>
+    <CDropdownDivider/>
+    <CDropdownItem href="#">Separated link</CDropdownItem>
+  </CDropdownMenu>
+</CDropdown>
+:::
+```vue
+<CDropdown color="secondary" direction="dropup-center">
+  <CDropdownToggle color="secondary">Centered dropup</CDropdownToggle>
   <CDropdownMenu>
     <CDropdownItem href="#">Action</CDropdownItem>
     <CDropdownItem href="#">Another action</CDropdownItem>
