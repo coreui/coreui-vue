@@ -188,7 +188,7 @@ const CFormInput = defineComponent({
                 onInput: (event: InputEvent) => handleInput(event),
                 readonly: props.readonly,
                 type: props.type,
-                ...(props.modelValue && { value: props.modelValue }),
+                ...((props.modelValue || props.modelValue === 0) && { value: props.modelValue })
               },
               slots.default && slots.default(),
             ),
