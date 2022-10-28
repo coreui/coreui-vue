@@ -2,6 +2,7 @@
 title: Vue Navbar Component
 name: Navbar
 description: Documentation and examples for the Vue navbar powerful, responsive navigation header component. Includes support for branding, links, dropdowns, and more.
+other_frameworks: navbar
 ---
 
 ## Supported content

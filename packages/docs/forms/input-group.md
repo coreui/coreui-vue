@@ -2,6 +2,7 @@
 title: Vue Input Group Component
 name: Input group
 description: Easily extend form controls by adding text, buttons, or button groups on either side of textual inputs, custom selects, and custom file inputs.
+other_frameworks: input-group
 ---
 
 ## Basic example

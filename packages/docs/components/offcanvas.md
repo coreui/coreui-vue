@@ -2,7 +2,7 @@
 title: Vue Offcanvas Component
 name: Offcanvas
 description: Vue alert component allows build hidden sidebars into your project for navigation, shopping carts.
-
+other_frameworks: offcanvas
 ---
 
 

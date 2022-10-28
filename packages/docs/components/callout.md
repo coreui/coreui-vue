@@ -2,7 +2,7 @@
 title: Vue Callout Component
 name: Callout
 description: Vue callout component provides presentation of content in a visually distinct manner. Includes a heading, icon and typically text-based content.
-
+other_frameworks: callout
 ---
 
 ## Examples

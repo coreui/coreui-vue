@@ -2,6 +2,7 @@
 title: Vue Button Group Component
 name: Button group
 description: Vue button group component allows to group a series of buttons and power them with JavaScript.
+other_frameworks: button-group
 ---
 
 ## Basic example

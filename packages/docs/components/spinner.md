@@ -2,7 +2,7 @@
 title: Vue Spinner Component
 name: Spinner
 description: Indicate the loading state of a component or page with CoreUI spinners, built entirely with HTML, CSS, and no JavaScript.
-
+other_frameworks: spinner
 ---
 
 ## About

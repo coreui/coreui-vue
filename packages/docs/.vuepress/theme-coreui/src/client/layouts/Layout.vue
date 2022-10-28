@@ -32,7 +32,7 @@
                   <p>You can support our Open Source software development in the following ways:</p>
                   <ul>
                     <li>
-                      Buy the <a href="https://coreui.io/pricing/?support=vue">CoreUI PRO</a>,
+                      Buy the <a href="https://coreui.io/pricing/?framework=vue&docs=coreui-banner-pro">CoreUI PRO</a>,
                       and get access to PRO components, and dedicated support.
                     </li>
                     <li>

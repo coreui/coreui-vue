@@ -2,6 +2,7 @@
 title: Vue Checkbox & Radio Components
 name: Checks & radios
 description: Create consistent cross-browser and cross-device checkboxes and radios with our Vue checkbox, radio, and switch components.
+other_frameworks: radio
 ---
 
 ## Approach

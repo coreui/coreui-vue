@@ -2,6 +2,7 @@
 title: Vue Accordion Component
 name: Accordion
 description: Build vertically collapsing accordions in combination with our Vue Collapse component.
+other_frameworks: accordion
 ---
 
 ## Examples
@@ -10,7 +11,7 @@ Click the accordions below to expand/collapse the accordion content.
 
 ::: demo
 <CAccordion>
-  <CAccordionItem :item-key="1" :style="{ '--cui-accordion-bg': 'red' }">
+  <CAccordionItem :item-key="1">
     <CAccordionHeader>
       Accordion Item #1
     </CAccordionHeader>

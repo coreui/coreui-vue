@@ -1,8 +1,8 @@
 ---
 title: Vue Navs & Tabs Components
-name: Nav
+name: Navs & Tabs
 description: Documentation and examples for how to use CoreUI's included Vue navigation components.
-
+other_frameworks: navs-tabs
 ---
 
 ## Base nav

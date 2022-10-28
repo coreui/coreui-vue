@@ -2,6 +2,7 @@
 title: Vue Tooltip Component and Directive
 name: Tooltip
 description: Documentation and examples for adding Vue Tooltips.
+other_frameworks: tooltip
 ---
 
 ## Examples

@@ -2,6 +2,7 @@
 title: Vue Table Component
 name: Table
 description: Documentation and examples for opt-in styling of tables.
+other_frameworks: table
 ---
 
 ## How to use Vue Table Component

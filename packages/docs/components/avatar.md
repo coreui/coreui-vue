@@ -2,6 +2,7 @@
 title: Vue Avatar Component
 name: Avatar
 description: Vue avatar component can be used to display circular user profile pictures. Avatar can be used to portray people or objects. It supports images, icons, or letters.
+other_frameworks: avatar
 ---
 
 ## Image avatars

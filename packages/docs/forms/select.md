@@ -2,6 +2,7 @@
 title: Vue Select Component
 name: Select
 description: Vue select component. Customize the native `<select>`s with custom CSS that changes the element's initial appearance.
+other_frameworks: select
 ---
 
 ## Default

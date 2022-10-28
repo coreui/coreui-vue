@@ -2,6 +2,7 @@
 title: Vue Pagination Component
 name: Pagination
 description: Documentation and examples for showing pagination to indicate a series of related content exists across multiple pages.
+other_frameworks: pagination
 ---
 
 ## Overview

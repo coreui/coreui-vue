@@ -2,7 +2,7 @@
 title: Vue Card Component
 name: Card
 description: Vue card component provides a flexible and extensible container for displaying content. Card is delivered with a bunch of variants and options.
-
+other_frameworks: card
 ---
 
 ## Examples

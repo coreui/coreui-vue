@@ -2,6 +2,7 @@
 title: Vue Floating labels
 name: Floating labels
 description: Vue floating label component. Create beautifully simple form labels that float over your input fields.
+other_frameworks: floating-labels
 ---
 
 ## Example

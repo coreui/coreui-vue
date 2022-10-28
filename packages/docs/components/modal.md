@@ -2,6 +2,7 @@
 title: Vue Modal Component
 name: Modal
 description: Vue Modal component offers a lightweight, multi-purpose popup to add dialogs to yours. Learn how to customize Vue CoreUI Modals easily. Multiple examples and tutorial.
+other_frameworks: modal
 ---
 
 ## Examples

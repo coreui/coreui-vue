@@ -2,6 +2,7 @@
 title: Vue Toast Component
 name: Toast
 description: Push notifications to your visitors with a toast, a lightweight and easily customizable alert message.
+other_frameworks: toast
 ---
 
 Vue toasts are lightweight notifications designed to mimic the push notifications that have been popularized by mobile and desktop operating systems. They’re built with flexbox, so they’re easy to align and position.
