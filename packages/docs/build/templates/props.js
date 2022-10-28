@@ -11,7 +11,7 @@ const renderTags = (tags) => {
   }
   return Object.entries(tags)
     .map(([tag, values]) => {
-    return tag !== 'since' && values.map(v => `<br/>\`@${tag}\` ${isTag(v) ? v.content : v.description}`).join('');
+    return tag !== 'since' ? values.map(v => `<br/>\`@${tag}\` ${isTag(v) ? v.content : v.description}`).join(''): '';
   })
   .join('');
 };
