@@ -10,11 +10,15 @@
       <CNavItem href="https://twitter.com/core_ui">
         <CIcon icon="cib-twitter" size="xl" />
       </CNavItem>
+      <CNavItem href="https://opencollective.com/coreui">
+        <CIcon icon="cib-open-collective" size="xl" />
+      </CNavItem>
     </CHeaderNav>
     <CButton
       class="d-lg-inline-block my-2 my-md-0 ms-md-3"
       color="primary"
-      href="https://coreui.io/react/#compare"
+      component="a"
+      href="https://coreui.io/vue/docs/getting-started/introduction.html"
       variant="outline"
     >
       <CIcon icon="cil-cloud-download" /> Download
@@ -22,7 +26,8 @@
     <CButton
       class="d-lg-inline-block my-2 my-md-0 ms-md-3"
       color="primary"
-      href="https://coreui.io/pro/react/"
+      component="a"
+      href="https://coreui.io/pricing/?framework=vue&docs=coreui-header-button"
     >
       Get CoreUI PRO
     </CButton>
