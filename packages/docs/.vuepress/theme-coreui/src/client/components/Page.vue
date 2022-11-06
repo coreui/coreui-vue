@@ -6,7 +6,7 @@
     <h3 className="mb-4">CoreUI PRO Component</h3>
     <p>
       To use this component you must have a CoreUI PRO license. Buy the
-      <a href="https://coreui.io/pricing/?framework=vuet&docs=coreui-banner-pro">CoreUI PRO</a>
+      <a href="https://coreui.io/pricing/?framework=vue&docs=coreui-banner-pro">CoreUI PRO</a>
       and get access to all PRO components, features, templates, and dedicated support.
     </p>
   </div>
