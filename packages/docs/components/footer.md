@@ -2,7 +2,7 @@
 title: Vue Footer Component
 name: Footer
 description: Vue footer component is an additional navigation used for displaying general information that a user might want to access from any page within your site. It is a place to display boilerplate text about the site, company info, copyrights, links to a contact form, sitemap, FAQ and other such resources.
-
+other_frameworks: footer
 ---
 
 ## Examples

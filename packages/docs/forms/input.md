@@ -2,7 +2,7 @@
 title: Vue Form Input
 name: Form input
 description: Vue input components. Give textual form `<input>`s an upgrade with custom styles, sizing, focus states, validation, and more.
-
+other_frameworks: input
 ---
 
 ## Example

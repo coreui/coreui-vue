@@ -2,6 +2,7 @@
 title: Vue Form Text Component
 name: Form control
 description: Vue textarea components. Give textual form `<textarea>`s an upgrade with custom styles, sizing, focus states, validation, and more.
+other_frameworks: textarea
 ---
 
 ## Example

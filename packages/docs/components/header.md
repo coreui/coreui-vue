@@ -2,6 +2,7 @@
 title: Vue Header Component
 name: Header
 description: Documentation and examples for the Header powerful, responsive navigation header. Includes support for branding, links, dropdowns, and more.
+other_frameworks: header
 ---
 
 ## Example

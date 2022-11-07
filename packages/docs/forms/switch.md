@@ -2,6 +2,7 @@
 title: Vue Switch Component
 name: Switch
 description: Create consistent cross-browser and cross-device switch component.
+other_frameworks: switch
 ---
 
 ## Switches

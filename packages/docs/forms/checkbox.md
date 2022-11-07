@@ -2,6 +2,7 @@
 title: Vue Checkbox Component
 name: Checkbox
 description: Create consistent cross-browser and cross-device checkboxes with our Vue checkbox components.
+other_frameworks: checkbox
 ---
 
 ## Approach

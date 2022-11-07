@@ -2,6 +2,7 @@
 title: Vue Close Button Component
 name: Close Button
 description: A generic close button component for dismissing content like modals and alerts.
+other_frameworks: close-button
 ---
 
 ## Example

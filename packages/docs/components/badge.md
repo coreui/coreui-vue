@@ -2,6 +2,7 @@
 title: Vue Badge Component
 name: Badge
 description: Vue badge component is small count and labeling component.
+other_frameworks: badge
 ---
 
 ## Example

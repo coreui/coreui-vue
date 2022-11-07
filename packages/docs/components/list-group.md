@@ -2,6 +2,7 @@
 title: Vue List Group Component
 name: List group
 description: Vue List Group component allows displaying a series of content. Learn how to use Vue list group to build complex list structure on your website.
+other_frameworks: list-group
 ---
 
 ## Basic example

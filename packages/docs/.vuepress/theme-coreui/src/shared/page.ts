@@ -41,4 +41,6 @@ export interface DefaultThemeNormalPageFrontmatter
   sidebarDepth?: number
   prev?: string | NavLink
   next?: string | NavLink
+  pro_component: boolean
+  other_frameworks?: string
 }

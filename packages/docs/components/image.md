@@ -2,6 +2,7 @@
 title: Vue Image Component
 name: Image
 description: Vue image component with responsive behavior (so it's never become larger than their parent element) and special styles.
+other_frameworks: image
 ---
 
 ## Responsive images

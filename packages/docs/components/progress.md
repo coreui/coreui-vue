@@ -2,7 +2,7 @@
 title: Vue Progress Component
 name: Progress
 description: Documentation and examples for using Vue progress bars featuring support for stacked bars, animated backgrounds, and text labels.
-
+other_frameworks: progress
 ---
 
 ## Example

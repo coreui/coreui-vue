@@ -2,6 +2,7 @@
 title: Vue Carousel Component
 name: Carousel
 description: Vue carousel is a slideshow component for cycling through elements—images or slides of text—like a carousel.
+other_frameworks: carousel
 ---
 
 ## How it works

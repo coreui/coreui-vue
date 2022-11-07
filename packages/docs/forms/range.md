@@ -2,6 +2,7 @@
 title: Vue Range Component
 name: Range
 description: Vue range component. Use our custom range inputs for consistent cross-browser styling and built-in customization.
+other_frameworks: range
 ---
 
 ## Overview

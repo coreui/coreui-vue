@@ -2,7 +2,7 @@
 title: Vue Dropdown Component
 name: Dropdown
 description: Vue dropdown component allows you to toggle contextual overlays for displaying lists, links, and more html elements.
-
+other_frameworks: dropdown
 ---
 
 ## Overview

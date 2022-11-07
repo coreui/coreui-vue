@@ -1,6 +1,8 @@
 ---
 title: Vue Breadcrumb Component
 name: Breadcrumb
+description: Vue breadcrumb navigation component which indicates the current location within a navigational hierarchy that automatically adds separators.
+other_frameworks: breadcrumb
 ---
 
 

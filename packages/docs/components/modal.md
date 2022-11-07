@@ -2,6 +2,7 @@
 title: Vue Modal Component
 name: Modal
 description: Vue Modal component offers a lightweight, multi-purpose popup to add dialogs to yours. Learn how to customize Vue CoreUI Modals easily. Multiple examples and tutorial.
+other_frameworks: modal
 ---
 
 ## Examples
@@ -802,12 +803,12 @@ Modals have three optional sizes, available via modifier classes to be placed on
 
 ## Fullscreen Modal
 
-Another override is the option to pop up a modal that covers the user viewport, available via property `fullscrean`.
+Another override is the option to pop up a modal that covers the user viewport, available via property `fullscreen`.
 
 <table class="table">
   <thead>
     <tr>
-      <th>Property fullscrean</th>
+      <th>Property fullscreen</th>
       <th>Availability</th>
     </tr>
   </thead>

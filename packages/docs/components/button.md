@@ -2,7 +2,7 @@
 title: Vue Buttons Component
 name: Buttons
 description: Vue button component for actions in tables, forms, cards, and more. CoreUI for Vue.js provides various styles, states, and size. Ready to use and easy to customize.
-
+other_frameworks: button
 ---
 
 ## Examples

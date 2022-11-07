@@ -20,23 +20,18 @@
       </ul>
       <p class="mb-0">CoreUI for Vue is Open Source UI Components Library for Vue.js.</p>
       <p class="mb-0">
-        Currently v{{ version }}. Code licensed
+        CoreUI code licensed
         <a
           href="https://github.com/coreui/coreui/blob/main/LICENSE"
           target="_blank"
           rel="license noopener"
-        >
-          MIT
-        </a>
-        , docs 
+        >MIT</a>, docs 
         <a
           href="https://creativecommons.org/licenses/by/3.0/"
           target="_blank"
           rel="license noopener"
-        >
-          CC BY 3.0
-        </a>
-        .
+        >CC BY 3.0</a>.
+        <strong>CoreUI PRO requires a <a href="https://coreui.io/pricing/?framework=vue&docs=footer">commercial license</a>.</strong>
       </p>
     </CContainer>
   </CFooter>

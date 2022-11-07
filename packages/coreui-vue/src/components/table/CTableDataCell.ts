@@ -31,11 +31,18 @@ const CTableDataCell = defineComponent({
      * @values  'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light', string
      */
     color: Color,
+    /**
+     * @ignore
+     */
+    scope: {
+      type: String,
+      required: false,
+    },
   },
   setup(props, { slots }) {
     return () =>
       h(
-        'td',
+        props.scope ? 'th' : 'td',
         {
           class: [
             {
@@ -44,6 +51,7 @@ const CTableDataCell = defineComponent({
               [`table-${props.color}`]: props.color,
             },
           ],
+          ...(props.scope && { scope: props.scope }),
         },
         slots.default && slots.default(),
       )
