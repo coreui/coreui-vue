@@ -34,7 +34,7 @@
     "build": "rollup -c"
   },
   "config": {
-    "version_short": "4.3"
+    "version_short": "4.4"
   },
   "devDependencies": {
     "@popperjs/core": "^2.11.6",
