@@ -11,7 +11,7 @@ Due to the widespread use of `<CTable>` elements across third-party widgets like
 
 Using the most basic table CoreUI, here's how `<CTable>`-based tables look in CoreUI.
 
-::: demo
+::: demo-rounded
 <CTable :columns="columns" :items="items" />
 :::
 
@@ -694,7 +694,7 @@ These hoverable rows can also be combined with the striped variant:
 
 Highlight a table row or cell by adding a `active` property.
 
-::: demo
+::: demo-rounded
 <CTable :columns="columnsActiveTableExample" :items="itemsActiveTableExample" />
 :::
 
