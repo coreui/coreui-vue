@@ -47,6 +47,19 @@ export default defineUserConfig<DefaultThemeOptions>({
     [
       '@vuepress/container',
       {
+        type: 'demo-rounded',
+        render: function (tokens, idx) {
+          if (tokens[idx].nesting === 1) {
+            return '<div class="docs-example border rounded p-4">\n'
+          } else {
+            return '</div>\n'
+          }
+        },
+      },
+    ],
+    [
+      '@vuepress/container',
+      {
         type: 'demo-dark',
         render: function (tokens, idx) {
           if (tokens[idx].nesting === 1) {
