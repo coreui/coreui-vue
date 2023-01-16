@@ -27,7 +27,7 @@ import CFormSelect from '@coreui/vue/src/components/form/CFormSelect'
 
 #### Events
 
-| Event name             | Description                                                                        | Properties |
-| ---------------------- | ---------------------------------------------------------------------------------- | ---------- |
-| **change**             | Event occurs when when a user changes the selected option of a `<select>` element. |
-| **update-model-value** | Emit the new value whenever there’s a change event.                                |
+| Event name            | Description                                                                        | Properties |
+| --------------------- | ---------------------------------------------------------------------------------- | ---------- |
+| **change**            | Event occurs when when a user changes the selected option of a `<select>` element. |
+| **update:modelValue** | Emit the new value whenever there’s a change event.                                |

@@ -27,8 +27,8 @@ import CFormTextarea from '@coreui/vue/src/components/form/CFormTextarea'
 
 #### Events
 
-| Event name             | Description                                                                    | Properties |
-| ---------------------- | ------------------------------------------------------------------------------ | ---------- |
-| **change**             | Event occurs when the element loses focus, after the content has been changed. |
-| **input**              | Event occurs immediately after the value of a component has changed.           |
-| **update-model-value** | Emit the new value whenever there’s an input or change event.                  |
+| Event name            | Description                                                                    | Properties |
+| --------------------- | ------------------------------------------------------------------------------ | ---------- |
+| **change**            | Event occurs when the element loses focus, after the content has been changed. |
+| **input**             | Event occurs immediately after the value of a component has changed.           |
+| **update:modelValue** | Emit the new value whenever there’s an input or change event.                  |

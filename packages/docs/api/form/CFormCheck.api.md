@@ -27,7 +27,7 @@ import CFormCheck from '@coreui/vue/src/components/form/CFormCheck'
 
 #### Events
 
-| Event name             | Description                                           | Properties |
-| ---------------------- | ----------------------------------------------------- | ---------- |
-| **change**             | Event occurs when the checked value has been changed. |
-| **update-model-value** | Emit the new value whenever there’s a change event.   |
+| Event name            | Description                                           | Properties |
+| --------------------- | ----------------------------------------------------- | ---------- |
+| **change**            | Event occurs when the checked value has been changed. |
+| **update:modelValue** | Emit the new value whenever there’s a change event.   |
