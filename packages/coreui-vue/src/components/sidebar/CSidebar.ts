@@ -1,18 +1,10 @@
 import { defineComponent, h, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { CBackdrop } from '../backdrop'
 
+import { isVisible } from './../../utils'
+
 const isOnMobile = (element: HTMLDivElement) =>
   Boolean(getComputedStyle(element).getPropertyValue('--cui-is-mobile'))
-
-const isVisible = (element: HTMLDivElement) => {
-  const rect = element.getBoundingClientRect()
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  )
-}
 
 const CSidebar = defineComponent({
   name: 'CSidebar',
