@@ -5,7 +5,6 @@ import vue from 'rollup-plugin-vue'
 import pkg from './package.json'
 
 const plugins = [
-  // external(),
   resolve({
     dedupe: ['vue'],
     extensions: ['.ts', '.json', '.vue'],
