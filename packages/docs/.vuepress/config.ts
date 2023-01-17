@@ -7,12 +7,12 @@ import pkg from '../package.json'
 const path = require('path')
 
 export default defineUserConfig<DefaultThemeOptions>({
-  base: `/vue/docs/${pkg.config.version_short}/`,
+  base: `/vue/docs/`,
   lang: 'en-US',
   title: 'Vue UI Components · CoreUI',
   description: 'UI Components Library for Vue.js (Vue 3)',
   head: [
-    ['link', { rel: 'icon', href: `/vue/docs/${pkg.config.version_short}/favicons/favicon-96x96.png` }],
+    ['link', { rel: 'icon', href: `/vue/docs/favicons/favicon-96x96.png` }],
     // ['link', { rel: 'manifest', href: '/favicons/manifest.json' }],
   ],
   extendsMarkdown: (md) => {
