@@ -28,8 +28,8 @@ module.exports = {
     props: require('./templates/props'),
     slots: require('./templates/slots'),
   },
-  docsRepo: 'profile/repo',
-  docsBranch: 'master',
+  docsRepo: '@coreui/vue',
+  docsBranch: 'main',
   docsFolder: '',
   editLinkLabel: 'Edit on github',
 }
