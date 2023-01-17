@@ -1,10 +1,8 @@
 import { defineUserConfig } from 'vuepress'
-import type { DefaultThemeOptions } from 'vuepress'
 import { permalink } from 'markdown-it-anchor'
-import pkg from '../package.json'
+import { resolve } from 'node:path'
 
-// const md = require('markdown-it')()
-const path = require('path')
+import type { DefaultThemeOptions } from 'vuepress'
 
 export default defineUserConfig<DefaultThemeOptions>({
   base: `/vue/docs/`,
@@ -71,7 +69,7 @@ export default defineUserConfig<DefaultThemeOptions>({
       },
     ],
   ],
-  theme: path.resolve(__dirname, './theme-coreui'),
+  theme: resolve(__dirname, './theme-coreui'),
   themeConfig: {
     sidebar: [
       {
