@@ -41,6 +41,30 @@ const CFormControlWrapper = defineComponent({
     },
   },
   setup(props, { slots }) {
+    const formControlValidation = () =>
+      h(
+        CFormControlValidation,
+        {
+          describedby: props.describedby,
+          feedback: props.feedback,
+          feedbackInvalid: props.feedbackInvalid,
+          feedbackValid: props.feedbackValid,
+          floatingLabel: props.floatingLabel,
+          invalid: props.invalid,
+          tooltipFeedback: props.tooltipFeedback,
+          valid: props.valid,
+        },
+        {
+          ...(slots.feedback && { feedback: () => slots.feedback && slots.feedback() }),
+          ...(slots.feedbackInvalid && {
+            feedbackInvalid: () => slots.feedbackInvalid && slots.feedbackInvalid(),
+          }),
+          ...(slots.feedbackValid && {
+            feedbackValid: () => slots.feedbackInvalid && slots.feedbackInvalid(),
+          }),
+        },
+      )
+
     return () =>
       props.floatingLabel
         ? h(CFormFloating, () => [
@@ -64,28 +88,7 @@ const CFormControlWrapper = defineComponent({
                   default: () => (slots.text && slots.text()) || props.text,
                 },
               ),
-            h(
-              CFormControlValidation,
-              {
-                describedby: props.describedby,
-                feedback: props.feedback,
-                feedbackInvalid: props.feedbackInvalid,
-                feedbackValid: props.feedbackValid,
-                floatingLabel: props.floatingLabel,
-                invalid: props.invalid,
-                tooltipFeedback: props.tooltipFeedback,
-                valid: props.valid,
-              },
-              {
-                ...(slots.feedback && { feedback: () => slots.feedback && slots.feedback() }),
-                ...(slots.feedbackInvalid && {
-                  feedbackInvalid: () => slots.feedbackInvalid && slots.feedbackInvalid(),
-                }),
-                ...(slots.feedbackValid && {
-                  feedbackValid: () => slots.feedbackInvalid && slots.feedbackInvalid(),
-                }),
-              },
-            ),
+            formControlValidation(),
           ])
         : [
             (props.label || slots.label) &&
@@ -109,28 +112,7 @@ const CFormControlWrapper = defineComponent({
                   default: () => (slots.text && slots.text()) || props.text,
                 },
               ),
-            h(
-              CFormControlValidation,
-              {
-                describedby: props.describedby,
-                feedback: props.feedback,
-                feedbackInvalid: props.feedbackInvalid,
-                feedbackValid: props.feedbackValid,
-                floatingLabel: props.floatingLabel,
-                invalid: props.invalid,
-                tooltipFeedback: props.tooltipFeedback,
-                valid: props.valid,
-              },
-              {
-                ...(slots.feedback && { feedback: () => slots.feedback && slots.feedback() }),
-                ...(slots.feedbackInvalid && {
-                  feedbackInvalid: () => slots.feedbackInvalid && slots.feedbackInvalid(),
-                }),
-                ...(slots.feedbackValid && {
-                  feedbackValid: () => slots.feedbackInvalid && slots.feedbackInvalid(),
-                }),
-              },
-            ),
+            formControlValidation(),
           ]
   },
 })
