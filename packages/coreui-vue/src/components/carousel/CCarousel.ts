@@ -11,7 +11,7 @@ import {
   watch,
 } from 'vue'
 
-import { isVisible } from './../../utils'
+import { isInViewport } from './../../utils'
 
 const CCarousel = defineComponent({
   name: 'CCarousel',
@@ -133,7 +133,7 @@ const CCarousel = defineComponent({
     const nextItemWhenVisible = () => {
       // Don't call next when the page isn't visible
       // or the carousel or its parent isn't visible
-      if (!document.hidden && isVisible(carouselRef.value)) {
+      if (!document.hidden && isInViewport(carouselRef.value)) {
         handleControlClick('next')
       }
     }
@@ -156,7 +156,7 @@ const CCarousel = defineComponent({
     }
 
     const handleScroll = () => {
-      if (!document.hidden && isVisible(carouselRef.value)) {
+      if (!document.hidden && isInViewport(carouselRef.value)) {
         visible.value = true
       } else {
         visible.value = false

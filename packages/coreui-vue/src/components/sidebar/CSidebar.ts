@@ -1,7 +1,7 @@
 import { defineComponent, h, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { CBackdrop } from '../backdrop'
 
-import { isVisible } from './../../utils'
+import { isInViewport } from './../../utils'
 
 const isOnMobile = (element: HTMLDivElement) =>
   Boolean(getComputedStyle(element).getPropertyValue('--cui-is-mobile'))
@@ -88,7 +88,7 @@ const CSidebar = defineComponent({
 
     onMounted(() => {
       mobile.value = isOnMobile(sidebarRef.value)
-      inViewport.value = isVisible(sidebarRef.value)
+      inViewport.value = isInViewport(sidebarRef.value)
 
       window.addEventListener('resize', () => handleResize())
       window.addEventListener('mouseup', handleClickOutside)
@@ -96,7 +96,7 @@ const CSidebar = defineComponent({
 
       sidebarRef.value.addEventListener('mouseup', handleOnClick)
       sidebarRef.value.addEventListener('transitionend', () => {
-        inViewport.value = isVisible(sidebarRef.value)
+        inViewport.value = isInViewport(sidebarRef.value)
       })
     })
 
@@ -107,7 +107,7 @@ const CSidebar = defineComponent({
 
       sidebarRef.value.removeEventListener('mouseup', handleOnClick)
       sidebarRef.value.removeEventListener('transitionend', () => {
-        inViewport.value = isVisible(sidebarRef.value)
+        inViewport.value = isInViewport(sidebarRef.value)
       })
     })
 
@@ -118,7 +118,7 @@ const CSidebar = defineComponent({
 
     const handleResize = () => {
       mobile.value = isOnMobile(sidebarRef.value)
-      inViewport.value = isVisible(sidebarRef.value)
+      inViewport.value = isInViewport(sidebarRef.value)
     }
 
     const handleKeyup = (event: Event) => {
