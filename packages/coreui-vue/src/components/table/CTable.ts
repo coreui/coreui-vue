@@ -137,7 +137,7 @@ const CTable = defineComponent({
      * @since 4.5.0
      */
     footer: {
-      type: Array as PropType<FooterItem[]>,
+      type: Array as PropType<FooterItem[] | string[]>,
       default: () => [],
       required: false,
     },
