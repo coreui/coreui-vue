@@ -138,7 +138,6 @@ const CTable = defineComponent({
      */
     footer: {
       type: Array as PropType<FooterItem[] | string[]>,
-      default: () => [],
       required: false,
     },
     /**
@@ -158,7 +157,6 @@ const CTable = defineComponent({
      */
     items: {
       type: Array as PropType<Item[]>,
-      default: () => [],
       required: false,
     },
     responsive: {
@@ -228,7 +226,7 @@ const CTable = defineComponent({
             if (typeof column === 'object') return column.key
             else return column
           })
-        : Object.keys(props.items[0] || {}).filter((el) => el.charAt(0) !== '_'),
+        : Object.keys((props.items && props.items[0]) || {}).filter((el) => el.charAt(0) !== '_'),
     )
 
     const table = () =>
@@ -301,34 +299,37 @@ const CTable = defineComponent({
                 {},
                 {
                   default: () => [
-                    props.items.map((item: Item) =>
-                      h(
-                        CTableRow,
-                        {
-                          ...(item._props && { ...item._props }),
-                        },
-                        {
-                          default: () => [
-                            rawColumnNames.value.map(
-                              (colName: string) =>
-                                item[colName] &&
-                                h(
-                                  CTableDataCell,
-                                  {
-                                    ...(item._cellProps &&
-                                      item._cellProps['all'] && { ...item._cellProps['all'] }),
-                                    ...(item._cellProps &&
-                                      item._cellProps[colName] && { ...item._cellProps[colName] }),
-                                  },
-                                  {
-                                    default: () => item[colName],
-                                  },
-                                ),
-                            ),
-                          ],
-                        },
+                    props.items &&
+                      props.items.map((item: Item) =>
+                        h(
+                          CTableRow,
+                          {
+                            ...(item._props && { ...item._props }),
+                          },
+                          {
+                            default: () => [
+                              rawColumnNames.value.map(
+                                (colName: string) =>
+                                  item[colName] &&
+                                  h(
+                                    CTableDataCell,
+                                    {
+                                      ...(item._cellProps &&
+                                        item._cellProps['all'] && { ...item._cellProps['all'] }),
+                                      ...(item._cellProps &&
+                                        item._cellProps[colName] && {
+                                          ...item._cellProps[colName],
+                                        }),
+                                    },
+                                    {
+                                      default: () => item[colName],
+                                    },
+                                  ),
+                              ),
+                            ],
+                          },
+                        ),
                       ),
-                    ),
                   ],
                 },
               ),
@@ -346,17 +347,19 @@ const CTable = defineComponent({
                       {},
                       {
                         default: () => [
-                          props.footer.map((item: FooterItem | string) =>
-                            h(
-                              CTableDataCell,
-                              {
-                                ...(typeof item === 'object' && item._props && { ...item._props }),
-                              },
-                              {
-                                default: () => (typeof item === 'object' ? item.label : item),
-                              },
+                          props.footer &&
+                            props.footer.map((item: FooterItem | string) =>
+                              h(
+                                CTableDataCell,
+                                {
+                                  ...(typeof item === 'object' &&
+                                    item._props && { ...item._props }),
+                                },
+                                {
+                                  default: () => (typeof item === 'object' ? item.label : item),
+                                },
+                              ),
                             ),
-                          ),
                         ],
                       },
                     ),
