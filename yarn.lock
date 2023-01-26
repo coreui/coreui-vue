@@ -325,10 +325,10 @@
   resolved "https://registry.yarnpkg.com/@coreui/icons-vue/-/icons-vue-2.0.0.tgz#722e55f74badba58fdf0ab6f83ffa54deffbcbb3"
   integrity sha512-3OLOv6TExmi93kapV4n9kmJ36fqxTHv3Vn/SPGAUX1btwf0wCmXen4xF3A8OdLEwR0i6Ggqw+MY/T7WjA6k2xg==
 
-"@coreui/icons@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@coreui/icons/-/icons-2.1.0.tgz#b21641d3d034fdef308c87dc347c8684c408a753"
-  integrity sha512-3yY9J0088TSY403jwJeP5YERH3RLOvxdhOa4VIQsGOX4fuQZiyVUM+vwlzyCSpgAv9NwKPkCor+gc+JJaYf0TA==
+"@coreui/icons@^3.0.0-0":
+  version "3.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/@coreui/icons/-/icons-3.0.0-rc.0.tgz#37710d41ff24220f3a33dde1c88d93a2e450a014"
+  integrity sha512-lDazxGn10cQxH3hhNrUKg62YqBYilL4VPcXj7Z9FTHTiRVxLfx8HmjqVMoeuKTNBa0tGGUys7brBwXvqN0ijKQ==
 
 "@esbuild/linux-loong64@0.14.54":
   version "0.14.54"
