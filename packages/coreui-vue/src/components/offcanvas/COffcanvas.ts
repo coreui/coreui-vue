@@ -10,11 +10,21 @@ const COffcanvas = defineComponent({
   props: {
     /**
      * Apply a backdrop on body while offcanvas is open.
+     *
+     * @values boolean | 'static'
      */
     backdrop: {
-      type: Boolean,
+      type: [Boolean, String],
       default: true,
-      require: false,
+      validator: (value: boolean | string) => {
+        if (typeof value === 'string') {
+          return ['static'].includes(value)
+        }
+        if (typeof value === 'boolean') {
+          return true
+        }
+        return false
+      },
     },
     /**
      * Closes the offcanvas when escape key is pressed.
@@ -22,7 +32,6 @@ const COffcanvas = defineComponent({
     keyboard: {
       type: Boolean,
       default: true,
-      require: false,
     },
     /**
      * Components placement, there’s no default placement.
@@ -43,15 +52,11 @@ const COffcanvas = defineComponent({
     scroll: {
       type: Boolean,
       default: false,
-      required: false,
     },
     /**
      * Toggle the visibility of offcanvas component.
      */
-    visible: {
-      type: Boolean,
-      require: false,
-    },
+    visible: Boolean,
   },
   emits: [
     /**
@@ -93,22 +98,18 @@ const COffcanvas = defineComponent({
       emit('show')
       executeAfterTransition(() => done(), el as HTMLElement)
       setTimeout(() => {
-        el.style.visibility = 'visible'
         el.classList.add('show')
       }, 1)
     }
     const handleAfterEnter = () => {
-      window.addEventListener('mousedown', handleMouseDown)
-      window.addEventListener('keyup', handleKeyUp)
+      offcanvasRef.value.focus()
     }
     const handleLeave = (el: RendererElement, done: () => void) => {
       executeAfterTransition(() => done(), el as HTMLElement)
-      window.removeEventListener('mousedown', handleMouseDown)
-      window.removeEventListener('keyup', handleKeyUp)
-      el.classList.remove('show')
+      el.classList.add('hiding')
     }
     const handleAfterLeave = (el: RendererElement) => {
-      el.style.visibility = 'hidden'
+      el.classList.remove('show', 'hiding')
     }
 
     const handleDismiss = () => {
@@ -116,21 +117,16 @@ const COffcanvas = defineComponent({
       emit('hide')
     }
 
-    const handleKeyUp = (event: KeyboardEvent) => {
-      if (offcanvasRef.value && !offcanvasRef.value.contains(event.target as HTMLElement)) {
-        if (event.key === 'Escape' && props.keyboard && props.backdrop) {
-          return handleDismiss()
-        }
+    const handleBackdropDismiss = () => {
+      if (props.backdrop !== 'static') {
+        handleDismiss()
       }
     }
 
-    const handleMouseDown = (event: Event) => {
-      window.addEventListener('mouseup', () => handleMouseUp(event), { once: true })
-    }
-
-    const handleMouseUp = (event: Event) => {
-      if (offcanvasRef.value && !offcanvasRef.value.contains(event.target as HTMLElement)) {
-        props.backdrop && handleDismiss()
+    const handleKeyDown = (event: KeyboardEvent) => {
+      console.log('keydown')
+      if (event.key === 'Escape' && props.keyboard) {
+        handleDismiss()
       }
     }
 
@@ -155,8 +151,10 @@ const COffcanvas = defineComponent({
                     [`offcanvas-${props.placement}`]: props.placement,
                   },
                 ],
+                onKeydown: (event: KeyboardEvent) => handleKeyDown(event),
                 ref: offcanvasRef,
                 role: 'dialog',
+                tabindex: -1,
               },
               slots.default && slots.default(),
             ),
@@ -166,6 +164,7 @@ const COffcanvas = defineComponent({
       props.backdrop &&
         h(CBackdrop, {
           class: 'offcanvas-backdrop',
+          onClick: handleBackdropDismiss,
           visible: visible.value,
         }),
     ]
