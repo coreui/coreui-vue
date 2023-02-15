@@ -50,6 +50,7 @@ const COffcanvas = defineComponent({
      * Responsive offcanvas property hide content outside the viewport from a specified breakpoint and down.
      *
      * @values boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
+     * @since 4.7.0
      */
     responsive: {
       type: [Boolean, String],
