@@ -25,7 +25,6 @@ const CModal = defineComponent({
      */
     alignment: {
       default: 'top',
-      required: false,
       validator: (value: string) => {
         return ['top', 'center'].includes(value)
       },
@@ -33,12 +32,20 @@ const CModal = defineComponent({
     /**
      * Apply a backdrop on body while offcanvas is open.
      *
-     * @values 'static'
+     * @values boolean | 'static'
      */
     backdrop: {
       type: [Boolean, String],
       default: true,
-      require: false,
+      validator: (value: boolean | string) => {
+        if (typeof value == 'string') {
+          return ['static'].includes(value)
+        }
+        if (typeof value == 'boolean') {
+          return true
+        }
+        return false
+      },
     },
     /**
      * A string of all className you want applied to the modal content component.
@@ -46,7 +53,6 @@ const CModal = defineComponent({
     contentClassName: {
       type: String,
       default: undefined,
-      required: false,
     },
     /**
      * Set modal to covers the entire user viewport
@@ -56,7 +62,6 @@ const CModal = defineComponent({
     fullscreen: {
       type: [Boolean, String],
       default: undefined,
-      required: false,
       validator: (value: boolean | string) => {
         if (typeof value == 'string') {
           return ['sm', 'md', 'lg', 'xl', 'xxl'].includes(value)
@@ -73,14 +78,12 @@ const CModal = defineComponent({
     keyboard: {
       type: Boolean,
       default: true,
-      required: false,
     },
     /**
      * Create a scrollable modal that allows scrolling the modal body.
      */
     scrollable: {
       type: Boolean,
-      required: false,
     },
     /**
      * Size the component small, large, or extra large.
@@ -90,7 +93,6 @@ const CModal = defineComponent({
     size: {
       type: String,
       default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['sm', 'lg', 'xl'].includes(value)
       },
@@ -101,7 +103,6 @@ const CModal = defineComponent({
     transition: {
       type: Boolean,
       default: true,
-      required: false,
     },
     /**
      * By default the component is unmounted after close animation, if you want to keep the component mounted set this property to false.
@@ -109,7 +110,6 @@ const CModal = defineComponent({
     unmountOnClose: {
       type: Boolean,
       default: true,
-      required: false,
     },
     /**
      * Toggle the visibility of alert component.
