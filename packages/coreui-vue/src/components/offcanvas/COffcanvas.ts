@@ -47,6 +47,24 @@ const COffcanvas = defineComponent({
       },
     },
     /**
+     * Responsive offcanvas property hide content outside the viewport from a specified breakpoint and down.
+     *
+     * @values boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
+     */
+    responsive: {
+      type: [Boolean, String],
+      default: true,
+      validator: (value: boolean | string) => {
+        if (typeof value === 'string') {
+          return ['sm', 'md', 'lg', 'xl', 'xxl'].includes(value)
+        }
+        if (typeof value === 'boolean') {
+          return true
+        }
+        return false
+      },
+    },
+    /**
      * Allow body scrolling while offcanvas is open
      */
     scroll: {
@@ -101,13 +119,16 @@ const COffcanvas = defineComponent({
         el.classList.add('show')
       }, 1)
     }
+
     const handleAfterEnter = () => {
       offcanvasRef.value.focus()
     }
+
     const handleLeave = (el: RendererElement, done: () => void) => {
       executeAfterTransition(() => done(), el as HTMLElement)
       el.classList.add('hiding')
     }
+
     const handleAfterLeave = (el: RendererElement) => {
       el.classList.remove('show', 'hiding')
     }
@@ -146,8 +167,10 @@ const COffcanvas = defineComponent({
               'div',
               {
                 class: [
-                  'offcanvas',
                   {
+                    [`offcanvas${
+                      typeof props.responsive !== 'boolean' ? '-' + props.responsive : ''
+                    }`]: props.responsive,
                     [`offcanvas-${props.placement}`]: props.placement,
                   },
                 ],

@@ -205,6 +205,51 @@ If you set a `backdrop` to `static`, your React offcanvas component will not clo
 </script>
 ```
 
+## Responsive 
+
+Responsive offcanvas properties hide content outside the viewport from a specified breakpoint and down.
+Above that breakpoint, the contents within will behave as usual. 
+For example, `responsive="lg"` hides content in an offcanvas below the lg breakpoint, but shows the content above the lg breakpoint.
+
+::: demo
+<CButton color="primary" @click="() => { visibleResponsiveBackdrop = !visibleResponsiveBackdrop }">Toggle offcanvas</CButton>
+<CAlert class="d-none d-lg-block" color="info">Resize your browser to show the responsive offcanvas toggle.</CAlert>
+<COffcanvas placement="start" responsive="lg" :visible="visibleResponsiveBackdrop" @hide="() => { visibleResponsiveBackdrop = !visibleResponsiveBackdrop }">
+  <COffcanvasHeader>
+    <COffcanvasTitle>Responsive offcanvas</COffcanvasTitle>
+    <CCloseButton class="text-reset" @click="() => { visibleResponsiveBackdrop = false }"/>
+  </COffcanvasHeader>
+  <COffcanvasBody>
+    <p>This is content within an <code>.offcanvas-lg</code></p>.
+  </COffcanvasBody>
+</COffcanvas>
+:::
+```vue
+<template>
+  <CButton color="primary" @click="() => { visibleResponsiveBackdrop = !visibleResponsiveBackdrop }">Toggle static offcanvas</CButton>
+  <CAlert class="d-none d-lg-block" color="info">Resize your browser to show the responsive offcanvas toggle.</CAlert>
+  <COffcanvas placement="start" responsive="lg" :visible="visibleResponsiveBackdrop" @hide="() => { visibleResponsiveBackdrop = !visibleResponsiveBackdrop }">
+    <COffcanvasHeader>
+      <COffcanvasTitle>Responsive offcanvas</COffcanvasTitle>
+      <CCloseButton class="text-reset" @click="() => { visibleResponsiveBackdrop = false }"/>
+    </COffcanvasHeader>
+    <COffcanvasBody>
+      <p>This is content within an <code>.offcanvas-lg</code></p>.
+    </COffcanvasBody>
+  </COffcanvas>
+</template>
+<script>
+  export default {
+    data() {
+      return { 
+        visibleResponsiveBackdrop: false,
+      }
+    }
+  }
+</script>
+```
+
+
 ## Placement
 
 There's no default placement for offcanvas components, so you must add one of the modifier classes below;
@@ -343,6 +388,7 @@ Since the offcanvas panel is conceptually a modal dialog, be sure to add `aria-l
         visibleEnd: false,
         visibleBottom: false,
         visibleScrolling: false,
+        visibleResponsiveBackdrop: false,
         visibleWithStaticBackdrop: false,
         visibleWithBothOptions: false,
       }
