@@ -146,7 +146,6 @@ const COffcanvas = defineComponent({
     }
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      console.log('keydown')
       if (event.key === 'Escape' && props.keyboard) {
         handleDismiss()
       }
