@@ -13,6 +13,8 @@
     "@coreui/icons": "^3.0.0",
     "@coreui/icons-vue": "^2.0.0",
     "@coreui/vue-chartjs": "^2.0.1",
+    "@docsearch/css": "^3.3.3",
+    "@docsearch/js": "^3.3.3",
     "@vuepress/plugin-toc": "2.0.0-beta.38",
     "markdown-it-include": "^2.0.0",
     "vue-docgen-cli": "^4.57.1",

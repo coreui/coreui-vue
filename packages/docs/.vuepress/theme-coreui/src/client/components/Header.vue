@@ -3,6 +3,7 @@
     <CHeaderToggler class="ms-md-3" @click="$emit('toggle-sidebar')">
       <CIcon icon="cil-menu" size="lg" />
     </CHeaderToggler>
+    <div class="docs-search" id="docsearch"></div>
     <CHeaderNav class="ms-auto">
       <CNavItem href="https://github.com/coreui">
         <CIcon icon="cib-github" size="xl" />

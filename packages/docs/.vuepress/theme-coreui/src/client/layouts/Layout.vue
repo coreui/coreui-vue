@@ -45,7 +45,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, Transition } from 'vue'
+import { computed, defineComponent, onMounted, ref, Transition } from 'vue'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import type { DefaultThemePageFrontmatter } from '../../shared'
 import Footer from '../components/Footer.vue'
@@ -54,6 +54,7 @@ import Home from '../components/Home.vue'
 import Page from '../components/Page.vue'
 import Sidebar from '../components/Sidebar.vue'
 import { useScrollPromise, useSidebarItems, useThemeLocaleData } from '../composables'
+import docsearch from '@docsearch/js'
 
 export default defineComponent({
   name: 'Layout',
@@ -99,6 +100,18 @@ export default defineComponent({
     const scrollPromise = useScrollPromise()
     const onBeforeEnter = scrollPromise.resolve
     const onBeforeLeave = scrollPromise.pending
+
+    onMounted(() => {
+      const searchElement = document.getElementById('docsearch') as HTMLElement
+      docsearch({
+        appId: 'RG8RW9GEH3',
+        apiKey: '4926b633296d71c6d727f7766170f82b',
+        indexName: 'coreuivue',
+        container: searchElement,
+        // @ts-ignore
+        debug: false,
+      })
+    })
 
     return {
       isSidebarOpen,
