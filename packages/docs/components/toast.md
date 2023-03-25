@@ -182,7 +182,7 @@ Toasts are slightly translucent to blend in with what's below them.
 You can stack toasts by wrapping them in a toast container, which will vertically add some spacing.
 
 ::: demo
-<CToaster>
+<CToaster class="position-relative">
 <CToast :autohide="false">
 <CToastHeader closeButton>
 <svg
