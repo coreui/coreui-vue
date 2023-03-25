@@ -7,10 +7,7 @@ const CToastHeader = defineComponent({
     /**
      * Automatically add a close button to the header.
      */
-    closeButton: {
-      type: Boolean,
-      require: false,
-    },
+    closeButton: Boolean,
   },
   emits: [
     /**

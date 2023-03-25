@@ -8,33 +8,25 @@ const CFormControlValidation = defineComponent({
     /**
      * @ignore
      */
-    describedby: {
-      type: String,
-    },
+    describedby: String,
     /**
      * Provide valuable, actionable feedback.
      *
      * @since 4.3.0
      */
-    feedback: {
-      type: String,
-    },
+    feedback: String,
     /**
      * Provide valuable, actionable feedback.
      *
      * @since 4.3.0
      */
-    feedbackInvalid: {
-      type: String,
-    },
+    feedbackInvalid: String,
     /**
      * Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.
      *
      * @since 4.3.0
      */
-    feedbackValid: {
-      type: String,
-    },
+    feedbackValid: String,
     /**
      * Set component validation state to invalid.
      */

@@ -6,11 +6,7 @@ const CFormLabel = defineComponent({
     /**
      * A string of all className you want to be applied to the component, and override standard className value.
      */
-    customClassName: {
-      type: [Array, String],
-      default: undefined,
-      required: false,
-    },
+    customClassName: [Array, String],
   },
   setup(props, { slots }) {
     return () =>

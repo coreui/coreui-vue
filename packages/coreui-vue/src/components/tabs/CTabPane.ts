@@ -1,6 +1,6 @@
 import { defineComponent, h, ref, RendererElement, Transition, vShow, withDirectives } from 'vue'
 
-import { executeAfterTransition } from './../../utils/transition'
+import { executeAfterTransition } from '../../utils/transition'
 
 const CTabPane = defineComponent({
   name: 'CTabPane',
@@ -11,7 +11,6 @@ const CTabPane = defineComponent({
     visible: {
       type: Boolean,
       default: false,
-      required: false,
     },
   },
   emits: [

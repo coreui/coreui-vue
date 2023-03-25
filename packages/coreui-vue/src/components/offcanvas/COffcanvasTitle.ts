@@ -8,7 +8,6 @@ const COffcanvasTitle = defineComponent({
      */
     component: {
       type: String,
-      required: false,
       default: 'h5',
     },
   },

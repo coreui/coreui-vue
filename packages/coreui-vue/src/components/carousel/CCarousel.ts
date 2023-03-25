@@ -10,7 +10,7 @@ import {
   watch,
 } from 'vue'
 
-import { isInViewport } from './../../utils'
+import { isInViewport } from '../../utils'
 
 const CCarousel = defineComponent({
   name: 'CCarousel',
@@ -29,7 +29,6 @@ const CCarousel = defineComponent({
     index: {
       type: Number,
       default: 0,
-      required: false,
     },
     /**
      * Adding indicators at the bottom of the carousel for each item.
@@ -41,7 +40,6 @@ const CCarousel = defineComponent({
     interval: {
       type: [Boolean, Number],
       default: 5000,
-      required: false,
     },
     /**
      * If set to 'hover', pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave. If set to false, hovering over the carousel won't pause it.
@@ -49,7 +47,6 @@ const CCarousel = defineComponent({
     pause: {
       type: [Boolean, String],
       default: 'hover',
-      required: false,
       validator: (value: boolean | string) => {
         return typeof value === 'boolean' || value === 'hover'
       },
@@ -62,7 +59,6 @@ const CCarousel = defineComponent({
     transition: {
       type: String,
       default: 'slide',
-      required: false,
       validator: (value: string) => {
         return ['crossfade', 'slide'].includes(value)
       },
@@ -73,7 +69,6 @@ const CCarousel = defineComponent({
     wrap: {
       type: Boolean,
       default: true,
-      required: false,
     },
   },
   setup(props, { slots }) {

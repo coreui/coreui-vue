@@ -13,33 +13,25 @@ const CFormCheck = defineComponent({
      *
      * @see http://coreui.io/vue/docs/components/button.html
      */
-    button: {
-      type: Object,
-    },
+    button: Object,
     /**
      * Provide valuable, actionable feedback.
      *
      * @since 4.3.0
      */
-    feedback: {
-      type: String,
-    },
+    feedback: String,
     /**
      * Provide valuable, actionable feedback.
      *
      * @since 4.3.0
      */
-    feedbackInvalid: {
-      type: String,
-    },
+    feedbackInvalid: String,
     /**
      * Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.
      *
      * @since 4.3.0
      */
-    feedbackValid: {
-      type: String,
-    },
+    feedbackValid: String,
     /**
      * Sets hit area to the full area of the component.
      */
@@ -53,9 +45,7 @@ const CFormCheck = defineComponent({
     /**
      * The id global attribute defines an identifier (ID) that must be unique in the whole document.
      */
-    id: {
-      type: String,
-    },
+    id: String,
     /**
      * Input Checkbox indeterminate Property
      */
@@ -63,9 +53,7 @@ const CFormCheck = defineComponent({
     /**
      * Group checkboxes or radios on the same horizontal row by adding.
      */
-    inline: {
-      type: Boolean,
-    },
+    inline: Boolean,
     /**
      * Set component validation state to invalid.
      */
@@ -73,9 +61,7 @@ const CFormCheck = defineComponent({
     /**
      * The element represents a caption for a component.
      */
-    label: {
-      type: String,
-    },
+    label: String,
     /**
      * The default name for a value passed using v-model.
      */
@@ -107,9 +93,7 @@ const CFormCheck = defineComponent({
     /**
      * Set component validation state to valid.
      */
-    valid: {
-      type: Boolean,
-    },
+    valid: Boolean,
   },
   emits: [
     /**

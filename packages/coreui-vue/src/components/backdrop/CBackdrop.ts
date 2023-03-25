@@ -1,6 +1,6 @@
 import { defineComponent, h, RendererElement, Transition } from 'vue'
 
-import { executeAfterTransition } from './../../utils/transition'
+import { executeAfterTransition } from '../../utils/transition'
 
 const CBackdrop = defineComponent({
   name: 'CBackdrop',
@@ -11,7 +11,6 @@ const CBackdrop = defineComponent({
     visible: {
       type: Boolean,
       default: false,
-      required: false,
     },
   },
   setup(props) {

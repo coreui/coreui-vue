@@ -6,11 +6,7 @@ const CAccordion = defineComponent({
     /**
      * The active item key.
      */
-    activeItemKey: {
-      type: [Number, String],
-      default: undefined,
-      require: false,
-    },
+    activeItemKey: [Number, String],
     /**
      * Make accordion items stay open when another item is opened
      */

@@ -10,7 +10,6 @@ const CModalHeader = defineComponent({
      */
     closeButton: {
       type: Boolean,
-      required: false,
       default: true,
     },
   },

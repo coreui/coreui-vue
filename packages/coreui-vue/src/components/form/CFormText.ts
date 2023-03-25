@@ -8,7 +8,6 @@ const CFormText = defineComponent({
      */
     component: {
       type: String,
-      required: false,
       default: 'div',
     },
   },

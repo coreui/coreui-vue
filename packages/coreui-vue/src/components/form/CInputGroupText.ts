@@ -8,7 +8,6 @@ const CInputGroupText = defineComponent({
      */
     component: {
       type: String,
-      required: false,
       default: 'span',
     },
   },

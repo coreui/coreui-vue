@@ -10,8 +10,6 @@ const CImage = defineComponent({
      */
     align: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['start', 'center', 'end'].includes(value)
       },
@@ -19,24 +17,15 @@ const CImage = defineComponent({
     /**
      * Make image responsive.
      */
-    fluid: {
-      type: Boolean,
-      required: false,
-    },
+    fluid: Boolean,
     /**
      * Make image rounded.
      */
-    rounded: {
-      type: Boolean,
-      required: false,
-    },
+    rounded: Boolean,
     /**
      * Give an image a rounded 1px border appearance.
      */
-    thumbnail: {
-      type: Boolean,
-      required: false,
-    },
+    thumbnail: Boolean,
   },
   setup(props) {
     return () =>

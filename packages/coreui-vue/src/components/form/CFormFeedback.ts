@@ -8,7 +8,6 @@ const CFormFeedback = defineComponent({
      */
     component: {
       type: String,
-      required: false,
       default: 'div',
     },
     /**

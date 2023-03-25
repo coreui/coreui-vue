@@ -9,11 +9,7 @@ const CDropdownToggle = defineComponent({
     /**
      * Toggle the active state for the component.
      */
-    active: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
+    active: Boolean,
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
      *
@@ -26,15 +22,13 @@ const CDropdownToggle = defineComponent({
     caret: {
       type: Boolean,
       default: true,
-      required: false,
     },
     /**
      * Component used for the root node. Either a string to use a HTML element or a component.
      */
     component: {
       type: String,
-      default: 'button',
-      require: false,
+      default: 'button'
     },
     /**
      * Create a custom toggler which accepts any content.
@@ -43,10 +37,7 @@ const CDropdownToggle = defineComponent({
     /**
      * Toggle the disabled state for the component.
      */
-    disabled: {
-      type: Boolean,
-      required: false,
-    },
+    disabled: Boolean,
     /**
      * @values 'rounded', 'rounded-top', 'rounded-end', 'rounded-bottom', 'rounded-start', 'rounded-circle', 'rounded-pill', 'rounded-0', 'rounded-1', 'rounded-2', 'rounded-3'
      */
@@ -58,8 +49,6 @@ const CDropdownToggle = defineComponent({
      */
     size: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['sm', 'lg'].includes(value)
       },
@@ -67,10 +56,7 @@ const CDropdownToggle = defineComponent({
     /**
      * Similarly, create split button dropdowns with virtually the same markup as single button dropdowns, but with the addition of `.dropdown-toggle-split` className for proper spacing around the dropdown caret.
      */
-    split: {
-      type: Boolean,
-      required: false,
-    },
+    split: Boolean,
     /**
      * Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them.
      *
@@ -79,7 +65,6 @@ const CDropdownToggle = defineComponent({
     trigger: {
       type: String as PropType<Triggers>,
       default: 'click',
-      required: false,
     },
     /**
      * Set the button variant to an outlined button or a ghost button.
@@ -88,8 +73,6 @@ const CDropdownToggle = defineComponent({
      */
     variant: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['ghost', 'outline'].includes(value)
       },

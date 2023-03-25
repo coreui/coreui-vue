@@ -8,7 +8,6 @@ const CNavbarNav = defineComponent({
      */
     component: {
       type: String,
-      required: false,
       default: 'ul',
     },
   },

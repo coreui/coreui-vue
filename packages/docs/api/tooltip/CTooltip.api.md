@@ -14,7 +14,7 @@ import CTooltip from '@coreui/vue/src/components/tooltip/CTooltip'
 | **offset**    | Offset of the tooltip relative to its target.                                                                                                                        | array              | -                               | [0, 0]  |
 | **placement** | Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property. | Placement          | -                               | 'top'   |
 | **trigger**   | Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them.                                                  | string \| string[] | `'click'`, `'focus'`, `'hover'` | 'hover' |
-| **visible**   | Toggle the visibility of tooltip component.                                                                                                                          | boolean            | -                               |         |
+| **visible**   | Toggle the visibility of tooltip component.                                                                                                                          | boolean            | -                               | -       |
 
 #### Events
 

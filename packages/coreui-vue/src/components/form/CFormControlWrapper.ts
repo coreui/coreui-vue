@@ -14,31 +14,23 @@ const CFormControlWrapper = defineComponent({
      *
      * @since 4.3.0
      */
-    floatingLabel: {
-      type: String,
-    },
+    floatingLabel: String,
     /**
      * @ignore
      */
-    id: {
-      type: String,
-    },
+    id: String,
     /**
      * Add a caption for a component.
      *
      * @since 4.3.0
      */
-    label: {
-      type: String,
-    },
+    label: String,
     /**
      * Add helper text to the component.
      *
      * @since 4.3.0
      */
-    text: {
-      type: String,
-    },
+    text: String,
   },
   setup(props, { slots }) {
     const formControlValidation = () =>

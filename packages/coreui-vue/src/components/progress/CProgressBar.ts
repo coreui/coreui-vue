@@ -8,10 +8,7 @@ const CProgressBar = defineComponent({
     /**
      * Use to animate the stripes right to left via CSS3 animations.
      */
-    animated: {
-      type: Boolean,
-      required: false,
-    },
+    animated: Boolean,
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
      *
@@ -23,7 +20,6 @@ const CProgressBar = defineComponent({
      */
     value: {
       type: Number,
-      required: false,
       default: 0,
     },
     /**
@@ -33,8 +29,6 @@ const CProgressBar = defineComponent({
      */
     variant: {
       type: String,
-      default: undefined,
-      require: false,
       validator: (value: string) => {
         return value === 'striped'
       },

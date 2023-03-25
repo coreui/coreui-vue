@@ -11,8 +11,6 @@ const CDropdown = defineComponent({
      */
     alignment: {
       type: [String, Object],
-      default: undefined,
-      required: false,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validator: (value: string | any) => {
         if (value === 'start' || value === 'end') {
@@ -57,10 +55,7 @@ const CDropdown = defineComponent({
     /**
      * Sets a darker color scheme to match a dark navbar.
      */
-    dark: {
-      type: Boolean,
-      required: false,
-    },
+    dark: Boolean,
     /**
      * Sets a specified  direction and location of the dropdown menu.
      *
@@ -68,8 +63,6 @@ const CDropdown = defineComponent({
      */
     direction: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['center', 'dropup', 'dropup-center', 'dropend', 'dropstart'].includes(value)
       },
@@ -77,10 +70,7 @@ const CDropdown = defineComponent({
     /**
      * Toggle the disabled state for the component.
      */
-    disabled: {
-      type: Boolean,
-      required: false,
-    },
+    disabled: Boolean,
     /**
      * Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property.
      *
@@ -89,7 +79,6 @@ const CDropdown = defineComponent({
     placement: {
       type: String as PropType<Placement>,
       default: 'bottom-start',
-      required: false,
     },
     /**
      * If you want to disable dynamic positioning set this property to `true`.
@@ -97,14 +86,12 @@ const CDropdown = defineComponent({
     popper: {
       type: Boolean,
       default: true,
-      required: false,
     },
     /**
      * Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them.
      */
     trigger: {
       type: [String, Array],
-      required: false,
       default: 'click',
     },
     /**
@@ -115,7 +102,6 @@ const CDropdown = defineComponent({
     variant: {
       type: String,
       default: 'btn-group',
-      required: false,
       validator: (value: string) => {
         return ['btn-group', 'dropdown', 'input-group', 'nav-item'].includes(value)
       },
@@ -123,10 +109,7 @@ const CDropdown = defineComponent({
     /**
      * Toggle the visibility of dropdown menu component.
      */
-    visible: {
-      type: Boolean,
-      required: false,
-    },
+    visible: Boolean,
   },
   emits: [
     /**

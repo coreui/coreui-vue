@@ -24,61 +24,37 @@ const CRow = defineComponent({
      *
      * @values { cols: 'auto' | number | string } | { gutter: number | string } | { gutterX: number | string } | { gutterY: number | string }
      */
-    xs: {
-      type: Object as () => BPObject,
-      default: undefined,
-      required: false,
-    },
+    xs: Object as () => BPObject,
     /**
      * The number of columns/offset/order on small devices (<768px).
      *
      * @values { cols: 'auto' | number | string } | { gutter: number | string } | { gutterX: number | string } | { gutterY: number | string }
      */
-    sm: {
-      type: Object as () => BPObject,
-      default: undefined,
-      required: false,
-      /**
-       * The number of columns/offset/order on medium devices (<992px).
-       *
-       * @values { cols: 'auto' | number | string } | { gutter: number | string } | { gutterX: number | string } | { gutterY: number | string }
-       */
-    },
-    md: {
-      type: Object as () => BPObject,
-      default: undefined,
-      required: false,
-    },
+    sm: Object as () => BPObject,
+    /**
+     * The number of columns/offset/order on medium devices (<992px).
+     *
+     * @values { cols: 'auto' | number | string } | { gutter: number | string } | { gutterX: number | string } | { gutterY: number | string }
+     */
+    md: Object as () => BPObject,
     /**
      * The number of columns/offset/order on large devices (<1200px).
      *
      * @values { cols: 'auto' | number | string } | { gutter: number | string } | { gutterX: number | string } | { gutterY: number | string }
      */
-    lg: {
-      type: Object as () => BPObject,
-      default: undefined,
-      required: false,
-    },
+    lg: Object as () => BPObject,
     /**
      * The number of columns/offset/order on X-Large devices (<1400px).
      *
      * @values { cols: 'auto' | number | string } | { gutter: number | string } | { gutterX: number | string } | { gutterY: number | string }
      */
-    xl: {
-      type: Object as () => BPObject,
-      default: undefined,
-      required: false,
-    },
+    xl: Object as () => BPObject,
     /**
      * The number of columns/offset/order on XX-Large devices (≥1400px).
      *
      * @values { cols: 'auto' | number | string } | { gutter: number | string } | { gutterX: number | string } | { gutterY: number | string }
      */
-    xxl: {
-      type: Object as () => BPObject,
-      default: undefined,
-      required: false,
-    },
+    xxl: Object as () => BPObject,
   },
   setup(props, { slots }) {
     const repsonsiveClassNames: string[] = []

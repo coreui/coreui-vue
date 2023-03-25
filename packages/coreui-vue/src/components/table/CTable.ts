@@ -57,8 +57,6 @@ const CTable = defineComponent({
      */
     align: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['bottom', 'middle', 'top'].includes(value)
       },
@@ -72,37 +70,23 @@ const CTable = defineComponent({
     /**
      * Add borders on all sides of the table and cells.
      */
-    bordered: {
-      type: Boolean,
-      required: false,
-    },
+    bordered: Boolean,
     /**
      * Remove borders on all sides of the table and cells.
      */
-    borderless: {
-      type: Boolean,
-      required: false,
-    },
+    borderless: Boolean,
     /**
      * Put the `<caption>` on the top of the table.
      *
      * @values 'top' | string
      */
-    caption: {
-      type: String,
-      default: undefined,
-      required: false,
-    },
+    caption: String,
     /**
      * Set the text of the table caption and the caption on the top of the table.
      *
      * @since 4.5.0
      */
-    captionTop: {
-      type: String,
-      default: undefined,
-      required: false,
-    },
+    captionTop: String,
     /**
      * Prop for table columns configuration. If prop is not defined, table will display columns based on the first item keys, omitting keys that begins with underscore (e.g. '_props')
      *
@@ -118,7 +102,6 @@ const CTable = defineComponent({
      */
     columns: {
       type: Array as PropType<(Column | string)[]>,
-      required: false,
     },
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
@@ -138,15 +121,11 @@ const CTable = defineComponent({
      */
     footer: {
       type: Array as PropType<(FooterItem | string)[]>,
-      required: false,
     },
     /**
      * Enable a hover state on table rows within a `<CTableBody>`.
      */
-    hover: {
-      type: Boolean,
-      required: false,
-    },
+    hover: Boolean,
     /**
      * Array of objects, where each object represents one item - row in table. Additionally, you can add style classes to each row by passing them by '_props' key and to single cell by '_cellProps'.
      *
@@ -157,12 +136,9 @@ const CTable = defineComponent({
      */
     items: {
       type: Array as PropType<Item[]>,
-      required: false,
     },
     responsive: {
       type: [Boolean, String],
-      default: undefined,
-      required: false,
       validator: (value: boolean | string) => {
         if (typeof value == 'string') {
           return ['sm', 'md', 'lg', 'xl', 'xxl'].includes(value)
@@ -176,26 +152,17 @@ const CTable = defineComponent({
     /**
      * Make table more compact by cutting all cell `padding` in half.
      */
-    small: {
-      type: Boolean,
-      required: false,
-    },
+    small: Boolean,
     /**
      * Add zebra-striping to any table row within the `<CTableBody>`.
      */
-    striped: {
-      type: Boolean,
-      required: false,
-    },
+    striped: Boolean,
     /**
      * Add zebra-striping to any table column.
      *
      * @since 4.4.0
      */
-    stripedColumns: {
-      type: Boolean,
-      required: false,
-    },
+    stripedColumns: Boolean,
     /**
      * Properties that will be passed to the table footer component.
      *
@@ -204,8 +171,6 @@ const CTable = defineComponent({
      */
     tableFootProps: {
       type: Object,
-      default: undefined,
-      required: false,
     },
     /**
      * Properties that will be passed to the table head component.
@@ -215,8 +180,6 @@ const CTable = defineComponent({
      */
     tableHeadProps: {
       type: Object,
-      default: undefined,
-      required: false,
     },
   },
   setup(props, { slots, attrs }) {

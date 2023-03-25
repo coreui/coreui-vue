@@ -8,7 +8,6 @@ const CHeaderBrand = defineComponent({
      */
     component: {
       type: String,
-      required: false,
       default: 'a',
     },
   },

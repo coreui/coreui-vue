@@ -8,7 +8,6 @@ const CCardText = defineComponent({
      */
     component: {
       type: String,
-      required: false,
       default: 'p',
     },
   },

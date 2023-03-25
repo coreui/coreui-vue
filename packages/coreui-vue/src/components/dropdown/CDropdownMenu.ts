@@ -11,7 +11,6 @@ const CDropdownMenu = defineComponent({
     component: {
       type: String,
       default: 'div',
-      required: false,
     },
   },
   setup(props, { slots }) {

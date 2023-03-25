@@ -9,28 +9,19 @@ const CFormSwitch = defineComponent({
     /**
      * The id global attribute defines an identifier (ID) that must be unique in the whole document
      */
-    id: {
-      type: String,
-    },
+    id: String,
     /**
      * Set component validation state to invalid.
      */
-    invalid: {
-      type: Boolean,
-    },
+    invalid: Boolean,
     /**
      * The element represents a caption for a component.
      */
-    label: {
-      type: String,
-    },
+    label: String,
     /**
      * The default name for a value passed using v-model.
      */
-    modelValue: {
-      type: [Boolean, String],
-      value: undefined,
-    },
+    modelValue: [Boolean, String],
     /**
      * Put checkboxes or radios on the opposite side.
      *
@@ -60,9 +51,7 @@ const CFormSwitch = defineComponent({
     /**
      * Set component validation state to valid.
      */
-    valid: {
-      type: Boolean,
-    },
+    valid: Boolean,
   },
   emits: [
     /**

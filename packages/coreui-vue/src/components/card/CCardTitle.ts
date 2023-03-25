@@ -8,7 +8,6 @@ const CCardTitle = defineComponent({
      */
     component: {
       type: String,
-      required: false,
       default: 'h5',
     },
   },

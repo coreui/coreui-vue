@@ -5,26 +5,17 @@ import { CCard, CCardBody } from '../card'
 const CWidgetStatsA = defineComponent({
   name: 'CWidgetStatsA',
   props: {
-    color: {
-      type: String,
-      default: undefined,
-      require: false,
-    },
+    color: String,
     /**
      * Title for your component. If you want to pass non-string value please use dedicated slot `<template #title>...</template>`
      */
-    title: {
-      type: String,
-      default: undefined,
-      require: false,
-    },
+    title: String,
     /**
      * Value for your component. If you want to pass non-string or non-number value please use dedicated slot `<template #value>...</template>`
      */
     value: {
       type: [Number, String],
-      default: 0,
-      require: false,
+      default: 0
     },
   },
   /**

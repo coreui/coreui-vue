@@ -6,17 +6,11 @@ export const CCloseButton = defineComponent({
     /**
      * Toggle the disabled state for the component.
      */
-    disabled: {
-      type: Boolean,
-      required: false,
-    },
+    disabled: Boolean,
     /**
      * Change the default color to white.
      */
-    white: {
-      type: Boolean,
-      required: false,
-    },
+    white: Boolean,
   },
   emits: [
     /**

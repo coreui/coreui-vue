@@ -10,8 +10,8 @@ import CCloseButton from '@coreui/vue/src/components/close-button/CCloseButton'
 
 | Prop name    | Description                                  | Type    | Values | Default |
 | ------------ | -------------------------------------------- | ------- | ------ | ------- |
-| **disabled** | Toggle the disabled state for the component. | boolean | -      |         |
-| **white**    | Change the default color to white.           | boolean | -      |         |
+| **disabled** | Toggle the disabled state for the component. | boolean | -      | -       |
+| **white**    | Change the default color to white.           | boolean | -      | -       |
 
 #### Events
 

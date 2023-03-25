@@ -10,7 +10,6 @@ const CCardLink = defineComponent({
     href: {
       type: String,
       default: '#',
-      required: false,
     },
   },
   setup(props, { slots }) {

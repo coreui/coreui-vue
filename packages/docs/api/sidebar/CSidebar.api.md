@@ -10,12 +10,12 @@ import CSidebar from '@coreui/vue/src/components/sidebar/CSidebar'
 
 | Prop name      | Description                                      | Type    | Values | Default |
 | -------------- | ------------------------------------------------ | ------- | ------ | ------- |
-| **narrow**     | Make sidebar narrow.                             | boolean | -      |         |
-| **overlaid**   | Set sidebar to overlaid variant.                 | boolean | -      |         |
+| **narrow**     | Make sidebar narrow.                             | boolean | -      | -       |
+| **overlaid**   | Set sidebar to overlaid variant.                 | boolean | -      | -       |
 | **position**   | Place sidebar in non-static positions.           | string  | -      | -       |
 | **size**       | Size the component small, large, or extra large. | string  | -      | -       |
-| **unfoldable** | Expand narrowed sidebar on hover.                | boolean | -      |         |
-| **visible**    | Toggle the visibility of sidebar component.      | boolean | -      |         |
+| **unfoldable** | Expand narrowed sidebar on hover.                | boolean | -      | -       |
+| **visible**    | Toggle the visibility of sidebar component.      | boolean | -      | -       |
 
 #### Events
 

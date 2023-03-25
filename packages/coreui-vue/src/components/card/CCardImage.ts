@@ -8,7 +8,6 @@ const CCardImage = defineComponent({
      */
     component: {
       type: String,
-      required: false,
       default: 'img',
     },
     /**
@@ -18,8 +17,6 @@ const CCardImage = defineComponent({
      */
     orientation: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['top', 'bottom'].includes(value)
       },

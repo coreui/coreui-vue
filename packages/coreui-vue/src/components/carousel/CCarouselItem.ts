@@ -16,7 +16,6 @@ const CCarouselItem = defineComponent({
     direction: {
       type: String,
       default: 'next',
-      required: false,
     },
     /**
      * The amount of time to delay between automatically cycling an item.
@@ -24,7 +23,6 @@ const CCarouselItem = defineComponent({
     interval: {
       type: [Boolean, Number],
       default: false,
-      required: false,
     },
   },
   setup(props, { slots }) {

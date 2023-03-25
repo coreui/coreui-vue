@@ -23,8 +23,6 @@ const CAvatar = defineComponent({
      */
     size: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['sm', 'md', 'lg', 'xl'].includes(value)
       },
@@ -32,11 +30,7 @@ const CAvatar = defineComponent({
     /**
      * The src attribute for the img element.
      */
-    src: {
-      type: String,
-      default: undefined,
-      required: false,
-    },
+    src: String,
     /**
      * Sets the color context of the status indicator to one of CoreUI’s themed colors.
      *
@@ -44,8 +38,6 @@ const CAvatar = defineComponent({
      */
     status: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return [
           'primary',

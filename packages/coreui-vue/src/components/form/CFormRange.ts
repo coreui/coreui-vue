@@ -7,61 +7,39 @@ const CFormRange = defineComponent({
     /**
      * Toggle the disabled state for the component.
      */
-    disabled: {
-      type: Boolean,
-      default: undefined,
-    },
+    disabled: Boolean,
     /**
      * Add a caption for a component.
      *
      * @since 4.3.0
      */
-    label: {
-      type: String,
-    },
+    label: String,
     /**
      * Specifies the maximum value for the component.
      */
-    max: {
-      type: Number,
-      default: undefined,
-    },
+    max: Number,
     /**
      * Specifies the minimum value for the component.
      */
-    min: {
-      type: Number,
-      default: undefined,
-    },
+    min: Number,
     /**
      * The default name for a value passed using v-model.
      */
-    modelValue: {
-      type: String,
-      value: undefined,
-    },
+    modelValue: String,
     /**
      * Toggle the readonly state for the component.
      */
-    readonly: {
-      type: Boolean,
-    },
+    readonly: Boolean,
     /**
      * Specifies the interval between legal numbers in the component.
      */
-    steps: {
-      type: Number,
-      default: undefined,
-    },
+    steps: Number,
     /**
      * The `value` attribute of component.
      *
      * @controllable onChange
      * */
-    value: {
-      type: Number,
-      default: undefined,
-    },
+    value: Number,
   },
   emits: [
     /**

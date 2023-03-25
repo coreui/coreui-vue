@@ -21,8 +21,6 @@ export const CPlaceholder = defineComponent({
      */
     animation: {
       type: String,
-      default: undefined,
-      require: false,
       validator: (value: string) => {
         return ['glow', 'wave'].includes(value)
       },
@@ -39,7 +37,6 @@ export const CPlaceholder = defineComponent({
     component: {
       type: String,
       default: 'span',
-      required: false,
     },
     /**
      * Size the component extra small, small, or large.
@@ -48,8 +45,6 @@ export const CPlaceholder = defineComponent({
      */
     size: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['xs', 'sm', 'lg'].includes(value)
       },
@@ -57,51 +52,27 @@ export const CPlaceholder = defineComponent({
     /**
      * The number of columns on extra small devices (<576px).
      */
-    xs: {
-      type: Number,
-      default: undefined,
-      require: false,
-    },
+    xs: Number,
     /**
      * The number of columns on small devices (<768px).
      */
-    sm: {
-      type: Number,
-      default: undefined,
-      require: false,
-    },
+    sm: Number,
     /**
      * The number of columns on medium devices (<992px).
      */
-    md: {
-      type: Number,
-      default: undefined,
-      require: false,
-    },
+    md: Number,
     /**
      * The number of columns on large devices (<1200px).
      */
-    lg: {
-      type: Number,
-      default: undefined,
-      require: false,
-    },
+    lg: Number,
     /**
      * The number of columns on X-Large devices (<1400px).
      */
-    xl: {
-      type: Number,
-      default: undefined,
-      require: false,
-    },
+    xl: Number,
     /**
      * The number of columns on XX-Large devices (≥1400px).
      */
-    xxl: {
-      type: Number,
-      default: undefined,
-      require: false,
-    },
+    xxl: Number,
   },
   setup(props, { slots }) {
     const repsonsiveClassNames: string[] = []

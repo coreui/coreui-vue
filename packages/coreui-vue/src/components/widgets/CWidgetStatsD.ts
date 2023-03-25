@@ -23,8 +23,7 @@ const CWidgetStatsD = defineComponent({
      */
     values: {
       type: Array as PropType<Value[]>,
-      default: () => [],
-      require: false,
+      default: () => []
     },
   },
   /**

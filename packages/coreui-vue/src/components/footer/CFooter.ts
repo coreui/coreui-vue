@@ -10,8 +10,6 @@ const CFooter = defineComponent({
      */
     position: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['fixed', 'sticky'].includes(value)
       },

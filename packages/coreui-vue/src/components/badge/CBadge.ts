@@ -16,7 +16,6 @@ const CBadge = defineComponent({
      */
     component: {
       type: String,
-      required: false,
       default: 'span',
     },
     /**
@@ -26,8 +25,6 @@ const CBadge = defineComponent({
      */
     position: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['top-start', 'top-end', 'bottom-end', 'bottom-start'].includes(value)
       },
@@ -45,8 +42,6 @@ const CBadge = defineComponent({
      */
     size: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return value === 'sm'
       },

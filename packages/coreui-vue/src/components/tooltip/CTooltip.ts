@@ -1,7 +1,7 @@
 import { defineComponent, h, PropType, ref, RendererElement, Teleport, Transition } from 'vue'
 import { createPopper, Placement } from '@popperjs/core'
 
-import { executeAfterTransition } from './../../utils/transition'
+import { executeAfterTransition } from '../../utils/transition'
 
 const CTooltip = defineComponent({
   name: 'CTooltip',
@@ -9,18 +9,13 @@ const CTooltip = defineComponent({
     /**
      * Content for your component. If you want to pass non-string value please use dedicated slot `<template #content>...</template>`
      */
-    content: {
-      type: String,
-      default: undefined,
-      required: false,
-    },
+    content: String,
     /**
      * Offset of the tooltip relative to its target.
      */
     offset: {
       type: Array,
       default: () => [0, 0],
-      required: false,
     },
     /**
      * Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property.
@@ -28,7 +23,6 @@ const CTooltip = defineComponent({
     placement: {
       type: String as PropType<Placement>,
       default: 'top',
-      required: false,
       validator: (value: string) => {
         return ['top', 'right', 'bottom', 'left'].includes(value)
       },
@@ -41,7 +35,6 @@ const CTooltip = defineComponent({
     trigger: {
       type: [String, Array] as PropType<string | string[]>,
       default: 'hover',
-      required: false,
       validator: (value: string | string[]) => {
         if (typeof value === 'string') {
           return ['click', 'focus', 'hover'].includes(value)

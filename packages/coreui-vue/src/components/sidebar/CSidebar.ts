@@ -1,7 +1,7 @@
 import { defineComponent, h, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { CBackdrop } from '../backdrop'
 
-import { isInViewport } from './../../utils'
+import { isInViewport } from '../../utils'
 
 const isOnMobile = (element: HTMLDivElement) =>
   Boolean(getComputedStyle(element).getPropertyValue('--cui-is-mobile'))
@@ -12,23 +12,16 @@ const CSidebar = defineComponent({
     /**
      * Make sidebar narrow.
      */
-    narrow: {
-      type: Boolean,
-      required: false,
-    },
+    narrow: Boolean,
     /**
      * Set sidebar to overlaid variant.
      */
-    overlaid: {
-      type: Boolean,
-      required: false,
-    },
+    overlaid: Boolean,
     /**
      * Place sidebar in non-static positions.
      */
     position: {
       type: String,
-      default: undefined,
       validator: (value: string) => {
         return ['fixed'].includes(value)
       },
@@ -38,7 +31,6 @@ const CSidebar = defineComponent({
      */
     size: {
       type: String,
-      default: undefined,
       validator: (value: string) => {
         return ['sm', 'lg', 'xl'].includes(value)
       },

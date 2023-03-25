@@ -10,8 +10,6 @@ const CPagination = defineComponent({
      */
     align: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['start', 'center', 'end'].includes(value)
       },
@@ -23,8 +21,6 @@ const CPagination = defineComponent({
      */
     size: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['sm', 'lg'].includes(value)
       },

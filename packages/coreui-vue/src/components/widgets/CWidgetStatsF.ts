@@ -22,26 +22,17 @@ const CWidgetStatsF = defineComponent({
     /**
      * Title for your component. If you want to pass non-string value please use dedicated slot `<template #title>...</template>`
      */
-    title: {
-      type: String,
-      default: undefined,
-      require: false,
-    },
+    title: String,
     /**
      * Helper text for your component. If you want to pass non-string value please use dedicated slot `<template #text>...</template>`
      */
-    text: {
-      type: String,
-      default: undefined,
-      require: false,
-    },
+    text: String,
     /**
      * Value for your component. If you want to pass non-string or non-number value please use dedicated slot `<template #value>...</template>`
      */
     value: {
       type: [Number, String],
-      default: 0,
-      require: false,
+      default: 0
     },
   },
   /**

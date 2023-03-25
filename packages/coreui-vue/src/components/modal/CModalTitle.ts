@@ -9,7 +9,6 @@ const CModalTitle = defineComponent({
     component: {
       type: String,
       default: 'h5',
-      required: false,
     },
   },
   setup(props, { slots }) {

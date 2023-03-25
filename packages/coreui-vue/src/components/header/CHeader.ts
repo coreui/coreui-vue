@@ -10,8 +10,6 @@ const CHeader = defineComponent({
      */
     container: {
       type: [Boolean, String],
-      default: undefined,
-      required: false,
       validator: (value: boolean | string) => {
         return (
           typeof value === 'boolean' || ['sm', 'md', 'lg', 'xl', 'xxl', 'fluid'].includes(value)
@@ -25,8 +23,6 @@ const CHeader = defineComponent({
      */
     position: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['fixed', 'sticky'].includes(value)
       },

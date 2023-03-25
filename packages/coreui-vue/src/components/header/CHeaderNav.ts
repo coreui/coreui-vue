@@ -8,7 +8,6 @@ const CHeaderNav = defineComponent({
      */
     component: {
       type: String,
-      required: false,
       default: 'ul',
     },
   },

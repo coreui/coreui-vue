@@ -11,6 +11,6 @@ import CImage from '@coreui/vue/src/components/image/CImage'
 | Prop name     | Description                                    | Type    | Values                         | Default |
 | ------------- | ---------------------------------------------- | ------- | ------------------------------ | ------- |
 | **align**     | Set the horizontal aligment.                   | string  | `'start'`, `'center'`, `'end'` | -       |
-| **fluid**     | Make image responsive.                         | boolean | -                              |         |
-| **rounded**   | Make image rounded.                            | boolean | -                              |         |
-| **thumbnail** | Give an image a rounded 1px border appearance. | boolean | -                              |         |
+| **fluid**     | Make image responsive.                         | boolean | -                              | -       |
+| **rounded**   | Make image rounded.                            | boolean | -                              | -       |
+| **thumbnail** | Give an image a rounded 1px border appearance. | boolean | -                              | -       |

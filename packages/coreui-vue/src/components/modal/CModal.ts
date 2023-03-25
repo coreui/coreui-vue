@@ -12,7 +12,7 @@ import {
 
 import { CBackdrop } from './../backdrop/CBackdrop'
 
-import { executeAfterTransition } from './../../utils/transition'
+import { executeAfterTransition } from '../../utils/transition'
 
 const CModal = defineComponent({
   name: 'CModal',
@@ -50,10 +50,7 @@ const CModal = defineComponent({
     /**
      * A string of all className you want applied to the modal content component.
      */
-    contentClassName: {
-      type: String,
-      default: undefined,
-    },
+    contentClassName: String,
     /**
      * Set modal to covers the entire user viewport
      *
@@ -61,7 +58,6 @@ const CModal = defineComponent({
      */
     fullscreen: {
       type: [Boolean, String],
-      default: undefined,
       validator: (value: boolean | string) => {
         if (typeof value == 'string') {
           return ['sm', 'md', 'lg', 'xl', 'xxl'].includes(value)
@@ -82,9 +78,7 @@ const CModal = defineComponent({
     /**
      * Create a scrollable modal that allows scrolling the modal body.
      */
-    scrollable: {
-      type: Boolean,
-    },
+    scrollable: Boolean,
     /**
      * Size the component small, large, or extra large.
      *
@@ -92,7 +86,6 @@ const CModal = defineComponent({
      */
     size: {
       type: String,
-      default: undefined,
       validator: (value: string) => {
         return ['sm', 'lg', 'xl'].includes(value)
       },

@@ -16,47 +16,33 @@ const CFormSelect = defineComponent({
      *
      * @since 4.3.0
      */
-    feedback: {
-      type: String,
-    },
+    feedback: String,
     /**
      * Provide valuable, actionable feedback.
      *
      * @since 4.3.0
      */
-    feedbackInvalid: {
-      type: String,
-    },
+    feedbackInvalid: String,
     /**
      * Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.
      *
      * @since 4.3.0
      */
-    feedbackValid: {
-      type: String,
-    },
+    feedbackValid: String,
     /**
      * Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.
      *
      * @since 4.3.0
      */
-    floatingLabel: {
-      type: String,
-    },
+    floatingLabel: String,
     /**
      * Specifies the number of visible options in a drop-down list.
      */
-    htmlSize: {
-      type: Number,
-      default: undefined,
-      required: false,
-    },
+    htmlSize: Number,
     /**
      * The id global attribute defines an identifier (ID) that must be unique in the whole document.
      */
-    id: {
-      type: String,
-    },
+    id: String,
     /**
      * Set component validation state to invalid.
      */
@@ -66,32 +52,21 @@ const CFormSelect = defineComponent({
      *
      * @since 4.3.0
      */
-    label: {
-      type: String,
-    },
+    label: String,
     /**
      * The default name for a value passed using v-model.
      */
     modelValue: {
       type: [String, Array] as PropType<string | string[]>,
-      default: undefined,
-      require: false,
     },
-    multiple: {
-      type: Boolean,
-      required: false,
-    },
+    multiple: Boolean,
     /**
      * Options list of the select component. Available keys: `label`, `value`, `disabled`.
      * Examples:
      * - `:options="[{ value: 'js', label: 'JavaScript' }, { value: 'html', label: 'HTML', disabled: true }]"`
      * - `:options="['js', 'html']"`
      */
-    options: {
-      type: Array as PropType<Option[] | string[]>,
-      default: undefined,
-      required: false,
-    },
+    options: Array as PropType<Option[] | string[]>,
     /**
      * Size the component small or large.
      *
@@ -99,8 +74,6 @@ const CFormSelect = defineComponent({
      */
     size: {
       type: String,
-      default: undefined,
-      require: false,
       validator: (value: string) => {
         return ['sm', 'lg'].includes(value)
       },
@@ -110,9 +83,7 @@ const CFormSelect = defineComponent({
      *
      * @since 4.3.0
      */
-    text: {
-      type: String,
-    },
+    text: String,
     /**
      * Display validation feedback in a styled tooltip.
      *

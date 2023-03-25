@@ -15,11 +15,7 @@ export const CAlert = defineComponent({
     /**
      * Optionally add a close button to alert and allow it to self dismisss.
      */
-    dismissible: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
+    dismissible: Boolean,
     /**
      * Set the alert variant to a solid.
      *
@@ -27,8 +23,6 @@ export const CAlert = defineComponent({
      */
     variant: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return value === 'solid'
       },
@@ -39,7 +33,6 @@ export const CAlert = defineComponent({
     visible: {
       type: Boolean,
       default: true,
-      required: false,
     },
   },
   emits: [

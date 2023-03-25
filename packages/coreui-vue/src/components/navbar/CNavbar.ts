@@ -18,8 +18,6 @@ const CNavbar = defineComponent({
      */
     colorScheme: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['dark', 'light'].includes(value)
       },
@@ -30,7 +28,6 @@ const CNavbar = defineComponent({
     component: {
       type: String,
       default: 'nav',
-      required: false,
     },
     /**
      * Defines optional container wrapping children elements.
@@ -39,8 +36,6 @@ const CNavbar = defineComponent({
      */
     container: {
       type: [Boolean, String],
-      default: undefined,
-      required: false,
       validator: (value: boolean | string) => {
         return (
           typeof value === 'boolean' || ['sm', 'md', 'lg', 'xl', 'xxl', 'fluid'].includes(value)
@@ -54,8 +49,6 @@ const CNavbar = defineComponent({
      */
     expand: {
       type: [Boolean, String],
-      default: undefined,
-      required: false,
       validator: (value: boolean | string) => {
         return typeof value === 'boolean' || ['sm', 'md', 'lg', 'xl', 'xxl'].includes(value)
       },
@@ -67,8 +60,6 @@ const CNavbar = defineComponent({
      */
     placement: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['fixed-top', 'fixed-bottom', 'sticky-top'].includes(value)
       },

@@ -1,6 +1,6 @@
 import { defineComponent, h, onMounted, provide, ref, RendererElement, Transition } from 'vue'
 
-import { executeAfterTransition } from './../../utils/transition'
+import { executeAfterTransition } from '../../utils/transition'
 
 import { Color } from '../props'
 
@@ -13,7 +13,6 @@ const CToast = defineComponent({
     autohide: {
       type: Boolean,
       default: true,
-      required: false,
     },
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
@@ -27,7 +26,6 @@ const CToast = defineComponent({
     delay: {
       type: Number,
       default: 5000,
-      required: false,
     },
     /**
      * Optionally add a close button to component and allow it to self dismiss.
@@ -35,31 +33,21 @@ const CToast = defineComponent({
     dismissible: {
       type: Boolean,
       default: true,
-      required: false,
     },
     /**
      * index of the component.
      */
-    index: {
-      type: Number,
-      default: undefined,
-      required: false,
-    },
+    index: Number,
     /**
      * Title node for your component.
      */
-    title: {
-      type: String,
-      default: undefined,
-      required: false,
-    },
+    title: String,
     /**
      * Toggle the visibility of component.
      */
     visible: {
       type: Boolean,
       default: true,
-      required: false,
     },
   },
   emits: [

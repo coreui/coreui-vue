@@ -9,7 +9,6 @@ export const CAlertHeading = defineComponent({
     component: {
       type: String,
       default: 'h4',
-      required: false,
     },
   },
   setup(props, { slots }) {

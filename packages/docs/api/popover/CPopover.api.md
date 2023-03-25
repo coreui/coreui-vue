@@ -15,7 +15,7 @@ import CPopover from '@coreui/vue/src/components/popover/CPopover'
 | **placement** | Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property. | Placement          | -                               | 'top'   |
 | **title**     | Title for your component. If you want to pass non-string value please use dedicated slot `<template #title>...</template>`                                           | string             | -                               | -       |
 | **trigger**   | Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them.                                                  | string \| string[] | `'click'`, `'focus'`, `'hover'` | 'click' |
-| **visible**   | Toggle the visibility of popover component.                                                                                                                          | boolean            | -                               |         |
+| **visible**   | Toggle the visibility of popover component.                                                                                                                          | boolean            | -                               | -       |
 
 #### Events
 

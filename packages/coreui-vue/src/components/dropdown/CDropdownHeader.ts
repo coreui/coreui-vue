@@ -9,7 +9,6 @@ const CDropdownHeader = defineComponent({
     component: {
       type: String,
       default: 'h6',
-      required: false,
     },
   },
   setup(props, { slots }) {

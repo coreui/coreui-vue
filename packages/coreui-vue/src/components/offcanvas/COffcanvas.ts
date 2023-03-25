@@ -3,7 +3,7 @@ import { defineComponent, h, ref, RendererElement, Transition, watch, withDirect
 import { CBackdrop } from '../backdrop'
 
 import { vVisible } from '../../directives/v-c-visible'
-import { executeAfterTransition } from './../../utils/transition'
+import { executeAfterTransition } from '../../utils/transition'
 
 const COffcanvas = defineComponent({
   name: 'COffcanvas',
@@ -40,7 +40,6 @@ const COffcanvas = defineComponent({
      */
     placement: {
       type: String,
-      default: undefined,
       require: true,
       validator: (value: string) => {
         return ['start', 'end', 'top', 'bottom'].includes(value)
@@ -72,10 +71,14 @@ const COffcanvas = defineComponent({
       type: Boolean,
       default: false,
     },
+
     /**
      * Toggle the visibility of offcanvas component.
      */
-    visible: Boolean,
+    visible: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: [
     /**
@@ -98,12 +101,12 @@ const COffcanvas = defineComponent({
       },
     )
 
+
     watch(visible, () => {
-      if (visible.value) {
-        if (!props.scroll) {
-          document.body.style.overflow = 'hidden'
-          document.body.style.paddingRight = '0px'
-        }
+      if (visible.value && !props.scroll) {
+        document.body.style.overflow = 'hidden'
+        document.body.style.paddingRight = '0px'
+
         return
       }
 

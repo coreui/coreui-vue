@@ -8,7 +8,6 @@ const CNav = defineComponent({
      */
     component: {
       type: String,
-      required: false,
       default: 'ul',
     },
     /**
@@ -18,8 +17,6 @@ const CNav = defineComponent({
      */
     layout: {
       type: String,
-      required: false,
-      default: undefined,
       validator: (value: string) => {
         return ['fill', 'justified'].includes(value)
       },
@@ -31,8 +28,6 @@ const CNav = defineComponent({
      */
     variant: {
       type: String,
-      required: false,
-      default: undefined,
       validator: (value: string) => {
         return ['tabs', 'pills'].includes(value)
       },

@@ -10,7 +10,7 @@ import CToastHeader from '@coreui/vue/src/components/toast/CToastHeader'
 
 | Prop name        | Description                                     | Type    | Values | Default |
 | ---------------- | ----------------------------------------------- | ------- | ------ | ------- |
-| **close-button** | Automatically add a close button to the header. | boolean | -      |         |
+| **close-button** | Automatically add a close button to the header. | boolean | -      | -       |
 
 #### Events
 

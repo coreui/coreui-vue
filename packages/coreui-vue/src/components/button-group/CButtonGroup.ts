@@ -10,8 +10,6 @@ const CButtonGroup = defineComponent({
      */
     size: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['sm', 'lg'].includes(value)
       },
@@ -19,10 +17,7 @@ const CButtonGroup = defineComponent({
     /**
      * Create a set of buttons that appear vertically stacked rather than horizontally. Split button dropdowns are not supported here.
      */
-    vertical: {
-      type: Boolean,
-      required: false,
-    },
+    vertical: Boolean,
   },
   setup(props, { slots }) {
     return () =>

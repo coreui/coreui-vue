@@ -1,7 +1,7 @@
 import { defineComponent, h, Transition, ref, RendererElement, withDirectives } from 'vue'
 
 import { vVisible } from '../../directives/v-c-visible'
-import { executeAfterTransition } from './../../utils/transition'
+import { executeAfterTransition } from '../../utils/transition'
 
 const CCollapse = defineComponent({
   name: 'CCollapse',
@@ -9,17 +9,11 @@ const CCollapse = defineComponent({
     /**
      * Set horizontal collapsing to transition the width instead of height.
      */
-    horizontal: {
-      type: Boolean,
-      required: false,
-    },
+    horizontal: Boolean,
     /**
      * Toggle the visibility of component.
      */
-    visible: {
-      type: Boolean,
-      required: false,
-    },
+    visible: Boolean,
   },
   emits: [
     /**

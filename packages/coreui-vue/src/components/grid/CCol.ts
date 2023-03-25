@@ -29,8 +29,6 @@ const CCol = defineComponent({
      */
     xs: {
       type: [Boolean, Number, String, Object] as PropType<Col>,
-      default: undefined,
-      require: false,
     },
     /**
      * The number of columns/offset/order on small devices (<768px).
@@ -39,8 +37,6 @@ const CCol = defineComponent({
      */
     sm: {
       type: [Boolean, Number, String, Object] as PropType<Col>,
-      default: undefined,
-      require: false,
     },
     /**
      * The number of columns/offset/order on medium devices (<992px).
@@ -49,8 +45,6 @@ const CCol = defineComponent({
      */
     md: {
       type: [Boolean, Number, String, Object] as PropType<Col>,
-      default: undefined,
-      require: false,
     },
     /**
      * The number of columns/offset/order on large devices (<1200px).
@@ -59,8 +53,6 @@ const CCol = defineComponent({
      */
     lg: {
       type: [Boolean, Number, String, Object] as PropType<Col>,
-      default: undefined,
-      require: false,
     },
     /**
      * The number of columns/offset/order on X-Large devices (<1400px).
@@ -69,8 +61,6 @@ const CCol = defineComponent({
      */
     xl: {
       type: [Boolean, Number, String, Object] as PropType<Col>,
-      default: undefined,
-      require: false,
     },
     /**
      * The number of columns/offset/order on XX-Large devices (≥1400px).
@@ -79,8 +69,6 @@ const CCol = defineComponent({
      */
     xxl: {
       type: [Boolean, Number, String, Object] as PropType<Col>,
-      default: undefined,
-      require: false,
     },
   },
   setup(props, { slots }) {

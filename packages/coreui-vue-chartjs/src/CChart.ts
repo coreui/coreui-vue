@@ -29,7 +29,6 @@ const CChart = defineComponent({
     customTooltips: {
       type: Boolean,
       default: true,
-      required: false,
     },
     /**
      * The data object that is passed into the Chart.js chart (more info).
@@ -46,15 +45,12 @@ const CChart = defineComponent({
     height: {
       type: Number,
       default: 150,
-      required: false,
     },
     /**
      * ID attribute applied to the rendered canvas.
      */
     id: {
       type: String,
-      default: undefined,
-      required: false,
     },
     /**
      * The options object that is passed into the Chart.js chart.
@@ -63,8 +59,6 @@ const CChart = defineComponent({
      */
     options: {
       type: Object as PropType<ChartOptions>,
-      default: undefined,
-      required: false,
     },
     /**
      * The plugins array that is passed into the Chart.js chart (more info)
@@ -73,8 +67,6 @@ const CChart = defineComponent({
      */
     plugins: {
       type: Array as PropType<Plugin[]>,
-      default: undefined,
-      required: false,
     },
     /**
      * If true, will tear down and redraw chart on all updates.
@@ -88,7 +80,6 @@ const CChart = defineComponent({
     type: {
       type: String as PropType<ChartType>,
       default: 'bar',
-      required: false,
     },
     /**
      * Width attribute applied to the rendered canvas.
@@ -98,7 +89,6 @@ const CChart = defineComponent({
     width: {
       type: Number,
       default: 300,
-      required: false,
     },
     /**
      * Put the chart into the wrapper div element.
@@ -108,7 +98,6 @@ const CChart = defineComponent({
     wrapper: {
       type: Boolean,
       default: true,
-      required: false,
     },
   },
   emits: [

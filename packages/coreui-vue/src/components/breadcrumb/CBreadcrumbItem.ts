@@ -6,18 +6,11 @@ const CBreadcrumbItem = defineComponent({
     /**
      * Toggle the active state for the component.
      */
-    active: {
-      type: Boolean,
-      required: false,
-    },
+    active: Boolean,
     /**
      * The `href` attribute for the inner link component.
      */
-    href: {
-      type: String,
-      default: undefined,
-      required: false,
-    },
+    href: String,
   },
 
   setup(props, { slots }) {

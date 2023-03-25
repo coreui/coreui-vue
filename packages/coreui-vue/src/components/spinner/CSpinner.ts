@@ -10,8 +10,6 @@ const CSpinner = defineComponent({
      */
     color: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return [
           'primary',
@@ -31,7 +29,6 @@ const CSpinner = defineComponent({
     component: {
       type: String,
       default: 'div',
-      required: false,
     },
     /**
      * Size the component small.
@@ -40,8 +37,6 @@ const CSpinner = defineComponent({
      */
     size: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return value === 'sm'
       },
@@ -54,7 +49,6 @@ const CSpinner = defineComponent({
     variant: {
       type: String,
       default: 'border',
-      required: false,
       validator: (value: string) => {
         return ['border', 'grow'].includes(value)
       },
@@ -65,7 +59,6 @@ const CSpinner = defineComponent({
     visuallyHiddenLabel: {
       type: String,
       default: 'Loading...',
-      required: false,
     },
   },
   setup(props) {

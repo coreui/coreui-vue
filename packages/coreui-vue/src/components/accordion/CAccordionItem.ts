@@ -6,16 +6,11 @@ const CAccordionItem = defineComponent({
     /**
      * The item key.
      */
-    itemKey: {
-      type: [Number, String],
-      default: undefined,
-      require: false,
-    },
+    itemKey: [Number, String]
   },
   setup(props, { slots }) {
     const activeItemKey = inject('activeItemKey') as Ref<number | string>
     const alwaysOpen = inject('alwaysOpen') as boolean
-    // eslint-disable-next-line no-unused-vars
     const setActiveItemKey = inject('setActiveItemKey') as (key: number | string) => void
 
     const itemKey = ref(props.itemKey ? props.itemKey : Math.random().toString(36).substr(2, 9))

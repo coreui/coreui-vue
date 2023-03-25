@@ -8,7 +8,6 @@ const CCardHeader = defineComponent({
      */
     component: {
       type: String,
-      required: false,
       default: 'div',
     },
   },

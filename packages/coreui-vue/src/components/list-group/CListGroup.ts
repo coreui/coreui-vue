@@ -8,16 +8,12 @@ const CListGroup = defineComponent({
      */
     component: {
       type: String,
-      required: false,
       default: 'ul',
     },
     /**
      * Remove some borders and rounded corners to render list group items edge-to-edge in a parent component (e.g., `<CCard>`)
      */
-    flush: {
-      type: Boolean,
-      required: false,
-    },
+    flush: Boolean,
     /**
      * Specify a layout type.
      *
@@ -25,8 +21,6 @@ const CListGroup = defineComponent({
      */
     layout: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return [
           'horizontal',

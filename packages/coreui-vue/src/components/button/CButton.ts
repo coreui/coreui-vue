@@ -7,11 +7,7 @@ export const CButton = defineComponent({
     /**
      * Toggle the active state for the component.
      */
-    active: {
-      type: Boolean,
-      default: false,
-      required: false,
-    },
+    active: Boolean,
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
      *
@@ -24,23 +20,15 @@ export const CButton = defineComponent({
     component: {
       type: String,
       default: 'button',
-      required: false,
     },
     /**
      * Toggle the disabled state for the component.
      */
-    disabled: {
-      type: Boolean,
-      required: false,
-    },
+    disabled: Boolean,
     /**
      * The href attribute specifies the URL of the page the link goes to.
      */
-    href: {
-      type: String,
-      default: undefined,
-      required: false,
-    },
+    href: String,
     /**
      * Select the shape of the component.
      *
@@ -54,8 +42,6 @@ export const CButton = defineComponent({
      */
     size: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['sm', 'lg'].includes(value)
       },
@@ -69,7 +55,6 @@ export const CButton = defineComponent({
     type: {
       type: String,
       default: 'button',
-      required: false,
       validator: (value: string) => {
         return ['button', 'submit', 'reset'].includes(value)
       },
@@ -81,8 +66,6 @@ export const CButton = defineComponent({
      */
     variant: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['ghost', 'outline'].includes(value)
       },

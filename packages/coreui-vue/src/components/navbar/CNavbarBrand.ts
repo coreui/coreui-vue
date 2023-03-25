@@ -10,16 +10,11 @@ const CNavbarBrand = defineComponent({
     component: {
       type: String,
       default: 'a',
-      required: false,
     },
     /**
      * The href attribute specifies the URL of the page the link goes to.
      */
-    href: {
-      type: String,
-      default: undefined,
-      required: false,
-    },
+    href: String,
   },
   setup(props, { slots }) {
     return () =>

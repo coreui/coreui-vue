@@ -15,45 +15,27 @@ const CContainer = defineComponent({
     /**
      * Set container 100% wide until small breakpoint.
      */
-    sm: {
-      type: Boolean,
-      required: false,
-    },
+    sm: Boolean,
     /**
      * Set container 100% wide until medium breakpoint.
      */
-    md: {
-      type: Boolean,
-      required: false,
-    },
+    md: Boolean,
     /**
      * Set container 100% wide until large breakpoint.
      */
-    lg: {
-      type: Boolean,
-      required: false,
-    },
+    lg: Boolean,
     /**
      * Set container 100% wide until X-large breakpoint.
      */
-    xl: {
-      type: Boolean,
-      required: false,
-    },
+    xl: Boolean,
     /**
      * Set container 100% wide until XX-large breakpoint.
      */
-    xxl: {
-      type: Boolean,
-      required: false,
-    },
+    xxl: Boolean,
     /**
      * Set container 100% wide, spanning the entire width of the viewport.
      */
-    fluid: {
-      type: Boolean,
-      required: false,
-    },
+    fluid: Boolean,
   },
   setup(props, { slots }) {
     const repsonsiveClassNames: string[] = []

@@ -8,10 +8,7 @@ const CTableDataCell = defineComponent({
     /**
      * Highlight a table row or cell.
      */
-    active: {
-      type: Boolean,
-      required: false,
-    },
+    active: Boolean,
     /**
      * Set the vertical aligment.
      *
@@ -19,8 +16,6 @@ const CTableDataCell = defineComponent({
      */
     align: {
       type: String,
-      default: undefined,
-      required: false,
       validator: (value: string) => {
         return ['bottom', 'middle', 'top'].includes(value)
       },
@@ -34,10 +29,7 @@ const CTableDataCell = defineComponent({
     /**
      * @ignore
      */
-    scope: {
-      type: String,
-      required: false,
-    },
+    scope: String,
   },
   setup(props, { slots }) {
     return () =>

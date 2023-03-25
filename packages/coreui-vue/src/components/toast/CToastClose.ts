@@ -7,11 +7,7 @@ const CToastClose = defineComponent({
     /**
      * Component used for the root node. Either a string to use a HTML element or a component.
      */
-    component: {
-      type: String,
-      default: undefined,
-      required: false,
-    },
+    component: String,
     ...CCloseButton.props,
   },
   emits: [

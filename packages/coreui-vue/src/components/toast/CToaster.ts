@@ -10,8 +10,6 @@ const CToaster = defineComponent({
      */
     placement: {
       type: String,
-      default: undefined,
-      require: false,
       validator: (value: string) => {
         return [
           'top-start',
