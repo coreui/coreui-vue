@@ -1,7 +1,6 @@
 import {
   defineComponent,
   h,
-  reactive,
   ref,
   VNode,
   onBeforeMount,
@@ -79,10 +78,15 @@ const CCarousel = defineComponent({
   },
   setup(props, { slots }) {
     const carouselRef = ref()
-    const timeout = ref()
+
+    const active = ref(props.index)
     const animating = ref(false)
-    const visible = ref()
     const customInterval = ref<boolean | number>(props.interval)
+    const direction = ref('next')
+    const items = ref<VNode[]>([])
+    const timeout = ref()
+    const visible = ref()
+    
     const setAnimating = (value: boolean) => {
       animating.value = value
     }
@@ -105,28 +109,15 @@ const CCarousel = defineComponent({
       }
     }
 
-    const state = reactive({
-      items: [] as VNode[],
-      active: props.index,
-      direction: 'next',
-    })
-
-    onBeforeMount(() => {
-      if (slots.default) {
-        // @ts-expect-error TODO: fix types
-        state.items = slots.default().filter((child) => child.type.name === 'CCarouselItem')
-      }
-    })
-
-    const handleControlClick = (direction: string) => {
+    const handleControlClick = (_direction: string) => {
       if (animating.value) {
         return
       }
-      state.direction = direction
-      if (direction === 'next') {
-        state.active === state.items.length - 1 ? (state.active = 0) : state.active++
+      direction.value = _direction
+      if (_direction === 'next') {
+        active.value === items.value.length - 1 ? (active.value = 0) : active.value++
       } else {
-        state.active === 0 ? (state.active = state.items.length - 1) : state.active--
+        active.value === 0 ? (active.value = items.value.length - 1) : active.value--
       }
     }
 
@@ -139,19 +130,19 @@ const CCarousel = defineComponent({
     }
 
     const handleIndicatorClick = (index: number) => {
-      if (state.active === index) {
+      if (active.value === index) {
         return
       }
 
-      if (state.active < index) {
-        state.direction = 'next'
-        state.active = index
+      if (active.value < index) {
+        direction.value = 'next'
+        active.value = index
         return
       }
 
-      if (state.active > index) {
-        state.direction = 'prev'
-        state.active = index
+      if (active.value > index) {
+        direction.value = 'prev'
+        active.value = index
       }
     }
 
@@ -162,6 +153,17 @@ const CCarousel = defineComponent({
         visible.value = false
       }
     }
+
+    onBeforeMount(() => {
+      if (slots.default) {
+        const children = typeof slots.default()[0].type === 'symbol' ? slots.default()[0].children : slots.default()
+
+        if (children && Array.isArray(children)) {
+          // @ts-expect-error TODO: fix types
+          items.value = children.filter((child) => child.type.name === 'CCarouselItem')
+        }
+      }
+    })
 
     onMounted(() => {
       window.addEventListener('scroll', handleScroll)
@@ -174,7 +176,7 @@ const CCarousel = defineComponent({
           return
         }
 
-        if (!props.wrap && state.active < state.items.length - 1) {
+        if (!props.wrap && active.value < items.value.length - 1) {
           !animating.value && cycle()
         }
       })
@@ -204,12 +206,12 @@ const CCarousel = defineComponent({
               {
                 class: 'carousel-indicators',
               },
-              state.items.map((_, index) => {
+              items.value.map((_, index) => {
                 return h('button', {
                   type: 'button',
                   id: index,
                   'data-coreui-target': '',
-                  ...(state.active === index && { class: 'active' }),
+                  ...(active.value === index && { class: 'active' }),
                   onClick: () => handleIndicatorClick(index),
                 })
               }),
@@ -217,10 +219,10 @@ const CCarousel = defineComponent({
           h(
             'div',
             { class: 'carousel-inner' },
-            state.items.map((item, index) => {
+            items.value.map((item, index) => {
               return h(item, {
-                active: state.active === index ? true : false,
-                direction: state.direction,
+                active: active.value === index ? true : false,
+                direction: direction.value,
               })
             }),
           ),
