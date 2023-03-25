@@ -84,6 +84,12 @@ const CFormCheck = defineComponent({
       value: undefined,
     },
     /**
+     * Put checkboxes or radios on the opposite side.
+     *
+     * @sinve 4.8.0
+     */
+    reverse: Boolean,
+    /**
      * Display validation feedback in a styled tooltip.
      *
      * @since 4.3.0
@@ -126,6 +132,7 @@ const CFormCheck = defineComponent({
       'form-check',
       {
         'form-check-inline': props.inline,
+        'form-check-reverse': props.reverse,
         'is-invalid': props.invalid,
         'is-valid': props.valid,
       },

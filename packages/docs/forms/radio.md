@@ -63,6 +63,19 @@ Group radios on the same horizontal row by adding `inline` boolean property to a
 <CFormCheck inline type="radio" name="inlineRadioOptions" id="inlineCheckbox3" value="option3" label="3 (disabled)" disabled/>
 ```
 
+## Reverse 
+
+Put your radios on the opposite side by adding `reverse` boolean property.
+
+::: demo
+<CFormCheck reverse type="radio" id="reverseOption1" value="option1" label="Reverse radio"/>
+<CFormCheck reverse type="radio" id="reverseOption2" value="option2" label="Disabled reverse radio" disabled/>
+:::
+```vue
+<CFormCheck reverse type="radio" id="reverseOption1" value="option1" label="Reverse radio"/>
+<CFormCheck reverse type="radio" id="reverseOption2" value="option2" label="Disabled reverse radio" disabled/>
+```
+
 ## Without labels
 
 Remember to still provide some form of accessible name for assistive technologies (for instance, using `aria-label`).
