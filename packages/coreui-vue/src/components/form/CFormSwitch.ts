@@ -32,6 +32,12 @@ const CFormSwitch = defineComponent({
       value: undefined,
     },
     /**
+     * Put checkboxes or radios on the opposite side.
+     *
+     * @sinve 4.8.0
+     */
+    reverse: Boolean,
+    /**
      * Size the component large or extra large. Works only with `switch`.
      *
      * @values 'lg' | 'xl'
@@ -82,6 +88,7 @@ const CFormSwitch = defineComponent({
           class: [
             'form-check form-switch',
             {
+              'form-check-reverse': props.reverse,
               [`form-switch-${props.size}`]: props.size,
               'is-invalid': props.invalid,
               'is-valid': props.valid,

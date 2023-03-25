@@ -5,9 +5,13 @@ description: Create consistent cross-browser and cross-device switch component.
 other_frameworks: switch
 ---
 
-## Switches
+## About
 
-A switch has the markup of a custom checkbox but uses the `switch` boolean properly to render a toggle switch. Switches also support the `disabled` attribute.
+Vue Switch Components are a type of UI component that allows users to toggle between two states, usually represented as "on" or "off", "enabled" or "disabled", or "checked" or "unchecked".
+
+When a user interacts with the component by clicking or tapping on it, the switch toggles its state, triggering an action or changing the appearance of the component. This type of component is often used in forms, settings panels, and other places where users need to turn something on or off or choose between two options.
+
+## Example
 
 ::: demo
 <CFormSwitch label="Default switch checkbox input" id="formSwitchCheckDefault"/>
@@ -22,7 +26,9 @@ A switch has the markup of a custom checkbox but uses the `switch` boolean prope
 <CFormSwitch label="Disabled checked switch checkbox input" id="formSwitchCheckCheckedDisabled" checked disabled/>
 ```
 
-### Sizes
+## Sizing
+
+Larger or smaller react switches? Add `size="lg"` or `size="xl"` for additional sizes.
 
 ::: demo
 <CFormSwitch label="Default switch checkbox input" id="formSwitchCheckDefault"/>
@@ -33,6 +39,19 @@ A switch has the markup of a custom checkbox but uses the `switch` boolean prope
 <CFormSwitch label="Default switch checkbox input" id="formSwitchCheckDefault"/>
 <CFormSwitch size="lg" label="Large switch checkbox input" id="formSwitchCheckDefaultLg"/>
 <CFormSwitch size="xl" label="Extra large switch checkbox input" id="formSwitchCheckDefaultXL"/>
+```
+
+## Reverse 
+
+Put your switches on the opposite side by adding `reverse` boolean property.
+
+::: demo
+<CFormSwitch reverse type="radio" id="reverseFormSwitch1" label="Reverse switch"/>
+<CFormSwitch reverse type="radio" id="reverseFormSwitch2" label="Disabled reverse switch" disabled/>
+:::
+```vue
+<CFormSwitch reverse type="radio" id="reverseFormSwitch1" label="Reverse switch"/>
+<CFormSwitch reverse type="radio" id="reverseFormSwitch2" label="Disabled reverse switch" disabled/>
 ```
 
 ## API
