@@ -167,7 +167,7 @@ You can also enable `<body>` scrolling with a visible backdrop.
 
 ### Static backdrop
 
-If you set a `backdrop` to `static`, your React offcanvas component will not close when clicking outside of it.
+If you set a `backdrop` to `static`, your Vue offcanvas component will not close when clicking outside of it.
 
 ::: demo
 <CButton color="primary" @click="() => { visibleWithStaticBackdrop = !visibleWithStaticBackdrop }">Toggle static offcanvas</CButton>
