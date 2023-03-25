@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Customize CNavGroup component renders correctly 1`] = `
-"<li class=\\"nav-group show\\"><a class=\\"nav-link nav-group-toggle\\">togglerContent</a>
-  <transition-stub>
-    <ul class=\\"nav-group-items compact\\"></ul>
+"<li class="nav-group show"><a class="nav-link nav-group-toggle">togglerContent</a>
+  <transition-stub appear="false" persisted="false" css="false">
+    <ul class="nav-group-items compact"></ul>
   </transition-stub>
 </li>"
 `;
 
 exports[`Loads and display CNavGroup component renders correctly 1`] = `
-"<li class=\\"nav-group\\">
+"<li class="nav-group">
   <!---->
-  <transition-stub>
+  <transition-stub appear="false" persisted="false" css="false">
     <!---->
   </transition-stub>
 </li>"

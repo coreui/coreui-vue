@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Customize (two) CNavbarBrand component renders correctly 1`] = `"<a class=\\"navbar-brand\\" href=\\"/bazinga\\">Default slot</a>"`;
+exports[`Customize (two) CNavbarBrand component renders correctly 1`] = `"<a class="navbar-brand" href="/bazinga">Default slot</a>"`;
 
-exports[`Customize CNavbarBrand component renders correctly 1`] = `"<div class=\\"navbar-brand\\" href=\\"/bazinga\\">Default slot</div>"`;
+exports[`Customize CNavbarBrand component renders correctly 1`] = `"<div class="navbar-brand" href="/bazinga">Default slot</div>"`;
 
-exports[`Loads and display CNavbarBrand component renders correctly 1`] = `"<a class=\\"navbar-brand\\">Default slot</a>"`;
+exports[`Loads and display CNavbarBrand component renders correctly 1`] = `"<a class="navbar-brand">Default slot</a>"`;

@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Customize CFormSwitch component renders correctly 1`] = `"<div class=\\"form-check form-switch form-switch-lg is-invalid is-valid\\"><input class=\\"form-check-input is-invalid is-valid\\" id=\\"uniqueid\\" type=\\"radio\\"><label class=\\"form-label form-check-label\\" for=\\"uniqueid\\">some label</label></div>"`;
+exports[`Customize CFormSwitch component renders correctly 1`] = `"<div class="form-check form-switch form-switch-lg is-invalid is-valid"><input class="form-check-input is-invalid is-valid" id="uniqueid" type="radio"><label class="form-label form-check-label" for="uniqueid">some label</label></div>"`;
 
 exports[`Loads and display CFormSwitch component renders correctly 1`] = `
-"<div class=\\"form-check form-switch\\"><input class=\\"form-check-input\\" type=\\"checkbox\\">
+"<div class="form-check form-switch"><input class="form-check-input" type="checkbox">
   <!---->
 </div>"
 `;

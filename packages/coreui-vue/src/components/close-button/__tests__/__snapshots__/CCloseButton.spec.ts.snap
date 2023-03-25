@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Customize CCloseButton component renders correctly 1`] = `"<button type=\\"button\\" class=\\"btn btn-close btn-close-white\\" aria-label=\\"Close\\" disabled=\\"\\"></button>"`;
+exports[`Customize CCloseButton component renders correctly 1`] = `"<button type="button" class="btn btn-close btn-close-white" aria-label="Close" disabled=""></button>"`;
 
-exports[`Loads and display CCloseButton component renders correctly 1`] = `"<button type=\\"button\\" class=\\"btn btn-close\\" aria-label=\\"Close\\"></button>"`;
+exports[`Loads and display CCloseButton component renders correctly 1`] = `"<button type="button" class="btn btn-close" aria-label="Close"></button>"`;
