@@ -1,6 +1,4 @@
-import { defineComponent, h, onMounted, provide, ref, RendererElement, Transition } from 'vue'
-
-import { executeAfterTransition } from '../../utils/transition'
+import { defineComponent, h, onMounted, provide, ref, Transition } from 'vue'
 
 import { Color } from '../props'
 
@@ -45,10 +43,7 @@ const CToast = defineComponent({
     /**
      * Toggle the visibility of component.
      */
-    visible: {
-      type: Boolean,
-      default: true,
-    },
+    visible: Boolean,
   },
   emits: [
     /**
@@ -61,51 +56,23 @@ const CToast = defineComponent({
     'show',
   ],
   setup(props, { slots, emit }) {
-    const visible = ref(props.visible)
-    let timeout = 0
+    const timeout = ref(0)
+    const visible = ref()
 
-    const updateVisible = (v: boolean) => {
-      visible.value = v
+    const updateVisible = (_visible: boolean) => {
+      visible.value = _visible
     }
+
     provide('updateVisible', updateVisible)
 
-    const handleBeforeEnter = (el: RendererElement) => {
-      el.classList.add('showing')
-    }
-
-    const handleEnter = (el: RendererElement, done: () => void) => {
-      executeAfterTransition(() => done(), el as HTMLElement)
-      el.classList.add('show')
-      setTimeout(() => {
-        el.classList.remove('showing')
-      }, 1)
-
-      if (props.index) {
-        emit('show', props.index)
-      } else {
-        emit('show')
-      }
-    }
-
-    const handleLeave = (el: RendererElement, done: () => void) => {
-      executeAfterTransition(() => done(), el as HTMLElement)
-      el.classList.add('showing')
-    }
-
-    const handleAfterLeave = (el: RendererElement) => {
-      el.classList.remove('show')
-      el.classList.add('hide')
-      if (props.index) {
-        emit('close', props.index)
-      } else {
-        emit('close')
-      }
-    }
-
     onMounted(() => {
+      if (props.visible) {
+        visible.value = props.visible
+      }
+      
       if (props.autohide) {
-        clearTimeout(timeout)
-        timeout = window.setTimeout(() => {
+        clearTimeout(timeout.value)
+        timeout.value = window.setTimeout(() => {
           visible.value = false
           emit('close')
         }, props.delay)
@@ -117,29 +84,39 @@ const CToast = defineComponent({
         Transition,
         {
           appear: true,
-          onBeforeEnter: (el) => handleBeforeEnter(el),
-          onEnter: (el, done) => handleEnter(el, done),
-          onLeave: (el, done) => handleLeave(el, done),
-          onAfterLeave: (el) => handleAfterLeave(el),
+          enterFromClass: '',
+          enterActiveClass: 'show showing',
+          enterToClass: 'show',
+          leaveFromClass: 'show',
+          leaveActiveClass: 'show showing',
+          leaveToClass: 'show',
+          onAfterEnter: (el) => {
+            el.classList.add('show')
+            props.index ? emit('show', props.index) : emit('show')
+          },
+          onAfterLeave: () => {
+            props.index ? emit('close', props.index) : emit('close')
+          },
         },
-        () =>
-          visible.value &&
-          h(
-            'div',
-            {
-              class: [
-                'toast fade',
-                {
-                  [`bg-${props.color}`]: props.color,
-                },
-              ],
-              'aria-live': 'assertive',
-              'aria-atomic': true,
-              role: 'alert',
-              ref: 'toastRef',
-            },
-            slots.default && slots.default(),
-          ),
+        {
+          default: () =>
+            visible.value &&
+            h(
+              'div',
+              {
+                class: [
+                  'toast fade',
+                  {
+                    [`bg-${props.color}`]: props.color,
+                  },
+                ],
+                'aria-live': 'assertive',
+                'aria-atomic': true,
+                role: 'alert',
+              },
+              slots.default && slots.default(),
+            ),
+        },
       )
   },
 })

@@ -23,7 +23,7 @@ To encourage extensible and predictable toasts, we recommend a header and body. 
 Toasts are as flexible as you need and have very little required markup. At a minimum, we require a single element to contain your "toasted" content and strongly encourage a dismiss button.
 
 ::: demo
-<CToast :autohide="false">
+<CToast :autohide="false" visible>
 <CToastHeader closeButton>
 <svg
       class="rounded me-2"
@@ -42,9 +42,8 @@ Toasts are as flexible as you need and have very little required markup. At a mi
 <CToastBody>Hello, world! This is a toast message.</CToastBody>
 </CToast>
 :::
-
 ```vue
-<CToast :autohide="false">
+<CToast :autohide="false" visible>
   <CToastHeader closeButton>
     <svg
       class="rounded me-2"
@@ -67,7 +66,7 @@ Toasts are as flexible as you need and have very little required markup. At a mi
 :::demo
 <CButton color="primary" @click="createToast">Send a toast</CButton>
 <CToaster placement="top-end">
-  <CToast v-for="(toast, index) in toasts">
+  <CToast v-for="(toast, index) in toasts" visible>
     <CToastHeader closeButton>
     <span class="me-auto fw-bold">{{toast.title}}</span>
     <small>7 min ago</small>
@@ -81,7 +80,7 @@ Toasts are as flexible as you need and have very little required markup. At a mi
 ```vue
 <template>
   <CButton color="primary" @click="createToast">Send a toast</CButton>
-  <CToaster placement="top-end">
+  <CToaster placement="top-end" visible>
     <CToast v-for="(toast, index) in toasts">
       <CToastHeader closeButton>
       <span class="me-auto fw-bold">{{toast.title}}</span>
@@ -136,7 +135,7 @@ Toasts are as flexible as you need and have very little required markup. At a mi
 Toasts are slightly translucent to blend in with what's below them.
 
 ::: demo-dark
-<CToast :autohide="false">
+<CToast :autohide="false" visible>
 <CToastHeader closeButton>
 <svg
       class="rounded me-2"
@@ -157,7 +156,7 @@ Toasts are slightly translucent to blend in with what's below them.
 :::
 
 ```vue
-<CToast :autohide="false">
+<CToast :autohide="false" visible>
   <CToastHeader closeButton>
     <svg
       class="rounded me-2"
@@ -182,8 +181,8 @@ Toasts are slightly translucent to blend in with what's below them.
 You can stack toasts by wrapping them in a toast container, which will vertically add some spacing.
 
 ::: demo
-<CToaster class="position-relative">
-<CToast :autohide="false">
+<CToaster class="position-relative" >
+<CToast :autohide="false" visible>
 <CToastHeader closeButton>
 <svg
         class="rounded me-2"
@@ -201,7 +200,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
 </CToastHeader>
 <CToastBody>Hello, world! This is a toast message.</CToastBody>
 </CToast>
-<CToast :autohide="false">
+<CToast :autohide="false" visible>
 <CToastHeader closeButton>
 <svg
         class="rounded me-2"
@@ -224,7 +223,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
 
 ```vue
 <CToaster>
-  <CToast :autohide="false">
+  <CToast :autohide="false" visible>
     <CToastHeader closeButton>
       <svg
         class="rounded me-2"
@@ -242,7 +241,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
     </CToastHeader>
     <CToastBody>Hello, world! This is a toast message.</CToastBody>
   </CToast>
-  <CToast :autohide="false">
+  <CToast :autohide="false" visible>
     <CToastHeader closeButton>
       <svg
         class="rounded me-2"
@@ -268,8 +267,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
 Customize your toasts by removing sub-components, tweaking them with [utilities](https://coreui.io/docs/4.0/utilities/api), or by adding your own markup. Here we've created a simpler toast by removing the default `<CToastHeader>`, adding a custom hide icon from [CoreUI Icons](https://icons.coreui.io), and using some [flexbox utilities](https://coreui.io/docs/4.0/utilities/flex) to adjust the layout.
 
 ::: demo
-<CToast :autohide="false" class="align-items-center">
-
+<CToast :autohide="false" class="align-items-center" visible>
   <div class="d-flex">
     <CToastBody>Hello, world! This is a toast message.</CToastBody>
     <CToastClose class="me-2 m-auto"/>
@@ -277,7 +275,7 @@ Customize your toasts by removing sub-components, tweaking them with [utilities]
 </CToast>
 :::
 ```vue
-<CToast :autohide="false" class="align-items-center">
+<CToast :autohide="false" class="align-items-center" visible>
   <div class="d-flex">
     <CToastBody>Hello, world! This is a toast message.</CToastBody>
     <CToastClose class="me-2 m-auto"/>
@@ -288,7 +286,7 @@ Customize your toasts by removing sub-components, tweaking them with [utilities]
 Alternatively, you can also add additional controls and components to toasts.
 
 ::: demo
-<CToast :autohide="false" class="align-items-center">
+<CToast :autohide="false" class="align-items-center" visible>
   <CToastBody>
     Hello, world! This is a toast message.
     <div class="mt-2 pt-2 border-top">
@@ -301,7 +299,7 @@ Alternatively, you can also add additional controls and components to toasts.
 </CToast>
 :::
 ```vue
-<CToast :autohide="false" class="align-items-center">
+<CToast :autohide="false" class="align-items-center" visible>
   <CToastBody>
     Hello, world! This is a toast message.
     <div class="mt-2 pt-2 border-top">
@@ -319,8 +317,7 @@ Alternatively, you can also add additional controls and components to toasts.
 Building on the above example, you can create different toast color schemes with our [color](https://coreui.io/docs/4.0/utilities/colors) and [background](https://coreui.io/docs/4.0//utilities/background) utilities. Here we've set `color="primary"` and added `.text-white` class to the `<Ctoast>`, and then set `white` property to our close button. For a crisp edge, we remove the default border with `.border-0`.
 
 ::: demo
-<CToast :autohide="false" color="primary" class="text-white align-items-center">
-
+<CToast :autohide="false" color="primary" class="text-white align-items-center" visible>
   <div class="d-flex">
     <CToastBody>Hello, world! This is a toast message.</CToastBody>
     <CToastClose class="me-2 m-auto" white />
@@ -328,7 +325,7 @@ Building on the above example, you can create different toast color schemes with
 </CToast>
 :::
 ```vue
-<CToast :autohide="false" color="primary" class="text-white align-items-center">
+<CToast :autohide="false" color="primary" class="text-white align-items-center" visible>
   <div class="d-flex">
     <CToastBody>Hello, world! This is a toast message.</CToastBody>
     <CToastClose class="me-2 m-auto" white />

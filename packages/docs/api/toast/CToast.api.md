@@ -16,7 +16,7 @@ import CToast from '@coreui/vue/src/components/toast/CToast'
 | **dismissible** | Optionally add a close button to component and allow it to self dismiss.  | boolean | -                                                                                                         | true    |
 | **index**       | index of the component.                                                   | number  | -                                                                                                         | -       |
 | **title**       | Title node for your component.                                            | string  | -                                                                                                         | -       |
-| **visible**     | Toggle the visibility of component.                                       | boolean | -                                                                                                         | true    |
+| **visible**     | Toggle the visibility of component.                                       | boolean | -                                                                                                         | -       |
 
 #### Events
 
