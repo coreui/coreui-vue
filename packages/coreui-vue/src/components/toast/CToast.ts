@@ -1,6 +1,6 @@
 import { defineComponent, h, onMounted, provide, ref, Transition } from 'vue'
 
-import { Color } from '../props'
+import { Color } from '../../props'
 
 const CToast = defineComponent({
   name: 'CToast',

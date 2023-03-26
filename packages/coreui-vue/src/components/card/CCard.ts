@@ -1,5 +1,6 @@
 import { defineComponent, h } from 'vue'
-import { Color, TextColor } from '../props'
+
+import { Color, TextColor } from '../../props'
 
 const CCard = defineComponent({
   name: 'CCard',

@@ -1,7 +1,9 @@
 import { cloneVNode, defineComponent, h, inject, onMounted, PropType, Ref, ref } from 'vue'
+
 import { CButton } from '../button'
-import { Color, Shape } from '../props'
-import { Triggers } from '../Types'
+
+import { Color, Shape } from '../../props'
+import { Triggers } from '../../types'
 
 const CDropdownToggle = defineComponent({
   name: 'CDropdownToggle',

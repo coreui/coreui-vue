@@ -1,7 +1,8 @@
 import { defineComponent, h, ref, Transition, watch } from 'vue'
 
-import { Color } from '../props'
-import { CCloseButton } from '../close-button/CCloseButton'
+import { CCloseButton } from '../close-button'
+
+import { Color } from '../../props'
 
 export const CAlert = defineComponent({
   name: 'CAlert',

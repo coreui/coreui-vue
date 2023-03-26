@@ -1,7 +1,8 @@
 import { defineComponent, h } from 'vue'
 
-import { Color } from '../props'
-import { CCard, CCardBody, CCardFooter } from './../card/'
+import { CCard, CCardBody, CCardFooter } from '../card/'
+
+import { Color } from '../../props'
 
 const CWidgetStatsF = defineComponent({
   name: 'CWidgetStatsF',

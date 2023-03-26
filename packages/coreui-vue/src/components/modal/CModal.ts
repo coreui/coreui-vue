@@ -10,7 +10,7 @@ import {
   withDirectives,
 } from 'vue'
 
-import { CBackdrop } from './../backdrop/CBackdrop'
+import { CBackdrop } from '../backdrop/CBackdrop'
 
 import { executeAfterTransition } from '../../utils/transition'
 

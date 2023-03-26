@@ -1,8 +1,9 @@
 import { defineComponent, h, PropType } from 'vue'
 
-import { Color } from '../props'
-import { CCard, CCardBody, CCardHeader } from './../card/'
-import { CCol } from './../grid/'
+import { CCard, CCardBody, CCardHeader } from '../card/'
+import { CCol } from '../grid/'
+
+import { Color } from '../../props'
 
 type Value = {
   title?: string
@@ -23,7 +24,7 @@ const CWidgetStatsD = defineComponent({
      */
     values: {
       type: Array as PropType<Value[]>,
-      default: () => []
+      default: () => [],
     },
   },
   /**

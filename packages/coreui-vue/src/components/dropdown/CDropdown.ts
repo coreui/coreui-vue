@@ -1,6 +1,8 @@
 import { defineComponent, h, ref, provide, watch, PropType } from 'vue'
 import { createPopper, Placement } from '@popperjs/core'
 
+import { Triggers } from '../../types'
+
 const CDropdown = defineComponent({
   name: 'CDropdown',
   props: {
@@ -91,7 +93,7 @@ const CDropdown = defineComponent({
      * Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them.
      */
     trigger: {
-      type: [String, Array],
+      type: String as PropType<Triggers>,
       default: 'click',
     },
     /**

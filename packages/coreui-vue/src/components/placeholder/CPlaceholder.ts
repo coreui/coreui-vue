@@ -1,6 +1,6 @@
 import { defineComponent, h } from 'vue'
 
-import { Color } from '../props'
+import { Color } from '../../props'
 
 const BREAKPOINTS = [
   'xxl' as const,

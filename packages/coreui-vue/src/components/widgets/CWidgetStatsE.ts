@@ -1,6 +1,6 @@
 import { defineComponent, h } from 'vue'
 
-import { CCard, CCardBody } from './../card/'
+import { CCard, CCardBody } from '../card/'
 
 const CWidgetStatsE = defineComponent({
   name: 'CWidgetStatsE',

@@ -1,6 +1,6 @@
 import { defineComponent, h, onMounted, ref, RendererElement, Transition, watch } from 'vue'
 
-import { executeAfterTransition } from './../../utils/transition'
+import { executeAfterTransition } from '../../utils/transition'
 
 const CNavGroup = defineComponent({
   name: 'CNavGroup',

@@ -1,8 +1,8 @@
 import { defineComponent, h } from 'vue'
 import { shape } from 'vue-types'
 
-import { Color } from '../props'
-import { CCard, CCardBody } from './../card'
+import { Color } from '../../props'
+import { CCard, CCardBody } from '../card'
 import { CProgress } from '../progress/CProgress'
 
 const CWidgetStatsC = defineComponent({

@@ -1,6 +1,6 @@
 import { defineComponent, h } from 'vue'
 
-import { Color, Shape, TextColor } from '../props'
+import { Color, Shape, TextColor } from '../../props'
 
 const CBadge = defineComponent({
   name: 'CBadge',

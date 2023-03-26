@@ -8,7 +8,7 @@ import { CTableHead } from './CTableHead'
 import { CTableHeaderCell } from './CTableHeaderCell'
 import { CTableRow } from './CTableRow'
 
-import { Color } from '../props'
+import { Color } from '../../props'
 import { getColumnLabel, getColumnNames } from './utils'
 import type { Column, FooterItem, Item } from './types'
 

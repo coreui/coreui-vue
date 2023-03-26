@@ -1,4 +1,4 @@
-const Shape = {
+export const Shape = {
   type: String,
   validator: (value: string): boolean => {
     // The value must match one of these strings
@@ -17,14 +17,16 @@ const Shape = {
     ].includes(value)
   },
 }
-const Align = {
+
+export const Align = {
   type: String,
   validator: (value: string): boolean => {
     // The value must match one of these strings
     return ['', 'left', 'center', 'right'].includes(value)
   },
 }
-const Color = {
+
+export const Color = {
   type: String,
   validator: (value: string): boolean => {
     // The value must match one of these strings
@@ -42,7 +44,8 @@ const Color = {
     ].includes(value)
   },
 }
-const TextColor = {
+
+export const TextColor = {
   type: String,
   validator: (value: string): boolean => {
     return [
@@ -65,7 +68,8 @@ const TextColor = {
     ].includes(value)
   },
 }
-const Breakpoint = {
+
+export const Breakpoint = {
   validator: (value: boolean | number): boolean => {
     if (typeof value == 'boolean' || typeof value == 'number') {
       return true
@@ -74,5 +78,3 @@ const Breakpoint = {
     }
   },
 }
-
-export { Align, Breakpoint, Color, Shape, TextColor }

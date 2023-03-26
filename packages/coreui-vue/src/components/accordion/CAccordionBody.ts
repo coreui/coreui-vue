@@ -1,5 +1,5 @@
 import { defineComponent, h, inject, Ref } from 'vue'
-import { CCollapse } from './../collapse/CCollapse'
+import { CCollapse } from '../collapse/CCollapse'
 
 const CAccordionBody = defineComponent({
   name: 'CAccordionBody',
