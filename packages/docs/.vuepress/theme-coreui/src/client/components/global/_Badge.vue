@@ -19,17 +19,14 @@ export default defineComponent({
   props: {
     type: {
       type: String,
-      required: false,
       default: 'tip',
     },
     text: {
       type: String,
-      required: false,
       default: '',
     },
     vertical: {
       type: String,
-      required: false,
       default: undefined,
     },
   },
