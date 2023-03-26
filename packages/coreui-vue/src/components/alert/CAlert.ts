@@ -61,8 +61,6 @@ export const CAlert = defineComponent({
       h(
         Transition,
         {
-          name: 'fade',
-          duration: 350,
           enterFromClass: '',
           enterActiveClass: 'fade',
           enterToClass: 'fade show',
