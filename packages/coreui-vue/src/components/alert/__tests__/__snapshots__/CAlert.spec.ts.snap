@@ -4,12 +4,10 @@ exports[`Loads and display CAlert component renders correctly 1`] = `
 <transition-stub
   appear="false"
   css="true"
-  duration="350"
   enteractiveclass="fade"
   enterfromclass=""
   entertoclass="fade show"
   leaveactiveclass="fade"
-  name="fade"
   persisted="false"
 >
   <div
@@ -26,12 +24,10 @@ exports[`Loads and display CAlert component renders correctly with slot 1`] = `
   appear="false"
   class="bazinga"
   css="true"
-  duration="350"
   enteractiveclass="fade"
   enterfromclass=""
   entertoclass="fade show"
   leaveactiveclass="fade"
-  name="fade"
   persisted="false"
 >
   <div
