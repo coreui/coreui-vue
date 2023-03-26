@@ -24,7 +24,7 @@ const tmpl = (props) => {
     t += renderTags(prop.tags)
     const n = prop.type?.name ?? ''
     const v = prop.values?.map(pv => `\`${pv}\``).join(', ') ?? '-'
-    const d = prop.defaultValue?.value ?? ''
+    const d = prop.defaultValue?.value ?? '-'
     const since = prop.tags && prop.tags.since ? `<br><div class="badge bg-primary">${prop.tags.since[0].description}+</div>` : ''
 
     if (prop.description && !prop.description.includes('@ignore')) {
