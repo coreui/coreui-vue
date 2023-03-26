@@ -4,7 +4,9 @@ import { CToast as Component } from '../../../index'
 const ComponentName = 'CToast'
 
 const defaultWrapper = mount(Component, {
-  propsData: {},
+  propsData: {
+    visible: true,
+  },
   slots: {
     default: 'Default slot',
   },

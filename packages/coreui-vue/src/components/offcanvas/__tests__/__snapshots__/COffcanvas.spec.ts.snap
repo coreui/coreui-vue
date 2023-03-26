@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Customize COffcanvas component renders correctly 1`] = `
-"<transition-stub>
-  <div class=\\"offcanvas offcanvas-bottom\\" role=\\"dialog\\">Default slot</div>
+"<transition-stub appear="false" persisted="false" css="false">
+  <div class="offcanvas offcanvas-bottom" role="dialog" tabindex="-1">Default slot</div>
 </transition-stub>
-<transition-stub class=\\"offcanvas-backdrop\\">
-  <div class=\\"fade\\"></div>
+<transition-stub appear="false" persisted="false" css="true" class="offcanvas-backdrop">
+  <div class="fade"></div>
 </transition-stub>"
 `;
 
 exports[`Loads and display COffcanvas component renders correctly 1`] = `
-"<transition-stub>
-  <div class=\\"offcanvas offcanvas-end\\" role=\\"dialog\\">Default slot</div>
+"<transition-stub appear="false" persisted="false" css="false">
+  <div class="offcanvas offcanvas-end" role="dialog" tabindex="-1">Default slot</div>
 </transition-stub>
-<transition-stub class=\\"offcanvas-backdrop\\">
-  <div class=\\"fade\\"></div>
+<transition-stub appear="false" persisted="false" css="true" class="offcanvas-backdrop">
+  <div class="fade"></div>
 </transition-stub>"
 `;

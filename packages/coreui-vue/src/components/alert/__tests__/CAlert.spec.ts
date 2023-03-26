@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import { CAlert as Component } from './../../'
+import { CAlert as Component } from '../../'
 
 const ComponentName = 'CAlert'
 const wrapper = shallowMount(Component)

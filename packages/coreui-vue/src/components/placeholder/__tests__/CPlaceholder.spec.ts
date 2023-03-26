@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import { CPlaceholder as Component } from './../../'
+import { CPlaceholder as Component } from '../../'
 
 const ComponentName = 'CPlaceholder'
 const wrapper = shallowMount(Component)

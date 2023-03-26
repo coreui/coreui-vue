@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import { CBadge as Component } from './../../'
+import { CBadge as Component } from '../../'
 
 const ComponentName = 'CBadge'
 const wrapper = shallowMount(Component)
