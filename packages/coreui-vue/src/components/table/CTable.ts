@@ -1,6 +1,5 @@
 import { computed, defineComponent, h, PropType } from 'vue'
 
-import { Color } from '../props'
 import { CTableBody } from './CTableBody'
 import { CTableCaption } from './CTableCaption'
 import { CTableDataCell } from './CTableDataCell'
@@ -9,43 +8,9 @@ import { CTableHead } from './CTableHead'
 import { CTableHeaderCell } from './CTableHeaderCell'
 import { CTableRow } from './CTableRow'
 
-export interface Column {
-  label?: string
-  key: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  _style?: any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  _props?: any
-}
-
-export interface FooterItem {
-  label?: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  _props?: any
-}
-
-export type Item = {
-  [key: string]: number | string | any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  _props?: any
-}
-
-const pretifyName = (name: string) => {
-  return name
-    .replace(/[-_.]/g, ' ')
-    .replace(/ +/g, ' ')
-    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
-    .split(' ')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
-}
-
-const label = (column: Column | string) =>
-  typeof column === 'object'
-    ? column.label !== undefined
-      ? column.label
-      : pretifyName(column.key)
-    : pretifyName(column)
+import { Color } from '../props'
+import { getColumnLabel, getColumnNames } from './utils'
+import type { Column, FooterItem, Item } from './types'
 
 const CTable = defineComponent({
   name: 'CTable',
@@ -183,14 +148,14 @@ const CTable = defineComponent({
     },
   },
   setup(props, { slots, attrs }) {
-    const rawColumnNames = computed(() =>
-      props.columns
-        ? props.columns.map((column: Column | string) => {
-            if (typeof column === 'object') return column.key
-            else return column
-          })
-        : Object.keys((props.items && props.items[0]) || {}).filter((el) => el.charAt(0) !== '_'),
-    )
+    const columnNames = computed(() => getColumnNames(props.columns, props.items))
+    //   props.columns
+    //     ? props.columns.map((column: Column | string) => {
+    //         if (typeof column === 'object') return column.key
+    //         else return column
+    //       })
+    //     : Object.keys((props.items && props.items[0]) || {}).filter((el) => el.charAt(0) !== '_'),
+    // )
 
     const table = () =>
       h(
@@ -247,7 +212,7 @@ const CTable = defineComponent({
                                     column._style && { style: { ...column._style } }),
                                 },
                                 {
-                                  default: () => label(column),
+                                  default: () => getColumnLabel(column),
                                 },
                               ),
                             ),
@@ -271,7 +236,7 @@ const CTable = defineComponent({
                           },
                           {
                             default: () => [
-                              rawColumnNames.value.map(
+                              columnNames.value && columnNames.value.map(
                                 (colName: string) =>
                                   item[colName] &&
                                   h(
