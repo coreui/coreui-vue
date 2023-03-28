@@ -6,6 +6,7 @@
   "scripts": {
     "charts:build": "lerna run --scope \"@coreui/vue-chartjs\" build --stream",
     "charts:test": "lerna run --scope \"@coreui/vue-chartjs\" test --stream",
+    "charts:test:update": "lerna run --scope \"@coreui/vue-chartjs\" test:update --stream",
     "docs:api": "lerna run --scope \"@coreui/vue-docs\" api --stream",
     "docs:dev": "lerna run --scope \"@coreui/vue-docs\" dev --stream",
     "docs:build": "lerna run --scope \"@coreui/vue-docs\" build --stream",
@@ -15,6 +16,7 @@
     "icons:test:update": "lerna run --scope \"@coreui/icons-vue\" test:update --stream",
     "lib:build": "lerna run --scope \"@coreui/vue\" build --stream",
     "lib:test": "lerna run --scope \"@coreui/vue\" test --stream",
+    "lib:test:update": "lerna run --scope \"@coreui/vue\" test:update --stream",
     "lint": "eslint \"packages/**/src/**/*.{js,ts,tsx}\"",
     "test": "npm-run-all charts:test icons:test lib:test",
     "test:update": "npm-run-all charts:test:update icons:test:update lib:test:update"
@@ -28,7 +30,8 @@
     "eslint": "8.34.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.9.0",
-    "lerna": "^4.0.0",
+    "lerna": "^6.5.1",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.8.4"
   }
 }
