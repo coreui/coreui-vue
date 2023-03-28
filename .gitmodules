@@ -1,0 +1,4 @@
+[submodule "packages/coreui-vue-chartjs"]
+	path = packages/coreui-vue-chartjs
+	url = https://github.com/coreui/coreui-vue-chartjs.git
+  branch = main
