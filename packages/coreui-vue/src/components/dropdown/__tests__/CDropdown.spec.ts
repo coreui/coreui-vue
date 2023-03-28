@@ -18,7 +18,7 @@ const customWrapper = mount(Component, {
     disabled: true,
     placement: 'right-start',
     popper: false,
-    trigger: 'mouseover',
+    trigger: 'hover',
     variant: 'nav-item',
     visible: true,
   },
