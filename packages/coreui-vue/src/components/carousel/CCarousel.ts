@@ -119,7 +119,7 @@ const CCarousel = defineComponent({
     const nextItemWhenVisible = () => {
       // Don't call next when the page isn't visible
       // or the carousel or its parent isn't visible
-      if (!document.hidden && isInViewport(carouselRef.value)) {
+      if (!document.hidden && carouselRef.value && isInViewport(carouselRef.value)) {
         handleControlClick('next')
       }
     }
@@ -142,7 +142,7 @@ const CCarousel = defineComponent({
     }
 
     const handleScroll = () => {
-      if (!document.hidden && isInViewport(carouselRef.value)) {
+      if (!document.hidden && carouselRef.value && isInViewport(carouselRef.value)) {
         visible.value = true
       } else {
         visible.value = false
