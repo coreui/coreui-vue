@@ -14,7 +14,7 @@ import CFormSwitch from '@coreui/vue/src/components/form/CFormSwitch'
 | **invalid**     | Set component validation state to invalid.                                                   | boolean         | -                       | -          |
 | **label**       | The element represents a caption for a component.                                            | string          | -                       | -          |
 | **model-value** | The default name for a value passed using v-model.                                           | boolean\|string | -                       | -          |
-| **reverse**     | Put checkboxes or radios on the opposite side.<br/>`@sinve` 4.8.0                            | boolean         | -                       | -          |
+| **reverse**     | Put checkboxes or radios on the opposite side.<br/>`@since` 4.8.0                            | boolean         | -                       | -          |
 | **size**        | Size the component large or extra large. Works only with `switch`.                           | string          | `'lg' \| 'xl'`          | -          |
 | **type**        | Specifies the type of component.                                                             | string          | `'checkbox'`, `'radio'` | 'checkbox' |
 | **valid**       | Set component validation state to valid.                                                     | boolean         | -                       | -          |

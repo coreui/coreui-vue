@@ -25,7 +25,7 @@ const CFormSwitch = defineComponent({
     /**
      * Put checkboxes or radios on the opposite side.
      *
-     * @sinve 4.8.0
+     * @since 4.8.0
      */
     reverse: Boolean,
     /**
