@@ -1,4 +1,4 @@
-import { defineComponent, h, provide, ref } from 'vue'
+import { defineComponent, h, provide, ref, watch } from 'vue'
 
 const CAccordion = defineComponent({
   name: 'CAccordion',
@@ -16,14 +16,19 @@ const CAccordion = defineComponent({
      */
     flush: Boolean,
   },
+  emits: ['update:activeItemKey'],
   setup(props, { slots }) {
     const activeItemKey = ref(props.activeItemKey)
     const setActiveItemKey = (key: string | number) => {
-      activeItemKey.value = key
+      emit('update:activeItemKey', key)
     }
     provide('activeItemKey', activeItemKey)
     provide('alwaysOpen', props.alwaysOpen)
     provide('setActiveItemKey', setActiveItemKey)
+    
+    watch(() => props.activeItemKey, (value) => {
+      activeItemKey.value = value;
+    })
 
     return () =>
       h(
