@@ -7,7 +7,11 @@
   >
     <Sidebar :visible="isSidebarOpen" @visible-change="(event) => (isSidebarOpen = event)" />
     <div class="wrapper d-flex flex-column min-vh-100">
-      <Header @toggle-sidebar="toggleSidebar(!isSidebarOpen)" />
+      <Header
+        :theme="storedTheme"
+        @toggle-sidebar="toggleSidebar(!isSidebarOpen)"
+        @toggle-color-mode="(theme) => {setTheme(theme)}"
+      />
       <div class="body flex-grow-1 px-3">
         <CContainer lg>
           <Home v-if="frontmatter.home" />
@@ -45,7 +49,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, ref, Transition } from 'vue'
+import { computed, defineComponent, onBeforeMount, onMounted, ref, Transition } from 'vue'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import type { DefaultThemePageFrontmatter } from '../../shared'
 import Footer from '../components/Footer.vue'
@@ -101,6 +105,46 @@ export default defineComponent({
     const onBeforeEnter = scrollPromise.resolve
     const onBeforeLeave = scrollPromise.pending
 
+    const theme = 'coreui-react-docs-theme'
+    const storedTheme = ref()
+
+    const getPreferredTheme = (storedTheme: string | undefined) => {
+      if (storedTheme) {
+        return storedTheme
+      }
+
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    }
+
+    const setTheme = (theme: string) => {
+      document.documentElement.dataset.coreuiTheme =
+        theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : theme
+
+      const event = new Event('ColorSchemeChange')
+      document.documentElement.dispatchEvent(event)
+      storedTheme.value = theme
+
+      localStorage.setItem('coreui-react-docs-theme', theme)
+    }
+
+    onMounted(() => {
+      if (typeof localStorage.getItem(theme) === 'string') {
+        storedTheme.value = localStorage.getItem(theme)
+      }
+
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+        if (storedTheme.value !== 'light' || storedTheme.value !== 'dark') {
+          setTheme(getPreferredTheme(storedTheme.value))
+        }
+      })
+
+      if (localStorage.getItem(theme)) {
+        setTheme(localStorage.getItem(theme))
+      }
+    })
+
     onMounted(() => {
       const searchElement = document.getElementById('docsearch') as HTMLElement
       docsearch({
@@ -121,6 +165,8 @@ export default defineComponent({
       toggleSidebar,
       onBeforeEnter,
       onBeforeLeave,
+      setTheme,
+      storedTheme,
     }
   },
 })

@@ -1,23 +1,24 @@
-@import '@coreui/coreui/scss/coreui.scss';
-@import '@docsearch/css/dist/style.css';
+@import "@coreui/coreui/scss/coreui.scss";
+@import "@docsearch/css/dist/style.css";
 
-@import 'ads';
-@import 'anchor';
-@import 'demo';
-@import 'footer';
-@import 'layout';
-@import 'search';
-@import 'sidebar';
-@import 'table-api';
-@import 'toc';
+@import "variables";
 
-@import 'vars';
-@import 'vars-dark';
+@import "ads";
+@import "anchor";
+@import "component-examples";
+@import "footer";
+@import "layout";
+@import "prism";
+@import "scrolling";
+@import "search";
+@import "sidebar";
+@import "table-api";
+@import "toc";
+@import "custom-container";
 
-@import 'code';
-@import 'code-group';
-@import 'custom-container';
-@import 'page';
-@import 'transitions';
-
-@import '@vuepress/plugin-palette/style';
+.back-to-top {
+--c-brand: #3eaf7c;
+--c-brand-light: #4abf8a;
+--back-to-top-color: var(--c-brand);
+--back-to-top-color-hover: var(--c-brand-light);
+}

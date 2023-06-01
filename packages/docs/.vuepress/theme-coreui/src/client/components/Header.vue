@@ -14,6 +14,47 @@
       <CNavItem href="https://opencollective.com/coreui">
         <CIcon icon="cib-open-collective" size="xl" />
       </CNavItem>
+      <li class="nav-item py-2 py-lg-1">
+        <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-body text-opacity-75"></div>
+        <hr class="d-lg-none my-2 text-white-50" />
+      </li>
+      <CDropdown variant="nav-item" placement="bottom-end">
+        <CDropdownToggle :caret="false">
+          <CIcon v-if="theme === 'dark'" icon="cil-moon" size="xl" />
+          <CIcon v-else-if="theme === 'light'" icon="cil-sun" size="xl" />
+          <CIcon v-else icon="cil-contrast" size="xl" />
+        </CDropdownToggle>
+        <CDropdownMenu>
+          <CDropdownItem
+            class="d-flex align-items-center"
+            component="button"
+            type="button"
+            @click="$emit('toggle-color-mode', 'light')"
+            >
+            <CIcon class="me-2" icon="cil-sun" size="lg" /> Light
+          </CDropdownItem>
+          <CDropdownItem
+            class="d-flex align-items-center"
+            component="button"
+            type="button"
+            @click="$emit('toggle-color-mode', 'dark')"
+          >
+            <CIcon class="me-2" icon="cil-moon" size="lg" /> Dark
+          </CDropdownItem>
+          <CDropdownItem
+            class="d-flex align-items-center"
+            component="button"
+            type="button"
+            @click="$emit('toggle-color-mode', 'auto')"
+          >
+            <CIcon class="me-2" icon="cil-contrast" size="lg" /> Auto
+          </CDropdownItem>
+        </CDropdownMenu>
+      </CDropdown>
+      <li class="nav-item py-2 py-lg-1">
+        <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-body text-opacity-75"></div>
+        <hr class="d-lg-none my-2 text-white-50" />
+      </li>
     </CHeaderNav>
     <CButton
       class="d-lg-inline-block my-2 my-md-0 ms-md-3"
@@ -35,10 +76,28 @@
   </CHeader>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref, watch } from 'vue'
 
 export default defineComponent({
   name: 'Header',
-  emits: ['toggle-sidebar'],
+  props: {
+    theme: String,
+  },
+  emits: ['toggle-color-mode', 'toggle-sidebar'],
+  setup(props) {
+    console.log(props.theme)
+    const theme = ref(props.theme)
+    watch(
+      () => props.theme,
+      () => {
+        theme.value = props.theme
+        console.log(props.theme)
+      },
+    )
+
+    return {
+      theme
+    }
+  }
 })
 </script>

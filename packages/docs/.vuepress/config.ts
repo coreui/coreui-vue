@@ -26,6 +26,9 @@ export default defineUserConfig<DefaultThemeOptions>({
         placement: 'after'
       })
     },
+    code: {
+      lineNumbers: false
+    }
   },
   plugins: [
     '@vuepress/plugin-toc',
