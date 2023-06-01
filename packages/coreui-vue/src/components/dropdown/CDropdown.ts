@@ -1,7 +1,8 @@
-import { defineComponent, h, ref, provide, watch, PropType } from 'vue'
+import { defineComponent, h, ref, provide, watch, PropType, onMounted } from 'vue'
 import { createPopper, Placement } from '@popperjs/core'
 
 import { Triggers } from '../../types'
+import { isRTL } from '../../utils'
 
 const CDropdown = defineComponent({
   name: 'CDropdown',
@@ -149,30 +150,6 @@ const CDropdown = defineComponent({
     provide('dropdownToggleRef', dropdownToggleRef)
     provide('dropdownMenuRef', dropdownMenuRef)
 
-    if (props.direction === 'center') {
-      placement.value = 'bottom'
-    }
-
-    if (props.direction === 'dropup') {
-      placement.value = 'top-start'
-    }
-
-    if (props.direction === 'dropup-center') {
-      placement.value = 'top'
-    }
-
-    if (props.direction === 'dropend') {
-      placement.value = 'right-start'
-    }
-
-    if (props.direction === 'dropstart') {
-      placement.value = 'left-start'
-    }
-
-    if (props.alignment === 'end') {
-      placement.value = 'bottom-end'
-    }
-
     const initPopper = () => {
       // Disable popper if responsive aligment is set.
       if (typeof props.alignment === 'object') {
@@ -226,6 +203,32 @@ const CDropdown = defineComponent({
     watch(visible, () => {
       props.popper && (visible.value ? initPopper() : destroyPopper())
       visible.value ? emit('show') : emit('hide')
+    })
+
+    onMounted(() => {
+      if (props.direction === 'center') {
+        placement.value = 'bottom'
+      }
+
+      if (props.direction === 'dropup') {
+        placement.value = isRTL(dropdownMenuRef.value) ? 'top-end' : 'top-start'
+      }
+
+      if (props.direction === 'dropup-center') {
+        placement.value = 'top'
+      }
+
+      if (props.direction === 'dropend') {
+        placement.value = isRTL(dropdownMenuRef.value) ? 'left-start' : 'right-start'
+      }
+
+      if (props.direction === 'dropstart') {
+        placement.value = isRTL(dropdownMenuRef.value) ? 'right-start' : 'left-start'
+      }
+
+      if (props.alignment === 'end') {
+        placement.value = isRTL(dropdownMenuRef.value) ? 'bottom-start' : 'bottom-end'
+      }
     })
 
     return () =>
