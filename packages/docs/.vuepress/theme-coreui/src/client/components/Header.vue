@@ -26,6 +26,7 @@
         </CDropdownToggle>
         <CDropdownMenu>
           <CDropdownItem
+            :active="theme === 'light'"
             class="d-flex align-items-center"
             component="button"
             type="button"
@@ -34,6 +35,7 @@
             <CIcon class="me-2" icon="cil-sun" size="lg" /> Light
           </CDropdownItem>
           <CDropdownItem
+            :active="theme === 'dark'"
             class="d-flex align-items-center"
             component="button"
             type="button"
@@ -42,6 +44,7 @@
             <CIcon class="me-2" icon="cil-moon" size="lg" /> Dark
           </CDropdownItem>
           <CDropdownItem
+            :active="theme === 'auto'"
             class="d-flex align-items-center"
             component="button"
             type="button"
@@ -64,6 +67,14 @@
       variant="outline"
     >
       <CIcon icon="cil-cloud-download" /> Download
+    </CButton>
+    <CButton
+      class="d-lg-inline-block my-2 my-md-0 ms-md-3"
+      color="primary"
+      href="https://coreui.io/about/services/?docs=coreui-header-button"
+      variant="outline"
+    >
+      <CIcon class="me-2" icon="cil-handshake" /> Hire Us
     </CButton>
     <CButton
       class="d-lg-inline-block my-2 my-md-0 ms-md-3"

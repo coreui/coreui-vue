@@ -10,37 +10,43 @@
       <Header
         :theme="storedTheme"
         @toggle-sidebar="toggleSidebar(!isSidebarOpen)"
-        @toggle-color-mode="(theme) => {setTheme(theme)}"
+        @toggle-color-mode="
+          (theme) => {
+            setTheme(theme)
+          }
+        "
       />
       <div class="body flex-grow-1 px-3">
         <CContainer lg>
-          <Home v-if="frontmatter.home" />
-          <Transition
-            v-else
-            name="fade-slide-y"
-            mode="out-in"
-            @before-enter="onBeforeEnter"
-            @before-leave="onBeforeLeave"
-          >
-            <CRow>
-              <CCol :lg="9">
-                <Page :key="page.path">
-                  <template #top>
-                    <slot name="page-top" />
-                  </template>
-                  <template #bottom>
-                    <slot name="page-bottom" />
-                  </template>
-                </Page>
-              </CCol>
-              <CCol :lg="3">
-                <div class="docs-toc text-muted">
-                  <strong class="d-block h6 mb-2 pb-2 border-bottom">On this page</strong>
-                  <Toc />
-                </div>
-              </CCol>
-            </CRow>
-          </Transition>
+          <main class="docs-main">
+            <Home v-if="frontmatter.home" />
+            <Transition
+              v-else
+              name="fade-slide-y"
+              mode="out-in"
+              @before-enter="onBeforeEnter"
+              @before-leave="onBeforeLeave"
+            >
+              <CRow>
+                <CCol :lg="9">
+                  <Page :key="page.path">
+                    <template #top>
+                      <slot name="page-top" />
+                    </template>
+                    <template #bottom>
+                      <slot name="page-bottom" />
+                    </template>
+                  </Page>
+                </CCol>
+                <CCol :lg="3">
+                  <div class="docs-toc text-muted">
+                    <strong class="d-block h6 mb-2 pb-2 border-bottom">On this page</strong>
+                    <Toc />
+                  </div>
+                </CCol>
+              </CRow>
+            </Transition>
+          </main>
         </CContainer>
       </div>
       <Footer />
