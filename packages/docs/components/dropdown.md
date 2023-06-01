@@ -19,7 +19,7 @@ Bind the dropdown's toggle and the dropdown menu inside `<CDropdown>`, or differ
 
 Here's how you can put them to work with either `<button>` elements:
 ::: demo
-<CDropdown>
+<CDropdown direction="dropup">
   <CDropdownToggle color="primary">Dropdown Button</CDropdownToggle>
   <CDropdownMenu>
     <CDropdownItem href="#">Action</CDropdownItem>
@@ -27,6 +27,16 @@ Here's how you can put them to work with either `<button>` elements:
     <CDropdownItem href="#">Something else here</CDropdownItem>
   </CDropdownMenu>
 </CDropdown>
+<div dir="rtl">
+<CDropdown direction="dropup">
+  <CDropdownToggle color="primary">Dropdown Button</CDropdownToggle>
+  <CDropdownMenu>
+    <CDropdownItem href="#">Action</CDropdownItem>
+    <CDropdownItem href="#">Another action</CDropdownItem>
+    <CDropdownItem href="#">Something else here</CDropdownItem>
+  </CDropdownMenu>
+</CDropdown>
+</div>
 :::
 ```vue
 <CDropdown>
@@ -408,7 +418,7 @@ Make the dropup menu centered above the toggle by adding `direction="dropup-cent
 </CDropdown>
 ```
 
-### Dropright
+### Dropend
 
 Trigger dropdown menus at the right of the elements by adding `direction="dropend"` to the `<CDropdown>` component.
 
@@ -459,7 +469,7 @@ Trigger dropdown menus at the right of the elements by adding `direction="dropen
 </CDropdown>
 ```
 
-### Dropleft
+### Dropstart
 
 Trigger dropdown menus at the left of the elements by adding `direction="dropstart"` to the `<CDropdown>` component.
 
