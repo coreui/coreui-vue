@@ -1,27 +1,14 @@
 <template>
-  <div
-    class="theme-container"
-    :class="containerClass"
-    @touchstart="onTouchStart"
-    @touchend="onTouchEnd"
-  >
+  <div>
     <Sidebar :visible="isSidebarOpen" @visible-change="(event) => (isSidebarOpen = event)" />
     <div class="wrapper d-flex flex-column min-vh-100">
       <Header
-        :theme="storedTheme"
         @toggle-sidebar="toggleSidebar(!isSidebarOpen)"
-        @toggle-color-mode="
-          (theme) => {
-            setTheme(theme)
-          }
-        "
       />
       <div class="body flex-grow-1 px-3">
         <CContainer lg>
           <main class="docs-main">
-            <Home v-if="frontmatter.home" />
             <Transition
-              v-else
               name="fade-slide-y"
               mode="out-in"
               @before-enter="onBeforeEnter"
@@ -55,16 +42,16 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onBeforeMount, onMounted, ref, Transition } from 'vue'
+import { defineComponent, onMounted, ref } from 'vue'
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
+import docsearch from '@docsearch/js'
 import type { DefaultThemePageFrontmatter } from '../../shared'
 import Footer from '../components/Footer.vue'
 import Header from '../components/Header.vue'
-import Home from '../components/Home.vue'
 import Page from '../components/Page.vue'
 import Sidebar from '../components/Sidebar.vue'
-import { useScrollPromise, useSidebarItems, useThemeLocaleData } from '../composables'
-import docsearch from '@docsearch/js'
+import { useScrollPromise } from '../composables'
+
 
 export default defineComponent({
   name: 'Layout',
@@ -72,84 +59,25 @@ export default defineComponent({
   components: {
     Footer,
     Header,
-    Home,
     Page,
     Sidebar,
-    Transition,
   },
 
   setup() {
     const page = usePageData()
     const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>()
-    const themeLocale = useThemeLocaleData()
-
-    // navbar
-    const shouldShowNavbar = computed(
-      () => frontmatter.value.navbar !== false && themeLocale.value.navbar !== false,
-    )
 
     // sidebar
-    const sidebarItems = useSidebarItems()
     const isSidebarOpen = ref(true)
 
     const toggleSidebar = (to?: boolean): void => {
       isSidebarOpen.value = typeof to === 'boolean' ? to : !isSidebarOpen.value
     }
 
-    // classes
-    const containerClass = computed(() => [
-      {
-        'no-navbar': !shouldShowNavbar.value,
-        'no-sidebar': !sidebarItems.value.length,
-        'sidebar-open': isSidebarOpen.value,
-      },
-      frontmatter.value.pageClass,
-    ])
-
     // handle scrollBehavior with transition
     const scrollPromise = useScrollPromise()
     const onBeforeEnter = scrollPromise.resolve
     const onBeforeLeave = scrollPromise.pending
-
-    const theme = 'coreui-react-docs-theme'
-    const storedTheme = ref()
-
-    const getPreferredTheme = (storedTheme: string | undefined) => {
-      if (storedTheme) {
-        return storedTheme
-      }
-
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-    }
-
-    const setTheme = (theme: string) => {
-      document.documentElement.dataset.coreuiTheme =
-        theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches
-          ? 'dark'
-          : theme
-
-      const event = new Event('ColorSchemeChange')
-      document.documentElement.dispatchEvent(event)
-      storedTheme.value = theme
-
-      localStorage.setItem('coreui-react-docs-theme', theme)
-    }
-
-    onMounted(() => {
-      if (typeof localStorage.getItem(theme) === 'string') {
-        storedTheme.value = localStorage.getItem(theme)
-      }
-
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-        if (storedTheme.value !== 'light' || storedTheme.value !== 'dark') {
-          setTheme(getPreferredTheme(storedTheme.value))
-        }
-      })
-
-      if (localStorage.getItem(theme)) {
-        setTheme(localStorage.getItem(theme))
-      }
-    })
 
     onMounted(() => {
       const searchElement = document.getElementById('docsearch') as HTMLElement
@@ -167,12 +95,9 @@ export default defineComponent({
       isSidebarOpen,
       frontmatter,
       page,
-      containerClass,
       toggleSidebar,
       onBeforeEnter,
       onBeforeLeave,
-      setTheme,
-      storedTheme,
     }
   },
 })

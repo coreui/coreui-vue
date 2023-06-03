@@ -20,35 +20,35 @@
       </li>
       <CDropdown variant="nav-item" placement="bottom-end">
         <CDropdownToggle :caret="false">
-          <CIcon v-if="theme === 'dark'" icon="cil-moon" size="xl" />
-          <CIcon v-else-if="theme === 'light'" icon="cil-sun" size="xl" />
+          <CIcon v-if="storedTheme === 'dark'" icon="cil-moon" size="xl" />
+          <CIcon v-else-if="storedTheme === 'light'" icon="cil-sun" size="xl" />
           <CIcon v-else icon="cil-contrast" size="xl" />
         </CDropdownToggle>
         <CDropdownMenu>
           <CDropdownItem
-            :active="theme === 'light'"
+            :active="storedTheme === 'light'"
             class="d-flex align-items-center"
             component="button"
             type="button"
-            @click="$emit('toggle-color-mode', 'light')"
-            >
+            @click="toggleColorMode('light')"
+          >
             <CIcon class="me-2" icon="cil-sun" size="lg" /> Light
           </CDropdownItem>
           <CDropdownItem
-            :active="theme === 'dark'"
+            :active="storedTheme === 'dark'"
             class="d-flex align-items-center"
             component="button"
             type="button"
-            @click="$emit('toggle-color-mode', 'dark')"
+            @click="toggleColorMode('dark')"
           >
             <CIcon class="me-2" icon="cil-moon" size="lg" /> Dark
           </CDropdownItem>
           <CDropdownItem
-            :active="theme === 'auto'"
+            :active="storedTheme === 'auto'"
             class="d-flex align-items-center"
             component="button"
             type="button"
-            @click="$emit('toggle-color-mode', 'auto')"
+            @click="toggleColorMode('auto')"
           >
             <CIcon class="me-2" icon="cil-contrast" size="lg" /> Auto
           </CDropdownItem>
@@ -88,6 +88,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue'
+import { useColorMode } from '../composables'
 
 export default defineComponent({
   name: 'Header',
@@ -96,7 +97,11 @@ export default defineComponent({
   },
   emits: ['toggle-color-mode', 'toggle-sidebar'],
   setup(props) {
+    const storedTheme = useColorMode()
     const theme = ref(props.theme)
+    const toggleColorMode = (theme: string): void => {
+      storedTheme.value = theme
+    }
     watch(
       () => props.theme,
       () => {
@@ -105,8 +110,10 @@ export default defineComponent({
     )
 
     return {
-      theme
+      theme,
+      storedTheme,
+      toggleColorMode,
     }
-  }
+  },
 })
 </script>
