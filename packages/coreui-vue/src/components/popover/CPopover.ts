@@ -5,7 +5,6 @@ import { executeAfterTransition } from '../../utils/transition'
 import { isRTL } from '../../utils'
 
 const getPlacement = (placement: string, element: HTMLDivElement | null): Placement => {
-  console.log(element)
   switch (placement) {
     case 'right': {
       return isRTL(element) ? 'left' : 'right'

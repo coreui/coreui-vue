@@ -96,13 +96,11 @@ export default defineComponent({
   },
   emits: ['toggle-color-mode', 'toggle-sidebar'],
   setup(props) {
-    console.log(props.theme)
     const theme = ref(props.theme)
     watch(
       () => props.theme,
       () => {
         theme.value = props.theme
-        console.log(props.theme)
       },
     )
 
