@@ -14,7 +14,7 @@ const CWidgetStatsE = defineComponent({
      */
     value: {
       type: [Number, String],
-      default: 0
+      default: 0,
     },
   },
   /**

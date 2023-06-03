@@ -236,24 +236,25 @@ const CTable = defineComponent({
                           },
                           {
                             default: () => [
-                              columnNames.value && columnNames.value.map(
-                                (colName: string) =>
-                                  item[colName] &&
-                                  h(
-                                    CTableDataCell,
-                                    {
-                                      ...(item._cellProps &&
-                                        item._cellProps['all'] && { ...item._cellProps['all'] }),
-                                      ...(item._cellProps &&
-                                        item._cellProps[colName] && {
-                                          ...item._cellProps[colName],
-                                        }),
-                                    },
-                                    {
-                                      default: () => item[colName],
-                                    },
-                                  ),
-                              ),
+                              columnNames.value &&
+                                columnNames.value.map(
+                                  (colName: string) =>
+                                    item[colName] &&
+                                    h(
+                                      CTableDataCell,
+                                      {
+                                        ...(item._cellProps &&
+                                          item._cellProps['all'] && { ...item._cellProps['all'] }),
+                                        ...(item._cellProps &&
+                                          item._cellProps[colName] && {
+                                            ...item._cellProps[colName],
+                                          }),
+                                      },
+                                      {
+                                        default: () => item[colName],
+                                      },
+                                    ),
+                                ),
                             ],
                           },
                         ),

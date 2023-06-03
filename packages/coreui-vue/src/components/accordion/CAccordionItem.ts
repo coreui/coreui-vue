@@ -6,7 +6,7 @@ const CAccordionItem = defineComponent({
     /**
      * The item key.
      */
-    itemKey: [Number, String]
+    itemKey: [Number, String],
   },
   setup(props, { slots }) {
     const activeItemKey = inject('activeItemKey') as Ref<number | string>

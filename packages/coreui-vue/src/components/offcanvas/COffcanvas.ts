@@ -101,7 +101,6 @@ const COffcanvas = defineComponent({
       },
     )
 
-
     watch(visible, () => {
       if (visible.value && !props.scroll) {
         document.body.style.overflow = 'hidden'

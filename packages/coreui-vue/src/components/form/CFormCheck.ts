@@ -3,7 +3,6 @@ import { computed, defineComponent, h } from 'vue'
 import { CButton } from '../button'
 import { CFormControlValidation } from './CFormControlValidation'
 import { CFormLabel } from './CFormLabel'
-import { any } from 'vue-types'
 
 const CFormCheck = defineComponent({
   name: 'CFormCheck',

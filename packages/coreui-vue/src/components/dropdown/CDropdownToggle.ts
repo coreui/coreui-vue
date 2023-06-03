@@ -30,7 +30,7 @@ const CDropdownToggle = defineComponent({
      */
     component: {
       type: String,
-      default: 'button'
+      default: 'button',
     },
     /**
      * Create a custom toggler which accepts any content.

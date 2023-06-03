@@ -81,7 +81,7 @@ const CCarousel = defineComponent({
     const items = ref<VNode[]>([])
     const timeout = ref()
     const visible = ref()
-    
+
     const setAnimating = (value: boolean) => {
       animating.value = value
     }
@@ -151,7 +151,10 @@ const CCarousel = defineComponent({
 
     onBeforeMount(() => {
       if (slots.default) {
-        const children = typeof slots.default()[0].type === 'symbol' ? slots.default()[0].children : slots.default()
+        const children =
+          typeof slots.default()[0].type === 'symbol'
+            ? slots.default()[0].children
+            : slots.default()
 
         if (children && Array.isArray(children)) {
           // @ts-expect-error TODO: fix types

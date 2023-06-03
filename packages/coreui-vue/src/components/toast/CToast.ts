@@ -69,7 +69,7 @@ const CToast = defineComponent({
       if (props.visible) {
         visible.value = props.visible
       }
-      
+
       if (props.autohide) {
         clearTimeout(timeout.value)
         timeout.value = window.setTimeout(() => {

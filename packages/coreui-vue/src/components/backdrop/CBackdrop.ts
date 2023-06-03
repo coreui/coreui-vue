@@ -21,7 +21,7 @@ const CBackdrop = defineComponent({
           },
           onLeave: (el) => {
             el.classList.remove('show')
-          }
+          },
         },
         () =>
           props.visible &&

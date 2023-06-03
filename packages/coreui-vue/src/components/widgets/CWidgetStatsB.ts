@@ -47,7 +47,7 @@ const CWidgetStatsB = defineComponent({
      */
     value: {
       type: [Number, String],
-      default: 0
+      default: 0,
     },
   },
   setup(props, { slots }) {
