@@ -1,8 +1,9 @@
-import { defineComponent, h } from 'vue'
+import { computed, defineComponent, h } from 'vue'
 
 import { CButton } from '../button'
 import { CFormControlValidation } from './CFormControlValidation'
 import { CFormLabel } from './CFormLabel'
+import { any } from 'vue-types'
 
 const CFormCheck = defineComponent({
   name: 'CFormCheck',
@@ -94,6 +95,10 @@ const CFormCheck = defineComponent({
      * Set component validation state to valid.
      */
     valid: Boolean,
+    /**
+     * The value attribute of component.
+     */
+    value: String,
   },
   emits: [
     /**
@@ -107,9 +112,9 @@ const CFormCheck = defineComponent({
   ],
   setup(props, { attrs, emit, slots }) {
     const handleChange = (event: InputEvent) => {
-      const target = event.target as HTMLInputElement
+      console.log(event)
       emit('change', event)
-      emit('update:modelValue', target.checked)
+      emit('update:modelValue', (event.target as HTMLInputElement).value)
     }
 
     const className = [
@@ -132,15 +137,18 @@ const CFormCheck = defineComponent({
       },
     ]
 
+    const isChecked = computed(() => props.modelValue == props.value)
+
     const formControl = () => {
       return h('input', {
         ...attrs,
-        ...(props.modelValue && { checked: props.modelValue }),
+        ...(props.modelValue && { checked: isChecked.value }),
         class: inputClassName,
         id: props.id,
         indeterminate: props.indeterminate,
         onChange: (event: InputEvent) => handleChange(event),
         type: props.type,
+        value: props.value,
       })
     }
 
