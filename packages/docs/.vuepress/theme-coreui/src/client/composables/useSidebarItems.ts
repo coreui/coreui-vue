@@ -1,7 +1,4 @@
-import { inject } from 'vue'
-import type { ComputedRef, InjectionKey } from 'vue'
-import { useRoute } from 'vue-router'
-import { usePageData } from '@vuepress/client'
+import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import type { PageHeader } from '@vuepress/client'
 import {
   isArray,
@@ -9,21 +6,24 @@ import {
   isString,
   resolveLocalePath,
 } from '@vuepress/shared'
+import { computed, inject, provide } from 'vue'
+import type { ComputedRef, InjectionKey } from 'vue'
+import { useRoute } from 'vue-router'
 import type {
   DefaultThemeData,
   DefaultThemeNormalPageFrontmatter,
+  ResolvedSidebarItem,
   SidebarConfigArray,
   SidebarConfigObject,
   SidebarItem,
-  ResolvedSidebarItem,
-} from '../../shared'
-import { useNavLink } from './useNavLink'
+} from '../../shared/index.js'
+import { useNavLink } from './useNavLink.js'
+import { useThemeLocaleData } from './useThemeData.js'
 
 export type SidebarItemsRef = ComputedRef<ResolvedSidebarItem[]>
 
-export const sidebarItemsSymbol: InjectionKey<SidebarItemsRef> = Symbol(
-  'sidebarItems'
-)
+export const sidebarItemsSymbol: InjectionKey<SidebarItemsRef> =
+  Symbol('sidebarItems')
 
 /**
  * Inject sidebar items global computed
@@ -37,6 +37,18 @@ export const useSidebarItems = (): SidebarItemsRef => {
 }
 
 /**
+ * Create sidebar items ref and provide as global computed in setup
+ */
+export const setupSidebarItems = (): void => {
+  const themeLocale = useThemeLocaleData()
+  const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
+  const sidebarItems = computed(() =>
+    resolveSidebarItems(frontmatter.value, themeLocale.value)
+  )
+  provide(sidebarItemsSymbol, sidebarItems)
+}
+
+/**
  * Resolve sidebar items global computed
  *
  * It should only be resolved and provided once
@@ -45,7 +57,7 @@ export const resolveSidebarItems = (
   frontmatter: DefaultThemeNormalPageFrontmatter,
   themeLocale: DefaultThemeData
 ): ResolvedSidebarItem[] => {
-  // get sidebar config from frontmatter > themeConfig
+  // get sidebar config from frontmatter > theme data
   const sidebarConfig = frontmatter.sidebar ?? themeLocale.sidebar ?? 'auto'
   const sidebarDepth = frontmatter.sidebarDepth ?? themeLocale.sidebarDepth ?? 2
 
@@ -77,7 +89,7 @@ export const headerToSidebarItem = (
   sidebarDepth: number
 ): ResolvedSidebarItem => ({
   text: header.title,
-  link: `#${header.slug}`,
+  link: header.link,
   children: headersToSidebarItemChildren(header.children, sidebarDepth),
 })
 

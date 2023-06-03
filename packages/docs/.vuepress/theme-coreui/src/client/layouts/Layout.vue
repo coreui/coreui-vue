@@ -52,7 +52,6 @@ import Page from '../components/Page.vue'
 import Sidebar from '../components/Sidebar.vue'
 import { useScrollPromise } from '../composables'
 
-
 export default defineComponent({
   name: 'Layout',
 

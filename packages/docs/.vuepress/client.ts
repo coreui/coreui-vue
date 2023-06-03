@@ -1,4 +1,4 @@
-import type { ClientAppEnhance } from '@vuepress/client'
+import { defineClientConfig } from '@vuepress/client'
 import { CIcon } from '@coreui/icons-vue'
 import CChartPlugin from '@coreui/vue-chartjs/src/'
 import CoreuiVue from '@coreui/vue/src'
@@ -61,11 +61,12 @@ export const icons = {
   cilWarning,
 }
 
-const clientAppEnhance: ClientAppEnhance = ({ app }) => {
-  app.use(CoreuiVue)
-  app.provide('icons', icons)
-  app.component('CIcon', CIcon)
-  app.use(CChartPlugin)
-}
-
-export default clientAppEnhance
+export default defineClientConfig({
+  enhance({ app, router }) {
+    app.use(CoreuiVue)
+    app.provide('icons', icons)
+    app.component('CIcon', CIcon)
+    app.use(CChartPlugin),
+    router.addRoute({ path: '', redirect: '/getting-started/introduction.html' })
+  },
+})
