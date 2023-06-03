@@ -112,7 +112,7 @@ const CCol = defineComponent({
       h(
         'div',
         {
-          class: [repsonsiveClassNames.length ? repsonsiveClassNames : 'col'],
+          class: [repsonsiveClassNames.length > 0 ? repsonsiveClassNames : 'col'],
         },
         slots.default && slots.default(),
       )

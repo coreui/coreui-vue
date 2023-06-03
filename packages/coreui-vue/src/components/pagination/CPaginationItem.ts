@@ -24,7 +24,7 @@ const CPaginationItem = defineComponent({
   },
   setup(props, { slots }) {
     return () => {
-      const component = props.component ? props.component : props.active ? 'span' : 'a'
+      const component = props.component ?? (props.active ? 'span' : 'a')
       return h(
         'li',
         {

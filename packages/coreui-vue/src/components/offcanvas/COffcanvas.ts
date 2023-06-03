@@ -171,7 +171,7 @@ const COffcanvas = defineComponent({
                 class: [
                   {
                     [`offcanvas${
-                      typeof props.responsive !== 'boolean' ? '-' + props.responsive : ''
+                      typeof props.responsive === 'boolean' ? '' : '-' + props.responsive
                     }`]: props.responsive,
                     [`offcanvas-${props.placement}`]: props.placement,
                   },

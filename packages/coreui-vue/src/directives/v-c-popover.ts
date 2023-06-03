@@ -43,13 +43,13 @@ export default {
   uid: '',
   mounted(el: HTMLElement, binding: DirectiveBinding): void {
     const value = binding.value
-    const content = typeof value === 'string' ? value : value.content ? value.content : ''
-    const header = value.header ? value.header : ''
-    const trigger = value.trigger ? value.trigger : 'click'
+    const content = typeof value === 'string' ? value : value.content ?? ''
+    const header = value.header ?? ''
+    const trigger = value.trigger ?? 'click'
 
     // Popper Config
-    const offset = value.offset ? value.offset : [0, 8]
-    const placement = value.placement ? value.placement : 'top'
+    const offset = value.offset ?? [0, 8]
+    const placement = value.placement ?? 'top'
 
     const popperOptions = {
       placement: placement,

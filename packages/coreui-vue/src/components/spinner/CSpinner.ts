@@ -69,7 +69,10 @@ const CSpinner = defineComponent({
           class: [
             `spinner-${props.variant}`,
             `text-${props.color}`,
-            props.size && `spinner-${props.variant}-${props.size}`,
+            {
+              [`spinner-${props.variant}-${props.size}`]: props.size,
+            },
+            // props.size && `spinner-${props.variant}-${props.size}`,
           ],
           role: 'status',
         },

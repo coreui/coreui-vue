@@ -13,7 +13,7 @@ const CAccordionItem = defineComponent({
     const alwaysOpen = inject('alwaysOpen') as boolean
     const setActiveItemKey = inject('setActiveItemKey') as (key: number | string) => void
 
-    const itemKey = ref(props.itemKey ? props.itemKey : Math.random().toString(36).substr(2, 9))
+    const itemKey = ref(props.itemKey ?? Math.random().toString(36).slice(2, 11))
     const visible = ref(Boolean(activeItemKey.value === itemKey.value))
 
     watch(activeItemKey, () => (visible.value = Boolean(activeItemKey.value === itemKey.value)))

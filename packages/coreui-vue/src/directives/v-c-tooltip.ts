@@ -40,12 +40,12 @@ const toggleTooltipElement = (tooltip: HTMLDivElement, el: HTMLElement, popperOp
 export default {
   mounted(el: HTMLElement, binding: DirectiveBinding): void {
     const value = binding.value
-    const content = typeof value === 'string' ? value : value.content ? value.content : ''
-    const trigger = value.trigger ? value.trigger : 'hover'
+    const content = typeof value === 'string' ? value : value.content ?? ''
+    const trigger = value.trigger ?? 'hover'
 
     // Popper Config
-    const offset = value.offset ? value.offset : [0, 0]
-    const placement = value.placement ? value.placement : 'top'
+    const offset = value.offset ?? [0, 0]
+    const placement = value.placement ?? 'top'
 
     const popperOptions = {
       placement: placement,

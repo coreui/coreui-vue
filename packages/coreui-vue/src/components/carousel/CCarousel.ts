@@ -142,11 +142,8 @@ const CCarousel = defineComponent({
     }
 
     const handleScroll = () => {
-      if (!document.hidden && carouselRef.value && isInViewport(carouselRef.value)) {
-        visible.value = true
-      } else {
-        visible.value = false
-      }
+      visible.value =
+        !document.hidden && carouselRef.value && isInViewport(carouselRef.value) ? true : false
     }
 
     onBeforeMount(() => {

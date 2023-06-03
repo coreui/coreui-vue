@@ -71,10 +71,6 @@ export const TextColor = {
 
 export const Breakpoint = {
   validator: (value: boolean | number): boolean => {
-    if (typeof value == 'boolean' || typeof value == 'number') {
-      return true
-    } else {
-      return false
-    }
+    return typeof value == 'boolean' || typeof value == 'number' ? true : false
   },
 }

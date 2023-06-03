@@ -36,7 +36,7 @@ const CHeader = defineComponent({
         props.container
           ? h(
               'div',
-              { class: `container${props.container !== true ? '-' + props.container : ''}` },
+              { class: `container${props.container === true ? '' : '-' + props.container}` },
               slots.default && slots.default(),
             )
           : slots.default && slots.default(),

@@ -1,4 +1,4 @@
-import { ObjectDirective } from '@vue/runtime-core'
+import { ObjectDirective } from 'vue'
 
 interface VShowElement extends HTMLElement {
   // _vod = vue original display

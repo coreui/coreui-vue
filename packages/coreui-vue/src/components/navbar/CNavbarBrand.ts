@@ -19,7 +19,7 @@ const CNavbarBrand = defineComponent({
   setup(props, { slots }) {
     return () =>
       h(
-        props.component ? props.component : props.href ? 'a' : 'span',
+        props.component ?? (props.href ? 'a' : 'span'),
         {
           class: 'navbar-brand',
           href: props.href,

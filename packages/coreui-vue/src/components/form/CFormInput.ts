@@ -1,7 +1,7 @@
 import { defineComponent, h } from 'vue'
 import { CFormControlWrapper } from './CFormControlWrapper'
 
-export const File = typeof window !== 'undefined' ? window.File : class File extends Object {}
+export const File = typeof window === 'undefined' ? class File extends Object {} : window.File
 
 const CFormInput = defineComponent({
   name: 'CFormInput',

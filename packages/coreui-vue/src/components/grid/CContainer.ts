@@ -49,7 +49,7 @@ const CContainer = defineComponent({
       h(
         'div',
         {
-          class: [repsonsiveClassNames.length ? repsonsiveClassNames : 'container'],
+          class: [repsonsiveClassNames.length > 0 ? repsonsiveClassNames : 'container'],
         },
         slots.default && slots.default(),
       )
