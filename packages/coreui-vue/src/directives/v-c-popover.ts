@@ -1,13 +1,7 @@
 import { DirectiveBinding } from 'vue'
 import { createPopper } from '@popperjs/core'
 
-const getUID = (prefix: string) => {
-  do {
-    prefix += Math.floor(Math.random() * 1000000)
-  } while (document.getElementById(prefix))
-
-  return prefix
-}
+import { getUID } from '../utils'
 
 const createPopoverElement = (id: string, header: string, content: string): HTMLDivElement => {
   const popover = document.createElement('div')

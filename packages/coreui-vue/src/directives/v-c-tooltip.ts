@@ -1,13 +1,7 @@
 import { DirectiveBinding } from 'vue'
 import { createPopper } from '@popperjs/core'
 
-const getUID = (prefix: string) => {
-  do {
-    prefix += Math.floor(Math.random() * 1000000)
-  } while (document.getElementById(prefix))
-
-  return prefix
-}
+import { getUID } from '../utils'
 
 const createTooltipElement = (id: string, content: string): HTMLDivElement => {
   const tooltip = document.createElement('div')
