@@ -87,7 +87,7 @@
   </CHeader>
 </template>
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue'
+import { defineComponent } from 'vue'
 import { useColorMode } from '../composables'
 
 export default defineComponent({
@@ -96,21 +96,13 @@ export default defineComponent({
     theme: String,
   },
   emits: ['toggle-color-mode', 'toggle-sidebar'],
-  setup(props) {
+  setup() {
     const storedTheme = useColorMode()
-    const theme = ref(props.theme)
     const toggleColorMode = (theme: string): void => {
       storedTheme.value = theme
     }
-    watch(
-      () => props.theme,
-      () => {
-        theme.value = props.theme
-      },
-    )
 
     return {
-      theme,
       storedTheme,
       toggleColorMode,
     }
