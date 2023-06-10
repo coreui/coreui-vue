@@ -44,7 +44,7 @@ export default {
     const trigger = value.trigger ?? 'hover'
 
     // Popper Config
-    const offset = value.offset ?? [0, 0]
+    const offset = value.offset ?? [0, 6]
     const placement = value.placement ?? 'top'
 
     const popperOptions = {
