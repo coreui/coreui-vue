@@ -54,6 +54,12 @@ Put your switches on the opposite side by adding `reverse` boolean property.
 <CFormSwitch reverse type="radio" id="reverseFormSwitch2" label="Disabled reverse switch" disabled/>
 ```
 
+## Customizing
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="form-switch-variables" />
+
 ## API
 
 !!!include(./api/form/CFormSwitch.api.md)!!!

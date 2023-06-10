@@ -248,3 +248,9 @@ When working with the CoreUI for Bootstrap grid system, be sure to place form el
   </CCol>
 </CRow>
 ```
+
+## Customizing
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="form-floating-variables" />

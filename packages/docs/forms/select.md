@@ -128,6 +128,13 @@ Add the `disabled` boolean attribute on a select to give it a grayed out appeara
 </CFormSelect>
 ```
 
+
+## Customizing
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="form-select-variables" />
+
 ## API
 
 !!!include(./api/form/CFormSelect.api.md)!!!

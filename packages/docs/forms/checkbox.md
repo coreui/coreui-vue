@@ -135,6 +135,12 @@ Different variants of button, such at the various outlined styles, are supported
 <CFormCheck :button="{ color: 'secondary', variant: 'outline' }" id="btn-check-2-outlined" autocomplete="off" label="Checked" checked/>
 ```
 
+## Customizing
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="form-check-variables" />
+
 ## API
 
 !!!include(./api/form/CFormCheck.api.md)!!!

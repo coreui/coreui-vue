@@ -82,6 +82,20 @@ Add the `readonly` boolean attribute on an textarea to prevent modification of t
 ></CFormTextarea>
 ```
 
+## Customizing
+
+### SASS variables
+
+`$input-*` are shared across most of our form controls (and not buttons).
+
+<ScssDocs file="_variables.scss" capture="form-input-variables" />
+
+`$form-label-*` and `$form-text-*` are for our `<CFormLabel />`s and `<CFormText />` component.
+
+<ScssDocs file="_variables.scss" capture="form-label-variables" />
+
+<ScssDocs file="_variables.scss" capture="form-text-variables" />
+
 ## API
 
 !!!include(./api/form/CFormTextarea.api.md)!!!

@@ -536,6 +536,12 @@ Input groups include support for custom selects and custom file inputs. Browser 
 </CInputGroup>
 ```
 
+## Customizing
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="input-group-variables" />
+
 ## API
 
 !!!include(./api/form/CInputGroup.api.md)!!!
