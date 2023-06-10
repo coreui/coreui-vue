@@ -99,34 +99,95 @@ Four options are available: top, right, bottom, and left aligned. Directions are
 <CButton color="secondary" v-c-popover="{content: 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.', placement: 'left'}">Popover on left</CButton>
 ```
 
+### Custom popovers
+
+You can customize the appearance of popovers using [CSS variables](#css-variables). We set a custom `style` to scope our custom appearance and use it to override some of the local CSS variables.
+
+::: demo
+<CPopover
+  content="This popover is themed via CSS variables."
+  placement="right"
+  title="Custom popover"
+  :style="customPopoverStyle"
+>
+  <template #toggler="{ on }">
+    <CButton color="secondary" v-on="on">Custom popover</CButton>
+  </template>
+</CPopover>
+:::
+```vue
+<template>
+  <CPopover
+    content="This popover is themed via CSS variables."
+    placement="right"
+    title="Custom popover"
+    :style="customPopoverStyle"
+  >
+    <template #toggler="{ on }">
+      <CButton color="secondary" v-on="on">Custom popover</CButton>
+    </template>
+  </CPopover>
+</template>
+<script>
+  export default {
+    data() {
+      return { 
+       customPopoverStyle: {
+          '--cui-popover-max-width': '200px',
+          '--cui-popover-border-color': 'var(--cui-primary)',
+          '--cui-popover-header-bg': 'var(--cui-primary)',
+          '--cui-popover-header-color': 'var(--cui-white)',
+          '--cui-popover-body-padding-x': '1rem',
+          '--cui-popover-body-padding-y': '.5rem',
+        }
+      }
+    }
+  }
+</script>
+```
+
+## Usage
+
+### Disabled elements
+
+Elements with the disabled attribute aren't interactive, meaning users cannot hover or click them to trigger a popover (or tooltip). As a workaround, you'll want to trigger the popover from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`.
+
+For disabled popover triggers, you may also prefer `:trigger="['hover', 'focus']"` so that the popover appears as immediate visual feedback to your users as they may not expect to click on a disabled element.
+
+:::demo
+<CPopover
+  content="Disabled popover"
+  placement="right"
+  :trigger="['hover', 'focus']"
+>
+  <template #toggler="{ on }">
+    <span class="d-inline-block" :tabindex="0" v-on="on">
+      <CButton color="primary" disabled>Disabled button</CButton>
+    </span>
+  </template>
+</CPopover>
+:::
+```vue
+<CPopover
+  content="Disabled popover"
+  placement="right"
+  :trigger="['hover', 'focus']"
+>
+  <template #toggler="{ on }">
+    <span class="d-inline-block" :tabindex="0" v-on="on">
+      <CButton color="primary" disabled>Disabled button</CButton>
+    </span>
+  </template>
+</CPopover>
+```
+
 ## Customizing
 
 ### CSS variables
 
 Vue popovers use local CSS variables on `.popover` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
-```sass
---cui-popover-zindex: #{$zindex-popover};
---cui-popover-max-width: #{$popover-max-width};
---cui-popover-font-size: {$popover-font-size};
---cui-popover-bg: #{$popover-bg};
---cui-popover-border-width: #{$popover-border-width};
---cui-popover-border-color: #{$popover-border-color};
---cui-popover-border-radius: #{$popover-border-radius};
---cui-popover-inner-border-radius: #{$popover-inner-border-radius};
---cui-popover-box-shadow: #{$popover-box-shadow};
---cui-popover-header-padding-x: #{$popover-header-padding-x};
---cui-popover-header-padding-y: #{$popover-header-padding-y};
---cui-popover-header-font-size: {$popover-header-font-size};
---cui-popover-header-color: #{$popover-header-color};
---cui-popover-header-bg: #{$popover-header-bg};
---cui-popover-body-padding-x: #{$popover-body-padding-x};
---cui-popover-body-padding-y: #{$popover-body-padding-y};
---cui-popover-body-color: #{$popover-body-color};
---cui-popover-arrow-width: #{$popover-arrow-width};
---cui-popover-arrow-height: #{$popover-arrow-height};
---cui-popover-arrow-border: var(--cui-popover-border-color);
-```
+<ScssDocs file="_popover.scss" capture="popover-css-vars"/>
 
 #### How to use CSS variables
 
@@ -140,30 +201,25 @@ return <CPopover :style="vars">...</CPopover>
 
 ### SASS variables
 
-```sass
-$popover-font-size:                 $font-size-sm;
-$popover-bg:                        $white;
-$popover-max-width:                 276px;
-$popover-border-width:              $border-width;
-$popover-border-color:              var(--cui-border-color-translucent);
-$popover-border-radius:             $border-radius-lg;
-$popover-inner-border-radius:       subtract($popover-border-radius, $popover-border-width);
-$popover-box-shadow:                $box-shadow;
-
-$popover-header-font-size:          $font-size-base;
-$popover-header-bg:                 shade-color($popover-bg, 6%);
-$popover-header-color:              var(--cui-heading-color);
-$popover-header-padding-y:          .5rem;
-$popover-header-padding-x:          $spacer;
-
-$popover-body-color:                $body-color;
-$popover-body-padding-y:            $spacer;
-$popover-body-padding-x:            $spacer;
-
-$popover-arrow-width:               1rem;
-$popover-arrow-height:              .5rem;
-```
+<ScssDocs file="_variables.scss" capture="popover-variables"/>
 
 ## API
 
 !!!include(./api/popover/CPopover.api.md)!!!
+
+<script>
+  export default {
+    data() {
+      return { 
+       customPopoverStyle: {
+          '--cui-popover-max-width': '200px',
+          '--cui-popover-border-color': 'var(--cui-primary)',
+          '--cui-popover-header-bg': 'var(--cui-primary)',
+          '--cui-popover-header-color': 'var(--cui-white)',
+          '--cui-popover-body-padding-x': '1rem',
+          '--cui-popover-body-padding-y': '.5rem',
+        }
+      }
+    }
+  }
+</script>

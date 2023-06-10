@@ -109,9 +109,9 @@ We apply additional styling to `CButton`s via `::before` to ensure the `height` 
 You can change the `width` through grid column classes, width utilities, or inline styles.
 
 :::demo
-  <CPlaceholder :xs="6" />
-  <CPlaceholder class="w-75" />
-  <CPlaceholder style="width: 30%" />
+<CPlaceholder :xs="6" />
+<CPlaceholder class="w-75" />
+<CPlaceholder style="width: 30%" />
 :::
 ```vue
 <CPlaceholder :xs="6" />
@@ -124,16 +124,16 @@ You can change the `width` through grid column classes, width utilities, or inli
 By default, the `<CPlaceholder>` uses `currentColor`. This can be overridden with a custom color or utility class.
 
 :::demo
-  <CPlaceholder :xs="12" />
+<CPlaceholder :xs="12" />
 
-  <CPlaceholder color="primary" :xs="12" />
-  <CPlaceholder color="secondary" :xs="12" />
-  <CPlaceholder color="success" :xs="12" />
-  <CPlaceholder color="danger" :xs="12" />
-  <CPlaceholder color="warning" :xs="12" />
-  <CPlaceholder color="info" :xs="12" />
-  <CPlaceholder color="light" :xs="12" />
-  <CPlaceholder color="dark" :xs="12" />
+<CPlaceholder color="primary" :xs="12" />
+<CPlaceholder color="secondary" :xs="12" />
+<CPlaceholder color="success" :xs="12" />
+<CPlaceholder color="danger" :xs="12" />
+<CPlaceholder color="warning" :xs="12" />
+<CPlaceholder color="info" :xs="12" />
+<CPlaceholder color="light" :xs="12" />
+<CPlaceholder color="dark" :xs="12" />
 :::
 ```vue
 <CPlaceholder :xs="12" />
@@ -153,10 +153,10 @@ By default, the `<CPlaceholder>` uses `currentColor`. This can be overridden wit
 The size of `<CPlaceholder>`s are based on the typographic style of the parent element. Customize them with `size` prop: `lg`, `sm`, or `xs`.
 
 :::demo
-  <CPlaceholder :xs="12" size="lg"/>
-  <CPlaceholder :xs="12"/>
-  <CPlaceholder :xs="12" size="sm"/>
-  <CPlaceholder :xs="12" size="xs"/>
+<CPlaceholder :xs="12" size="lg"/>
+<CPlaceholder :xs="12"/>
+<CPlaceholder :xs="12" size="sm"/>
+<CPlaceholder :xs="12" size="xs"/>
 :::
 ```vue
 <CPlaceholder :xs="12" size="lg"/>
@@ -170,12 +170,12 @@ The size of `<CPlaceholder>`s are based on the typographic style of the parent e
 Animate placeholders with `animation="glow"` or `animation="wave"` to better convey the perception of something being _actively_ loaded.
 
 :::demo
-  <CPlaceholder component="p" animation="glow">
-    <CPlaceholder :xs="12" />
-  </CPlaceholder>  
-  <CPlaceholder component="p" animation="wave">
-    <CPlaceholder :xs="12" />
-  </CPlaceholder> 
+<CPlaceholder component="p" animation="glow">
+  <CPlaceholder :xs="12" />
+</CPlaceholder>  
+<CPlaceholder component="p" animation="wave">
+  <CPlaceholder :xs="12" />
+</CPlaceholder> 
 :::
 ```vue
 <CPlaceholder component="p" animation="glow">

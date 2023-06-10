@@ -18,8 +18,7 @@ Vue Alert is prepared for any length of text, as well as an optional close butto
 <CAlert color="light">A simple light alert—check it out!</CAlert>
 <CAlert color="dark">A simple dark alert—check it out!</CAlert>
 :::
-
-```vue
+```markup
 <CAlert color="primary">A simple primary alert—check it out!</CAlert>
 <CAlert color="secondary">A simple secondary alert—check it out!</CAlert>
 <CAlert color="success">A simple success alert—check it out!</CAlert>
@@ -38,7 +37,7 @@ Click the button below to show an alert (hidden with inline styles to start), th
 <CAlert color="primary" :visible="liveExampleVisible" dismissible @close="() => { liveExampleVisible = false }">A simple primary alert—check it out!</CAlert>
 <CButton color="primary" @click="() => { liveExampleVisible = true }">Show live alert</CButton>
 :::
-```vue
+```markup
 <CAlert color="primary" :visible="liveExampleVisible" dismissible @close="() => { liveExampleVisible = false }">A simple primary alert—check it out!</CAlert>
 <CButton color="primary" @click="() => { liveExampleVisible = true }">Show live alert</CButton>
 ```
@@ -73,7 +72,7 @@ Use the `<CAlertLink>` component to immediately give matching colored links insi
 </CAlert>
 :::
 
-```vue
+```markup
 <CAlert color="primary">
   A simple primary alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
 </CAlert>
@@ -113,7 +112,7 @@ Alert can also incorporate supplementary HTML elements like heading, paragraph, 
 </CAlert>
 :::
 
-```vue
+```markup
 <CAlert color="success" v-bind:visible="true">
   <CAlertHeading>Well done!</CAlertHeading>
   <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
@@ -135,7 +134,7 @@ Similarly, you can use [flexbox utilities](https//coreui.io/docs/4.0/utilities/f
   </div>
 </CAlert>
 :::
-```vue
+```markup
 <CAlert color="primary" class="d-flex align-items-center">
   <svg class="flex-shrink-0 me-2" width="24" height="24" viewBox="0 0 512 512">
     <rect width="32" height="176" x="240" y="176" fill="var(--ci-primary-color, currentColor)" class="ci-primary"></rect><rect width="32" height="32" x="240" y="384" fill="var(--ci-primary-color, currentColor)" class="ci-primary"></rect><path fill="var(--ci-primary-color, currentColor)" d="M274.014,16H237.986L16,445.174V496H496V445.174ZM464,464H48V452.959L256,50.826,464,452.959Z" class="ci-primary"></path>
@@ -174,7 +173,7 @@ Need more than one icon for your alerts? Consider using [CoreUI Icons](https://i
   </div>
 </CAlert>
 :::
-```vue
+```markup
 <CAlert color="primary" class="d-flex align-items-center">
   <CIcon icon="cil-info" class="flex-shrink-0 me-2" width="24" height="24" />
   <div>
@@ -216,7 +215,7 @@ Use `variant="solid"` to change contextual colors to solid.
 <CAlert color="dark" variant="solid">A simple solid dark alert—check it out!</CAlert>
 :::
 
-```vue
+```markup
 <CAlert color="primary" variant="solid">A simple solid primary alert—check it out!</CAlert>
 <CAlert color="secondary" variant="solid">A simple solid secondary alert—check it out!</CAlert>
 <CAlert color="success" variant="solid">A simple solid success alert—check it out!</CAlert>
@@ -237,7 +236,7 @@ Alerts can also be easily dismissed. Just add the `dismissible` prop.
 </CAlert>
 :::
 
-```vue
+```markup
 <CAlert color="warning" dismissible @close="alert">
   <strong>Go right ahead</strong> and click that dimiss over there on the right.
 </CAlert>
@@ -274,16 +273,7 @@ Alerts can also be easily dismissed. Just add the `dismissible` prop.
 
 Vue alerts use local CSS variables on `.alert` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
-```sass
---cui-alert-bg: transparent;
---cui-alert-padding-x: #{$alert-padding-x};
---cui-alert-padding-y: #{$alert-padding-y};
---cui-alert-margin-bottom: #{$alert-margin-bottom};
---cui-alert-color: inherit;
---cui-alert-border-color: transparent;
---cui-alert-border: #{$alert-border-width} solid var(--cui-alert-border-color);
---cui-alert-border-radius: #{$alert-border-radius};
-```
+<ScssDocs file="_alert.scss" capture="alert-css-vars"/>
 
 #### How to use CSS variables
 
@@ -297,18 +287,8 @@ return <CAlert :style="vars">...</CAlert>
 
 ### SASS variables
 
-```sass
-$alert-padding-y:               $spacer;
-$alert-padding-x:               $spacer;
-$alert-margin-bottom:           1rem;
-$alert-border-radius:           $border-radius;
-$alert-link-font-weight:        $font-weight-bold;
-$alert-border-width:            $border-width;
-$alert-bg-scale:                -80%;
-$alert-border-scale:            -70%;
-$alert-color-scale:             40%;
-$alert-dismissible-padding-r:   $alert-padding-x * 3; // 3x covers width of x plus default padding on either side
-```
+<ScssDocs file="_variables.scss" capture="alert-variables" />
+
 ## API
 
 !!!include(./api/alert/CAlert.api.md)!!!

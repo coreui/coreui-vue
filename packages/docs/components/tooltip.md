@@ -7,6 +7,8 @@ other_frameworks: tooltip
 
 ## Examples
 
+### Tooltips on links
+
 Hover over the links below to see tooltips:
 
 ::: demo
@@ -112,26 +114,84 @@ Hover over the buttons below to see the four tooltips directions: top, right, bo
 <CButton color="secondary" v-c-tooltip="{content: 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.', placement: 'left'}">Tooltip on left</CButton>
 ```
 
+### Custom popovers
+
+You can customize the appearance of tooltips using [CSS variables](#css-variables). We set a custom `style` to scope our custom appearance and use it to override some of the local CSS variables.
+
+::: demo
+<CTooltip
+  content="This top tooltip is themed via CSS variables."
+  placement="top"
+  :style="customTooltipStyle"
+>
+  <template #toggler="{ on }">
+    <CButton color="secondary" v-on="on">Custom popover</CButton>
+  </template>
+</CTooltip>
+:::
+```vue
+<template>
+  <CTooltip
+    content="This top tooltip is themed via CSS variables."
+    placement="top"
+    :style="customTooltipStyle"
+  >
+    <template #toggler="{ on }">
+      <CButton color="secondary" v-on="on">Custom popover</CButton>
+    </template>
+  </CTooltip>
+</template>
+<script>
+  export default {
+    data() {
+      return { 
+       customTooltipStyle: {
+          '--cui-tooltip-bg': 'var(--cui-primary)',
+        }
+      }
+    }
+  }
+</script>
+```
+
+## Usage
+
+### Disabled elements
+
+Elements with the disabled attribute aren’t interactive, meaning users cannot focus, hover, or click them to trigger a tooltip (or popover). As a workaround, you’ll want to trigger the tooltip from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`.
+
+:::demo
+<CTooltip
+  content="Disabled tooltip"
+  :trigger="['hover', 'focus']"
+>
+  <template #toggler="{ on }">
+    <span class="d-inline-block" :tabindex="0" v-on="on">
+      <CButton color="primary" disabled>Disabled button</CButton>
+    </span>
+  </template>
+</CTooltip>
+:::
+```vue
+<CTooltip
+  content="Disabled tooltip"
+  :trigger="['hover', 'focus']"
+>
+  <template #toggler="{ on }">
+    <span class="d-inline-block" :tabindex="0" v-on="on">
+      <CButton color="primary" disabled>Disabled button</CButton>
+    </span>
+  </template>
+</CTooltip>
+```
+
 ## Customizing
 
 ### CSS variables
 
 Vue toltips use local CSS variables on `.tooltip` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
-```sass
---cui-tooltip-zindex: #{$zindex-tooltip};
---cui-tooltip-max-width: #{$tooltip-max-width};
---cui-tooltip-padding-x: #{$tooltip-padding-x};
---cui-tooltip-padding-y: #{$tooltip-padding-y};
---cui-tooltip-margin: #{$tooltip-margin};
---cui-tooltip-font-size: #{$tooltip-font-size};
---cui-tooltip-color: #{$tooltip-color};
---cui-tooltip-bg: #{$tooltip-bg};
---cui-tooltip-border-radius: #{$tooltip-border-radius};
---cui-tooltip-opacity: #{$tooltip-opacity};
---cui-tooltip-arrow-width: #{$tooltip-arrow-width};
---cui-tooltip-arrow-height: #{$tooltip-arrow-height};
-```
+<ScssDocs file="_tooltip.scss" capture="tooltip-css-vars"/>
 
 #### How to use CSS variables
 
@@ -145,23 +205,21 @@ return <CTooltip :style="vars">...</CTooltip>
 
 ### SASS variables
 
-```sass
-$tooltip-font-size:                 $font-size-sm;
-$tooltip-max-width:                 200px;
-$tooltip-color:                     $high-emphasis-inverse;
-$tooltip-bg:                        $black;
-$tooltip-border-radius:             $border-radius;
-$tooltip-opacity:                   .9;
-$tooltip-padding-y:                 $spacer * .25;
-$tooltip-padding-x:                 $spacer * .5;
-$tooltip-margin:                    null;
-
-$tooltip-arrow-width:               .8rem;
-$tooltip-arrow-height:              .4rem;
-$tooltip-arrow-color:               null; 
-```
+<ScssDocs file="_variables.scss" capture="tooltip-variables"/>
 
 ## API
 
 
 !!!include(./api/tooltip/CTooltip.api.md)!!!
+
+<script>
+  export default {
+    data() {
+      return { 
+       customTooltipStyle: {
+          '--cui-tooltip-bg': 'var(--cui-primary)',
+        }
+      }
+    }
+  }
+</script>
