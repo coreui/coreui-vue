@@ -160,7 +160,7 @@ const CFormSelect = defineComponent({
                         ...(typeof option === 'object' && {
                           ...(option.disabled && { disabled: option.disabled }),
                           ...(option.selected && { selected: option.selected }),
-                          ...(option.value && {
+                          ...(option.value !== undefined && {
                             value: option.value,
                             ...(props.modelValue &&
                               props.multiple &&
