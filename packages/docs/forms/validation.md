@@ -808,7 +808,7 @@ If your form layout allows it, you can swap the text for the tooltip to display 
 
 ### CSS variables
 
-CoreUI forms components use local CSS variables for validation for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+CoreUI for Vue components use local CSS variables for validation for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
 
 <ScssDocs file="_root.scss" capture="root-form-validation-variables"/>
 
@@ -829,6 +829,7 @@ Two mixins are combined, through our loop, to generate our form validation feedb
 <ScssDocs file="mixins/_forms.scss" capture="form-validation-mixins" />
 
 ### SASS maps
+
 This is the validation Sass map from `_variables.scss`. Override or extend this to generate different or additional states.
 
 <ScssDocs file="_variables.scss" capture="form-validation-states" />
