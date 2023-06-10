@@ -30,7 +30,7 @@ const CTooltip = defineComponent({
      */
     offset: {
       type: Array,
-      default: () => [0, 0],
+      default: () => [0, 6],
     },
     /**
      * Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property.
@@ -75,7 +75,7 @@ const CTooltip = defineComponent({
      */
     'show',
   ],
-  setup(props, { slots, emit }) {
+  setup(props, { attrs, slots, emit }) {
     const togglerRef = ref()
     const tooltipRef = ref()
     const popper = ref()
@@ -145,6 +145,7 @@ const CTooltip = defineComponent({
                 class: 'tooltip fade bs-tooltip-auto',
                 ref: tooltipRef,
                 role: 'tooltip',
+                ...attrs,
               },
               [
                 h('div', { class: 'tooltip-arrow', 'data-popper-arrow': '' }),

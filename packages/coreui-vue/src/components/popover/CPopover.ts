@@ -79,7 +79,7 @@ const CPopover = defineComponent({
      */
     'show',
   ],
-  setup(props, { slots, emit }) {
+  setup(props, { attrs, slots, emit }) {
     const togglerRef = ref()
     const popoverRef = ref()
     const popper = ref()
@@ -149,6 +149,7 @@ const CPopover = defineComponent({
                 class: 'popover fade bs-popover-auto',
                 ref: popoverRef,
                 role: 'tooltip',
+                ...attrs,
               },
               [
                 h('div', { class: 'popover-arrow', 'data-popper-arrow': '' }),
