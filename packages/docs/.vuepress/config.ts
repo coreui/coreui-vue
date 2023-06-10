@@ -4,7 +4,11 @@ import include_plugin from 'markdown-it-include'
 import { defaultTheme } from './theme-coreui'
 
 import { containerPlugin } from '@vuepress/plugin-container'
+import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { tocPlugin } from '@vuepress/plugin-toc'
+import { getDirname, path } from '@vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
 
 export default defineUserConfig({
   base: `/vue/docs/`,
@@ -63,6 +67,11 @@ export default defineUserConfig({
       },
     }),
     tocPlugin({}),
+    registerComponentsPlugin({
+      components: {
+        ScssDocs: path.resolve(__dirname, './theme-coreui/src/client/components/ScssDocs.vue'),
+      },
+    }),
   ],
   theme: defaultTheme({
     sidebar: [
