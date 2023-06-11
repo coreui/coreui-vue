@@ -1,13 +1,12 @@
 <template>
   <div className="highlight">
-    <pre class="prism-code language-scss" v-html="code" :style="{ 'max-height': '100%' }" />
+    <pre class="prism-code language-scss" v-html="code" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Prism from 'prismjs'
-import 'prismjs/components/prism-jsx'
 import 'prismjs/components/prism-scss'
 export default defineComponent({
   name: 'ScssDocs',
