@@ -1,44 +1,22 @@
-//@ts-nocheck
 import { App } from 'vue'
 import * as Components from './components'
-import { vcplaceholder, vcpopover, vctooltip } from './directives'
-
-const removeKeysFromObject = (object, keys) => {
-  return Object.entries(object).reduce((obj, [key, value]) => {
-    if (!keys.includes(key) && !keys.includes(value.name)) {
-      obj[key] = value
-    }
-    return obj
-  }, {})
-}
+import * as Directives from './directives'
 
 const CoreuiVue = {
-  install: (app: App, options: any): void => {
-    let pluginComponents = Components
-    // let pluginDirectives = Directives
-
-    const toRemove = options && options.remove ? options.remove : null
-    if (toRemove && Array.isArray(toRemove)) {
-      pluginComponents = removeKeysFromObject(Components, toRemove)
-      // pluginDirectives = removeKeysFromObject(Directives, toRemove)
+  install: (app: App): void => {
+    for (const key in Components) {
+      app.component(key, Components[key])
     }
 
-    for (const plugin in pluginComponents) {
-      app.component(plugin, Components[plugin])
+    for (const key in Directives) {
+      app.directive(key, Directives[key])
     }
-    // for (const directive in pluginDirectives) {
-    //   app.directive(directive, Directives[directive])
-    // }
-
-    app.directive('c-placeholder', vcplaceholder)
-    app.directive('c-popover', vcpopover)
-    app.directive('c-tooltip', vctooltip)
   },
 }
 
 // Export library
 export default CoreuiVue
 
-//Export components
+// Export components & directives
 export * from './components'
 export * from './directives'
