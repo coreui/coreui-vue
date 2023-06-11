@@ -40,7 +40,7 @@ export default defineUserConfig({
       type: 'demo',
       render: function (tokens, idx) {
         if (tokens[idx].nesting === 1) {
-          return '<div class="docs-example border rounded-top p-4">\n'
+          return '<div class="docs-example rounded-top p-4">\n'
         } else {
           return '</div>\n'
         }
@@ -50,7 +50,7 @@ export default defineUserConfig({
       type: 'demo-rounded',
       render: function (tokens, idx) {
         if (tokens[idx].nesting === 1) {
-          return '<div class="docs-example border rounded p-4">\n'
+          return '<div class="docs-example rounded p-4">\n'
         } else {
           return '</div>\n'
         }
