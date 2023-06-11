@@ -111,7 +111,6 @@ const CFormCheck = defineComponent({
   ],
   setup(props, { attrs, emit, slots }) {
     const handleChange = (event: InputEvent) => {
-      console.log(event)
       emit('change', event)
       emit('update:modelValue', (event.target as HTMLInputElement).value)
     }
