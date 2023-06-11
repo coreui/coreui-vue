@@ -22,7 +22,7 @@ const CDropdownMenu = defineComponent({
 
     const { autoClose, alignment, dark, popper } = config
 
-    // eslint-disable-next-line @typescript-eslint/ban-types
+    // eslint-disable-next-line @typescript-eslint/ban-types, unicorn/consistent-function-scoping
     const alignmentClassNames = (alignment: object | string) => {
       const classNames: string[] = []
       if (typeof alignment === 'object') {

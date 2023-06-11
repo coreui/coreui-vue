@@ -19,22 +19,22 @@ const CDropdown = defineComponent({
         if (value === 'start' || value === 'end') {
           return true
         } else {
-          if (typeof value.xs !== 'undefined' && (value.xs === 'start' || value.xs === 'end')) {
+          if (value.xs !== undefined && (value.xs === 'start' || value.xs === 'end')) {
             return true
           }
-          if (typeof value.sm !== 'undefined' && (value.sm === 'start' || value.sm === 'end')) {
+          if (value.sm !== undefined && (value.sm === 'start' || value.sm === 'end')) {
             return true
           }
-          if (typeof value.md !== 'undefined' && (value.md === 'start' || value.md === 'end')) {
+          if (value.md !== undefined && (value.md === 'start' || value.md === 'end')) {
             return true
           }
-          if (typeof value.lg !== 'undefined' && (value.lg === 'start' || value.lg === 'end')) {
+          if (value.lg !== undefined && (value.lg === 'start' || value.lg === 'end')) {
             return true
           }
-          if (typeof value.xl !== 'undefined' && (value.xl === 'start' || value.xl === 'end')) {
+          if (value.xl !== undefined && (value.xl === 'start' || value.xl === 'end')) {
             return true
           }
-          if (typeof value.xxl !== 'undefined' && (value.xxl === 'start' || value.xxl === 'end')) {
+          if (value.xxl !== undefined && (value.xxl === 'start' || value.xxl === 'end')) {
             return true
           }
           return false

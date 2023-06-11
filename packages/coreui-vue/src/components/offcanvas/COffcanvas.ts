@@ -127,11 +127,13 @@ const COffcanvas = defineComponent({
       offcanvasRef.value.focus()
     }
 
+    // eslint-disable-next-line unicorn/consistent-function-scoping
     const handleLeave = (el: RendererElement, done: () => void) => {
       executeAfterTransition(() => done(), el as HTMLElement)
       el.classList.add('hiding')
     }
 
+    // eslint-disable-next-line unicorn/consistent-function-scoping
     const handleAfterLeave = (el: RendererElement) => {
       el.classList.remove('show', 'hiding')
     }

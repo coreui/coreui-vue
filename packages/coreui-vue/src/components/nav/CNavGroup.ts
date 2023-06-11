@@ -63,19 +63,23 @@ const CNavGroup = defineComponent({
       navGroupRef.value.classList.add('show')
     }
 
+    // eslint-disable-next-line unicorn/consistent-function-scoping
     const handleEnter = (el: RendererElement, done: () => void) => {
       executeAfterTransition(() => done(), el as HTMLElement)
       el.style.height = `${el.scrollHeight}px`
     }
 
+    // eslint-disable-next-line unicorn/consistent-function-scoping
     const handleAfterEnter = (el: RendererElement) => {
       el.style.height = 'auto'
     }
 
+    // eslint-disable-next-line unicorn/consistent-function-scoping
     const handleBeforeLeave = (el: RendererElement) => {
       el.style.height = `${el.scrollHeight}px`
     }
 
+    // eslint-disable-next-line unicorn/consistent-function-scoping
     const handleLeave = (el: RendererElement, done: () => void) => {
       executeAfterTransition(() => done(), el as HTMLElement)
       setTimeout(() => {

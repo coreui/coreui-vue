@@ -13,6 +13,7 @@ const createTooltipElement = (id: string, content: string): HTMLDivElement => {
   return tooltip
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const addTooltipElement = (tooltip: HTMLDivElement, el: HTMLElement, popperOptions: any) => {
   document.body.appendChild(tooltip)
   createPopper(el, tooltip, popperOptions)
@@ -24,10 +25,11 @@ const addTooltipElement = (tooltip: HTMLDivElement, el: HTMLElement, popperOptio
 const removeTooltipElement = (tooltip: HTMLDivElement) => {
   tooltip.classList.remove('show')
   setTimeout(() => {
-    document.body.removeChild(tooltip)
+    tooltip.remove()
   }, 300)
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const toggleTooltipElement = (tooltip: HTMLDivElement, el: HTMLElement, popperOptions: any) => {
   const popperElement = document.getElementById(tooltip.id)
   if (popperElement && popperElement.classList.contains('show')) {

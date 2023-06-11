@@ -14,6 +14,7 @@ const createPopoverElement = (id: string, header: string, content: string): HTML
   return popover
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const addPopoverElement = (popover: HTMLDivElement, el: HTMLElement, popperOptions: any) => {
   document.body.appendChild(popover)
   createPopper(el, popover, popperOptions)
@@ -25,10 +26,11 @@ const addPopoverElement = (popover: HTMLDivElement, el: HTMLElement, popperOptio
 const removePopoverElement = (popover: HTMLDivElement) => {
   popover.classList.remove('show')
   setTimeout(() => {
-    document.body.removeChild(popover)
+    popover.remove()
   }, 300)
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const togglePopoverElement = (popover: HTMLDivElement, el: HTMLElement, popperOptions: any) => {
   const popperElement = document.getElementById(popover.id)
   if (popperElement && popperElement.classList.contains('show')) {
