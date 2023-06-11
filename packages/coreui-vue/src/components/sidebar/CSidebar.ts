@@ -82,7 +82,7 @@ const CSidebar = defineComponent({
       mobile.value = isOnMobile(sidebarRef.value)
       inViewport.value = isInViewport(sidebarRef.value)
 
-      window.addEventListener('resize', () => handleResize())
+      window.addEventListener('resize', handleResize)
       window.addEventListener('mouseup', handleClickOutside)
       window.addEventListener('keyup', handleKeyup)
 
@@ -93,11 +93,12 @@ const CSidebar = defineComponent({
     })
 
     onBeforeUnmount(() => {
-      window.removeEventListener('resize', () => handleResize())
+      window.removeEventListener('resize', handleResize)
       window.removeEventListener('mouseup', handleClickOutside)
       window.removeEventListener('keyup', handleKeyup)
 
       sidebarRef.value.removeEventListener('mouseup', handleOnClick)
+      // eslint-disable-next-line unicorn/no-invalid-remove-event-listener
       sidebarRef.value.removeEventListener('transitionend', () => {
         inViewport.value = isInViewport(sidebarRef.value)
       })

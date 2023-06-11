@@ -152,6 +152,7 @@ const CModal = defineComponent({
       window.addEventListener('keyup', handleKeyUp)
     }
 
+    // eslint-disable-next-line unicorn/consistent-function-scoping
     const handleLeave = (el: RendererElement, done: () => void) => {
       executeAfterTransition(() => done(), el as HTMLElement)
       document.body.classList.remove('modal-open')
