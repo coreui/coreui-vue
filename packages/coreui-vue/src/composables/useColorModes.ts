@@ -1,4 +1,4 @@
-import { onMounted, ref, watch } from 'vue'
+import { onBeforeMount, ref, watch } from 'vue'
 
 const getStoredTheme = (localStorageItemName: string) => localStorage.getItem(localStorageItemName)
 const setStoredTheme = (localStorageItemName: string, colorMode: string) =>
@@ -32,7 +32,7 @@ export const useColorModes = (localStorageItemName = 'coreui-vue-color-scheme') 
     setTheme(colorMode.value)
   })
 
-  onMounted(() => {
+  onBeforeMount(() => {
     if (typeof getStoredTheme(localStorageItemName) === 'string') {
       setTheme(colorMode.value)
     }
