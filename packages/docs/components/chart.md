@@ -27,7 +27,9 @@ A line chart is a way of plotting data points on a line. Often, it is used to sh
 [Line Chart properties](https://www.chartjs.org/docs/latest/charts/line.html#dataset-properties)
 
 ::: demo
-<CChartLine
+<CChart
+  type="line"
+  ref="chartLineRef"
   :wrapper="false"
   :data="{
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -50,10 +52,36 @@ A line chart is a way of plotting data points on a line. Often, it is used to sh
       }
     ]
   }"
+  :options="{
+    plugins: {
+      legend: {
+        labels: {
+          color: getStyle('--cui-body-color'),
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
+      },
+      y: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
+      },
+    },
+  }"
 />
 :::
 ```vue
-<!-- use <CChart type="line"> or <CChartLine> component -->
 <CChart
   type="line"
   :wrapper="false"
@@ -86,7 +114,9 @@ A line chart is a way of plotting data points on a line. Often, it is used to sh
 A bar chart provides a way of showing data values represented as vertical bars. It is sometimes used to show trend data, and the comparison of multiple data sets side by side. [Bar Chart properties](https://www.chartjs.org/docs/latest/charts/bar.html#dataset-properties)
 
 ::: demo
-<CChartBar
+<CChart
+  type="bar"
+  ref="chartBarRef"
   :data="{
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [
@@ -97,11 +127,37 @@ A bar chart provides a way of showing data values represented as vertical bars. 
       },
     ],
   }"
+  :options="{
+    plugins: {
+      legend: {
+        labels: {
+          color: getStyle('--cui-body-color'),
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
+      },
+      y: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
+      },
+    },
+  }"
   labels="months"
 />
 :::
 ```vue
-<!-- use <CChart type="bar"> or <CChartBar> component -->
 <CChart
   type="bar"
   :data="{
@@ -125,6 +181,7 @@ A radar chart is a way of showing multiple data points and the variation between
 ::: demo
 <CChart
   type="radar"
+  ref="chartRadarRef"
   :data="{
     labels: [
       'Eating',
@@ -158,11 +215,30 @@ A radar chart is a way of showing multiple data points and the variation between
       },
     ],
   }"
+  :options="{
+    plugins: {
+      legend: {
+        labels: {
+          color: getStyle('--cui-body-color'),
+        }
+      }
+    },
+    scales: {
+      r: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
+      },
+    },
+  }"
 />
 :::
 ```vue
-<!-- use <CChart type="radar"> or <CChartRadar> component -->
-<CChartRadar
+<CChart
+  type="radar"
   :data="{
     labels: [
       'Eating',
@@ -204,8 +280,9 @@ A radar chart is a way of showing multiple data points and the variation between
 Pie and doughnut charts are probably the most commonly used charts. They are divided into segments, the arc of each segment shows the proportional value of each piece of data. [Doughnut and Pie Charts properties](https://www.chartjs.org/docs/latest/charts/doughnut.html#dataset-properties)
 
 ::: demo
-<CChartDoughnut
+<CChart
   type="doughnut"
+  ref="chartDoughnutRef"
   :data="{
     labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
     datasets: [
@@ -215,10 +292,18 @@ Pie and doughnut charts are probably the most commonly used charts. They are div
       },
     ],
   }"
+  :options="{
+    plugins: {
+      legend: {
+        labels: {
+          color: getStyle('--cui-body-color'),
+        }
+      }
+    },
+  }"
 />
 :::
 ```vue
-<!-- use <CChart type="doughnut"> or <CChartDoughnut> component -->
 <CChart
   type="doughnut"
   :data="{
@@ -234,8 +319,9 @@ Pie and doughnut charts are probably the most commonly used charts. They are div
 ```
 
 ::: demo
-<CChartPie
+<CChart
   type="pie"
+  ref="chartPieRef"
   :data="{
     labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
     datasets: [
@@ -245,10 +331,18 @@ Pie and doughnut charts are probably the most commonly used charts. They are div
       },
     ],
   }"
+  :options="{
+    plugins: {
+      legend: {
+        labels: {
+          color: getStyle('--cui-body-color'),
+        }
+      }
+    },
+  }"
 />
 :::
 ```vue
-<!-- use <CChart type="pie"> or <CChartPie> component -->
 <CChart
   type="pie"
   :data="{
@@ -268,7 +362,9 @@ Pie and doughnut charts are probably the most commonly used charts. They are div
 Polar area charts are similar to pie charts, but each segment has the same angle - the radius of the segment differs depending on the value. [Polar Area Chart properties](https://www.chartjs.org/docs/latest/charts/polar.html#dataset-properties)
 
 ::: demo
-<CChartPolarArea
+<CChart
+  type="polarArea"
+  ref="chartPolarAreaRef"
   :data="{
     labels: ['Red', 'Green', 'Yellow', 'Grey', 'Blue'],
     datasets: [
@@ -278,10 +374,25 @@ Polar area charts are similar to pie charts, but each segment has the same angle
       },
     ],
   }"
+  :options="{
+    plugins: {
+      legend: {
+        labels: {
+          color: getStyle('--cui-body-color'),
+        }
+      }
+    },
+    scales: {
+      r: {
+        grid: {
+          color: getStyle('--cui-border-color'),
+        },
+      }
+    }
+  }"
 />
 :::
 ```vue
-<!-- use <CChart type="polarArea"> or <CChartPolarArea> component -->
 <CChart
   type="polarArea"
   :data="{
@@ -301,7 +412,9 @@ Polar area charts are similar to pie charts, but each segment has the same angle
 A bubble chart is used to display three dimensions of data at the same time. The location of the bubble is determined by the first two dimensions and the corresponding horizontal and vertical axes. The third dimension is represented by the size of the individual bubbles. [Bubble Chart properties](https://www.chartjs.org/docs/latest/charts/bubble.html#dataset-properties)
 
 ::: demo
-<CChartBubble
+<CChart
+  type="bubble"
+  ref="chartBubbleRef"
   :data="{
     datasets: [{
       label: 'First Dataset',
@@ -317,10 +430,36 @@ A bubble chart is used to display three dimensions of data at the same time. The
       backgroundColor: 'rgb(255, 99, 132)'
     }]
   }"
+  :options="{
+    plugins: {
+      legend: {
+        labels: {
+          color: getStyle('--cui-body-color'),
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
+      },
+      y: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
+      },
+    },
+  }"
 />
 :::
 ```vue
-<!-- use <CChart type="bubble"> or <CChartBubble> component -->
 <CChart
   type="bubble"
   :data="{
@@ -347,7 +486,9 @@ A bubble chart is used to display three dimensions of data at the same time. The
 A bubble chart is used to display three dimensions of data at the same time. The location of the bubble is determined by the first two dimensions and the corresponding horizontal and vertical axes. The third dimension is represented by the size of the individual bubbles. [Scatter Chart properties](https://www.chartjs.org/docs/latest/charts/scatter.html#dataset-properties)
 
 ::: demo
-<CChartScatter
+<CChart
+  type="scatter"
+  ref="chartScatterRef"
   :data="{
     datasets: [{
       label: 'Scatter Dataset',
@@ -368,12 +509,33 @@ A bubble chart is used to display three dimensions of data at the same time. The
     }],
   }"
   :options="{
+    plugins: {
+      legend: {
+        labels: {
+          color: getStyle('--cui-body-color'),
+        }
+      }
+    },
     scales: {
       x: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        position: 'bottom',
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
         type: 'linear',
-        position: 'bottom'
-      }
-    }
+      },
+      y: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
+      },
+    },
   }"
 />
 :::
@@ -401,15 +563,105 @@ A bubble chart is used to display three dimensions of data at the same time. The
     }],
   }"
   :options="{
+    plugins: {
+      legend: {
+        labels: {
+          color: getStyle('--cui-body-color'),
+        }
+      }
+    },
     scales: {
       x: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        position: 'bottom',
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
         type: 'linear',
-        position: 'bottom'
-      }
-    }
+      },
+      y: {
+        grid: {
+          color: getStyle('--cui-border-color-translucent'),
+        },
+        ticks: {
+          color: getStyle('--cui-body-color'),
+        },
+      },
+    },
   }"
 />
 ```
+
+<script setup>
+  import { onMounted, ref, watch } from 'vue'
+  import { getStyle } from '@coreui/utils'
+  
+  const chartLineRef = ref()
+  const chartBarRef = ref()
+  const chartRadarRef = ref()
+  const chartDoughnutRef = ref()
+  const chartPieRef = ref()
+  const chartPolarAreaRef = ref()
+  const chartBubbleRef = ref()
+  const chartScatterRef = ref()
+
+  onMounted(() => {
+    document.documentElement.addEventListener('ColorSchemeChange', () => {
+      // chartLineRef
+      chartLineRef.value.chart.options.plugins.legend.labels.color = getStyle('--cui-body-color')
+      chartLineRef.value.chart.options.scales.x.grid.color = getStyle('--cui-border-color-translucent')
+      chartLineRef.value.chart.options.scales.x.ticks.color = getStyle('--cui-body-color')
+      chartLineRef.value.chart.options.scales.y.grid.color = getStyle('--cui-border-color-translucent')
+      chartLineRef.value.chart.options.scales.y.ticks.color = getStyle('--cui-body-color')
+      chartLineRef.value.chart.update()
+
+      // chartBarRef
+      chartBarRef.value.chart.options.plugins.legend.labels.color = getStyle('--cui-body-color')
+      chartBarRef.value.chart.options.scales.x.grid.color = getStyle('--cui-border-color-translucent')
+      chartBarRef.value.chart.options.scales.x.ticks.color = getStyle('--cui-body-color')
+      chartBarRef.value.chart.options.scales.y.grid.color = getStyle('--cui-border-color-translucent')
+      chartBarRef.value.chart.options.scales.y.ticks.color = getStyle('--cui-body-color')
+      chartBarRef.value.chart.update()
+
+      // chartRadarRef
+      chartRadarRef.value.chart.options.plugins.legend.labels.color = getStyle('--cui-body-color')
+      chartRadarRef.value.chart.options.scales.r.grid.color = getStyle('--cui-border-color-translucent')
+      chartRadarRef.value.chart.options.scales.r.ticks.color = getStyle('--cui-body-color')
+      chartRadarRef.value.chart.update()
+
+      // chartDoughnutRef
+      chartDoughnutRef.value.chart.options.plugins.legend.labels.color = getStyle('--cui-body-color')
+      chartDoughnutRef.value.chart.update()
+
+      // chartPieRef
+      chartPieRef.value.chart.options.plugins.legend.labels.color = getStyle('--cui-body-color')
+      chartPieRef.value.chart.update()
+
+      // chartPolarAreaRef
+      chartPolarAreaRef.value.chart.options.plugins.legend.labels.color = getStyle('--cui-body-color')
+      chartPolarAreaRef.value.chart.options.scales.r.grid.color = getStyle('--cui-border-color-translucent')
+      chartPolarAreaRef.value.chart.update()
+
+      // chartBubbleRef
+      chartBubbleRef.value.chart.options.plugins.legend.labels.color = getStyle('--cui-body-color')
+      chartBubbleRef.value.chart.options.scales.x.grid.color = getStyle('--cui-border-color-translucent')
+      chartBubbleRef.value.chart.options.scales.x.ticks.color = getStyle('--cui-body-color')
+      chartBubbleRef.value.chart.options.scales.y.grid.color = getStyle('--cui-border-color-translucent')
+      chartBubbleRef.value.chart.options.scales.y.ticks.color = getStyle('--cui-body-color')
+      chartBubbleRef.value.chart.update()
+
+      // chartScatterRef
+      chartScatterRef.value.chart.options.plugins.legend.labels.color = getStyle('--cui-body-color')
+      chartScatterRef.value.chart.options.scales.x.grid.color = getStyle('--cui-border-color-translucent')
+      chartScatterRef.value.chart.options.scales.x.ticks.color = getStyle('--cui-body-color')
+      chartScatterRef.value.chart.options.scales.y.grid.color = getStyle('--cui-border-color-translucent')
+      chartScatterRef.value.chart.options.scales.y.ticks.color = getStyle('--cui-body-color')
+      chartScatterRef.value.chart.update()
+    })
+  })
+</script> 
 
 ## API
 
