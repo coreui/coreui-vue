@@ -88,7 +88,6 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
-// import { useColorMode } from '../composables'
 import { useColorModes } from '@coreui/vue/src'
 
 export default defineComponent({
@@ -99,18 +98,10 @@ export default defineComponent({
   emits: ['toggle-sidebar'],
   setup() {
     const { getColorMode, setColorMode } = useColorModes('coreui-vue-docs-theme')
-    // const colorMode = getColorMode()
-    // const storedTheme = useColorMode()
-    // const toggleColorMode = (theme: string): void => {
-    //   storedTheme.value = theme
-    // }
 
     return {
-      // colorMode,
       setColorMode,
       getColorMode,
-      // storedTheme,
-      // toggleColorMode,
     }
   },
 })
