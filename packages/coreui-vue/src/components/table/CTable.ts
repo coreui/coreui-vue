@@ -239,7 +239,7 @@ const CTable = defineComponent({
                               columnNames.value &&
                                 columnNames.value.map(
                                   (colName: string) =>
-                                    item[colName] &&
+                                    item[colName] !== undefined &&
                                     h(
                                       CTableDataCell,
                                       {
