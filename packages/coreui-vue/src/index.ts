@@ -19,4 +19,5 @@ export default CoreuiVue
 
 // Export components & directives
 export * from './components'
+export * from './composables'
 export * from './directives'

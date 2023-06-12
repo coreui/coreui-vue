@@ -1,7 +1,6 @@
 import { defineClientConfig } from '@vuepress/client'
 import { h } from 'vue'
 import {
-//   useColorMode,
   setupSidebarItems,
   useScrollPromise,
 } from './composables/index.js'
@@ -31,7 +30,6 @@ export default defineClientConfig({
   },
 
   setup() {
-    // useColorMode()
     setupSidebarItems()
   },
 

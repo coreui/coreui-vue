@@ -20,35 +20,35 @@
       </li>
       <CDropdown variant="nav-item" placement="bottom-end">
         <CDropdownToggle :caret="false">
-          <CIcon v-if="storedTheme === 'dark'" icon="cil-moon" size="xl" />
-          <CIcon v-else-if="storedTheme === 'light'" icon="cil-sun" size="xl" />
+          <CIcon v-if="getColorMode() === 'dark'" icon="cil-moon" size="xl" />
+          <CIcon v-else-if="getColorMode() === 'light'" icon="cil-sun" size="xl" />
           <CIcon v-else icon="cil-contrast" size="xl" />
         </CDropdownToggle>
         <CDropdownMenu>
           <CDropdownItem
-            :active="storedTheme === 'light'"
+            :active="getColorMode() === 'light'"
             class="d-flex align-items-center"
             component="button"
             type="button"
-            @click="toggleColorMode('light')"
+            @click="setColorMode('light')"
           >
             <CIcon class="me-2" icon="cil-sun" size="lg" /> Light
           </CDropdownItem>
           <CDropdownItem
-            :active="storedTheme === 'dark'"
+            :active="getColorMode() === 'dark'"
             class="d-flex align-items-center"
             component="button"
             type="button"
-            @click="toggleColorMode('dark')"
+            @click="setColorMode('dark')"
           >
             <CIcon class="me-2" icon="cil-moon" size="lg" /> Dark
           </CDropdownItem>
           <CDropdownItem
-            :active="storedTheme === 'auto'"
+            :active="getColorMode() === 'auto'"
             class="d-flex align-items-center"
             component="button"
             type="button"
-            @click="toggleColorMode('auto')"
+            @click="setColorMode('auto')"
           >
             <CIcon class="me-2" icon="cil-contrast" size="lg" /> Auto
           </CDropdownItem>
@@ -88,23 +88,29 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useColorMode } from '../composables'
+// import { useColorMode } from '../composables'
+import { useColorModes } from '@coreui/vue/src'
 
 export default defineComponent({
   name: 'Header',
   props: {
     theme: String,
   },
-  emits: ['toggle-color-mode', 'toggle-sidebar'],
+  emits: ['toggle-sidebar'],
   setup() {
-    const storedTheme = useColorMode()
-    const toggleColorMode = (theme: string): void => {
-      storedTheme.value = theme
-    }
+    const { getColorMode, setColorMode } = useColorModes('coreui-vue-docs-theme')
+    // const colorMode = getColorMode()
+    // const storedTheme = useColorMode()
+    // const toggleColorMode = (theme: string): void => {
+    //   storedTheme.value = theme
+    // }
 
     return {
-      storedTheme,
-      toggleColorMode,
+      // colorMode,
+      setColorMode,
+      getColorMode,
+      // storedTheme,
+      // toggleColorMode,
     }
   },
 })
