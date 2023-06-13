@@ -49,6 +49,7 @@ export const useColorModes = (localStorageItemName = 'coreui-vue-color-scheme') 
 
   return {
     getColorMode: () => colorMode.value,
+    isColorModeSet: () => Boolean(getStoredTheme(localStorageItemName)),
     setColorMode: (mode: string) => {
       colorMode.value = mode
     },
