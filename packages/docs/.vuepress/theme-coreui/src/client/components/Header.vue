@@ -98,7 +98,7 @@ export default defineComponent({
   emits: ['toggle-sidebar'],
   setup() {
     const { getColorMode, setColorMode } = useColorModes('coreui-vue-docs-theme')
-
+    
     return {
       setColorMode,
       getColorMode,
