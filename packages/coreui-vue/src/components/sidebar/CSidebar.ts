@@ -3,8 +3,13 @@ import { CBackdrop } from '../backdrop'
 
 import { isInViewport } from '../../utils'
 
-const isOnMobile = (element: HTMLDivElement) =>
-  Boolean(getComputedStyle(element).getPropertyValue('--cui-is-mobile'))
+const isOnMobile = (element?: HTMLDivElement) => {
+  if (!element) {
+    return
+  }
+
+  return Boolean(getComputedStyle(element).getPropertyValue('--cui-is-mobile'))
+}
 
 const CSidebar = defineComponent({
   name: 'CSidebar',
