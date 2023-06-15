@@ -40,6 +40,7 @@ const toggleTooltipElement = (tooltip: HTMLDivElement, el: HTMLElement, popperOp
 }
 
 export default {
+  name: 'c-tooltip',
   mounted(el: HTMLElement, binding: DirectiveBinding): void {
     const value = binding.value
     const content = typeof value === 'string' ? value : value.content ?? ''

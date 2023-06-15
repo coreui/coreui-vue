@@ -9,7 +9,7 @@ const CoreuiVue = {
     }
 
     for (const key in Directives) {
-      app.directive(key, Directives[key])
+      app.directive(Directives[key]['name'], Directives[key])
     }
   },
 }
