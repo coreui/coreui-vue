@@ -1,10 +1,15 @@
 import { onBeforeMount, ref, watch } from 'vue'
 
-const getStoredTheme = (localStorageItemName: string) => localStorage.getItem(localStorageItemName)
+const getStoredTheme = (localStorageItemName: string) =>
+  typeof window !== 'undefined' && localStorage.getItem(localStorageItemName)
 const setStoredTheme = (localStorageItemName: string, colorMode: string) =>
   localStorage.setItem(localStorageItemName, colorMode)
 
 const getPreferredColorScheme = (localStorageItemName: string) => {
+  if (typeof window === 'undefined') {
+    return
+  }
+
   const storedTheme = getStoredTheme(localStorageItemName)
 
   if (storedTheme) {
@@ -28,23 +33,23 @@ export const useColorModes = (localStorageItemName = 'coreui-vue-color-scheme') 
   const colorMode = ref(getPreferredColorScheme(localStorageItemName))
 
   watch(colorMode, () => {
-    setStoredTheme(localStorageItemName, colorMode.value)
-    setTheme(colorMode.value)
+    if (colorMode.value) {
+      setStoredTheme(localStorageItemName, colorMode.value)
+      setTheme(colorMode.value)
+    }
   })
 
   onBeforeMount(() => {
-    if (typeof getStoredTheme(localStorageItemName) === 'string') {
+    if (typeof getStoredTheme(localStorageItemName) === 'string' && colorMode.value) {
       setTheme(colorMode.value)
     }
 
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
       const storedTheme = getStoredTheme(localStorageItemName)
-      if (storedTheme !== 'light' && storedTheme !== 'dark') {
+      if (storedTheme !== 'light' && storedTheme !== 'dark' && colorMode.value) {
         setTheme(colorMode.value)
       }
     })
-
-    watch(colorMode, () => setTheme(colorMode.value))
   })
 
   return {
