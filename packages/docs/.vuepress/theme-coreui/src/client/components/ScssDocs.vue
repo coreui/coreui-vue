@@ -1,5 +1,5 @@
 <template>
-  <div className="highlight">
+  <div class="highlight">
     <pre class="prism-code language-scss" v-html="code" />
   </div>
 </template>

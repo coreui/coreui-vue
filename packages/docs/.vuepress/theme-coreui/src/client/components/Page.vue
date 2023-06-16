@@ -3,7 +3,7 @@
     v-if="pro_component"
     class="bg-danger bg-opacity-10 border-start border-start-5 border-start-danger p-4 pb-3 mb-5"
   >
-    <h3 className="mb-4">CoreUI PRO Component</h3>
+    <h3 class="mb-4">CoreUI PRO Component</h3>
     <p>
       To use this component you must have a CoreUI PRO license. Buy the
       <a href="https://coreui.io/pricing/?framework=vue&docs=coreui-banner-pro">CoreUI PRO</a>
