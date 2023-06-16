@@ -966,7 +966,7 @@ description:
       <template #icon><CIcon icon="cib-coreui-c" height="52" class="my-4 text-white" /></template>
       <template #chart>
         <CChart
-          className="position-absolute w-100 h-100"
+          class="position-absolute w-100 h-100"
           type="line"
           :data="{
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],

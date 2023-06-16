@@ -48,14 +48,14 @@ Add the `disabled` boolean attribute on an input to give it a grayed out appeara
 
 ::: demo
 <CFormTextarea
-  className="mb-3"
+  class="mb-3"
   placeholder="Disabled textarea"
   aria-label="Disabled textarea example"
   disabled></CFormTextarea>
 :::
 ```vue
 <CFormTextarea
-  className="mb-3"
+  class="mb-3"
   placeholder="Disabled textarea"
   aria-label="Disabled textarea example"
   disabled>

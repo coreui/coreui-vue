@@ -549,7 +549,7 @@ Validation styles are available for the following form controls and components:
     required
   />
   <CFormCheck
-    className="mb-3"
+    class="mb-3"
     type="radio"
     name="radio-stacked"
     id="validationFormCheck3"
@@ -611,7 +611,7 @@ Validation styles are available for the following form controls and components:
     required
   />
   <CFormCheck
-    className="mb-3"
+    class="mb-3"
     type="radio"
     name="radio-stacked"
     id="validationFormCheck3"
