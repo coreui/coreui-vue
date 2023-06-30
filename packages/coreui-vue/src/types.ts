@@ -27,7 +27,7 @@ export type Placements =
   | 'left-start'
   | 'left'
   | 'left-end'
-  | undefined
+  | string
 
 export type Shapes =
   | 'rounded'

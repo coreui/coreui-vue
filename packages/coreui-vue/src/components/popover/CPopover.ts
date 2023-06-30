@@ -1,6 +1,7 @@
 import { defineComponent, h, PropType, ref, RendererElement, Teleport, Transition } from 'vue'
 import { createPopper, Placement } from '@popperjs/core'
 
+import type { Placements } from '../../types'
 import { executeAfterTransition } from '../../utils/transition'
 import { getRTLPlacement } from '../../utils'
 
@@ -11,6 +12,24 @@ const CPopover = defineComponent({
      * Content for your component. If you want to pass non-string value please use dedicated slot `<template #content>...</template>`
      */
     content: String,
+    /**
+     * Specify the desired order of fallback placements by providing a list of placements as an array. The placements should be prioritized based on preference.
+     *
+     * @since 4.9.0-beta.2
+     */
+    fallbackPlacements: {
+      type: [String, Array] as PropType<Placements | Placements[]>,
+      default: () => ['top', 'right', 'bottom', 'left'],
+      validator: (value: Placements | Placements[]) => {
+        if (typeof value === 'string') {
+          return ['top', 'right', 'bottom', 'left'].includes(value)
+        }
+        if (Array.isArray(value)) {
+          return value.every((e) => ['top', 'right', 'bottom', 'left'].includes(e))
+        }
+        return false
+      },
+    },
     /**
      * Offset of the popover relative to its target.
      */
@@ -101,6 +120,12 @@ const CPopover = defineComponent({
               name: 'arrow',
               options: {
                 element: '.popover-arrow',
+              },
+            },
+            {
+              name: 'flip',
+              options: {
+                fallbackPlacements: props.fallbackPlacements,
               },
             },
             {
