@@ -2,21 +2,7 @@ import { defineComponent, h, PropType, ref, RendererElement, Teleport, Transitio
 import { createPopper, Placement } from '@popperjs/core'
 
 import { executeAfterTransition } from '../../utils/transition'
-import { isRTL } from '../../utils'
-
-const getPlacement = (placement: string, element: HTMLDivElement | null): Placement => {
-  switch (placement) {
-    case 'right': {
-      return isRTL(element) ? 'left' : 'right'
-    }
-    case 'left': {
-      return isRTL(element) ? 'right' : 'left'
-    }
-    default: {
-      return placement as Placement
-    }
-  }
-}
+import { getRTLPlacement } from '../../utils'
 
 const CTooltip = defineComponent({
   name: 'CTooltip',
@@ -105,7 +91,7 @@ const CTooltip = defineComponent({
     const initPopper = () => {
       if (togglerRef.value) {
         popper.value = createPopper(togglerRef.value, tooltipRef.value, {
-          placement: getPlacement(props.placement, togglerRef.value),
+          placement: getRTLPlacement(props.placement, togglerRef.value),
           modifiers: [
             {
               name: 'offset',
