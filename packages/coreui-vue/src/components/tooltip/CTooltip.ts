@@ -94,6 +94,12 @@ const CTooltip = defineComponent({
           placement: getRTLPlacement(props.placement, togglerRef.value),
           modifiers: [
             {
+              name: 'arrow',
+              options: {
+                element: '.tooltip-arrow',
+              },
+            },
+            {
               name: 'offset',
               options: {
                 offset: props.offset,
@@ -134,7 +140,7 @@ const CTooltip = defineComponent({
                 ...attrs,
               },
               [
-                h('div', { class: 'tooltip-arrow', 'data-popper-arrow': '' }),
+                h('div', { class: 'tooltip-arrow' }),
                 (props.content || slots.content) &&
                   h(
                     'div',

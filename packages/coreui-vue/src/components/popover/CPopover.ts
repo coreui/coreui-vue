@@ -98,6 +98,12 @@ const CPopover = defineComponent({
           placement: getRTLPlacement(props.placement, togglerRef.value),
           modifiers: [
             {
+              name: 'arrow',
+              options: {
+                element: '.popover-arrow',
+              },
+            },
+            {
               name: 'offset',
               options: {
                 offset: props.offset,
@@ -138,7 +144,7 @@ const CPopover = defineComponent({
                 ...attrs,
               },
               [
-                h('div', { class: 'popover-arrow', 'data-popper-arrow': '' }),
+                h('div', { class: 'popover-arrow' }),
                 (props.title || slots.title) &&
                   h(
                     'div',
