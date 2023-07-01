@@ -1,7 +1,7 @@
 import { defineComponent, h, PropType, ref, RendererElement, Teleport, Transition } from 'vue'
 import { createPopper, Placement } from '@popperjs/core'
 
-import type { Placements } from '../../types'
+import type { Placements, Triggers } from '../../types'
 import { executeAfterTransition } from '../../utils/transition'
 import { getRTLPlacement } from '../../utils'
 
@@ -57,9 +57,9 @@ const CPopover = defineComponent({
      * @values 'click', 'focus', 'hover'
      */
     trigger: {
-      type: [String, Array] as PropType<string | string[]>,
+      type: [String, Array] as PropType<Triggers | Triggers[]>,
       default: 'click',
-      validator: (value: string | string[]) => {
+      validator: (value: Triggers | Triggers[]) => {
         if (typeof value === 'string') {
           return ['click', 'focus', 'hover'].includes(value)
         }
