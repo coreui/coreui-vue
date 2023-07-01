@@ -1,7 +1,7 @@
 import { defineComponent, h, PropType, ref, RendererElement, Teleport, Transition } from 'vue'
 import { createPopper, Placement } from '@popperjs/core'
 
-import type { Placements } from '../../types'
+import type { Placements, Triggers } from '../../types'
 import { executeAfterTransition } from '../../utils/transition'
 import { getRTLPlacement } from '../../utils'
 
@@ -53,9 +53,9 @@ const CTooltip = defineComponent({
      * @values 'click', 'focus', 'hover'
      */
     trigger: {
-      type: [String, Array] as PropType<string | string[]>,
-      default: 'hover',
-      validator: (value: string | string[]) => {
+      type: [String, Array] as PropType<Triggers | Triggers[]>,
+      default: () => ['hover', 'focus'],
+      validator: (value: Triggers | Triggers[]) => {
         if (typeof value === 'string') {
           return ['click', 'focus', 'hover'].includes(value)
         }
