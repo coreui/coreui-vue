@@ -22,6 +22,15 @@ const CPopover = defineComponent({
      */
     content: String,
     /**
+     * The delay for displaying and hiding the popover (in milliseconds). When a numerical value is provided, the delay applies to both the hide and show actions. The object structure for specifying the delay is as follows: delay: `{ 'show': 500, 'hide': 100 }`.
+     *
+     * @since 4.9.0-beta.2
+     */
+    delay: {
+      type: [Number, Object] as PropType<number | { show: number; hide: number }>,
+      default: 0,
+    },
+    /**
      * Specify the desired order of fallback placements by providing a list of placements as an array. The placements should be prioritized based on preference.
      *
      * @since 4.9.0-beta.2
@@ -98,6 +107,8 @@ const CPopover = defineComponent({
     const popoverRef = ref()
     const popper = ref()
     const visible = ref(props.visible)
+    const delay =
+      typeof props.delay === 'number' ? { show: props.delay, hide: props.delay } : props.delay
 
     const handleEnter = (el: RendererElement, done: () => void) => {
       emit('show')
@@ -115,9 +126,18 @@ const CPopover = defineComponent({
       }, el as HTMLElement)
     }
 
-    const handleToggle = (event: Event) => {
+    const toggleVisible = (event: Event, _visible: boolean) => {
       togglerRef.value = event.target
-      visible.value = !visible.value
+      if (_visible) {
+        setTimeout(() => {
+          visible.value = true
+        }, delay.show)
+        return
+      }
+
+      setTimeout(() => {
+        visible.value = false
+      }, delay.hide)
     }
 
     const initPopper = () => {
@@ -208,11 +228,14 @@ const CPopover = defineComponent({
       slots.toggler &&
         slots.toggler({
           on: {
-            click: (event: Event) => props.trigger.includes('click') && handleToggle(event),
-            blur: (event: Event) => props.trigger.includes('focus') && handleToggle(event),
-            focus: (event: Event) => props.trigger.includes('focus') && handleToggle(event),
-            mouseenter: (event: Event) => props.trigger.includes('hover') && handleToggle(event),
-            mouseleave: (event: Event) => props.trigger.includes('hover') && handleToggle(event),
+            click: (event: Event) =>
+              props.trigger.includes('click') && toggleVisible(event, !visible.value),
+            blur: (event: Event) => props.trigger.includes('focus') && toggleVisible(event, false),
+            focus: (event: Event) => props.trigger.includes('focus') && toggleVisible(event, true),
+            mouseenter: (event: Event) =>
+              props.trigger.includes('hover') && toggleVisible(event, true),
+            mouseleave: (event: Event) =>
+              props.trigger.includes('hover') && toggleVisible(event, false),
           },
         }),
     ]
