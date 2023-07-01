@@ -9,6 +9,15 @@ const CPopover = defineComponent({
   name: 'CPopover',
   props: {
     /**
+     * Apply a CSS fade transition to the popover.
+     *
+     * @since 4.9.0-beta.2
+     */
+    animation: {
+      type: Boolean,
+      default: true,
+    },
+    /**
      * Content for your component. If you want to pass non-string value please use dedicated slot `<template #content>...</template>`
      */
     content: String,
@@ -163,7 +172,13 @@ const CPopover = defineComponent({
             h(
               'div',
               {
-                class: 'popover fade bs-popover-auto',
+                class: [
+                  'popover',
+                  'bs-popover-auto',
+                  {
+                    fade: props.animation,
+                  },
+                ],
                 ref: popoverRef,
                 role: 'tooltip',
                 ...attrs,

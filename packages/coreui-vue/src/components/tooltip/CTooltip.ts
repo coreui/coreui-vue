@@ -9,6 +9,15 @@ const CTooltip = defineComponent({
   name: 'CTooltip',
   props: {
     /**
+     * Apply a CSS fade transition to the tooltip.
+     *
+     * @since 4.9.0-beta.2
+     */
+    animation: {
+      type: Boolean,
+      default: true,
+    },
+    /**
      * Content for your component. If you want to pass non-string value please use dedicated slot `<template #content>...</template>`
      */
     content: String,
@@ -159,7 +168,13 @@ const CTooltip = defineComponent({
             h(
               'div',
               {
-                class: 'tooltip fade bs-tooltip-auto',
+                class: [
+                  'tooltip',
+                  'bs-tooltip-auto',
+                  {
+                    fade: props.animation,
+                  },
+                ],
                 ref: tooltipRef,
                 role: 'tooltip',
                 ...attrs,
