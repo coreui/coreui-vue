@@ -1,6 +1,7 @@
 import { defineComponent, h, PropType, ref, RendererElement, Teleport, Transition } from 'vue'
-import { createPopper, Placement } from '@popperjs/core'
+import type { Placement } from '@popperjs/core'
 
+import { usePopper } from '../../composables'
 import type { Placements, Triggers } from '../../types'
 import { executeAfterTransition } from '../../utils/transition'
 import { getRTLPlacement } from '../../utils'
@@ -101,14 +102,39 @@ const CTooltip = defineComponent({
   setup(props, { attrs, slots, emit }) {
     const togglerRef = ref()
     const tooltipRef = ref()
-    const popper = ref()
     const visible = ref(props.visible)
+    const { initPopper, destroyPopper } = usePopper()
+    
     const delay =
       typeof props.delay === 'number' ? { show: props.delay, hide: props.delay } : props.delay
 
+    const popperConfig = {
+      modifiers: [
+        {
+          name: 'arrow',
+          options: {
+            element: '.tooltip-arrow',
+          },
+        },
+        {
+          name: 'flip',
+          options: {
+            fallbackPlacements: props.fallbackPlacements,
+          },
+        },
+        {
+          name: 'offset',
+          options: {
+            offset: props.offset,
+          },
+        },
+      ],
+      placement: getRTLPlacement(props.placement, togglerRef.value),
+    }
+
     const handleEnter = (el: RendererElement, done: () => void) => {
       emit('show')
-      initPopper()
+      initPopper(togglerRef.value, tooltipRef.value, popperConfig)
       el.classList.add('show')
       executeAfterTransition(() => done(), el as HTMLElement)
     }
@@ -134,41 +160,6 @@ const CTooltip = defineComponent({
       setTimeout(() => {
         visible.value = false
       }, delay.hide)
-    }
-
-    const initPopper = () => {
-      if (togglerRef.value) {
-        popper.value = createPopper(togglerRef.value, tooltipRef.value, {
-          placement: getRTLPlacement(props.placement, togglerRef.value),
-          modifiers: [
-            {
-              name: 'arrow',
-              options: {
-                element: '.tooltip-arrow',
-              },
-            },
-            {
-              name: 'flip',
-              options: {
-                fallbackPlacements: props.fallbackPlacements,
-              },
-            },
-            {
-              name: 'offset',
-              options: {
-                offset: props.offset,
-              },
-            },
-          ],
-        })
-      }
-    }
-
-    const destroyPopper = () => {
-      if (popper.value) {
-        popper.value.destroy()
-      }
-      popper.value = undefined
     }
 
     return () => [
