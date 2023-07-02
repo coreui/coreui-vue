@@ -2,6 +2,7 @@ import { onBeforeMount, ref, watch } from 'vue'
 
 const getStoredTheme = (localStorageItemName: string) =>
   typeof window !== 'undefined' && localStorage.getItem(localStorageItemName)
+
 const setStoredTheme = (localStorageItemName: string, colorMode: string) =>
   localStorage.setItem(localStorageItemName, colorMode)
 
@@ -53,7 +54,7 @@ export const useColorModes = (localStorageItemName = 'coreui-vue-color-scheme') 
   })
 
   return {
-    getColorMode: () => colorMode.value,
+    colorMode,
     isColorModeSet: () => Boolean(getStoredTheme(localStorageItemName)),
     setColorMode: (mode: string) => {
       colorMode.value = mode
