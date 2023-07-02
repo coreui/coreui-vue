@@ -119,6 +119,15 @@ const CDropdown = defineComponent({
      */
     disabled: Boolean,
     /**
+     * Offset of the dropdown menu relative to its target.
+     *
+     * @since 4.9.0-beta.2
+     */
+    offset: {
+      type: Array,
+      default: () => [0, 2],
+    },
+    /**
      * Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property.
      *
      * @values 'auto', 'top-end', 'top', 'top-start', 'bottom-end', 'bottom', 'bottom-start', 'right-start', 'right', 'right-end', 'left-start', 'left', 'left-end'
@@ -177,6 +186,14 @@ const CDropdown = defineComponent({
     const { initPopper, destroyPopper } = usePopper()
 
     const popperConfig = {
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: props.offset,
+          },
+        },
+      ],
       placement: getPlacement(
         props.placement,
         props.direction,
