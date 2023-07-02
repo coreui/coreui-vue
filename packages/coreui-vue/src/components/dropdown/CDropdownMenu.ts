@@ -1,4 +1,4 @@
-import { defineComponent, h, inject, onUnmounted, onUpdated, Ref } from 'vue'
+import { defineComponent, h, inject, Ref } from 'vue'
 
 const CDropdownMenu = defineComponent({
   name: 'CDropdownMenu',
@@ -14,13 +14,11 @@ const CDropdownMenu = defineComponent({
     },
   },
   setup(props, { slots }) {
-    const dropdownToggleRef = inject('dropdownToggleRef') as Ref<HTMLElement>
     const dropdownMenuRef = inject('dropdownMenuRef') as Ref<HTMLElement>
     const config = inject('config') as any // eslint-disable-line @typescript-eslint/no-explicit-any
-    const hideMenu = inject('hideMenu') as () => void
     const visible = inject('visible') as Ref<boolean>
 
-    const { autoClose, alignment, dark, popper } = config
+    const { alignment, dark, popper } = config
 
     // eslint-disable-next-line @typescript-eslint/ban-types, unicorn/consistent-function-scoping
     const alignmentClassNames = (alignment: object | string) => {
@@ -35,49 +33,6 @@ const CDropdownMenu = defineComponent({
       }
       return classNames
     }
-
-    const handleKeyup = (event: KeyboardEvent) => {
-      if (autoClose === false) {
-        return
-      }
-
-      if (event.key === 'Escape') {
-        hideMenu()
-      }
-    }
-
-    const handleMouseUp = (event: Event) => {
-      if (dropdownToggleRef.value?.contains(event.target as HTMLElement)) {
-        return
-      }
-
-      if (autoClose === true) {
-        hideMenu()
-        return
-      }
-
-      if (autoClose === 'inside' && dropdownMenuRef.value?.contains(event.target as HTMLElement)) {
-        hideMenu()
-        return
-      }
-
-      if (
-        autoClose === 'outside' &&
-        !dropdownMenuRef.value?.contains(event.target as HTMLElement)
-      ) {
-        hideMenu()
-      }
-    }
-
-    onUpdated(() => {
-      visible.value && window.addEventListener('mouseup', handleMouseUp)
-      visible.value && window.addEventListener('keyup', handleKeyup)
-    })
-
-    onUnmounted(() => {
-      window.removeEventListener('mouseup', handleMouseUp)
-      window.removeEventListener('keyup', handleKeyup)
-    })
 
     return () =>
       h(

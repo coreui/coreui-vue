@@ -1,8 +1,52 @@
-import { defineComponent, h, ref, provide, watch, PropType, onMounted } from 'vue'
-import { createPopper, Placement } from '@popperjs/core'
+import { defineComponent, h, ref, provide, watch, PropType } from 'vue'
+import type { Placement } from '@popperjs/core'
 
-import { Triggers } from '../../types'
+import { usePopper } from '../../composables'
+import type { Placements, Triggers } from '../../types'
 import { isRTL } from '../../utils'
+
+export type Directions = 'start' | 'end'
+
+export type Breakpoints =
+  | { xs: Directions }
+  | { sm: Directions }
+  | { md: Directions }
+  | { lg: Directions }
+  | { xl: Directions }
+  | { xxl: Directions }
+
+export type Alignments = Directions | Breakpoints
+
+const getPlacement = (
+  placement: Placement,
+  direction: string | undefined,
+  alignment: Alignments | string | undefined,
+  isRTL: boolean,
+): Placements => {
+  let _placement = placement
+
+  if (direction === 'dropup') {
+    _placement = isRTL ? 'top-end' : 'top-start'
+  }
+
+  if (direction === 'dropup-center') {
+    _placement = 'top'
+  }
+
+  if (direction === 'dropend') {
+    _placement = isRTL ? 'left-start' : 'right-start'
+  }
+
+  if (direction === 'dropstart') {
+    _placement = isRTL ? 'right-start' : 'left-start'
+  }
+
+  if (alignment === 'end') {
+    _placement = isRTL ? 'bottom-start' : 'bottom-end'
+  }
+
+  return _placement
+}
 
 const CDropdown = defineComponent({
   name: 'CDropdown',
@@ -13,7 +57,7 @@ const CDropdown = defineComponent({
      * @values { 'start' | 'end' | { xs: 'start' | 'end' } | { sm: 'start' | 'end' } | { md: 'start' | 'end' } | { lg: 'start' | 'end' } | { xl: 'start' | 'end'} | { xxl: 'start' | 'end'} }
      */
     alignment: {
-      type: [String, Object],
+      type: [String, Object] as PropType<string | Alignments>,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       validator: (value: string | any) => {
         if (value === 'start' || value === 'end') {
@@ -127,9 +171,19 @@ const CDropdown = defineComponent({
   setup(props, { slots, emit }) {
     const dropdownToggleRef = ref()
     const dropdownMenuRef = ref()
-    const placement = ref(props.placement)
-    const popper = ref()
+    const popper = ref(typeof props.alignment === 'object' ? false : props.popper)
     const visible = ref(props.visible)
+
+    const { initPopper, destroyPopper } = usePopper()
+
+    const popperConfig = {
+      placement: getPlacement(
+        props.placement,
+        props.direction,
+        props.alignment,
+        isRTL(dropdownMenuRef.value),
+      ) as Placement,
+    }
 
     watch(
       () => props.visible,
@@ -138,8 +192,22 @@ const CDropdown = defineComponent({
       },
     )
 
+    watch(visible, () => {
+      if (visible.value && dropdownToggleRef.value && dropdownMenuRef.value) {
+        popper.value && initPopper(dropdownToggleRef.value, dropdownMenuRef.value, popperConfig)
+        window.addEventListener('mouseup', handleMouseUp)
+        window.addEventListener('keyup', handleKeyup)
+        emit('show')
+        return
+      }
+
+      popper.value && destroyPopper()
+      window.removeEventListener('mouseup', handleMouseUp)
+      window.removeEventListener('keyup', handleKeyup)
+      emit('hide')
+    })
+
     provide('config', {
-      autoClose: props.autoClose,
       alignment: props.alignment,
       dark: props.dark,
       popper: props.popper,
@@ -150,27 +218,38 @@ const CDropdown = defineComponent({
     provide('dropdownToggleRef', dropdownToggleRef)
     provide('dropdownMenuRef', dropdownMenuRef)
 
-    const initPopper = () => {
-      // Disable popper if responsive aligment is set.
-      if (typeof props.alignment === 'object') {
+    const handleKeyup = (event: KeyboardEvent) => {
+      if (props.autoClose === false) {
         return
       }
 
-      if (dropdownToggleRef.value) {
-        popper.value = createPopper(dropdownToggleRef.value, dropdownMenuRef.value, {
-          placement: placement.value,
-        })
+      if (event.key === 'Escape') {
+        setVisible(false)
       }
     }
 
-    const destroyPopper = () => {
-      if (popper.value) {
-        popper.value.destroy()
+    const handleMouseUp = (event: Event) => {
+      if (!dropdownToggleRef.value || !dropdownMenuRef.value) {
+        return
       }
-      popper.value = undefined
+
+      if (dropdownToggleRef.value.contains(event.target as HTMLElement)) {
+        return
+      }
+
+      if (
+        props.autoClose === true ||
+        (props.autoClose === 'inside' &&
+          dropdownMenuRef.value.contains(event.target as HTMLElement)) ||
+        (props.autoClose === 'outside' &&
+          !dropdownMenuRef.value.contains(event.target as HTMLElement))
+      ) {
+        setVisible(false)
+        return
+      }
     }
 
-    const toggleMenu = (_visible?: boolean) => {
+    const setVisible = (_visible?: boolean) => {
       if (props.disabled) {
         return
       }
@@ -188,48 +267,7 @@ const CDropdown = defineComponent({
       visible.value = true
     }
 
-    provide('toggleMenu', toggleMenu)
-
-    const hideMenu = () => {
-      if (props.disabled) {
-        return
-      }
-
-      visible.value = false
-    }
-
-    provide('hideMenu', hideMenu)
-
-    watch(visible, () => {
-      props.popper && (visible.value ? initPopper() : destroyPopper())
-      visible.value ? emit('show') : emit('hide')
-    })
-
-    onMounted(() => {
-      if (props.direction === 'center') {
-        placement.value = 'bottom'
-      }
-
-      if (props.direction === 'dropup') {
-        placement.value = isRTL(dropdownMenuRef.value) ? 'top-end' : 'top-start'
-      }
-
-      if (props.direction === 'dropup-center') {
-        placement.value = 'top'
-      }
-
-      if (props.direction === 'dropend') {
-        placement.value = isRTL(dropdownMenuRef.value) ? 'left-start' : 'right-start'
-      }
-
-      if (props.direction === 'dropstart') {
-        placement.value = isRTL(dropdownMenuRef.value) ? 'right-start' : 'left-start'
-      }
-
-      if (props.alignment === 'end') {
-        placement.value = isRTL(dropdownMenuRef.value) ? 'bottom-start' : 'bottom-end'
-      }
-    })
+    provide('setVisible', setVisible)
 
     return () =>
       props.variant === 'input-group'

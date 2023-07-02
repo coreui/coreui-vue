@@ -3,7 +3,7 @@ import { cloneVNode, defineComponent, h, inject, onMounted, PropType, Ref, ref }
 import { CButton } from '../button'
 
 import { Color, Shape } from '../../props'
-import { Triggers } from '../../types'
+import type { Triggers } from '../../types'
 
 const CDropdownToggle = defineComponent({
   name: 'CDropdownToggle',
@@ -85,7 +85,7 @@ const CDropdownToggle = defineComponent({
     const dropdownToggleRef = inject('dropdownToggleRef') as Ref<HTMLElement>
     const dropdownVariant = inject('variant') as string
     const visible = inject('visible') as Ref<boolean>
-    const toggleMenu = inject('toggleMenu') as (_visible?: boolean) => void
+    const setVisible = inject('setVisible') as (_visible?: boolean) => void
 
     const className = [
       {
@@ -103,7 +103,7 @@ const CDropdownToggle = defineComponent({
             return
           }
 
-          toggleMenu()
+          setVisible()
         },
       }),
       ...((props.trigger === 'focus' || props.trigger.includes('focus')) && {
@@ -112,13 +112,13 @@ const CDropdownToggle = defineComponent({
             return
           }
 
-          toggleMenu(true)
+          setVisible(true)
         },
         onblur: () => {
           if (props.disabled) {
             return
           }
-          toggleMenu(false)
+          setVisible(false)
         },
       }),
     }
