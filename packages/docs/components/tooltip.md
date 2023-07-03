@@ -161,10 +161,7 @@ You can customize the appearance of tooltips using [CSS variables](#css-variable
 Elements with the disabled attribute aren’t interactive, meaning users cannot focus, hover, or click them to trigger a tooltip (or popover). As a workaround, you’ll want to trigger the tooltip from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`.
 
 :::demo
-<CTooltip
-  content="Disabled tooltip"
-  :trigger="['hover', 'focus']"
->
+<CTooltip content="Disabled tooltip">
   <template #toggler="{ on }">
     <span class="d-inline-block" :tabindex="0" v-on="on">
       <CButton color="primary" disabled>Disabled button</CButton>
@@ -173,10 +170,7 @@ Elements with the disabled attribute aren’t interactive, meaning users cannot 
 </CTooltip>
 :::
 ```vue
-<CTooltip
-  content="Disabled tooltip"
-  :trigger="['hover', 'focus']"
->
+<CTooltip content="Disabled tooltip">
   <template #toggler="{ on }">
     <span class="d-inline-block" :tabindex="0" v-on="on">
       <CButton color="primary" disabled>Disabled button</CButton>
