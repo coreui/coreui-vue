@@ -9,7 +9,7 @@
   "license": "MIT",
   "devDependencies": {
     "@coreui/chartjs": "^3.1.2",
-    "@coreui/coreui": "^4.3.0-beta.0",
+    "@coreui/coreui": "^4.2.6",
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-vue": "^2.0.0",
     "@coreui/utils": "^2.0.2",
