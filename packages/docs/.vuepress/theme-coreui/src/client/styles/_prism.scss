@@ -6,8 +6,7 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
  * @author Rose Pritchard
  */
 
-:root,
-[data-coreui-theme="light"] {
+:root {
   // --base00: #fff;
   // --base01: #f5f5f5;
   --base02: #c8c8fa;
@@ -24,32 +23,6 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
   --base0D: #{$purple-500}; // #795da3
   --base0E: #{$pink-600}; // #a71d5d
   --base0F: #333;
- }
-
-@include color-mode(dark, true) {
-  // --base00: #282c34;
-  // --base01: #353b45;
-  --base02: #3e4451;
-  --base03: #868e96;
-  --base04: #868e96;
-  --base05: #abb2bf;
-  --base06: #b6bdca;
-  --base07: #{$orange-300}; // #d19a66
-  --base08: #{$cyan-300};
-  --base09: #{$orange-300}; // #d19a66
-  --base0A: #{$yellow-200}; // #e5c07b
-  --base0B: #{$teal-300}; // #98c379
-  --base0C: #{$teal-300}; // #56b6c2
-  --base0D: #{$blue-300}; // #61afef
-  --base0E: #{$indigo-200}; // #c678dd
-  --base0F: #{$red-300}; // #be5046
-
-  .language-diff .gd {
-    color: $red-400;
-  }
-  .language-diff .gi {
-    color: $green-400;
-  }
 }
 
 code[class*='language-'],
