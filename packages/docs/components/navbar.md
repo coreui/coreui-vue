@@ -1304,10 +1304,6 @@ Variables for all navbars:
 
 <ScssDocs file="_variables.scss" capture="navbar-variables"/>
 
-Variables for the [dark navbar](#color-schemes):
-
-<ScssDocs file="_variables.scss" capture="navbar-dark-variables"/>
-
 ### SASS loops
 
 [Responsive navbar expand/collapse classes](#responsive-behaviors) (e.g., `.navbar-expand-lg`) are combined with the `$breakpoints` map and generated through a loop in `scss/_navbar.scss`.

@@ -808,19 +808,11 @@ If your form layout allows it, you can swap the text for the tooltip to display 
 
 ### CSS variables
 
-CoreUI for Vue components use local CSS variables for validation for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
-
-<ScssDocs file="_root.scss" capture="root-form-validation-variables"/>
-
 These variables are also color mode adaptive, meaning they change color while in dark mode.
 
 ### SASS variables
 
 <ScssDocs file="_variables.scss" capture="form-feedback-variables" />
-
-<ScssDocs file="_variables.scss" capture="form-validation-colors" />
-
-<ScssDocs file="_variables-dark.scss" capture="form-validation-colors-dark" />
 
 ### SASS mixins
 
