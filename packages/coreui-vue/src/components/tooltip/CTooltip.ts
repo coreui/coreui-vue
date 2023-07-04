@@ -12,7 +12,7 @@ const CTooltip = defineComponent({
     /**
      * Apply a CSS fade transition to the tooltip.
      *
-     * @since 4.9.0-beta.2
+     * @since 4.9.0-rc.0
      */
     animation: {
       type: Boolean,
@@ -25,7 +25,7 @@ const CTooltip = defineComponent({
     /**
      * The delay for displaying and hiding the popover (in milliseconds). When a numerical value is provided, the delay applies to both the hide and show actions. The object structure for specifying the delay is as follows: delay: `{ 'show': 500, 'hide': 100 }`.
      *
-     * @since 4.9.0-beta.2
+     * @since 4.9.0-rc.0
      */
     delay: {
       type: [Number, Object] as PropType<number | { show: number; hide: number }>,
@@ -34,7 +34,7 @@ const CTooltip = defineComponent({
     /**
      * Specify the desired order of fallback placements by providing a list of placements as an array. The placements should be prioritized based on preference.
      *
-     * @since 4.9.0-beta.2
+     * @since 4.9.0-rc.0
      */
     fallbackPlacements: {
       type: [String, Array] as PropType<Placements | Placements[]>,
