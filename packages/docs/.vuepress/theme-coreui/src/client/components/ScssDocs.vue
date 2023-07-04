@@ -15,16 +15,18 @@ export default defineComponent({
     file: String,
   },
   setup(props) {
-
     if (typeof window !== 'undefined') {
-      window.Prism = window.Prism || {};
-      window.Prism.manual = true;
+      window.Prism = window.Prism || {}
+      window.Prism.manual = true
     }
 
-    const files = import.meta.glob(`../../../../../../../node_modules/@coreui/coreui/scss/**/*.scss`, {
-      as: 'raw',
-      eager: true,
-    })
+    const files = import.meta.glob(
+      `../../../../../../../node_modules/@coreui/coreui/scss/**/*.scss`,
+      {
+        as: 'raw',
+        eager: true,
+      },
+    )
     const file = files[`../../../../../../../node_modules/@coreui/coreui/scss/${props.file}`]
 
     const captureStart = `// scss-docs-start ${props.capture}`
@@ -40,8 +42,13 @@ export default defineComponent({
             .replaceAll('\n  @', '\n@'),
           Prism.languages.scss,
           'scss',
-      )
+        )
       : null
+
+    if (code === null) {
+      console.error(`Can't find "${props.capture}"`)
+    }
+
     return {
       code,
     }
