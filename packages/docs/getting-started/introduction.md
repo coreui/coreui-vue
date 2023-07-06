@@ -10,13 +10,13 @@ menu: Getting started
 ### Npm
 
 ```bash
-npm install @coreui/vue
+npm install @coreui/vue@next
 ```
 
 ### Yarn
 
 ```bash
-yarn add @coreui/vue
+yarn add @coreui/vue@next
 ```
 
 ## Using components
@@ -34,7 +34,7 @@ Vue components are styled using `@coreui/coreui` CSS library, but you can use th
 ###### Installation
 
 ```bash
-npm install @coreui/coreui
+npm install @coreui/coreui@next
 ```
 
 ###### Basic usage
