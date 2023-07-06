@@ -121,7 +121,7 @@ const CDropdown = defineComponent({
     /**
      * Offset of the dropdown menu relative to its target.
      *
-     * @since 4.9.0-beta.2
+     * @since 4.9.0
      */
     offset: {
       type: Array,

@@ -17,7 +17,7 @@ const CFormCheck = defineComponent({
     /**
      * Use in conjunction with the v-model directive to specify the value that should be assigned to the bound variable when the checkbox is in the `false` state.
      *
-     * @since 4.9.0-beta.2
+     * @since 4.9.0
      */
     falseValue: String,
     /**
@@ -90,7 +90,7 @@ const CFormCheck = defineComponent({
     /**
      * Use in conjunction with the v-model directive to specify the value that should be assigned to the bound variable when the checkbox is in the `true` state.
      *
-     * @since 4.9.0-beta.2
+     * @since 4.9.0
      */
     trueValue: String,
     /**
