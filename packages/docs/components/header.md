@@ -104,7 +104,7 @@ Here's an example of all the sub-components included in a responsive light-theme
   export default {
     data() {
       return { 
-        visible: true,
+        visible: false,
       }
     }
   }
@@ -115,7 +115,7 @@ Here's an example of all the sub-components included in a responsive light-theme
   export default {
     data() {
       return { 
-        visible: true,
+        visible: false,
       }
     }
   }
