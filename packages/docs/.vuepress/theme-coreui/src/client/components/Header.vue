@@ -50,9 +50,6 @@
 import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'Header',
-  props: {
-    theme: String,
-  },
   emits: ['toggle-sidebar'],
   setup() {},
 })
