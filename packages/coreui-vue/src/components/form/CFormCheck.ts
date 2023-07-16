@@ -15,6 +15,12 @@ const CFormCheck = defineComponent({
      */
     button: Object,
     /**
+     * Use in conjunction with the v-model directive to specify the value that should be assigned to the bound variable when the checkbox is in the `false` state.
+     *
+     * @since 4.10.0
+     */
+    falseValue: String,
+    /**
      * Provide valuable, actionable feedback.
      *
      * @since 4.3.0
@@ -66,7 +72,7 @@ const CFormCheck = defineComponent({
      * The default name for a value passed using v-model.
      */
     modelValue: {
-      type: [Boolean, String],
+      type: [Array, Boolean, String],
       value: undefined,
     },
     /**
@@ -81,6 +87,12 @@ const CFormCheck = defineComponent({
      * @since 4.3.0
      */
     tooltipFeedback: Boolean,
+    /**
+     * Use in conjunction with the v-model directive to specify the value that should be assigned to the bound variable when the checkbox is in the `true` state.
+     *
+     * @since 4.10.0
+     */
+    trueValue: String,
     /**
      * Specifies the type of component.
      *
@@ -111,8 +123,35 @@ const CFormCheck = defineComponent({
   ],
   setup(props, { attrs, emit, slots }) {
     const handleChange = (event: InputEvent) => {
+      const target = event.target as HTMLInputElement
       emit('change', event)
-      emit('update:modelValue', (event.target as HTMLInputElement).value)
+
+      if (props.falseValue && props.trueValue) {
+        emit('update:modelValue', target.checked ? props.trueValue : props.falseValue)
+        return
+      }
+
+      if (props.value && Array.isArray(props.modelValue)) {
+        if (props.modelValue.includes(props.value)) {
+          emit(
+            'update:modelValue',
+            props.modelValue.filter((value) => value !== props.value),
+          )
+        } else {
+          emit('update:modelValue', [...props.modelValue, props.value])
+        }
+
+        return
+      }
+
+      if (props.value === undefined) {
+        emit('update:modelValue', target.checked)
+        return
+      }
+
+      if (props.value && (props.modelValue === undefined || typeof props.modelValue === 'string')) {
+        emit('update:modelValue', target.checked ? props.value : undefined)
+      }
     }
 
     const className = [
@@ -135,12 +174,22 @@ const CFormCheck = defineComponent({
       },
     ]
 
-    const isChecked = computed(() => props.modelValue == props.value)
+    const isChecked = computed(() => {
+      if (Array.isArray(props.modelValue)) {
+        return props.modelValue.includes(props.value)
+      }
+
+      if (typeof props.modelValue === 'string') {
+        return props.modelValue === props.value
+      }
+
+      return props.modelValue
+    })
 
     const formControl = () => {
       return h('input', {
         ...attrs,
-        ...(props.modelValue && { checked: isChecked.value }),
+        ...(props.modelValue && props.value && { checked: isChecked.value }),
         class: inputClassName,
         id: props.id,
         indeterminate: props.indeterminate,
