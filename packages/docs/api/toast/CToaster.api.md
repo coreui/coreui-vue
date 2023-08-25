@@ -10,4 +10,4 @@ import CToaster from '@coreui/vue/src/components/toast/CToaster'
 
 | Prop name     | Description                           | Type   | Values                                                                                                                          | Default |
 | ------------- | ------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| **placement** | Describes the placement of component. | string | `'top-start'`, `'top'`, `'top-end'`, `'middle-start'`, `'middle'`, `'middle-end'`, `'bottom-start'`, `'bottom'`, `'bottom-end'` | -       |
+| **placement** | Describes the placement of component. | string | `'top-start'`, `'top-center'`, `'top-end'`, `'middle-start'`, `'middle-center'`, `'middle-end'`, `'bottom-start'`, `'bottom-center'`, `'bottom-end'` | -       |
