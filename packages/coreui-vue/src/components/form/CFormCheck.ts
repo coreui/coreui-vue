@@ -189,7 +189,7 @@ const CFormCheck = defineComponent({
     const formControl = () => {
       return h('input', {
         ...attrs,
-        ...(props.modelValue && props.value && { checked: isChecked.value }),
+        ...((props.modelValue || props.value) && { checked: isChecked.value }),
         class: inputClassName,
         id: props.id,
         indeterminate: props.indeterminate,
