@@ -2,6 +2,7 @@ import { defineComponent, h } from 'vue'
 
 const CBreadcrumb = defineComponent({
   name: 'CBreadcrumb',
+  inheritAttrs: false,
   setup(_, { slots, attrs }) {
     return () =>
       h(
