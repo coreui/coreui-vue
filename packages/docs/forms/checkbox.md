@@ -20,6 +20,74 @@ Browser default checkboxes are replaced with the help of `<CFormCheck>`. Checkbo
 <CFormCheck id="flexCheckChecked" label="Checked checkbox" checked />
 ```
 
+### vModel
+
+Single checkbox, boolean value.
+
+::: demo
+<CFormCheck id="flexCheckDefaultVModel" label="Default checkbox" v-model="checked" />
+<div>Checked: {{checked}}</div>
+:::
+```vue
+<template>
+  <CFormCheck id="flexCheckDefaultVModel" label="Default checkbox" v-model="checked" />
+  <div>Checked: {{checked}}</div>
+</template>
+<script>
+  import { ref } from 'vue'
+  export default {
+    setup() {
+      const checked = ref(true)
+      return {
+        checked
+      }
+    }
+  }
+</script>
+```
+
+We can also bind multiple checkboxes to the same array.
+
+::: demo
+<CFormCheck id="lucas" value="Lucas" label="Lucas" v-model="checkedNames"/>
+<CFormCheck id="andrew" value="Andrew" label="Andrew" v-model="checkedNames"/>
+<CFormCheck id="anna" value="Anna" label="Anna" v-model="checkedNames"/>
+<div>Checked names: {{checkedNames}}</div>
+:::
+```vue
+<template>
+  <CFormCheck id="lucas" value="Lucas" label="Lucas" v-model="checkedNames"/>
+  <CFormCheck id="andrew" value="Andrew" label="Andrew" v-model="checkedNames"/>
+  <CFormCheck id="anna" value="Anna" label="Anna" v-model="checkedNames"/>
+  <div>Checked names: {{checkedNames}}</div>
+</template>
+<script>
+  import { ref } from 'vue'
+  export default {
+    setup() {
+      const checkedNames = ref(['Andrew'])
+      return {
+        checkedNames
+      }
+    }
+  }
+</script>
+```
+
+<script>
+  import { ref } from 'vue'
+  export default {
+    setup() {
+      const checked = ref(true)
+      const checkedNames = ref(['Andrew'])
+      return {
+        checked,
+        checkedNames
+      }
+    }
+  }
+</script>
+
 ## Indeterminate
 
 Checkboxes can utilize the `:indeterminate` pseudo-class when manually set via `indeterminate` property.

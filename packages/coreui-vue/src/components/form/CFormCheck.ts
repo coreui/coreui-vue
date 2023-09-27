@@ -17,7 +17,7 @@ const CFormCheck = defineComponent({
     /**
      * Use in conjunction with the v-model directive to specify the value that should be assigned to the bound variable when the checkbox is in the `false` state.
      *
-     * @since 4.9.0
+     * @since 4.10.0
      */
     falseValue: String,
     /**
@@ -90,7 +90,7 @@ const CFormCheck = defineComponent({
     /**
      * Use in conjunction with the v-model directive to specify the value that should be assigned to the bound variable when the checkbox is in the `true` state.
      *
-     * @since 4.9.0
+     * @since 4.10.0
      */
     trueValue: String,
     /**
@@ -189,7 +189,7 @@ const CFormCheck = defineComponent({
     const formControl = () => {
       return h('input', {
         ...attrs,
-        ...(props.modelValue && props.value && { checked: isChecked.value }),
+        ...((props.modelValue || props.value) && { checked: isChecked.value }),
         class: inputClassName,
         id: props.id,
         indeterminate: props.indeterminate,
