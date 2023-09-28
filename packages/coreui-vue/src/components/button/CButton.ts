@@ -79,6 +79,7 @@ export const CButton = defineComponent({
     'click',
   ],
   setup(props, { emit, slots }) {
+    const component = props.href ? 'a' : props.component
     const handleClick = (event: Event) => {
       if (props.disabled) {
         return
@@ -88,7 +89,7 @@ export const CButton = defineComponent({
     }
     return () =>
       h(
-        props.component,
+        component,
         {
           class: [
             'btn',
@@ -100,10 +101,9 @@ export const CButton = defineComponent({
             },
             props.shape,
           ],
-          disabled: props.disabled && props.component !== 'a',
-          ...(props.component === 'a' && props.disabled && { 'aria-disabled': true, tabIndex: -1 }),
-          ...(props.component === 'a' && props.href && { href: props.href }),
-          ...(props.component === 'button' && { type: props.type }),
+          ...(component === 'a' && props.disabled && { 'aria-disabled': true, tabIndex: -1 }),
+          ...(component === 'a' && props.href && { href: props.href }),
+          ...(component === 'button' && { type: props.type, disabled: props.disabled }),
           onClick: handleClick,
         },
         slots.default && slots.default(),
