@@ -26,7 +26,7 @@
                   </Page>
                 </CCol>
                 <CCol :lg="3">
-                  <div class="docs-toc mt-4 mb-5 my-md-0 ps-xl-5 mb-lg-5 text-muted">
+                  <div class="docs-toc mt-4 mb-5 my-md-0 ps-xl-5 mb-lg-5 text-body-secondary">
                     <strong class="d-block h6 mb-2 pb-2 border-bottom">On this page</strong>
                     <Toc />
                   </div>
