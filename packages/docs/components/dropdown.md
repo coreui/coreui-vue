@@ -257,7 +257,7 @@ And putting it to use in a navbar:
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarNav>
       <CDropdown dark variant="nav-item">
-        <CDropdownToggle color="primary">Dropdown Button</CDropdownToggle>
+        <CDropdownToggle color="dark" :navLink="false">Dropdown Button</CDropdownToggle>
         <CDropdownMenu>
           <CDropdownItem href="#">Action</CDropdownItem>
           <CDropdownItem href="#">Another action</CDropdownItem>
@@ -276,7 +276,7 @@ And putting it to use in a navbar:
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarNav>
       <CDropdown dark variant="nav-item">
-        <CDropdownToggle color="primary">Dropdown Button</CDropdownToggle>
+        <CDropdownToggle color="dark" :navLink="false">Dropdown Button</CDropdownToggle>
         <CDropdownMenu>
           <CDropdownItem href="#">Action</CDropdownItem>
           <CDropdownItem href="#">Another action</CDropdownItem>

@@ -1,4 +1,4 @@
-import { cloneVNode, defineComponent, h, inject, onMounted, PropType, Ref, ref } from 'vue'
+import { cloneVNode, computed, defineComponent, h, inject, onMounted, PropType, Ref, ref } from 'vue'
 
 import { CButton } from '../button'
 
@@ -8,10 +8,6 @@ import type { Triggers } from '../../types'
 const CDropdownToggle = defineComponent({
   name: 'CDropdownToggle',
   props: {
-    /**
-     * Toggle the active state for the component.
-     */
-    active: Boolean,
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
      *
@@ -40,6 +36,15 @@ const CDropdownToggle = defineComponent({
      * Toggle the disabled state for the component.
      */
     disabled: Boolean,
+    /**
+     * If a dropdown `variant` is set to `nav-item` then render the toggler as a link instead of a button.
+     *
+     * @since v5.0.0-alpha.1
+     */
+    navLink: {
+      type: Boolean,
+      default: true,
+    },
     /**
      * @values 'rounded', 'rounded-top', 'rounded-end', 'rounded-bottom', 'rounded-start', 'rounded-circle', 'rounded-pill', 'rounded-0', 'rounded-1', 'rounded-2', 'rounded-3'
      */
@@ -87,18 +92,10 @@ const CDropdownToggle = defineComponent({
     const visible = inject('visible') as Ref<boolean>
     const setVisible = inject('setVisible') as (_visible?: boolean) => void
 
-    const className = [
-      {
-        'dropdown-toggle': props.caret,
-        'dropdown-toggle-split': props.split,
-        active: props.active,
-        disabled: props.disabled,
-      },
-    ]
-
     const triggers = {
       ...((props.trigger === 'click' || props.trigger.includes('click')) && {
-        onClick: () => {
+        onClick: (event: Event) => {
+          event.preventDefault()
           if (props.disabled) {
             return
           }
@@ -123,6 +120,20 @@ const CDropdownToggle = defineComponent({
       }),
     }
 
+    const togglerProps = computed(() => {
+      return {
+        class: {
+          'nav-link': dropdownVariant === 'nav-item' && props.navLink,
+          'dropdown-toggle': props.caret,
+          'dropdown-toggle-split': props.split,
+          disabled: props.disabled,
+          show: visible.value
+        },
+        'aria-expanded': visible.value,
+        ...(!props.disabled && { ...triggers }),
+      }
+    })
+
     onMounted(() => {
       if (togglerRef.value) {
         dropdownToggleRef.value = togglerRef.value.$el
@@ -140,45 +151,30 @@ const CDropdownToggle = defineComponent({
               ...triggers,
             }),
           )
-        : dropdownVariant === 'nav-item'
+        : dropdownVariant === 'nav-item' && props.navLink
         ? h(
             'a',
             {
-              active: props.active,
-              class: [
-                'nav-link',
-                className,
-                {
-                  show: visible.value,
-                },
-              ],
-              disabled: props.disabled,
               href: '#',
+              ...togglerProps.value,
+              role: 'button',
               ref: dropdownToggleRef,
-              ...triggers,
             },
             { default: () => slots.default && slots.default() },
           )
         : h(
             CButton,
             {
-              class: [
-                className,
-                {
-                  show: visible.value,
-                },
-              ],
-              active: props.active,
+              ...togglerProps.value,
               color: props.color,
+              component: props.component,
               disabled: props.disabled,
+              shape: props.shape,
+              size: props.size,
+              variant: props.variant,
               ref: (el) => {
                 togglerRef.value = el
               },
-              shape: props.shape,
-              size: props.size,
-              ...triggers,
-              ...(props.component === 'button' && { type: 'button' }),
-              variant: props.variant,
             },
             () =>
               props.split
