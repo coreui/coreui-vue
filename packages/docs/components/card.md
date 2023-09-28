@@ -71,7 +71,7 @@ Subtitles are managed by `<CCardSubtitle>` component. If the `<CCardTitle>` also
 <CCard style="width: 18rem">
   <CCardBody>
     <CCardTitle>Card title</CCardTitle>
-    <CCardSubtitle class="mb-2 text-muted">Card subtitle</CCardSubtitle>
+    <CCardSubtitle class="mb-2 text-body-secondary">Card subtitle</CCardSubtitle>
     <CCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
     <CCardLink href="#">Card link</CCardLink>
     <CCardLink href="#">Another link</CCardLink>
@@ -82,7 +82,7 @@ Subtitles are managed by `<CCardSubtitle>` component. If the `<CCardTitle>` also
 <CCard style="width: 18rem">
   <CCardBody>
     <CCardTitle>Card title</CCardTitle>
-    <CCardSubtitle class="mb-2 text-muted">Card subtitle</CCardSubtitle>
+    <CCardSubtitle class="mb-2 text-body-secondary">Card subtitle</CCardSubtitle>
     <CCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
     <CCardLink href="#">Card link</CCardLink>
     <CCardLink href="#">Another link</CCardLink>
@@ -295,7 +295,7 @@ Card headers can be styled by adding ex. `component="h5"`.
     <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
     <CButton href="#">Go somewhere</CButton>
   </CCardBody>
-  <CCardFooter class="text-muted">2 days ago</CCardFooter>
+  <CCardFooter class="text-body-secondary">2 days ago</CCardFooter>
 </CCard>
 :::
 ```vue
@@ -306,7 +306,7 @@ Card headers can be styled by adding ex. `component="h5"`.
     <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
     <CButton href="#">Go somewhere</CButton>
   </CCardBody>
-  <CCardFooter class="text-muted">2 days ago</CCardFooter>
+  <CCardFooter class="text-body-secondary">2 days ago</CCardFooter>
 </CCard>
 ```
 
@@ -638,14 +638,14 @@ Similar to headers and footers, cards can include top and bottom "image caps"—
   <CCardBody>
     <CCardTitle>Card title</CCardTitle>
     <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
-    <CCardText><small class="text-muted">Last updated 3 mins ago</small></CCardText>
+    <CCardText><small class="text-body-secondary">Last updated 3 mins ago</small></CCardText>
   </CCardBody>
 </CCard>
 <CCard class="mb-3">
   <CCardBody>
     <CCardTitle>Card title</CCardTitle>
     <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
-    <CCardText><small class="text-muted">Last updated 3 mins ago</small></CCardText>
+    <CCardText><small class="text-body-secondary">Last updated 3 mins ago</small></CCardText>
   </CCardBody>
     <CCardImage orientation="bottom" :src="$withBase('/images/vue.jpg')" />
 </CCard>
@@ -656,14 +656,14 @@ Similar to headers and footers, cards can include top and bottom "image caps"—
   <CCardBody>
     <CCardTitle>Card title</CCardTitle>
     <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
-    <CCardText><small class="text-muted">Last updated 3 mins ago</small></CCardText>
+    <CCardText><small class="text-body-secondary">Last updated 3 mins ago</small></CCardText>
   </CCardBody>
 </CCard>
 <CCard class="mb-3">
   <CCardBody>
     <CCardTitle>Card title</CCardTitle>
     <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
-    <CCardText><small class="text-muted">Last updated 3 mins ago</small></CCardText>
+    <CCardText><small class="text-body-secondary">Last updated 3 mins ago</small></CCardText>
   </CCardBody>
     <CCardImage orientation="bottom" src="/images/vue.jpg" />
 </CCard>
@@ -708,7 +708,7 @@ Using a combination of grid and utility classes, cards can be made horizontal in
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
-        <CCardText><small class="text-muted">Last updated 3 mins ago</small></CCardText>
+        <CCardText><small class="text-body-secondary">Last updated 3 mins ago</small></CCardText>
       </CCardBody>
     </CCol>
   </CRow>
@@ -724,7 +724,7 @@ Using a combination of grid and utility classes, cards can be made horizontal in
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
-        <CCardText><small class="text-muted">Last updated 3 mins ago</small></CCardText>
+        <CCardText><small class="text-body-secondary">Last updated 3 mins ago</small></CCardText>
       </CCardBody>
     </CCol>
   </CRow>
@@ -890,7 +890,7 @@ Use card groups to render cards as a single, attached element with equal width a
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
-      <CCardText><small class="text-muted">Last updated 3 mins ago</small></CCardText>
+      <CCardText><small class="text-body-secondary">Last updated 3 mins ago</small></CCardText>
     </CCardBody>
   </CCard>
   <CCard>
@@ -898,7 +898,7 @@ Use card groups to render cards as a single, attached element with equal width a
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This card has supporting text below as a natural lead-in to additional content.</CCardText>
-      <CCardText><small class="text-muted">Last updated 3 mins ago</small></CCardText>
+      <CCardText><small class="text-body-secondary">Last updated 3 mins ago</small></CCardText>
     </CCardBody>
   </CCard>
   <CCard>
@@ -906,7 +906,7 @@ Use card groups to render cards as a single, attached element with equal width a
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CCardText>
-      <CCardText><small class="text-muted">Last updated 3 mins ago</small></CCardText>
+      <CCardText><small class="text-body-secondary">Last updated 3 mins ago</small></CCardText>
     </CCardBody>
   </CCard>
 </CCardGroup>
@@ -918,7 +918,7 @@ Use card groups to render cards as a single, attached element with equal width a
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
-      <CCardText><small class="text-muted">Last updated 3 mins ago</small></CCardText>
+      <CCardText><small class="text-body-secondary">Last updated 3 mins ago</small></CCardText>
     </CCardBody>
   </CCard>
   <CCard>
@@ -926,7 +926,7 @@ Use card groups to render cards as a single, attached element with equal width a
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This card has supporting text below as a natural lead-in to additional content.</CCardText>
-      <CCardText><small class="text-muted">Last updated 3 mins ago</small></CCardText>
+      <CCardText><small class="text-body-secondary">Last updated 3 mins ago</small></CCardText>
     </CCardBody>
   </CCard>
   <CCard>
@@ -934,7 +934,7 @@ Use card groups to render cards as a single, attached element with equal width a
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CCardText>
-      <CCardText><small class="text-muted">Last updated 3 mins ago</small></CCardText>
+      <CCardText><small class="text-body-secondary">Last updated 3 mins ago</small></CCardText>
     </CCardBody>
   </CCard>
 </CCardGroup>
@@ -950,7 +950,7 @@ When using card groups with footers, their content will automatically line up.
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
     </CCardBody>
-    <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+    <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
   </CCard>
   <CCard>
     <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
@@ -958,7 +958,7 @@ When using card groups with footers, their content will automatically line up.
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This card has supporting text below as a natural lead-in to additional content.</CCardText>
     </CCardBody>
-    <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+    <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
   </CCard>
   <CCard>
     <CCardImage orientation="top" :src="$withBase('/images/vue.jpg')" />
@@ -966,7 +966,7 @@ When using card groups with footers, their content will automatically line up.
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CCardText>
     </CCardBody>
-    <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+    <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
   </CCard>
 </CCardGroup>
 :::
@@ -978,7 +978,7 @@ When using card groups with footers, their content will automatically line up.
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
     </CCardBody>
-    <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+    <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
   </CCard>
   <CCard>
     <CCardImage orientation="top" src="/images/vue.jpg" />
@@ -986,7 +986,7 @@ When using card groups with footers, their content will automatically line up.
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This card has supporting text below as a natural lead-in to additional content.</CCardText>
     </CCardBody>
-    <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+    <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
   </CCard>
   <CCard>
     <CCardImage orientation="top" src="/images/vue.jpg" />
@@ -994,7 +994,7 @@ When using card groups with footers, their content will automatically line up.
       <CCardTitle>Card title</CCardTitle>
       <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CCardText>
     </CCardBody>
-    <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+    <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
   </CCard>
 </CCardGroup>
 ```
@@ -1012,7 +1012,7 @@ Use the `CRow` component and set `:xs|sm|md|lg|xl|xxl="{ cols: * }"` property to
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
   <CCol xs>
@@ -1022,7 +1022,7 @@ Use the `CRow` component and set `:xs|sm|md|lg|xl|xxl="{ cols: * }"` property to
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
   <CCol xs>
@@ -1032,7 +1032,7 @@ Use the `CRow` component and set `:xs|sm|md|lg|xl|xxl="{ cols: * }"` property to
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
   <CCol xs>
@@ -1042,7 +1042,7 @@ Use the `CRow` component and set `:xs|sm|md|lg|xl|xxl="{ cols: * }"` property to
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
 </CRow>
@@ -1056,7 +1056,7 @@ Use the `CRow` component and set `:xs|sm|md|lg|xl|xxl="{ cols: * }"` property to
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
   <CCol xs>
@@ -1066,7 +1066,7 @@ Use the `CRow` component and set `:xs|sm|md|lg|xl|xxl="{ cols: * }"` property to
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
   <CCol xs>
@@ -1076,7 +1076,7 @@ Use the `CRow` component and set `:xs|sm|md|lg|xl|xxl="{ cols: * }"` property to
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
   <CCol xs>
@@ -1086,7 +1086,7 @@ Use the `CRow` component and set `:xs|sm|md|lg|xl|xxl="{ cols: * }"` property to
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
 </CRow>
@@ -1103,7 +1103,7 @@ Change it to `:md="{ cols: 3}"` and you'll see the fourth card wrap.
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
   <CCol xs>
@@ -1113,7 +1113,7 @@ Change it to `:md="{ cols: 3}"` and you'll see the fourth card wrap.
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
   <CCol xs>
@@ -1123,7 +1123,7 @@ Change it to `:md="{ cols: 3}"` and you'll see the fourth card wrap.
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
   <CCol xs>
@@ -1133,7 +1133,7 @@ Change it to `:md="{ cols: 3}"` and you'll see the fourth card wrap.
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
 </CRow>
@@ -1147,7 +1147,7 @@ Change it to `:md="{ cols: 3}"` and you'll see the fourth card wrap.
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
   <CCol xs>
@@ -1157,7 +1157,7 @@ Change it to `:md="{ cols: 3}"` and you'll see the fourth card wrap.
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
   <CCol xs>
@@ -1167,7 +1167,7 @@ Change it to `:md="{ cols: 3}"` and you'll see the fourth card wrap.
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
   <CCol xs>
@@ -1177,7 +1177,7 @@ Change it to `:md="{ cols: 3}"` and you'll see the fourth card wrap.
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
 </CRow>
@@ -1277,7 +1277,7 @@ Just like with card groups, card footers will automatically line up.
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
   <CCol xs>
@@ -1287,7 +1287,7 @@ Just like with card groups, card footers will automatically line up.
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This card has supporting text below as a natural lead-in to additional content.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
   <CCol xs>
@@ -1297,7 +1297,7 @@ Just like with card groups, card footers will automatically line up.
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
 </CRow>
@@ -1311,7 +1311,7 @@ Just like with card groups, card footers will automatically line up.
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
   <CCol xs>
@@ -1321,7 +1321,7 @@ Just like with card groups, card footers will automatically line up.
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This card has supporting text below as a natural lead-in to additional content.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
   <CCol xs>
@@ -1331,7 +1331,7 @@ Just like with card groups, card footers will automatically line up.
         <CCardTitle>Card title</CCardTitle>
         <CCardText>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</CCardText>
       </CCardBody>
-      <CCardFooter><small class="text-muted">Last updated 3 mins ago</small></CCardFooter>
+      <CCardFooter><small class="text-body-secondary">Last updated 3 mins ago</small></CCardFooter>
     </CCard>
   </CCol>
 </CRow>

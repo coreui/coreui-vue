@@ -19,7 +19,7 @@ Bind the dropdown's toggle and the dropdown menu inside `<CDropdown>`, or differ
 
 Here's how you can put them to work with either `<button>` elements:
 ::: demo
-<CDropdown direction="dropup">
+<CDropdown>
   <CDropdownToggle color="primary">Dropdown Button</CDropdownToggle>
   <CDropdownMenu>
     <CDropdownItem href="#">Action</CDropdownItem>
@@ -27,16 +27,6 @@ Here's how you can put them to work with either `<button>` elements:
     <CDropdownItem href="#">Something else here</CDropdownItem>
   </CDropdownMenu>
 </CDropdown>
-<div dir="rtl">
-<CDropdown direction="dropup">
-  <CDropdownToggle color="primary">Dropdown Button</CDropdownToggle>
-  <CDropdownMenu>
-    <CDropdownItem href="#">Action</CDropdownItem>
-    <CDropdownItem href="#">Another action</CDropdownItem>
-    <CDropdownItem href="#">Something else here</CDropdownItem>
-  </CDropdownMenu>
-</CDropdown>
-</div>
 :::
 ```vue
 <CDropdown>
@@ -630,7 +620,7 @@ In the following example we use `div` instead of `<CDropdownMenu>` to show `<CDr
 Place any freeform text within a dropdown menu with text. Note that you'll likely need additional sizing styles to constrain the menu width.
 
 ::: demo
-<div class="border rounded p-4 text-muted" style="max-width: 200px">
+<div class="border rounded p-4 text-body-secondary" style="max-width: 200px">
   <p>
     Some example text that's free-flowing within the dropdown menu.
   </p>

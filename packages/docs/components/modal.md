@@ -713,7 +713,7 @@ Modals have three optional sizes, available via modifier classes to be placed on
     </tr>
     <tr>
       <td>Default</td>
-      <td class="text-muted">None</td>
+      <td class="text-body-secondary">None</td>
       <td><code>500px</code></td>
     </tr>
     <tr>

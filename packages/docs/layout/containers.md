@@ -49,7 +49,7 @@ The table below illustrates how each container's `max-width` compares to the ori
   <tbody>
     <tr>
       <th scope="row" class="fw-normal"><code>&lt;CContainer&gt;</code></th>
-      <td class="text-muted">100%</td>
+      <td class="text-body-secondary">100%</td>
       <td>540px</td>
       <td>720px</td>
       <td>960px</td>
@@ -58,7 +58,7 @@ The table below illustrates how each container's `max-width` compares to the ori
     </tr>
     <tr>
       <th scope="row" class="fw-normal"><code>&lt;CContainer sm&gt;</code></th>
-      <td class="text-muted">100%</td>
+      <td class="text-body-secondary">100%</td>
       <td>540px</td>
       <td>720px</td>
       <td>960px</td>
@@ -67,8 +67,8 @@ The table below illustrates how each container's `max-width` compares to the ori
     </tr>
     <tr>
       <th scope="row" class="fw-normal"><code>&lt;CContainer md&gt;</code></th>
-      <td class="text-muted">100%</td>
-      <td class="text-muted">100%</td>
+      <td class="text-body-secondary">100%</td>
+      <td class="text-body-secondary">100%</td>
       <td>720px</td>
       <td>960px</td>
       <td>1140px</td>
@@ -76,39 +76,39 @@ The table below illustrates how each container's `max-width` compares to the ori
     </tr>
     <tr>
       <th scope="row" class="fw-normal"><code>&lt;CContainer lg&gt;</code></th>
-      <td class="text-muted">100%</td>
-      <td class="text-muted">100%</td>
-      <td class="text-muted">100%</td>
+      <td class="text-body-secondary">100%</td>
+      <td class="text-body-secondary">100%</td>
+      <td class="text-body-secondary">100%</td>
       <td>960px</td>
       <td>1140px</td>
       <td>1320px</td>
     </tr>
     <tr>
       <th scope="row" class="fw-normal"><code>&lt;CContainer xl&gt;</code></th>
-      <td class="text-muted">100%</td>
-      <td class="text-muted">100%</td>
-      <td class="text-muted">100%</td>
-      <td class="text-muted">100%</td>
+      <td class="text-body-secondary">100%</td>
+      <td class="text-body-secondary">100%</td>
+      <td class="text-body-secondary">100%</td>
+      <td class="text-body-secondary">100%</td>
       <td>1140px</td>
       <td>1320px</td>
     </tr>
     <tr>
       <th scope="row" class="fw-normal"><code>&lt;CContainer xxl&gt;</code></th>
-      <td class="text-muted">100%</td>
-      <td class="text-muted">100%</td>
-      <td class="text-muted">100%</td>
-      <td class="text-muted">100%</td>
-      <td class="text-muted">100%</td>
+      <td class="text-body-secondary">100%</td>
+      <td class="text-body-secondary">100%</td>
+      <td class="text-body-secondary">100%</td>
+      <td class="text-body-secondary">100%</td>
+      <td class="text-body-secondary">100%</td>
       <td>1320px</td>
     </tr>
     <tr>
       <th scope="row" class="fw-normal"><code>&lt;CContainer fluid&gt;</code></th>
-      <td class="text-muted">100%</td>
-      <td class="text-muted">100%</td>
-      <td class="text-muted">100%</td>
-      <td class="text-muted">100%</td>
-      <td class="text-muted">100%</td>
-      <td class="text-muted">100%</td>
+      <td class="text-body-secondary">100%</td>
+      <td class="text-body-secondary">100%</td>
+      <td class="text-body-secondary">100%</td>
+      <td class="text-body-secondary">100%</td>
+      <td class="text-body-secondary">100%</td>
+      <td class="text-body-secondary">100%</td>
     </tr>
   </tbody>
 </table>
