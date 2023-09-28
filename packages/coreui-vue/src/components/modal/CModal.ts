@@ -52,6 +52,15 @@ const CModal = defineComponent({
      */
     contentClassName: String,
     /**
+     * Puts the focus on the modal when shown.
+     *
+     * @since v5.0.0-alpha.1
+     */
+    focus: {
+      type: Boolean,
+      default: true,
+    },
+    /**
      * Set modal to covers the entire user viewport
      *
      * @values boolean, 'sm', 'md', 'lg', 'xl', 'xxl'
@@ -124,6 +133,7 @@ const CModal = defineComponent({
     'show',
   ],
   setup(props, { slots, attrs, emit }) {
+    const activeElementRef = ref()
     const modalRef = ref()
     const modalContentRef = ref()
     const visible = ref(props.visible)
@@ -136,6 +146,7 @@ const CModal = defineComponent({
     )
 
     const handleEnter = (el: RendererElement, done: () => void) => {
+      activeElementRef.value = document.activeElement as HTMLElement | null
       executeAfterTransition(() => done(), el as HTMLElement)
       document.body.classList.add('modal-open')
       document.body.style.overflow = 'hidden'
@@ -148,6 +159,7 @@ const CModal = defineComponent({
     }
 
     const handleAfterEnter = () => {
+      props.focus && modalRef.value?.focus()
       window.addEventListener('mousedown', handleMouseDown)
       window.addEventListener('keyup', handleKeyUp)
     }
@@ -166,6 +178,7 @@ const CModal = defineComponent({
     }
 
     const handleAfterLeave = (el: RendererElement) => {
+      activeElementRef.value?.focus()
       window.removeEventListener('mousedown', handleMouseDown)
       window.removeEventListener('keyup', handleKeyUp)
       el.style.display = 'none'
