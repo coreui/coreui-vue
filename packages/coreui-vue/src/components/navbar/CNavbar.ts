@@ -74,13 +74,13 @@ const CNavbar = defineComponent({
             'navbar',
             {
               [`bg-${props.color}`]: props.color,
-              [`navbar-${props.colorScheme}`]: props.colorScheme,
               [typeof props.expand === 'boolean'
                 ? 'navbar-expand'
                 : `navbar-expand-${props.expand}`]: props.expand,
             },
             props.placement,
           ],
+          ...(props.colorScheme && { 'data-coreui-theme': props.colorScheme }),
         },
         props.container
           ? h(
