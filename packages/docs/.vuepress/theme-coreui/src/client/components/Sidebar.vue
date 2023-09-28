@@ -1,5 +1,5 @@
 <template>
-  <CSidebar position="fixed" size="lg" class="docs-sidebar elevation-0 border-end ps-xl-4">
+  <CSidebar position="fixed" size="lg" class="docs-sidebar border-end px-xl-4 elevation-0">
     <CSidebarBrand class="justify-content-start ps-3">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -17,8 +17,8 @@
         </g>
       </svg>
     </CSidebarBrand>
-    <div class="text-body-secondary ms-3 me-5 mb-2 small fw-semibold">Framework:</div>
-    <CDropdown class="ms-3 me-5 mb-4">
+    <div class="text-body-secondary mx-3 mb-2 small fw-semibold">Framework:</div>
+    <CDropdown class="mx-3 mb-4">
       <CDropdownToggle color="primary" variant="outline"> Vue.js </CDropdownToggle>
       <CDropdownMenu class="w-100">
         <CDropdownItem href="https://coreui.io/angular/docs/4.0/" target="_blank">
