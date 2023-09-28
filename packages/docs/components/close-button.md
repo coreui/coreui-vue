@@ -27,17 +27,17 @@ Disabled close buttons change their `opacity`. We've also applied `pointer-event
 <CCloseButton disabled/>
 ```
 
-## White variant
+## Dark variant
 
-Change the default `<CCloseButton>` to be white with the `white` boolean property.
+Add `dark` boolean property to the `<CCloseButton>`, to invert the close button. This uses the filter property to invert the background-image without overriding its value.
 
 ::: demo-dark
-<CCloseButton white/>
-<CCloseButton white disabled/>
+<CCloseButton dark/>
+<CCloseButton dark disabled/>
 :::
 ```vue
-<CCloseButton white/>
-<CCloseButton white disabled/>
+<CCloseButton dark/>
+<CCloseButton dark disabled/>
 ```
 
 ## API

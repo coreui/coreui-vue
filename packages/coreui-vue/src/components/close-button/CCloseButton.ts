@@ -4,6 +4,10 @@ export const CCloseButton = defineComponent({
   name: 'CCloseButton',
   props: {
     /**
+     * Invert the default color.
+     */
+    dark: Boolean,
+    /**
      * Toggle the disabled state for the component.
      */
     disabled: Boolean,
@@ -39,6 +43,7 @@ export const CCloseButton = defineComponent({
         ],
         'aria-label': 'Close',
         disabled: props.disabled,
+        ...(props.dark && { 'data-coreui-theme': 'dark' }),
         onClick: handleClick,
       })
   },
