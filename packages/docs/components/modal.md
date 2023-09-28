@@ -43,9 +43,13 @@ Toggle a working modal demo by clicking the button below. It will slide down and
 
 ::: demo
 <CButton color="primary" @click="() => { visibleLiveDemo = true }">Launch demo modal</CButton>
-<CModal :visible="visibleLiveDemo" @close="() => { visibleLiveDemo = false }">
+<CModal 
+  :visible="visibleLiveDemo"
+  @close="() => { visibleLiveDemo = false }"
+  aria-labelledby="LiveDemoExampleLabel"
+>
   <CModalHeader>
-    <CModalTitle>Modal title</CModalTitle>
+    <CModalTitle id="LiveDemoExampleLabel">Modal title</CModalTitle>
   </CModalHeader>
   <CModalBody>Woohoo, you're reading this text in a modal!</CModalBody>
   <CModalFooter>
@@ -59,9 +63,13 @@ Toggle a working modal demo by clicking the button below. It will slide down and
 ``` vue
 <template>
   <CButton color="primary" @click="() => { visibleLiveDemo = true }">Launch demo modal</CButton>
-  <CModal :visible="visibleLiveDemo" @close="() => { visibleLiveDemo = false }">
+  <CModal 
+    :visible="visibleLiveDemo"
+    @close="() => { visibleLiveDemo = false }"
+    aria-labelledby="LiveDemoExampleLabel"
+  >
     <CModalHeader>
-      <CModalTitle>Modal title</CModalTitle>
+      <CModalTitle id="LiveDemoExampleLabel">Modal title</CModalTitle>
     </CModalHeader>
     <CModalBody>Woohoo, you're reading this text in a modal!</CModalBody>
     <CModalFooter>
@@ -88,9 +96,14 @@ If you set `backdrop` property to `static`, your modal will behave as though the
 
 ::: demo
 <CButton color="primary" @click="() => { visibleStaticBackdropDemo = true }">Launch static backdrop modal</CButton>
-<CModal backdrop="static" :visible="visibleStaticBackdropDemo" @close="() => { visibleStaticBackdropDemo = false }">
+<CModal 
+  backdrop="static"
+  :visible="visibleStaticBackdropDemo"
+  @close="() => { visibleStaticBackdropDemo = false }" 
+  aria-labelledby="StaticBackdropExampleLabel"
+>
   <CModalHeader>
-    <CModalTitle>Modal title</CModalTitle>
+    <CModalTitle id="StaticBackdropExampleLabel">Modal title</CModalTitle>
   </CModalHeader>
   <CModalBody>Woohoo, you're reading this text in a modal!</CModalBody>
   <CModalFooter>
@@ -104,9 +117,14 @@ If you set `backdrop` property to `static`, your modal will behave as though the
 ``` vue
 <template>
   <CButton color="primary" @click="() => { visibleStaticBackdropDemo = true }">Launch demo modal</CButton>
-  <CModal backdrop="static" :visible="visibleStaticBackdropDemo" @close="() => { visibleStaticBackdropDemo = false }">
+  <CModal 
+    backdrop="static"
+    :visible="visibleStaticBackdropDemo"
+    @close="() => { visibleStaticBackdropDemo = false }" 
+    aria-labelledby="StaticBackdropExampleLabel"
+  >
     <CModalHeader>
-      <CModalTitle>Modal title</CModalTitle>
+      <CModalTitle id="StaticBackdropExampleLabel">Modal title</CModalTitle>
     </CModalHeader>
     <CModalBody>Woohoo, you're reading this text in a modal!</CModalBody>
     <CModalFooter>
@@ -134,9 +152,13 @@ When modals become too long for the user's viewport or device, they scroll indep
 
 ::: demo
 <CButton color="primary" @click="() => { visibleScrollingLongContentDemo = true }">Launch static backdrop modal</CButton>
-<CModal :visible="visibleScrollingLongContentDemo" @close="() => { visibleScrollingLongContentDemo = false }">
+<CModal 
+  :visible="visibleScrollingLongContentDemo"
+  @close="() => { visibleScrollingLongContentDemo = false }"
+  aria-labelledby="ScrollingLongContentExampleLabel"
+>
   <CModalHeader>
-    <CModalTitle>Modal title</CModalTitle>
+   <CModalTitle id="ScrollingLongContentExampleLabel">Modal title</CModalTitle>
   </CModalHeader>
   <CModalBody>
     <p>
@@ -229,9 +251,13 @@ When modals become too long for the user's viewport or device, they scroll indep
 ``` vue
 <template>
   <CButton color="primary" @click="() => { visibleScrollingLongContentDemo = true }">Launch demo modal</CButton>
-  <CModal :visible="visibleScrollingLongContentDemo" @close="() => { visibleScrollingLongContentDemo = false }">
+  <CModal 
+    :visible="visibleScrollingLongContentDemo"
+    @close="() => { visibleScrollingLongContentDemo = false }"
+    aria-labelledby="ScrollingLongContentExampleLabel"
+  >
     <CModalHeader>
-      <CModalTitle>Modal title</CModalTitle>
+     <CModalTitle id="ScrollingLongContentExampleLabel">Modal title</CModalTitle>
     </CModalHeader>
     <CModalBody>
       <p>
@@ -336,9 +362,14 @@ You can also create a scrollable modal that allows scroll the modal body by addi
 
 ::: demo
 <CButton color="primary" @click="() => { visibleScrollableDemo = true }">Launch static backdrop modal</CButton>
-<CModal scrollable :visible="visibleScrollableDemo" @close="() => { visibleScrollableDemo = false }">
+<CModal
+  scrollable
+  :visible="visibleScrollableDemo"
+  @close="() => { visibleScrollableDemo = false }"
+  aria-labelledby="ScrollingLongContentExampleLabel2"
+>
   <CModalHeader>
-    <CModalTitle>Modal title</CModalTitle>
+    <CModalTitle id="ScrollingLongContentExampleLabel2">Modal title</CModalTitle>
   </CModalHeader>
   <CModalBody>
     <p>
@@ -431,9 +462,14 @@ You can also create a scrollable modal that allows scroll the modal body by addi
 ``` vue
 <template>
   <CButton color="primary" @click="() => { visibleScrollableDemo = true }">Launch demo modal</CButton>
-  <CModal scrollable :visible="visibleScrollableDemo" @close="() => { visibleScrollableDemo = false }">
+  <CModal
+    scrollable
+    :visible="visibleScrollableDemo"
+    @close="() => { visibleScrollableDemo = false }"
+    aria-labelledby="ScrollingLongContentExampleLabel2"
+  >
     <CModalHeader>
-      <CModalTitle>Modal title</CModalTitle>
+      <CModalTitle id="ScrollingLongContentExampleLabel2">Modal title</CModalTitle>
     </CModalHeader>
     <CModalBody>
       <p>
@@ -540,9 +576,14 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
 
 ::: demo
 <CButton color="primary" @click="() => { visibleVerticallyCenteredDemo = true }">Vertically centered modal</CButton>
-<CModal alignment="center" :visible="visibleVerticallyCenteredDemo" @close="() => { visibleVerticallyCenteredDemo = false }">
+<CModal
+  alignment="center"
+  :visible="visibleVerticallyCenteredDemo"
+  @close="() => { visibleVerticallyCenteredDemo = false }"
+  aria-labelledby="VerticallyCenteredExample"
+>
   <CModalHeader>
-    <CModalTitle>Modal title</CModalTitle>
+    <CModalTitle id="VerticallyCenteredExample">Modal title</CModalTitle>
   </CModalHeader>
   <CModalBody>
     Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
@@ -558,9 +599,14 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
 ``` vue
 <template>
   <CButton color="primary" @click="() => { visibleVerticallyCenteredDemo = true }">Launch demo modal</CButton>
-  <CModal alignment="center" :visible="visibleVerticallyCenteredDemo" @close="() => { visibleVerticallyCenteredDemo = false }">
+  <CModal
+    alignment="center"
+    :visible="visibleVerticallyCenteredDemo"
+    @close="() => { visibleVerticallyCenteredDemo = false }"
+    aria-labelledby="VerticallyCenteredExample"
+  >
     <CModalHeader>
-      <CModalTitle>Modal title</CModalTitle>
+      <CModalTitle id="VerticallyCenteredExample">Modal title</CModalTitle>
     </CModalHeader>
     <CModalBody>
       Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
@@ -586,9 +632,15 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
 
 ::: demo
 <CButton color="primary" @click="() => { visibleVerticallyCenteredScrollableDemo = true }">Vertically centered scrollable modal</CButton>
-<CModal alignment="center" scrollable :visible="visibleVerticallyCenteredScrollableDemo" @close="() => { visibleVerticallyCenteredScrollableDemo = false }">
+<CModal 
+  alignment="center"
+  scrollable
+  :visible="visibleVerticallyCenteredScrollableDemo"
+  @close="() => { visibleVerticallyCenteredScrollableDemo = false }"
+  aria-labelledby="VerticallyCenteredExample2"
+>
   <CModalHeader>
-    <CModalTitle>Modal title</CModalTitle>
+    <CModalTitle id="VerticallyCenteredExample2">Modal title</CModalTitle>
   </CModalHeader>
   <CModalBody>
     Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
@@ -604,9 +656,15 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
 ``` vue
 <template>
   <CButton color="primary" @click="() => { visibleVerticallyCenteredScrollableDemo = true }">Vertically centered scrollable modal</CButton>
-  <CModal alignment="center" scrollable :visible="visibleVerticallyCenteredScrollableDemo" @close="() => { visibleVerticallyCenteredScrollableDemo = false }">
+  <CModal 
+    alignment="center"
+    scrollable
+    :visible="visibleVerticallyCenteredScrollableDemo"
+    @close="() => { visibleVerticallyCenteredScrollableDemo = false }"
+    aria-labelledby="VerticallyCenteredExample2"
+  >
     <CModalHeader>
-      <CModalTitle>Modal title</CModalTitle>
+      <CModalTitle id="VerticallyCenteredExample2">Modal title</CModalTitle>
     </CModalHeader>
     <CModalBody>
       Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
@@ -635,10 +693,14 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
 `<CTooltips>` and `<CPopovers>` can be placed within modals as needed. When modals are closed, any tooltips and popovers within are also automaticallyed.
 
 ::: demo
-<CButton color="primary" @click="() => { tooltipsAndPopoversDemo = true }">Launch demo modal</CButton>
-<CModal :visible="tooltipsAndPopoversDemo" @close="() => { tooltipsAndPopoversDemo = false }">
+<CButton color="primary" @click="() => { visibleTooltipsAndPopoversDemo = true }">Launch demo modal</CButton>
+<CModal
+  :visible="visibleTooltipsAndPopoversDemo"
+  @close="() => { visibleTooltipsAndPopoversDemo = false }"
+  aria-labelledby="TooltipsAndPopoverExample"
+>
   <CModalHeader>
-    <CModalTitle>Modal title</CModalTitle>
+    <CModalTitle id="TooltipsAndPopoverExample">Modal title</CModalTitle>
   </CModalHeader>
   <CModalBody>
     <h5>Popover in a modal</h5>
@@ -650,7 +712,7 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
     </p>
   </CModalBody>
   <CModalFooter>
-    <CButton color="secondary" @click="() => { tooltipsAndPopoversDemo = false }">
+    <CButton color="secondary" @click="() => { visibleTooltipsAndPopoversDemo = false }">
       Close
     </CButton>
     <CButton color="primary">Save changes</CButton>
@@ -659,10 +721,14 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
 :::
 ``` vue
 <template>
-  <CButton color="primary" @click="() => { tooltipsAndPopoversDemo = true }">Launch demo modal</CButton>
-  <CModal :visible="tooltipsAndPopoversDemo" @close="() => { tooltipsAndPopoversDemo = false }">
+  <CButton color="primary" @click="() => { visibleTooltipsAndPopoversDemo = true }">Launch demo modal</CButton>
+  <CModal
+    :visible="visibleTooltipsAndPopoversDemo"
+    @close="() => { visibleTooltipsAndPopoversDemo = false }"
+    aria-labelledby="TooltipsAndPopoverExample"
+  >
     <CModalHeader>
-      <CModalTitle>Modal title</CModalTitle>
+      <CModalTitle id="TooltipsAndPopoverExample">Modal title</CModalTitle>
     </CModalHeader>
     <CModalBody>
       <h5>Popover in a modal</h5>
@@ -674,7 +740,7 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
       </p>
     </CModalBody>
     <CModalFooter>
-      <CButton color="secondary" @click="() => { tooltipsAndPopoversDemo = false }">
+      <CButton color="secondary" @click="() => { visibleTooltipsAndPopoversDemo = false }">
         Close
       </CButton>
       <CButton color="primary">Save changes</CButton>
@@ -685,13 +751,142 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
   export default {
     data() {
       return { 
-        tooltipsAndPopoversDemo: false,
+        visibleTooltipsAndPopoversDemo: false,
       }
     }
   }
 </script>
 ```
 
+### Toggle between modals
+
+Toggle between multiple modals with some clever placement of the `visible` props. **Please note multiple modals cannot be opened at the same time** — this method simply toggles between two separate modals.
+
+::: demo
+<CButton color="primary" @click="() => { visibleToggleBetweenModalsDemo1 = true }">Open first modal</CButton>
+<CModal
+  :visible="visibleToggleBetweenModalsDemo1"
+  @close="() => { visibleToggleBetweenModalsDemo1 = false }"
+  aria-labelledby="ToggleBetweenModalsExample1"
+>
+  <CModalHeader>
+    <CModalTitle id="ToggleBetweenModalsExample1">Modal 1 title</CModalTitle>
+  </CModalHeader>
+  <CModalBody>
+    <p>Show a second modal and hide this one with the button below.</p>
+  </CModalBody>
+  <CModalFooter>
+    <CButton 
+      color="primary"
+      @click="() => { 
+        visibleToggleBetweenModalsDemo1 = false
+        visibleToggleBetweenModalsDemo2 = true
+      }"
+    >Open second modal</CButton>
+  </CModalFooter>
+</CModal>
+<CModal
+  :visible="visibleToggleBetweenModalsDemo2"
+  @close="() => {
+    visibleToggleBetweenModalsDemo1 = true
+    visibleToggleBetweenModalsDemo2 = false
+  }"
+  aria-labelledby="ToggleBetweenModalsExample2"
+>
+  <CModalHeader>
+    <CModalTitle id="ToggleBetweenModalsExample2">Modal 2 title</CModalTitle>
+  </CModalHeader>
+  <CModalBody>
+    <p>Hide this modal and show the first with the button below.</p>
+  </CModalBody>
+  <CModalFooter>
+    <CButton 
+      color="primary"
+      @click="() => { 
+        visibleToggleBetweenModalsDemo1 = true
+        visibleToggleBetweenModalsDemo2 = false
+      }"
+    >Back to first</CButton>
+  </CModalFooter>
+</CModal>
+:::
+```vue
+<template>
+  <CButton color="primary" @click="() => { visibleToggleBetweenModalsDemo1 = true }">Open first modal</CButton>
+  <CModal
+    :visible="visibleToggleBetweenModalsDemo1"
+    @close="() => { visibleToggleBetweenModalsDemo1 = false }"
+    aria-labelledby="ToggleBetweenModalsExample1"
+  >
+    <CModalHeader>
+      <CModalTitle id="ToggleBetweenModalsExample1">Modal 1 title</CModalTitle>
+    </CModalHeader>
+    <CModalBody>
+      <p>Show a second modal and hide this one with the button below.</p>
+    </CModalBody>
+    <CModalFooter>
+      <CButton 
+        color="primary"
+        @click="() => { 
+          visibleToggleBetweenModalsDemo1 = false
+          visibleToggleBetweenModalsDemo2 = true
+        }"
+      >Open second modal</CButton>
+    </CModalFooter>
+  </CModal>
+  <CModal
+    :visible="visibleToggleBetweenModalsDemo2"
+    @close="() => {
+      visibleToggleBetweenModalsDemo1 = true
+      visibleToggleBetweenModalsDemo2 = false
+    }"
+    aria-labelledby="ToggleBetweenModalsExample2"
+  >
+    <CModalHeader>
+      <CModalTitle id="ToggleBetweenModalsExample2">Modal 2 title</CModalTitle>
+    </CModalHeader>
+    <CModalBody>
+      <p>Hide this modal and show the first with the button below.</p>
+    </CModalBody>
+    <CModalFooter>
+      <CButton 
+        color="primary"
+        @click="() => { 
+          visibleToggleBetweenModalsDemo1 = true
+          visibleToggleBetweenModalsDemo2 = false
+        }"
+      >Back to first</CButton>
+    </CModalFooter>
+  </CModal>
+</template>
+<script>
+  export default {
+    data() {
+      return { 
+        visibleToggleBetweenModalsDemo1: false,
+        visibleToggleBetweenModalsDemo2: false,
+      }
+    }
+  }
+</script>
+```
+
+### Change animation
+
+The variable `$modal-fade-transform` determines the transform state of React Modal component before the modal fade-in animation, whereas the variable `$modal-show-transform` determines the transform state of Modal component after the modal fade-in animation.
+If you want a zoom-in animation, for example, set `$modal-fade-transform: scale(.8)`.
+
+### Remove animation
+
+For modals that simply appear rather than fade into view, set `transition` to `false`.
+
+```vue
+<CModal transition={false}>...</CModal>
+```
+
+### Accessibility
+
+Be sure to add `aria-labelledby="..."`, referencing the modal title, to `<CModal />` Additionally, you may give a description of your modal dialog with `aria-describedby` on `<CModal>`. Note that you don’t need to add `role="dialog` since we already add it.
 
 ## Optional sizes
 
@@ -733,25 +928,40 @@ Modals have three optional sizes, available via modifier classes to be placed on
 <CButton color="primary" @click="() => { xlDemo = true }">Extra large modal</CButton>
 <CButton color="primary" @click="() => { lgDemo = true }">Large modal</CButton>
 <CButton color="primary" @click="() => { smDemo = true }">Small modal</CButton>
-<CModal size="xl" :visible="xlDemo" @close="() => { xlDemo = false }">
+<CModal
+  size="xl"
+  :visible="xlDemo"
+  @close="() => { xlDemo = false }"
+  aria-labelledby="OptionalSizesExample1"
+>
   <CModalHeader>
-    <CModalTitle>Extra large modal</CModalTitle>
+    <CModalTitle id="OptionalSizesExample1">Extra large modal</CModalTitle>
   </CModalHeader>
   <CModalBody>
     ...
   </CModalBody>
 </CModal>
-<CModal size="lg" :visible="lgDemo" @close="() => { lgDemo = false }">
+<CModal 
+  size="lg"
+  :visible="lgDemo"
+  @close="() => { lgDemo = false }"
+  aria-labelledby="OptionalSizesExample2"
+>
   <CModalHeader>
-    <CModalTitle>Large modal</CModalTitle>
+    <CModalTitle id="OptionalSizesExample2">Large modal</CModalTitle>
   </CModalHeader>
   <CModalBody>
     ...
   </CModalBody>
 </CModal>
-<CModal size="sm" :visible="smDemo" @close="() => { smDemo = false }">
+<CModal
+  size="sm" 
+  :visible="smDemo" 
+  @close="() => { smDemo = false }"
+  aria-labelledby="OptionalSizesExample3"
+>
   <CModalHeader>
-    <CModalTitle>Small modal</CModalTitle>
+    <CModalTitle id="OptionalSizesExample3">Small modal</CModalTitle>
   </CModalHeader>
   <CModalBody>
     ...
@@ -763,25 +973,40 @@ Modals have three optional sizes, available via modifier classes to be placed on
   <CButton color="primary" @click="() => { xlDemo = true }">Extra large modal</CButton>
   <CButton color="primary" @click="() => { lgDemo = true }">Large modal</CButton>
   <CButton color="primary" @click="() => { smDemo = true }">Small modal</CButton>
-  <CModal size="xl" :visible="xlDemo" @close="() => { xlDemo = false }">
+  <CModal
+    size="xl"
+    :visible="xlDemo"
+    @close="() => { xlDemo = false }"
+    aria-labelledby="OptionalSizesExample1"
+  >
     <CModalHeader>
-      <CModalTitle>Extra large modal</CModalTitle>
+      <CModalTitle id="OptionalSizesExample1">Extra large modal</CModalTitle>
     </CModalHeader>
     <CModalBody>
       ...
     </CModalBody>
   </CModal>
-  <CModal size="lg" :visible="lgDemo" @close="() => { lgDemo = false }">
-    <CModalHeader>
-      <CModalTitle>Large modal</CModalTitle>
-    </CModalHeader>
+  <CModal
+    size="lg"
+    :visible="lgDemo"
+    @close="() => { lgDemo = false }"
+    aria-labelledby="OptionalSizesExample2"
+  >
+  <CModalHeader>
+    <CModalTitle id="OptionalSizesExample2">Large modal</CModalTitle>
+  </CModalHeader>
     <CModalBody>
       ...
     </CModalBody>
   </CModal>
-  <CModal size="sm" :visible="smDemo" @close="() => { smDemo = false }">
+  <CModal
+    size="sm" 
+    :visible="smDemo" 
+    @close="() => { smDemo = false }"
+    aria-labelledby="OptionalSizesExample3"
+  >
     <CModalHeader>
-      <CModalTitle>Small modal</CModalTitle>
+      <CModalTitle id="OptionalSizesExample3">Small modal</CModalTitle>
     </CModalHeader>
     <CModalBody>
       ...
@@ -847,49 +1072,79 @@ Another override is the option to pop up a modal that covers the user viewport, 
 <CButton color="primary" @click="() => { fullscreenLgDemo = true }">Full screen below lg</CButton>
 <CButton color="primary" @click="() => { fullscreenXlDemo = true }">Full screen below xl</CButton>
 <CButton color="primary" @click="() => { fullscreenXxlDemo = true }">Full screen below xxl</CButton>
-<CModal fullscreen :visible="fullscreenDemo" @close="() => { fullscreenDemo = false }">
+<CModal
+  fullscreen
+  :visible="fullscreenDemo"
+  @close="() => { fullscreenDemo = false }"
+  aria-labelledby="FullscreenExample1"
+>
   <CModalHeader>
-    <CModalTitle>Full screen</CModalTitle>
+    <CModalTitle id="FullscreenExample1">Full screen</CModalTitle>
   </CModalHeader>
   <CModalBody>
     ...
   </CModalBody>
 </CModal>
-<CModal fullscreen="sm" :visible="fullscreenSmDemo" @close="() => { fullscreenSmDemo = false }">
+<CModal
+  fullscreen="sm"
+  :visible="fullscreenSmDemo"
+  @close="() => { fullscreenSmDemo = false }"
+  aria-labelledby="FullscreenExample2"
+>
   <CModalHeader>
-    <CModalTitle>Full screen below sm</CModalTitle>
+    <CModalTitle id="FullscreenExample2">Full screen below sm</CModalTitle>
   </CModalHeader>
   <CModalBody>
     ...
   </CModalBody>
 </CModal>
-<CModal fullscreen="md" :visible="fullscreenMdDemo" @close="() => { fullscreenMdDemo = false }">
+<CModal
+  fullscreen="md"
+  :visible="fullscreenMdDemo"
+  @close="() => { fullscreenMdDemo = false }"
+  aria-labelledby="FullscreenExample3"
+>
   <CModalHeader>
-    <CModalTitle>Full screen below md</CModalTitle>
+    <CModalTitle id="FullscreenExample3">Full screen below md</CModalTitle>
   </CModalHeader>
   <CModalBody>
     ...
   </CModalBody>
 </CModal>
-<CModal fullscreen="lg" :visible="fullscreenLgDemo" @close="() => { fullscreenLgDemo = false }">
+<CModal
+  fullscreen="lg"
+  :visible="fullscreenLgDemo"
+  @close="() => { fullscreenLgDemo = false }"
+  aria-labelledby="FullscreenExample4"
+>
   <CModalHeader>
-    <CModalTitle>Full screen below lg</CModalTitle>
+    <CModalTitle id="FullscreenExample4">Full screen below lg</CModalTitle>
   </CModalHeader>
   <CModalBody>
     ...
   </CModalBody>
 </CModal>
-<CModal fullscreen="xl" :visible="fullscreenXlDemo" @close="() => { fullscreenXlDemo = false }">
+<CModal
+  fullscreen="xl"
+  :visible="fullscreenXlDemo"
+  @close="() => { fullscreenXlDemo = false }"
+  aria-labelledby="FullscreenExample5"
+>
   <CModalHeader>
-    <CModalTitle>Full screen below xl</CModalTitle>
+    <CModalTitle id="FullscreenExample5">Full screen below xl</CModalTitle>
   </CModalHeader>
   <CModalBody>
     ...
   </CModalBody>
 </CModal>
-<CModal fullscreen="xxl" :visible="fullscreenXxlDemo" @close="() => { fullscreenXxlDemo = false }">
+<CModal
+  fullscreen="xxl"
+  :visible="fullscreenXxlDemo"
+  @close="() => { fullscreenXxlDemo = false }"
+  aria-labelledby="FullscreenExample6"
+>
   <CModalHeader>
-    <CModalTitle>Full screen below xxl</CModalTitle>
+    <CModalTitle id="FullscreenExample6">Full screen below xxl</CModalTitle>
   </CModalHeader>
   <CModalBody>
     ...
@@ -904,49 +1159,79 @@ Another override is the option to pop up a modal that covers the user viewport, 
   <CButton color="primary" @click="() => { fullscreenLgDemo = true }">Full screen below lg</CButton>
   <CButton color="primary" @click="() => { fullscreenXlDemo = true }">Full screen below xl</CButton>
   <CButton color="primary" @click="() => { fullscreenXxlDemo = true }">Full screen below xxl</CButton>
-  <CModal fullscreen :visible="fullscreenDemo" @close="() => { fullscreenDemo = false }">
+  <CModal
+    fullscreen
+    :visible="fullscreenDemo"
+    @close="() => { fullscreenDemo = false }"
+    aria-labelledby="FullscreenExample1"
+  >
     <CModalHeader>
-      <CModalTitle>Full screen</CModalTitle>
+      <CModalTitle id="FullscreenExample1">Full screen</CModalTitle>
     </CModalHeader>
     <CModalBody>
       ...
     </CModalBody>
   </CModal>
-  <CModal fullscreen="sm" :visible="fullscreenSmDemo" @close="() => { fullscreenSmDemo = false }">
+  <CModal
+    fullscreen="sm"
+    :visible="fullscreenSmDemo"
+    @close="() => { fullscreenSmDemo = false }"
+    aria-labelledby="FullscreenExample2"
+  >
     <CModalHeader>
-      <CModalTitle>Full screen below sm</CModalTitle>
+      <CModalTitle id="FullscreenExample2">Full screen below sm</CModalTitle>
     </CModalHeader>
     <CModalBody>
       ...
     </CModalBody>
   </CModal>
-  <CModal fullscreen="md" :visible="fullscreenMdDemo" @close="() => { fullscreenMdDemo = false }">
+  <CModal
+    fullscreen="md"
+    :visible="fullscreenMdDemo"
+    @close="() => { fullscreenMdDemo = false }"
+    aria-labelledby="FullscreenExample3"
+  >
     <CModalHeader>
-      <CModalTitle>Full screen below md</CModalTitle>
+      <CModalTitle id="FullscreenExample3">Full screen below md</CModalTitle>
     </CModalHeader>
     <CModalBody>
       ...
     </CModalBody>
   </CModal>
-  <CModal fullscreen="lg" :visible="fullscreenLgDemo" @close="() => { fullscreenLgDemo = false }">
+  <CModal
+    fullscreen="lg"
+    :visible="fullscreenLgDemo"
+    @close="() => { fullscreenLgDemo = false }"
+    aria-labelledby="FullscreenExample4"
+  >
     <CModalHeader>
-      <CModalTitle>Full screen below lg</CModalTitle>
+      <CModalTitle id="FullscreenExample4">Full screen below lg</CModalTitle>
     </CModalHeader>
     <CModalBody>
       ...
     </CModalBody>
   </CModal>
-  <CModal fullscreen="xl" :visible="fullscreenXlDemo" @close="() => { fullscreenXlDemo = false }">
+  <CModal
+    fullscreen="xl"
+    :visible="fullscreenXlDemo"
+    @close="() => { fullscreenXlDemo = false }"
+    aria-labelledby="FullscreenExample5"
+  >
     <CModalHeader>
-      <CModalTitle>Full screen below xl</CModalTitle>
+      <CModalTitle id="FullscreenExample5">Full screen below xl</CModalTitle>
     </CModalHeader>
     <CModalBody>
       ...
     </CModalBody>
   </CModal>
-  <CModal fullscreen="xxl" :visible="fullscreenXxlDemo" @close="() => { fullscreenXxlDemo = false }">
+  <CModal
+    fullscreen="xxl"
+    :visible="fullscreenXxlDemo"
+    @close="() => { fullscreenXxlDemo = false }"
+    aria-labelledby="FullscreenExample6"
+  >
     <CModalHeader>
-      <CModalTitle>Full screen below xxl</CModalTitle>
+      <CModalTitle id="FullscreenExample6">Full screen below xxl</CModalTitle>
     </CModalHeader>
     <CModalBody>
       ...
@@ -979,7 +1264,9 @@ Another override is the option to pop up a modal that covers the user viewport, 
         visibleScrollableDemo: false,
         visibleVerticallyCenteredDemo: false,
         visibleVerticallyCenteredScrollableDemo: false,
-        tooltipsAndPopoversDemo: false,
+        visibleTooltipsAndPopoversDemo: false,
+        visibleToggleBetweenModalsDemo1: false,
+        visibleToggleBetweenModalsDemo2: false,
         xlDemo: false,
         lgDemo: false,
         smDemo: false,
