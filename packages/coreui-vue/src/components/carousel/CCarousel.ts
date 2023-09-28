@@ -188,8 +188,8 @@ const CCarousel = defineComponent({
           class: [
             'carousel slide',
             props.transition === 'crossfade' && 'carousel-fade',
-            props.dark && 'carousel-dark',
           ],
+          ...(props.dark && { 'data-coreui-theme': 'dark' }),
           onmouseover: () => props.pause && pause(),
           onmouseleave: () => cycle(),
           ref: carouselRef,
