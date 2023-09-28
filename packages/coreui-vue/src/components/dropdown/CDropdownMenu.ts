@@ -1,5 +1,7 @@
 import { defineComponent, h, inject, Ref } from 'vue'
 
+import { getAlignmentClassNames } from './utils'
+
 const CDropdownMenu = defineComponent({
   name: 'CDropdownMenu',
   props: {
@@ -20,20 +22,6 @@ const CDropdownMenu = defineComponent({
 
     const { alignment, dark, popper } = config
 
-    // eslint-disable-next-line @typescript-eslint/ban-types, unicorn/consistent-function-scoping
-    const alignmentClassNames = (alignment: object | string) => {
-      const classNames: string[] = []
-      if (typeof alignment === 'object') {
-        Object.keys(alignment).map((key) => {
-          classNames.push(`dropdown-menu${key === 'xs' ? '' : `-${key}`}-${alignment[key]}`)
-        })
-      }
-      if (typeof alignment === 'string') {
-        classNames.push(`dropdown-menu-${alignment}`)
-      }
-      return classNames
-    }
-
     return () =>
       h(
         props.component,
@@ -41,7 +29,7 @@ const CDropdownMenu = defineComponent({
           class: [
             'dropdown-menu',
             { 'dropdown-menu-dark': dark, show: visible.value },
-            alignmentClassNames(alignment),
+            getAlignmentClassNames(alignment),
           ],
           ...((typeof alignment === 'object' || !popper) && {
             'data-coreui-popper': 'static',
