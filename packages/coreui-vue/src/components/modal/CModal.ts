@@ -230,6 +230,7 @@ const CModal = defineComponent({
       h(
         'div',
         {
+          ...attrs,
           class: [
             'modal',
             {
@@ -237,6 +238,7 @@ const CModal = defineComponent({
             },
             attrs.class,
           ],
+          ...(visible.value ? { 'aria-modal': true, role: 'dialog' } : { 'aria-hidden': 'true' }),
           ref: modalRef,
         },
         h(
@@ -253,7 +255,6 @@ const CModal = defineComponent({
                 [`modal-${props.size}`]: props.size,
               },
             ],
-            role: 'dialog',
           },
           h(
             'div',
