@@ -27,6 +27,10 @@ const COffcanvas = defineComponent({
       },
     },
     /**
+     * Sets a darker color scheme.
+     */
+    dark: Boolean,
+    /**
      * Closes the offcanvas when escape key is pressed.
      */
     keyboard: {
@@ -182,6 +186,7 @@ const COffcanvas = defineComponent({
                 ref: offcanvasRef,
                 role: 'dialog',
                 tabindex: -1,
+                ...(props.dark && { 'data-coreui-theme': 'dark' }),
               },
               slots.default && slots.default(),
             ),
