@@ -75,7 +75,7 @@ const CWidgetStatsC = defineComponent({
                   {
                     class: [
                       'text-end mb-4',
-                      props.inverse ? 'text-medium-emphasis-inverse' : 'text-medium-emphasis',
+                      props.inverse ? 'text-white text-opacity-75' : 'text-body-secondary',
                     ],
                   },
                   slots.icon && slots.icon(),
@@ -96,7 +96,7 @@ const CWidgetStatsC = defineComponent({
                   {
                     class: [
                       'text-uppercase fw-semibold small',
-                      props.inverse ? 'text-medium-emphasis-inverse' : 'text-medium-emphasis',
+                      props.inverse ? 'text-white text-opacity-75' : 'text-body-secondary',
                     ],
                   },
                   {

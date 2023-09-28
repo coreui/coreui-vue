@@ -74,7 +74,7 @@ const CWidgetStatsD = defineComponent({
                           h(CCol, { class: 'fs-5 fw-semibold' }, () => value.value),
                           h(
                             CCol,
-                            { class: 'text-uppercase text-medium-emphasis small' },
+                            { class: 'text-uppercase text-body-secondary small' },
                             () => value.title,
                           ),
                         ],

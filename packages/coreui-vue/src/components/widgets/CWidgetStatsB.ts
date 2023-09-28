@@ -57,7 +57,7 @@ const CWidgetStatsB = defineComponent({
         {
           class: [
             {
-              'text-high-emphasis-inverse': props.inverse,
+              'text-white': props.inverse,
             },
           ],
           color: props.color,
@@ -99,7 +99,7 @@ const CWidgetStatsB = defineComponent({
                   'small',
                   {
                     class: [
-                      props.inverse ? 'text-medium-emphasis-inverse' : 'text-medium-emphasis',
+                      props.inverse ? 'text-white text-opacity-75' : 'text-body-secondary',
                     ],
                   },
                   {

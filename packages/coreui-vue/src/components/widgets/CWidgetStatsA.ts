@@ -34,7 +34,7 @@ const CWidgetStatsA = defineComponent({
         CCard,
         {
           class: [
-            { [`bg-${props.color}`]: props.color, 'text-high-emphasis-inverse': props.color },
+            { [`bg-${props.color}`]: props.color, 'text-white': props.color },
           ],
         },
         () => [

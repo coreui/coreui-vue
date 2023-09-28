@@ -81,7 +81,7 @@ const CWidgetStatsF = defineComponent({
                     h(
                       'div',
                       {
-                        class: 'text-medium-emphasis text-uppercase fw-semibold small',
+                        class: 'text-body-secondary text-uppercase fw-semibold small',
                       },
                       {
                         default: () => (slots.title && slots.title()) || props.title,
