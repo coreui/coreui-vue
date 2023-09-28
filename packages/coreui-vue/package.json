@@ -54,7 +54,7 @@
     "vue-types": "^5.1.0"
   },
   "peerDependencies": {
-    "@coreui/coreui": "^5.0.0-alpha.0",
+    "@coreui/coreui": "^5.0.0-alpha.2",
     "vue": "^3.2.21"
   },
   "standard": {
