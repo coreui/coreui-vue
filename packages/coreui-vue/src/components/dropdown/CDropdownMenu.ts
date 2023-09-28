@@ -26,14 +26,11 @@ const CDropdownMenu = defineComponent({
       h(
         props.component,
         {
-          class: [
-            'dropdown-menu',
-            { 'dropdown-menu-dark': dark, show: visible.value },
-            getAlignmentClassNames(alignment),
-          ],
+          class: ['dropdown-menu', { show: visible.value }, getAlignmentClassNames(alignment)],
           ...((typeof alignment === 'object' || !popper) && {
             'data-coreui-popper': 'static',
           }),
+          ...(dark && { 'data-coreui-theme': 'dark' }),
           ref: dropdownMenuRef,
         },
         props.component === 'ul'
