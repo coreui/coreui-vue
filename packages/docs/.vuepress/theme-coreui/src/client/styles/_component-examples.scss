@@ -355,6 +355,7 @@
 // Code snippets
 //
 
+div[class^="language-"],
 .highlight {
   position: relative;
   padding: .75rem ($cd-gutter-x * .5);
@@ -388,13 +389,14 @@
 .docs-code-snippet {
   margin: 0 ($cd-gutter-x * -.5) $spacer;
 
+  div[class^="language-"],
   .highlight {
     margin-bottom: 0;
   }
 
+  .docs-example ~ div[class^="language-"],
   .docs-example ~ .highlight {
-    border: solid var(--cui-border-color);
-    border-width: 1px 0 0;
+    border: 0;
     @include border-top-radius(0);
   }
 
@@ -420,6 +422,11 @@
   }
 }
 
+.docs-example {
+  border-bottom-width: 0;
+}
+
+.docs-example + div[class^="language-"],
 .docs-example + .highlight {
   border-top-width: 0;
   @include border-top-radius(0);
