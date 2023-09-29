@@ -163,6 +163,7 @@ const COffcanvas = defineComponent({
       h(
         Transition,
         {
+          appear: visible.value,
           css: false,
           onEnter: (el, done) => handleEnter(el, done),
           onAfterEnter: () => handleAfterEnter(),
