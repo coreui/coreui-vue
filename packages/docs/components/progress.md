@@ -12,38 +12,18 @@ Progress components are built with two HTML elements, some CSS to set the width,
 ## Basic usage
 
 ::: demo
-<CProgress class="mb-3">
-  <CProgressBar :value="0"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar :value="25"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar :value="50"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar :value="75"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar :value="100"/>
-</CProgress>
+<CProgress :value="0"/>
+<CProgress :value="25"/>
+<CProgress :value="50"/>
+<CProgress :value="75"/>
+<CProgress :value="100"/>
 :::
 ```vue
-<CProgress class="mb-3">
-  <CProgressBar :value="0"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar :value="25"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar :value="50"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar :value="75"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar :value="100"/>
-</CProgress>
+<CProgress :value="0"/>
+<CProgress :value="25"/>
+<CProgress :value="50"/>
+<CProgress :value="75"/>
+<CProgress :value="100"/>
 ```
 
 ## Labels
@@ -51,14 +31,29 @@ Progress components are built with two HTML elements, some CSS to set the width,
 Add labels to your progress bars by placing text within the `<CProgressBar>`.
 
 ::: demo
-<CProgress class="mb-3">
-  <CProgressBar :value="25">25%</CProgressBar>
+<CProgress :value="25">25%</CProgress>
+:::
+```vue
+<CProgress :value="25">25%</CProgress>
+```
+
+Please note that the default setting for the content within the `<CProgressBar />` is to be limited by the `overflow: hidden property`, preventing it from extending beyond the bar's boundaries. If the progress bar is shorter than its label, the content will be truncated and could be difficult to read. To modify this behavior, you can utilize the `.overflow-visible` class from the overflow utilities. However, it is important to specify a specific text color to ensure readability. It's worth noting that this approach currently does not consider color modes.
+
+:::demo
+<CProgress :value="10" color="success">
+  <CProgressBar class="overflow-visible text-dark px-2">Long label text for the progress bar, set to a dark color</CProgressBar>
 </CProgress>
 :::
 ```vue
-<CProgress class="mb-3">
-  <CProgressBar :value="25">25%</CProgressBar>
+<CProgress :value="10" color="success">
+  <CProgressBar class="overflow-visible text-dark px-2">Long label text for the progress bar, set to a dark color</CProgressBar>
 </CProgress>
+```
+
+Since **v5.0.0** you can also use the `progressBarClassName` property directly on the `<CProgress />` component to achieve the same.
+
+```vue
+<CProgress progressBarClassName="overflow-visible text-dark px-2" color="success" :value="10">Long label text for the progress bar, set to a dark color</CProgress>
 ```
 
 ## Height
@@ -66,20 +61,12 @@ Add labels to your progress bars by placing text within the `<CProgressBar>`.
 We only set a `height` value on the `<CProgress>`, so if you change that value the inner `<CProgressBar>` will automatically resize accordingly.
 
 ::: demo
-<CProgress :height="1" class="mb-3">
-  <CProgressBar :value="25"></CProgressBar>
-</CProgress>
-<CProgress :height="20" class="mb-3">
-  <CProgressBar :value="25"></CProgressBar>
-</CProgress>
+<CProgress :height="1" :value="25" />
+<CProgress :height="20" :value="25" />
 :::
 ```vue
-<CProgress :height="1" class="mb-3">
-  <CProgressBar :value="25"></CProgressBar>
-</CProgress>
-<CProgress :height="20" class="mb-3">
-  <CProgressBar :value="25"></CProgressBar>
-</CProgress>
+<CProgress :height="1" :value="25" />
+<CProgress :height="20" :value="25" />
 ```
 
 ## Backgrounds
@@ -87,50 +74,92 @@ We only set a `height` value on the `<CProgress>`, so if you change that value t
 Use `color` prop to change the appearance of individual progress bars.
 
 ::: demo
-<CProgress class="mb-3">
-  <CProgressBar color="success" :value="25"/>
+<CProgress color="success" :value="25"/>
+<CProgress color="info" :value="50"/>
+<CProgress color="warning" :value="75"/>
+<CProgress color="danger" :value="100"/>
+:::
+```vue
+<CProgress color="success" :value="25"/>
+<CProgress color="info" :value="50"/>
+<CProgress color="warning" :value="75"/>
+<CProgress color="danger" :value="100"/>
+```
+
+Ensure that when you incorporate labels into progress bars featuring a custom background color, you also select an appropriate text color to ensure readability and maintain adequate contrast for the labels.
+
+::: demo
+<CProgress color="success" :value="25">
+  <CProgressBar>25%</CProgressBar>
 </CProgress>
-<CProgress class="mb-3">
-  <CProgressBar color="info" :value="50"/>
+<CProgress color="info" :value="50">
+  <CProgressBar class="text-dark">50%</CProgressBar>
 </CProgress>
-<CProgress class="mb-3">
-  <CProgressBar color="warning" :value="75"/>
+<CProgress color="warning" :value="75">
+  <CProgressBar class="text-dark">75%</CProgressBar>
 </CProgress>
-<CProgress class="mb-3">
-  <CProgressBar color="danger" :value="100"/>
+<CProgress color="danger" :value="100">
+  <CProgressBar>100%</CProgressBar>
 </CProgress>
 :::
 ```vue
-<CProgress class="mb-3">
-  <CProgressBar color="success" :value="25"/>
+<CProgress color="success" :value="25">
+  <CProgressBar>25%</CProgressBar>
 </CProgress>
-<CProgress class="mb-3">
-  <CProgressBar color="info" :value="50"/>
+<CProgress color="info" :value="50">
+  <CProgressBar class="text-dark">50%</CProgressBar>
 </CProgress>
-<CProgress class="mb-3">
-  <CProgressBar color="warning" :value="75"/>
+<CProgress color="warning" :value="75">
+  <CProgressBar class="text-dark">75%</CProgressBar>
 </CProgress>
-<CProgress class="mb-3">
-  <CProgressBar color="danger" :value="100"/>
+<CProgress color="danger" :value="100">
+  <CProgressBar>100%</CProgressBar>
 </CProgress>
+```
+
+
+Since **v5.0.0** you can also use the `progressBarClassName` property directly on the `<CProgress />` component to achieve the same.
+
+```vue
+<CProgress color="success" :value="25">25%</CProgress>
+<CProgress color="info" progressBarClassName="text-dark" :value="50">50%</CProgress>
+<CProgress color="warning" progressBarClassName="text-dark" :value="75">75%</CProgress>
+<CProgress color="danger" :value="100">100%</CProgress>
 ```
 
 ## Multiple bars
 
 Include multiple progress bars in a progress component if you need.
 
+<Callout color="info" title="New markup in v5.0.0">
+  In version 5.0.0, we introduced a new <code>&lt;CProgressStacked&gt;</code> component to more logically wrap multiple progress bars into a single stacked progress bar. The previous structure will continue to work until the next major version.
+</Callout>
+
+
+**New markup**
+
 ::: demo
-<CProgress class="mb-3">
-  <CProgressBar :value="15"/>
-  <CProgressBar color="success" :value="30"/>
-  <CProgressBar color="info" :value="20"/>
-</CProgress>
+<CProgressStacked>
+  <CProgress :value="15" />
+  <CProgress color="success" :value="30" />
+  <CProgress color="info" :value="20" />
+</CProgressStacked>
 :::
 ```vue
-<CProgress class="mb-3">
-  <CProgressBar :value="15"/>
-  <CProgressBar color="success" :value="30"/>
-  <CProgressBar color="info" :value="20"/>
+<CProgressStacked>
+  <CProgress :value="15" />
+  <CProgress color="success" :value="30" />
+  <CProgress color="info" :value="20" />
+</CProgressStacked>
+```
+
+
+**Previous markup**
+```vue
+<CProgress>
+  <CProgressBar :value="15" />
+  <CProgressBar color="success" :value="30" />
+  <CProgressBar color="info" :value="20" />
 </CProgress>
 ```
 
@@ -139,32 +168,16 @@ Include multiple progress bars in a progress component if you need.
 Add `variant="striped"` to any `<CProgressBar>` to apply a stripe via CSS gradient over the progress bar's background color.
 
 ::: demo
-<CProgress class="mb-3">
-  <CProgressBar color="success" variant="striped" :value="25"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar color="info" variant="striped" :value="50"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar color="warning" variant="striped" :value="75"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar color="danger" variant="striped" :value="100"/>
-</CProgress>
+<CProgress color="success" variant="striped" :value="25"/>
+<CProgress color="info" variant="striped" :value="50"/>
+<CProgress color="warning" variant="striped" :value="75"/>
+<CProgress color="danger" variant="striped" :value="100"/>
 :::
 ```vue
-<CProgress class="mb-3">
-  <CProgressBar color="success" variant="striped" :value="25"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar color="info" variant="striped" :value="50"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar color="warning" variant="striped" :value="75"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar color="danger" variant="striped" :value="100"/>
-</CProgress>
+<CProgress color="success" variant="striped" :value="25"/>
+<CProgress color="info" variant="striped" :value="50"/>
+<CProgress color="warning" variant="striped" :value="75"/>
+<CProgress color="danger" variant="striped" :value="100"/>
 ```
 
 ## Animated stripes
@@ -172,32 +185,16 @@ Add `variant="striped"` to any `<CProgressBar>` to apply a stripe via CSS gradie
 The striped gradient can also be animated. Add `animated` property to `<CProgressBar>` to animate the stripes right to left via CSS3 animations.
 
 ::: demo
-<CProgress class="mb-3">
-  <CProgressBar color="success" variant="striped" animated :value="25"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar color="info" variant="striped" animated :value="50"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar color="warning" variant="striped" animated :value="75"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar color="danger" variant="striped" animated :value="100"/>
-</CProgress>
+<CProgress color="success" variant="striped" animated :value="25"/>
+<CProgress color="info" variant="striped" animated :value="50"/>
+<CProgress color="warning" variant="striped" animated :value="75"/>
+<CProgress color="danger" variant="striped" animated :value="100"/>
 :::
 ```vue
-<CProgress class="mb-3">
-  <CProgressBar color="success" variant="striped" animated :value="25"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar color="info" variant="striped" animated :value="50"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar color="warning" variant="striped" animated :value="75"/>
-</CProgress>
-<CProgress class="mb-3">
-  <CProgressBar color="danger" variant="striped" animated :value="100"/>
-</CProgress>
+<CProgress color="success" variant="striped" animated :value="25"/>
+<CProgress color="info" variant="striped" animated :value="50"/>
+<CProgress color="warning" variant="striped" animated :value="75"/>
+<CProgress color="danger" variant="striped" animated :value="100"/>
 ```
 
 ## Customizing

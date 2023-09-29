@@ -1,4 +1,4 @@
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, inject } from 'vue'
 
 import { Color } from '../../props'
 
@@ -35,6 +35,8 @@ const CProgressBar = defineComponent({
     },
   },
   setup(props, { slots }) {
+    const stacked = inject('stacked', false) as boolean
+
     return () =>
       h(
         'div',
@@ -47,11 +49,7 @@ const CProgressBar = defineComponent({
               ['progress-bar-animated']: props.animated,
             },
           ],
-          role: 'progressbar',
-          style: `width: ${props.value}%`,
-          'aria-valuenow': props.value,
-          'aria-valuemin': '0',
-          'aria-valuemax': '100',
+          ...(!stacked && { style: { width: `${props.value}%` } }),
         },
         slots.default && slots.default(),
       )
