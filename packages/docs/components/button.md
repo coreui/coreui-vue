@@ -32,12 +32,9 @@ CoreUI includes a bunch of predefined buttons components, each serving its own s
 <CButton color="link">Link</CButton>
 ```
 
-<div class="callout callout-info">
-  <h5>Conveying meaning to assistive technologies</h5>
-  <p>
-    Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the `.visually-hidden` class.
-  </p>
-</div>
+<Callout color="info" title="Conveying meaning to assistive technologies">
+  Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the <code>.visually-hidden</code> class.
+</Callout>
 
 ## Disable text wrapping
 
@@ -115,7 +112,7 @@ If you need a ghost variant of button, set `variant="ghost"` prop to remove all 
 ```
 
 
-<CCallout color="info">Some of the button styles use a relatively light foreground color, and should only be used on a dark background in order to have sufficient contrast.</CCallout>
+<Callout color="info">Some of the button styles use a relatively light foreground color, and should only be used on a dark background in order to have sufficient contrast.</Callout>
 
 ## Sizes
 

@@ -69,6 +69,7 @@ export default defineUserConfig({
     tocPlugin({}),
     registerComponentsPlugin({
       components: {
+        Callout: path.resolve(__dirname, './theme-coreui/src/client/components/Callout.vue'),
         ScssDocs: path.resolve(__dirname, './theme-coreui/src/client/components/ScssDocs.vue'),
       },
     }),

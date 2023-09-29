@@ -100,9 +100,9 @@ We apply additional styling to `CButton`s via `::before` to ensure the `height` 
 <CButton v-c-placeholder="{xs: 4}" color="primary" aria-hidden="true" disabled href="#" tabindex="-1"></CButton>
 ```
 
-<CCallout class="mb-4" color="info">
+<Callout color="info">
   The use of <code>aria-hidden="true"</code> only indicates that the element should be hidden to screen readers. The <strong>loading</strong> behavior of the placeholder depends on how authors will actually use the placeholder styles, how they plan to update things, etc. Some JavaScript code may be needed to *swap* the state of the placeholder and inform AT users of the update.
-</CCallout>
+</Callout>
 
 ### Width
 

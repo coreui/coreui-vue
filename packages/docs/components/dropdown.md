@@ -292,12 +292,9 @@ And putting it to use in a navbar:
 
 ## Directions
 
-<CCallout color="info">
-  <h4>RTL</h4>
-  <p>
-    Directions are mirrored when using CoreUI in RTL, meaning `.dropstart` will appear on the right side.
-  </p>
-</CCallout>
+<Callout color="info" title="RTL">
+  Directions are mirrored when using CoreUI in RTL, meaning `.dropstart` will appear on the right side.
+</Callout>
 
 ### Centered
 
