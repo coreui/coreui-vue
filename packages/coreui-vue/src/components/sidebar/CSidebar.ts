@@ -162,7 +162,7 @@ const CSidebar = defineComponent({
       ),
       mobile.value &&
         h(CBackdrop, {
-          class: 'sidebar-backdrop d-none',
+          class: 'sidebar-backdrop',
           visible: props.visible,
           onClick: () => handleHide(),
         }),
