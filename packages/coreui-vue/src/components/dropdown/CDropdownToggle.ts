@@ -1,4 +1,14 @@
-import { cloneVNode, computed, defineComponent, h, inject, onMounted, PropType, Ref, ref } from 'vue'
+import {
+  cloneVNode,
+  computed,
+  defineComponent,
+  h,
+  inject,
+  onMounted,
+  PropType,
+  Ref,
+  ref,
+} from 'vue'
 
 import { CButton } from '../button'
 
@@ -127,7 +137,7 @@ const CDropdownToggle = defineComponent({
           'dropdown-toggle': props.caret,
           'dropdown-toggle-split': props.split,
           disabled: props.disabled,
-          show: visible.value
+          show: visible.value,
         },
         'aria-expanded': visible.value,
         ...(!props.disabled && { ...triggers }),

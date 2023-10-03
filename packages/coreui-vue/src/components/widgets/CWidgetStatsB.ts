@@ -98,9 +98,7 @@ const CWidgetStatsB = defineComponent({
                 h(
                   'small',
                   {
-                    class: [
-                      props.inverse ? 'text-white text-opacity-75' : 'text-body-secondary',
-                    ],
+                    class: [props.inverse ? 'text-white text-opacity-75' : 'text-body-secondary'],
                   },
                   {
                     default: () => (slots.text && slots.text()) || props.text,

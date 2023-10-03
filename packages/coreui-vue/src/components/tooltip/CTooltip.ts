@@ -104,7 +104,7 @@ const CTooltip = defineComponent({
     const tooltipRef = ref()
     const visible = ref(props.visible)
     const { initPopper, destroyPopper } = usePopper()
-    
+
     const delay =
       typeof props.delay === 'number' ? { show: props.delay, hide: props.delay } : props.delay
 

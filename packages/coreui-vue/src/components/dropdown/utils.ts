@@ -13,7 +13,7 @@ export const getAlignmentClassNames = (alignment: object | string) => {
   if (typeof alignment === 'string') {
     classNames.push(`dropdown-menu-${alignment}`)
   }
-  
+
   return classNames
 }
 

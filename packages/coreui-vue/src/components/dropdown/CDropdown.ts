@@ -185,8 +185,7 @@ const CDropdown = defineComponent({
       window.removeEventListener('keyup', handleKeyup)
       dropdownToggleRef.value &&
         dropdownToggleRef.value.removeEventListener('keydown', handleKeydown)
-      dropdownMenuRef.value &&
-        dropdownMenuRef.value.removeEventListener('keydown', handleKeydown)
+      dropdownMenuRef.value && dropdownMenuRef.value.removeEventListener('keydown', handleKeydown)
       emit('hide')
     })
 
@@ -202,10 +201,16 @@ const CDropdown = defineComponent({
     provide('dropdownMenuRef', dropdownMenuRef)
 
     const handleKeydown = (event: KeyboardEvent) => {
-      if (visible.value && dropdownMenuRef.value && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
+      if (
+        visible.value &&
+        dropdownMenuRef.value &&
+        (event.key === 'ArrowDown' || event.key === 'ArrowUp')
+      ) {
         event.preventDefault()
         const target = event.target as HTMLElement
-        const items: HTMLElement[] = Array.from(dropdownMenuRef.value.querySelectorAll('.dropdown-item:not(.disabled):not(:disabled)'))
+        const items: HTMLElement[] = Array.from(
+          dropdownMenuRef.value.querySelectorAll('.dropdown-item:not(.disabled):not(:disabled)'),
+        )
         getNextActiveElement(items, target, event.key === 'ArrowDown', true).focus()
       }
     }
