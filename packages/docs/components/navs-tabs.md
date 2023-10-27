@@ -312,6 +312,96 @@ Take that same HTML, but use `variant="pills"` instead:
 </CNav>
 ```
 
+
+### Underline
+
+Take that same code, but use `variant="underline"` instead:
+
+::: demo
+<CNav variant="underline">
+  <CNavItem>
+    <CNavLink href="#" active>
+      Active
+    </CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#" disabled>
+      Disabled
+    </CNavLink>
+  </CNavItem>
+</CNav>
+:::
+```vue
+<CNav variant="underline">
+  <CNavItem>
+    <CNavLink href="#" active>
+      Active
+    </CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#" disabled>
+      Disabled
+    </CNavLink>
+  </CNavItem>
+</CNav>
+```
+### Underline border
+
+Take that same code, but use `variant="underline-border"` instead:
+
+::: demo
+<CNav variant="underline-border">
+  <CNavItem>
+    <CNavLink href="#" active>
+      Active
+    </CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#" disabled>
+      Disabled
+    </CNavLink>
+  </CNavItem>
+</CNav>
+:::
+```vue
+<CNav variant="underline-border">
+  <CNavItem>
+    <CNavLink href="#" active>
+      Active
+    </CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#" disabled>
+      Disabled
+    </CNavLink>
+  </CNavItem>
+</CNav>
+```
+
 ### Fill and justify
 
 Force your `.nav`'s contents to extend the full available width one of two modifier classes. To proportionately fill all available space with your `.nav-item`s, use `layout="fill"`. Notice that all horizontal space is occupied, but not every nav item has the same width.

@@ -24,12 +24,12 @@ const CNav = defineComponent({
     /**
      * Set the nav variant to tabs or pills.
      *
-     * @values 'tabs', 'pills'
+     * @values 'pills', 'tabs', 'underline', 'underline-border'
      */
     variant: {
       type: String,
       validator: (value: string) => {
-        return ['tabs', 'pills'].includes(value)
+        return ['pills', 'tabs', 'underline', 'underline-border'].includes(value)
       },
     },
   },
