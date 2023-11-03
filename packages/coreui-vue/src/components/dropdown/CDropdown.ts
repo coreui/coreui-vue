@@ -60,6 +60,17 @@ const CDropdown = defineComponent({
       },
     },
     /**
+     * Appends the vue dropdown menu to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`.
+     *
+     * @since v5.0.0-beta.0
+     */
+    container: {
+      type: [HTMLElement, () => HTMLElement, String] as PropType<
+        HTMLElement | (() => HTMLElement) | string
+      >,
+      default: 'body',
+    },
+    /**
      * Sets a darker color scheme to match a dark navbar.
      */
     dark: Boolean,
@@ -102,6 +113,15 @@ const CDropdown = defineComponent({
     popper: {
       type: Boolean,
       default: true,
+    },
+    /**
+     * Generates dropdown menu using Teleport.
+     *
+     * @since v5.0.0-beta.0
+     */
+    teleport: {
+      type: Boolean,
+      default: false,
     },
     /**
      * Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them.
@@ -191,8 +211,10 @@ const CDropdown = defineComponent({
 
     provide('config', {
       alignment: props.alignment,
+      container: props.container,
       dark: props.dark,
       popper: props.popper,
+      teleport: props.teleport,
     })
 
     provide('variant', props.variant)

@@ -1,5 +1,6 @@
 import { defineComponent, h, inject, Ref } from 'vue'
 
+import { CConditionalTeleport } from '../conditional-teleport'
 import { getAlignmentClassNames } from './utils'
 
 const CDropdownMenu = defineComponent({
@@ -20,22 +21,36 @@ const CDropdownMenu = defineComponent({
     const config = inject('config') as any // eslint-disable-line @typescript-eslint/no-explicit-any
     const visible = inject('visible') as Ref<boolean>
 
-    const { alignment, dark, popper } = config
+    const { alignment, container, dark, popper, teleport } = config
 
     return () =>
       h(
-        props.component,
+        CConditionalTeleport,
         {
-          class: ['dropdown-menu', { show: visible.value }, getAlignmentClassNames(alignment)],
-          ...((typeof alignment === 'object' || !popper) && {
-            'data-coreui-popper': 'static',
-          }),
-          ...(dark && { 'data-coreui-theme': 'dark' }),
-          ref: dropdownMenuRef,
+          container: container,
+          teleport: teleport,
         },
-        props.component === 'ul'
-          ? slots.default && slots.default().map((vnode) => h('li', {}, vnode))
-          : slots.default && slots.default(),
+        {
+          default: () =>
+            h(
+              props.component,
+              {
+                class: [
+                  'dropdown-menu',
+                  { show: visible.value },
+                  getAlignmentClassNames(alignment),
+                ],
+                ...((typeof alignment === 'object' || !popper) && {
+                  'data-coreui-popper': 'static',
+                }),
+                ...(dark && { 'data-coreui-theme': 'dark' }),
+                ref: dropdownMenuRef,
+              },
+              props.component === 'ul'
+                ? slots.default && slots.default().map((vnode) => h('li', {}, vnode))
+                : slots.default && slots.default(),
+            ),
+        },
       )
   },
 })

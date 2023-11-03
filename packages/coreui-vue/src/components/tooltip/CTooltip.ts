@@ -1,6 +1,7 @@
-import { defineComponent, h, PropType, ref, RendererElement, Teleport, Transition } from 'vue'
+import { defineComponent, h, PropType, ref, RendererElement, Transition } from 'vue'
 import type { Placement } from '@popperjs/core'
 
+import { CConditionalTeleport } from '../conditional-teleport'
 import { usePopper } from '../../composables'
 import type { Placements, Triggers } from '../../types'
 import { executeAfterTransition } from '../../utils/transition'
@@ -17,6 +18,17 @@ const CTooltip = defineComponent({
     animation: {
       type: Boolean,
       default: true,
+    },
+    /**
+     * Appends the vue tooltip to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`.
+     *
+     * @since v5.0.0-beta.0
+     */
+    container: {
+      type: [HTMLElement, () => HTMLElement, String] as PropType<
+        HTMLElement | (() => HTMLElement) | string
+      >,
+      default: 'body',
     },
     /**
      * Content for your component. If you want to pass non-string value please use dedicated slot `<template #content>...</template>`
@@ -164,45 +176,49 @@ const CTooltip = defineComponent({
 
     return () => [
       h(
-        Teleport,
+        CConditionalTeleport,
         {
-          to: 'body',
+          container: props.container,
+          teleport: true,
         },
-        h(
-          Transition,
-          {
-            onEnter: (el, done) => handleEnter(el, done),
-            onLeave: (el, done) => handleLeave(el, done),
-          },
-          () =>
-            visible.value &&
+        {
+          default: () =>
             h(
-              'div',
+              Transition,
               {
-                class: [
-                  'tooltip',
-                  'bs-tooltip-auto',
-                  {
-                    fade: props.animation,
-                  },
-                ],
-                ref: tooltipRef,
-                role: 'tooltip',
-                ...attrs,
+                onEnter: (el, done) => handleEnter(el, done),
+                onLeave: (el, done) => handleLeave(el, done),
               },
-              [
-                h('div', { class: 'tooltip-arrow' }),
-                (props.content || slots.content) &&
-                  h(
-                    'div',
-                    { class: 'tooltip-inner' },
-                    {
-                      default: () => (slots.content && slots.content()) || props.content,
-                    },
-                  ),
-              ],
+              () =>
+                visible.value &&
+                h(
+                  'div',
+                  {
+                    class: [
+                      'tooltip',
+                      'bs-tooltip-auto',
+                      {
+                        fade: props.animation,
+                      },
+                    ],
+                    ref: tooltipRef,
+                    role: 'tooltip',
+                    ...attrs,
+                  },
+                  [
+                    h('div', { class: 'tooltip-arrow' }),
+                    (props.content || slots.content) &&
+                      h(
+                        'div',
+                        { class: 'tooltip-inner' },
+                        {
+                          default: () => (slots.content && slots.content()) || props.content,
+                        },
+                      ),
+                  ],
+                ),
             ),
-        ),
+        },
       ),
       slots.toggler &&
         slots.toggler({
