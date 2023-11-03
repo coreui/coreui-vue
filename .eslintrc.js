@@ -4,9 +4,6 @@ module.exports = {
     ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
     sourceType: 'module', // Allows for the use of imports
     extraFileExtensions: ['.vue'],
-    ecmaFeatures: {
-      jsx: true,
-    },
   },
   extends: [
     'eslint:recommended',
@@ -29,6 +26,18 @@ module.exports = {
     'vue/require-default-prop': 'off',
   },
   overrides: [
+    {
+      files: ['**/*.mjs'],
+      env: {
+        "env": {
+          "browser": false,
+          "node": true
+        },
+        "parserOptions": {
+          "sourceType": "module"
+        },
+      },
+    },
     {
       files: ['**/__tests__/*.{j,t}s?(x)', '**/tests/unit/**/*.spec.{j,t}s?(x)'],
       env: {
