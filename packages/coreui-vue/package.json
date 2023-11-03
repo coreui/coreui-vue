@@ -1,6 +1,6 @@
 {
   "name": "@coreui/vue",
-  "version": "5.0.0-alpha.1",
+  "version": "5.0.0-beta.0",
   "description": "UI Components Library for Vue.js",
   "keywords": [
     "vue",
@@ -59,7 +59,8 @@
     "vue-types": "^5.1.1"
   },
   "peerDependencies": {
-    "@coreui/coreui": "^5.0.0-alpha.2",
+    "@coreui/coreui": "^5.0.0-beta.1",
+    "@popperjs/core": "^2.11.8",
     "vue": "^3.2.21"
   },
   "standard": {
