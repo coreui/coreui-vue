@@ -40,8 +40,11 @@
     "test:clear": "jest --clearCache",
     "test:update": "jest --coverage --updateSnapshot"
   },
+  "dependencies": {
+    "@coreui/coreui": "^5.0.0-beta.1",
+    "@popperjs/core": "^2.11.8"
+  },
   "devDependencies": {
-    "@popperjs/core": "^2.11.8",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.5",
@@ -59,8 +62,6 @@
     "vue-types": "^5.1.1"
   },
   "peerDependencies": {
-    "@coreui/coreui": "^5.0.0-beta.1",
-    "@popperjs/core": "^2.11.8",
     "vue": "^3.2.21"
   }
 }
