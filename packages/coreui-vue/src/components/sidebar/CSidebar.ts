@@ -15,6 +15,18 @@ const CSidebar = defineComponent({
   name: 'CSidebar',
   props: {
     /**
+     * Sets if the color of text should be colored for a light or dark dark background.
+     *
+     * @values 'dark', light'
+     */
+    colorScheme: {
+      type: String,
+      default: undefined,
+      validator: (value: string) => {
+        return ['dark', 'light'].includes(value)
+      },
+    },
+    /**
      * Make sidebar narrow.
      */
     narrow: Boolean,
@@ -22,6 +34,17 @@ const CSidebar = defineComponent({
      * Set sidebar to overlaid variant.
      */
     overlaid: Boolean,
+    /**
+     * Components placement, there’s no default placement.
+     * @values 'start', 'end'
+     */
+    placement: {
+      type: String,
+      default: undefined,
+      validator: (value: string) => {
+        return ['start', 'end'].includes(value)
+      },
+    },
     /**
      * Place sidebar in non-static positions.
      */
@@ -64,10 +87,16 @@ const CSidebar = defineComponent({
     'visible-change',
   ],
   setup(props, { attrs, slots, emit }) {
-    const mobile = ref()
-    const inViewport = ref()
     const sidebarRef = ref()
-    const visible = ref(props.visible)
+
+    const inViewport = ref()
+    const mobile = ref()
+    const visibleMobile = ref(false)
+    const visibleDesktop = ref(
+      props.visible !== undefined ? props.visible : props.overlaid ? false : true,
+    )
+
+    // const visible = ref(props.visible)
 
     watch(inViewport, () => {
       emit('visible-change', inViewport.value)
@@ -76,11 +105,14 @@ const CSidebar = defineComponent({
 
     watch(
       () => props.visible,
-      () => (visible.value = props.visible),
+      () => props.visible !== undefined && handleVisibleChange(props.visible),
     )
 
     watch(mobile, () => {
-      if (mobile.value && visible.value) visible.value = false
+      if (mobile.value) {
+        console.log('mobile')
+        visibleMobile.value = false
+      }
     })
 
     onMounted(() => {
@@ -109,8 +141,17 @@ const CSidebar = defineComponent({
       })
     })
 
+    const handleVisibleChange = (visible: boolean) => {
+      if (mobile.value) {
+        visibleMobile.value = visible
+        return
+      }
+
+      visibleDesktop.value = visible
+    }
+
     const handleHide = () => {
-      visible.value = false
+      handleVisibleChange(false)
       emit('visible-change', false)
     }
 
@@ -146,13 +187,15 @@ const CSidebar = defineComponent({
           class: [
             'sidebar',
             {
+              [`sidebar-${props.colorScheme}`]: props.colorScheme,
               'sidebar-narrow': props.narrow,
               'sidebar-overlaid': props.overlaid,
+              [`sidebar-${props.placement}`]: props.placement,
               [`sidebar-${props.position}`]: props.position,
               [`sidebar-${props.size}`]: props.size,
               'sidebar-narrow-unfoldable': props.unfoldable,
-              show: visible.value === true && mobile.value,
-              hide: visible.value === false && !mobile.value,
+              show: (mobile.value && visibleMobile.value) || (props.overlaid && visibleDesktop.value),
+              hide: visibleDesktop.value === false && !mobile.value && !props.overlaid,
             },
             attrs.class,
           ],
@@ -163,7 +206,7 @@ const CSidebar = defineComponent({
       mobile.value &&
         h(CBackdrop, {
           class: 'sidebar-backdrop',
-          visible: props.visible,
+          visible: visibleMobile.value,
           onClick: () => handleHide(),
         }),
     ]
