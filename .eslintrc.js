@@ -29,12 +29,12 @@ module.exports = {
     {
       files: ['**/*.mjs'],
       env: {
-        "env": {
-          "browser": false,
-          "node": true
+        env: {
+          browser: false,
+          node: true,
         },
-        "parserOptions": {
-          "sourceType": "module"
+        parserOptions: {
+          sourceType: 'module',
         },
       },
     },
@@ -42,6 +42,22 @@ module.exports = {
       files: ['**/__tests__/*.{j,t}s?(x)', '**/tests/unit/**/*.spec.{j,t}s?(x)'],
       env: {
         jest: true,
+      },
+    },
+    {
+      files: ['packages/docs/build/**'],
+      env: {
+        env: {
+          browser: false,
+          node: true,
+        },
+        parserOptions: {
+          sourceType: 'script',
+        },
+        rules: {
+          'no-console': 'off',
+          strict: 'error',
+        },
       },
     },
   ],

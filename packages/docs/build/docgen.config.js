@@ -2,7 +2,6 @@
 'use strict'
 
 const path = require('path')
-// const pkg = require('./../package.json')
 
 module.exports = {
   componentsRoot: './../../packages', // the folder where CLI will start searching for components.
