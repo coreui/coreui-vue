@@ -5,6 +5,7 @@ import { getAlignmentClassNames } from './utils'
 
 const CDropdownMenu = defineComponent({
   name: 'CDropdownMenu',
+  inheritAttrs: false,
   props: {
     /**
      * Component used for the root node. Either a string to use a HTML element or a component.
@@ -16,7 +17,7 @@ const CDropdownMenu = defineComponent({
       default: 'div',
     },
   },
-  setup(props, { slots }) {
+  setup(props, { attrs, slots }) {
     const dropdownMenuRef = inject('dropdownMenuRef') as Ref<HTMLElement>
     const config = inject('config') as any // eslint-disable-line @typescript-eslint/no-explicit-any
     const visible = inject('visible') as Ref<boolean>
@@ -35,10 +36,12 @@ const CDropdownMenu = defineComponent({
             h(
               props.component,
               {
+                ...attrs,
                 class: [
                   'dropdown-menu',
                   { show: visible.value },
                   getAlignmentClassNames(alignment),
+                  attrs.class,
                 ],
                 ...((typeof alignment === 'object' || !popper) && {
                   'data-coreui-popper': 'static',

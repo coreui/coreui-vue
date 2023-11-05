@@ -9,6 +9,7 @@ import { getRTLPlacement } from '../../utils'
 
 const CPopover = defineComponent({
   name: 'CPopover',
+  inheritAttrs: false,
   props: {
     /**
      * Apply a CSS fade transition to the popover.
@@ -25,9 +26,7 @@ const CPopover = defineComponent({
      * @since v5.0.0-beta.0
      */
     container: {
-      type: [Object, String] as PropType<
-        HTMLElement | (() => HTMLElement) | string
-      >,
+      type: [Object, String] as PropType<HTMLElement | (() => HTMLElement) | string>,
       default: 'body',
     },
     /**
@@ -198,16 +197,17 @@ const CPopover = defineComponent({
                 h(
                   'div',
                   {
+                    ...attrs,
                     class: [
                       'popover',
                       'bs-popover-auto',
                       {
                         fade: props.animation,
                       },
+                      attrs.class,
                     ],
                     ref: popoverRef,
                     role: 'tooltip',
-                    ...attrs,
                   },
                   [
                     h('div', { class: 'popover-arrow' }),

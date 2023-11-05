@@ -9,6 +9,7 @@ import { getRTLPlacement } from '../../utils'
 
 const CTooltip = defineComponent({
   name: 'CTooltip',
+  // inheritAttrs: false,
   props: {
     /**
      * Apply a CSS fade transition to the tooltip.
@@ -194,16 +195,17 @@ const CTooltip = defineComponent({
                 h(
                   'div',
                   {
+                    ...attrs,
                     class: [
                       'tooltip',
                       'bs-tooltip-auto',
                       {
                         fade: props.animation,
                       },
+                      attrs.class,
                     ],
                     ref: tooltipRef,
                     role: 'tooltip',
-                    ...attrs,
                   },
                   [
                     h('div', { class: 'tooltip-arrow' }),
