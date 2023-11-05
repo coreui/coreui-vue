@@ -30,8 +30,12 @@ const CLink = defineComponent({
     'click',
   ],
   setup(props, { slots, emit }) {
-    const handleClick = () => {
+    const handleClick = (event: Event) => {
       emit('click', props.href)
+
+      if (props.href === '' || props.href === '#') {
+        event.preventDefault()
+      }
     }
     return () =>
       h(
