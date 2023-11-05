@@ -62,11 +62,5 @@
     "@coreui/coreui": "^5.0.0-beta.1",
     "@popperjs/core": "^2.11.8",
     "vue": "^3.2.21"
-  },
-  "standard": {
-    "ignore": [
-      "node_modules/",
-      "build/"
-    ]
   }
 }
