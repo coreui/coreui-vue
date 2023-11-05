@@ -65,7 +65,7 @@ const CDropdown = defineComponent({
      * @since v5.0.0-beta.0
      */
     container: {
-      type: [HTMLElement, () => HTMLElement, String] as PropType<
+      type: [Object, String] as PropType<
         HTMLElement | (() => HTMLElement) | string
       >,
       default: 'body',
