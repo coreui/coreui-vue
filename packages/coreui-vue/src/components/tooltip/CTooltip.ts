@@ -9,7 +9,7 @@ import { getRTLPlacement } from '../../utils'
 
 const CTooltip = defineComponent({
   name: 'CTooltip',
-  // inheritAttrs: false,
+  inheritAttrs: false,
   props: {
     /**
      * Apply a CSS fade transition to the tooltip.
