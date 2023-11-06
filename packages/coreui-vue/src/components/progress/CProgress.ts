@@ -23,7 +23,7 @@ const CProgress = defineComponent({
     /**
      * A string of all className you want applied to the <CProgressBar/> component.
      *
-     * @since 5.0.0-beta.0
+     * @since 5.0.0-beta.1
      */
     progressBarClassName: String,
     /**
