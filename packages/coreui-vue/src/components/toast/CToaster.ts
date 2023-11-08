@@ -31,7 +31,7 @@ const CToaster = defineComponent({
         'div',
         {
           class: [
-            'toaster toast-container p-3',
+            'toaster toast-container',
             {
               'position-fixed': props.placement,
               'top-0': props.placement && props.placement.includes('top'),

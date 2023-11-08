@@ -65,8 +65,8 @@ Toasts are as flexible as you need and have very little required markup. At a mi
 
 :::demo
 <CButton color="primary" @click="createToast">Send a toast</CButton>
-<CToaster placement="top-end">
-  <CToast v-for="(toast, index) in toasts" visible>
+<CToaster class="p-3" placement="top-end">
+  <CToast v-for="(toast, index) in toasts" visible :key="index">
     <CToastHeader closeButton>
     <span class="me-auto fw-bold">{{toast.title}}</span>
     <small>7 min ago</small>
@@ -80,8 +80,8 @@ Toasts are as flexible as you need and have very little required markup. At a mi
 ```vue
 <template>
   <CButton color="primary" @click="createToast">Send a toast</CButton>
-  <CToaster placement="top-end" visible>
-    <CToast v-for="(toast, index) in toasts">
+  <CToaster class="p-3" placement="top-end">
+    <CToast v-for="(toast, index) in toasts" visible :key="index">
       <CToastHeader closeButton>
       <span class="me-auto fw-bold">{{toast.title}}</span>
       <small>7 min ago</small>
@@ -181,7 +181,7 @@ Toasts are slightly translucent to blend in with what's below them.
 You can stack toasts by wrapping them in a toast container, which will vertically add some spacing.
 
 ::: demo
-<CToaster class="position-relative" >
+<CToaster class="position-static">
 <CToast :autohide="false" visible>
 <CToastHeader closeButton>
 <svg
@@ -222,7 +222,7 @@ You can stack toasts by wrapping them in a toast container, which will verticall
 :::
 
 ```vue
-<CToaster>
+<CToaster class="position-static">
   <CToast :autohide="false" visible>
     <CToastHeader closeButton>
       <svg
