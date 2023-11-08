@@ -148,11 +148,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 ## Status
 
-[![Build Status](https://github.com/coreui/coreui-vue/workflows/JS%20Tests/badge.svg?branch=main)](https://github.com/coreui/coreui-vue/actions?query=workflow%3AJS+Tests+branch%3Amain)
 [![npm version](https://img.shields.io/npm/v/@coreui/vue)](https://www.npmjs.com/package/@coreui/vue)
-[![peerDependencies Status](https://img.shields.io/david/peer/coreui/coreui)](https://david-dm.org/coreui/coreui?type=peer)
-[![devDependency Status](https://img.shields.io/david/dev/coreui/coreui)](https://david-dm.org/coreui/coreui?type=dev)
-[![Coverage Status](https://img.shields.io/coveralls/github/coreui/coreui-vue/v4)](https://coveralls.io/github/coreui/coreui-vue?branch=v4)
 
 ## Bugs and feature requests
 
