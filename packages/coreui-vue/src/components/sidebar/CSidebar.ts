@@ -70,7 +70,10 @@ const CSidebar = defineComponent({
     /**
      * Toggle the visibility of sidebar component.
      */
-    visible: Boolean,
+    visible: {
+      type: Boolean,
+      default: undefined,
+    },
   },
   emits: [
     /**
@@ -95,8 +98,6 @@ const CSidebar = defineComponent({
     const visibleDesktop = ref(
       props.visible !== undefined ? props.visible : props.overlaid ? false : true,
     )
-
-    // const visible = ref(props.visible)
 
     watch(inViewport, () => {
       emit('visible-change', inViewport.value)
@@ -194,7 +195,8 @@ const CSidebar = defineComponent({
               [`sidebar-${props.position}`]: props.position,
               [`sidebar-${props.size}`]: props.size,
               'sidebar-narrow-unfoldable': props.unfoldable,
-              show: (mobile.value && visibleMobile.value) || (props.overlaid && visibleDesktop.value),
+              show:
+                (mobile.value && visibleMobile.value) || (props.overlaid && visibleDesktop.value),
               hide: visibleDesktop.value === false && !mobile.value && !props.overlaid,
             },
             attrs.class,
