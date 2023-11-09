@@ -66,6 +66,16 @@ export default defineUserConfig({
         }
       },
     }),
+    containerPlugin({
+      type: 'demo-bg-secondary',
+      render: function (tokens, idx) {
+        if (tokens[idx].nesting === 1) {
+          return '<div class="docs-example rounded-top p-0 bg-body-secondary overflow-hidden">\n'
+        } else {
+          return '</div>\n'
+        }
+      },
+    }),
     tocPlugin({}),
     registerComponentsPlugin({
       components: {
