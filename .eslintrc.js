@@ -1,4 +1,19 @@
+/**
+ * Copyright (c) 2013-present, creativeLabs Lukasz Holeczek.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+'use strict'
+
 module.exports = {
+  root: true, // So parent files don't get applied
+  env: {
+    es6: true,
+    browser: true,
+    node: true,
+  },
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   parserOptions: {
     ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
@@ -29,13 +44,11 @@ module.exports = {
     {
       files: ['**/*.mjs'],
       env: {
-        env: {
-          browser: false,
-          node: true,
-        },
-        parserOptions: {
-          sourceType: 'module',
-        },
+        browser: false,
+        node: true,
+      },
+      parserOptions: {
+        sourceType: 'module',
       },
     },
     {
@@ -47,17 +60,15 @@ module.exports = {
     {
       files: ['packages/docs/build/**'],
       env: {
-        env: {
-          browser: false,
-          node: true,
-        },
-        parserOptions: {
-          sourceType: 'script',
-        },
-        rules: {
-          'no-console': 'off',
-          strict: 'error',
-        },
+        browser: false,
+        node: true,
+      },
+      parserOptions: {
+        sourceType: 'script',
+      },
+      rules: {
+        'no-console': 'off',
+        strict: 'error',
       },
     },
   ],
