@@ -96,7 +96,7 @@ const CSidebar = defineComponent({
     const mobile = ref()
     const visibleMobile = ref(false)
     const visibleDesktop = ref(
-      props.visible !== undefined ? props.visible : props.overlaid ? false : true,
+      props.visible === undefined ? (props.overlaid ? false : true) : props.visible,
     )
 
     watch(inViewport, () => {
