@@ -377,6 +377,10 @@ export default defineUserConfig({
             text: 'v4',
             link: '/migration/v4.html',
           },
+          {
+            text: 'v5',
+            link: '/migration/v5.html',
+          },
         ],
       },
     ],
