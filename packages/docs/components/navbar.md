@@ -981,10 +981,10 @@ With a toggler on the left and brand name on the right:
 Sometimes you want to use the collapse plugin to trigger a container element for content that structurally sits outside of the `<CNavbar>`.
 
 ::: demo
-<CCollapse id="navbarToggleExternalContent" :visible="visibleExternalContent">
+<CCollapse id="navbarToggleExternalContent" :visible="visibleExternalContent" data-coreui-theme="dark">
   <div class="bg-dark p-4">
-    <h5 class="text-white h4">Collapsed content</h5>
-    <span class="text-medium-emphasis-inverse">Toggleable via the navbar brand.</span>
+    <h5 class="text-body-emphasis h4">Collapsed content</h5>
+    <span class="text-body-secondary">Toggleable via the navbar brand.</span>
   </div>
 </CCollapse>
 <CNavbar colorScheme="dark" class="bg-dark">
@@ -999,10 +999,10 @@ Sometimes you want to use the collapse plugin to trigger a container element for
 :::
 ```vue
 <template>
-  <CCollapse id="navbarToggleExternalContent" :visible="visibleExternalContent">
+  <CCollapse id="navbarToggleExternalContent" :visible="visibleExternalContent" data-coreui-theme="dark">
     <div class="bg-dark p-4">
-      <h5 class="text-white h4">Collapsed content</h5>
-      <span class="text-medium-emphasis-inverse">Toggleable via the navbar brand.</span>
+      <h5 class="text-body-emphasis h4">Collapsed content</h5>
+      <span class="text-body-secondary">Toggleable via the navbar brand.</span>
     </div>
   </CCollapse>
   <CNavbar colorScheme="dark" class="bg-dark">

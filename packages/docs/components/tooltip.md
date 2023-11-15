@@ -12,7 +12,7 @@ other_frameworks: tooltip
 Hover over the links below to see tooltips:
 
 ::: demo
-<p class="text-medium-emphasis">
+<p class="text-body-secondary">
   Tight pants next level keffiyeh
   <CLink v-c-tooltip="'Tooltip text'"> you&nbsp;probably </CLink>
     haven't heard of them.
@@ -31,7 +31,7 @@ Hover over the links below to see tooltips:
 </p>
 :::
 ```vue demo
-<p class="text-medium-emphasis">
+<p class="text-body-secondary">
   Tight pants next level keffiyeh
   <CLink v-c-tooltip="'Tooltip text'"> you probably </CLink>
     haven't heard of them.

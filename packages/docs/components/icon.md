@@ -162,7 +162,7 @@ CoreUI Icons package is delivered with more than 1500 icons in multiple formats 
         <div class="p-3 py-4 mb-2 bg-light text-center rounded">
           <CIcon :icon="icon[i]" size="xxl"/>
         </div>
-        <div class="text-medium-emphasis text-center pt-1 small">{{i}}</div>
+        <div class="text-body-secondary text-center pt-1 small">{{i}}</div>
       </CCol>
     </CRow>
   </CTabPane>
@@ -172,7 +172,7 @@ CoreUI Icons package is delivered with more than 1500 icons in multiple formats 
         <div class="p-3 py-4 mb-2 bg-light text-center rounded">
           <CIcon :icon="icon[i]" size="xxl"/>
         </div>
-        <div class="text-medium-emphasis text-center pt-1 small">{{i}}</div>
+        <div class="text-body-secondary text-center pt-1 small">{{i}}</div>
       </CCol>
     </CRow>
   </CTabPane>
@@ -182,7 +182,7 @@ CoreUI Icons package is delivered with more than 1500 icons in multiple formats 
         <div class="p-3 py-4 mb-2 bg-light text-center rounded">
           <CIcon :icon="icon[i]" size="xxl"/>
         </div>
-        <div class="text-medium-emphasis text-center pt-1 small">{{i}}</div>
+        <div class="text-body-secondary text-center pt-1 small">{{i}}</div>
       </CCol>
     </CRow>
   </CTabPane>

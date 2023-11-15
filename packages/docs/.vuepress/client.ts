@@ -8,6 +8,7 @@ import '@coreui/chartjs/scss/coreui-chartjs.scss'
 import {
   cibCoreuiC,
   cibDiscourse,
+  cibFacebook,
   cibGithub,
   cibTwitter,
   cibOpenCollective,
@@ -37,6 +38,7 @@ import {
 export const icons = {
   cibCoreuiC,
   cibDiscourse,
+  cibFacebook,
   cibGithub,
   cibTwitter,
   cibOpenCollective,
