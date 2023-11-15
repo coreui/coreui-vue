@@ -2,8 +2,8 @@
 
 exports[`Customize CModal component renders correctly 1`] = `
 "<transition-stub appear="false" persisted="false" css="false">
-  <div class="modal">
-    <div class="modal-dialog modal-dialog-centered modal-fullscreen-lg-down modal-dialog-scrollable modal-lg" role="dialog">
+  <div class="modal" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen-lg-down modal-dialog-scrollable modal-lg">
       <div class="modal-content bazinga">Default slot</div>
     </div>
   </div>
@@ -12,8 +12,8 @@ exports[`Customize CModal component renders correctly 1`] = `
 
 exports[`Loads and display CModal component renders correctly 1`] = `
 "<transition-stub appear="false" persisted="false" css="false">
-  <div class="modal fade">
-    <div class="modal-dialog modal-fullscreen" role="dialog">
+  <div class="modal fade" aria-modal="true" role="dialog">
+    <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">Default slot</div>
     </div>
   </div>

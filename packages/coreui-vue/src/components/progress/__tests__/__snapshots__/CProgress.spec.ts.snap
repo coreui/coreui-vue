@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Customize CProgress component renders correctly 1`] = `"<div class="progress progress-thin progress-white" style="height: 100px;">Default slot</div>"`;
+exports[`Customize CProgress component renders correctly 1`] = `
+"<div class="progress progress-thin progress-white" style="height: 100px;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar bg-undefined" style="width: 0%;">Default slot</div>
+</div>"
+`;
 
-exports[`Loads and display CProgress component renders correctly 1`] = `"<div class="progress" style="">Default slot</div>"`;
+exports[`Loads and display CProgress component renders correctly 1`] = `
+"<div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar bg-undefined" style="width: 0%;">Default slot</div>
+</div>"
+`;

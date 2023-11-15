@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Customize CNavbar component renders correctly 1`] = `
-"<div class="navbar bg-warning navbar-light navbar-expand-xl fixed-bottom">
+"<div class="navbar bg-warning navbar-expand-xl fixed-bottom" data-coreui-theme="light">
   <div class="container-lg">Default slot</div>
 </div>"
 `;
