@@ -8,18 +8,18 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@coreui/chartjs": "^4.0.0-beta.1",
-    "@coreui/coreui": "^5.0.0-beta.2",
+    "@coreui/chartjs": "^4.0.0-rc.0",
+    "@coreui/coreui": "^5.0.0-rc.0",
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-vue": "^2.0.0",
     "@coreui/utils": "^2.0.2",
-    "@coreui/vue-chartjs": "^3.0.0-beta.0",
+    "@coreui/vue-chartjs": "^3.0.0-rc.0",
     "@docsearch/css": "^3.5.2",
     "@docsearch/js": "^3.5.2",
-    "@vuepress/plugin-register-components": "2.0.0-beta.67",
-    "@vuepress/plugin-toc": "2.0.0-beta.67",
+    "@vuepress/plugin-register-components": "2.0.0-beta.68",
+    "@vuepress/plugin-toc": "2.0.0-beta.68",
     "markdown-it-include": "^2.0.0",
     "vue-docgen-cli": "^4.67.0",
-    "vuepress": "2.0.0-beta.67"
+    "vuepress": "2.0.0-beta.68"
   }
 }
