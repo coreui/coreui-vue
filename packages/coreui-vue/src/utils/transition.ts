@@ -37,13 +37,18 @@ export const executeAfterTransition = (
   }, emulatedDuration)
 }
 
-export const getTransitionDurationFromElement = (element: HTMLElement) => {
+export const getTransitionDurationFromElement = (element: HTMLElement | null) => {
   if (!element) {
     return 0
   }
 
   // Get transition-duration of the element
-  let { transitionDuration, transitionDelay } = window.getComputedStyle(element)
+  let transitionDuration, transitionDelay;
+  try {
+    ({ transitionDuration, transitionDelay } = window.getComputedStyle(element));
+  } catch (error) {
+    return 0;
+  }
 
   const floatTransitionDuration = Number.parseFloat(transitionDuration)
   const floatTransitionDelay = Number.parseFloat(transitionDelay)
