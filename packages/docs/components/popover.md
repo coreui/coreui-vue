@@ -11,15 +11,15 @@ other_frameworks: popover
 
 ::: demo
 <CPopover title="Popover title" content="And here\’s some amazing content. It’s very engaging. Right?" placement="right">
-  <template #toggler="{ on }">
-    <CButton color="danger" size="lg" v-on="on">Click to toggle popover</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="danger" size="lg" :aria-describedby="id" v-on="on">Click to toggle popover</CButton>
   </template>
 </CPopover>
 :::
 ```vue
 <CPopover title="Popover title" content="And here\’s some amazing content. It’s very engaging. Right?" placement="right">
-  <template #toggler="{ on }">
-    <CButton color="danger" size="lg" v-on="on">Click to toggle popover</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="danger" size="lg" :aria-describedby="id" v-on="on">Click to toggle popover</CButton>
   </template>
 </CPopover>
 ```
@@ -41,45 +41,45 @@ Four options are available: top, right, bottom, and left aligned. Directions are
 
 ::: demo
 <CPopover content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="top">
-  <template #toggler="{ on }">
-    <CButton color="secondary" v-on="on">Popover on top</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="secondary" :aria-describedby="id" v-on="on">Popover on top</CButton>
   </template>
 </CPopover>
 <CPopover content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="right">
-  <template #toggler="{ on }">
-    <CButton color="secondary" v-on="on">Popover on right</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="secondary" :aria-describedby="id" v-on="on">Popover on right</CButton>
   </template>
 </CPopover>
 <CPopover content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="bottom">
-  <template #toggler="{ on }">
-    <CButton color="secondary" v-on="on">Popover on bottom</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="secondary" :aria-describedby="id" v-on="on">Popover on bottom</CButton>
   </template>
 </CPopover>
 <CPopover content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="left">
-  <template #toggler="{ on }">
-    <CButton color="secondary" v-on="on">Popover on left</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="secondary" :aria-describedby="id" v-on="on">Popover on left</CButton>
   </template>
 </CPopover>
 :::
 ```vue
 <CPopover content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="top">
-  <template #toggler="{ on }">
-    <CButton color="secondary" v-on="on">Popover on top</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="secondary" :aria-describedby="id" v-on="on">Popover on top</CButton>
   </template>
 </CPopover>
 <CPopover content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="right">
-  <template #toggler="{ on }">
-    <CButton color="secondary" v-on="on">Popover on right</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="secondary" :aria-describedby="id" v-on="on">Popover on right</CButton>
   </template>
 </CPopover>
 <CPopover content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="bottom">
-  <template #toggler="{ on }">
-    <CButton color="secondary" v-on="on">Popover on bottom</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="secondary" :aria-describedby="id" v-on="on">Popover on bottom</CButton>
   </template>
 </CPopover>
 <CPopover content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="left">
-  <template #toggler="{ on }">
-    <CButton color="secondary" v-on="on">Popover on left</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="secondary" :aria-describedby="id" v-on="on">Popover on left</CButton>
   </template>
 </CPopover>
 ```
@@ -110,8 +110,8 @@ You can customize the appearance of popovers using [CSS variables](#css-variable
   title="Custom popover"
   :style="customPopoverStyle"
 >
-  <template #toggler="{ on }">
-    <CButton color="secondary" v-on="on">Custom popover</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="secondary" :aria-describedby="id" v-on="on">Custom popover</CButton>
   </template>
 </CPopover>
 :::
@@ -123,8 +123,8 @@ You can customize the appearance of popovers using [CSS variables](#css-variable
     title="Custom popover"
     :style="customPopoverStyle"
   >
-    <template #toggler="{ on }">
-      <CButton color="secondary" v-on="on">Custom popover</CButton>
+    <template #toggler="{ id, on }">
+      <CButton color="secondary" :aria-describedby="id" v-on="on">Custom popover</CButton>
     </template>
   </CPopover>
 </template>
@@ -160,8 +160,8 @@ For disabled popover triggers, you may also prefer `:trigger="['hover', 'focus']
   placement="right"
   :trigger="['hover', 'focus']"
 >
-  <template #toggler="{ on }">
-    <span class="d-inline-block" :tabindex="0" v-on="on">
+  <template #toggler="{ id, on }">
+    <span class="d-inline-block" :tabindex="0" :aria-describedby="id" v-on="on">
       <CButton color="primary" disabled>Disabled button</CButton>
     </span>
   </template>
@@ -173,8 +173,8 @@ For disabled popover triggers, you may also prefer `:trigger="['hover', 'focus']
   placement="right"
   :trigger="['hover', 'focus']"
 >
-  <template #toggler="{ on }">
-    <span class="d-inline-block" :tabindex="0" v-on="on">
+  <template #toggler="{ id, on }">
+    <span class="d-inline-block" :tabindex="0" :aria-describedby="id" v-on="on">
       <CButton color="primary" disabled>Disabled button</CButton>
     </span>
   </template>

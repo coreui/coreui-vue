@@ -1,6 +1,8 @@
 import { DirectiveBinding } from 'vue'
 import { createPopper } from '@popperjs/core'
 
+import type { Options } from '@popperjs/core'
+
 import { getUID } from '../utils'
 
 const createPopoverElement = (id: string, header: string, content: string): HTMLDivElement => {
@@ -14,8 +16,13 @@ const createPopoverElement = (id: string, header: string, content: string): HTML
   return popover
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const addPopoverElement = (popover: HTMLDivElement, el: HTMLElement, popperOptions: any) => {
+const addPopoverElement = (
+  el: HTMLElement,
+  popover: HTMLDivElement,
+  popperOptions: Partial<Options>,
+  uID: string,
+) => {
+  el.setAttribute('aria-describedby', uID)
   document.body.appendChild(popover)
   createPopper(el, popover, popperOptions)
   setTimeout(() => {
@@ -23,21 +30,26 @@ const addPopoverElement = (popover: HTMLDivElement, el: HTMLElement, popperOptio
   }, 1)
 }
 
-const removePopoverElement = (popover: HTMLDivElement) => {
+const removePopoverElement = (el: HTMLElement, popover: HTMLDivElement) => {
+  el.removeAttribute('aria-describedby')
   popover.classList.remove('show')
   setTimeout(() => {
     popover.remove()
   }, 300)
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const togglePopoverElement = (popover: HTMLDivElement, el: HTMLElement, popperOptions: any) => {
+const togglePopoverElement = (
+  el: HTMLElement,
+  popover: HTMLDivElement,
+  popperOptions: Partial<Options>,
+  uID: string,
+) => {
   const popperElement = document.getElementById(popover.id)
   if (popperElement && popperElement.classList.contains('show')) {
-    removePopoverElement(popover)
+    removePopoverElement(el, popover)
     return
   }
-  addPopoverElement(popover, el, popperOptions)
+  addPopoverElement(el, popover, popperOptions, uID)
 }
 
 export default {
@@ -65,30 +77,30 @@ export default {
       ],
     }
 
-    const popoverUID = getUID('popover')
-    binding.arg = popoverUID
-    const popover = createPopoverElement(popoverUID, header, content)
+    const uID = getUID('popover')
+    binding.arg = uID
+    const popover = createPopoverElement(uID, header, content)
 
     trigger.includes('click') &&
       el.addEventListener('click', () => {
-        togglePopoverElement(popover, el, popperOptions)
+        togglePopoverElement(el, popover, popperOptions, uID)
       })
 
     if (trigger.includes('focus')) {
       el.addEventListener('focus', () => {
-        addPopoverElement(popover, el, popperOptions)
+        addPopoverElement(el, popover, popperOptions, uID)
       })
       el.addEventListener('blur', () => {
-        removePopoverElement(popover)
+        removePopoverElement(el, popover)
       })
     }
 
     if (trigger.includes('hover')) {
       el.addEventListener('mouseenter', () => {
-        addPopoverElement(popover, el, popperOptions)
+        addPopoverElement(el, popover, popperOptions, uID)
       })
       el.addEventListener('mouseleave', () => {
-        removePopoverElement(popover)
+        removePopoverElement(el, popover)
       })
     }
   },
