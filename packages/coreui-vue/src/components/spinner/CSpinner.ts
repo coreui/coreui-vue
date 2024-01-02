@@ -3,6 +3,13 @@ import { defineComponent, h } from 'vue'
 const CSpinner = defineComponent({
   name: 'CSpinner',
   props: {
+        /**
+     * Component used for the root node. Either a string to use a HTML element or a component.
+     */
+        as: {
+          type: String,
+          default: 'div',
+        },
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
      *
@@ -22,13 +29,6 @@ const CSpinner = defineComponent({
           'light',
         ].includes(value)
       },
-    },
-    /**
-     * Component used for the root node. Either a string to use a HTML element or a component.
-     */
-    component: {
-      type: String,
-      default: 'div',
     },
     /**
      * Size the component small.
@@ -64,7 +64,7 @@ const CSpinner = defineComponent({
   setup(props) {
     return () =>
       h(
-        props.component,
+        props.as,
         {
           class: [
             `spinner-${props.variant}`,

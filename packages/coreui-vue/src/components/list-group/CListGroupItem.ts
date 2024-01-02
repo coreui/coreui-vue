@@ -10,6 +10,13 @@ const CListGroupItem = defineComponent({
      */
     active: Boolean,
     /**
+     * Component used for the root node. Either a string to use a HTML element or a component.
+     */
+    as: {
+      type: String,
+      default: 'li',
+    },
+    /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
      *
      * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light', string
@@ -19,29 +26,22 @@ const CListGroupItem = defineComponent({
      * Toggle the disabled state for the component.
      */
     disabled: Boolean,
-    /**
-     * Component used for the root node. Either a string to use a HTML element or a component.
-     */
-    component: {
-      type: String,
-      default: 'li',
-    },
   },
   setup(props, { slots }) {
     return () =>
       h(
-        props.component,
+        props.as,
         {
           class: [
             'list-group-item',
             {
               [`list-group-item-${props.color}`]: props.color,
-              'list-group-item-action': props.component === 'a' || props.component === 'button',
+              'list-group-item-action': props.as === 'a' || props.as === 'button',
               [`active`]: props.active,
               [`disabled`]: props.disabled,
             },
           ],
-          ...((props.component === 'a' || props.component === 'button') && {
+          ...((props.as === 'a' || props.as === 'button') && {
             active: props.active,
             disabled: props.disabled,
           }),

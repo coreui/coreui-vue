@@ -6,12 +6,20 @@ const CNavItem = defineComponent({
   name: 'CNavItem',
   props: {
     ...CNavLink.props,
+    /**
+     * Component used for the root node. Either a string to use a HTML element or a component.
+     */
+    as: {
+      type: String,
+      default: 'li',
+    },
   },
   setup(props, { slots }) {
     return () =>
       h(
-        'li',
+        props.as,
         {
+          as: props.component,
           class: 'nav-item',
         },
         props.href
@@ -19,7 +27,6 @@ const CNavItem = defineComponent({
               CNavLink,
               {
                 active: props.active,
-                component: props.component,
                 disabled: props.disabled,
                 href: props.href,
               },

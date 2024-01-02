@@ -32,7 +32,7 @@ const defaultWrapper = mount(Component, {
 
 const customWrapper = mount(Component, {
   propsData: {
-    component: 'ul',
+    as: 'ul',
   },
   slots: {
     default: 'Default slot',

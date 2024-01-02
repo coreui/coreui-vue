@@ -21,7 +21,7 @@ const defaultWrapper = mount(Component, {
 
 const customWrapper = mount(Component, {
   propsData: {
-    component: CButton,
+    as: CButton,
   },
   slots: {
     default: 'Default slot',

@@ -12,8 +12,8 @@ const defaultWrapper = mount(Component, {
 
 const customWrapper = mount(Component, {
   propsData: {
+    as: 'h4',
     color: 'warning',
-    component: 'h4',
     size: 'sm',
     variant: 'grow',
     visuallyHiddenLabel: 'visuallyHiddenLabel',

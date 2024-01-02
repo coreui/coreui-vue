@@ -12,7 +12,7 @@ const CDropdownItem = defineComponent({
     /**
      * Component used for the root node. Either a string to use a HTML element or a component.
      */
-    component: {
+    as: {
       type: String,
       default: 'a',
     },
@@ -32,7 +32,7 @@ const CDropdownItem = defineComponent({
         {
           class: 'dropdown-item',
           active: props.active,
-          component: props.component,
+          as: props.as,
           disabled: props.disabled,
           href: props.href,
         },

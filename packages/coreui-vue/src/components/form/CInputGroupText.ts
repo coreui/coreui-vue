@@ -6,13 +6,13 @@ const CInputGroupText = defineComponent({
     /**
      * Component used for the root node. Either a string to use a HTML element or a component.
      */
-    component: {
+    as: {
       type: String,
       default: 'span',
     },
   },
   setup(props, { slots }) {
-    return () => h(props.component, { class: 'input-group-text' }, slots.default && slots.default())
+    return () => h(props.as, { class: 'input-group-text' }, slots.default && slots.default())
   },
 })
 

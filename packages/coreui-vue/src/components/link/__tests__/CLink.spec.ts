@@ -15,7 +15,7 @@ const defaultWrapper = mount(Component, {
 const customWrapper = mount(Component, {
   propsData: {
     active: true,
-    component: 'div',
+    as: 'div',
     disabled: true,
     href: '/bazinga',
   },

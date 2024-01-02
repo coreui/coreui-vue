@@ -12,9 +12,9 @@ const defaultWrapper = mount(Component, {
 
 const customWrapper = mount(Component, {
   propsData: {
+    as: 'div',
     color: 'warning',
     colorScheme: 'light',
-    component: 'div',
     container: 'lg',
     expand: 'xl',
     placement: 'fixed-bottom',

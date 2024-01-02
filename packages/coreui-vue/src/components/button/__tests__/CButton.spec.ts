@@ -13,8 +13,8 @@ const defaultWrapper = mount(Component, {
 const customWrapper = mount(Component, {
   propsData: {
     active: true,
+    as: 'div',
     color: 'warning',
-    component: 'div',
     disabled: true,
     href: '/bazinga',
     shape: 'rounded-pill',
@@ -28,8 +28,8 @@ const customWrapper = mount(Component, {
 
 const customWrapperTwo = mount(Component, {
   propsData: {
+    as: 'a',
     color: 'warning',
-    component: 'a',
     disabled: true,
   },
   slots: {

@@ -12,7 +12,7 @@ const defaultWrapper = mount(Component, {
 
 const customWrapper = mount(Component, {
   propsData: {
-    component: 'span',
+    as: 'span',
   },
   slots: {
     default: 'Default slot',

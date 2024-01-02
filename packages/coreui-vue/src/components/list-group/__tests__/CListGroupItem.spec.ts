@@ -13,9 +13,9 @@ const defaultWrapper = mount(Component, {
 const customWrapper = mount(Component, {
   propsData: {
     active: true,
+    as: 'div',
     color: 'warning',
     disabled: true,
-    component: 'div',
   },
   slots: {
     default: 'Default slot',
@@ -24,8 +24,8 @@ const customWrapper = mount(Component, {
 
 const customWrapperTwo = mount(Component, {
   propsData: {
-    component: 'button',
     active: true,
+    as: 'button',
     disabled: true,
   },
   slots: {

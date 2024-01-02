@@ -6,6 +6,13 @@ const CNavGroup = defineComponent({
   name: 'CNavGroup',
   props: {
     /**
+     * Component used for the root node. Either a string to use a HTML element or a component.
+     */
+    as: {
+      type: String,
+      default: 'li',
+    },
+    /**
      * Make nav group more compact by cutting all `padding` in half.
      */
     compact: Boolean,
@@ -93,7 +100,7 @@ const CNavGroup = defineComponent({
 
     return () =>
       h(
-        'li',
+        props.as,
         {
           class: 'nav-group',
           ref: navGroupRef,
@@ -123,7 +130,7 @@ const CNavGroup = defineComponent({
               default: () =>
                 visible.value &&
                 h(
-                  'ul',
+                  props.as === 'div' ? 'div' : 'ul',
                   {
                     class: [
                       'nav-group-items',

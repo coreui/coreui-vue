@@ -204,7 +204,7 @@ const CFormCheck = defineComponent({
         ? h(
             CButton,
             {
-              component: 'label',
+              as: 'label',
               ...props.button,
               ...(props.id && { for: props.id }),
             },

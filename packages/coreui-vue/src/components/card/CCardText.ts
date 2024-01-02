@@ -6,13 +6,13 @@ const CCardText = defineComponent({
     /**
      * Component used for the root node. Either a string to use a HTML element or a component.
      */
-    component: {
+    as: {
       type: String,
       default: 'p',
     },
   },
   setup(props, { slots }) {
-    return () => h(props.component, { class: 'card-text' }, slots.default && slots.default())
+    return () => h(props.as, { class: 'card-text' }, slots.default && slots.default())
   },
 })
 

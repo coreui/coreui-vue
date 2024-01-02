@@ -7,7 +7,7 @@ const CToastClose = defineComponent({
     /**
      * Component used for the root node. Either a string to use a HTML element or a component.
      */
-    component: String,
+    as: String,
     ...CCloseButton.props,
   },
   emits: [
@@ -24,9 +24,9 @@ const CToastClose = defineComponent({
       updateVisible(false)
     }
     return () =>
-      props.component
+      props.as
         ? h(
-            props.component,
+            props.as,
             {
               onClick: () => {
                 handleClose()

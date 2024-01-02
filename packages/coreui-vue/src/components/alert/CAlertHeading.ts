@@ -6,7 +6,7 @@ export const CAlertHeading = defineComponent({
     /**
      * 	Component used for the root node. Either a string to use a HTML element or a component.
      */
-    component: {
+    as: {
       type: String,
       default: 'h4',
     },
@@ -14,7 +14,7 @@ export const CAlertHeading = defineComponent({
   setup(props, { slots }) {
     return () =>
       h(
-        props.component,
+        props.as,
         {
           class: 'alert-heading',
         },

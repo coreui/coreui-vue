@@ -7,7 +7,7 @@ const CNavbarBrand = defineComponent({
      * Component used for the root node. Either a string to use a HTML element or a component.
      *
      */
-    component: {
+    as: {
       type: String,
       default: 'a',
     },
@@ -19,7 +19,7 @@ const CNavbarBrand = defineComponent({
   setup(props, { slots }) {
     return () =>
       h(
-        props.component ?? (props.href ? 'a' : 'span'),
+        props.as ?? (props.href ? 'a' : 'span'),
         {
           class: 'navbar-brand',
           href: props.href,

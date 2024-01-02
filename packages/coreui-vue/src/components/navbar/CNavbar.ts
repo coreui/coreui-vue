@@ -6,6 +6,13 @@ const CNavbar = defineComponent({
   name: 'CNavbar',
   props: {
     /**
+     * Component used for the root node. Either a string to use a HTML element or a component.
+     */
+    as: {
+      type: String,
+      default: 'nav',
+    },
+    /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
      *
      * @values  'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light', string
@@ -21,13 +28,6 @@ const CNavbar = defineComponent({
       validator: (value: string) => {
         return ['dark', 'light'].includes(value)
       },
-    },
-    /**
-     * Component used for the root node. Either a string to use a HTML element or a component.
-     */
-    component: {
-      type: String,
-      default: 'nav',
     },
     /**
      * Defines optional container wrapping children elements.
@@ -68,7 +68,7 @@ const CNavbar = defineComponent({
   setup(props, { slots }) {
     return () =>
       h(
-        props.component,
+        props.as,
         {
           class: [
             'navbar',

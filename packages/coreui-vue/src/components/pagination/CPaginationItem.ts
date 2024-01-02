@@ -12,7 +12,7 @@ const CPaginationItem = defineComponent({
     /**
      * Component used for the root node. Either a string to use a HTML element or a component.
      */
-    component: String,
+    as: String,
     /**
      * Toggle the disabled state for the component.
      */
@@ -24,7 +24,7 @@ const CPaginationItem = defineComponent({
   },
   setup(props, { slots }) {
     return () => {
-      const component = props.component ?? (props.active ? 'span' : 'a')
+      const component = props.as ?? (props.active ? 'span' : 'a')
       return h(
         'li',
         {

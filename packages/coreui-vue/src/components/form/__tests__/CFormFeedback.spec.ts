@@ -12,7 +12,7 @@ const defaultWrapper = mount(Component, {
 
 const customWrapper = mount(Component, {
   propsData: {
-    component: 'h2',
+    as: 'h2',
     invalid: true,
     tooltip: true,
     valid: true,
@@ -24,7 +24,7 @@ const customWrapper = mount(Component, {
 
 const customWrapperTwo = mount(Component, {
   propsData: {
-    component: 'h2',
+    as: 'h2',
     invalid: true,
     tooltip: false,
     valid: true,

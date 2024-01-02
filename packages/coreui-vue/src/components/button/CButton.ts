@@ -10,18 +10,18 @@ export const CButton = defineComponent({
      */
     active: Boolean,
     /**
+     * Component used for the root node. Either a string to use a HTML element or a component.
+     */
+    as: {
+      type: String,
+      default: 'button',
+    },
+    /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
      *
      * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'
      */
     color: Color,
-    /**
-     * Component used for the root node. Either a string to use a HTML element or a component.
-     */
-    component: {
-      type: String,
-      default: 'button',
-    },
     /**
      * Toggle the disabled state for the component.
      */
@@ -79,7 +79,7 @@ export const CButton = defineComponent({
     'click',
   ],
   setup(props, { emit, slots }) {
-    const component = props.href ? 'a' : props.component
+    const component = props.href ? 'a' : props.as
     const handleClick = (event: Event) => {
       if (props.disabled) {
         return

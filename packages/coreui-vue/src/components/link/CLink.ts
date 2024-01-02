@@ -10,7 +10,7 @@ const CLink = defineComponent({
     /**
      * Component used for the root node. Either a string to use a HTML element or a component.
      */
-    component: {
+    as: {
       type: String,
       default: 'a',
     },
@@ -39,12 +39,12 @@ const CLink = defineComponent({
     }
     return () =>
       h(
-        props.component,
+        props.as,
         {
           class: [{ active: props.active, disabled: props.disabled }],
           ...(props.active && { 'aria-current': 'page' }),
-          ...(props.component === 'a' && props.disabled && { 'aria-disabled': true, tabIndex: -1 }),
-          ...((props.component === 'a' || props.component === 'button') && {
+          ...(props.as === 'a' && props.disabled && { 'aria-disabled': true, tabIndex: -1 }),
+          ...((props.as === 'a' || props.as === 'button') && {
             onClick: handleClick,
           }),
           href: props.href,

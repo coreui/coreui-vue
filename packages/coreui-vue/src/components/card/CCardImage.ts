@@ -6,7 +6,7 @@ const CCardImage = defineComponent({
     /**
      * Component used for the root node. Either a string to use a HTML element or a component.
      */
-    component: {
+    as: {
       type: String,
       default: 'img',
     },
@@ -25,7 +25,7 @@ const CCardImage = defineComponent({
   setup(props, { slots }) {
     return () =>
       h(
-        props.component,
+        props.as,
         {
           class: `card-img${props.orientation ? `-${props.orientation}` : ''}`,
         },

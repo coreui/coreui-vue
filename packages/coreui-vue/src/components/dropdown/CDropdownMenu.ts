@@ -12,7 +12,7 @@ const CDropdownMenu = defineComponent({
      *
      * @values 'div', 'ul'
      */
-    component: {
+    as: {
       type: String,
       default: 'div',
     },
@@ -34,7 +34,7 @@ const CDropdownMenu = defineComponent({
         {
           default: () =>
             h(
-              props.component,
+              props.as,
               {
                 ...attrs,
                 class: [
@@ -49,7 +49,7 @@ const CDropdownMenu = defineComponent({
                 ...(dark && { 'data-coreui-theme': 'dark' }),
                 ref: dropdownMenuRef,
               },
-              props.component === 'ul'
+              props.as === 'ul'
                 ? slots.default && slots.default().map((vnode) => h('li', {}, vnode))
                 : slots.default && slots.default(),
             ),

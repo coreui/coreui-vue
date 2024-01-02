@@ -12,7 +12,7 @@ const CNavLink = defineComponent({
     /**
      * Component used for the root node. Either a string to use a HTML element or a component.
      */
-    component: {
+    as: {
       type: String,
       default: 'a',
     },
@@ -32,7 +32,7 @@ const CNavLink = defineComponent({
         {
           class: 'nav-link',
           active: props.active,
-          component: props.component,
+          component: props.as,
           disabled: props.disabled,
           href: props.href,
         },
