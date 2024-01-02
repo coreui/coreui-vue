@@ -1,11 +1,11 @@
-import { defineComponent, h, PropType, ref, RendererElement, Transition } from 'vue'
+import { defineComponent, h, onMounted, PropType, ref, RendererElement, Transition } from 'vue'
 import type { Placement } from '@popperjs/core'
 
 import { CConditionalTeleport } from '../conditional-teleport'
 import { usePopper } from '../../composables'
 import type { Placements, Triggers } from '../../types'
 import { executeAfterTransition } from '../../utils/transition'
-import { getRTLPlacement } from '../../utils'
+import { getRTLPlacement, getUID } from '../../utils'
 
 const CTooltip = defineComponent({
   name: 'CTooltip',
@@ -113,6 +113,7 @@ const CTooltip = defineComponent({
   setup(props, { attrs, slots, emit }) {
     const togglerRef = ref()
     const tooltipRef = ref()
+    const uID = ref()
     const visible = ref(props.visible)
     const { initPopper, destroyPopper } = usePopper()
 
@@ -142,6 +143,10 @@ const CTooltip = defineComponent({
       ],
       placement: getRTLPlacement(props.placement, togglerRef.value),
     }
+
+    onMounted(() => {
+      uID.value = getUID('tooltip')
+    })
 
     const handleEnter = (el: RendererElement, done: () => void) => {
       emit('show')
@@ -202,6 +207,7 @@ const CTooltip = defineComponent({
                       },
                       attrs.class,
                     ],
+                    id: uID.value,
                     ref: tooltipRef,
                     role: 'tooltip',
                   },
@@ -222,6 +228,7 @@ const CTooltip = defineComponent({
       ),
       slots.toggler &&
         slots.toggler({
+          id: visible.value ? uID.value : null,
           on: {
             click: (event: Event) =>
               props.trigger.includes('click') && toggleVisible(event, !visible.value),

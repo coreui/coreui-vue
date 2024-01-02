@@ -1,6 +1,8 @@
 import { DirectiveBinding } from 'vue'
 import { createPopper } from '@popperjs/core'
 
+import type { Options } from '@popperjs/core'
+
 import { getUID } from '../utils'
 
 const createTooltipElement = (id: string, content: string): HTMLDivElement => {
@@ -13,8 +15,13 @@ const createTooltipElement = (id: string, content: string): HTMLDivElement => {
   return tooltip
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const addTooltipElement = (tooltip: HTMLDivElement, el: HTMLElement, popperOptions: any) => {
+const addTooltipElement = (
+  el: HTMLElement,
+  tooltip: HTMLDivElement,
+  popperOptions: Partial<Options>,
+  uID: string,
+) => {
+  el.setAttribute('aria-describedby', uID)
   document.body.appendChild(tooltip)
   createPopper(el, tooltip, popperOptions)
   setTimeout(() => {
@@ -22,21 +29,26 @@ const addTooltipElement = (tooltip: HTMLDivElement, el: HTMLElement, popperOptio
   }, 1)
 }
 
-const removeTooltipElement = (tooltip: HTMLDivElement) => {
+const removeTooltipElement = (el: HTMLElement, tooltip: HTMLDivElement) => {
+  el.removeAttribute('aria-describedby')
   tooltip.classList.remove('show')
   setTimeout(() => {
     tooltip.remove()
   }, 300)
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const toggleTooltipElement = (tooltip: HTMLDivElement, el: HTMLElement, popperOptions: any) => {
+const toggleTooltipElement = (
+  el: HTMLElement,
+  tooltip: HTMLDivElement,
+  popperOptions: Partial<Options>,
+  uID: string,
+) => {
   const popperElement = document.getElementById(tooltip.id)
   if (popperElement && popperElement.classList.contains('show')) {
-    removeTooltipElement(tooltip)
+    removeTooltipElement(el, tooltip)
     return
   }
-  addTooltipElement(tooltip, el, popperOptions)
+  addTooltipElement(el, tooltip, popperOptions, uID)
 }
 
 export default {
@@ -62,30 +74,30 @@ export default {
       ],
     }
 
-    const tooltipUID = getUID('tooltip')
-    binding.arg = tooltipUID
-    const tooltip = createTooltipElement(tooltipUID, content)
+    const uID = getUID('tooltip')
+    binding.arg = uID
+    const tooltip = createTooltipElement(uID, content)
 
     trigger.includes('click') &&
       el.addEventListener('click', () => {
-        toggleTooltipElement(tooltip, el, popperOptions)
+        toggleTooltipElement(el, tooltip, popperOptions, uID)
       })
 
     if (trigger.includes('focus')) {
       el.addEventListener('focus', () => {
-        addTooltipElement(tooltip, el, popperOptions)
+        addTooltipElement(el, tooltip, popperOptions, uID)
       })
       el.addEventListener('blur', () => {
-        removeTooltipElement(tooltip)
+        removeTooltipElement(el, tooltip)
       })
     }
 
     if (trigger.includes('hover')) {
       el.addEventListener('mouseenter', () => {
-        addTooltipElement(tooltip, el, popperOptions)
+        addTooltipElement(el, tooltip, popperOptions, uID)
       })
       el.addEventListener('mouseleave', () => {
-        removeTooltipElement(tooltip)
+        removeTooltipElement(el, tooltip)
       })
     }
   },

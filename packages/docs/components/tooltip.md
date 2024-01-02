@@ -56,45 +56,45 @@ Hover over the buttons below to see the four tooltips directions: top, right, bo
 
 ::: demo
 <CTooltip content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="top">
-  <template #toggler="{ on }">
-    <CButton color="secondary" v-on="on">Tooltip on top</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="secondary" :aria-describedby="id" v-on="on">Tooltip on top</CButton>
   </template>
 </CTooltip>
 <CTooltip content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="right">
-  <template #toggler="{ on }">
-    <CButton color="secondary" v-on="on">Tooltip on right</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="secondary" :aria-describedby="id" v-on="on">Tooltip on right</CButton>
   </template>
 </CTooltip>
 <CTooltip content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="bottom">
-  <template #toggler="{ on }">
-    <CButton color="secondary" v-on="on">Tooltip on bottom</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="secondary" :aria-describedby="id" v-on="on">Tooltip on bottom</CButton>
   </template>
 </CTooltip>
 <CTooltip content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="left">
-  <template #toggler="{ on }">
-    <CButton color="secondary" v-on="on">Tooltip on left</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="secondary" :aria-describedby="id" v-on="on">Tooltip on left</CButton>
   </template>
 </CTooltip>
 :::
 ```vue
 <CTooltip content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="top">
-  <template #toggler="{ on }">
-    <CButton color="secondary" v-on="on">Tooltip on top</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="secondary" :aria-describedby="id" v-on="on">Tooltip on top</CButton>
   </template>
 </CTooltip>
 <CTooltip content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="right">
-  <template #toggler="{ on }">
-    <CButton color="secondary" v-on="on">Tooltip on right</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="secondary" :aria-describedby="id" v-on="on">Tooltip on right</CButton>
   </template>
 </CTooltip>
 <CTooltip content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="bottom">
-  <template #toggler="{ on }">
-    <CButton color="secondary" v-on="on">Tooltip on bottom</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="secondary" :aria-describedby="id" v-on="on">Tooltip on bottom</CButton>
   </template>
 </CTooltip>
 <CTooltip content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus" placement="left">
-  <template #toggler="{ on }">
-    <CButton color="secondary" v-on="on">Tooltip on left</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="secondary" :aria-describedby="id" v-on="on">Tooltip on left</CButton>
   </template>
 </CTooltip>
 ```
@@ -124,8 +124,8 @@ You can customize the appearance of tooltips using [CSS variables](#css-variable
   placement="top"
   :style="customTooltipStyle"
 >
-  <template #toggler="{ on }">
-    <CButton color="secondary" v-on="on">Custom popover</CButton>
+  <template #toggler="{ id, on }">
+    <CButton color="secondary" :aria-describedby="id" v-on="on">Custom popover</CButton>
   </template>
 </CTooltip>
 :::
@@ -136,8 +136,8 @@ You can customize the appearance of tooltips using [CSS variables](#css-variable
     placement="top"
     :style="customTooltipStyle"
   >
-    <template #toggler="{ on }">
-      <CButton color="secondary" v-on="on">Custom popover</CButton>
+    <template #toggler="{ id, on }">
+      <CButton color="secondary" :aria-describedby="id" v-on="on">Custom popover</CButton>
     </template>
   </CTooltip>
 </template>
@@ -162,8 +162,8 @@ Elements with the disabled attribute aren’t interactive, meaning users cannot 
 
 :::demo
 <CTooltip content="Disabled tooltip">
-  <template #toggler="{ on }">
-    <span class="d-inline-block" :tabindex="0" v-on="on">
+  <template #toggler="{ id, on }">
+    <span class="d-inline-block" :tabindex="0" :aria-describedby="id" v-on="on">
       <CButton color="primary" disabled>Disabled button</CButton>
     </span>
   </template>
@@ -171,8 +171,8 @@ Elements with the disabled attribute aren’t interactive, meaning users cannot 
 :::
 ```vue
 <CTooltip content="Disabled tooltip">
-  <template #toggler="{ on }">
-    <span class="d-inline-block" :tabindex="0" v-on="on">
+  <template #toggler="{ id, on }">
+    <span class="d-inline-block" :tabindex="0" :aria-describedby="id" v-on="on">
       <CButton color="primary" disabled>Disabled button</CButton>
     </span>
   </template>
