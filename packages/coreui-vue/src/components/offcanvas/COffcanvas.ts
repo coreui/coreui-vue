@@ -7,6 +7,7 @@ import { executeAfterTransition } from '../../utils/transition'
 
 const COffcanvas = defineComponent({
   name: 'COffcanvas',
+  inheritAttrs: false,
   props: {
     /**
      * Apply a backdrop on body while offcanvas is open.
@@ -90,7 +91,7 @@ const COffcanvas = defineComponent({
      */
     'show',
   ],
-  setup(props, { slots, emit }) {
+  setup(props, { attrs, emit, slots }) {
     const offcanvasRef = ref()
     const visible = ref(props.visible)
 
@@ -170,6 +171,7 @@ const COffcanvas = defineComponent({
             h(
               'div',
               {
+                ...attrs,
                 class: [
                   {
                     [`offcanvas${
@@ -177,6 +179,7 @@ const COffcanvas = defineComponent({
                     }`]: props.responsive,
                     [`offcanvas-${props.placement}`]: props.placement,
                   },
+                  attrs.class,
                 ],
                 onKeydown: (event: KeyboardEvent) => handleKeyDown(event),
                 ref: offcanvasRef,
