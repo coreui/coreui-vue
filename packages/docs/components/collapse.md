@@ -15,7 +15,7 @@ The collapse component is used to show and hide content. Buttons or anchors are 
 You can use a link or a button component.
 
 ::: demo
-<CButton color="primary" href="#" @click="visible = !visible">Link</CButton>
+<CButton color="primary" href="#" @click.prevent="visible = !visible">Link</CButton>
 <CButton color="primary" @click="visible = !visible">Button</CButton>
 <CCollapse :visible="visible">
   <CCard class="mt-3">
@@ -29,7 +29,7 @@ You can use a link or a button component.
 :::
 ```vue
 <template>
-  <CButton color="primary" href="#" @click="visible = !visible">Link</CButton>
+  <CButton color="primary" href="#" @click.prevent="visible = !visible">Link</CButton>
   <CButton color="primary" @click="visible = !visible">Button</CButton>
   <CCollapse :visible="visible">
     <CCard class="mt-3">
