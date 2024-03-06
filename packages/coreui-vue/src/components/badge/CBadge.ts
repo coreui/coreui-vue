@@ -61,7 +61,7 @@ const CBadge = defineComponent({
           class: [
             'badge',
             {
-              [`bg-${props.color}`]: props.color,
+              [`text-bg-${props.color}`]: props.color,
               'position-absolute translate-middle': props.position,
               'top-0': props.position && props.position.includes('top'),
               'top-100': props.position && props.position.includes('bottom'),
