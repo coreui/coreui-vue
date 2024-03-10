@@ -21,8 +21,11 @@ const CAccordion = defineComponent({
     const setActiveItemKey = (key: string | number) => {
       activeItemKey.value = key
     }
-    
-    watch(() => props.activeItemKey, value => activeItemKey.value = value)
+
+    watch(
+      () => props.activeItemKey,
+      (value) => (activeItemKey.value = value),
+    )
 
     provide('activeItemKey', activeItemKey)
     provide('alwaysOpen', props.alwaysOpen)
