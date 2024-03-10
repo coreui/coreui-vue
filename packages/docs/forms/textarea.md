@@ -15,13 +15,12 @@ other_frameworks: textarea
   text="Must be 8-20 words long."></CFormTextarea>
 :::
 ```vue
-<CForm>
-  <CFormTextarea
-    id="exampleFormControlTextarea1"
-    label="Example textarea"
-    rows="3"
-    text="Must be 8-20 words long."
-  ></CFormTextarea>
+<CFormTextarea
+  id="exampleFormControlTextarea1"
+  label="Example textarea"
+  rows="3"
+  text="Must be 8-20 words long."
+></CFormTextarea>
 </CForm>
 ```
 
