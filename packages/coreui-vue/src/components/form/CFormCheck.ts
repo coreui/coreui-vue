@@ -189,7 +189,7 @@ const CFormCheck = defineComponent({
     const formControl = () => {
       return h('input', {
         ...attrs,
-        ...((props.modelValue || props.value) && { checked: isChecked.value }),
+        ...(props.modelValue && { checked: isChecked.value }),
         class: inputClassName,
         id: props.id,
         indeterminate: props.indeterminate,
@@ -236,26 +236,26 @@ const CFormCheck = defineComponent({
       props.button
         ? [formControl(), (slots.label || props.label) && formLabel(), formValidation()]
         : props.label
-        ? props.hitArea
-          ? [
-              h(
-                CFormLabel,
+          ? props.hitArea
+            ? [
+                h(
+                  CFormLabel,
+                  {
+                    customClassName: className,
+                    ...(props.id && { for: props.id }),
+                  },
+                  [formControl(), props.label],
+                ),
+                formValidation(),
+              ]
+            : h(
+                'div',
                 {
-                  customClassName: className,
-                  ...(props.id && { for: props.id }),
+                  class: className,
                 },
-                [formControl(), props.label],
-              ),
-              formValidation(),
-            ]
-          : h(
-              'div',
-              {
-                class: className,
-              },
-              [formControl(), props.label && formLabel(), formValidation()],
-            )
-        : formControl()
+                [formControl(), props.label && formLabel(), formValidation()],
+              )
+          : formControl()
   },
 })
 
