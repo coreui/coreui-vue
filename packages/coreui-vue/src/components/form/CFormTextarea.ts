@@ -133,6 +133,7 @@ const CFormTextarea = defineComponent({
                     'is-invalid': props.invalid,
                     'is-valid': props.valid,
                   },
+                  attrs.class,
                 ],
                 onChange: (event: InputEvent) => handleChange(event),
                 onInput: (event: InputEvent) => handleInput(event),

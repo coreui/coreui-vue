@@ -94,6 +94,7 @@ const CFormSwitch = defineComponent({
                 'is-invalid': props.invalid,
                 'is-valid': props.valid,
               },
+              attrs.class,
             ],
             id: props.id,
             onChange: (event: InputEvent) => handleChange(event),
