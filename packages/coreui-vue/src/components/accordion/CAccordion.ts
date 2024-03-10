@@ -1,4 +1,4 @@
-import { defineComponent, h, provide, ref } from 'vue'
+import { defineComponent, h, provide, ref, watch } from 'vue'
 
 const CAccordion = defineComponent({
   name: 'CAccordion',
@@ -21,6 +21,9 @@ const CAccordion = defineComponent({
     const setActiveItemKey = (key: string | number) => {
       activeItemKey.value = key
     }
+    
+    watch(() => props.activeItemKey, value => activeItemKey.value = value)
+
     provide('activeItemKey', activeItemKey)
     provide('alwaysOpen', props.alwaysOpen)
     provide('setActiveItemKey', setActiveItemKey)
