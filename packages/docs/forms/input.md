@@ -38,7 +38,7 @@ If you need to add custom classs to form's components, or need to add some custo
 <CForm>
   <CFormLabel for="exampleFormControlInput1">Email address</CFormLabel>
   <CFormInput type="email" id="exampleFormControlInput1" placeholder="name@example.com" aria-describedby="exampleFormControlInputHelpInline" />
-  <CFormText component="span" id="exampleFormControlInputHelpInline">
+  <CFormText as="span" id="exampleFormControlInputHelpInline">
     Must be 8-20 characters long.
   </CFormText>
 </CForm>

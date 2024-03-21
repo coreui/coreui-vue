@@ -47,18 +47,18 @@ The `<CButton>` component are designed for `<button>` ,  `<a>`  or  `<input>` el
 If you're using `<CButton>` component as `<a>` elements that are used to trigger functionality ex. collapsing content, these links should be given a `role="button"` to adequately communicate their meaning to assistive technologies such as screen readers.
 
 ::: demo
-<CButton component="a" color="primary" href="#" role="button">Link</CButton>
+<CButton as="a" color="primary" href="#" role="button">Link</CButton>
 <CButton type="submit" color="primary">Button</CButton>
-<CButton component="input" type="button" color="primary" value="Input"/>
-<CButton component="input" type="submit" color="primary" value="Submit"/>
-<CButton component="input" type="reset" color="primary" value="Reset"/>
+<CButton as="input" type="button" color="primary" value="Input"/>
+<CButton as="input" type="submit" color="primary" value="Submit"/>
+<CButton as="input" type="reset" color="primary" value="Reset"/>
 :::
 ```vue
-<CButton component="a" color="primary" href="#" role="button">Link</CButton>
+<CButton as="a" color="primary" href="#" role="button">Link</CButton>
 <CButton type="submit" color="primary">Button</CButton>
-<CButton component="input" type="button" color="primary" value="Input"/>
-<CButton component="input" type="submit" color="primary" value="Submit"/>
-<CButton component="input" type="reset" color="primary" value="Reset"/>
+<CButton as="input" type="button" color="primary" value="Input"/>
+<CButton as="input" type="submit" color="primary" value="Submit"/>
+<CButton as="input" type="reset" color="primary" value="Reset"/>
 ```
 
 ## Outline buttons
@@ -197,12 +197,12 @@ Disabled buttons using the `<a>` component act a little different:
 `<a>`s don't support the `disabled` attribute, so CoreUI has to add `.disabled` class to make buttons look inactive. CoreUI also has to add to the disabled button component `aria-disabled="true"` attribute to show the state of the component to assistive technologies.
 
 ::: demo
-<CButton component="a" href="#" color="primary" size="lg" disabled>Primary link</CButton>
-<CButton component="a" href="#" color="secondary" size="lg" disabled>Link</CButton>
+<CButton as="a" href="#" color="primary" size="lg" disabled>Primary link</CButton>
+<CButton as="a" href="#" color="secondary" size="lg" disabled>Link</CButton>
 :::
 ```vue
-<CButton component="a" href="#" color="primary" size="lg" disabled>Primary link</CButton>
-<CButton component="a" href="#" color="secondary" size="lg" disabled>Link</CButton>
+<CButton as="a" href="#" color="primary" size="lg" disabled>Primary link</CButton>
+<CButton as="a" href="#" color="secondary" size="lg" disabled>Link</CButton>
 ```
 
 The `.disabled` class uses `pointer-events: none` to try to disable the link functionality of `<a>`s, but that CSS property is not yet standardized. Besides, even in browsers that do support `pointer-events: none`, keyboard navigation remains unaffected, meaning that sighted keyboard users and users of assistive technologies will still be able to activate these links. So to be safe, we automatically add a `tabindex="-1"` attribute on disabled links (to prevent them from receiving keyboard focus) and use custom JavaScript to disable their functionality.

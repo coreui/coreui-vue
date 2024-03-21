@@ -41,8 +41,8 @@ const CPaginationItem = defineComponent({
           ? h(
               CLink,
               {
+                as: component,
                 class: ['page-link'],
-                component: component,
                 href: props.href,
               },
               {

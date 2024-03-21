@@ -237,7 +237,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
     <CCollapse class="navbar-collapse" :visible="visible">
-      <CNavbarNav component="nav">
+      <CNavbarNav as="nav">
         <CNavLink href="#" active>
             Home
           </CNavLink>
@@ -255,7 +255,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
     <CNavbarBrand href="#">Navbar</CNavbarBrand>
     <CNavbarToggler aria-label="Toggle navigation" aria-expanded={visible} @click="visible = !visible"/>
     <CCollapse class="navbar-collapse" :visible="visible">
-      <CNavbarNav component="nav">
+      <CNavbarNav as="nav">
         <CNavLink href="#" active>
             Home
           </CNavLink>

@@ -176,8 +176,8 @@ const CDropdownToggle = defineComponent({
               CButton,
               {
                 ...togglerProps.value,
+                as: props.as,
                 color: props.color,
-                component: props.as,
                 disabled: props.disabled,
                 shape: props.shape,
                 size: props.size,

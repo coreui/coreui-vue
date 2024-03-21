@@ -102,38 +102,38 @@ Use spinners within buttons to indicate an action is currently processing or tak
 
 ::: demo
 <CButton disabled>
-  <CSpinner component="span" size="sm" aria-hidden="true"/>
+  <CSpinner as="span" size="sm" aria-hidden="true"/>
 </CButton>
 <CButton disabled>
-  <CSpinner component="span" size="sm" aria-hidden="true"/>
+  <CSpinner as="span" size="sm" aria-hidden="true"/>
   Loading...
 </CButton>
 :::
 ```vue
 <CButton disabled>
-  <CSpinner component="span" size="sm" aria-hidden="true"/>
+  <CSpinner as="span" size="sm" aria-hidden="true"/>
 </CButton>
 <CButton disabled>
-  <CSpinner component="span" size="sm" aria-hidden="true"/>
+  <CSpinner as="span" size="sm" aria-hidden="true"/>
   Loading...
 </CButton>
 ```
 
 ::: demo
 <CButton disabled>
-  <CSpinner component="span" size="sm" variant="grow" aria-hidden="true"/>
+  <CSpinner as="span" size="sm" variant="grow" aria-hidden="true"/>
 </CButton>
 <CButton disabled>
-  <CSpinner component="span" size="sm" variant="grow" aria-hidden="true"/>
+  <CSpinner as="span" size="sm" variant="grow" aria-hidden="true"/>
   Loading...
 </CButton>
 :::
 ```vue
 <CButton disabled>
-  <CSpinner component="span" size="sm" variant="grow" aria-hidden="true"/>
+  <CSpinner as="span" size="sm" variant="grow" aria-hidden="true"/>
 </CButton>
 <CButton disabled>
-  <CSpinner component="span" size="sm" variant="grow" aria-hidden="true"/>
+  <CSpinner as="span" size="sm" variant="grow" aria-hidden="true"/>
   Loading...
 </CButton>
 ```

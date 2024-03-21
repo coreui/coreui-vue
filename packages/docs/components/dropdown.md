@@ -43,7 +43,7 @@ And with `<a>` elements:
 
 ::: demo
 <CDropdown color="secondary" togglerText="Dropdown button">
-  <CDropdownToggle component="a" color="primary">Dropdown Button</CDropdownToggle>
+  <CDropdownToggle as="a" color="primary">Dropdown Button</CDropdownToggle>
   <CDropdownMenu>
     <CDropdownItem href="#">Action</CDropdownItem>
     <CDropdownItem href="#">Another action</CDropdownItem>
@@ -53,7 +53,7 @@ And with `<a>` elements:
 :::
 ```vue
 <CDropdown color="secondary" togglerText="Dropdown button">
-  <CDropdownToggle component="a" color="primary">Dropdown Button</CDropdownToggle>
+  <CDropdownToggle as="a" color="primary">Dropdown Button</CDropdownToggle>
   <CDropdownMenu>
     <CDropdownItem href="#">Action</CDropdownItem>
     <CDropdownItem href="#">Another action</CDropdownItem>

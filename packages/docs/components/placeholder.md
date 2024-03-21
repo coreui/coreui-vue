@@ -30,7 +30,7 @@ In the example below, we take a typical card component and recreate it with plac
     </CCardBody>
   </CCard>
   <CCard style="width: 18rem">
-    <CCardImage component="svg" orientation="top" width="100%" height="162" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+    <CCardImage as="svg" orientation="top" width="100%" height="162" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
       <title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect>
     </CCardImage>  
     <CCardBody>
@@ -62,7 +62,7 @@ In the example below, we take a typical card component and recreate it with plac
   </CCardBody>
 </CCard>
 <CCard style="width: 18rem">
-  <CCardImage component="svg" orientation="top" width="100%" height="162" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+  <CCardImage as="svg" orientation="top" width="100%" height="162" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
     <title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect>
   </CCardImage>  
   <CCardBody>
@@ -170,19 +170,19 @@ The size of `<CPlaceholder>`s are based on the typographic style of the parent e
 Animate placeholders with `animation="glow"` or `animation="wave"` to better convey the perception of something being _actively_ loaded.
 
 :::demo
-<CPlaceholder component="p" animation="glow">
+<CPlaceholder as="p" animation="glow">
   <CPlaceholder :xs="12" />
 </CPlaceholder>  
-<CPlaceholder component="p" animation="wave">
+<CPlaceholder as="p" animation="wave">
   <CPlaceholder :xs="12" />
 </CPlaceholder> 
 :::
 ```vue
-<CPlaceholder component="p" animation="glow">
+<CPlaceholder as="p" animation="glow">
   <CPlaceholder :xs="12" />
 </CPlaceholder>  
 
-<CPlaceholder component="p" animation="wave">
+<CPlaceholder as="p" animation="wave">
   <CPlaceholder :xs="12" />
 </CPlaceholder> 
 ```

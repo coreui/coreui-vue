@@ -241,11 +241,11 @@ Add an optional header and/or footer within a card.
 </CCard>
 ```
 
-Card headers can be styled by adding ex. `component="h5"`.
+Card headers can be styled by adding ex. `as="h5"`.
 
 ::: demo
 <CCard>
-  <CCardHeader component="h5">Header</CCardHeader>
+  <CCardHeader as="h5">Header</CCardHeader>
   <CCardBody>
     <CCardTitle>Special title treatment</CCardTitle>
     <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
@@ -255,7 +255,7 @@ Card headers can be styled by adding ex. `component="h5"`.
 :::
 ```vue
 <CCard>
-  <CCardHeader component="h5">Header</CCardHeader>
+  <CCardHeader as="h5">Header</CCardHeader>
   <CCardBody>
     <CCardTitle>Special title treatment</CCardTitle>
     <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>

@@ -56,7 +56,7 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
 
 ::: demo
 
-  <CNav component="nav">
+  <CNav as="nav">
     <CNavLink href="#" active>
       Active
     </CNavLink>
@@ -70,7 +70,7 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
 :::
 ```vue
 
-  <CNav component="nav">
+  <CNav as="nav">
     <CNavLink href="#" active>
       Active
     </CNavLink>
@@ -495,7 +495,7 @@ For equal-width elements, use `layout="justified"`. All horizontal space will be
 If you need responsive nav variations, consider using a series of [flexbox utilities](https://coreui.io/docs/utilities/flex). While more verbose, these utilities offer greater customization across responsive breakpoints. In the example below, our nav will be stacked on the lowest breakpoint, then adapt to a horizontal layout that fills the available width starting from the small breakpoint.
 
 ::: demo
-<CNav component="nav" variant="pills" class="flex-column flex-sm-row">
+<CNav as="nav" variant="pills" class="flex-column flex-sm-row">
   <CNavLink href="#" active>
     Active
   </CNavLink>
@@ -507,7 +507,7 @@ If you need responsive nav variations, consider using a series of [flexbox utili
 </CNav>
 :::
 ```vue
-<CNav component="nav" variant="pills" class="flex-column flex-sm-row">
+<CNav as="nav" variant="pills" class="flex-column flex-sm-row">
   <CNavLink href="#" active>
     Active
   </CNavLink>

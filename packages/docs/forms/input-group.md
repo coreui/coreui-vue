@@ -422,7 +422,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
 
 ::: demo
 <CInputGroup class="mb-3">
-  <CInputGroupText component="label" for="inputGroupSelect01">Options</CInputGroupText>
+  <CInputGroupText as="label" for="inputGroupSelect01">Options</CInputGroupText>
   <CFormSelect id="inputGroupSelect01">
     <option>Choose...</option>
     <option value="1">One</option>
@@ -437,7 +437,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
     <option value="2">Two</option>
     <option value="3">Three</option>
   </CFormSelect>
-  <CInputGroupText component="label" for="inputGroupSelect02">Options</CInputGroupText>
+  <CInputGroupText as="label" for="inputGroupSelect02">Options</CInputGroupText>
 </CInputGroup>
 <CInputGroup class="mb-3">
   <CButton type="button" color="secondary" variant="outline">Button</CButton>
@@ -460,7 +460,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
 :::
 ```vue
 <CInputGroup class="mb-3">
-  <CInputGroupText component="label" for="inputGroupSelect01">Options</CInputGroupText>
+  <CInputGroupText as="label" for="inputGroupSelect01">Options</CInputGroupText>
   <CFormSelect id="inputGroupSelect01">
     <option>Choose...</option>
     <option value="1">One</option>
@@ -475,7 +475,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
     <option value="2">Two</option>
     <option value="3">Three</option>
   </CFormSelect>
-  <CInputGroupText component="label" for="inputGroupSelect02">Options</CInputGroupText>
+  <CInputGroupText as="label" for="inputGroupSelect02">Options</CInputGroupText>
 </CInputGroup>
 <CInputGroup class="mb-3">
   <CButton type="button" color="secondary" variant="outline">Button</CButton>
@@ -501,12 +501,12 @@ Input groups include support for custom selects and custom file inputs. Browser 
 
 ::: demo
 <CInputGroup class="mb-3">
-  <CInputGroupText component="label" for="inputGroupFile01">Upload</CInputGroupText>
+  <CInputGroupText as="label" for="inputGroupFile01">Upload</CInputGroupText>
   <CFormInput type="file" id="inputGroupFile01"/>
 </CInputGroup>
 <CInputGroup class="mb-3">
   <CFormInput type="file" id="inputGroupFile02"/>
-  <CInputGroupText component="label" for="inputGroupFile02">Upload</CInputGroupText>
+  <CInputGroupText as="label" for="inputGroupFile02">Upload</CInputGroupText>
 </CInputGroup>
 <CInputGroup class="mb-3">
   <CButton type="button" color="secondary" variant="outline" id="inputGroupFileAddon03">Button</CButton>
@@ -519,12 +519,12 @@ Input groups include support for custom selects and custom file inputs. Browser 
 :::
 ```vue
 <CInputGroup class="mb-3">
-  <CInputGroupText component="label" for="inputGroupFile01">Upload</CInputGroupText>
+  <CInputGroupText as="label" for="inputGroupFile01">Upload</CInputGroupText>
   <CFormInput type="file" id="inputGroupFile01"/>
 </CInputGroup>
 <CInputGroup class="mb-3">
   <CFormInput type="file" id="inputGroupFile02"/>
-  <CInputGroupText component="label" for="inputGroupFile02">Upload</CInputGroupText>
+  <CInputGroupText as="label" for="inputGroupFile02">Upload</CInputGroupText>
 </CInputGroup>
 <CInputGroup class="mb-3">
   <CButton type="button" color="secondary" variant="outline" id="inputGroupFileAddon03">Button</CButton>

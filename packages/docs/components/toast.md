@@ -293,7 +293,7 @@ Alternatively, you can also add additional controls and components to toasts.
     <CButton type="button" color="primary" size="sm">
     Take action
     </CButton>
-    <CToastClose component="CButton" color="secondary" size="sm" class="ms-1">Close</CToastClose>
+    <CToastClose as="CButton" color="secondary" size="sm" class="ms-1">Close</CToastClose>
     </div>
   </CToastBody>
 </CToast>
@@ -306,7 +306,7 @@ Alternatively, you can also add additional controls and components to toasts.
     <CButton type="button" color="primary" size="sm">
     Take action
     </CButton>
-    <CToastClose component="CButton" color="secondary" size="sm" class="ms-1">Close</CToastClose>
+    <CToastClose as="CButton" color="secondary" size="sm" class="ms-1">Close</CToastClose>
     </div>
   </CToastBody>
 </CToast>

@@ -76,43 +76,43 @@ Add `disabled` boolean property to a `<CListGroupItem>` to make it appear disabl
 
 ## Links and buttons
 
-Use `<a>`s or `<button>`s to create _actionable_ list group items with hover, disabled, and active states by adding `component="a|button"`. We separate these pseudo-classes to ensure list groups made of non-interactive elements (like `<li>`s or `<div>`s) don't provide a click or tap affordance.
+Use `<a>`s or `<button>`s to create _actionable_ list group items with hover, disabled, and active states by adding `as="a|button"`. We separate these pseudo-classes to ensure list groups made of non-interactive elements (like `<li>`s or `<div>`s) don't provide a click or tap affordance.
 
 ::: demo
 <CListGroup>
-  <CListGroupItem component="a" href="#" active>Cras justo odio</CListGroupItem>
-  <CListGroupItem component="a" href="#">Dapibus ac facilisis in</CListGroupItem>
-  <CListGroupItem component="a" href="#">Morbi leo risus</CListGroupItem>
-  <CListGroupItem component="a" href="#">Porta ac consectetur ac</CListGroupItem>
-  <CListGroupItem component="a" href="#" disabled>Vestibulum at eros</CListGroupItem>
+  <CListGroupItem as="a" href="#" active>Cras justo odio</CListGroupItem>
+  <CListGroupItem as="a" href="#">Dapibus ac facilisis in</CListGroupItem>
+  <CListGroupItem as="a" href="#">Morbi leo risus</CListGroupItem>
+  <CListGroupItem as="a" href="#">Porta ac consectetur ac</CListGroupItem>
+  <CListGroupItem as="a" href="#" disabled>Vestibulum at eros</CListGroupItem>
 </CListGroup>
 :::
 ```vue
 <CListGroup>
-  <CListGroupItem component="a" href="#" active>Cras justo odio</CListGroupItem>
-  <CListGroupItem component="a" href="#">Dapibus ac facilisis in</CListGroupItem>
-  <CListGroupItem component="a" href="#">Morbi leo risus</CListGroupItem>
-  <CListGroupItem component="a" href="#">Porta ac consectetur ac</CListGroupItem>
-  <CListGroupItem component="a" href="#" disabled>Vestibulum at eros</CListGroupItem>
+  <CListGroupItem as="a" href="#" active>Cras justo odio</CListGroupItem>
+  <CListGroupItem as="a" href="#">Dapibus ac facilisis in</CListGroupItem>
+  <CListGroupItem as="a" href="#">Morbi leo risus</CListGroupItem>
+  <CListGroupItem as="a" href="#">Porta ac consectetur ac</CListGroupItem>
+  <CListGroupItem as="a" href="#" disabled>Vestibulum at eros</CListGroupItem>
 </CListGroup>
 ```
 
 ::: demo
 <CListGroup>
-  <CListGroupItem component="button" active>Cras justo odio</CListGroupItem>
-  <CListGroupItem component="button">Dapibus ac facilisis in</CListGroupItem>
-  <CListGroupItem component="button">Morbi leo risus</CListGroupItem>
-  <CListGroupItem component="button">Porta ac consectetur ac</CListGroupItem>
-  <CListGroupItem component="button" disabled>Vestibulum at eros</CListGroupItem>
+  <CListGroupItem as="button" active>Cras justo odio</CListGroupItem>
+  <CListGroupItem as="button">Dapibus ac facilisis in</CListGroupItem>
+  <CListGroupItem as="button">Morbi leo risus</CListGroupItem>
+  <CListGroupItem as="button">Porta ac consectetur ac</CListGroupItem>
+  <CListGroupItem as="button" disabled>Vestibulum at eros</CListGroupItem>
 </CListGroup>
 :::
 ```vue
 <CListGroup>
-  <CListGroupItem component="button" active>Cras justo odio</CListGroupItem>
-  <CListGroupItem component="button">Dapibus ac facilisis in</CListGroupItem>
-  <CListGroupItem component="button">Morbi leo risus</CListGroupItem>
-  <CListGroupItem component="button">Porta ac consectetur ac</CListGroupItem>
-  <CListGroupItem component="button" disabled>Vestibulum at eros</CListGroupItem>
+  <CListGroupItem as="button" active>Cras justo odio</CListGroupItem>
+  <CListGroupItem as="button">Dapibus ac facilisis in</CListGroupItem>
+  <CListGroupItem as="button">Morbi leo risus</CListGroupItem>
+  <CListGroupItem as="button">Porta ac consectetur ac</CListGroupItem>
+  <CListGroupItem as="button" disabled>Vestibulum at eros</CListGroupItem>
 </CListGroup>
 ```
 
@@ -183,14 +183,14 @@ Contextual classes also work with `<a>`s or `<button>`s. Note the addition of th
 
 ::: demo
 <CListGroup>
-  <CListGroupItem component="a" href="#">Dapibus ac facilisis in</CListGroupItem>
-  <CListGroupItem v-for="(item) in ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']" component="a" href="#" :color="item">A simple {{item}} list group item</CListGroupItem>
+  <CListGroupItem as="a" href="#">Dapibus ac facilisis in</CListGroupItem>
+  <CListGroupItem v-for="(item) in ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']" as="a" href="#" :color="item">A simple {{item}} list group item</CListGroupItem>
 </CListGroup>
 :::
 ```vue
 <CListGroup>
-  <CListGroupItem component="a" href="#">Dapibus ac facilisis in</CListGroupItem>
-  <CListGroupItem v-for="(item) in ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']" component="a" href="#" :color="item">A simple {{item}} list group item</CListGroupItem>
+  <CListGroupItem as="a" href="#">Dapibus ac facilisis in</CListGroupItem>
+  <CListGroupItem v-for="(item) in ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']" as="a" href="#" :color="item">A simple {{item}} list group item</CListGroupItem>
 </CListGroup>
 ```
 
@@ -223,7 +223,7 @@ Add nearly any HTML within, even for linked list groups like the one below, with
 
 ::: demo
 <CListGroup>
-  <CListGroupItem component="a" href="#" active>
+  <CListGroupItem as="a" href="#" active>
     <div class="d-flex w-100 justify-content-between">
     <h5 class="mb-1">List group item heading</h5>
       <small>3 days ago</small>
@@ -231,7 +231,7 @@ Add nearly any HTML within, even for linked list groups like the one below, with
     <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
     <small>Donec id elit non mi porta.</small>
   </CListGroupItem>
-  <CListGroupItem component="a" href="#">
+  <CListGroupItem as="a" href="#">
     <div class="d-flex w-100 justify-content-between">
     <h5 class="mb-1">List group item heading</h5>
       <small class="text-body-secondary">3 days ago</small>
@@ -239,7 +239,7 @@ Add nearly any HTML within, even for linked list groups like the one below, with
     <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
     <small class="text-body-secondary">Donec id elit non mi porta.</small>
   </CListGroupItem>
-  <CListGroupItem component="a" href="#">
+  <CListGroupItem as="a" href="#">
     <div class="d-flex w-100 justify-content-between">
     <h5 class="mb-1">List group item heading</h5>
       <small class="text-body-secondary">3 days ago</small>
@@ -251,7 +251,7 @@ Add nearly any HTML within, even for linked list groups like the one below, with
 :::
 ```vue
 <CListGroup>
-  <CListGroupItem component="a" href="#" active>
+  <CListGroupItem as="a" href="#" active>
     <div class="d-flex w-100 justify-content-between">
     <h5 class="mb-1">List group item heading</h5>
       <small>3 days ago</small>
@@ -259,7 +259,7 @@ Add nearly any HTML within, even for linked list groups like the one below, with
     <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
     <small>Donec id elit non mi porta.</small>
   </CListGroupItem>
-  <CListGroupItem component="a" href="#">
+  <CListGroupItem as="a" href="#">
     <div class="d-flex w-100 justify-content-between">
     <h5 class="mb-1">List group item heading</h5>
       <small class="text-body-secondary">3 days ago</small>
@@ -267,7 +267,7 @@ Add nearly any HTML within, even for linked list groups like the one below, with
     <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
     <small class="text-body-secondary">Donec id elit non mi porta.</small>
   </CListGroupItem>
-  <CListGroupItem component="a" href="#">
+  <CListGroupItem as="a" href="#">
     <div class="d-flex w-100 justify-content-between">
     <h5 class="mb-1">List group item heading</h5>
       <small class="text-body-secondary">3 days ago</small>

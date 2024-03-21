@@ -30,9 +30,9 @@ const CNavLink = defineComponent({
       h(
         CLink,
         {
-          class: 'nav-link',
+          as: props.as,
           active: props.active,
-          component: props.as,
+          class: 'nav-link',
           disabled: props.disabled,
           href: props.href,
         },

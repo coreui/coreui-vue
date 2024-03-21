@@ -29,7 +29,7 @@ If you need to add custom classs to form's components, or need to add some custo
 ```vue
 <CFormLabel for="exampleFormControlTextarea1">Example textarea</CFormLabel>
 <CFormTextarea id="exampleFormControlTextarea1" rows="3"></CFormTextarea>
-<CFormText component="span" id="passwordHelpInline">Must be 8-20 words long.</CFormText>
+<CFormText as="span" id="passwordHelpInline">Must be 8-20 words long.</CFormText>
 ```
 
 You can also use slots.

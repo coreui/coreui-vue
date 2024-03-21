@@ -28,7 +28,7 @@
           <CDropdownItem
             :active="colorMode === 'light'"
             class="d-flex align-items-center"
-            component="button"
+            as="button"
             type="button"
             @click="setColorMode('light')"
           >
@@ -37,7 +37,7 @@
           <CDropdownItem
             :active="colorMode === 'dark'"
             class="d-flex align-items-center"
-            component="button"
+            as="button"
             type="button"
             @click="setColorMode('dark')"
           >
@@ -46,7 +46,7 @@
           <CDropdownItem
             :active="colorMode === 'auto'"
             class="d-flex align-items-center"
-            component="button"
+            as="button"
             type="button"
             @click="setColorMode('auto')"
           >
@@ -62,7 +62,7 @@
     <CButton
       class="d-lg-inline-block my-2 my-md-0 ms-md-3"
       color="primary"
-      component="a"
+      as="a"
       href="https://coreui.io/vue/docs/getting-started/introduction.html"
       variant="outline"
     >
@@ -79,7 +79,7 @@
     <CButton
       class="d-lg-inline-block my-2 my-md-0 ms-md-3"
       color="primary"
-      component="a"
+      as="a"
       href="https://coreui.io/pricing/?framework=vue&docs=coreui-header-button"
     >
       Get CoreUI PRO
