@@ -6,18 +6,18 @@ const CBadge = defineComponent({
   name: 'CBadge',
   props: {
     /**
-     * Sets the color context of the component to one of CoreUI’s themed colors.
-     *
-     * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'
-     */
-    color: Color,
-    /**
      * Component used for the root node. Either a string to use a HTML element or a component.
      */
     as: {
       type: String,
       default: 'span',
     },
+    /**
+     * Sets the color context of the component to one of CoreUI’s themed colors.
+     *
+     * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'
+     */
+    color: Color,
     /**
      * Position badge in one of the corners of a link or button.
      *
@@ -61,7 +61,8 @@ const CBadge = defineComponent({
           class: [
             'badge',
             {
-              [`text-bg-${props.color}`]: props.color,
+              [`text-bg-${props.color}`]: props.color && !props.textColor,
+              [`bg-${props.color}`]: props.color && props.textColor,
               'position-absolute translate-middle': props.position,
               'top-0': props.position && props.position.includes('top'),
               'top-100': props.position && props.position.includes('bottom'),
