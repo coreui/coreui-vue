@@ -780,6 +780,49 @@ Use `color` property to change the appearance of a card.
 </template>
 ```
 
+You can also apply contextual variations with the `textBgColor` property, which automatically sets the text color to ensure compliance with the WCAG 4.5:1 contrast ratio standard for enhanced accessibility.
+
+::: demo
+<template v-for="(item) in [
+  { color: 'primary' },
+  { color: 'secondary' },
+  { color: 'success' },
+  { color: 'danger' },
+  { color: 'warning' },
+  { color: 'info' },
+  { color: 'light' },
+  { color: 'dark' }
+]">
+  <CCard :textBgColor="item.color" class="mb-3" style="max-width: 18rem">
+    <CCardHeader>Header</CCardHeader>
+    <CCardBody>
+      <CCardTitle>{{item.color}} card title</CCardTitle>
+      <CCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
+    </CCardBody>
+  </CCard>
+</template>
+:::
+```vue
+<template v-for="(item) in [
+  { color: 'primary' },
+  { color: 'secondary' },
+  { color: 'success' },
+  { color: 'danger' },
+  { color: 'warning' },
+  { color: 'info' },
+  { color: 'light' },
+  { color: 'dark' }
+]">
+  <CCard :textBgColor="item.color" class="mb-3" style="max-width: 18rem">
+    <CCardHeader>Header</CCardHeader>
+    <CCardBody>
+      <CCardTitle>{{item.color}} card title</CCardTitle>
+      <CCardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CCardText>
+    </CCardBody>
+  </CCard>
+</template>
+```
+
 <Callout color="info" title="Conveying meaning to assistive technologies">
   Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the <code>.visually-hidden</code> class.
 </Callout>
