@@ -107,7 +107,7 @@ More complex layouts can also be created with the grid system.
     <CFormCheck type="checkbox" id="gridCheck" label="Check me out"/>
   </CCol>
   <CCol xs="12">
-    <CButton type="submit">Sign in</CButton>
+    <CButton color="primary" type="submit">Sign in</CButton>
   </CCol>
 </CForm>
 :::
@@ -148,7 +148,7 @@ More complex layouts can also be created with the grid system.
     <CFormCheck type="checkbox" id="gridCheck" label="Check me out"/>
   </CCol>
   <CCol xs="12">
-    <CButton type="submit">Sign in</CButton>
+    <CButton color="primary" type="submit">Sign in</CButton>
   </CCol>
 </CForm>
 ```
@@ -186,7 +186,7 @@ At times, you maybe need to use margin or padding utilities to create that perfe
       <CFormCheck type="checkbox" id="gridCheck1" label="Example checkbox"/>
     </div>
   </CRow>
-  <CButton type="submit">Sign in</CButton>
+  <CButton color="primary" type="submit">Sign in</CButton>
 </CForm>
 :::
 ```vue
@@ -216,7 +216,7 @@ At times, you maybe need to use margin or padding utilities to create that perfe
       <CFormCheck type="checkbox" id="gridCheck1" label="Example checkbox"/>
     </div>
   </CRow>
-  <CButton type="submit">Sign in</CButton>
+  <CButton color="primary" type="submit">Sign in</CButton>
 </CForm>
 ```
 
@@ -326,7 +326,7 @@ The example below uses a flexbox utility to vertically center the contents and c
     <CFormCheck type="checkbox" id="autoSizingCheck" label="Remember me"/>
   </CCol>
   <CCol xs="auto">
-    <CButton type="submit">Submit</CButton>
+    <CButton color="primary" type="submit">Submit</CButton>
   </CCol>
 </CForm>
 :::
@@ -356,7 +356,7 @@ The example below uses a flexbox utility to vertically center the contents and c
     <CFormCheck type="checkbox" id="autoSizingCheck" label="Remember me"/>
   </CCol>
   <CCol xs="auto">
-    <CButton type="submit">Submit</CButton>
+    <CButton color="primary" type="submit">Submit</CButton>
   </CCol>
 </CForm>
 ```
@@ -389,7 +389,7 @@ You can then remix that once again with size-specific column classes.
     <CFormCheck type="checkbox" id="autoSizingCheck2" label="Remember me"/>
   </CCol>
   <CCol xs="auto">
-    <CButton type="submit">Submit</CButton>
+    <CButton color="primary" type="submit">Submit</CButton>
   </CCol>
 </CForm>
 :::
@@ -419,7 +419,7 @@ You can then remix that once again with size-specific column classes.
     <CFormCheck type="checkbox" id="autoSizingCheck2" label="Remember me"/>
   </CCol>
   <CCol xs="auto">
-    <CButton type="submit">Submit</CButton>
+    <CButton color="primary" type="submit">Submit</CButton>
   </CCol>
 </CForm>
 ```
@@ -450,7 +450,7 @@ Use the `<CCol xs="auto">` class to create horizontal layouts. By adding [gutter
     <CFormCheck type="checkbox" id="inlineFormCheck" label="Remember me"/>
   </CCol>
   <CCol xs="12">
-    <CButton type="submit">Submit</CButton>
+    <CButton color="primary" type="submit">Submit</CButton>
   </CCol>
 </CForm>
 :::
@@ -476,7 +476,7 @@ Use the `<CCol xs="auto">` class to create horizontal layouts. By adding [gutter
     <CFormCheck type="checkbox" id="inlineFormCheck" label="Remember me"/>
   </CCol>
   <CCol xs="12">
-    <CButton type="submit">Submit</CButton>
+    <CButton color="primary" type="submit">Submit</CButton>
   </CCol>
 </CForm>
 ```

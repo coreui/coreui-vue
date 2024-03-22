@@ -578,7 +578,7 @@ Add a header to label sections of actions in any dropdown menu.
 In the following example we use `div` instead of `<CDropdownMenu>` to show `<CDropdownMenu>` content.
 
 ::: demo
-<div class="border rounded py-2">
+<div class="dropdown-menu">
   <CDropdownHeader>Dropdown header</CDropdownHeader>
   <CDropdownItem href="#">Action</CDropdownItem>
   <CDropdownItem href="#">Another action</CDropdownItem>
@@ -597,7 +597,7 @@ Separate groups of related menu items with a divider.
 In the following example we use `div` instead of `<CDropdownMenu>` to show `<CDropdownMenu>` content.
 
 ::: demo
-<div class="border rounded py-2">
+<div class="dropdown-menu">
   <CDropdownItem href="#">Action</CDropdownItem>
   <CDropdownItem href="#">Another action</CDropdownItem>
   <CDropdownItem href="#">Something else here</CDropdownItem>
@@ -640,7 +640,7 @@ Place any freeform text within a dropdown menu with text. Note that you'll likel
 Put a form within a dropdown menu, or make it into a dropdown menu.
 
 ::: demo
-<div class="border rounded py-2">
+<div class="dropdown-menu">
   <CForm class="px-4 py-4">
     <div class="mb-3">
       <CFormLabel for="exampleDropdownFormEmail1">Email address</CFormLabel>
@@ -653,7 +653,7 @@ Put a form within a dropdown menu, or make it into a dropdown menu.
     <div class="mb-3">
       <CFormCheck id="dropdownCheck" label="Remember me"/>
     </div>
-    <CButton type="submit">Sign in</CButton>
+    <CButton color="primary" type="submit">Sign in</CButton>
   </CForm>
   <CDropdownDivider/>
   <CDropdownItem href="#">New around here? Sign up</CDropdownItem>
@@ -673,7 +673,7 @@ Put a form within a dropdown menu, or make it into a dropdown menu.
   <div class="mb-3">
     <CFormCheck id="dropdownCheck" label="Remember me"/>
   </div>
-  <CButton type="submit">Sign in</CButton>
+  <CButton color="primary" type="submit">Sign in</CButton>
 </CForm>
 <CDropdownDivider/>
 <CDropdownItem href="#">New around here? Sign up</CDropdownItem>

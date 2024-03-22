@@ -155,7 +155,7 @@ However, if your form also includes custom button-like elements such as `<CButto
     <div class="mb-3">
       <CFormCheck id="disabledFieldsetCheck" label="Can't check this" disabled />
     </div>
-    <CButton type="submit">Submit</CButton>
+    <CButton color="primary" type="submit">Submit</CButton>
   </fieldset>
 </CForm>
 :::
@@ -176,7 +176,7 @@ However, if your form also includes custom button-like elements such as `<CButto
     <div class="mb-3">
       <CFormCheck id="disabledFieldsetCheck" label="Can't check this" disabled />
     </div>
-    <CButton type="submit">Submit</CButton>
+    <CButton color="primary" type="submit">Submit</CButton>
   </fieldset>
 </CForm>
 ```

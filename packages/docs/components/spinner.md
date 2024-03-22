@@ -101,38 +101,38 @@ Add `size="sm"`property` to make a smaller spinner that can quickly be used with
 Use spinners within buttons to indicate an action is currently processing or taking place. You may also swap the text out of the spinner element and utilize button text as needed.
 
 ::: demo
-<CButton disabled>
+<CButton color="primary" disabled>
   <CSpinner as="span" size="sm" aria-hidden="true"/>
 </CButton>
-<CButton disabled>
+<CButton color="primary" disabled>
   <CSpinner as="span" size="sm" aria-hidden="true"/>
   Loading...
 </CButton>
 :::
 ```vue
-<CButton disabled>
+<CButton color="primary" disabled>
   <CSpinner as="span" size="sm" aria-hidden="true"/>
 </CButton>
-<CButton disabled>
+<CButton color="primary" disabled>
   <CSpinner as="span" size="sm" aria-hidden="true"/>
   Loading...
 </CButton>
 ```
 
 ::: demo
-<CButton disabled>
+<CButton color="primary" disabled>
   <CSpinner as="span" size="sm" variant="grow" aria-hidden="true"/>
 </CButton>
-<CButton disabled>
+<CButton color="primary" disabled>
   <CSpinner as="span" size="sm" variant="grow" aria-hidden="true"/>
   Loading...
 </CButton>
 :::
 ```vue
-<CButton disabled>
+<CButton color="primary" disabled>
   <CSpinner as="span" size="sm" variant="grow" aria-hidden="true"/>
 </CButton>
-<CButton disabled>
+<CButton color="primary" disabled>
   <CSpinner as="span" size="sm" variant="grow" aria-hidden="true"/>
   Loading...
 </CButton>
