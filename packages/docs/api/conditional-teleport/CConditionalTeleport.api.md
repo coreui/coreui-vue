@@ -10,5 +10,5 @@ import CConditionalTeleport from '@coreui/vue/src/components/conditional-telepor
 
 | Prop name                                                          | Description                                                                                     | Type                                         | Values | Default |
 | ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- | -------------------------------------------- | ------ | ------- |
-| **container** <br><div class="badge bg-primary">v5.0.0-rc.2+</div> | An HTML element or function that returns a single element, with `document.body` as the default. | HTMLElement \| (() => HTMLElement) \| string | -      | 'body'  |
+| **container** <br><div class="badge bg-primary">v5.0.0-rc.3+</div> | An HTML element or function that returns a single element, with `document.body` as the default. | HTMLElement \| (() => HTMLElement) \| string | -      | 'body'  |
 | **teleport**                                                       | Render some children into a different part of the DOM                                           | boolean                                      | -      | true    |
