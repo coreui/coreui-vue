@@ -7,11 +7,11 @@ import { CAccordionItem } from './CAccordionItem'
 
 const CAccordionPlugin = {
   install: (app: App): void => {
-    app.component(CAccordion.name, CAccordion)
-    app.component(CAccordionBody.name, CAccordionBody)
-    app.component(CAccordionButton.name, CAccordionButton)
-    app.component(CAccordionHeader.name, CAccordionHeader)
-    app.component(CAccordionItem.name, CAccordionItem)
+    app.component(CAccordion.name as string, CAccordion)
+    app.component(CAccordionBody.name as string, CAccordionBody)
+    app.component(CAccordionButton.name as string, CAccordionButton)
+    app.component(CAccordionHeader.name as string, CAccordionHeader)
+    app.component(CAccordionItem.name as string, CAccordionItem)
   },
 }
 

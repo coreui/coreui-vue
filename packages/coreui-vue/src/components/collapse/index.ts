@@ -3,7 +3,7 @@ import { CCollapse } from './CCollapse'
 
 const CCollapsePlugin = {
   install: (app: App): void => {
-    app.component(CCollapse.name, CCollapse)
+    app.component(CCollapse.name as string, CCollapse)
   },
 }
 

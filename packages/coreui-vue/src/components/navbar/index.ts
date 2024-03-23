@@ -7,11 +7,11 @@ import { CNavbarToggler } from './CNavbarToggler'
 
 const CNavbarPlugin = {
   install: (app: App): void => {
-    app.component(CNavbar.name, CNavbar)
-    app.component(CNavbarBrand.name, CNavbarBrand)
-    app.component(CNavbarNav.name, CNavbarNav)
-    app.component(CNavbarText.name, CNavbarText)
-    app.component(CNavbarToggler.name, CNavbarToggler)
+    app.component(CNavbar.name as string, CNavbar)
+    app.component(CNavbarBrand.name as string, CNavbarBrand)
+    app.component(CNavbarNav.name as string, CNavbarNav)
+    app.component(CNavbarText.name as string, CNavbarText)
+    app.component(CNavbarToggler.name as string, CNavbarToggler)
   },
 }
 

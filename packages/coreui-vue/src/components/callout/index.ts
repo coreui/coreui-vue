@@ -3,7 +3,7 @@ import { CCallout } from './CCallout'
 
 const CCalloutPlugin = {
   install: (app: App): void => {
-    app.component(CCallout.name, CCallout)
+    app.component(CCallout.name as string, CCallout)
   },
 }
 

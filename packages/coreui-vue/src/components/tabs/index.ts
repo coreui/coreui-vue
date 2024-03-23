@@ -4,8 +4,8 @@ import { CTabPane } from './CTabPane'
 
 const CTabsPlugin = {
   install: (app: App): void => {
-    app.component(CTabContent.name, CTabContent)
-    app.component(CTabPane.name, CTabPane)
+    app.component(CTabContent.name as string, CTabContent)
+    app.component(CTabPane.name as string, CTabPane)
   },
 }
 

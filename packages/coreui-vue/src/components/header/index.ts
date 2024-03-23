@@ -8,12 +8,12 @@ import { CHeaderToggler } from './CHeaderToggler'
 
 const CHeaderPlugin = {
   install: (app: App): void => {
-    app.component(CHeader.name, CHeader)
-    app.component(CHeaderBrand.name, CHeaderBrand)
-    app.component(CHeaderDivider.name, CHeaderDivider)
-    app.component(CHeaderNav.name, CHeaderNav)
-    app.component(CHeaderText.name, CHeaderText)
-    app.component(CHeaderToggler.name, CHeaderToggler)
+    app.component(CHeader.name as string, CHeader)
+    app.component(CHeaderBrand.name as string, CHeaderBrand)
+    app.component(CHeaderDivider.name as string, CHeaderDivider)
+    app.component(CHeaderNav.name as string, CHeaderNav)
+    app.component(CHeaderText.name as string, CHeaderText)
+    app.component(CHeaderToggler.name as string, CHeaderToggler)
   },
 }
 

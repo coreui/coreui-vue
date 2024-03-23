@@ -3,7 +3,7 @@ import { CFooter } from './CFooter'
 
 const CFooterPlugin = {
   install: (app: App): void => {
-    app.component(CFooter.name, CFooter)
+    app.component(CFooter.name as string, CFooter)
   },
 }
 

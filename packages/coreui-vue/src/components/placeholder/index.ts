@@ -3,7 +3,7 @@ import { CPlaceholder } from './CPlaceholder'
 
 const CPlaceholderPlugin = {
   install: (app: App): void => {
-    app.component(CPlaceholder.name, CPlaceholder)
+    app.component(CPlaceholder.name as string, CPlaceholder)
   },
 }
 

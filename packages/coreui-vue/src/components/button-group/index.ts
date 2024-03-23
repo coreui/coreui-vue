@@ -4,8 +4,8 @@ import { CButtonGroup } from './CButtonGroup'
 
 const CButtonGroupPlugin = {
   install: (app: App): void => {
-    app.component(CButtonToolbar.name, CButtonToolbar)
-    app.component(CButtonGroup.name, CButtonGroup)
+    app.component(CButtonToolbar.name as string, CButtonToolbar)
+    app.component(CButtonGroup.name as string, CButtonGroup)
   },
 }
 

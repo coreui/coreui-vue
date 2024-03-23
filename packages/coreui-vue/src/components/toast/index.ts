@@ -7,11 +7,11 @@ import { CToastHeader } from './CToastHeader'
 
 const CToastPlugin = {
   install: (app: App): void => {
-    app.component(CToast.name, CToast)
-    app.component(CToastBody.name, CToastBody)
-    app.component(CToastClose.name, CToastClose)
-    app.component(CToaster.name, CToaster)
-    app.component(CToastHeader.name, CToastHeader)
+    app.component(CToast.name as string, CToast)
+    app.component(CToastBody.name as string, CToastBody)
+    app.component(CToastClose.name as string, CToastClose)
+    app.component(CToaster.name as string, CToaster)
+    app.component(CToastHeader.name as string, CToastHeader)
   },
 }
 

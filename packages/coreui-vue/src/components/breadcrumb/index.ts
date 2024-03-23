@@ -4,8 +4,8 @@ import { CBreadcrumb } from './CBreadcrumb'
 
 const CBreadcrumbPlugin = {
   install: (app: App): void => {
-    app.component(CBreadcrumb.name, CBreadcrumb)
-    app.component(CBreadcrumbItem.name, CBreadcrumbItem)
+    app.component(CBreadcrumb.name as string, CBreadcrumb)
+    app.component(CBreadcrumbItem.name as string, CBreadcrumbItem)
   },
 }
 

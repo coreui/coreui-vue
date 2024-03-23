@@ -8,12 +8,12 @@ import { CWidgetStatsF } from './CWidgetStatsF'
 
 const CWidgetsStatsPlugin = {
   install: (app: App): void => {
-    app.component(CWidgetStatsA.name, CWidgetStatsA)
-    app.component(CWidgetStatsB.name, CWidgetStatsB)
-    app.component(CWidgetStatsC.name, CWidgetStatsC)
-    app.component(CWidgetStatsD.name, CWidgetStatsD)
-    app.component(CWidgetStatsE.name, CWidgetStatsE)
-    app.component(CWidgetStatsF.name, CWidgetStatsF)
+    app.component(CWidgetStatsA.name as string, CWidgetStatsA)
+    app.component(CWidgetStatsB.name as string, CWidgetStatsB)
+    app.component(CWidgetStatsC.name as string, CWidgetStatsC)
+    app.component(CWidgetStatsD.name as string, CWidgetStatsD)
+    app.component(CWidgetStatsE.name as string, CWidgetStatsE)
+    app.component(CWidgetStatsF.name as string, CWidgetStatsF)
   },
 }
 

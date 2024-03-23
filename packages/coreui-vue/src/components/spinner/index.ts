@@ -3,7 +3,7 @@ import { CSpinner } from './CSpinner'
 
 const CSpinnerPlugin = {
   install: (app: App): void => {
-    app.component(CSpinner.name, CSpinner)
+    app.component(CSpinner.name as string, CSpinner)
   },
 }
 

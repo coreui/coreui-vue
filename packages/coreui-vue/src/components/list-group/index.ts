@@ -4,8 +4,8 @@ import { CListGroupItem } from './CListGroupItem'
 
 const CListGroupPlugin = {
   install: (app: App): void => {
-    app.component(CListGroup.name, CListGroup)
-    app.component(CListGroupItem.name, CListGroupItem)
+    app.component(CListGroup.name as string, CListGroup)
+    app.component(CListGroupItem.name as string, CListGroupItem)
   },
 }
 

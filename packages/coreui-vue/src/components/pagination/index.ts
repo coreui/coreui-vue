@@ -4,8 +4,8 @@ import { CPaginationItem } from './CPaginationItem'
 
 const CPaginationPlugin = {
   install: (app: App): void => {
-    app.component(CPagination.name, CPagination)
-    app.component(CPaginationItem.name, CPaginationItem)
+    app.component(CPagination.name as string, CPagination)
+    app.component(CPaginationItem.name as string, CPaginationItem)
   },
 }
 

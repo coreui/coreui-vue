@@ -1,7 +1,6 @@
 import { App } from 'vue'
 import { CForm } from './CForm'
 import { CFormCheck } from './CFormCheck'
-// import { CFormControl } from './CFormControl'
 import { CFormFeedback } from './CFormFeedback'
 import { CFormFloating } from './CFormFloating'
 import { CFormInput } from './CFormInput'
@@ -16,20 +15,19 @@ import { CInputGroupText } from './CInputGroupText'
 
 const CFormPlugin = {
   install: (app: App): void => {
-    app.component(CForm.name, CForm)
-    app.component(CFormCheck.name, CFormCheck)
-    // app.component(CFormControl.name, CFormControl)
-    app.component(CFormFeedback.name, CFormFeedback)
-    app.component(CFormFloating.name, CFormFloating)
-    app.component(CFormInput.name, CFormInput)
-    app.component(CFormLabel.name, CFormLabel)
-    app.component(CFormRange.name, CFormRange)
-    app.component(CFormSelect.name, CFormSelect)
-    app.component(CFormSwitch.name, CFormSwitch)
-    app.component(CFormText.name, CFormText)
-    app.component(CFormTextarea.name, CFormTextarea)
-    app.component(CInputGroup.name, CInputGroup)
-    app.component(CInputGroupText.name, CInputGroupText)
+    app.component(CForm.name as string, CForm)
+    app.component(CFormCheck.name as string, CFormCheck)
+    app.component(CFormFeedback.name as string, CFormFeedback)
+    app.component(CFormFloating.name as string, CFormFloating)
+    app.component(CFormInput.name as string, CFormInput)
+    app.component(CFormLabel.name as string, CFormLabel)
+    app.component(CFormRange.name as string, CFormRange)
+    app.component(CFormSelect.name as string, CFormSelect)
+    app.component(CFormSwitch.name as string, CFormSwitch)
+    app.component(CFormText.name as string, CFormText)
+    app.component(CFormTextarea.name as string, CFormTextarea)
+    app.component(CInputGroup.name as string, CInputGroup)
+    app.component(CInputGroupText.name as string, CInputGroupText)
   },
 }
 
@@ -37,7 +35,6 @@ export {
   CFormPlugin,
   CForm,
   CFormCheck,
-  // CFormControl,
   CFormFeedback,
   CFormFloating,
   CFormInput,

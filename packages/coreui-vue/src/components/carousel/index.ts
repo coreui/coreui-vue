@@ -5,9 +5,9 @@ import { CCarouselItem } from './CCarouselItem'
 
 const CCarouselPlugin = {
   install: (app: App): void => {
-    app.component(CCarousel.name, CCarousel)
-    app.component(CCarouselCaption.name, CCarouselCaption)
-    app.component(CCarouselItem.name, CCarouselItem)
+    app.component(CCarousel.name as string, CCarousel)
+    app.component(CCarouselCaption.name as string, CCarouselCaption)
+    app.component(CCarouselItem.name as string, CCarouselItem)
   },
 }
 

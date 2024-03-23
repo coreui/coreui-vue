@@ -54,7 +54,7 @@ const CModal = defineComponent({
     /**
      * Puts the focus on the modal when shown.
      *
-     * @since v5.0.0-rc.2
+     * @since v5.0.0-rc.3
      */
     focus: {
       type: Boolean,

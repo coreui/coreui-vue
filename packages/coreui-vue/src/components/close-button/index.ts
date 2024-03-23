@@ -3,7 +3,7 @@ import { CCloseButton } from './CCloseButton'
 
 const CCloseButtonPlugin = {
   install: (app: App): void => {
-    app.component(CCloseButton.name, CCloseButton)
+    app.component(CCloseButton.name as string, CCloseButton)
   },
 }
 

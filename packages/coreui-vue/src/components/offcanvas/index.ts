@@ -6,10 +6,10 @@ import { COffcanvasTitle } from './COffcanvasTitle'
 
 const COffcanvasPlugin = {
   install: (app: App): void => {
-    app.component(COffcanvas.name, COffcanvas)
-    app.component(COffcanvasBody.name, COffcanvasBody)
-    app.component(COffcanvasHeader.name, COffcanvasHeader)
-    app.component(COffcanvasTitle.name, COffcanvasTitle)
+    app.component(COffcanvas.name as string, COffcanvas)
+    app.component(COffcanvasBody.name as string, COffcanvasBody)
+    app.component(COffcanvasHeader.name as string, COffcanvasHeader)
+    app.component(COffcanvasTitle.name as string, COffcanvasTitle)
   },
 }
 

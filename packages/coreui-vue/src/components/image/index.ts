@@ -3,7 +3,7 @@ import { CImage } from './CImage'
 
 const CImagePlugin = {
   install: (app: App): void => {
-    app.component(CImage.name, CImage)
+    app.component(CImage.name as string, CImage)
   },
 }
 

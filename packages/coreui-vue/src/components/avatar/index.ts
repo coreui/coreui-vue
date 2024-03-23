@@ -3,7 +3,7 @@ import { CAvatar } from './CAvatar'
 
 const CAvatarPlugin = {
   install: (app: App): void => {
-    app.component(CAvatar.name, CAvatar)
+    app.component(CAvatar.name as string, CAvatar)
   },
 }
 

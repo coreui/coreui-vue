@@ -7,11 +7,11 @@ import { CModalTitle } from './CModalTitle'
 
 const CModalPlugin = {
   install: (app: App): void => {
-    app.component(CModal.name, CModal)
-    app.component(CModalBody.name, CModalBody)
-    app.component(CModalFooter.name, CModalFooter)
-    app.component(CModalHeader.name, CModalHeader)
-    app.component(CModalTitle.name, CModalTitle)
+    app.component(CModal.name as string, CModal)
+    app.component(CModalBody.name as string, CModalBody)
+    app.component(CModalFooter.name as string, CModalFooter)
+    app.component(CModalHeader.name as string, CModalHeader)
+    app.component(CModalTitle.name as string, CModalTitle)
   },
 }
 

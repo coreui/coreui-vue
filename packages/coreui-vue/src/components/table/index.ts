@@ -10,14 +10,14 @@ import { CTableRow } from './CTableRow'
 
 const CTablePlugin = {
   install: (app: App): void => {
-    app.component(CTable.name, CTable)
-    app.component(CTableBody.name, CTableBody)
-    app.component(CTableCaption.name, CTableCaption)
-    app.component(CTableDataCell.name, CTableDataCell)
-    app.component(CTableFoot.name, CTableFoot)
-    app.component(CTableHead.name, CTableHead)
-    app.component(CTableHeaderCell.name, CTableHeaderCell)
-    app.component(CTableRow.name, CTableRow)
+    app.component(CTable.name as string, CTable)
+    app.component(CTableBody.name as string, CTableBody)
+    app.component(CTableCaption.name as string, CTableCaption)
+    app.component(CTableDataCell.name as string, CTableDataCell)
+    app.component(CTableFoot.name as string, CTableFoot)
+    app.component(CTableHead.name as string, CTableHead)
+    app.component(CTableHeaderCell.name as string, CTableHeaderCell)
+    app.component(CTableRow.name as string, CTableRow)
   },
 }
 

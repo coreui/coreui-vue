@@ -8,12 +8,12 @@ import { CDropdownToggle } from './CDropdownToggle'
 
 const CDropdownPlugin = {
   install: (app: App): void => {
-    app.component(CDropdown.name, CDropdown)
-    app.component(CDropdownItem.name, CDropdownItem)
-    app.component(CDropdownHeader.name, CDropdownHeader)
-    app.component(CDropdownDivider.name, CDropdownDivider)
-    app.component(CDropdownMenu.name, CDropdownMenu)
-    app.component(CDropdownToggle.name, CDropdownToggle)
+    app.component(CDropdown.name as string, CDropdown)
+    app.component(CDropdownItem.name as string, CDropdownItem)
+    app.component(CDropdownHeader.name as string, CDropdownHeader)
+    app.component(CDropdownDivider.name as string, CDropdownDivider)
+    app.component(CDropdownMenu.name as string, CDropdownMenu)
+    app.component(CDropdownToggle.name as string, CDropdownToggle)
   },
 }
 

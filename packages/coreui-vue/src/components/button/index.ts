@@ -3,7 +3,7 @@ import { CButton } from './CButton'
 
 const CButtonPlugin = {
   install: (app: App): void => {
-    app.component(CButton.name, CButton)
+    app.component(CButton.name as string, CButton)
   },
 }
 

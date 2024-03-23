@@ -8,12 +8,12 @@ import { CNavTitle } from './CNavTitle'
 
 const CNavPlugin = {
   install: (app: App): void => {
-    app.component(CNav.name, CNav)
-    app.component(CNavGroup.name, CNavGroup)
-    app.component(CNavGroupItems.name, CNavGroupItems)
-    app.component(CNavItem.name, CNavItem)
-    app.component(CNavLink.name, CNavLink)
-    app.component(CNavTitle.name, CNavTitle)
+    app.component(CNav.name as string, CNav)
+    app.component(CNavGroup.name as string, CNavGroup)
+    app.component(CNavGroupItems.name as string, CNavGroupItems)
+    app.component(CNavItem.name as string, CNavItem)
+    app.component(CNavLink.name as string, CNavLink)
+    app.component(CNavTitle.name as string, CNavTitle)
   },
 }
 
