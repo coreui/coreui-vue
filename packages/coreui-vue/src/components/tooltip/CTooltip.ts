@@ -23,7 +23,7 @@ const CTooltip = defineComponent({
     /**
      * Appends the vue tooltip to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`.
      *
-     * @since v5.0.0-rc.3
+     * @since v5.0.0
      */
     container: {
       type: [Object, String] as PropType<HTMLElement | (() => HTMLElement) | string>,
