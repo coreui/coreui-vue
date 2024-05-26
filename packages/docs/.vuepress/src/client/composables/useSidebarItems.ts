@@ -1,7 +1,6 @@
 import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import type { PageHeader } from '@vuepress/client'
 import {
-  isArray,
   isPlainObject,
   isString,
   resolveLocalePath,
@@ -70,7 +69,7 @@ export const resolveSidebarItems = (
     return resolveAutoSidebarItems(sidebarDepth)
   }
 
-  if (isArray(sidebarConfig)) {
+  if (Array.isArray(sidebarConfig)) {
     return resolveArraySidebarItems(sidebarConfig, sidebarDepth)
   }
 

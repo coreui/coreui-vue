@@ -1,7 +1,8 @@
 import { defineUserConfig } from 'vuepress'
+import { viteBundler } from '@vuepress/bundler-vite'
 import anchor from 'markdown-it-anchor'
 import include_plugin from 'markdown-it-include'
-import { defaultTheme } from './theme-coreui'
+import { defaultTheme } from './src/node/defaultTheme'
 
 import { containerPlugin } from '@vuepress/plugin-container'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
@@ -18,6 +19,10 @@ export default defineUserConfig({
   head: [
     ['link', { rel: 'icon', href: `/vue/docs/favicons/favicon-96x96.png` }],
   ],
+  bundler: viteBundler({
+    viteOptions: {},
+    vuePluginOptions: {},
+  }),
   markdown: {
     anchor: {
       permalink: anchor.permalink.ariaHidden({
@@ -79,8 +84,8 @@ export default defineUserConfig({
     tocPlugin({}),
     registerComponentsPlugin({
       components: {
-        Callout: path.resolve(__dirname, './theme-coreui/src/client/components/Callout.vue'),
-        ScssDocs: path.resolve(__dirname, './theme-coreui/src/client/components/ScssDocs.vue'),
+        Callout: path.resolve(__dirname, './src/client/components/Callout.vue'),
+        ScssDocs: path.resolve(__dirname, './src/client/components/ScssDocs.vue'),
       },
     }),
   ],

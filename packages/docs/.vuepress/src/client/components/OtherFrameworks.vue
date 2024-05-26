@@ -42,3 +42,4 @@ const humanize = (text: string) => {
   return string[0].toUpperCase() + string.slice(1)
 }
 </script>
+./other_frameworks.json

@@ -39,7 +39,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import pkg from './../../../../../package.json'
+import pkg from './../../../../package.json'
 export default defineComponent({
   name: 'Footer',
   setup () {
@@ -50,3 +50,4 @@ export default defineComponent({
   }
 })
 </script>
+../../../../package.json
