@@ -1,103 +1,73 @@
 <template>
   <div>
     <Sidebar :visible="isSidebarOpen" @visible-change="(event) => (isSidebarOpen = event)" />
-    <div class="wrapper d-flex flex-column min-vh-100">
-      <Header
-        @toggle-sidebar="toggleSidebar(!isSidebarOpen)"
-      />
-      <div class="body flex-grow-1 px-3">
-        <CContainer lg>
-          <main class="docs-main">
-            <Transition
-              name="fade-slide-y"
-              mode="out-in"
-              @before-enter="onBeforeEnter"
-              @before-leave="onBeforeLeave"
-            >
-              <CRow>
-                <CCol :lg="9">
-                  <Page :key="page.path">
-                    <template #top>
-                      <slot name="page-top" />
-                    </template>
-                    <template #bottom>
-                      <slot name="page-bottom" />
-                    </template>
-                  </Page>
-                </CCol>
-                <CCol :lg="3">
-                  <div class="docs-toc mt-4 mb-5 my-md-0 ps-xl-5 mb-lg-5 text-body-secondary">
-                    <strong class="d-block h6 mb-2 pb-2 border-bottom">On this page</strong>
-                    <Toc />
-                  </div>
-                </CCol>
-              </CRow>
-            </Transition>
+    <div class="wrapper flex-grow-1">
+      <Header @toggle-sidebar="toggleSidebar(!isSidebarOpen)" />
+      <Transition
+        name="fade-slide-y"
+        mode="out-in"
+        @before-enter="onBeforeEnter"
+        @before-leave="onBeforeLeave"
+      >
+        <CContainer class="my-md-4 flex-grow-1" lg>
+          <main class="docs-main order-1">
+            <div class="docs-intro ps-lg-4">
+              <Banner />
+              <h1 className="docs-title" id="content">{{ title }}</h1>
+              <p class="docs-lead">{{ description }}</p>
+              <Ads />
+              <OtherFrameworks />
+            </div>
+            <Toc />
+            <div className="docs-content ps-lg-4"><Content /></div>
           </main>
         </CContainer>
-      </div>
+      </Transition>
       <Footer />
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
-import { usePageData, usePageFrontmatter } from '@vuepress/client'
+<script setup lang="ts">
+import { onMounted, ref } from 'vue'
+import { usePageFrontmatter } from '@vuepress/client'
 import docsearch from '@docsearch/js'
 import type { DefaultThemePageFrontmatter } from '../../shared'
+import Ads from '../components/Ads.vue'
+import Banner from '../components/Banner.vue'
 import Footer from '../components/Footer.vue'
 import Header from '../components/Header.vue'
-import Page from '../components/Page.vue'
+import OtherFrameworks from '../components/OtherFrameworks.vue'
 import Sidebar from '../components/Sidebar.vue'
+import Toc from '../components/Toc.vue'
 import { useScrollPromise } from '../composables'
 
-export default defineComponent({
-  name: 'Layout',
+const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>()
 
-  components: {
-    Footer,
-    Header,
-    Page,
-    Sidebar,
-  },
+// sidebar
+const isSidebarOpen = ref(true)
 
-  setup() {
-    const page = usePageData()
-    const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>()
+const toggleSidebar = (to?: boolean): void => {
+  isSidebarOpen.value = typeof to === 'boolean' ? to : !isSidebarOpen.value
+}
 
-    // sidebar
-    const isSidebarOpen = ref(true)
+// handle scrollBehavior with transition
+const scrollPromise = useScrollPromise()
+const onBeforeEnter = scrollPromise.resolve
+const onBeforeLeave = scrollPromise.pending
 
-    const toggleSidebar = (to?: boolean): void => {
-      isSidebarOpen.value = typeof to === 'boolean' ? to : !isSidebarOpen.value
-    }
+const title = frontmatter.value.title
+const description = frontmatter.value.description
 
-    // handle scrollBehavior with transition
-    const scrollPromise = useScrollPromise()
-    const onBeforeEnter = scrollPromise.resolve
-    const onBeforeLeave = scrollPromise.pending
-
-    onMounted(() => {
-      const searchElement = document.getElementById('docsearch') as HTMLElement
-      docsearch({
-        appId: 'RG8RW9GEH3',
-        apiKey: '4926b633296d71c6d727f7766170f82b',
-        indexName: 'coreuivue',
-        container: searchElement,
-        // @ts-ignore
-        debug: false,
-      })
-    })
-
-    return {
-      isSidebarOpen,
-      frontmatter,
-      page,
-      toggleSidebar,
-      onBeforeEnter,
-      onBeforeLeave,
-    }
-  },
+onMounted(() => {
+  const searchElement = document.getElementById('docsearch') as HTMLElement
+  docsearch({
+    appId: 'RG8RW9GEH3',
+    apiKey: '4926b633296d71c6d727f7766170f82b',
+    indexName: 'coreuivue',
+    container: searchElement,
+    // @ts-ignore
+    debug: false,
+  })
 })
 </script>
