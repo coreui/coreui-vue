@@ -10,11 +10,11 @@ menu: Getting started
 ### Npm
 
 <CTabs :activeItemKey="1">
-  <CTabList variant="underline-border">
+  <CTabList class="docs-code-tabs" variant="underline-border">
     <CTab :itemKey="1">CoreUI</CTab>
     <CTab :itemKey="2">CoreUI PRO</CTab>
   </CTabList>
-  <CTabContent>
+  <CTabContent class="docs-code-tab-content">
     <CTabPanel :itemKey="1">
     
 ```bash
@@ -34,11 +34,11 @@ npm install @coreui/vue-pro @coreui/coreui-pro
 ### Yarn
 
 <CTabs :activeItemKey="1">
-  <CTabList variant="underline-border">
+  <CTabList class="docs-code-tabs" variant="underline-border">
     <CTab :itemKey="1">CoreUI</CTab>
     <CTab :itemKey="2">CoreUI PRO</CTab>
   </CTabList>
-  <CTabContent>
+  <CTabContent class="docs-code-tab-content">
     <CTabPanel :itemKey="1">
     
 ```bash
@@ -57,11 +57,11 @@ yarn add @coreui/vue-pro @coreui/coreui-pro
 ## Using components
 
 <CTabs :activeItemKey="1">
-  <CTabList variant="underline-border">
+  <CTabList class="docs-code-tabs" variant="underline-border">
     <CTab :itemKey="1">CoreUI</CTab>
     <CTab :itemKey="2">CoreUI PRO</CTab>
   </CTabList>
-  <CTabContent>
+  <CTabContent class="docs-code-tab-content">
     <CTabPanel :itemKey="1">
     
 ```js
@@ -87,11 +87,11 @@ Vue components are styled using the `@coreui/coreui` or `@coreui/coreui-pro` CSS
 ###### Basic usage
 
 <CTabs :activeItemKey="1">
-  <CTabList variant="underline-border">
+  <CTabList class="docs-code-tabs" variant="underline-border">
     <CTab :itemKey="1">CoreUI</CTab>
     <CTab :itemKey="2">CoreUI PRO</CTab>
   </CTabList>
-  <CTabContent>
+  <CTabContent class="docs-code-tab-content">
     <CTabPanel :itemKey="1">
     
 ```js
