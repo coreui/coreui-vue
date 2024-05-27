@@ -329,6 +329,10 @@ export default defineUserConfig({
             link: `/components/table.html`,
           },
           {
+            text: 'Tabs',
+            link: `/components/tabs.html`,
+          },
+          {
             text: 'Toast',
             link: `/components/toast.html`,
           },
