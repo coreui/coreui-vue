@@ -228,6 +228,7 @@ const CDropdown = defineComponent({
       ) {
         event.preventDefault()
         const target = event.target as HTMLElement
+        // eslint-disable-next-line unicorn/prefer-spread
         const items: HTMLElement[] = Array.from(
           dropdownMenuRef.value.querySelectorAll('.dropdown-item:not(.disabled):not(:disabled)'),
         )
