@@ -8,9 +8,10 @@ import CTabPane from '@coreui/vue/src/components/tabs/CTabPane'
 
 #### Props
 
-| Prop name   | Description                         | Type    | Values | Default |
-| ----------- | ----------------------------------- | ------- | ------ | ------- |
-| **visible** | Toggle the visibility of component. | boolean | -      | false   |
+| Prop name                                                     | Description                             | Type    | Values | Default |
+| ------------------------------------------------------------- | --------------------------------------- | ------- | ------ | ------- |
+| **transition** <br><div class="badge bg-primary">5.1.0+</div> | Enable fade in and fade out transition. | boolean | -      | true    |
+| **visible**                                                   | Toggle the visibility of component.     | boolean | -      | false   |
 
 #### Events
 

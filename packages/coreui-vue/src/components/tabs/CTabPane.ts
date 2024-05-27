@@ -6,6 +6,15 @@ const CTabPane = defineComponent({
   name: 'CTabPane',
   props: {
     /**
+     * Enable fade in and fade out transition.
+     *
+     * @since 5.1.0
+     */
+    transition: {
+      type: Boolean,
+      default: true,
+    },
+    /**
      * Toggle the visibility of component.
      */
     visible: {
@@ -57,9 +66,9 @@ const CTabPane = defineComponent({
               {
                 class: [
                   'tab-pane',
-                  'fade',
                   {
                     active: props.visible,
+                    fade: props.transition,
                     show: firstRender.value && props.visible,
                   },
                 ],
