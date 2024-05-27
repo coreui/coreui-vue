@@ -3,10 +3,10 @@ import type { Placement } from '@popperjs/core'
 
 import { usePopper } from '../../composables'
 import type { Triggers } from '../../types'
-import { isRTL } from '../../utils'
+import { getNextActiveElement, isRTL } from '../../utils'
 
 import type { Alignments } from './types'
-import { getNextActiveElement, getPlacement } from './utils'
+import { getPlacement } from './utils'
 
 const CDropdown = defineComponent({
   name: 'CDropdown',

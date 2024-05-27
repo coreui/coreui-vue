@@ -1,5 +1,5 @@
 import { defineComponent, h, ref } from 'vue'
-import { getNextActiveElement } from '../dropdown/utils'
+import { getNextActiveElement } from '../../utils'
 
 const CTabList = defineComponent({
   name: 'CTabList',
