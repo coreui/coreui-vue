@@ -2,10 +2,18 @@
 // Docs examples
 //
 
-.tab-content .tab-pane {
-  @include border-top-radius(0 !important);
+.docs-code-tabs {
+  padding: 0 ($cd-gutter-x * .5);
+  margin: 0 ($cd-gutter-x * -.5);
 
-  .highlight, div[class^="language-"] {
+  @include media-breakpoint-up(md) {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.docs-code-tab-content {
+  .tab-pane div[class^="language-"] {
     border-top: 0 !important;
     @include border-top-radius(0 !important);
   }
