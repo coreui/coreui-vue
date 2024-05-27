@@ -2,6 +2,15 @@
 // Docs examples
 //
 
+.tab-content .tab-pane {
+  @include border-top-radius(0 !important);
+
+  .highlight, div[class^="language-"] {
+    border-top: 0 !important;
+    @include border-top-radius(0 !important);
+  }
+}
+
 .docs-example-snippet {
   border: solid var(--cui-border-color);
   border-width: 1px 0;

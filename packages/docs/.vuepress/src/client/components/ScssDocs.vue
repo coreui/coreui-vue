@@ -21,11 +21,11 @@ export default defineComponent({
       window.Prism.manual = true;
     }
 
-    const files = import.meta.glob(`../../../../../../../node_modules/@coreui/coreui/scss/**/*.scss`, {
+    const files = import.meta.glob(`../../../../../../node_modules/@coreui/coreui/scss/**/*.scss`, {
       as: 'raw',
       eager: true,
     })
-    const file = files[`../../../../../../../node_modules/@coreui/coreui/scss/${props.file}`]
+    const file = files[`../../../../../../node_modules/@coreui/coreui/scss/${props.file}`]
 
     const captureStart = `// scss-docs-start ${props.capture}`
     const captureEnd = `// scss-docs-end ${props.capture}`
