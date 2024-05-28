@@ -1,5 +1,6 @@
 ---
 title: Vue Placeholder Component
+name: Placeholder
 description: Use loading vue placeholders for your components or pages to indicate something may still be loading.
 other_frameworks: placeholder
 ---

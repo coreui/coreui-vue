@@ -1,5 +1,6 @@
 ---
 title: Vue Chart.js Component
+name: Chart.js
 description: Vue wrapper for Chart.js 3.0, the most popular charting library.
 ---
 
