@@ -13,8 +13,15 @@
           <main class="docs-main order-1">
             <div class="docs-intro ps-lg-4">
               <Banner />
-              <h1 className="docs-title" id="content">{{ title }}</h1>
-              <p class="docs-lead">{{ description }}</p>
+              <div v-if="name && name !== title" class="d-flex flex-column">
+                <h1 class="order-2 h5 mb-4 text-body-secondary" id="content">
+                  {{ title }}
+                </h1>
+                <h2 class="docs-title order-1 h1">{{ name }}</h2>
+              </div>
+              <h1 v-else class="docs-title" id="content">
+                {{ title }}
+              </h1>
               <Ads />
               <OtherFrameworks />
             </div>
@@ -56,6 +63,7 @@ const scrollPromise = useScrollPromise()
 const onBeforeEnter = scrollPromise.resolve
 const onBeforeLeave = scrollPromise.pending
 
+const name = frontmatter.value.name
 const title = frontmatter.value.title
 const description = frontmatter.value.description
 

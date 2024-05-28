@@ -22,7 +22,7 @@ export default defineComponent({
     }
 
     const files = import.meta.glob(`../../../../../../node_modules/@coreui/coreui/scss/**/*.scss`, {
-      as: 'raw',
+      query: '?raw',
       eager: true,
     })
     const file = files[`../../../../../../node_modules/@coreui/coreui/scss/${props.file}`]
