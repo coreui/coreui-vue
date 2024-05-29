@@ -22,6 +22,7 @@
               <h1 v-else class="docs-title" id="content">
                 {{ title }}
               </h1>
+              <p class="docs-lead">{{ description }}</p>
               <Ads />
               <OtherFrameworks />
             </div>
