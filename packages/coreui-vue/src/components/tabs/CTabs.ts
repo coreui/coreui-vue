@@ -1,5 +1,5 @@
 import { defineComponent, h, provide, ref, watch } from 'vue'
-import { getUID } from '../../utils'
+import { useUniqueId } from '../../composables'
 
 const CTabs = defineComponent({
   name: 'CTabs',
@@ -19,7 +19,8 @@ const CTabs = defineComponent({
     'change',
   ],
   setup(props, { slots, emit }) {
-    const uID = ref(getUID('t'))
+    const { getUID } = useUniqueId()
+    const uID = ref(getUID())
     const activeItemKey = ref(props.activeItemKey)
     const setActiveItemKey = (key: string | number) => {
       activeItemKey.value = key

@@ -1,7 +1,6 @@
 import { defineUserConfig } from 'vuepress'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
-import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
 import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
@@ -11,7 +10,6 @@ import anchor from 'markdown-it-anchor'
 import include_plugin from 'markdown-it-include'
 import { defaultTheme } from './src/node'
 
-import { fileURLToPath, URL } from 'url'
 const __dirname = getDirname(import.meta.url)
 
 export default defineUserConfig({

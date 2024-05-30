@@ -1,9 +1,8 @@
 import { DirectiveBinding } from 'vue'
 import { createPopper } from '@popperjs/core'
-
 import type { Options } from '@popperjs/core'
 
-import { getUID } from '../utils'
+import { useUniqueId } from '../composables'
 
 const createPopoverElement = (id: string, header: string, content: string): HTMLDivElement => {
   const popover = document.createElement('div')
@@ -56,6 +55,7 @@ export default {
   name: 'c-popover',
   uid: '',
   mounted(el: HTMLElement, binding: DirectiveBinding): void {
+    const { getUID } = useUniqueId('popover')
     const value = binding.value
     const content = typeof value === 'string' ? value : value.content ?? ''
     const header = value.header ?? ''
@@ -77,7 +77,7 @@ export default {
       ],
     }
 
-    const uID = getUID('popover')
+    const uID = getUID()
     binding.arg = uID
     const popover = createPopoverElement(uID, header, content)
 

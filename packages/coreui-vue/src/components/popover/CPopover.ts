@@ -2,10 +2,10 @@ import { defineComponent, h, onMounted, PropType, ref, RendererElement, Transiti
 import type { Placement } from '@popperjs/core'
 
 import { CConditionalTeleport } from '../conditional-teleport'
-import { usePopper } from '../../composables'
+import { useUniqueId, usePopper } from '../../composables'
 import type { Placements, Triggers } from '../../types'
 import { executeAfterTransition } from '../../utils/transition'
-import { getRTLPlacement, getUID } from '../../utils'
+import { getRTLPlacement } from '../../utils'
 
 const CPopover = defineComponent({
   name: 'CPopover',
@@ -119,6 +119,7 @@ const CPopover = defineComponent({
     const popoverRef = ref()
     const uID = ref()
     const visible = ref(props.visible)
+    const { getUID } = useUniqueId('popover')
     const { initPopper, destroyPopper } = usePopper()
 
     const delay =
@@ -149,7 +150,7 @@ const CPopover = defineComponent({
     }
 
     onMounted(() => {
-      uID.value = getUID('popover')
+      uID.value = getUID()
     })
 
     const handleEnter = (el: RendererElement, done: () => void) => {

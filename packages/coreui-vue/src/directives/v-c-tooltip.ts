@@ -1,9 +1,8 @@
 import { DirectiveBinding } from 'vue'
 import { createPopper } from '@popperjs/core'
-
 import type { Options } from '@popperjs/core'
 
-import { getUID } from '../utils'
+import { useUniqueId } from '../composables'
 
 const createTooltipElement = (id: string, content: string): HTMLDivElement => {
   const tooltip = document.createElement('div')
@@ -54,6 +53,7 @@ const toggleTooltipElement = (
 export default {
   name: 'c-tooltip',
   mounted(el: HTMLElement, binding: DirectiveBinding): void {
+    const { getUID } = useUniqueId('tooltip')
     const value = binding.value
     const content = typeof value === 'string' ? value : value.content ?? ''
     const trigger = value.trigger ?? 'hover'
@@ -74,7 +74,7 @@ export default {
       ],
     }
 
-    const uID = getUID('tooltip')
+    const uID = getUID()
     binding.arg = uID
     const tooltip = createTooltipElement(uID, content)
 
