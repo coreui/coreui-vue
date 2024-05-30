@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+const visible = ref(false)
+const toggleVisible = () => {
+  visible.value = !visible.value
+}
+</script>
+
 <template>
   <div class="docs-toc mt-4 mb-5 my-md-0 ps-xl-5 mb-lg-5 text-body-secondary">
     <button
@@ -27,10 +35,3 @@
     </CCollapse>
   </div>
 </template>
-<script setup lang="ts">
-import { ref } from 'vue'
-const visible = ref(false)
-const toggleVisible = () => {
-  visible.value = !visible.value
-}
-</script>

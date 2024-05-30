@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import { useSidebarItems } from '../composables'
+import { SidebarNav } from './SidebarNav'
+
+const sidebarItems = useSidebarItems()
+</script>
+
 <template>
   <CSidebar position="fixed" size="lg" class="docs-sidebar border-end px-xl-4 elevation-0">
     <CSidebarBrand class="justify-content-start ps-3">
@@ -35,24 +42,3 @@
     <SidebarNav :items="sidebarItems" />
   </CSidebar>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue'
-import { useSidebarItems } from '../composables'
-import { SidebarNav } from './SidebarNav'
-
-export default defineComponent({
-  name: 'Sidebar',
-
-  components: {
-    SidebarNav,
-  },
-
-  setup() {
-    const sidebarItems = useSidebarItems()
-    return {
-      sidebarItems,
-    }
-  },
-})
-</script>

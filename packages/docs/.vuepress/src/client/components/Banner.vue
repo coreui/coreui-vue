@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { usePageFrontmatter } from '@vuepress/client'
+import type { DefaultThemePageFrontmatter } from '../../shared'
+
+const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>()
+const pro_component = frontmatter.value.pro_component
+</script>
+
 <template>
   <div
     v-if="pro_component"
@@ -38,11 +46,3 @@
     </ul>
   </div>
 </template>
-
-<script setup lang="ts">
-import { usePageFrontmatter } from '@vuepress/client'
-import type { DefaultThemePageFrontmatter } from '../../shared'
-
-const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>()
-const pro_component = frontmatter.value.pro_component
-</script>

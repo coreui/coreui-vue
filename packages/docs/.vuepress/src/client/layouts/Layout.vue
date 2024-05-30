@@ -1,41 +1,3 @@
-<template>
-  <div>
-    <Sidebar :visible="isSidebarOpen" @visible-change="(event) => (isSidebarOpen = event)" />
-    <div class="wrapper flex-grow-1">
-      <Header @toggle-sidebar="toggleSidebar(!isSidebarOpen)" />
-      <Transition
-        name="fade-slide-y"
-        mode="out-in"
-        @before-enter="onBeforeEnter"
-        @before-leave="onBeforeLeave"
-      >
-        <CContainer class="my-md-4 flex-grow-1" lg>
-          <main class="docs-main order-1">
-            <div class="docs-intro ps-lg-4">
-              <Banner />
-              <div v-if="name && name !== title" class="d-flex flex-column">
-                <h1 class="order-2 h5 mb-4 text-body-secondary" id="content">
-                  {{ title }}
-                </h1>
-                <h2 class="docs-title order-1 h1">{{ name }}</h2>
-              </div>
-              <h1 v-else class="docs-title" id="content">
-                {{ title }}
-              </h1>
-              <p class="docs-lead">{{ description }}</p>
-              <Ads />
-              <OtherFrameworks />
-            </div>
-            <Toc />
-            <div className="docs-content ps-lg-4"><Content /></div>
-          </main>
-        </CContainer>
-      </Transition>
-      <Footer />
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { usePageFrontmatter } from '@vuepress/client'
@@ -80,3 +42,41 @@ onMounted(() => {
   })
 })
 </script>
+
+<template>
+  <div>
+    <Sidebar :visible="isSidebarOpen" @visible-change="(event) => (isSidebarOpen = event)" />
+    <div class="wrapper flex-grow-1">
+      <Header @toggle-sidebar="toggleSidebar(!isSidebarOpen)" />
+      <Transition
+        name="fade-slide-y"
+        mode="out-in"
+        @before-enter="onBeforeEnter"
+        @before-leave="onBeforeLeave"
+      >
+        <CContainer class="my-md-4 flex-grow-1" lg>
+          <main class="docs-main order-1">
+            <div class="docs-intro ps-lg-4">
+              <Banner />
+              <div v-if="name && name !== title" class="d-flex flex-column">
+                <h1 class="order-2 h5 mb-4 text-body-secondary" id="content">
+                  {{ title }}
+                </h1>
+                <h2 class="docs-title order-1 h1">{{ name }}</h2>
+              </div>
+              <h1 v-else class="docs-title" id="content">
+                {{ title }}
+              </h1>
+              <p class="docs-lead">{{ description }}</p>
+              <Ads />
+              <OtherFrameworks />
+            </div>
+            <Toc />
+            <div className="docs-content ps-lg-4"><Content /></div>
+          </main>
+        </CContainer>
+      </Transition>
+      <Footer />
+    </div>
+  </div>
+</template>

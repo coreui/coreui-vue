@@ -1,3 +1,12 @@
+<script setup lang="ts">
+import { useColorModes } from '@coreui/vue/src'
+
+const props = defineProps({
+  theme: String,
+})
+
+const { colorMode, setColorMode } = useColorModes('coreui-vue-docs-theme')
+</script>
 <template>
   <CHeader class="mb-5 elevation-0 border-bottom" position="sticky">
     <CHeaderToggler class="ms-md-3" @click="$emit('toggle-sidebar')">
@@ -86,23 +95,3 @@
     </CButton>
   </CHeader>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue'
-import { useColorModes } from '@coreui/vue/src'
-
-export default defineComponent({
-  name: 'Header',
-  props: {
-    theme: String,
-  },
-  emits: ['toggle-sidebar'],
-  setup() {
-    const { colorMode, setColorMode } = useColorModes('coreui-vue-docs-theme')
-    
-    return {
-      colorMode,
-      setColorMode,
-    }
-  },
-})
-</script>

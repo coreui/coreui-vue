@@ -10,30 +10,11 @@ export interface DefaultThemePageFrontmatter {
   navbar?: boolean
   pageClass?: string
   name?: string
+  pro_component?: boolean
+  other_frameworks?: string
 }
 
-export interface DefaultThemeHomePageFrontmatter
-  extends DefaultThemePageFrontmatter {
-  home: true
-  heroImage?: string
-  heroAlt?: string
-  heroText?: string | null
-  tagline?: string | null
-  actions?: {
-    text: string
-    link: string
-    type?: 'primary' | 'secondary'
-  }[]
-  features?: {
-    title: string
-    details: string
-  }[]
-  footer?: string
-  footerHtml?: boolean
-}
-
-export interface DefaultThemeNormalPageFrontmatter
-  extends DefaultThemePageFrontmatter {
+export interface DefaultThemeNormalPageFrontmatter extends DefaultThemePageFrontmatter {
   home?: false
   editLink?: boolean
   lastUpdated?: boolean
@@ -42,6 +23,4 @@ export interface DefaultThemeNormalPageFrontmatter
   sidebarDepth?: number
   prev?: string | NavLink
   next?: string | NavLink
-  pro_component: boolean
-  other_frameworks?: string
 }

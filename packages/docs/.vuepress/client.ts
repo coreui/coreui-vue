@@ -1,4 +1,5 @@
 import { defineClientConfig } from '@vuepress/client'
+
 import { CIcon } from '@coreui/icons-vue'
 import CChartPlugin from '@coreui/vue-chartjs'
 import CoreuiVue from '@coreui/vue/src/'

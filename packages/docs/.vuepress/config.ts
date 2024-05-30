@@ -1,14 +1,17 @@
 import { defineUserConfig } from 'vuepress'
 import { viteBundler } from '@vuepress/bundler-vite'
-import anchor from 'markdown-it-anchor'
-import include_plugin from 'markdown-it-include'
-import { defaultTheme } from './src/node/defaultTheme'
-
-import { containerPlugin } from '@vuepress/plugin-container'
+import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
+import { backToTopPlugin } from '@vuepress/plugin-back-to-top'
+import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
+import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { tocPlugin } from '@vuepress/plugin-toc'
 import { getDirname, path } from '@vuepress/utils'
+import anchor from 'markdown-it-anchor'
+import include_plugin from 'markdown-it-include'
+import { defaultTheme } from './src/node'
 
+import { fileURLToPath, URL } from 'url'
 const __dirname = getDirname(import.meta.url)
 
 export default defineUserConfig({
@@ -16,22 +19,14 @@ export default defineUserConfig({
   lang: 'en-US',
   title: 'Vue UI Components · CoreUI',
   description: 'UI Components Library for Vue.js (Vue 3)',
-  head: [
-    ['link', { rel: 'icon', href: `/vue/docs/favicons/favicon-96x96.png` }],
-  ],
-  bundler: viteBundler({
-    viteOptions: {},
-    vuePluginOptions: {},
-  }),
+  head: [['link', { rel: 'icon', href: `/vue/docs/favicons/favicon-96x96.png` }]],
+  bundler: viteBundler(),
   markdown: {
     anchor: {
       permalink: anchor.permalink.ariaHidden({
         class: 'anchor-link',
-        placement: 'after'
-      })
-    },
-    code: {
-      lineNumbers: false,
+        placement: 'after',
+      }),
     },
   },
   extendsMarkdown: (md) => {
@@ -41,53 +36,42 @@ export default defineUserConfig({
       })
   },
   plugins: [
-    containerPlugin({
+    activeHeaderLinksPlugin({
+      headerLinkSelector: 'a.sidebar-item',
+      headerAnchorSelector: '.header-anchor',
+      // should greater than page transition duration
+      delay: 300,
+    }),
+    // backToTopPlugin(),
+    markdownContainerPlugin({
       type: 'demo',
-      render: function (tokens, idx) {
-        if (tokens[idx].nesting === 1) {
-          return '<div class="docs-example rounded-top p-4">\n'
-        } else {
-          return '</div>\n'
-        }
-      },
+      before: (): string => `<div class="docs-example rounded-top p-4">\n`,
+      after: (): string => '</div>\n',
     }),
-    containerPlugin({
-      type: 'demo-rounded',
-      render: function (tokens, idx) {
-        if (tokens[idx].nesting === 1) {
-          return '<div class="docs-example rounded p-4">\n'
-        } else {
-          return '</div>\n'
-        }
-      },
-    }),
-    containerPlugin({
-      type: 'demo-dark',
-      render: function (tokens, idx) {
-        if (tokens[idx].nesting === 1) {
-          return '<div class="docs-example rounded-top p-4 bg-dark">\n'
-        } else {
-          return '</div>\n'
-        }
-      },
-    }),
-    containerPlugin({
+    markdownContainerPlugin({
       type: 'demo-bg-secondary',
-      render: function (tokens, idx) {
-        if (tokens[idx].nesting === 1) {
-          return '<div class="docs-example rounded-top p-0 bg-body-secondary overflow-hidden">\n'
-        } else {
-          return '</div>\n'
-        }
-      },
+      before: (): string =>
+        `<div class="docs-example rounded-top p-0 bg-body-secondary overflow-hidden">\n`,
+      after: (): string => '</div>\n',
     }),
-    tocPlugin({}),
+    markdownContainerPlugin({
+      type: 'demo-dark',
+      before: (): string => `<div class="docs-example rounded-top p-4 bg-dark">\n`,
+      after: (): string => '</div>\n',
+    }),
+    markdownContainerPlugin({
+      type: 'demo-rounded',
+      before: (): string => `<div class="docs-example rounded p-4">\n`,
+      after: (): string => '</div>\n',
+    }),
+    prismjsPlugin(),
     registerComponentsPlugin({
       components: {
         Callout: path.resolve(__dirname, './src/client/components/Callout.vue'),
         ScssDocs: path.resolve(__dirname, './src/client/components/ScssDocs.vue'),
       },
     }),
+    tocPlugin({}),
   ],
   theme: defaultTheme({
     sidebar: [

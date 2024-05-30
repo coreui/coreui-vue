@@ -36,18 +36,3 @@
     </CContainer>
   </CFooter>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue'
-import pkg from './../../../../package.json'
-export default defineComponent({
-  name: 'Footer',
-  setup () {
-    const version = pkg.version
-    return {
-      version
-    }
-  }
-})
-</script>
-../../../../package.json
