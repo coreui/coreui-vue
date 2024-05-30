@@ -10,6 +10,7 @@ export interface DefaultThemePageFrontmatter {
   navbar?: boolean
   pageClass?: string
   name?: string
+  preview_component?: boolean
   pro_component?: boolean
   other_frameworks?: string
 }

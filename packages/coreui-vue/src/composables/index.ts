@@ -1,5 +1,5 @@
 import { useColorModes } from './useColorModes'
-import { useUniqueId } from './useUniqueId'
 import { usePopper } from './usePopper'
+import { useUniqueId } from './useUniqueId'
 
-export { useColorModes, useUniqueId, usePopper }
+export { useColorModes, usePopper, useUniqueId }

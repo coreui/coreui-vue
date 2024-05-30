@@ -70,6 +70,16 @@ export default defineUserConfig({
       },
     }),
     tocPlugin({}),
+    {
+      name: 'extendsPage',
+      extendsPage: (page) => {
+        const frontmatter = page.frontmatter
+
+        frontmatter.head = [
+          ['link', { rel: 'canonical', href: `https://coreui.io/vue/docs${page.path}` }],
+        ]
+      },
+    },
   ],
   theme: defaultTheme({
     sidebar: [
