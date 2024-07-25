@@ -1,6 +1,6 @@
 import { defineClientConfig } from '@vuepress/client'
 
-import { CIcon } from '@coreui/icons-vue'
+import { CIcon, CIconSvg } from '@coreui/icons-vue'
 import CChartPlugin from '@coreui/vue-chartjs'
 import CoreuiVue from '@coreui/vue/src/'
 import '@coreui/coreui/scss/coreui.scss'
@@ -71,6 +71,7 @@ export default defineClientConfig({
     app.use(CoreuiVue)
     app.provide('icons', icons)
     app.component('CIcon', CIcon)
+    app.component('CIconSvg', CIconSvg)
     app.use(CChartPlugin),
     router.addRoute({ path: '', redirect: '/getting-started/introduction.html' })
   },
