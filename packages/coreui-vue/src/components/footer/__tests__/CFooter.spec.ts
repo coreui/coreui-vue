@@ -19,6 +19,15 @@ const customWrapper = mount(Component, {
   },
 })
 
+const customWrapperTwo = mount(Component, {
+  propsData: {
+    as: 'footer',
+  },
+  slots: {
+    default: 'Default slot',
+  },
+})
+
 describe(`Loads and display ${ComponentName} component`, () => {
   it('has a name', () => {
     expect(Component.name).toMatch(ComponentName)
@@ -40,5 +49,15 @@ describe(`Customize ${ComponentName} component`, () => {
     expect(customWrapper.text()).toContain('Default slot')
     expect(customWrapper.classes('footer')).toBe(true)
     expect(customWrapper.classes('footer-fixed')).toBe(true)
+  })
+})
+
+describe(`Customize (number two) ${ComponentName} component`, () => {
+  it('renders correctly', () => {
+    expect(customWrapperTwo.html()).toMatchSnapshot()
+  })
+
+  it('tag name is custom', () => {
+    expect(customWrapperTwo.element.tagName).toBe('FOOTER')
   })
 })
