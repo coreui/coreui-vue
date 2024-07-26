@@ -46,7 +46,7 @@
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/coreui/coreui-vue/archive/v4.4.0.zip)
+- [Download the latest release](https://github.com/coreui/coreui-vue/archive/v5.2.0.zip)
 - Clone the repo: `git clone https://github.com/coreui/coreui-vue.git`
 - Install with [npm](https://www.npmjs.com/): `npm install @coreui/vue`
 - Install with [yarn](https://yarnpkg.com/): `yarn add @coreui/vue`
@@ -134,6 +134,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 - [Vue Progress](https://coreui.io/vue/docs/components/progress.html)
 - [Vue Radio](https://coreui.io/vue/docs/forms/radio.html)
 - [Vue Range](https://coreui.io/vue/docs/forms/range.html)
+- [Vue Rating](https://coreui.io/vue/docs/forms/rating.html)
 - [Vue Select](https://coreui.io/vue/docs/forms/select.html)
 - [Vue Sidebar](https://coreui.io/vue/docs/components/sidebar.html)
 - [Vue Smart Pagination](https://coreui.io/vue/docs/components/smart-pagination.html) **PRO**
