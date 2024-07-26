@@ -290,7 +290,7 @@ CoreUI Icons package is delivered with more than 1500 icons in multiple formats 
   <CTabPane role="tabpanel" aria-labelledby="linear-tab" :visible="tabPaneActiveKey === 1">
     <CRow v-if="tabPaneActiveKey === 1" :xs="{ cols: 3 }" :sm="{ cols: 4 }" :lg="{ cols: 5 }">
       <CCol class="mb-4" v-for="(i) in linearIcons">
-        <div class="p-3 py-4 mb-2 bg-light text-center rounded">
+        <div class="p-3 py-4 mb-2 bg-body-tertiary text-center rounded">
           <CIcon :icon="icon[i]" size="xxl"/>
         </div>
         <div class="text-body-secondary text-center pt-1 small">{{i}}</div>
@@ -300,7 +300,7 @@ CoreUI Icons package is delivered with more than 1500 icons in multiple formats 
   <CTabPane role="tabpanel" aria-labelledby="brand-tab" :visible="tabPaneActiveKey === 2">
     <CRow v-if="tabPaneActiveKey === 2" :xs="{ cols: 3 }" :sm="{ cols: 4 }" :lg="{ cols: 5 }">
       <CCol class="mb-4" v-for="(i) in brandIcons">
-        <div class="p-3 py-4 mb-2 bg-light text-center rounded">
+        <div class="p-3 py-4 mb-2 bg-body-tertiary text-center rounded">
           <CIcon :icon="icon[i]" size="xxl"/>
         </div>
         <div class="text-body-secondary text-center pt-1 small">{{i}}</div>
@@ -310,7 +310,7 @@ CoreUI Icons package is delivered with more than 1500 icons in multiple formats 
   <CTabPane role="tabpanel" aria-labelledby="flags-tab" :visible="tabPaneActiveKey === 3">
     <CRow v-if="tabPaneActiveKey === 3" :xs="{ cols: 3 }" :sm="{ cols: 4 }" :lg="{ cols: 5 }">
       <CCol class="mb-4" v-for="(i) in flagIcons">
-        <div class="p-3 py-4 mb-2 bg-light text-center rounded">
+        <div class="p-3 py-4 mb-2 bg-body-tertiary text-center rounded">
           <CIcon :icon="icon[i]" size="xxl"/>
         </div>
         <div class="text-body-secondary text-center pt-1 small">{{i}}</div>
