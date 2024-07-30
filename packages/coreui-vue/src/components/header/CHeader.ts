@@ -4,6 +4,13 @@ const CHeader = defineComponent({
   name: 'CHeader',
   props: {
     /**
+     * Component used for the root node. Either a string to use a HTML element or a component.
+     */
+    as: {
+      type: String,
+      default: 'div',
+    },
+    /**
      * Defines optional container wrapping children elements.
      *
      * @values boolean, 'sm', 'md', 'lg', 'xl', 'xxl', 'fluid'
@@ -31,7 +38,7 @@ const CHeader = defineComponent({
   setup(props, { slots }) {
     return () =>
       h(
-        'div',
+        props.as,
         { class: ['header', { [`header-${props.position}`]: props.position }] },
         props.container
           ? h(
