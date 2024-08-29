@@ -49,7 +49,7 @@ const CDropdownToggle = defineComponent({
     /**
      * If a dropdown `variant` is set to `nav-item` then render the toggler as a link instead of a button.
      *
-     * @since v5.0.0
+     * @since 5.0.0
      */
     navLink: {
       type: Boolean,

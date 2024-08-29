@@ -16,7 +16,7 @@ const CConditionalTeleport = defineComponent({
     /**
      * An HTML element or function that returns a single element, with `document.body` as the default.
      *
-     * @since v5.0.0
+     * @since 5.0.0
      */
     container: {
       type: [Object, String] as PropType<HTMLElement | (() => HTMLElement) | string>,

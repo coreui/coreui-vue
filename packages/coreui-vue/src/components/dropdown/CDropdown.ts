@@ -62,7 +62,7 @@ const CDropdown = defineComponent({
     /**
      * Appends the vue dropdown menu to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`.
      *
-     * @since v5.0.0
+     * @since 5.0.0
      */
     container: {
       type: [Object, String] as PropType<HTMLElement | (() => HTMLElement) | string>,
@@ -115,7 +115,7 @@ const CDropdown = defineComponent({
     /**
      * Generates dropdown menu using Teleport.
      *
-     * @since v5.0.0
+     * @since 5.0.0
      */
     teleport: {
       type: Boolean,
