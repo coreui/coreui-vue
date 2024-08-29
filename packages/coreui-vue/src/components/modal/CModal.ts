@@ -1,6 +1,7 @@
 import {
   defineComponent,
   h,
+  PropType,
   provide,
   ref,
   RendererElement,
@@ -11,6 +12,7 @@ import {
 } from 'vue'
 
 import { CBackdrop } from '../backdrop/CBackdrop'
+import { CConditionalTeleport } from '../conditional-teleport'
 
 import { executeAfterTransition } from '../../utils/transition'
 
@@ -48,13 +50,22 @@ const CModal = defineComponent({
       },
     },
     /**
+     * Appends the vue popover to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`.
+     *
+     * @since 5.3.0
+     */
+    container: {
+      type: [Object, String] as PropType<HTMLElement | (() => HTMLElement) | string>,
+      default: 'body',
+    },
+    /**
      * A string of all className you want applied to the modal content component.
      */
     contentClassName: String,
     /**
      * Puts the focus on the modal when shown.
      *
-     * @since v5.0.0
+     * @since 5.0.0
      */
     focus: {
       type: Boolean,
@@ -98,6 +109,15 @@ const CModal = defineComponent({
       validator: (value: string) => {
         return ['sm', 'lg', 'xl'].includes(value)
       },
+    },
+    /**
+     * Generates modal using Teleport.
+     *
+     * @since 5.3.0
+     */
+    teleport: {
+      type: Boolean,
+      default: false,
     },
     /**
      * Remove animation to create modal that simply appear rather than fade in to view.
@@ -264,27 +284,37 @@ const CModal = defineComponent({
         ),
       )
 
-    return () => [
+    return () =>
       h(
-        Transition,
+        CConditionalTeleport,
         {
-          css: false,
-          onEnter: (el, done) => handleEnter(el, done),
-          onAfterEnter: () => handleAfterEnter(),
-          onLeave: (el, done) => handleLeave(el, done),
-          onAfterLeave: (el) => handleAfterLeave(el),
+          container: props.container,
+          teleport: props.teleport,
         },
-        () =>
-          props.unmountOnClose
-            ? visible.value && modal()
-            : withDirectives(modal(), [[vShow, visible.value]]),
-      ),
-      props.backdrop &&
-        h(CBackdrop, {
-          class: 'modal-backdrop',
-          visible: visible.value,
-        }),
-    ]
+        {
+          default: () => [
+            h(
+              Transition,
+              {
+                css: false,
+                onEnter: (el, done) => handleEnter(el, done),
+                onAfterEnter: () => handleAfterEnter(),
+                onLeave: (el, done) => handleLeave(el, done),
+                onAfterLeave: (el) => handleAfterLeave(el),
+              },
+              () =>
+                props.unmountOnClose
+                  ? visible.value && modal()
+                  : withDirectives(modal(), [[vShow, visible.value]]),
+            ),
+            props.backdrop &&
+              h(CBackdrop, {
+                class: 'modal-backdrop',
+                visible: visible.value,
+              }),
+          ],
+        },
+      )
   },
 })
 
