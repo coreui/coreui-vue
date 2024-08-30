@@ -21,9 +21,9 @@ export default defineUserConfig({
   bundler: viteBundler(),
   markdown: {
     anchor: {
-      permalink: anchor.permalink.ariaHidden({
+      permalink: anchor.permalink.linkInsideHeader({
         class: 'anchor-link',
-        placement: 'after',
+        placement: 'after'
       }),
     },
   },

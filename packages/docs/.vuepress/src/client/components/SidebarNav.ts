@@ -1,13 +1,14 @@
 import { defineComponent, h, computed, onMounted, ref } from 'vue'
-import type { VNode } from 'vue'
-import { RouterLink, useRoute } from 'vue-router'
-import type { RouteLocationNormalizedLoaded } from 'vue-router'
-import type { ResolvedSidebarItem } from '../../shared'
-
+import { useRoute } from 'vuepress/client'
+import { RouterLink} from 'vue-router'
+import { useSidebarItems } from '../composables'
 import { withBase } from '@vuepress/client'
-
 import { CBadge, CNavGroup, CNavItem, CSidebarNav } from '@coreui/vue/src/'
 import { CIcon } from '@coreui/icons-vue'
+
+import type { VNode } from 'vue'
+import type { RouteLocationNormalizedLoaded } from 'vue-router'
+import type { ResolvedSidebarItem } from '../../shared'
 
 const normalizePath = (path: string): string =>
   decodeURI(path)
@@ -43,13 +44,8 @@ const isActiveItem = (route: RouteLocationNormalizedLoaded, item: ResolvedSideba
 
 const SidebarNav = defineComponent({
   name: 'SidebarNav',
-  props: {
-    items: {
-      type: Array,
-      required: true,
-    },
-  },
-  setup(props) {
+  setup() {
+    const sidebarItems = useSidebarItems()
     const route = useRoute()
     const firstRender = ref(true)
 
@@ -57,7 +53,7 @@ const SidebarNav = defineComponent({
       firstRender.value = false
     })
 
-    const renderItem = (item: ResolvedSidebarItem): VNode => {
+    const renderItem = (item: any): VNode => {
       if (item.children && !item.link.includes('.html')) {
         const visible = computed(() => item.children.some((child) => isActiveItem(route, child)))
 
@@ -122,7 +118,7 @@ const SidebarNav = defineComponent({
       CSidebarNav,
       {},
       {
-        default: () => props.items.map((item: any) => renderItem(item)),
+        default: () => sidebarItems.value.map((item: any) => renderItem(item)),
       }
     )
     },

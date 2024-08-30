@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { useSidebarItems } from '../composables'
 import { SidebarNav } from './SidebarNav'
-
-const sidebarItems = useSidebarItems()
 </script>
 
 <template>
@@ -39,6 +36,6 @@ const sidebarItems = useSidebarItems()
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>
-    <SidebarNav :items="sidebarItems" />
+    <SidebarNav />
   </CSidebar>
 </template>
