@@ -17,62 +17,55 @@ Using the most basic table CoreUI, here's how `<CTable>`-based tables look in Co
 
 In version **4.5.0** we introduced a new way to create a table, similarly to our [Smart Table component](https://coreui.io/vue/docs/components/smart-table.html).
 
-
 ```vue
+<script setup>
+  const columns = [
+    {
+      key: 'id',
+      label: '#',
+      _props: { scope: 'col' },
+    },
+    {
+      key: 'class',
+      _props: { scope: 'col' },
+    },
+    {
+      key: 'heading_1',
+      label: 'Heading',
+      _props: { scope: 'col' },
+    },
+    {
+      key: 'heading_2',
+      label: 'Heading',
+      _props: { scope: 'col' },
+    },
+  ]
+  const items = [
+    {
+      id: 1,
+      class: 'Mark',
+      heading_1: 'Otto',
+      heading_2: '@mdo',
+      _cellProps: { id: { scope: 'row' } },
+    },
+    {
+      id: 2,
+      class: 'Jacob',
+      heading_1: 'Thornton',
+      heading_2: '@fat',
+      _cellProps: { id: { scope: 'row' } },
+    },
+    {
+      id: 3,
+      class: 'Larry the Bird',
+      heading_2: '@twitter',
+      _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
+    },
+  ]
+</script>
 <template>
   <CTable :columns="columns" :items="items" />
 </template>
-<script>
-  export default {
-    data: () => {
-      return {
-        columns: [
-          {
-            key: 'id',
-            label: '#',
-            _props: { scope: 'col' },
-          },
-          {
-            key: 'class',
-            _props: { scope: 'col' },
-          },
-          {
-            key: 'heading_1',
-            label: 'Heading',
-            _props: { scope: 'col' },
-          },
-          {
-            key: 'heading_2',
-            label: 'Heading',
-            _props: { scope: 'col' },
-          },
-        ],
-        items: [
-          {
-            id: 1,
-            class: 'Mark',
-            heading_1: 'Otto',
-            heading_2: '@mdo',
-            _cellProps: { id: { scope: 'row' } },
-          },
-          {
-            id: 2,
-            class: 'Jacob',
-            heading_1: 'Thornton',
-            heading_2: '@fat',
-            _cellProps: { id: { scope: 'row' } },
-          },
-          {
-            id: 3,
-            class: 'Larry the Bird',
-            heading_2: '@twitter',
-            _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
-          },
-        ]
-      }
-    },
-  }
-</script>
 ```
 
 You can also put all table components together manually as hitherto.
@@ -116,6 +109,7 @@ Use contextual classes to color tables, table rows or individual cells.
 ::: demo
 <CTable :columns="columnsVariantExample" :items="itemsVariantExample" />
 :::
+
 ```vue
 <CTable>
   <CTableHead>
@@ -178,86 +172,80 @@ Use contextual classes to color tables, table rows or individual cells.
 Since version **4.5.0** also this way.
 
 ```vue
+<script setup>
+  const columnsVariantExample = [
+    { key: 'class', _props: { scope: 'col' } },
+    { key: 'heading_1', label: 'Heading', _props: { scope: 'col' } },
+    { key: 'heading_2', label: 'Heading', _props: { scope: 'col' } },
+  ]
+  const itemsVariantExample = [
+    {
+      class: 'Default',
+      heading_1: 'Cell',
+      heading_2: 'Cell',
+      _cellProps: { class: { scope: 'row' } },
+    },
+    {
+      class: 'Primary',
+      heading_1: 'Cell',
+      heading_2: 'Cell',
+      _cellProps: { class: { scope: 'row' } },
+      _props: { color: 'primary' },
+    },
+    {
+      class: 'Secondary',
+      heading_1: 'Cell',
+      heading_2: 'Cell',
+      _cellProps: { class: { scope: 'row' } },
+      _props: { color: 'secondary' },
+    },
+    {
+      class: 'Success',
+      heading_1: 'Cell',
+      heading_2: 'Cell',
+      _cellProps: { class: { scope: 'row' } },
+      _props: { color: 'success' },
+    },
+    {
+      class: 'Danger',
+      heading_1: 'Cell',
+      heading_2: 'Cell',
+      _cellProps: { class: { scope: 'row' } },
+      _props: { color: 'danger' },
+    },
+    {
+      class: 'Warning',
+      heading_1: 'Cell',
+      heading_2: 'Cell',
+      _cellProps: { class: { scope: 'row' } },
+      _props: { color: 'warning' },
+    },
+    {
+      class: 'Info',
+      heading_1: 'Cell',
+      heading_2: 'Cell',
+      _cellProps: { class: { scope: 'row' } },
+      _props: { color: 'info' },
+    },
+    {
+      class: 'Light',
+      heading_1: 'Cell',
+      heading_2: 'Cell',
+      _cellProps: { class: { scope: 'row' } },
+      _props: { color: 'light' },
+    },
+    {
+      class: 'Dark',
+      heading_1: 'Cell',
+      heading_2: 'Cell',
+      _cellProps: { class: { scope: 'row' } },
+      _props: { color: 'dark' },
+    },
+  ]
+</script>
 <template>
   <CTable :columns="columnsVariantExample" :items="itemsVariantExample" />
 </template>
-<script>
-  export default {
-    data: () => {
-      return {
-        columnsVariantExample: [
-          { key: 'class', _props: { scope: 'col' } },
-          { key: 'heading_1', label: 'Heading', _props: { scope: 'col' } },
-          { key: 'heading_2', label: 'Heading', _props: { scope: 'col' } },
-        ],
-        itemsVariantExample: [
-          {
-            class: 'Default',
-            heading_1: 'Cell',
-            heading_2: 'Cell',
-            _cellProps: { class: { scope: 'row' } },
-          },
-          {
-            class: 'Primary',
-            heading_1: 'Cell',
-            heading_2: 'Cell',
-            _cellProps: { class: { scope: 'row' } },
-            _props: { color: 'primary' },
-          },
-          {
-            class: 'Secondary',
-            heading_1: 'Cell',
-            heading_2: 'Cell',
-            _cellProps: { class: { scope: 'row' } },
-            _props: { color: 'secondary' },
-          },
-          {
-            class: 'Success',
-            heading_1: 'Cell',
-            heading_2: 'Cell',
-            _cellProps: { class: { scope: 'row' } },
-            _props: { color: 'success' },
-          },
-          {
-            class: 'Danger',
-            heading_1: 'Cell',
-            heading_2: 'Cell',
-            _cellProps: { class: { scope: 'row' } },
-            _props: { color: 'danger' },
-          },
-          {
-            class: 'Warning',
-            heading_1: 'Cell',
-            heading_2: 'Cell',
-            _cellProps: { class: { scope: 'row' } },
-            _props: { color: 'warning' },
-          },
-          {
-            class: 'Info',
-            heading_1: 'Cell',
-            heading_2: 'Cell',
-            _cellProps: { class: { scope: 'row' } },
-            _props: { color: 'info' },
-          },
-          {
-            class: 'Light',
-            heading_1: 'Cell',
-            heading_2: 'Cell',
-            _cellProps: { class: { scope: 'row' } },
-            _props: { color: 'light' },
-          },
-          {
-            class: 'Dark',
-            heading_1: 'Cell',
-            heading_2: 'Cell',
-            _cellProps: { class: { scope: 'row' } },
-            _props: { color: 'dark' },
-          },
-        ]
-      }
-    },
-  }
-</script>
 ```
 
 ## Accented tables
@@ -701,61 +689,55 @@ Highlight a table row or cell by adding a `active` property.
 As mentioned before since version **4.5.0** we have two ways to generate tables, also with custom properties for rows, and cells.
 
 ```vue
+<script setup>
+  const columnsActiveTableExample = [
+    {
+      key: 'id',
+      label: '#',
+      _props: { scope: 'col' },
+    },
+    {
+      key: 'class',
+      _props: { scope: 'col' },
+    },
+    {
+      key: 'heading_1',
+      label: 'Heading',
+      _props: { scope: 'col' },
+    },
+    {
+      key: 'heading_2',
+      label: 'Heading',
+      _props: { scope: 'col' },
+    },
+  ]
+  const itemsActiveTableExample = [
+    {
+      id: 1,
+      class: 'Mark',
+      heading_1: 'Otto',
+      heading_2: '@mdo',
+      _props: { active: true },
+      _cellProps: { id: { scope: 'row' } },
+    },
+    {
+      id: 2,
+      class: 'Jacob',
+      heading_1: 'Thornton',
+      heading_2: '@fat',
+      _cellProps: { id: { scope: 'row' } },
+    },
+    {
+      id: 3,
+      class: 'Larry the Bird',
+      heading_2: '@twitter',
+      _cellProps: { id: { scope: 'row' }, class: { active: true, colSpan: 2 } },
+    },
+  ]
+</script>
 <template>
   <CTable :columns="columnsActiveTableExample" :items="itemsActiveTableExample" />
 </template>
-<script>
-  export default {
-    data: () => {
-      return {
-        columnsActiveTableExample: [
-          {
-            key: 'id',
-            label: '#',
-            _props: { scope: 'col' },
-          },
-          {
-            key: 'class',
-            _props: { scope: 'col' },
-          },
-          {
-            key: 'heading_1',
-            label: 'Heading',
-            _props: { scope: 'col' },
-          },
-          {
-            key: 'heading_2',
-            label: 'Heading',
-            _props: { scope: 'col' },
-          },
-        ],
-        itemsActiveTableExample: [
-          {
-            id: 1,
-            class: 'Mark',
-            heading_1: 'Otto',
-            heading_2: '@mdo',
-            _props: { active: true },
-            _cellProps: { id: { scope: 'row' } },
-          },
-          {
-            id: 2,
-            class: 'Jacob',
-            heading_1: 'Thornton',
-            heading_2: '@fat',
-            _cellProps: { id: { scope: 'row' } },
-          },
-          {
-            id: 3,
-            class: 'Larry the Bird',
-            heading_2: '@twitter',
-            _cellProps: { id: { scope: 'row' }, class: { active: true, colSpan: 2 } },
-          },
-        ],
-      }
-    },
-  }
-</script>
 ```
 
 ```vue
@@ -794,61 +776,55 @@ As mentioned before since version **4.5.0** we have two ways to generate tables,
 <CTable color="dark" :columns="columnsActiveTableExample" :items="itemsActiveTableExample" />
 :::
 ```vue
+<script setup>
+  const columnsActiveTableExample = [
+    {
+      key: 'id',
+      label: '#',
+      _props: { scope: 'col' },
+    },
+    {
+      key: 'class',
+      _props: { scope: 'col' },
+    },
+    {
+      key: 'heading_1',
+      label: 'Heading',
+      _props: { scope: 'col' },
+    },
+    {
+      key: 'heading_2',
+      label: 'Heading',
+      _props: { scope: 'col' },
+    },
+  ]
+  const itemsActiveTableExample = [
+    {
+      id: 1,
+      class: 'Mark',
+      heading_1: 'Otto',
+      heading_2: '@mdo',
+      _props: { active: true },
+      _cellProps: { id: { scope: 'row' } },
+    },
+    {
+      id: 2,
+      class: 'Jacob',
+      heading_1: 'Thornton',
+      heading_2: '@fat',
+      _cellProps: { id: { scope: 'row' } },
+    },
+    {
+      id: 3,
+      class: 'Larry the Bird',
+      heading_2: '@twitter',
+      _cellProps: { id: { scope: 'row' }, class: { active: true, colSpan: 2 } },
+    },
+  ]
+</script>
 <template>
   <CTable color="dark" :columns="columnsActiveTableExample" :items="itemsActiveTableExample" />
 </template>
-<script>
-  export default {
-    data: () => {
-      return {
-        columnsActiveTableExample: [
-          {
-            key: 'id',
-            label: '#',
-            _props: { scope: 'col' },
-          },
-          {
-            key: 'class',
-            _props: { scope: 'col' },
-          },
-          {
-            key: 'heading_1',
-            label: 'Heading',
-            _props: { scope: 'col' },
-          },
-          {
-            key: 'heading_2',
-            label: 'Heading',
-            _props: { scope: 'col' },
-          },
-        ],
-        itemsActiveTableExample: [
-          {
-            id: 1,
-            class: 'Mark',
-            heading_1: 'Otto',
-            heading_2: '@mdo',
-            _props: { active: true },
-            _cellProps: { id: { scope: 'row' } },
-          },
-          {
-            id: 2,
-            class: 'Jacob',
-            heading_1: 'Thornton',
-            heading_2: '@fat',
-            _cellProps: { id: { scope: 'row' } },
-          },
-          {
-            id: 3,
-            class: 'Larry the Bird',
-            heading_2: '@twitter',
-            _cellProps: { id: { scope: 'row' }, class: { active: true, colSpan: 2 } },
-          },
-        ],
-      }
-    },
-  }
-</script>
 ```
 
 ## Table borders
@@ -1148,19 +1124,13 @@ Similar to tables and dark tables, use the modifier prop `color="light"` or `col
 If you generate a table using the new method incorporated in version **4.5.0**, you have to use tableHeadProps property to pass properties to the table header component.
 
 ```vue
+<script setup>
+  const columns = [ ... ]
+  const items = [ ... ]
+</script>
 <template>
   <CTable :columns="columns" :items="items" :tableHeadProps="{ color: 'light' }" />
 </template>
-<script>
- export default {
-    data: () => {
-      return {
-        columns: [ ... ],
-        items: [ ... ]
-      }
-    },
-  }
-</script>
 ```
 
 ::: demo
@@ -1208,19 +1178,13 @@ If you generate a table using the new method incorporated in version **4.5.0**, 
 Starting from version **4.5.0** also this way.
 
 ```vue
+<script setup>
+  const columns = [ ... ]
+  const items = [ ... ]
+</script>
 <template>
   <CTable :columns="columns" :items="items" :tableHeadProps="{ color: 'dark' }" />
 </template>
-<script>
- export default {
-    data: () => {
-      return {
-        columns: [ ... ],
-        items: [ ... ]
-      }
-    },
-  }
-</script>
 ```
 
 ### Table foot
@@ -1278,25 +1242,19 @@ Starting from version **4.5.0** also this way.
 Starting from version **4.5.0** also this way.
 
 ```vue
+<script setup>
+  const columns = [ ... ]
+  const footer = [
+    'Footer',
+    'Footer',
+    'Footer',
+    'Footer',
+  ]
+  const items = [ ... ]
+</script>
 <template>
   <CTable :columns="columns" :footer="footer" :items="items" :tableHeadProps="{ color: 'dark' }" />
 </template>
-<script>
- export default {
-    data: () => {
-      return {
-        columns: [ ... ],
-        footer: [
-          'Footer',
-          'Footer',
-          'Footer',
-          'Footer',
-        ],
-        items: [ ... ]
-      }
-    },
-  }
-</script>
 ```
 
 ### Captions
@@ -1351,19 +1309,13 @@ A `<CTableCaption>` functions like a heading for a table. It helps users with sc
 Starting from version **4.5.0** also this way.
 
 ```vue
+<script setup>
+  const columns = [ ... ]
+  const items = [ ... ]
+</script>
 <template>
   <CTable caption="List of users" :columns="columns" :items="items"  />
 </template>
-<script>
- export default {
-    data: () => {
-      return {
-        columns: [ ... ],
-        items: [ ... ]
-      }
-    },
-  }
-</script>
 ```
 
 You can also put the `<CTableCaption>` on the top of the table with `caption="top"`.
@@ -1438,19 +1390,13 @@ You can also put the `<CTableCaption>` on the top of the table with `caption="to
 Since version **4.5.0** also this way.
 
 ```vue
+<script setup>
+  const columns = [ ... ]
+  const items = [ ... ]
+</script>
 <template>
   <CTable captionTop="List of users" :columns="columns" :items="items"  />
 </template>
-<script>
- export default {
-    data: () => {
-      return {
-        columns: [ ... ],
-        items: [ ... ]
-      }
-    },
-  }
-</script>
 ```
 ## Responsive tables
 
@@ -1804,171 +1750,6 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
 </CTable>
 ```
 
-<script>
-  export default {
-    data: () => {
-      return {
-        columns: [
-          {
-            key: 'id',
-            label: '#',
-            _props: { scope: 'col' },
-          },
-          {
-            key: 'class',
-            _props: { scope: 'col' },
-          },
-          {
-            key: 'heading_1',
-            label: 'Heading',
-            _props: { scope: 'col' },
-          },
-          {
-            key: 'heading_2',
-            label: 'Heading',
-            _props: { scope: 'col' },
-          },
-        ],
-        items: [
-          {
-            id: 1,
-            class: 'Mark',
-            heading_1: 'Otto',
-            heading_2: '@mdo',
-            _cellProps: { id: { scope: 'row' } },
-          },
-          {
-            id: 2,
-            class: 'Jacob',
-            heading_1: 'Thornton',
-            heading_2: '@fat',
-            _cellProps: { id: { scope: 'row' } },
-          },
-          {
-            id: 3,
-            class: 'Larry the Bird',
-            heading_2: '@twitter',
-            _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
-          },
-        ],
-        columnsActiveTableExample: [
-          {
-            key: 'id',
-            label: '#',
-            _props: { scope: 'col' },
-          },
-          {
-            key: 'class',
-            _props: { scope: 'col' },
-          },
-          {
-            key: 'heading_1',
-            label: 'Heading',
-            _props: { scope: 'col' },
-          },
-          {
-            key: 'heading_2',
-            label: 'Heading',
-            _props: { scope: 'col' },
-          },
-        ],
-        itemsActiveTableExample: [
-          {
-            id: 1,
-            class: 'Mark',
-            heading_1: 'Otto',
-            heading_2: '@mdo',
-            _props: { active: true },
-            _cellProps: { id: { scope: 'row' } },
-          },
-          {
-            id: 2,
-            class: 'Jacob',
-            heading_1: 'Thornton',
-            heading_2: '@fat',
-            _cellProps: { id: { scope: 'row' } },
-          },
-          {
-            id: 3,
-            class: 'Larry the Bird',
-            heading_2: '@twitter',
-            _cellProps: { id: { scope: 'row' }, class: { active: true, colSpan: 2 } },
-          },
-        ],
-        columnsVariantExample: [
-          { key: 'class', _props: { scope: 'col' } },
-          { key: 'heading_1', label: 'Heading', _props: { scope: 'col' } },
-          { key: 'heading_2', label: 'Heading', _props: { scope: 'col' } },
-        ],
-        itemsVariantExample: [
-          {
-            class: 'Default',
-            heading_1: 'Cell',
-            heading_2: 'Cell',
-            _cellProps: { class: { scope: 'row' } },
-          },
-          {
-            class: 'Primary',
-            heading_1: 'Cell',
-            heading_2: 'Cell',
-            _cellProps: { class: { scope: 'row' } },
-            _props: { color: 'primary' },
-          },
-          {
-            class: 'Secondary',
-            heading_1: 'Cell',
-            heading_2: 'Cell',
-            _cellProps: { class: { scope: 'row' } },
-            _props: { color: 'secondary' },
-          },
-          {
-            class: 'Success',
-            heading_1: 'Cell',
-            heading_2: 'Cell',
-            _cellProps: { class: { scope: 'row' } },
-            _props: { color: 'success' },
-          },
-          {
-            class: 'Danger',
-            heading_1: 'Cell',
-            heading_2: 'Cell',
-            _cellProps: { class: { scope: 'row' } },
-            _props: { color: 'danger' },
-          },
-          {
-            class: 'Warning',
-            heading_1: 'Cell',
-            heading_2: 'Cell',
-            _cellProps: { class: { scope: 'row' } },
-            _props: { color: 'warning' },
-          },
-          {
-            class: 'Info',
-            heading_1: 'Cell',
-            heading_2: 'Cell',
-            _cellProps: { class: { scope: 'row' } },
-            _props: { color: 'info' },
-          },
-          {
-            class: 'Light',
-            heading_1: 'Cell',
-            heading_2: 'Cell',
-            _cellProps: { class: { scope: 'row' } },
-            _props: { color: 'light' },
-          },
-          {
-            class: 'Dark',
-            heading_1: 'Cell',
-            heading_2: 'Cell',
-            _cellProps: { class: { scope: 'row' } },
-            _props: { color: 'dark' },
-          },
-        ]
-      }
-    },
-  }
-</script>
-
 ## API
 
 !!!include(./api/table/CTable.api.md)!!!
@@ -1984,3 +1765,162 @@ Responsive tables allow tables to be scrolled horizontally with ease. Make any t
 !!!include(./api/table/CTableHeaderCell.api.md)!!!
 
 !!!include(./api/table/CTableRow.api.md)!!!
+
+<script setup>
+  const columns = [
+    {
+      key: 'id',
+      label: '#',
+      _props: { scope: 'col' },
+    },
+    {
+      key: 'class',
+      _props: { scope: 'col' },
+    },
+    {
+      key: 'heading_1',
+      label: 'Heading',
+      _props: { scope: 'col' },
+    },
+    {
+      key: 'heading_2',
+      label: 'Heading',
+      _props: { scope: 'col' },
+    },
+  ]
+  const items = [
+    {
+      id: 1,
+      class: 'Mark',
+      heading_1: 'Otto',
+      heading_2: '@mdo',
+      _cellProps: { id: { scope: 'row' } },
+    },
+    {
+      id: 2,
+      class: 'Jacob',
+      heading_1: 'Thornton',
+      heading_2: '@fat',
+      _cellProps: { id: { scope: 'row' } },
+    },
+    {
+      id: 3,
+      class: 'Larry the Bird',
+      heading_2: '@twitter',
+      _cellProps: { id: { scope: 'row' }, class: { colSpan: 2 } },
+    },
+  ]
+  const columnsActiveTableExample = [
+    {
+      key: 'id',
+      label: '#',
+      _props: { scope: 'col' },
+    },
+    {
+      key: 'class',
+      _props: { scope: 'col' },
+    },
+    {
+      key: 'heading_1',
+      label: 'Heading',
+      _props: { scope: 'col' },
+    },
+    {
+      key: 'heading_2',
+      label: 'Heading',
+      _props: { scope: 'col' },
+    },
+  ]
+  const itemsActiveTableExample = [
+    {
+      id: 1,
+      class: 'Mark',
+      heading_1: 'Otto',
+      heading_2: '@mdo',
+      _props: { active: true },
+      _cellProps: { id: { scope: 'row' } },
+    },
+    {
+      id: 2,
+      class: 'Jacob',
+      heading_1: 'Thornton',
+      heading_2: '@fat',
+      _cellProps: { id: { scope: 'row' } },
+    },
+    {
+      id: 3,
+      class: 'Larry the Bird',
+      heading_2: '@twitter',
+      _cellProps: { id: { scope: 'row' }, class: { active: true, colSpan: 2 } },
+    },
+  ]
+  const columnsVariantExample = [
+    { key: 'class', _props: { scope: 'col' } },
+    { key: 'heading_1', label: 'Heading', _props: { scope: 'col' } },
+    { key: 'heading_2', label: 'Heading', _props: { scope: 'col' } },
+  ]
+  const itemsVariantExample = [
+    {
+      class: 'Default',
+      heading_1: 'Cell',
+      heading_2: 'Cell',
+      _cellProps: { class: { scope: 'row' } },
+    },
+    {
+      class: 'Primary',
+      heading_1: 'Cell',
+      heading_2: 'Cell',
+      _cellProps: { class: { scope: 'row' } },
+      _props: { color: 'primary' },
+    },
+    {
+      class: 'Secondary',
+      heading_1: 'Cell',
+      heading_2: 'Cell',
+      _cellProps: { class: { scope: 'row' } },
+      _props: { color: 'secondary' },
+    },
+    {
+      class: 'Success',
+      heading_1: 'Cell',
+      heading_2: 'Cell',
+      _cellProps: { class: { scope: 'row' } },
+      _props: { color: 'success' },
+    },
+    {
+      class: 'Danger',
+      heading_1: 'Cell',
+      heading_2: 'Cell',
+      _cellProps: { class: { scope: 'row' } },
+      _props: { color: 'danger' },
+    },
+    {
+      class: 'Warning',
+      heading_1: 'Cell',
+      heading_2: 'Cell',
+      _cellProps: { class: { scope: 'row' } },
+      _props: { color: 'warning' },
+    },
+    {
+      class: 'Info',
+      heading_1: 'Cell',
+      heading_2: 'Cell',
+      _cellProps: { class: { scope: 'row' } },
+      _props: { color: 'info' },
+    },
+    {
+      class: 'Light',
+      heading_1: 'Cell',
+      heading_2: 'Cell',
+      _cellProps: { class: { scope: 'row' } },
+      _props: { color: 'light' },
+    },
+    {
+      class: 'Dark',
+      heading_1: 'Cell',
+      heading_2: 'Cell',
+      _cellProps: { class: { scope: 'row' } },
+      _props: { color: 'dark' },
+    },
+  ]
+</script>

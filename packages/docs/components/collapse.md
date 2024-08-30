@@ -28,6 +28,10 @@ You can use a link or a button component.
 </CCollapse>
 :::
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const visible = ref(false)
+</script>
 <template>
   <CButton color="primary" href="#" @click.prevent="visible = !visible">Link</CButton>
   <CButton color="primary" @click="visible = !visible">Button</CButton>
@@ -41,15 +45,6 @@ You can use a link or a button component.
     </CCard>
   </CCollapse>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        visible: false,
-      }
-    }
-  }
-</script> 
 ```
 
 ## Horizontal
@@ -69,6 +64,10 @@ The collapse plugin also supports horizontal collapsing. Add the `horizontal` pr
 </div>
 :::
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const visibleHorizontal = ref(false)
+</script>
 <template>
   <CButton class="mb-3" color="primary" aria-expanded={visible} aria-controls="collapseWidthExample" @click="visibleHorizontal = !visibleHorizontal">Button</CButton>
   <div style="min-height: 120px">
@@ -81,15 +80,6 @@ The collapse plugin also supports horizontal collapsing. Add the `horizontal` pr
     </CCollapse>
   </div>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        visibleHorizontal: false,
-      }
-    }
-  }
-</script>
 ```
 
 ## Multiple targets
@@ -132,6 +122,11 @@ A `<CButton>` can show and hide multiple elements.
 </CRow>
 :::
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const visibleA = ref(false)
+  const visibleB = ref(false)
+</script>
 <template>
   <CButton color="primary" @click="visibleA = !visibleA">Toggle first element</CButton>
   <CButton color="primary" @click="visibleB = !visibleB">Toggle second element</CButton>
@@ -166,32 +161,17 @@ A `<CButton>` can show and hide multiple elements.
       </CCollapse>
     </CCol>
   </CRow>
-</template>  
-<script>
-  export default {
-    data() {
-      return { 
-        visibleA: false,
-        visibleB: false,
-      }
-    }
-  }
-</script>
+</template>
 ```
-
-<script>
-  export default {
-    data() {
-      return { 
-        visible: false,
-        visibleHorizontal: false,
-        visibleA: false,
-        visibleB: false,
-      }
-    }
-  }
-</script>
 
 ## API
 
 !!!include(./api/collapse/CCollapse.api.md)!!!
+
+<script setup>
+  import { ref } from 'vue'
+  const visible = ref(false)
+  const visibleHorizontal = ref(false)
+  const visibleA = ref(false)
+  const visibleB = ref(false)
+</script>

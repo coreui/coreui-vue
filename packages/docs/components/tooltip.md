@@ -114,7 +114,7 @@ Hover over the buttons below to see the four tooltips directions: top, right, bo
 <CButton color="secondary" v-c-tooltip="{content: 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.', placement: 'left'}">Tooltip on left</CButton>
 ```
 
-### Custom popovers
+### Custom tooltips
 
 You can customize the appearance of tooltips using [CSS variables](#css-variables). We set a custom `style` to scope our custom appearance and use it to override some of the local CSS variables.
 
@@ -125,11 +125,16 @@ You can customize the appearance of tooltips using [CSS variables](#css-variable
   :style="customTooltipStyle"
 >
   <template #toggler="{ id, on }">
-    <CButton color="secondary" :aria-describedby="id" v-on="on">Custom popover</CButton>
+    <CButton color="secondary" :aria-describedby="id" v-on="on">Custom tooltip</CButton>
   </template>
 </CTooltip>
 :::
 ```vue
+<script setup>
+  const customTooltipStyle = {
+    '--cui-tooltip-bg': 'var(--cui-primary)',
+  }
+</script>
 <template>
   <CTooltip
     content="This top tooltip is themed via CSS variables."
@@ -137,21 +142,10 @@ You can customize the appearance of tooltips using [CSS variables](#css-variable
     :style="customTooltipStyle"
   >
     <template #toggler="{ id, on }">
-      <CButton color="secondary" :aria-describedby="id" v-on="on">Custom popover</CButton>
+      <CButton color="secondary" :aria-describedby="id" v-on="on">Custom tooltip</CButton>
     </template>
   </CTooltip>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-       customTooltipStyle: {
-          '--cui-tooltip-bg': 'var(--cui-primary)',
-        }
-      }
-    }
-  }
-</script>
 ```
 
 ## Usage
@@ -206,14 +200,8 @@ return <CTooltip :style="vars">...</CTooltip>
 
 !!!include(./api/tooltip/CTooltip.api.md)!!!
 
-<script>
-  export default {
-    data() {
-      return { 
-       customTooltipStyle: {
-          '--cui-tooltip-bg': 'var(--cui-primary)',
-        }
-      }
-    }
+<script setup>
+  const customTooltipStyle = {
+    '--cui-tooltip-bg': 'var(--cui-primary)',
   }
 </script>

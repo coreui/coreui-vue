@@ -60,7 +60,11 @@ Toggle a working modal demo by clicking the button below. It will slide down and
   </CModalFooter>
 </CModal>
 :::
-``` vue
+```vue
+<script setup>
+  import { ref } from 'vue'
+  const visibleLiveDemo = ref(false)
+</script>
 <template>
   <CButton color="primary" @click="() => { visibleLiveDemo = true }">Launch demo modal</CButton>
   <CModal 
@@ -80,15 +84,6 @@ Toggle a working modal demo by clicking the button below. It will slide down and
     </CModalFooter>
   </CModal>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        visibleLiveDemo: false,
-      }
-    }
-  }
-</script>
 ```
 ### Static backdrop
 
@@ -114,7 +109,11 @@ If you set `backdrop` property to `static`, your modal will behave as though the
   </CModalFooter>
 </CModal>
 :::
-``` vue
+```vue
+<script setup>
+  import { ref } from 'vue'
+  const visibleStaticBackdropDemo = ref(false)
+</script>
 <template>
   <CButton color="primary" @click="() => { visibleStaticBackdropDemo = true }">Launch demo modal</CButton>
   <CModal 
@@ -135,15 +134,6 @@ If you set `backdrop` property to `static`, your modal will behave as though the
     </CModalFooter>
   </CModal>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        visibleStaticBackdropDemo: false,
-      }
-    }
-  }
-</script>
 ```
 
 ### Scrolling long content
@@ -248,7 +238,11 @@ When modals become too long for the user's viewport or device, they scroll indep
   </CModalBody>
 </CModal>
 :::
-``` vue
+```vue
+<script setup>
+  import { ref } from 'vue'
+  const visibleScrollingLongContentDemo = ref(false)
+</script>
 <template>
   <CButton color="primary" @click="() => { visibleScrollingLongContentDemo = true }">Launch demo modal</CButton>
   <CModal 
@@ -347,15 +341,6 @@ When modals become too long for the user's viewport or device, they scroll indep
     </CModalBody>
   </CModal>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        visibleScrollingLongContentDemo: false,
-      }
-    }
-  }
-</script>
 ```
 
 You can also create a scrollable modal that allows scroll the modal body by adding `scrollable` prop.
@@ -459,7 +444,11 @@ You can also create a scrollable modal that allows scroll the modal body by addi
   </CModalBody>
 </CModal>
 :::
-``` vue
+```vue
+<script setup>
+  import { ref } from 'vue'
+  const visibleScrollableDemo = ref(false)
+</script>
 <template>
   <CButton color="primary" @click="() => { visibleScrollableDemo = true }">Launch demo modal</CButton>
   <CModal
@@ -559,15 +548,6 @@ You can also create a scrollable modal that allows scroll the modal body by addi
     </CModalBody>
   </CModal>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        visibleScrollableDemo: false,
-      }
-    }
-  }
-</script>
 ```
 
 ### Vertically centered
@@ -596,7 +576,11 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
   </CModalFooter>
 </CModal>
 :::
-``` vue
+```vue
+<script setup>
+  import { ref } from 'vue'
+  const visibleVerticallyCenteredDemo = ref(false)
+</script>
 <template>
   <CButton color="primary" @click="() => { visibleVerticallyCenteredDemo = true }">Launch demo modal</CButton>
   <CModal
@@ -619,15 +603,6 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
     </CModalFooter>
   </CModal>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        visibleVerticallyCenteredDemo: false,
-      }
-    }
-  }
-</script>
 ```
 
 ::: demo
@@ -653,7 +628,11 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
   </CModalFooter>
 </CModal>
 :::
-``` vue
+```vue
+<script setup>
+  import { ref } from 'vue'
+  const visibleVerticallyCenteredScrollableDemo = ref(false)
+</script>
 <template>
   <CButton color="primary" @click="() => { visibleVerticallyCenteredScrollableDemo = true }">Vertically centered scrollable modal</CButton>
   <CModal 
@@ -677,15 +656,6 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
     </CModalFooter>
   </CModal>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        visibleVerticallyCenteredScrollableDemo: false,
-      }
-    }
-  }
-</script>
 ```
 
 ### Tooltips and popovers
@@ -719,7 +689,11 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
   </CModalFooter>
 </CModal>
 :::
-``` vue
+```vue
+<script setup>
+  import { ref } from 'vue'
+  const visibleTooltipsAndPopoversDemo = ref(false)
+</script>
 <template>
   <CButton color="primary" @click="() => { visibleTooltipsAndPopoversDemo = true }">Launch demo modal</CButton>
   <CModal
@@ -747,15 +721,6 @@ Add `alignment="center` to `<CModal>` to vertically center the modal.
     </CModalFooter>
   </CModal>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        visibleTooltipsAndPopoversDemo: false,
-      }
-    }
-  }
-</script>
 ```
 
 ### Toggle between modals
@@ -811,6 +776,11 @@ Toggle between multiple modals with some clever placement of the `visible` props
 </CModal>
 :::
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const visibleToggleBetweenModalsDemo1 = ref(false)
+  const visibleToggleBetweenModalsDemo2 = ref(false)
+</script>
 <template>
   <CButton color="primary" @click="() => { visibleToggleBetweenModalsDemo1 = true }">Open first modal</CButton>
   <CModal
@@ -859,16 +829,6 @@ Toggle between multiple modals with some clever placement of the `visible` props
     </CModalFooter>
   </CModal>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        visibleToggleBetweenModalsDemo1: false,
-        visibleToggleBetweenModalsDemo2: false,
-      }
-    }
-  }
-</script>
 ```
 
 ### Change animation
@@ -968,7 +928,13 @@ Modals have three optional sizes, available via modifier classes to be placed on
   </CModalBody>
 </CModal>
 :::
-``` vue
+```vue
+<script setup>
+  import { ref } from 'vue'
+  const xlDemo = ref(false)
+  const lgDemo = ref(false)
+  const smDemo = ref(false)
+</script>
 <template>
   <CButton color="primary" @click="() => { xlDemo = true }">Extra large modal</CButton>
   <CButton color="primary" @click="() => { lgDemo = true }">Large modal</CButton>
@@ -1013,17 +979,6 @@ Modals have three optional sizes, available via modifier classes to be placed on
     </CModalBody>
   </CModal>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        xlDemo: false,
-        lgDemo: false,
-        smDemo: false,
-      }
-    }
-  }
-</script>
 ```
 
 ## Fullscreen Modal
@@ -1151,7 +1106,16 @@ Another override is the option to pop up a modal that covers the user viewport, 
   </CModalBody>
 </CModal>
 :::
-``` vue
+```vue
+<script setup>
+  import { ref } from 'vue'
+  const fullscreenDemo = ref(false)
+  const fullscreenSmDemo = ref(false)
+  const fullscreenMdDemo = ref(false)
+  const fullscreenLgDemo = ref(false)
+  const fullscreenXlDemo = ref(false)
+  const fullscreenXxlDemo = ref(false)
+</script>
 <template>
   <CButton color="primary" @click="() => { fullscreenDemo = true }">Full screen</CButton>
   <CButton color="primary" @click="() => { fullscreenSmDemo = true }">Full screen below sm</CButton>
@@ -1238,48 +1202,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
     </CModalBody>
   </CModal>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        fullscreenDemo: false,
-        fullscreenSmDemo: false,
-        fullscreenMdDemo: false,
-        fullscreenLgDemo: false,
-        fullscreenXlDemo: false,
-        fullscreenXxlDemo: false,
-      }
-    }
-  }
-</script>
 ```
-
-<script>
-  export default {
-    data() {
-      return { 
-        visibleLiveDemo: false,
-        visibleStaticBackdropDemo: false,
-        visibleScrollingLongContentDemo: false,
-        visibleScrollableDemo: false,
-        visibleVerticallyCenteredDemo: false,
-        visibleVerticallyCenteredScrollableDemo: false,
-        visibleTooltipsAndPopoversDemo: false,
-        visibleToggleBetweenModalsDemo1: false,
-        visibleToggleBetweenModalsDemo2: false,
-        xlDemo: false,
-        lgDemo: false,
-        smDemo: false,
-        fullscreenDemo: false,
-        fullscreenSmDemo: false,
-        fullscreenMdDemo: false,
-        fullscreenLgDemo: false,
-        fullscreenXlDemo: false,
-        fullscreenXxlDemo: false,
-      }
-    }
-  }
-</script>
 
 ## Customizing
 
@@ -1318,3 +1241,25 @@ return <CModal :style="vars">...</CModal>
 !!!include(./api/modal/CModalHeader.api.md)!!!
 
 !!!include(./api/modal/CModalTitle.api.md)!!!
+
+<script setup>
+  import { ref } from 'vue'
+  const visibleLiveDemo = ref(false)
+  const visibleStaticBackdropDemo = ref(false)
+  const visibleScrollingLongContentDemo = ref(false)
+  const visibleScrollableDemo = ref(false)
+  const visibleVerticallyCenteredDemo = ref(false)
+  const visibleVerticallyCenteredScrollableDemo = ref(false)
+  const visibleTooltipsAndPopoversDemo = ref(false)
+  const visibleToggleBetweenModalsDemo1 = ref(false)
+  const visibleToggleBetweenModalsDemo2 = ref(false)
+  const xlDemo = ref(false)
+  const lgDemo = ref(false)
+  const smDemo = ref(false)
+  const fullscreenDemo = ref(false)
+  const fullscreenSmDemo = ref(false)
+  const fullscreenMdDemo = ref(false)
+  const fullscreenLgDemo = ref(false)
+  const fullscreenXlDemo = ref(false)
+  const fullscreenXxlDemo = ref(false)
+</script>

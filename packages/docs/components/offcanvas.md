@@ -28,16 +28,18 @@ Below is an offcanvas example that is shown by default (via `:visible="true"`). 
 </div>
 :::
 ```vue
-<COffcanvas :backdrop="false" placement="start" :visible="true">
-  <COffcanvasHeader>
-    <COffcanvasTitle>Offcanvas</COffcanvasTitle>
-    <CCloseButton class="text-reset" />
-  </COffcanvasHeader>
-  <COffcanvasBody>
-    Content for the offcanvas goes here. You can place just about any Bootstrap component or
-    custom elements here.
-  </COffcanvasBody>
-</COffcanvas>
+<template>
+  <COffcanvas :backdrop="false" placement="start" :visible="true">
+    <COffcanvasHeader>
+      <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+      <CCloseButton class="text-reset" />
+    </COffcanvasHeader>
+    <COffcanvasBody>
+      Content for the offcanvas goes here. You can place just about any Bootstrap component or
+      custom elements here.
+    </COffcanvasBody>
+  </COffcanvas>
+</template>
 ```
 
 ### Live demo
@@ -61,6 +63,10 @@ Use the buttons below to show and hide an offcanvas component.
 </COffcanvas>
 :::
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const visible = ref(false)
+</script>
 <template>
   <CButton color="primary" @click="() => { visible = !visible }">Toggle offcanvas</CButton>
   <COffcanvas placement="start" :visible="visible" @hide="() => { visible = !visible }">
@@ -74,15 +80,6 @@ Use the buttons below to show and hide an offcanvas component.
     </COffcanvasBody>
   </COffcanvas>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        visible: false,
-      }
-    }
-  }
-</script>
 ```
 
 ### Body scrolling
@@ -102,6 +99,11 @@ Scrolling the `<body>` element is disabled when an offcanvas and its backdrop ar
 </COffcanvas>
 :::
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const visible = ref(false)
+  const visibleScrolling = ref(false)
+</script>
 <template>
   <CButton color="primary" @click="() => { visibleScrolling = !visibleScrolling }">Enable body scrolling</CButton>
   <COffcanvas :backdrop="false" placement="start" scroll :visible="visibleScrolling" @hide="() => { visibleScrolling = !visibleScrolling }">
@@ -114,15 +116,6 @@ Scrolling the `<body>` element is disabled when an offcanvas and its backdrop ar
     </COffcanvasBody>
   </COffcanvas>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        visibleScrolling: false,
-      }
-    }
-  }
-</script>
 ```
 
 ### Body scrolling and backdrop
@@ -142,6 +135,10 @@ You can also enable `<body>` scrolling with a visible backdrop.
 </COffcanvas>
 :::
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const visibleWithBothOptions = ref(false)
+</script>
 <template>
   <CButton color="primary" @click="() => { visibleWithBothOptions = !visibleWithBothOptions }">Enable both scrolling &amp; backdrop</CButton>
   <COffcanvas placement="start" scroll :visible="visibleWithBothOptions" @hide="() => { visibleWithBothOptions = !visibleWithBothOptions }">
@@ -154,15 +151,6 @@ You can also enable `<body>` scrolling with a visible backdrop.
     </COffcanvasBody>
   </COffcanvas>
 </template>
-<script>
-  export default {
-    data() {
-      return {
-        visibleWithBothOptions: false,
-      }
-    }
-  }
-</script>
 ```
 
 ### Static backdrop
@@ -182,6 +170,10 @@ If you set a `backdrop` to `static`, your Vue offcanvas component will not close
 </COffcanvas>
 :::
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const visibleWithStaticBackdrop = ref(false)
+</script>
 <template>
   <CButton color="primary" @click="() => { visibleWithStaticBackdrop = !visibleWithStaticBackdrop }">Toggle static offcanvas</CButton>
   <COffcanvas backdrop="static" placement="start" :visible="visibleWithStaticBackdrop" @hide="() => { visibleWithStaticBackdrop = !visibleWithStaticBackdrop }">
@@ -194,15 +186,6 @@ If you set a `backdrop` to `static`, your Vue offcanvas component will not close
     </COffcanvasBody>
   </COffcanvas>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        visibleWithStaticBackdrop: false,
-      }
-    }
-  }
-</script>
 ```
 
 ## Dark offcanvas
@@ -255,6 +238,10 @@ For example, `responsive="lg"` hides content in an offcanvas below the lg breakp
 </COffcanvas>
 :::
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const visibleResponsiveBackdrop = ref(false)
+</script>
 <template>
   <CButton color="primary" @click="() => { visibleResponsiveBackdrop = !visibleResponsiveBackdrop }">Toggle static offcanvas</CButton>
   <CAlert class="d-none d-lg-block" color="info">Resize your browser to show the responsive offcanvas toggle.</CAlert>
@@ -268,15 +255,6 @@ For example, `responsive="lg"` hides content in an offcanvas below the lg breakp
     </COffcanvasBody>
   </COffcanvas>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        visibleResponsiveBackdrop: false,
-      }
-    }
-  }
-</script>
 ```
 
 
@@ -305,6 +283,10 @@ Try the top, right, and bottom examples out below.
 </COffcanvas>
 :::
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const visibleTop = ref(false)
+</script>
 <template>
   <CButton color="primary" @click="() => { visibleTop = !visibleTop }">Toggle top offcanvas</CButton>
   <COffcanvas placement="top" :visible="visibleTop" @hide="() => { visibleTop = !visibleTop }">
@@ -318,15 +300,6 @@ Try the top, right, and bottom examples out below.
     </COffcanvasBody>
   </COffcanvas>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        visibleTop: false,
-      }
-    }
-  }
-</script>
 ```
 
 ::: demo
@@ -343,6 +316,10 @@ Try the top, right, and bottom examples out below.
 </COffcanvas>
 :::
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const visibleEnd = ref(false)
+</script>
 <template>
   <CButton color="primary" @click="() => { visibleEnd = !visibleEnd }">Toggle right offcanvas</CButton>
   <COffcanvas placement="end" :visible="visibleEnd" @hide="() => { visibleEnd = !visibleEnd }">
@@ -356,15 +333,6 @@ Try the top, right, and bottom examples out below.
     </COffcanvasBody>
   </COffcanvas>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        visibleEnd: false,
-      }
-    }
-  }
-</script>
 ```
 
 ::: demo
@@ -381,6 +349,10 @@ Try the top, right, and bottom examples out below.
 </COffcanvas>
 :::
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const visibleBottom = ref(false)
+</script>
 <template>
   <CButton color="primary" @click="() => { visibleBottom = !visibleBottom }">Toggle bottom offcanvas</CButton>
   <COffcanvas placement="bottom" :visible="visibleBottom" @hide="() => { visibleBottom = !visibleBottom }">
@@ -394,37 +366,11 @@ Try the top, right, and bottom examples out below.
     </COffcanvasBody>
   </COffcanvas>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        visibleBottom: false,
-      }
-    }
-  }
-</script>
 ```
 
 ## Accessibility
 
 Since the offcanvas panel is conceptually a modal dialog, be sure to add `aria-labelledby="..."`—referencing the offcanvas title—to `<COffcanvas>`. Note that you don’t need to add `role="dialog"` since we already add it automatically.
-
-<script>
-  export default {
-    data() {
-      return { 
-        visible: false,
-        visibleTop: false,
-        visibleEnd: false,
-        visibleBottom: false,
-        visibleScrolling: false,
-        visibleResponsiveBackdrop: false,
-        visibleWithStaticBackdrop: false,
-        visibleWithBothOptions: false,
-      }
-    }
-  }
-</script>
 
 ## Customizing
 
@@ -453,3 +399,15 @@ return <COffcanvas :style="vars">...</COffcanvas>
 !!!include(./api/offcanvas/COffcanvas.api.md)!!!
 
 !!!include(./api/offcanvas/COffcanvasTitle.api.md)!!!
+
+<script setup>
+  import { ref } from 'vue'
+  const visible = ref(false)
+  const visibleTop = ref(false)
+  const visibleEnd = ref(false)
+  const visibleBottom = ref(false)
+  const visibleScrolling = ref(false)
+  const visibleResponsiveBackdrop = ref(false)
+  const visibleWithStaticBackdrop = ref(false)
+  const visibleWithBothOptions = ref(false)
+</script>

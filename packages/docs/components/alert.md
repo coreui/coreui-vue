@@ -19,7 +19,8 @@ Vue Alert is prepared for any length of text, as well as an optional close butto
 <CAlert color="light">A simple light alert—check it out!</CAlert>
 <CAlert color="dark">A simple dark alert—check it out!</CAlert>
 :::
-```markup
+
+```vue
 <CAlert color="primary">A simple primary alert—check it out!</CAlert>
 <CAlert color="secondary">A simple secondary alert—check it out!</CAlert>
 <CAlert color="success">A simple success alert—check it out!</CAlert>
@@ -38,9 +39,16 @@ Click the button below to show an alert (hidden with inline styles to start), th
 <CAlert color="primary" :visible="liveExampleVisible" dismissible @close="() => { liveExampleVisible = false }">A simple primary alert—check it out!</CAlert>
 <CButton color="primary" @click="() => { liveExampleVisible = true }">Show live alert</CButton>
 :::
-```markup
-<CAlert color="primary" :visible="liveExampleVisible" dismissible @close="() => { liveExampleVisible = false }">A simple primary alert—check it out!</CAlert>
-<CButton color="primary" @click="() => { liveExampleVisible = true }">Show live alert</CButton>
+
+```vue
+<script setup>
+  import { ref } from 'vue'
+  const liveExampleVisible = ref(false)
+</script>
+<template>
+  <CAlert color="primary" :visible="liveExampleVisible" dismissible @close="() => { liveExampleVisible = false }">A simple primary alert—check it out!</CAlert>
+  <CButton color="primary" @click="() => { liveExampleVisible = true }">Show live alert</CButton>
+</template>
 ```
 
 ### Link color
@@ -48,32 +56,32 @@ Click the button below to show an alert (hidden with inline styles to start), th
 Use the `<CAlertLink>` component to immediately give matching colored links inside any alert.
 ::: demo
 <CAlert color="primary">
-  A simple primary alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
+A simple primary alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
 </CAlert>
 <CAlert color="secondary">
-  A simple secondary alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
+A simple secondary alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
 </CAlert>
 <CAlert color="success">
-  A simple success alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
+A simple success alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
 </CAlert>
 <CAlert color="danger">
-  A simple danger alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
+A simple danger alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
 </CAlert>
 <CAlert color="warning">
-  A simple warning alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
+A simple warning alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
 </CAlert>
 <CAlert color="info">
-  A simple info alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
+A simple info alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
 </CAlert>
 <CAlert color="light">
-  A simple light alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
+A simple light alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
 </CAlert>
 <CAlert color="dark">
-  A simple dark alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
+A simple dark alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
 </CAlert>
 :::
 
-```markup
+```vue
 <CAlert color="primary">
   A simple primary alert with <CAlertLink href="#">an example link</CAlertLink>. Give it a click if you like.
 </CAlert>
@@ -106,14 +114,15 @@ Alert can also incorporate supplementary HTML elements like heading, paragraph, 
 
 ::: demo
 <CAlert color="success">
-  <CAlertHeading>Well done!</CAlertHeading>
+<CAlertHeading>Well done!</CAlertHeading>
+
   <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
   <hr />
   <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
 </CAlert>
 :::
 
-```markup
+```vue
 <CAlert color="success" v-bind:visible="true">
   <CAlertHeading>Well done!</CAlertHeading>
   <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
@@ -121,21 +130,23 @@ Alert can also incorporate supplementary HTML elements like heading, paragraph, 
   <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
 </CAlert>
 ```
+
 ### Icons
 
 Similarly, you can use [flexbox utilities](https//coreui.io/docs/4.0/utilities/flex") and [CoreUI Icons](https://icons.coreui.io) to create alerts with icons. Depending on your icons and content, you may want to add more utilities or custom styles.
 
 ::: demo
 <CAlert color="primary" class="d-flex align-items-center">
-  <svg class="flex-shrink-0 me-2" width="24" height="24" viewBox="0 0 512 512">
-    <rect width="32" height="176" x="240" y="176" fill="var(--ci-primary-color, currentColor)" class="ci-primary"></rect><rect width="32" height="32" x="240" y="384" fill="var(--ci-primary-color, currentColor)" class="ci-primary"></rect><path fill="var(--ci-primary-color, currentColor)" d="M274.014,16H237.986L16,445.174V496H496V445.174ZM464,464H48V452.959L256,50.826,464,452.959Z" class="ci-primary"></path>
-  </svg>
+<svg class="flex-shrink-0 me-2" width="24" height="24" viewBox="0 0 512 512">
+<rect width="32" height="176" x="240" y="176" fill="var(--ci-primary-color, currentColor)" class="ci-primary"></rect><rect width="32" height="32" x="240" y="384" fill="var(--ci-primary-color, currentColor)" class="ci-primary"></rect><path fill="var(--ci-primary-color, currentColor)" d="M274.014,16H237.986L16,445.174V496H496V445.174ZM464,464H48V452.959L256,50.826,464,452.959Z" class="ci-primary"></path>
+</svg>
+
   <div>
     An example alert with an icon
   </div>
 </CAlert>
 :::
-```markup
+```vue
 <CAlert color="primary" class="d-flex align-items-center">
   <svg class="flex-shrink-0 me-2" width="24" height="24" viewBox="0 0 512 512">
     <rect width="32" height="176" x="240" y="176" fill="var(--ci-primary-color, currentColor)" class="ci-primary"></rect><rect width="32" height="32" x="240" y="384" fill="var(--ci-primary-color, currentColor)" class="ci-primary"></rect><path fill="var(--ci-primary-color, currentColor)" d="M274.014,16H237.986L16,445.174V496H496V445.174ZM464,464H48V452.959L256,50.826,464,452.959Z" class="ci-primary"></path>
@@ -150,7 +161,8 @@ Need more than one icon for your alerts? Consider using [CoreUI Icons](https://i
 
 ::: demo
 <CAlert color="primary" class="d-flex align-items-center">
-  <CIcon icon="cil-info" class="flex-shrink-0 me-2" width="24" height="24" />
+<CIcon icon="cil-info" class="flex-shrink-0 me-2" width="24" height="24" />
+
   <div>
     An example alert with an icon
   </div>
@@ -174,7 +186,7 @@ Need more than one icon for your alerts? Consider using [CoreUI Icons](https://i
   </div>
 </CAlert>
 :::
-```markup
+```vue
 <CAlert color="primary" class="d-flex align-items-center">
   <CIcon icon="cil-info" class="flex-shrink-0 me-2" width="24" height="24" />
   <div>
@@ -216,7 +228,7 @@ Use `variant="solid"` to change contextual colors to solid.
 <CAlert color="dark" variant="solid">A simple solid dark alert—check it out!</CAlert>
 :::
 
-```markup
+```vue
 <CAlert color="primary" variant="solid">A simple solid primary alert—check it out!</CAlert>
 <CAlert color="secondary" variant="solid">A simple solid secondary alert—check it out!</CAlert>
 <CAlert color="success" variant="solid">A simple solid success alert—check it out!</CAlert>
@@ -232,41 +244,23 @@ Use `variant="solid"` to change contextual colors to solid.
 Alerts can also be easily dismissed. Just add the `dismissible` prop.
 
 ::: demo
-<CAlert color="warning" dismissible @close="alert">
+<CAlert color="warning" dismissible @close="message">
   <strong>Go right ahead</strong> and click that dimiss over there on the right.
 </CAlert>
 :::
 
-```markup
-<CAlert color="warning" dismissible @close="alert">
-  <strong>Go right ahead</strong> and click that dimiss over there on the right.
-</CAlert>
-
-<script>
-  export default {
-    methods: {
-      alert () {
-        alert("👋 Well, hi there! Thanks for dismissing me.")
-      },
-    }
+```vue
+<script setup>
+  const message = () => {
+    alert("👋 Well, hi there! Thanks for dismissing me.")
   }
 </script>
+<template>
+  <CAlert color="warning" dismissible @close="message">
+    <strong>Go right ahead</strong> and click that dimiss over there on the right.
+  </CAlert>
+</template>
 ```
-
-<script>
-  export default {
-    data() {
-      return { 
-        liveExampleVisible: false,
-      }
-    },
-    methods: {
-      alert () {
-        alert("👋 Well, hi there! Thanks for dismissing me.")
-      },
-    }
-  }
-</script>
 
 ## Customizing
 
@@ -279,9 +273,9 @@ Vue alerts use local CSS variables on `.alert` for enhanced real-time customizat
 #### How to use CSS variables
 
 ```js
-const vars = { 
+const vars = {
   '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+  '--my-another-css-var': "red"
 }
 return <CAlert :style="vars">...</CAlert>
 ```
@@ -295,3 +289,11 @@ return <CAlert :style="vars">...</CAlert>
 !!!include(./api/alert/CAlert.api.md)!!!
 
 !!!include(./api/alert/CAlertHeading.api.md)!!!
+
+<script setup>
+  import { ref } from 'vue'
+  const liveExampleVisible = ref(false)
+  const message = () => {
+    alert("👋 Well, hi there! Thanks for dismissing me.")
+  }
+</script>

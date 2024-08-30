@@ -116,6 +116,16 @@ You can customize the appearance of popovers using [CSS variables](#css-variable
 </CPopover>
 :::
 ```vue
+<script setup>
+  const customPopoverStyle = {
+    '--cui-popover-max-width': '200px',
+    '--cui-popover-border-color': 'var(--cui-primary)',
+    '--cui-popover-header-bg': 'var(--cui-primary)',
+    '--cui-popover-header-color': 'var(--cui-white)',
+    '--cui-popover-body-padding-x': '1rem',
+    '--cui-popover-body-padding-y': '.5rem',
+  }
+</script>
 <template>
   <CPopover
     content="This popover is themed via CSS variables."
@@ -128,22 +138,6 @@ You can customize the appearance of popovers using [CSS variables](#css-variable
     </template>
   </CPopover>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-       customPopoverStyle: {
-          '--cui-popover-max-width': '200px',
-          '--cui-popover-border-color': 'var(--cui-primary)',
-          '--cui-popover-header-bg': 'var(--cui-primary)',
-          '--cui-popover-header-color': 'var(--cui-white)',
-          '--cui-popover-body-padding-x': '1rem',
-          '--cui-popover-body-padding-y': '.5rem',
-        }
-      }
-    }
-  }
-</script>
 ```
 
 ## Usage
@@ -207,19 +201,13 @@ return <CPopover :style="vars">...</CPopover>
 
 !!!include(./api/popover/CPopover.api.md)!!!
 
-<script>
-  export default {
-    data() {
-      return { 
-       customPopoverStyle: {
-          '--cui-popover-max-width': '200px',
-          '--cui-popover-border-color': 'var(--cui-primary)',
-          '--cui-popover-header-bg': 'var(--cui-primary)',
-          '--cui-popover-header-color': 'var(--cui-white)',
-          '--cui-popover-body-padding-x': '1rem',
-          '--cui-popover-body-padding-y': '.5rem',
-        }
-      }
-    }
+<script setup>
+  const customPopoverStyle = {
+    '--cui-popover-max-width': '200px',
+    '--cui-popover-border-color': 'var(--cui-primary)',
+    '--cui-popover-header-bg': 'var(--cui-primary)',
+    '--cui-popover-header-color': 'var(--cui-white)',
+    '--cui-popover-body-padding-x': '1rem',
+    '--cui-popover-body-padding-y': '.5rem',
   }
 </script>

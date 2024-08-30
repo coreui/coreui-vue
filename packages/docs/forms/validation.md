@@ -8,13 +8,13 @@ description: Provide valuable, actionable feedback to your users with HTML5 form
 
 For custom CoreUI form validation messages, you'll need to add the `novalidate` boolean property to your `<CForm>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you. When attempting to submit, you'll see the `:invalid` and `:valid` styles applied to your form controls.
 
-Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback. 
+Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback.
 
 ::: demo
-<CForm 
-  class="row g-3 needs-validation" 
-  novalidate 
-  :validated="validatedCustom01" 
+<CForm
+  class="row g-3 needs-validation"
+  novalidate
+  :validated="validatedCustom01"
   @submit="handleSubmitCustom01"
 >
   <CCol md="4">
@@ -91,6 +91,18 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
 </CForm>
 :::
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const validatedCustom01 = ref()
+  const handleSubmitCustom01 = (event) => {
+    const form = event.currentTarget
+    if (form.checkValidity() === false) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+    validatedCustom01.value = true
+  }
+</script>
 <template>
   <CForm 
     class="row g-3 needs-validation" 
@@ -171,25 +183,6 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
     </CCol>
   </CForm>
 </template>
-<script>
-  export default {
-    data: () => {
-      return {
-        validatedCustom01: null,
-      }
-    },
-    methods: {
-      handleSubmitCustom01(event) {
-        const form = event.currentTarget
-        if (form.checkValidity() === false) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-        this.validatedCustom01 = true
-      },
-    }
-  }
-</script> 
 ```
 
 ## Browser defaults
@@ -245,9 +238,7 @@ While these feedback styles cannot be styled with CSS, you can still customize t
       label="State"
       required
     >
-      <option selected="" disabled="" value="">
-        Choose...
-      </option>
+      <option selected="" disabled="" value="">Choose...</option>
       <option>...</option>
     </CFormSelect>
   </CCol>
@@ -273,6 +264,7 @@ While these feedback styles cannot be styled with CSS, you can still customize t
   </CCol>
 </CForm>
 :::
+
 ```vue
 <CForm class="row g-3">
   <CCol md="4">
@@ -434,6 +426,7 @@ For invalid fields, ensure that the invalid feedback/error message is associated
   </CCol>
 </CForm>
 :::
+
 ```vue
 <CForm class="row g-3 needs-validation">
   <CCol md="4">
@@ -532,7 +525,7 @@ Validation styles are available for the following form controls and components:
       label="Textarea"
       placeholder="Required example textarea"
       required
-    ></CFormTextarea>
+    />
   </div>
   <CFormCheck
     class="mb-3"
@@ -594,7 +587,7 @@ Validation styles are available for the following form controls and components:
       label="Textarea"
       placeholder="Required example textarea"
       required
-    ></CFormTextarea>
+    />
   </div>
   <CFormCheck
     class="mb-3"
@@ -706,9 +699,7 @@ If your form layout allows it, you can swap the text for the tooltip to display 
       required
       tooltipFeedback
     >
-      <option selected="" disabled="" value="">
-        Choose...
-      </option>
+      <option selected="" disabled="" value="">Choose...</option>
       <option>...</option>
     </CFormSelect>
   </CCol>
@@ -727,39 +718,55 @@ If your form layout allows it, you can swap the text for the tooltip to display 
   </CCol>
 </CForm>
 :::
+
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const validatedTooltip01 = ref()
+  const handleSubmitTooltip01 = (event) => {
+    const form = event.currentTarget
+    if (form.checkValidity() === false) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+    
+    validatedTooltip01.value = true
+  }
+</script>
 <template>
-  <CForm class="row g-3 needs-validation" novalidate :validated="validatedTooltip01" @submit="handleSubmitTooltip01">
+  <CForm
+    class="row g-3 needs-validation"
+    novalidate
+    :validated="validatedTooltip01"
+    @submit="handleSubmitTooltip01"
+  >
     <CCol md="4" class="position-relative">
       <CFormLabel for="validationTooltip01">Email</CFormLabel>
-      <CFormInput id="validationTooltip01" value="Mark" required/>
-      <CFormFeedback tooltip valid>
-        Looks good!
-      </CFormFeedback>
+      <CFormInput id="validationTooltip01" value="Mark" required />
+      <CFormFeedback tooltip valid> Looks good! </CFormFeedback>
     </CCol>
     <CCol md="4" class="position-relative">
       <CFormLabel for="validationTooltip02">Email</CFormLabel>
-      <CFormInput id="validationTooltip02" value="Otto" required/>
-      <CFormFeedback tooltip valid>
-        Looks good!
-      </CFormFeedback>
+      <CFormInput id="validationTooltip02" value="Otto" required />
+      <CFormFeedback tooltip valid> Looks good! </CFormFeedback>
     </CCol>
     <CCol md="4" class="position-relative">
       <CFormLabel for="validationTooltipUsername">Username</CFormLabel>
       <CInputGroup class="has-validation">
         <CInputGroupText id="inputGroupPrepend">@</CInputGroupText>
-        <CFormInput id="validationTooltipUsername" value="" aria-describedby="inputGroupPrepend" required/>
-        <CFormFeedback tooltip invalid>
-        Please choose a username.
-        </CFormFeedback>
+        <CFormInput
+          id="validationTooltipUsername"
+          value=""
+          aria-describedby="inputGroupPrepend"
+          required
+        />
+        <CFormFeedback tooltip invalid> Please choose a username. </CFormFeedback>
       </CInputGroup>
     </CCol>
     <CCol md="6" class="position-relative">
       <CFormLabel for="validationTooltip03">City</CFormLabel>
-      <CFormInput id="validationTooltip03" required/>
-      <CFormFeedback tooltip invalid>
-        Please provide a valid city.
-      </CFormFeedback>
+      <CFormInput id="validationTooltip03" required />
+      <CFormFeedback tooltip invalid> Please provide a valid city. </CFormFeedback>
     </CCol>
     <CCol md="3" class="position-relative">
       <CFormLabel for="validationTooltip04">City</CFormLabel>
@@ -767,41 +774,18 @@ If your form layout allows it, you can swap the text for the tooltip to display 
         <option disabled value="">Choose...</option>
         <option>...</option>
       </CFormSelect>
-      <CFormFeedback tooltip invalid>
-        Please provide a valid city.
-      </CFormFeedback>
+      <CFormFeedback tooltip invalid> Please provide a valid city. </CFormFeedback>
     </CCol>
     <CCol md="3" class="position-relative">
       <CFormLabel for="validationTooltip05">City</CFormLabel>
-      <CFormInput id="validationTooltip05" required/>
-      <CFormFeedback tooltip invalid>
-        Please provide a valid zip.
-      </CFormFeedback>
+      <CFormInput id="validationTooltip05" required />
+      <CFormFeedback tooltip invalid> Please provide a valid zip. </CFormFeedback>
     </CCol>
     <CCol xs="12" class="position-relative">
       <CButton color="primary" type="submit">Submit form</CButton>
     </CCol>
   </CForm>
 </template>
-<script>
-  export default {
-    data: () => {
-      return {
-        validatedTooltip01: null,
-      }
-    },
-    methods: {
-      handleSubmitTooltip01(event) {
-        const form = event.currentTarget
-        if (form.checkValidity() === false) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-        this.validatedTooltip01 = true
-      }
-    }
-  }
-</script>
 ```
 
 ## Customizing
@@ -842,31 +826,25 @@ Used to iterate over `$form-validation-states` map values to generate our valida
 
 <ScssDocs file="forms/_validation.scss" capture="form-validation-states-loop" />
 
-<script>
-  export default {
-    data: () => {
-      return {
-        validatedCustom01: null,
-        validatedTooltip01: null,
-      }
-    },
-    methods: {
-      handleSubmitCustom01(event) {
-        const form = event.currentTarget
-        if (form.checkValidity() === false) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-        this.validatedCustom01 = true
-      },
-      handleSubmitTooltip01(event) {
-        const form = event.currentTarget
-        if (form.checkValidity() === false) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-        this.validatedTooltip01 = true
-      }
+<script setup>
+  import { ref } from 'vue'
+  const validatedCustom01 = ref()
+  const validatedTooltip01 = ref()
+  const handleSubmitCustom01 = (event) => {
+    const form = event.currentTarget
+    if (form.checkValidity() === false) {
+      event.preventDefault()
+      event.stopPropagation()
     }
+    validatedCustom01.value = true
+  }
+  const handleSubmitTooltip01 = (event) => {
+    const form = event.currentTarget
+    if (form.checkValidity() === false) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+    
+    validatedTooltip01.value = true
   }
 </script>

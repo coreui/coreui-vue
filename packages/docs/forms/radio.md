@@ -33,6 +33,10 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
 <div>Picked: {{ picked }}</div>
 :::
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const picked = ref('Four')
+</script>
 <template>
   <CFormCheck type="radio" id="flexRadioVModel1" inline label="One" value="One" v-model="picked"/>
   <CFormCheck type="radio" id="flexRadioVModel2" inline label="Two" value="Two" v-model="picked"/>
@@ -41,30 +45,7 @@ Add the `disabled` attribute and the associated `<label>`s are automatically sty
   <CFormCheck type="radio" id="flexRadioVModel5" inline label="Five" value="Five" v-model="picked"/>
   <div>Picked: {{ picked }}</div>
 </template>
-<script>
-  import { ref } from 'vue'
-  export default {
-    setup() {
-      const picked = ref('Four')
-      return {
-        picked
-      }
-    }
-  }
-</script>
 ```
-
-<script>
-  import { ref } from 'vue'
-  export default {
-    setup() {
-      const picked = ref('Four')
-      return {
-        picked
-      }
-    }
-  }
-</script>
 
 ### Disabled
 
@@ -170,3 +151,8 @@ Different variants of button, such at the various outlined styles, are supported
 ## API
 
 !!!include(./api/form/CFormCheck.api.md)!!!
+
+<script setup>
+  import { ref } from 'vue'
+  const picked = ref('Four')
+</script>

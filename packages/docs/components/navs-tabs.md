@@ -702,6 +702,10 @@ Note that dynamic tabbed interfaces should not contain dropdown menus, as this c
 </CTabContent>
 :::
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const tabPaneActiveKey = ref(1)
+</script>
 <template>
   <CNav variant="tabs" role="tablist">
     <CNavItem>
@@ -761,15 +765,6 @@ Note that dynamic tabbed interfaces should not contain dropdown menus, as this c
     </CTabPane>
   </CTabContent>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        tabPaneActiveKey: 1,
-      }
-    }
-  }
-</script>
 ```
 
 The tabs also works with pills.
@@ -834,6 +829,10 @@ The tabs also works with pills.
 </CTabContent>
 :::
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const tabPanePillsActiveKey = ref(1)
+</script>
 <template>
   <CNav variant="tabs" role="tablist">
     <CNavItem>
@@ -893,27 +892,7 @@ The tabs also works with pills.
     </CTabPane>
   </CTabContent>
 </template>
-<script>
-  export default {
-    data() {
-      return { 
-        tabPanePillsActiveKey: 1,
-      }
-    }
-  }
-</script>
 ```
-
-<script>
-  export default {
-    data() {
-      return { 
-        tabPaneActiveKey: 1,
-        tabPanePillsActiveKey: 1,
-      }
-    }
-  }
-</script>
 
 ## Customizing
 
@@ -958,3 +937,9 @@ return <CNav :style="vars">...</CNav>
 `CNavItem` and `CNavLink` have the same properties. If you set the `href` property on `CNavItem` then, `CNavLink` will be generated inside `CNavItem`.
 
 !!!include(./api/nav/CNavLink.api.md)!!!
+
+<script setup>
+  import { ref } from 'vue'
+  const tabPaneActiveKey = ref(1)
+  const tabPanePillsActiveKey = ref(1)
+</script>

@@ -78,6 +78,16 @@ Toasts are as flexible as you need and have very little required markup. At a mi
 </CToaster>
 :::
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const toasts = ref([])
+  const createToast = () => {
+    toasts.value.push({
+      title: 'new toast',
+      content: 'Lorem ipsum dolor cet emit'
+    })
+  }
+</script>
 <template>
   <CButton color="primary" @click="createToast">Send a toast</CButton>
   <CToaster class="p-3" placement="top-end">
@@ -92,43 +102,7 @@ Toasts are as flexible as you need and have very little required markup. At a mi
     </CToast>
   </CToaster>
 </template>
-<script>
-  export default {
-    data() {
-      return {
-        toasts: []
-      }
-    },
-    methods: {
-      createToast() {
-        this.toasts.push({
-          title: 'new toast',
-          content: 'Lorem ipsum dolor cet emit'
-        })
-      }
-    }
-  }
-</script>
 ```
-
-<script>
-  export default {
-    data() {
-      return {
-        toasts: []
-      }
-    },
-    
-    methods: {
-      createToast() {
-        this.toasts.push({
-          title: 'new toast',
-          content: 'Lorem ipsum dolor cet emit'
-        })
-      }
-    }
-  }
-</script>
 
 ### Translucent
 
@@ -364,3 +338,14 @@ return <CToast :style="vars">...</CToast>
 !!!include(./api/toast/CToastHeader.api.md)!!!
 
 !!!include(./api/toast/CToaster.api.md)!!!
+
+<script setup>
+  import { ref } from 'vue'
+  const toasts = ref([])
+  const createToast = () => {
+    toasts.value.push({
+      title: 'new toast',
+      content: 'Lorem ipsum dolor cet emit'
+    })
+  }
+</script>

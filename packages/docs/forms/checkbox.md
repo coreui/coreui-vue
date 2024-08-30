@@ -29,21 +29,14 @@ Single checkbox, boolean value.
 <div>Checked: {{checked}}</div>
 :::
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const checked = ref(true)
+</script>
 <template>
   <CFormCheck id="flexCheckDefaultVModel" label="Default checkbox" v-model="checked" />
   <div>Checked: {{checked}}</div>
 </template>
-<script>
-  import { ref } from 'vue'
-  export default {
-    setup() {
-      const checked = ref(true)
-      return {
-        checked
-      }
-    }
-  }
-</script>
 ```
 
 We can also bind multiple checkboxes to the same array.
@@ -55,38 +48,17 @@ We can also bind multiple checkboxes to the same array.
 <div>Checked names: {{checkedNames}}</div>
 :::
 ```vue
+<script setup>
+  import { ref } from 'vue'
+  const checkedNames = ref(['Andrew'])
+</script>
 <template>
   <CFormCheck id="lucas" value="Lucas" label="Lucas" v-model="checkedNames"/>
   <CFormCheck id="andrew" value="Andrew" label="Andrew" v-model="checkedNames"/>
   <CFormCheck id="anna" value="Anna" label="Anna" v-model="checkedNames"/>
   <div>Checked names: {{checkedNames}}</div>
 </template>
-<script>
-  import { ref } from 'vue'
-  export default {
-    setup() {
-      const checkedNames = ref(['Andrew'])
-      return {
-        checkedNames
-      }
-    }
-  }
-</script>
 ```
-
-<script>
-  import { ref } from 'vue'
-  export default {
-    setup() {
-      const checked = ref(true)
-      const checkedNames = ref(['Andrew'])
-      return {
-        checked,
-        checkedNames
-      }
-    }
-  }
-</script>
 
 ## Indeterminate
 
@@ -212,3 +184,9 @@ Different variants of button, such at the various outlined styles, are supported
 ## API
 
 !!!include(./api/form/CFormCheck.api.md)!!!
+
+<script setup>
+  import { ref } from 'vue'
+  const checked = ref(true)
+  const checkedNames = ref(['Andrew'])
+</script>
