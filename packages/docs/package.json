@@ -11,7 +11,7 @@
     "@coreui/chartjs": "^4.0.0",
     "@coreui/coreui": "^5.1.2",
     "@coreui/icons": "^3.0.1",
-    "@coreui/icons-vue": "^2.1.0",
+    "@coreui/icons-vue": "^2.2.0",
     "@coreui/utils": "^2.0.2",
     "@coreui/vue-chartjs": "^3.0.0",
     "@docsearch/css": "^3.6.1",
