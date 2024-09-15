@@ -1,6 +1,12 @@
 import { defineComponent, h, inject } from 'vue'
 import { CCloseButton } from '../close-button/CCloseButton'
 
+type CCloseButtonProps = InstanceType<typeof CCloseButton>['$props']
+
+interface CToastCloseProps {
+  as: string
+}
+
 const CToastClose = defineComponent({
   name: 'CToastClose',
   props: {
@@ -16,7 +22,7 @@ const CToastClose = defineComponent({
      */
     'close',
   ],
-  setup(props, { slots, emit }) {
+  setup(props: CToastCloseProps & CCloseButtonProps, { slots, emit }) {
     // eslint-disable-next-line no-unused-vars
     const updateVisible = inject('updateVisible') as (visible: boolean) => void
     const handleClose = () => {

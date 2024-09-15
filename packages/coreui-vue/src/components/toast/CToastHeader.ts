@@ -9,20 +9,11 @@ const CToastHeader = defineComponent({
      */
     closeButton: Boolean,
   },
-  emits: [
-    /**
-     * Event called after clicking the close button.
-     */
-    'close',
-  ],
-  setup(props, { slots, emit }) {
+  setup(props, { slots }) {
     return () =>
       h('div', { class: 'toast-header' }, [
         slots.default && slots.default(),
-        props.closeButton &&
-          h(CToastClose, {
-            onClose: () => emit('close'),
-          }),
+        props.closeButton && h(CToastClose),
       ])
   },
 })

@@ -2,6 +2,12 @@ import { defineComponent, h } from 'vue'
 
 import { CNavLink } from './CNavLink'
 
+type CNavLinkProps = Omit<InstanceType<typeof CNavLink>['$props'], 'as'>
+
+interface CNavItemProps {
+  as: string
+}
+
 const CNavItem = defineComponent({
   name: 'CNavItem',
   props: {
@@ -14,12 +20,11 @@ const CNavItem = defineComponent({
       default: 'li',
     },
   },
-  setup(props, { slots }) {
+  setup(props: CNavLinkProps & CNavItemProps, { slots }) {
     return () =>
       h(
         props.as,
         {
-          as: props.component,
           class: 'nav-item',
         },
         props.href

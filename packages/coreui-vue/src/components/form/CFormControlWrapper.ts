@@ -4,6 +4,15 @@ import { CFormFloating } from './CFormFloating'
 import { CFormLabel } from './CFormLabel'
 import { CFormText } from './CFormText'
 
+type CFormControlValidationProps = InstanceType<typeof CFormControlValidation>['$props']
+
+interface CFormControlWrapperProps {
+  floatingLabel?: string
+  id?: string
+  label?: string
+  text?: string
+}
+
 const CFormControlWrapper = defineComponent({
   name: 'CFormControlWrapper',
   inheritAttrs: false,
@@ -32,7 +41,7 @@ const CFormControlWrapper = defineComponent({
      */
     text: String,
   },
-  setup(props, { slots }) {
+  setup(props: CFormControlWrapperProps & CFormControlValidationProps, { slots }) {
     const formControlValidation = () =>
       h(
         CFormControlValidation,

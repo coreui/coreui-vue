@@ -119,7 +119,9 @@ const CFormSelect = defineComponent({
       h(
         CFormControlWrapper,
         {
-          describedby: attrs['aria-describedby'],
+          ...(typeof attrs['aria-describedby'] === 'string' && {
+            describedby: attrs['aria-describedby'],
+          }),
           feedback: props.feedback,
           feedbackInvalid: props.feedbackInvalid,
           feedbackValid: props.feedbackValid,
