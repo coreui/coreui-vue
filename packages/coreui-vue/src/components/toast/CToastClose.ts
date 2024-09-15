@@ -1,4 +1,4 @@
-import { defineComponent, h, inject } from 'vue'
+import { defineComponent, h, inject, resolveComponent } from 'vue'
 import { CCloseButton } from '../close-button/CCloseButton'
 
 type CCloseButtonProps = InstanceType<typeof CCloseButton>['$props']
@@ -32,7 +32,7 @@ const CToastClose = defineComponent({
     return () =>
       props.as
         ? h(
-            props.as,
+            resolveComponent(props.as),
             {
               onClick: () => {
                 handleClose()
