@@ -1,10 +1,9 @@
 import { defineComponent, h } from 'vue'
-
 import { CNavLink } from './CNavLink'
 
-type CNavLinkProps = Omit<InstanceType<typeof CNavLink>['$props'], 'as'>
+import type { ComponentProps } from '../../utils/ComponentProps'
 
-interface CNavItemProps {
+interface CNavItemProps extends ComponentProps<typeof CNavLink> {
   as: string
 }
 
@@ -20,7 +19,7 @@ const CNavItem = defineComponent({
       default: 'li',
     },
   },
-  setup(props: CNavLinkProps & CNavItemProps, { slots }) {
+  setup(props: CNavItemProps, { slots }) {
     return () =>
       h(
         props.as,

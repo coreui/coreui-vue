@@ -8,7 +8,8 @@ module.exports = {
   components: [
     '**/[A-Z]*.ts',
     '!**/[A-Z]*.d.ts',
-    '!**/[A-Z]*.spec.ts'
+    '!**/[A-Z]*.spec.ts',
+    '!**/ComponentProps.ts',
   ],
   outDir: 'api', // folder to save components docs in (relative to the current working directry)
   getDocFileName: (componentPath) =>
