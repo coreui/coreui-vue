@@ -50,8 +50,7 @@ const CTabPanel = defineComponent({
   ],
   setup(props, { slots, emit }) {
     const activeItemKey = inject('activeItemKey') as Ref<number | string>
-    const id = inject('id') as Ref<number | string>
-
+    const id = inject('id')
     const tabPaneRef = ref()
     const firstRender = ref(true)
     const visible = ref()
@@ -112,9 +111,9 @@ const CTabPanel = defineComponent({
                     show: firstRender.value && visible.value,
                   },
                 ],
-                id: `${props.itemKey}-tab-panel-${id.value}`,
+                id: `${props.itemKey}-tab-panel-${id}`,
                 role: 'tabpanel',
-                'aria-labelledby': `${props.itemKey}-tab-${id.value}`,
+                'aria-labelledby': `${props.itemKey}-tab-${id}`,
                 tabindex: 0,
                 ref: tabPaneRef,
               },

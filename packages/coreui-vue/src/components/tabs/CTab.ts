@@ -13,7 +13,7 @@ const CTab = defineComponent({
   },
   setup(props, { slots }) {
     const activeItemKey = inject('activeItemKey') as Ref<number | string>
-    const id = inject('id') as Ref<number | string>
+    const id = inject('id')
     const setActiveItemKey = inject('setActiveItemKey') as (key: number | string) => void
 
     const isActive = () => props.itemKey === activeItemKey.value
@@ -28,11 +28,11 @@ const CTab = defineComponent({
               active: isActive(),
             },
           ],
-          id: `${props.itemKey}-tab-${id.value}`,
+          id: `${props.itemKey}-tab-${id}`,
           role: 'tab',
           tabindex: isActive() ? 0 : -1,
           type: 'button',
-          'aria-controls': `${props.itemKey}-tab-panel-${id.value}`,
+          'aria-controls': `${props.itemKey}-tab-panel-${id}`,
           'aria-selected': isActive(),
           onClick: () => setActiveItemKey(props.itemKey),
           onFocus: () => setActiveItemKey(props.itemKey),
