@@ -4,6 +4,10 @@ const CTab = defineComponent({
   name: 'CTab',
   props: {
     /**
+     * Toggle the disabled state for the component.
+     */
+    disabled: Boolean,
+    /**
      * Item key.
      */
     itemKey: {
@@ -34,6 +38,7 @@ const CTab = defineComponent({
           type: 'button',
           'aria-controls': `${props.itemKey}-tab-panel-${id}`,
           'aria-selected': isActive(),
+          disabled: props.disabled,
           onClick: () => setActiveItemKey(props.itemKey),
           onFocus: () => setActiveItemKey(props.itemKey),
         },
