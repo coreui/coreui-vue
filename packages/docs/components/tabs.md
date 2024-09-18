@@ -76,16 +76,16 @@ If you don’t provide the `variant` prop, the component will default to a basic
     <CTab disabled itemKey="disabled">Disabled</CTab>
   </CTabList>
   <CTabContent>
-    <CTabPanel className="p-3" itemKey="home">
+    <CTabPanel class="p-3" itemKey="home">
       Home tab content
     </CTabPanel>
-    <CTabPanel className="p-3" itemKey="profile">
+    <CTabPanel class="p-3" itemKey="profile">
       Profile tab content
     </CTabPanel>
-    <CTabPanel className="p-3" itemKey="contact">
+    <CTabPanel class="p-3" itemKey="contact">
       Contact tab content
     </CTabPanel>
-    <CTabPanel className="p-3" itemKey="disabled">
+    <CTabPanel class="p-3" itemKey="disabled">
       Disabled tab content
     </CTabPanel>
   </CTabContent>
@@ -100,16 +100,16 @@ If you don’t provide the `variant` prop, the component will default to a basic
     <CTab disabled itemKey="disabled">Disabled</CTab>
   </CTabList>
   <CTabContent>
-    <CTabPanel className="p-3" itemKey="home">
+    <CTabPanel class="p-3" itemKey="home">
       Home tab content
     </CTabPanel>
-    <CTabPanel className="p-3" itemKey="profile">
+    <CTabPanel class="p-3" itemKey="profile">
       Profile tab content
     </CTabPanel>
-    <CTabPanel className="p-3" itemKey="contact">
+    <CTabPanel class="p-3" itemKey="contact">
       Contact tab content
     </CTabPanel>
-    <CTabPanel className="p-3" itemKey="disabled">
+    <CTabPanel class="p-3" itemKey="disabled">
       Disabled tab content
     </CTabPanel>
   </CTabContent>
@@ -129,16 +129,16 @@ Take that same code, but use `variant="pills"` instead:
     <CTab aria-controls="disabled-tab-pane" disabled :itemKey="4">Disabled</CTab>
   </CTabList>
   <CTabContent>
-    <CTabPanel className="p-3" aria-labelledby="home-tab-pane" :itemKey="1">
+    <CTabPanel class="p-3" aria-labelledby="home-tab-pane" :itemKey="1">
       Home tab content
     </CTabPanel>
-    <CTabPanel className="p-3" aria-labelledby="profile-tab-pane" :itemKey="2">
+    <CTabPanel class="p-3" aria-labelledby="profile-tab-pane" :itemKey="2">
       Profile tab content
     </CTabPanel>
-    <CTabPanel className="p-3" aria-labelledby="contact-tab-pane" :itemKey="3">
+    <CTabPanel class="p-3" aria-labelledby="contact-tab-pane" :itemKey="3">
       Contact tab content
     </CTabPanel>
-    <CTabPanel className="p-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
+    <CTabPanel class="p-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
       Disabled tab content
     </CTabPanel>
   </CTabContent>
@@ -153,16 +153,16 @@ Take that same code, but use `variant="pills"` instead:
     <CTab aria-controls="disabled-tab-pane" disabled :itemKey="4">Disabled</CTab>
   </CTabList>
   <CTabContent>
-    <CTabPanel className="p-3" aria-labelledby="home-tab-pane" :itemKey="1">
+    <CTabPanel class="p-3" aria-labelledby="home-tab-pane" :itemKey="1">
       Home tab content
     </CTabPanel>
-    <CTabPanel className="p-3" aria-labelledby="profile-tab-pane" :itemKey="2">
+    <CTabPanel class="p-3" aria-labelledby="profile-tab-pane" :itemKey="2">
       Profile tab content
     </CTabPanel>
-    <CTabPanel className="p-3" aria-labelledby="contact-tab-pane" :itemKey="3">
+    <CTabPanel class="p-3" aria-labelledby="contact-tab-pane" :itemKey="3">
       Contact tab content
     </CTabPanel>
-    <CTabPanel className="p-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
+    <CTabPanel class="p-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
       Disabled tab content
     </CTabPanel>
   </CTabContent>
@@ -182,16 +182,16 @@ Take that same code, but use `variant="underline"` instead:
     <CTab aria-controls="disabled-tab-pane" disabled :itemKey="4">Disabled</CTab>
   </CTabList>
   <CTabContent>
-    <CTabPanel className="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
+    <CTabPanel class="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
       Home tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
+    <CTabPanel class="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
       Profile tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
+    <CTabPanel class="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
       Contact tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
+    <CTabPanel class="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
       Disabled tab content
     </CTabPanel>
   </CTabContent>
@@ -206,16 +206,16 @@ Take that same code, but use `variant="underline"` instead:
     <CTab aria-controls="disabled-tab-pane" disabled :itemKey="4">Disabled</CTab>
   </CTabList>
   <CTabContent>
-    <CTabPanel className="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
+    <CTabPanel class="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
       Home tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
+    <CTabPanel class="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
       Profile tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
+    <CTabPanel class="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
       Contact tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
+    <CTabPanel class="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
       Disabled tab content
     </CTabPanel>
   </CTabContent>
@@ -235,16 +235,16 @@ Take that same code, but use `variant="underline-border"` instead:
     <CTab aria-controls="disabled-tab-pane" disabled :itemKey="4">Disabled</CTab>
   </CTabList>
   <CTabContent>
-    <CTabPanel className="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
+    <CTabPanel class="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
       Home tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
+    <CTabPanel class="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
       Profile tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
+    <CTabPanel class="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
       Contact tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
+    <CTabPanel class="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
       Disabled tab content
     </CTabPanel>
   </CTabContent>
@@ -259,16 +259,16 @@ Take that same code, but use `variant="underline-border"` instead:
     <CTab aria-controls="disabled-tab-pane" disabled :itemKey="4">Disabled</CTab>
   </CTabList>
   <CTabContent>
-    <CTabPanel className="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
+    <CTabPanel class="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
       Home tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
+    <CTabPanel class="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
       Profile tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
+    <CTabPanel class="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
       Contact tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
+    <CTabPanel class="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
       Disabled tab content
     </CTabPanel>
   </CTabContent>
@@ -288,16 +288,16 @@ Force your `<CTabs>`'s contents to extend the full available width one of two mo
     <CTab aria-controls="disabled-tab-pane" disabled :itemKey="4">Disabled</CTab>
   </CTabList>
   <CTabContent>
-    <CTabPanel className="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
+    <CTabPanel class="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
       Home tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
+    <CTabPanel class="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
       Profile tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
+    <CTabPanel class="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
       Contact tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
+    <CTabPanel class="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
       Disabled tab content
     </CTabPanel>
   </CTabContent>
@@ -312,16 +312,16 @@ Force your `<CTabs>`'s contents to extend the full available width one of two mo
     <CTab aria-controls="disabled-tab-pane" disabled :itemKey="4">Disabled</CTab>
   </CTabList>
   <CTabContent>
-    <CTabPanel className="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
+    <CTabPanel class="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
       Home tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
+    <CTabPanel class="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
       Profile tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
+    <CTabPanel class="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
       Contact tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
+    <CTabPanel class="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
       Disabled tab content
     </CTabPanel>
   </CTabContent>
@@ -339,16 +339,16 @@ For equal-width elements, use `layout="justified"`. All horizontal space will be
     <CTab aria-controls="disabled-tab-pane" disabled :itemKey="4">Disabled</CTab>
   </CTabList>
   <CTabContent>
-    <CTabPanel className="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
+    <CTabPanel class="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
       Home tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
+    <CTabPanel class="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
       Profile tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
+    <CTabPanel class="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
       Contact tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
+    <CTabPanel class="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
       Disabled tab content
     </CTabPanel>
   </CTabContent>
@@ -363,16 +363,16 @@ For equal-width elements, use `layout="justified"`. All horizontal space will be
     <CTab aria-controls="disabled-tab-pane" disabled :itemKey="4">Disabled</CTab>
   </CTabList>
   <CTabContent>
-    <CTabPanel className="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
+    <CTabPanel class="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
       Home tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
+    <CTabPanel class="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
       Profile tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
+    <CTabPanel class="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
       Contact tab content
     </CTabPanel>
-    <CTabPanel className="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
+    <CTabPanel class="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
       Disabled tab content
     </CTabPanel>
   </CTabContent>
@@ -404,16 +404,16 @@ Our Vue Tabs component automatically manages all `role="..."` and `aria-` attrib
     <CTab id="disabled-tab" aria-controls="disabled-tab-pane" disabled :itemKey="4">Disabled</CTab>
   </CTabList>
   <CTabContent>
-    <CTabPanel id="home-tab-pane" className="p-3" aria-labelledby="home-tab-pane" aria-labelledby="home-tab" :itemKey="1">
+    <CTabPanel id="home-tab-pane" class="p-3" aria-labelledby="home-tab-pane" aria-labelledby="home-tab" :itemKey="1">
       Home tab content
     </CTabPanel>
-    <CTabPanel id="profile-tab-pane" className="p-3" aria-labelledby="profile-tab-pane" aria-labelledby="profile-tab" :itemKey="2">
+    <CTabPanel id="profile-tab-pane" class="p-3" aria-labelledby="profile-tab-pane" aria-labelledby="profile-tab" :itemKey="2">
       Profile tab content
     </CTabPanel>
-    <CTabPanel id="contact-tab-pane" className="p-3" aria-labelledby="contact-tab-pane" aria-labelledby="contact-tab" :itemKey="3">
+    <CTabPanel id="contact-tab-pane" class="p-3" aria-labelledby="contact-tab-pane" aria-labelledby="contact-tab" :itemKey="3">
       Contact tab content
     </CTabPanel>
-    <CTabPanel id="disabled-tab-pane" className="p-3" aria-labelledby="disabled-tab-pane" aria-labelledby="disabled-tab" :itemKey="4">
+    <CTabPanel id="disabled-tab-pane" class="p-3" aria-labelledby="disabled-tab-pane" aria-labelledby="disabled-tab" :itemKey="4">
       Disabled tab content
     </CTabPanel>
   </CTabContent>
