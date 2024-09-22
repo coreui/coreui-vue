@@ -5,6 +5,8 @@ const CTab = defineComponent({
   props: {
     /**
      * Toggle the disabled state for the component.
+     *
+     * @since 5.4.0
      */
     disabled: Boolean,
     /**
