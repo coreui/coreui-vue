@@ -65,7 +65,7 @@ And with `<a>` elements:
 The best part is you can do this with any button variant, too:
 
 ::: demo
-<template v-for="(item) in ['primary', 'secondary', 'success', 'info', 'warning', 'danger']">
+<template v-for="(item) in ['primary', 'secondary', 'success', 'info', 'warning', 'danger']" :key="item">
   <CDropdown :color="item" :togglerText="item" variant="btn-group">
     <CDropdownToggle :color="item">{{item}}</CDropdownToggle>
     <CDropdownMenu>
@@ -77,7 +77,7 @@ The best part is you can do this with any button variant, too:
 </template>
 :::
 ```vue
-<template v-for="(item) in ['primary', 'secondary', 'success', 'info', 'warning', 'danger']">
+<template v-for="(item) in ['primary', 'secondary', 'success', 'info', 'warning', 'danger']" :key="item">
   <CDropdown :color="item" :togglerText="item" variant="btn-group">
     <CDropdownToggle :color="item">{{togglerText}}</CDropdownToggle>
     <CDropdownMenu>
@@ -96,7 +96,7 @@ Similarly, create split button dropdowns with virtually the same markup as singl
 We use this extra class to reduce the horizontal `padding` on either side of the caret by 25% and remove the `margin-left` that's attached for normal button dropdowns. Those additional changes hold the caret centered in the split button and implement a more properly sized hit area next to the main button.
 
 ::: demo
-<template v-for="(item) in ['primary', 'secondary', 'success', 'info', 'warning', 'danger']">
+<template v-for="(item) in ['primary', 'secondary', 'success', 'info', 'warning', 'danger']" :key="item">
   <CDropdown :color="item" :togglerText="item" variant="btn-group">
     <CButton :color="item">{{ item }}</CButton>
     <CDropdownToggle :color="item" split>{{item}}</CDropdownToggle>
@@ -109,7 +109,7 @@ We use this extra class to reduce the horizontal `padding` on either side of the
 </template>
 :::
 ```vue
-<template v-for="(item) in ['primary', 'secondary', 'success', 'info', 'warning', 'danger']">
+<template v-for="(item) in ['primary', 'secondary', 'success', 'info', 'warning', 'danger']" :key="item">
   <CDropdown :color="item" :togglerText="item" variant="btn-group">
     <CButton :color="item">{{ item }}</CButton>
     <CDropdownToggle :color="item" split>{{item}}</CDropdownToggle>
