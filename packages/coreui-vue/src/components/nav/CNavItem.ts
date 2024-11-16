@@ -5,10 +5,12 @@ import type { ComponentProps } from '../../utils/ComponentProps'
 
 interface CNavItemProps extends ComponentProps<typeof CNavLink> {
   as: string
+  class: string
 }
 
 const CNavItem = defineComponent({
   name: 'CNavItem',
+  inheritAttrs: false,
   props: {
     /**
      * Toggle the active state for the component.
@@ -22,6 +24,10 @@ const CNavItem = defineComponent({
       default: 'li',
     },
     /**
+     * A string of all className you want applied to the component.
+     */
+    class: String,
+    /**
      * Toggle the disabled state for the component.
      */
     disabled: Boolean,
@@ -30,17 +36,18 @@ const CNavItem = defineComponent({
      */
     href: String,
   },
-  setup(props: CNavItemProps, { slots }) {
+  setup(props: CNavItemProps, { attrs, slots }) {
     return () =>
       h(
         props.as,
         {
-          class: 'nav-item',
+          class: ['nav-item', props.class],
         },
         props.href
           ? h(
               CNavLink,
               {
+                ...attrs,
                 active: props.active,
                 disabled: props.disabled,
                 href: props.href,
