@@ -1,8 +1,12 @@
-import { defineComponent, h, inject, provide, ref, watch, Ref } from 'vue'
+import { defineComponent, h, inject, provide, ref, watch, Ref, useId } from 'vue'
 
 const CAccordionItem = defineComponent({
   name: 'CAccordionItem',
   props: {
+    /**
+     * The id global attribute defines an identifier (ID) that must be unique in the whole document.
+     */
+    id: String,
     /**
      * The item key.
      */
@@ -13,16 +17,20 @@ const CAccordionItem = defineComponent({
     const alwaysOpen = inject('alwaysOpen') as boolean
     const setActiveItemKey = inject('setActiveItemKey') as (key: number | string) => void
 
-    const itemKey = ref(props.itemKey ?? Math.random().toString(36).slice(2, 11))
+    const id = props.id ?? useId()
+    const itemKey = ref(props.itemKey ?? id)
     const visible = ref(Boolean(activeItemKey.value === itemKey.value))
 
     watch(activeItemKey, () => (visible.value = Boolean(activeItemKey.value === itemKey.value)))
 
     const toggleVisibility = () => {
       visible.value = !visible.value
-      !alwaysOpen && visible && setActiveItemKey(itemKey.value)
+      if (!alwaysOpen && visible) {
+        setActiveItemKey(itemKey.value)
+      }
     }
 
+    provide('id', id)
     provide('visible', visible)
     provide('toggleVisibility', toggleVisibility)
 

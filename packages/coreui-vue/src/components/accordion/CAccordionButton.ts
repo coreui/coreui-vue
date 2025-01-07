@@ -3,6 +3,7 @@ import { defineComponent, h, inject, Ref } from 'vue'
 const CAccordionButton = defineComponent({
   name: 'CAccordionButton',
   setup(_, { slots }) {
+    const id = inject('id') as string
     const toggleVisibility = inject('toggleVisibility') as () => void
     const visible = inject('visible') as Ref<boolean>
 
@@ -11,7 +12,8 @@ const CAccordionButton = defineComponent({
         'button',
         {
           type: 'button',
-          'aria-expanded': !visible.value,
+          'aria-control': id,
+          'aria-expanded': visible.value,
           class: ['accordion-button', { ['collapsed']: !visible.value }],
           onClick: () => toggleVisibility(),
         },
