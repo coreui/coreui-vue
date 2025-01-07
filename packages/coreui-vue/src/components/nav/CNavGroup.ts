@@ -41,7 +41,10 @@ const CNavGroup = defineComponent({
 
     onMounted(() => {
       visible.value = props.visible
-      props.visible && navGroupRef.value.classList.add('show')
+      if (props.visible) {
+        navGroupRef.value.classList.add('show')
+      }
+
       emit('visible-change', visible.value)
     })
 
@@ -60,7 +63,8 @@ const CNavGroup = defineComponent({
       emit('visible-change', visible.value)
     })
 
-    const handleTogglerClick = () => {
+    const handleTogglerClick = (event: Event) => {
+      event.preventDefault()
       visible.value = !visible.value
       emit('visible-change', visible.value)
     }
@@ -111,6 +115,7 @@ const CNavGroup = defineComponent({
               'a',
               {
                 class: ['nav-link', 'nav-group-toggle'],
+                href: '#',
                 onClick: handleTogglerClick,
               },
               slots.togglerContent && slots.togglerContent(),
