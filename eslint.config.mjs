@@ -6,7 +6,7 @@ import globals from 'globals'
 import typescriptEslint from 'typescript-eslint'
 
 export default typescriptEslint.config(
-  { ignores: ['**/*.d.ts', '**/coverage', '**/dist', '**/docs', 'eslint.config.mjs'] },
+  { ignores: ['**/*.d.ts', '**/coverage', '**/dist', '**/docs'] },
   {
     extends: [
       eslint.configs.recommended,
@@ -44,7 +44,7 @@ export default typescriptEslint.config(
         ...globals.node,
       },
 
-      ecmaVersion: 5,
+      ecmaVersion: 'latest',
       sourceType: 'module',
     },
   },
