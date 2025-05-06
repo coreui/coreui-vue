@@ -7,6 +7,7 @@ import { CFormText } from './CFormText'
 import type { ComponentProps } from '../../utils/ComponentProps'
 
 interface CFormControlWrapperProps extends ComponentProps<typeof CFormControlValidation> {
+  floatingClassName?: string
   floatingLabel?: string
   id?: string
   label?: string
@@ -18,6 +19,12 @@ const CFormControlWrapper = defineComponent({
   inheritAttrs: false,
   props: {
     ...CFormControlValidation.props,
+    /**
+     * A string of all className you want applied to the floating label wrapper.
+     *
+     * @since 5.5.0
+     */
+    floatingClassName: String,
     /**
      * Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.
      *
@@ -69,29 +76,36 @@ const CFormControlWrapper = defineComponent({
 
     return () =>
       props.floatingLabel
-        ? h(CFormFloating, () => [
-            slots.default && slots.default(),
-            h(
-              CFormLabel,
-              {
-                for: props.id,
-              },
-              {
-                default: () => (slots.label && slots.label()) || props.label || props.floatingLabel,
-              },
-            ),
-            (props.text || slots.text) &&
+        ? h(
+            CFormFloating,
+            {
+              class: props.floatingClassName,
+            },
+            () => [
+              slots.default && slots.default(),
               h(
-                CFormText,
+                CFormLabel,
                 {
-                  id: props.describedby,
+                  for: props.id,
                 },
                 {
-                  default: () => (slots.text && slots.text()) || props.text,
+                  default: () =>
+                    (slots.label && slots.label()) || props.label || props.floatingLabel,
                 },
               ),
-            formControlValidation(),
-          ])
+              (props.text || slots.text) &&
+                h(
+                  CFormText,
+                  {
+                    id: props.describedby,
+                  },
+                  {
+                    default: () => (slots.text && slots.text()) || props.text,
+                  },
+                ),
+              formControlValidation(),
+            ],
+          )
         : [
             (props.label || slots.label) &&
               h(
