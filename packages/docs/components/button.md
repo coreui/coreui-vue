@@ -63,7 +63,27 @@ If you're using `<CButton>` component as `<a>` elements that are used to trigger
 
 ## Outline buttons
 
-If you need a button, but without the strong background colors. Set `variant="outline"` prop to remove all background colors.
+### Base outline style
+
+The `variant="outline` property provides a neutral outline button style without any color modifiers. It’s useful as a foundation for minimal buttons without background color or strong visual emphasis.
+
+::: demo
+<CButton variant="outline">Base outline button</CButton>
+<CButton variant="outline" active>Active state</CButton>
+<CButton variant="outline" disabled>Disabled state</CButton>
+:::
+```vue
+<CButton variant="outline">Base outline button</CButton>
+<CButton variant="outline" active>Active state</CButton>
+<CButton variant="outline" disabled>Disabled state</CButton>
+```
+
+These Vue buttons use a transparent background, subtle border, and inherit text color from the parent context. They’re best suited for minimalist UI elements like modals, toolbars, or secondary actions.
+
+
+### Themed outline variants
+
+If you need a button, but without the strong background colors, set `color` and `variant=" outline"` props to remove all background colors.
 
 ::: demo
 <CButton color="primary" variant="outline">Primary</CButton>
@@ -86,9 +106,30 @@ If you need a button, but without the strong background colors. Set `variant="ou
 <CButton color="dark" variant="outline">Dark</CButton>
 ```
 
+These outline variants of our Vue.js buttons retain transparent backgrounds by default, but display a background tint on hover or focus to indicate interactivity. They’re ideal for secondary actions when you want to differentiate from the standard buttons visually.
+
 ## Ghost buttons
 
+### Base ghost style
+
+Use the `variant="ghost"` property to create ultra-minimalist buttons with no borders and a fully transparent background. These Vue buttons rely solely on text color for visibility and apply a background highlight when hovered over or in an active state.
+
+They’re perfect for interfaces where you want buttons to be present but visually unobtrusive—such as action buttons in modals, cards, or toolbars.
+
 If you need a ghost variant of button, set `variant="ghost"` prop to remove all background colors.
+
+::: demo
+<CButton variant="ghost">Base ghost button</CButton>
+<CButton variant="ghost" active>Active state</CButton>
+<CButton variant="ghost" disabled>Disabled state</CButton>
+:::
+```vue
+<CButton variant="ghost">Base ghost button</CButton>
+<CButton variant="ghost" active>Active state</CButton>
+<CButton variant="ghost" disabled>Disabled state</CButton>
+```
+
+To apply theme colors to Vue ghost buttons, use the `color` and `variant="ghost"` properties. By default, these variants color only the text. On hover or focus, they add a background that corresponds to the theme color.
 
 ::: demo
 <CButton color="primary" variant="ghost">Primary</CButton>

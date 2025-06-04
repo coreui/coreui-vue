@@ -93,9 +93,9 @@ export const CButton = defineComponent({
         {
           class: [
             'btn',
+            props.variant && props.color ? `btn-${props.variant}-${props.color}` : `btn-${props.variant}`,
             {
               [`btn-${props.color}`]: props.color && !props.variant,
-              [`btn-${props.variant}-${props.color}`]: props.color && props.variant,
               [`btn-${props.size}`]: props.size,
               active: props.active,
               disabled: props.disabled,
