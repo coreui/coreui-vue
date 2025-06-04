@@ -275,6 +275,112 @@ Take that same code, but use `variant="underline-border"` instead:
 </CTabs>
 ```
 
+### Enclosed
+
+Use the `variant="enclosed"` class to give your tab items a subtle border and rounded styling.
+
+::: demo
+<CTabs :activeItemKey="1">
+  <CTabList variant="enclosed">
+    <CTab aria-controls="home-tab-pane" :itemKey="1">Home</CTab>
+    <CTab aria-controls="profile-tab-pane" :itemKey="2">Profile</CTab>
+    <CTab aria-controls="contact-tab-pane" :itemKey="3">Contact</CTab>
+    <CTab aria-controls="disabled-tab-pane" disabled :itemKey="4">Disabled</CTab>
+  </CTabList>
+  <CTabContent>
+    <CTabPanel class="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
+      Home tab content
+    </CTabPanel>
+    <CTabPanel class="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
+      Profile tab content
+    </CTabPanel>
+    <CTabPanel class="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
+      Contact tab content
+    </CTabPanel>
+    <CTabPanel class="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
+      Disabled tab content
+    </CTabPanel>
+  </CTabContent>
+</CTabs>
+:::
+```vue
+<CTabs :activeItemKey="1">
+  <CTabList variant="enclosed-pills">
+    <CTab aria-controls="home-tab-pane" :itemKey="1">Home</CTab>
+    <CTab aria-controls="profile-tab-pane" :itemKey="2">Profile</CTab>
+    <CTab aria-controls="contact-tab-pane" :itemKey="3">Contact</CTab>
+    <CTab aria-controls="disabled-tab-pane" disabled :itemKey="4">Disabled</CTab>
+  </CTabList>
+  <CTabContent>
+    <CTabPanel class="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
+      Home tab content
+    </CTabPanel>
+    <CTabPanel class="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
+      Profile tab content
+    </CTabPanel>
+    <CTabPanel class="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
+      Contact tab content
+    </CTabPanel>
+    <CTabPanel class="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
+      Disabled tab content
+    </CTabPanel>
+  </CTabContent>
+</CTabs>
+```
+
+### Enclosed pills 
+
+Use the `variant="enclosed-pills"` to achieve a pill-style appearance for each tab item, using pill-shaped borders and smoother outlines.
+
+::: demo
+<CTabs :activeItemKey="1">
+  <CTabList variant="enclosed-pills">
+    <CTab aria-controls="home-tab-pane" :itemKey="1">Home</CTab>
+    <CTab aria-controls="profile-tab-pane" :itemKey="2">Profile</CTab>
+    <CTab aria-controls="contact-tab-pane" :itemKey="3">Contact</CTab>
+    <CTab aria-controls="disabled-tab-pane" disabled :itemKey="4">Disabled</CTab>
+  </CTabList>
+  <CTabContent>
+    <CTabPanel class="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
+      Home tab content
+    </CTabPanel>
+    <CTabPanel class="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
+      Profile tab content
+    </CTabPanel>
+    <CTabPanel class="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
+      Contact tab content
+    </CTabPanel>
+    <CTabPanel class="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
+      Disabled tab content
+    </CTabPanel>
+  </CTabContent>
+</CTabs>
+:::
+```vue
+<CTabs :activeItemKey="1">
+  <CTabList variant="enclosed-pills">
+    <CTab aria-controls="home-tab-pane" :itemKey="1">Home</CTab>
+    <CTab aria-controls="profile-tab-pane" :itemKey="2">Profile</CTab>
+    <CTab aria-controls="contact-tab-pane" :itemKey="3">Contact</CTab>
+    <CTab aria-controls="disabled-tab-pane" disabled :itemKey="4">Disabled</CTab>
+  </CTabList>
+  <CTabContent>
+    <CTabPanel class="py-3" aria-labelledby="home-tab-pane" :itemKey="1">
+      Home tab content
+    </CTabPanel>
+    <CTabPanel class="py-3" aria-labelledby="profile-tab-pane" :itemKey="2">
+      Profile tab content
+    </CTabPanel>
+    <CTabPanel class="py-3" aria-labelledby="contact-tab-pane" :itemKey="3">
+      Contact tab content
+    </CTabPanel>
+    <CTabPanel class="py-3" aria-labelledby="disabled-tab-pane" :itemKey="4">
+      Disabled tab content
+    </CTabPanel>
+  </CTabContent>
+</CTabs>
+```
+
 ### Fill and justify
 
 Force your `<CTabs>`'s contents to extend the full available width one of two modifier classes. To proportionately fill all available space use `layout="fill"`. Notice that all horizontal space is occupied, but not every nav item has the same width.

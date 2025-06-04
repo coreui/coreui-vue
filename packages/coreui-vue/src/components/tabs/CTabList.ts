@@ -18,12 +18,12 @@ const CTabList = defineComponent({
     /**
      * Set the nav variant to tabs or pills.
      *
-     * @values 'pills', 'tabs', 'underline', 'underline-border'
+     * @values 'enclosed', 'enclosed-pills', 'pills', 'tabs', 'underline', 'underline-border'
      */
     variant: {
       type: String,
       validator: (value: string) => {
-        return ['pills', 'tabs', 'underline', 'underline-border'].includes(value)
+        return ['enclosed', 'enclosed-pills', 'pills', 'tabs', 'underline', 'underline-border'].includes(value)
       },
     },
   },
@@ -72,6 +72,7 @@ const CTabList = defineComponent({
         {
           class: [
             'nav',
+            props.variant === 'enclosed-pills' && 'nav-enclosed',
             {
               [`nav-${props.layout}`]: props.layout,
               [`nav-${props.variant}`]: props.variant,
