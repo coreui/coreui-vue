@@ -402,6 +402,96 @@ Take that same code, but use `variant="underline-border"` instead:
 </CNav>
 ```
 
+### Enclosed
+
+Use the `variant="enclosed"` class to give your navigation items a subtle border and rounded styling.
+
+::: demo
+<CNav variant="enclosed">
+  <CNavItem>
+    <CNavLink href="#" active>
+      Active
+    </CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#" disabled>
+      Disabled
+    </CNavLink>
+  </CNavItem>
+</CNav>
+:::
+```vue
+<CNav variant="enclosed">
+  <CNavItem>
+    <CNavLink href="#" active>
+      Active
+    </CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#" disabled>
+      Disabled
+    </CNavLink>
+  </CNavItem>
+</CNav>
+```
+
+### Enclosed pills 
+
+Use the `variant="enclosed-pills"` to achieve a pill-style appearance for each nav item, using pill-shaped borders and smoother outlines.
+
+::: demo
+<CNav variant="enclosed-pills">
+  <CNavItem>
+    <CNavLink href="#" active>
+      Active
+    </CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#" disabled>
+      Disabled
+    </CNavLink>
+  </CNavItem>
+</CNav>
+:::
+```vue
+<CNav variant="enclosed-pills">
+  <CNavItem>
+    <CNavLink href="#" active>
+      Active
+    </CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#">Link</CNavLink>
+  </CNavItem>
+  <CNavItem>
+    <CNavLink href="#" disabled>
+      Disabled
+    </CNavLink>
+  </CNavItem>
+</CNav>
+```
+
 ### Fill and justify
 
 Force your `.nav`'s contents to extend the full available width one of two modifier classes. To proportionately fill all available space with your `.nav-item`s, use `layout="fill"`. Notice that all horizontal space is occupied, but not every nav item has the same width.
