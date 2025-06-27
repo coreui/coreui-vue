@@ -4,7 +4,8 @@ export type Column = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   _style?: any
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  _props?: any
+  _props?: any,
+  formatter?: (value: unknown) => string
 }
 
 export type FooterItem = {
