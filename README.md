@@ -101,6 +101,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 - [Vue Accordion](https://coreui.io/vue/docs/components/accordion.html)
 - [Vue Alert](https://coreui.io/vue/docs/components/alert.html)
+- [Vue Autocomplete](https://coreui.io/vue/docs/forms/autocomplete.html) **PRO**
 - [Vue Avatar](https://coreui.io/vue/docs/components/avatar.html)
 - [Vue Badge](https://coreui.io/vue/docs/components/badge.html)
 - [Vue Breadcrumb](https://coreui.io/vue/docs/components/breadcrumb.html)
@@ -134,12 +135,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 - [Vue Progress](https://coreui.io/vue/docs/components/progress.html)
 - [Vue Radio](https://coreui.io/vue/docs/forms/radio.html)
 - [Vue Range](https://coreui.io/vue/docs/forms/range.html)
+- [Vue Range Slider](https://coreui.io/vue/docs/forms/range-slider.html) **PRO**
 - [Vue Rating](https://coreui.io/vue/docs/forms/rating.html)
 - [Vue Select](https://coreui.io/vue/docs/forms/select.html)
 - [Vue Sidebar](https://coreui.io/vue/docs/components/sidebar.html)
 - [Vue Smart Pagination](https://coreui.io/vue/docs/components/smart-pagination.html) **PRO**
 - [Vue Smart Table](https://coreui.io/vue/docs/components/smart-table.html) **PRO**
 - [Vue Spinner](https://coreui.io/vue/docs/components/spinner.html)
+- [Vue Stepper](https://coreui.io/vue/docs/forms/stepper.html) **PRO**
 - [Vue Switch](https://coreui.io/vue/docs/forms/switch.html)
 - [Vue Table](https://coreui.io/vue/docs/components/table.html)
 - [Vue Textarea](https://coreui.io/vue/docs/forms/textarea.html)
