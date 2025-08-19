@@ -238,7 +238,7 @@ const CTable = defineComponent({
                             default: () => [
                               columnNames.value &&
                                 columnNames.value.map(
-                                  (colName: string) =>
+                                  (colName: string, idx: number) =>
                                     item[colName] !== undefined &&
                                     h(
                                       CTableDataCell,
@@ -251,7 +251,14 @@ const CTable = defineComponent({
                                           }),
                                       },
                                       {
-                                        default: () => item[colName],
+                                        default: () => {
+                                          const column = props.columns![idx];
+                                          const value  = item[colName];
+                                          
+                                          return typeof column === "object" && column.formatter
+                                            ? column.formatter(value)
+                                            : value;
+                                        }
                                       },
                                     ),
                                 ),
