@@ -19,12 +19,19 @@ export default defineUserConfig({
   description: 'UI Components Library for Vue.js (Vue 3)',
   head: [['link', { rel: 'icon', href: `/vue/docs/favicons/favicon-96x96.png` }]],
   bundler: viteBundler(),
+  alias: {
+    '@example': path.resolve(__dirname, '../code-examples/'),
+  },
   markdown: {
     anchor: {
       permalink: anchor.permalink.linkInsideHeader({
         class: 'anchor-link',
         placement: 'after'
       }),
+    },
+    importCode: {
+      handleImportPath: (str) =>
+        str.replace(/^@example/, path.resolve(__dirname, '../code-examples/')),
     },
   },
   extendsMarkdown: (md) => {
@@ -255,6 +262,10 @@ export default defineUserConfig({
           {
             text: 'Dropdown',
             link: `/components/dropdown.html`,
+          },
+          {
+            text: 'Focus Trap',
+            link: `/components/focus-trap.html`,
           },
           {
             text: 'Footer',

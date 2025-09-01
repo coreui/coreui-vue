@@ -4,6 +4,7 @@ import { CBackdrop } from '../backdrop'
 
 import { vVisible } from '../../directives/v-c-visible'
 import { executeAfterTransition } from '../../utils/transition'
+import { CFocusTrap } from '../focus-trap'
 
 const COffcanvas = defineComponent({
   name: 'COffcanvas',
@@ -103,7 +104,7 @@ const COffcanvas = defineComponent({
       () => props.visible,
       () => {
         visible.value = props.visible
-      },
+      }
     )
 
     watch(visible, () => {
@@ -161,41 +162,44 @@ const COffcanvas = defineComponent({
     }
 
     return () => [
-      h(
-        Transition,
-        {
-          appear: visible.value,
-          css: false,
-          onEnter: (el, done) => handleEnter(el, done),
-          onAfterEnter: () => handleAfterEnter(),
-          onLeave: (el, done) => handleLeave(el, done),
-          onAfterLeave: (el) => handleAfterLeave(el),
-        },
-        () =>
-          withDirectives(
-            h(
-              'div',
-              {
-                ...attrs,
-                class: [
-                  {
-                    [`offcanvas${
-                      typeof props.responsive === 'boolean' ? '' : '-' + props.responsive
-                    }`]: props.responsive,
-                    [`offcanvas-${props.placement}`]: props.placement,
-                  },
-                  attrs.class,
-                ],
-                onKeydown: (event: KeyboardEvent) => handleKeyDown(event),
-                ref: offcanvasRef,
-                role: 'dialog',
-                tabindex: -1,
-                ...(props.dark && { 'data-coreui-theme': 'dark' }),
-              },
-              slots.default && slots.default(),
-            ),
-            [[vVisible, props.visible]],
-          ),
+      h(CFocusTrap, { active: visible.value && Boolean(props.backdrop) }, () =>
+        h(
+          Transition,
+          {
+            appear: visible.value,
+            css: false,
+            onEnter: (el, done) => handleEnter(el, done),
+            onAfterEnter: () => handleAfterEnter(),
+            onLeave: (el, done) => handleLeave(el, done),
+            onAfterLeave: (el) => handleAfterLeave(el),
+          },
+          () =>
+            withDirectives(
+              h(
+                'div',
+                {
+                  ...attrs,
+                  class: [
+                    {
+                      [`offcanvas${
+                        typeof props.responsive === 'boolean' ? '' : '-' + props.responsive
+                      }`]: props.responsive,
+                      [`offcanvas-${props.placement}`]: props.placement,
+                    },
+                    attrs.class,
+                  ],
+                  onKeydown: (event: KeyboardEvent) => handleKeyDown(event),
+                  ref: offcanvasRef,
+                  role: 'dialog',
+                  tabindex: -1,
+                  ...(props.dark && { 'data-coreui-theme': 'dark' }),
+                },
+                slots.default && slots.default()
+              ),
+
+              [[vVisible, props.visible]]
+            )
+        )
       ),
       props.backdrop &&
         h(CBackdrop, {

@@ -13,6 +13,7 @@ import {
 
 import { CBackdrop } from '../backdrop/CBackdrop'
 import { CConditionalTeleport } from '../conditional-teleport'
+import { CFocusTrap } from '../focus-trap'
 
 import { executeAfterTransition } from '../../utils/transition'
 
@@ -162,7 +163,7 @@ const CModal = defineComponent({
       () => props.visible,
       () => {
         visible.value = props.visible
-      },
+      }
     )
 
     const handleEnter = (el: RendererElement, done: () => void) => {
@@ -276,12 +277,14 @@ const CModal = defineComponent({
               },
             ],
           },
-          h(
-            'div',
-            { class: ['modal-content', props.contentClassName], ref: modalContentRef },
-            slots.default && slots.default(),
-          ),
-        ),
+          h(CFocusTrap, { active: props.focus }, () =>
+            h(
+              'div',
+              { class: ['modal-content', props.contentClassName], ref: modalContentRef },
+              slots.default && slots.default()
+            )
+          )
+        )
       )
 
     return () =>
@@ -305,7 +308,7 @@ const CModal = defineComponent({
               () =>
                 props.unmountOnClose
                   ? visible.value && modal()
-                  : withDirectives(modal(), [[vShow, visible.value]]),
+                  : withDirectives(modal(), [[vShow, visible.value]])
             ),
             props.backdrop &&
               h(CBackdrop, {
@@ -313,7 +316,7 @@ const CModal = defineComponent({
                 visible: visible.value,
               }),
           ],
-        },
+        }
       )
   },
 })
