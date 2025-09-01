@@ -9,7 +9,7 @@
   "license": "MIT",
   "devDependencies": {
     "@coreui/chartjs": "^4.0.0",
-    "@coreui/coreui": "^5.4.0",
+    "@coreui/coreui": "^5.4.3",
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-vue": "^2.2.0",
     "@coreui/utils": "^2.0.2",
@@ -29,7 +29,7 @@
     "@vuepress/utils": "2.0.0-rc.19",
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-include": "^2.0.0",
-    "sass": "^1.89.1",
+    "sass": "^1.91.0",
     "vue-docgen-cli": "^4.79.0",
     "vuepress": "2.0.0-rc.19"
   }
