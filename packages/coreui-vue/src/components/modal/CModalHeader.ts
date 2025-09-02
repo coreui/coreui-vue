@@ -1,4 +1,4 @@
-import { defineComponent, h, inject } from 'vue'
+import { defineComponent, h, inject, Ref } from 'vue'
 
 import { CCloseButton } from '../close-button/CCloseButton'
 
@@ -14,11 +14,13 @@ const CModalHeader = defineComponent({
     },
   },
   setup(props, { slots }) {
-    const handleDismiss = inject('handleDismiss') as () => void
+    const visible = inject<Ref<boolean>>('visible')!
     return () =>
       h('span', { class: 'modal-header' }, [
         slots.default && slots.default(),
-        props.closeButton && h(CCloseButton, { onClick: () => handleDismiss() }, ''),
+        props.closeButton && h(CCloseButton, { onClick: () => {
+          visible.value = false
+        } }, ''),
       ])
   },
 })

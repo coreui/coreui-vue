@@ -33,7 +33,7 @@ const CModal = defineComponent({
       },
     },
     /**
-     * Apply a backdrop on body while offcanvas is open.
+     * Apply a backdrop on body while modal is open.
      *
      * @values boolean | 'static'
      */
@@ -176,13 +176,14 @@ const CModal = defineComponent({
       setTimeout(() => {
         el.classList.add('show')
       }, 1)
+
       emit('show')
     }
 
     const handleAfterEnter = () => {
       props.focus && modalRef.value?.focus()
       window.addEventListener('mousedown', handleMouseDown)
-      window.addEventListener('keyup', handleKeyUp)
+      window.addEventListener('keydown', handleKeyDown)
     }
 
     // eslint-disable-next-line unicorn/consistent-function-scoping
@@ -196,33 +197,33 @@ const CModal = defineComponent({
       }
 
       el.classList.remove('show')
+      emit('close')
     }
 
     const handleAfterLeave = (el: RendererElement) => {
       activeElementRef.value?.focus()
       window.removeEventListener('mousedown', handleMouseDown)
-      window.removeEventListener('keyup', handleKeyUp)
+      window.removeEventListener('keydown', handleKeyDown)
       el.style.display = 'none'
     }
 
     const handleDismiss = () => {
-      emit('close')
+      if (props.backdrop === 'static') {
+        modalRef.value.classList.add('modal-static')
+        emit('close-prevented')
+        setTimeout(() => {
+          modalRef.value.classList.remove('modal-static')
+        }, 300)
+
+        return
+      }
+
       visible.value = false
     }
 
-    const handleKeyUp = (event: KeyboardEvent) => {
-      if (modalContentRef.value && !modalContentRef.value.contains(event.target as HTMLElement)) {
-        if (props.backdrop !== 'static' && event.key === 'Escape' && props.keyboard) {
-          handleDismiss()
-        }
-
-        if (props.backdrop === 'static') {
-          modalRef.value.classList.add('modal-static')
-          emit('close-prevented')
-          setTimeout(() => {
-            modalRef.value.classList.remove('modal-static')
-          }, 300)
-        }
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && props.keyboard) {
+        handleDismiss()
       }
     }
 
@@ -232,20 +233,11 @@ const CModal = defineComponent({
 
     const handleMouseUp = (event: Event) => {
       if (modalContentRef.value && !modalContentRef.value.contains(event.target as HTMLElement)) {
-        if (props.backdrop !== 'static') {
-          handleDismiss()
-        }
-
-        if (props.backdrop === 'static') {
-          modalRef.value.classList.add('modal-static')
-          setTimeout(() => {
-            modalRef.value.classList.remove('modal-static')
-          }, 300)
-        }
+        handleDismiss()
       }
     }
 
-    provide('handleDismiss', handleDismiss)
+    provide('visible', visible)
 
     const modal = () =>
       h(
