@@ -100,7 +100,7 @@ const CDropdownToggle = defineComponent({
     const dropdownToggleRef = inject('dropdownToggleRef') as Ref<HTMLElement>
     const dropdownVariant = inject('variant') as string
     const visible = inject('visible') as Ref<boolean>
-    const setVisible = inject('setVisible') as (_visible?: boolean) => void
+    const setVisible = inject('setVisible') as (_visible?: boolean, event?: KeyboardEvent) => void
 
     const triggers = {
       ...((props.trigger === 'click' || props.trigger.includes('click')) && {
@@ -110,7 +110,7 @@ const CDropdownToggle = defineComponent({
             return
           }
 
-          setVisible()
+          setVisible(!visible.value)
         },
       }),
       ...((props.trigger === 'focus' || props.trigger.includes('focus')) && {
@@ -128,6 +128,12 @@ const CDropdownToggle = defineComponent({
           setVisible(false)
         },
       }),
+      onkeydown: (event: KeyboardEvent) => {
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+          event.preventDefault()
+          setVisible(true, event)
+        }
+      }
     }
 
     const togglerProps = computed(() => {

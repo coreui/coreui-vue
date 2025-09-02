@@ -1,4 +1,4 @@
-import { defineComponent, h, ref, provide, watch, PropType } from 'vue'
+import { defineComponent, h, ref, provide, watch, PropType, onUnmounted, nextTick } from 'vue'
 import type { Placement } from '@popperjs/core'
 
 import { usePopper } from '../../composables'
@@ -158,6 +158,7 @@ const CDropdown = defineComponent({
   setup(props, { slots, emit }) {
     const dropdownToggleRef = ref()
     const dropdownMenuRef = ref()
+    const pendingKeyDownEventRef = ref<KeyboardEvent | null>(null)
     const popper = ref(typeof props.alignment === 'object' ? false : props.popper)
     const visible = ref(props.visible)
 
@@ -176,7 +177,7 @@ const CDropdown = defineComponent({
         props.placement,
         props.direction,
         props.alignment,
-        isRTL(dropdownMenuRef.value),
+        isRTL(dropdownMenuRef.value)
       ) as Placement,
     }
 
@@ -184,16 +185,27 @@ const CDropdown = defineComponent({
       () => props.visible,
       () => {
         visible.value = props.visible
-      },
+      }
     )
 
     watch(visible, () => {
       if (visible.value && dropdownToggleRef.value && dropdownMenuRef.value) {
-        popper.value && initPopper(dropdownToggleRef.value, dropdownMenuRef.value, popperConfig)
+        if (popper.value) {
+          initPopper(dropdownToggleRef.value, dropdownMenuRef.value, popperConfig)
+        }
+
         window.addEventListener('mouseup', handleMouseUp)
         window.addEventListener('keyup', handleKeyup)
         dropdownToggleRef.value.addEventListener('keydown', handleKeydown)
         dropdownMenuRef.value.addEventListener('keydown', handleKeydown)
+
+        if (pendingKeyDownEventRef.value) {
+          nextTick(() => {
+            handleKeydown(pendingKeyDownEventRef.value as KeyboardEvent)
+            pendingKeyDownEventRef.value = null
+          })
+        }
+        
         emit('show')
         return
       }
@@ -201,10 +213,14 @@ const CDropdown = defineComponent({
       popper.value && destroyPopper()
       window.removeEventListener('mouseup', handleMouseUp)
       window.removeEventListener('keyup', handleKeyup)
+      dropdownMenuRef.value && dropdownMenuRef.value.removeEventListener('keydown', handleKeydown)
+      emit('hide')
+    })
+
+    onUnmounted(() => {
       dropdownToggleRef.value &&
         dropdownToggleRef.value.removeEventListener('keydown', handleKeydown)
       dropdownMenuRef.value && dropdownMenuRef.value.removeEventListener('keydown', handleKeydown)
-      emit('hide')
     })
 
     provide('config', {
@@ -219,18 +235,14 @@ const CDropdown = defineComponent({
     provide('visible', visible)
     provide('dropdownToggleRef', dropdownToggleRef)
     provide('dropdownMenuRef', dropdownMenuRef)
+    provide('pendingKeyDownEventRef', pendingKeyDownEventRef)
 
     const handleKeydown = (event: KeyboardEvent) => {
-      if (
-        visible.value &&
-        dropdownMenuRef.value &&
-        (event.key === 'ArrowDown' || event.key === 'ArrowUp')
-      ) {
+      if (dropdownMenuRef.value && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
         event.preventDefault()
         const target = event.target as HTMLElement
-        // eslint-disable-next-line unicorn/prefer-spread
         const items: HTMLElement[] = Array.from(
-          dropdownMenuRef.value.querySelectorAll('.dropdown-item:not(.disabled):not(:disabled)'),
+          dropdownMenuRef.value.querySelectorAll('.dropdown-item:not(.disabled):not(:disabled)')
         )
         getNextActiveElement(items, target, event.key === 'ArrowDown', true).focus()
       }
@@ -243,6 +255,7 @@ const CDropdown = defineComponent({
 
       if (event.key === 'Escape') {
         setVisible(false)
+        dropdownToggleRef.value?.focus()
       }
     }
 
@@ -267,22 +280,20 @@ const CDropdown = defineComponent({
       }
     }
 
-    const setVisible = (_visible?: boolean) => {
+    const setVisible = (_visible?: boolean, event?: KeyboardEvent) => {
       if (props.disabled) {
         return
       }
 
-      if (typeof _visible == 'boolean') {
+      if (typeof _visible === 'boolean') {
+        if (event) {
+          pendingKeyDownEventRef.value = event || null
+        }
+
         visible.value = _visible
+
         return
       }
-
-      if (visible.value === true) {
-        visible.value = false
-        return
-      }
-
-      visible.value = true
     }
 
     provide('setVisible', setVisible)
@@ -298,11 +309,11 @@ const CDropdown = defineComponent({
                 props.direction === 'center'
                   ? 'dropdown-center'
                   : props.direction === 'dropup-center'
-                  ? 'dropup dropup-center'
-                  : props.direction,
+                    ? 'dropup dropup-center'
+                    : props.direction,
               ],
             },
-            slots.default && slots.default(),
+            slots.default && slots.default()
           )
   },
 })
