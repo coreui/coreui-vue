@@ -278,14 +278,25 @@ const CFocusTrap = defineComponent({
       containerRef,
     })
 
-    return () =>
-      slots.default?.().map((slot) =>
-        cloneVNode(slot, {
-          ref: (el) => {
-            containerRef.value = el as HTMLElement | null
-          },
-        })
-      )
+    return () => {
+      const vnodes = slots.default?.()
+      const vnode = vnodes?.[0]
+      if (!vnode) return null
+    
+      const originalRef = (vnode.props as any)?.ref
+    
+      return cloneVNode(vnode, {
+        ref: (el) => {
+          containerRef.value = el as HTMLElement | null
+    
+          if (typeof originalRef === 'function') {
+            originalRef(el)
+          } else if (originalRef && typeof originalRef === 'object' && 'value' in originalRef) {
+            ;(originalRef as { value: any }).value = el
+          }
+        },
+      })
+    }
   },
 })
 
