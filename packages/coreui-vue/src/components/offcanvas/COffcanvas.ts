@@ -1,10 +1,10 @@
 import { defineComponent, h, ref, RendererElement, Transition, watch, withDirectives } from 'vue'
 
 import { CBackdrop } from '../backdrop'
+import { CFocusTrap } from '../focus-trap'
 
 import { vVisible } from '../../directives/v-c-visible'
 import { executeAfterTransition } from '../../utils/transition'
-import { CFocusTrap } from '../focus-trap'
 
 const COffcanvas = defineComponent({
   name: 'COffcanvas',

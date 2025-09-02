@@ -46,7 +46,7 @@
 
 Several quick start options are available:
 
-- [Download the latest release](https://github.com/coreui/coreui-vue/archive/v5.5.0.zip)
+- [Download the latest release](https://github.com/coreui/coreui-vue/archive/v5.6.0.zip)
 - Clone the repo: `git clone https://github.com/coreui/coreui-vue.git`
 - Install with [npm](https://www.npmjs.com/): `npm install @coreui/vue`
 - Install with [yarn](https://yarnpkg.com/): `yarn add @coreui/vue`
@@ -117,6 +117,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 - [Vue Date Range Picker](https://coreui.io/vue/docs/forms/date-range-picker.html) **PRO**
 - [Vue Dropdown](https://coreui.io/vue/docs/components/dropdown.html)
 - [Vue Floating Labels](https://coreui.io/vue/docs/forms/floating-labels.html)
+- [Vue Focus Trap](https://coreui.io/vue/docs/components/focus-trap.html)
 - [Vue Footer](https://coreui.io/vue/docs/components/footer.html)
 - [Vue Header](https://coreui.io/vue/docs/components/header.html)
 - [Vue Image](https://coreui.io/vue/docs/components/image.html)
