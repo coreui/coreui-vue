@@ -1,8 +1,9 @@
-// stylelint-disable scss/dollar-variable-default
-
+@use "sass:color";
+@use "@coreui/coreui/scss/variables" as *;
 // Local docs variables
-$cd-purple:        #4c0bce;
-$cd-violet:        lighten(saturate($cd-purple, 5%), 15%); // stylelint-disable-line function-disallowed-list
+
+$cd-purple:       #4c0bce;
+$cd-violet:        color.scale($cd-purple, $saturation: 10%, $lightness: 25%); // stylelint-disable-line scss/at-function-named-arguments
 $cd-accent:       #ffe484;
 
 $cd-gutter-x: 3rem;

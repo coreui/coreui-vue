@@ -1,3 +1,6 @@
+@use "@coreui/coreui/scss/mixins/transition" as *;
+@use "@coreui/coreui/scss/variables" as *;
+
 .anchor-link {
   font-weight: 400;
   color: rgba($link-color, .5);

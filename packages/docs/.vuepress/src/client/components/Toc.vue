@@ -7,9 +7,9 @@ const toggleVisible = () => {
 </script>
 
 <template>
-  <div class="docs-toc mt-4 mb-5 my-md-0 ps-xl-5 mb-lg-5 text-body-secondary">
+  <div class="docs-toc mt-4 mb-5 my-lg-0 ps-xl-5 mb-lg-5 text-body-secondary">
     <button
-      class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none docs-toc-toggle d-md-none"
+      class="btn btn-link p-lg-0 mb-2 mb-lg-0 text-decoration-none docs-toc-toggle d-lg-none"
       type="button"
       :aria-expanded="visible ? true : false"
       aria-controls="tocContents"
@@ -18,7 +18,7 @@ const toggleVisible = () => {
       On this page
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="icon d-md-none ms-2"
+        class="icon d-lg-none ms-2"
         aria-hidden="true"
         viewBox="0 0 512 512"
       >
@@ -29,7 +29,7 @@ const toggleVisible = () => {
         />
       </svg>
     </button>
-    <strong class="d-none d-md-block h6 mb-2 pb-2 border-bottom">On this page</strong>
+    <strong class="d-none d-lg-block h6 mb-2 pb-2 border-bottom">On this page</strong>
     <CCollapse class="docs-toc-collapse" id="tocContents" :visible="visible">
       <Toc />
     </CCollapse>

@@ -1,21 +1,20 @@
-@import "@coreui/coreui/scss/coreui.scss";
-@import "@docsearch/css/dist/style.css";
+@use "@coreui/coreui/scss/coreui" with (
+  $enable-deprecation-messages: false
+);
 
-@import "variables";
-
-@import "ads";
-@import "anchor";
-@import "callouts";
-@import "component-examples";
-@import "footer";
-@import "layout";
-@import "prism";
-@import "scrolling";
-@import "search";
-@import "sidebar";
-@import "table-api";
-@import "toc";
-@import "custom-container";
+@forward "ads";
+@forward "anchor";
+@forward "callouts";
+@forward "component-examples";
+@forward "footer";
+@forward "layout";
+@forward "prism";
+@forward "scrolling";
+@forward "search";
+@forward "sidebar";
+@forward "table-api";
+@forward "toc";
+@forward "custom-container";
 
 .back-to-top {
 --c-brand: #3eaf7c;

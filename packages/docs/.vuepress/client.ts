@@ -3,7 +3,6 @@ import { defineClientConfig } from '@vuepress/client'
 import { CIcon, CIconSvg } from '@coreui/icons-vue'
 import CChartPlugin from '@coreui/vue-chartjs'
 import CoreuiVue from '@coreui/vue/src/'
-import '@coreui/coreui/scss/coreui.scss'
 import '@coreui/chartjs/scss/coreui-chartjs.scss'
 
 import {
@@ -21,6 +20,7 @@ import {
   cilCheckCircle,
   cilCloudDownload,
   cilContrast,
+  cilExternalLink,
   cilHandshake,
   cilInfo,
   cilLayers,
@@ -51,6 +51,7 @@ export const icons = {
   cilCheckCircle,
   cilCloudDownload,
   cilContrast,
+  cilExternalLink,
   cilHandshake,
   cilInfo,
   cilLayers,
