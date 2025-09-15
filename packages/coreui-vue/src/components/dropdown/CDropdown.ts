@@ -1,4 +1,15 @@
-import { defineComponent, h, nextTick, onUnmounted, provide, PropType, ref, Ref, watch } from 'vue'
+import {
+  computed,
+  defineComponent,
+  h,
+  nextTick,
+  onUnmounted,
+  provide,
+  PropType,
+  ref,
+  Ref,
+  watch,
+} from 'vue'
 import type { Placement } from '@popperjs/core'
 
 import { usePopper } from '../../composables'
@@ -54,7 +65,7 @@ const CDropdown = defineComponent({
      * - `'outside'` - the dropdown will be closed (only) by clicking outside the dropdown menu.
      */
     autoClose: {
-      type: [Boolean, String],
+      type: [Boolean, String] as PropType<boolean | 'inside' | 'outside'>,
       default: true,
       validator: (value: boolean | string) => {
         return typeof value === 'boolean' || ['inside', 'outside'].includes(value)
@@ -181,7 +192,7 @@ const CDropdown = defineComponent({
 
     const { initPopper, destroyPopper } = usePopper()
 
-    const popperConfig = {
+    const popperConfig = computed(() => ({
       modifiers: [
         {
           name: 'offset',
@@ -196,7 +207,7 @@ const CDropdown = defineComponent({
         props.alignment,
         isRTL(dropdownMenuRef.value)
       ) as Placement,
-    }
+    }))
 
     watch(
       () => props.visible,
@@ -213,7 +224,7 @@ const CDropdown = defineComponent({
           dropdownRef
         )
         if (referenceElement && popper.value) {
-          initPopper(referenceElement, dropdownMenuRef.value, popperConfig)
+          initPopper(referenceElement, dropdownMenuRef.value, popperConfig.value)
         }
 
         window.addEventListener('click', handleClick)
