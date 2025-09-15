@@ -422,7 +422,7 @@ Trigger dropdown menus at the right of the elements by adding `direction="dropen
 </CDropdown>
 <CDropdown color="secondary" direction="dropend">
   <CButton color="secondary">Split dropend</CButton>
-  <CDropdownToggle color="secondary" split/>
+  <CDropdownToggle color="secondary" split splitLabel="Toggle Dropend" />
   <CDropdownMenu>
     <CDropdownItem href="#">Action</CDropdownItem>
     <CDropdownItem href="#">Another action</CDropdownItem>
@@ -445,7 +445,7 @@ Trigger dropdown menus at the right of the elements by adding `direction="dropen
 </CDropdown>
 <CDropdown color="secondary" direction="dropend">
   <CButton color="secondary">Split dropend</CButton>
-  <CDropdownToggle color="secondary" split/>
+  <CDropdownToggle color="secondary" split splitLabel="Toggle Dropend" />
   <CDropdownMenu>
     <CDropdownItem href="#">Action</CDropdownItem>
     <CDropdownItem href="#">Another action</CDropdownItem>
@@ -473,7 +473,7 @@ Trigger dropdown menus at the left of the elements by adding `direction="dropsta
 </CDropdown>
 <CButtonGroup>
   <CDropdown color="secondary" direction="dropstart">
-    <CDropdownToggle color="secondary" split/>
+    <CDropdownToggle color="secondary" split splitLabel="Toggle Dropstart" />
     <CDropdownMenu>
       <CDropdownItem href="#">Action</CDropdownItem>
       <CDropdownItem href="#">Another action</CDropdownItem>
@@ -498,7 +498,7 @@ Trigger dropdown menus at the left of the elements by adding `direction="dropsta
 </CDropdown>
 <CButtonGroup>
   <CDropdown color="secondary" direction="dropstart">
-    <CDropdownToggle color="secondary" split/>
+    <CDropdownToggle color="secondary" splitLabel="Toggle Dropstart" />
     <CDropdownMenu>
       <CDropdownItem href="#">Action</CDropdownItem>
       <CDropdownItem href="#">Another action</CDropdownItem>

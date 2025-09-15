@@ -75,6 +75,15 @@ const CDropdownToggle = defineComponent({
      */
     split: Boolean,
     /**
+     * Screen reader label for split button dropdown toggle.
+     *
+     * @since 5.7.0
+     */
+    splitLabel: {
+      type: String,
+      default: 'Toggle Dropdown',
+    },
+    /**
      * Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them.
      *
      * @type 'hover' | 'focus' | 'click'
@@ -194,7 +203,7 @@ const CDropdownToggle = defineComponent({
               },
               () =>
                 props.split
-                  ? h('span', { class: 'visually-hidden' }, 'Toggle Dropdown')
+                  ? h('span', { class: 'visually-hidden' }, props.splitLabel)
                   : slots.default && slots.default(),
             )
   },
