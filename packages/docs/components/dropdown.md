@@ -704,6 +704,15 @@ Use `offset` to displace the dropdown from its default position. The value is a 
       <CDropdownItem href="#">Something else here</CDropdownItem>
     </CDropdownMenu>
   </CDropdown>
+  <CDropdown reference="parent">
+    <CButton color="secondary">Reference</CButton>
+    <CDropdownToggle color="secondary" split />
+    <CDropdownMenu>
+      <CDropdownItem href="#">Action</CDropdownItem>
+      <CDropdownItem href="#">Another action</CDropdownItem>
+      <CDropdownItem href="#">Something else here</CDropdownItem>
+    </CDropdownMenu>
+  </CDropdown>
 </div>
 :::
 ```vue
@@ -726,6 +735,15 @@ Use `offset` to displace the dropdown from its default position. The value is a 
       <CDropdownItem href="#">Something else here</CDropdownItem>
     </CDropdownMenu>
   </CDropdown>
+  <CDropdown reference="parent">
+    <CButton color="secondary">Reference</CButton>
+    <CDropdownToggle color="secondary" split />
+    <CDropdownMenu>
+      <CDropdownItem href="#">Action</CDropdownItem>
+      <CDropdownItem href="#">Another action</CDropdownItem>
+      <CDropdownItem href="#">Something else here</CDropdownItem>
+    </CDropdownMenu>
+  </CDropdown>
 </div>
 ```
 
@@ -733,10 +751,10 @@ Use `offset` to displace the dropdown from its default position. The value is a 
 
 By default, dropdowns are closed when clicking outside of the dropdown menu or the toggle button. You can change this behavior with the `autoClose` property. Set `autoClose` to: 
 
-- `true` - Close on clicks inside or outside of the React.js dropdown menu.
+- `true` - Close on clicks inside or outside of the Vue.js dropdown menu.
 - `false` - Disable auto-close; close manually by setting the `:visible="false"` (also not closed by `Escape`).
-- `'inside'` - Close only when clicking inside the React.js dropdown menu.
-- `'outside'` - Close only when clicking outside the React.js dropdown menu.
+- `'inside'` - Close only when clicking inside the Vue.js dropdown menu.
+- `'outside'` - Close only when clicking outside the Vue.js dropdown menu.
 
 ::: demo
 <div class="d-flex gap-1">

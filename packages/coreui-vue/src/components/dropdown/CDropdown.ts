@@ -1,4 +1,4 @@
-import { defineComponent, h, ref, provide, watch, PropType, onUnmounted, nextTick } from 'vue'
+import { defineComponent, h, nextTick, onUnmounted, provide, PropType, ref, Ref, watch } from 'vue'
 import type { Placement } from '@popperjs/core'
 
 import { usePopper } from '../../composables'
@@ -6,7 +6,7 @@ import type { Triggers } from '../../types'
 import { getNextActiveElement, isRTL } from '../../utils'
 
 import type { Alignments } from './types'
-import { getPlacement } from './utils'
+import { getPlacement, getReferenceElement } from './utils'
 import { CFocusTrap } from '../focus-trap'
 
 const CDropdown = defineComponent({
@@ -114,6 +114,21 @@ const CDropdown = defineComponent({
       default: true,
     },
     /**
+     * Sets the reference element for positioning the Vue Dropdown Menu.
+     * - `toggle` - The Vue Dropdown Toggle button (default).
+     * - `parent` - The Vue Dropdown wrapper element.
+     * - `HTMLElement` - A custom HTML element.
+     * - `Ref` - A custom reference element.
+     *
+     * @since 5.7.0
+     */
+    reference: {
+      type: [String, Object] as PropType<
+        'parent' | 'toggle' | HTMLElement | Ref<HTMLElement | null>
+      >,
+      default: 'toggle',
+    },
+    /**
      * Generates dropdown menu using Teleport.
      *
      * @since 5.0.0
@@ -157,8 +172,9 @@ const CDropdown = defineComponent({
     'show',
   ],
   setup(props, { slots, emit }) {
-    const dropdownToggleRef = ref()
-    const dropdownMenuRef = ref()
+    const dropdownRef = ref<HTMLElement | null>(null)
+    const dropdownMenuRef = ref<HTMLElement | null>(null)
+    const dropdownToggleRef = ref<HTMLElement | null>(null)
     const pendingKeyDownEventRef = ref<KeyboardEvent | null>(null)
     const popper = ref(typeof props.alignment === 'object' ? false : props.popper)
     const visible = ref(props.visible)
@@ -191,8 +207,13 @@ const CDropdown = defineComponent({
 
     watch(visible, () => {
       if (visible.value && dropdownToggleRef.value && dropdownMenuRef.value) {
-        if (popper.value) {
-          initPopper(dropdownToggleRef.value, dropdownMenuRef.value, popperConfig)
+        const referenceElement = getReferenceElement(
+          props.reference,
+          dropdownToggleRef,
+          dropdownRef
+        )
+        if (referenceElement && popper.value) {
+          initPopper(referenceElement, dropdownMenuRef.value, popperConfig)
         }
 
         window.addEventListener('click', handleClick)
@@ -334,6 +355,7 @@ const CDropdown = defineComponent({
                         ? 'dropup dropup-center'
                         : props.direction,
                   ],
+                  ref: dropdownRef,
                 },
                 slots.default && slots.default()
               )

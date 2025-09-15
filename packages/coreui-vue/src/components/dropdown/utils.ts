@@ -1,3 +1,4 @@
+import { Ref } from 'vue'
 import type { Placement } from '@popperjs/core'
 import type { Placements } from '../../types'
 import type { Alignments, Breakpoints } from './types'
@@ -48,4 +49,24 @@ export const getPlacement = (
   }
 
   return _placement
+}
+
+export const getReferenceElement = (
+  reference: 'parent' | 'toggle' | Ref<HTMLElement | null> | HTMLElement,
+  dropdownToggleRef: Ref<HTMLElement | null>,
+  dropdownRef: Ref<HTMLElement | null>
+): HTMLElement | null => {
+  if (reference === 'parent') {
+    return dropdownRef.value
+  }
+
+  if (reference instanceof HTMLElement) {
+    return reference
+  }
+
+  if (reference instanceof Object && 'value' in reference) {
+    return reference.value
+  }
+
+  return dropdownToggleRef.value
 }
