@@ -7,6 +7,7 @@ import { getNextActiveElement, isRTL } from '../../utils'
 
 import type { Alignments } from './types'
 import { getPlacement } from './utils'
+import { CFocusTrap } from '../focus-trap'
 
 const CDropdown = defineComponent({
   name: 'CDropdown',
@@ -217,7 +218,8 @@ const CDropdown = defineComponent({
       window.removeEventListener('click', handleClick)
       window.removeEventListener('keyup', handleKeyup)
       dropdownMenuRef.value && dropdownMenuRef.value.removeEventListener('keydown', handleKeydown)
-      dropdownToggleRef.value && dropdownToggleRef.value.removeEventListener('keydown', handleKeydown)
+      dropdownToggleRef.value &&
+        dropdownToggleRef.value.removeEventListener('keydown', handleKeydown)
       emit('hide')
     })
 
@@ -315,22 +317,27 @@ const CDropdown = defineComponent({
     provide('setVisible', setVisible)
 
     return () =>
-      props.variant === 'input-group'
-        ? [slots.default && slots.default()]
-        : h(
-            'div',
-            {
-              class: [
-                props.variant === 'nav-item' ? 'nav-item dropdown' : props.variant,
-                props.direction === 'center'
-                  ? 'dropdown-center'
-                  : props.direction === 'dropup-center'
-                    ? 'dropup dropup-center'
-                    : props.direction,
-              ],
-            },
-            slots.default && slots.default()
-          )
+      h(
+        CFocusTrap,
+        { active: props.teleport && visible.value, additionalContainer: dropdownMenuRef },
+        () =>
+          props.variant === 'input-group'
+            ? [slots.default && slots.default()]
+            : h(
+                'div',
+                {
+                  class: [
+                    props.variant === 'nav-item' ? 'nav-item dropdown' : props.variant,
+                    props.direction === 'center'
+                      ? 'dropdown-center'
+                      : props.direction === 'dropup-center'
+                        ? 'dropup dropup-center'
+                        : props.direction,
+                  ],
+                },
+                slots.default && slots.default()
+              )
+      )
   },
 })
 
