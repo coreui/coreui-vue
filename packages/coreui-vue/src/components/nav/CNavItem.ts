@@ -4,7 +4,7 @@ import { CNavLink } from './CNavLink'
 import type { ComponentProps } from '../../utils/ComponentProps'
 
 interface CNavItemProps extends ComponentProps<typeof CNavLink> {
-  as?: string
+  as: string
   class?: string
 }
 
