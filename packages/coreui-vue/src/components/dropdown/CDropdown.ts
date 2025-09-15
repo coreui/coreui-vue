@@ -194,7 +194,7 @@ const CDropdown = defineComponent({
           initPopper(dropdownToggleRef.value, dropdownMenuRef.value, popperConfig)
         }
 
-        window.addEventListener('mouseup', handleMouseUp)
+        window.addEventListener('click', handleClick)
         window.addEventListener('keyup', handleKeyup)
         dropdownToggleRef.value.addEventListener('keydown', handleKeydown)
         dropdownMenuRef.value.addEventListener('keydown', handleKeydown)
@@ -205,15 +205,19 @@ const CDropdown = defineComponent({
             pendingKeyDownEventRef.value = null
           })
         }
-        
+
         emit('show')
         return
       }
 
-      popper.value && destroyPopper()
-      window.removeEventListener('mouseup', handleMouseUp)
+      if (popper.value) {
+        destroyPopper()
+      }
+
+      window.removeEventListener('click', handleClick)
       window.removeEventListener('keyup', handleKeyup)
       dropdownMenuRef.value && dropdownMenuRef.value.removeEventListener('keydown', handleKeydown)
+      dropdownToggleRef.value && dropdownToggleRef.value.removeEventListener('keydown', handleKeydown)
       emit('hide')
     })
 
@@ -259,24 +263,36 @@ const CDropdown = defineComponent({
       }
     }
 
-    const handleMouseUp = (event: Event) => {
+    const handleClick = (event: Event) => {
       if (!dropdownToggleRef.value || !dropdownMenuRef.value) {
         return
       }
 
-      if (dropdownToggleRef.value.contains(event.target as HTMLElement)) {
+      if ((event as MouseEvent).button === 2) {
+        return
+      }
+
+      const composedPath = event.composedPath()
+      const isOnToggle = composedPath.includes(dropdownToggleRef.value)
+      const isOnMenu = composedPath.includes(dropdownMenuRef.value)
+
+      if (isOnToggle) {
+        return
+      }
+
+      const target = event.target as HTMLElement | null
+      const FORM_TAG_RE = /^(input|select|option|textarea|form|button|label)$/i
+
+      if (isOnMenu && target && FORM_TAG_RE.test(target.tagName)) {
         return
       }
 
       if (
         props.autoClose === true ||
-        (props.autoClose === 'inside' &&
-          dropdownMenuRef.value.contains(event.target as HTMLElement)) ||
-        (props.autoClose === 'outside' &&
-          !dropdownMenuRef.value.contains(event.target as HTMLElement))
+        (props.autoClose === 'inside' && isOnMenu) ||
+        (props.autoClose === 'outside' && !isOnMenu)
       ) {
         setVisible(false)
-        return
       }
     }
 

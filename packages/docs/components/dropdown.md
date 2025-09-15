@@ -680,6 +680,137 @@ Put a form within a dropdown menu, or make it into a dropdown menu.
 <CDropdownItem href="#">Forgot password?</CDropdownItem>
 ```
 
+## Dropdown options
+
+Use `offset` to displace the dropdown from its default position. The value is a string with two numbers separated by a comma, e.g. `:offset="[10, 20]"`. Use `teleport` property to render dropdowns in `body` instead of the parent element. This helps to avoid any overflow or z-index issues.
+
+::: demo
+<div class="d-flex gap-1">
+  <CDropdown :offset="[10, 20]">
+    <CDropdownToggle color="secondary">Offset</CDropdownToggle>
+    <CDropdownMenu>
+      <CDropdownItem href="#">Action</CDropdownItem>
+      <CDropdownItem href="#">Another action</CDropdownItem>
+      <CDropdownItem href="#">Something else here</CDropdownItem>
+    </CDropdownMenu>
+  </CDropdown>
+  <CDropdown teleport>
+    <CDropdownToggle color="secondary" aria-controls="dropdownMenuInTeleport">
+      Teleport
+    </CDropdownToggle>
+    <CDropdownMenu id="dropdownMenuInTeleport">
+      <CDropdownItem href="#">Action</CDropdownItem>
+      <CDropdownItem href="#">Another action</CDropdownItem>
+      <CDropdownItem href="#">Something else here</CDropdownItem>
+    </CDropdownMenu>
+  </CDropdown>
+</div>
+:::
+```vue
+<div class="d-flex gap-1">
+  <CDropdown :offset="[10, 20]">
+    <CDropdownToggle color="secondary">Offset</CDropdownToggle>
+    <CDropdownMenu>
+      <CDropdownItem href="#">Action</CDropdownItem>
+      <CDropdownItem href="#">Another action</CDropdownItem>
+      <CDropdownItem href="#">Something else here</CDropdownItem>
+    </CDropdownMenu>
+  </CDropdown>
+  <CDropdown teleport>
+    <CDropdownToggle color="secondary" aria-controls="dropdownMenuInTeleport">
+      Teleport
+    </CDropdownToggle>
+    <CDropdownMenu id="dropdownMenuInTeleport">
+      <CDropdownItem href="#">Action</CDropdownItem>
+      <CDropdownItem href="#">Another action</CDropdownItem>
+      <CDropdownItem href="#">Something else here</CDropdownItem>
+    </CDropdownMenu>
+  </CDropdown>
+</div>
+```
+
+### Auto close behavior
+
+By default, dropdowns are closed when clicking outside of the dropdown menu or the toggle button. You can change this behavior with the `autoClose` property. Set `autoClose` to: 
+
+- `true` - Close on clicks inside or outside of the React.js dropdown menu.
+- `false` - Disable auto-close; close manually by setting the `:visible="false"` (also not closed by `Escape`).
+- `'inside'` - Close only when clicking inside the React.js dropdown menu.
+- `'outside'` - Close only when clicking outside the React.js dropdown menu.
+
+::: demo
+<div class="d-flex gap-1">
+  <CDropdown>
+    <CDropdownToggle color="secondary">Default dropdown</CDropdownToggle>
+    <CDropdownMenu>
+      <CDropdownItem href="#">Action</CDropdownItem>
+      <CDropdownItem href="#">Another action</CDropdownItem>
+      <CDropdownItem href="#">Something else here</CDropdownItem>
+    </CDropdownMenu>
+  </CDropdown>
+  <CDropdown autoClose="inside">
+    <CDropdownToggle color="secondary">Clickable inside</CDropdownToggle>
+    <CDropdownMenu>
+      <CDropdownItem href="#">Action</CDropdownItem>
+      <CDropdownItem href="#">Another action</CDropdownItem>
+      <CDropdownItem href="#">Something else here</CDropdownItem>
+    </CDropdownMenu>
+  </CDropdown>
+  <CDropdown autoClose="outside">
+    <CDropdownToggle color="secondary">Clickable outside</CDropdownToggle>
+    <CDropdownMenu>
+      <CDropdownItem href="#">Action</CDropdownItem>
+      <CDropdownItem href="#">Another action</CDropdownItem>
+      <CDropdownItem href="#">Something else here</CDropdownItem>
+    </CDropdownMenu>
+  </CDropdown>
+  <CDropdown :autoClose="false">
+    <CDropdownToggle color="secondary">Manual close</CDropdownToggle>
+    <CDropdownMenu>
+      <CDropdownItem href="#">Action</CDropdownItem>
+      <CDropdownItem href="#">Another action</CDropdownItem>
+      <CDropdownItem href="#">Something else here</CDropdownItem>
+    </CDropdownMenu>
+  </CDropdown>
+</div>
+:::
+```vue
+<div class="d-flex gap-1">
+  <CDropdown>
+    <CDropdownToggle color="secondary">Default dropdown</CDropdownToggle>
+    <CDropdownMenu>
+      <CDropdownItem href="#">Action</CDropdownItem>
+      <CDropdownItem href="#">Another action</CDropdownItem>
+      <CDropdownItem href="#">Something else here</CDropdownItem>
+    </CDropdownMenu>
+  </CDropdown>
+  <CDropdown autoClose="inside">
+    <CDropdownToggle color="secondary">Clickable inside</CDropdownToggle>
+    <CDropdownMenu>
+      <CDropdownItem href="#">Action</CDropdownItem>
+      <CDropdownItem href="#">Another action</CDropdownItem>
+      <CDropdownItem href="#">Something else here</CDropdownItem>
+    </CDropdownMenu>
+  </CDropdown>
+  <CDropdown autoClose="outside">
+    <CDropdownToggle color="secondary">Clickable outside</CDropdownToggle>
+    <CDropdownMenu>
+      <CDropdownItem href="#">Action</CDropdownItem>
+      <CDropdownItem href="#">Another action</CDropdownItem>
+      <CDropdownItem href="#">Something else here</CDropdownItem>
+    </CDropdownMenu>
+  </CDropdown>
+  <CDropdown :autoClose="false">
+    <CDropdownToggle color="secondary">Manual close</CDropdownToggle>
+    <CDropdownMenu>
+      <CDropdownItem href="#">Action</CDropdownItem>
+      <CDropdownItem href="#">Another action</CDropdownItem>
+      <CDropdownItem href="#">Something else here</CDropdownItem>
+    </CDropdownMenu>
+  </CDropdown>
+</div>
+```
+
 ## Customizing
 
 ### CSS variables
