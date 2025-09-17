@@ -1,6 +1,6 @@
 {
   "name": "@coreui/vue-docs",
-  "version": "5.6.0",
+  "version": "5.7.0",
   "scripts": {
     "api": "vue-docgen -c build/docgen.config.js",
     "dev": "vuepress dev --clean-cache",
