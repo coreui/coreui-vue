@@ -161,6 +161,10 @@ export default defineUserConfig({
             link: `/forms/checkbox.html`,
           },
           {
+            text: 'Chip Input',
+            link: `/forms/chip-input.html`,
+          },
+          {
             text: 'Input',
             link: `/forms/input.html`,
           },
@@ -250,6 +254,10 @@ export default defineUserConfig({
           {
             text: 'Chart',
             link: `/components/chart.html`,
+          },
+          {
+            text: 'Chip',
+            link: `/components/chip.html`,
           },
           {
             text: 'Close Button',

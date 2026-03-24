@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CChip renders with custom props 1`] = `"<span class="chip active disabled chip-primary chip-lg chip-clickable chip-outline" aria-disabled="true">Test</span>"`;
+
+exports[`CChip renders with default props 1`] = `"<span class="chip">Test</span>"`;
