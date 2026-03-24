@@ -68,7 +68,7 @@ onMounted(() => {
                 {{ title }}
               </h1>
               <p class="docs-lead">{{ description }}</p>
-              <Ads />
+              <Ads v-if="!frontmatter.pro_component" />
               <OtherFrameworks />
             </div>
             <Toc />
