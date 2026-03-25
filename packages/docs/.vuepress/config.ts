@@ -18,7 +18,16 @@ export default defineUserConfig({
   title: 'Vue UI Components · CoreUI',
   description: 'UI Components Library for Vue.js (Vue 3)',
   head: [['link', { rel: 'icon', href: `/vue/docs/favicons/favicon-96x96.png` }]],
-  bundler: viteBundler(),
+  bundler: viteBundler({
+    viteOptions: {
+      ssr: {
+        noExternal: ['@coreui/vue', '@coreui/vue-chartjs', '@coreui/icons-vue'],
+      },
+      define: {
+        __VUE_PROD_DEVTOOLS__: false,
+      },
+    },
+  }),
   alias: {
     '@example': path.resolve(__dirname, '../code-examples/'),
   },

@@ -1,5 +1,17 @@
 import { defineClientConfig } from '@vuepress/client'
 
+// SSR-safe localStorage shim
+if (typeof window === 'undefined') {
+  global.localStorage = {
+    getItem: () => null,
+    setItem: () => {},
+    removeItem: () => {},
+    clear: () => {},
+    key: () => null,
+    length: 0,
+  }
+}
+
 import { CIcon, CIconSvg } from '@coreui/icons-vue'
 import CChartPlugin from '@coreui/vue-chartjs'
 import CoreuiVue from '@coreui/vue/src/'
