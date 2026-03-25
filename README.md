@@ -113,6 +113,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 - [Vue Card](https://coreui.io/vue/docs/components/card.html)
 - [Vue Carousel](https://coreui.io/vue/docs/components/carousel.html)
 - [Vue Checkbox](https://coreui.io/vue/docs/forms/checkbox.html)
+- [Vue Chip](https://coreui.io/vue/docs/components/chip.html)
+- [Vue Chip Input](https://coreui.io/vue/docs/forms/chip-input.html)
 - [Vue Close Button](https://coreui.io/vue/docs/components/close-button.html)
 - [Vue Collapse](https://coreui.io/vue/docs/components/collapse.html)
 - [Vue Date Picker](https://coreui.io/vue/docs/forms/date-picker.html) **PRO**
