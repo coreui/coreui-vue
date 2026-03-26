@@ -56,10 +56,15 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
   }
 }
 
+div[class*=language-] {
+  background: none;
+  margin: 0;
+}
+
 code[class*='language-'],
 pre[class*='language-'] {
-  background: none;
-  font-family: var(--cui-font-monospace);
+  background: none !important;
+  font-family: var(--cui-font-monospace) !important;
   font-size: .875em;
   text-align: left;
   white-space: pre;
@@ -84,42 +89,42 @@ pre[class*='language-']:not(.language-sass):not(.language-scss):not(.language-te
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: var(--base03);
+  color: var(--base03) !important;
 }
 
 .token.tag {
-  color: var(--base08);
+  color: var(--base08) !important;
 }
 
 .token.attr-name,
 .token.namespace,
 .token.deleted {
-  color: var(--base0A);
+  color: var(--base0A) !important;
 }
 
 .token.punctuation {
-  color: var(--base05);
+  color: var(--base05) !important;
 }
 
 .token.function-name {
-  color: var(--base0A); 
+  color: var(--base0A) !important; 
 }
 
 .token.boolean,
 .token.number,
 .token.function {
-  color: var(--base09);
+  color: var(--base09) !important;
 }
 
 .token.class-name,
 .token.maybe-class-name {
-  color: var(--base08);
+  color: var(--base08) !important;
 }
 
 .token.property,
 .token.constant,
 .token.symbol {
-  color: var(--base0A);
+  color: var(--base0A) !important;
 }
 
 .token.selector,
@@ -127,7 +132,7 @@ pre[class*='language-']:not(.language-sass):not(.language-scss):not(.language-te
 .token.atrule,
 .token.keyword,
 .token.builtin {
-  color: var(--base0E);
+  color: var(--base0E) !important;
 }
 
 .token.string,
@@ -135,13 +140,13 @@ pre[class*='language-']:not(.language-sass):not(.language-scss):not(.language-te
 .token.attr-value,
 .token.regex,
 .token.variable {
-  color: var(--base0C);
+  color: var(--base0C) !important;
 }
 
 .token.operator,
 .token.entity,
 .token.url {
-  color: var(--base05);
+  color: var(--base05) !important;
 }
 
 .token.important,
@@ -163,14 +168,14 @@ pre[class*='language-']:not(.language-sass):not(.language-scss):not(.language-te
 .language-bash,
 .language-sh {
   .token-line::before {
-    color: var(--base03);
+    color: var(--base03) !important;
     content: "$ ";
     user-select: none;
   }
 }
 
 .language-powershell::before {
-  color: var(--base0C);
+  color: var(--base0C) !important;
   content: "PM> ";
   user-select: none;
 }

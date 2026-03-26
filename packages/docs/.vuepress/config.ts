@@ -4,7 +4,6 @@ import { activeHeaderLinksPlugin } from '@vuepress/plugin-active-header-links'
 import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
-import { tocPlugin } from '@vuepress/plugin-toc'
 import { getDirname, path } from '@vuepress/utils'
 import anchor from 'markdown-it-anchor'
 import include_plugin from 'markdown-it-include'
@@ -37,10 +36,14 @@ export default defineUserConfig({
         class: 'anchor-link',
         placement: 'after'
       }),
+      level: [2, 3],
     },
     importCode: {
       handleImportPath: (str) =>
         str.replace(/^@example/, path.resolve(__dirname, '../code-examples/')),
+    },
+    headers: {
+      level: [2, 3],
     },
   },
   extendsMarkdown: (md) => {
@@ -56,7 +59,6 @@ export default defineUserConfig({
       // should greater than page transition duration
       delay: 300,
     }),
-    // backToTopPlugin(),
     markdownContainerPlugin({
       type: 'demo',
       before: (): string => `<div class="docs-example rounded-top p-4">\n`,
@@ -78,19 +80,27 @@ export default defineUserConfig({
       before: (): string => `<div class="docs-example rounded p-4">\n`,
       after: (): string => '</div>\n',
     }),
-    prismjsPlugin(),
+    prismjsPlugin({
+      theme: 'custom',
+      lineNumbers: false,
+      codeBlockTitle: false,
+    }),
     registerComponentsPlugin({
       components: {
         Callout: path.resolve(__dirname, './src/client/components/Callout.vue'),
         ScssDocs: path.resolve(__dirname, './src/client/components/ScssDocs.vue'),
       },
     }),
-    tocPlugin({}),
     {
-      name: 'extendsPage',
+      name: 'custom-headers-plugin',
       extendsPage: (page) => {
-        const frontmatter = page.frontmatter
+        // Add headers back to page.data for TOC
+        if (page.headers) {
+          page.data.headers = page.headers
+        }
 
+        // Add canonical URL
+        const frontmatter = page.frontmatter
         frontmatter.head = [
           ['link', { rel: 'canonical', href: `https://coreui.io/vue/docs${page.path}` }],
         ]

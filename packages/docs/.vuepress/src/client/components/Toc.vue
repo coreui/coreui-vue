@@ -1,9 +1,55 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed, h } from 'vue'
+import { usePageData } from 'vuepress/client'
+import type { VNode } from 'vue'
+
+interface PageHeader {
+  level: number
+  title: string
+  slug: string
+  children?: PageHeader[]
+}
+
 const visible = ref(false)
 const toggleVisible = () => {
   visible.value = !visible.value
 }
+
+const page = usePageData()
+
+const headers = computed<PageHeader[]>(() => {
+  const pageAsAny = page.value as any
+  const pageHeaders = pageAsAny.headers || pageAsAny.data?.headers || []
+
+  // VuePress already provides headers in hierarchical structure
+  return pageHeaders as PageHeader[]
+})
+
+const renderHeaders = (headerList: PageHeader[], level = 0): VNode[] => {
+  if (!headerList || headerList.length === 0) return []
+
+  return headerList.map((header: PageHeader) =>
+    h('li', { key: header.slug }, [
+      h('a', {
+        href: `#${header.slug}`,
+        class: 'vuepress-toc-link'
+      }, header.title),
+      header.children && header.children.length > 0
+        ? h('ul', { class: 'vuepress-toc-list' }, renderHeaders(header.children, level + 1))
+        : null
+    ])
+  )
+}
+
+const tocContent = computed<VNode | null>(() => {
+  const headerList = headers.value
+  if (!headerList || headerList.length === 0) {
+    return null
+  }
+  return h('nav', { class: 'vuepress-toc' }, [
+    h('ul', { class: 'vuepress-toc-list' }, renderHeaders(headerList))
+  ])
+})
 </script>
 
 <template>
@@ -31,7 +77,7 @@ const toggleVisible = () => {
     </button>
     <strong class="d-none d-lg-block h6 mb-2 pb-2 border-bottom">On this page</strong>
     <CCollapse class="docs-toc-collapse" id="tocContents" :visible="visible">
-      <Toc />
+      <component :is="tocContent" v-if="tocContent" />
     </CCollapse>
   </div>
 </template>
