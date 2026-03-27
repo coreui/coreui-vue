@@ -33,17 +33,9 @@ const { colorMode, setColorMode } = useColorModes('coreui-vue-docs-theme')
     </RouterLink>
     <CHeaderNav class="me-auto d-none d-xl-flex" role="{undefined}">
       <CNavItem
-        href="https://coreui.io/pricing/?framework=vue&src=react-docs&cta=coreui-header-pricing"
+        href="https://coreui.io/pricing/?framework=vue&src=coreui-vue-docs&cta=coreui-header-pricing"
       >
         Pricing
-      </CNavItem>
-      <CNavItem
-        href="https://coreui.requestshub.com/p/coreui-for-vuejs/roadmap"
-        target="blank"
-        rel="noopener noreferrer"
-      >
-        Roadmap
-        <CIcon icon="cil-external-link" class="ms-2" size="sm" />
       </CNavItem>
     </CHeaderNav>
     <div class="docs-search ms-auto" id="docsearch"></div>

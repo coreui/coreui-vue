@@ -20,8 +20,6 @@
   ·
   <a href="https://github.com/coreui/coreui-vue/issues/new?template=feature_request.md">Request feature</a>
   ·
-  <a href="https://coreui.requestshub.com/p/coreui-for-vuejs/roadmap">Roadmap</a>
-  ·
   <a href="https://coreui.io/blog/">Blog</a>
 </p>
 
