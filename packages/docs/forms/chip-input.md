@@ -2,7 +2,7 @@
 title: Vue Chip Input Component
 name: Chip Input
 description: Vue Chip Input component for CoreUI helps you create tag-like multi-value inputs for skills, categories, or recipients with keyboard support, selection, and form integration.
-# other_frameworks: chip-input
+other_frameworks: chip-input
 pre_release: true
 ---
 

@@ -2,7 +2,7 @@
 title: Vue Chip Component
 name: Chip
 description: Vue chip component for CoreUI lets you build compact, interactive labels, tags, filters, and selections with icons, avatars, remove buttons, and keyboard support.
-# other_frameworks: chip
+other_frameworks: chip
 pre_release: true
 ---
 

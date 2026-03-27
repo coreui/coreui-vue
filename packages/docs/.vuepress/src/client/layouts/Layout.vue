@@ -69,7 +69,7 @@ onMounted(() => {
               </h1>
               <p class="docs-lead">{{ description }}</p>
               <Ads v-if="!frontmatter.pro_component" />
-              <OtherFrameworks />
+              <OtherFrameworks :title="title" />
             </div>
             <Toc />
             <div className="docs-content ps-lg-4"><Content /></div>
