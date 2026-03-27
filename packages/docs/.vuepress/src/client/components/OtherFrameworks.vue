@@ -20,9 +20,7 @@ const props = defineProps({
 const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>()
 
 const frameworks = computed(() => {
-  return frontmatter.value.other_frameworks
-    ? frontmatter.value.other_frameworks.split(', ')
-    : []
+  return frontmatter.value.other_frameworks ? frontmatter.value.other_frameworks.split(', ') : []
 })
 
 const otherFrameworks: ComponentLinks = { ...componentLinks }
@@ -44,8 +42,8 @@ const availableFrameworks = computed(() => {
     frameworks.value.flatMap((component: string) =>
       Object.keys(otherFrameworks[component] || {})
         .filter((fw) => fw !== 'vue')
-        .map((fw) => fw.charAt(0).toUpperCase() + fw.slice(1)),
-    ),
+        .map((fw) => fw.charAt(0).toUpperCase() + fw.slice(1))
+    )
   )
   const result = [...frameworkSet]
   result.sort()
@@ -71,10 +69,7 @@ const showComponent = computed(() => {
   <section v-if="showComponent" aria-labelledby="other-frameworks-heading">
     <h2 id="other-frameworks-heading">Available in Other JavaScript Frameworks</h2>
     <p>
-      CoreUI {{ title }}
-      {{ availableFrameworks.length === 1 ? 'component is' : 'components are' }} available as
-      {{ formatFrameworkList }}
-      {{ availableFrameworks.length === 1 ? 'component' : 'components' }}. Explore
+      CoreUI {{ title }} is also available for {{ formatFrameworkList }}. Explore
       framework-specific implementations below:
     </p>
     <nav aria-label="Framework-specific component links">
