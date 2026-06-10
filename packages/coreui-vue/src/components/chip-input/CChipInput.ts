@@ -344,6 +344,17 @@ const CChipInput = defineComponent({
         return
       }
 
+      // ArrowRight past the last chip moves focus into the text field.
+      if (event.key === 'ArrowRight') {
+        const chips = getFocusableChips()
+        const lastChip = chips[chips.length - 1]
+        if (lastChip?.contains(event.target as Node)) {
+          event.preventDefault()
+          inputRef.value?.focus()
+          return
+        }
+      }
+
       if (handleKeydown(event)) {
         return
       }

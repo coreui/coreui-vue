@@ -364,4 +364,18 @@ describe('CChipInput', () => {
     const removeBtn = wrapper.find('.chip-remove')
     expect(removeBtn.exists()).toBe(false)
   })
+
+  it('moves focus to the input on ArrowRight from the last chip', async () => {
+    const wrapper = mount(CChipInput, {
+      attachTo: document.body,
+      props: { defaultValue: ['React', 'Vue'] },
+    })
+    const chips = wrapper.findAll('.chip')
+    const lastChip = chips[chips.length - 1]
+    const input = wrapper.find('input.chip-input-field').element as HTMLInputElement
+    ;(lastChip.element as HTMLElement).focus()
+    await lastChip.trigger('keydown', { key: 'ArrowRight' })
+    expect(document.activeElement).toBe(input)
+    wrapper.unmount()
+  })
 })
