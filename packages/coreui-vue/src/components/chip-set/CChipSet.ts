@@ -31,13 +31,6 @@ const CChipSet = defineComponent({
      */
     filter: Boolean,
     /**
-     * The selected chip values passed using `v-model:selected`.
-     */
-    selected: {
-      type: Array as PropType<string[]>,
-      default: undefined,
-    },
-    /**
      * Displays a remove button on every chip rendered by the component.
      */
     removable: Boolean,
@@ -52,6 +45,13 @@ const CChipSet = defineComponent({
      * Enables selection behavior for the chips rendered by the component.
      */
     selectable: Boolean,
+    /**
+     * The selected chip values passed using `v-model:selected`.
+     */
+    selected: {
+      type: Array as PropType<string[]>,
+      default: undefined,
+    },
     /**
      * Replaces the default selected icon shown by filter chips with a custom icon node.
      */
