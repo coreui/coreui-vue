@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { h } from 'vue'
-import { CChipSet } from '../CChipSet'
+import { CChipSet, type CChipSetItem } from '../CChipSet'
 import { CChip } from '../../chip/CChip'
 
 const set = (props: Record<string, unknown>, values: string[]) =>
@@ -99,6 +99,29 @@ describe('CChipSet', () => {
     const w = set({ removable: true }, ['a', 'b'])
     await w.find('.chip-remove').trigger('click')
     expect(w.emitted('remove')?.[0]).toEqual(['a'])
+  })
+
+  it('v-model:chips — emits update:chips without the removed chip', async () => {
+    const w = mount(CChipSet, {
+      props: { removable: true, chips: ['a', { value: 'b', label: 'B' }] },
+    })
+    await w.find('.chip-remove').trigger('click')
+    expect(w.emitted('remove')?.[0]).toEqual(['a'])
+    expect(w.emitted('update:chips')?.[0]).toEqual([[{ value: 'b', label: 'B' }]])
+  })
+
+  it('v-model:chips — the set removes the chip once the parent syncs', async () => {
+    const w = mount(CChipSet, {
+      props: {
+        removable: true,
+        chips: ['a', 'b'],
+        'onUpdate:chips': (next: (string | CChipSetItem)[]) => w.setProps({ chips: next }),
+      },
+    })
+    expect(w.findAll('.chip')).toHaveLength(2)
+    await w.find('.chip-remove').trigger('click')
+    await w.vm.$nextTick()
+    expect(w.findAll('.chip')).toHaveLength(1)
   })
 
   it('renders chips from the chips prop (strings and objects)', async () => {

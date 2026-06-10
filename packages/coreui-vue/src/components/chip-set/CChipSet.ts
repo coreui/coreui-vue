@@ -5,6 +5,9 @@ import { useChipSet, type ChipSetConfig } from './useChipSet'
 
 export type { CChipSetItem }
 
+const itemValue = (item: string | CChipSetItem): string =>
+  typeof item === 'string' ? item : item.value
+
 const CChipSet = defineComponent({
   name: 'CChipSet',
   props: {
@@ -71,13 +74,17 @@ const CChipSet = defineComponent({
   },
   emits: [
     /**
-     * Event occurs when a chip requests removal. The chips are controlled by the slot content, so drop the chip from your data in response.
+     * Event occurs when a chip requests removal, with its value.
      */
     'remove',
     /**
      * Event occurs when the selected chip values change.
      */
     'select',
+    /**
+     * Emit the chips without the removed one (for `v-model:chips`).
+     */
+    'update:chips',
     /**
      * Emit the new selected values whenever the selection changes (for `v-model:selected`).
      */
@@ -101,7 +108,17 @@ const CChipSet = defineComponent({
         emit('update:selected', selected)
         emit('select', selected)
       },
-      onRemove: (value) => emit('remove', value),
+      onRemove: (value) => {
+        // With `v-model:chips` the parent stays in sync automatically; a one-way
+        // `:chips` binding ignores the update and handles removal via `@remove`.
+        if (props.chips) {
+          emit(
+            'update:chips',
+            props.chips.filter((item) => itemValue(item) !== value),
+          )
+        }
+        emit('remove', value)
+      },
     })
 
     expose({ rootRef })

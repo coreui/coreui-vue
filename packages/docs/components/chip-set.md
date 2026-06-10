@@ -67,12 +67,20 @@ Customize the check with the `selected-icon` prop, the same way you customize th
 
 ## Removable chips
 
-Set `removable` to add a remove button to every chip. The chips are controlled by your data, so drop the chip in the `@remove` handler. When a chip is removed, focus moves to a neighboring chip.
+Set `removable` to add a remove button to every chip. When a chip is removed, focus moves to a neighboring chip.
+
+Bind the list with `v-model:chips` and the set removes chips for you, keeping your data in sync:
 
 :::demo
 <ChipSetRemovableExample />
 :::
 @[code vue](@example/chip-set/ChipSetRemovableExample.vue)
+
+A one-way `:chips` binding leaves removal to you — handle it in `@remove`:
+
+```vue
+<CChipSet removable :chips="chips" @remove="(value) => chips = chips.filter((c) => c !== value)" />
+```
 
 ## Keyboard behavior
 

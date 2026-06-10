@@ -1,5 +1,5 @@
 <template>
-  <CChipSet removable :chips="chips" @remove="onRemove" />
+  <CChipSet removable v-model:chips="chips" />
 </template>
 
 <script setup>
@@ -11,8 +11,4 @@ const chips = ref([
   { value: 'filter-two', label: 'Filter two' },
   { value: 'filter-three', label: 'Filter three', disabled: true },
 ])
-
-const onRemove = (value) => {
-  chips.value = chips.value.filter((chip) => chip.value !== value)
-}
 </script>

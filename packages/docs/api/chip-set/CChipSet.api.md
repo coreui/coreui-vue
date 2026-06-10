@@ -23,8 +23,9 @@ import CChipSet from '@coreui/vue/src/components/chip-set/CChipSet'
 
 #### Events
 
-| Event name          | Description                                                                                                                           | Properties |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| **remove**          | Event occurs when a chip requests removal. The chips are controlled by the slot content, so drop the chip from your data in response. |
-| **select**          | Event occurs when the selected chip values change.                                                                                    |
-| **update:selected** | Emit the new selected values whenever the selection changes (for `v-model:selected`).                                                 |
+| Event name          | Description                                                                           | Properties |
+| ------------------- | ------------------------------------------------------------------------------------- | ---------- |
+| **remove**          | Event occurs when a chip requests removal, with its value.                            |
+| **select**          | Event occurs when the selected chip values change.                                    |
+| **update:chips**    | Emit the chips without the removed one (for `v-model:chips`).                         |
+| **update:selected** | Emit the new selected values whenever the selection changes (for `v-model:selected`). |
