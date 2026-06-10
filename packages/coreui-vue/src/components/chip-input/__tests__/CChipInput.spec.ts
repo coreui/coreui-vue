@@ -378,4 +378,20 @@ describe('CChipInput', () => {
     expect(document.activeElement).toBe(input)
     wrapper.unmount()
   })
+
+  it('moves focus to the input on ArrowLeft from the last chip in RTL', async () => {
+    document.documentElement.dir = 'rtl'
+    const wrapper = mount(CChipInput, {
+      attachTo: document.body,
+      props: { defaultValue: ['React', 'Vue'] },
+    })
+    const chips = wrapper.findAll('.chip')
+    const lastChip = chips[chips.length - 1]
+    const input = wrapper.find('input.chip-input-field').element as HTMLInputElement
+    ;(lastChip.element as HTMLElement).focus()
+    await lastChip.trigger('keydown', { key: 'ArrowLeft' })
+    expect(document.activeElement).toBe(input)
+    wrapper.unmount()
+    document.documentElement.dir = ''
+  })
 })

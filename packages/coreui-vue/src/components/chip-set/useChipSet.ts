@@ -1,6 +1,7 @@
 import { computed, nextTick, provide, ref, type ComputedRef, type InjectionKey } from 'vue'
 
 import { SELECTOR_CHIP_FOCUSABLE } from '../chip/const'
+import { isRTL } from '../../utils'
 
 export interface ChipSetConfig {
   disabled?: boolean
@@ -122,17 +123,19 @@ export const useChipSet = (options: UseChipSetOptions) => {
 
     const chips = getFocusableChips()
     const index = chips.indexOf(chip)
+    // In RTL the visual direction is mirrored, so left/right swap.
+    const rtl = isRTL(rootRef.value)
 
     switch (event.key) {
       case 'ArrowLeft': {
         event.preventDefault()
-        chips[index - 1]?.focus()
+        chips[rtl ? index + 1 : index - 1]?.focus()
         return true
       }
 
       case 'ArrowRight': {
         event.preventDefault()
-        chips[index + 1]?.focus()
+        chips[rtl ? index - 1 : index + 1]?.focus()
         return true
       }
 

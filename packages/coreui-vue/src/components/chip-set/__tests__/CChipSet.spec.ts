@@ -43,6 +43,26 @@ describe('CChipSet', () => {
     w.unmount()
   })
 
+  it('mirrors arrow keys in RTL', async () => {
+    document.documentElement.dir = 'rtl'
+    const w = mount(CChipSet, {
+      attachTo: document.body,
+      props: { selectable: true },
+      slots: {
+        default: () => ['a', 'b'].map((v) => h(CChip, { value: v, key: v }, { default: () => v })),
+      },
+    })
+    const chips = w.findAll('.chip')
+    ;(chips[0].element as HTMLElement).focus()
+    // In RTL, ArrowLeft moves to the next chip.
+    await chips[0].trigger('keydown', { key: 'ArrowLeft' })
+    expect(document.activeElement).toBe(chips[1].element)
+    await chips[1].trigger('keydown', { key: 'ArrowRight' })
+    expect(document.activeElement).toBe(chips[0].element)
+    w.unmount()
+    document.documentElement.dir = ''
+  })
+
   it('selectable: click selects (multiple)', async () => {
     const w = set({ selectable: true }, ['a', 'b'])
     const chips = w.findAll('.chip')
