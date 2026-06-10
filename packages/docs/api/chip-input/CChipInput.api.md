@@ -14,6 +14,7 @@ import CChipInput from '@coreui/vue/src/components/chip-input/CChipInput'
 | **create-on-blur**  | Creates a new chip when the component loses focus with a pending value.                                                        | boolean        | -              | true     |
 | **default-value**   | Sets the initial uncontrolled values rendered by the component.                                                                | string[]       | -              | () => [] |
 | **disabled**        | Toggle the disabled state for the component.                                                                                   | boolean        | -              | -        |
+| **filter**          | Renders the chips as filter chips, each showing a leading check icon while selected. Implies `selectable`.                     | boolean        | -              | -        |
 | **id**              | Sets the `id` of the internal text input rendered by the component.                                                            | string         | -              | -        |
 | **label**           | Renders an inline label inside the component container.                                                                        | string\|object | -              | -        |
 | **max-chips**       | Sets the maximum number of chips that can be created in the component.                                                         | number         | -              | null     |

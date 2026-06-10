@@ -182,6 +182,10 @@ export default defineUserConfig({
           {
             text: 'Chip Input',
             link: `/forms/chip-input.html`,
+            badge: {
+              color: 'success',
+              text: 'New',
+            },
           },
           {
             text: 'Input',
@@ -277,6 +281,18 @@ export default defineUserConfig({
           {
             text: 'Chip',
             link: `/components/chip.html`,
+            badge: {
+              color: 'success',
+              text: 'New',
+            },
+          },
+          {
+            text: 'Chip Set',
+            link: `/components/chip-set.html`,
+            badge: {
+              color: 'success',
+              text: 'New',
+            },
           },
           {
             text: 'Close Button',
