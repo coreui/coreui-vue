@@ -1,12 +1,7 @@
 <template>
-  <CChipSet>
-    <CChip value="apple">Apple</CChip>
-    <CChip value="banana">Banana</CChip>
-    <CChip value="cherry">Cherry</CChip>
-    <CChip value="date">Date</CChip>
-  </CChipSet>
+  <CChipSet :chips="['Apple', 'Banana', 'Cherry', 'Date']" />
 </template>
 
 <script setup>
-import { CChipSet, CChip } from '@coreui/vue'
+import { CChipSet } from '@coreui/vue'
 </script>

@@ -1,14 +1,11 @@
 <template>
-  <CChipSet selectable selection-mode="single" v-model:selected="selected">
-    <CChip value="small">Small</CChip>
-    <CChip value="medium">Medium</CChip>
-    <CChip value="large">Large</CChip>
-  </CChipSet>
+  <CChipSet selectable selection-mode="single" :chips="chips" v-model:selected="selected" />
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { CChipSet, CChip } from '@coreui/vue'
+import { CChipSet } from '@coreui/vue'
 
-const selected = ref(['small'])
+const chips = ['Small', 'Medium', 'Large']
+const selected = ref(['Small'])
 </script>

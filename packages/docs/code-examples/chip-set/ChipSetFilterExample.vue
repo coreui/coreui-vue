@@ -1,15 +1,11 @@
 <template>
-  <CChipSet filter v-model:selected="selected">
-    <CChip value="design">Design</CChip>
-    <CChip value="development">Development</CChip>
-    <CChip value="marketing">Marketing</CChip>
-    <CChip value="sales">Sales</CChip>
-  </CChipSet>
+  <CChipSet filter :chips="chips" v-model:selected="selected" />
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { CChipSet, CChip } from '@coreui/vue'
+import { CChipSet } from '@coreui/vue'
 
-const selected = ref(['development', 'sales'])
+const chips = ['Design', 'Development', 'Marketing', 'Sales']
+const selected = ref(['Development', 'Sales'])
 </script>

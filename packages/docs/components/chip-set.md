@@ -18,12 +18,23 @@ The chip set forwards `selectable`, `filter`, `removable`, `disabled`, `removeIc
 
 ## Basic chip set
 
-Wrap your chips in `CChipSet`.
+Pass a `chips` array to render the chips from data. Each item is a string or an object with a `value`, an optional `label`, and any `CChip` props (so per-chip overrides work).
 
 :::demo
 <ChipSetBasicExample />
 :::
 @[code vue](@example/chip-set/ChipSetBasicExample.vue)
+
+You can also place `CChip` in the default slot instead of passing `chips`:
+
+```vue
+<CChipSet>
+  <CChip value="apple">Apple</CChip>
+  <CChip value="banana">Banana</CChip>
+  <CChip value="cherry">Cherry</CChip>
+  <CChip value="date">Date</CChip>
+</CChipSet>
+```
 
 ## Selectable chips
 
@@ -56,21 +67,12 @@ Customize the check with the `selected-icon` prop, the same way you customize th
 
 ## Removable chips
 
-Set `removable` to add a remove button to every chip. The chips are controlled by the slot content, so drop the chip from your data in the `@remove` handler. When a chip is removed, focus moves to a neighboring chip.
+Set `removable` to add a remove button to every chip. The chips are controlled by your data, so drop the chip in the `@remove` handler. When a chip is removed, focus moves to a neighboring chip.
 
 :::demo
 <ChipSetRemovableExample />
 :::
 @[code vue](@example/chip-set/ChipSetRemovableExample.vue)
-
-## Rendering from data
-
-Instead of placing `CChip` in the default slot, pass a `chips` array. Each item is a string or an object with a `value`, an optional `label`, and any `CChip` props (so per-chip overrides still work). The slot is used when `chips` is omitted.
-
-:::demo
-<ChipSetDataExample />
-:::
-@[code vue](@example/chip-set/ChipSetDataExample.vue)
 
 ## Keyboard behavior
 
@@ -114,7 +116,6 @@ $chip-set-gap: .25rem !default;
 <script setup>
   import ChipSetBasicExample from '@example/chip-set/ChipSetBasicExample.vue'
   import ChipSetSelectableExample from '@example/chip-set/ChipSetSelectableExample.vue'
-  import ChipSetDataExample from '@example/chip-set/ChipSetDataExample.vue'
   import ChipSetSingleExample from '@example/chip-set/ChipSetSingleExample.vue'
   import ChipSetFilterExample from '@example/chip-set/ChipSetFilterExample.vue'
   import ChipSetRemovableExample from '@example/chip-set/ChipSetRemovableExample.vue'

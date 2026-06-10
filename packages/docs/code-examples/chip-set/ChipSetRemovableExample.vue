@@ -1,14 +1,10 @@
 <template>
-  <CChipSet removable @remove="onRemove">
-    <CChip v-for="chip in chips" :key="chip.value" :value="chip.value" :disabled="chip.disabled">
-      {{ chip.label }}
-    </CChip>
-  </CChipSet>
+  <CChipSet removable :chips="chips" @remove="onRemove" />
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { CChipSet, CChip } from '@coreui/vue'
+import { CChipSet } from '@coreui/vue'
 
 const chips = ref([
   { value: 'filter-one', label: 'Filter one' },
