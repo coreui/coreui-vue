@@ -1,6 +1,9 @@
 import { computed, defineComponent, h, PropType } from 'vue'
 
+import { chipsFromData, type CChipSetItem } from './buildChips'
 import { useChipSet, type ChipSetConfig } from './useChipSet'
+
+export type { CChipSetItem }
 
 const CChipSet = defineComponent({
   name: 'CChipSet',
@@ -13,6 +16,13 @@ const CChipSet = defineComponent({
       default: 'div',
     },
     /**
+     * Renders chips from data instead of the default slot. Each item is a string or an object with a `value`, an optional `label`, and any `CChip` props. The slot is used when this is omitted.
+     */
+    chips: {
+      type: Array as PropType<(string | CChipSetItem)[]>,
+      default: undefined,
+    },
+    /**
      * Disables every chip rendered by the component.
      */
     disabled: Boolean,
@@ -21,9 +31,9 @@ const CChipSet = defineComponent({
      */
     filter: Boolean,
     /**
-     * The selected chip values passed using v-model.
+     * The selected chip values passed using `v-model:selected`.
      */
-    modelValue: {
+    selected: {
       type: Array as PropType<string[]>,
       default: undefined,
     },
@@ -61,17 +71,17 @@ const CChipSet = defineComponent({
   },
   emits: [
     /**
-     * Event occurs when the selected chip values change.
-     */
-    'change',
-    /**
      * Event occurs when a chip requests removal. The chips are controlled by the slot content, so drop the chip from your data in response.
      */
     'remove',
     /**
-     * Emit the new selected values whenever the selection changes.
+     * Event occurs when the selected chip values change.
      */
-    'update:modelValue',
+    'select',
+    /**
+     * Emit the new selected values whenever the selection changes (for `v-model:selected`).
+     */
+    'update:selected',
   ],
   setup(props, { attrs, emit, slots, expose }) {
     const config = computed<ChipSetConfig>(() => ({
@@ -86,10 +96,10 @@ const CChipSet = defineComponent({
     const { rootRef, handleKeydown } = useChipSet({
       config,
       selectionMode: () => props.selectionMode,
-      modelValue: () => props.modelValue,
+      selected: () => props.selected,
       onSelectionChange: (selected) => {
-        emit('update:modelValue', selected)
-        emit('change', selected)
+        emit('update:selected', selected)
+        emit('select', selected)
       },
       onRemove: (value) => emit('remove', value),
     })
@@ -105,7 +115,7 @@ const CChipSet = defineComponent({
           ...(props.disabled && { 'aria-disabled': true }),
           onKeydown: handleKeydown,
         },
-        slots.default && slots.default(),
+        props.chips ? chipsFromData(props.chips) : slots.default && slots.default(),
       )
   },
 })

@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils'
-import { CChipInput } from '../../../index'
+import { h } from 'vue'
+import { CChip, CChipInput } from '../../../index'
 
 describe('CChipInput', () => {
   it('has correct name', () => {
@@ -393,5 +394,20 @@ describe('CChipInput', () => {
     expect(document.activeElement).toBe(input)
     wrapper.unmount()
     document.documentElement.dir = ''
+  })
+
+  it('seeds initial chips from CChip slot content', () => {
+    const wrapper = mount(CChipInput, {
+      slots: {
+        default: () => [
+          h(CChip, { value: 'React' }, { default: () => 'React' }),
+          h(CChip, { value: 'Vue' }, { default: () => 'Vue' }),
+        ],
+      },
+    })
+    const chips = wrapper.findAll('.chip')
+    expect(chips).toHaveLength(2)
+    expect(wrapper.text()).toContain('React')
+    expect(wrapper.text()).toContain('Vue')
   })
 })

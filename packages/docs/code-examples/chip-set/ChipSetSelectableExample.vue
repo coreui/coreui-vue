@@ -1,5 +1,5 @@
 <template>
-  <CChipSet selectable v-model="selected">
+  <CChipSet selectable v-model:selected="selected">
     <CChip value="design">Design</CChip>
     <CChip value="development">Development</CChip>
     <CChip value="marketing">Marketing</CChip>

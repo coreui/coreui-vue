@@ -27,7 +27,7 @@ Wrap your chips in `CChipSet`.
 
 ## Selectable chips
 
-Set `selectable` to make every chip in the set selectable. With the default `selection-mode` of `multiple`, any number of chips can be active at once — useful for filters. Bind the selection with `v-model`.
+Set `selectable` to make every chip in the set selectable. With the default `selection-mode` of `multiple`, any number of chips can be active at once — useful for filters. Bind the selection with `v-model:selected` (or listen to `@select`).
 
 :::demo
 <ChipSetSelectableExample />
@@ -62,6 +62,15 @@ Set `removable` to add a remove button to every chip. The chips are controlled b
 <ChipSetRemovableExample />
 :::
 @[code vue](@example/chip-set/ChipSetRemovableExample.vue)
+
+## Rendering from data
+
+Instead of placing `CChip` in the default slot, pass a `chips` array. Each item is a string or an object with a `value`, an optional `label`, and any `CChip` props (so per-chip overrides still work). The slot is used when `chips` is omitted.
+
+:::demo
+<ChipSetDataExample />
+:::
+@[code vue](@example/chip-set/ChipSetDataExample.vue)
 
 ## Keyboard behavior
 
@@ -105,6 +114,7 @@ $chip-set-gap: .25rem !default;
 <script setup>
   import ChipSetBasicExample from '@example/chip-set/ChipSetBasicExample.vue'
   import ChipSetSelectableExample from '@example/chip-set/ChipSetSelectableExample.vue'
+  import ChipSetDataExample from '@example/chip-set/ChipSetDataExample.vue'
   import ChipSetSingleExample from '@example/chip-set/ChipSetSingleExample.vue'
   import ChipSetFilterExample from '@example/chip-set/ChipSetFilterExample.vue'
   import ChipSetRemovableExample from '@example/chip-set/ChipSetRemovableExample.vue'

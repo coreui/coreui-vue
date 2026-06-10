@@ -1,10 +1,45 @@
-import { computed, defineComponent, h, ref, PropType } from 'vue'
+import { computed, defineComponent, h, ref, PropType, type VNode } from 'vue'
 
-import { CChip } from '../chip/CChip'
+import { chipsFromData } from '../chip-set/buildChips'
 import { useChipSet, type ChipSetConfig } from '../chip-set/useChipSet'
 import { isRTL } from '../../utils'
 
 type ChipClassName = string | ((value: string) => string)
+
+// Initial chip values can be supplied declaratively as CChip slot content
+// (parity with the vanilla ChipInput, which reads existing .chip elements).
+const slotText = (slot: unknown): string | undefined => {
+  if (typeof slot !== 'function') {
+    return undefined
+  }
+
+  const rendered = slot()
+  const first = Array.isArray(rendered) ? rendered[0] : rendered
+  if (typeof first === 'string') {
+    return first
+  }
+
+  return typeof first?.children === 'string' ? first.children : undefined
+}
+
+const valuesFromSlot = (nodes: VNode[] = []): string[] => {
+  const values: string[] = []
+  for (const node of nodes) {
+    if (Array.isArray(node.children)) {
+      values.push(...valuesFromSlot(node.children as VNode[]))
+      continue
+    }
+
+    const value =
+      (node.props?.value as string | undefined) ??
+      slotText((node.children as { default?: unknown } | null)?.default)
+    if (value) {
+      values.push(value)
+    }
+  }
+
+  return values
+}
 
 const uniqueValues = (values: string[]): string[] => [
   ...new Set(values.map((value) => value.trim()).filter(Boolean)),
@@ -151,8 +186,12 @@ const CChipInput = defineComponent({
      */
     'update:modelValue',
   ],
-  setup(props, { attrs, emit, expose }) {
-    const internalValues = ref<string[]>(uniqueValues(props.defaultValue))
+  setup(props, { attrs, emit, expose, slots }) {
+    const internalValues = ref<string[]>(
+      uniqueValues(
+        props.defaultValue.length > 0 ? props.defaultValue : valuesFromSlot(slots.default?.()),
+      ),
+    )
     const inputValue = ref('')
     const inputRef = ref<HTMLInputElement>()
 
@@ -174,7 +213,7 @@ const CChipInput = defineComponent({
 
     const { rootRef, clearSelection, getFocusableChips, handleKeydown } = useChipSet({
       config,
-      modelValue: () => undefined,
+      selected: () => undefined,
       restoreFocusOnRemove: false,
       onSelectionChange: (selected) => emit('select', selected),
       onRemove: (value) => remove(value),
@@ -394,19 +433,13 @@ const CChipInput = defineComponent({
             },
             props.label,
           ),
-        ...values.value.map((chipValue) =>
-          h(
-            CChip,
-            {
-              ariaRemoveLabel: `Remove ${chipValue}`,
-              class: resolveChipClassName(props.chipClassName, chipValue),
-              key: chipValue,
-              value: chipValue,
-            },
-            {
-              default: () => chipValue,
-            },
-          ),
+        ...chipsFromData(
+          values.value.map((chipValue) => ({
+            value: chipValue,
+            label: chipValue,
+            ariaRemoveLabel: `Remove ${chipValue}`,
+            class: resolveChipClassName(props.chipClassName, chipValue),
+          })),
         ),
         h('input', {
           ref: inputRef,

@@ -70,7 +70,7 @@ describe('CChipSet', () => {
     await chips[1].trigger('click')
     expect(chips[0].classes()).toContain('active')
     expect(chips[1].classes()).toContain('active')
-    expect(w.emitted('update:modelValue')?.slice(-1)[0]).toEqual([['a', 'b']])
+    expect(w.emitted('update:selected')?.slice(-1)[0]).toEqual([['a', 'b']])
   })
 
   it('single selection deselects siblings', async () => {
@@ -80,18 +80,18 @@ describe('CChipSet', () => {
     await chips[1].trigger('click')
     expect(chips[0].classes()).not.toContain('active')
     expect(chips[1].classes()).toContain('active')
-    expect(w.emitted('update:modelValue')?.slice(-1)[0]).toEqual([['b']])
+    expect(w.emitted('update:selected')?.slice(-1)[0]).toEqual([['b']])
   })
 
   it('controlled v-model', () => {
-    const w = set({ selectable: true, modelValue: ['b'] }, ['a', 'b'])
+    const w = set({ selectable: true, selected: ['b'] }, ['a', 'b'])
     const chips = w.findAll('.chip')
     expect(chips[0].classes()).not.toContain('active')
     expect(chips[1].classes()).toContain('active')
   })
 
   it('filter shows check icon when selected', () => {
-    const w = set({ filter: true, modelValue: ['a'] }, ['a'])
+    const w = set({ filter: true, selected: ['a'] }, ['a'])
     expect(w.find('.chip-check').exists()).toBe(true)
   })
 
@@ -99,6 +99,24 @@ describe('CChipSet', () => {
     const w = set({ removable: true }, ['a', 'b'])
     await w.find('.chip-remove').trigger('click')
     expect(w.emitted('remove')?.[0]).toEqual(['a'])
+  })
+
+  it('renders chips from the chips prop (strings and objects)', async () => {
+    const w = mount(CChipSet, {
+      attachTo: document.body,
+      props: {
+        selectable: true,
+        chips: ['react', { value: 'vue', label: 'Vue' }, { value: 'ng', label: 'Angular', selectable: false }],
+      },
+    })
+    expect(w.findAll('.chip')).toHaveLength(3)
+    expect(w.text()).toContain('Vue')
+
+    const chips = w.findAll('.chip')
+    // Per-item override still works with the data-driven API.
+    await chips[2].trigger('click')
+    expect(chips[2].classes()).not.toContain('active')
+    w.unmount()
   })
 
   it('disabled forwards to chips', () => {

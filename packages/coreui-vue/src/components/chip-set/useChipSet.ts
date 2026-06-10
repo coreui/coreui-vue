@@ -25,9 +25,9 @@ export const chipSetContextKey: InjectionKey<ChipSetContext> = Symbol('CChipSet'
 export interface UseChipSetOptions {
   config: ComputedRef<ChipSetConfig>
   selectionMode?: () => 'single' | 'multiple'
-  /** Controlled selected values (e.g. v-model). Undefined keeps it uncontrolled. */
-  modelValue?: () => string[] | undefined
-  defaultValue?: string[]
+  /** Controlled selected values (e.g. v-model:selected). Undefined keeps it uncontrolled. */
+  selected?: () => string[] | undefined
+  defaultSelected?: string[]
   /** Move focus to a neighbor after removal. Containers with their own target (CChipInput → input) pass false. */
   restoreFocusOnRemove?: boolean
   onSelectionChange?: (selected: string[]) => void
@@ -45,18 +45,18 @@ export const useChipSet = (options: UseChipSetOptions) => {
   const {
     config,
     selectionMode = () => 'multiple',
-    modelValue = () => undefined,
-    defaultValue = [],
+    selected = () => undefined,
+    defaultSelected = [],
     restoreFocusOnRemove = true,
     onSelectionChange,
     onRemove,
   } = options
 
   const rootRef = ref<HTMLElement>()
-  const internalSelected = ref<string[]>(defaultValue)
+  const internalSelected = ref<string[]>(defaultSelected)
 
   const selectedValues = computed(() => {
-    const controlled = modelValue()
+    const controlled = selected()
     return controlled === undefined ? internalSelected.value : controlled
   })
 
@@ -65,7 +65,7 @@ export const useChipSet = (options: UseChipSetOptions) => {
   ]
 
   const emitSelection = (next: string[]): void => {
-    if (modelValue() === undefined) {
+    if (selected() === undefined) {
       internalSelected.value = next
     }
     onSelectionChange?.(next)
