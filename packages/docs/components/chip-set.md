@@ -95,7 +95,7 @@ When a chip inside a chip set is focused:
 | `Home` | Move focus to the first chip |
 | `End` | Move focus to the last chip |
 
-Disabled chips are skipped while navigating.
+Disabled chips are skipped while navigating. In right-to-left layouts the arrow keys are mirrored — `←` moves to the next chip and `→` to the previous one — while `Home` and `End` always jump to the first and last chip.
 
 ## Accessibility
 
