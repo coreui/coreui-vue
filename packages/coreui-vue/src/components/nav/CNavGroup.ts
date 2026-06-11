@@ -1,4 +1,17 @@
-import { defineComponent, h, onMounted, ref, RendererElement, Transition, watch } from 'vue'
+import {
+  computed,
+  defineComponent,
+  h,
+  inject,
+  onMounted,
+  provide,
+  Ref,
+  ref,
+  RendererElement,
+  Transition,
+  useId,
+  watch,
+} from 'vue'
 
 import { executeAfterTransition } from '../../utils/transition'
 
@@ -19,59 +32,84 @@ const CNavGroup = defineComponent({
     /**
      * Show nav group items.
      */
-    visible: Boolean,
+    visible: {
+      type: Boolean,
+      default: undefined,
+    },
   },
-  emits: ['visible-change'],
+  emits: ['update:visible', 'visible-change'],
   setup(props, { slots, emit }) {
-    const visible = ref()
-    const navGroupRef = ref()
-    const visibleGroup = ref()
+    const key = useId()
 
-    const handleVisibleChange = (visible: boolean, index: number) => {
-      if (visible) {
-        visibleGroup.value = index
-      } else {
-        if (visibleGroup.value === index) {
-          visibleGroup.value = 0
-        }
-      }
-    }
-
-    const isVisible = (index: number) => Boolean(visibleGroup.value === index)
-
-    onMounted(() => {
-      visible.value = props.visible
-      if (props.visible) {
-        navGroupRef.value.classList.add('show')
-      }
-
-      emit('visible-change', visible.value)
-    })
-
-    watch(
-      () => props.visible,
-      () => {
-        visible.value = props.visible
-
-        if (visible.value === false) {
-          visibleGroup.value = undefined
-        }
-      },
+    const parentActiveKey = inject<Ref<string | undefined> | undefined>(
+      'cNavGroupActiveKey',
+      undefined,
+    )
+    const parentSetActiveKey = inject<((key?: string) => void) | undefined>(
+      'cNavGroupSetActiveKey',
+      undefined,
     )
 
-    watch(visible, () => {
-      emit('visible-change', visible.value)
+    const internal = ref(Boolean(props.visible))
+
+    const visible = computed(() => {
+      if (props.visible !== undefined) {
+        return props.visible
+      }
+
+      if (parentActiveKey) {
+        return parentActiveKey.value === key
+      }
+
+      return internal.value
+    })
+
+    const activeGroupKey = ref<string>()
+    provide('cNavGroupActiveKey', activeGroupKey)
+    provide('cNavGroupSetActiveKey', (value?: string) => {
+      activeGroupKey.value = value
+    })
+
+    const showClass = ref(visible.value)
+
+    onMounted(() => {
+      if (props.visible && parentSetActiveKey) {
+        parentSetActiveKey(key)
+      }
+    })
+
+    watch(visible, (value) => {
+      if (props.visible !== undefined && parentSetActiveKey) {
+        if (value) {
+          parentSetActiveKey(key)
+        } else if (parentActiveKey && parentActiveKey.value === key) {
+          parentSetActiveKey(undefined)
+        }
+      }
+
+      emit('visible-change', value)
     })
 
     const handleTogglerClick = (event: Event) => {
       event.preventDefault()
-      visible.value = !visible.value
-      emit('visible-change', visible.value)
+
+      const next = !visible.value
+      emit('update:visible', next)
+
+      if (props.visible !== undefined) {
+        return
+      }
+
+      if (parentActiveKey && parentSetActiveKey) {
+        parentSetActiveKey(next ? key : undefined)
+      } else {
+        internal.value = next
+      }
     }
 
     const handleBeforeEnter = (el: RendererElement) => {
       el.style.height = '0px'
-      navGroupRef.value.classList.add('show')
+      showClass.value = true
     }
 
     // eslint-disable-next-line unicorn/consistent-function-scoping
@@ -99,21 +137,21 @@ const CNavGroup = defineComponent({
     }
 
     const handleAfterLeave = () => {
-      navGroupRef.value.classList.remove('show')
+      showClass.value = false
     }
 
     return () =>
       h(
         props.as,
         {
-          class: 'nav-group',
-          ref: navGroupRef,
+          class: ['nav-group', { show: showClass.value }],
         },
         [
           slots.togglerContent &&
             h(
               'a',
               {
+                'aria-expanded': visible.value,
                 class: ['nav-link', 'nav-group-toggle'],
                 href: '#',
                 onClick: handleTogglerClick,
@@ -144,18 +182,7 @@ const CNavGroup = defineComponent({
                       },
                     ],
                   },
-                  slots.default &&
-                    slots.default().map((vnode, index) => {
-                      // @ts-expect-error name is defined in component
-                      if (vnode.type.name === 'CNavGroup') {
-                        return h(vnode, {
-                          onVisibleChange: (visible: boolean) =>
-                            handleVisibleChange(visible, index + 1),
-                          ...(visibleGroup.value && { visible: isVisible(index + 1) }),
-                        })
-                      }
-                      return vnode
-                    }),
+                  slots.default && slots.default(),
                 ),
             },
           ),

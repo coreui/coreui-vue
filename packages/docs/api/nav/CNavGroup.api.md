@@ -18,4 +18,5 @@ import CNavGroup from '@coreui/vue/src/components/nav/CNavGroup'
 
 | Event name         | Description | Properties |
 | ------------------ | ----------- | ---------- |
+| **update:visible** |             |
 | **visible-change** |             |
