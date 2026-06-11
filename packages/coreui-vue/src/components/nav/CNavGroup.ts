@@ -192,7 +192,7 @@ const CNavGroup = defineComponent({
                 href: '#',
                 onClick: handleTogglerClick,
               },
-              slots.togglerContent && slots.togglerContent()
+              slots.togglerContent && slots.togglerContent({ visible: visible.value })
             ),
           h(
             props.as === 'div' ? 'div' : 'ul',

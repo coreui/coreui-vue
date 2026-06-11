@@ -5,383 +5,160 @@ description: Vue Sidebar is a powerful and customizable responsive navigation co
 other_frameworks: sidebar
 ---
 
+## How it works
+
+Here's what you need to know before getting started with the Vue Sidebar component:
+
+- `CSidebar` renders the `.sidebar` container.
+- On mobile devices, the sidebar is hidden by default. Control it with the `visible` prop.
+- On desktop devices, the sidebar is shown by default. Hide it with `:visible="false"`.
+- Use `narrow` to switch the sidebar to the narrow variant.
+- Use `unfoldable` to switch the sidebar to the narrow-unfoldable variant.
+- `CSidebarNav` renders `.sidebar-nav` and supports nested groups through `CNavGroup`.
+- For accessibility, prefer semantic elements such as `nav`, or add `role="navigation"` when using `as="div"` on `CSidebarNav`.
+
 ## Supported content
 
-Sidebar come with built-in support for a handful of sub-components. Choose from the following as needed:
+Sidebar comes with built-in support for a handful of sub-components. Choose from the following as needed:
 
-- `<CSidebarHeader>` for optional header.
+- `<CSidebarHeader>` for an optional header.
 - `<CSidebarBrand>` for your company, product, or project name.
-- `<CSidebarNav>` for a full-height and lightweight navigation (including support for dropdowns).
-- `<CSidebarFooter>` for optional footer.
-- `<CSidebarToggler>` for use with our minimizer plugin.
+- `<CSidebarNav>` for a full-height and lightweight navigation, including nested groups.
+- `<CSidebarFooter>` for an optional footer.
+- `<CSidebarToggler>` for toggling the sidebar state.
 
 ## Examples
 
-### Sidebar component
-
-Below is an sidebar example that is shown by default on desktop devices.
+Below is a more complete sidebar example shown by default on desktop devices. It combines several optional features in a single demo, including narrow visibility helpers, tree navigation, nested groups, a custom group indicator, badges, and a footer dropdown.
 
 ::: demo-bg-secondary
-<CSidebar>
-  <CSidebarHeader class="border-bottom">
-    <CSidebarBrand>CoreUI</CSidebarBrand>
-  </CSidebarHeader>
-  <CSidebarNav>
-    <CNavTitle>Nav Title</CNavTitle>
-    <CNavItem href="#">
-      <CIcon  customClassName="nav-icon" icon="cil-speedometer"/> Nav item
-    </CNavItem>
-    <CNavItem href="#">
-      <CIcon  customClassName="nav-icon" icon="cil-speedometer"/> With badge
-      <CBadge class="ms-auto" color="primary">NEW</CBadge>
-    </CNavItem>
-    <CNavGroup>
-      <template #togglerContent>
-        <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown
-      </template>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-    </CNavGroup>
-    <CNavGroup>
-      <template #togglerContent>
-        <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown2
-      </template>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-    </CNavGroup>
-    <CNavItem href="https://coreui.io">
-      <CIcon customClassName="nav-icon" icon="cil-cloud-download" /> Download CoreUI
-    </CNavItem>
-    <CNavItem href="https://coreui.io/pro/">
-      <CIcon customClassName="nav-icon" icon="cil-layers" /> Try CoreUI PRO
-    </CNavItem>
-  </CSidebarNav>
-  <CSidebarFooter class="border-top">
-    <CSidebarToggler/>
-  </CSidebarFooter>
-</CSidebar>
+<SidebarExample />
 :::
-```vue
-<CSidebar>
-  <CSidebarHeader class="border-bottom">
-    <CSidebarBrand>CoreUI</CSidebarBrand>
-  </CSidebarHeader>
-  <CSidebarNav>
-    <CNavTitle>Nav Title</CNavTitle>
-    <CNavItem href="#">
-      <CIcon  customClassName="nav-icon" icon="cil-speedometer"/> Nav item
-    </CNavItem>
-    <CNavItem href="#">
-      <CIcon  customClassName="nav-icon" icon="cil-speedometer"/> With badge
-      <CBadge class="ms-auto" color="primary">NEW</CBadge>
-    </CNavItem>
-    <CNavGroup>
-      <template #togglerContent>
-        <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown
-      </template>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-    </CNavGroup>
-    <CNavGroup>
-      <template #togglerContent>
-        <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown2
-      </template>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-    </CNavGroup>
-    <CNavItem href="https://coreui.io">
-      <CIcon customClassName="nav-icon" icon="cil-cloud-download" /> Download CoreUI
-    </CNavItem>
-    <CNavItem href="https://coreui.io/pro/">
-      <CIcon customClassName="nav-icon" icon="cil-layers" /> Try CoreUI PRO
-    </CNavItem>
-  </CSidebarNav>
-  <CSidebarFooter class="border-top">
-    <CSidebarToggler/>
-  </CSidebarFooter>
-</CSidebar>
-```
+@[code vue](@example/sidebar/SidebarExample.vue)
 
 ### Narrow sidebar
 
-Add the `narrow` property to make the sidebar narrow.
+Add the `narrow` prop to make the sidebar narrow.
+
+Use `.d-sidebar-narrow` to show content only in the narrow state and `.d-sidebar-narrow-none` to hide content in the narrow state. These utility classes replace older brand-specific visibility helpers.
 
 ::: demo-bg-secondary
-<CSidebar narrow>
-  <CSidebarHeader class="border-bottom">
-    <CSidebarBrand>CUI</CSidebarBrand>
-  </CSidebarHeader>
-  <CSidebarNav>
-    <CNavTitle>Nav Title</CNavTitle>
-    <CNavItem href="#">
-      <CIcon  customClassName="nav-icon" icon="cil-speedometer"/>
-    </CNavItem>
-    <CNavItem href="#">
-      <CIcon  customClassName="nav-icon" icon="cil-speedometer"/>
-    </CNavItem>
-    <CNavItem href="https://coreui.io">
-      <CIcon customClassName="nav-icon" icon="cil-cloud-download" />
-    </CNavItem>
-    <CNavItem href="https://coreui.io/pro/">
-      <CIcon customClassName="nav-icon" icon="cil-layers" />
-    </CNavItem>
-  </CSidebarNav>
-</CSidebar>
+<SidebarNarrowExample />
 :::
-```vue
-<CSidebar narrow>
-  <CSidebarHeader class="border-bottom">
-    <CSidebarBrand>CUI</CSidebarBrand>
-  </CSidebarHeader>
-  <CSidebarNav>
-    <CNavTitle>Nav Title</CNavTitle>
-    <CNavItem href="#">
-      <CIcon  customClassName="nav-icon" icon="cil-speedometer"/>
-    </CNavItem>
-    <CNavItem href="#">
-      <CIcon  customClassName="nav-icon" icon="cil-speedometer"/>
-    </CNavItem>
-    <CNavItem href="https://coreui.io">
-      <CIcon customClassName="nav-icon" icon="cil-cloud-download" />
-    </CNavItem>
-    <CNavItem href="https://coreui.io/pro/">
-      <CIcon customClassName="nav-icon" icon="cil-layers" />
-    </CNavItem>
-  </CSidebarNav>
-</CSidebar>
-```
+@[code vue](@example/sidebar/SidebarNarrowExample.vue)
 
 ### Unfoldable sidebar
 
-Add the `unfoldable` property to make the sidebar narrow with unfoldable on hover.
+Add the `unfoldable` prop to make the sidebar narrow and expand it on hover.
+
+Use `.d-sidebar-narrow-unfoldable` and `.d-sidebar-narrow-unfoldable-none` to control content visibility for unfoldable sidebars.
 
 ::: demo-bg-secondary
-<CSidebar unfoldable>
-  <CSidebarHeader class="border-bottom">
-    <CSidebarBrand>CUI</CSidebarBrand>
-  </CSidebarHeader>
-  <CSidebarNav>
-    <CNavTitle>Nav Title</CNavTitle>
-    <CNavItem href="#">
-      <CIcon  customClassName="nav-icon" icon="cil-speedometer"/> Nav item
-    </CNavItem>
-    <CNavItem href="#">
-      <CIcon  customClassName="nav-icon" icon="cil-speedometer"/> With badge
-      <CBadge class="ms-auto" color="primary">NEW</CBadge>
-    </CNavItem>
-    <CNavGroup>
-      <template #togglerContent>
-        <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown
-      </template>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-    </CNavGroup>
-    <CNavGroup>
-      <template #togglerContent>
-        <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown2
-      </template>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-    </CNavGroup>
-    <CNavItem href="https://coreui.io">
-      <CIcon customClassName="nav-icon" icon="cil-cloud-download" /> Download CoreUI
-    </CNavItem>
-    <CNavItem href="https://coreui.io/pro/">
-      <CIcon customClassName="nav-icon" icon="cil-layers" /> Try CoreUI PRO
-    </CNavItem>
-  </CSidebarNav>
-</CSidebar>
+<SidebarUnfoldableExample />
 :::
-```vue
-<CSidebar unfoldable>
-  <CSidebarHeader class="border-bottom">
-    <CSidebarBrand>CUI</CSidebarBrand>
-  </CSidebarHeader>
-  <CSidebarNav>
-    <CNavTitle>Nav Title</CNavTitle>
-    <CNavItem href="#">
-      <CIcon  customClassName="nav-icon" icon="cil-speedometer"/> Nav item
-    </CNavItem>
-    <CNavItem href="#">
-      <CIcon  customClassName="nav-icon" icon="cil-speedometer"/> With badge
-      <CBadge class="ms-auto" color="primary">NEW</CBadge>
-    </CNavItem>
-    <CNavGroup>
-      <template #togglerContent>
-        <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown
-      </template>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-    </CNavGroup>
-    <CNavGroup>
-      <template #togglerContent>
-        <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown2
-      </template>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-    </CNavGroup>
-    <CNavItem href="https://coreui.io">
-      <CIcon customClassName="nav-icon" icon="cil-cloud-download" /> Download CoreUI
-    </CNavItem>
-    <CNavItem href="https://coreui.io/pro/">
-      <CIcon customClassName="nav-icon" icon="cil-layers" /> Try CoreUI PRO
-    </CNavItem>
-  </CSidebarNav>
-</CSidebar>
-```
+@[code vue](@example/sidebar/SidebarUnfoldableExample.vue)
 
-## Controlling nav group visibility
+### Narrow visibility helpers
+
+Use the sidebar visibility helpers to swap content between regular, narrow, and narrow-unfoldable variants:
+
+- `.d-sidebar-narrow` shows content only in the narrow state.
+- `.d-sidebar-narrow-none` hides content in the narrow state.
+- `.d-sidebar-narrow-unfoldable` shows content only when the sidebar uses the unfoldable variant.
+- `.d-sidebar-narrow-unfoldable-none` hides content when the sidebar uses the unfoldable variant.
+
+## Navigation
+
+Use `CSidebarNav` as the main navigation container inside a sidebar. It supports plain links, section titles, nested groups, tree navigation, compact navigation, and custom group indicators.
+
+### Basic navigation
+
+Use the following building blocks inside `CSidebarNav`:
+
+- `<CNavTitle>` for section headings.
+- `<CNavItem>` for each navigation entry.
+- `<CNavLink>` for standalone navigation links.
+- `CIcon` with `customClassName="nav-icon"` for optional leading icons.
+- `<CBadge>` or utility classes such as `ms-auto` for trailing metadata.
+
+### Navigation groups
+
+Use `<CNavGroup>` for expandable navigation sections. The `togglerContent` slot defines the clickable label, and nested `CNavItem` or `CNavGroup` components become the group content.
+
+Set `visible` on `CNavGroup` when the group should be expanded by default.
+
+Use the `compact` prop on `CNavGroup` to reduce spacing only for that nested group.
+
+### Compact navigation
 
 <AddedIn version="5.9.0" />
 
-`<CNavGroup>` works uncontrolled by default—clicking the toggler expands and collapses it on its own. To control it from the parent, bind `visible` and listen to `update:visible` (or use `v-model:visible`). In controlled mode the toggler only requests a change through `update:visible`; the group's state follows the `visible` prop, so the parent has the final say.
+Add the `compact` prop to `CSidebarNav` to reduce the vertical padding across the entire navigation.
 
-This makes it possible to keep a section open even when the user clicks to collapse it—useful for a route-aware sidebar that must keep the active section expanded. Toggle the lock below and try to collapse the group: while locked, the parent rejects the change and the group stays in sync with `visible`.
+Use the `compact` prop on `CNavGroup` to compact only a nested section.
 
 ::: demo-bg-secondary
-<SidebarNavGroupControlledExample />
+<SidebarCompactExample />
 :::
-@[code vue](@example/sidebar/SidebarNavGroupControlledExample.vue)
+@[code vue](@example/sidebar/SidebarCompactExample.vue)
+
+### Tree navigation
+
+<AddedIn version="5.9.0" />
+
+Add `variant="tree"` to `CSidebarNav` to render nested groups as a tree. Nested groups automatically keep their hierarchy, making deeper navigation levels easier to scan.
+
+::: demo-bg-secondary
+<SidebarTreeExample />
+:::
+@[code vue](@example/sidebar/SidebarTreeExample.vue)
+
+### Group indicator
+
+By default, `CNavGroup` renders the standard group indicator through the `.nav-group-toggle` styles, so no additional markup is required.
+
+::: demo-bg-secondary
+<SidebarGroupIndicatorExample />
+:::
+@[code vue](@example/sidebar/SidebarGroupIndicatorExample.vue)
+
+### Custom group indicator
+
+To replace the default indicator, pass custom indicator markup inside the `togglerContent` slot using a `.nav-group-toggle-indicator` element. The `togglerContent` slot is a scoped slot that receives `{ visible }`, so you can swap icons yourself based on the group state.
+
+::: demo-bg-secondary
+<SidebarCustomIndicatorExample />
+:::
+@[code vue](@example/sidebar/SidebarCustomIndicatorExample.vue)
+
+### Controlled navigation group
+
+<AddedIn version="5.9.0" />
+
+`CNavGroup` works uncontrolled by default—clicking the toggler expands and collapses it. To control it from the parent, bind `visible` and listen to `update:visible` (or use `v-model:visible`). In controlled mode the toggler only requests a change through `update:visible`; the group follows the `visible` prop, so the parent has the final say.
+
+This makes it possible to keep a section open even when the user clicks to collapse it—useful for a route-aware sidebar that must keep the active section expanded. Toggle the lock and try to collapse the group: while locked, the parent rejects the change and the group stays open.
+
+::: demo-bg-secondary
+<SidebarControlledGroupExample />
+:::
+@[code vue](@example/sidebar/SidebarControlledGroupExample.vue)
 
 ## Dark sidebar
 
-Change the appearance of sidebars with the `colorScheme="dark"`.
+Change the appearance of sidebars with `colorScheme="dark"`.
 
 ::: demo-bg-secondary
-<CSidebar colorScheme="dark">
-  <CSidebarHeader class="border-bottom">
-    <CSidebarBrand>CoreUI</CSidebarBrand>
-  </CSidebarHeader>
-  <CSidebarNav>
-    <CNavTitle>Nav Title</CNavTitle>
-    <CNavItem href="#">
-      <CIcon  customClassName="nav-icon" icon="cil-speedometer"/> Nav item
-    </CNavItem>
-    <CNavItem href="#">
-      <CIcon  customClassName="nav-icon" icon="cil-speedometer"/> With badge
-      <CBadge class="ms-auto" color="primary">NEW</CBadge>
-    </CNavItem>
-    <CNavGroup>
-      <template #togglerContent>
-        <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown
-      </template>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-    </CNavGroup>
-    <CNavGroup>
-      <template #togglerContent>
-        <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown2
-      </template>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-    </CNavGroup>
-    <CNavItem href="https://coreui.io">
-      <CIcon customClassName="nav-icon" icon="cil-cloud-download" /> Download CoreUI
-    </CNavItem>
-    <CNavItem href="https://coreui.io/pro/">
-      <CIcon customClassName="nav-icon" icon="cil-layers" /> Try CoreUI PRO
-    </CNavItem>
-  </CSidebarNav>
-  <CSidebarFooter class="border-top">
-    <CSidebarToggler/>
-  </CSidebarFooter>
-</CSidebar>
+<SidebarDarkExample />
 :::
-```vue
-<CSidebar colorScheme="dark">
-  <CSidebarHeader class="border-bottom">
-    <CSidebarBrand>CoreUI</CSidebarBrand>
-  </CSidebarHeader>
-  <CSidebarNav>
-    <CNavTitle>Nav Title</CNavTitle>
-    <CNavItem href="#">
-      <CIcon  customClassName="nav-icon" icon="cil-speedometer"/> Nav item
-    </CNavItem>
-    <CNavItem href="#">
-      <CIcon  customClassName="nav-icon" icon="cil-speedometer"/> With badge
-      <CBadge class="ms-auto" color="primary">NEW</CBadge>
-    </CNavItem>
-    <CNavGroup>
-      <template #togglerContent>
-        <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown
-      </template>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-    </CNavGroup>
-    <CNavGroup>
-      <template #togglerContent>
-        <CIcon  customClassName="nav-icon" icon="cil-puzzle"/> Nav dropdown2
-      </template>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-      <CNavItem href="#">
-        <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
-      </CNavItem>
-    </CNavGroup>
-    <CNavItem href="https://coreui.io">
-      <CIcon customClassName="nav-icon" icon="cil-cloud-download" /> Download CoreUI
-    </CNavItem>
-    <CNavItem href="https://coreui.io/pro/">
-      <CIcon customClassName="nav-icon" icon="cil-layers" /> Try CoreUI PRO
-    </CNavItem>
-  </CSidebarNav>
-  <CSidebarFooter class="border-top">
-    <CSidebarToggler/>
-  </CSidebarFooter>
-</CSidebar>
-```
+@[code vue](@example/sidebar/SidebarDarkExample.vue)
 
 ## Placement
 
-By default placement for sidebar components is on the left of the viewport, but you can add one of the modifier classes below.
+By default, placement for sidebar components is on the left side of the viewport, but you can change it with the `placement` prop:
 
-- `placement="start"` places sidebar on the left of the viewport (shown above)
-- `placement="end"` places sidebar on the right of the viewport
+- `placement="start"` places the sidebar on the left side of the viewport.
+- `placement="end"` places the sidebar on the right side of the viewport.
 
 ## Customizing
 
@@ -421,6 +198,16 @@ return <CSidebar :style="vars">...</CSidebar>
 
 !!!include(./api/sidebar/CSidebar.api.md)!!!
 
+!!!include(./api/sidebar/CSidebarNav.api.md)!!!
+
 <script setup>
-  import SidebarNavGroupControlledExample from '@example/sidebar/SidebarNavGroupControlledExample.vue'
+  import SidebarExample from '@example/sidebar/SidebarExample.vue'
+  import SidebarNarrowExample from '@example/sidebar/SidebarNarrowExample.vue'
+  import SidebarUnfoldableExample from '@example/sidebar/SidebarUnfoldableExample.vue'
+  import SidebarCompactExample from '@example/sidebar/SidebarCompactExample.vue'
+  import SidebarTreeExample from '@example/sidebar/SidebarTreeExample.vue'
+  import SidebarGroupIndicatorExample from '@example/sidebar/SidebarGroupIndicatorExample.vue'
+  import SidebarCustomIndicatorExample from '@example/sidebar/SidebarCustomIndicatorExample.vue'
+  import SidebarControlledGroupExample from '@example/sidebar/SidebarControlledGroupExample.vue'
+  import SidebarDarkExample from '@example/sidebar/SidebarDarkExample.vue'
 </script>
