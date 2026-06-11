@@ -23,7 +23,7 @@ import { SidebarNav } from './SidebarNav'
     </CSidebarBrand>
     <div class="text-body-secondary mx-3 mb-2 small fw-semibold">Framework:</div>
     <CDropdown class="mx-3 mb-4">
-      <CDropdownToggle color="primary" variant="outline"> Vue.js </CDropdownToggle>
+      <CDropdownToggle class="w-100" color="primary" variant="outline"> Vue.js </CDropdownToggle>
       <CDropdownMenu class="w-100">
         <CDropdownItem href="https://coreui.io/angular/docs/4.0/" target="_blank">
           Angular
