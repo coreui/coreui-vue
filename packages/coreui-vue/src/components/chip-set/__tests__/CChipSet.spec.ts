@@ -143,8 +143,10 @@ describe('CChipSet', () => {
   })
 
   it('disabled forwards to chips', () => {
-    const w = set({ disabled: true }, ['a'])
+    const w = set({ disabled: true, removable: true }, ['a'])
     expect(w.find('.chip').classes()).toContain('disabled')
+    // A disabled chip never gets a remove button (parity with vanilla).
+    expect(w.find('.chip-remove').exists()).toBe(false)
   })
 
   it('lets a chip override set config (opt out of selectable / removable)', async () => {

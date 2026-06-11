@@ -314,6 +314,7 @@ const CChip = defineComponent({
           h('span', { class: 'chip-check', 'aria-hidden': 'true' }, selectedIconVNode as VNode),
         slots.default && slots.default(),
         isRemovable.value &&
+          !isDisabled.value &&
           h(
             'button',
             {
@@ -322,7 +323,6 @@ const CChip = defineComponent({
               'aria-label': ariaRemoveLabel.value,
               onClick: handleRemoveClick,
               tabindex: -1,
-              disabled: isDisabled.value,
             },
             removeIconVNode as VNode,
           ),
