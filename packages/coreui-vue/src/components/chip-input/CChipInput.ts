@@ -1,4 +1,4 @@
-import { computed, defineComponent, h, ref, PropType, type VNode } from 'vue'
+import { computed, defineComponent, h, ref, useId, PropType, type VNode } from 'vue'
 
 import { chipsFromData } from '../chip-set/buildChips'
 import { useChipSet, type ChipSetConfig } from '../chip-set/useChipSet'
@@ -142,6 +142,15 @@ const CChipInput = defineComponent({
      */
     selectable: Boolean,
     /**
+     * Sets how many chips can be selected at once.
+     *
+     * @values 'single', 'multiple'
+     */
+    selectionMode: {
+      type: String as PropType<'single' | 'multiple'>,
+      default: 'multiple',
+    },
+    /**
      * Sets the separator character used to create chips while typing or pasting in the component.
      */
     separator: {
@@ -194,6 +203,7 @@ const CChipInput = defineComponent({
     )
     const inputValue = ref('')
     const inputRef = ref<HTMLInputElement>()
+    const generatedName = useId()
 
     const values = computed(() =>
       props.modelValue !== undefined
@@ -213,6 +223,7 @@ const CChipInput = defineComponent({
 
     const { rootRef, clearSelection, getFocusableChips, handleKeydown } = useChipSet({
       config,
+      selectionMode: () => props.selectionMode,
       selected: () => undefined,
       restoreFocusOnRemove: false,
       onSelectionChange: (selected) => emit('select', selected),
@@ -457,12 +468,11 @@ const CChipInput = defineComponent({
           onPaste: handlePaste,
           onFocus: clearSelection,
         }),
-        props.name &&
-          h('input', {
-            type: 'hidden',
-            name: props.name,
-            value: values.value.join(','),
-          }),
+        h('input', {
+          type: 'hidden',
+          name: props.name ?? generatedName,
+          value: values.value.join(','),
+        }),
       ].filter(Boolean)
 
       return h(

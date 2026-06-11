@@ -186,6 +186,18 @@ describe('CChipInput', () => {
     expect(hiddenInput.attributes('value')).toBe('tag1,tag2')
   })
 
+  it('always renders a hidden input even without a name', () => {
+    const wrapper = mount(CChipInput, {
+      props: {
+        modelValue: ['tag1'],
+      },
+    })
+    const hiddenInput = wrapper.find('input[type="hidden"]')
+    expect(hiddenInput.exists()).toBe(true)
+    expect(hiddenInput.attributes('name')).toBeTruthy()
+    expect(hiddenInput.attributes('value')).toBe('tag1')
+  })
+
   it('applies size classes', () => {
     const wrapperSm = mount(CChipInput, {
       props: {
@@ -270,6 +282,23 @@ describe('CChipInput', () => {
 
     const chips = wrapper.findAllComponents({ name: 'CChip' })
     expect(chips[0].props('selectable')).toBe(true)
+  })
+
+  it('single selection deselects siblings', async () => {
+    const wrapper = mount(CChipInput, {
+      props: {
+        selectable: true,
+        selectionMode: 'single',
+        modelValue: ['a', 'b'],
+      },
+    })
+
+    const chips = wrapper.findAll('.chip')
+    await chips[0].trigger('click')
+    await chips[1].trigger('click')
+
+    expect(chips[0].classes()).not.toContain('active')
+    expect(chips[1].classes()).toContain('active')
   })
 
   it('handles paste with separator', async () => {
