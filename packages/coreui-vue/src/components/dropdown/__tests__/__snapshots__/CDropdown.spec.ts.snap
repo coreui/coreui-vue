@@ -4,4 +4,4 @@ exports[`Customize (variant number two) CDropdown component renders correctly 1`
 
 exports[`Customize CDropdown component renders correctly 1`] = `"<div class="nav-item dropdown dropend">Default slot</div>"`;
 
-exports[`Loads and display CDropdown component renders correctly 1`] = `"<div class="btn-group">Default slot</div>"`;
+exports[`Loads and display CDropdown component renders correctly 1`] = `"<div class="dropdown">Default slot</div>"`;

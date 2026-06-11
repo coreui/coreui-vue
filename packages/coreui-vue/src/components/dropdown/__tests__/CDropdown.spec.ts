@@ -45,7 +45,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('contain slots and classes', () => {
     expect(defaultWrapper.text()).toContain('Default slot')
-    expect(defaultWrapper.classes('btn-group')).toBe(true)
+    expect(defaultWrapper.classes('dropdown')).toBe(true)
   })
 })
 

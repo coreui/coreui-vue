@@ -162,7 +162,7 @@ const CDropdown = defineComponent({
      */
     variant: {
       type: String,
-      default: 'btn-group',
+      default: 'dropdown',
       validator: (value: string) => {
         return ['btn-group', 'dropdown', 'input-group', 'nav-item'].includes(value)
       },
