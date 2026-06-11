@@ -43,8 +43,8 @@ describe(`Customize ${ComponentName} component`, () => {
     expect(customWrapper.find('a').attributes('aria-expanded')).toBe('true')
     expect(customWrapper.find('ul').classes('nav-group-items')).toBe(true)
     expect(customWrapper.find('ul').classes('compact')).toBe(true)
-    expect(customWrapper.find('ul').isVisible()).toBe(true)
     expect(customWrapper.classes('nav-group')).toBe(true)
+    expect(customWrapper.classes('show')).toBe(true)
   })
 })
 
@@ -54,18 +54,18 @@ describe(`${ComponentName} uncontrolled mode`, () => {
       slots: { togglerContent: 'togglerContent' },
     })
 
-    expect(wrapper.find('.nav-group-items').isVisible()).toBe(false)
+    expect(wrapper.classes('show')).toBe(false)
     expect(wrapper.emitted('visible-change')).toBeUndefined()
 
     await wrapper.find('.nav-group-toggle').trigger('click')
 
-    expect(wrapper.find('.nav-group-items').isVisible()).toBe(true)
+    expect(wrapper.classes('show')).toBe(true)
     expect(wrapper.emitted('update:visible')).toEqual([[true]])
     expect(wrapper.emitted('visible-change')).toEqual([[true]])
 
     await wrapper.find('.nav-group-toggle').trigger('click')
 
-    expect(wrapper.find('.nav-group-items').isVisible()).toBe(false)
+    expect(wrapper.classes('show')).toBe(false)
   })
 
   it('does not emit visible-change on mount', () => {
@@ -82,11 +82,11 @@ describe(`${ComponentName} uncontrolled mode`, () => {
       slots: { togglerContent: 'togglerContent' },
     })
 
-    expect(wrapper.find('.nav-group-items').isVisible()).toBe(true)
+    expect(wrapper.classes('show')).toBe(true)
 
     await wrapper.find('.nav-group-toggle').trigger('click')
 
-    expect(wrapper.find('.nav-group-items').isVisible()).toBe(false)
+    expect(wrapper.classes('show')).toBe(false)
   })
 })
 
@@ -118,20 +118,19 @@ describe(`${ComponentName} nested groups`, () => {
 
   it('renders and toggles per level', async () => {
     const wrapper = nested()
-    const groupItems = (index: number) =>
-      wrapper.findAll('.nav-group')[index].find('.nav-group-items')
+    const group = (index: number) => wrapper.findAll('.nav-group')[index]
 
-    expect(groupItems(0).isVisible()).toBe(false)
+    expect(group(0).classes('show')).toBe(false)
 
     await wrapper.findAll('.nav-group-toggle')[0].trigger('click')
-    expect(groupItems(0).isVisible()).toBe(true)
-    expect(groupItems(1).isVisible()).toBe(false)
+    expect(group(0).classes('show')).toBe(true)
+    expect(group(1).classes('show')).toBe(false)
 
     await wrapper.findAll('.nav-group-toggle')[1].trigger('click')
-    expect(groupItems(1).isVisible()).toBe(true)
+    expect(group(1).classes('show')).toBe(true)
 
     await wrapper.findAll('.nav-group-toggle')[0].trigger('click')
-    expect(groupItems(0).isVisible()).toBe(false)
+    expect(group(0).classes('show')).toBe(false)
   })
 
   it('opening one sibling closes the other (per-level accordion)', async () => {
@@ -157,15 +156,15 @@ describe(`${ComponentName} nested groups`, () => {
         ],
       },
     })
-    const items = (index: number) => wrapper.findAll('.nav-group')[index].find('.nav-group-items')
+    const group = (index: number) => wrapper.findAll('.nav-group')[index]
 
     await wrapper.findAll('.nav-group-toggle')[0].trigger('click')
-    expect(items(0).isVisible()).toBe(true)
-    expect(items(1).isVisible()).toBe(false)
+    expect(group(0).classes('show')).toBe(true)
+    expect(group(1).classes('show')).toBe(false)
 
     await wrapper.findAll('.nav-group-toggle')[1].trigger('click')
-    expect(items(1).isVisible()).toBe(true)
-    expect(items(0).isVisible()).toBe(false)
+    expect(group(1).classes('show')).toBe(true)
+    expect(group(0).classes('show')).toBe(false)
   })
 
   it('an active nav link opens its ancestor groups', async () => {
@@ -192,12 +191,11 @@ describe(`${ComponentName} nested groups`, () => {
         ],
       },
     })
-    const items = (index: number) => wrapper.findAll('.nav-group')[index].find('.nav-group-items')
 
     await nextTick()
 
-    expect(items(0).isVisible()).toBe(true)
-    expect(items(1).isVisible()).toBe(true)
+    expect(wrapper.findAll('.nav-group')[0].classes('show')).toBe(true)
+    expect(wrapper.findAll('.nav-group')[1].classes('show')).toBe(true)
   })
 })
 
@@ -209,12 +207,12 @@ describe(`${ComponentName} controlled mode`, () => {
       slots: { togglerContent: 'togglerContent' },
     })
 
-    expect(wrapper.find('.nav-group-items').isVisible()).toBe(true)
+    expect(wrapper.classes('show')).toBe(true)
 
     await wrapper.find('.nav-group-toggle').trigger('click')
 
     expect(onUpdate).toHaveBeenCalledWith(false)
-    expect(wrapper.find('.nav-group-items').isVisible()).toBe(true)
+    expect(wrapper.classes('show')).toBe(true)
   })
 
   it('follows the prop when the parent accepts (v-model)', async () => {
@@ -230,6 +228,6 @@ describe(`${ComponentName} controlled mode`, () => {
     await wrapper.setProps({ visible: false })
 
     expect(wrapper.emitted('visible-change')).toContainEqual([false])
-    expect(wrapper.find('.nav-group-items').isVisible()).toBe(false)
+    expect(wrapper.classes('show')).toBe(false)
   })
 })

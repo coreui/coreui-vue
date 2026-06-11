@@ -7,12 +7,8 @@ import {
   provide,
   Ref,
   ref,
-  RendererElement,
-  Transition,
   useId,
-  vShow,
   watch,
-  withDirectives,
 } from 'vue'
 
 import { executeAfterTransition } from '../../utils/transition'
@@ -45,6 +41,8 @@ const CNavGroup = defineComponent({
     const key = useId()
     const instance = getCurrentInstance()
     const hasUpdateListener = Boolean(instance?.vnode.props?.['onUpdate:visible'])
+
+    const navGroupItemsRef = ref<HTMLElement>()
 
     const parentActiveKey = inject<Ref<string | undefined> | undefined>(
       'cNavGroupActiveKey',
@@ -108,16 +106,6 @@ const CNavGroup = defineComponent({
       { immediate: true }
     )
 
-    // The items stay mounted (so nested active links can open their ancestors), so the `show`
-    // class drives their visibility. Add it as soon as the group is visible; the leave
-    // transition removes it after the collapse finishes (`handleAfterLeave`).
-    const showClass = ref(visible.value)
-    watch(visible, (value) => {
-      if (value) {
-        showClass.value = true
-      }
-    })
-
     // Accordion: when another branch opens, a controlled group must close too. As its
     // visibility is owned by the parent, request the change through `update:visible`.
     watch(
@@ -133,9 +121,43 @@ const CNavGroup = defineComponent({
       }
     )
 
-    watch(visible, (value) => {
-      emit('visible-change', value)
-    })
+    // Animate the height of the always-mounted items, after the `show` class (driven straight
+    // from `visible`, so the toggler indicator reacts immediately). `display` is forced while
+    // collapsing to override the `.nav-group:not(.show) .nav-group-items { display: none }` rule.
+    watch(
+      visible,
+      (value) => {
+        emit('visible-change', value)
+
+        const el = navGroupItemsRef.value
+        if (!el) {
+          return
+        }
+
+        el.style.display = 'block'
+
+        // Each branch sets the starting height, forces a reflow by reading `offsetHeight`, then
+        // sets the target height. The reflow makes the browser commit the starting value, so the
+        // CSS height transition runs instead of both writes collapsing into a single frame.
+        if (value) {
+          el.style.height = '0px'
+          el.offsetHeight // eslint-disable-line @typescript-eslint/no-unused-expressions
+          el.style.height = `${el.scrollHeight}px`
+          executeAfterTransition(() => {
+            el.style.height = 'auto'
+          }, el)
+        } else {
+          el.style.height = `${el.scrollHeight}px`
+          el.offsetHeight // eslint-disable-line @typescript-eslint/no-unused-expressions
+          el.style.height = '0px'
+          executeAfterTransition(() => {
+            el.style.display = ''
+            el.style.height = ''
+          }, el)
+        }
+      },
+      { flush: 'post' }
+    )
 
     const handleTogglerClick = (event: Event) => {
       event.preventDefault()
@@ -154,44 +176,11 @@ const CNavGroup = defineComponent({
       }
     }
 
-    const handleBeforeEnter = (el: RendererElement) => {
-      el.style.height = '0px'
-      showClass.value = true
-    }
-
-    // eslint-disable-next-line unicorn/consistent-function-scoping
-    const handleEnter = (el: RendererElement, done: () => void) => {
-      executeAfterTransition(() => done(), el as HTMLElement)
-      el.style.height = `${el.scrollHeight}px`
-    }
-
-    // eslint-disable-next-line unicorn/consistent-function-scoping
-    const handleAfterEnter = (el: RendererElement) => {
-      el.style.height = 'auto'
-    }
-
-    // eslint-disable-next-line unicorn/consistent-function-scoping
-    const handleBeforeLeave = (el: RendererElement) => {
-      el.style.height = `${el.scrollHeight}px`
-    }
-
-    // eslint-disable-next-line unicorn/consistent-function-scoping
-    const handleLeave = (el: RendererElement, done: () => void) => {
-      executeAfterTransition(() => done(), el as HTMLElement)
-      setTimeout(() => {
-        el.style.height = '0px'
-      }, 1)
-    }
-
-    const handleAfterLeave = () => {
-      showClass.value = false
-    }
-
     return () =>
       h(
         props.as,
         {
-          class: ['nav-group', { show: showClass.value }],
+          class: ['nav-group', { show: visible.value }],
         },
         [
           slots.togglerContent &&
@@ -206,34 +195,17 @@ const CNavGroup = defineComponent({
               slots.togglerContent && slots.togglerContent()
             ),
           h(
-            Transition,
+            props.as === 'div' ? 'div' : 'ul',
             {
-              css: false,
-              onBeforeEnter: (el) => handleBeforeEnter(el),
-              onEnter: (el, done) => handleEnter(el, done),
-              onAfterEnter: (el) => handleAfterEnter(el),
-              onBeforeLeave: (el) => handleBeforeLeave(el),
-              onLeave: (el, done) => handleLeave(el, done),
-              onAfterLeave: () => handleAfterLeave(),
+              class: [
+                'nav-group-items',
+                {
+                  compact: props.compact,
+                },
+              ],
+              ref: navGroupItemsRef,
             },
-            {
-              default: () =>
-                withDirectives(
-                  h(
-                    props.as === 'div' ? 'div' : 'ul',
-                    {
-                      class: [
-                        'nav-group-items',
-                        {
-                          compact: props.compact,
-                        },
-                      ],
-                    },
-                    slots.default && slots.default()
-                  ),
-                  [[vShow, visible.value]]
-                ),
-            }
+            slots.default && slots.default()
           ),
         ]
       )
