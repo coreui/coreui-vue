@@ -1,4 +1,4 @@
-import { Component, defineComponent, h, ref, PropType } from 'vue'
+import { Component, defineComponent, h, provide, ref, PropType } from 'vue'
 
 const CSidebarNav = defineComponent({
   name: 'CSidebarNav',
@@ -12,19 +12,11 @@ const CSidebarNav = defineComponent({
     },
   },
   setup(props, { slots }) {
-    const visibleGroup = ref()
-
-    const handleVisibleChange = (visible: boolean, index: number) => {
-      if (visible) {
-        visibleGroup.value = index
-      } else {
-        if (visibleGroup.value === index) {
-          visibleGroup.value = 0
-        }
-      }
-    }
-
-    const isVisible = (index: number) => Boolean(visibleGroup.value === index)
+    const activeGroupKey = ref<string>()
+    provide('cNavGroupActiveKey', activeGroupKey)
+    provide('cNavGroupSetActiveKey', (value?: string) => {
+      activeGroupKey.value = value
+    })
 
     return () =>
       h(
@@ -33,18 +25,7 @@ const CSidebarNav = defineComponent({
           class: 'sidebar-nav',
         },
         {
-          default: () =>
-            slots.default &&
-            slots.default().map((vnode, index) => {
-              // @ts-expect-error name is defined in component
-              if (vnode.type.name === 'CNavGroup') {
-                return h(vnode, {
-                  onVisibleChange: (visible: boolean) => handleVisibleChange(visible, index + 1),
-                  ...(visibleGroup.value && { visible: isVisible(index + 1) }),
-                })
-              }
-              return vnode
-            }),
+          default: () => slots.default && slots.default(),
         },
       )
   },

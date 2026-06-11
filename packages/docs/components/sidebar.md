@@ -262,6 +262,19 @@ Add the `unfoldable` property to make the sidebar narrow with unfoldable on hove
 </CSidebar>
 ```
 
+## Controlling nav group visibility
+
+<AddedIn version="5.9.0" />
+
+`<CNavGroup>` works uncontrolled by default—clicking the toggler expands and collapses it on its own. To control it from the parent, bind `visible` and listen to `update:visible` (or use `v-model:visible`). In controlled mode the toggler only requests a change through `update:visible`; the group's state follows the `visible` prop, so the parent has the final say.
+
+This makes it possible to keep a section open even when the user clicks to collapse it—useful for a route-aware sidebar that must keep the active section expanded. Toggle the lock below and try to collapse the group: while locked, the parent rejects the change and the group stays in sync with `visible`.
+
+::: demo-bg-secondary
+<SidebarNavGroupControlledExample />
+:::
+@[code vue](@example/sidebar/SidebarNavGroupControlledExample.vue)
+
 ## Dark sidebar
 
 Change the appearance of sidebars with the `colorScheme="dark"`.
@@ -407,3 +420,7 @@ return <CSidebar :style="vars">...</CSidebar>
 ## API
 
 !!!include(./api/sidebar/CSidebar.api.md)!!!
+
+<script setup>
+  import SidebarNavGroupControlledExample from '@example/sidebar/SidebarNavGroupControlledExample.vue'
+</script>

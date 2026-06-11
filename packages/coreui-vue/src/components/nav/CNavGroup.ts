@@ -1,4 +1,15 @@
-import { defineComponent, h, onMounted, ref, RendererElement, Transition, watch } from 'vue'
+import {
+  computed,
+  defineComponent,
+  getCurrentInstance,
+  h,
+  inject,
+  provide,
+  Ref,
+  ref,
+  useId,
+  watch,
+} from 'vue'
 
 import { executeAfterTransition } from '../../utils/transition'
 
@@ -17,149 +28,186 @@ const CNavGroup = defineComponent({
      */
     compact: Boolean,
     /**
-     * Show nav group items.
+     * Show nav group items. Acts as the initial state on its own, or as the controlled value
+     * when paired with a `v-model:visible` / `@update:visible` listener.
      */
-    visible: Boolean,
+    visible: {
+      type: Boolean,
+      default: undefined,
+    },
   },
-  emits: ['visible-change'],
+  emits: ['update:visible', 'visible-change'],
   setup(props, { slots, emit }) {
-    const visible = ref()
-    const navGroupRef = ref()
-    const visibleGroup = ref()
+    const key = useId()
+    const instance = getCurrentInstance()
+    const hasUpdateListener = Boolean(instance?.vnode.props?.['onUpdate:visible'])
 
-    const handleVisibleChange = (visible: boolean, index: number) => {
-      if (visible) {
-        visibleGroup.value = index
-      } else {
-        if (visibleGroup.value === index) {
-          visibleGroup.value = 0
-        }
+    const navGroupItemsRef = ref<HTMLElement>()
+
+    const parentActiveKey = inject<Ref<string | undefined> | undefined>(
+      'cNavGroupActiveKey',
+      undefined
+    )
+    const parentSetActiveKey = inject<((key?: string) => void) | undefined>(
+      'cNavGroupSetActiveKey',
+      undefined
+    )
+    const parentOpenBranch = inject<(() => void) | undefined>('cNavGroupOpenBranch', undefined)
+
+    const controlled = computed(() => props.visible !== undefined && hasUpdateListener)
+
+    const internal = ref(Boolean(props.visible))
+
+    const visible = computed(() => {
+      if (controlled.value) {
+        return props.visible as boolean
       }
-    }
 
-    const isVisible = (index: number) => Boolean(visibleGroup.value === index)
-
-    onMounted(() => {
-      visible.value = props.visible
-      if (props.visible) {
-        navGroupRef.value.classList.add('show')
+      if (parentActiveKey) {
+        return parentActiveKey.value === key
       }
 
-      emit('visible-change', visible.value)
+      return internal.value
     })
 
+    const activeGroupKey = ref<string>()
+    provide('cNavGroupActiveKey', activeGroupKey)
+    provide('cNavGroupSetActiveKey', (value?: string) => {
+      activeGroupKey.value = value
+    })
+
+    const openBranch = () => {
+      parentSetActiveKey?.(key)
+      parentOpenBranch?.()
+    }
+    provide('cNavGroupOpenBranch', openBranch)
+
+    // Seed the accordion / local state from the `visible` prop: opens default-open groups and
+    // follows later changes (and keeps controlled groups in sync). Watching `props.visible`
+    // keeps this from re-running on accordion changes, so a default-open group can be collapsed
+    // manually.
     watch(
       () => props.visible,
-      () => {
-        visible.value = props.visible
+      (value) => {
+        if (value === undefined) {
+          return
+        }
 
-        if (visible.value === false) {
-          visibleGroup.value = undefined
+        if (parentSetActiveKey) {
+          if (value) {
+            parentSetActiveKey(key)
+          } else if (parentActiveKey && parentActiveKey.value === key) {
+            parentSetActiveKey(undefined)
+          }
+        } else {
+          internal.value = value
         }
       },
+      { immediate: true }
     )
 
-    watch(visible, () => {
-      emit('visible-change', visible.value)
-    })
+    // Accordion: when another branch opens, a controlled group must close too. As its
+    // visibility is owned by the parent, request the change through `update:visible`.
+    watch(
+      () => parentActiveKey?.value,
+      (activeKey) => {
+        if (!controlled.value || !props.visible) {
+          return
+        }
+
+        if (activeKey !== undefined && activeKey !== key) {
+          emit('update:visible', false)
+        }
+      }
+    )
+
+    // Animate the height of the always-mounted items, after the `show` class (driven straight
+    // from `visible`, so the toggler indicator reacts immediately). `display` is forced while
+    // collapsing to override the `.nav-group:not(.show) .nav-group-items { display: none }` rule.
+    watch(
+      visible,
+      (value) => {
+        emit('visible-change', value)
+
+        const el = navGroupItemsRef.value
+        if (!el) {
+          return
+        }
+
+        el.style.display = 'block'
+
+        // Each branch sets the starting height, forces a reflow by reading `offsetHeight`, then
+        // sets the target height. The reflow makes the browser commit the starting value, so the
+        // CSS height transition runs instead of both writes collapsing into a single frame.
+        if (value) {
+          el.style.height = '0px'
+          el.offsetHeight // eslint-disable-line @typescript-eslint/no-unused-expressions
+          el.style.height = `${el.scrollHeight}px`
+          executeAfterTransition(() => {
+            el.style.height = 'auto'
+          }, el)
+        } else {
+          el.style.height = `${el.scrollHeight}px`
+          el.offsetHeight // eslint-disable-line @typescript-eslint/no-unused-expressions
+          el.style.height = '0px'
+          executeAfterTransition(() => {
+            el.style.display = ''
+            el.style.height = ''
+          }, el)
+        }
+      },
+      { flush: 'post' }
+    )
 
     const handleTogglerClick = (event: Event) => {
       event.preventDefault()
-      visible.value = !visible.value
-      emit('visible-change', visible.value)
-    }
 
-    const handleBeforeEnter = (el: RendererElement) => {
-      el.style.height = '0px'
-      navGroupRef.value.classList.add('show')
-    }
+      const next = !visible.value
+      emit('update:visible', next)
 
-    // eslint-disable-next-line unicorn/consistent-function-scoping
-    const handleEnter = (el: RendererElement, done: () => void) => {
-      executeAfterTransition(() => done(), el as HTMLElement)
-      el.style.height = `${el.scrollHeight}px`
-    }
+      if (controlled.value) {
+        return
+      }
 
-    // eslint-disable-next-line unicorn/consistent-function-scoping
-    const handleAfterEnter = (el: RendererElement) => {
-      el.style.height = 'auto'
-    }
-
-    // eslint-disable-next-line unicorn/consistent-function-scoping
-    const handleBeforeLeave = (el: RendererElement) => {
-      el.style.height = `${el.scrollHeight}px`
-    }
-
-    // eslint-disable-next-line unicorn/consistent-function-scoping
-    const handleLeave = (el: RendererElement, done: () => void) => {
-      executeAfterTransition(() => done(), el as HTMLElement)
-      setTimeout(() => {
-        el.style.height = '0px'
-      }, 1)
-    }
-
-    const handleAfterLeave = () => {
-      navGroupRef.value.classList.remove('show')
+      if (parentSetActiveKey) {
+        parentSetActiveKey(next ? key : undefined)
+      } else {
+        internal.value = next
+      }
     }
 
     return () =>
       h(
         props.as,
         {
-          class: 'nav-group',
-          ref: navGroupRef,
+          class: ['nav-group', { show: visible.value }],
         },
         [
           slots.togglerContent &&
             h(
               'a',
               {
+                'aria-expanded': visible.value,
                 class: ['nav-link', 'nav-group-toggle'],
                 href: '#',
                 onClick: handleTogglerClick,
               },
-              slots.togglerContent && slots.togglerContent(),
+              slots.togglerContent && slots.togglerContent()
             ),
           h(
-            Transition,
+            props.as === 'div' ? 'div' : 'ul',
             {
-              css: false,
-              onBeforeEnter: (el) => handleBeforeEnter(el),
-              onEnter: (el, done) => handleEnter(el, done),
-              onAfterEnter: (el) => handleAfterEnter(el),
-              onBeforeLeave: (el) => handleBeforeLeave(el),
-              onLeave: (el, done) => handleLeave(el, done),
-              onAfterLeave: () => handleAfterLeave(),
+              class: [
+                'nav-group-items',
+                {
+                  compact: props.compact,
+                },
+              ],
+              ref: navGroupItemsRef,
             },
-            {
-              default: () =>
-                visible.value &&
-                h(
-                  props.as === 'div' ? 'div' : 'ul',
-                  {
-                    class: [
-                      'nav-group-items',
-                      {
-                        compact: props.compact,
-                      },
-                    ],
-                  },
-                  slots.default &&
-                    slots.default().map((vnode, index) => {
-                      // @ts-expect-error name is defined in component
-                      if (vnode.type.name === 'CNavGroup') {
-                        return h(vnode, {
-                          onVisibleChange: (visible: boolean) =>
-                            handleVisibleChange(visible, index + 1),
-                          ...(visibleGroup.value && { visible: isVisible(index + 1) }),
-                        })
-                      }
-                      return vnode
-                    }),
-                ),
-            },
+            slots.default && slots.default()
           ),
-        ],
+        ]
       )
   },
 })
