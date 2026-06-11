@@ -287,8 +287,11 @@ const CFocusTrap = defineComponent({
     
       return cloneVNode(vnode, {
         ref: (el) => {
-          containerRef.value = el as HTMLElement | null
-    
+          // `el` may be a component public instance (e.g. when the trapped node is wrapped in a
+          // `<Transition>`); resolve it to the underlying DOM element so focus handling works.
+          const element = ((el as { $el?: HTMLElement } | null)?.$el ?? el) as HTMLElement | null
+          containerRef.value = element
+
           if (typeof originalRef === 'function') {
             originalRef(el)
           } else if (originalRef && typeof originalRef === 'object' && 'value' in originalRef) {

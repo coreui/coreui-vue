@@ -8,12 +8,14 @@ const config = {
   alignment: { lg: 'end' },
   dark: false,
   popper: true,
+  teleport: false,
 }
 
 const customConfig = {
   alignment: { lg: 'end' },
   dark: true,
   popper: false,
+  teleport: false,
 }
 
 const defaultWrapper = mount(Component, {
@@ -55,9 +57,10 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('contain slots and classes', () => {
     expect(defaultWrapper.text()).toContain('Default slot')
-    expect(defaultWrapper.classes('dropdown-menu')).toBe(true)
-    expect(defaultWrapper.classes('dropdown-menu-dark')).toBe(false)
-    expect(defaultWrapper.classes('show')).toBe(false)
+    const menu = defaultWrapper.find('.dropdown-menu')
+    expect(menu.classes('dropdown-menu')).toBe(true)
+    expect(menu.attributes('data-coreui-theme')).toBeUndefined()
+    expect(menu.classes('show')).toBe(false)
   })
 })
 
@@ -68,9 +71,10 @@ describe(`Customize ${ComponentName} component`, () => {
   it('contain slots and classes', () => {
     expect(customWrapper.text()).toContain('Default slot')
     expect(customWrapper.find('li').text()).toContain('Default slot')
-    expect(customWrapper.classes('dropdown-menu')).toBe(true)
-    expect(customWrapper.classes('dropdown-menu-dark')).toBe(true)
-    expect(customWrapper.classes('show')).toBe(true)
-    expect(customWrapper.attributes('data-coreui-popper')).toBe('static')
+    const menu = customWrapper.find('.dropdown-menu')
+    expect(menu.classes('dropdown-menu')).toBe(true)
+    expect(menu.attributes('data-coreui-theme')).toBe('dark')
+    expect(menu.classes('show')).toBe(true)
+    expect(menu.attributes('data-coreui-popper')).toBe('static')
   })
 })

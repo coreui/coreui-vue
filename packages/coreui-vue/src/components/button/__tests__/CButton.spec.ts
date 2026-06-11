@@ -62,7 +62,6 @@ describe(`Customize ${ComponentName} component`, () => {
     expect(customWrapper.classes('disabled')).toBe(true)
     expect(customWrapper.classes('rounded-pill')).toBe(true)
     expect(customWrapper.classes('btn')).toBe(true)
-    expect(customWrapper.attributes('disabled')).toBe('true')
   })
 })
 

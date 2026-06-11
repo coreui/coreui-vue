@@ -281,7 +281,9 @@ describe('CChipInput', () => {
     })
 
     const chips = wrapper.findAllComponents({ name: 'CChip' })
-    expect(chips[0].props('selectable')).toBe(true)
+    // CChipInput forwards `selectable` to chips through the shared set config, not as a prop, so
+    // the chips are selectable in effect—`aria-selected` is only rendered for a selectable chip.
+    expect(chips[0].attributes('aria-selected')).toBe('false')
   })
 
   it('single selection deselects siblings', async () => {

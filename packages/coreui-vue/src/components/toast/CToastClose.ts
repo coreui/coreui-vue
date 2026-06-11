@@ -1,10 +1,10 @@
-import { defineComponent, h, inject, resolveComponent } from 'vue'
+import { Component, defineComponent, h, inject, PropType, resolveComponent } from 'vue'
 import { CCloseButton } from '../close-button/CCloseButton'
 
 import type { ComponentProps } from '../../utils/ComponentProps'
 
 interface CCloseButtonProps extends ComponentProps<typeof CCloseButton> {
-  as?: string
+  as?: string | Component
 }
 
 const CToastClose = defineComponent({
@@ -13,7 +13,7 @@ const CToastClose = defineComponent({
     /**
      * Component used for the root node. Either a string to use a HTML element or a component.
      */
-    as: String,
+    as: [String, Object] as PropType<string | Component>,
     ...CCloseButton.props,
   },
   emits: [
@@ -32,7 +32,7 @@ const CToastClose = defineComponent({
     return () =>
       props.as
         ? h(
-            resolveComponent(props.as),
+            typeof props.as === 'string' ? resolveComponent(props.as) : props.as,
             {
               onClick: () => {
                 handleClose()

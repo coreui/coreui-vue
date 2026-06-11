@@ -80,7 +80,10 @@ const CChip = defineComponent({
     /**
      * Controls the selected state of a selectable component.
      */
-    selected: Boolean,
+    selected: {
+      type: Boolean,
+      default: undefined,
+    },
     /**
      * Replaces the default selected icon shown by a filter chip with a custom icon node.
      */

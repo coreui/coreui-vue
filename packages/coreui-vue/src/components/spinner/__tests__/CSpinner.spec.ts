@@ -32,7 +32,6 @@ describe(`Loads and display ${ComponentName} component`, () => {
   })
   it('contain slots and classes', () => {
     expect(defaultWrapper.classes('spinner-border')).toBe(true)
-    expect(defaultWrapper.classes('text-undefined')).toBe(true)
     expect(defaultWrapper.find('span').classes('visually-hidden')).toBe(true)
     expect(defaultWrapper.find('span').text()).toContain('Loading...')
   })

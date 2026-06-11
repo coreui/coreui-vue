@@ -45,6 +45,6 @@ describe(`Customize ${ComponentName} component`, () => {
     expect(customWrapper.classes('carousel')).toBe(true)
     expect(customWrapper.classes('slide')).toBe(true)
     expect(customWrapper.classes('carousel-fade')).toBe(true)
-    expect(customWrapper.classes('carousel-dark')).toBe(true)
+    expect(customWrapper.attributes('data-coreui-theme')).toBe('dark')
   })
 })
