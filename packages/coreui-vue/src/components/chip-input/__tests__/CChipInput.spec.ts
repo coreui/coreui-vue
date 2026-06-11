@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils'
-import { CChipInput } from '../../../index'
+import { h } from 'vue'
+import { CChip, CChipInput } from '../../../index'
 
 describe('CChipInput', () => {
   it('has correct name', () => {
@@ -185,6 +186,18 @@ describe('CChipInput', () => {
     expect(hiddenInput.attributes('value')).toBe('tag1,tag2')
   })
 
+  it('always renders a hidden input even without a name', () => {
+    const wrapper = mount(CChipInput, {
+      props: {
+        modelValue: ['tag1'],
+      },
+    })
+    const hiddenInput = wrapper.find('input[type="hidden"]')
+    expect(hiddenInput.exists()).toBe(true)
+    expect(hiddenInput.attributes('name')).toBeTruthy()
+    expect(hiddenInput.attributes('value')).toBe('tag1')
+  })
+
   it('applies size classes', () => {
     const wrapperSm = mount(CChipInput, {
       props: {
@@ -269,6 +282,23 @@ describe('CChipInput', () => {
 
     const chips = wrapper.findAllComponents({ name: 'CChip' })
     expect(chips[0].props('selectable')).toBe(true)
+  })
+
+  it('single selection deselects siblings', async () => {
+    const wrapper = mount(CChipInput, {
+      props: {
+        selectable: true,
+        selectionMode: 'single',
+        modelValue: ['a', 'b'],
+      },
+    })
+
+    const chips = wrapper.findAll('.chip')
+    await chips[0].trigger('click')
+    await chips[1].trigger('click')
+
+    expect(chips[0].classes()).not.toContain('active')
+    expect(chips[1].classes()).toContain('active')
   })
 
   it('handles paste with separator', async () => {
@@ -363,5 +393,50 @@ describe('CChipInput', () => {
     })
     const removeBtn = wrapper.find('.chip-remove')
     expect(removeBtn.exists()).toBe(false)
+  })
+
+  it('moves focus to the input on ArrowRight from the last chip', async () => {
+    const wrapper = mount(CChipInput, {
+      attachTo: document.body,
+      props: { defaultValue: ['React', 'Vue'] },
+    })
+    const chips = wrapper.findAll('.chip')
+    const lastChip = chips[chips.length - 1]
+    const input = wrapper.find('input.chip-input-field').element as HTMLInputElement
+    ;(lastChip.element as HTMLElement).focus()
+    await lastChip.trigger('keydown', { key: 'ArrowRight' })
+    expect(document.activeElement).toBe(input)
+    wrapper.unmount()
+  })
+
+  it('moves focus to the input on ArrowLeft from the last chip in RTL', async () => {
+    document.documentElement.dir = 'rtl'
+    const wrapper = mount(CChipInput, {
+      attachTo: document.body,
+      props: { defaultValue: ['React', 'Vue'] },
+    })
+    const chips = wrapper.findAll('.chip')
+    const lastChip = chips[chips.length - 1]
+    const input = wrapper.find('input.chip-input-field').element as HTMLInputElement
+    ;(lastChip.element as HTMLElement).focus()
+    await lastChip.trigger('keydown', { key: 'ArrowLeft' })
+    expect(document.activeElement).toBe(input)
+    wrapper.unmount()
+    document.documentElement.dir = ''
+  })
+
+  it('seeds initial chips from CChip slot content', () => {
+    const wrapper = mount(CChipInput, {
+      slots: {
+        default: () => [
+          h(CChip, { value: 'React' }, { default: () => 'React' }),
+          h(CChip, { value: 'Vue' }, { default: () => 'Vue' }),
+        ],
+      },
+    })
+    const chips = wrapper.findAll('.chip')
+    expect(chips).toHaveLength(2)
+    expect(wrapper.text()).toContain('React')
+    expect(wrapper.text()).toContain('Vue')
   })
 })

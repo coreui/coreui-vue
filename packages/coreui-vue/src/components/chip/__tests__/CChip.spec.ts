@@ -362,4 +362,30 @@ describe('CChip', () => {
     })
     expect(wrapper.classes()).toContain('chip-success')
   })
+
+  it('filter implies selectable and shows a check icon while selected', async () => {
+    const wrapper = mount(CChip, {
+      props: { filter: true },
+      slots: { default: 'Filter' },
+    })
+
+    expect(wrapper.attributes('aria-selected')).toBe('false')
+    expect(wrapper.find('.chip-check').exists()).toBe(false)
+
+    await wrapper.trigger('click')
+    expect(wrapper.classes()).toContain('active')
+    expect(wrapper.emitted('select')).toHaveLength(1)
+    expect(wrapper.find('.chip-check').exists()).toBe(true)
+
+    await wrapper.trigger('click')
+    expect(wrapper.find('.chip-check').exists()).toBe(false)
+  })
+
+  it('renders a custom selectedIcon for a filter chip', () => {
+    const wrapper = mount(CChip, {
+      props: { filter: true, selected: true, selectedIcon: '<i class="custom-check"></i>' },
+      slots: { default: 'Filter' },
+    })
+    expect(wrapper.find('.chip-check').exists()).toBe(true)
+  })
 })

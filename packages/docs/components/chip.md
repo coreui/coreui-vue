@@ -65,6 +65,22 @@ Use `.chip-img` for an image-like avatar or combine `CChip` with `CAvatar`.
 :::
 @[code vue](@example/chip/ChipAvatarsExample.vue)
 
+## Variants
+
+Use `color` to apply theme color variants to your chips. Chips are subtle by default as this allows for a clear, themed active state.
+
+:::demo
+<ChipColorVariantsExample />
+:::
+@[code vue](@example/chip/ChipColorVariantsExample.vue)
+
+Combine `variant="outline"` with a `color` for outline color variants.
+
+:::demo
+<ChipOutlineVariantsExample />
+:::
+@[code vue](@example/chip/ChipOutlineVariantsExample.vue)
+
 ## Sizes
 
 Use `size="sm"` or `size="lg"` for different sizes.
@@ -132,21 +148,23 @@ Disable chips to prevent interaction.
 
 ## Keyboard behavior
 
-Chips support keyboard navigation when they are `selectable` and/or `removable`.
+A standalone chip handles its own selection and removal from the keyboard when it is `selectable` and/or `removable`. Roving focus between chips (arrow keys, <kbd>Home</kbd>/<kbd>End</kbd>) is provided by the parent [Chip Set](/components/chip-set.html) container.
 
 ### When a chip is focused
 
-- **Enter** / **Space**: toggle selection when `selectable` is enabled
-- **Backspace** / **Delete**: close chip when `removable` is enabled
-- **ArrowLeft**: move focus to previous chip
-- **ArrowRight**: move focus to next chip
-- **Home**: move focus to the first chip in the container
-- **End**: move focus to the last chip in the container
+| Key | Action |
+| --- | --- |
+| `Enter` / `Space` | Toggle selection (only when `selectable` is enabled) |
+| `Backspace` / `Delete` | Close chip when `removable` is enabled |
+
+When chips are grouped in a [Chip Set](/components/chip-set.html), the arrow keys, <kbd>Home</kbd>, and <kbd>End</kbd> move focus between chips, and focus moves to a neighboring chip after one is removed.
 
 ### Mouse interaction
 
-- **Click chip**: toggle selection when `selectable` is enabled
-- **Click remove button**: close chip when `removable` is enabled
+| Action | Effect |
+| --- | --- |
+| Click chip | Toggle selection (only when `selectable` is enabled) |
+| Click remove button | Close chip (only when `removable` is enabled) |
 
 ## Accessibility
 
@@ -189,6 +207,8 @@ return <CChip :style="vars">...</CChip>
   import ChipOutlineExample from '@example/chip/ChipOutlineExample.vue'
   import ChipIconsExample from '@example/chip/ChipIconsExample.vue'
   import ChipAvatarsExample from '@example/chip/ChipAvatarsExample.vue'
+  import ChipColorVariantsExample from '@example/chip/ChipColorVariantsExample.vue'
+  import ChipOutlineVariantsExample from '@example/chip/ChipOutlineVariantsExample.vue'
   import ChipSizesExample from '@example/chip/ChipSizesExample.vue'
   import ChipActiveExample from '@example/chip/ChipActiveExample.vue'
   import ChipClickableExample from '@example/chip/ChipClickableExample.vue'
