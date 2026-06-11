@@ -1,4 +1,4 @@
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, inject, onMounted, watch } from 'vue'
 
 import { CLink } from '../link/CLink'
 
@@ -26,6 +26,23 @@ const CNavLink = defineComponent({
     href: String,
   },
   setup(props, { slots }) {
+    const openBranch = inject<(() => void) | undefined>('cNavGroupOpenBranch', undefined)
+
+    onMounted(() => {
+      if (props.active && openBranch) {
+        openBranch()
+      }
+    })
+
+    watch(
+      () => props.active,
+      (active, previous) => {
+        if (active && !previous && openBranch) {
+          openBranch()
+        }
+      }
+    )
+
     return () =>
       h(
         CLink,
@@ -38,7 +55,7 @@ const CNavLink = defineComponent({
         },
         {
           default: () => slots.default && slots.default(),
-        },
+        }
       )
   },
 })

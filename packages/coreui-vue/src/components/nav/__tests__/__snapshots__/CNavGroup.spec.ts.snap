@@ -12,7 +12,7 @@ exports[`Loads and display CNavGroup component renders correctly 1`] = `
 "<li class="nav-group">
   <!---->
   <transition-stub appear="false" persisted="false" css="false">
-    <!---->
+    <ul class="nav-group-items" style="display: none;"></ul>
   </transition-stub>
 </li>"
 `;

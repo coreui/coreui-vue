@@ -1,16 +1,18 @@
 import {
   computed,
   defineComponent,
+  getCurrentInstance,
   h,
   inject,
-  onMounted,
   provide,
   Ref,
   ref,
   RendererElement,
   Transition,
   useId,
+  vShow,
   watch,
+  withDirectives,
 } from 'vue'
 
 import { executeAfterTransition } from '../../utils/transition'
@@ -30,7 +32,8 @@ const CNavGroup = defineComponent({
      */
     compact: Boolean,
     /**
-     * Show nav group items.
+     * Show nav group items. Acts as the initial state on its own, or as the controlled value
+     * when paired with a `v-model:visible` / `@update:visible` listener.
      */
     visible: {
       type: Boolean,
@@ -40,21 +43,26 @@ const CNavGroup = defineComponent({
   emits: ['update:visible', 'visible-change'],
   setup(props, { slots, emit }) {
     const key = useId()
+    const instance = getCurrentInstance()
+    const hasUpdateListener = Boolean(instance?.vnode.props?.['onUpdate:visible'])
 
     const parentActiveKey = inject<Ref<string | undefined> | undefined>(
       'cNavGroupActiveKey',
-      undefined,
+      undefined
     )
     const parentSetActiveKey = inject<((key?: string) => void) | undefined>(
       'cNavGroupSetActiveKey',
-      undefined,
+      undefined
     )
+    const parentOpenBranch = inject<(() => void) | undefined>('cNavGroupOpenBranch', undefined)
+
+    const controlled = computed(() => props.visible !== undefined && hasUpdateListener)
 
     const internal = ref(Boolean(props.visible))
 
     const visible = computed(() => {
-      if (props.visible !== undefined) {
-        return props.visible
+      if (controlled.value) {
+        return props.visible as boolean
       }
 
       if (parentActiveKey) {
@@ -70,23 +78,62 @@ const CNavGroup = defineComponent({
       activeGroupKey.value = value
     })
 
-    const showClass = ref(visible.value)
+    const openBranch = () => {
+      parentSetActiveKey?.(key)
+      parentOpenBranch?.()
+    }
+    provide('cNavGroupOpenBranch', openBranch)
 
-    onMounted(() => {
-      if (props.visible && parentSetActiveKey) {
-        parentSetActiveKey(key)
+    // Seed the accordion / local state from the `visible` prop: opens default-open groups and
+    // follows later changes (and keeps controlled groups in sync). Watching `props.visible`
+    // keeps this from re-running on accordion changes, so a default-open group can be collapsed
+    // manually.
+    watch(
+      () => props.visible,
+      (value) => {
+        if (value === undefined) {
+          return
+        }
+
+        if (parentSetActiveKey) {
+          if (value) {
+            parentSetActiveKey(key)
+          } else if (parentActiveKey && parentActiveKey.value === key) {
+            parentSetActiveKey(undefined)
+          }
+        } else {
+          internal.value = value
+        }
+      },
+      { immediate: true }
+    )
+
+    // The items stay mounted (so nested active links can open their ancestors), so the `show`
+    // class drives their visibility. Add it as soon as the group is visible; the leave
+    // transition removes it after the collapse finishes (`handleAfterLeave`).
+    const showClass = ref(visible.value)
+    watch(visible, (value) => {
+      if (value) {
+        showClass.value = true
       }
     })
 
-    watch(visible, (value) => {
-      if (props.visible !== undefined && parentSetActiveKey) {
-        if (value) {
-          parentSetActiveKey(key)
-        } else if (parentActiveKey && parentActiveKey.value === key) {
-          parentSetActiveKey(undefined)
+    // Accordion: when another branch opens, a controlled group must close too. As its
+    // visibility is owned by the parent, request the change through `update:visible`.
+    watch(
+      () => parentActiveKey?.value,
+      (activeKey) => {
+        if (!controlled.value || !props.visible) {
+          return
+        }
+
+        if (activeKey !== undefined && activeKey !== key) {
+          emit('update:visible', false)
         }
       }
+    )
 
+    watch(visible, (value) => {
       emit('visible-change', value)
     })
 
@@ -96,11 +143,11 @@ const CNavGroup = defineComponent({
       const next = !visible.value
       emit('update:visible', next)
 
-      if (props.visible !== undefined) {
+      if (controlled.value) {
         return
       }
 
-      if (parentActiveKey && parentSetActiveKey) {
+      if (parentSetActiveKey) {
         parentSetActiveKey(next ? key : undefined)
       } else {
         internal.value = next
@@ -156,7 +203,7 @@ const CNavGroup = defineComponent({
                 href: '#',
                 onClick: handleTogglerClick,
               },
-              slots.togglerContent && slots.togglerContent(),
+              slots.togglerContent && slots.togglerContent()
             ),
           h(
             Transition,
@@ -171,22 +218,24 @@ const CNavGroup = defineComponent({
             },
             {
               default: () =>
-                visible.value &&
-                h(
-                  props.as === 'div' ? 'div' : 'ul',
-                  {
-                    class: [
-                      'nav-group-items',
-                      {
-                        compact: props.compact,
-                      },
-                    ],
-                  },
-                  slots.default && slots.default(),
+                withDirectives(
+                  h(
+                    props.as === 'div' ? 'div' : 'ul',
+                    {
+                      class: [
+                        'nav-group-items',
+                        {
+                          compact: props.compact,
+                        },
+                      ],
+                    },
+                    slots.default && slots.default()
+                  ),
+                  [[vShow, visible.value]]
                 ),
-            },
+            }
           ),
-        ],
+        ]
       )
   },
 })
