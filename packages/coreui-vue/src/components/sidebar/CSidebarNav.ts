@@ -10,6 +10,21 @@ const CSidebarNav = defineComponent({
       type: [Object, String] as PropType<string | Component>,
       default: 'ul',
     },
+    /**
+     * Make navigation more compact by cutting link padding in half.
+     *
+     * @since 5.9.0
+     */
+    compact: Boolean,
+    /**
+     * Sets the navigation variant.
+     *
+     * @since 5.9.0
+     */
+    variant: {
+      type: String as PropType<'tree'>,
+      default: undefined,
+    },
   },
   setup(props, { slots }) {
     const activeGroupKey = ref<string>()
@@ -22,7 +37,13 @@ const CSidebarNav = defineComponent({
       h(
         props.as,
         {
-          class: 'sidebar-nav',
+          class: [
+            'sidebar-nav',
+            {
+              compact: props.compact,
+              'sidebar-nav-tree': props.variant === 'tree',
+            },
+          ],
         },
         {
           default: () => slots.default && slots.default(),
