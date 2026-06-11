@@ -87,6 +87,7 @@ export default defineUserConfig({
     }),
     registerComponentsPlugin({
       components: {
+        AddedIn: path.resolve(__dirname, './src/client/components/AddedIn.vue'),
         Callout: path.resolve(__dirname, './src/client/components/Callout.vue'),
         ScssDocs: path.resolve(__dirname, './src/client/components/ScssDocs.vue'),
       },
