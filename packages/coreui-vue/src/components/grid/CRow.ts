@@ -85,7 +85,7 @@ const CRow = defineComponent({
         {
           class: ['row', repsonsiveClassNames],
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

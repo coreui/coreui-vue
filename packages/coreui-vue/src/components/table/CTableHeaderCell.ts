@@ -23,7 +23,7 @@ const CTableHeaderCell = defineComponent({
             },
           ],
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

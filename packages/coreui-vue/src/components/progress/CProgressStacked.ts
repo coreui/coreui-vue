@@ -11,7 +11,7 @@ const CProgressStacked = defineComponent({
         {
           class: 'progress-stacked',
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

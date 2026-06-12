@@ -29,7 +29,7 @@ const CCardImage = defineComponent({
         {
           class: `card-img${props.orientation ? `-${props.orientation}` : ''}`,
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

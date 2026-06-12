@@ -18,7 +18,7 @@ export const CAlertHeading = defineComponent({
         {
           class: 'alert-heading',
         },
-        slots,
+        slots
       )
   },
 })

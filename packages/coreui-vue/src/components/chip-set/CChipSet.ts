@@ -114,7 +114,7 @@ const CChipSet = defineComponent({
         if (props.chips) {
           emit(
             'update:chips',
-            props.chips.filter((item) => itemValue(item) !== value),
+            props.chips.filter((item) => itemValue(item) !== value)
           )
         }
         emit('remove', value)
@@ -132,7 +132,7 @@ const CChipSet = defineComponent({
           ...(props.disabled && { 'aria-disabled': true }),
           onKeydown: handleKeydown,
         },
-        props.chips ? chipsFromData(props.chips) : slots.default && slots.default(),
+        props.chips ? chipsFromData(props.chips) : slots.default && slots.default()
       )
   },
 })

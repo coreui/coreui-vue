@@ -9,7 +9,7 @@ const CCarouselCaption = defineComponent({
         {
           class: 'carousel-caption',
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

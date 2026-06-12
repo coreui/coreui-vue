@@ -44,7 +44,7 @@ const CTab = defineComponent({
           onClick: () => setActiveItemKey(props.itemKey),
           onFocus: () => setActiveItemKey(props.itemKey),
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

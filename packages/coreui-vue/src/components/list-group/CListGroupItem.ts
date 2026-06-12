@@ -48,7 +48,7 @@ const CListGroupItem = defineComponent({
           ...(props.active && { 'aria-current': true }),
           ...(props.disabled && { 'aria-disabled': true }),
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

@@ -54,7 +54,6 @@ describe(`Customize ${ComponentName} component`, () => {
   })
 })
 
-
 describe(`Customize (number two) ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapperTwo.html()).toMatchSnapshot()

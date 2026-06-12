@@ -114,7 +114,7 @@ const CCol = defineComponent({
         {
           class: [repsonsiveClassNames.length > 0 ? repsonsiveClassNames : 'col'],
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

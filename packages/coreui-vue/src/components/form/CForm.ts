@@ -13,7 +13,7 @@ const CForm = defineComponent({
       h(
         'form',
         { class: [{ ['was-validated']: props.validated }] },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

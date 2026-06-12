@@ -170,10 +170,10 @@ const CFormSelect = defineComponent({
                           }),
                         }),
                       },
-                      typeof option === 'string' ? option : option.label,
+                      typeof option === 'string' ? option : option.label
                     )
                   })
-                : slots.default && slots.default(),
+                : slots.default && slots.default()
             ),
           ...(slots.feedback && { feedback: () => slots.feedback && slots.feedback() }),
           ...(slots.feedbackInvalid && {
@@ -184,7 +184,7 @@ const CFormSelect = defineComponent({
           }),
           ...(slots.label && { label: () => slots.label && slots.label() }),
           ...(slots.text && { text: () => slots.text && slots.text() }),
-        },
+        }
       )
   },
 })

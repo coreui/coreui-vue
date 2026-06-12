@@ -13,8 +13,8 @@ const CAccordionHeader = defineComponent({
           {},
           {
             default: () => slots.default && slots.default(),
-          },
-        ),
+          }
+        )
       )
   },
 })

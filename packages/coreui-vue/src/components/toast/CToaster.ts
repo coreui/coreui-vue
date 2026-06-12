@@ -43,7 +43,7 @@ const CToaster = defineComponent({
             },
           ],
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

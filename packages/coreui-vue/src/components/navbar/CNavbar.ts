@@ -86,9 +86,9 @@ const CNavbar = defineComponent({
           ? h(
               'div',
               { class: [`container${props.container === true ? '' : '-' + props.container}`] },
-              slots.default && slots.default(),
+              slots.default && slots.default()
             )
-          : slots.default && slots.default(),
+          : slots.default && slots.default()
       )
   },
 })

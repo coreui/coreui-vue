@@ -101,8 +101,8 @@ const CProgress = defineComponent({
                 value: props.value,
                 variant: props.variant,
               },
-              () => slots.default && slots.default(),
-            ),
+              () => slots.default && slots.default()
+            )
       )
   },
 })

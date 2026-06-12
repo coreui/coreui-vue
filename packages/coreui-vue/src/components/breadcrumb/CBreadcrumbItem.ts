@@ -28,7 +28,7 @@ const CBreadcrumbItem = defineComponent({
         },
         props.href
           ? h('a', { href: props.href }, slots.default && slots.default())
-          : slots.default && slots.default(),
+          : slots.default && slots.default()
       )
   },
 })

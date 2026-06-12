@@ -8,7 +8,7 @@ export const getAlignmentClassNames = (alignment: Alignments) => {
   if (typeof alignment === 'object') {
     for (const key in alignment) {
       classNames.push(
-        `dropdown-menu${key === 'xs' ? '' : `-${key}`}-${alignment[key as keyof Breakpoints]}`,
+        `dropdown-menu${key === 'xs' ? '' : `-${key}`}-${alignment[key as keyof Breakpoints]}`
       )
     }
   }
@@ -24,7 +24,7 @@ export const getPlacement = (
   placement: Placement,
   direction: string | undefined,
   alignment: Alignments | string | undefined,
-  isRTL: boolean,
+  isRTL: boolean
 ): Placements => {
   let _placement = placement
 

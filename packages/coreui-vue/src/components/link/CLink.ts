@@ -49,7 +49,7 @@ const CLink = defineComponent({
           }),
           href: props.href,
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

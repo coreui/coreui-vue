@@ -23,7 +23,6 @@ const CToastClose = defineComponent({
     'close',
   ],
   setup(props: CCloseButtonProps, { slots, emit }) {
-    // eslint-disable-next-line no-unused-vars
     const updateVisible = inject('updateVisible') as (visible: boolean) => void
     const handleClose = () => {
       emit('close')
@@ -38,7 +37,7 @@ const CToastClose = defineComponent({
                 handleClose()
               },
             },
-            () => slots.default && slots.default(),
+            () => slots.default && slots.default()
           )
         : h(CCloseButton, {
             ...props,

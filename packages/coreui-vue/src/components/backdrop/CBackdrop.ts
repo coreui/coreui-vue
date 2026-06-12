@@ -27,7 +27,7 @@ const CBackdrop = defineComponent({
           props.visible &&
           h('div', {
             class: 'fade',
-          }),
+          })
       )
   },
 })

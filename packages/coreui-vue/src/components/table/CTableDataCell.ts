@@ -45,7 +45,7 @@ const CTableDataCell = defineComponent({
           ],
           ...(props.scope && { scope: props.scope }),
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

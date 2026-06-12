@@ -81,7 +81,7 @@ const CBadge = defineComponent({
             props.shape,
           ],
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

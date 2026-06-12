@@ -51,9 +51,9 @@ const CDropdownMenu = defineComponent({
               },
               props.as === 'ul'
                 ? slots.default && slots.default().map((vnode) => h('li', {}, vnode))
-                : slots.default && slots.default(),
+                : slots.default && slots.default()
             ),
-        },
+        }
       )
   },
 })

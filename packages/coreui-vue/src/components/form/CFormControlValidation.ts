@@ -56,7 +56,7 @@ const CFormControlValidation = defineComponent({
           },
           {
             default: () => (slots.feedback && slots.feedback()) || props.feedback,
-          },
+          }
         ),
       (props.feedbackInvalid || slots.feedbackInvalid) &&
         h(
@@ -69,7 +69,7 @@ const CFormControlValidation = defineComponent({
           {
             default: () =>
               (slots.feedbackInvalid && slots.feedbackInvalid()) || props.feedbackInvalid,
-          },
+          }
         ),
       (props.feedbackValid || slots.feedbackValid) &&
         h(
@@ -80,7 +80,7 @@ const CFormControlValidation = defineComponent({
           },
           {
             default: () => (slots.feedbackValid && slots.feedbackValid()) || props.feedbackValid,
-          },
+          }
         ),
     ]
   },

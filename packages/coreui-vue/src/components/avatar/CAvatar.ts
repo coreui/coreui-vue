@@ -79,7 +79,7 @@ const CAvatar = defineComponent({
             ? h('img', { src: props.src, class: 'avatar-img' })
             : slots.default && slots.default(),
           props.status && h('span', { class: ['avatar-status', `bg-${props.status}`] }),
-        ],
+        ]
       )
   },
 })

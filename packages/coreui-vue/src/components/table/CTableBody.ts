@@ -23,7 +23,7 @@ const CTableBody = defineComponent({
             },
           ],
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

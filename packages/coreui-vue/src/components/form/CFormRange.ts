@@ -67,7 +67,7 @@ const CFormRange = defineComponent({
           },
           {
             default: () => (slots.label && slots.label()) || props.label,
-          },
+          }
         ),
       h(
         'input',
@@ -83,7 +83,7 @@ const CFormRange = defineComponent({
           type: 'range',
           value: props.modelValue,
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       ),
     ]
   },

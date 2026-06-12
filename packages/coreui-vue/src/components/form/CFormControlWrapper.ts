@@ -71,7 +71,7 @@ const CFormControlWrapper = defineComponent({
           ...(slots.feedbackValid && {
             feedbackValid: () => slots.feedbackInvalid && slots.feedbackInvalid(),
           }),
-        },
+        }
       )
 
     return () =>
@@ -91,7 +91,7 @@ const CFormControlWrapper = defineComponent({
                 {
                   default: () =>
                     (slots.label && slots.label()) || props.label || props.floatingLabel,
-                },
+                }
               ),
               (props.text || slots.text) &&
                 h(
@@ -101,10 +101,10 @@ const CFormControlWrapper = defineComponent({
                   },
                   {
                     default: () => (slots.text && slots.text()) || props.text,
-                  },
+                  }
                 ),
               formControlValidation(),
-            ],
+            ]
           )
         : [
             (props.label || slots.label) &&
@@ -115,7 +115,7 @@ const CFormControlWrapper = defineComponent({
                 },
                 {
                   default: () => (slots.label && slots.label()) || props.label,
-                },
+                }
               ),
             slots.default && slots.default(),
             (props.text || slots.text) &&
@@ -126,7 +126,7 @@ const CFormControlWrapper = defineComponent({
                 },
                 {
                   default: () => (slots.text && slots.text()) || props.text,
-                },
+                }
               ),
             formControlValidation(),
           ]

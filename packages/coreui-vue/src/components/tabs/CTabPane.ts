@@ -74,10 +74,10 @@ const CTabPane = defineComponent({
                 ],
                 ref: tabPaneRef,
               },
-              slots.default && slots.default(),
+              slots.default && slots.default()
             ),
-            [[vShow, props.visible]],
-          ),
+            [[vShow, props.visible]]
+          )
       )
   },
 })

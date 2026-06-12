@@ -54,7 +54,7 @@ const CWidgetStatsD = defineComponent({
                   },
                 ],
               },
-              () => [slots.icon && slots.icon(), slots.chart && slots.chart()],
+              () => [slots.icon && slots.icon(), slots.chart && slots.chart()]
             ),
             h(
               CCardBody,
@@ -75,16 +75,16 @@ const CWidgetStatsD = defineComponent({
                           h(
                             CCol,
                             { class: 'text-uppercase text-body-secondary small' },
-                            () => value.title,
+                            () => value.title
                           ),
                         ],
-                      },
+                      }
                     ),
                   ]),
-              },
+              }
             ),
           ],
-        },
+        }
       )
   },
 })

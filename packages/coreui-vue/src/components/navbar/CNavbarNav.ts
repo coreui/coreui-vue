@@ -19,7 +19,7 @@ const CNavbarNav = defineComponent({
           class: 'navbar-nav',
           role: 'navigation',
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

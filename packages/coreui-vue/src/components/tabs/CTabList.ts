@@ -23,7 +23,14 @@ const CTabList = defineComponent({
     variant: {
       type: String,
       validator: (value: string) => {
-        return ['enclosed', 'enclosed-pills', 'pills', 'tabs', 'underline', 'underline-border'].includes(value)
+        return [
+          'enclosed',
+          'enclosed-pills',
+          'pills',
+          'tabs',
+          'underline',
+          'underline-border',
+        ].includes(value)
       },
     },
   },
@@ -42,9 +49,9 @@ const CTabList = defineComponent({
       ) {
         event.preventDefault()
         const target = event.target as HTMLElement
-        // eslint-disable-next-line unicorn/prefer-spread
+
         const items: HTMLElement[] = Array.from(
-          tabListRef.value.querySelectorAll('.nav-link:not(.disabled):not(:disabled)'),
+          tabListRef.value.querySelectorAll('.nav-link:not(.disabled):not(:disabled)')
         )
 
         let nextActiveElement
@@ -56,7 +63,7 @@ const CTabList = defineComponent({
             items,
             target,
             event.key === 'ArrowDown' || event.key === 'ArrowRight',
-            true,
+            true
           )
         }
 
@@ -82,7 +89,7 @@ const CTabList = defineComponent({
           onKeydown: (event) => handleKeydown(event),
           ref: tabListRef,
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

@@ -10,7 +10,7 @@ const CBreadcrumb = defineComponent({
         {
           'aria-label': 'breadcrumb',
         },
-        h('ol', { class: ['breadcrumb', attrs.class] }, slots.default && slots.default()),
+        h('ol', { class: ['breadcrumb', attrs.class] }, slots.default && slots.default())
       )
   },
 })

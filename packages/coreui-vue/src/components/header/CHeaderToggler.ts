@@ -11,7 +11,7 @@ const CHeaderToggler = defineComponent({
           type: 'button',
           'aria-label': 'Toggle navigation',
         },
-        slots.default ? slots.default() : h('span', { class: ['header-toggler-icon'] }),
+        slots.default ? slots.default() : h('span', { class: ['header-toggler-icon'] })
       )
   },
 })

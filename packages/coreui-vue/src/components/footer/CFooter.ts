@@ -27,7 +27,7 @@ const CFooter = defineComponent({
       h(
         props.as,
         { class: ['footer', { [`footer-${props.position}`]: props.position }] },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

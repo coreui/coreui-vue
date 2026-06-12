@@ -53,16 +53,11 @@ export const CSearchButton = defineComponent({
     const shortcuts = computed(() => parseShortcut(props.shortcut))
     const preferredShortcut = computed(() => getPreferredShortcut(shortcuts.value))
     const shortcutTokens = computed(() =>
-      formatShortcutTokens(preferredShortcut.value?.shortcut || ''),
+      formatShortcutTokens(preferredShortcut.value?.shortcut || '')
     )
 
     const handleShortcut = (event: KeyboardEvent) => {
-      if (
-        props.disabled ||
-        event.defaultPrevented ||
-        event.repeat ||
-        shouldIgnoreShortcut(event)
-      ) {
+      if (props.disabled || event.defaultPrevented || event.repeat || shouldIgnoreShortcut(event)) {
         return
       }
 
@@ -143,7 +138,7 @@ export const CSearchButton = defineComponent({
                       h('path', {
                         fill: 'currentColor',
                         d: 'm479.6 399.716-81.084-81.084-62.368-25.767A175 175 0 0 0 368 192c0-97.047-78.953-176-176-176S16 94.953 16 192s78.953 176 176 176a175.03 175.03 0 0 0 101.619-32.377l25.7 62.2 81.081 81.088a56 56 0 1 0 79.2-79.195M48 192c0-79.4 64.6-144 144-144s144 64.6 144 144-64.6 144-144 144S48 271.4 48 192m408.971 264.284a24.03 24.03 0 0 1-33.942 0l-76.572-76.572-23.894-57.835 57.837 23.894 76.573 76.572a24.03 24.03 0 0 1-.002 33.941',
-                      }),
+                      })
                     ),
                 h('span', { class: 'search-button-placeholder' }, props.placeholder),
               ],
@@ -158,11 +153,11 @@ export const CSearchButton = defineComponent({
                   'data-coreui-search-button-key': key,
                   key,
                 },
-                key,
-              ),
-            ),
+                key
+              )
+            )
           ),
-        ],
+        ]
       )
   },
 })

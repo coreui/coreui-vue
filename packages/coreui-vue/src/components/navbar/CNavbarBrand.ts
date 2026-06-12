@@ -24,7 +24,7 @@ const CNavbarBrand = defineComponent({
           class: 'navbar-brand',
           href: props.href,
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

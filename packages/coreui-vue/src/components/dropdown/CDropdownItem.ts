@@ -38,7 +38,7 @@ const CDropdownItem = defineComponent({
         },
         {
           default: () => slots.default && slots.default(),
-        },
+        }
       )
   },
 })

@@ -35,7 +35,7 @@ const CFormFeedback = defineComponent({
             },
           ],
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

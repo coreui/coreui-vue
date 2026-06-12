@@ -9,7 +9,7 @@ const CTabs = defineComponent({
     activeItemKey: {
       type: [Number, String],
       required: true,
-    }
+    },
   },
   emits: [
     /**
@@ -29,7 +29,7 @@ const CTabs = defineComponent({
       (value) => {
         activeItemKey.value = value
         emit('change', value)
-      },
+      }
     )
 
     provide('activeItemKey', activeItemKey)

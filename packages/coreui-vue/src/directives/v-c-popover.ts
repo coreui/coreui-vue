@@ -19,7 +19,7 @@ const addPopoverElement = (
   el: HTMLElement,
   popover: HTMLDivElement,
   popperOptions: Partial<Options>,
-  uID: string,
+  uID: string
 ) => {
   el.setAttribute('aria-describedby', uID)
   document.body.appendChild(popover)
@@ -41,7 +41,7 @@ const togglePopoverElement = (
   el: HTMLElement,
   popover: HTMLDivElement,
   popperOptions: Partial<Options>,
-  uID: string,
+  uID: string
 ) => {
   const popperElement = document.getElementById(popover.id)
   if (popperElement && popperElement.classList.contains('show')) {
@@ -57,7 +57,7 @@ export default {
   mounted(el: HTMLElement, binding: DirectiveBinding): void {
     const { getUID } = useUniqueId('popover')
     const value = binding.value
-    const content = typeof value === 'string' ? value : value.content ?? ''
+    const content = typeof value === 'string' ? value : (value.content ?? '')
     const header = value.header ?? ''
     const trigger = value.trigger ?? 'click'
 

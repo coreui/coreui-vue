@@ -19,7 +19,7 @@ const CHeaderNav = defineComponent({
           class: 'header-nav',
           role: 'navigation',
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })
