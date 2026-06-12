@@ -3,7 +3,7 @@
     <CSearchButton
       aria-label="Open command palette"
       placeholder="Command palette"
-      shortcut="meta+k,ctrl+k"
+      shortcut="meta+i,ctrl+i"
       @trigger="count++"
     />
     <CAlert color="info" class="mt-3 mb-0">
