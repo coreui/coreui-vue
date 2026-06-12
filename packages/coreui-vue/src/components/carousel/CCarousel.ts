@@ -99,7 +99,7 @@ const CCarousel = defineComponent({
       if (typeof props.interval === 'number') {
         timeout.value = setTimeout(
           () => nextItemWhenVisible(),
-          typeof customInterval.value === 'number' ? customInterval.value : props.interval,
+          typeof customInterval.value === 'number' ? customInterval.value : props.interval
         )
       }
     }
@@ -206,7 +206,7 @@ const CCarousel = defineComponent({
                   ...(active.value === index && { class: 'active' }),
                   onClick: () => handleIndicatorClick(index),
                 })
-              }),
+              })
             ),
           h(
             'div',
@@ -216,7 +216,7 @@ const CCarousel = defineComponent({
                 active: active.value === index ? true : false,
                 direction: direction.value,
               })
-            }),
+            })
           ),
           props.controls && [
             h(
@@ -230,7 +230,7 @@ const CCarousel = defineComponent({
               [
                 h('span', { class: 'carousel-control-prev-icon', ariaHidden: 'true' }),
                 h('span', { class: 'visually-hidden' }, 'Previous'),
-              ],
+              ]
             ),
             h(
               'button',
@@ -243,10 +243,10 @@ const CCarousel = defineComponent({
               [
                 h('span', { class: 'carousel-control-next-icon', ariaHidden: 'true' }),
                 h('span', { class: 'visually-hidden' }, 'Next'),
-              ],
+              ]
             ),
           ],
-        ],
+        ]
       )
   },
 })

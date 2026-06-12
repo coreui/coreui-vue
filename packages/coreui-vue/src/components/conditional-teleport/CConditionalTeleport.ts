@@ -1,7 +1,7 @@
 import { defineComponent, h, PropType, ref, Teleport, watch } from 'vue'
 
 const getContainer = (
-  container?: HTMLElement | (() => HTMLElement) | string,
+  container?: HTMLElement | (() => HTMLElement) | string
 ): HTMLElement | string => {
   if (container) {
     return typeof container === 'function' ? container() : container
@@ -39,7 +39,7 @@ const CConditionalTeleport = defineComponent({
         if (props.teleport) {
           container.value = getContainer(props.container)
         }
-      },
+      }
     )
 
     return () =>
@@ -51,7 +51,7 @@ const CConditionalTeleport = defineComponent({
         },
         {
           default: () => slots.default && slots.default(),
-        },
+        }
       )
   },
 })

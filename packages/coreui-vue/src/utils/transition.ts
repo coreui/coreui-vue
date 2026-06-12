@@ -7,7 +7,7 @@ const execute = (callback: () => void) => {
 export const executeAfterTransition = (
   callback: () => void,
   transitionElement: HTMLElement,
-  waitForTransition = true,
+  waitForTransition = true
 ) => {
   if (!waitForTransition) {
     execute(callback)

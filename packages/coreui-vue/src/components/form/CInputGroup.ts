@@ -27,7 +27,7 @@ const CInputGroup = defineComponent({
             },
           ],
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

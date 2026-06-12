@@ -47,7 +47,7 @@ const uniqueValues = (values: string[]): string[] => [
 
 const resolveChipClassName = (
   chipClassName: ChipClassName | undefined,
-  value: string,
+  value: string
 ): string | undefined => {
   if (!chipClassName) {
     return undefined
@@ -198,17 +198,17 @@ const CChipInput = defineComponent({
   setup(props, { attrs, emit, expose, slots }) {
     const internalValues = ref<string[]>(
       uniqueValues(
-        props.defaultValue.length > 0 ? props.defaultValue : valuesFromSlot(slots.default?.()),
-      ),
+        props.defaultValue.length > 0 ? props.defaultValue : valuesFromSlot(slots.default?.())
+      )
     )
     const inputValue = ref('')
     const inputRef = ref<HTMLInputElement>()
     const generatedName = useId()
 
     const values = computed(() =>
-      props.modelValue !== undefined
-        ? uniqueValues(props.modelValue as string[])
-        : uniqueValues(internalValues.value)
+      props.modelValue === undefined
+        ? uniqueValues(internalValues.value)
+        : uniqueValues(props.modelValue as string[])
     )
 
     // CChipInput builds on the same engine as CChipSet: useChipSet owns selection
@@ -240,7 +240,7 @@ const CChipInput = defineComponent({
     }
 
     const canAddMore = computed(
-      () => props.maxChips === null || values.value.length < props.maxChips,
+      () => props.maxChips === null || values.value.length < props.maxChips
     )
 
     const add = (rawValue: string): boolean => {
@@ -339,13 +339,14 @@ const CChipInput = defineComponent({
         const parts = value.split(props.separator)
         const chipsToAdd = uniqueValues(parts.slice(0, -1))
 
-        const newChips = chipsToAdd.filter(chip => !values.value.includes(chip))
-        const availableSlots = props.maxChips !== null ? props.maxChips - values.value.length : Infinity
+        const newChips = chipsToAdd.filter((chip) => !values.value.includes(chip))
+        const availableSlots =
+          props.maxChips === null ? Infinity : props.maxChips - values.value.length
         const chipsToEmit = newChips.slice(0, availableSlots)
 
         if (chipsToEmit.length > 0) {
           const nextValues = [...values.value, ...chipsToEmit]
-          chipsToEmit.forEach(chip => emit('add', chip))
+          chipsToEmit.forEach((chip) => emit('add', chip))
           emitValuesChange(nextValues)
         }
 
@@ -372,13 +373,14 @@ const CChipInput = defineComponent({
       event.preventDefault()
       const chipsToAdd = uniqueValues(pastedData.split(props.separator))
 
-      const newChips = chipsToAdd.filter(chip => !values.value.includes(chip))
-      const availableSlots = props.maxChips !== null ? props.maxChips - values.value.length : Infinity
+      const newChips = chipsToAdd.filter((chip) => !values.value.includes(chip))
+      const availableSlots =
+        props.maxChips === null ? Infinity : props.maxChips - values.value.length
       const chipsToEmit = newChips.slice(0, availableSlots)
 
       if (chipsToEmit.length > 0) {
         const nextValues = [...values.value, ...chipsToEmit]
-        chipsToEmit.forEach(chip => emit('add', chip))
+        chipsToEmit.forEach((chip) => emit('add', chip))
         emitValuesChange(nextValues)
       }
 
@@ -442,7 +444,7 @@ const CChipInput = defineComponent({
               class: 'chip-input-label',
               for: props.id,
             },
-            props.label,
+            props.label
           ),
         ...chipsFromData(
           values.value.map((chipValue) => ({
@@ -450,7 +452,7 @@ const CChipInput = defineComponent({
             label: chipValue,
             ariaRemoveLabel: `Remove ${chipValue}`,
             class: resolveChipClassName(props.chipClassName, chipValue),
-          })),
+          }))
         ),
         h('input', {
           ref: inputRef,
@@ -492,7 +494,7 @@ const CChipInput = defineComponent({
           onClick: handleContainerClick,
           onKeydown: handleContainerKeydown,
         },
-        children,
+        children
       )
     }
   },

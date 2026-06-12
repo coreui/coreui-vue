@@ -49,7 +49,7 @@ const CWidgetStatsA = defineComponent({
                     { class: 'fs-4 fw-semibold' },
                     {
                       default: () => (slots.value && slots.value()) || props.value,
-                    },
+                    }
                   ),
                 (props.title || slots.title) &&
                   h(
@@ -57,21 +57,21 @@ const CWidgetStatsA = defineComponent({
                     {},
                     {
                       default: () => (slots.title && slots.title()) || props.title,
-                    },
+                    }
                   ),
               ]),
               /**
                * @slot Location for action component, ex. `<CDropdown>`.
                */
               slots.action && slots.action(),
-            ],
+            ]
           ),
           /**
            * @slot Location for chart component.
            */
           slots.chart && slots.chart(),
           slots.default && slots.default(),
-        ],
+        ]
       )
   },
 })

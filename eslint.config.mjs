@@ -29,9 +29,13 @@ export default typescriptEslint.config(
       'unicorn/filename-case': 'off',
       'unicorn/no-array-for-each': 'off',
       'unicorn/no-null': 'off',
+      'unicorn/no-useless-undefined': 'off',
+      'unicorn/prefer-at': 'off',
       'unicorn/prefer-dom-node-append': 'off',
       'unicorn/prefer-export-from': 'off',
+      'unicorn/prefer-global-this': 'off',
       'unicorn/prefer-query-selector': 'off',
+      'unicorn/prefer-spread': 'off',
       'unicorn/prevent-abbreviations': 'off',
       'vue/require-default-prop': 'off',
     },
@@ -72,5 +76,5 @@ export default typescriptEslint.config(
       strict: 'error',
     },
   },
-  eslintPluginPrettierRecommended,
+  eslintPluginPrettierRecommended
 )

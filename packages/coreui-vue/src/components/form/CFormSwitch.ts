@@ -109,9 +109,9 @@ const CFormSwitch = defineComponent({
               },
               {
                 default: () => props.label,
-              },
+              }
             ),
-        ],
+        ]
       )
   },
 })

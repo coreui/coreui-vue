@@ -54,9 +54,9 @@ const CNavItem = defineComponent({
               },
               {
                 default: () => slots.default && slots.default(),
-              },
+              }
             )
-          : slots.default && slots.default(),
+          : slots.default && slots.default()
       )
   },
 })

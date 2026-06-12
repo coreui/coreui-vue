@@ -282,9 +282,9 @@ const CFocusTrap = defineComponent({
       const vnodes = slots.default?.()
       const vnode = vnodes?.[0]
       if (!vnode) return null
-    
+
       const originalRef = (vnode.props as any)?.ref
-    
+
       return cloneVNode(vnode, {
         ref: (el) => {
           // `el` may be a component public instance (e.g. when the trapped node is wrapped in a

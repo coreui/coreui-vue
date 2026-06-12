@@ -47,9 +47,9 @@ const CPaginationItem = defineComponent({
               },
               {
                 default: () => slots.default && slots.default(),
-              },
+              }
             )
-          : h(component, { class: ['page-link'] }, slots.default && slots.default()),
+          : h(component, { class: ['page-link'] }, slots.default && slots.default())
       )
     }
   },

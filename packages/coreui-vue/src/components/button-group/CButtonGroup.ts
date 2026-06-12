@@ -29,7 +29,7 @@ const CButtonGroup = defineComponent({
             { [`btn-group-${props.size}`]: props.size },
           ],
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

@@ -142,7 +142,7 @@ const CDropdownToggle = defineComponent({
           event.preventDefault()
           setVisible(true, event)
         }
-      }
+      },
     }
 
     const togglerProps = computed(() => {
@@ -174,7 +174,7 @@ const CDropdownToggle = defineComponent({
                 togglerRef.value = el
               },
               ...triggers,
-            }),
+            })
           )
         : dropdownVariant === 'nav-item' && props.navLink
           ? h(
@@ -185,7 +185,7 @@ const CDropdownToggle = defineComponent({
                 role: 'button',
                 ref: dropdownToggleRef,
               },
-              { default: () => slots.default && slots.default() },
+              { default: () => slots.default && slots.default() }
             )
           : h(
               CButton,
@@ -204,7 +204,7 @@ const CDropdownToggle = defineComponent({
               () =>
                 props.split
                   ? h('span', { class: 'visually-hidden' }, props.splitLabel)
-                  : slots.default && slots.default(),
+                  : slots.default && slots.default()
             )
   },
 })

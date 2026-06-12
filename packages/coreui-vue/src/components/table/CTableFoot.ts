@@ -23,7 +23,7 @@ const CTableFoot = defineComponent({
             },
           ],
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

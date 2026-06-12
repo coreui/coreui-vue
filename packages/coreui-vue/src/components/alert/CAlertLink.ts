@@ -9,7 +9,7 @@ export const CAlertLink = defineComponent({
         {
           class: 'alert-link',
         },
-        slots,
+        slots
       )
   },
 })

@@ -101,10 +101,10 @@ const CCollapse = defineComponent({
                   { 'collapse-horizontal': props.horizontal, show: show.value },
                 ],
               },
-              slots.default && slots.default(),
+              slots.default && slots.default()
             ),
-            [[vVisible, props.visible]],
-          ),
+            [[vVisible, props.visible]]
+          )
       )
   },
 })

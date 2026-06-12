@@ -12,7 +12,7 @@ const CoreuiVue = {
     for (const key in Directives) {
       app.directive(
         (Directives as { [key: string]: any })[key]['name'],
-        (Directives as { [key: string]: any })[key],
+        (Directives as { [key: string]: any })[key]
       )
     }
   },

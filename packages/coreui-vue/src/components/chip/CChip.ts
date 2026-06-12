@@ -165,8 +165,8 @@ const CChip = defineComponent({
     const isFilter = computed(() => Boolean(props.filter ?? config('filter')))
     const isRemovable = computed(() => Boolean(props.removable ?? config('removable')))
     // A filter chip is selectable by definition.
-    const isSelectable = computed(
-      () => Boolean((props.selectable ?? config('selectable')) || isFilter.value),
+    const isSelectable = computed(() =>
+      Boolean((props.selectable ?? config('selectable')) || isFilter.value)
     )
     const removeIcon = computed(() => props.removeIcon ?? config('removeIcon'))
     const selectedIcon = computed(() => props.selectedIcon ?? config('selectedIcon'))
@@ -178,11 +178,11 @@ const CChip = defineComponent({
       if (coordinated.value) {
         return chipSet!.isSelected(props.value as string)
       }
-      return props.selected !== undefined ? Boolean(props.selected) : internalSelected.value
+      return props.selected === undefined ? internalSelected.value : Boolean(props.selected)
     })
 
-    const isFocusable = computed(
-      () => Boolean(!isDisabled.value && (isSelectable.value || isRemovable.value)),
+    const isFocusable = computed(() =>
+      Boolean(!isDisabled.value && (isSelectable.value || isRemovable.value))
     )
 
     const setSelectableState = (nextSelected: boolean, event: MouseEvent | KeyboardEvent): void => {
@@ -288,10 +288,7 @@ const CChip = defineComponent({
             'stroke-width': 2,
             'stroke-linecap': 'round',
           },
-          [
-            h('line', { x1: 4, y1: 4, x2: 12, y2: 12 }),
-            h('line', { x1: 12, y1: 4, x2: 4, y2: 12 }),
-          ],
+          [h('line', { x1: 4, y1: 4, x2: 12, y2: 12 }), h('line', { x1: 12, y1: 4, x2: 4, y2: 12 })]
         )
 
       const selectedIconVNode =
@@ -308,7 +305,7 @@ const CChip = defineComponent({
           },
           h('path', {
             d: 'M425.373 89.373 196 318.745 86.627 209.373l-45.254 45.254L196 409.255l274.627-274.628z',
-          }),
+          })
         )
 
       const children = [
@@ -327,7 +324,7 @@ const CChip = defineComponent({
               onClick: handleRemoveClick,
               tabindex: -1,
             },
-            removeIconVNode as VNode,
+            removeIconVNode as VNode
           ),
       ].filter(Boolean)
 
@@ -355,7 +352,7 @@ const CChip = defineComponent({
           onKeydown: handleKeydown,
           ...(props.as === 'button' && { disabled: isDisabled.value }),
         },
-        children,
+        children
       )
     }
   },

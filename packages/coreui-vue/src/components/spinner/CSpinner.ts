@@ -3,13 +3,13 @@ import { defineComponent, h } from 'vue'
 const CSpinner = defineComponent({
   name: 'CSpinner',
   props: {
-        /**
+    /**
      * Component used for the root node. Either a string to use a HTML element or a component.
      */
-        as: {
-          type: String,
-          default: 'div',
-        },
+    as: {
+      type: String,
+      default: 'div',
+    },
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
      *
@@ -75,7 +75,7 @@ const CSpinner = defineComponent({
           ],
           role: 'status',
         },
-        h('span', { class: ['visually-hidden'] }, props.visuallyHiddenLabel),
+        h('span', { class: ['visually-hidden'] }, props.visuallyHiddenLabel)
       )
   },
 })

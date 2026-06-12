@@ -29,7 +29,14 @@ const CNav = defineComponent({
     variant: {
       type: String,
       validator: (value: string) => {
-        return ['enclosed', 'enclosed-pills', 'pills', 'tabs', 'underline', 'underline-border'].includes(value)
+        return [
+          'enclosed',
+          'enclosed-pills',
+          'pills',
+          'tabs',
+          'underline',
+          'underline-border',
+        ].includes(value)
       },
     },
   },
@@ -48,7 +55,7 @@ const CNav = defineComponent({
           ],
           role: 'navigation',
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

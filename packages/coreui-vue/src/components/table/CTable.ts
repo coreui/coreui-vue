@@ -186,7 +186,7 @@ const CTable = defineComponent({
                 {},
                 {
                   default: () => props.caption || props.captionTop,
-                },
+                }
               ),
             props.columns &&
               h(
@@ -213,13 +213,13 @@ const CTable = defineComponent({
                                 },
                                 {
                                   default: () => getColumnLabel(column),
-                                },
-                              ),
+                                }
+                              )
                             ),
                         ],
-                      },
+                      }
                     ),
-                },
+                }
               ),
             props.items &&
               h(
@@ -252,15 +252,15 @@ const CTable = defineComponent({
                                       },
                                       {
                                         default: () => item[colName],
-                                      },
-                                    ),
+                                      }
+                                    )
                                 ),
                             ],
-                          },
-                        ),
+                          }
+                        )
                       ),
                   ],
-                },
+                }
               ),
             slots.default && slots.default(),
             props.footer &&
@@ -286,16 +286,16 @@ const CTable = defineComponent({
                                 },
                                 {
                                   default: () => (typeof item === 'object' ? item.label : item),
-                                },
-                              ),
+                                }
+                              )
                             ),
                         ],
-                      },
+                      }
                     ),
-                },
+                }
               ),
           ],
-        },
+        }
       )
     return () => [
       props.responsive
@@ -307,7 +307,7 @@ const CTable = defineComponent({
                   ? 'table-responsive'
                   : `table-responsive-${props.responsive}`,
             },
-            table(),
+            table()
           )
         : table(),
     ]

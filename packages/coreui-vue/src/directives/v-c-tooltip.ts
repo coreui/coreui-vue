@@ -18,7 +18,7 @@ const addTooltipElement = (
   el: HTMLElement,
   tooltip: HTMLDivElement,
   popperOptions: Partial<Options>,
-  uID: string,
+  uID: string
 ) => {
   el.setAttribute('aria-describedby', uID)
   document.body.appendChild(tooltip)
@@ -40,7 +40,7 @@ const toggleTooltipElement = (
   el: HTMLElement,
   tooltip: HTMLDivElement,
   popperOptions: Partial<Options>,
-  uID: string,
+  uID: string
 ) => {
   const popperElement = document.getElementById(tooltip.id)
   if (popperElement && popperElement.classList.contains('show')) {
@@ -55,7 +55,7 @@ export default {
   mounted(el: HTMLElement, binding: DirectiveBinding): void {
     const { getUID } = useUniqueId('tooltip')
     const value = binding.value
-    const content = typeof value === 'string' ? value : value.content ?? ''
+    const content = typeof value === 'string' ? value : (value.content ?? '')
     const trigger = value.trigger ?? 'hover'
 
     // Popper Config

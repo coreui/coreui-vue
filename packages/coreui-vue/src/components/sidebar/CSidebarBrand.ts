@@ -21,7 +21,7 @@ const CSidebarBrand = defineComponent({
       h(
         props.as ?? (props.href ? 'a' : 'div'),
         { class: 'sidebar-brand', href: props.href },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

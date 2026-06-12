@@ -12,7 +12,7 @@ const CAccordionBody = defineComponent({
         { class: 'accordion-collapse', id, visible: visible.value },
         {
           default: () => h('div', { class: ['accordion-body'] }, slots.default && slots.default()),
-        },
+        }
       )
   },
 })

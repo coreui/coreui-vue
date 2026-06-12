@@ -108,7 +108,7 @@ export const CButton = defineComponent({
           ...(component === 'button' && { type: props.type, disabled: props.disabled }),
           onClick: handleClick,
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

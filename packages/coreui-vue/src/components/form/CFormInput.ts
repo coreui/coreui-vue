@@ -168,7 +168,7 @@ const CFormInput = defineComponent({
                 type: props.type,
                 ...((props.modelValue || props.modelValue === 0) && { value: props.modelValue }),
               },
-              slots.default && slots.default(),
+              slots.default && slots.default()
             ),
           ...(slots.feedback && { feedback: () => slots.feedback && slots.feedback() }),
           ...(slots.feedbackInvalid && {
@@ -179,7 +179,7 @@ const CFormInput = defineComponent({
           }),
           ...(slots.label && { label: () => slots.label && slots.label() }),
           ...(slots.text && { text: () => slots.text && slots.text() }),
-        },
+        }
       )
   },
 })

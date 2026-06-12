@@ -135,7 +135,7 @@ const CFormCheck = defineComponent({
         if (props.modelValue.includes(props.value)) {
           emit(
             'update:modelValue',
-            props.modelValue.filter((value) => value !== props.value),
+            props.modelValue.filter((value) => value !== props.value)
           )
         } else {
           emit('update:modelValue', [...props.modelValue, props.value])
@@ -210,14 +210,14 @@ const CFormCheck = defineComponent({
             },
             {
               default: () => (slots.label && slots.label()) || props.label,
-            },
+            }
           )
         : h(
             CFormLabel,
             { class: 'form-check-label', ...(props.id && { for: props.id }) },
             {
               default: () => (slots.label && slots.label()) || props.label,
-            },
+            }
           )
 
     const formValidation = () => {
@@ -244,7 +244,7 @@ const CFormCheck = defineComponent({
                     customClassName: className,
                     ...(props.id && { for: props.id }),
                   },
-                  [formControl(), props.label],
+                  [formControl(), props.label]
                 ),
                 formValidation(),
               ]
@@ -253,7 +253,7 @@ const CFormCheck = defineComponent({
                 {
                   class: className,
                 },
-                [formControl(), props.label && formLabel(), formValidation()],
+                [formControl(), props.label && formLabel(), formValidation()]
               )
           : formControl()
   },

@@ -78,7 +78,7 @@ const CWidgetStatsC = defineComponent({
                       props.inverse ? 'text-white text-opacity-75' : 'text-body-secondary',
                     ],
                   },
-                  slots.icon && slots.icon(),
+                  slots.icon && slots.icon()
                 ),
               (props.value || slots.value) &&
                 h(
@@ -88,7 +88,7 @@ const CWidgetStatsC = defineComponent({
                   },
                   {
                     default: () => (slots.value && slots.value()) || props.value,
-                  },
+                  }
                 ),
               (props.title || slots.title) &&
                 h(
@@ -101,7 +101,7 @@ const CWidgetStatsC = defineComponent({
                   },
                   {
                     default: () => (slots.title && slots.title()) || props.title,
-                  },
+                  }
                 ),
               h(CProgress, {
                 class: 'my-2',
@@ -110,8 +110,8 @@ const CWidgetStatsC = defineComponent({
                 ...(props.progress && props.progress.value && { value: props.progress.value }),
                 white: props.inverse,
               }),
-            ],
-          ),
+            ]
+          )
       )
   },
 })

@@ -18,9 +18,16 @@ const CModalHeader = defineComponent({
     return () =>
       h('span', { class: 'modal-header' }, [
         slots.default && slots.default(),
-        props.closeButton && h(CCloseButton, { onClick: () => {
-          visible.value = false
-        } }, ''),
+        props.closeButton &&
+          h(
+            CCloseButton,
+            {
+              onClick: () => {
+                visible.value = false
+              },
+            },
+            ''
+          ),
       ])
   },
 })

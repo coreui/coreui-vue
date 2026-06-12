@@ -49,7 +49,7 @@ export const CAlert = defineComponent({
       () => props.visible,
       () => {
         visible.value = props.visible
-      },
+      }
     )
 
     const handleDismiss = () => {
@@ -91,9 +91,9 @@ export const CAlert = defineComponent({
                       handleDismiss()
                     },
                   }),
-              ],
+              ]
             ),
-        },
+        }
       )
   },
 })

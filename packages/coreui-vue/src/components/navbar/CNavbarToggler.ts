@@ -9,7 +9,7 @@ const CNavbarToggler = defineComponent({
         {
           class: 'navbar-toggler',
         },
-        slots.default ? slots.default() : h('span', { class: ['navbar-toggler-icon'] }),
+        slots.default ? slots.default() : h('span', { class: ['navbar-toggler-icon'] })
       )
   },
 })

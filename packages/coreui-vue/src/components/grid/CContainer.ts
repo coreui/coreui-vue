@@ -51,7 +51,7 @@ const CContainer = defineComponent({
         {
           class: [repsonsiveClassNames.length > 0 ? repsonsiveClassNames : 'container'],
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

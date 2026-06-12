@@ -51,7 +51,7 @@ const CProgressBar = defineComponent({
           ],
           ...(!stacked && { style: { width: `${props.value}%` } }),
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

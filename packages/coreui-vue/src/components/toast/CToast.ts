@@ -114,9 +114,9 @@ const CToast = defineComponent({
                 'aria-atomic': true,
                 role: 'alert',
               },
-              slots.default && slots.default(),
+              slots.default && slots.default()
             ),
-        },
+        }
       )
   },
 })

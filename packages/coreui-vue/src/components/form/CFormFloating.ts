@@ -9,7 +9,7 @@ const CFormFloating = defineComponent({
         {
           class: 'form-floating',
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

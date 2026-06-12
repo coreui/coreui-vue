@@ -47,7 +47,7 @@ const CSidebarNav = defineComponent({
         },
         {
           default: () => slots.default && slots.default(),
-        },
+        }
       )
   },
 })

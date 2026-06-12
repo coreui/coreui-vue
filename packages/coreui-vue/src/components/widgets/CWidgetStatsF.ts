@@ -64,7 +64,7 @@ const CWidgetStatsF = defineComponent({
                       props.padding ? 'p-3' : 'p-4',
                     ],
                   },
-                  (slots.default && slots.default()) || (slots.icon && slots.icon()),
+                  (slots.default && slots.default()) || (slots.icon && slots.icon())
                 ),
                 h('div', {}, [
                   (props.value || slots.value) &&
@@ -75,7 +75,7 @@ const CWidgetStatsF = defineComponent({
                       },
                       {
                         default: () => (slots.value && slots.value()) || props.value,
-                      },
+                      }
                     ),
                   (props.title || slots.title) &&
                     h(
@@ -85,14 +85,14 @@ const CWidgetStatsF = defineComponent({
                       },
                       {
                         default: () => (slots.title && slots.title()) || props.title,
-                      },
+                      }
                     ),
                 ]),
-              ],
+              ]
             ),
             slots.footer && h(CCardFooter, {}, () => slots.footer && slots.footer()),
           ],
-        },
+        }
       )
   },
 })

@@ -15,7 +15,7 @@ const CFormLabel = defineComponent({
         {
           class: props.customClassName ?? 'form-label',
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

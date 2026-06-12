@@ -18,7 +18,7 @@ const CDropdownHeader = defineComponent({
         {
           class: 'dropdown-header',
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

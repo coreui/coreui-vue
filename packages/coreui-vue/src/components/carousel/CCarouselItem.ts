@@ -32,9 +32,8 @@ const CCarouselItem = defineComponent({
     const orderClassName = ref()
     const activeClassName = ref(active.value && 'active')
 
-    // eslint-disable-next-line no-unused-vars
     const setAnimating = inject('setAnimating') as (value: boolean) => void
-    // eslint-disable-next-line no-unused-vars
+
     const setCustomInterval = inject('setCustomInterval') as (value: boolean | number) => void
 
     watch(active, (active, prevActive) => {
@@ -82,7 +81,7 @@ const CCarouselItem = defineComponent({
           ],
           ref: carouselItemRef,
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

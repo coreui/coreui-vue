@@ -6,7 +6,9 @@ import { CChip } from '../../chip/CChip'
 const set = (props: Record<string, unknown>, values: string[]) =>
   mount(CChipSet, {
     props,
-    slots: { default: () => values.map((v) => h(CChip, { value: v, key: v }, { default: () => v })) },
+    slots: {
+      default: () => values.map((v) => h(CChip, { value: v, key: v }, { default: () => v })),
+    },
   })
 
 describe('CChipSet', () => {
@@ -129,7 +131,11 @@ describe('CChipSet', () => {
       attachTo: document.body,
       props: {
         selectable: true,
-        chips: ['react', { value: 'vue', label: 'Vue' }, { value: 'ng', label: 'Angular', selectable: false }],
+        chips: [
+          'react',
+          { value: 'vue', label: 'Vue' },
+          { value: 'ng', label: 'Angular', selectable: false },
+        ],
       },
     })
     expect(w.findAll('.chip')).toHaveLength(3)

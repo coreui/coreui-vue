@@ -42,8 +42,8 @@ const CPagination = defineComponent({
               },
             ],
           },
-          slots.default && slots.default(),
-        ),
+          slots.default && slots.default()
+        )
       )
   },
 })

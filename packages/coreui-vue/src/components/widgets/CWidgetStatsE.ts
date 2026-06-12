@@ -39,7 +39,7 @@ const CWidgetStatsE = defineComponent({
                 },
                 {
                   default: () => (slots.title && slots.title()) || props.title,
-                },
+                }
               ),
             (props.value || slots.value) &&
               h(
@@ -49,12 +49,12 @@ const CWidgetStatsE = defineComponent({
                 },
                 {
                   default: () => (slots.value && slots.value()) || props.value,
-                },
+                }
               ),
             slots.chart && slots.chart(),
             slots.default && slots.default(),
-          ],
-        ),
+          ]
+        )
       )
   },
 })

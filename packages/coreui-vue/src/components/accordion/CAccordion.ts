@@ -24,7 +24,7 @@ const CAccordion = defineComponent({
 
     watch(
       () => props.activeItemKey,
-      (value) => (activeItemKey.value = value),
+      (value) => (activeItemKey.value = value)
     )
 
     provide('activeItemKey', activeItemKey)
@@ -35,7 +35,7 @@ const CAccordion = defineComponent({
       h(
         'div',
         { class: ['accordion', { ['accordion-flush']: props.flush }] },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

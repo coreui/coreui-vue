@@ -220,7 +220,7 @@ const CPopover = defineComponent({
                         { class: 'popover-header' },
                         {
                           default: () => (slots.title && slots.title()) || props.title,
-                        },
+                        }
                       ),
                     (props.content || slots.content) &&
                       h(
@@ -228,12 +228,12 @@ const CPopover = defineComponent({
                         { class: 'popover-body' },
                         {
                           default: () => (slots.content && slots.content()) || props.content,
-                        },
+                        }
                       ),
-                  ],
-                ),
+                  ]
+                )
             ),
-        },
+        }
       ),
       slots.toggler &&
         slots.toggler({

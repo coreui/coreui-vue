@@ -141,7 +141,7 @@ const CFormTextarea = defineComponent({
                 onInput: (event: InputEvent) => handleInput(event),
                 ...(props.modelValue && { value: props.modelValue }),
               },
-              slots.default && slots.default(),
+              slots.default && slots.default()
             ),
           ...(slots.feedback && { feedback: () => slots.feedback && slots.feedback() }),
           ...(slots.feedbackInvalid && {
@@ -152,7 +152,7 @@ const CFormTextarea = defineComponent({
           }),
           ...(slots.label && { label: () => slots.label && slots.label() }),
           ...(slots.text && { text: () => slots.text && slots.text() }),
-        },
+        }
       )
   },
 })

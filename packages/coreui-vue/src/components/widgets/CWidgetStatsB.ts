@@ -77,7 +77,7 @@ const CWidgetStatsB = defineComponent({
                   },
                   {
                     default: () => (slots.value && slots.value()) || props.value,
-                  },
+                  }
                 ),
               (props.title || slots.title) &&
                 h(
@@ -85,7 +85,7 @@ const CWidgetStatsB = defineComponent({
                   {},
                   {
                     default: () => (slots.title && slots.title()) || props.title,
-                  },
+                  }
                 ),
               h(CProgress, {
                 class: 'my-2',
@@ -102,10 +102,10 @@ const CWidgetStatsB = defineComponent({
                   },
                   {
                     default: () => (slots.text && slots.text()) || props.text,
-                  },
+                  }
                 ),
-            ],
-          ),
+            ]
+          )
       )
   },
 })

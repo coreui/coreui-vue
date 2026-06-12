@@ -62,7 +62,7 @@ const CTabPanel = defineComponent({
       },
       {
         immediate: true,
-      },
+      }
     )
 
     watch(
@@ -72,7 +72,7 @@ const CTabPanel = defineComponent({
       },
       {
         immediate: true,
-      },
+      }
     )
 
     const handleEnter = (el: RendererElement, done: () => void) => {
@@ -117,10 +117,10 @@ const CTabPanel = defineComponent({
                 tabindex: 0,
                 ref: tabPaneRef,
               },
-              slots.default && slots.default(),
+              slots.default && slots.default()
             ),
-            [[vShow, visible.value]],
-          ),
+            [[vShow, visible.value]]
+          )
       )
   },
 })

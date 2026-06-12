@@ -96,7 +96,7 @@ const CSidebar = defineComponent({
     const mobile = ref()
     const visibleMobile = ref(false)
     const visibleDesktop = ref(
-      props.visible === undefined ? (props.overlaid ? false : true) : props.visible,
+      props.visible === undefined ? (props.overlaid ? false : true) : props.visible
     )
 
     watch(inViewport, () => {
@@ -106,7 +106,7 @@ const CSidebar = defineComponent({
 
     watch(
       () => props.visible,
-      () => props.visible !== undefined && handleVisibleChange(props.visible),
+      () => props.visible !== undefined && handleVisibleChange(props.visible)
     )
 
     watch(mobile, () => {
@@ -203,7 +203,7 @@ const CSidebar = defineComponent({
           ],
           ref: sidebarRef,
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       ),
       mobile.value &&
         h(CBackdrop, {

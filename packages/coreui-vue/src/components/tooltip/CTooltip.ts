@@ -216,12 +216,12 @@ const CTooltip = defineComponent({
                         { class: 'tooltip-inner' },
                         {
                           default: () => (slots.content && slots.content()) || props.content,
-                        },
+                        }
                       ),
-                  ],
-                ),
+                  ]
+                )
             ),
-        },
+        }
       ),
       slots.toggler &&
         slots.toggler({

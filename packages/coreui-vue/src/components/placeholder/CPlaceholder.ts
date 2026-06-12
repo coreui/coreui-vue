@@ -104,7 +104,7 @@ export const CPlaceholder = defineComponent({
             repsonsiveClassNames,
           ],
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })

@@ -17,7 +17,7 @@ const CAccordionButton = defineComponent({
           class: ['accordion-button', { ['collapsed']: !visible.value }],
           onClick: () => toggleVisibility(),
         },
-        slots.default && slots.default(),
+        slots.default && slots.default()
       )
   },
 })
