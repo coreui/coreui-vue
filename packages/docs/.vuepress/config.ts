@@ -364,6 +364,10 @@ export default defineUserConfig({
             link: `/components/progress.html`,
           },
           {
+            text: 'Search Button',
+            link: `/components/search-button.html`,
+          },
+          {
             text: 'Sidebar',
             link: `/components/sidebar.html`,
           },

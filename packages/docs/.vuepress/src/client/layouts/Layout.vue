@@ -32,11 +32,15 @@ const description = frontmatter.value.description
 
 onMounted(() => {
   const searchElement = document.getElementById('docsearch') as HTMLElement
+  const isSearchButtonDocsPage = window.location.pathname.includes('/components/search-button')
   docsearch({
     appId: 'RG8RW9GEH3',
     apiKey: '4926b633296d71c6d727f7766170f82b',
     indexName: 'coreuivue',
     container: searchElement,
+    keyboardShortcuts: {
+      '/': !isSearchButtonDocsPage,
+    },
     // @ts-ignore
     debug: false,
   })
