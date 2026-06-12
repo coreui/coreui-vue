@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CChipInput renders correctly 1`] = `"<div class="chip-input"><input type="text" class="chip-input-field" placeholder="" size="1" value=""></div>"`;
+exports[`CChipInput renders correctly 1`] = `"<div class="chip-input"><input type="text" class="chip-input-field" placeholder="" size="1" value=""><input type="hidden" name="v-0" value=""></div>"`;

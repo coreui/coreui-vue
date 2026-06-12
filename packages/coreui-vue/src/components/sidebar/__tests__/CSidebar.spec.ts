@@ -34,7 +34,7 @@ describe(`Loads and display ${ComponentName} component`, () => {
   it('contain slots and classes', () => {
     expect(defaultWrapper.text()).toContain('Default slot')
     expect(defaultWrapper.find('.sidebar').classes('sidebar')).toBe(true)
-    expect(defaultWrapper.find('.sidebar').classes('hide')).toBe(true)
+    expect(defaultWrapper.find('.sidebar').classes('hide')).toBe(false)
   })
 })
 

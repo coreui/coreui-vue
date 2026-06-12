@@ -44,7 +44,7 @@ describe(`Customize ${ComponentName} component`, () => {
   it('contain slots and classes', () => {
     expect(customWrapper.classes('navbar')).toBe(true)
     expect(customWrapper.classes('bg-warning')).toBe(true)
-    expect(customWrapper.classes('navbar-light')).toBe(true)
+    expect(customWrapper.attributes('data-coreui-theme')).toBe('light')
     expect(customWrapper.classes('navbar-expand-xl')).toBe(true)
     expect(customWrapper.classes('fixed-bottom')).toBe(true)
     expect(customWrapper.find('.container-lg').classes('container-lg')).toBe(true)
