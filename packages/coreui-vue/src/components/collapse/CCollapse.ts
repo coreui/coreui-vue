@@ -49,7 +49,7 @@ const CCollapse = defineComponent({
     const handleAfterEnter = (el: RendererElement) => {
       show.value = true
       collapsing.value = false
-      props.horizontal ? el.style.removeProperty('width') : el.style.removeProperty('height')
+      el.style.removeProperty(props.horizontal ? 'width' : 'height')
     }
 
     const handleBeforeLeave = (el: RendererElement) => {
@@ -76,7 +76,7 @@ const CCollapse = defineComponent({
 
     const handleAfterLeave = (el: RendererElement) => {
       collapsing.value = false
-      props.horizontal ? el.style.removeProperty('width') : el.style.removeProperty('height')
+      el.style.removeProperty(props.horizontal ? 'width' : 'height')
     }
 
     return () =>

@@ -92,10 +92,18 @@ const CToast = defineComponent({
           leaveToClass: 'show',
           onAfterEnter: (el) => {
             el.classList.add('show')
-            props.index ? emit('show', props.index) : emit('show')
+            if (props.index) {
+              emit('show', props.index)
+            } else {
+              emit('show')
+            }
           },
           onAfterLeave: () => {
-            props.index ? emit('close', props.index) : emit('close')
+            if (props.index) {
+              emit('close', props.index)
+            } else {
+              emit('close')
+            }
           },
         },
         {

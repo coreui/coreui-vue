@@ -249,16 +249,14 @@ const CDropdown = defineComponent({
 
       window.removeEventListener('click', handleClick)
       window.removeEventListener('keyup', handleKeyup)
-      dropdownMenuRef.value && dropdownMenuRef.value.removeEventListener('keydown', handleKeydown)
-      dropdownToggleRef.value &&
-        dropdownToggleRef.value.removeEventListener('keydown', handleKeydown)
+      dropdownMenuRef.value?.removeEventListener('keydown', handleKeydown)
+      dropdownToggleRef.value?.removeEventListener('keydown', handleKeydown)
       emit('hide')
     })
 
     onUnmounted(() => {
-      dropdownToggleRef.value &&
-        dropdownToggleRef.value.removeEventListener('keydown', handleKeydown)
-      dropdownMenuRef.value && dropdownMenuRef.value.removeEventListener('keydown', handleKeydown)
+      dropdownToggleRef.value?.removeEventListener('keydown', handleKeydown)
+      dropdownMenuRef.value?.removeEventListener('keydown', handleKeydown)
     })
 
     provide('config', {

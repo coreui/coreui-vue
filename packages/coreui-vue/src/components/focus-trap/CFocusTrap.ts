@@ -283,7 +283,7 @@ const CFocusTrap = defineComponent({
       const vnode = vnodes?.[0]
       if (!vnode) return null
 
-      const originalRef = (vnode.props as any)?.ref
+      const originalRef = (vnode.props as Record<string, unknown> | null)?.ref
 
       return cloneVNode(vnode, {
         ref: (el) => {
@@ -295,7 +295,7 @@ const CFocusTrap = defineComponent({
           if (typeof originalRef === 'function') {
             originalRef(el)
           } else if (originalRef && typeof originalRef === 'object' && 'value' in originalRef) {
-            ;(originalRef as { value: any }).value = el
+            ;(originalRef as { value: unknown }).value = el
           }
         },
       })

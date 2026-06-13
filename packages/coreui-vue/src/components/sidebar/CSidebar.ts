@@ -101,7 +101,7 @@ const CSidebar = defineComponent({
 
     watch(inViewport, () => {
       emit('visible-change', inViewport.value)
-      inViewport.value ? emit('show') : emit('hide')
+      emit(inViewport.value ? 'show' : 'hide')
     })
 
     watch(
@@ -174,11 +174,14 @@ const CSidebar = defineComponent({
 
     const handleOnClick = (event: Event) => {
       const target = event.target as HTMLAnchorElement
-      target &&
+      if (
+        target &&
         target.classList.contains('nav-link') &&
         !target.classList.contains('nav-group-toggle') &&
-        mobile.value &&
+        mobile.value
+      ) {
         handleHide()
+      }
     }
 
     return () => [

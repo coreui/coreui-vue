@@ -37,7 +37,9 @@ const CCarouselItem = defineComponent({
     const setCustomInterval = inject('setCustomInterval') as (value: boolean | number) => void
 
     watch(active, (active, prevActive) => {
-      active && setCustomInterval(props.interval)
+      if (active) {
+        setCustomInterval(props.interval)
+      }
       if (!prevActive && active) {
         orderClassName.value = `carousel-item-${props.direction}`
         setCustomInterval(props.interval)

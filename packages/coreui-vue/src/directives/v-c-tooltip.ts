@@ -78,10 +78,11 @@ export default {
     binding.arg = uID
     const tooltip = createTooltipElement(uID, content)
 
-    trigger.includes('click') &&
+    if (trigger.includes('click')) {
       el.addEventListener('click', () => {
         toggleTooltipElement(el, tooltip, popperOptions, uID)
       })
+    }
 
     if (trigger.includes('focus')) {
       el.addEventListener('focus', () => {
@@ -103,6 +104,8 @@ export default {
   },
   beforeUnmount(_el: HTMLElement, binding: DirectiveBinding): void {
     const tooltip = binding.arg && document.getElementById(binding.arg)
-    tooltip && tooltip.remove()
+    if (tooltip) {
+      tooltip.remove()
+    }
   },
 }

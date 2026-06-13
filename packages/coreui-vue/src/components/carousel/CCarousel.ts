@@ -110,9 +110,9 @@ const CCarousel = defineComponent({
       }
       direction.value = _direction
       if (_direction === 'next') {
-        active.value === items.value.length - 1 ? (active.value = 0) : active.value++
+        active.value = active.value === items.value.length - 1 ? 0 : active.value + 1
       } else {
-        active.value === 0 ? (active.value = items.value.length - 1) : active.value--
+        active.value = active.value === 0 ? items.value.length - 1 : active.value - 1
       }
     }
 
@@ -167,18 +167,22 @@ const CCarousel = defineComponent({
     onUpdated(() => {
       watch(animating, () => {
         if (props.wrap) {
-          !animating.value && cycle()
+          if (!animating.value) {
+            cycle()
+          }
           return
         }
 
-        if (!props.wrap && active.value < items.value.length - 1) {
-          !animating.value && cycle()
+        if (!props.wrap && active.value < items.value.length - 1 && !animating.value) {
+          cycle()
         }
       })
     })
 
     watch(visible, () => {
-      visible.value && cycle()
+      if (visible.value) {
+        cycle()
+      }
     })
 
     return () =>
