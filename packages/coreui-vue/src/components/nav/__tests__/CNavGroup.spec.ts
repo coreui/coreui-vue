@@ -90,32 +90,32 @@ describe(`${ComponentName} uncontrolled mode`, () => {
   })
 })
 
-describe(`${ComponentName} nested groups`, () => {
-  const nested = () =>
-    mount(CSidebarNav, {
-      slots: {
-        default: () => [
-          h(
-            CNavGroup,
-            {},
-            {
-              togglerContent: () => 'A',
-              default: () => [
-                h(
-                  CNavGroup,
-                  {},
-                  {
-                    togglerContent: () => 'B',
-                    default: () => [h(CNavItem, { href: '#' }, () => 'item')],
-                  }
-                ),
-              ],
-            }
-          ),
-        ],
-      },
-    })
+const nested = () =>
+  mount(CSidebarNav, {
+    slots: {
+      default: () => [
+        h(
+          CNavGroup,
+          {},
+          {
+            togglerContent: () => 'A',
+            default: () => [
+              h(
+                CNavGroup,
+                {},
+                {
+                  togglerContent: () => 'B',
+                  default: () => [h(CNavItem, { href: '#' }, () => 'item')],
+                }
+              ),
+            ],
+          }
+        ),
+      ],
+    },
+  })
 
+describe(`${ComponentName} nested groups`, () => {
   it('renders and toggles per level', async () => {
     const wrapper = nested()
     const group = (index: number) => wrapper.findAll('.nav-group')[index]

@@ -43,7 +43,9 @@ const CContainer = defineComponent({
     BREAKPOINTS.forEach((bp) => {
       const breakpoint = props[bp]
 
-      breakpoint && repsonsiveClassNames.push(`container-${bp}`)
+      if (breakpoint) {
+        repsonsiveClassNames.push(`container-${bp}`)
+      }
     })
     return () =>
       h(

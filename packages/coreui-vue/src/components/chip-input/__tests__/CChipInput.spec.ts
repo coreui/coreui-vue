@@ -339,10 +339,9 @@ describe('CChipInput', () => {
   })
 
   it('applies chipClassName as function', async () => {
-    const classNameFn = (value: string) => `chip-${value}`
     const wrapper = mount(CChipInput, {
       props: {
-        chipClassName: classNameFn,
+        chipClassName: (value: string) => `chip-${value}`,
         modelValue: ['primary', 'secondary'],
       },
     })

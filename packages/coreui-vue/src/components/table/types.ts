@@ -14,6 +14,7 @@ export type FooterItem = {
 }
 
 export type Item = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: number | string | any
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   _props?: any

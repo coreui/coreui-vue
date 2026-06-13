@@ -181,7 +181,9 @@ const CModal = defineComponent({
     }
 
     const handleAfterEnter = () => {
-      props.focus && modalRef.value?.focus()
+      if (props.focus) {
+        modalRef.value?.focus()
+      }
       window.addEventListener('mousedown', handleMouseDown)
       window.addEventListener('keydown', handleKeyDown)
     }

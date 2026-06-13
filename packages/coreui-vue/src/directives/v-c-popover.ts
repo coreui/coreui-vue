@@ -81,10 +81,11 @@ export default {
     binding.arg = uID
     const popover = createPopoverElement(uID, header, content)
 
-    trigger.includes('click') &&
+    if (trigger.includes('click')) {
       el.addEventListener('click', () => {
         togglePopoverElement(el, popover, popperOptions, uID)
       })
+    }
 
     if (trigger.includes('focus')) {
       el.addEventListener('focus', () => {
@@ -106,6 +107,8 @@ export default {
   },
   unmounted(_el: HTMLElement, binding: DirectiveBinding): void {
     const popover = binding.arg && document.getElementById(binding.arg)
-    popover && popover.remove()
+    if (popover) {
+      popover.remove()
+    }
   },
 }

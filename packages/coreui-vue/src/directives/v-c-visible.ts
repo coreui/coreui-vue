@@ -18,7 +18,7 @@ export const vVisible: ObjectDirective<VShowElement> = {
     }
   },
   updated(el, { value, oldValue }, { transition }) {
-    if (!value === !oldValue) return
+    if (Boolean(value) === Boolean(oldValue)) return
     if (transition) {
       if (value) {
         transition.beforeEnter(el)

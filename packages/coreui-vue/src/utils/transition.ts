@@ -19,7 +19,7 @@ export const executeAfterTransition = (
 
   let called = false
 
-  const handler = ({ target }: { target: any }) => {
+  const handler = ({ target }: Event) => {
     if (target !== transitionElement) {
       return
     }
