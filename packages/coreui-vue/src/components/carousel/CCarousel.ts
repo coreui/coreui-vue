@@ -10,7 +10,7 @@ import {
   watch,
 } from 'vue'
 
-import { isInViewport, Swipe } from '../../utils'
+import { isInViewport, isRTL, Swipe } from '../../utils'
 
 const CCarousel = defineComponent({
   name: 'CCarousel',
@@ -190,8 +190,8 @@ const CCarousel = defineComponent({
 
       if (props.touch && carouselRef.value) {
         swipe = new Swipe(carouselRef.value, {
-          onLeft: () => handleControlClick('next'),
-          onRight: () => handleControlClick('prev'),
+          onLeft: () => handleControlClick(isRTL(carouselRef.value) ? 'prev' : 'next'),
+          onRight: () => handleControlClick(isRTL(carouselRef.value) ? 'next' : 'prev'),
         })
       }
     })
