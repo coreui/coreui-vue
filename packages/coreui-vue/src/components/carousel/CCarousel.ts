@@ -4,13 +4,13 @@ import {
   ref,
   VNode,
   onBeforeMount,
+  onBeforeUnmount,
   onMounted,
-  onUpdated,
   provide,
   watch,
 } from 'vue'
 
-import { isInViewport } from '../../utils'
+import { isInViewport, isRTL, Swipe } from '../../utils'
 
 const CCarousel = defineComponent({
   name: 'CCarousel',
@@ -64,6 +64,15 @@ const CCarousel = defineComponent({
       },
     },
     /**
+     * Set whether the carousel should support left/right swipe interactions on touchscreen devices.
+     *
+     * @since 5.10.0
+     */
+    touch: {
+      type: Boolean,
+      default: true,
+    },
+    /**
      * Set whether the carousel should cycle continuously or have hard stops.
      */
     wrap: {
@@ -71,7 +80,21 @@ const CCarousel = defineComponent({
       default: true,
     },
   },
-  setup(props, { slots }) {
+  emits: [
+    /**
+     * Event called when the slide transition starts.
+     *
+     * @since 5.10.0
+     */
+    'slide',
+    /**
+     * Event called when the slide transition ends.
+     *
+     * @since 5.10.0
+     */
+    'slid',
+  ],
+  setup(props, { emit, slots }) {
     const carouselRef = ref()
 
     const active = ref(props.index)
@@ -81,6 +104,8 @@ const CCarousel = defineComponent({
     const items = ref<VNode[]>([])
     const timeout = ref()
     const visible = ref()
+
+    let swipe: Swipe | undefined
 
     const setAnimating = (value: boolean) => {
       animating.value = value
@@ -162,21 +187,31 @@ const CCarousel = defineComponent({
 
     onMounted(() => {
       window.addEventListener('scroll', handleScroll)
+
+      if (props.touch && carouselRef.value) {
+        swipe = new Swipe(carouselRef.value, {
+          onLeft: () => handleControlClick(isRTL(carouselRef.value) ? 'prev' : 'next'),
+          onRight: () => handleControlClick(isRTL(carouselRef.value) ? 'next' : 'prev'),
+        })
+      }
     })
 
-    onUpdated(() => {
-      watch(animating, () => {
-        if (props.wrap) {
-          if (!animating.value) {
-            cycle()
-          }
-          return
-        }
+    onBeforeUnmount(() => {
+      window.removeEventListener('scroll', handleScroll)
+      swipe?.dispose()
+    })
 
-        if (!props.wrap && active.value < items.value.length - 1 && !animating.value) {
-          cycle()
-        }
-      })
+    watch(animating, () => {
+      if (animating.value) {
+        emit('slide', active.value, direction.value)
+        return
+      }
+
+      emit('slid', active.value, direction.value)
+
+      if (props.wrap || active.value < items.value.length - 1) {
+        cycle()
+      }
     })
 
     watch(visible, () => {
