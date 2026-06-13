@@ -111,7 +111,6 @@ const CSidebar = defineComponent({
 
     watch(mobile, () => {
       if (mobile.value) {
-        console.log('mobile')
         visibleMobile.value = false
       }
     })
