@@ -33,7 +33,7 @@ const CFormRange = defineComponent({
     /**
      * Specifies the interval between legal numbers in the component.
      */
-    steps: Number,
+    step: Number,
     /**
      * The `value` attribute of component.
      *
@@ -79,7 +79,7 @@ const CFormRange = defineComponent({
           min: props.min,
           onChange: (event: InputEvent) => handleChange(event),
           readonly: props.readonly,
-          steps: props.steps,
+          step: props.step,
           type: 'range',
           value: props.modelValue,
         },

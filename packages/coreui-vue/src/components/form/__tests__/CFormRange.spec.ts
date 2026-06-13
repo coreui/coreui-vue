@@ -16,7 +16,7 @@ const customWrapper = mount(Component, {
     max: 400,
     min: 50,
     readonly: true,
-    steps: 10,
+    step: 10,
     value: 250,
   },
   slots: {
@@ -50,6 +50,6 @@ describe(`Customize ${ComponentName} component`, () => {
     expect(customWrapper.find('input').attributes('max')).toBe('400')
     expect(customWrapper.find('input').attributes('min')).toBe('50')
     expect(customWrapper.find('input').attributes('readonly')).toBe('')
-    expect(customWrapper.find('input').attributes('steps')).toBe('10')
+    expect(customWrapper.find('input').attributes('step')).toBe('10')
   })
 })
