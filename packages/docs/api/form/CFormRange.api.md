@@ -16,7 +16,7 @@ import CFormRange from '@coreui/vue/src/components/form/CFormRange'
 | **min**                                                  | Specifies the minimum value for the component.                   | number  | -      | -       |
 | **model-value**                                          | The default name for a value passed using v-model.               | string  | -      | -       |
 | **readonly**                                             | Toggle the readonly state for the component.                     | boolean | -      | -       |
-| **steps**                                                | Specifies the interval between legal numbers in the component.   | number  | -      | -       |
+| **step**                                                 | Specifies the interval between legal numbers in the component.   | number  | -      | -       |
 | **value**                                                | The `value` attribute of component.<br/>`@controllable` onChange | number  | -      | -       |
 
 #### Events
