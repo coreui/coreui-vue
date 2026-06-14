@@ -2,6 +2,9 @@
 function mdclean(input) {
 	return input.replace(/\r?\n/g, '<br>').replace(/\|/g, '\\|')
 }
+function escapeAngles(input) {
+	return input.replace(/</g, '&lt;').replace(/>/g, '&gt;')
+}
 function isTag(v) {
   return !!v.content;
 }
@@ -30,7 +33,7 @@ const tmpl = (props) => {
     if (prop.description && !prop.description.includes('@ignore')) {
       ret += `| **${mdclean(name.match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
       .map(x => x.toLowerCase())
-      .join('-'))}** ${mdclean(since)} | ${mdclean(t)} | ${mdclean(n.replace(replaceToString, 'string'))} | ${mdclean(v)} | ${mdclean(d.replace('undefined', '-'))} |\n`;
+      .join('-'))}** ${mdclean(since)} | ${mdclean(t)} | ${mdclean(escapeAngles(n.replace(replaceToString, 'string')))} | ${mdclean(v)} | ${mdclean(d.replace('undefined', '-'))} |\n`;
     }
   });
   return ret;
