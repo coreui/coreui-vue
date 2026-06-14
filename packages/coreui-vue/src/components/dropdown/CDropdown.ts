@@ -10,7 +10,7 @@ import {
   Ref,
   watch,
 } from 'vue'
-import type { Placement } from '@popperjs/core'
+import type { Options, Placement } from '@popperjs/core'
 
 import { usePopper } from '../../composables'
 import type { Triggers } from '../../types'
@@ -125,6 +125,19 @@ const CDropdown = defineComponent({
       default: true,
     },
     /**
+     * A Popper.js configuration object, or a function that receives the default
+     * configuration and returns a modified one, used to customize the
+     * positioning of the dropdown menu.
+     *
+     * @since 5.10.0
+     */
+    popperConfig: {
+      type: [Object, Function] as PropType<
+        Partial<Options> | ((defaultPopperConfig: Partial<Options>) => Partial<Options>)
+      >,
+      default: undefined,
+    },
+    /**
      * Sets the reference element for positioning the Vue Dropdown Menu.
      * - `toggle` - The Vue Dropdown Toggle button (default).
      * - `parent` - The Vue Dropdown wrapper element.
@@ -192,22 +205,31 @@ const CDropdown = defineComponent({
 
     const { initPopper, destroyPopper } = usePopper()
 
-    const popperConfig = computed(() => ({
-      modifiers: [
-        {
-          name: 'offset',
-          options: {
-            offset: props.offset,
+    const popperConfig = computed(() => {
+      const defaultPopperConfig = {
+        modifiers: [
+          {
+            name: 'offset',
+            options: {
+              offset: props.offset,
+            },
           },
-        },
-      ],
-      placement: getPlacement(
-        props.placement,
-        props.direction,
-        props.alignment,
-        isRTL(dropdownMenuRef.value)
-      ) as Placement,
-    }))
+        ],
+        placement: getPlacement(
+          props.placement,
+          props.direction,
+          props.alignment,
+          isRTL(dropdownMenuRef.value)
+        ) as Placement,
+      }
+
+      return {
+        ...defaultPopperConfig,
+        ...(typeof props.popperConfig === 'function'
+          ? props.popperConfig(defaultPopperConfig)
+          : props.popperConfig),
+      }
+    })
 
     watch(
       () => props.visible,

@@ -1,5 +1,5 @@
 import { defineComponent, h, PropType, ref, RendererElement, Transition, useId } from 'vue'
-import type { Placement } from '@popperjs/core'
+import type { Options, Placement } from '@popperjs/core'
 
 import { CConditionalTeleport } from '../conditional-teleport'
 import { usePopper } from '../../composables'
@@ -78,6 +78,19 @@ const CTooltip = defineComponent({
       },
     },
     /**
+     * A Popper.js configuration object, or a function that receives the default
+     * configuration and returns a modified one, used to customize the
+     * positioning of the tooltip.
+     *
+     * @since 5.10.0
+     */
+    popperConfig: {
+      type: [Object, Function] as PropType<
+        Partial<Options> | ((defaultPopperConfig: Partial<Options>) => Partial<Options>)
+      >,
+      default: undefined,
+    },
+    /**
      * Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them.
      *
      * @values 'click', 'focus', 'hover'
@@ -121,7 +134,7 @@ const CTooltip = defineComponent({
     const delay =
       typeof props.delay === 'number' ? { show: props.delay, hide: props.delay } : props.delay
 
-    const popperConfig = {
+    const defaultPopperConfig = {
       modifiers: [
         {
           name: 'arrow',
@@ -143,6 +156,13 @@ const CTooltip = defineComponent({
         },
       ],
       placement: getRTLPlacement(props.placement, togglerRef.value),
+    }
+
+    const popperConfig = {
+      ...defaultPopperConfig,
+      ...(typeof props.popperConfig === 'function'
+        ? props.popperConfig(defaultPopperConfig)
+        : props.popperConfig),
     }
 
     const handleEnter = (el: RendererElement, done: () => void) => {
