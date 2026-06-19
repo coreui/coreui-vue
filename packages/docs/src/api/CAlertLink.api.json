@@ -1,0 +1,7 @@
+{
+  "name": "CAlertLink",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CAlertLink } from '@coreui/vue'"
+}

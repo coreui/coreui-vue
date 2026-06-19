@@ -1,0 +1,75 @@
+{
+  "name": "CToast",
+  "props": [
+    {
+      "name": "autohide",
+      "type": "boolean",
+      "default": "true",
+      "description": "Auto hide the toast.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "color",
+      "type": "Color",
+      "default": null,
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "delay",
+      "type": "number",
+      "default": "5000",
+      "description": "Delay hiding the toast (ms).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "dismissible",
+      "type": "boolean",
+      "default": "true",
+      "description": "Optionally add a close button to component and allow it to self dismiss.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "index",
+      "type": "number",
+      "default": null,
+      "description": "index of the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "default": null,
+      "description": "Title node for your component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "default": null,
+      "description": "Toggle the visibility of component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [
+    {
+      "name": "close",
+      "description": "Callback fired when the component requests to be closed.",
+      "properties": []
+    },
+    {
+      "name": "show",
+      "description": "Callback fired when the component requests to be shown.",
+      "properties": []
+    }
+  ],
+  "slots": [],
+  "imports": "import { CToast } from '@coreui/vue'"
+}

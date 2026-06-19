@@ -1,0 +1,52 @@
+---
+title: "Vue Select Component"
+name: "Select"
+description: "Vue select component. Customize the native `<select>`s with custom CSS that changes the element's initial appearance."
+otherFrameworks:
+  - select
+---
+
+import FormSelectExample from './examples/FormSelectExample.vue'
+import FormSelectExampleRaw from './examples/FormSelectExample.vue?raw'
+import FormSelectSizingExample from './examples/FormSelectSizingExample.vue'
+import FormSelectSizingExampleRaw from './examples/FormSelectSizingExample.vue?raw'
+import FormSelectSizing2Example from './examples/FormSelectSizing2Example.vue'
+import FormSelectSizing2ExampleRaw from './examples/FormSelectSizing2Example.vue?raw'
+import FormSelectSizing3Example from './examples/FormSelectSizing3Example.vue'
+import FormSelectSizing3ExampleRaw from './examples/FormSelectSizing3Example.vue?raw'
+import FormSelectDisabledExample from './examples/FormSelectDisabledExample.vue'
+import FormSelectDisabledExampleRaw from './examples/FormSelectDisabledExample.vue?raw'
+
+## Default
+
+<Example code={FormSelectExampleRaw} lang="vue" name="FormSelectExample">
+  <FormSelectExample client:only="vue" />
+</Example>
+
+## Sizing
+
+You may also choose from small and large custom selects to match our similarly sized text inputs.
+
+<Example code={FormSelectSizingExampleRaw} lang="vue" name="FormSelectSizingExample">
+  <FormSelectSizingExample client:only="vue" />
+</Example>
+
+The `multiple` attribute is also supported:
+
+<Example code={FormSelectSizing2ExampleRaw} lang="vue" name="FormSelectSizing2Example">
+  <FormSelectSizing2Example client:only="vue" />
+</Example>
+
+As is the `html-size` property:
+
+<Example code={FormSelectSizing3ExampleRaw} lang="vue" name="FormSelectSizing3Example">
+  <FormSelectSizing3Example client:only="vue" />
+</Example>
+
+## Disabled
+
+Add the `disabled` boolean attribute on a select to give it a grayed out appearance and remove pointer events.
+
+<Example code={FormSelectDisabledExampleRaw} lang="vue" name="FormSelectDisabledExample">
+  <FormSelectDisabledExample client:only="vue" />
+</Example>

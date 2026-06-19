@@ -1,0 +1,7 @@
+{
+  "name": "CNavGroupItems",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CNavGroupItems } from '@coreui/vue'"
+}

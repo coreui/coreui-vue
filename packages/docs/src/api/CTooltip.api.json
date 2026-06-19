@@ -1,0 +1,99 @@
+{
+  "name": "CTooltip",
+  "props": [
+    {
+      "name": "animation",
+      "type": "boolean",
+      "default": "true",
+      "description": "Apply a CSS fade transition to the tooltip.",
+      "since": "4.9.0",
+      "deprecated": null
+    },
+    {
+      "name": "container",
+      "type": "HTMLElement | (() => HTMLElement) | string",
+      "default": "'body'",
+      "description": "Appends the vue tooltip to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`.",
+      "since": "5.0.0",
+      "deprecated": null
+    },
+    {
+      "name": "content",
+      "type": "string",
+      "default": null,
+      "description": "Content for your component. If you want to pass non-string value please use dedicated slot `<template #content>...</template>`",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "delay",
+      "type": "number | { show: number; hide: number }",
+      "default": "0",
+      "description": "The delay for displaying and hiding the popover (in milliseconds). When a numerical value is provided, the delay applies to both the hide and show actions. The object structure for specifying the delay is as follows: delay: `{ 'show': 500, 'hide': 100 }`.",
+      "since": "4.9.0",
+      "deprecated": null
+    },
+    {
+      "name": "fallbackPlacements",
+      "type": "Placements | Placements[]",
+      "default": "() => ['top', 'right', 'bottom', 'left']",
+      "description": "Specify the desired order of fallback placements by providing a list of placements as an array. The placements should be prioritized based on preference.",
+      "since": "4.9.0",
+      "deprecated": null
+    },
+    {
+      "name": "offset",
+      "type": "array",
+      "default": "[0, 6]",
+      "description": "Offset of the tooltip relative to its target.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "placement",
+      "type": "Placement",
+      "default": "'top'",
+      "description": "Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "popperConfig",
+      "type": "Partial<Options> | ((defaultPopperConfig: Partial<Options>) => Partial<Options>)",
+      "default": "undefined",
+      "description": "A Popper.js configuration object, or a function that receives the default\nconfiguration and returns a modified one, used to customize the\npositioning of the tooltip.",
+      "since": "5.10.0",
+      "deprecated": null
+    },
+    {
+      "name": "trigger",
+      "type": "Triggers | Triggers[]",
+      "default": "() => ['hover', 'focus']",
+      "description": "Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "default": null,
+      "description": "Toggle the visibility of tooltip component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [
+    {
+      "name": "hide",
+      "description": "Callback fired when the component requests to be hidden.",
+      "properties": []
+    },
+    {
+      "name": "show",
+      "description": "Callback fired when the component requests to be shown.",
+      "properties": []
+    }
+  ],
+  "slots": [],
+  "imports": "import { CTooltip } from '@coreui/vue'"
+}

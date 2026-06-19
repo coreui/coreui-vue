@@ -1,0 +1,56 @@
+{
+  "name": "CCol",
+  "props": [
+    {
+      "name": "xs",
+      "type": "Col",
+      "default": null,
+      "description": "The number of columns/offset/order on extra small devices (<576px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "sm",
+      "type": "Col",
+      "default": null,
+      "description": "The number of columns/offset/order on small devices (<768px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "md",
+      "type": "Col",
+      "default": null,
+      "description": "The number of columns/offset/order on medium devices (<992px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "lg",
+      "type": "Col",
+      "default": null,
+      "description": "The number of columns/offset/order on large devices (<1200px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "xl",
+      "type": "Col",
+      "default": null,
+      "description": "The number of columns/offset/order on X-Large devices (<1400px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "xxl",
+      "type": "Col",
+      "default": null,
+      "description": "The number of columns/offset/order on XX-Large devices (≥1400px).",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CCol } from '@coreui/vue'"
+}

@@ -1,0 +1,75 @@
+{
+  "name": "COffcanvas",
+  "props": [
+    {
+      "name": "backdrop",
+      "type": "boolean|string",
+      "default": "true",
+      "description": "Apply a backdrop on body while offcanvas is open.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "dark",
+      "type": "boolean",
+      "default": null,
+      "description": "Sets a darker color scheme.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "keyboard",
+      "type": "boolean",
+      "default": "true",
+      "description": "Closes the offcanvas when escape key is pressed.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "placement",
+      "type": "string",
+      "default": null,
+      "description": "Components placement, there’s no default placement.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "responsive",
+      "type": "boolean|string",
+      "default": "true",
+      "description": "Responsive offcanvas property hide content outside the viewport from a specified breakpoint and down.",
+      "since": "4.7.0",
+      "deprecated": null
+    },
+    {
+      "name": "scroll",
+      "type": "boolean",
+      "default": "false",
+      "description": "Allow body scrolling while offcanvas is open",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "default": "false",
+      "description": "Toggle the visibility of offcanvas component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [
+    {
+      "name": "hide",
+      "description": "Callback fired when the component requests to be hidden.",
+      "properties": []
+    },
+    {
+      "name": "show",
+      "description": "Callback fired when the component requests to be shown.",
+      "properties": []
+    }
+  ],
+  "slots": [],
+  "imports": "import { COffcanvas } from '@coreui/vue'"
+}

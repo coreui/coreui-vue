@@ -1,0 +1,197 @@
+---
+title: "Vue Bootstrap Modal Component"
+name: "Modal with Bootstrap Styling"
+bootstrap: true
+description: "Learn how to use CoreUI’s Vue Modal component with Bootstrap styles for flexible, framework-consistent UI."
+---
+
+import ModalVerticallyCenteredExample from './examples/ModalVerticallyCenteredExample.vue'
+import ModalVerticallyCenteredExampleRaw from './examples/ModalVerticallyCenteredExample.vue?raw'
+import ModalLiveDemoExample from './examples/ModalLiveDemoExample.vue'
+import ModalLiveDemoExampleRaw from './examples/ModalLiveDemoExample.vue?raw'
+import ModalStaticBackdropExample from './examples/ModalStaticBackdropExample.vue'
+import ModalStaticBackdropExampleRaw from './examples/ModalStaticBackdropExample.vue?raw'
+import ModalScrollingLongContentExample from './examples/ModalScrollingLongContentExample.vue'
+import ModalScrollingLongContentExampleRaw from './examples/ModalScrollingLongContentExample.vue?raw'
+import ModalScrollingLongContent2Example from './examples/ModalScrollingLongContent2Example.vue'
+import ModalScrollingLongContent2ExampleRaw from './examples/ModalScrollingLongContent2Example.vue?raw'
+import ModalVerticallyCenteredScrollableExample from './examples/ModalVerticallyCenteredScrollableExample.vue'
+import ModalVerticallyCenteredScrollableExampleRaw from './examples/ModalVerticallyCenteredScrollableExample.vue?raw'
+import ModalTooltipsAndPopoversExample from './examples/ModalTooltipsAndPopoversExample.vue'
+import ModalTooltipsAndPopoversExampleRaw from './examples/ModalTooltipsAndPopoversExample.vue?raw'
+import ModalOptionalSizesExample from './examples/ModalOptionalSizesExample.vue'
+import ModalOptionalSizesExampleRaw from './examples/ModalOptionalSizesExample.vue?raw'
+import ModalToggleBetweenModalsExample from './examples/ModalToggleBetweenModalsExample.vue'
+import ModalToggleBetweenModalsExampleRaw from './examples/ModalToggleBetweenModalsExample.vue?raw'
+import ModalFullscreenExample from './examples/ModalFullscreenExample.vue'
+import ModalFullscreenExampleRaw from './examples/ModalFullscreenExample.vue?raw'
+import ModalFullscreenModalExample from './examples/ModalFullscreenModalExample.vue'
+import ModalFullscreenModalExampleRaw from './examples/ModalFullscreenModalExample.vue?raw'
+
+## Examples
+
+### Modal components
+
+Below is a static modal example (meaning its `position` and `display` have been overridden). Included are the modal header, modal body (required for `padding`), and modal footer (optional). We ask that you include modal headers with actions whenever possible, or provide another explicit action.
+
+<Example class="theme-bootstrap" code={ModalVerticallyCenteredExampleRaw} lang="vue" name="ModalVerticallyCenteredExample">
+  <ModalVerticallyCenteredExample client:only="vue" />
+</Example>
+
+### Live demo
+
+Toggle a working modal demo by clicking the button below. It will slide down and fade in from the top of the page.
+
+<Example class="theme-bootstrap" code={ModalLiveDemoExampleRaw} lang="vue" name="ModalLiveDemoExample">
+  <ModalLiveDemoExample client:only="vue" />
+</Example>
+
+### Static backdrop
+
+If you set `backdrop` property to `static`, your modal will behave as though the backdrop is static, meaning it will not close when clicking outside it. Click the button below to try it.
+
+<Example class="theme-bootstrap" code={ModalStaticBackdropExampleRaw} lang="vue" name="ModalStaticBackdropExample">
+  <ModalStaticBackdropExample client:only="vue" />
+</Example>
+
+### Scrolling long content
+
+When modals become too long for the user's viewport or device, they scroll independent of the page itself. Try the demo below to see what we mean.
+
+<Example class="theme-bootstrap" code={ModalScrollingLongContentExampleRaw} lang="vue" name="ModalScrollingLongContentExample">
+  <ModalScrollingLongContentExample client:only="vue" />
+</Example>
+
+You can also create a scrollable modal that allows scroll the modal body by adding `scrollable` prop.
+
+<Example class="theme-bootstrap" code={ModalScrollingLongContent2ExampleRaw} lang="vue" name="ModalScrollingLongContent2Example">
+  <ModalScrollingLongContent2Example client:only="vue" />
+</Example>
+
+### Vertically centered
+
+Add `alignment="center` to `<CModal>` to vertically center the modal.
+
+<Example class="theme-bootstrap" code={ModalVerticallyCenteredScrollableExampleRaw} lang="vue" name="ModalVerticallyCenteredScrollableExample">
+  <ModalVerticallyCenteredScrollableExample client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={ModalTooltipsAndPopoversExampleRaw} lang="vue" name="ModalTooltipsAndPopoversExample">
+  <ModalTooltipsAndPopoversExample client:only="vue" />
+</Example>
+
+### Tooltips and popovers
+
+`<CTooltips>` and `<CPopovers>` can be placed within modals as needed. When modals are closed, any tooltips and popovers within are also automaticallyed.
+
+<Example class="theme-bootstrap" code={ModalOptionalSizesExampleRaw} lang="vue" name="ModalOptionalSizesExample">
+  <ModalOptionalSizesExample client:only="vue" />
+</Example>
+
+### Toggle between modals
+
+Toggle between multiple modals with some clever placement of the `visible` props. **Please note multiple modals cannot be opened at the same time** — this method simply toggles between two separate modals.
+
+<Example class="theme-bootstrap" code={ModalToggleBetweenModalsExampleRaw} lang="vue" name="ModalToggleBetweenModalsExample">
+  <ModalToggleBetweenModalsExample client:only="vue" />
+</Example>
+
+### Change animation
+
+The variable `$modal-fade-transform` determines the transform state of React Modal component before the modal fade-in animation, whereas the variable `$modal-show-transform` determines the transform state of Modal component after the modal fade-in animation.
+If you want a zoom-in animation, for example, set `$modal-fade-transform: scale(.8)`.
+
+### Remove animation
+
+For modals that simply appear rather than fade into view, set `transition` to `false`.
+
+```vue
+<CModal transition={false}>...</CModal>
+```
+
+### Accessibility
+
+Be sure to add `aria-labelledby="..."`, referencing the modal title, to `<CModal />` Additionally, you may give a description of your modal dialog with `aria-describedby` on `<CModal>`. Note that you don’t need to add `role="dialog` since we already add it.
+
+## Optional sizes
+
+Modals have three optional sizes, available via modifier classes to be placed on a `<CModal>`. These sizes kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Size</th>
+      <th>Property size</th>
+      <th>Modal max-width</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Small</td>
+      <td><code>'sm'</code></td>
+      <td><code>300px</code></td>
+    </tr>
+    <tr>
+      <td>Default</td>
+      <td class="text-body-secondary">None</td>
+      <td><code>500px</code></td>
+    </tr>
+    <tr>
+      <td>Large</td>
+      <td><code>'lg'</code></td>
+      <td><code>800px</code></td>
+    </tr>
+    <tr>
+      <td>Extra large</td>
+      <td><code>'xl'</code></td>
+      <td><code>1140px</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<Example class="theme-bootstrap" code={ModalFullscreenExampleRaw} lang="vue" name="ModalFullscreenExample">
+  <ModalFullscreenExample client:only="vue" />
+</Example>
+
+## Fullscreen Modal
+
+Another override is the option to pop up a modal that covers the user viewport, available via property `fullscreen`.
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Property fullscreen</th>
+      <th>Availability</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>true</code></td>
+      <td>Always</td>
+    </tr>
+    <tr>
+      <td><code>'sm'</code></td>
+      <td>Below <code>576px</code></td>
+    </tr>
+    <tr>
+      <td><code>'md'</code></td>
+      <td>Below <code>768px</code></td>
+    </tr>
+    <tr>
+      <td><code>'lg'</code></td>
+      <td>Below <code>992px</code></td>
+    </tr>
+    <tr>
+      <td><code>'xl'</code></td>
+      <td>Below <code>1200px</code></td>
+    </tr>
+    <tr>
+      <td><code>'xxl'</code></td>
+      <td>Below <code>1400px</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<Example class="theme-bootstrap" code={ModalFullscreenModalExampleRaw} lang="vue" name="ModalFullscreenModalExample">
+  <ModalFullscreenModalExample client:only="vue" />
+</Example>

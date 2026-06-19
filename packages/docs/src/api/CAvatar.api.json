@@ -1,0 +1,56 @@
+{
+  "name": "CAvatar",
+  "props": [
+    {
+      "name": "color",
+      "type": "Color",
+      "default": null,
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "shape",
+      "type": "Shape",
+      "default": null,
+      "description": "Select the shape of the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "size",
+      "type": "string",
+      "default": null,
+      "description": "Size the component small, large, or extra large.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "src",
+      "type": "string",
+      "default": null,
+      "description": "The src attribute for the img element.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "default": null,
+      "description": "Sets the color context of the status indicator to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "textColor",
+      "type": "TextColor",
+      "default": null,
+      "description": "Sets the text color of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CAvatar } from '@coreui/vue'"
+}

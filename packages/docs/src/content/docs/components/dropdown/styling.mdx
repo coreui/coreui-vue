@@ -1,0 +1,37 @@
+---
+title: "Vue Dropdown Component Styling"
+name: "Dropdown Styling"
+description: "Learn how to customize the Vue Dropdown component with CSS classes, variables, and SASS for flexible styling and seamless integration into your design."
+---
+
+### CSS variables
+
+Vue dropdowns use local CSS variables on `.dropdown` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+<ScssDocs file="_dropdown.scss" capture="dropdown-css-vars"/>
+
+Customization through CSS variables can be seen on the `.dropdown-menu-dark` class where we override specific values without adding duplicate CSS selectors.
+
+<ScssDocs file="_dropdown.scss" capture="dropdown-dark-css-vars"/>
+
+#### How to use CSS variables
+
+```js
+const vars = { 
+  '--my-css-var': 10,
+  '--my-another-css-var': "red" 
+}
+return <CDropdown :style="vars">...</CDropdown>
+```
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="dropdown-variables"/>
+
+Variables for the dark dropdown:
+
+<ScssDocs file="_variables.scss" capture="dropdown-dark-variables"/>
+
+Variables for the CSS-based carets that indicate a dropdown's interactivity:
+
+<ScssDocs file="_variables.scss" capture="caret-variables"/>

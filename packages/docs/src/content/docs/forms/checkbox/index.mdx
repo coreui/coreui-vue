@@ -1,0 +1,130 @@
+---
+title: "Vue Checkbox Component"
+name: "Checkbox"
+description: "Create consistent cross-browser and cross-device checkboxes with our Vue checkbox components."
+otherFrameworks:
+  - checkbox
+---
+
+import CheckboxExample from './examples/CheckboxExample.vue'
+import CheckboxExampleRaw from './examples/CheckboxExample.vue?raw'
+import CheckboxIndeterminateExample from './examples/CheckboxIndeterminateExample.vue'
+import CheckboxIndeterminateExampleRaw from './examples/CheckboxIndeterminateExample.vue?raw'
+import CheckboxDisabledExample from './examples/CheckboxDisabledExample.vue'
+import CheckboxDisabledExampleRaw from './examples/CheckboxDisabledExample.vue?raw'
+import CheckboxStackedExample from './examples/CheckboxStackedExample.vue'
+import CheckboxStackedExampleRaw from './examples/CheckboxStackedExample.vue?raw'
+import CheckboxInlineExample from './examples/CheckboxInlineExample.vue'
+import CheckboxInlineExampleRaw from './examples/CheckboxInlineExample.vue?raw'
+import CheckboxReverseExample from './examples/CheckboxReverseExample.vue'
+import CheckboxReverseExampleRaw from './examples/CheckboxReverseExample.vue?raw'
+import CheckboxToggleButtonsExample from './examples/CheckboxToggleButtonsExample.vue'
+import CheckboxToggleButtonsExampleRaw from './examples/CheckboxToggleButtonsExample.vue?raw'
+import CheckboxToggleButtonsOutlinedStylesExample from './examples/CheckboxToggleButtonsOutlinedStylesExample.vue'
+import CheckboxToggleButtonsOutlinedStylesExampleRaw from './examples/CheckboxToggleButtonsOutlinedStylesExample.vue?raw'
+import CheckboxWithoutLabelsExample from './examples/CheckboxWithoutLabelsExample.vue'
+import CheckboxWithoutLabelsExampleRaw from './examples/CheckboxWithoutLabelsExample.vue?raw'
+import CheckboxToggleButtons2Example from './examples/CheckboxToggleButtons2Example.vue'
+import CheckboxToggleButtons2ExampleRaw from './examples/CheckboxToggleButtons2Example.vue?raw'
+import CheckboxToggleButtons3Example from './examples/CheckboxToggleButtons3Example.vue'
+import CheckboxToggleButtons3ExampleRaw from './examples/CheckboxToggleButtons3Example.vue?raw'
+import CheckboxToggleButtons4Example from './examples/CheckboxToggleButtons4Example.vue'
+import CheckboxToggleButtons4ExampleRaw from './examples/CheckboxToggleButtons4Example.vue?raw'
+import CheckboxOutlinedStylesExample from './examples/CheckboxOutlinedStylesExample.vue'
+import CheckboxOutlinedStylesExampleRaw from './examples/CheckboxOutlinedStylesExample.vue?raw'
+
+## Approach
+
+Browser default checkboxes are replaced with the help of `<CFormCheck>`. Checkboxes are for selecting one or several options in a list.
+
+## Checks
+
+<Example code={CheckboxExampleRaw} lang="vue" name="CheckboxExample">
+  <CheckboxExample client:only="vue" />
+</Example>
+
+### vModel
+
+Single checkbox, boolean value.
+
+<Example code={CheckboxIndeterminateExampleRaw} lang="vue" name="CheckboxIndeterminateExample">
+  <CheckboxIndeterminateExample client:only="vue" />
+</Example>
+
+We can also bind multiple checkboxes to the same array.
+
+<Example code={CheckboxDisabledExampleRaw} lang="vue" name="CheckboxDisabledExample">
+  <CheckboxDisabledExample client:only="vue" />
+</Example>
+
+## Indeterminate
+
+Checkboxes can utilize the `:indeterminate` pseudo-class when manually set via `indeterminate` property.
+
+<Example code={CheckboxStackedExampleRaw} lang="vue" name="CheckboxStackedExample">
+  <CheckboxStackedExample client:only="vue" />
+</Example>
+
+### Disabled
+
+Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input's state.
+
+<Example code={CheckboxInlineExampleRaw} lang="vue" name="CheckboxInlineExample">
+  <CheckboxInlineExample client:only="vue" />
+</Example>
+
+## Default (stacked)
+
+By default, any number of checkboxes that are immediate sibling will be vertically stacked and appropriately spaced.
+
+<Example code={CheckboxReverseExampleRaw} lang="vue" name="CheckboxReverseExample">
+  <CheckboxReverseExample client:only="vue" />
+</Example>
+
+## Inline
+
+Group checkboxes on the same horizontal row by adding `inline` boolean property to any `<CFormCheck>`.
+
+<Example code={CheckboxToggleButtonsExampleRaw} lang="vue" name="CheckboxToggleButtonsExample">
+  <CheckboxToggleButtonsExample client:only="vue" />
+</Example>
+
+## Reverse 
+
+Put your checkboxes on the opposite side by adding `reverse` boolean property.
+
+<Example code={CheckboxToggleButtonsOutlinedStylesExampleRaw} lang="vue" name="CheckboxToggleButtonsOutlinedStylesExample">
+  <CheckboxToggleButtonsOutlinedStylesExample client:only="vue" />
+</Example>
+
+## Without labels
+
+Remember to still provide some form of accessible name for assistive technologies (for instance, using `aria-label`).
+
+<Example code={CheckboxWithoutLabelsExampleRaw} lang="vue" name="CheckboxWithoutLabelsExample">
+  <CheckboxWithoutLabelsExample client:only="vue" />
+</Example>
+
+## Toggle buttons
+
+Create button-like checkboxes buttons by using `button` boolean property on the `<CFormCheck>` component. These toggle buttons can further be grouped in a button group if needed.
+
+<Example code={CheckboxToggleButtons2ExampleRaw} lang="vue" name="CheckboxToggleButtons2Example">
+  <CheckboxToggleButtons2Example client:only="vue" />
+</Example>
+
+<Example code={CheckboxToggleButtons3ExampleRaw} lang="vue" name="CheckboxToggleButtons3Example">
+  <CheckboxToggleButtons3Example client:only="vue" />
+</Example>
+
+<Example code={CheckboxToggleButtons4ExampleRaw} lang="vue" name="CheckboxToggleButtons4Example">
+  <CheckboxToggleButtons4Example client:only="vue" />
+</Example>
+
+### Outlined styles
+
+Different variants of button, such at the various outlined styles, are supported.
+
+<Example code={CheckboxOutlinedStylesExampleRaw} lang="vue" name="CheckboxOutlinedStylesExample">
+  <CheckboxOutlinedStylesExample client:only="vue" />
+</Example>

@@ -1,0 +1,76 @@
+---
+title: "Vue Form Controls"
+name: "Form control"
+description: "Vue input and textarea components. Give textual form controls like `<input>`s and `<textarea>`s an upgrade with custom styles, sizing, focus states, and more."
+---
+
+import FormControlExample from './examples/FormControlExample.vue'
+import FormControlExampleRaw from './examples/FormControlExample.vue?raw'
+import FormControlSizingExample from './examples/FormControlSizingExample.vue'
+import FormControlSizingExampleRaw from './examples/FormControlSizingExample.vue?raw'
+import FormControlDisabledExample from './examples/FormControlDisabledExample.vue'
+import FormControlDisabledExampleRaw from './examples/FormControlDisabledExample.vue?raw'
+import FormControlReadonlyExample from './examples/FormControlReadonlyExample.vue'
+import FormControlReadonlyExampleRaw from './examples/FormControlReadonlyExample.vue?raw'
+import FormControlReadonlyPlainTextExample from './examples/FormControlReadonlyPlainTextExample.vue'
+import FormControlReadonlyPlainTextExampleRaw from './examples/FormControlReadonlyPlainTextExample.vue?raw'
+import FormControlReadonlyPlainText2Example from './examples/FormControlReadonlyPlainText2Example.vue'
+import FormControlReadonlyPlainText2ExampleRaw from './examples/FormControlReadonlyPlainText2Example.vue?raw'
+import FormControlFileInputExample from './examples/FormControlFileInputExample.vue'
+import FormControlFileInputExampleRaw from './examples/FormControlFileInputExample.vue?raw'
+import FormControlColorExample from './examples/FormControlColorExample.vue'
+import FormControlColorExampleRaw from './examples/FormControlColorExample.vue?raw'
+
+## Example
+
+<Example code={FormControlExampleRaw} lang="vue" name="FormControlExample">
+  <FormControlExample client:only="vue" />
+</Example>
+
+## Sizing
+
+Set heights using `size` property like `size="lg"` and `size="sm"`.
+
+<Example code={FormControlSizingExampleRaw} lang="vue" name="FormControlSizingExample">
+  <FormControlSizingExample client:only="vue" />
+</Example>
+
+## Disabled
+
+Add the `disabled` boolean attribute on an input to give it a grayed out appearance and remove pointer events.
+
+<Example code={FormControlDisabledExampleRaw} lang="vue" name="FormControlDisabledExample">
+  <FormControlDisabledExample client:only="vue" />
+</Example>
+
+## Readonly
+
+Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
+
+<Example code={FormControlReadonlyExampleRaw} lang="vue" name="FormControlReadonlyExample">
+  <FormControlReadonlyExample client:only="vue" />
+</Example>
+
+## Readonly plain text
+
+If you want to have `<input readonly>` elements in your form styled as plain text, use the `plain-text` boolean property to remove the default form field styling and preserve the correct margin and padding.
+
+<Example code={FormControlReadonlyPlainTextExampleRaw} lang="vue" name="FormControlReadonlyPlainTextExample">
+  <FormControlReadonlyPlainTextExample client:only="vue" />
+</Example>
+
+<Example code={FormControlReadonlyPlainText2ExampleRaw} lang="vue" name="FormControlReadonlyPlainText2Example">
+  <FormControlReadonlyPlainText2Example client:only="vue" />
+</Example>
+
+## File input
+
+<Example code={FormControlFileInputExampleRaw} lang="vue" name="FormControlFileInputExample">
+  <FormControlFileInputExample client:only="vue" />
+</Example>
+
+## Color
+
+<Example code={FormControlColorExampleRaw} lang="vue" name="FormControlColorExample">
+  <FormControlColorExample client:only="vue" />
+</Example>

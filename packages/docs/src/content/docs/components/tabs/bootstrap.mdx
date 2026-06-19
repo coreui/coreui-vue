@@ -1,0 +1,99 @@
+---
+title: "Vue Bootstrap Tabs Component"
+name: "Tabs with Bootstrap Styling"
+bootstrap: true
+description: "Learn how to use CoreUI’s Vue Tabs component with Bootstrap styles for flexible, framework-consistent UI."
+---
+
+import TabsExample from './examples/TabsExample.vue'
+import TabsExampleRaw from './examples/TabsExample.vue?raw'
+import TabsUnstyledExample from './examples/TabsUnstyledExample.vue'
+import TabsUnstyledExampleRaw from './examples/TabsUnstyledExample.vue?raw'
+import TabsPillsExample from './examples/TabsPillsExample.vue'
+import TabsPillsExampleRaw from './examples/TabsPillsExample.vue?raw'
+import TabsUnderlineExample from './examples/TabsUnderlineExample.vue'
+import TabsUnderlineExampleRaw from './examples/TabsUnderlineExample.vue?raw'
+import TabsUnderlineBorderExample from './examples/TabsUnderlineBorderExample.vue'
+import TabsUnderlineBorderExampleRaw from './examples/TabsUnderlineBorderExample.vue?raw'
+import TabsEnclosedExample from './examples/TabsEnclosedExample.vue'
+import TabsEnclosedExampleRaw from './examples/TabsEnclosedExample.vue?raw'
+import TabsEnclosedPillsExample from './examples/TabsEnclosedPillsExample.vue'
+import TabsEnclosedPillsExampleRaw from './examples/TabsEnclosedPillsExample.vue?raw'
+import TabsUnstyledFillAndJustifyExample from './examples/TabsUnstyledFillAndJustifyExample.vue'
+import TabsUnstyledFillAndJustifyExampleRaw from './examples/TabsUnstyledFillAndJustifyExample.vue?raw'
+import TabsUnstyledFillAndJustify2Example from './examples/TabsUnstyledFillAndJustify2Example.vue'
+import TabsUnstyledFillAndJustify2ExampleRaw from './examples/TabsUnstyledFillAndJustify2Example.vue?raw'
+
+## Example
+
+The basic Vue tabs example uses the `variant="tabs"` props to generate a tabbed interface.
+
+<Example class="theme-bootstrap" code={TabsExampleRaw} lang="vue" name="TabsExample">
+  <TabsExample client:only="vue" />
+</Example>
+
+## Available styles
+
+Change the style of `<CTabs>`'s component with modifiers and utilities. Mix and match as needed, or build your own.
+
+### Unstyled
+
+If you don’t provide the `variant` prop, the component will default to a basic style.
+
+<Example class="theme-bootstrap" code={TabsUnstyledExampleRaw} lang="vue" name="TabsUnstyledExample">
+  <TabsUnstyledExample client:only="vue" />
+</Example>
+
+### Pills
+
+Take that same code, but use `variant="pills"` instead:
+
+<Example class="theme-bootstrap" code={TabsPillsExampleRaw} lang="vue" name="TabsPillsExample">
+  <TabsPillsExample client:only="vue" />
+</Example>
+
+### Underline
+
+Take that same code, but use `variant="underline"` instead:
+
+<Example class="theme-bootstrap" code={TabsUnderlineExampleRaw} lang="vue" name="TabsUnderlineExample">
+  <TabsUnderlineExample client:only="vue" />
+</Example>
+
+### Underline border
+
+Take that same code, but use `variant="underline-border"` instead:
+
+<Example class="theme-bootstrap" code={TabsUnderlineBorderExampleRaw} lang="vue" name="TabsUnderlineBorderExample">
+  <TabsUnderlineBorderExample client:only="vue" />
+</Example>
+
+### Enclosed
+
+Use the `variant="enclosed"` class to give your tab items a subtle border and rounded styling.
+
+<Example class="theme-bootstrap" code={TabsEnclosedExampleRaw} lang="vue" name="TabsEnclosedExample">
+  <TabsEnclosedExample client:only="vue" />
+</Example>
+
+### Enclosed pills 
+
+Use the `variant="enclosed-pills"` to achieve a pill-style appearance for each tab item, using pill-shaped borders and smoother outlines.
+
+<Example class="theme-bootstrap" code={TabsEnclosedPillsExampleRaw} lang="vue" name="TabsEnclosedPillsExample">
+  <TabsEnclosedPillsExample client:only="vue" />
+</Example>
+
+### Fill and justify
+
+Force your `<CTabs>`'s contents to extend the full available width one of two modifier classes. To proportionately fill all available space use `layout="fill"`. Notice that all horizontal space is occupied, but not every nav item has the same width.
+
+<Example class="theme-bootstrap" code={TabsUnstyledFillAndJustifyExampleRaw} lang="vue" name="TabsUnstyledFillAndJustifyExample">
+  <TabsUnstyledFillAndJustifyExample client:only="vue" />
+</Example>
+
+For equal-width elements, use `layout="justified"`. All horizontal space will be occupied by nav links, but unlike the `layout="fill"` above, every nav item will be the same width.
+
+<Example class="theme-bootstrap" code={TabsUnstyledFillAndJustify2ExampleRaw} lang="vue" name="TabsUnstyledFillAndJustify2Example">
+  <TabsUnstyledFillAndJustify2Example client:only="vue" />
+</Example>

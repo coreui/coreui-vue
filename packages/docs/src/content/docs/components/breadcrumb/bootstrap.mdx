@@ -1,0 +1,58 @@
+---
+title: "Vue Bootstrap Breadcrumb Component"
+name: "Breadcrumb with Bootstrap Styling"
+bootstrap: true
+description: "Learn how to use CoreUI’s Vue Breadcrumb component with Bootstrap styles for flexible, framework-consistent UI."
+---
+
+import BreadcrumbExample from './examples/BreadcrumbExample.vue'
+import BreadcrumbExampleRaw from './examples/BreadcrumbExample.vue?raw'
+import BreadcrumbDividersExample from './examples/BreadcrumbDividersExample.vue'
+import BreadcrumbDividersExampleRaw from './examples/BreadcrumbDividersExample.vue?raw'
+import BreadcrumbDividers2Example from './examples/BreadcrumbDividers2Example.vue'
+import BreadcrumbDividers2ExampleRaw from './examples/BreadcrumbDividers2Example.vue?raw'
+import BreadcrumbDividers3Example from './examples/BreadcrumbDividers3Example.vue'
+import BreadcrumbDividers3ExampleRaw from './examples/BreadcrumbDividers3Example.vue?raw'
+
+## Example
+
+The breadcrumb navigation provides links back to each previous page the user navigated through and shows the current location in a website or an application. You don’t have to add separators, because they automatically added in CSS through ::before and content.
+
+<Example class="theme-bootstrap" code={BreadcrumbExampleRaw} lang="vue" name="BreadcrumbExample">
+  <BreadcrumbExample client:only="vue" />
+</Example>
+
+## Dividers
+
+Dividers are automatically added in CSS through [`::before`](https://developer.mozilla.org/en-US/docs/Web/CSS/::before) and [`content`](https://developer.mozilla.org/en-US/docs/Web/CSS/content). They can be changed by modifying a local CSS custom property `--coreui-breadcrumb-divider`, or through the `$breadcrumb-divider` Sass variable — and `$breadcrumb-divider-flipped` for its RTL counterpart, if needed. We default to our Sass variable, which is set as a fallback to the custom property. This way, you get a global divider that you can override without recompiling CSS at any time.
+
+<Example class="theme-bootstrap" code={BreadcrumbDividersExampleRaw} lang="vue" name="BreadcrumbDividersExample">
+  <BreadcrumbDividersExample client:only="vue" />
+</Example>
+
+When modifying via Sass, the [quote](https://sass-lang.com/documentation/modules/string#quote) function is required to generate the quotes around a string. For example, using `>` as the divider, you can use this:
+
+```scss
+$breadcrumb-divider: quote(">");
+```
+
+It's also possible to use an **embedded SVG icon**. Apply it via our CSS custom property, or use the Sass variable.
+
+<Example class="theme-bootstrap" code={BreadcrumbDividers2ExampleRaw} lang="vue" name="BreadcrumbDividers2Example">
+  <BreadcrumbDividers2Example client:only="vue" />
+</Example>
+
+```scss
+$breadcrumb-divider: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' 
+width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E");
+```
+
+You can also remove the divider setting `--cui-breadcrumb-divider: '';` (empty strings in CSS custom properties counts as a value), or setting the Sass variable to `$breadcrumb-divider: none;`.
+
+<Example class="theme-bootstrap" code={BreadcrumbDividers3ExampleRaw} lang="vue" name="BreadcrumbDividers3Example">
+  <BreadcrumbDividers3Example client:only="vue" />
+</Example>
+
+```scss
+$breadcrumb-divider: none;
+```

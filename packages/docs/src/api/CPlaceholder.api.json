@@ -1,0 +1,88 @@
+{
+  "name": "CPlaceholder",
+  "props": [
+    {
+      "name": "animation",
+      "type": "string",
+      "default": null,
+      "description": "Set animation type to better convey the perception of something being actively loaded.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "as",
+      "type": "string",
+      "default": "'span'",
+      "description": "Component used for the root node. Either a string to use a HTML element or a component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "color",
+      "type": "Color",
+      "default": null,
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "size",
+      "type": "string",
+      "default": null,
+      "description": "Size the component extra small, small, or large.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "xs",
+      "type": "number",
+      "default": null,
+      "description": "The number of columns on extra small devices (<576px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "sm",
+      "type": "number",
+      "default": null,
+      "description": "The number of columns on small devices (<768px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "md",
+      "type": "number",
+      "default": null,
+      "description": "The number of columns on medium devices (<992px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "lg",
+      "type": "number",
+      "default": null,
+      "description": "The number of columns on large devices (<1200px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "xl",
+      "type": "number",
+      "default": null,
+      "description": "The number of columns on X-Large devices (<1400px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "xxl",
+      "type": "number",
+      "default": null,
+      "description": "The number of columns on XX-Large devices (≥1400px).",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CPlaceholder } from '@coreui/vue'"
+}

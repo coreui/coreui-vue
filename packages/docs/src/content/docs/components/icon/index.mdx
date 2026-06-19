@@ -1,0 +1,151 @@
+---
+title: "Vue Icon Component"
+name: "Icon"
+description: "Vue icons library is a great resource for Vue developers, who can use its customizable SVG icons in their applications. It offers an extensive library of icons to choose from, which can be easily inserted into projects with just a few lines of code. Not only that, but users are also able to customize the appearance of these icons by setting various props on them. This provides developers with an efficient and flexible way to integrate useful graphical elements into their web pages without doing any extra work."
+---
+
+import IconSingleIconExample from './examples/IconSingleIconExample.vue'
+import IconSingleIconExampleRaw from './examples/IconSingleIconExample.vue?raw'
+import IconUtilityClassesExample from './examples/IconUtilityClassesExample.vue'
+import IconUtilityClassesExampleRaw from './examples/IconUtilityClassesExample.vue?raw'
+import IconCSSVariablesExample from './examples/IconCSSVariablesExample.vue'
+import IconCSSVariablesExampleRaw from './examples/IconCSSVariablesExample.vue?raw'
+import IconSizingExample from './examples/IconSizingExample.vue'
+import IconSizingExampleRaw from './examples/IconSizingExample.vue?raw'
+import IconCustomSVGIconsExample from './examples/IconCustomSVGIconsExample.vue'
+import IconCustomSVGIconsExampleRaw from './examples/IconCustomSVGIconsExample.vue?raw'
+import IconAvailableIconsExample from './examples/IconAvailableIconsExample.vue'
+import IconAvailableIcons2Example from './examples/IconAvailableIcons2Example.vue'
+
+## Installation
+
+To start using CoreUI Vue Icons in your project, you need to install it as a dependency. Follow the instructions below based on your package manager of choice:
+
+### Npm
+
+```bash
+// CoreUI Icons library
+npm install @coreui/icons
+
+// CIcon component
+npm install @coreui/icons-vue 
+```
+
+### Yarn
+
+```bash
+yarn add @coreui/icons
+yarn add @coreui/icons-vue
+```
+
+## Usage
+
+Import vue.js icons using one of these two options:
+
+### Single Vue.js icon
+
+To use a single Vue.js icon, import the `<CIcon>` component and the desired icon(s) from the `@coreui/icons` library. Then, include the `<CIcon>` component in your code and specify the icon prop with the imported icon variable. Additionally, you can set the desired size for the icon using the `size` prop.
+
+<Example code={IconSingleIconExampleRaw} lang="vue" name="IconSingleIconExample">
+  <IconSingleIconExample client:only="vue" />
+</Example>
+
+### All icons
+
+To use all icons available in the CoreUI Vue.js Icons package, import the CIcon component and the entire `@coreui/icons` library using the `* as` syntax. Then, reference the desired icon within the `icon` prop.
+
+```vue
+<template>
+  <CIcon :icon="icon.cilList" size="xxl"/>
+</template>
+```
+
+### Icons object
+
+This way you import your needed Vue.js icons once and pass them to $root object on 'icons' key
+
+```js
+// main.js / main.ts
+import { CIcon } from '@coreui/icons-vue';
+import {
+  cilArrowBottom,
+  cilArrowRight,
+  cilArrowTop,
+  cilBan,
+  cilBasket,
+  cilBell,
+  cilCalculator,
+  cilCalendar
+} from '@coreui/icons'
+
+const icons = {
+  cilArrowBottom,
+  cilArrowRight,
+  cilArrowTop,
+  cilBan,
+  cilBasket,
+  cilBell,
+  cilCalculator,
+  cilCalendar
+}
+
+const app = createApp(App)
+...
+app.provide('icons', icons)
+app.component('CIcon', CIcon)
+...
+app.mount('#app')
+
+```
+
+Later anywhere in the app:
+
+```vue
+<CIcon icon="cilArrowBottom" size="xxl"/>
+<CIcon icon="cil-arrow-bottom" size="xxl"/>
+```
+
+You can pass the name of the icon both in camelCase and kebab-case
+
+### Color
+
+The CoreUI Vue Icon component offers versatile color customization options, empowering you to personalize the icons in multiple ways. You can effortlessly modify the colors by utilizing either class names or CSS variables, providing flexibility and ease in creating visually stunning and cohesive icon designs.
+
+#### Utility classes
+
+With some [color utility classes](https://coreui.io/docs/utilities/colors/), you may use color to convey message.
+
+<Example code={IconUtilityClassesExampleRaw} lang="vue" name="IconUtilityClassesExample">
+  <IconUtilityClassesExample client:only="vue" />
+</Example>
+
+#### CSS Variables
+
+CoreUI Vue Icons leverage local CSS variables, such as `--ci-primary-color` and `--ci-secondary-color` (for Duotone icons), to facilitate real-time customization. This allows developers to easily customize the icons by providing their own custom CSS variables.
+
+<Example code={IconCSSVariablesExampleRaw} lang="vue" name="IconCSSVariablesExample">
+  <IconCSSVariablesExample client:only="vue" />
+</Example>
+
+### Sizing
+
+Set heights of vue icons using size property like `size="lg"` and `size="sm"`.
+
+<Example code={IconSizingExampleRaw} lang="vue" name="IconSizingExample">
+  <IconSizingExample client:only="vue" />
+</Example>
+
+### Custom SVG Icons
+
+The `<CIconSvg`> component allows you to add custom SVG icons to your application. In case you want to use custom SVG icons, this component provides the flexibility to include bespoke SVG graphics that align with your design requirements.
+
+<Example code={IconCustomSVGIconsExampleRaw} lang="vue" name="IconCustomSVGIconsExample">
+  <IconCustomSVGIconsExample client:only="vue" />
+</Example>
+
+## Available icons
+
+CoreUI Icons package is delivered with more than 1500 icons in multiple formats SVG, PNG, and Webfonts. CoreUI Icons are beautifully crafted symbols for common actions and items. You can use them in your digital products for web or mobile app.
+
+<IconAvailableIconsExample client:only="vue" />
+<IconAvailableIcons2Example client:only="vue" />

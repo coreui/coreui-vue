@@ -1,0 +1,73 @@
+---
+title: "Vue Bootstrap Search Button Component"
+name: "Search Button with Bootstrap Styling"
+bootstrap: true
+description: "Learn how to use CoreUI’s Vue Search Button component with Bootstrap styles for flexible, framework-consistent UI."
+---
+
+import SearchButtonExample from './examples/SearchButtonExample.vue'
+import SearchButtonExampleRaw from './examples/SearchButtonExample.vue?raw'
+import SearchButtonCustomShortcutExample from './examples/SearchButtonCustomShortcutExample.vue'
+import SearchButtonCustomShortcutExampleRaw from './examples/SearchButtonCustomShortcutExample.vue?raw'
+import SearchButtonOffcanvasExample from './examples/SearchButtonOffcanvasExample.vue'
+import SearchButtonOffcanvasExampleRaw from './examples/SearchButtonOffcanvasExample.vue?raw'
+
+## Overview
+
+<AddedIn version="5.9.0" />
+
+The CoreUI **Vue Search Button component** is a trigger element designed for search entry points and command-style actions. It behaves like a regular button on click, but it can also react to a configurable keyboard shortcut such as `meta+/` or `ctrl+/`.
+
+- Use it as a standalone trigger for a custom search UI.
+- Pair it with reactive state to open a modal, offcanvas, or command palette.
+- Shortcut keys are rendered automatically.
+- Displayed shortcut keys react to keyboard interaction and receive an `.active` state while pressed.
+
+## Basic example
+
+Use `<CSearchButton>` as the entry point for a search interface. Listen to `@trigger` as the main activation callback for both direct interaction and keyboard shortcuts.
+
+<Example class="theme-bootstrap" code={SearchButtonExampleRaw} lang="vue" name="SearchButtonExample">
+  <SearchButtonExample client:only="vue" />
+</Example>
+
+## Custom shortcut
+
+Configure the shortcut with the `shortcut` prop. On macOS, the component prefers the `meta` variant for the visible label. On Windows and Linux, it prefers the `ctrl` variant.
+
+<Callout color="warning">
+Shortcuts such as `meta+f`, `ctrl+f`, `meta+s`, or `ctrl+s` can override native browser or system shortcuts. Prefer safer combinations such as `meta+/` and `ctrl+/` unless replacing the default behavior is intentional.
+</Callout>
+
+<Example class="theme-bootstrap" code={SearchButtonCustomShortcutExampleRaw} lang="vue" name="SearchButtonCustomShortcutExample">
+  <SearchButtonCustomShortcutExample client:only="vue" />
+</Example>
+
+## Launch an offcanvas
+
+The component works naturally with reactive state and a dedicated `@trigger` event. This demo uses `meta+shift+o` / `ctrl+shift+o` to avoid colliding with other live examples on the page.
+
+<Example class="theme-bootstrap" code={SearchButtonOffcanvasExampleRaw} lang="vue" name="SearchButtonOffcanvasExample">
+  <SearchButtonOffcanvasExample client:only="vue" />
+</Example>
+
+## Keyboard behavior
+
+### When the configured shortcut is pressed
+
+| Key | Action |
+| --- | --- |
+| `Enter` / `Space` on a focused search button | Trigger the component activation callback |
+| Configured shortcut, e.g. `⌘/` / `Ctrl+/` | Trigger the component activation callback |
+| Modifier key inside the visible shortcut | Add `.active` to the corresponding `.search-button-key` while pressed |
+| Final key inside the visible shortcut | Add `.active` to the corresponding `.search-button-key` while pressed |
+
+### Keyboard state behavior
+
+| Interaction | Effect |
+| --- | --- |
+| Matching shortcut on `keydown` | Optionally prevents the browser's default behavior and emits `trigger` |
+| Plain typing inside `input`, `textarea`, `select`, or `contenteditable` | Does not trigger the component without `meta` or `ctrl` |
+| `keyup` after a shortcut key press | Removes `.active` from the rendered shortcut keys |
+| Browser window `blur` | Clears all active shortcut key states |
+| Multiple configured shortcuts | The component listens to all configured shortcuts and renders the platform-preferred one in the UI |

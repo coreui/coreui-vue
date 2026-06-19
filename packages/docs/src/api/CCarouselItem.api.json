@@ -1,0 +1,32 @@
+{
+  "name": "CCarouselItem",
+  "props": [
+    {
+      "name": "active",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "direction",
+      "type": "string",
+      "default": "'next'",
+      "description": "",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "interval",
+      "type": "boolean|number",
+      "default": "false",
+      "description": "The amount of time to delay between automatically cycling an item.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CCarouselItem } from '@coreui/vue'"
+}

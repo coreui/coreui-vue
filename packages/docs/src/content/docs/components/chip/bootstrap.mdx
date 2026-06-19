@@ -1,0 +1,180 @@
+---
+title: "Vue Bootstrap Chip Component"
+name: "Chip with Bootstrap Styling"
+bootstrap: true
+description: "Learn how to use CoreUI’s Vue Chip component with Bootstrap styles for flexible, framework-consistent UI."
+---
+
+import ChipExample from './examples/ChipExample.vue'
+import ChipExampleRaw from './examples/ChipExample.vue?raw'
+import ChipOutlineExample from './examples/ChipOutlineExample.vue'
+import ChipOutlineExampleRaw from './examples/ChipOutlineExample.vue?raw'
+import ChipIconExample from './examples/ChipIconExample.vue'
+import ChipIconExampleRaw from './examples/ChipIconExample.vue?raw'
+import ChipAvatarExample from './examples/ChipAvatarExample.vue'
+import ChipAvatarExampleRaw from './examples/ChipAvatarExample.vue?raw'
+import ChipVariantsExample from './examples/ChipVariantsExample.vue'
+import ChipVariantsExampleRaw from './examples/ChipVariantsExample.vue?raw'
+import ChipOutlineVariantsExample from './examples/ChipOutlineVariantsExample.vue'
+import ChipOutlineVariantsExampleRaw from './examples/ChipOutlineVariantsExample.vue?raw'
+import ChipSizesExample from './examples/ChipSizesExample.vue'
+import ChipSizesExampleRaw from './examples/ChipSizesExample.vue?raw'
+import ChipActiveStateExample from './examples/ChipActiveStateExample.vue'
+import ChipActiveStateExampleRaw from './examples/ChipActiveStateExample.vue?raw'
+import ChipInteractiveExample from './examples/ChipInteractiveExample.vue'
+import ChipInteractiveExampleRaw from './examples/ChipInteractiveExample.vue?raw'
+import ChipSelectableExample from './examples/ChipSelectableExample.vue'
+import ChipSelectableExampleRaw from './examples/ChipSelectableExample.vue?raw'
+import ChipDismissButtonExample from './examples/ChipDismissButtonExample.vue'
+import ChipDismissButtonExampleRaw from './examples/ChipDismissButtonExample.vue?raw'
+import ChipCustomRemoveIconExample from './examples/ChipCustomRemoveIconExample.vue'
+import ChipCustomRemoveIconExampleRaw from './examples/ChipCustomRemoveIconExample.vue?raw'
+import ChipDisabledExample from './examples/ChipDisabledExample.vue'
+import ChipDisabledExampleRaw from './examples/ChipDisabledExample.vue?raw'
+
+## Overview
+
+The CoreUI **Vue Chip component** lets you build compact, interactive UI elements for labels, tags, filters, and selections. Chips support icons, avatars, removal, keyboard navigation, and theme-aware styling.
+
+Chips are similar to badges, but they have a single size and more defined visual styles useful for indicating state and selection.
+
+- Chips are statically sized and do not scale with the parent element by default.
+- Chips can have icons, avatars, and remove buttons.
+- Chips can be active or disabled.
+- Chips automatically gain focus when they are `selectable` or `removable`.
+- Chips support keyboard navigation and selection in their container.
+
+See examples of all of this in action below.
+
+## When to use chips
+
+Use the Vue Chip component when you need:
+
+- Multi-select filters in search or form interfaces
+- Removable tags for selected items or applied filters
+- Keyboard-navigable selection groups
+- Compact status indicators with icon or avatar support
+
+## Basic chips
+
+Use `CChip` for standalone chips.
+
+<Example class="theme-bootstrap" code={ChipExampleRaw} lang="vue" name="ChipExample">
+  <ChipExample client:only="vue" />
+</Example>
+
+## Outline chips
+
+Use `variant="outline"` to remove all background images and colors on any chip.
+
+<Example class="theme-bootstrap" code={ChipOutlineExampleRaw} lang="vue" name="ChipOutlineExample">
+  <ChipOutlineExample client:only="vue" />
+</Example>
+
+## Chips with icons
+
+Wrap `CIcon` from `@coreui/icons-vue` in a `<span class="chip-icon">` to render a leading icon.
+
+<Example class="theme-bootstrap" code={ChipIconExampleRaw} lang="vue" name="ChipIconExample">
+  <ChipIconExample client:only="vue" />
+</Example>
+
+## Chips with avatars
+
+Use `.chip-img` for an image-like avatar or combine `CChip` with `CAvatar`.
+
+<Example class="theme-bootstrap" code={ChipAvatarExampleRaw} lang="vue" name="ChipAvatarExample">
+  <ChipAvatarExample client:only="vue" />
+</Example>
+
+## Variants
+
+Use `color` to apply theme color variants to your chips. Chips are subtle by default as this allows for a clear, themed active state.
+
+<Example class="theme-bootstrap" code={ChipVariantsExampleRaw} lang="vue" name="ChipVariantsExample">
+  <ChipVariantsExample client:only="vue" />
+</Example>
+
+Combine `variant="outline"` with a `color` for outline color variants.
+
+<Example class="theme-bootstrap" code={ChipOutlineVariantsExampleRaw} lang="vue" name="ChipOutlineVariantsExample">
+  <ChipOutlineVariantsExample client:only="vue" />
+</Example>
+
+## Sizes
+
+Use `size="sm"` or `size="lg"` for different sizes.
+
+<Example class="theme-bootstrap" code={ChipSizesExampleRaw} lang="vue" name="ChipSizesExample">
+  <ChipSizesExample client:only="vue" />
+</Example>
+
+## Active state
+
+Add `active` to make chips use the solid appearance. This is useful for toggle-style chip selections.
+
+<Example class="theme-bootstrap" code={ChipActiveStateExampleRaw} lang="vue" name="ChipActiveStateExample">
+  <ChipActiveStateExample client:only="vue" />
+</Example>
+
+## Interactive chips
+
+### Clickable
+
+Enable interactive hover styling and pointer cursor with the `clickable` prop.
+
+<Example class="theme-bootstrap" code={ChipInteractiveExampleRaw} lang="vue" name="ChipInteractiveExample">
+  <ChipInteractiveExample client:only="vue" />
+</Example>
+
+### Selectable
+
+Use `selectable` to enable selection behavior. Chips become keyboard-navigable and toggle on click or Enter/Space.
+
+<Example class="theme-bootstrap" code={ChipSelectableExampleRaw} lang="vue" name="ChipSelectableExample">
+  <ChipSelectableExample client:only="vue" />
+</Example>
+
+## Remove button
+
+If `removable` is enabled, the remove button is rendered automatically.
+
+<Example class="theme-bootstrap" code={ChipDismissButtonExampleRaw} lang="vue" name="ChipDismissButtonExample">
+  <ChipDismissButtonExample client:only="vue" />
+</Example>
+
+### Custom remove icon
+
+Replace the default remove icon with a custom icon.
+
+<Example class="theme-bootstrap" code={ChipCustomRemoveIconExampleRaw} lang="vue" name="ChipCustomRemoveIconExample">
+  <ChipCustomRemoveIconExample client:only="vue" />
+</Example>
+
+## Disabled state
+
+Disable chips to prevent interaction.
+
+<Example class="theme-bootstrap" code={ChipDisabledExampleRaw} lang="vue" name="ChipDisabledExample">
+  <ChipDisabledExample client:only="vue" />
+</Example>
+
+## Keyboard behavior
+
+A standalone chip handles its own selection and removal from the keyboard when it is `selectable` and/or `removable`. Roving focus between chips (arrow keys, <kbd>Home</kbd>/<kbd>End</kbd>) is provided by the parent [Chip Set](/components/chip-set.html) container.
+
+### When a chip is focused
+
+| Key | Action |
+| --- | --- |
+| `Enter` / `Space` | Toggle selection (only when `selectable` is enabled) |
+| `Backspace` / `Delete` | Close chip when `removable` is enabled |
+
+When chips are grouped in a [Chip Set](/components/chip-set.html), the arrow keys, <kbd>Home</kbd>, and <kbd>End</kbd> move focus between chips, and focus moves to a neighboring chip after one is removed.
+
+### Mouse interaction
+
+| Action | Effect |
+| --- | --- |
+| Click chip | Toggle selection (only when `selectable` is enabled) |
+| Click remove button | Close chip (only when `removable` is enabled) |

@@ -1,0 +1,23 @@
+<template>
+  <CToast :autohide="false" class="align-items-center" visible>
+    <CToastBody>
+      Hello, world! This is a toast message.
+      <div class="mt-2 pt-2 border-top">
+        <CButton type="button" color="primary" size="sm"> Take action </CButton>
+        <CToastClose as="CButton" color="secondary" size="sm" class="ms-1">Close</CToastClose>
+      </div>
+    </CToastBody>
+  </CToast>
+</template>
+
+<script setup>
+import { CToast, CToastBody, CButton, CToastClose } from '@coreui/vue'
+import { ref } from 'vue'
+const toasts = ref([])
+const createToast = () => {
+  toasts.value.push({
+    title: 'new toast',
+    content: 'Lorem ipsum dolor cet emit',
+  })
+}
+</script>

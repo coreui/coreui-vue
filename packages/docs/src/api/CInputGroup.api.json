@@ -1,0 +1,16 @@
+{
+  "name": "CInputGroup",
+  "props": [
+    {
+      "name": "size",
+      "type": "string",
+      "default": null,
+      "description": "Size the component small or large.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CInputGroup } from '@coreui/vue'"
+}

@@ -1,0 +1,56 @@
+{
+  "name": "CContainer",
+  "props": [
+    {
+      "name": "sm",
+      "type": "boolean",
+      "default": null,
+      "description": "Set container 100% wide until small breakpoint.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "md",
+      "type": "boolean",
+      "default": null,
+      "description": "Set container 100% wide until medium breakpoint.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "lg",
+      "type": "boolean",
+      "default": null,
+      "description": "Set container 100% wide until large breakpoint.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "xl",
+      "type": "boolean",
+      "default": null,
+      "description": "Set container 100% wide until X-large breakpoint.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "xxl",
+      "type": "boolean",
+      "default": null,
+      "description": "Set container 100% wide until XX-large breakpoint.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "fluid",
+      "type": "boolean",
+      "default": null,
+      "description": "Set container 100% wide, spanning the entire width of the viewport.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CContainer } from '@coreui/vue'"
+}

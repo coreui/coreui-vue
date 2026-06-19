@@ -1,0 +1,7 @@
+{
+  "name": "CCardBody",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CCardBody } from '@coreui/vue'"
+}

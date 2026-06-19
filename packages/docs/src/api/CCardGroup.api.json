@@ -1,0 +1,7 @@
+{
+  "name": "CCardGroup",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CCardGroup } from '@coreui/vue'"
+}

@@ -1,0 +1,80 @@
+---
+title: "Vue Spinner Component"
+name: "Spinner"
+description: "Indicate the loading state of a component or page with CoreUI spinners, built entirely with HTML, CSS, and no JavaScript."
+otherFrameworks:
+  - spinner
+---
+
+import SpinnerBorderExample from './examples/SpinnerBorderExample.vue'
+import SpinnerBorderExampleRaw from './examples/SpinnerBorderExample.vue?raw'
+import SpinnerBorderColorsExample from './examples/SpinnerBorderColorsExample.vue'
+import SpinnerBorderColorsExampleRaw from './examples/SpinnerBorderColorsExample.vue?raw'
+import SpinnerGrowExample from './examples/SpinnerGrowExample.vue'
+import SpinnerGrowExampleRaw from './examples/SpinnerGrowExample.vue?raw'
+import SpinnerGrowColorsExample from './examples/SpinnerGrowColorsExample.vue'
+import SpinnerGrowColorsExampleRaw from './examples/SpinnerGrowColorsExample.vue?raw'
+import SpinnerBorderMarginExample from './examples/SpinnerBorderMarginExample.vue'
+import SpinnerBorderMarginExampleRaw from './examples/SpinnerBorderMarginExample.vue?raw'
+import SpinnerBorderPlacementFlexExample from './examples/SpinnerBorderPlacementFlexExample.vue'
+import SpinnerBorderPlacementFlexExampleRaw from './examples/SpinnerBorderPlacementFlexExample.vue?raw'
+import SpinnerBorderPlacementFlex2Example from './examples/SpinnerBorderPlacementFlex2Example.vue'
+import SpinnerBorderPlacementFlex2ExampleRaw from './examples/SpinnerBorderPlacementFlex2Example.vue?raw'
+
+## About
+
+CoreUI "spinners" can be used to show the loading state in your projects. They're built only with HTML and CSS, meaning you don't need any JavaScript to create them. You will, however, need some custom JavaScript to toggle their visibility. Their appearance, alignment, and sizing can be easily customized with our amazing utility classes.
+
+For accessibility purposes, each loader here includes `role="status"` and a nested `<span class="visually-hidden">Loading...</span>`.
+
+## Border spinner
+
+Use the border spinners for a lightweight loading indicator.
+
+## Basic usage
+
+<Example code={SpinnerBorderExampleRaw} lang="vue" name="SpinnerBorderExample">
+  <SpinnerBorderExample client:only="vue" />
+</Example>
+
+### Colors
+
+The border spinner uses `currentColor` for its `border-color`. You can use any of our text color utilities on the standard spinner.
+
+<Example code={SpinnerBorderColorsExampleRaw} lang="vue" name="SpinnerBorderColorsExample">
+  <SpinnerBorderColorsExample client:only="vue" />
+</Example>
+
+## Growing spinner
+
+If you don't fancy a border spinner, switch to the grow spinner. While it doesn't technically spin, it does repeatedly grow!
+
+<Example code={SpinnerGrowExampleRaw} lang="vue" name="SpinnerGrowExample">
+  <SpinnerGrowExample client:only="vue" />
+</Example>
+
+Once again, this spinner is built with `currentColor`, so you can easily change its appearance. Here it is in blue, along with the supported variants.
+
+<Example code={SpinnerGrowColorsExampleRaw} lang="vue" name="SpinnerGrowColorsExample">
+  <SpinnerGrowColorsExample client:only="vue" />
+</Example>
+
+## Size
+
+Add `size="sm"`property` to make a smaller spinner that can quickly be used within other components.
+
+<Example code={SpinnerBorderMarginExampleRaw} lang="vue" name="SpinnerBorderMarginExample">
+  <SpinnerBorderMarginExample client:only="vue" />
+</Example>
+
+## Buttons
+
+Use spinners within buttons to indicate an action is currently processing or taking place. You may also swap the text out of the spinner element and utilize button text as needed.
+
+<Example code={SpinnerBorderPlacementFlexExampleRaw} lang="vue" name="SpinnerBorderPlacementFlexExample">
+  <SpinnerBorderPlacementFlexExample client:only="vue" />
+</Example>
+
+<Example code={SpinnerBorderPlacementFlex2ExampleRaw} lang="vue" name="SpinnerBorderPlacementFlex2Example">
+  <SpinnerBorderPlacementFlex2Example client:only="vue" />
+</Example>

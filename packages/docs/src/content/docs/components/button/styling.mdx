@@ -1,0 +1,25 @@
+---
+title: "Vue Buttons Component Styling"
+name: "Buttons Styling"
+description: "Learn how to customize the Vue Buttons component with CSS classes, variables, and SASS for flexible styling and seamless integration into your design."
+---
+
+### CSS variables
+
+Vue buttons use local CSS variables on `.btn` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+<ScssDocs file="_buttons.scss" capture="btn-css-vars"/>
+
+#### How to use CSS variables
+
+```js
+const vars = { 
+  '--my-css-var': 10,
+  '--my-another-css-var': "red" 
+}
+return <CButton :style="vars">...</CButton>
+```
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="btn-variables"/>

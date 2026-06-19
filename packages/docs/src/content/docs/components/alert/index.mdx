@@ -1,0 +1,85 @@
+---
+title: "Vue Alert Component"
+name: "Alert"
+description: "Vue alert component gives contextual feedback information for common user operations. The alert component is delivered with a bunch of usable and adjustable alert messages."
+otherFrameworks:
+  - alert
+---
+
+import AlertExample from './examples/AlertExample.vue'
+import AlertExampleRaw from './examples/AlertExample.vue?raw'
+import AlertLiveExample from './examples/AlertLiveExample.vue'
+import AlertLiveExampleRaw from './examples/AlertLiveExample.vue?raw'
+import AlertLinkColorExample from './examples/AlertLinkColorExample.vue'
+import AlertLinkColorExampleRaw from './examples/AlertLinkColorExample.vue?raw'
+import AlertAdditionalContentExample from './examples/AlertAdditionalContentExample.vue'
+import AlertAdditionalContentExampleRaw from './examples/AlertAdditionalContentExample.vue?raw'
+import AlertIcons1Example from './examples/AlertIcons1Example.vue'
+import AlertIcons1ExampleRaw from './examples/AlertIcons1Example.vue?raw'
+import AlertIcons2Example from './examples/AlertIcons2Example.vue'
+import AlertIcons2ExampleRaw from './examples/AlertIcons2Example.vue?raw'
+import AlertSolidExample from './examples/AlertSolidExample.vue'
+import AlertSolidExampleRaw from './examples/AlertSolidExample.vue?raw'
+import AlertDismissingExample from './examples/AlertDismissingExample.vue'
+import AlertDismissingExampleRaw from './examples/AlertDismissingExample.vue?raw'
+
+## Examples
+
+Vue Alert is prepared for any length of text, as well as an optional close button. For a styling, use one of the **required** contextual `color` props (e.g., `primary`). For inline dismissal, use the [dismissing prop](#dismissing).
+
+<Example code={AlertExampleRaw} lang="vue" name="AlertExample">
+  <AlertExample client:only="vue" />
+</Example>
+
+### Live example
+
+Click the button below to show an alert (hidden with inline styles to start), then dismiss (and destroy) it with the built-in close button.
+
+<Example code={AlertLiveExampleRaw} lang="vue" name="AlertLiveExample">
+  <AlertLiveExample client:only="vue" />
+</Example>
+
+### Link color
+
+Use the `<CAlertLink>` component to immediately give matching colored links inside any alert.
+<Example code={AlertLinkColorExampleRaw} lang="vue" name="AlertLinkColorExample">
+  <AlertLinkColorExample client:only="vue" />
+</Example>
+
+### Additional content
+
+Alert can also incorporate supplementary HTML elements like heading, paragraph, and divider.
+
+<Example code={AlertAdditionalContentExampleRaw} lang="vue" name="AlertAdditionalContentExample">
+  <AlertAdditionalContentExample client:only="vue" />
+</Example>
+
+### Icons
+
+Similarly, you can use [flexbox utilities](https//coreui.io/docs/4.0/utilities/flex") and [CoreUI Icons](https://icons.coreui.io) to create alerts with icons. Depending on your icons and content, you may want to add more utilities or custom styles.
+
+<Example code={AlertIcons1ExampleRaw} lang="vue" name="AlertIcons1Example">
+  <AlertIcons1Example client:only="vue" />
+</Example>
+
+Need more than one icon for your alerts? Consider using [CoreUI Icons](https://icons.coreui.io).
+
+<Example code={AlertIcons2ExampleRaw} lang="vue" name="AlertIcons2Example">
+  <AlertIcons2Example client:only="vue" />
+</Example>
+
+### Solid
+
+Use `variant="solid"` to change contextual colors to solid.
+
+<Example code={AlertSolidExampleRaw} lang="vue" name="AlertSolidExample">
+  <AlertSolidExample client:only="vue" />
+</Example>
+
+### Dismissing
+
+Alerts can also be easily dismissed. Just add the `dismissible` prop.
+
+<Example code={AlertDismissingExampleRaw} lang="vue" name="AlertDismissingExample">
+  <AlertDismissingExample client:only="vue" />
+</Example>

@@ -1,0 +1,152 @@
+{
+  "name": "CFormInput",
+  "props": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": null,
+      "description": "Toggle the disabled state for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "feedback",
+      "type": "string",
+      "default": null,
+      "description": "Provide valuable, actionable feedback.",
+      "since": "4.3.0",
+      "deprecated": null
+    },
+    {
+      "name": "feedbackInvalid",
+      "type": "string",
+      "default": null,
+      "description": "Provide valuable, actionable feedback.",
+      "since": "4.3.0",
+      "deprecated": null
+    },
+    {
+      "name": "feedbackValid",
+      "type": "string",
+      "default": null,
+      "description": "Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.",
+      "since": "4.3.0",
+      "deprecated": null
+    },
+    {
+      "name": "floatingLabel",
+      "type": "string",
+      "default": null,
+      "description": "Provide valuable, actionable valid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.",
+      "since": "4.3.0",
+      "deprecated": null
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "default": null,
+      "description": "The id global attribute defines an identifier (ID) that must be unique in the whole document.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "invalid",
+      "type": "boolean",
+      "default": null,
+      "description": "Set component validation state to invalid.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "default": null,
+      "description": "Add a caption for a component.",
+      "since": "4.3.0",
+      "deprecated": null
+    },
+    {
+      "name": "modelValue",
+      "type": "File|number|string",
+      "default": null,
+      "description": "The default name for a value passed using v-model.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "plainText",
+      "type": "boolean",
+      "default": null,
+      "description": "Render the component styled as plain text. Removes the default form field styling and preserve the correct margin and padding. Recommend to use only along side `readonly`.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "readonly",
+      "type": "boolean",
+      "default": null,
+      "description": "Toggle the readonly state for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "size",
+      "type": "string",
+      "default": null,
+      "description": "Size the component small or large.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "text",
+      "type": "string",
+      "default": null,
+      "description": "Add helper text to the component.",
+      "since": "4.3.0",
+      "deprecated": null
+    },
+    {
+      "name": "tooltipFeedback",
+      "type": "boolean",
+      "default": null,
+      "description": "Display validation feedback in a styled tooltip.",
+      "since": "4.3.0",
+      "deprecated": null
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "default": "'text'",
+      "description": "Specifies the type of component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "valid",
+      "type": "boolean",
+      "default": null,
+      "description": "Set component validation state to valid.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [
+    {
+      "name": "change",
+      "description": "Event occurs when the element loses focus, after the content has been changed.",
+      "properties": []
+    },
+    {
+      "name": "input",
+      "description": "Event occurs immediately after the value of a component has changed.",
+      "properties": []
+    },
+    {
+      "name": "update:modelValue",
+      "description": "Emit the new value whenever there’s an input or change event.",
+      "properties": []
+    }
+  ],
+  "slots": [],
+  "imports": "import { CFormInput } from '@coreui/vue'"
+}

@@ -1,0 +1,46 @@
+{
+  "name": "CAlert",
+  "props": [
+    {
+      "name": "color",
+      "type": "Color",
+      "default": null,
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "dismissible",
+      "type": "boolean",
+      "default": null,
+      "description": "Optionally add a close button to alert and allow it to self dismisss.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "variant",
+      "type": "string",
+      "default": null,
+      "description": "Set the alert variant to a solid.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "default": "true",
+      "description": "Toggle the visibility of alert component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [
+    {
+      "name": "close",
+      "description": "Callback fired when the component requests to be closed.",
+      "properties": []
+    }
+  ],
+  "slots": [],
+  "imports": "import { CAlert } from '@coreui/vue'"
+}

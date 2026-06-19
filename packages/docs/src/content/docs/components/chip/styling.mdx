@@ -1,0 +1,25 @@
+---
+title: "Vue Chip Component Styling"
+name: "Chip Styling"
+description: "Learn how to customize the Vue Chip component with CSS classes, variables, and SASS for flexible styling and seamless integration into your design."
+---
+
+### CSS variables
+
+Vue chips use local CSS variables on `.chip` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+<ScssDocs file="_chip.scss" capture="chip-css-vars"/>
+
+#### How to use CSS variables
+
+```js
+const vars = { 
+  '--my-css-var': 10,
+  '--my-another-css-var': "red" 
+}
+return <CChip :style="vars">...</CChip>
+```
+
+### SASS variables
+
+<ScssDocs file="_chip.scss" capture="chip-variables"/>

@@ -1,0 +1,139 @@
+{
+  "name": "CDropdown",
+  "props": [
+    {
+      "name": "alignment",
+      "type": "string | Alignments",
+      "default": null,
+      "description": "Set aligment of dropdown menu.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "autoClose",
+      "type": "boolean | 'inside' | 'outside'",
+      "default": "true",
+      "description": "Configure the auto close behavior of the dropdown:\n- `true` - the dropdown will be closed by clicking outside or inside the dropdown menu.\n- `false` - the dropdown will be closed by clicking the toggle button and manually calling hide or toggle method. (Also will not be closed by pressing esc key)\n- `'inside'` - the dropdown will be closed (only) by clicking inside the dropdown menu.\n- `'outside'` - the dropdown will be closed (only) by clicking outside the dropdown menu.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "container",
+      "type": "HTMLElement | (() => HTMLElement) | string",
+      "default": "'body'",
+      "description": "Appends the vue dropdown menu to a specific element. You can pass an HTML element or function that returns a single element. By default `document.body`.",
+      "since": "5.0.0",
+      "deprecated": null
+    },
+    {
+      "name": "dark",
+      "type": "boolean",
+      "default": null,
+      "description": "Sets a darker color scheme to match a dark navbar.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "direction",
+      "type": "string",
+      "default": null,
+      "description": "Sets a specified  direction and location of the dropdown menu.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": null,
+      "description": "Toggle the disabled state for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "offset",
+      "type": "array",
+      "default": "[0, 2]",
+      "description": "Offset of the dropdown menu relative to its target.",
+      "since": "4.9.0",
+      "deprecated": null
+    },
+    {
+      "name": "placement",
+      "type": "Placement",
+      "default": "'bottom-start'",
+      "description": "Describes the placement of your component after Popper.js has applied all the modifiers that may have flipped or altered the originally provided placement property.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "popper",
+      "type": "boolean",
+      "default": "true",
+      "description": "If you want to disable dynamic positioning set this property to `true`.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "popperConfig",
+      "type": "Partial<Options> | ((defaultPopperConfig: Partial<Options>) => Partial<Options>)",
+      "default": "undefined",
+      "description": "A Popper.js configuration object, or a function that receives the default\nconfiguration and returns a modified one, used to customize the\npositioning of the dropdown menu.",
+      "since": "5.10.0",
+      "deprecated": null
+    },
+    {
+      "name": "reference",
+      "type": "'parent' | 'toggle' | HTMLElement | Ref<HTMLElement | null>",
+      "default": "'toggle'",
+      "description": "Sets the reference element for positioning the Vue Dropdown Menu.\n- `toggle` - The Vue Dropdown Toggle button (default).\n- `parent` - The Vue Dropdown wrapper element.\n- `HTMLElement` - A custom HTML element.\n- `Ref` - A custom reference element.",
+      "since": "5.7.0",
+      "deprecated": null
+    },
+    {
+      "name": "teleport",
+      "type": "boolean",
+      "default": "false",
+      "description": "Generates dropdown menu using Teleport.",
+      "since": "5.0.0",
+      "deprecated": null
+    },
+    {
+      "name": "trigger",
+      "type": "Triggers",
+      "default": "'click'",
+      "description": "Sets which event handlers you’d like provided to your toggle prop. You can specify one trigger or an array of them.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "variant",
+      "type": "string",
+      "default": "'dropdown'",
+      "description": "Set the dropdown variant to an btn-group, dropdown, input-group, and nav-item.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "default": null,
+      "description": "Toggle the visibility of dropdown menu component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [
+    {
+      "name": "hide",
+      "description": "Callback fired when the component requests to be hidden.",
+      "properties": []
+    },
+    {
+      "name": "show",
+      "description": "Callback fired when the component requests to be shown.",
+      "properties": []
+    }
+  ],
+  "slots": [],
+  "imports": "import { CDropdown } from '@coreui/vue'"
+}

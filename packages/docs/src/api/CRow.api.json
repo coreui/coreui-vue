@@ -1,0 +1,56 @@
+{
+  "name": "CRow",
+  "props": [
+    {
+      "name": "xs",
+      "type": "Object as () => BPObject",
+      "default": null,
+      "description": "The number of columns/offset/order on extra small devices (<576px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "sm",
+      "type": "Object as () => BPObject",
+      "default": null,
+      "description": "The number of columns/offset/order on small devices (<768px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "md",
+      "type": "Object as () => BPObject",
+      "default": null,
+      "description": "The number of columns/offset/order on medium devices (<992px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "lg",
+      "type": "Object as () => BPObject",
+      "default": null,
+      "description": "The number of columns/offset/order on large devices (<1200px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "xl",
+      "type": "Object as () => BPObject",
+      "default": null,
+      "description": "The number of columns/offset/order on X-Large devices (<1400px).",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "xxl",
+      "type": "Object as () => BPObject",
+      "default": null,
+      "description": "The number of columns/offset/order on XX-Large devices (≥1400px).",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CRow } from '@coreui/vue'"
+}

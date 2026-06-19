@@ -1,0 +1,83 @@
+---
+title: "Vue Bootstrap Badge Component"
+name: "Badge with Bootstrap Styling"
+bootstrap: true
+description: "Learn how to use CoreUI’s Vue Badge component with Bootstrap styles for flexible, framework-consistent UI."
+---
+
+import BadgeExample from './examples/BadgeExample.vue'
+import BadgeExampleRaw from './examples/BadgeExample.vue?raw'
+import Badge2Example from './examples/Badge2Example.vue'
+import Badge2ExampleRaw from './examples/Badge2Example.vue?raw'
+import Badge3Example from './examples/Badge3Example.vue'
+import Badge3ExampleRaw from './examples/Badge3Example.vue?raw'
+import BadgePositionedExample from './examples/BadgePositionedExample.vue'
+import BadgePositionedExampleRaw from './examples/BadgePositionedExample.vue?raw'
+import BadgePositioned2Example from './examples/BadgePositioned2Example.vue'
+import BadgePositioned2ExampleRaw from './examples/BadgePositioned2Example.vue?raw'
+import BadgeContextualVariations from './examples/BadgeContextualVariations.vue'
+import BadgeContextualVariationsRaw from './examples/BadgeContextualVariations.vue?raw'
+import BadgeContextual2Variations from './examples/BadgeContextual2Variations.vue'
+import BadgeContextual2VariationsRaw from './examples/BadgeContextual2Variations.vue?raw'
+import BadgePillExample from './examples/BadgePillExample.vue'
+import BadgePillExampleRaw from './examples/BadgePillExample.vue?raw'
+
+## Example
+
+Badge component scales to suit the size of the parent element by using relative font sizing and `em` units.
+
+### Basic usage
+
+<Example class="theme-bootstrap" code={BadgeExampleRaw} lang="vue" name="BadgeExample">
+  <BadgeExample client:only="vue" />
+</Example>
+
+Badges can be used as part of links or buttons to provide a counter.
+
+<Example class="theme-bootstrap" code={Badge2ExampleRaw} lang="vue" name="Badge2Example">
+  <Badge2Example client:only="vue" />
+</Example>
+
+Remark that depending on how you use them, badges may be complicated for users of screen readers and related assistive technologies.
+
+Unless the context is clear, consider including additional context with a visually hidden piece of additional text.
+
+<Example class="theme-bootstrap" code={Badge3ExampleRaw} lang="vue" name="Badge3Example">
+  <Badge3Example client:only="vue" />
+</Example>
+
+### Positioned
+
+Use `position` prop to modify a component and position it in the corner of a link or button.
+
+<Example class="theme-bootstrap" code={BadgePositionedExampleRaw} lang="vue" name="BadgePositionedExample">
+  <BadgePositionedExample client:only="vue" />
+</Example>
+
+You can also create more generic indicators without a counter using a few more utilities.
+
+<Example class="theme-bootstrap" code={BadgePositioned2ExampleRaw} lang="vue" name="BadgePositioned2Example">
+  <BadgePositioned2Example client:only="vue" />
+</Example>
+
+## Contextual variations
+
+Add any of the below-mentioned `color` props to modify the presentation of a badge.
+
+<Example class="theme-bootstrap" code={BadgeContextualVariationsRaw} lang="vue" name="BadgeContextualVariations">
+  <BadgeContextualVariations client:only="vue" />
+</Example>
+
+You can also apply contextual variations with the `textBgColor` property, which automatically sets the text color to ensure compliance with the WCAG 4.5:1 contrast ratio standard for enhanced accessibility.
+
+<Example class="theme-bootstrap" code={BadgeContextual2VariationsRaw} lang="vue" name="BadgeContextual2Variations">
+  <BadgeContextual2Variations client:only="vue" />
+</Example>
+
+## Pill badges
+
+Apply the `shape="rounded-pill"` prop to make badges rounded.
+
+<Example class="theme-bootstrap" code={BadgePillExampleRaw} lang="vue" name="BadgePillExample">
+  <BadgePillExample client:only="vue" />
+</Example>

@@ -1,0 +1,24 @@
+{
+  "name": "CPagination",
+  "props": [
+    {
+      "name": "align",
+      "type": "string",
+      "default": null,
+      "description": "Set the alignment of pagination components.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "size",
+      "type": "string",
+      "default": null,
+      "description": "Size the component small or large.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CPagination } from '@coreui/vue'"
+}

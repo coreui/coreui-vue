@@ -1,0 +1,7 @@
+{
+  "name": "COffcanvasBody",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { COffcanvasBody } from '@coreui/vue'"
+}

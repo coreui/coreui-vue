@@ -1,0 +1,16 @@
+{
+  "name": "CNavbarNav",
+  "props": [
+    {
+      "name": "as",
+      "type": "string",
+      "default": "'ul'",
+      "description": "Component used for the root node. Either a string to use a HTML element or a component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CNavbarNav } from '@coreui/vue'"
+}

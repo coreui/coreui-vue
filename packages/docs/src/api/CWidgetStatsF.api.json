@@ -1,0 +1,54 @@
+{
+  "name": "CWidgetStatsF",
+  "props": [
+    {
+      "name": "color",
+      "type": "Color",
+      "default": null,
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "padding",
+      "type": "boolean",
+      "default": "true",
+      "description": "Set padding of your component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "default": null,
+      "description": "Title for your component. If you want to pass non-string value please use dedicated slot `<template #title>...</template>`",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "text",
+      "type": "string",
+      "default": null,
+      "description": "Helper text for your component. If you want to pass non-string value please use dedicated slot `<template #text>...</template>`",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "value",
+      "type": "number|string",
+      "default": "0",
+      "description": "Value for your component. If you want to pass non-string or non-number value please use dedicated slot `<template #value>...</template>`",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "icon",
+      "description": "Location for icon component.",
+      "bindings": []
+    }
+  ],
+  "imports": "import { CWidgetStatsF } from '@coreui/vue'"
+}

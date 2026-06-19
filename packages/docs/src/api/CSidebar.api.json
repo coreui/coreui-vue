@@ -1,0 +1,88 @@
+{
+  "name": "CSidebar",
+  "props": [
+    {
+      "name": "colorScheme",
+      "type": "string",
+      "default": "undefined",
+      "description": "Sets if the color of text should be colored for a light or dark dark background.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "narrow",
+      "type": "boolean",
+      "default": null,
+      "description": "Make sidebar narrow.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "overlaid",
+      "type": "boolean",
+      "default": null,
+      "description": "Set sidebar to overlaid variant.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "placement",
+      "type": "string",
+      "default": "undefined",
+      "description": "Components placement, there’s no default placement.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "position",
+      "type": "string",
+      "default": null,
+      "description": "Place sidebar in non-static positions.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "size",
+      "type": "string",
+      "default": null,
+      "description": "Size the component small, large, or extra large.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "unfoldable",
+      "type": "boolean",
+      "default": null,
+      "description": "Expand narrowed sidebar on hover.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "default": "undefined",
+      "description": "Toggle the visibility of sidebar component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [
+    {
+      "name": "hide",
+      "description": "Callback fired when the component requests to be hidden.",
+      "properties": []
+    },
+    {
+      "name": "show",
+      "description": "Callback fired when the component requests to be shown.",
+      "properties": []
+    },
+    {
+      "name": "visible-change",
+      "description": "Event emitted after visibility of component changed.",
+      "properties": []
+    }
+  ],
+  "slots": [],
+  "imports": "import { CSidebar } from '@coreui/vue'"
+}

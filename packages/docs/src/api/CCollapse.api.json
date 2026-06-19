@@ -1,0 +1,35 @@
+{
+  "name": "CCollapse",
+  "props": [
+    {
+      "name": "horizontal",
+      "type": "boolean",
+      "default": null,
+      "description": "Set horizontal collapsing to transition the width instead of height.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "default": null,
+      "description": "Toggle the visibility of component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [
+    {
+      "name": "hide",
+      "description": "Callback fired when the component requests to be hidden.",
+      "properties": []
+    },
+    {
+      "name": "show",
+      "description": "Callback fired when the component requests to be shown.",
+      "properties": []
+    }
+  ],
+  "slots": [],
+  "imports": "import { CCollapse } from '@coreui/vue'"
+}

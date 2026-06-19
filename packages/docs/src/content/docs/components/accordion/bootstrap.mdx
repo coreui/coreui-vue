@@ -1,0 +1,37 @@
+---
+title: "Vue Bootstrap Accordion Component"
+name: "Accordion with Bootstrap Styling"
+bootstrap: true
+description: "Learn how to use CoreUI’s Vue Accordion component with Bootstrap styles for flexible, framework-consistent UI."
+---
+
+import AccordionExample from './examples/AccordionExample.vue'
+import AccordionExampleRaw from './examples/AccordionExample.vue?raw'
+import AccordionFlushExample from './examples/AccordionFlushExample.vue'
+import AccordionFlushExampleRaw from './examples/AccordionFlushExample.vue?raw'
+import AccordionAlwaysOpenExample from './examples/AccordionAlwaysOpenExample.vue'
+import AccordionAlwaysOpenExampleRaw from './examples/AccordionAlwaysOpenExample.vue?raw'
+
+## Examples
+
+Click the accordions below to expand/collapse the accordion content.
+
+<Example class="theme-bootstrap" code={AccordionExampleRaw} lang="vue" name="AccordionExample">
+  <AccordionExample client:only="vue" />
+</Example>
+
+### Flush
+
+Add `flush` to remove the default `background-color`, some borders, and some rounded corners to render accordions edge-to-edge with their parent container.
+
+<Example class="theme-bootstrap" code={AccordionFlushExampleRaw} lang="vue" name="AccordionFlushExample">
+  <AccordionFlushExample client:only="vue" />
+</Example>
+
+### Always open
+
+Add `always-open` property to make accordion items stay open when another item is opened.
+
+<Example class="theme-bootstrap" code={AccordionAlwaysOpenExampleRaw} lang="vue" name="AccordionAlwaysOpenExample">
+  <AccordionAlwaysOpenExample client:only="vue" />
+</Example>

@@ -1,0 +1,338 @@
+---
+title: "Vue Bootstrap Card Component"
+name: "Card with Bootstrap Styling"
+bootstrap: true
+description: "Learn how to use CoreUI’s Vue Card component with Bootstrap styles for flexible, framework-consistent UI."
+---
+
+import CardExample from './examples/CardExample.vue'
+import CardExampleRaw from './examples/CardExample.vue?raw'
+import CardBodyExample from './examples/CardBodyExample.vue'
+import CardBodyExampleRaw from './examples/CardBodyExample.vue?raw'
+import CardTitleExample from './examples/CardTitleExample.vue'
+import CardTitleExampleRaw from './examples/CardTitleExample.vue?raw'
+import CardImagesExample from './examples/CardImagesExample.vue'
+import CardImagesExampleRaw from './examples/CardImagesExample.vue?raw'
+import CardListGroupsExample from './examples/CardListGroupsExample.vue'
+import CardListGroupsExampleRaw from './examples/CardListGroupsExample.vue?raw'
+import CardListGroups2Example from './examples/CardListGroups2Example.vue'
+import CardListGroups2ExampleRaw from './examples/CardListGroups2Example.vue?raw'
+import CardListGroups3Example from './examples/CardListGroups3Example.vue'
+import CardListGroups3ExampleRaw from './examples/CardListGroups3Example.vue?raw'
+import CardKitchenSinkExample from './examples/CardKitchenSinkExample.vue'
+import CardKitchenSinkExampleRaw from './examples/CardKitchenSinkExample.vue?raw'
+import CardHeaderExample from './examples/CardHeaderExample.vue'
+import CardHeaderExampleRaw from './examples/CardHeaderExample.vue?raw'
+import CardHeader2Example from './examples/CardHeader2Example.vue'
+import CardHeader2ExampleRaw from './examples/CardHeader2Example.vue?raw'
+import CardHeader3Example from './examples/CardHeader3Example.vue'
+import CardHeader3ExampleRaw from './examples/CardHeader3Example.vue?raw'
+import CardHeaderAndFooterExample from './examples/CardHeaderAndFooterExample.vue'
+import CardHeaderAndFooterExampleRaw from './examples/CardHeaderAndFooterExample.vue?raw'
+import CardSizingExample from './examples/CardSizingExample.vue'
+import CardSizingExampleRaw from './examples/CardSizingExample.vue?raw'
+import CardSizing2Example from './examples/CardSizing2Example.vue'
+import CardSizing2ExampleRaw from './examples/CardSizing2Example.vue?raw'
+import CardSizing3Example from './examples/CardSizing3Example.vue'
+import CardSizing3ExampleRaw from './examples/CardSizing3Example.vue?raw'
+import CardTextAlignmentExample from './examples/CardTextAlignmentExample.vue'
+import CardTextAlignmentExampleRaw from './examples/CardTextAlignmentExample.vue?raw'
+import CardNavigationExample from './examples/CardNavigationExample.vue'
+import CardNavigationExampleRaw from './examples/CardNavigationExample.vue?raw'
+import CardNavigation2Example from './examples/CardNavigation2Example.vue'
+import CardNavigation2ExampleRaw from './examples/CardNavigation2Example.vue?raw'
+import CardImageCapsExample from './examples/CardImageCapsExample.vue'
+import CardImageCapsExampleRaw from './examples/CardImageCapsExample.vue?raw'
+import CardImageOverlaysExample from './examples/CardImageOverlaysExample.vue'
+import CardImageOverlaysExampleRaw from './examples/CardImageOverlaysExample.vue?raw'
+import CardImageHorizontalExample from './examples/CardImageHorizontalExample.vue'
+import CardImageHorizontalExampleRaw from './examples/CardImageHorizontalExample.vue?raw'
+import CardStylesBackgroundAndColorExample from './examples/CardStylesBackgroundAndColorExample.vue'
+import CardStylesBackgroundAndColorExampleRaw from './examples/CardStylesBackgroundAndColorExample.vue?raw'
+import CardStylesBorderExample from './examples/CardStylesBorderExample.vue'
+import CardStylesBorderExampleRaw from './examples/CardStylesBorderExample.vue?raw'
+import CardStylesTopBorderExample from './examples/CardStylesTopBorderExample.vue'
+import CardStylesTopBorderExampleRaw from './examples/CardStylesTopBorderExample.vue?raw'
+import CardGridExample from './examples/CardGridExample.vue'
+import CardGridExampleRaw from './examples/CardGridExample.vue?raw'
+import CardGroupsExample from './examples/CardGroupsExample.vue'
+import CardGroupsExampleRaw from './examples/CardGroupsExample.vue?raw'
+import CardGroups2Example from './examples/CardGroups2Example.vue'
+import CardGroups2ExampleRaw from './examples/CardGroups2Example.vue?raw'
+import CardGrid2Example from './examples/CardGrid2Example.vue'
+import CardGrid2ExampleRaw from './examples/CardGrid2Example.vue?raw'
+import CardGrid3Example from './examples/CardGrid3Example.vue'
+import CardGrid3ExampleRaw from './examples/CardGrid3Example.vue?raw'
+import CardGrid4Example from './examples/CardGrid4Example.vue'
+import CardGrid4ExampleRaw from './examples/CardGrid4Example.vue?raw'
+import CardGridCardsExample from './examples/CardGridCardsExample.vue'
+import CardGridCardsExampleRaw from './examples/CardGridCardsExample.vue?raw'
+
+## Examples
+
+  
+## About
+
+A Vue card component is a content container. It incorporates options for images, headers, and footers, a wide variety of content, contextual background colors, and excellent display options.
+
+## Example
+
+Cards are built with as little markup and styles as possible but still manage to deliver a bunch of control and customization. Built with flexbox, they offer easy alignment and mix well with other CoreUI components. Cards have no top, left, and right margins by default, so use [spacing utilities](https://coreui.io/docs/utilities/spacing) as needed. They have no fixed width to start, so they'll fill the full width of its parent.
+
+Below is an example of a basic card with mixed content and a fixed width. Cards have no fixed width to start, so they'll naturally fill the full width of its parent element.
+
+<Example class="theme-bootstrap" code={CardExampleRaw} lang="vue" name="CardExample">
+  <CardExample client:only="vue" />
+</Example>
+
+## Content types
+
+CoreUI card supports a wide variety of content, including images, text, list groups, links, and more. Below are examples of those elements.
+
+### Body
+
+The main block of a card is the `<CCardBody>`. Use it whenever you need a padded section within a card.
+
+<Example class="theme-bootstrap" code={CardBodyExampleRaw} lang="vue" name="CardBodyExample">
+  <CardBodyExample client:only="vue" />
+</Example>
+### Titles, text, and links
+
+Card titles are managed by `<CCardTitle>` component. Identically, links are attached and collected next to each other by `<CCardLink>` component.
+
+Subtitles are managed by `<CCardSubtitle>` component. If the `<CCardTitle>` also, the `<CCardSubtitle>` items are stored in a `<CCardBody>` item, the card title, and subtitle are arranged rightly.
+
+<Example class="theme-bootstrap" code={CardTitleExampleRaw} lang="vue" name="CardTitleExample">
+  <CardTitleExample client:only="vue" />
+</Example>
+
+### Images
+
+`.card-img-top` places a picture to the top of the card. With `.card-text`, text can be added to the card. Text within `.card-text` can additionally be styled with the regular HTML tags.
+
+<Example class="theme-bootstrap" code={CardImagesExampleRaw} lang="vue" name="CardImagesExample">
+  <CardImagesExample client:only="vue" />
+</Example>
+
+### List groups
+
+Create lists of content in a card with a flush list group.
+
+<Example class="theme-bootstrap" code={CardListGroupsExampleRaw} lang="vue" name="CardListGroupsExample">
+  <CardListGroupsExample client:only="vue" />
+</Example>
+<Example class="theme-bootstrap" code={CardListGroups2ExampleRaw} lang="vue" name="CardListGroups2Example">
+  <CardListGroups2Example client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={CardListGroups3ExampleRaw} lang="vue" name="CardListGroups3Example">
+  <CardListGroups3Example client:only="vue" />
+</Example>
+
+### Kitchen sink
+
+Combine and match many content types to build the card you need, or throw everything in there. Shown below are image styles, blocks, text styles, and a list group—all wrapped in a fixed-width card.
+
+<Example class="theme-bootstrap" code={CardKitchenSinkExampleRaw} lang="vue" name="CardKitchenSinkExample">
+  <CardKitchenSinkExample client:only="vue" />
+</Example>
+
+### Header and footer
+
+Add an optional header and/or footer within a card.
+
+<Example class="theme-bootstrap" code={CardHeaderExampleRaw} lang="vue" name="CardHeaderExample">
+  <CardHeaderExample client:only="vue" />
+</Example>
+
+Card headers can be styled by adding ex. `as="h5"`.
+
+<Example class="theme-bootstrap" code={CardHeader2ExampleRaw} lang="vue" name="CardHeader2Example">
+  <CardHeader2Example client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={CardHeader3ExampleRaw} lang="vue" name="CardHeader3Example">
+  <CardHeader3Example client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={CardHeaderAndFooterExampleRaw} lang="vue" name="CardHeaderAndFooterExample">
+  <CardHeaderAndFooterExample client:only="vue" />
+</Example>
+
+## Sizing
+
+Cards assume no specific `width` to start, so they'll be 100% wide unless otherwise stated. You can adjust this as required with custom CSS, grid classes, grid Sass mixins, or services.
+
+### Using grid markup
+
+Using the grid, wrap cards in columns and rows as needed.
+
+<Example class="theme-bootstrap" code={CardSizingExampleRaw} lang="vue" name="CardSizingExample">
+  <CardSizingExample client:only="vue" />
+</Example>
+
+### Using utilities
+
+Use some of [available sizing utilities](https://coreui.io/docs/utilities/sizing/) to rapidly set a card's width.
+
+<Example class="theme-bootstrap" code={CardSizing2ExampleRaw} lang="vue" name="CardSizing2Example">
+  <CardSizing2Example client:only="vue" />
+</Example>
+
+### Using custom CSS
+
+Use custom CSS in your stylesheets or as inline styles to set a width.
+
+<Example class="theme-bootstrap" code={CardSizing3ExampleRaw} lang="vue" name="CardSizing3Example">
+  <CardSizing3Example client:only="vue" />
+</Example>
+
+## Text alignment
+
+You can instantly change the text arrangement of any card—in its whole or specific parts—with [text align classes](https://coreui.io/docs/utilities/text/#text-alignment).
+
+<Example class="theme-bootstrap" code={CardTextAlignmentExampleRaw} lang="vue" name="CardTextAlignmentExample">
+  <CardTextAlignmentExample client:only="vue" />
+</Example>
+
+## Navigation
+
+Add some navigation to a `<CCardHeader>` with our `<CNav>` component.
+
+<Example class="theme-bootstrap" code={CardNavigationExampleRaw} lang="vue" name="CardNavigationExample">
+  <CardNavigationExample client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={CardNavigation2ExampleRaw} lang="vue" name="CardNavigation2Example">
+  <CardNavigation2Example client:only="vue" />
+</Example>
+
+## Images
+
+Cards introduce several options for acting with images. Pick from appending "image caps" at either end of a card, overlaying images with content, or just inserting the image in a card.
+
+### Image caps
+
+Similar to headers and footers, cards can include top and bottom "image caps"—images at the top or bottom of a card.
+
+<Example class="theme-bootstrap" code={CardImageCapsExampleRaw} lang="vue" name="CardImageCapsExample">
+  <CardImageCapsExample client:only="vue" />
+</Example>
+
+### Image overlays
+
+Adapt an image into a background and overlay your text. Depending on the image, you may need additional styles or utilities.
+
+<Example class="theme-bootstrap" code={CardImageOverlaysExampleRaw} lang="vue" name="CardImageOverlaysExample">
+  <CardImageOverlaysExample client:only="vue" />
+</Example>
+
+## Horizontal
+
+Using a combination of grid and utility classes, cards can be made horizontal in a mobile-friendly and responsive way. In the example below, we remove the grid gutters with `.g-0` and use `.col-md-*` classes to make the card horizontal at the `md` breakpoint. Further adjustments may be needed depending on your card content.
+
+<Example class="theme-bootstrap" code={CardImageHorizontalExampleRaw} lang="vue" name="CardImageHorizontalExample">
+  <CardImageHorizontalExample client:only="vue" />
+</Example>
+
+## Card styles
+
+Cards include various options for customizing their backgrounds, borders, and color.
+
+### Background and color
+
+Use `color` property to change the appearance of a card.
+
+<Example class="theme-bootstrap" code={CardStylesBackgroundAndColorExampleRaw} lang="vue" name="CardStylesBackgroundAndColorExample">
+  <CardStylesBackgroundAndColorExample client:only="vue" />
+</Example>
+
+You can also apply contextual variations with the `textBgColor` property, which automatically sets the text color to ensure compliance with the WCAG 4.5:1 contrast ratio standard for enhanced accessibility.
+
+<Example class="theme-bootstrap" code={CardStylesBorderExampleRaw} lang="vue" name="CardStylesBorderExample">
+  <CardStylesBorderExample client:only="vue" />
+</Example>
+
+<Callout color="info" title="Conveying meaning to assistive technologies">
+  Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the <code>.visually-hidden</code> class.
+</Callout>
+
+### Border
+
+Use [border utilities](https://coreui.io/docs/utilities/borders/) to change just the `border-color` of a card. Note that you can set `text-color` property on the `<CCard>` or a subset of the card's contents as shown below.
+
+<Example class="theme-bootstrap" code={CardStylesTopBorderExampleRaw} lang="vue" name="CardStylesTopBorderExample">
+  <CardStylesTopBorderExample client:only="vue" />
+</Example>
+
+### Top border
+
+<Example class="theme-bootstrap" code={CardGridExampleRaw} lang="vue" name="CardGridExample">
+  <CardGridExample client:only="vue" />
+</Example>
+
+## Card layout
+
+In addition to styling the content within cards, CoreUI includes a few options for laying out series of cards. For the time being, **these layout options are not yet responsive**.
+
+### Card groups
+
+Use card groups to render cards as a single, attached element with equal width and height columns. Card groups start off stacked and use `display: flex;` to become attached with uniform dimensions starting at the `sm` breakpoint.
+
+<Example class="theme-bootstrap" code={CardGroupsExampleRaw} lang="vue" name="CardGroupsExample">
+  <CardGroupsExample client:only="vue" />
+</Example>
+
+When using card groups with footers, their content will automatically line up.
+
+<Example class="theme-bootstrap" code={CardGroups2ExampleRaw} lang="vue" name="CardGroups2Example">
+  <CardGroups2Example client:only="vue" />
+</Example>
+
+### Grid cards
+
+Use the `CRow` component and set `:xs|sm|md|lg|xl|xxl="{ cols: * }"` property to control how many grid columns (wrapped around your cards) you show per row. For example, here's `:xs="{cols: 1}"` laying out the cards on one column, and `:md="{cols: 1}"` splitting four cards to equal width across multiple rows, from the medium breakpoint up.
+
+<Example class="theme-bootstrap" code={CardGrid2ExampleRaw} lang="vue" name="CardGrid2Example">
+  <CardGrid2Example client:only="vue" />
+</Example>
+
+Change it to `:md="{ cols: 3}"` and you'll see the fourth card wrap.
+
+<Example class="theme-bootstrap" code={CardGrid3ExampleRaw} lang="vue" name="CardGrid3Example">
+  <CardGrid3Example client:only="vue" />
+</Example>
+
+When you need equal height, add `.h-100` to the cards. If you want equal heights by default, you can set `$card-height: 100%` in Sass.
+
+<Example class="theme-bootstrap" code={CardGrid4ExampleRaw} lang="vue" name="CardGrid4Example">
+  <CardGrid4Example client:only="vue" />
+</Example>
+
+Just like with card groups, card footers will automatically line up.
+
+<Example class="theme-bootstrap" code={CardGridCardsExampleRaw} lang="vue" name="CardGridCardsExample">
+  <CardGridCardsExample client:only="vue" />
+</Example>
+
+## Customizing
+
+### CSS variables
+
+Vue cards use local CSS variables on `.card` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+<ScssDocs file="_card.scss" capture="card-css-vars"/>
+
+#### How to use CSS variables
+
+```js
+const vars = { 
+  '--my-css-var': 10,
+  '--my-another-css-var': "red" 
+}
+return <CCard :style="vars">...</CCard>
+```
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="card-variables"/>

@@ -1,0 +1,7 @@
+{
+  "name": "CDropdownDivider",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CDropdownDivider } from '@coreui/vue'"
+}

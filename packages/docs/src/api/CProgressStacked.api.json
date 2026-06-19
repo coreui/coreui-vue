@@ -1,0 +1,7 @@
+{
+  "name": "CProgressStacked",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CProgressStacked } from '@coreui/vue'"
+}

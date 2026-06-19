@@ -1,0 +1,7 @@
+{
+  "name": "CSidebarToggler",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CSidebarToggler } from '@coreui/vue'"
+}

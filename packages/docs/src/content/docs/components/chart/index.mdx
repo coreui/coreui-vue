@@ -1,0 +1,101 @@
+---
+title: "Vue Chart.js Component"
+name: "Chart.js"
+description: "Vue wrapper for Chart.js 3.0, the most popular charting library."
+---
+
+import ChartLineExample from './examples/ChartLineExample.vue'
+import ChartLineExampleRaw from './examples/ChartLineExample.vue?raw'
+import ChartBarExample from './examples/ChartBarExample.vue'
+import ChartBarExampleRaw from './examples/ChartBarExample.vue?raw'
+import ChartRadarExample from './examples/ChartRadarExample.vue'
+import ChartRadarExampleRaw from './examples/ChartRadarExample.vue?raw'
+import ChartDoughnutAndPieExample from './examples/ChartDoughnutAndPieExample.vue'
+import ChartDoughnutAndPieExampleRaw from './examples/ChartDoughnutAndPieExample.vue?raw'
+import ChartDoughnutAndPieChartsExample from './examples/ChartDoughnutAndPieChartsExample.vue'
+import ChartDoughnutAndPieChartsExampleRaw from './examples/ChartDoughnutAndPieChartsExample.vue?raw'
+import ChartPolarAreaExample from './examples/ChartPolarAreaExample.vue'
+import ChartPolarAreaExampleRaw from './examples/ChartPolarAreaExample.vue?raw'
+import ChartBubbleExample from './examples/ChartBubbleExample.vue'
+import ChartBubbleExampleRaw from './examples/ChartBubbleExample.vue?raw'
+import ChartScatterExample from './examples/ChartScatterExample.vue'
+import ChartScatterExampleRaw from './examples/ChartScatterExample.vue?raw'
+
+## Installation
+
+If you want to use our Chart.js Vue wrapper you have to install an additional package.
+
+### Npm
+
+```bash
+npm install @coreui/vue-chartjs
+```
+
+### Yarn
+
+```bash
+yarn add @coreui/vue-chartjs
+```
+
+## Chart Types
+
+### Line Chart
+
+A line chart is a way of plotting data points on a line. Often, it is used to show trend data, or the comparison of two data sets. 
+[Line Chart properties](https://www.chartjs.org/docs/latest/charts/line.html#dataset-properties)
+
+<Example code={ChartLineExampleRaw} lang="vue" name="ChartLineExample">
+  <ChartLineExample client:only="vue" />
+</Example>
+
+### Bar Chart
+
+A bar chart provides a way of showing data values represented as vertical bars. It is sometimes used to show trend data, and the comparison of multiple data sets side by side. [Bar Chart properties](https://www.chartjs.org/docs/latest/charts/bar.html#dataset-properties)
+
+<Example code={ChartBarExampleRaw} lang="vue" name="ChartBarExample">
+  <ChartBarExample client:only="vue" />
+</Example>
+
+### Radar Chart
+
+A radar chart is a way of showing multiple data points and the variation between them. They are often useful for comparing the points of two or more different data sets. [Radar Chart properties](https://www.chartjs.org/docs/latest/charts/radar.html#dataset-properties)
+
+<Example code={ChartRadarExampleRaw} lang="vue" name="ChartRadarExample">
+  <ChartRadarExample client:only="vue" />
+</Example>
+
+### Doughnut and Pie Charts
+
+Pie and doughnut charts are probably the most commonly used charts. They are divided into segments, the arc of each segment shows the proportional value of each piece of data. [Doughnut and Pie Charts properties](https://www.chartjs.org/docs/latest/charts/doughnut.html#dataset-properties)
+
+<Example code={ChartDoughnutAndPieExampleRaw} lang="vue" name="ChartDoughnutAndPieExample">
+  <ChartDoughnutAndPieExample client:only="vue" />
+</Example>
+
+<Example code={ChartDoughnutAndPieChartsExampleRaw} lang="vue" name="ChartDoughnutAndPieChartsExample">
+  <ChartDoughnutAndPieChartsExample client:only="vue" />
+</Example>
+
+### Polar Area Chart
+
+Polar area charts are similar to pie charts, but each segment has the same angle - the radius of the segment differs depending on the value. [Polar Area Chart properties](https://www.chartjs.org/docs/latest/charts/polar.html#dataset-properties)
+
+<Example code={ChartPolarAreaExampleRaw} lang="vue" name="ChartPolarAreaExample">
+  <ChartPolarAreaExample client:only="vue" />
+</Example>
+
+### Bubble Chart
+
+A bubble chart is used to display three dimensions of data at the same time. The location of the bubble is determined by the first two dimensions and the corresponding horizontal and vertical axes. The third dimension is represented by the size of the individual bubbles. [Bubble Chart properties](https://www.chartjs.org/docs/latest/charts/bubble.html#dataset-properties)
+
+<Example code={ChartBubbleExampleRaw} lang="vue" name="ChartBubbleExample">
+  <ChartBubbleExample client:only="vue" />
+</Example>
+
+### Scatter Chart
+
+A bubble chart is used to display three dimensions of data at the same time. The location of the bubble is determined by the first two dimensions and the corresponding horizontal and vertical axes. The third dimension is represented by the size of the individual bubbles. [Scatter Chart properties](https://www.chartjs.org/docs/latest/charts/scatter.html#dataset-properties)
+
+<Example code={ChartScatterExampleRaw} lang="vue" name="ChartScatterExample">
+  <ChartScatterExample client:only="vue" />
+</Example>

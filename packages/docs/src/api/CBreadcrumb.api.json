@@ -1,0 +1,7 @@
+{
+  "name": "CBreadcrumb",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CBreadcrumb } from '@coreui/vue'"
+}

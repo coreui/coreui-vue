@@ -1,0 +1,52 @@
+---
+title: "Vue Bootstrap Form control Component"
+name: "Form control with Bootstrap Styling"
+bootstrap: true
+description: "Learn how to use CoreUI’s Vue Form control component with Bootstrap styles for flexible, framework-consistent UI."
+---
+
+import FormTextareaExample from './examples/FormTextareaExample.vue'
+import FormTextareaExampleRaw from './examples/FormTextareaExample.vue?raw'
+import FormTextareaDisabledExample from './examples/FormTextareaDisabledExample.vue'
+import FormTextareaDisabledExampleRaw from './examples/FormTextareaDisabledExample.vue?raw'
+import FormTextareaReadonlyExample from './examples/FormTextareaReadonlyExample.vue'
+import FormTextareaReadonlyExampleRaw from './examples/FormTextareaReadonlyExample.vue?raw'
+
+## Example
+
+<Example class="theme-bootstrap" code={FormTextareaExampleRaw} lang="vue" name="FormTextareaExample">
+  <FormTextareaExample client:only="vue" />
+</Example>
+
+If you need to add custom classs to form's components, or need to add some custom elements you can add each form component separately. Please check the example below.
+
+```vue
+<CFormLabel for="exampleFormControlTextarea1">Example textarea</CFormLabel>
+<CFormTextarea id="exampleFormControlTextarea1" rows="3"></CFormTextarea>
+<CFormText as="span" id="passwordHelpInline">Must be 8-20 words long.</CFormText>
+```
+
+You can also use slots.
+
+```vue
+<CFormTextarea id="exampleFormControlTextarea1" rows="3">
+  <template #label>Example textarea</template>
+  <template #text>Must be 8-20 word long.</template>
+</CFormTextarea>
+```
+
+## Disabled
+
+Add the `disabled` boolean attribute on an input to give it a grayed out appearance and remove pointer events.
+
+<Example class="theme-bootstrap" code={FormTextareaDisabledExampleRaw} lang="vue" name="FormTextareaDisabledExample">
+  <FormTextareaDisabledExample client:only="vue" />
+</Example>
+
+## Readonly
+
+Add the `readonly` boolean attribute on an textarea to prevent modification of the textarea's value. Read-only textareas appear lighter (just like disabled textareas), but retain the standard cursor.
+
+<Example class="theme-bootstrap" code={FormTextareaReadonlyExampleRaw} lang="vue" name="FormTextareaReadonlyExample">
+  <FormTextareaReadonlyExample client:only="vue" />
+</Example>

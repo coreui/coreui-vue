@@ -1,0 +1,35 @@
+{
+  "name": "CWidgetStatsD",
+  "props": [
+    {
+      "name": "color",
+      "type": "Color",
+      "default": null,
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "values",
+      "type": "Value[]",
+      "default": "() => []",
+      "description": "Values and titles for your component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "chart",
+      "description": "Location for chart component.",
+      "bindings": []
+    },
+    {
+      "name": "icon",
+      "description": "Location for icon component, ex. `<CDropdown>`.",
+      "bindings": []
+    }
+  ],
+  "imports": "import { CWidgetStatsD } from '@coreui/vue'"
+}

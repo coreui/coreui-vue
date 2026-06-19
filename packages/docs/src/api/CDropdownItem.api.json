@@ -1,0 +1,40 @@
+{
+  "name": "CDropdownItem",
+  "props": [
+    {
+      "name": "active",
+      "type": "boolean",
+      "default": null,
+      "description": "Toggle the active state for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "as",
+      "type": "string",
+      "default": "'a'",
+      "description": "Component used for the root node. Either a string to use a HTML element or a component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": null,
+      "description": "Toggle the disabled state for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "href",
+      "type": "string",
+      "default": null,
+      "description": "The href attribute specifies the URL of the page the link goes to.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CDropdownItem } from '@coreui/vue'"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "CModalBody",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CModalBody } from '@coreui/vue'"
+}

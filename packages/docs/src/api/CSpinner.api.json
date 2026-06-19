@@ -1,0 +1,48 @@
+{
+  "name": "CSpinner",
+  "props": [
+    {
+      "name": "as",
+      "type": "string",
+      "default": "'div'",
+      "description": "Component used for the root node. Either a string to use a HTML element or a component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "default": null,
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "size",
+      "type": "string",
+      "default": null,
+      "description": "Size the component small.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "variant",
+      "type": "string",
+      "default": "'border'",
+      "description": "Set the button variant to an outlined button or a ghost button.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "visuallyHiddenLabel",
+      "type": "string",
+      "default": "'Loading...'",
+      "description": "Set visually hidden label for accessibility purposes.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CSpinner } from '@coreui/vue'"
+}

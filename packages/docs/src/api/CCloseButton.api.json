@@ -1,0 +1,38 @@
+{
+  "name": "CCloseButton",
+  "props": [
+    {
+      "name": "dark",
+      "type": "boolean",
+      "default": null,
+      "description": "Invert the default color.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": null,
+      "description": "Toggle the disabled state for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "white",
+      "type": "boolean",
+      "default": null,
+      "description": "Change the default color to white.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [
+    {
+      "name": "click",
+      "description": "Event called when the user clicks on the component.",
+      "properties": []
+    }
+  ],
+  "slots": [],
+  "imports": "import { CCloseButton } from '@coreui/vue'"
+}

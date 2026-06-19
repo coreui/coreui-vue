@@ -1,0 +1,244 @@
+---
+title: "Vue Bootstrap Navbar Component"
+name: "Navbar with Bootstrap Styling"
+bootstrap: true
+description: "Learn how to use CoreUI’s Vue Navbar component with Bootstrap styles for flexible, framework-consistent UI."
+---
+
+import NavbarExample from './examples/NavbarExample.vue'
+import NavbarExampleRaw from './examples/NavbarExample.vue?raw'
+import NavbarBrandExample from './examples/NavbarBrandExample.vue'
+import NavbarBrandExampleRaw from './examples/NavbarBrandExample.vue?raw'
+import NavbarBrand2Example from './examples/NavbarBrand2Example.vue'
+import NavbarBrand2ExampleRaw from './examples/NavbarBrand2Example.vue?raw'
+import NavbarBrand3Example from './examples/NavbarBrand3Example.vue'
+import NavbarBrand3ExampleRaw from './examples/NavbarBrand3Example.vue?raw'
+import NavbarNavExample from './examples/NavbarNavExample.vue'
+import NavbarNavExampleRaw from './examples/NavbarNavExample.vue?raw'
+import NavbarNav2Example from './examples/NavbarNav2Example.vue'
+import NavbarNav2ExampleRaw from './examples/NavbarNav2Example.vue?raw'
+import NavbarNav3Example from './examples/NavbarNav3Example.vue'
+import NavbarNav3ExampleRaw from './examples/NavbarNav3Example.vue?raw'
+import NavbarFormsExample from './examples/NavbarFormsExample.vue'
+import NavbarFormsExampleRaw from './examples/NavbarFormsExample.vue?raw'
+import NavbarForms2Example from './examples/NavbarForms2Example.vue'
+import NavbarForms2ExampleRaw from './examples/NavbarForms2Example.vue?raw'
+import NavbarForms3Example from './examples/NavbarForms3Example.vue'
+import NavbarForms3ExampleRaw from './examples/NavbarForms3Example.vue?raw'
+import NavbarForms4Example from './examples/NavbarForms4Example.vue'
+import NavbarForms4ExampleRaw from './examples/NavbarForms4Example.vue?raw'
+import NavbarText from './examples/NavbarText.vue'
+import NavbarTextRaw from './examples/NavbarText.vue?raw'
+import NavbarColorSchemesExample from './examples/NavbarColorSchemesExample.vue'
+import NavbarColorSchemesExampleRaw from './examples/NavbarColorSchemesExample.vue?raw'
+import NavbarContainersExample from './examples/NavbarContainersExample.vue'
+import NavbarContainersExampleRaw from './examples/NavbarContainersExample.vue?raw'
+import NavbarContainers2Example from './examples/NavbarContainers2Example.vue'
+import NavbarContainers2ExampleRaw from './examples/NavbarContainers2Example.vue?raw'
+import NavbarPlacementExample from './examples/NavbarPlacementExample.vue'
+import NavbarPlacementExampleRaw from './examples/NavbarPlacementExample.vue?raw'
+import NavbarPlacementFixedTopExample from './examples/NavbarPlacementFixedTopExample.vue'
+import NavbarPlacementFixedTopExampleRaw from './examples/NavbarPlacementFixedTopExample.vue?raw'
+import NavbarPlacementFixedBottomExample from './examples/NavbarPlacementFixedBottomExample.vue'
+import NavbarPlacementFixedBottomExampleRaw from './examples/NavbarPlacementFixedBottomExample.vue?raw'
+import NavbarPlacementStickyTopExample from './examples/NavbarPlacementStickyTopExample.vue'
+import NavbarPlacementStickyTopExampleRaw from './examples/NavbarPlacementStickyTopExample.vue?raw'
+import NavbarResponsiveTogglerExample from './examples/NavbarResponsiveTogglerExample.vue'
+import NavbarResponsiveTogglerExampleRaw from './examples/NavbarResponsiveTogglerExample.vue?raw'
+import NavbarResponsiveToggler2Example from './examples/NavbarResponsiveToggler2Example.vue'
+import NavbarResponsiveToggler2ExampleRaw from './examples/NavbarResponsiveToggler2Example.vue?raw'
+import NavbarResponsiveToggler3Example from './examples/NavbarResponsiveToggler3Example.vue'
+import NavbarResponsiveToggler3ExampleRaw from './examples/NavbarResponsiveToggler3Example.vue?raw'
+import NavbarResponsiveExternalContentExample from './examples/NavbarResponsiveExternalContentExample.vue'
+import NavbarResponsiveExternalContentExampleRaw from './examples/NavbarResponsiveExternalContentExample.vue?raw'
+import NavbarResponsiveOffcanvasExample from './examples/NavbarResponsiveOffcanvasExample.vue'
+import NavbarResponsiveOffcanvasExampleRaw from './examples/NavbarResponsiveOffcanvasExample.vue?raw'
+import NavbarResponsiveOffcanvas2Example from './examples/NavbarResponsiveOffcanvas2Example.vue'
+import NavbarResponsiveOffcanvas2ExampleRaw from './examples/NavbarResponsiveOffcanvas2Example.vue?raw'
+
+## Supported content
+
+`<CNavbar>` come with built-in support for a handful of sub-components. Choose from the following as needed:
+
+- `<CNavbarBrand>` for your company, product, or project name.
+- `<CNavbarNav>` for a full-height and lightweight navigation (including support for dropdowns).
+- `<CNavbarToggler>` for use with our collapse plugin and other [navigation toggling](#responsive-behaviors) behaviors.
+- Flex and spacing utilities for any form controls and actions.
+- `<CNavbarText>` for adding vertically centered strings of text.
+- `<CCollapse>` for grouping and hiding navbar contents by a parent breakpoint.
+
+Here's an example of all the sub-components included in a responsive light-themed navbar that automatically collapses at the `lg` (large) breakpoint.
+
+## Basic usage
+
+<Example class="theme-bootstrap" code={NavbarExampleRaw} lang="vue" name="NavbarExample">
+  <NavbarExample client:only="vue" />
+</Example>
+
+### Brand
+
+The `<CNavbarBrand>` can be applied to most elements, but an anchor works best, as some elements might require utility classes or custom styles.
+
+<Example class="theme-bootstrap" code={NavbarBrandExampleRaw} lang="vue" name="NavbarBrandExample">
+  <NavbarBrandExample client:only="vue" />
+</Example>
+
+Adding images to the `<CNavbarBrand>` will likely always require custom styles or utilities to properly size. Here are some examples to demonstrate.
+
+<Example class="theme-bootstrap" code={NavbarBrand2ExampleRaw} lang="vue" name="NavbarBrand2Example">
+  <NavbarBrand2Example client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={NavbarBrand3ExampleRaw} lang="vue" name="NavbarBrand3Example">
+  <NavbarBrand3Example client:only="vue" />
+</Example>
+
+### Nav
+
+`<CNavbar>` navigation is based on `<CNavbarNav>`. **Navigation in navbars will also grow to occupy as much horizontal space as possible** to keep your navbar contents securely aligned.
+
+<Example class="theme-bootstrap" code={NavbarNavExampleRaw} lang="vue" name="NavbarNavExample">
+  <NavbarNavExample client:only="vue" />
+</Example>
+
+And because we use classes for our navs, you can avoid the list-based approach entirely if you like.
+
+<Example class="theme-bootstrap" code={NavbarNav2ExampleRaw} lang="vue" name="NavbarNav2Example">
+  <NavbarNav2Example client:only="vue" />
+</Example>
+
+You can also use dropdowns in your navbar. Please note that `<CDropdown>` component requires `variant="nav-item"`.
+
+<Example class="theme-bootstrap" code={NavbarNav3ExampleRaw} lang="vue" name="NavbarNav3Example">
+  <NavbarNav3Example client:only="vue" />
+</Example>
+
+### Forms
+
+Place various form controls and components within a navbar:
+
+<Example class="theme-bootstrap" code={NavbarFormsExampleRaw} lang="vue" name="NavbarFormsExample">
+  <NavbarFormsExample client:only="vue" />
+</Example>
+
+Immediate child elements of `<CNavbar>` use flex layout and will default to `justify-content: space-between`. Use additional [flex utilities](https://coreui.io/docs/4.0/utilities/flex/) as needed to adjust this behavior.
+
+<Example class="theme-bootstrap" code={NavbarForms2ExampleRaw} lang="vue" name="NavbarForms2Example">
+  <NavbarForms2Example client:only="vue" />
+</Example>
+
+Input groups work, too. If your navbar is an entire form, or mostly a form, you can use the `<CForm>` element as the container and save some HTML.
+
+<Example class="theme-bootstrap" code={NavbarForms3ExampleRaw} lang="vue" name="NavbarForms3Example">
+  <NavbarForms3Example client:only="vue" />
+</Example>
+
+Various buttons are supported as part of these navbar forms, too. This is also a great reminder that vertical alignment utilities can be used to align different sized elements.
+
+<Example class="theme-bootstrap" code={NavbarForms4ExampleRaw} lang="vue" name="NavbarForms4Example">
+  <NavbarForms4Example client:only="vue" />
+</Example>
+
+### Text
+
+Navbars may contain bits of text with the help of `<CNavbarText>`. This class adjusts vertical alignment and horizontal spacing for strings of text.
+
+<Example class="theme-bootstrap" code={NavbarTextRaw} lang="vue" name="NavbarText">
+  <NavbarText client:only="vue" />
+</Example>
+
+## Color schemes
+
+Theming the navbar has never been easier thanks to the combination of theming classes and `background-color` utilities. Set `color-scheme="light"` for use with light background colors, or `color-scheme="dark"` for dark background colors. Then, customize with `.bg-*` utilities.
+
+<Example class="theme-bootstrap" code={NavbarColorSchemesExampleRaw} lang="vue" name="NavbarColorSchemesExample">
+  <NavbarColorSchemesExample client:only="vue" />
+</Example>
+
+## Containers
+
+Although it's not required, you can wrap a `<CNavbar>` in a `<CContainer>` to center it on a page–though note that an inner container is still required. Or you can add a container inside the `<CNavbar>` to only center the contents of a [fixed or static top navbar](#placement).
+
+<Example class="theme-bootstrap" code={NavbarContainersExampleRaw} lang="vue" name="NavbarContainersExample">
+  <NavbarContainersExample client:only="vue" />
+</Example>
+
+Use any of the responsive containers to change how wide the content in your navbar is presented.
+
+<Example class="theme-bootstrap" code={NavbarContainers2ExampleRaw} lang="vue" name="NavbarContainers2Example">
+  <NavbarContainers2Example client:only="vue" />
+</Example>
+
+## Placement
+
+Use our `placement` properly to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, or stickied to the top (scrolls with the page until it reaches the top, then stays there). Fixed navbars use `position: fixed`, meaning they're pulled from the normal flow of the DOM and may require custom CSS (e.g., `padding-top` on the `<body>`) to prevent overlap with other elements.
+
+Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully supported in every browser](https://caniuse.com/css-sticky)**.
+
+<Example class="theme-bootstrap" code={NavbarPlacementExampleRaw} lang="vue" name="NavbarPlacementExample">
+  <NavbarPlacementExample client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={NavbarPlacementFixedTopExampleRaw} lang="vue" name="NavbarPlacementFixedTopExample">
+  <NavbarPlacementFixedTopExample client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={NavbarPlacementFixedBottomExampleRaw} lang="vue" name="NavbarPlacementFixedBottomExample">
+  <NavbarPlacementFixedBottomExample client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={NavbarPlacementStickyTopExampleRaw} lang="vue" name="NavbarPlacementStickyTopExample">
+  <NavbarPlacementStickyTopExample client:only="vue" />
+</Example>
+
+## Responsive behaviors
+
+Navbars can use `<CNavbarToggler>`, `<CCollapse>`, and `expand="{sm|md|lg|xl|xxl}"` property to determine when their content collapses behind a button. In combination with other utilities, you can easily choose when to show or hide particular elements.
+
+For navbars that never collapse, add the `expand` boolean property on the `<CNavbar>`. For navbars that always collapse, don't add any property.
+
+### Toggler
+
+Navbar togglers are left-aligned by default, but should they follow a sibling element like a `<CNavbarBrand>`, they'll automatically be aligned to the far right. Reversing your markup will reverse the placement of the toggler. Below are examples of different toggle styles.
+
+With no `<CNavbarBrand>` shown at the smallest breakpoint:
+
+<Example class="theme-bootstrap" code={NavbarResponsiveTogglerExampleRaw} lang="vue" name="NavbarResponsiveTogglerExample">
+  <NavbarResponsiveTogglerExample client:only="vue" />
+</Example>
+
+With a brand name shown on the left and toggler on the right:
+
+<Example class="theme-bootstrap" code={NavbarResponsiveToggler2ExampleRaw} lang="vue" name="NavbarResponsiveToggler2Example">
+  <NavbarResponsiveToggler2Example client:only="vue" />
+</Example>
+
+With a toggler on the left and brand name on the right:
+
+<Example class="theme-bootstrap" code={NavbarResponsiveToggler3ExampleRaw} lang="vue" name="NavbarResponsiveToggler3Example">
+  <NavbarResponsiveToggler3Example client:only="vue" />
+</Example>
+
+### External content
+
+Sometimes you want to use the collapse plugin to trigger a container element for content that structurally sits outside of the `<CNavbar>`.
+
+<Example class="theme-bootstrap" code={NavbarResponsiveExternalContentExampleRaw} lang="vue" name="NavbarResponsiveExternalContentExample">
+  <NavbarResponsiveExternalContentExample client:only="vue" />
+</Example>
+
+### Offcanvas
+
+Transform your expanding and collapsing navbar into an offcanvas drawer with the offcanvas plugin. We extend both the offcanvas default styles and use our `expand="*"` prop to create a dynamic and flexible navigation sidebar.
+
+In the example below, to create an offcanvas navbar that is always collapsed across all breakpoints, omit the `expand="*"` prop entirely.
+
+<Example class="theme-bootstrap" code={NavbarResponsiveOffcanvasExampleRaw} lang="vue" name="NavbarResponsiveOffcanvasExample">
+  <NavbarResponsiveOffcanvasExample client:only="vue" />
+</Example>
+
+To create an offcanvas navbar that expands into a normal navbar at a specific breakpoint like `xxl`, use `expand="xxl"` property.
+
+<Example class="theme-bootstrap" code={NavbarResponsiveOffcanvas2ExampleRaw} lang="vue" name="NavbarResponsiveOffcanvas2Example">
+  <NavbarResponsiveOffcanvas2Example client:only="vue" />
+</Example>

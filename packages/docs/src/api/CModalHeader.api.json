@@ -1,0 +1,16 @@
+{
+  "name": "CModalHeader",
+  "props": [
+    {
+      "name": "closeButton",
+      "type": "boolean",
+      "default": "true",
+      "description": "Add a close button component to the header.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CModalHeader } from '@coreui/vue'"
+}

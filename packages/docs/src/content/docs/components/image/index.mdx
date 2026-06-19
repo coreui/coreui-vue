@@ -1,0 +1,50 @@
+---
+title: "Vue Image Component"
+name: "Image"
+description: "Vue image component with responsive behavior (so it's never become larger than their parent element) and special styles."
+otherFrameworks:
+  - image
+---
+
+import ImageResponsiveExample from './examples/ImageResponsiveExample.vue'
+import ImageResponsiveExampleRaw from './examples/ImageResponsiveExample.vue?raw'
+import ImageThumbnailExample from './examples/ImageThumbnailExample.vue'
+import ImageThumbnailExampleRaw from './examples/ImageThumbnailExample.vue?raw'
+import ImageAligningExample from './examples/ImageAligningExample.vue'
+import ImageAligningExampleRaw from './examples/ImageAligningExample.vue?raw'
+import ImageAligning2Example from './examples/ImageAligning2Example.vue'
+import ImageAligning2ExampleRaw from './examples/ImageAligning2Example.vue?raw'
+import ImageAligning3Example from './examples/ImageAligning3Example.vue'
+import ImageAligning3ExampleRaw from './examples/ImageAligning3Example.vue?raw'
+
+## Responsive images
+
+Images in CoreUI for Vue.js are made responsive with `fluid` property. This applies `max-width: 100%;` and `height: auto;` to the image so that it scales with the parent element.
+
+<Example code={ImageResponsiveExampleRaw} lang="vue" name="ImageResponsiveExample">
+  <ImageResponsiveExample client:only="vue" />
+</Example>
+
+## Image thumbnails
+
+In addition to our [border-radius utilities](https://coreui.io/docs/4.0/utilities/borders), you can use prop`thumbnail` to give an image a rounded 1px border appearance.
+
+<Example code={ImageThumbnailExampleRaw} lang="vue" name="ImageThumbnailExample">
+  <ImageThumbnailExample client:only="vue" />
+</Example>
+
+## Aligning images
+
+Align images with the `align` property.
+
+<Example code={ImageAligningExampleRaw} lang="vue" name="ImageAligningExample">
+  <ImageAligningExample client:only="vue" />
+</Example>
+
+<Example code={ImageAligning2ExampleRaw} lang="vue" name="ImageAligning2Example">
+  <ImageAligning2Example client:only="vue" />
+</Example>
+
+<Example code={ImageAligning3ExampleRaw} lang="vue" name="ImageAligning3Example">
+  <ImageAligning3Example client:only="vue" />
+</Example>

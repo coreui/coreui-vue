@@ -1,0 +1,7 @@
+{
+  "name": "CCardFooter",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CCardFooter } from '@coreui/vue'"
+}

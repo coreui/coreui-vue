@@ -1,0 +1,64 @@
+{
+  "name": "CIcon",
+  "props": [
+    {
+      "name": "content",
+      "type": "string|array",
+      "default": "undefined",
+      "description": "Use `:icon=\"...\"` instead of",
+      "since": null,
+      "deprecated": "since version 3.0"
+    },
+    {
+      "name": "customClassName",
+      "type": "string|array|object",
+      "default": "undefined",
+      "description": "Use for replacing default CIcon component classes. Prop is overriding the 'size' prop.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "icon",
+      "type": "string | string[]",
+      "default": "undefined",
+      "description": "Name of the icon placed in React object or SVG content.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "default": "undefined",
+      "description": "Use `icon=\"...\"` instead of",
+      "since": null,
+      "deprecated": "since version 3.0"
+    },
+    {
+      "name": "size",
+      "type": "string",
+      "default": "undefined",
+      "description": "Size of the icon. Available sizes: 'sm', 'lg', 'xl', 'xxl', '3xl...9xl', 'custom', 'custom-size'.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "default": "undefined",
+      "description": "Title tag content.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "use",
+      "type": "string",
+      "default": "undefined",
+      "description": "If defined component will be rendered using 'use' tag.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CIcon } from '@coreui/vue'"
+}
