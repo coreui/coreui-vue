@@ -31,7 +31,7 @@ The chip set forwards `selectable`, `filter`, `removable`, `disabled`, `removeIc
 
 Pass a `chips` array to render the chips from data. Each item is a string or an object with a `value`, an optional `label`, and any `CChip` props (so per-chip overrides work).
 
-<Example code={ChipSetExampleRaw} lang="vue" name="ChipSetExample">
+<Example code={ChipSetExampleRaw} name="ChipSetExample">
   <ChipSetExample client:only="vue" />
 </Example>
 
@@ -50,7 +50,7 @@ You can also place `CChip` in the default slot instead of passing `chips`:
 
 Set `selectable` to make every chip in the set selectable. With the default `selection-mode` of `multiple`, any number of chips can be active at once — useful for filters. Bind the selection with `v-model:selected` (or listen to `@select`).
 
-<Example code={ChipSetSelectableExampleRaw} lang="vue" name="ChipSetSelectableExample">
+<Example code={ChipSetSelectableExampleRaw} name="ChipSetSelectableExample">
   <ChipSetSelectableExample client:only="vue" />
 </Example>
 
@@ -58,7 +58,7 @@ Set `selectable` to make every chip in the set selectable. With the default `sel
 
 Use `selection-mode="single"` to allow only one selected chip at a time — selecting a chip deselects its siblings. This is useful for choice chips.
 
-<Example code={ChipSetSingleExampleRaw} lang="vue" name="ChipSetSingleExample">
+<Example code={ChipSetSingleExampleRaw} name="ChipSetSingleExample">
   <ChipSetSingleExample client:only="vue" />
 </Example>
 
@@ -66,7 +66,7 @@ Use `selection-mode="single"` to allow only one selected chip at a time — sele
 
 Set `filter` to turn the chips into filter chips. A check icon is shown on each selected chip and removed when it is deselected. `filter` implies `selectable`, so you don't need to set both.
 
-<Example code={ChipSetFilterExampleRaw} lang="vue" name="ChipSetFilterExample">
+<Example code={ChipSetFilterExampleRaw} name="ChipSetFilterExample">
   <ChipSetFilterExample client:only="vue" />
 </Example>
 
@@ -78,7 +78,7 @@ Set `removable` to add a remove button to every chip. When a chip is removed, fo
 
 Bind the list with `v-model:chips` and the set removes chips for you, keeping your data in sync:
 
-<Example code={ChipSetRemovableExampleRaw} lang="vue" name="ChipSetRemovableExample">
+<Example code={ChipSetRemovableExampleRaw} name="ChipSetRemovableExample">
   <ChipSetRemovableExample client:only="vue" />
 </Example>
 

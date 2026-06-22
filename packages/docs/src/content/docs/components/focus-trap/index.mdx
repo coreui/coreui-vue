@@ -39,7 +39,7 @@ Focus traps are a critical accessibility pattern required by WCAG 2.1 guidelines
 
 The most basic implementation wraps slot content and activates the focus trap:
 
-<Example code={FocusTrapBasicExampleRaw} lang="vue" name="FocusTrapBasicExample">
+<Example code={FocusTrapBasicExampleRaw} name="FocusTrapBasicExample">
   <FocusTrapBasicExample client:only="vue" />
 </Example>
 
@@ -57,7 +57,7 @@ For these components, focus trapping is handled automatically with proper focus 
 
 CModal includes built-in focus trapping, so you don't need to add CFocusTrap manually:
 
-<Example code={FocusTrapModalExampleRaw} lang="vue" name="FocusTrapModalExample">
+<Example code={FocusTrapModalExampleRaw} name="FocusTrapModalExample">
   <FocusTrapModalExample client:only="vue" />
 </Example>
 
@@ -65,7 +65,7 @@ CModal includes built-in focus trapping, so you don't need to add CFocusTrap man
 
 You can enhance CDropdown with CFocusTrap for improved keyboard accessibility:
 
-<Example code={FocusTrapDropdownExampleRaw} lang="vue" name="FocusTrapDropdownExample">
+<Example code={FocusTrapDropdownExampleRaw} name="FocusTrapDropdownExample">
   <FocusTrapDropdownExample client:only="vue" />
 </Example>
 
@@ -73,7 +73,7 @@ You can enhance CDropdown with CFocusTrap for improved keyboard accessibility:
 
 COffcanvas includes built-in focus trapping for slide-out navigation panels:
 
-<Example code={FocusTrapSidebarExampleRaw} lang="vue" name="FocusTrapSidebarExample">
+<Example code={FocusTrapSidebarExampleRaw} name="FocusTrapSidebarExample">
   <FocusTrapSidebarExample client:only="vue" />
 </Example>
 
@@ -86,7 +86,7 @@ The `focus-first-element` prop controls the initial focus behavior:
 - `focus-first-element="true"`: Focuses the first tabbable element (good for menus, forms)
 - `focus-first-element="false"`: Focuses the container element (good for panels, scrollable regions)
 
-<Example code={FocusTrapFocusControlExampleRaw} lang="vue" name="FocusTrapFocusControlExample">
+<Example code={FocusTrapFocusControlExampleRaw} name="FocusTrapFocusControlExample">
   <FocusTrapFocusControlExample client:only="vue" />
 </Example>
 
@@ -94,7 +94,7 @@ The `focus-first-element` prop controls the initial focus behavior:
 
 The `restore-focus` prop controls whether focus returns to the previously focused element when the trap deactivates. Focus on a button, then activate the trap. When you deactivate it, notice where focus returns based on the `restore-focus` setting:
 
-<Example code={FocusTrapRestoreFocusExampleRaw} lang="vue" name="FocusTrapRestoreFocusExample">
+<Example code={FocusTrapRestoreFocusExampleRaw} name="FocusTrapRestoreFocusExample">
   <FocusTrapRestoreFocusExample client:only="vue" />
 </Example>
 
@@ -102,7 +102,7 @@ The `restore-focus` prop controls whether focus returns to the previously focuse
 
 Use the `@activate` and `@deactivate` events to trigger additional behavior such as screen reader announcements, analytics events, updating application state, or managing other UI components:
 
-<Example code={FocusTrapEventsExampleRaw} lang="vue" name="FocusTrapEventsExample">
+<Example code={FocusTrapEventsExampleRaw} name="FocusTrapEventsExample">
   <FocusTrapEventsExample client:only="vue" />
 </Example>
 
@@ -110,7 +110,7 @@ Use the `@activate` and `@deactivate` events to trigger additional behavior such
 
 Focus traps can be conditionally activated based on application state:
 
-<Example code={FocusTrapConditionalExampleRaw} lang="vue" name="FocusTrapConditionalExample">
+<Example code={FocusTrapConditionalExampleRaw} name="FocusTrapConditionalExample">
   <FocusTrapConditionalExample client:only="vue" />
 </Example>
 

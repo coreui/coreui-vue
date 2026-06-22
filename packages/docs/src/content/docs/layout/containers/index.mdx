@@ -124,7 +124,7 @@ The table below illustrates how each container's `max-width` compares to the ori
 
 Our default `<CContainer>` class is a responsive, fixed-width container, meaning its `max-width` changes at each breakpoint.
 
-<Example code={ContainersDefaultContainerExampleRaw} lang="vue" name="ContainersDefaultContainerExample">
+<Example code={ContainersDefaultContainerExampleRaw} name="ContainersDefaultContainerExample">
   <ContainersDefaultContainerExample client:only="vue" />
 </Example>
 
@@ -132,7 +132,7 @@ Our default `<CContainer>` class is a responsive, fixed-width container, meaning
 
 Responsive containers allow you to specify a class that is 100% wide until the specified breakpoint is reached, after which we apply `max-width`s for each of the higher breakpoints. For example, `<CContainer sm>` is 100% wide to start until the `sm` breakpoint is reached, where it will scale up with `md`, `lg`, `xl`, and `xxl`.
 
-<Example code={ContainersResponsiveContainersExampleRaw} lang="vue" name="ContainersResponsiveContainersExample">
+<Example code={ContainersResponsiveContainersExampleRaw} name="ContainersResponsiveContainersExample">
   <ContainersResponsiveContainersExample client:only="vue" />
 </Example>
 
@@ -140,6 +140,6 @@ Responsive containers allow you to specify a class that is 100% wide until the s
 
 Use `<CContainer fluid>` for a full width container, spanning the entire width of the viewport.
 
-<Example code={ContainersFluidContainersExampleRaw} lang="vue" name="ContainersFluidContainersExample">
+<Example code={ContainersFluidContainersExampleRaw} name="ContainersFluidContainersExample">
   <ContainersFluidContainersExample client:only="vue" />
 </Example>

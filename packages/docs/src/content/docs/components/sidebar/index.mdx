@@ -51,7 +51,7 @@ Sidebar comes with built-in support for a handful of sub-components. Choose from
 
 Below is a more complete sidebar example shown by default on desktop devices. It combines several optional features in a single demo, including narrow visibility helpers, tree navigation, nested groups, a custom group indicator, badges, and a footer dropdown.
 
-<Example code={SidebarExampleRaw} lang="vue" name="SidebarExample">
+<Example code={SidebarExampleRaw} name="SidebarExample">
   <SidebarExample client:only="vue" />
 </Example>
 
@@ -61,7 +61,7 @@ Add the `narrow` prop to make the sidebar narrow.
 
 Use `.d-sidebar-narrow` to show content only in the narrow state and `.d-sidebar-narrow-none` to hide content in the narrow state. These utility classes replace older brand-specific visibility helpers.
 
-<Example code={SidebarNarrowExampleRaw} lang="vue" name="SidebarNarrowExample">
+<Example code={SidebarNarrowExampleRaw} name="SidebarNarrowExample">
   <SidebarNarrowExample client:only="vue" />
 </Example>
 
@@ -71,7 +71,7 @@ Add the `unfoldable` prop to make the sidebar narrow and expand it on hover.
 
 Use `.d-sidebar-narrow-unfoldable` and `.d-sidebar-narrow-unfoldable-none` to control content visibility for unfoldable sidebars.
 
-<Example code={SidebarUnfoldableExampleRaw} lang="vue" name="SidebarUnfoldableExample">
+<Example code={SidebarUnfoldableExampleRaw} name="SidebarUnfoldableExample">
   <SidebarUnfoldableExample client:only="vue" />
 </Example>
 
@@ -114,7 +114,7 @@ Add the `compact` prop to `CSidebarNav` to reduce the vertical padding across th
 
 Use the `compact` prop on `CNavGroup` to compact only a nested section.
 
-<Example code={SidebarCompactExampleRaw} lang="vue" name="SidebarCompactExample">
+<Example code={SidebarCompactExampleRaw} name="SidebarCompactExample">
   <SidebarCompactExample client:only="vue" />
 </Example>
 
@@ -124,7 +124,7 @@ Use the `compact` prop on `CNavGroup` to compact only a nested section.
 
 Add `variant="tree"` to `CSidebarNav` to render nested groups as a tree. Nested groups automatically keep their hierarchy, making deeper navigation levels easier to scan.
 
-<Example code={SidebarTreeExampleRaw} lang="vue" name="SidebarTreeExample">
+<Example code={SidebarTreeExampleRaw} name="SidebarTreeExample">
   <SidebarTreeExample client:only="vue" />
 </Example>
 
@@ -132,7 +132,7 @@ Add `variant="tree"` to `CSidebarNav` to render nested groups as a tree. Nested 
 
 By default, `CNavGroup` renders the standard group indicator through the `.nav-group-toggle` styles, so no additional markup is required.
 
-<Example code={SidebarGroupIndicatorExampleRaw} lang="vue" name="SidebarGroupIndicatorExample">
+<Example code={SidebarGroupIndicatorExampleRaw} name="SidebarGroupIndicatorExample">
   <SidebarGroupIndicatorExample client:only="vue" />
 </Example>
 
@@ -140,7 +140,7 @@ By default, `CNavGroup` renders the standard group indicator through the `.nav-g
 
 To replace the default indicator, pass custom indicator markup inside the `togglerContent` slot using a `.nav-group-toggle-indicator` element. The `togglerContent` slot is a scoped slot that receives `{ visible }`, so you can swap icons yourself based on the group state.
 
-<Example code={SidebarCustomIndicatorExampleRaw} lang="vue" name="SidebarCustomIndicatorExample">
+<Example code={SidebarCustomIndicatorExampleRaw} name="SidebarCustomIndicatorExample">
   <SidebarCustomIndicatorExample client:only="vue" />
 </Example>
 
@@ -152,7 +152,7 @@ To replace the default indicator, pass custom indicator markup inside the `toggl
 
 This makes it possible to keep a section open even when the user clicks to collapse it—useful for a route-aware sidebar that must keep the active section expanded. Toggle the lock and try to collapse the group: while locked, the parent rejects the change and the group stays open.
 
-<Example code={SidebarControlledGroupExampleRaw} lang="vue" name="SidebarControlledGroupExample">
+<Example code={SidebarControlledGroupExampleRaw} name="SidebarControlledGroupExample">
   <SidebarControlledGroupExample client:only="vue" />
 </Example>
 
@@ -160,7 +160,7 @@ This makes it possible to keep a section open even when the user clicks to colla
 
 Change the appearance of sidebars with `colorScheme="dark"`.
 
-<Example code={SidebarDarkExampleRaw} lang="vue" name="SidebarDarkExample">
+<Example code={SidebarDarkExampleRaw} name="SidebarDarkExample">
   <SidebarDarkExample client:only="vue" />
 </Example>
 

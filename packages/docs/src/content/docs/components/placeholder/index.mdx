@@ -29,7 +29,7 @@ In the example below, we take a typical card component and recreate it with plac
 
 In the example below, we take a typical card component and recreate it with placeholders applied to create a "loading card". Size and proportions are the same between the two.
 
-<Example code={PlaceholderExampleRaw} lang="vue" name="PlaceholderExample">
+<Example code={PlaceholderExampleRaw} name="PlaceholderExample">
   <PlaceholderExample client:only="vue" />
 </Example>
 
@@ -39,7 +39,7 @@ Create placeholders with the `<CPlaceholder>` component and a grid column propx 
 
 We apply additional styling to `CButton`s via `::before` to ensure the `height` is respected. You may extend this pattern for other situations as needed, or add a `&nbsp;` within the element to reflect the height when actual text is rendered in its place.
 
-<Example code={Placeholder2ExampleRaw} lang="vue" name="Placeholder2Example">
+<Example code={Placeholder2ExampleRaw} name="Placeholder2Example">
   <Placeholder2Example client:only="vue" />
 </Example>
 
@@ -51,7 +51,7 @@ We apply additional styling to `CButton`s via `::before` to ensure the `height` 
 
 You can change the `width` through grid column classes, width utilities, or inline styles.
 
-<Example code={PlaceholderWidthExampleRaw} lang="vue" name="PlaceholderWidthExample">
+<Example code={PlaceholderWidthExampleRaw} name="PlaceholderWidthExample">
   <PlaceholderWidthExample client:only="vue" />
 </Example>
 
@@ -59,7 +59,7 @@ You can change the `width` through grid column classes, width utilities, or inli
 
 By default, the `<CPlaceholder>` uses `currentColor`. This can be overridden with a custom color or utility class.
 
-<Example code={PlaceholderColorExampleRaw} lang="vue" name="PlaceholderColorExample">
+<Example code={PlaceholderColorExampleRaw} name="PlaceholderColorExample">
   <PlaceholderColorExample client:only="vue" />
 </Example>
 
@@ -67,7 +67,7 @@ By default, the `<CPlaceholder>` uses `currentColor`. This can be overridden wit
 
 The size of `<CPlaceholder>`s are based on the typographic style of the parent element. Customize them with `size` prop: `lg`, `sm`, or `xs`.
 
-<Example code={PlaceholderSizingExampleRaw} lang="vue" name="PlaceholderSizingExample">
+<Example code={PlaceholderSizingExampleRaw} name="PlaceholderSizingExample">
   <PlaceholderSizingExample client:only="vue" />
 </Example>
 
@@ -75,6 +75,6 @@ The size of `<CPlaceholder>`s are based on the typographic style of the parent e
 
 Animate placeholders with `animation="glow"` or `animation="wave"` to better convey the perception of something being _actively_ loaded.
 
-<Example code={PlaceholderAnimationExampleRaw} lang="vue" name="PlaceholderAnimationExample">
+<Example code={PlaceholderAnimationExampleRaw} name="PlaceholderAnimationExample">
   <PlaceholderAnimationExample client:only="vue" />
 </Example>

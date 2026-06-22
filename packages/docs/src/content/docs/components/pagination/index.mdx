@@ -27,7 +27,7 @@ We use a large block of connected links for our pagination, making links hard to
 
 In addition, as pages likely have more than one such navigation section, it's advisable to provide a descriptive `aria-label` for the `<nav>` to reflect its purpose. For example, if the pagination component is used to navigate between a set of search results, an appropriate label could be `aria-label="Search results pages"`.
 
-<Example code={PaginationExampleRaw} lang="vue" name="PaginationExample">
+<Example code={PaginationExampleRaw} name="PaginationExample">
   <PaginationExample client:only="vue" />
 </Example>
 
@@ -35,7 +35,7 @@ In addition, as pages likely have more than one such navigation section, it's ad
 
 Looking to use an icon or symbol in place of text for some pagination links? Be sure to provide proper screen reader support with `aria` attributes.
 
-<Example code={PaginationWorkingWithIconsExampleRaw} lang="vue" name="PaginationWorkingWithIconsExample">
+<Example code={PaginationWorkingWithIconsExampleRaw} name="PaginationWorkingWithIconsExample">
   <PaginationWorkingWithIconsExample client:only="vue" />
 </Example>
 
@@ -45,7 +45,7 @@ Pagination links are customizable for different circumstances. Use `disabled` fo
 
 While the `disabled` prop uses `pointer-events: none` to _try_ to disable the link functionality of `<a>`s, that CSS property is not yet standardized and doesn't account for keyboard navigation. As such, we always add `tabindex="-1"` on disabled links and use custom JavaScript to fully disable their functionality.
 
-<Example code={PaginationDisabledAndActiveExampleRaw} lang="vue" name="PaginationDisabledAndActiveExample">
+<Example code={PaginationDisabledAndActiveExampleRaw} name="PaginationDisabledAndActiveExample">
   <PaginationDisabledAndActiveExample client:only="vue" />
 </Example>
 
@@ -53,11 +53,11 @@ While the `disabled` prop uses `pointer-events: none` to _try_ to disable the li
 
 Fancy larger or smaller pagination? Add `size="lg"` or `size="sm"` for additional sizes.
 
-<Example code={PaginationSizingLargeExampleRaw} lang="vue" name="PaginationSizingLargeExample">
+<Example code={PaginationSizingLargeExampleRaw} name="PaginationSizingLargeExample">
   <PaginationSizingLargeExample client:only="vue" />
 </Example>
 
-<Example code={PaginationSizingSmallExampleRaw} lang="vue" name="PaginationSizingSmallExample">
+<Example code={PaginationSizingSmallExampleRaw} name="PaginationSizingSmallExample">
   <PaginationSizingSmallExample client:only="vue" />
 </Example>
 
@@ -65,10 +65,10 @@ Fancy larger or smaller pagination? Add `size="lg"` or `size="sm"` for additiona
 
 Change the alignment of pagination components with `align` property.
 
-<Example code={PaginationAlignmentExampleRaw} lang="vue" name="PaginationAlignmentExample">
+<Example code={PaginationAlignmentExampleRaw} name="PaginationAlignmentExample">
   <PaginationAlignmentExample client:only="vue" />
 </Example>
 
-<Example code={PaginationAlignment2ExampleRaw} lang="vue" name="PaginationAlignment2Example">
+<Example code={PaginationAlignment2ExampleRaw} name="PaginationAlignment2Example">
   <PaginationAlignment2Example client:only="vue" />
 </Example>

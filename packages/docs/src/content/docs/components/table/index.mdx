@@ -75,7 +75,7 @@ Due to the widespread use of `<CTable>` elements across third-party widgets like
 
 Using the most basic table CoreUI, here's how `<CTable>`-based tables look in CoreUI.
 
-<Example code={TableExampleRaw} lang="vue" name="TableExample">
+<Example code={TableExampleRaw} name="TableExample">
   <TableExample client:only="vue" />
 </Example>
 In version **4.5.0** we introduced a new way to create a table, similarly to our [Smart Table component](https://coreui.io/vue/docs/components/smart-table.html).
@@ -124,7 +124,7 @@ You can also put all table components together manually as hitherto.
 
 Use contextual classes to color tables, table rows or individual cells.
 
-<Example code={TableVariantsExampleRaw} lang="vue" name="TableVariantsExample">
+<Example code={TableVariantsExampleRaw} name="TableVariantsExample">
   <TableVariantsExample client:only="vue" />
 </Example>
 
@@ -142,7 +142,7 @@ Since version **4.5.0** also this way.
 
 Use `striped` property to add zebra-striping to any table row within the `<CTableBody>`.
 
-<Example code={TableStripedRowsExampleRaw} lang="vue" name="TableStripedRowsExample">
+<Example code={TableStripedRowsExampleRaw} name="TableStripedRowsExample">
   <TableStripedRowsExample client:only="vue" />
 </Example>
 
@@ -150,25 +150,25 @@ Use `striped` property to add zebra-striping to any table row within the `<CTabl
 
 Use `stripedColumns` boolean property to add zebra-striping to any table column.
 
-<Example code={TableStripedColumnsExampleRaw} lang="vue" name="TableStripedColumnsExample">
+<Example code={TableStripedColumnsExampleRaw} name="TableStripedColumnsExample">
   <TableStripedColumnsExample client:only="vue" />
 </Example>
 
 These classes can also be added to table variants:
 
-<Example code={TableStripedColumns2ExampleRaw} lang="vue" name="TableStripedColumns2Example">
+<Example code={TableStripedColumns2ExampleRaw} name="TableStripedColumns2Example">
   <TableStripedColumns2Example client:only="vue" />
 </Example>
 
-<Example code={TableStripedColumns3ExampleRaw} lang="vue" name="TableStripedColumns3Example">
+<Example code={TableStripedColumns3ExampleRaw} name="TableStripedColumns3Example">
   <TableStripedColumns3Example client:only="vue" />
 </Example>
 
-<Example code={TableStripedColumns4ExampleRaw} lang="vue" name="TableStripedColumns4Example">
+<Example code={TableStripedColumns4ExampleRaw} name="TableStripedColumns4Example">
   <TableStripedColumns4Example client:only="vue" />
 </Example>
 
-<Example code={TableStripedColumns5ExampleRaw} lang="vue" name="TableStripedColumns5Example">
+<Example code={TableStripedColumns5ExampleRaw} name="TableStripedColumns5Example">
   <TableStripedColumns5Example client:only="vue" />
 </Example>
 
@@ -176,17 +176,17 @@ These classes can also be added to table variants:
 
 Use `hover` property to enable a hover state on table rows within a `<CTableBody>`.
 
-<Example code={TableHoverableRowsExampleRaw} lang="vue" name="TableHoverableRowsExample">
+<Example code={TableHoverableRowsExampleRaw} name="TableHoverableRowsExample">
   <TableHoverableRowsExample client:only="vue" />
 </Example>
 
-<Example code={TableHoverableRows2ExampleRaw} lang="vue" name="TableHoverableRows2Example">
+<Example code={TableHoverableRows2ExampleRaw} name="TableHoverableRows2Example">
   <TableHoverableRows2Example client:only="vue" />
 </Example>
 
 These hoverable rows can also be combined with the striped variant:
 
-<Example code={TableHoverableRows3ExampleRaw} lang="vue" name="TableHoverableRows3Example">
+<Example code={TableHoverableRows3ExampleRaw} name="TableHoverableRows3Example">
   <TableHoverableRows3Example client:only="vue" />
 </Example>
 
@@ -194,7 +194,7 @@ These hoverable rows can also be combined with the striped variant:
 
 Highlight a table row or cell by adding a `active` property.
 
-<Example code={TableActiveTablesExampleRaw} lang="vue" name="TableActiveTablesExample">
+<Example code={TableActiveTablesExampleRaw} name="TableActiveTablesExample">
   <TableActiveTablesExample client:only="vue" />
 </Example>
 As mentioned before since version **4.5.0** we have two ways to generate tables, also with custom properties for rows, and cells.
@@ -237,7 +237,7 @@ As mentioned before since version **4.5.0** we have two ways to generate tables,
 </CTable>
 ```
 
-<Example code={TableActiveTables2ExampleRaw} lang="vue" name="TableActiveTables2Example">
+<Example code={TableActiveTables2ExampleRaw} name="TableActiveTables2Example">
   <TableActiveTables2Example client:only="vue" />
 </Example>
 
@@ -247,13 +247,13 @@ As mentioned before since version **4.5.0** we have two ways to generate tables,
 
 Add `bordered` property for borders on all sides of the table and cells.
 
-<Example code={TableBorderedTablesExampleRaw} lang="vue" name="TableBorderedTablesExample">
+<Example code={TableBorderedTablesExampleRaw} name="TableBorderedTablesExample">
   <TableBorderedTablesExample client:only="vue" />
 </Example>
 
 [Border color utilities](https://coreui.io/docs/4.0/utilities/borders#border-color) can be added to change colors:
 
-<Example code={TableBorderedTables2ExampleRaw} lang="vue" name="TableBorderedTables2Example">
+<Example code={TableBorderedTables2ExampleRaw} name="TableBorderedTables2Example">
   <TableBorderedTables2Example client:only="vue" />
 </Example>
 
@@ -261,11 +261,11 @@ Add `bordered` property for borders on all sides of the table and cells.
 
 Add `borderless` property for a table without borders.
 
-<Example code={TableTablesWithoutBordersExampleRaw} lang="vue" name="TableTablesWithoutBordersExample">
+<Example code={TableTablesWithoutBordersExampleRaw} name="TableTablesWithoutBordersExample">
   <TableTablesWithoutBordersExample client:only="vue" />
 </Example>
 
-<Example code={TableTablesWithoutBorders2ExampleRaw} lang="vue" name="TableTablesWithoutBorders2Example">
+<Example code={TableTablesWithoutBorders2ExampleRaw} name="TableTablesWithoutBorders2Example">
   <TableTablesWithoutBorders2Example client:only="vue" />
 </Example>
 
@@ -273,7 +273,7 @@ Add `borderless` property for a table without borders.
 
 Add `small` property to make any `<CTable>` more compact by cutting all cell `padding` in half.
 
-<Example code={TableSmallTablesExampleRaw} lang="vue" name="TableSmallTablesExample">
+<Example code={TableSmallTablesExampleRaw} name="TableSmallTablesExample">
   <TableSmallTablesExample client:only="vue" />
 </Example>
 
@@ -281,7 +281,7 @@ Add `small` property to make any `<CTable>` more compact by cutting all cell `pa
 
 Table cells of `<CTableHead>` are always vertical aligned to the bottom. Table cells in `<CTableBody>` inherit their alignment from `<CTable>` and are aligned to the the top by default. Use the align property to re-align where needed.
 
-<Example code={TableVerticalAlignmentExampleRaw} lang="vue" name="TableVerticalAlignmentExample">
+<Example code={TableVerticalAlignmentExampleRaw} name="TableVerticalAlignmentExample">
   <TableVerticalAlignmentExample client:only="vue" />
 </Example>
 
@@ -289,7 +289,7 @@ Table cells of `<CTableHead>` are always vertical aligned to the bottom. Table c
 
 Border styles, active styles, and table variants are not inherited by nested tables.
 
-<Example code={TableNestingExampleRaw} lang="vue" name="TableNestingExample">
+<Example code={TableNestingExampleRaw} name="TableNestingExample">
   <TableNestingExample client:only="vue" />
 </Example>
 
@@ -299,7 +299,7 @@ Border styles, active styles, and table variants are not inherited by nested tab
 
 Similar to tables and dark tables, use the modifier prop `color="light"` or `color="dark"` to make `<CTableHead>`s appear light or dark gray.
 
-<Example code={TableTableHeadExampleRaw} lang="vue" name="TableTableHeadExample">
+<Example code={TableTableHeadExampleRaw} name="TableTableHeadExample">
   <TableTableHeadExample client:only="vue" />
 </Example>
 
@@ -311,7 +311,7 @@ If you generate a table using the new method incorporated in version **4.5.0**, 
 </template>
 ```
 
-<Example code={TableTableHead2ExampleRaw} lang="vue" name="TableTableHead2Example">
+<Example code={TableTableHead2ExampleRaw} name="TableTableHead2Example">
   <TableTableHead2Example client:only="vue" />
 </Example>
 
@@ -325,7 +325,7 @@ Starting from version **4.5.0** also this way.
 
 ### Table foot
 
-<Example code={TableTableFootExampleRaw} lang="vue" name="TableTableFootExample">
+<Example code={TableTableFootExampleRaw} name="TableTableFootExample">
   <TableTableFootExample client:only="vue" />
 </Example>
 
@@ -341,7 +341,7 @@ Starting from version **4.5.0** also this way.
 
 A `<CTableCaption>` functions like a heading for a table. It helps users with screen readers to find a table and understand what it's about and decide if they want to read it.
 
-<Example code={TableCaptionsExampleRaw} lang="vue" name="TableCaptionsExample">
+<Example code={TableCaptionsExampleRaw} name="TableCaptionsExample">
   <TableCaptionsExample client:only="vue" />
 </Example>
 
@@ -355,7 +355,7 @@ Starting from version **4.5.0** also this way.
 
 You can also put the `<CTableCaption>` on the top of the table with `caption="top"`.
 
-<Example code={TableCaptions2ExampleRaw} lang="vue" name="TableCaptions2Example">
+<Example code={TableCaptions2ExampleRaw} name="TableCaptions2Example">
   <TableCaptions2Example client:only="vue" />
 </Example>
 
@@ -370,26 +370,26 @@ Since version **4.5.0** also this way.
 
 Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by adding a `responsive` property. Or, pick a maximum breakpoint with which to have a responsive table up to by using `responsive="{-sm|-md|-lg|-xl|-xxl}"`.
 
-<Example code={TableResponsiveTablesExampleRaw} lang="vue" name="TableResponsiveTablesExample">
+<Example code={TableResponsiveTablesExampleRaw} name="TableResponsiveTablesExample">
   <TableResponsiveTablesExample client:only="vue" />
 </Example>
 
-<Example code={TableResponsiveTables2ExampleRaw} lang="vue" name="TableResponsiveTables2Example">
+<Example code={TableResponsiveTables2ExampleRaw} name="TableResponsiveTables2Example">
   <TableResponsiveTables2Example client:only="vue" />
 </Example>
 
-<Example code={TableResponsiveTables3ExampleRaw} lang="vue" name="TableResponsiveTables3Example">
+<Example code={TableResponsiveTables3ExampleRaw} name="TableResponsiveTables3Example">
   <TableResponsiveTables3Example client:only="vue" />
 </Example>
 
-<Example code={TableResponsiveTables4ExampleRaw} lang="vue" name="TableResponsiveTables4Example">
+<Example code={TableResponsiveTables4ExampleRaw} name="TableResponsiveTables4Example">
   <TableResponsiveTables4Example client:only="vue" />
 </Example>
 
-<Example code={TableResponsiveTables5ExampleRaw} lang="vue" name="TableResponsiveTables5Example">
+<Example code={TableResponsiveTables5ExampleRaw} name="TableResponsiveTables5Example">
   <TableResponsiveTables5Example client:only="vue" />
 </Example>
 
-<Example code={TableResponsiveTables6ExampleRaw} lang="vue" name="TableResponsiveTables6Example">
+<Example code={TableResponsiveTables6ExampleRaw} name="TableResponsiveTables6Example">
   <TableResponsiveTables6Example client:only="vue" />
 </Example>

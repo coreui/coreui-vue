@@ -31,7 +31,7 @@ Progress components are built with two HTML elements, some CSS to set the width,
 
 ## Basic usage
 
-<Example code={ProgressExampleRaw} lang="vue" name="ProgressExample">
+<Example code={ProgressExampleRaw} name="ProgressExample">
   <ProgressExample client:only="vue" />
 </Example>
 
@@ -39,13 +39,13 @@ Progress components are built with two HTML elements, some CSS to set the width,
 
 Add labels to your progress bars by placing text within the `<CProgressBar>`.
 
-<Example code={ProgressLabelsExampleRaw} lang="vue" name="ProgressLabelsExample">
+<Example code={ProgressLabelsExampleRaw} name="ProgressLabelsExample">
   <ProgressLabelsExample client:only="vue" />
 </Example>
 
 Please note that the default setting for the content within the `<CProgressBar />` is to be limited by the `overflow: hidden property`, preventing it from extending beyond the bar's boundaries. If the progress bar is shorter than its label, the content will be truncated and could be difficult to read. To modify this behavior, you can utilize the `.overflow-visible` class from the overflow utilities. However, it is important to specify a specific text color to ensure readability. It's worth noting that this approach currently does not consider color modes.
 
-<Example code={ProgressLabels2ExampleRaw} lang="vue" name="ProgressLabels2Example">
+<Example code={ProgressLabels2ExampleRaw} name="ProgressLabels2Example">
   <ProgressLabels2Example client:only="vue" />
 </Example>
 
@@ -59,7 +59,7 @@ Since **v5.0.0** you can also use the `progressBarClassName` property directly o
 
 We only set a `height` value on the `<CProgress>`, so if you change that value the inner `<CProgressBar>` will automatically resize accordingly.
 
-<Example code={ProgressHeightExampleRaw} lang="vue" name="ProgressHeightExample">
+<Example code={ProgressHeightExampleRaw} name="ProgressHeightExample">
   <ProgressHeightExample client:only="vue" />
 </Example>
 
@@ -67,13 +67,13 @@ We only set a `height` value on the `<CProgress>`, so if you change that value t
 
 Use `color` prop to change the appearance of individual progress bars.
 
-<Example code={ProgressHeight2ExampleRaw} lang="vue" name="ProgressHeight2Example">
+<Example code={ProgressHeight2ExampleRaw} name="ProgressHeight2Example">
   <ProgressHeight2Example client:only="vue" />
 </Example>
 
 Ensure that when you incorporate labels into progress bars featuring a custom background color, you also select an appropriate text color to ensure readability and maintain adequate contrast for the labels.
 
-<Example code={ProgressBackgroundsExampleRaw} lang="vue" name="ProgressBackgroundsExample">
+<Example code={ProgressBackgroundsExampleRaw} name="ProgressBackgroundsExample">
   <ProgressBackgroundsExample client:only="vue" />
 </Example>
 
@@ -96,7 +96,7 @@ Include multiple progress bars in a progress component if you need.
 
 **New markup**
 
-<Example code={ProgressBackgrounds2ExampleRaw} lang="vue" name="ProgressBackgrounds2Example">
+<Example code={ProgressBackgrounds2ExampleRaw} name="ProgressBackgrounds2Example">
   <ProgressBackgrounds2Example client:only="vue" />
 </Example>
 
@@ -113,7 +113,7 @@ Include multiple progress bars in a progress component if you need.
 
 Add `variant="striped"` to any `<CProgressBar>` to apply a stripe via CSS gradient over the progress bar's background color.
 
-<Example code={ProgressMultipleBarsExampleRaw} lang="vue" name="ProgressMultipleBarsExample">
+<Example code={ProgressMultipleBarsExampleRaw} name="ProgressMultipleBarsExample">
   <ProgressMultipleBarsExample client:only="vue" />
 </Example>
 
@@ -121,6 +121,6 @@ Add `variant="striped"` to any `<CProgressBar>` to apply a stripe via CSS gradie
 
 The striped gradient can also be animated. Add `animated` property to `<CProgressBar>` to animate the stripes right to left via CSS3 animations.
 
-<Example code={ProgressAnimatedStripedExampleRaw} lang="vue" name="ProgressAnimatedStripedExample">
+<Example code={ProgressAnimatedStripedExampleRaw} name="ProgressAnimatedStripedExample">
   <ProgressAnimatedStripedExample client:only="vue" />
 </Example>

@@ -35,7 +35,7 @@ import GridRowColumns6ExampleRaw from './examples/GridRowColumns6Example.vue?raw
 
 CoreUI's grid system uses a series of containers, rows, and columns to layout and align content. It's built with [flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) and is fully responsive. Below is an example and an in-depth explanation for how the grid system comes together.
 
-<Example code={GridExampleRaw} lang="vue" name="GridExample">
+<Example code={GridExampleRaw} name="GridExample">
   <GridExample client:only="vue" />
 </Example>
 
@@ -150,7 +150,7 @@ Utilize breakpoint-specific column classes for easy column sizing without an exp
 
 For example, here are two grid layouts that apply to every device and viewport, from `xs` to `xxl`. Add any number of unit-less classes for each breakpoint you need and every column will be the same width.
 
-<Example code={GridEqualWidthExampleRaw} lang="vue" name="GridEqualWidthExample">
+<Example code={GridEqualWidthExampleRaw} name="GridEqualWidthExample">
   <GridEqualWidthExample client:only="vue" />
 </Example>
 
@@ -158,7 +158,7 @@ For example, here are two grid layouts that apply to every device and viewport, 
 
 Auto-layout for flexbox grid columns also means you can set the width of one column and have the sibling columns automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths. Note that the other columns will resize no matter the width of the center column.
 
-<Example code={GridSettingOneColumnWidthExampleRaw} lang="vue" name="GridSettingOneColumnWidthExample">
+<Example code={GridSettingOneColumnWidthExampleRaw} name="GridSettingOneColumnWidthExample">
   <GridSettingOneColumnWidthExample client:only="vue" />
 </Example>
 
@@ -166,7 +166,7 @@ Auto-layout for flexbox grid columns also means you can set the width of one col
 
 Use `<CCol {breakpoint}="auto"` props to size columns based on the natural width of their content.
 
-<Example code={GridVariableWidthContentExampleRaw} lang="vue" name="GridVariableWidthContentExample">
+<Example code={GridVariableWidthContentExampleRaw} name="GridVariableWidthContentExample">
   <GridVariableWidthContentExample client:only="vue" />
 </Example>
 
@@ -178,7 +178,7 @@ CoreUI's grid includes six tiers of predefined classes for building complex resp
 
 For grids that are the same from the smallest of devices to the largest, use the `<CCol>` and `<CCol xs={*}>` classes. Specify a numbered class when you need a particularly sized column; otherwise, feel free to stick to `<CCol>`.
 
-<Example code={GridAllBreakpointsExampleRaw} lang="vue" name="GridAllBreakpointsExample">
+<Example code={GridAllBreakpointsExampleRaw} name="GridAllBreakpointsExample">
   <GridAllBreakpointsExample client:only="vue" />
 </Example>
 
@@ -186,7 +186,7 @@ For grids that are the same from the smallest of devices to the largest, use the
 
 Using a single set of `<CCol sm={*}>` classes, you can create a basic grid system that starts out stacked and becomes horizontal at the small breakpoint (`sm`).
 
-<Example code={GridStackedToHorizontalExampleRaw} lang="vue" name="GridStackedToHorizontalExample">
+<Example code={GridStackedToHorizontalExampleRaw} name="GridStackedToHorizontalExample">
   <GridStackedToHorizontalExample client:only="vue" />
 </Example>
 
@@ -194,7 +194,7 @@ Using a single set of `<CCol sm={*}>` classes, you can create a basic grid syste
 
 Don't want your columns to simply stack in some grid tiers? Use a combination of different classes for each tier as needed. See the example below for a better idea of how it all works.
 
-<Example code={GridMixAndMatchExampleRaw} lang="vue" name="GridMixAndMatchExample">
+<Example code={GridMixAndMatchExampleRaw} name="GridMixAndMatchExample">
   <GridMixAndMatchExample client:only="vue" />
 </Example>
 
@@ -204,26 +204,26 @@ Use the responsive `:{breakpoint}="{ cols: * }"` classes to quickly set the numb
 
 Use these row columns classes to quickly create basic grid layouts or to control your card layouts.
 
-<Example code={GridRowColumnsExampleRaw} lang="vue" name="GridRowColumnsExample">
+<Example code={GridRowColumnsExampleRaw} name="GridRowColumnsExample">
   <GridRowColumnsExample client:only="vue" />
 </Example>
 
-<Example code={GridRowColumns2ExampleRaw} lang="vue" name="GridRowColumns2Example">
+<Example code={GridRowColumns2ExampleRaw} name="GridRowColumns2Example">
   <GridRowColumns2Example client:only="vue" />
 </Example>
 
-<Example code={GridRowColumns3ExampleRaw} lang="vue" name="GridRowColumns3Example">
+<Example code={GridRowColumns3ExampleRaw} name="GridRowColumns3Example">
   <GridRowColumns3Example client:only="vue" />
 </Example>
 
-<Example code={GridRowColumns4ExampleRaw} lang="vue" name="GridRowColumns4Example">
+<Example code={GridRowColumns4ExampleRaw} name="GridRowColumns4Example">
   <GridRowColumns4Example client:only="vue" />
 </Example>
 
-<Example code={GridRowColumns5ExampleRaw} lang="vue" name="GridRowColumns5Example">
+<Example code={GridRowColumns5ExampleRaw} name="GridRowColumns5Example">
   <GridRowColumns5Example client:only="vue" />
 </Example>
 
-<Example code={GridRowColumns6ExampleRaw} lang="vue" name="GridRowColumns6Example">
+<Example code={GridRowColumns6ExampleRaw} name="GridRowColumns6Example">
   <GridRowColumns6Example client:only="vue" />
 </Example>

@@ -19,7 +19,7 @@ import FormRangeStepsExampleRaw from './examples/FormRangeStepsExample.vue?raw'
 
 Create custom `<input type="range">` controls with `<CFormRange>`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only Edge Legacy and Firefox supports "filling" their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.
 
-<Example code={FormRangeExampleRaw} lang="vue" name="FormRangeExample">
+<Example code={FormRangeExampleRaw} name="FormRangeExample">
   <FormRangeExample client:only="vue" />
 </Example>
 
@@ -27,7 +27,7 @@ Create custom `<input type="range">` controls with `<CFormRange>`. The track (th
 
 Add the `disabled` boolean attribute on an input to give it a grayed out appearance and remove pointer events.
 
-<Example code={FormRangeDisabledExampleRaw} lang="vue" name="FormRangeDisabledExample">
+<Example code={FormRangeDisabledExampleRaw} name="FormRangeDisabledExample">
   <FormRangeDisabledExample client:only="vue" />
 </Example>
 
@@ -35,7 +35,7 @@ Add the `disabled` boolean attribute on an input to give it a grayed out appeara
 
 Range inputs have implicit values for `min` and `max`—`0` and `100`, respectively. You may specify new values for those using the `min` and `max` attributes.
 
-<Example code={FormRangeMinAndMaxExampleRaw} lang="vue" name="FormRangeMinAndMaxExample">
+<Example code={FormRangeMinAndMaxExampleRaw} name="FormRangeMinAndMaxExample">
   <FormRangeMinAndMaxExample client:only="vue" />
 </Example>
 
@@ -43,6 +43,6 @@ Range inputs have implicit values for `min` and `max`—`0` and `100`, respectiv
 
 By default, range inputs "snap" to integer values. To change this, you can specify a `step` value. In the example below, we double the number of steps by using `:step="0.5"`.
 
-<Example code={FormRangeStepsExampleRaw} lang="vue" name="FormRangeStepsExample">
+<Example code={FormRangeStepsExampleRaw} name="FormRangeStepsExample">
   <FormRangeStepsExample client:only="vue" />
 </Example>

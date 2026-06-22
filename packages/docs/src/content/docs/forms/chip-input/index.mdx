@@ -71,7 +71,7 @@ Use the Vue Chip Input component when you need:
 
 Use `CChipInput` to render a multi-value field with predefined chips and inline input.
 
-<Example code={ChipInputExampleRaw} lang="vue" name="ChipInputExample">
+<Example code={ChipInputExampleRaw} name="ChipInputExample">
   <ChipInputExample client:only="vue" />
 </Example>
 
@@ -79,7 +79,7 @@ Use `CChipInput` to render a multi-value field with predefined chips and inline 
 
 Use the `label` prop for accessibility and better UX.
 
-<Example code={ChipInputWithLabelExampleRaw} lang="vue" name="ChipInputWithLabelExample">
+<Example code={ChipInputWithLabelExampleRaw} name="ChipInputWithLabelExample">
   <ChipInputWithLabelExample client:only="vue" />
 </Example>
 
@@ -87,7 +87,7 @@ Use the `label` prop for accessibility and better UX.
 
 Use `size="sm"` and `size="lg"` to match surrounding form controls.
 
-<Example code={ChipInputSizesExampleRaw} lang="vue" name="ChipInputSizesExample">
+<Example code={ChipInputSizesExampleRaw} name="ChipInputSizesExample">
   <ChipInputSizesExample client:only="vue" />
 </Example>
 
@@ -95,7 +95,7 @@ Use `size="sm"` and `size="lg"` to match surrounding form controls.
 
 Use `chipClassName` to apply contextual chip colors based on chip text.
 
-<Example code={ChipInputVariantsExampleRaw} lang="vue" name="ChipInputVariantsExample">
+<Example code={ChipInputVariantsExampleRaw} name="ChipInputVariantsExample">
   <ChipInputVariantsExample client:only="vue" />
 </Example>
 
@@ -103,7 +103,7 @@ Use `chipClassName` to apply contextual chip colors based on chip text.
 
 Apply a single class to all chips.
 
-<Example code={ChipInputClassNameExampleRaw} lang="vue" name="ChipInputClassNameExample">
+<Example code={ChipInputClassNameExampleRaw} name="ChipInputClassNameExample">
   <ChipInputClassNameExample client:only="vue" />
 </Example>
 
@@ -111,7 +111,7 @@ Apply a single class to all chips.
 
 By default, chips are created when the user types a comma `,`. Change the separator using the `separator` prop.
 
-<Example code={ChipInputEmptyStateExampleRaw} lang="vue" name="ChipInputEmptyStateExample">
+<Example code={ChipInputEmptyStateExampleRaw} name="ChipInputEmptyStateExample">
   <ChipInputEmptyStateExample client:only="vue" />
 </Example>
 
@@ -119,7 +119,7 @@ By default, chips are created when the user types a comma `,`. Change the separa
 
 Set `separator` to empty string or `null` to disable automatic chip creation on typing. Users must press **Enter**.
 
-<Example code={ChipInputNoSeparatorExampleRaw} lang="vue" name="ChipInputNoSeparatorExample">
+<Example code={ChipInputNoSeparatorExampleRaw} name="ChipInputNoSeparatorExample">
   <ChipInputNoSeparatorExample client:only="vue" />
 </Example>
 
@@ -127,7 +127,7 @@ Set `separator` to empty string or `null` to disable automatic chip creation on 
 
 Limit the number of chips with `maxChips`.
 
-<Example code={ChipInputMaxChipsExampleRaw} lang="vue" name="ChipInputMaxChipsExample">
+<Example code={ChipInputMaxChipsExampleRaw} name="ChipInputMaxChipsExample">
   <ChipInputMaxChipsExample client:only="vue" />
 </Example>
 
@@ -135,7 +135,7 @@ Limit the number of chips with `maxChips`.
 
 By default, typing a value and blurring the input creates a chip. Disable this with `createOnBlur`.
 
-<Example code={ChipInputCreateOnBlurExampleRaw} lang="vue" name="ChipInputCreateOnBlurExample">
+<Example code={ChipInputCreateOnBlurExampleRaw} name="ChipInputCreateOnBlurExample">
   <ChipInputCreateOnBlurExample client:only="vue" />
 </Example>
 
@@ -143,7 +143,7 @@ By default, typing a value and blurring the input creates a chip. Disable this w
 
 Disable the component to prevent interaction.
 
-<Example code={ChipInputDisabledExampleRaw} lang="vue" name="ChipInputDisabledExample">
+<Example code={ChipInputDisabledExampleRaw} name="ChipInputDisabledExample">
   <ChipInputDisabledExample client:only="vue" />
 </Example>
 
@@ -151,7 +151,7 @@ Disable the component to prevent interaction.
 
 Use `readOnly` to display chips without allowing changes.
 
-<Example code={ChipInputReadonlyExampleRaw} lang="vue" name="ChipInputReadonlyExample">
+<Example code={ChipInputReadonlyExampleRaw} name="ChipInputReadonlyExample">
   <ChipInputReadonlyExample client:only="vue" />
 </Example>
 
@@ -159,7 +159,7 @@ Use `readOnly` to display chips without allowing changes.
 
 Enable chip selection with the `selectable` prop. Use the `@select` event to track selected chips.
 
-<Example code={ChipInputSelectableExampleRaw} lang="vue" name="ChipInputSelectableExample">
+<Example code={ChipInputSelectableExampleRaw} name="ChipInputSelectableExample">
   <ChipInputSelectableExample client:only="vue" />
 </Example>
 
@@ -167,7 +167,7 @@ Enable chip selection with the `selectable` prop. Use the `@select` event to tra
 
 When `name` is provided, a hidden input is rendered for standard form submission.
 
-<Example code={ChipInputFormExampleRaw} lang="vue" name="ChipInputFormExample">
+<Example code={ChipInputFormExampleRaw} name="ChipInputFormExample">
   <ChipInputFormExample client:only="vue" />
 </Example>
 
@@ -182,7 +182,7 @@ The component emits several events for tracking changes:
 - `@input` - Fires when the text input value changes
 - `@select` - Fires when selected chips change (when `selectable` is true)
 
-<Example code={ChipInputEventsExampleRaw} lang="vue" name="ChipInputEventsExample">
+<Example code={ChipInputEventsExampleRaw} name="ChipInputEventsExample">
   <ChipInputEventsExample client:only="vue" />
 </Example>
 
@@ -209,7 +209,7 @@ The Chip Input component supports comprehensive keyboard interaction:
 
 For reactive data binding, use `v-model`:
 
-<Example code={ChipInputVModelExampleRaw} lang="vue" name="ChipInputVModelExample">
+<Example code={ChipInputVModelExampleRaw} name="ChipInputVModelExample">
   <ChipInputVModelExample client:only="vue" />
 </Example>
 
@@ -217,7 +217,7 @@ For reactive data binding, use `v-model`:
 
 For initial values without reactive binding, use `defaultValue`:
 
-<Example code={ChipInputDefaultValueExampleRaw} lang="vue" name="ChipInputDefaultValueExample">
+<Example code={ChipInputDefaultValueExampleRaw} name="ChipInputDefaultValueExample">
   <ChipInputDefaultValueExample client:only="vue" />
 </Example>
 
@@ -225,7 +225,7 @@ For initial values without reactive binding, use `defaultValue`:
 
 Users can paste multiple values at once. If the pasted text contains the separator character, it's automatically split into multiple chips.
 
-<Example code={ChipInputPasteExampleRaw} lang="vue" name="ChipInputPasteExample">
+<Example code={ChipInputPasteExampleRaw} name="ChipInputPasteExample">
   <ChipInputPasteExample client:only="vue" />
 </Example>
 
@@ -233,18 +233,18 @@ Users can paste multiple values at once. If the pasted text contains the separat
 
 ### Email recipients
 
-<Example code={ChipInputEmailExampleRaw} lang="vue" name="ChipInputEmailExample">
+<Example code={ChipInputEmailExampleRaw} name="ChipInputEmailExample">
   <ChipInputEmailExample client:only="vue" />
 </Example>
 
 ### Skills selector
 
-<Example code={ChipInputSkillsExampleRaw} lang="vue" name="ChipInputSkillsExample">
+<Example code={ChipInputSkillsExampleRaw} name="ChipInputSkillsExample">
   <ChipInputSkillsExample client:only="vue" />
 </Example>
 
 ### Product tags
 
-<Example code={ChipInputProductTagsExampleRaw} lang="vue" name="ChipInputProductTagsExample">
+<Example code={ChipInputProductTagsExampleRaw} name="ChipInputProductTagsExample">
   <ChipInputProductTagsExample client:only="vue" />
 </Example>

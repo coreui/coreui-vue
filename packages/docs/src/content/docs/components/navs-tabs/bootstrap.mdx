@@ -48,13 +48,13 @@ Navigation available in CoreUI for Vue share general markup and styles, from the
 
 The base `.nav` component is built with flexbox and provide a strong foundation for building all types of navigation components. It includes some style overrides (for working with lists), some link padding for larger hit areas, and basic disabled styling.
 
-<Example class="theme-bootstrap" code={NavExampleRaw} lang="vue" name="NavExample">
+<Example class="theme-bootstrap" code={NavExampleRaw} name="NavExample">
   <NavExample client:only="vue" />
 </Example>
 
 Classes are used throughout, so your markup can be super flexible. Use `<ul>`s like above, `<ol>` if the order of your items is important, or roll your own with a `<nav>` element. Because the .nav uses display: flex, the nav links behave the same as nav items would, but without the extra markup.
 
-<Example class="theme-bootstrap" code={Nav2ExampleRaw} lang="vue" name="Nav2Example">
+<Example class="theme-bootstrap" code={Nav2ExampleRaw} name="Nav2Example">
   <Nav2Example client:only="vue" />
 </Example>
 
@@ -68,13 +68,13 @@ Change the horizontal alignment of your nav with [flexbox utilities](https://cor
 
 Centered with `.justify-content-center`:
 
-<Example class="theme-bootstrap" code={NavHorizontalAlignmentExampleRaw} lang="vue" name="NavHorizontalAlignmentExample">
+<Example class="theme-bootstrap" code={NavHorizontalAlignmentExampleRaw} name="NavHorizontalAlignmentExample">
   <NavHorizontalAlignmentExample client:only="vue" />
 </Example>
 
 Right-aligned with `.justify-content-end`:
 
-<Example class="theme-bootstrap" code={NavHorizontalAlignment2ExampleRaw} lang="vue" name="NavHorizontalAlignment2Example">
+<Example class="theme-bootstrap" code={NavHorizontalAlignment2ExampleRaw} name="NavHorizontalAlignment2Example">
   <NavHorizontalAlignment2Example client:only="vue" />
 </Example>
 
@@ -82,7 +82,7 @@ Right-aligned with `.justify-content-end`:
 
 Stack your navigation by changing the flex item direction with the `.flex-column` utility. Need to stack them on some viewports but not others? Use the responsive versions (e.g., `.flex-sm-column`).
 
-<Example class="theme-bootstrap" code={NavVerticalExampleRaw} lang="vue" name="NavVerticalExample">
+<Example class="theme-bootstrap" code={NavVerticalExampleRaw} name="NavVerticalExample">
   <NavVerticalExample client:only="vue" />
 </Example>
 
@@ -90,7 +90,7 @@ Stack your navigation by changing the flex item direction with the `.flex-column
 
 Takes the basic nav from above and adds the `variant="tabs"` class to generate a tabbed interface
 
-<Example class="theme-bootstrap" code={NavTabsExampleRaw} lang="vue" name="NavTabsExample">
+<Example class="theme-bootstrap" code={NavTabsExampleRaw} name="NavTabsExample">
   <NavTabsExample client:only="vue" />
 </Example>
 
@@ -98,7 +98,7 @@ Takes the basic nav from above and adds the `variant="tabs"` class to generate a
 
 Take that same HTML, but use `variant="pills"` instead:
 
-<Example class="theme-bootstrap" code={NavPillsExampleRaw} lang="vue" name="NavPillsExample">
+<Example class="theme-bootstrap" code={NavPillsExampleRaw} name="NavPillsExample">
   <NavPillsExample client:only="vue" />
 </Example>
 
@@ -106,14 +106,14 @@ Take that same HTML, but use `variant="pills"` instead:
 
 Take that same code, but use `variant="underline"` instead:
 
-<Example class="theme-bootstrap" code={NavUnderlineExampleRaw} lang="vue" name="NavUnderlineExample">
+<Example class="theme-bootstrap" code={NavUnderlineExampleRaw} name="NavUnderlineExample">
   <NavUnderlineExample client:only="vue" />
 </Example>
 ### Underline border
 
 Take that same code, but use `variant="underline-border"` instead:
 
-<Example class="theme-bootstrap" code={NavUnderlineBorderExampleRaw} lang="vue" name="NavUnderlineBorderExample">
+<Example class="theme-bootstrap" code={NavUnderlineBorderExampleRaw} name="NavUnderlineBorderExample">
   <NavUnderlineBorderExample client:only="vue" />
 </Example>
 
@@ -121,7 +121,7 @@ Take that same code, but use `variant="underline-border"` instead:
 
 Use the `variant="enclosed"` class to give your navigation items a subtle border and rounded styling.
 
-<Example class="theme-bootstrap" code={NavEnclosedExampleRaw} lang="vue" name="NavEnclosedExample">
+<Example class="theme-bootstrap" code={NavEnclosedExampleRaw} name="NavEnclosedExample">
   <NavEnclosedExample client:only="vue" />
 </Example>
 
@@ -129,7 +129,7 @@ Use the `variant="enclosed"` class to give your navigation items a subtle border
 
 Use the `variant="enclosed-pills"` to achieve a pill-style appearance for each nav item, using pill-shaped borders and smoother outlines.
 
-<Example class="theme-bootstrap" code={NavEnclosedPillsExampleRaw} lang="vue" name="NavEnclosedPillsExample">
+<Example class="theme-bootstrap" code={NavEnclosedPillsExampleRaw} name="NavEnclosedPillsExample">
   <NavEnclosedPillsExample client:only="vue" />
 </Example>
 
@@ -137,13 +137,13 @@ Use the `variant="enclosed-pills"` to achieve a pill-style appearance for each n
 
 Force your `.nav`'s contents to extend the full available width one of two modifier classes. To proportionately fill all available space with your `.nav-item`s, use `layout="fill"`. Notice that all horizontal space is occupied, but not every nav item has the same width.
 
-<Example class="theme-bootstrap" code={NavFillAndJustifyExampleRaw} lang="vue" name="NavFillAndJustifyExample">
+<Example class="theme-bootstrap" code={NavFillAndJustifyExampleRaw} name="NavFillAndJustifyExample">
   <NavFillAndJustifyExample client:only="vue" />
 </Example>
 
 For equal-width elements, use `layout="justified"`. All horizontal space will be occupied by nav links, but unlike the .nav-fill above, every nav item will be the same width.
 
-<Example class="theme-bootstrap" code={NavFillAndJustify2ExampleRaw} lang="vue" name="NavFillAndJustify2Example">
+<Example class="theme-bootstrap" code={NavFillAndJustify2ExampleRaw} name="NavFillAndJustify2Example">
   <NavFillAndJustify2Example client:only="vue" />
 </Example>
 
@@ -151,7 +151,7 @@ For equal-width elements, use `layout="justified"`. All horizontal space will be
 
 If you need responsive nav variations, consider using a series of [flexbox utilities](https://coreui.io/docs/utilities/flex). While more verbose, these utilities offer greater customization across responsive breakpoints. In the example below, our nav will be stacked on the lowest breakpoint, then adapt to a horizontal layout that fills the available width starting from the small breakpoint.
 
-<Example class="theme-bootstrap" code={NavWorkingWithFlexUtilitiesExampleRaw} lang="vue" name="NavWorkingWithFlexUtilitiesExample">
+<Example class="theme-bootstrap" code={NavWorkingWithFlexUtilitiesExampleRaw} name="NavWorkingWithFlexUtilitiesExample">
   <NavWorkingWithFlexUtilitiesExample client:only="vue" />
 </Example>
 
@@ -167,13 +167,13 @@ Add dropdown menus with a little extra HTML.
 
 ### Tabs with dropdowns
 
-<Example class="theme-bootstrap" code={NavTabsWithDropdownExampleRaw} lang="vue" name="NavTabsWithDropdownExample">
+<Example class="theme-bootstrap" code={NavTabsWithDropdownExampleRaw} name="NavTabsWithDropdownExample">
   <NavTabsWithDropdownExample client:only="vue" />
 </Example>
 
 ### Pills with dropdowns
 
-<Example class="theme-bootstrap" code={NavPillsWithDropdownExampleRaw} lang="vue" name="NavPillsWithDropdownExample">
+<Example class="theme-bootstrap" code={NavPillsWithDropdownExampleRaw} name="NavPillsWithDropdownExample">
   <NavPillsWithDropdownExample client:only="vue" />
 </Example>
 
@@ -183,12 +183,12 @@ Dynamic tabbed interfaces, as described in the [<abbr title="Web Accessibility I
 
 Note that dynamic tabbed interfaces should not contain dropdown menus, as this causes both usability and accessibility issues. From a usability perspective, the fact that the currently displayed tab's trigger element is not immediately visible (as it's inside the closed dropdown menu) can cause confusion. From an accessibility point of view, there is currently no sensible way to map this sort of construct to a standard WAI ARIA pattern, meaning that it cannot be easily made understandable to users of assistive technologies.
 
-<Example class="theme-bootstrap" code={NavTabPanesExampleRaw} lang="vue" name="NavTabPanesExample">
+<Example class="theme-bootstrap" code={NavTabPanesExampleRaw} name="NavTabPanesExample">
   <NavTabPanesExample client:only="vue" />
 </Example>
 
 The tabs also works with pills.
 
-<Example class="theme-bootstrap" code={NavTabPanes2ExampleRaw} lang="vue" name="NavTabPanes2Example">
+<Example class="theme-bootstrap" code={NavTabPanes2ExampleRaw} name="NavTabPanes2Example">
   <NavTabPanes2Example client:only="vue" />
 </Example>

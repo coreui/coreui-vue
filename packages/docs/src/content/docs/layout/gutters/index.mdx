@@ -29,13 +29,13 @@ import GuttersNoGuttersExampleRaw from './examples/GuttersNoGuttersExample.vue?r
 
 `:{breakpoint}="{ gutterX: * }"` props can be used to control the horizontal gutter widths. The `<CContainer>` or `<CContainer fluid>` parent may need to be adjusted if larger gutters are used too to avoid unwanted overflow, using a matching padding utility. For example, in the following example we've increased the padding with `.px-4`:
 
-<Example code={GuttersHorizontalGuttersExampleRaw} lang="vue" name="GuttersHorizontalGuttersExample">
+<Example code={GuttersHorizontalGuttersExampleRaw} name="GuttersHorizontalGuttersExample">
   <GuttersHorizontalGuttersExample client:only="vue" />
 </Example>
 
 An alternative solution is to add a wrapper around the `<CRow>` with the `.overflow-hidden` class:
 
-<Example code={GuttersHorizontalGutters2ExampleRaw} lang="vue" name="GuttersHorizontalGutters2Example">
+<Example code={GuttersHorizontalGutters2ExampleRaw} name="GuttersHorizontalGutters2Example">
   <GuttersHorizontalGutters2Example client:only="vue" />
 </Example>
 
@@ -43,7 +43,7 @@ An alternative solution is to add a wrapper around the `<CRow>` with the `.overf
 
 `:{breakpoint}="{ gutterY: * }"` props can be used to control the vertical gutter widths. Like the horizontal gutters, the vertical gutters can cause some overflow below the `<CRow>` at the end of a page. If this occurs, you add a wrapper around `<CRow>` with the `.overflow-hidden` class:
 
-<Example code={GuttersVerticalGuttersExampleRaw} lang="vue" name="GuttersVerticalGuttersExample">
+<Example code={GuttersVerticalGuttersExampleRaw} name="GuttersVerticalGuttersExample">
   <GuttersVerticalGuttersExample client:only="vue" />
 </Example>
 
@@ -51,7 +51,7 @@ An alternative solution is to add a wrapper around the `<CRow>` with the `.overf
 
 `:{breakpoint}="{ gutter: * }"` props can be used to control the horizontal gutter widths, for the following example we use a smaller gutter width, so there won't be a need to add the `.overflow-hidden` wrapper class.
 
-<Example code={GuttersHorizontalVerticalGuttersExampleRaw} lang="vue" name="GuttersHorizontalVerticalGuttersExample">
+<Example code={GuttersHorizontalVerticalGuttersExampleRaw} name="GuttersHorizontalVerticalGuttersExample">
   <GuttersHorizontalVerticalGuttersExample client:only="vue" />
 </Example>
 
@@ -59,7 +59,7 @@ An alternative solution is to add a wrapper around the `<CRow>` with the `.overf
 
 Gutter props can also be added to [row columns](../layout/grid#row-columns). In the following example, we use responsive row columns and responsive gutter props.
 
-<Example code={GuttersRowColumnsGuttersExampleRaw} lang="vue" name="GuttersRowColumnsGuttersExample">
+<Example code={GuttersRowColumnsGuttersExampleRaw} name="GuttersRowColumnsGuttersExample">
   <GuttersRowColumnsGuttersExample client:only="vue" />
 </Example>
 
@@ -71,6 +71,6 @@ The gutters between columns in our predefined grid props can be removed with `:{
 
 In practice, here's how it looks. Note you can continue to use this with all other predefined grid props (including column widths, responsive tiers, reorders, and more).
 
-<Example code={GuttersNoGuttersExampleRaw} lang="vue" name="GuttersNoGuttersExample">
+<Example code={GuttersNoGuttersExampleRaw} name="GuttersNoGuttersExample">
   <GuttersNoGuttersExample client:only="vue" />
 </Example>

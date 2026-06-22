@@ -40,7 +40,7 @@ import ButtonBlock4ExampleRaw from './examples/ButtonBlock4Example.vue?raw'
 
 CoreUI includes a bunch of predefined buttons components, each serving its own semantic purpose. Buttons show what action will happen when the user clicks or touches it. CoreUI buttons are used to initialize operations, both in the background or foreground of an experience.
 
-<Example class="theme-bootstrap" code={ButtonExampleRaw} lang="vue" name="ButtonExample">
+<Example class="theme-bootstrap" code={ButtonExampleRaw} name="ButtonExample">
   <ButtonExample client:only="vue" />
 </Example>
 
@@ -58,7 +58,7 @@ The `<CButton>` component are designed for `<button>` ,  `<a>`  or  `<input>` el
 
 If you're using `<CButton>` component as `<a>` elements that are used to trigger functionality ex. collapsing content, these links should be given a `role="button"` to adequately communicate their meaning to assistive technologies such as screen readers.
 
-<Example class="theme-bootstrap" code={ButtonComponentsExampleRaw} lang="vue" name="ButtonComponentsExample">
+<Example class="theme-bootstrap" code={ButtonComponentsExampleRaw} name="ButtonComponentsExample">
   <ButtonComponentsExample client:only="vue" />
 </Example>
 
@@ -68,7 +68,7 @@ If you're using `<CButton>` component as `<a>` elements that are used to trigger
 
 The `variant="outline` property provides a neutral outline button style without any color modifiers. It’s useful as a foundation for minimal buttons without background color or strong visual emphasis.
 
-<Example class="theme-bootstrap" code={ButtonOutlineBaseClassExampleRaw} lang="vue" name="ButtonOutlineBaseClassExample">
+<Example class="theme-bootstrap" code={ButtonOutlineBaseClassExampleRaw} name="ButtonOutlineBaseClassExample">
   <ButtonOutlineBaseClassExample client:only="vue" />
 </Example>
 
@@ -78,7 +78,7 @@ These Vue buttons use a transparent background, subtle border, and inherit text 
 
 If you need a button, but without the strong background colors, set `color` and `variant=" outline"` props to remove all background colors.
 
-<Example class="theme-bootstrap" code={ButtonOutlineExampleRaw} lang="vue" name="ButtonOutlineExample">
+<Example class="theme-bootstrap" code={ButtonOutlineExampleRaw} name="ButtonOutlineExample">
   <ButtonOutlineExample client:only="vue" />
 </Example>
 
@@ -94,13 +94,13 @@ They’re perfect for interfaces where you want buttons to be present but visual
 
 If you need a ghost variant of button, set `variant="ghost"` prop to remove all background colors.
 
-<Example class="theme-bootstrap" code={ButtonGhostBaseClassExampleRaw} lang="vue" name="ButtonGhostBaseClassExample">
+<Example class="theme-bootstrap" code={ButtonGhostBaseClassExampleRaw} name="ButtonGhostBaseClassExample">
   <ButtonGhostBaseClassExample client:only="vue" />
 </Example>
 
 To apply theme colors to Vue ghost buttons, use the `color` and `variant="ghost"` properties. By default, these variants color only the text. On hover or focus, they add a background that corresponds to the theme color.
 
-<Example class="theme-bootstrap" code={ButtonGhostExampleRaw} lang="vue" name="ButtonGhostExample">
+<Example class="theme-bootstrap" code={ButtonGhostExampleRaw} name="ButtonGhostExample">
   <ButtonGhostExample client:only="vue" />
 </Example>
 
@@ -110,7 +110,7 @@ To apply theme colors to Vue ghost buttons, use the `color` and `variant="ghost"
 
 Larger or smaller buttons? Add `size="lg"` or `size="sm"` for additional sizes.
 
-<Example class="theme-bootstrap" code={ButtonSizesExampleRaw} lang="vue" name="ButtonSizesExample">
+<Example class="theme-bootstrap" code={ButtonSizesExampleRaw} name="ButtonSizesExample">
   <ButtonSizesExample client:only="vue" />
 </Example>
 
@@ -118,13 +118,13 @@ Larger or smaller buttons? Add `size="lg"` or `size="sm"` for additional sizes.
 
 ### Pill buttons
 
-<Example class="theme-bootstrap" code={ButtonShapePillExampleRaw} lang="vue" name="ButtonShapePillExample">
+<Example class="theme-bootstrap" code={ButtonShapePillExampleRaw} name="ButtonShapePillExample">
   <ButtonShapePillExample client:only="vue" />
 </Example>
 
 ### Square buttons
 
-<Example class="theme-bootstrap" code={ButtonShapeSquareExampleRaw} lang="vue" name="ButtonShapeSquareExample">
+<Example class="theme-bootstrap" code={ButtonShapeSquareExampleRaw} name="ButtonShapeSquareExample">
   <ButtonShapeSquareExample client:only="vue" />
 </Example>
 
@@ -132,7 +132,7 @@ Larger or smaller buttons? Add `size="lg"` or `size="sm"` for additional sizes.
 
 Add the `disabled` boolean prop to any `<CButton>` component to make buttons look inactive. Disabled button has `pointer-events: none` applied to, disabling hover and active states from triggering.
 
-<Example class="theme-bootstrap" code={ButtonDisabledExampleRaw} lang="vue" name="ButtonDisabledExample">
+<Example class="theme-bootstrap" code={ButtonDisabledExampleRaw} name="ButtonDisabledExample">
   <ButtonDisabledExample client:only="vue" />
 </Example>
 
@@ -140,7 +140,7 @@ Disabled buttons using the `<a>` component act a little different:
 
 `<a>`s don't support the `disabled` attribute, so CoreUI has to add `.disabled` class to make buttons look inactive. CoreUI also has to add to the disabled button component `aria-disabled="true"` attribute to show the state of the component to assistive technologies.
 
-<Example class="theme-bootstrap" code={ButtonDisabled2ExampleRaw} lang="vue" name="ButtonDisabled2Example">
+<Example class="theme-bootstrap" code={ButtonDisabled2ExampleRaw} name="ButtonDisabled2Example">
   <ButtonDisabled2Example client:only="vue" />
 </Example>
 
@@ -150,24 +150,24 @@ The `.disabled` class uses `pointer-events: none` to try to disable the link fun
 
 Create buttons that span the full width of a parent—by using utilities.
 
-<Example class="theme-bootstrap" code={ButtonBlockExampleRaw} lang="vue" name="ButtonBlockExample">
+<Example class="theme-bootstrap" code={ButtonBlockExampleRaw} name="ButtonBlockExample">
   <ButtonBlockExample client:only="vue" />
 </Example>
 
 Here we create a responsive variation, starting with vertically stacked buttons until the `md` breakpoint, where `.d-md-block` replaces the `.d-grid` class, thus nullifying the `gap-2` utility. Resize your browser to see them change.
 
-<Example class="theme-bootstrap" code={ButtonBlock2ExampleRaw} lang="vue" name="ButtonBlock2Example">
+<Example class="theme-bootstrap" code={ButtonBlock2ExampleRaw} name="ButtonBlock2Example">
   <ButtonBlock2Example client:only="vue" />
 </Example>
 
 You can adjust the width of your block buttons with grid column width classes. For example, for a half-width "block button", use `.col-6`. Center it horizontally with `.mx-auto`, too.
 
-<Example class="theme-bootstrap" code={ButtonBlock3ExampleRaw} lang="vue" name="ButtonBlock3Example">
+<Example class="theme-bootstrap" code={ButtonBlock3ExampleRaw} name="ButtonBlock3Example">
   <ButtonBlock3Example client:only="vue" />
 </Example>
 
 Additional utilities can be used to adjust the alignment of buttons when horizontal. Here we've taken our previous responsive example and added some flex utilities and a margin utility on the button to right align the buttons when they're no longer stacked.
 
-<Example class="theme-bootstrap" code={ButtonBlock4ExampleRaw} lang="vue" name="ButtonBlock4Example">
+<Example class="theme-bootstrap" code={ButtonBlock4ExampleRaw} name="ButtonBlock4Example">
   <ButtonBlock4Example client:only="vue" />
 </Example>

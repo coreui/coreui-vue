@@ -21,7 +21,7 @@ For custom CoreUI form validation messages, you'll need to add the `novalidate` 
 
 Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback.
 
-<Example code={ValidationExampleRaw} lang="vue" name="ValidationExample">
+<Example code={ValidationExampleRaw} name="ValidationExample">
   <ValidationExample client:only="vue" />
 </Example>
 
@@ -31,7 +31,7 @@ Not interested in custom validation feedback messages or writing JavaScript to c
 
 While these feedback styles cannot be styled with CSS, you can still customize the feedback text through JavaScript.
 
-<Example code={ValidationBrowserDefaultsExampleRaw} lang="vue" name="ValidationBrowserDefaultsExample">
+<Example code={ValidationBrowserDefaultsExampleRaw} name="ValidationBrowserDefaultsExample">
   <ValidationBrowserDefaultsExample client:only="vue" />
 </Example>
 
@@ -41,7 +41,7 @@ In case you require custom or server-side validation, you can indicate invalid a
 
 For invalid fields, ensure that the invalid feedback/error message is associated with the relevant form field using `aria-describedby` (noting that this attribute allows more than one `id` to be referenced, in case the field already points to additional form text).
 
-<Example code={ValidationCustomExampleRaw} lang="vue" name="ValidationCustomExample">
+<Example code={ValidationCustomExampleRaw} name="ValidationCustomExample">
   <ValidationCustomExample client:only="vue" />
 </Example>
 
@@ -54,7 +54,7 @@ Validation styles are available for the following form controls and components:
 - `<CFormSelect>`s
 - `<CFormTextarea>`s
 
-<Example code={ValidationSupportedElementsExampleRaw} lang="vue" name="ValidationSupportedElementsExample">
+<Example code={ValidationSupportedElementsExampleRaw} name="ValidationSupportedElementsExample">
   <ValidationSupportedElementsExample client:only="vue" />
 </Example>
 
@@ -62,6 +62,6 @@ Validation styles are available for the following form controls and components:
 
 If your form layout allows it, you can swap the text for the tooltip to display validation feedback in a styled tooltip. Be sure to have a parent with `position: relative` on it for tooltip positioning. In the example below, our column classes have this already, but your project may require an alternative setup.
 
-<Example code={ValidationTooltipsExampleRaw} lang="vue" name="ValidationTooltipsExample">
+<Example code={ValidationTooltipsExampleRaw} name="ValidationTooltipsExample">
   <ValidationTooltipsExample client:only="vue" />
 </Example>

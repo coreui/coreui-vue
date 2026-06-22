@@ -41,7 +41,7 @@ Since CoreUI applies `display: block` and `width: 100%` to almost all our form c
 
 More complex forms can be built using our grid classes. Use these for form layouts that require multiple columns, varied widths, and additional alignment options.
 
-<Example code={LayoutFormGridExampleRaw} lang="vue" name="LayoutFormGridExample">
+<Example code={LayoutFormGridExampleRaw} name="LayoutFormGridExample">
   <LayoutFormGridExample client:only="vue" />
 </Example>
 
@@ -49,13 +49,13 @@ More complex forms can be built using our grid classes. Use these for form layou
 
 By adding [gutter modifier classes](https://coreui.io/docs/layout/gutters/), you can have control over the gutter width in as well the inline as block direction.
 
-<Example code={LayoutGuttersExampleRaw} lang="vue" name="LayoutGuttersExample">
+<Example code={LayoutGuttersExampleRaw} name="LayoutGuttersExample">
   <LayoutGuttersExample client:only="vue" />
 </Example>
 
 More complex layouts can also be created with the grid system.
 
-<Example code={LayoutGutters2ExampleRaw} lang="vue" name="LayoutGutters2Example">
+<Example code={LayoutGutters2ExampleRaw} name="LayoutGutters2Example">
   <LayoutGutters2Example client:only="vue" />
 </Example>
 
@@ -65,7 +65,7 @@ Create horizontal forms with the grid by adding the `.row` class to form groups 
 
 At times, you maybe need to use margin or padding utilities to create that perfect alignment you need. For example, we've removed the `padding-top` on our stacked radio inputs label to better align the text baseline.
 
-<Example code={LayoutHorizontalFormExampleRaw} lang="vue" name="LayoutHorizontalFormExample">
+<Example code={LayoutHorizontalFormExampleRaw} name="LayoutHorizontalFormExample">
   <LayoutHorizontalFormExample client:only="vue" />
 </Example>
 
@@ -73,7 +73,7 @@ At times, you maybe need to use margin or padding utilities to create that perfe
 
 Be sure to use `.col-form-label-sm` or `.col-form-label-lg` to your `<CFormLabel>`s or `<legend>`s to correctly follow the size of `.form-control-lg` and `.form-control-sm`.
 
-<Example code={LayoutHorizontalFormLabelSizingExampleRaw} lang="vue" name="LayoutHorizontalFormLabelSizingExample">
+<Example code={LayoutHorizontalFormLabelSizingExampleRaw} name="LayoutHorizontalFormLabelSizingExample">
   <LayoutHorizontalFormLabelSizingExample client:only="vue" />
 </Example>
 
@@ -81,7 +81,7 @@ Be sure to use `.col-form-label-sm` or `.col-form-label-lg` to your `<CFormLabel
 
 As shown in the previous examples, our grid system allows you to place any number of `<CCol>`s within a `<CRow>`. They'll split the available width equally between them. You may also pick a subset of your columns to take up more or less space, while the remaining `<CCol>`s equally split the rest, with specific column classes like `<CCol sm="7">`.
 
-<Example code={LayoutColumnSizingExampleRaw} lang="vue" name="LayoutColumnSizingExample">
+<Example code={LayoutColumnSizingExampleRaw} name="LayoutColumnSizingExample">
   <LayoutColumnSizingExample client:only="vue" />
 </Example>
 
@@ -89,13 +89,13 @@ As shown in the previous examples, our grid system allows you to place any numbe
 
 The example below uses a flexbox utility to vertically center the contents and changes `<CCol>` to `<CCol xs="auto">` so that your columns only take up as much space as needed. Put another way, the column sizes itself based on the contents.
 
-<Example code={LayoutAutoSizingExampleRaw} lang="vue" name="LayoutAutoSizingExample">
+<Example code={LayoutAutoSizingExampleRaw} name="LayoutAutoSizingExample">
   <LayoutAutoSizingExample client:only="vue" />
 </Example>
 
 You can then remix that once again with size-specific column classes.
 
-<Example code={LayoutAutoSizing2ExampleRaw} lang="vue" name="LayoutAutoSizing2Example">
+<Example code={LayoutAutoSizing2ExampleRaw} name="LayoutAutoSizing2Example">
   <LayoutAutoSizing2Example client:only="vue" />
 </Example>
 
@@ -103,6 +103,6 @@ You can then remix that once again with size-specific column classes.
 
 Use the `<CCol xs="auto">` class to create horizontal layouts. By adding [gutter modifier classes](https://coreui.io/docs/layout/gutters/), we will have gutters in horizontal and vertical directions. The `.align-items-center` aligns the form elements to the middle, making the `<CFormCheck>` align properly.
 
-<Example code={LayoutInlineFormsExampleRaw} lang="vue" name="LayoutInlineFormsExample">
+<Example code={LayoutInlineFormsExampleRaw} name="LayoutInlineFormsExample">
   <LayoutInlineFormsExample client:only="vue" />
 </Example>

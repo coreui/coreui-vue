@@ -37,11 +37,11 @@ To encourage extensible and predictable toasts, we recommend a header and body. 
 
 Toasts are as flexible as you need and have very little required markup. At a minimum, we require a single element to contain your "toasted" content and strongly encourage a dismiss button.
 
-<Example class="theme-bootstrap" code={ToastExampleRaw} lang="vue" name="ToastExample">
+<Example class="theme-bootstrap" code={ToastExampleRaw} name="ToastExample">
   <ToastExample client:only="vue" />
 </Example>
 
-<Example class="theme-bootstrap" code={ToastLiveExampleRaw} lang="vue" name="ToastLiveExample">
+<Example class="theme-bootstrap" code={ToastLiveExampleRaw} name="ToastLiveExample">
   <ToastLiveExample client:only="vue" />
 </Example>
 
@@ -49,7 +49,7 @@ Toasts are as flexible as you need and have very little required markup. At a mi
 
 Toasts are slightly translucent to blend in with what's below them.
 
-<Example class="theme-bootstrap" code={ToastTranslucentExampleRaw} lang="vue" name="ToastTranslucentExample">
+<Example class="theme-bootstrap" code={ToastTranslucentExampleRaw} name="ToastTranslucentExample">
   <ToastTranslucentExample client:only="vue" />
 </Example>
 
@@ -57,7 +57,7 @@ Toasts are slightly translucent to blend in with what's below them.
 
 You can stack toasts by wrapping them in a toast container, which will vertically add some spacing.
 
-<Example class="theme-bootstrap" code={ToastStackingExampleRaw} lang="vue" name="ToastStackingExample">
+<Example class="theme-bootstrap" code={ToastStackingExampleRaw} name="ToastStackingExample">
   <ToastStackingExample client:only="vue" />
 </Example>
 
@@ -65,13 +65,13 @@ You can stack toasts by wrapping them in a toast container, which will verticall
 
 Customize your toasts by removing sub-components, tweaking them with [utilities](https://coreui.io/docs/4.0/utilities/api), or by adding your own markup. Here we've created a simpler toast by removing the default `<CToastHeader>`, adding a custom hide icon from [CoreUI Icons](https://icons.coreui.io), and using some [flexbox utilities](https://coreui.io/docs/4.0/utilities/flex) to adjust the layout.
 
-<Example class="theme-bootstrap" code={ToastCustomContentExampleRaw} lang="vue" name="ToastCustomContentExample">
+<Example class="theme-bootstrap" code={ToastCustomContentExampleRaw} name="ToastCustomContentExample">
   <ToastCustomContentExample client:only="vue" />
 </Example>
 
 Alternatively, you can also add additional controls and components to toasts.
 
-<Example class="theme-bootstrap" code={ToastCustomContent2ExampleRaw} lang="vue" name="ToastCustomContent2Example">
+<Example class="theme-bootstrap" code={ToastCustomContent2ExampleRaw} name="ToastCustomContent2Example">
   <ToastCustomContent2Example client:only="vue" />
 </Example>
 
@@ -79,6 +79,6 @@ Alternatively, you can also add additional controls and components to toasts.
 
 Building on the above example, you can create different toast color schemes with our [color](https://coreui.io/docs/4.0/utilities/colors) and [background](https://coreui.io/docs/4.0//utilities/background) utilities. Here we've set `color="primary"` and added `.text-white` class to the `<Ctoast>`, and then set `white` property to our close button. For a crisp edge, we remove the default border with `.border-0`.
 
-<Example class="theme-bootstrap" code={ToastColorSchemesExampleRaw} lang="vue" name="ToastColorSchemesExample">
+<Example class="theme-bootstrap" code={ToastColorSchemesExampleRaw} name="ToastColorSchemesExample">
   <ToastColorSchemesExample client:only="vue" />
 </Example>

@@ -82,7 +82,7 @@ Cards are built with as little markup and styles as possible but still manage to
 
 Below is an example of a basic card with mixed content and a fixed width. Cards have no fixed width to start, so they'll naturally fill the full width of its parent element.
 
-<Example code={CardExampleRaw} lang="vue" name="CardExample">
+<Example code={CardExampleRaw} name="CardExample">
   <CardExample client:only="vue" />
 </Example>
 
@@ -94,7 +94,7 @@ CoreUI card supports a wide variety of content, including images, text, list gro
 
 The main block of a card is the `<CCardBody>`. Use it whenever you need a padded section within a card.
 
-<Example code={CardBodyExampleRaw} lang="vue" name="CardBodyExample">
+<Example code={CardBodyExampleRaw} name="CardBodyExample">
   <CardBodyExample client:only="vue" />
 </Example>
 ### Titles, text, and links
@@ -103,7 +103,7 @@ Card titles are managed by `<CCardTitle>` component. Identically, links are atta
 
 Subtitles are managed by `<CCardSubtitle>` component. If the `<CCardTitle>` also, the `<CCardSubtitle>` items are stored in a `<CCardBody>` item, the card title, and subtitle are arranged rightly.
 
-<Example code={CardTitleExampleRaw} lang="vue" name="CardTitleExample">
+<Example code={CardTitleExampleRaw} name="CardTitleExample">
   <CardTitleExample client:only="vue" />
 </Example>
 
@@ -111,7 +111,7 @@ Subtitles are managed by `<CCardSubtitle>` component. If the `<CCardTitle>` also
 
 `.card-img-top` places a picture to the top of the card. With `.card-text`, text can be added to the card. Text within `.card-text` can additionally be styled with the regular HTML tags.
 
-<Example code={CardImagesExampleRaw} lang="vue" name="CardImagesExample">
+<Example code={CardImagesExampleRaw} name="CardImagesExample">
   <CardImagesExample client:only="vue" />
 </Example>
 
@@ -119,14 +119,14 @@ Subtitles are managed by `<CCardSubtitle>` component. If the `<CCardTitle>` also
 
 Create lists of content in a card with a flush list group.
 
-<Example code={CardListGroupsExampleRaw} lang="vue" name="CardListGroupsExample">
+<Example code={CardListGroupsExampleRaw} name="CardListGroupsExample">
   <CardListGroupsExample client:only="vue" />
 </Example>
-<Example code={CardListGroups2ExampleRaw} lang="vue" name="CardListGroups2Example">
+<Example code={CardListGroups2ExampleRaw} name="CardListGroups2Example">
   <CardListGroups2Example client:only="vue" />
 </Example>
 
-<Example code={CardListGroups3ExampleRaw} lang="vue" name="CardListGroups3Example">
+<Example code={CardListGroups3ExampleRaw} name="CardListGroups3Example">
   <CardListGroups3Example client:only="vue" />
 </Example>
 
@@ -134,7 +134,7 @@ Create lists of content in a card with a flush list group.
 
 Combine and match many content types to build the card you need, or throw everything in there. Shown below are image styles, blocks, text styles, and a list group—all wrapped in a fixed-width card.
 
-<Example code={CardKitchenSinkExampleRaw} lang="vue" name="CardKitchenSinkExample">
+<Example code={CardKitchenSinkExampleRaw} name="CardKitchenSinkExample">
   <CardKitchenSinkExample client:only="vue" />
 </Example>
 
@@ -142,21 +142,21 @@ Combine and match many content types to build the card you need, or throw everyt
 
 Add an optional header and/or footer within a card.
 
-<Example code={CardHeaderExampleRaw} lang="vue" name="CardHeaderExample">
+<Example code={CardHeaderExampleRaw} name="CardHeaderExample">
   <CardHeaderExample client:only="vue" />
 </Example>
 
 Card headers can be styled by adding ex. `as="h5"`.
 
-<Example code={CardHeader2ExampleRaw} lang="vue" name="CardHeader2Example">
+<Example code={CardHeader2ExampleRaw} name="CardHeader2Example">
   <CardHeader2Example client:only="vue" />
 </Example>
 
-<Example code={CardHeader3ExampleRaw} lang="vue" name="CardHeader3Example">
+<Example code={CardHeader3ExampleRaw} name="CardHeader3Example">
   <CardHeader3Example client:only="vue" />
 </Example>
 
-<Example code={CardHeaderAndFooterExampleRaw} lang="vue" name="CardHeaderAndFooterExample">
+<Example code={CardHeaderAndFooterExampleRaw} name="CardHeaderAndFooterExample">
   <CardHeaderAndFooterExample client:only="vue" />
 </Example>
 
@@ -168,7 +168,7 @@ Cards assume no specific `width` to start, so they'll be 100% wide unless otherw
 
 Using the grid, wrap cards in columns and rows as needed.
 
-<Example code={CardSizingExampleRaw} lang="vue" name="CardSizingExample">
+<Example code={CardSizingExampleRaw} name="CardSizingExample">
   <CardSizingExample client:only="vue" />
 </Example>
 
@@ -176,7 +176,7 @@ Using the grid, wrap cards in columns and rows as needed.
 
 Use some of [available sizing utilities](https://coreui.io/docs/utilities/sizing/) to rapidly set a card's width.
 
-<Example code={CardSizing2ExampleRaw} lang="vue" name="CardSizing2Example">
+<Example code={CardSizing2ExampleRaw} name="CardSizing2Example">
   <CardSizing2Example client:only="vue" />
 </Example>
 
@@ -184,7 +184,7 @@ Use some of [available sizing utilities](https://coreui.io/docs/utilities/sizing
 
 Use custom CSS in your stylesheets or as inline styles to set a width.
 
-<Example code={CardSizing3ExampleRaw} lang="vue" name="CardSizing3Example">
+<Example code={CardSizing3ExampleRaw} name="CardSizing3Example">
   <CardSizing3Example client:only="vue" />
 </Example>
 
@@ -192,7 +192,7 @@ Use custom CSS in your stylesheets or as inline styles to set a width.
 
 You can instantly change the text arrangement of any card—in its whole or specific parts—with [text align classes](https://coreui.io/docs/utilities/text/#text-alignment).
 
-<Example code={CardTextAlignmentExampleRaw} lang="vue" name="CardTextAlignmentExample">
+<Example code={CardTextAlignmentExampleRaw} name="CardTextAlignmentExample">
   <CardTextAlignmentExample client:only="vue" />
 </Example>
 
@@ -200,11 +200,11 @@ You can instantly change the text arrangement of any card—in its whole or spec
 
 Add some navigation to a `<CCardHeader>` with our `<CNav>` component.
 
-<Example code={CardNavigationExampleRaw} lang="vue" name="CardNavigationExample">
+<Example code={CardNavigationExampleRaw} name="CardNavigationExample">
   <CardNavigationExample client:only="vue" />
 </Example>
 
-<Example code={CardNavigation2ExampleRaw} lang="vue" name="CardNavigation2Example">
+<Example code={CardNavigation2ExampleRaw} name="CardNavigation2Example">
   <CardNavigation2Example client:only="vue" />
 </Example>
 
@@ -216,7 +216,7 @@ Cards introduce several options for acting with images. Pick from appending "ima
 
 Similar to headers and footers, cards can include top and bottom "image caps"—images at the top or bottom of a card.
 
-<Example code={CardImageCapsExampleRaw} lang="vue" name="CardImageCapsExample">
+<Example code={CardImageCapsExampleRaw} name="CardImageCapsExample">
   <CardImageCapsExample client:only="vue" />
 </Example>
 
@@ -224,7 +224,7 @@ Similar to headers and footers, cards can include top and bottom "image caps"—
 
 Adapt an image into a background and overlay your text. Depending on the image, you may need additional styles or utilities.
 
-<Example code={CardImageOverlaysExampleRaw} lang="vue" name="CardImageOverlaysExample">
+<Example code={CardImageOverlaysExampleRaw} name="CardImageOverlaysExample">
   <CardImageOverlaysExample client:only="vue" />
 </Example>
 
@@ -232,7 +232,7 @@ Adapt an image into a background and overlay your text. Depending on the image, 
 
 Using a combination of grid and utility classes, cards can be made horizontal in a mobile-friendly and responsive way. In the example below, we remove the grid gutters with `.g-0` and use `.col-md-*` classes to make the card horizontal at the `md` breakpoint. Further adjustments may be needed depending on your card content.
 
-<Example code={CardImageHorizontalExampleRaw} lang="vue" name="CardImageHorizontalExample">
+<Example code={CardImageHorizontalExampleRaw} name="CardImageHorizontalExample">
   <CardImageHorizontalExample client:only="vue" />
 </Example>
 
@@ -244,13 +244,13 @@ Cards include various options for customizing their backgrounds, borders, and co
 
 Use `color` property to change the appearance of a card.
 
-<Example code={CardStylesBackgroundAndColorExampleRaw} lang="vue" name="CardStylesBackgroundAndColorExample">
+<Example code={CardStylesBackgroundAndColorExampleRaw} name="CardStylesBackgroundAndColorExample">
   <CardStylesBackgroundAndColorExample client:only="vue" />
 </Example>
 
 You can also apply contextual variations with the `textBgColor` property, which automatically sets the text color to ensure compliance with the WCAG 4.5:1 contrast ratio standard for enhanced accessibility.
 
-<Example code={CardStylesBorderExampleRaw} lang="vue" name="CardStylesBorderExample">
+<Example code={CardStylesBorderExampleRaw} name="CardStylesBorderExample">
   <CardStylesBorderExample client:only="vue" />
 </Example>
 
@@ -262,13 +262,13 @@ You can also apply contextual variations with the `textBgColor` property, which 
 
 Use [border utilities](https://coreui.io/docs/utilities/borders/) to change just the `border-color` of a card. Note that you can set `text-color` property on the `<CCard>` or a subset of the card's contents as shown below.
 
-<Example code={CardStylesTopBorderExampleRaw} lang="vue" name="CardStylesTopBorderExample">
+<Example code={CardStylesTopBorderExampleRaw} name="CardStylesTopBorderExample">
   <CardStylesTopBorderExample client:only="vue" />
 </Example>
 
 ### Top border
 
-<Example code={CardGridExampleRaw} lang="vue" name="CardGridExample">
+<Example code={CardGridExampleRaw} name="CardGridExample">
   <CardGridExample client:only="vue" />
 </Example>
 
@@ -280,13 +280,13 @@ In addition to styling the content within cards, CoreUI includes a few options f
 
 Use card groups to render cards as a single, attached element with equal width and height columns. Card groups start off stacked and use `display: flex;` to become attached with uniform dimensions starting at the `sm` breakpoint.
 
-<Example code={CardGroupsExampleRaw} lang="vue" name="CardGroupsExample">
+<Example code={CardGroupsExampleRaw} name="CardGroupsExample">
   <CardGroupsExample client:only="vue" />
 </Example>
 
 When using card groups with footers, their content will automatically line up.
 
-<Example code={CardGroups2ExampleRaw} lang="vue" name="CardGroups2Example">
+<Example code={CardGroups2ExampleRaw} name="CardGroups2Example">
   <CardGroups2Example client:only="vue" />
 </Example>
 
@@ -294,25 +294,25 @@ When using card groups with footers, their content will automatically line up.
 
 Use the `CRow` component and set `:xs|sm|md|lg|xl|xxl="{ cols: * }"` property to control how many grid columns (wrapped around your cards) you show per row. For example, here's `:xs="{cols: 1}"` laying out the cards on one column, and `:md="{cols: 1}"` splitting four cards to equal width across multiple rows, from the medium breakpoint up.
 
-<Example code={CardGrid2ExampleRaw} lang="vue" name="CardGrid2Example">
+<Example code={CardGrid2ExampleRaw} name="CardGrid2Example">
   <CardGrid2Example client:only="vue" />
 </Example>
 
 Change it to `:md="{ cols: 3}"` and you'll see the fourth card wrap.
 
-<Example code={CardGrid3ExampleRaw} lang="vue" name="CardGrid3Example">
+<Example code={CardGrid3ExampleRaw} name="CardGrid3Example">
   <CardGrid3Example client:only="vue" />
 </Example>
 
 When you need equal height, add `.h-100` to the cards. If you want equal heights by default, you can set `$card-height: 100%` in Sass.
 
-<Example code={CardGrid4ExampleRaw} lang="vue" name="CardGrid4Example">
+<Example code={CardGrid4ExampleRaw} name="CardGrid4Example">
   <CardGrid4Example client:only="vue" />
 </Example>
 
 Just like with card groups, card footers will automatically line up.
 
-<Example code={CardGridCardsExampleRaw} lang="vue" name="CardGridCardsExample">
+<Example code={CardGridCardsExampleRaw} name="CardGridCardsExample">
   <CardGridCardsExample client:only="vue" />
 </Example>
 

@@ -21,7 +21,7 @@ Be sure to use an appropriate `type` attribute on all inputs (e.g., `email` for 
 
 Here’s a quick example to demonstrate CoreUI’s form styles. Keep reading for documentation on required classes, form layout, and more.
 
-<Example code={OverviewOverviewExampleRaw} lang="vue" name="OverviewOverviewExample">
+<Example code={OverviewOverviewExampleRaw} name="OverviewOverviewExample">
   <OverviewOverviewExample client:only="vue" />
 </Example>
 
@@ -34,13 +34,13 @@ Form text should be explicitly associated with the form control it relates to us
 
 Form text below inputs can be styled with `<CFormText>`. If a block-level element will be used, a top margin is added for easy spacing from the inputs above.
 
-<Example code={OverviewFormTextExampleRaw} lang="vue" name="OverviewFormTextExample">
+<Example code={OverviewFormTextExampleRaw} name="OverviewFormTextExample">
   <OverviewFormTextExample client:only="vue" />
 </Example>
 
 Inline text can use any typical inline HTML element (be it a `<span>`, `<small>`, or something else) with nothing more than the `.form-text` class.
 
-<Example code={OverviewFormText2ExampleRaw} lang="vue" name="OverviewFormText2Example">
+<Example code={OverviewFormText2ExampleRaw} name="OverviewFormText2Example">
   <OverviewFormText2Example client:only="vue" />
 </Example>
 
@@ -56,6 +56,6 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
 
 However, if your form also includes custom button-like elements such as `<CButton>...</CButton>`, these will only be given a style of `pointer-events: none`, meaning they are still focusable and operable using the keyboard. In this case, you must manually modify these controls by adding `tabindex="-1"` to prevent them from receiving focus and `aria-disabled="disabled"` to signal their state to assistive technologies.
 
-<Example code={OverviewDisabledFormsExampleRaw} lang="vue" name="OverviewDisabledFormsExample">
+<Example code={OverviewDisabledFormsExampleRaw} name="OverviewDisabledFormsExample">
   <OverviewDisabledFormsExample client:only="vue" />
 </Example>
