@@ -1,5 +1,6 @@
 {
   "name": "@coreui/vue-docs",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -16,6 +17,8 @@
     "@coreui/astro-docs": "link:../../../coreui-astro-docs/packages/astro-docs",
     "@coreui/chartjs": "^4.0.0",
     "@coreui/icons": "^3.1.0",
+    "@coreui/internal-links": "^5.1.0",
+    "@coreui/utils": "^2.0.2",
     "@popperjs/core": "^2.11.8",
     "astro": "^6.4.0",
     "chart.js": "^4.4.4",
