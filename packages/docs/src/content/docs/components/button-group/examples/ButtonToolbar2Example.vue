@@ -1,5 +1,5 @@
 <template>
-  <CButtonToolbar class="mb-3" role="group" aria-label="Toolbar with button groups">
+  <CButtonToolbar class="mb-3" role="toolbar" aria-label="Toolbar with button groups">
     <CButtonGroup class="me-2" role="group" aria-label="First group">
       <CButton color="secondary" variant="outline">1</CButton>
       <CButton color="secondary" variant="outline">2</CButton>
