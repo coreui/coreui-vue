@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import { CNavGroup, CSidebar, CSidebarNav } from '@coreui/vue'
+import { CNavGroup, CNavItem, CSidebar, CSidebarNav } from '@coreui/vue'
 import { CIcon } from '@coreui/icons-vue'
 import { cilFolder } from '@coreui/icons'
 </script>

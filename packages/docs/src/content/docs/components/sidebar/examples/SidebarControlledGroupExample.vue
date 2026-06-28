@@ -46,9 +46,9 @@
 
 <script setup>
 import { ref } from 'vue'
-import { CNavGroup, CNavItem, CSidebar, CSidebarNav } from '@coreui/vue'
+import { CButton, CNavGroup, CNavItem, CSidebar, CSidebarFooter, CSidebarNav } from '@coreui/vue'
 import { CIcon } from '@coreui/icons-vue'
-import { cilPuzzle, cilSpeedometer } from '@coreui/icons'
+import { cilCloudDownload, cilLayers, cilPuzzle, cilSettings, cilSpeedometer } from '@coreui/icons'
 
 const visible = ref(true)
 const locked = ref(true)

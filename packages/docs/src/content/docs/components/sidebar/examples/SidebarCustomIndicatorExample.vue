@@ -29,7 +29,13 @@
 </template>
 
 <script setup>
-import { CNavGroup, CSidebar, CSidebarNav } from '@coreui/vue'
+import { CNavGroup, CNavItem, CSidebar, CSidebarNav } from '@coreui/vue'
 import { CIcon } from '@coreui/icons-vue'
-import { cilMinus, cilPlus, cilPuzzle } from '@coreui/icons'
+import {
+  cilChevronCircleDownAlt,
+  cilChevronCircleUpAlt,
+  cilMinus,
+  cilPlus,
+  cilPuzzle,
+} from '@coreui/icons'
 </script>

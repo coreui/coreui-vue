@@ -64,5 +64,5 @@ import {
   CTooltip,
 } from '@coreui/vue'
 import { CIcon } from '@coreui/icons-vue'
-import { cilSpeedometer } from '@coreui/icons'
+import { cilCart, cilCloudDownload, cilSpeedometer } from '@coreui/icons'
 </script>

@@ -179,9 +179,39 @@
 
 <script setup>
 import { ref } from 'vue'
-import { CBadge, CButton, CNavGroup, CNavItem, CNavTitle, CSidebar, CSidebarBrand, CSidebarHeader, CSidebarNav } from '@coreui/vue'
+import {
+  CAvatar,
+  CBadge,
+  CButton,
+  CDropdown,
+  CDropdownDivider,
+  CDropdownItem,
+  CDropdownMenu,
+  CDropdownToggle,
+  CNavGroup,
+  CNavItem,
+  CNavTitle,
+  CSidebar,
+  CSidebarBrand,
+  CSidebarFooter,
+  CSidebarHeader,
+  CSidebarNav,
+} from '@coreui/vue'
 import { CIcon } from '@coreui/icons-vue'
-import { cilMinus, cilPlus, cilPuzzle, cilSidebarClose, cilSidebarOpen, cilSpeedometer } from '@coreui/icons'
+import {
+  cilAccountLogout,
+  cilCloudDownload,
+  cilCreditCard,
+  cilMinus,
+  cilOptions,
+  cilPlus,
+  cilPuzzle,
+  cilSettings,
+  cilSidebarClose,
+  cilSidebarOpen,
+  cilSpeedometer,
+  cilUser,
+} from '@coreui/icons'
 
 const unfoldable = ref(false)
 </script>
