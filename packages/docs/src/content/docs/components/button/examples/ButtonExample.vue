@@ -1,5 +1,5 @@
 <template>
-  <CButton color="primary" disabled>Primary</CButton>
+  <CButton color="primary">Primary</CButton>
   <CButton color="secondary">Secondary</CButton>
   <CButton color="success">Success</CButton>
   <CButton color="danger">Danger</CButton>
