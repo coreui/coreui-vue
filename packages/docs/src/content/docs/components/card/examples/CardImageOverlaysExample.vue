@@ -1,6 +1,6 @@
 <template>
   <CCard class="mb-3 bg-dark text-white">
-    <CCardImage src="/images/vue.jpg" />
+    <CCardImage src="/assets/img/vue.jpg" />
     <CCardImageOverlay>
       <CCardTitle>Card title</CCardTitle>
       <CCardText

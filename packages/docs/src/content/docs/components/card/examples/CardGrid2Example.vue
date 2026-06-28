@@ -2,7 +2,7 @@
   <CRow :xs="{ cols: 1, gutter: 4 }" :md="{ cols: 2 }">
     <CCol xs>
       <CCard>
-        <CCardImage orientation="top" src="/images/vue.jpg" />
+        <CCardImage orientation="top" src="/assets/img/vue.jpg" />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText
@@ -17,7 +17,7 @@
     </CCol>
     <CCol xs>
       <CCard>
-        <CCardImage orientation="top" src="/images/vue.jpg" />
+        <CCardImage orientation="top" src="/assets/img/vue.jpg" />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText
@@ -32,7 +32,7 @@
     </CCol>
     <CCol xs>
       <CCard>
-        <CCardImage orientation="top" src="/images/vue.jpg" />
+        <CCardImage orientation="top" src="/assets/img/vue.jpg" />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText
@@ -47,7 +47,7 @@
     </CCol>
     <CCol xs>
       <CCard>
-        <CCardImage orientation="top" src="/images/vue.jpg" />
+        <CCardImage orientation="top" src="/assets/img/vue.jpg" />
         <CCardBody>
           <CCardTitle>Card title</CCardTitle>
           <CCardText

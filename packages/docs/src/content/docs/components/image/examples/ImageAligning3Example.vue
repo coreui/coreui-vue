@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <CImage rounded src="/images/vue400.jpg" width="200" height="200" />
+    <CImage rounded src="/assets/img/vue400.jpg" width="200" height="200" />
   </div>
 </template>
 

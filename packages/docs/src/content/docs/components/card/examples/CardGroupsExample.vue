@@ -1,7 +1,7 @@
 <template>
   <CCardGroup>
     <CCard>
-      <CCardImage orientation="top" src="/images/vue.jpg" />
+      <CCardImage orientation="top" src="/assets/img/vue.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText
@@ -12,7 +12,7 @@
       </CCardBody>
     </CCard>
     <CCard>
-      <CCardImage orientation="top" src="/images/vue.jpg" />
+      <CCardImage orientation="top" src="/assets/img/vue.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText
@@ -23,7 +23,7 @@
       </CCardBody>
     </CCard>
     <CCard>
-      <CCardImage orientation="top" src="/images/vue.jpg" />
+      <CCardImage orientation="top" src="/assets/img/vue.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText

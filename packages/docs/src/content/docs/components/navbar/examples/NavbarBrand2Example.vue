@@ -2,7 +2,7 @@
   <CNavbar color-scheme="light" class="bg-light">
     <CContainer fluid>
       <CNavbarBrand href="#">
-        <img src="/images/brand/coreui-signet.svg" alt="" width="22" height="24" />
+        <img src="/assets/brand/coreui-signet.svg" alt="" width="22" height="24" />
       </CNavbarBrand>
     </CContainer>
   </CNavbar>

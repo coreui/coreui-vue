@@ -1,5 +1,5 @@
 <template>
-  <CAvatar src="/images/avatars/1.jpg" status="success" />
+  <CAvatar src="/assets/img/avatars/1.jpg" status="success" />
   <CAvatar color="secondary" status="danger">CUI</CAvatar>
 </template>
 

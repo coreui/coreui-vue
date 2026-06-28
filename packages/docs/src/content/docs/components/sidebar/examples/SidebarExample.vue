@@ -129,7 +129,7 @@
             class="w-100 d-flex gap-2 p-1 align-items-center"
             variant="ghost"
           >
-            <CAvatar shape="rounded" size="md" src="/images/avatars/7.jpg" />
+            <CAvatar shape="rounded" size="md" src="/assets/img/avatars/7.jpg" />
             <div class="small text-start d-sidebar-narrow-none">
               <div class="fw-semibold">Lena Scaffold</div>
               <div>lena@acme.com</div>
@@ -138,7 +138,7 @@
           </CDropdownToggle>
           <CDropdownMenu class="w-100">
             <div class="d-flex gap-2 px-2">
-              <CAvatar shape="rounded" size="md" src="/images/avatars/7.jpg" />
+              <CAvatar shape="rounded" size="md" src="/assets/img/avatars/7.jpg" />
               <div class="small text-start">
                 <div class="fw-semibold">Lena Scaffold</div>
                 <div>lena@acme.com</div>

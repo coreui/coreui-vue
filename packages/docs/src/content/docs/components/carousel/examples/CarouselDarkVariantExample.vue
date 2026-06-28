@@ -1,13 +1,13 @@
 <template>
   <CCarousel controls indicators dark>
     <CCarouselItem>
-      <img class="d-block w-100" src="/images/vue.jpg" alt="slide 1" />
+      <img class="d-block w-100" src="/assets/img/vue.jpg" alt="slide 1" />
     </CCarouselItem>
     <CCarouselItem>
-      <img class="d-block w-100" src="/images/react.jpg" alt="slide 2" />
+      <img class="d-block w-100" src="/assets/img/react.jpg" alt="slide 2" />
     </CCarouselItem>
     <CCarouselItem>
-      <img class="d-block w-100" src="/images/angular.jpg" alt="slide 3" />
+      <img class="d-block w-100" src="/assets/img/angular.jpg" alt="slide 3" />
     </CCarouselItem>
   </CCarousel>
 </template>

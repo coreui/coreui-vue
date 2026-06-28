@@ -1,6 +1,6 @@
 <template>
   <CCard style="width: 18rem">
-    <CCardImage orientation="top" src="/images/vue.jpg" />
+    <CCardImage orientation="top" src="/assets/img/vue.jpg" />
     <CCardBody>
       <CCardText
         >Some quick example text to build on the card title and make up the bulk of the card's

@@ -1,5 +1,5 @@
 <template>
-  <CImage fluid src="/images/vue.jpg" />
+  <CImage fluid src="/assets/img/vue.jpg" />
 </template>
 
 <script setup>

@@ -3,7 +3,7 @@
     <CContainer fluid>
       <CNavbarBrand href="#">
         <img
-          src="/images/brand/coreui-signet.svg"
+          src="/assets/brand/coreui-signet.svg"
           alt=""
           width="22"
           height="24"

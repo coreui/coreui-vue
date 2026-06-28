@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex justify-content-around">
     <CCard style="width: 18rem">
-      <CCardImage orientation="top" src="/images/vue.jpg" />
+      <CCardImage orientation="top" src="/assets/img/vue.jpg" />
       <CCardBody>
         <CCardTitle>Card title</CCardTitle>
         <CCardText>

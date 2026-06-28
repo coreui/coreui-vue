@@ -1,6 +1,6 @@
 <template>
   <CCard class="mb-3">
-    <CCardImage orientation="top" src="/images/vue.jpg" />
+    <CCardImage orientation="top" src="/assets/img/vue.jpg" />
     <CCardBody>
       <CCardTitle>Card title</CCardTitle>
       <CCardText
@@ -19,7 +19,7 @@
       >
       <CCardText><small class="text-body-secondary">Last updated 3 mins ago</small></CCardText>
     </CCardBody>
-    <CCardImage orientation="bottom" src="/images/vue.jpg" />
+    <CCardImage orientation="bottom" src="/assets/img/vue.jpg" />
   </CCard>
 </template>
 
