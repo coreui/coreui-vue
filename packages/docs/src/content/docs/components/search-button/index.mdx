@@ -74,6 +74,23 @@ The component works naturally with reactive state and a dedicated `@trigger` eve
 | Browser window `blur` | Clears all active shortcut key states |
 | Multiple configured shortcuts | The component listens to all configured shortcuts and renders the platform-preferred one in the UI |
 
+## Accessibility
+
+Accessibility is an important part of the Search Button design. The component includes built-in behaviors that help preserve expected keyboard interaction and reduce conflicts with assistive technologies, but accessible results still depend on choosing the right markup and shortcut combinations.
+
+### Built-in accessibility behavior
+
+- Native button semantics are preserved because `<CSearchButton>` renders a `<button type="button">` by default.
+- Rendered `.search-button-keys` are treated as visual hints only and are hidden from assistive technologies.
+- Plain typing inside editable fields does not trigger the component unless the shortcut also includes `meta` or `ctrl`.
+- The component keeps standard button keyboard behavior such as `Enter` and `Space`.
+
+### Author responsibilities
+
+- Choose shortcuts carefully and avoid overriding common browser or system shortcuts unless that behavior is intentional and clearly communicated.
+- Make sure the visible button label clearly describes the action, for example `Search`, `Open search`, or `Command palette`.
+- Mark decorative icons as `aria-hidden="true"` when you provide a custom `icon`.
+
 ## API
 
 Check out the documentation below for a comprehensive guide to all the props you can use with the component.

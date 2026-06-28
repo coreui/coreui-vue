@@ -113,6 +113,10 @@ Try the top, right, and bottom examples out below.
   <OffcanvasPlacementBottomExample client:only="vue" />
 </Example>
 
+## Accessibility
+
+Since the offcanvas panel is conceptually a modal dialog, be sure to add `aria-labelledby="..."`—referencing the offcanvas title—to `<COffcanvas>`. Note that you don’t need to add `role="dialog"` since we already add it automatically.
+
 ## API
 
 Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.

@@ -103,6 +103,12 @@ When a chip inside a chip set is focused:
 
 Disabled chips are skipped while navigating. In right-to-left layouts the arrow keys are mirrored — `←` moves to the next chip and `→` to the previous one — while `Home` and `End` always jump to the first and last chip.
 
+## Accessibility
+
+- The chip set manages roving focus, so the arrow keys move focus between chips rather than relying on the browser's default tab order.
+- Add a descriptive `aria-label` to the chip set when the group has a meaningful role (e.g., "Applied filters").
+- Selection state is reflected on each chip via `aria-selected`; see the [Chip](/components/chip/) accessibility notes.
+
 ## API
 
 Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.

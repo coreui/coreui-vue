@@ -99,6 +99,67 @@ For equal-width elements, use `layout="justified"`. All horizontal space will be
   <TabsUnstyledFillAndJustify2Example client:only="vue" />
 </Example>
 
+## Accessibility
+
+Dynamic tabbed interfaces, as described in the [<abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel), require `role="tablist"`, `role="tab"`, `role="tabpanel"`, and additional `aria-` attributes in order to convey their structure, functionality and current state to users of assistive technologies (such as screen readers).
+
+### WAI-ARIA Roles
+
+- The element that serves as the container for the set of tabs has the role `tablist`.
+- Each element that serves as a tab has the role `tab` and is contained within the element with the role `tablist`.
+- Each element that contains the content panel for a tab has the role `tabpanel`.
+- If the tab list has a visible label, the element with the role `tablist` has `aria-labelledby` set to a value that refers to the labeling element. Otherwise, the `tablist` element has a label provided by `aria-label`.
+- Each element with the role `tab` has the property `aria-controls` referring to its associated `tabpanel` element.
+- The active tab element has the state `aria-selected` set to `true`, and all other tab elements have it set to `false`.
+- Each element with the role `tabpanel` has the property `aria-labelledby` referring to its associated `tab` element.
+
+Our Vue Tabs component automatically manages all `role="..."` and `aria-` attributes for accessibility. It also handles the selected state by adding `aria-selected="true"` to the active tab. Additionally, you have the flexibility to manually set these attributes, as shown in the example below:
+
+```vue
+<CTabs :active-item-key="2">
+  <CTabList variant="tabs">
+    <CTab id="home-tab" aria-controls="home-tab-pane" :item-key="1">Home</CTab>
+    <CTab id="profile-tab" aria-controls="profile-tab-pane" :item-key="2">Profile</CTab>
+    <CTab id="contact-tab" aria-controls="contact-tab-pane" :item-key="3">Contact</CTab>
+    <CTab id="disabled-tab" aria-controls="disabled-tab-pane" disabled :item-key="4">Disabled</CTab>
+  </CTabList>
+  <CTabContent>
+    <CTabPanel id="home-tab-pane" class="p-3" aria-labelledby="home-tab" :item-key="1">
+      Home tab content
+    </CTabPanel>
+    <CTabPanel id="profile-tab-pane" class="p-3" aria-labelledby="profile-tab" :item-key="2">
+      Profile tab content
+    </CTabPanel>
+    <CTabPanel id="contact-tab-pane" class="p-3" aria-labelledby="contact-tab" :item-key="3">
+      Contact tab content
+    </CTabPanel>
+    <CTabPanel id="disabled-tab-pane" class="p-3" aria-labelledby="disabled-tab" :item-key="4">
+      Disabled tab content
+    </CTabPanel>
+  </CTabContent>
+</CTabs>
+```
+
+This example demonstrates how to manually set `aria-selected`, `aria-controls`, and `aria-labelledby` attributes on your `<CTab>`'s and `<CTabPanels>`'s.
+
+### Keyboard Interaction
+
+**When focus enters the tab list:**
+
+<kbd>Tab</kbd>: It places focus on the active `tab` element.
+
+**When focus is on a tab element:**
+
+<kbd>Tab</kbd>: Moves focus to the next element in the tab sequence, typically the tabpanel unless the first focusable element inside the tabpanel is found earlier.
+
+<kbd>Left Arrow</kbd>: Moves focus to the previous tab. If on the first tab, it wraps around to the last tab.
+
+<kbd>Right Arrow</kbd>: Moves focus to the next tab. If on the last tab, it wraps around to the first tab.
+
+<kbd>Home</kbd>: Moves focus to the first tab.
+
+<kbd>End</kbd>: Moves focus to the last tab.
+
 ## API
 
 Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
