@@ -22,12 +22,17 @@ On the `.nav-pills` modifier class:
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CNav :style="vars">...</CNav>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-nav-link-color': '#333',
+  '--cui-nav-link-hover-color': '#f8f9fa',
 }
-return <CNav :style="vars">...</CNav>
+</script>
 ```
 
 ### SASS variables

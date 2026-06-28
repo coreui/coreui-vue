@@ -12,12 +12,17 @@ Vue headers use local CSS variables on `.header` for enhanced real-time customiz
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CHeader :style="vars">...</CHeader>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-header-color': '#333',
+  '--cui-header-bg': '#f8f9fa',
 }
-return <CHeader :style="vars">...</CHeader>
+</script>
 ```
 
 ### SASS variables

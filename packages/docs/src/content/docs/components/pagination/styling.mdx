@@ -12,12 +12,17 @@ Vue pagination use local CSS variables on `.pagination` for enhanced real-time c
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CPagination :style="vars">...</CPagination>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-pagination-color': '#333',
+  '--cui-pagination-bg': '#f8f9fa',
 }
-return <CPagination :style="vars">...</CCard>
+</script>
 ```
 
 ### SASS variables

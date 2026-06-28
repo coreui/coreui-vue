@@ -12,12 +12,17 @@ Vue list groups use local CSS variables on `.list-group` for enhanced real-time 
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CListGroup :style="vars">...</CListGroup>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-list-group-color': '#333',
+  '--cui-list-group-bg': '#f8f9fa',
 }
-return <CListGroup :style="vars">...</CListGroup>
+</script>
 ```
 
 ### SASS variables

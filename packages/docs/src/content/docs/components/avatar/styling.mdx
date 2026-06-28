@@ -12,12 +12,17 @@ Vue avatars use local CSS variables on `.avatar` for enhanced real-time customiz
 
 #### How to use CSS variables
 
-```jsx
+```vue
+<template>
+  <CAvatar :style="vars">...</CAvatar>
+</template>
+
+<script setup>
 const vars = {
-  '--my-css-var': 10,
-  '--my-another-css-var': 'red',
+  '--cui-avatar-width': '1rem',
+  '--cui-avatar-height': '1rem',
 }
-return <CAvatar style={vars}>...</CAvatar>
+</script>
 ```
 
 ### SASS variables

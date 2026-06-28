@@ -12,12 +12,17 @@ Vue footers use local CSS variables on `.footer` for enhanced real-time customiz
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CFooter :style="vars">...</CFooter>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-footer-color': '#333',
+  '--cui-footer-bg': '#f8f9fa',
 }
-return <CFooter :style="vars">...</CFooter>
+</script>
 ```
 
 ### SASS variables

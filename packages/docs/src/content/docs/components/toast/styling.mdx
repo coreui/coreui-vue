@@ -12,12 +12,17 @@ Vue toasts use local CSS variables on `.toast` for enhanced real-time customizat
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CToast :style="vars">...</CToast>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-toast-color': '#333',
+  '--cui-toast-bg': '#f8f9fa',
 }
-return <CToast :style="vars">...</CToast>
+</script>
 ```
 
 ### SASS variables

@@ -12,12 +12,17 @@ Vue accordions use local CSS variables on `.accordion` for enhanced real-time cu
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CAccordion :style="vars">...</CAccordion>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-accordion-color': '#333',
+  '--cui-accordion-bg': '#f8f9fa',
 }
-return <CAccordion :style="vars">...</CAccordion>
+</script>
 ```
 
 ### SASS variables

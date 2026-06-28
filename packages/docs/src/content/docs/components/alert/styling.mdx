@@ -12,12 +12,17 @@ Vue alerts use local CSS variables on `.alert` for enhanced real-time customizat
 
 #### How to use CSS variables
 
-```js
+```vue
+<template>
+  <CAlert :style="vars">...</CAlert>
+</template>
+
+<script setup>
 const vars = {
-  '--my-css-var': 10,
-  '--my-another-css-var': "red"
+  '--cui-alert-color': '#333',
+  '--cui-alert-bg': '#f8f9fa',
 }
-return <CAlert :style="vars">...</CAlert>
+</script>
 ```
 
 ### SASS variables

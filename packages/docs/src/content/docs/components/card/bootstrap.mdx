@@ -325,12 +325,17 @@ Vue cards use local CSS variables on `.card` for enhanced real-time customizatio
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CCard :style="vars">...</CCard>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-card-title-color': '#333',
+  '--cui-card-cap-bg': '#f8f9fa',
 }
-return <CCard :style="vars">...</CCard>
+</script>
 ```
 
 ### SASS variables

@@ -14,12 +14,17 @@ Vue modals use local CSS variables on `.modal` and `.modal-backdrop` for enhance
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CModal :style="vars">...</CModal>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-modal-color': '#333',
+  '--cui-modal-bg': '#f8f9fa',
 }
-return <CModal :style="vars">...</CModal>
+</script>
 ```
 
 ### SASS variables

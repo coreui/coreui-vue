@@ -12,12 +12,17 @@ Vue toltips use local CSS variables on `.tooltip` for enhanced real-time customi
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CTooltip :style="vars">...</CTooltip>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-tooltip-color': '#333',
+  '--cui-tooltip-bg': '#f8f9fa',
 }
-return <CTooltip :style="vars">...</CTooltip>
+</script>
 ```
 
 ### SASS variables

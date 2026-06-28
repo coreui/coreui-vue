@@ -12,12 +12,17 @@ Vue cards use local CSS variables on `.card` for enhanced real-time customizatio
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CProgress :style="vars">...</CProgress>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-progress-bar-color': '#333',
+  '--cui-progress-bg': '#f8f9fa',
 }
-return <CProgress :style="vars">...</CProgress>
+</script>
 ```
 
 ### SASS variables

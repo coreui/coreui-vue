@@ -16,12 +16,17 @@ Customization through CSS variables can be seen on the `.dropdown-menu-dark` cla
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CDropdown :style="vars">...</CDropdown>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-dropdown-color': '#333',
+  '--cui-dropdown-bg': '#f8f9fa',
 }
-return <CDropdown :style="vars">...</CDropdown>
+</script>
 ```
 
 ### SASS variables

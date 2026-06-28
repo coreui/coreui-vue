@@ -22,12 +22,17 @@ For both spinners, small spinner modifier classes are used to update the values 
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CSpinner :style="vars">...</CSpinner>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-spinner-width': '1rem',
+  '--cui-spinner-height': '1rem',
 }
-return <CSpinner :style="vars">...</CSpinner>
+</script>
 ```
 
 ### SASS variables

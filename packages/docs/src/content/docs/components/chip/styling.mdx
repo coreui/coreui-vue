@@ -12,12 +12,17 @@ Vue chips use local CSS variables on `.chip` for enhanced real-time customizatio
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CChip :style="vars">...</CChip>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-chip-color': '#333',
+  '--cui-chip-bg': '#f8f9fa',
 }
-return <CChip :style="vars">...</CChip>
+</script>
 ```
 
 ### SASS variables

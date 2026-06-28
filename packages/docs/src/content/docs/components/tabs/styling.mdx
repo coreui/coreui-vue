@@ -30,12 +30,17 @@ On the `.nav-underline-border` modifier class:
 
 #### How to use CSS variables
 
-```jsx
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CTabs :style="vars">...</CTabs>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-nav-link-color': '#333',
+  '--cui-nav-link-hover-color': '#f8f9fa',
 }
-return <CTabs :style="vars">...</CTabs>
+</script>
 ```
 
 ### SASS variables

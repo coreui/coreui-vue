@@ -12,12 +12,17 @@ Vue callouts use local CSS variables on `.callout` for enhanced real-time custom
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CCallout :style="vars">...</CCallout>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-callout-border-color': '#333',
+  '--cui-callout-padding-x': '1rem',
 }
-return <CCallout :style="vars">...</CCallout>
+</script>
 ```
 
 ### SASS variables

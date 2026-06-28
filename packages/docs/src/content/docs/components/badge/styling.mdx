@@ -12,12 +12,17 @@ Vue badges use local CSS variables on `.badges` for enhanced real-time customiza
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CBadge :style="vars">...</CBadge>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-badge-color': '#333',
+  '--cui-badge-padding-x': '1rem',
 }
-return <CBadge :style="vars">...</CBadge>
+</script>
 ```
 
 ### SASS variables

@@ -12,12 +12,17 @@ Vue breadcrumbs use local CSS variables on `.breadcrumb` for enhanced real-time 
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CBreadcrumb :style="vars">...</CBreadcrumb>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-breadcrumb-divider-color': '#333',
+  '--cui-breadcrumb-bg': '#f8f9fa',
 }
-return <CBreadcrumb :style="vars">...</CBreadcrumb>
+</script>
 ```
 
 ### SASS variables

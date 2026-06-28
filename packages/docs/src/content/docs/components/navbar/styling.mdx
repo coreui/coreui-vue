@@ -20,12 +20,17 @@ Customization through CSS variables can be seen on the `.navbar-dark` class wher
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CNavbar :style="vars">...</CNavbar>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-navbar-color': '#333',
+  '--cui-navbar-toggler-icon-bg': '#f8f9fa',
 }
-return <CNavbar :style="vars">...</CNavbar>
+</script>
 ```
 
 ### SASS variables

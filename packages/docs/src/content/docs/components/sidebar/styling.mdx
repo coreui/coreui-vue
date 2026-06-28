@@ -22,12 +22,17 @@ Vue sidebars use local CSS variables on `.sidebar` and `.sidebar-backdrop` for e
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CSidebar :style="vars">...</CSidebar>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-sidebar-color': '#333',
+  '--cui-sidebar-bg': '#f8f9fa',
 }
-return <CSidebar :style="vars">...</CSidebar>
+</script>
 ```
 
 ### SASS variables

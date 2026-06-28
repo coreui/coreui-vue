@@ -12,12 +12,17 @@ Vue popovers use local CSS variables on `.popover` for enhanced real-time custom
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CPopover :style="vars">...</CPopover>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-popover-border-color': '#333',
+  '--cui-popover-bg': '#f8f9fa',
 }
-return <CPopover :style="vars">...</CPopover>
+</script>
 ```
 
 ### SASS variables

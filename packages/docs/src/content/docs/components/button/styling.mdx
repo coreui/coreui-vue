@@ -12,12 +12,17 @@ Vue buttons use local CSS variables on `.btn` for enhanced real-time customizati
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <CButton :style="vars">...</CButton>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-btn-color': '#333',
+  '--cui-btn-bg': '#f8f9fa',
 }
-return <CButton :style="vars">...</CButton>
+</script>
 ```
 
 ### SASS variables

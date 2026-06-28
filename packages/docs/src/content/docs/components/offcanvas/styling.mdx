@@ -12,12 +12,17 @@ Vue offcanvas uses local CSS variables on `.offcanvas` for enhanced real-time cu
 
 #### How to use CSS variables
 
-```js
-const vars = { 
-  '--my-css-var': 10,
-  '--my-another-css-var': "red" 
+```vue
+<template>
+  <COffcanvas :style="vars">...</COffcanvas>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-offcanvas-color': '#333',
+  '--cui-offcanvas-bg': '#f8f9fa',
 }
-return <COffcanvas :style="vars">...</COffcanvas>
+</script>
 ```
 
 ### SASS variables
