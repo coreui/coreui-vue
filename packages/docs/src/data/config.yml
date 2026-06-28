@@ -27,13 +27,12 @@ seo:
     - { name: Documentation, item: https://coreui.io/vue/docs/ }
 
 # Carbon Ads — shown only on free component pages. Same serve/placement as the live
-# Vue docs (.vuepress/src/client/components/Ads.vue: serve=CEAICKJY&placement=coreuiio).
+# Vue docs (serve=CEAICKJY&placement=coreuiio).
 ads:
   code: CEAICKJY
   placement: coreuiio
 
-# DocSearch (Algolia) — the live Vue docs keys
-# (.vuepress/src/client/layouts/Layout.vue).
+# DocSearch (Algolia) — the live Vue docs keys.
 search:
   appId: RG8RW9GEH3
   apiKey: 4926b633296d71c6d727f7766170f82b

@@ -10,7 +10,6 @@
     "docs:api": "lerna run --scope \"@coreui/vue-docs\" api --stream",
     "docs:dev": "lerna run --scope \"@coreui/vue-docs\" dev --stream",
     "docs:build": "lerna run --scope \"@coreui/vue-docs\" build --stream",
-    "docs:dist": "lerna run --scope \"@coreui/vue-docs\" dist --stream",
     "icons:build": "lerna run --scope \"@coreui/icons-vue\" build --stream",
     "icons:test": "lerna run --scope \"@coreui/icons-vue\" test --stream",
     "icons:test:update": "lerna run --scope \"@coreui/icons-vue\" test:update --stream",

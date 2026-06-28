@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "dist": "astro build",
     "preview": "astro preview",
     "clean": "rm -rf dist",
     "api": "node node_modules/@coreui/astro-docs-api-generator/bin/coreui-docs-api.mjs"
