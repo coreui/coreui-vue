@@ -1,12 +1,12 @@
 <template>
   <CButtonGroup vertical role="group" aria-label="Vertical button group">
-    <CButton color="dark">Button</CButton>
-    <CButton color="dark">Button</CButton>
-    <CButton color="dark">Button</CButton>
-    <CButton color="dark">Button</CButton>
-    <CButton color="dark">Button</CButton>
-    <CButton color="dark">Button</CButton>
-    <CButton color="dark">Button</CButton>
+    <CButton color="primary">Button</CButton>
+    <CButton color="primary">Button</CButton>
+    <CButton color="primary">Button</CButton>
+    <CButton color="primary">Button</CButton>
+    <CButton color="primary">Button</CButton>
+    <CButton color="primary">Button</CButton>
+    <CButton color="primary">Button</CButton>
   </CButtonGroup>
 </template>
 
