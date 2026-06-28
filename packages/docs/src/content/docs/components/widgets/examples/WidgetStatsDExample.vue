@@ -10,7 +10,7 @@
         ]"
       >
         <template #icon>
-          <CIcon icon="cib-facebook" height="52" class="my-4 text-white" />
+          <CIcon :icon="cibFacebook" height="52" class="my-4 text-white" />
         </template>
         <template #chart>
           <CChart
@@ -70,7 +70,7 @@
         ]"
       >
         <template #icon>
-          <CIcon icon="cib-twitter" height="52" class="my-4 text-white" />
+          <CIcon :icon="cibTwitter" height="52" class="my-4 text-white" />
         </template>
         <template #chart>
           <CChart
@@ -126,5 +126,6 @@
 <script setup>
 import { CRow, CCol, CWidgetStatsD } from '@coreui/vue'
 import { CIcon } from '@coreui/icons-vue'
+import { cibFacebook, cibTwitter } from '@coreui/icons'
 import { CChart } from '@coreui/vue-chartjs'
 </script>

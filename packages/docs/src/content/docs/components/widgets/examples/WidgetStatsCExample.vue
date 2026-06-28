@@ -7,7 +7,7 @@
         :progress="{ color: 'info', value: 75 }"
         title="Visitors"
       >
-        <template #icon><CIcon icon="cil-people" height="36" /></template>
+        <template #icon><CIcon :icon="cilPeople" height="36" /></template>
         <template #title>Visitors</template>
       </CWidgetStatsC>
     </CCol>
@@ -20,7 +20,7 @@
         :progress="{ value: 75 }"
         title="New clients"
       >
-        <template #icon><CIcon icon="cil-user-follow" height="36" /></template>
+        <template #icon><CIcon :icon="cilUserFollow" height="36" /></template>
       </CWidgetStatsC>
     </CCol>
   </CRow>
@@ -29,4 +29,5 @@
 <script setup>
 import { CRow, CCol, CWidgetStatsC } from '@coreui/vue'
 import { CIcon } from '@coreui/icons-vue'
+import { cilPeople, cilUserFollow } from '@coreui/icons'
 </script>
