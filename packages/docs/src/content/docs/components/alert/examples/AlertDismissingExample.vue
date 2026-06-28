@@ -1,6 +1,6 @@
 <template>
   <CAlert color="warning" dismissible @close="message">
-    <strong>Go right ahead</strong> and click that dimiss over there on the right.
+    <strong>Go right ahead</strong> and click that dismiss over there on the right.
   </CAlert>
 </template>
 
