@@ -69,5 +69,5 @@ import {
   CSidebarNav,
 } from '@coreui/vue'
 import { CIcon } from '@coreui/icons-vue'
-import { cilCloudDownload, cilLayers, cilPuzzle, cilSpeedometer } from '@coreui/icons'
+import { cilPuzzle, cilSpeedometer } from '@coreui/icons'
 </script>

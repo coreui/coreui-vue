@@ -12,12 +12,4 @@
 
 <script setup>
 import { CToast, CToastBody, CButton, CToastClose } from '@coreui/vue'
-import { ref } from 'vue'
-const toasts = ref([])
-const createToast = () => {
-  toasts.value.push({
-    title: 'new toast',
-    content: 'Lorem ipsum dolor cet emit',
-  })
-}
 </script>

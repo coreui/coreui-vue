@@ -21,12 +21,4 @@
 
 <script setup>
 import { CToast, CToastHeader, CToastBody } from '@coreui/vue'
-import { ref } from 'vue'
-const toasts = ref([])
-const createToast = () => {
-  toasts.value.push({
-    title: 'new toast',
-    content: 'Lorem ipsum dolor cet emit',
-  })
-}
 </script>

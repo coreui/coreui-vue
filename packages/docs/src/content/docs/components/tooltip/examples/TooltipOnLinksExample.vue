@@ -17,7 +17,4 @@
 
 <script setup>
 import { CLink } from '@coreui/vue'
-const customTooltipStyle = {
-  '--cui-tooltip-bg': 'var(--cui-primary)',
-}
 </script>

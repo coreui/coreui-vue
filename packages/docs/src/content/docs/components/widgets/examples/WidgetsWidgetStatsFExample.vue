@@ -40,6 +40,6 @@
 </template>
 
 <script setup>
-import { CRow, CCol, CWidgetStatsF, CLink } from '@coreui/vue'
+import { CRow, CCol, CWidgetStatsF } from '@coreui/vue'
 import { CIcon } from '@coreui/icons-vue'
 </script>

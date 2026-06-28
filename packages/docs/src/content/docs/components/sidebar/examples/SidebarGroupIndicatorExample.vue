@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { CNavGroup, CNavItem, CSidebar, CSidebarNav } from '@coreui/vue'
+import { CNavGroup, CSidebar, CSidebarNav } from '@coreui/vue'
 import { CIcon } from '@coreui/icons-vue'
 import { cilPuzzle } from '@coreui/icons'
 </script>

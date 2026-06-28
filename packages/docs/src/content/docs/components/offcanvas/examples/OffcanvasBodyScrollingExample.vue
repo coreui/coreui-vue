@@ -48,10 +48,4 @@ import {
 import { ref } from 'vue'
 const visible = ref(false)
 const visibleScrolling = ref(false)
-const visibleWithBothOptions = ref(false)
-const visibleWithStaticBackdrop = ref(false)
-const visibleResponsiveBackdrop = ref(false)
-const visibleTop = ref(false)
-const visibleEnd = ref(false)
-const visibleBottom = ref(false)
 </script>

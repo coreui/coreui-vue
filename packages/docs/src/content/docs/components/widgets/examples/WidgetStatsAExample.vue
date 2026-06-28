@@ -327,15 +327,6 @@
 </template>
 
 <script setup>
-import {
-  CRow,
-  CCol,
-  CWidgetStatsA,
-  CDropdown,
-  CDropdownToggle,
-  CDropdownMenu,
-  CDropdownItem,
-} from '@coreui/vue'
+import { CRow, CCol, CWidgetStatsA } from '@coreui/vue'
 import { CIcon } from '@coreui/icons-vue'
-import { CChart } from '@coreui/vue-chartjs'
 </script>

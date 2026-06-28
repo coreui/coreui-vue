@@ -89,15 +89,6 @@ import {
   CButton,
 } from '@coreui/vue'
 import { ref } from 'vue'
-const validatedCustom01 = ref()
-const handleSubmitCustom01 = (event) => {
-  const form = event.currentTarget
-  if (form.checkValidity() === false) {
-    event.preventDefault()
-    event.stopPropagation()
-  }
-  validatedCustom01.value = true
-}
 const validatedTooltip01 = ref()
 const handleSubmitTooltip01 = (event) => {
   const form = event.currentTarget

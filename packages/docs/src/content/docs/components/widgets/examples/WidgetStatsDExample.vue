@@ -126,5 +126,4 @@
 <script setup>
 import { CRow, CCol, CWidgetStatsD } from '@coreui/vue'
 import { CIcon } from '@coreui/icons-vue'
-import { CChart } from '@coreui/vue-chartjs'
 </script>

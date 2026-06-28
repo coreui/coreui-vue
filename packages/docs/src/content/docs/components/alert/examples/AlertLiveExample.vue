@@ -25,7 +25,4 @@
 import { CAlert, CButton } from '@coreui/vue'
 import { ref } from 'vue'
 const liveExampleVisible = ref(false)
-const message = () => {
-  alert('👋 Well, hi there! Thanks for dismissing me.')
-}
 </script>

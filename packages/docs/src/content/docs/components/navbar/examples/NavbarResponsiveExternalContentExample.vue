@@ -25,6 +25,4 @@ import { CCollapse, CNavbar, CContainer, CNavbarToggler } from '@coreui/vue'
 import { ref } from 'vue'
 const visible = ref(true)
 const visibleExternalContent = ref(false)
-const visibleOffcanvas = ref(false)
-const visibleOffcanvas2 = ref(false)
 </script>

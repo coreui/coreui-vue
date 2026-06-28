@@ -35,7 +35,4 @@
 
 <script setup>
 import { CButton } from '@coreui/vue'
-const customTooltipStyle = {
-  '--cui-tooltip-bg': 'var(--cui-primary)',
-}
 </script>

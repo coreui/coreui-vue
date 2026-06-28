@@ -100,14 +100,4 @@ const handleSubmitCustom01 = (event) => {
   }
   validatedCustom01.value = true
 }
-const validatedTooltip01 = ref()
-const handleSubmitTooltip01 = (event) => {
-  const form = event.currentTarget
-  if (form.checkValidity() === false) {
-    event.preventDefault()
-    event.stopPropagation()
-  }
-
-  validatedTooltip01.value = true
-}
 </script>

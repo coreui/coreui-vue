@@ -36,9 +36,7 @@
 <script setup>
 import { CTabContent, CTabPane, CRow, CCol } from '@coreui/vue'
 import { CIcon } from '@coreui/icons-vue'
-import { cilList, cilShieldAlt } from '@coreui/icons'
 import * as icon from '@coreui/icons'
-import { CIconSvg } from '@coreui/icons-vue'
 import { ref } from 'vue'
 const linearIcons = [
   'cilAccountLogout',

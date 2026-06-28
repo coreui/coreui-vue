@@ -62,15 +62,8 @@
 
 <script setup>
 import { CChart } from '@coreui/vue-chartjs'
-import { onMounted, ref, watch } from 'vue'
+import { ref } from 'vue'
 import { getStyle } from '@coreui/utils'
-const chartLineRef = ref()
-const chartBarRef = ref()
-const chartRadarRef = ref()
-const chartDoughnutRef = ref()
-const chartPieRef = ref()
-const chartPolarAreaRef = ref()
-const chartBubbleRef = ref()
 const chartScatterRef = ref()
 onMounted(() => {
   document.documentElement.addEventListener('ColorSchemeChange', () => {
