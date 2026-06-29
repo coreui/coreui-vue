@@ -1,0 +1,7 @@
+{
+  "name": "CHeaderToggler",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CHeaderToggler } from '@coreui/vue'"
+}

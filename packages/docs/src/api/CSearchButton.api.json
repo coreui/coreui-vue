@@ -1,0 +1,51 @@
+{
+  "name": "CSearchButton",
+  "props": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": null,
+      "description": "Toggle the disabled state for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "default": "'Search'",
+      "description": "Placeholder content rendered inside `.search-button-placeholder`.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "preventDefault",
+      "type": "boolean",
+      "default": "true",
+      "description": "Prevent the browser's default behavior when the configured shortcut matches.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "shortcut",
+      "type": "string",
+      "default": "'meta+/,ctrl+/'",
+      "description": "Comma-separated shortcut list. The component matches all configured shortcuts and renders the platform-preferred one.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [
+    {
+      "name": "click",
+      "description": "Event called when the user clicks on the component.",
+      "properties": []
+    },
+    {
+      "name": "trigger",
+      "description": "Event called when the component is activated by click or keyboard shortcut.",
+      "properties": []
+    }
+  ],
+  "slots": [],
+  "imports": "import { CSearchButton } from '@coreui/vue'"
+}

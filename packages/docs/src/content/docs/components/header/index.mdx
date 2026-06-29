@@ -1,0 +1,38 @@
+---
+title: "Vue Header Component"
+name: "Header"
+description: "Documentation and examples for the Header powerful, responsive navigation header. Includes support for branding, links, dropdowns, and more."
+otherFrameworks:
+  - header
+---
+
+import HeaderSupportedContentExample from './examples/HeaderSupportedContentExample.vue'
+import HeaderSupportedContentExampleRaw from './examples/HeaderSupportedContentExample.vue?raw'
+
+## Example
+
+Here's what you need to know before getting started with the header:
+
+- Headers require a wrapping `.header` with `.header-expand{-sm|-md|-lg|-xl|-xxl}` for responsive collapsing and [color scheme](#color-schemes) classes.
+- Headers and their contents are fluid by default. Change the [container](#containers) to limit their horizontal width in different ways.
+- Use our [spacing](https://coreui.io/bootstrap/docs/utilities/spacing) and [flex](https://coreui.io/bootstrap/docs/utilities/flex) utility classes for controlling spacing and alignment within headers.
+- Headers are responsive by default, but you can easily modify them to change that. Responsive behavior depends on our Collapse JavaScript plugin.
+- Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every header to explicitly identify it as a landmark region for users of assistive technologies.
+- Indicate the current item by using `aria-current="page"` for the current page or `aria-current="true"` for the current item in a set.
+
+## Supported content
+
+Headers come with built-in support for a handful of sub-components. Choose from the following as needed:
+
+- `<CHeaderBrand>` for your company, product, or project name.
+- `<CHeaderNav>` for a full-height and lightweight navigation (including support for dropdowns).
+- `<CHeaderToggler>` for use with our collapse plugin and other [navigation toggling](#responsive-behaviors) behaviors.
+- Flex and spacing utilities for any form controls and actions.
+- `<CHeaderText>` for adding vertically centered strings of text.
+- `<CCollapse class="header-collapse">` for grouping and hiding header contents by a parent breakpoint.
+
+Here's an example of all the sub-components included in a responsive light-themed header that automatically collapses at the `lg` (large) breakpoint.
+
+<Example code={HeaderSupportedContentExampleRaw} name="HeaderSupportedContentExample">
+  <HeaderSupportedContentExample client:only="vue" />
+</Example>

@@ -1,0 +1,131 @@
+---
+title: "Vue Button Group Component"
+name: "Button group"
+description: "Vue button group component allows to group a series of buttons and power them with JavaScript."
+otherFrameworks:
+  - button-group
+---
+
+import ButtonGroupExample from './examples/ButtonGroupExample.vue'
+import ButtonGroupExampleRaw from './examples/ButtonGroupExample.vue?raw'
+import ButtonGroup2Example from './examples/ButtonGroup2Example.vue'
+import ButtonGroup2ExampleRaw from './examples/ButtonGroup2Example.vue?raw'
+import ButtonGroupMixedStylesExample from './examples/ButtonGroupMixedStylesExample.vue'
+import ButtonGroupMixedStylesExampleRaw from './examples/ButtonGroupMixedStylesExample.vue?raw'
+import ButtonGroupOutlinedStylesExample from './examples/ButtonGroupOutlinedStylesExample.vue'
+import ButtonGroupOutlinedStylesExampleRaw from './examples/ButtonGroupOutlinedStylesExample.vue?raw'
+import ButtonGroupCheckboxAndRadioExample from './examples/ButtonGroupCheckboxAndRadioExample.vue'
+import ButtonGroupCheckboxAndRadioExampleRaw from './examples/ButtonGroupCheckboxAndRadioExample.vue?raw'
+import ButtonGroupCheckboxAndRadio2Example from './examples/ButtonGroupCheckboxAndRadio2Example.vue'
+import ButtonGroupCheckboxAndRadio2ExampleRaw from './examples/ButtonGroupCheckboxAndRadio2Example.vue?raw'
+import ButtonToolbarExample from './examples/ButtonToolbarExample.vue'
+import ButtonToolbarExampleRaw from './examples/ButtonToolbarExample.vue?raw'
+import ButtonToolbar2Example from './examples/ButtonToolbar2Example.vue'
+import ButtonToolbar2ExampleRaw from './examples/ButtonToolbar2Example.vue?raw'
+import ButtonGroupSizingExample from './examples/ButtonGroupSizingExample.vue'
+import ButtonGroupSizingExampleRaw from './examples/ButtonGroupSizingExample.vue?raw'
+import ButtonGroupNestingExample from './examples/ButtonGroupNestingExample.vue'
+import ButtonGroupNestingExampleRaw from './examples/ButtonGroupNestingExample.vue?raw'
+import ButtonGroupVerticalExample from './examples/ButtonGroupVerticalExample.vue'
+import ButtonGroupVerticalExampleRaw from './examples/ButtonGroupVerticalExample.vue?raw'
+import ButtonGroupVerticalVariationExample from './examples/ButtonGroupVerticalVariationExample.vue'
+import ButtonGroupVerticalVariationExampleRaw from './examples/ButtonGroupVerticalVariationExample.vue?raw'
+import ButtonGroupVerticalVariation2Example from './examples/ButtonGroupVerticalVariation2Example.vue'
+import ButtonGroupVerticalVariation2ExampleRaw from './examples/ButtonGroupVerticalVariation2Example.vue?raw'
+
+## Basic example
+
+Wrap a series of `<CButton>` components in `<CButtonGroup>`. 
+
+<Example code={ButtonGroupExampleRaw} name="ButtonGroupExample">
+  <ButtonGroupExample client:only="vue" />
+</Example>
+
+##### Ensure the correct `role` and provide a label
+
+For assistive technologies (ex. screen readers) to communicate that a series of buttons are grouped, a proper `role` attribute has to be provided. For button groups, this should be `role="group"`, while toolbars should have a `role="toolbar"`.
+
+Besides, groups and toolbars should be provided an understandable label, as most assistive technologies will otherwise not declare them, despite the appearance of the specific role attribute. In the following examples provided here, we apply `aria-label`, but options such as `aria-labelledby` can also be used.
+
+These classes can also be added to groups of links, as an alternative to the `<CNav>` components.
+
+<Example code={ButtonGroup2ExampleRaw} name="ButtonGroup2Example">
+  <ButtonGroup2Example client:only="vue" />
+</Example>
+
+## Mixed styles
+
+<Example code={ButtonGroupMixedStylesExampleRaw} name="ButtonGroupMixedStylesExample">
+  <ButtonGroupMixedStylesExample client:only="vue" />
+</Example>
+
+## Outlined styles
+
+<Example code={ButtonGroupOutlinedStylesExampleRaw} name="ButtonGroupOutlinedStylesExample">
+  <ButtonGroupOutlinedStylesExample client:only="vue" />
+</Example>
+
+## Checkbox and radio button groups
+
+Combine button-like checkbox and radio toggle buttons into a seamless looking button group.
+
+<Example code={ButtonGroupCheckboxAndRadioExampleRaw} name="ButtonGroupCheckboxAndRadioExample">
+  <ButtonGroupCheckboxAndRadioExample client:only="vue" />
+</Example>
+
+<Example code={ButtonGroupCheckboxAndRadio2ExampleRaw} name="ButtonGroupCheckboxAndRadio2Example">
+  <ButtonGroupCheckboxAndRadio2Example client:only="vue" />
+</Example>
+
+## Button toolbar
+
+Join sets of button groups into button toolbars for more complicated components. Use utility classes as needed to space out groups, buttons, and more.
+
+<Example code={ButtonToolbarExampleRaw} name="ButtonToolbarExample">
+  <ButtonToolbarExample client:only="vue" />
+</Example>
+
+Feel free to combine input groups with button groups in your toolbars. Similar to the example above, you’ll likely need some utilities through to space items correctly.
+
+<Example code={ButtonToolbar2ExampleRaw} name="ButtonToolbar2Example">
+  <ButtonToolbar2Example client:only="vue" />
+</Example>
+
+## Sizing
+
+Alternatively, of implementing button sizing classes to each button in a group, set `size` property to all `<CButtonGroup>`'s, including each one when nesting multiple groups.
+
+<Example code={ButtonGroupSizingExampleRaw} name="ButtonGroupSizingExample">
+  <ButtonGroupSizingExample client:only="vue" />
+</Example>
+
+## Nesting
+
+Put a `<CDropdown>` inside `<CButtonGroup>` when you need dropdown menus combined with a series of buttons.
+
+<Example code={ButtonGroupNestingExampleRaw} name="ButtonGroupNestingExample">
+  <ButtonGroupNestingExample client:only="vue" />
+</Example>
+
+## Vertical variation
+
+Create a set of buttons that appear vertically stacked rather than horizontally. **Split button dropdowns are not supported here.**
+
+<Example code={ButtonGroupVerticalExampleRaw} name="ButtonGroupVerticalExample">
+  <ButtonGroupVerticalExample client:only="vue" />
+</Example>
+
+<Example code={ButtonGroupVerticalVariationExampleRaw} name="ButtonGroupVerticalVariationExample">
+  <ButtonGroupVerticalVariationExample client:only="vue" />
+</Example>
+
+<Example code={ButtonGroupVerticalVariation2ExampleRaw} name="ButtonGroupVerticalVariation2Example">
+  <ButtonGroupVerticalVariation2Example client:only="vue" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CButtonGroup /&gt;](./api/#cbuttongroup)
+- [&lt;CButtonToolbar /&gt;](./api/#cbuttontoolbar)

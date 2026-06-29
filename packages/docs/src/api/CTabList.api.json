@@ -1,0 +1,24 @@
+{
+  "name": "CTabList",
+  "props": [
+    {
+      "name": "layout",
+      "type": "string",
+      "default": null,
+      "description": "Specify a layout type for component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "variant",
+      "type": "string",
+      "default": null,
+      "description": "Set the nav variant to tabs or pills.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CTabList } from '@coreui/vue'"
+}

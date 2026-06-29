@@ -1,0 +1,7 @@
+{
+  "name": "CToastBody",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CToastBody } from '@coreui/vue'"
+}

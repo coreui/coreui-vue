@@ -1,0 +1,16 @@
+{
+  "name": "CCardLink",
+  "props": [
+    {
+      "name": "href",
+      "type": "string",
+      "default": "'#'",
+      "description": "The href attribute specifies the URL of the page the link goes to.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CCardLink } from '@coreui/vue'"
+}

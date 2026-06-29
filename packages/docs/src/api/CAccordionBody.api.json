@@ -1,0 +1,7 @@
+{
+  "name": "CAccordionBody",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CAccordionBody } from '@coreui/vue'"
+}

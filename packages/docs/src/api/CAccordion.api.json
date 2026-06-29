@@ -1,0 +1,32 @@
+{
+  "name": "CAccordion",
+  "props": [
+    {
+      "name": "activeItemKey",
+      "type": "number|string",
+      "default": null,
+      "description": "The active item key.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "alwaysOpen",
+      "type": "boolean",
+      "default": null,
+      "description": "Make accordion items stay open when another item is opened",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "flush",
+      "type": "boolean",
+      "default": null,
+      "description": "Removes the default background-color, some borders, and some rounded corners to render accordions edge-to-edge with their parent container.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CAccordion } from '@coreui/vue'"
+}

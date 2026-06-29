@@ -1,0 +1,64 @@
+{
+  "name": "CFormControlValidation",
+  "props": [
+    {
+      "name": "describedby",
+      "type": "string",
+      "default": null,
+      "description": "",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "feedback",
+      "type": "string",
+      "default": null,
+      "description": "Provide valuable, actionable feedback.",
+      "since": "4.3.0",
+      "deprecated": null
+    },
+    {
+      "name": "feedbackInvalid",
+      "type": "string",
+      "default": null,
+      "description": "Provide valuable, actionable feedback.",
+      "since": "4.3.0",
+      "deprecated": null
+    },
+    {
+      "name": "feedbackValid",
+      "type": "string",
+      "default": null,
+      "description": "Provide valuable, actionable invalid feedback when using standard HTML form validation which applied two CSS pseudo-classes, `:invalid` and `:valid`.",
+      "since": "4.3.0",
+      "deprecated": null
+    },
+    {
+      "name": "invalid",
+      "type": "boolean",
+      "default": null,
+      "description": "Set component validation state to invalid.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "tooltipFeedback",
+      "type": "boolean",
+      "default": null,
+      "description": "Display validation feedback in a styled tooltip.",
+      "since": "4.3.0",
+      "deprecated": null
+    },
+    {
+      "name": "valid",
+      "type": "boolean",
+      "default": null,
+      "description": "Set component validation state to valid.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CFormControlValidation } from '@coreui/vue'"
+}

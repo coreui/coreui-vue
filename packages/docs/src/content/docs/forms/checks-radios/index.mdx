@@ -1,0 +1,158 @@
+---
+title: "Vue Radio Component"
+name: "Radio"
+description: "Create consistent cross-browser and cross-device radios with our Vue radio component."
+---
+
+import ChecksRadiosChecksExample from './examples/ChecksRadiosChecksExample.vue'
+import ChecksRadiosChecksExampleRaw from './examples/ChecksRadiosChecksExample.vue?raw'
+import ChecksRadiosIndeterminateExample from './examples/ChecksRadiosIndeterminateExample.vue'
+import ChecksRadiosIndeterminateExampleRaw from './examples/ChecksRadiosIndeterminateExample.vue?raw'
+import ChecksRadiosDisabledExample from './examples/ChecksRadiosDisabledExample.vue'
+import ChecksRadiosDisabledExampleRaw from './examples/ChecksRadiosDisabledExample.vue?raw'
+import ChecksRadiosRadiosExample from './examples/ChecksRadiosRadiosExample.vue'
+import ChecksRadiosRadiosExampleRaw from './examples/ChecksRadiosRadiosExample.vue?raw'
+import ChecksRadiosDisabled2Example from './examples/ChecksRadiosDisabled2Example.vue'
+import ChecksRadiosDisabled2ExampleRaw from './examples/ChecksRadiosDisabled2Example.vue?raw'
+import ChecksRadiosSwitchesExample from './examples/ChecksRadiosSwitchesExample.vue'
+import ChecksRadiosSwitchesExampleRaw from './examples/ChecksRadiosSwitchesExample.vue?raw'
+import ChecksRadiosSizesExample from './examples/ChecksRadiosSizesExample.vue'
+import ChecksRadiosSizesExampleRaw from './examples/ChecksRadiosSizesExample.vue?raw'
+import ChecksRadiosDefaultStackedExample from './examples/ChecksRadiosDefaultStackedExample.vue'
+import ChecksRadiosDefaultStackedExampleRaw from './examples/ChecksRadiosDefaultStackedExample.vue?raw'
+import ChecksRadiosDefaultStacked2Example from './examples/ChecksRadiosDefaultStacked2Example.vue'
+import ChecksRadiosDefaultStacked2ExampleRaw from './examples/ChecksRadiosDefaultStacked2Example.vue?raw'
+import ChecksRadiosInlineExample from './examples/ChecksRadiosInlineExample.vue'
+import ChecksRadiosInlineExampleRaw from './examples/ChecksRadiosInlineExample.vue?raw'
+import ChecksRadiosInline2Example from './examples/ChecksRadiosInline2Example.vue'
+import ChecksRadiosInline2ExampleRaw from './examples/ChecksRadiosInline2Example.vue?raw'
+import ChecksRadiosWithoutLabelsExample from './examples/ChecksRadiosWithoutLabelsExample.vue'
+import ChecksRadiosWithoutLabelsExampleRaw from './examples/ChecksRadiosWithoutLabelsExample.vue?raw'
+import ChecksRadiosCheckboxToggleButtonsExample from './examples/ChecksRadiosCheckboxToggleButtonsExample.vue'
+import ChecksRadiosCheckboxToggleButtonsExampleRaw from './examples/ChecksRadiosCheckboxToggleButtonsExample.vue?raw'
+import ChecksRadiosCheckboxToggleButtons2Example from './examples/ChecksRadiosCheckboxToggleButtons2Example.vue'
+import ChecksRadiosCheckboxToggleButtons2ExampleRaw from './examples/ChecksRadiosCheckboxToggleButtons2Example.vue?raw'
+import ChecksRadiosCheckboxToggleButtons3Example from './examples/ChecksRadiosCheckboxToggleButtons3Example.vue'
+import ChecksRadiosCheckboxToggleButtons3ExampleRaw from './examples/ChecksRadiosCheckboxToggleButtons3Example.vue?raw'
+import ChecksRadiosRadioToggleButtonsExample from './examples/ChecksRadiosRadioToggleButtonsExample.vue'
+import ChecksRadiosRadioToggleButtonsExampleRaw from './examples/ChecksRadiosRadioToggleButtonsExample.vue?raw'
+import ChecksRadiosOutlinedStylesExample from './examples/ChecksRadiosOutlinedStylesExample.vue'
+import ChecksRadiosOutlinedStylesExampleRaw from './examples/ChecksRadiosOutlinedStylesExample.vue?raw'
+
+## Approach
+
+Browser default checkboxes and radios are replaced with the help of `<CFormCheck>`. Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.
+
+## Checks
+
+<Example code={ChecksRadiosChecksExampleRaw} name="ChecksRadiosChecksExample">
+  <ChecksRadiosChecksExample client:only="vue" />
+</Example>
+
+## Indeterminate
+
+Checkboxes can utilize the `:indeterminate` pseudo-class when manually set via `indeterminate` property.
+
+<Example code={ChecksRadiosIndeterminateExampleRaw} name="ChecksRadiosIndeterminateExample">
+  <ChecksRadiosIndeterminateExample client:only="vue" />
+</Example>
+
+### Disabled
+
+Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input's state.
+
+<Example code={ChecksRadiosDisabledExampleRaw} name="ChecksRadiosDisabledExample">
+  <ChecksRadiosDisabledExample client:only="vue" />
+</Example>
+
+## Radios
+
+Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input's state.
+
+<Example code={ChecksRadiosRadiosExampleRaw} name="ChecksRadiosRadiosExample">
+  <ChecksRadiosRadiosExample client:only="vue" />
+</Example>
+
+### Disabled
+
+<Example code={ChecksRadiosDisabled2ExampleRaw} name="ChecksRadiosDisabled2Example">
+  <ChecksRadiosDisabled2Example client:only="vue" />
+</Example>
+
+## Switches
+
+A switch has the markup of a custom checkbox but uses the `switch` boolean properly to render a toggle switch. Switches also support the `disabled` attribute.
+
+<Example code={ChecksRadiosSwitchesExampleRaw} name="ChecksRadiosSwitchesExample">
+  <ChecksRadiosSwitchesExample client:only="vue" />
+</Example>
+
+### Sizes
+
+<Example code={ChecksRadiosSizesExampleRaw} name="ChecksRadiosSizesExample">
+  <ChecksRadiosSizesExample client:only="vue" />
+</Example>
+
+## Default (stacked)
+
+By default, any number of checkboxes and radios that are immediate sibling will be vertically stacked and appropriately spaced.
+
+<Example code={ChecksRadiosDefaultStackedExampleRaw} name="ChecksRadiosDefaultStackedExample">
+  <ChecksRadiosDefaultStackedExample client:only="vue" />
+</Example>
+
+<Example code={ChecksRadiosDefaultStacked2ExampleRaw} name="ChecksRadiosDefaultStacked2Example">
+  <ChecksRadiosDefaultStacked2Example client:only="vue" />
+</Example>
+
+## Inline
+
+Group checkboxes or radios on the same horizontal row by adding `inline` boolean property to any `<CFormCheck>`.
+
+<Example code={ChecksRadiosInlineExampleRaw} name="ChecksRadiosInlineExample">
+  <ChecksRadiosInlineExample client:only="vue" />
+</Example>
+
+<Example code={ChecksRadiosInline2ExampleRaw} name="ChecksRadiosInline2Example">
+  <ChecksRadiosInline2Example client:only="vue" />
+</Example>
+
+## Without labels
+
+Remember to still provide some form of accessible name for assistive technologies (for instance, using `aria-label`).
+
+<Example code={ChecksRadiosWithoutLabelsExampleRaw} name="ChecksRadiosWithoutLabelsExample">
+  <ChecksRadiosWithoutLabelsExample client:only="vue" />
+</Example>
+
+## Toggle buttons
+
+Create button-like checkboxes and radio buttons by using `button` boolean property on the `<CFormCheck>` component. These toggle buttons can further be grouped in a button group if needed.
+
+### Checkbox toggle buttons
+
+<Example code={ChecksRadiosCheckboxToggleButtonsExampleRaw} name="ChecksRadiosCheckboxToggleButtonsExample">
+  <ChecksRadiosCheckboxToggleButtonsExample client:only="vue" />
+</Example>
+
+<Example code={ChecksRadiosCheckboxToggleButtons2ExampleRaw} name="ChecksRadiosCheckboxToggleButtons2Example">
+  <ChecksRadiosCheckboxToggleButtons2Example client:only="vue" />
+</Example>
+
+<Example code={ChecksRadiosCheckboxToggleButtons3ExampleRaw} name="ChecksRadiosCheckboxToggleButtons3Example">
+  <ChecksRadiosCheckboxToggleButtons3Example client:only="vue" />
+</Example>
+
+### Radio toggle buttons
+
+<Example code={ChecksRadiosRadioToggleButtonsExampleRaw} name="ChecksRadiosRadioToggleButtonsExample">
+  <ChecksRadiosRadioToggleButtonsExample client:only="vue" />
+</Example>
+
+### Outlined styles
+
+Different variants of button, such at the various outlined styles, are supported.
+
+<Example code={ChecksRadiosOutlinedStylesExampleRaw} name="ChecksRadiosOutlinedStylesExample">
+  <ChecksRadiosOutlinedStylesExample client:only="vue" />
+</Example>

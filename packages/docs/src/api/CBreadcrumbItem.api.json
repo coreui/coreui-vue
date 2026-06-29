@@ -1,0 +1,24 @@
+{
+  "name": "CBreadcrumbItem",
+  "props": [
+    {
+      "name": "active",
+      "type": "boolean",
+      "default": null,
+      "description": "Toggle the active state for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "href",
+      "type": "string",
+      "default": null,
+      "description": "The `href` attribute for the inner link component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CBreadcrumbItem } from '@coreui/vue'"
+}

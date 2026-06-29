@@ -1,0 +1,7 @@
+{
+  "name": "CHeaderText",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CHeaderText } from '@coreui/vue'"
+}

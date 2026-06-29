@@ -1,0 +1,54 @@
+{
+  "name": "CWidgetStatsC",
+  "props": [
+    {
+      "name": "color",
+      "type": "Color",
+      "default": null,
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "inverse",
+      "type": "boolean",
+      "default": null,
+      "description": "Colors have been inverted from their default dark shade.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "progress",
+      "type": "shape({\n  /**\n   * Sets the color context of the progress bar to one of CoreUI’s themed colors\n   *\n   * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'\n   */\n  color: Color,\n  /**\n   * The percent to progress the ProgressBar (out of 100).\n   */\n  value: {\n    type: Number,\n    default: 0,\n  },\n})",
+      "default": null,
+      "description": "",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "default": null,
+      "description": "Title for your component. If you want to pass non-string value please use dedicated slot `<template #title>...</template>`",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "value",
+      "type": "number|string",
+      "default": "0",
+      "description": "Value for your component. If you want to pass non-string or non-number value please use dedicated slot `<template #value>...</template>`",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "icon",
+      "description": "Location for icon component.",
+      "bindings": []
+    }
+  ],
+  "imports": "import { CWidgetStatsC } from '@coreui/vue'"
+}

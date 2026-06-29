@@ -1,0 +1,30 @@
+{
+  "name": "CWidgetStatsE",
+  "props": [
+    {
+      "name": "title",
+      "type": "string",
+      "default": null,
+      "description": "Title for your component. If you want to pass non-string value please use dedicated slot `<template #title>...</template>`",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "value",
+      "type": "number|string",
+      "default": "0",
+      "description": "Value for your component. If you want to pass non-string or non-number value please use dedicated slot `<template #value>...</template>`",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [
+    {
+      "name": "chart",
+      "description": "Location for chart component.",
+      "bindings": []
+    }
+  ],
+  "imports": "import { CWidgetStatsE } from '@coreui/vue'"
+}

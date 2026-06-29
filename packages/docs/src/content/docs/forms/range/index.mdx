@@ -1,0 +1,54 @@
+---
+title: "Vue Range Component"
+name: "Range"
+description: "Vue range component. Use our custom range inputs for consistent cross-browser styling and built-in customization."
+otherFrameworks:
+  - range
+---
+
+import FormRangeExample from './examples/FormRangeExample.vue'
+import FormRangeExampleRaw from './examples/FormRangeExample.vue?raw'
+import FormRangeDisabledExample from './examples/FormRangeDisabledExample.vue'
+import FormRangeDisabledExampleRaw from './examples/FormRangeDisabledExample.vue?raw'
+import FormRangeMinAndMaxExample from './examples/FormRangeMinAndMaxExample.vue'
+import FormRangeMinAndMaxExampleRaw from './examples/FormRangeMinAndMaxExample.vue?raw'
+import FormRangeStepsExample from './examples/FormRangeStepsExample.vue'
+import FormRangeStepsExampleRaw from './examples/FormRangeStepsExample.vue?raw'
+
+## Overview
+
+Create custom `<input type="range">` controls with `<CFormRange>`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only Edge Legacy and Firefox supports "filling" their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.
+
+<Example code={FormRangeExampleRaw} name="FormRangeExample">
+  <FormRangeExample client:only="vue" />
+</Example>
+
+## Disabled
+
+Add the `disabled` boolean attribute on an input to give it a grayed out appearance and remove pointer events.
+
+<Example code={FormRangeDisabledExampleRaw} name="FormRangeDisabledExample">
+  <FormRangeDisabledExample client:only="vue" />
+</Example>
+
+## Min and max
+
+Range inputs have implicit values for `min` and `max`—`0` and `100`, respectively. You may specify new values for those using the `min` and `max` attributes.
+
+<Example code={FormRangeMinAndMaxExampleRaw} name="FormRangeMinAndMaxExample">
+  <FormRangeMinAndMaxExample client:only="vue" />
+</Example>
+
+## Steps
+
+By default, range inputs "snap" to integer values. To change this, you can specify a `step` value. In the example below, we double the number of steps by using `:step="0.5"`.
+
+<Example code={FormRangeStepsExampleRaw} name="FormRangeStepsExample">
+  <FormRangeStepsExample client:only="vue" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CFormRange /&gt;](./api/#cformrange)

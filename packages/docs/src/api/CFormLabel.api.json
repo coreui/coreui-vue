@@ -1,0 +1,16 @@
+{
+  "name": "CFormLabel",
+  "props": [
+    {
+      "name": "customClassName",
+      "type": "array|string",
+      "default": null,
+      "description": "A string of all className you want to be applied to the component, and override standard className value.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CFormLabel } from '@coreui/vue'"
+}

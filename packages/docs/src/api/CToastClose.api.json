@@ -1,0 +1,22 @@
+{
+  "name": "CToastClose",
+  "props": [
+    {
+      "name": "as",
+      "type": "",
+      "default": null,
+      "description": "Component used for the root node. Either a string to use a HTML element or a component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [
+    {
+      "name": "close",
+      "description": "Event called before the dissmiss animation has started.",
+      "properties": []
+    }
+  ],
+  "slots": [],
+  "imports": "import { CToastClose } from '@coreui/vue'"
+}

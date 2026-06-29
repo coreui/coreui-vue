@@ -1,0 +1,31 @@
+---
+title: "Vue Search Button Component Styling"
+name: "Search Button Styling"
+description: "Learn how to customize the Vue Search Button component with CSS classes, variables, and SASS for flexible styling and seamless integration into your design."
+---
+
+### CSS variables
+
+Vue Search Button uses local CSS variables on `.search-button` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+```sass
+--cui-search-button-height: #{$search-button-height};
+--cui-search-button-padding-x: #{$search-button-padding-x};
+--cui-search-button-font-family: #{$search-button-font-family};
+--cui-search-button-font-size: #{$search-button-font-size};
+--cui-search-button-font-weight: #{$search-button-font-weight};
+--cui-search-button-color: #{$search-button-color};
+--cui-search-button-bg: #{$search-button-bg};
+--cui-search-button-border-width: #{$search-button-border-width};
+--cui-search-button-border-color: #{$search-button-border-color};
+--cui-search-button-border-radius: #{$search-button-border-radius};
+```
+
+#### How to use CSS variables
+
+```vue
+<template>
+  <CSearchButton placeholder="Search docs" :style="customVars" @trigger="() => {}" />
+</template>
+
+```

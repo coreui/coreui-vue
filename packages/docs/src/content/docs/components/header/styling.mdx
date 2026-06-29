@@ -1,0 +1,30 @@
+---
+title: "Vue Header Component Styling"
+name: "Header Styling"
+description: "Learn how to customize the Vue Header component with CSS classes, variables, and SASS for flexible styling and seamless integration into your design."
+---
+
+### CSS variables
+
+Vue headers use local CSS variables on `.header` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+<ScssDocs file="_header.scss" capture="header-css-vars"/>
+
+#### How to use CSS variables
+
+```vue
+<template>
+  <CHeader :style="vars">...</CHeader>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-header-color': '#333',
+  '--cui-header-bg': '#f8f9fa',
+}
+</script>
+```
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="header-variables"/>

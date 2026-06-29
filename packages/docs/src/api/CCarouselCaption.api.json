@@ -1,0 +1,7 @@
+{
+  "name": "CCarouselCaption",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CCarouselCaption } from '@coreui/vue'"
+}

@@ -1,0 +1,32 @@
+{
+  "name": "CCard",
+  "props": [
+    {
+      "name": "color",
+      "type": "Color",
+      "default": null,
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "textBgColor",
+      "type": "Color",
+      "default": null,
+      "description": "Sets the component's color scheme to one of CoreUI's themed colors, ensuring the text color contrast adheres to the WCAG 4.5:1 contrast ratio standard for accessibility.",
+      "since": "5.0.0",
+      "deprecated": null
+    },
+    {
+      "name": "textColor",
+      "type": "TextColor",
+      "default": null,
+      "description": "Sets the text color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CCard } from '@coreui/vue'"
+}

@@ -1,0 +1,40 @@
+---
+title: "Vue Spinner Component Styling"
+name: "Spinner Styling"
+description: "Learn how to customize the Vue Spinner component with CSS classes, variables, and SASS for flexible styling and seamless integration into your design."
+---
+
+### CSS variables
+
+Vue spinners use local CSS variables on `.spinner-border` and `.spinner-grow` for enhanced real-time customization. Values for the CSS variables are set via Sass, so Sass customization is still supported, too.
+
+Border spinner variables:
+
+<ScssDocs file="_spinners.scss" capture="spinner-border-css-vars"/>
+
+Growing spinner variables:
+
+<ScssDocs file="_spinners.scss" capture="spinner-grow-css-vars"/>
+
+For both spinners, small spinner modifier classes are used to update the values of these CSS variables as needed. For example, the `.spinner-border-sm` class does the following:
+
+<ScssDocs file="_spinners.scss" capture="spinner-border-sm-css-vars"/>
+
+#### How to use CSS variables
+
+```vue
+<template>
+  <CSpinner :style="vars">...</CSpinner>
+</template>
+
+<script setup>
+const vars = {
+  '--cui-spinner-width': '1rem',
+  '--cui-spinner-height': '1rem',
+}
+</script>
+```
+
+### SASS variables
+
+<ScssDocs file="_variables.scss" capture="spinner-variables"/>

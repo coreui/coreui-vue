@@ -1,0 +1,83 @@
+---
+title: "Vue Avatar Component"
+name: "Avatar"
+description: "The Vue Avatar component is used to display circular user profile pictures. Vue avatars can portray people or objects and support images, icons, or letters."
+otherFrameworks:
+  - avatar
+---
+
+import AvatarImage from './examples/AvatarImage.vue'
+import AvatarImageRaw from './examples/AvatarImage.vue?raw'
+import AvatarLetter from './examples/AvatarLetter.vue'
+import AvatarLetterRaw from './examples/AvatarLetter.vue?raw'
+import AvatarIcon from './examples/AvatarIcon.vue'
+import AvatarIconRaw from './examples/AvatarIcon.vue?raw'
+import AvatarRounded from './examples/AvatarRounded.vue'
+import AvatarRoundedRaw from './examples/AvatarRounded.vue?raw'
+import AvatarSquare from './examples/AvatarSquare.vue'
+import AvatarSquareRaw from './examples/AvatarSquare.vue?raw'
+import AvatarSizes from './examples/AvatarSizes.vue'
+import AvatarSizesRaw from './examples/AvatarSizes.vue?raw'
+import AvatarWithStatus from './examples/AvatarWithStatus.vue'
+import AvatarWithStatusRaw from './examples/AvatarWithStatus.vue?raw'
+
+## Image avatars
+
+Showcase Vue avatars using images. These avatars are typically circular and can display user profile pictures.
+
+<Example code={AvatarImageRaw} name="AvatarImage">
+  <AvatarImage client:only="vue" />
+</Example>
+
+## Letter avatars
+
+Use letters inside avatars to represent users or objects when images are not available. This can be useful for displaying initials.
+
+<Example code={AvatarLetterRaw} name="AvatarLetter">
+  <AvatarLetter client:only="vue" />
+</Example>
+
+## Icons avatars 
+
+Incorporate icons within Vue avatars, allowing for a visual representation using scalable vector graphics (SVG).
+
+<Example code={AvatarIconRaw} name="AvatarIcon">
+  <AvatarIcon client:only="vue" />
+</Example>
+
+## Rounded avatars
+
+Use the `shape="rounded"` prop to make avatars squared with rounded corners.
+
+<Example code={AvatarRoundedRaw} name="AvatarRounded">
+  <AvatarRounded client:only="vue" />
+</Example>
+## Square avatars
+
+Use the `shape="rounded-0"` prop to make avatars squared.
+
+<Example code={AvatarSquareRaw} name="AvatarSquare">
+  <AvatarSquare client:only="vue" />
+</Example>
+
+## Sizes
+
+Fancy larger or smaller avatar? Add `size="xl"`, `size="lg"`, `size="md"` or `size="sm"` for additional sizes.
+
+<Example code={AvatarSizesRaw} name="AvatarSizes">
+  <AvatarSizes client:only="vue" />
+</Example>
+
+## Avatars with status
+
+Add a status indicator to avatars using the `status` property to show online or offline status.
+
+<Example code={AvatarWithStatusRaw} name="AvatarWithStatus">
+  <AvatarWithStatus client:only="vue" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CAvatar /&gt;](./api/#cavatar)

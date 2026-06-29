@@ -1,0 +1,44 @@
+---
+title: "Vue Close Button Component"
+name: "Close Button"
+description: "A generic close button component for dismissing content like modals and alerts."
+otherFrameworks:
+  - close-button
+---
+
+import CloseButtonExample from './examples/CloseButtonExample.vue'
+import CloseButtonExampleRaw from './examples/CloseButtonExample.vue?raw'
+import CloseButtonDisabledExample from './examples/CloseButtonDisabledExample.vue'
+import CloseButtonDisabledExampleRaw from './examples/CloseButtonDisabledExample.vue?raw'
+import CloseButtonDarkExample from './examples/CloseButtonDarkExample.vue'
+import CloseButtonDarkExampleRaw from './examples/CloseButtonDarkExample.vue?raw'
+
+## Example
+
+Provide an option to dismiss or close a component with `<CCloseButton>`. Default styling is limited, but highly customizable. Modify the Sass variables to replace the default `background-image`.
+
+<Example code={CloseButtonExampleRaw} name="CloseButtonExample">
+  <CloseButtonExample client:only="vue" />
+</Example>
+
+## Disabled state
+
+Disabled close buttons change their `opacity`. We've also applied `pointer-events: none` and `user-select: none` to preventing hover and active states from triggering.
+
+<Example code={CloseButtonDisabledExampleRaw} name="CloseButtonDisabledExample">
+  <CloseButtonDisabledExample client:only="vue" />
+</Example>
+
+## Dark variant
+
+Add `dark` boolean property to the `<CCloseButton>`, to invert the close button. This uses the filter property to invert the background-image without overriding its value.
+
+<Example code={CloseButtonDarkExampleRaw} name="CloseButtonDarkExample">
+  <CloseButtonDarkExample client:only="vue" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CCloseButton /&gt;](./api/#cclosebutton)

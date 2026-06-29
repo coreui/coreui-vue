@@ -1,0 +1,11 @@
+<template>
+  <CNavbar color-scheme="light" class="bg-light" placement="sticky-top">
+    <CContainer fluid>
+      <CNavbarBrand href="#">Sticky top</CNavbarBrand>
+    </CContainer>
+  </CNavbar>
+</template>
+
+<script setup>
+import { CNavbar, CContainer, CNavbarBrand } from '@coreui/vue'
+</script>

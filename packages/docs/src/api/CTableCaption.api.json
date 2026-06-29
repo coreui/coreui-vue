@@ -1,0 +1,7 @@
+{
+  "name": "CTableCaption",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CTableCaption } from '@coreui/vue'"
+}

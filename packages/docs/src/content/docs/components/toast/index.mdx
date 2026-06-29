@@ -1,0 +1,95 @@
+---
+title: "Vue Toast Component"
+name: "Toast"
+description: "Push notifications to your visitors with a toast, a lightweight and easily customizable alert message."
+otherFrameworks:
+  - toast
+---
+
+import ToastExample from './examples/ToastExample.vue'
+import ToastExampleRaw from './examples/ToastExample.vue?raw'
+import ToastLiveExample from './examples/ToastLiveExample.vue'
+import ToastLiveExampleRaw from './examples/ToastLiveExample.vue?raw'
+import ToastTranslucentExample from './examples/ToastTranslucentExample.vue'
+import ToastTranslucentExampleRaw from './examples/ToastTranslucentExample.vue?raw'
+import ToastStackingExample from './examples/ToastStackingExample.vue'
+import ToastStackingExampleRaw from './examples/ToastStackingExample.vue?raw'
+import ToastCustomContentExample from './examples/ToastCustomContentExample.vue'
+import ToastCustomContentExampleRaw from './examples/ToastCustomContentExample.vue?raw'
+import ToastCustomContent2Example from './examples/ToastCustomContent2Example.vue'
+import ToastCustomContent2ExampleRaw from './examples/ToastCustomContent2Example.vue?raw'
+import ToastColorSchemesExample from './examples/ToastColorSchemesExample.vue'
+import ToastColorSchemesExampleRaw from './examples/ToastColorSchemesExample.vue?raw'
+
+Vue toasts are lightweight notifications designed to mimic the push notifications that have been popularized by mobile and desktop operating systems. They’re built with flexbox, so they’re easy to align and position.
+
+## Overview
+
+Things to know when using the toast plugin:
+
+- Toasts are opt-in for performance reasons, so **you must initialize them yourself**.
+- Toasts will automatically hide if you do not specify `autohide: false`.
+
+## Examples
+
+### Basic
+
+To encourage extensible and predictable toasts, we recommend a header and body. Toast headers use `display: flex`, allowing easy alignment of content thanks to our margin and flexbox utilities.
+
+Toasts are as flexible as you need and have very little required markup. At a minimum, we require a single element to contain your "toasted" content and strongly encourage a dismiss button.
+
+<Example code={ToastExampleRaw} name="ToastExample">
+  <ToastExample client:only="vue" />
+</Example>
+
+<Example code={ToastLiveExampleRaw} name="ToastLiveExample">
+  <ToastLiveExample client:only="vue" />
+</Example>
+
+### Translucent
+
+Toasts are slightly translucent to blend in with what's below them.
+
+<Example code={ToastTranslucentExampleRaw} name="ToastTranslucentExample">
+  <ToastTranslucentExample client:only="vue" />
+</Example>
+
+### Stacking
+
+You can stack toasts by wrapping them in a toast container, which will vertically add some spacing.
+
+<Example code={ToastStackingExampleRaw} name="ToastStackingExample">
+  <ToastStackingExample client:only="vue" />
+</Example>
+
+### Custom content
+
+Customize your toasts by removing sub-components, tweaking them with [utilities](https://coreui.io/bootstrap/docs/utilities/api), or by adding your own markup. Here we've created a simpler toast by removing the default `<CToastHeader>`, adding a custom hide icon from [CoreUI Icons](https://coreui.io/icons/), and using some [flexbox utilities](https://coreui.io/bootstrap/docs/utilities/flex) to adjust the layout.
+
+<Example code={ToastCustomContentExampleRaw} name="ToastCustomContentExample">
+  <ToastCustomContentExample client:only="vue" />
+</Example>
+
+Alternatively, you can also add additional controls and components to toasts.
+
+<Example code={ToastCustomContent2ExampleRaw} name="ToastCustomContent2Example">
+  <ToastCustomContent2Example client:only="vue" />
+</Example>
+
+### Color schemes
+
+Building on the above example, you can create different toast color schemes with our [color](https://coreui.io/bootstrap/docs/utilities/colors) and [background](https://coreui.io/bootstrap/docs/utilities/background) utilities. Here we've set `color="primary"` and added `.text-white` class to the `<Ctoast>`, and then set `white` property to our close button. For a crisp edge, we remove the default border with `.border-0`.
+
+<Example code={ToastColorSchemesExampleRaw} name="ToastColorSchemesExample">
+  <ToastColorSchemesExample client:only="vue" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CToast /&gt;](./api/#ctoast)
+- [&lt;CToastHeader /&gt;](./api/#ctoastheader)
+- [&lt;CToastBody /&gt;](./api/#ctoastbody)
+- [&lt;CToastClose /&gt;](./api/#ctoastclose)
+- [&lt;CToaster /&gt;](./api/#ctoaster)

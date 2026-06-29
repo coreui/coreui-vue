@@ -1,0 +1,40 @@
+{
+  "name": "CTableDataCell",
+  "props": [
+    {
+      "name": "active",
+      "type": "boolean",
+      "default": null,
+      "description": "Highlight a table row or cell.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "align",
+      "type": "string",
+      "default": null,
+      "description": "Set the vertical aligment.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "color",
+      "type": "Color",
+      "default": null,
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "scope",
+      "type": "string",
+      "default": null,
+      "description": "",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CTableDataCell } from '@coreui/vue'"
+}

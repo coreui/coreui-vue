@@ -1,0 +1,7 @@
+{
+  "name": "CSidebarHeader",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CSidebarHeader } from '@coreui/vue'"
+}

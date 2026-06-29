@@ -1,0 +1,32 @@
+{
+  "name": "CListGroup",
+  "props": [
+    {
+      "name": "as",
+      "type": "string",
+      "default": "'ul'",
+      "description": "Component used for the root node. Either a string to use a HTML element or a component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "flush",
+      "type": "boolean",
+      "default": null,
+      "description": "Remove some borders and rounded corners to render list group items edge-to-edge in a parent component (e.g., `<CCard>`)",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "layout",
+      "type": "string",
+      "default": null,
+      "description": "Specify a layout type.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CListGroup } from '@coreui/vue'"
+}

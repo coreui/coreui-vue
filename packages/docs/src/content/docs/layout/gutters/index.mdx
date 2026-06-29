@@ -1,0 +1,76 @@
+---
+title: "Gutters"
+name: "Gutters"
+description: "Gutters are the padding between your columns, used to responsively space and align content in the CoreUI for Vue.js grid system."
+---
+
+import GuttersHorizontalGuttersExample from './examples/GuttersHorizontalGuttersExample.vue'
+import GuttersHorizontalGuttersExampleRaw from './examples/GuttersHorizontalGuttersExample.vue?raw'
+import GuttersHorizontalGutters2Example from './examples/GuttersHorizontalGutters2Example.vue'
+import GuttersHorizontalGutters2ExampleRaw from './examples/GuttersHorizontalGutters2Example.vue?raw'
+import GuttersVerticalGuttersExample from './examples/GuttersVerticalGuttersExample.vue'
+import GuttersVerticalGuttersExampleRaw from './examples/GuttersVerticalGuttersExample.vue?raw'
+import GuttersHorizontalVerticalGuttersExample from './examples/GuttersHorizontalVerticalGuttersExample.vue'
+import GuttersHorizontalVerticalGuttersExampleRaw from './examples/GuttersHorizontalVerticalGuttersExample.vue?raw'
+import GuttersRowColumnsGuttersExample from './examples/GuttersRowColumnsGuttersExample.vue'
+import GuttersRowColumnsGuttersExampleRaw from './examples/GuttersRowColumnsGuttersExample.vue?raw'
+import GuttersNoGuttersExample from './examples/GuttersNoGuttersExample.vue'
+import GuttersNoGuttersExampleRaw from './examples/GuttersNoGuttersExample.vue?raw'
+
+## How they work
+
+- **Gutters are the gaps between column content, created by horizontal `padding`.** We set `padding-right` and `padding-left` on each column, and use negative `margin` to offset that at the start and end of each row to align content.
+
+- **Gutters start at `1.5rem` (`24px`) wide.** This allows us to match our grid to the [padding and margin spacers](https://coreui.io/bootstrap/docs/utilities/spacing) scale.
+
+- **Gutters can be responsively adjusted.** Use breakpoint-specific gutter props to modify horizontal gutters, vertical gutters, and all gutters.
+
+## Horizontal gutters
+
+`:{breakpoint}="{ gutterX: * }"` props can be used to control the horizontal gutter widths. The `<CContainer>` or `<CContainer fluid>` parent may need to be adjusted if larger gutters are used too to avoid unwanted overflow, using a matching padding utility. For example, in the following example we've increased the padding with `.px-4`:
+
+<Example code={GuttersHorizontalGuttersExampleRaw} name="GuttersHorizontalGuttersExample">
+  <GuttersHorizontalGuttersExample client:only="vue" />
+</Example>
+
+An alternative solution is to add a wrapper around the `<CRow>` with the `.overflow-hidden` class:
+
+<Example code={GuttersHorizontalGutters2ExampleRaw} name="GuttersHorizontalGutters2Example">
+  <GuttersHorizontalGutters2Example client:only="vue" />
+</Example>
+
+## Vertical gutters
+
+`:{breakpoint}="{ gutterY: * }"` props can be used to control the vertical gutter widths. Like the horizontal gutters, the vertical gutters can cause some overflow below the `<CRow>` at the end of a page. If this occurs, you add a wrapper around `<CRow>` with the `.overflow-hidden` class:
+
+<Example code={GuttersVerticalGuttersExampleRaw} name="GuttersVerticalGuttersExample">
+  <GuttersVerticalGuttersExample client:only="vue" />
+</Example>
+
+## Horizontal & vertical gutters
+
+`:{breakpoint}="{ gutter: * }"` props can be used to control the horizontal gutter widths, for the following example we use a smaller gutter width, so there won't be a need to add the `.overflow-hidden` wrapper class.
+
+<Example code={GuttersHorizontalVerticalGuttersExampleRaw} name="GuttersHorizontalVerticalGuttersExample">
+  <GuttersHorizontalVerticalGuttersExample client:only="vue" />
+</Example>
+
+## Row columns gutters
+
+Gutter props can also be added to [row columns](../layout/grid#row-columns). In the following example, we use responsive row columns and responsive gutter props.
+
+<Example code={GuttersRowColumnsGuttersExampleRaw} name="GuttersRowColumnsGuttersExample">
+  <GuttersRowColumnsGuttersExample client:only="vue" />
+</Example>
+
+## No gutters
+
+The gutters between columns in our predefined grid props can be removed with `:{breakpoint}="{ gutter: 0 }"`. This removes the negative `margin`s from `<CRow>` and the horizontal `padding` from all immediate children columns.
+
+**Need an edge-to-edge design?** Drop the parent `<CContainer>` or `<CContainer fluid>`.
+
+In practice, here's how it looks. Note you can continue to use this with all other predefined grid props (including column widths, responsive tiers, reorders, and more).
+
+<Example code={GuttersNoGuttersExampleRaw} name="GuttersNoGuttersExample">
+  <GuttersNoGuttersExample client:only="vue" />
+</Example>

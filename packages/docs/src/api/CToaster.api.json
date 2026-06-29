@@ -1,0 +1,16 @@
+{
+  "name": "CToaster",
+  "props": [
+    {
+      "name": "placement",
+      "type": "string",
+      "default": null,
+      "description": "Describes the placement of component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CToaster } from '@coreui/vue'"
+}

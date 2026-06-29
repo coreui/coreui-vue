@@ -1,0 +1,113 @@
+---
+title: "Vue Bootstrap Input group Component"
+name: "Input group with Bootstrap Styling"
+bootstrap: true
+description: "Learn how to use CoreUI’s Vue Input group component with Bootstrap styles for flexible, framework-consistent UI."
+---
+
+import InputGroupExample from './examples/InputGroupExample.vue'
+import InputGroupExampleRaw from './examples/InputGroupExample.vue?raw'
+import InputGroupWrappingExample from './examples/InputGroupWrappingExample.vue'
+import InputGroupWrappingExampleRaw from './examples/InputGroupWrappingExample.vue?raw'
+import InputGroupSizingExample from './examples/InputGroupSizingExample.vue'
+import InputGroupSizingExampleRaw from './examples/InputGroupSizingExample.vue?raw'
+import InputGroupCheckboxesAndRadiosExample from './examples/InputGroupCheckboxesAndRadiosExample.vue'
+import InputGroupCheckboxesAndRadiosExampleRaw from './examples/InputGroupCheckboxesAndRadiosExample.vue?raw'
+import InputGroupMultipleInputsExample from './examples/InputGroupMultipleInputsExample.vue'
+import InputGroupMultipleInputsExampleRaw from './examples/InputGroupMultipleInputsExample.vue?raw'
+import InputGroupMultipleAddonsExample from './examples/InputGroupMultipleAddonsExample.vue'
+import InputGroupMultipleAddonsExampleRaw from './examples/InputGroupMultipleAddonsExample.vue?raw'
+import InputGroupButtonAddonsExample from './examples/InputGroupButtonAddonsExample.vue'
+import InputGroupButtonAddonsExampleRaw from './examples/InputGroupButtonAddonsExample.vue?raw'
+import InputGroupButtonsWithDropdownsExample from './examples/InputGroupButtonsWithDropdownsExample.vue'
+import InputGroupButtonsWithDropdownsExampleRaw from './examples/InputGroupButtonsWithDropdownsExample.vue?raw'
+import InputGroupSegmentedButtonsExample from './examples/InputGroupSegmentedButtonsExample.vue'
+import InputGroupSegmentedButtonsExampleRaw from './examples/InputGroupSegmentedButtonsExample.vue?raw'
+import InputGroupCustomSelectExample from './examples/InputGroupCustomSelectExample.vue'
+import InputGroupCustomSelectExampleRaw from './examples/InputGroupCustomSelectExample.vue?raw'
+import InputGroupCustomFileInputExample from './examples/InputGroupCustomFileInputExample.vue'
+import InputGroupCustomFileInputExampleRaw from './examples/InputGroupCustomFileInputExample.vue?raw'
+
+## Basic example
+
+Place one add-on or button on either side of an input. You may also place one on both sides of an input. Remember to place `<CFormLabel>`s outside the input group.
+
+<Example class="theme-bootstrap" code={InputGroupExampleRaw} name="InputGroupExample">
+  <InputGroupExample client:only="vue" />
+</Example>
+
+## Wrapping
+
+Input groups wrap by default via `flex-wrap: wrap` in order to accommodate custom form field validation within an input group. You may disable this with `.flex-nowrap`.
+
+<Example class="theme-bootstrap" code={InputGroupWrappingExampleRaw} name="InputGroupWrappingExample">
+  <InputGroupWrappingExample client:only="vue" />
+</Example>
+
+## Sizing
+
+Add the relative form sizing classes to the `<CInputGroup>` itself and contents within will automatically resize—no need for repeating the form control size classes on each element.
+
+**Sizing on the individual input group elements isn't supported.**
+
+<Example class="theme-bootstrap" code={InputGroupSizingExampleRaw} name="InputGroupSizingExample">
+  <InputGroupSizingExample client:only="vue" />
+</Example>
+
+## Checkboxes and radios
+
+Place any checkbox or radio option within an input group's addon instead of text.
+
+<Example class="theme-bootstrap" code={InputGroupCheckboxesAndRadiosExampleRaw} name="InputGroupCheckboxesAndRadiosExample">
+  <InputGroupCheckboxesAndRadiosExample client:only="vue" />
+</Example>
+
+## Multiple inputs
+
+While multiple `<CFormInput>`s are supported visually, validation styles are only available for input groups with a single `<CFormInput>`.
+
+<Example class="theme-bootstrap" code={InputGroupMultipleInputsExampleRaw} name="InputGroupMultipleInputsExample">
+  <InputGroupMultipleInputsExample client:only="vue" />
+</Example>
+
+## Multiple addons
+
+Multiple add-ons are supported and can be mixed with checkbox and radio input versions.
+
+<Example class="theme-bootstrap" code={InputGroupMultipleAddonsExampleRaw} name="InputGroupMultipleAddonsExample">
+  <InputGroupMultipleAddonsExample client:only="vue" />
+</Example>
+
+## Button addons
+
+<Example class="theme-bootstrap" code={InputGroupButtonAddonsExampleRaw} name="InputGroupButtonAddonsExample">
+  <InputGroupButtonAddonsExample client:only="vue" />
+</Example>
+
+## Buttons with dropdowns
+
+<Example class="theme-bootstrap" code={InputGroupButtonsWithDropdownsExampleRaw} name="InputGroupButtonsWithDropdownsExample">
+  <InputGroupButtonsWithDropdownsExample client:only="vue" />
+</Example>
+
+## Segmented buttons
+
+<Example class="theme-bootstrap" code={InputGroupSegmentedButtonsExampleRaw} name="InputGroupSegmentedButtonsExample">
+  <InputGroupSegmentedButtonsExample client:only="vue" />
+</Example>
+
+## Custom forms
+
+Input groups include support for custom selects and custom file inputs. Browser default versions of these are not supported.
+
+### Custom select
+
+<Example class="theme-bootstrap" code={InputGroupCustomSelectExampleRaw} name="InputGroupCustomSelectExample">
+  <InputGroupCustomSelectExample client:only="vue" />
+</Example>
+
+### Custom file input
+
+<Example class="theme-bootstrap" code={InputGroupCustomFileInputExampleRaw} name="InputGroupCustomFileInputExample">
+  <InputGroupCustomFileInputExample client:only="vue" />
+</Example>

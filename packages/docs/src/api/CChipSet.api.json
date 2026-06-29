@@ -1,0 +1,109 @@
+{
+  "name": "CChipSet",
+  "props": [
+    {
+      "name": "as",
+      "type": "string",
+      "default": "'div'",
+      "description": "Component used for the root node. Either a string to use a HTML element or a component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "chips",
+      "type": "(string | CChipSetItem)[]",
+      "default": "undefined",
+      "description": "Renders chips from data instead of the default slot. Each item is a string or an object with a `value`, an optional `label`, and any `CChip` props. The slot is used when this is omitted.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": null,
+      "description": "Disables every chip rendered by the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "filter",
+      "type": "boolean",
+      "default": null,
+      "description": "Turns the chips into filter chips, each showing a leading check icon while selected.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "removable",
+      "type": "boolean",
+      "default": null,
+      "description": "Displays a remove button on every chip rendered by the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "removeIcon",
+      "type": "string|object",
+      "default": "undefined",
+      "description": "Replaces the default remove icon on every chip with a custom icon node.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "selectable",
+      "type": "boolean",
+      "default": null,
+      "description": "Enables selection behavior for the chips rendered by the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "selected",
+      "type": "string[]",
+      "default": "undefined",
+      "description": "The selected chip values passed using `v-model:selected`.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "selectedIcon",
+      "type": "string|object",
+      "default": "undefined",
+      "description": "Replaces the default selected icon shown by filter chips with a custom icon node.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "selectionMode",
+      "type": "string",
+      "default": "'multiple'",
+      "description": "Sets how many chips can be selected at once.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [
+    {
+      "name": "remove",
+      "description": "Event occurs when a chip requests removal, with its value.",
+      "properties": []
+    },
+    {
+      "name": "select",
+      "description": "Event occurs when the selected chip values change.",
+      "properties": []
+    },
+    {
+      "name": "update:chips",
+      "description": "Emit the chips without the removed one (for `v-model:chips`).",
+      "properties": []
+    },
+    {
+      "name": "update:selected",
+      "description": "Emit the new selected values whenever the selection changes (for `v-model:selected`).",
+      "properties": []
+    }
+  ],
+  "slots": [],
+  "imports": "import { CChipSet } from '@coreui/vue'"
+}

@@ -1,0 +1,11 @@
+---
+title: "Vue Breadcrumb Component Accessibility"
+name: "Breadcrumb Accessibility"
+description: "Detailed overview of the accessibility features implemented in CoreUI Vue Breadcrumb, ensuring compliance with WAI-ARIA guidelines."
+---
+
+## Accessibility
+
+Since breadcrumbs provide navigation, it's useful to add a significant label such as `aria-label="breadcrumb"` to explain the type of navigation implemented in the `<nav>` element. You should also add an `aria-current="page"` to the last item of the set to show that it represents the current page. **CoreUI for Vue.js automatically add all of this labels to breadcrumb's components.** 
+
+For more information, see the [WAI-ARIA Authoring Practices for the breadcrumb pattern](https://www.w3.org/TR/wai-aria-practices/#breadcrumb).

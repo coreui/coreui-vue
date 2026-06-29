@@ -1,0 +1,7 @@
+{
+  "name": "CButtonToolbar",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CButtonToolbar } from '@coreui/vue'"
+}

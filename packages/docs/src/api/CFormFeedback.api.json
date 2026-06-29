@@ -1,0 +1,40 @@
+{
+  "name": "CFormFeedback",
+  "props": [
+    {
+      "name": "as",
+      "type": "string",
+      "default": "'div'",
+      "description": "Component used for the root node. Either a string to use a HTML element or a component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "invalid",
+      "type": "boolean",
+      "default": null,
+      "description": "Method called immediately after the `value` prop changes.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "tooltip",
+      "type": "boolean",
+      "default": null,
+      "description": "If your form layout allows it, you can display validation feedback in a styled tooltip.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "valid",
+      "type": "boolean",
+      "default": null,
+      "description": "Set component validation state to valid.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CFormFeedback } from '@coreui/vue'"
+}

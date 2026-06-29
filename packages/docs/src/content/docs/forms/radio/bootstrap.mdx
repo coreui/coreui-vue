@@ -1,0 +1,97 @@
+---
+title: "Vue Bootstrap Checks & radios Component"
+name: "Checks & radios with Bootstrap Styling"
+bootstrap: true
+description: "Learn how to use CoreUI’s Vue Checks & radios component with Bootstrap styles for flexible, framework-consistent UI."
+---
+
+import RadioExample from './examples/RadioExample.vue'
+import RadioExampleRaw from './examples/RadioExample.vue?raw'
+import RadioDisabledExample from './examples/RadioDisabledExample.vue'
+import RadioDisabledExampleRaw from './examples/RadioDisabledExample.vue?raw'
+import RadioInlineExample from './examples/RadioInlineExample.vue'
+import RadioInlineExampleRaw from './examples/RadioInlineExample.vue?raw'
+import RadioStackedExample from './examples/RadioStackedExample.vue'
+import RadioStackedExampleRaw from './examples/RadioStackedExample.vue?raw'
+import RadioReverseExample from './examples/RadioReverseExample.vue'
+import RadioReverseExampleRaw from './examples/RadioReverseExample.vue?raw'
+import RadioWithoutLabelsExample from './examples/RadioWithoutLabelsExample.vue'
+import RadioWithoutLabelsExampleRaw from './examples/RadioWithoutLabelsExample.vue?raw'
+import RadioToggleButtonsExample from './examples/RadioToggleButtonsExample.vue'
+import RadioToggleButtonsExampleRaw from './examples/RadioToggleButtonsExample.vue?raw'
+import RadioToggleButtonsOutlinedStylesExample from './examples/RadioToggleButtonsOutlinedStylesExample.vue'
+import RadioToggleButtonsOutlinedStylesExampleRaw from './examples/RadioToggleButtonsOutlinedStylesExample.vue?raw'
+import RadioOutlinedStylesExample from './examples/RadioOutlinedStylesExample.vue'
+import RadioOutlinedStylesExampleRaw from './examples/RadioOutlinedStylesExample.vue?raw'
+
+## Approach
+
+Browser default radios are replaced with the help of `<CFormCheck radio>`. Radios are for selecting one option from many.
+
+## Radios
+
+Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input's state.
+
+<Example class="theme-bootstrap" code={RadioExampleRaw} name="RadioExample">
+  <RadioExample client:only="vue" />
+</Example>
+
+### vModel
+
+<Example class="theme-bootstrap" code={RadioDisabledExampleRaw} name="RadioDisabledExample">
+  <RadioDisabledExample client:only="vue" />
+</Example>
+
+### Disabled
+
+<Example class="theme-bootstrap" code={RadioInlineExampleRaw} name="RadioInlineExample">
+  <RadioInlineExample client:only="vue" />
+</Example>
+
+## Default (stacked)
+
+By default, any number of radios that are immediate sibling will be vertically stacked and appropriately spaced.
+
+<Example class="theme-bootstrap" code={RadioStackedExampleRaw} name="RadioStackedExample">
+  <RadioStackedExample client:only="vue" />
+</Example>
+
+## Inline
+
+Group radios on the same horizontal row by adding `inline` boolean property to any `<CFormCheck>`.
+
+<Example class="theme-bootstrap" code={RadioReverseExampleRaw} name="RadioReverseExample">
+  <RadioReverseExample client:only="vue" />
+</Example>
+
+## Reverse 
+
+Put your radios on the opposite side by adding `reverse` boolean property.
+
+<Example class="theme-bootstrap" code={RadioWithoutLabelsExampleRaw} name="RadioWithoutLabelsExample">
+  <RadioWithoutLabelsExample client:only="vue" />
+</Example>
+
+## Without labels
+
+Remember to still provide some form of accessible name for assistive technologies (for instance, using `aria-label`).
+
+<Example class="theme-bootstrap" code={RadioToggleButtonsExampleRaw} name="RadioToggleButtonsExample">
+  <RadioToggleButtonsExample client:only="vue" />
+</Example>
+
+## Toggle buttons
+
+Create button-like radio buttons by using `button` boolean property on the `<CFormCheck>` component. These toggle buttons can further be grouped in a button group if needed.
+
+<Example class="theme-bootstrap" code={RadioToggleButtonsOutlinedStylesExampleRaw} name="RadioToggleButtonsOutlinedStylesExample">
+  <RadioToggleButtonsOutlinedStylesExample client:only="vue" />
+</Example>
+
+### Outlined styles
+
+Different variants of button, such at the various outlined styles, are supported.
+
+<Example class="theme-bootstrap" code={RadioOutlinedStylesExampleRaw} name="RadioOutlinedStylesExample">
+  <RadioOutlinedStylesExample client:only="vue" />
+</Example>

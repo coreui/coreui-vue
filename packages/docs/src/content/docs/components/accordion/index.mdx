@@ -1,0 +1,47 @@
+---
+title: "Vue Accordion Component"
+name: "Accordion"
+description: "Build vertically collapsing accordions in combination with our Vue Collapse component."
+otherFrameworks:
+  - accordion
+---
+
+import AccordionExample from './examples/AccordionExample.vue'
+import AccordionExampleRaw from './examples/AccordionExample.vue?raw'
+import AccordionFlushExample from './examples/AccordionFlushExample.vue'
+import AccordionFlushExampleRaw from './examples/AccordionFlushExample.vue?raw'
+import AccordionAlwaysOpenExample from './examples/AccordionAlwaysOpenExample.vue'
+import AccordionAlwaysOpenExampleRaw from './examples/AccordionAlwaysOpenExample.vue?raw'
+
+## Examples
+
+Click the accordions below to expand/collapse the accordion content.
+
+<Example code={AccordionExampleRaw} name="AccordionExample">
+  <AccordionExample client:only="vue" />
+</Example>
+
+### Flush
+
+Add `flush` to remove the default `background-color`, some borders, and some rounded corners to render accordions edge-to-edge with their parent container.
+
+<Example code={AccordionFlushExampleRaw} name="AccordionFlushExample">
+  <AccordionFlushExample client:only="vue" />
+</Example>
+
+### Always open
+
+Add `always-open` property to make accordion items stay open when another item is opened.
+
+<Example code={AccordionAlwaysOpenExampleRaw} name="AccordionAlwaysOpenExample">
+  <AccordionAlwaysOpenExample client:only="vue" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CAccordion /&gt;](./api/#caccordion)
+- [&lt;CAccordionBody /&gt;](./api/#caccordionbody)
+- [&lt;CAccordionHeader /&gt;](./api/#caccordionheader)
+- [&lt;CAccordionItem /&gt;](./api/#caccordionitem)

@@ -1,0 +1,7 @@
+{
+  "name": "CSidebarFooter",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CSidebarFooter } from '@coreui/vue'"
+}

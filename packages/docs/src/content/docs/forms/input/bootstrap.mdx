@@ -1,0 +1,103 @@
+---
+title: "Vue Bootstrap Form input Component"
+name: "Form input with Bootstrap Styling"
+bootstrap: true
+description: "Learn how to use CoreUI’s Vue Form input component with Bootstrap styles for flexible, framework-consistent UI."
+---
+
+import FormInputExample from './examples/FormInputExample.vue'
+import FormInputExampleRaw from './examples/FormInputExample.vue?raw'
+import FormInputSizingExample from './examples/FormInputSizingExample.vue'
+import FormInputSizingExampleRaw from './examples/FormInputSizingExample.vue?raw'
+import FormInputDisabledExample from './examples/FormInputDisabledExample.vue'
+import FormInputDisabledExampleRaw from './examples/FormInputDisabledExample.vue?raw'
+import FormInputReadonlyExample from './examples/FormInputReadonlyExample.vue'
+import FormInputReadonlyExampleRaw from './examples/FormInputReadonlyExample.vue?raw'
+import FormInputReadonlyPlainTextExample from './examples/FormInputReadonlyPlainTextExample.vue'
+import FormInputReadonlyPlainTextExampleRaw from './examples/FormInputReadonlyPlainTextExample.vue?raw'
+import FormInputReadonlyPlainText2Example from './examples/FormInputReadonlyPlainText2Example.vue'
+import FormInputReadonlyPlainText2ExampleRaw from './examples/FormInputReadonlyPlainText2Example.vue?raw'
+import FormInputFileExample from './examples/FormInputFileExample.vue'
+import FormInputFileExampleRaw from './examples/FormInputFileExample.vue?raw'
+import FormInputColorExample from './examples/FormInputColorExample.vue'
+import FormInputColorExampleRaw from './examples/FormInputColorExample.vue?raw'
+
+## Example
+
+<Example class="theme-bootstrap" code={FormInputExampleRaw} name="FormInputExample">
+  <FormInputExample client:only="vue" />
+</Example>
+
+If you need to add custom classs to form's components, or need to add some custom elements you can add each form component separately. Please check the example below.
+
+```vue
+<CForm>
+  <CFormLabel for="exampleFormControlInput1">Email address</CFormLabel>
+  <CFormInput type="email" id="exampleFormControlInput1" placeholder="name@example.com" aria-describedby="exampleFormControlInputHelpInline" />
+  <CFormText as="span" id="exampleFormControlInputHelpInline">
+    Must be 8-20 characters long.
+  </CFormText>
+</CForm>
+```
+
+You can also use slots.
+
+```vue
+<CFormInput
+  type="email"
+  id="exampleFormControlInput1"
+  placeholder="name@example.com"
+  aria-describedby="exampleFormControlInputHelpInline"
+>
+  <template #label>Email address</template>
+  <template #text>Must be 8-20 characters long.</template>
+</CFormInput>
+```
+
+## Sizing
+
+Set heights using `size` property like `size="lg"` and `size="sm"`.
+
+<Example class="theme-bootstrap" code={FormInputSizingExampleRaw} name="FormInputSizingExample">
+  <FormInputSizingExample client:only="vue" />
+</Example>
+
+## Disabled
+
+Add the `disabled` boolean attribute on an input to give it a grayed out appearance and remove pointer events.
+
+<Example class="theme-bootstrap" code={FormInputDisabledExampleRaw} name="FormInputDisabledExample">
+  <FormInputDisabledExample client:only="vue" />
+</Example>
+
+## Readonly
+
+Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
+
+<Example class="theme-bootstrap" code={FormInputReadonlyExampleRaw} name="FormInputReadonlyExample">
+  <FormInputReadonlyExample client:only="vue" />
+</Example>
+
+## Readonly plain text
+
+If you want to have `<input readonly>` elements in your form styled as plain text, use the `plain-text` boolean property to remove the default form field styling and preserve the correct margin and padding.
+
+<Example class="theme-bootstrap" code={FormInputReadonlyPlainTextExampleRaw} name="FormInputReadonlyPlainTextExample">
+  <FormInputReadonlyPlainTextExample client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={FormInputReadonlyPlainText2ExampleRaw} name="FormInputReadonlyPlainText2Example">
+  <FormInputReadonlyPlainText2Example client:only="vue" />
+</Example>
+
+## File input
+
+<Example class="theme-bootstrap" code={FormInputFileExampleRaw} name="FormInputFileExample">
+  <FormInputFileExample client:only="vue" />
+</Example>
+
+## Color
+
+<Example class="theme-bootstrap" code={FormInputColorExampleRaw} name="FormInputColorExample">
+  <FormInputColorExample client:only="vue" />
+</Example>

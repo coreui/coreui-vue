@@ -1,0 +1,86 @@
+{
+  "name": "CButton",
+  "props": [
+    {
+      "name": "active",
+      "type": "boolean",
+      "default": null,
+      "description": "Toggle the active state for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "as",
+      "type": "string",
+      "default": "'button'",
+      "description": "Component used for the root node. Either a string to use a HTML element or a component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "color",
+      "type": "Color",
+      "default": null,
+      "description": "Sets the color context of the component to one of CoreUI’s themed colors.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": null,
+      "description": "Toggle the disabled state for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "href",
+      "type": "string",
+      "default": null,
+      "description": "The href attribute specifies the URL of the page the link goes to.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "shape",
+      "type": "Shape",
+      "default": null,
+      "description": "Select the shape of the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "size",
+      "type": "string",
+      "default": null,
+      "description": "Size the component small or large.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "default": "'button'",
+      "description": "Specifies the type of button. Always specify the type attribute for the `<button>` element.\nDifferent browsers may use different default types for the `<button>` element.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "variant",
+      "type": "string",
+      "default": null,
+      "description": "Set the button variant to an outlined button or a ghost button.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [
+    {
+      "name": "click",
+      "description": "Event called when the user clicks on the button.",
+      "properties": []
+    }
+  ],
+  "slots": [],
+  "imports": "import { CButton } from '@coreui/vue'"
+}

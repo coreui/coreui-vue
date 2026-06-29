@@ -1,0 +1,7 @@
+{
+  "name": "CFormFloating",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CFormFloating } from '@coreui/vue'"
+}

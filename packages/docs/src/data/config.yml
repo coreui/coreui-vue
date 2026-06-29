@@ -1,0 +1,39 @@
+siteName: CoreUI
+edition: free
+framework: Vue.js
+frameworkKey: vue
+gtm: GTM-KX4JH47
+
+header:
+  pricing: https://coreui.io/pricing/?framework=vue&src=vue-docs&cta=coreui-header-pricing
+  github: https://github.com/coreui/coreui-vue/
+  x: https://x.com/core_ui
+  discord: https://discord.gg/pQRWe5XdGm
+  hireUs: https://coreui.io/about/services/?docs=coreui-header-button
+  getCoreUI: https://coreui.io/pricing/?framework=vue&docs=coreui-header-button
+
+seo:
+  url: https://coreui.io/vue/docs
+  titleTemplate: "%s · CoreUI"
+  description: CoreUI for Vue.js is a UI component library written in TypeScript and ready for your next Vue.js project.
+  image: https://coreui.io/vue/docs/images/coreui-vue-social.jpg
+  twitter: core_ui
+  author: CoreUI
+  themeColor: "#321fdb"
+  favicon: /favicon.svg
+  breadcrumb:
+    - { name: CoreUI, item: https://coreui.io }
+    - { name: Vue, item: https://coreui.io/vue/ }
+    - { name: Documentation, item: https://coreui.io/vue/docs/ }
+
+# Carbon Ads — shown only on free component pages. Same serve/placement as the live
+# Vue docs (serve=CEAICKJY&placement=coreuiio).
+ads:
+  code: CEAICKJY
+  placement: coreuiio
+
+# DocSearch (Algolia) — the live Vue docs keys.
+search:
+  appId: RG8RW9GEH3
+  apiKey: 4926b633296d71c6d727f7766170f82b
+  indexName: coreuivue

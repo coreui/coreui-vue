@@ -1,0 +1,22 @@
+{
+  "name": "CTabs",
+  "props": [
+    {
+      "name": "activeItemKey",
+      "type": "number|string",
+      "default": null,
+      "description": "The active item key.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [
+    {
+      "name": "change",
+      "description": "The callback is fired when the active tab changes.",
+      "properties": []
+    }
+  ],
+  "slots": [],
+  "imports": "import { CTabs } from '@coreui/vue'"
+}

@@ -1,0 +1,394 @@
+---
+title: "Vue Bootstrap Table Component"
+name: "Table with Bootstrap Styling"
+bootstrap: true
+description: "Learn how to use CoreUI’s Vue Table component with Bootstrap styles for flexible, framework-consistent UI."
+---
+
+import TableExample from './examples/TableExample.vue'
+import TableExampleRaw from './examples/TableExample.vue?raw'
+import TableVariantsExample from './examples/TableVariantsExample.vue'
+import TableVariantsExampleRaw from './examples/TableVariantsExample.vue?raw'
+import TableStripedRowsExample from './examples/TableStripedRowsExample.vue'
+import TableStripedRowsExampleRaw from './examples/TableStripedRowsExample.vue?raw'
+import TableStripedColumnsExample from './examples/TableStripedColumnsExample.vue'
+import TableStripedColumnsExampleRaw from './examples/TableStripedColumnsExample.vue?raw'
+import TableStripedColumns2Example from './examples/TableStripedColumns2Example.vue'
+import TableStripedColumns2ExampleRaw from './examples/TableStripedColumns2Example.vue?raw'
+import TableStripedColumns3Example from './examples/TableStripedColumns3Example.vue'
+import TableStripedColumns3ExampleRaw from './examples/TableStripedColumns3Example.vue?raw'
+import TableStripedColumns4Example from './examples/TableStripedColumns4Example.vue'
+import TableStripedColumns4ExampleRaw from './examples/TableStripedColumns4Example.vue?raw'
+import TableStripedColumns5Example from './examples/TableStripedColumns5Example.vue'
+import TableStripedColumns5ExampleRaw from './examples/TableStripedColumns5Example.vue?raw'
+import TableHoverableRowsExample from './examples/TableHoverableRowsExample.vue'
+import TableHoverableRowsExampleRaw from './examples/TableHoverableRowsExample.vue?raw'
+import TableHoverableRows2Example from './examples/TableHoverableRows2Example.vue'
+import TableHoverableRows2ExampleRaw from './examples/TableHoverableRows2Example.vue?raw'
+import TableHoverableRows3Example from './examples/TableHoverableRows3Example.vue'
+import TableHoverableRows3ExampleRaw from './examples/TableHoverableRows3Example.vue?raw'
+import TableActiveTablesExample from './examples/TableActiveTablesExample.vue'
+import TableActiveTablesExampleRaw from './examples/TableActiveTablesExample.vue?raw'
+import TableActiveTables2Example from './examples/TableActiveTables2Example.vue'
+import TableActiveTables2ExampleRaw from './examples/TableActiveTables2Example.vue?raw'
+import TableBorderedTablesExample from './examples/TableBorderedTablesExample.vue'
+import TableBorderedTablesExampleRaw from './examples/TableBorderedTablesExample.vue?raw'
+import TableBorderedTables2Example from './examples/TableBorderedTables2Example.vue'
+import TableBorderedTables2ExampleRaw from './examples/TableBorderedTables2Example.vue?raw'
+import TableTablesWithoutBordersExample from './examples/TableTablesWithoutBordersExample.vue'
+import TableTablesWithoutBordersExampleRaw from './examples/TableTablesWithoutBordersExample.vue?raw'
+import TableTablesWithoutBorders2Example from './examples/TableTablesWithoutBorders2Example.vue'
+import TableTablesWithoutBorders2ExampleRaw from './examples/TableTablesWithoutBorders2Example.vue?raw'
+import TableSmallTablesExample from './examples/TableSmallTablesExample.vue'
+import TableSmallTablesExampleRaw from './examples/TableSmallTablesExample.vue?raw'
+import TableVerticalAlignmentExample from './examples/TableVerticalAlignmentExample.vue'
+import TableVerticalAlignmentExampleRaw from './examples/TableVerticalAlignmentExample.vue?raw'
+import TableNestingExample from './examples/TableNestingExample.vue'
+import TableNestingExampleRaw from './examples/TableNestingExample.vue?raw'
+import TableTableHeadExample from './examples/TableTableHeadExample.vue'
+import TableTableHeadExampleRaw from './examples/TableTableHeadExample.vue?raw'
+import TableTableHead2Example from './examples/TableTableHead2Example.vue'
+import TableTableHead2ExampleRaw from './examples/TableTableHead2Example.vue?raw'
+import TableTableFootExample from './examples/TableTableFootExample.vue'
+import TableTableFootExampleRaw from './examples/TableTableFootExample.vue?raw'
+import TableCaptionsExample from './examples/TableCaptionsExample.vue'
+import TableCaptionsExampleRaw from './examples/TableCaptionsExample.vue?raw'
+import TableCaptions2Example from './examples/TableCaptions2Example.vue'
+import TableCaptions2ExampleRaw from './examples/TableCaptions2Example.vue?raw'
+import TableResponsiveTablesExample from './examples/TableResponsiveTablesExample.vue'
+import TableResponsiveTablesExampleRaw from './examples/TableResponsiveTablesExample.vue?raw'
+import TableResponsiveTables2Example from './examples/TableResponsiveTables2Example.vue'
+import TableResponsiveTables2ExampleRaw from './examples/TableResponsiveTables2Example.vue?raw'
+import TableResponsiveTables3Example from './examples/TableResponsiveTables3Example.vue'
+import TableResponsiveTables3ExampleRaw from './examples/TableResponsiveTables3Example.vue?raw'
+import TableResponsiveTables4Example from './examples/TableResponsiveTables4Example.vue'
+import TableResponsiveTables4ExampleRaw from './examples/TableResponsiveTables4Example.vue?raw'
+import TableResponsiveTables5Example from './examples/TableResponsiveTables5Example.vue'
+import TableResponsiveTables5ExampleRaw from './examples/TableResponsiveTables5Example.vue?raw'
+import TableResponsiveTables6Example from './examples/TableResponsiveTables6Example.vue'
+import TableResponsiveTables6ExampleRaw from './examples/TableResponsiveTables6Example.vue?raw'
+
+## How to use Vue Table Component
+
+Due to the widespread use of `<CTable>` elements across third-party widgets like calendars and date pickers, CoreUI's tables are **opt-in**. All table styles are not inherited in CoreUI, meaning any nested tables can be styled independent from the parent.
+
+Using the most basic table CoreUI, here's how `<CTable>`-based tables look in CoreUI.
+
+<Example class="theme-bootstrap" code={TableExampleRaw} name="TableExample">
+  <TableExample client:only="vue" />
+</Example>
+In version **4.5.0** we introduced a new way to create a table, similarly to our [Smart Table component](https://coreui.io/vue/docs/components/smart-table/).
+
+```vue
+<template>
+  <CTable :columns="columns" :items="items" />
+</template>
+```
+
+You can also put all table components together manually as hitherto.
+
+```vue
+<CTable>
+  <CTableHead>
+    <CTableRow>
+      <CTableHeaderCell scope="col">#</CTableHeaderCell>
+      <CTableHeaderCell scope="col">Class</CTableHeaderCell>
+      <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
+      <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
+    </CTableRow>
+  </CTableHead>
+  <CTableBody>
+    <CTableRow>
+      <CTableHeaderCell scope="row">1</CTableHeaderCell>
+      <CTableDataCell>Mark</CTableDataCell>
+      <CTableDataCell>Otto</CTableDataCell>
+      <CTableDataCell>@mdo</CTableDataCell>
+    </CTableRow>
+    <CTableRow>
+      <CTableHeaderCell scope="row">2</CTableHeaderCell>
+      <CTableDataCell>Jacob</CTableDataCell>
+      <CTableDataCell>Thornton</CTableDataCell>
+      <CTableDataCell>@fat</CTableDataCell>
+    </CTableRow>
+    <CTableRow>
+      <CTableHeaderCell scope="row">3</CTableHeaderCell>
+      <CTableDataCell colspan="2">Larry the Bird</CTableDataCell>
+      <CTableDataCell>@twitter</CTableDataCell>
+    </CTableRow>
+  </CTableBody>
+</CTable>
+```
+
+## Variants
+
+Use contextual classes to color tables, table rows or individual cells.
+
+<Example class="theme-bootstrap" code={TableVariantsExampleRaw} name="TableVariantsExample">
+  <TableVariantsExample client:only="vue" />
+</Example>
+
+Since version **4.5.0** also this way.
+
+```vue
+<template>
+  <CTable :columns="columnsVariantExample" :items="itemsVariantExample" />
+</template>
+```
+
+## Accented tables
+
+### Striped rows
+
+Use `striped` property to add zebra-striping to any table row within the `<CTableBody>`.
+
+<Example class="theme-bootstrap" code={TableStripedRowsExampleRaw} name="TableStripedRowsExample">
+  <TableStripedRowsExample client:only="vue" />
+</Example>
+
+### Striped columns
+
+Use `stripedColumns` boolean property to add zebra-striping to any table column.
+
+<Example class="theme-bootstrap" code={TableStripedColumnsExampleRaw} name="TableStripedColumnsExample">
+  <TableStripedColumnsExample client:only="vue" />
+</Example>
+
+These classes can also be added to table variants:
+
+<Example class="theme-bootstrap" code={TableStripedColumns2ExampleRaw} name="TableStripedColumns2Example">
+  <TableStripedColumns2Example client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={TableStripedColumns3ExampleRaw} name="TableStripedColumns3Example">
+  <TableStripedColumns3Example client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={TableStripedColumns4ExampleRaw} name="TableStripedColumns4Example">
+  <TableStripedColumns4Example client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={TableStripedColumns5ExampleRaw} name="TableStripedColumns5Example">
+  <TableStripedColumns5Example client:only="vue" />
+</Example>
+
+### Hoverable rows
+
+Use `hover` property to enable a hover state on table rows within a `<CTableBody>`.
+
+<Example class="theme-bootstrap" code={TableHoverableRowsExampleRaw} name="TableHoverableRowsExample">
+  <TableHoverableRowsExample client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={TableHoverableRows2ExampleRaw} name="TableHoverableRows2Example">
+  <TableHoverableRows2Example client:only="vue" />
+</Example>
+
+These hoverable rows can also be combined with the striped variant:
+
+<Example class="theme-bootstrap" code={TableHoverableRows3ExampleRaw} name="TableHoverableRows3Example">
+  <TableHoverableRows3Example client:only="vue" />
+</Example>
+
+### Active tables
+
+Highlight a table row or cell by adding a `active` property.
+
+<Example class="theme-bootstrap" code={TableActiveTablesExampleRaw} name="TableActiveTablesExample">
+  <TableActiveTablesExample client:only="vue" />
+</Example>
+As mentioned before since version **4.5.0** we have two ways to generate tables, also with custom properties for rows, and cells.
+
+```vue
+<template>
+  <CTable :columns="columnsActiveTableExample" :items="itemsActiveTableExample" />
+</template>
+```
+
+```vue
+<CTable>
+  <CTableHead>
+    <CTableRow>
+      <CTableHeaderCell scope="col">#</CTableHeaderCell>
+      <CTableHeaderCell scope="col">Class</CTableHeaderCell>
+      <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
+      <CTableHeaderCell scope="col">Heading</CTableHeaderCell>
+    </CTableRow>
+  </CTableHead>
+  <CTableBody>
+    <CTableRow active>
+      <CTableHeaderCell scope="row">1</CTableHeaderCell>
+      <CTableDataCell>Mark</CTableDataCell>
+      <CTableDataCell>Otto</CTableDataCell>
+      <CTableDataCell>@mdo</CTableDataCell>
+    </CTableRow>
+    <CTableRow>
+      <CTableHeaderCell scope="row">2</CTableHeaderCell>
+      <CTableDataCell>Jacob</CTableDataCell>
+      <CTableDataCell>Thornton</CTableDataCell>
+      <CTableDataCell>@fat</CTableDataCell>
+    </CTableRow>
+    <CTableRow>
+      <CTableHeaderCell scope="row">3</CTableHeaderCell>
+      <CTableDataCell colspan="2" active>Larry the Bird</CTableDataCell>
+      <CTableDataCell>@twitter</CTableDataCell>
+    </CTableRow>
+  </CTableBody>
+</CTable>
+```
+
+<Example class="theme-bootstrap" code={TableActiveTables2ExampleRaw} name="TableActiveTables2Example">
+  <TableActiveTables2Example client:only="vue" />
+</Example>
+
+## Table borders
+
+### Bordered tables
+
+Add `bordered` property for borders on all sides of the table and cells.
+
+<Example class="theme-bootstrap" code={TableBorderedTablesExampleRaw} name="TableBorderedTablesExample">
+  <TableBorderedTablesExample client:only="vue" />
+</Example>
+
+[Border color utilities](https://coreui.io/bootstrap/docs/utilities/borders#border-color) can be added to change colors:
+
+<Example class="theme-bootstrap" code={TableBorderedTables2ExampleRaw} name="TableBorderedTables2Example">
+  <TableBorderedTables2Example client:only="vue" />
+</Example>
+
+### Tables without borders
+
+Add `borderless` property for a table without borders.
+
+<Example class="theme-bootstrap" code={TableTablesWithoutBordersExampleRaw} name="TableTablesWithoutBordersExample">
+  <TableTablesWithoutBordersExample client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={TableTablesWithoutBorders2ExampleRaw} name="TableTablesWithoutBorders2Example">
+  <TableTablesWithoutBorders2Example client:only="vue" />
+</Example>
+
+## Small tables
+
+Add `small` property to make any `<CTable>` more compact by cutting all cell `padding` in half.
+
+<Example class="theme-bootstrap" code={TableSmallTablesExampleRaw} name="TableSmallTablesExample">
+  <TableSmallTablesExample client:only="vue" />
+</Example>
+
+## Vertical alignment
+
+Table cells of `<CTableHead>` are always vertical aligned to the bottom. Table cells in `<CTableBody>` inherit their alignment from `<CTable>` and are aligned to the the top by default. Use the align property to re-align where needed.
+
+<Example class="theme-bootstrap" code={TableVerticalAlignmentExampleRaw} name="TableVerticalAlignmentExample">
+  <TableVerticalAlignmentExample client:only="vue" />
+</Example>
+
+## Nesting
+
+Border styles, active styles, and table variants are not inherited by nested tables.
+
+<Example class="theme-bootstrap" code={TableNestingExampleRaw} name="TableNestingExample">
+  <TableNestingExample client:only="vue" />
+</Example>
+
+## Anatomy
+
+### Table head
+
+Similar to tables and dark tables, use the modifier prop `color="light"` or `color="dark"` to make `<CTableHead>`s appear light or dark gray.
+
+<Example class="theme-bootstrap" code={TableTableHeadExampleRaw} name="TableTableHeadExample">
+  <TableTableHeadExample client:only="vue" />
+</Example>
+
+If you generate a table using the new method incorporated in version **4.5.0**, you have to use tableHeadProps property to pass properties to the table header component.
+
+```vue
+<template>
+  <CTable :columns="columns" :items="items" :tableHeadProps="{ color: 'light' }" />
+</template>
+```
+
+<Example class="theme-bootstrap" code={TableTableHead2ExampleRaw} name="TableTableHead2Example">
+  <TableTableHead2Example client:only="vue" />
+</Example>
+
+Starting from version **4.5.0** also this way.
+
+```vue
+<template>
+  <CTable :columns="columns" :items="items" :tableHeadProps="{ color: 'dark' }" />
+</template>
+```
+
+### Table foot
+
+<Example class="theme-bootstrap" code={TableTableFootExampleRaw} name="TableTableFootExample">
+  <TableTableFootExample client:only="vue" />
+</Example>
+
+Starting from version **4.5.0** also this way.
+
+```vue
+<template>
+  <CTable :columns="columns" :footer="footer" :items="items" :tableHeadProps="{ color: 'dark' }" />
+</template>
+```
+
+### Captions
+
+A `<CTableCaption>` functions like a heading for a table. It helps users with screen readers to find a table and understand what it's about and decide if they want to read it.
+
+<Example class="theme-bootstrap" code={TableCaptionsExampleRaw} name="TableCaptionsExample">
+  <TableCaptionsExample client:only="vue" />
+</Example>
+
+Starting from version **4.5.0** also this way.
+
+```vue
+<template>
+  <CTable caption="List of users" :columns="columns" :items="items"  />
+</template>
+```
+
+You can also put the `<CTableCaption>` on the top of the table with `caption="top"`.
+
+<Example class="theme-bootstrap" code={TableCaptions2ExampleRaw} name="TableCaptions2Example">
+  <TableCaptions2Example client:only="vue" />
+</Example>
+
+Since version **4.5.0** also this way.
+
+```vue
+<template>
+  <CTable captionTop="List of users" :columns="columns" :items="items"  />
+</template>
+```
+## Responsive tables
+
+Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by adding a `responsive` property. Or, pick a maximum breakpoint with which to have a responsive table up to by using `responsive="{-sm|-md|-lg|-xl|-xxl}"`.
+
+<Example class="theme-bootstrap" code={TableResponsiveTablesExampleRaw} name="TableResponsiveTablesExample">
+  <TableResponsiveTablesExample client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={TableResponsiveTables2ExampleRaw} name="TableResponsiveTables2Example">
+  <TableResponsiveTables2Example client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={TableResponsiveTables3ExampleRaw} name="TableResponsiveTables3Example">
+  <TableResponsiveTables3Example client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={TableResponsiveTables4ExampleRaw} name="TableResponsiveTables4Example">
+  <TableResponsiveTables4Example client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={TableResponsiveTables5ExampleRaw} name="TableResponsiveTables5Example">
+  <TableResponsiveTables5Example client:only="vue" />
+</Example>
+
+<Example class="theme-bootstrap" code={TableResponsiveTables6ExampleRaw} name="TableResponsiveTables6Example">
+  <TableResponsiveTables6Example client:only="vue" />
+</Example>

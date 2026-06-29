@@ -1,0 +1,7 @@
+{
+  "name": "CTabContent",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CTabContent } from '@coreui/vue'"
+}

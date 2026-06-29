@@ -1,0 +1,28 @@
+---
+title: "Vue Navs & Tabs Component API"
+name: "Navs & Tabs API"
+description: "Explore the API reference for the Vue Navs & Tabs component and discover how to effectively utilize its props for customization."
+---
+
+import CNavData from '@api/CNav.api.json'
+import CNavGroupData from '@api/CNavGroup.api.json'
+import CNavItemData from '@api/CNavItem.api.json'
+import CNavLinkData from '@api/CNavLink.api.json'
+
+## CNav
+
+<Api data={CNavData} />
+
+## CNavGroup
+
+<Api data={CNavGroupData} />
+
+## CNavItem
+
+<Api data={CNavItemData} />
+
+`CNavItem` and `CNavLink` have the same properties. If you set the `href` property on `CNavItem` then, `CNavLink` will be generated inside `CNavItem`.
+
+## CNavLink
+
+<Api data={CNavLinkData} />

@@ -1,0 +1,69 @@
+---
+title: "Vue Bootstrap Popover Component"
+name: "Popover with Bootstrap Styling"
+bootstrap: true
+description: "Learn how to use CoreUI’s Vue Popover component with Bootstrap styles for flexible, framework-consistent UI."
+---
+
+import PopoverLiveExample from './examples/PopoverLiveExample.vue'
+import PopoverLiveExampleRaw from './examples/PopoverLiveExample.vue?raw'
+import PopoverFourDirectionsExample from './examples/PopoverFourDirectionsExample.vue'
+import PopoverFourDirectionsExampleRaw from './examples/PopoverFourDirectionsExample.vue?raw'
+import PopoverDismissExample from './examples/PopoverDismissExample.vue'
+import PopoverDismissExampleRaw from './examples/PopoverDismissExample.vue?raw'
+import PopoverDisabledElementsExample from './examples/PopoverDisabledElementsExample.vue'
+import PopoverDisabledElementsExampleRaw from './examples/PopoverDisabledElementsExample.vue?raw'
+import PopoverCustomPopoversExample from './examples/PopoverCustomPopoversExample.vue'
+import PopoverCustomPopoversExampleRaw from './examples/PopoverCustomPopoversExample.vue?raw'
+import PopoverDisabledElements2Example from './examples/PopoverDisabledElements2Example.vue'
+import PopoverDisabledElements2ExampleRaw from './examples/PopoverDisabledElements2Example.vue?raw'
+
+## Example
+
+### Component
+
+<Example class="theme-bootstrap" code={PopoverLiveExampleRaw} name="PopoverLiveExample">
+  <PopoverLiveExample client:only="vue" />
+</Example>
+
+### Directive
+
+<Example class="theme-bootstrap" code={PopoverFourDirectionsExampleRaw} name="PopoverFourDirectionsExample">
+  <PopoverFourDirectionsExample client:only="vue" />
+</Example>
+
+### Four directions
+
+Four options are available: top, right, bottom, and left aligned. Directions are mirrored when using CoreUI for Vue in RTL.
+
+#### Component
+
+<Example class="theme-bootstrap" code={PopoverDismissExampleRaw} name="PopoverDismissExample">
+  <PopoverDismissExample client:only="vue" />
+</Example>
+
+#### Directive
+
+<Example class="theme-bootstrap" code={PopoverDisabledElementsExampleRaw} name="PopoverDisabledElementsExample">
+  <PopoverDisabledElementsExample client:only="vue" />
+</Example>
+
+### Custom popovers
+
+You can customize the appearance of popovers using [CSS variables](#css-variables). We set a custom `style` to scope our custom appearance and use it to override some of the local CSS variables.
+
+<Example class="theme-bootstrap" code={PopoverCustomPopoversExampleRaw} name="PopoverCustomPopoversExample">
+  <PopoverCustomPopoversExample client:only="vue" />
+</Example>
+
+## Usage
+
+### Disabled elements
+
+Elements with the disabled attribute aren't interactive, meaning users cannot hover or click them to trigger a popover (or tooltip). As a workaround, you'll want to trigger the popover from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`.
+
+For disabled popover triggers, you may also prefer `:trigger="['hover', 'focus']"` so that the popover appears as immediate visual feedback to your users as they may not expect to click on a disabled element.
+
+<Example class="theme-bootstrap" code={PopoverDisabledElements2ExampleRaw} name="PopoverDisabledElements2Example">
+  <PopoverDisabledElements2Example client:only="vue" />
+</Example>

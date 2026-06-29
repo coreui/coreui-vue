@@ -1,0 +1,24 @@
+{
+  "name": "CButtonGroup",
+  "props": [
+    {
+      "name": "size",
+      "type": "string",
+      "default": null,
+      "description": "Size the component small or large.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "vertical",
+      "type": "boolean",
+      "default": null,
+      "description": "Create a set of buttons that appear vertically stacked rather than horizontally. Split button dropdowns are not supported here.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CButtonGroup } from '@coreui/vue'"
+}

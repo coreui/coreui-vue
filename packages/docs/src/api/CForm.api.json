@@ -1,0 +1,16 @@
+{
+  "name": "CForm",
+  "props": [
+    {
+      "name": "validated",
+      "type": "boolean",
+      "default": null,
+      "description": "Mark a form as validated. If you set it `true`, all validation styles will be applied to the forms component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CForm } from '@coreui/vue'"
+}

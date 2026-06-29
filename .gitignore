@@ -40,3 +40,4 @@ Thumbs.db
 *.vi
 *.zip
 *~
+.gstack/

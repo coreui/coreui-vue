@@ -1,0 +1,43 @@
+{
+  "name": "CNavGroup",
+  "props": [
+    {
+      "name": "as",
+      "type": "string",
+      "default": "'li'",
+      "description": "Component used for the root node. Either a string to use a HTML element or a component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "compact",
+      "type": "boolean",
+      "default": null,
+      "description": "Make nav group more compact by cutting all `padding` in half.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "default": "undefined",
+      "description": "Show nav group items. Acts as the initial state on its own, or as the controlled value\nwhen paired with a `v-model:visible` / `@update:visible` listener.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [
+    {
+      "name": "update:visible",
+      "description": "",
+      "properties": []
+    },
+    {
+      "name": "visible-change",
+      "description": "",
+      "properties": []
+    }
+  ],
+  "slots": [],
+  "imports": "import { CNavGroup } from '@coreui/vue'"
+}

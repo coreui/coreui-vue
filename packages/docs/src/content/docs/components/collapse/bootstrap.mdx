@@ -1,0 +1,41 @@
+---
+title: "Vue Bootstrap Collapse Component"
+name: "Collapse with Bootstrap Styling"
+bootstrap: true
+description: "Learn how to use CoreUI’s Vue Collapse component with Bootstrap styles for flexible, framework-consistent UI."
+---
+
+import CollapseExample from './examples/CollapseExample.vue'
+import CollapseExampleRaw from './examples/CollapseExample.vue?raw'
+import CollapseHorizontalExample from './examples/CollapseHorizontalExample.vue'
+import CollapseHorizontalExampleRaw from './examples/CollapseHorizontalExample.vue?raw'
+import CollapseMultipleTargetsExample from './examples/CollapseMultipleTargetsExample.vue'
+import CollapseMultipleTargetsExampleRaw from './examples/CollapseMultipleTargetsExample.vue?raw'
+
+## How it works
+
+The collapse component is used to show and hide content. Buttons or anchors are used as triggers that are mapped to specific elements you toggle. Collapsing an element will animate the `height` from its current value to `0`. Given how CSS handles animations, you cannot use `padding` on a `.collapse` element. Instead, use the class as an independent wrapping element.
+
+## Example
+
+You can use a link or a button component.
+
+<Example class="theme-bootstrap" code={CollapseExampleRaw} name="CollapseExample">
+  <CollapseExample client:only="vue" />
+</Example>
+
+## Horizontal
+
+The collapse plugin also supports horizontal collapsing. Add the `horizontal` property to transition the `width` instead of `height` and set a `width` on the immediate child element.
+
+<Example class="theme-bootstrap" code={CollapseHorizontalExampleRaw} name="CollapseHorizontalExample">
+  <CollapseHorizontalExample client:only="vue" />
+</Example>
+
+## Multiple targets
+
+A `<CButton>` can show and hide multiple elements.
+
+<Example class="theme-bootstrap" code={CollapseMultipleTargetsExampleRaw} name="CollapseMultipleTargetsExample">
+  <CollapseMultipleTargetsExample client:only="vue" />
+</Example>

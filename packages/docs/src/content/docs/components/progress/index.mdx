@@ -1,0 +1,133 @@
+---
+title: "Vue Progress Component"
+name: "Progress"
+description: "Documentation and examples for using Vue progress bars featuring support for stacked bars, animated backgrounds, and text labels."
+otherFrameworks:
+  - progress
+---
+
+import ProgressExample from './examples/ProgressExample.vue'
+import ProgressExampleRaw from './examples/ProgressExample.vue?raw'
+import ProgressLabelsExample from './examples/ProgressLabelsExample.vue'
+import ProgressLabelsExampleRaw from './examples/ProgressLabelsExample.vue?raw'
+import ProgressLabels2Example from './examples/ProgressLabels2Example.vue'
+import ProgressLabels2ExampleRaw from './examples/ProgressLabels2Example.vue?raw'
+import ProgressHeightExample from './examples/ProgressHeightExample.vue'
+import ProgressHeightExampleRaw from './examples/ProgressHeightExample.vue?raw'
+import ProgressHeight2Example from './examples/ProgressHeight2Example.vue'
+import ProgressHeight2ExampleRaw from './examples/ProgressHeight2Example.vue?raw'
+import ProgressBackgroundsExample from './examples/ProgressBackgroundsExample.vue'
+import ProgressBackgroundsExampleRaw from './examples/ProgressBackgroundsExample.vue?raw'
+import ProgressBackgrounds2Example from './examples/ProgressBackgrounds2Example.vue'
+import ProgressBackgrounds2ExampleRaw from './examples/ProgressBackgrounds2Example.vue?raw'
+import ProgressMultipleBarsExample from './examples/ProgressMultipleBarsExample.vue'
+import ProgressMultipleBarsExampleRaw from './examples/ProgressMultipleBarsExample.vue?raw'
+import ProgressAnimatedStripedExample from './examples/ProgressAnimatedStripedExample.vue'
+import ProgressAnimatedStripedExampleRaw from './examples/ProgressAnimatedStripedExample.vue?raw'
+
+## Example
+
+Progress components are built with two HTML elements, some CSS to set the width, and a few attributes. We don't use [the HTML5 `<progress>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress), ensuring you can stack progress bars, animate them, and place text labels over them.
+
+## Basic usage
+
+<Example code={ProgressExampleRaw} name="ProgressExample">
+  <ProgressExample client:only="vue" />
+</Example>
+
+## Labels
+
+Add labels to your progress bars by placing text within the `<CProgressBar>`.
+
+<Example code={ProgressLabelsExampleRaw} name="ProgressLabelsExample">
+  <ProgressLabelsExample client:only="vue" />
+</Example>
+
+Please note that the default setting for the content within the `<CProgressBar />` is to be limited by the `overflow: hidden property`, preventing it from extending beyond the bar's boundaries. If the progress bar is shorter than its label, the content will be truncated and could be difficult to read. To modify this behavior, you can utilize the `.overflow-visible` class from the overflow utilities. However, it is important to specify a specific text color to ensure readability. It's worth noting that this approach currently does not consider color modes.
+
+<Example code={ProgressLabels2ExampleRaw} name="ProgressLabels2Example">
+  <ProgressLabels2Example client:only="vue" />
+</Example>
+
+Since **v5.0.0** you can also use the `progressBarClassName` property directly on the `<CProgress />` component to achieve the same.
+
+```vue
+<CProgress progressBarClassName="overflow-visible text-dark px-2" color="success" :value="10">Long label text for the progress bar, set to a dark color</CProgress>
+```
+
+## Height
+
+We only set a `height` value on the `<CProgress>`, so if you change that value the inner `<CProgressBar>` will automatically resize accordingly.
+
+<Example code={ProgressHeightExampleRaw} name="ProgressHeightExample">
+  <ProgressHeightExample client:only="vue" />
+</Example>
+
+## Backgrounds
+
+Use `color` prop to change the appearance of individual progress bars.
+
+<Example code={ProgressHeight2ExampleRaw} name="ProgressHeight2Example">
+  <ProgressHeight2Example client:only="vue" />
+</Example>
+
+Ensure that when you incorporate labels into progress bars featuring a custom background color, you also select an appropriate text color to ensure readability and maintain adequate contrast for the labels.
+
+<Example code={ProgressBackgroundsExampleRaw} name="ProgressBackgroundsExample">
+  <ProgressBackgroundsExample client:only="vue" />
+</Example>
+
+Since **v5.0.0** you can also use the `progressBarClassName` property directly on the `<CProgress />` component to achieve the same.
+
+```vue
+<CProgress color="success" :value="25">25%</CProgress>
+<CProgress color="info" progressBarClassName="text-dark" :value="50">50%</CProgress>
+<CProgress color="warning" progressBarClassName="text-dark" :value="75">75%</CProgress>
+<CProgress color="danger" :value="100">100%</CProgress>
+```
+
+## Multiple bars
+
+Include multiple progress bars in a progress component if you need.
+
+<Callout color="info" title="New markup in v5.0.0">
+  In version 5.0.0, we introduced a new <code>&lt;CProgressStacked&gt;</code> component to more logically wrap multiple progress bars into a single stacked progress bar. The previous structure will continue to work until the next major version.
+</Callout>
+
+**New markup**
+
+<Example code={ProgressBackgrounds2ExampleRaw} name="ProgressBackgrounds2Example">
+  <ProgressBackgrounds2Example client:only="vue" />
+</Example>
+
+**Previous markup**
+```vue
+<CProgress>
+  <CProgressBar :value="15" />
+  <CProgressBar color="success" :value="30" />
+  <CProgressBar color="info" :value="20" />
+</CProgress>
+```
+
+## Striped
+
+Add `variant="striped"` to any `<CProgressBar>` to apply a stripe via CSS gradient over the progress bar's background color.
+
+<Example code={ProgressMultipleBarsExampleRaw} name="ProgressMultipleBarsExample">
+  <ProgressMultipleBarsExample client:only="vue" />
+</Example>
+
+## Animated stripes
+
+The striped gradient can also be animated. Add `animated` property to `<CProgressBar>` to animate the stripes right to left via CSS3 animations.
+
+<Example code={ProgressAnimatedStripedExampleRaw} name="ProgressAnimatedStripedExample">
+  <ProgressAnimatedStripedExample client:only="vue" />
+</Example>
+
+## API
+
+Check out the documentation below for a comprehensive guide to all the props you can use with the components mentioned here.
+
+- [&lt;CProgress /&gt;](./api/#cprogress)
+- [&lt;CProgressBar /&gt;](./api/#cprogressbar)

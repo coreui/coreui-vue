@@ -1,0 +1,83 @@
+{
+  "name": "CFormRange",
+  "props": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "default": null,
+      "description": "Toggle the disabled state for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "default": null,
+      "description": "Add a caption for a component.",
+      "since": "4.3.0",
+      "deprecated": null
+    },
+    {
+      "name": "max",
+      "type": "number",
+      "default": null,
+      "description": "Specifies the maximum value for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "min",
+      "type": "number",
+      "default": null,
+      "description": "Specifies the minimum value for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "modelValue",
+      "type": "string",
+      "default": null,
+      "description": "The default name for a value passed using v-model.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "readonly",
+      "type": "boolean",
+      "default": null,
+      "description": "Toggle the readonly state for the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "step",
+      "type": "number",
+      "default": null,
+      "description": "Specifies the interval between legal numbers in the component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "value",
+      "type": "number",
+      "default": null,
+      "description": "The `value` attribute of component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [
+    {
+      "name": "change",
+      "description": "Event occurs when the value has been changed.",
+      "properties": []
+    },
+    {
+      "name": "update:modelValue",
+      "description": "Emit the new value whenever there’s a change event.",
+      "properties": []
+    }
+  ],
+  "slots": [],
+  "imports": "import { CFormRange } from '@coreui/vue'"
+}

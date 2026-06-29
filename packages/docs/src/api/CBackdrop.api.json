@@ -1,0 +1,16 @@
+{
+  "name": "CBackdrop",
+  "props": [
+    {
+      "name": "visible",
+      "type": "boolean",
+      "default": "false",
+      "description": "Toggle the visibility of modal component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CBackdrop } from '@coreui/vue'"
+}

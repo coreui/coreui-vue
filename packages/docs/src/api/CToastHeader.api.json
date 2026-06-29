@@ -1,0 +1,16 @@
+{
+  "name": "CToastHeader",
+  "props": [
+    {
+      "name": "closeButton",
+      "type": "boolean",
+      "default": null,
+      "description": "Automatically add a close button to the header.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CToastHeader } from '@coreui/vue'"
+}

@@ -1,0 +1,79 @@
+---
+title: "Vue Bootstrap Placeholder Component"
+name: "Placeholder with Bootstrap Styling"
+bootstrap: true
+description: "Learn how to use CoreUI’s Vue Placeholder component with Bootstrap styles for flexible, framework-consistent UI."
+---
+
+import PlaceholderExample from './examples/PlaceholderExample.vue'
+import PlaceholderExampleRaw from './examples/PlaceholderExample.vue?raw'
+import Placeholder2Example from './examples/Placeholder2Example.vue'
+import Placeholder2ExampleRaw from './examples/Placeholder2Example.vue?raw'
+import PlaceholderWidthExample from './examples/PlaceholderWidthExample.vue'
+import PlaceholderWidthExampleRaw from './examples/PlaceholderWidthExample.vue?raw'
+import PlaceholderColorExample from './examples/PlaceholderColorExample.vue'
+import PlaceholderColorExampleRaw from './examples/PlaceholderColorExample.vue?raw'
+import PlaceholderSizingExample from './examples/PlaceholderSizingExample.vue'
+import PlaceholderSizingExampleRaw from './examples/PlaceholderSizingExample.vue?raw'
+import PlaceholderAnimationExample from './examples/PlaceholderAnimationExample.vue'
+import PlaceholderAnimationExampleRaw from './examples/PlaceholderAnimationExample.vue?raw'
+
+## About
+
+Placeholders can be used to enhance the experience of your application. They're built only with HTML and CSS, meaning you don't need any JavaScript to create them. You will, however, need some custom JavaScript to toggle their visibility. Their appearance, color, and sizing can be easily customized with our utility classes.
+
+## Example
+
+In the example below, we take a typical card component and recreate it with placeholders applied to create a "loading card". Size and proportions are the same between the two.
+
+In the example below, we take a typical card component and recreate it with placeholders applied to create a "loading card". Size and proportions are the same between the two.
+
+<Example class="theme-bootstrap" code={PlaceholderExampleRaw} name="PlaceholderExample">
+  <PlaceholderExample client:only="vue" />
+</Example>
+
+## How it works
+
+Create placeholders with the `<CPlaceholder>` component and a grid column propx (e.g., `:xs="6"`) to set the `width`. They can replace the text inside an element or be added as a modifier class to an existing component.
+
+We apply additional styling to `CButton`s via `::before` to ensure the `height` is respected. You may extend this pattern for other situations as needed, or add a `&nbsp;` within the element to reflect the height when actual text is rendered in its place.
+
+<Example class="theme-bootstrap" code={Placeholder2ExampleRaw} name="Placeholder2Example">
+  <Placeholder2Example client:only="vue" />
+</Example>
+
+<Callout color="info">
+  The use of <code>aria-hidden="true"</code> only indicates that the element should be hidden to screen readers. The <strong>loading</strong> behavior of the placeholder depends on how authors will actually use the placeholder styles, how they plan to update things, etc. Some JavaScript code may be needed to *swap* the state of the placeholder and inform AT users of the update.
+</Callout>
+
+### Width
+
+You can change the `width` through grid column classes, width utilities, or inline styles.
+
+<Example class="theme-bootstrap" code={PlaceholderWidthExampleRaw} name="PlaceholderWidthExample">
+  <PlaceholderWidthExample client:only="vue" />
+</Example>
+
+### Color
+
+By default, the `<CPlaceholder>` uses `currentColor`. This can be overridden with a custom color or utility class.
+
+<Example class="theme-bootstrap" code={PlaceholderColorExampleRaw} name="PlaceholderColorExample">
+  <PlaceholderColorExample client:only="vue" />
+</Example>
+
+### Sizing
+
+The size of `<CPlaceholder>`s are based on the typographic style of the parent element. Customize them with `size` prop: `lg`, `sm`, or `xs`.
+
+<Example class="theme-bootstrap" code={PlaceholderSizingExampleRaw} name="PlaceholderSizingExample">
+  <PlaceholderSizingExample client:only="vue" />
+</Example>
+
+### Animation
+
+Animate placeholders with `animation="glow"` or `animation="wave"` to better convey the perception of something being _actively_ loaded.
+
+<Example class="theme-bootstrap" code={PlaceholderAnimationExampleRaw} name="PlaceholderAnimationExample">
+  <PlaceholderAnimationExample client:only="vue" />
+</Example>

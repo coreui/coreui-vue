@@ -1,0 +1,35 @@
+{
+  "name": "CTabPane",
+  "props": [
+    {
+      "name": "transition",
+      "type": "boolean",
+      "default": "true",
+      "description": "Enable fade in and fade out transition.",
+      "since": "5.1.0",
+      "deprecated": null
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "default": "false",
+      "description": "Toggle the visibility of component.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [
+    {
+      "name": "hide",
+      "description": "Callback fired when the component requests to be hidden.",
+      "properties": []
+    },
+    {
+      "name": "show",
+      "description": "Callback fired when the component requests to be shown.",
+      "properties": []
+    }
+  ],
+  "slots": [],
+  "imports": "import { CTabPane } from '@coreui/vue'"
+}

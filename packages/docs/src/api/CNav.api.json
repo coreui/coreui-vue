@@ -1,0 +1,32 @@
+{
+  "name": "CNav",
+  "props": [
+    {
+      "name": "as",
+      "type": "string",
+      "default": "'ul'",
+      "description": "Component used for the root node. Either a string to use a HTML element or a component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "layout",
+      "type": "string",
+      "default": null,
+      "description": "Specify a layout type for component.",
+      "since": null,
+      "deprecated": null
+    },
+    {
+      "name": "variant",
+      "type": "string",
+      "default": null,
+      "description": "Set the nav variant to tabs or pills.",
+      "since": null,
+      "deprecated": null
+    }
+  ],
+  "events": [],
+  "slots": [],
+  "imports": "import { CNav } from '@coreui/vue'"
+}

@@ -1,0 +1,128 @@
+---
+title: "Columns"
+name: "Columns"
+description: "Learn how to modify columns with a handful of options for alignment, ordering, and offsetting thanks to our flexbox grid system."
+---
+
+import ColumnsVerticalAlignmentExample from './examples/ColumnsVerticalAlignmentExample.vue'
+import ColumnsVerticalAlignmentExampleRaw from './examples/ColumnsVerticalAlignmentExample.vue?raw'
+import ColumnsVerticalAlignment2Example from './examples/ColumnsVerticalAlignment2Example.vue'
+import ColumnsVerticalAlignment2ExampleRaw from './examples/ColumnsVerticalAlignment2Example.vue?raw'
+import ColumnsHorizontalAlignmentExample from './examples/ColumnsHorizontalAlignmentExample.vue'
+import ColumnsHorizontalAlignmentExampleRaw from './examples/ColumnsHorizontalAlignmentExample.vue?raw'
+import ColumnsColumnWrappingExample from './examples/ColumnsColumnWrappingExample.vue'
+import ColumnsColumnWrappingExampleRaw from './examples/ColumnsColumnWrappingExample.vue?raw'
+import ColumnsColumnBreaksExample from './examples/ColumnsColumnBreaksExample.vue'
+import ColumnsColumnBreaksExampleRaw from './examples/ColumnsColumnBreaksExample.vue?raw'
+import ColumnsColumnBreaks2Example from './examples/ColumnsColumnBreaks2Example.vue'
+import ColumnsColumnBreaks2ExampleRaw from './examples/ColumnsColumnBreaks2Example.vue?raw'
+import ColumnsOrderPropsExample from './examples/ColumnsOrderPropsExample.vue'
+import ColumnsOrderPropsExampleRaw from './examples/ColumnsOrderPropsExample.vue?raw'
+import ColumnsOrderProps2Example from './examples/ColumnsOrderProps2Example.vue'
+import ColumnsOrderProps2ExampleRaw from './examples/ColumnsOrderProps2Example.vue?raw'
+import ColumnsOffsetPropExample from './examples/ColumnsOffsetPropExample.vue'
+import ColumnsOffsetPropExampleRaw from './examples/ColumnsOffsetPropExample.vue?raw'
+import ColumnsOffsetProp2Example from './examples/ColumnsOffsetProp2Example.vue'
+import ColumnsOffsetProp2ExampleRaw from './examples/ColumnsOffsetProp2Example.vue?raw'
+import ColumnsMarginUtilitiesExample from './examples/ColumnsMarginUtilitiesExample.vue'
+import ColumnsMarginUtilitiesExampleRaw from './examples/ColumnsMarginUtilitiesExample.vue?raw'
+import ColumnsStandaloneColumnExample from './examples/ColumnsStandaloneColumnExample.vue'
+import ColumnsStandaloneColumnExampleRaw from './examples/ColumnsStandaloneColumnExample.vue?raw'
+
+## How they work
+
+- **Columns build on the grid's flexbox architecture.** Flexbox means we have options for changing individual columns and [modifying groups of columns at the row level](./../grid#row-columns). You choose how columns grow, shrink, or otherwise change.
+
+- **When building grid layouts, all content goes in columns.** The hierarchy of CoreUI's grid goes from [container](./../containers) to row to column to your content. On rare occasions, you may combine content and column, but be aware there can be unintended consequences.
+
+- **CoreUI for Vue.js includes predefined components for creating fast, responsive layouts.** With [six breakpoints](./../breakpoints) and a dozen columns at each grid tier, we have dozens of components already built for you to create your desired layouts. This can be disabled via Sass if you wish.
+
+## Alignment
+
+Use flexbox alignment utilities to vertically and horizontally align columns.
+
+### Vertical alignment
+
+<Example code={ColumnsVerticalAlignmentExampleRaw} name="ColumnsVerticalAlignmentExample">
+  <ColumnsVerticalAlignmentExample client:only="vue" />
+</Example>
+
+<Example code={ColumnsVerticalAlignment2ExampleRaw} name="ColumnsVerticalAlignment2Example">
+  <ColumnsVerticalAlignment2Example client:only="vue" />
+</Example>
+
+### Horizontal alignment
+
+<Example code={ColumnsHorizontalAlignmentExampleRaw} name="ColumnsHorizontalAlignmentExample">
+  <ColumnsHorizontalAlignmentExample client:only="vue" />
+</Example>
+
+### Column wrapping
+
+If more than 12 columns are placed within a single row, each group of extra columns will, as one unit, wrap onto a new line.
+
+<Example code={ColumnsColumnWrappingExampleRaw} name="ColumnsColumnWrappingExample">
+  <ColumnsColumnWrappingExample client:only="vue" />
+</Example>
+
+### Column breaks
+
+Breaking columns to a new line in flexbox requires a small hack: add an element with `width: 100%` wherever you want to wrap your columns to a new line. Normally this is accomplished with multiple `<CRow>`s, but not every implementation method can account for this.
+
+<Example code={ColumnsColumnBreaksExampleRaw} name="ColumnsColumnBreaksExample">
+  <ColumnsColumnBreaksExample client:only="vue" />
+</Example>
+
+You may also apply this break at specific breakpoints with our [responsive display utilities](https://coreui.io/bootstrap/docs/utilities/display).
+
+<Example code={ColumnsColumnBreaks2ExampleRaw} name="ColumnsColumnBreaks2Example">
+  <ColumnsColumnBreaks2Example client:only="vue" />
+</Example>
+
+## Reordering
+
+### Order props
+
+Use `xs|sm|md|lg|xl|xxl="{ order: 1-5 }"` props for controlling the **visual order** of your content. These props are responsive, so you can set the `order` by breakpoint (e.g., `xs="{ order: 1}" md="{ order: 2}"`). Includes support for `1` through `5` across all six grid tiers.
+
+<Example code={ColumnsOrderPropsExampleRaw} name="ColumnsOrderPropsExample">
+  <ColumnsOrderPropsExample client:only="vue" />
+</Example>
+
+There are also responsive `xs|sm|md|lg|xl|xxl="{ order: 'first' }"` and `xs|sm|md|lg|xl|xxl="{ order: 'last' }"` props that change the `order` of an element by applying `order: -1` and `order: 6`, respectively. These values can also be intermixed with the numbered `xs|sm|md|lg|xl|xxl="{ order: 1-5 }"` values as needed.
+
+<Example code={ColumnsOrderProps2ExampleRaw} name="ColumnsOrderProps2Example">
+  <ColumnsOrderProps2Example client:only="vue" />
+</Example>
+
+### Offsetting columns
+
+You can offset grid columns in two ways: our responsive `xs|sm|md|lg|xl|xxl="{ offset: 0-12 }"` grid props and our [margin utilities](https://coreui.io/bootstrap/docs/utilities/spacing). Grid props are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.
+
+#### Offset prop
+
+Move columns to the right using `md="{ offset: * }"` props. These props increase the left margin of a column by `*` columns. For example, `md="{ offset: 4 }"` moves `.col-md-4` over four columns.
+
+<Example code={ColumnsOffsetPropExampleRaw} name="ColumnsOffsetPropExample">
+  <ColumnsOffsetPropExample client:only="vue" />
+</Example>
+
+<Example code={ColumnsOffsetProp2ExampleRaw} name="ColumnsOffsetProp2Example">
+  <ColumnsOffsetProp2Example client:only="vue" />
+</Example>
+
+#### Margin utilities
+
+You can use margin utilities like `.me-auto` to force sibling columns away from one another.
+
+<Example code={ColumnsMarginUtilitiesExampleRaw} name="ColumnsMarginUtilitiesExample">
+  <ColumnsMarginUtilitiesExample client:only="vue" />
+</Example>
+
+## Standalone column component
+
+The `<CCol>` component can also be used outside a `<CRow>` to give an element a specific width. Whenever column component are used as non direct children of a row, the paddings are omitted.
+
+<Example code={ColumnsStandaloneColumnExampleRaw} name="ColumnsStandaloneColumnExample">
+  <ColumnsStandaloneColumnExample client:only="vue" />
+</Example>

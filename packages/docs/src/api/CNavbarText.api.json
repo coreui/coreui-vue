@@ -1,0 +1,7 @@
+{
+  "name": "CNavbarText",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CNavbarText } from '@coreui/vue'"
+}

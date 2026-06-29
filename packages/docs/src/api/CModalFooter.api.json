@@ -1,0 +1,7 @@
+{
+  "name": "CModalFooter",
+  "props": [],
+  "events": [],
+  "slots": [],
+  "imports": "import { CModalFooter } from '@coreui/vue'"
+}
