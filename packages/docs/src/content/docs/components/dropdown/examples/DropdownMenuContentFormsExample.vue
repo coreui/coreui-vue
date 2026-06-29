@@ -3,11 +3,11 @@
     <CForm class="px-4 py-4">
       <div class="mb-3">
         <CFormLabel for="exampleDropdownFormEmail1">Email address</CFormLabel>
-        <CFormInput type="email" id="exampleDropdownFormEmail1" placeholder="email@example.com" />
+        <CFormInput id="exampleDropdownFormEmail1" type="email" placeholder="email@example.com" />
       </div>
       <div class="mb-3">
         <CFormLabel for="exampleDropdownFormPassword1">Password</CFormLabel>
-        <CFormInput type="password" id="exampleDropdownFormPassword1" placeholder="Password" />
+        <CFormInput id="exampleDropdownFormPassword1" type="password" placeholder="Password" />
       </div>
       <div class="mb-3">
         <CFormCheck id="dropdownCheck" label="Remember me" />

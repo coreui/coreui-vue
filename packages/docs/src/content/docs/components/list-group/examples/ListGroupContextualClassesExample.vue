@@ -12,6 +12,7 @@
         'light',
         'dark',
       ]"
+      :key="item"
       :color="item"
       >A simple {{ item }} list group item</CListGroupItem
     >

@@ -1,5 +1,5 @@
 <template>
-  <CFormRange label="Example range" :min="0" :max="5" :step="0.5" :value="3" id="customRange3" />
+  <CFormRange id="customRange3" label="Example range" :min="0" :max="5" :step="0.5" :value="3" />
 </template>
 
 <script setup>

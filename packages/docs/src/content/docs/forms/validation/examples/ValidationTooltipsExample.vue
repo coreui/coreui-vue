@@ -7,21 +7,21 @@
   >
     <CCol md="4" class="position-relative">
       <CFormInput
-        feedbackValid="Looks good!"
         id="validationTooltip01"
+        feedback-valid="Looks good!"
         label="First name"
         required
-        tooltipFeedback
+        tooltip-feedback
         value="Mark"
       />
     </CCol>
     <CCol md="4" class="position-relative">
       <CFormInput
-        feedbackValid="Looks good!"
         id="validationTooltip02"
+        feedback-valid="Looks good!"
         label="Last name"
         required
-        tooltipFeedback
+        tooltip-feedback
         value="Otto"
       />
     </CCol>
@@ -30,32 +30,32 @@
       <CInputGroup class="has-validation">
         <CInputGroupText id="inputGroupPrepend">@</CInputGroupText>
         <CFormInput
-          aria-describedby="inputGroupPrependFeedback"
-          feedbackInvalid="Please choose a username."
           id="validationTooltipUsername"
+          aria-describedby="inputGroupPrependFeedback"
+          feedback-invalid="Please choose a username."
           required
-          tooltipFeedback
+          tooltip-feedback
         />
       </CInputGroup>
     </CCol>
     <CCol md="6" class="position-relative">
       <CFormInput
-        aria-describedby="validationTooltip03Feedback"
-        feedbackInvalid="Please provide a valid city."
         id="validationTooltip03"
+        aria-describedby="validationTooltip03Feedback"
+        feedback-invalid="Please provide a valid city."
         label="City"
         required
-        tooltipFeedback
+        tooltip-feedback
       />
     </CCol>
     <CCol md="3" class="position-relative">
       <CFormSelect
-        aria-describedby="validationTooltip04Feedback"
-        feedbackInvalid="Please select a valid state."
         id="validationTooltip04"
+        aria-describedby="validationTooltip04Feedback"
+        feedback-invalid="Please select a valid state."
         label="State"
         required
-        tooltipFeedback
+        tooltip-feedback
       >
         <option selected="" disabled="" value="">Choose...</option>
         <option>...</option>
@@ -63,12 +63,12 @@
     </CCol>
     <CCol md="3" class="position-relative">
       <CFormInput
-        aria-describedby="validationTooltip05Feedback"
-        feedbackInvalid="Please provide a valid zip."
         id="validationTooltip05"
+        aria-describedby="validationTooltip05Feedback"
+        feedback-invalid="Please provide a valid zip."
         label="Zip"
         required
-        tooltipFeedback
+        tooltip-feedback
       />
     </CCol>
     <CCol xs="12" class="position-relative">

@@ -10,6 +10,7 @@
       { color: 'light' },
       { color: 'dark' },
     ]"
+    :key="item.color"
   >
     <CCard
       :text-color="item.textColor"

@@ -1,8 +1,8 @@
 <template>
   <CButton color="primary" @click="createToast">Send a toast</CButton>
   <CToaster class="p-3" placement="top-end">
-    <CToast v-for="(toast, index) in toasts" visible :key="index">
-      <CToastHeader closeButton>
+    <CToast v-for="(toast, index) in toasts" :key="index" visible>
+      <CToastHeader close-button>
         <span class="me-auto fw-bold">{{ toast.title }}</span>
         <small>7 min ago</small>
       </CToastHeader>

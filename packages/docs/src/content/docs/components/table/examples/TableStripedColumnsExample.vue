@@ -1,5 +1,5 @@
 <template>
-  <CTable stripedColumns>
+  <CTable striped-columns>
     <CTableHead>
       <CTableRow>
         <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -23,7 +23,7 @@
       </CTableRow>
       <CTableRow>
         <CTableHeaderCell scope="row">3</CTableHeaderCell>
-        <CTableDataCell colSpan="2">Larry the Bird</CTableDataCell>
+        <CTableDataCell col-span="2">Larry the Bird</CTableDataCell>
         <CTableDataCell>@twitter</CTableDataCell>
       </CTableRow>
     </CTableBody>

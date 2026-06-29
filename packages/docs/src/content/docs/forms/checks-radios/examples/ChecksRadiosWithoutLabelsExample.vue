@@ -3,7 +3,7 @@
     <CFormCheck id="checkboxNoLabel" value="" aria-label="..." />
   </div>
   <div>
-    <CFormCheck type="radio" name="radioNoLabel" id="radioNoLabel" value="" aria-label="..." />
+    <CFormCheck id="radioNoLabel" type="radio" name="radioNoLabel" value="" aria-label="..." />
   </div>
 </template>
 

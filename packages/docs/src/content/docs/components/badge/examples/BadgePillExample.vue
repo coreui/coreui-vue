@@ -4,7 +4,7 @@
   <CBadge color="danger" shape="rounded-pill">danger</CBadge>
   <CBadge color="warning" shape="rounded-pill">warning</CBadge>
   <CBadge color="info" shape="rounded-pill">info</CBadge>
-  <CBadge textBgColor="light" shape="rounded-pill">light</CBadge>
+  <CBadge text-bg-color="light" shape="rounded-pill">light</CBadge>
   <CBadge color="dark" shape="rounded-pill">dark</CBadge>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <CForm @submit.prevent="handleSubmit">
-    <CChipInput name="tags" label="Tags" v-model="tags" placeholder="Add tags..." />
+    <CChipInput v-model="tags" name="tags" label="Tags" placeholder="Add tags..." />
     <CButton type="submit" color="primary" class="mt-2">Submit</CButton>
     <div v-if="submitted" class="mt-2 text-success">
       <small>Form submitted with tags: {{ submittedTags }}</small>

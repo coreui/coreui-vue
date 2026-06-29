@@ -1,11 +1,11 @@
 <template>
-  <CBadge textBgColor="primary">primary</CBadge>
-  <CBadge textBgColor="success">success</CBadge>
-  <CBadge textBgColor="danger">danger</CBadge>
-  <CBadge textBgColor="warning">warning</CBadge>
-  <CBadge textBgColor="info">info</CBadge>
-  <CBadge textBgColor="light">light</CBadge>
-  <CBadge textBgColor="dark">dark</CBadge>
+  <CBadge text-bg-color="primary">primary</CBadge>
+  <CBadge text-bg-color="success">success</CBadge>
+  <CBadge text-bg-color="danger">danger</CBadge>
+  <CBadge text-bg-color="warning">warning</CBadge>
+  <CBadge text-bg-color="info">info</CBadge>
+  <CBadge text-bg-color="light">light</CBadge>
+  <CBadge text-bg-color="dark">dark</CBadge>
 </template>
 
 <script setup>

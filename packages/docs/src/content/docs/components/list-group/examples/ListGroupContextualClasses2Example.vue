@@ -12,6 +12,7 @@
         'light',
         'dark',
       ]"
+      :key="item"
       as="a"
       href="#"
       :color="item"

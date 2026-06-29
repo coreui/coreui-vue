@@ -1,5 +1,5 @@
 <template>
-  <CNavbar colorScheme="light" class="bg-light">
+  <CNavbar color-scheme="light" class="bg-light">
     <CContainer fluid>
       <CNavbarBrand>Offcanvas navbar</CNavbarBrand>
       <CNavbarToggler
@@ -72,6 +72,5 @@ import {
   CButton,
 } from '@coreui/vue'
 import { ref } from 'vue'
-const visible = ref(true)
 const visibleOffcanvas = ref(false)
 </script>

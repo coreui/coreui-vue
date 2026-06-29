@@ -1,6 +1,6 @@
 <template>
   <CToast :autohide="false" visible>
-    <CToastHeader closeButton>
+    <CToastHeader close-button>
       <svg
         class="rounded me-2"
         width="20"

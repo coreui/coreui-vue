@@ -11,7 +11,7 @@
   </CDropdown>
   <CDropdown color="secondary" direction="dropend">
     <CButton color="secondary">Split dropend</CButton>
-    <CDropdownToggle color="secondary" split splitLabel="Toggle Dropend" />
+    <CDropdownToggle color="secondary" split split-label="Toggle Dropend" />
     <CDropdownMenu>
       <CDropdownItem href="#">Action</CDropdownItem>
       <CDropdownItem href="#">Another action</CDropdownItem>

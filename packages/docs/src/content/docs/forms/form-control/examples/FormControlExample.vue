@@ -2,7 +2,7 @@
   <CForm>
     <div class="mb-3">
       <CFormLabel for="exampleFormControlInput1">Email address</CFormLabel>
-      <CFormInput type="email" id="exampleFormControlInput1" placeholder="name@example.com" />
+      <CFormInput id="exampleFormControlInput1" type="email" placeholder="name@example.com" />
     </div>
     <div class="mb-3">
       <CFormLabel for="exampleFormControlTextarea1">Example textarea</CFormLabel>

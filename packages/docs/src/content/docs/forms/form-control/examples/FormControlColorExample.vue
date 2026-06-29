@@ -1,6 +1,6 @@
 <template>
   <CFormLabel for="exampleColorInput">Color picker</CFormLabel>
-  <CFormInput type="color" id="exampleColorInput" value="#563d7c" title="Choose your color" />
+  <CFormInput id="exampleColorInput" type="color" value="#563d7c" title="Choose your color" />
 </template>
 
 <script setup>

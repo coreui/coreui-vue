@@ -25,28 +25,28 @@
       <CTooltip content="Nav item" placement="right">
         <template #toggler="{ id, on }">
           <CNavItem href="#" :aria-describedby="id" v-on="on">
-            <CIcon customClassName="nav-icon" :icon="cilSpeedometer" />
+            <CIcon custom-class-name="nav-icon" :icon="cilSpeedometer" />
           </CNavItem>
         </template>
       </CTooltip>
       <CTooltip content="Nav item" placement="right">
         <template #toggler="{ id, on }">
           <CNavItem href="#" :aria-describedby="id" v-on="on">
-            <CIcon customClassName="nav-icon" :icon="cilSpeedometer" />
+            <CIcon custom-class-name="nav-icon" :icon="cilSpeedometer" />
           </CNavItem>
         </template>
       </CTooltip>
       <CTooltip content="Download" placement="right">
         <template #toggler="{ id, on }">
           <CNavItem href="https://coreui.io" :aria-describedby="id" v-on="on">
-            <CIcon customClassName="nav-icon" :icon="cilCloudDownload" />
+            <CIcon custom-class-name="nav-icon" :icon="cilCloudDownload" />
           </CNavItem>
         </template>
       </CTooltip>
       <CTooltip content="Get CoreUI PRO" placement="right">
         <template #toggler="{ id, on }">
           <CNavItem href="https://coreui.io/pricing/" :aria-describedby="id" v-on="on">
-            <CIcon customClassName="nav-icon" :icon="cilCart" />
+            <CIcon custom-class-name="nav-icon" :icon="cilCart" />
           </CNavItem>
         </template>
       </CTooltip>

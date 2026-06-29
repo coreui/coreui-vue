@@ -1,9 +1,9 @@
 <template>
   <CFormFloating>
     <CFormTextarea
-      placeholder="Leave a comment here"
       id="floatingTextarea2"
-      floatingLabel="Comments"
+      placeholder="Leave a comment here"
+      floating-label="Comments"
       style="height: 100px"
     ></CFormTextarea>
   </CFormFloating>

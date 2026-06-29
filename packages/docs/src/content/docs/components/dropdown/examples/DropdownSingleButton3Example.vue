@@ -3,7 +3,7 @@
     v-for="item in ['primary', 'secondary', 'success', 'info', 'warning', 'danger']"
     :key="item"
   >
-    <CDropdown :color="item" :togglerText="item" variant="btn-group">
+    <CDropdown :color="item" :toggler-text="item" variant="btn-group">
       <CDropdownToggle :color="item">{{ item }}</CDropdownToggle>
       <CDropdownMenu>
         <CDropdownItem href="#">Action</CDropdownItem>

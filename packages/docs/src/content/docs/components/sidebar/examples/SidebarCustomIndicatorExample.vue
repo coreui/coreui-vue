@@ -3,7 +3,7 @@
     <CSidebarNav>
       <CNavGroup visible>
         <template #togglerContent="{ visible }">
-          <CIcon customClassName="nav-icon" :icon="cilPuzzle" /> Items group
+          <CIcon custom-class-name="nav-icon" :icon="cilPuzzle" /> Items group
           <span class="nav-group-toggle-indicator">
             <CIcon class="icon icon-sm" :icon="visible ? cilMinus : cilPlus" />
           </span>
@@ -13,7 +13,7 @@
       </CNavGroup>
       <CNavGroup>
         <template #togglerContent="{ visible }">
-          <CIcon customClassName="nav-icon" :icon="cilPuzzle" /> Alternate indicator
+          <CIcon custom-class-name="nav-icon" :icon="cilPuzzle" /> Alternate indicator
           <span class="nav-group-toggle-indicator">
             <CIcon
               class="icon icon-sm"

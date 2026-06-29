@@ -1,18 +1,18 @@
 <template>
   <div class="mb-3">
-    <CFormInput type="file" id="formFile" label="Default file input example" />
+    <CFormInput id="formFile" type="file" label="Default file input example" />
   </div>
   <div class="mb-3">
-    <CFormInput type="file" id="formFileMultiple" label="Multiple files input example" multiple />
+    <CFormInput id="formFileMultiple" type="file" label="Multiple files input example" multiple />
   </div>
   <div class="mb-3">
-    <CFormInput type="file" id="formFileDisabled" label="Disabled file input example" disabled />
+    <CFormInput id="formFileDisabled" type="file" label="Disabled file input example" disabled />
   </div>
   <div class="mb-3">
-    <CFormInput type="file" size="sm" id="formFileSm" label="Small file input example" />
+    <CFormInput id="formFileSm" type="file" size="sm" label="Small file input example" />
   </div>
   <div>
-    <CFormInput type="file" size="lg" id="formFileLg" label="Large file input example" />
+    <CFormInput id="formFileLg" type="file" size="lg" label="Large file input example" />
   </div>
 </template>
 

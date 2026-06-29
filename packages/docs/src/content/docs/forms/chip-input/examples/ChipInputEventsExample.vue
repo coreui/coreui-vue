@@ -2,12 +2,12 @@
   <div>
     <CChipInput
       v-model="tags"
+      placeholder="Type to trigger events..."
       @add="onAdd"
       @remove="onRemove"
-      placeholder="Type to trigger events..."
     />
 
-    <div class="mt-3 p-3 bg-light rounded" v-if="events.length">
+    <div v-if="events.length" class="mt-3 p-3 bg-light rounded">
       <h6>Event Log:</h6>
       <ul class="list-unstyled small mb-0">
         <li v-for="(event, index) in events.slice(-5)" :key="index">

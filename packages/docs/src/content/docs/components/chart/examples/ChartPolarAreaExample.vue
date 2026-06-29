@@ -1,7 +1,7 @@
 <template>
   <CChart
-    type="polarArea"
     ref="chartPolarAreaRef"
+    type="polarArea"
     :data="{
       labels: ['Red', 'Green', 'Yellow', 'Grey', 'Blue'],
       datasets: [

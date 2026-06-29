@@ -6,8 +6,8 @@
         :key="index"
         selectable
         :selected="chip.selected"
-        @selected-change="(selected) => (chip.selected = selected)"
         color="primary"
+        @selected-change="(selected) => (chip.selected = selected)"
       >
         {{ chip.label }}
       </CChip>

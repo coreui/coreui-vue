@@ -2,7 +2,7 @@
   <CFormFloating>
     <CFormTextarea
       id="floatingTextarea"
-      floatingLabel="Comments"
+      floating-label="Comments"
       placeholder="Leave a comment here"
     ></CFormTextarea>
   </CFormFloating>

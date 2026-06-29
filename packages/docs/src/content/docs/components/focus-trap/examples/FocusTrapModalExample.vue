@@ -4,9 +4,9 @@
 
     <CModal
       :visible="modalVisible"
-      @close="modalVisible = false"
       aria-labelledby="modal-title"
       aria-describedby="modal-description"
+      @close="modalVisible = false"
     >
       <CModalHeader>
         <CModalTitle id="modal-title">Modal with Built-in Focus Trap</CModalTitle>

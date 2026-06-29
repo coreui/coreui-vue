@@ -4,7 +4,7 @@
       <CNavbarBrand href="#">Navbar</CNavbarBrand>
       <CNavbarNav>
         <CDropdown dark variant="nav-item">
-          <CDropdownToggle color="dark" :navLink="false">Dropdown Button</CDropdownToggle>
+          <CDropdownToggle color="dark" :nav-link="false">Dropdown Button</CDropdownToggle>
           <CDropdownMenu>
             <CDropdownItem href="#">Action</CDropdownItem>
             <CDropdownItem href="#">Another action</CDropdownItem>

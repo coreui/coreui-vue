@@ -1,7 +1,7 @@
 <template>
-  <CFormCheck id="lucas" value="Lucas" label="Lucas" v-model="checkedNames" />
-  <CFormCheck id="andrew" value="Andrew" label="Andrew" v-model="checkedNames" />
-  <CFormCheck id="anna" value="Anna" label="Anna" v-model="checkedNames" />
+  <CFormCheck id="lucas" v-model="checkedNames" value="Lucas" label="Lucas" />
+  <CFormCheck id="andrew" v-model="checkedNames" value="Andrew" label="Andrew" />
+  <CFormCheck id="anna" v-model="checkedNames" value="Anna" label="Anna" />
   <div>Checked names: {{ checkedNames }}</div>
 </template>
 

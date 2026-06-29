@@ -1,9 +1,9 @@
 <template>
-  <CFormSwitch reverse type="radio" id="reverseFormSwitch1" label="Reverse switch" />
+  <CFormSwitch id="reverseFormSwitch1" reverse type="radio" label="Reverse switch" />
   <CFormSwitch
+    id="reverseFormSwitch2"
     reverse
     type="radio"
-    id="reverseFormSwitch2"
     label="Disabled reverse switch"
     disabled
   />

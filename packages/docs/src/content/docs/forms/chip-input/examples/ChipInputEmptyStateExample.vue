@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CChipInput separator=";" v-model="tags" placeholder="Type and use ; to separate..." />
+    <CChipInput v-model="tags" separator=";" placeholder="Type and use ; to separate..." />
     <p class="mt-2 text-muted">
       <small>Use semicolon (;) as separator</small>
     </p>

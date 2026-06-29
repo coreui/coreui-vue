@@ -1,15 +1,15 @@
 <template>
   <CFormInput
+    id="floatingInput"
     class="mb-3"
     type="email"
-    id="floatingInput"
-    floatingLabel="Email address"
+    floating-label="Email address"
     placeholder="name@example.com"
   />
   <CFormInput
-    type="password"
     id="floatingPassword"
-    floatingLabel="Password"
+    type="password"
+    floating-label="Password"
     placeholder="Password"
   />
 </template>

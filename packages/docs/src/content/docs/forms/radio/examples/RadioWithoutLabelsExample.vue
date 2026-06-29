@@ -1,9 +1,9 @@
 <template>
-  <CFormCheck reverse type="radio" id="reverseOption1" value="option1" label="Reverse radio" />
+  <CFormCheck id="reverseOption1" reverse type="radio" value="option1" label="Reverse radio" />
   <CFormCheck
+    id="reverseOption2"
     reverse
     type="radio"
-    id="reverseOption2"
     value="option2"
     label="Disabled reverse radio"
     disabled

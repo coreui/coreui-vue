@@ -21,7 +21,7 @@
       </CFormSelect>
     </CCol>
     <CCol xs="auto">
-      <CFormCheck type="checkbox" id="autoSizingCheck" label="Remember me" />
+      <CFormCheck id="autoSizingCheck" type="checkbox" label="Remember me" />
     </CCol>
     <CCol xs="auto">
       <CButton color="primary" type="submit">Submit</CButton>

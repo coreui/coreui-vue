@@ -8,7 +8,7 @@
         <CDropdownItem href="#">Something else here</CDropdownItem>
       </CDropdownMenu>
     </CDropdown>
-    <CDropdown autoClose="inside">
+    <CDropdown auto-close="inside">
       <CDropdownToggle color="secondary">Clickable inside</CDropdownToggle>
       <CDropdownMenu>
         <CDropdownItem href="#">Action</CDropdownItem>
@@ -16,7 +16,7 @@
         <CDropdownItem href="#">Something else here</CDropdownItem>
       </CDropdownMenu>
     </CDropdown>
-    <CDropdown autoClose="outside">
+    <CDropdown auto-close="outside">
       <CDropdownToggle color="secondary">Clickable outside</CDropdownToggle>
       <CDropdownMenu>
         <CDropdownItem href="#">Action</CDropdownItem>
@@ -24,7 +24,7 @@
         <CDropdownItem href="#">Something else here</CDropdownItem>
       </CDropdownMenu>
     </CDropdown>
-    <CDropdown :autoClose="false">
+    <CDropdown :auto-close="false">
       <CDropdownToggle color="secondary">Manual close</CDropdownToggle>
       <CDropdownMenu>
         <CDropdownItem href="#">Action</CDropdownItem>

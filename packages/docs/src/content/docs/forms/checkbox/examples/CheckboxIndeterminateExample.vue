@@ -1,5 +1,5 @@
 <template>
-  <CFormCheck id="flexCheckDefaultVModel" label="Default checkbox" v-model="checked" />
+  <CFormCheck id="flexCheckDefaultVModel" v-model="checked" label="Default checkbox" />
   <div>Checked: {{ checked }}</div>
 </template>
 

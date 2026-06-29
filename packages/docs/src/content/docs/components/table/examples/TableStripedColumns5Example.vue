@@ -1,5 +1,5 @@
 <template>
-  <CTable color="success" stripedColumns>
+  <CTable color="success" striped-columns>
     <CTableHead>
       <CTableRow>
         <CTableHeaderCell scope="col">#</CTableHeaderCell>

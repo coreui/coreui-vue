@@ -29,12 +29,12 @@
   <CModal
     size="xl"
     :visible="xlDemo"
+    aria-labelledby="OptionalSizesExample1"
     @close="
       () => {
         xlDemo = false
       }
     "
-    aria-labelledby="OptionalSizesExample1"
   >
     <CModalHeader>
       <CModalTitle id="OptionalSizesExample1">Extra large modal</CModalTitle>
@@ -44,12 +44,12 @@
   <CModal
     size="lg"
     :visible="lgDemo"
+    aria-labelledby="OptionalSizesExample2"
     @close="
       () => {
         lgDemo = false
       }
     "
-    aria-labelledby="OptionalSizesExample2"
   >
     <CModalHeader>
       <CModalTitle id="OptionalSizesExample2">Large modal</CModalTitle>
@@ -59,12 +59,12 @@
   <CModal
     size="sm"
     :visible="smDemo"
+    aria-labelledby="OptionalSizesExample3"
     @close="
       () => {
         smDemo = false
       }
     "
-    aria-labelledby="OptionalSizesExample3"
   >
     <CModalHeader>
       <CModalTitle id="OptionalSizesExample3">Small modal</CModalTitle>

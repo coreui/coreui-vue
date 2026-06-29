@@ -1,5 +1,5 @@
 <template>
-  <CChipSet removable v-model:chips="chips" />
+  <CChipSet v-model:chips="chips" removable />
 </template>
 
 <script setup>

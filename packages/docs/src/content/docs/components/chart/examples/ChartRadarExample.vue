@@ -1,7 +1,7 @@
 <template>
   <CChart
-    type="radar"
     ref="chartRadarRef"
+    type="radar"
     :data="{
       labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
       datasets: [

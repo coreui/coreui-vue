@@ -1,7 +1,7 @@
 <template>
   <CChart
-    type="scatter"
     ref="chartScatterRef"
+    type="scatter"
     :data="{
       datasets: [
         {

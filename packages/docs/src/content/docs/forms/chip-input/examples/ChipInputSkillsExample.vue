@@ -1,10 +1,10 @@
 <template>
   <CChipInput
-    label="Your skills"
     v-model="skills"
-    :maxChips="10"
+    label="Your skills"
+    :max-chips="10"
     placeholder="Add your skills..."
-    :chipClassName="'chip-primary'"
+    :chip-class-name="'chip-primary'"
   />
 </template>
 

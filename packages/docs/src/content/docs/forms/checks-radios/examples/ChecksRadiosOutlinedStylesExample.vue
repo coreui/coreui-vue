@@ -1,16 +1,16 @@
 <template>
   <div>
     <CFormCheck
-      :button="{ color: 'primary', variant: 'outline' }"
       id="btn-check-outlined"
+      :button="{ color: 'primary', variant: 'outline' }"
       autocomplete="off"
       label="Single toggle"
     />
   </div>
   <div>
     <CFormCheck
-      :button="{ color: 'secondary', variant: 'outline' }"
       id="btn-check-2-outlined"
+      :button="{ color: 'secondary', variant: 'outline' }"
       autocomplete="off"
       label="Checked"
       checked
@@ -18,19 +18,19 @@
   </div>
   <div>
     <CFormCheck
+      id="success-outlined"
       :button="{ color: 'success', variant: 'outline' }"
       type="radio"
       name="options-outlined"
-      id="success-outlined"
       autocomplete="off"
       label="Radio"
       checked
     />
     <CFormCheck
+      id="danger-outlined"
       :button="{ color: 'danger', variant: 'outline' }"
       type="radio"
       name="options-outlined"
-      id="danger-outlined"
       autocomplete="off"
       label="Radio"
     />

@@ -1,5 +1,5 @@
 <template>
-  <template v-for="item in ['', '-sm', '-md', '-lg', '-xl', '-xxl']">
+  <template v-for="item in ['', '-sm', '-md', '-lg', '-xl', '-xxl']" :key="item">
     <CListGroup class="mb-2" :layout="'horizontal' + item">
       <CListGroupItem>Cras justo odio</CListGroupItem>
       <CListGroupItem>Dapibus ac facilisis in</CListGroupItem>

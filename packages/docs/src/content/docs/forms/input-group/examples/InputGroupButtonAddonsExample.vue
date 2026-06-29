@@ -1,6 +1,6 @@
 <template>
   <CInputGroup class="mb-3">
-    <CButton type="button" color="secondary" variant="outline" id="button-addon1">Button</CButton>
+    <CButton id="button-addon1" type="button" color="secondary" variant="outline">Button</CButton>
     <CFormInput
       placeholder=""
       aria-label="Example text with button addon"
@@ -13,7 +13,7 @@
       aria-label="Recipient's username"
       aria-describedby="button-addon2"
     />
-    <CButton type="button" color="secondary" variant="outline" id="button-addon2">Button</CButton>
+    <CButton id="button-addon2" type="button" color="secondary" variant="outline">Button</CButton>
   </CInputGroup>
   <CInputGroup class="mb-3">
     <CButton type="button" color="secondary" variant="outline">Button</CButton>

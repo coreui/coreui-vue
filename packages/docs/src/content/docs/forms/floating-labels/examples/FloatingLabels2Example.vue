@@ -1,9 +1,9 @@
 <template>
   <CFormFloating>
     <CFormInput
-      type="email"
       id="floatingInputValue"
-      floatingLabel="Input with value"
+      type="email"
+      floating-label="Input with value"
       placeholder="name@example.com"
       value="test@example.com"
     />

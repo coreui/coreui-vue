@@ -41,7 +41,6 @@
 <script setup>
 import { CButton, CRow, CCol, CCollapse, CCard, CCardBody } from '@coreui/vue'
 import { ref } from 'vue'
-const visible = ref(false)
 const visibleA = ref(false)
 const visibleB = ref(false)
 </script>

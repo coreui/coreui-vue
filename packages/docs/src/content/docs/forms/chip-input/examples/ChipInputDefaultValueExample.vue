@@ -1,7 +1,7 @@
 <template>
   <div>
     <CChipInput
-      :defaultValue="['HTML', 'CSS', 'JavaScript']"
+      :default-value="['HTML', 'CSS', 'JavaScript']"
       placeholder="Add more..."
       @change="handleChange"
     />

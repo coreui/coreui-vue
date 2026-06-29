@@ -1,5 +1,5 @@
 <template>
-  <CDropdown color="secondary" togglerText="Dropdown button">
+  <CDropdown color="secondary" toggler-text="Dropdown button">
     <CDropdownToggle as="a" color="primary">Dropdown Button</CDropdownToggle>
     <CDropdownMenu>
       <CDropdownItem href="#">Action</CDropdownItem>

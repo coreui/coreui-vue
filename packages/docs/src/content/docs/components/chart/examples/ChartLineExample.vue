@@ -1,7 +1,7 @@
 <template>
   <CChart
-    type="line"
     ref="chartLineRef"
+    type="line"
     :wrapper="false"
     :data="{
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],

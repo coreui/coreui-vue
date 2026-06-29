@@ -1,5 +1,5 @@
 <template>
-  <CChipSet selectable selection-mode="single" :chips="chips" v-model:selected="selected" />
+  <CChipSet v-model:selected="selected" selectable selection-mode="single" :chips="chips" />
 </template>
 
 <script setup>

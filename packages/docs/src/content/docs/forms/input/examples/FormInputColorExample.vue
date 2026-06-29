@@ -1,7 +1,7 @@
 <template>
   <CFormInput
-    type="color"
     id="exampleColorInput"
+    type="color"
     label="Color picker"
     title="Choose your color"
     value="#563d7c"

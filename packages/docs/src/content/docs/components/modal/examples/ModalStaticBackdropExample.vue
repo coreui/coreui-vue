@@ -11,12 +11,12 @@
   <CModal
     backdrop="static"
     :visible="visibleStaticBackdropDemo"
+    aria-labelledby="StaticBackdropExampleLabel"
     @close="
       () => {
         visibleStaticBackdropDemo = false
       }
     "
-    aria-labelledby="StaticBackdropExampleLabel"
   >
     <CModalHeader>
       <CModalTitle id="StaticBackdropExampleLabel">Modal title</CModalTitle>

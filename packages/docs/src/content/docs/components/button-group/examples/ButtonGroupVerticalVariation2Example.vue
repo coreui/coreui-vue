@@ -1,27 +1,27 @@
 <template>
   <CButtonGroup vertical role="group" aria-label="Vertical button group">
     <CFormCheck
+      id="vbtnradio1"
       type="radio"
       :button="{ color: 'danger', variant: 'outline' }"
       name="vbtnradio"
-      id="vbtnradio1"
       autocomplete="off"
       label="Radio 1"
       checked
     />
     <CFormCheck
+      id="vbtnradio2"
       type="radio"
       :button="{ color: 'danger', variant: 'outline' }"
       name="vbtnradio"
-      id="vbtnradio2"
       autocomplete="off"
       label="Radio 2"
     />
     <CFormCheck
+      id="vbtnradio3"
       type="radio"
       :button="{ color: 'danger', variant: 'outline' }"
       name="vbtnradio"
-      id="vbtnradio3"
       autocomplete="off"
       label="Radio 3"
     />

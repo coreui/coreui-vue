@@ -10,6 +10,7 @@
       { color: 'light' },
       { color: 'dark', textColor: 'white' },
     ]"
+    :key="item.color"
   >
     <CCard :color="item.color" :text-color="item.textColor" class="mb-3" style="max-width: 18rem">
       <CCardHeader>Header</CCardHeader>

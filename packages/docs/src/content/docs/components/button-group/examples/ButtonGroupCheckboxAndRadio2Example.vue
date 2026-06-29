@@ -1,27 +1,27 @@
 <template>
   <CButtonGroup role="group" aria-label="Basic checkbox toggle button group">
     <CFormCheck
+      id="btnradio1"
       type="radio"
       :button="{ color: 'primary', variant: 'outline' }"
       name="btnradio"
-      id="btnradio1"
       autocomplete="off"
       label="Radio 1"
       checked
     />
     <CFormCheck
+      id="btnradio2"
       type="radio"
       :button="{ color: 'primary', variant: 'outline' }"
       name="btnradio"
-      id="btnradio2"
       autocomplete="off"
       label="Radio 2"
     />
     <CFormCheck
+      id="btnradio3"
       type="radio"
       :button="{ color: 'primary', variant: 'outline' }"
       name="btnradio"
-      id="btnradio3"
       autocomplete="off"
       label="Radio 3"
     />

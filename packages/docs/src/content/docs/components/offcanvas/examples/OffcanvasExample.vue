@@ -21,6 +21,4 @@ import {
   CCloseButton,
   COffcanvasBody,
 } from '@coreui/vue'
-import { ref } from 'vue'
-const visible = ref(false)
 </script>

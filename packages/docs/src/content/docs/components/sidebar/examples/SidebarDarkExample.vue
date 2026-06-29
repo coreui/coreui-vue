@@ -1,5 +1,5 @@
 <template>
-  <CSidebar class="border-end" colorScheme="dark">
+  <CSidebar class="border-end" color-scheme="dark">
     <CSidebarHeader class="border-bottom">
       <CSidebarBrand>
         <svg
@@ -30,15 +30,15 @@
     <CSidebarNav>
       <CNavTitle>Nav Title</CNavTitle>
       <CNavItem href="#">
-        <CIcon customClassName="nav-icon" :icon="cilSpeedometer" /> Nav item
+        <CIcon custom-class-name="nav-icon" :icon="cilSpeedometer" /> Nav item
       </CNavItem>
       <CNavItem href="#">
-        <CIcon customClassName="nav-icon" :icon="cilSpeedometer" /> With badge
+        <CIcon custom-class-name="nav-icon" :icon="cilSpeedometer" /> With badge
         <CBadge color="primary ms-auto">NEW</CBadge>
       </CNavItem>
       <CNavGroup>
         <template #togglerContent>
-          <CIcon customClassName="nav-icon" :icon="cilPuzzle" /> Nav dropdown
+          <CIcon custom-class-name="nav-icon" :icon="cilPuzzle" /> Nav dropdown
         </template>
         <CNavItem href="#">
           <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Nav dropdown item
@@ -48,10 +48,10 @@
         </CNavItem>
       </CNavGroup>
       <CNavItem href="https://coreui.io">
-        <CIcon customClassName="nav-icon" :icon="cilCloudDownload" /> Download CoreUI
+        <CIcon custom-class-name="nav-icon" :icon="cilCloudDownload" /> Download CoreUI
       </CNavItem>
       <CNavItem href="https://coreui.io/pricing/">
-        <CIcon customClassName="nav-icon" :icon="cilLayers" /> Try CoreUI <strong>PRO</strong>
+        <CIcon custom-class-name="nav-icon" :icon="cilLayers" /> Try CoreUI <strong>PRO</strong>
       </CNavItem>
     </CSidebarNav>
   </CSidebar>

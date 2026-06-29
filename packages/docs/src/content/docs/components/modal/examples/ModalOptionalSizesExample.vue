@@ -10,12 +10,12 @@
   >
   <CModal
     :visible="visibleTooltipsAndPopoversDemo"
+    aria-labelledby="TooltipsAndPopoverExample"
     @close="
       () => {
         visibleTooltipsAndPopoversDemo = false
       }
     "
-    aria-labelledby="TooltipsAndPopoverExample"
   >
     <CModalHeader>
       <CModalTitle id="TooltipsAndPopoverExample">Modal title</CModalTitle>
@@ -25,11 +25,11 @@
       <p>
         This
         <CButton
-          color="secondary"
           v-c-popover="{
             header: 'Popover title',
             content: 'Popover body content is set in this property.',
           }"
+          color="secondary"
           >button</CButton
         >
       </p>

@@ -1,18 +1,18 @@
 <template>
   <CFormCheck
+    id="success-outlined"
     :button="{ color: 'success', variant: 'outline' }"
     type="radio"
     name="options-outlined"
-    id="success-outlined"
     autocomplete="off"
     label="Radio"
     checked
   />
   <CFormCheck
+    id="danger-outlined"
     :button="{ color: 'danger', variant: 'outline' }"
     type="radio"
     name="options-outlined"
-    id="danger-outlined"
     autocomplete="off"
     label="Radio"
   />

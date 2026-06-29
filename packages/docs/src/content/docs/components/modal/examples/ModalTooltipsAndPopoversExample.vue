@@ -12,12 +12,12 @@
     alignment="center"
     scrollable
     :visible="visibleVerticallyCenteredScrollableDemo"
+    aria-labelledby="VerticallyCenteredExample2"
     @close="
       () => {
         visibleVerticallyCenteredScrollableDemo = false
       }
     "
-    aria-labelledby="VerticallyCenteredExample2"
   >
     <CModalHeader>
       <CModalTitle id="VerticallyCenteredExample2">Modal title</CModalTitle>

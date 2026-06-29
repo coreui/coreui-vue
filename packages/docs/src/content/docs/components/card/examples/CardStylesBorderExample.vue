@@ -10,8 +10,9 @@
       { color: 'light' },
       { color: 'dark' },
     ]"
+    :key="item.color"
   >
-    <CCard :textBgColor="item.color" class="mb-3" style="max-width: 18rem">
+    <CCard :text-bg-color="item.color" class="mb-3" style="max-width: 18rem">
       <CCardHeader>Header</CCardHeader>
       <CCardBody>
         <CCardTitle>{{ item.color }} card title</CCardTitle>

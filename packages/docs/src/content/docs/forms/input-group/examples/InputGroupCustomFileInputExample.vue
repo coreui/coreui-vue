@@ -1,31 +1,31 @@
 <template>
   <CInputGroup class="mb-3">
     <CInputGroupText as="label" for="inputGroupFile01">Upload</CInputGroupText>
-    <CFormInput type="file" id="inputGroupFile01" />
+    <CFormInput id="inputGroupFile01" type="file" />
   </CInputGroup>
   <CInputGroup class="mb-3">
-    <CFormInput type="file" id="inputGroupFile02" />
+    <CFormInput id="inputGroupFile02" type="file" />
     <CInputGroupText as="label" for="inputGroupFile02">Upload</CInputGroupText>
   </CInputGroup>
   <CInputGroup class="mb-3">
-    <CButton type="button" color="secondary" variant="outline" id="inputGroupFileAddon03"
+    <CButton id="inputGroupFileAddon03" type="button" color="secondary" variant="outline"
       >Button</CButton
     >
     <CFormInput
-      type="file"
       id="inputGroupFile03"
+      type="file"
       aria-describedby="inputGroupFileAddon03"
       aria-label="Upload"
     />
   </CInputGroup>
   <CInputGroup>
     <CFormInput
-      type="file"
       id="inputGroupFile04"
+      type="file"
       aria-describedby="inputGroupFileAddon04"
       aria-label="Upload"
     />
-    <CButton type="button" color="secondary" variant="outline" id="inputGroupFileAddon04"
+    <CButton id="inputGroupFileAddon04" type="button" color="secondary" variant="outline"
       >Button</CButton
     >
   </CInputGroup>

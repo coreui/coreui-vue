@@ -59,18 +59,18 @@
       <CSidebarNav variant="tree">
         <CNavTitle>Nav Title</CNavTitle>
         <CNavItem href="#">
-          <CIcon customClassName="nav-icon" :icon="cilSpeedometer" /> Nav item
+          <CIcon custom-class-name="nav-icon" :icon="cilSpeedometer" /> Nav item
         </CNavItem>
         <CNavItem disabled href="#">
-          <CIcon customClassName="nav-icon" :icon="cilSpeedometer" /> Nav item
+          <CIcon custom-class-name="nav-icon" :icon="cilSpeedometer" /> Nav item
         </CNavItem>
         <CNavItem href="#">
-          <CIcon customClassName="nav-icon" :icon="cilSpeedometer" /> With badge
+          <CIcon custom-class-name="nav-icon" :icon="cilSpeedometer" /> With badge
           <CBadge color="primary ms-auto">NEW</CBadge>
         </CNavItem>
         <CNavGroup compact visible>
           <template #togglerContent="{ visible }">
-            <CIcon customClassName="nav-icon" :icon="cilPuzzle" /> Items group
+            <CIcon custom-class-name="nav-icon" :icon="cilPuzzle" /> Items group
             <span class="nav-group-toggle-indicator">
               <CIcon class="icon icon-sm" :icon="visible ? cilMinus : cilPlus" />
             </span>
@@ -100,7 +100,7 @@
         </CNavGroup>
         <CNavGroup>
           <template #togglerContent="{ visible }">
-            <CIcon customClassName="nav-icon" :icon="cilSettings" /> Settings group
+            <CIcon custom-class-name="nav-icon" :icon="cilSettings" /> Settings group
             <span class="nav-group-toggle-indicator">
               <CIcon class="icon icon-sm" :icon="visible ? cilMinus : cilPlus" />
             </span>
@@ -119,7 +119,7 @@
           </CNavGroup>
         </CNavGroup>
         <CNavItem href="https://coreui.io">
-          <CIcon customClassName="nav-icon" :icon="cilCloudDownload" /> Download CoreUI
+          <CIcon custom-class-name="nav-icon" :icon="cilCloudDownload" /> Download CoreUI
         </CNavItem>
       </CSidebarNav>
       <CSidebarFooter>

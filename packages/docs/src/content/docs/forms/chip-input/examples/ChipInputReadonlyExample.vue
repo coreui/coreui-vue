@@ -1,5 +1,5 @@
 <template>
-  <CChipInput readOnly :modelValue="['Read', 'Only', 'Mode']" />
+  <CChipInput read-only :model-value="['Read', 'Only', 'Mode']" />
 </template>
 
 <script setup>

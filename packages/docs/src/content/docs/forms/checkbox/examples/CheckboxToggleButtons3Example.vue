@@ -1,7 +1,7 @@
 <template>
   <CFormCheck
-    :button="{ color: 'primary' }"
     id="btn-check-2"
+    :button="{ color: 'primary' }"
     autocomplete="off"
     label="Checked"
     checked
@@ -10,6 +10,4 @@
 
 <script setup>
 import { CFormCheck } from '@coreui/vue'
-import { ref } from 'vue'
-const checked = ref(true)
 </script>

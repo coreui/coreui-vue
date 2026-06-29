@@ -1,7 +1,7 @@
 <template>
-  <CFormSwitch label="Default switch checkbox input" id="formSwitchCheckDefault" />
-  <CFormSwitch size="lg" label="Large switch checkbox input" id="formSwitchCheckDefaultLg" />
-  <CFormSwitch size="xl" label="Extra large switch checkbox input" id="formSwitchCheckDefaultXL" />
+  <CFormSwitch id="formSwitchCheckDefault" label="Default switch checkbox input" />
+  <CFormSwitch id="formSwitchCheckDefaultLg" size="lg" label="Large switch checkbox input" />
+  <CFormSwitch id="formSwitchCheckDefaultXL" size="xl" label="Extra large switch checkbox input" />
 </template>
 
 <script setup>

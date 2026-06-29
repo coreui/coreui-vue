@@ -22,6 +22,5 @@
 <script setup>
 import { CButton, CCollapse, CCard, CCardBody } from '@coreui/vue'
 import { ref } from 'vue'
-const visible = ref(false)
 const visibleHorizontal = ref(false)
 </script>

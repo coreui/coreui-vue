@@ -1,7 +1,7 @@
 <template>
   <CChart
-    type="doughnut"
     ref="chartDoughnutRef"
+    type="doughnut"
     :data="{
       labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
       datasets: [

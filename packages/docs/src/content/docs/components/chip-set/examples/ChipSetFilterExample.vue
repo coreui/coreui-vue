@@ -1,5 +1,5 @@
 <template>
-  <CChipSet filter :chips="chips" v-model:selected="selected" />
+  <CChipSet v-model:selected="selected" filter :chips="chips" />
 </template>
 
 <script setup>

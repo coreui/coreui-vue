@@ -1,7 +1,7 @@
 <template>
   <CToaster class="position-static">
     <CToast :autohide="false" visible>
-      <CToastHeader closeButton>
+      <CToastHeader close-button>
         <svg
           class="rounded me-2"
           width="20"
@@ -19,7 +19,7 @@
       <CToastBody>Hello, world! This is a toast message.</CToastBody>
     </CToast>
     <CToast :autohide="false" visible>
-      <CToastHeader closeButton>
+      <CToastHeader close-button>
         <svg
           class="rounded me-2"
           width="20"

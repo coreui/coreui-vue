@@ -3,9 +3,9 @@
     <div class="mb-3">
       <CChipInput
         id="skillsInputSm"
+        v-model="smallTags"
         label="Small"
         size="sm"
-        v-model="smallTags"
         placeholder="Add a small chip"
       />
     </div>
@@ -13,8 +13,8 @@
     <div class="mb-3">
       <CChipInput
         id="skillsInputDefault"
-        label="Default"
         v-model="defaultTags"
+        label="Default"
         placeholder="Add a default chip"
       />
     </div>
@@ -22,9 +22,9 @@
     <div>
       <CChipInput
         id="skillsInputLg"
+        v-model="largeTags"
         label="Large"
         size="lg"
-        v-model="largeTags"
         placeholder="Add a large chip"
       />
     </div>

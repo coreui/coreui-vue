@@ -7,8 +7,8 @@
   >
     <CCol md="4">
       <CFormInput
-        feedbackValid="Looks good!"
         id="validationCustom01"
+        feedback-valid="Looks good!"
         label="First name"
         required
         value="Mark"
@@ -16,8 +16,8 @@
     </CCol>
     <CCol md="4">
       <CFormInput
-        feedbackValid="Looks good!"
         id="validationCustom02"
+        feedback-valid="Looks good!"
         label="Email"
         value="Otto"
         required
@@ -30,24 +30,24 @@
         <CFormInput
           id="validationCustomUsername"
           aria-describedby="inputGroupPrepend"
-          feedbackInvalid="Please choose a username."
+          feedback-invalid="Please choose a username."
           required
         />
       </CInputGroup>
     </CCol>
     <CCol md="6">
       <CFormInput
-        feedbackInvalid="Please provide a valid city."
         id="validationCustom03"
+        feedback-invalid="Please provide a valid city."
         label="City"
         required
       />
     </CCol>
     <CCol md="3">
       <CFormSelect
-        aria-describedby="validationCustom04Feedback"
-        feedbackInvalid="Please select a valid state."
         id="validationCustom04"
+        aria-describedby="validationCustom04Feedback"
+        feedback-invalid="Please select a valid state."
         label="State"
         required
       >
@@ -57,16 +57,16 @@
     </CCol>
     <CCol md="3">
       <CFormInput
-        feedbackInvalid="Please provide a valid zip."
         id="validationCustom05"
+        feedback-invalid="Please provide a valid zip."
         label="Zip"
         required
       />
     </CCol>
     <CCol xs="12">
       <CFormCheck
-        feedbackInvalid="You must agree before submitting."
         id="invalidCheck"
+        feedback-invalid="You must agree before submitting."
         label="Agree to terms and conditions"
         required
         type="checkbox"

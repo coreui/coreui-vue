@@ -3,9 +3,9 @@
     <CCol md>
       <CFormFloating>
         <CFormInput
-          type="email"
           id="floatingInputGrid"
-          floatingLabel="Email address"
+          type="email"
+          floating-label="Email address"
           placeholder="name@example.com"
           value="email@example.com"
         />
@@ -15,7 +15,7 @@
       <CFormFloating>
         <CFormSelect
           id="floatingSelectGrid"
-          floatingLabel="Works with selects"
+          floating-label="Works with selects"
           aria-label="Floating label select example"
         >
           <option>Open this select menu</option>

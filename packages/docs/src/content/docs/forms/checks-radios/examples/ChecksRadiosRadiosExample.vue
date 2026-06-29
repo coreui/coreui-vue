@@ -1,9 +1,9 @@
 <template>
-  <CFormCheck type="radio" name="flexRadioDefault" id="flexRadioDefault1" label="Default radio" />
+  <CFormCheck id="flexRadioDefault1" type="radio" name="flexRadioDefault" label="Default radio" />
   <CFormCheck
+    id="flexRadioDefault2"
     type="radio"
     name="flexRadioDefault"
-    id="flexRadioDefault2"
     label="Checked radio"
     checked
   />

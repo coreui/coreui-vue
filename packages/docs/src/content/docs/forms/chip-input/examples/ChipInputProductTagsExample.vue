@@ -1,10 +1,10 @@
 <template>
   <CChipInput
-    label="Product tags"
     v-model="tags"
+    label="Product tags"
     placeholder="Add tags..."
     size="sm"
-    :chipClassName="'chip-info'"
+    :chip-class-name="'chip-info'"
   />
 </template>
 

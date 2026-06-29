@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CChipInput :separator="null" v-model="tags" placeholder="Type and press Enter..." />
+    <CChipInput v-model="tags" :separator="null" placeholder="Type and press Enter..." />
     <p class="mt-2 text-muted">
       <small>Separator disabled - use Enter key to create chips</small>
     </p>

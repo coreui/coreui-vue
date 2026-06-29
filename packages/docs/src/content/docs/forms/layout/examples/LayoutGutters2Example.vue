@@ -2,11 +2,11 @@
   <CForm class="row g-3">
     <CCol md="6">
       <CFormLabel for="inputEmail4">Email</CFormLabel>
-      <CFormInput type="email" id="inputEmail4" />
+      <CFormInput id="inputEmail4" type="email" />
     </CCol>
     <CCol md="6">
       <CFormLabel for="inputPassword4">Password</CFormLabel>
-      <CFormInput type="password" id="inputPassword4" />
+      <CFormInput id="inputPassword4" type="password" />
     </CCol>
     <CCol xs="12">
       <CFormLabel for="inputAddress">Address</CFormLabel>
@@ -32,7 +32,7 @@
       <CFormInput id="inputZip" />
     </CCol>
     <CCol xs="12">
-      <CFormCheck type="checkbox" id="gridCheck" label="Check me out" />
+      <CFormCheck id="gridCheck" type="checkbox" label="Check me out" />
     </CCol>
     <CCol xs="12">
       <CButton color="primary" type="submit">Sign in</CButton>

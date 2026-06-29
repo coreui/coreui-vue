@@ -1,5 +1,5 @@
 <template>
-  <CChipInput v-model="tags" chipClassName="chip-info" placeholder="Add tagged items..." />
+  <CChipInput v-model="tags" chip-class-name="chip-info" placeholder="Add tagged items..." />
 </template>
 
 <script setup>

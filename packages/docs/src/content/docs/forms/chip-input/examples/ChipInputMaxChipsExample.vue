@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CChipInput :maxChips="5" v-model="tags" placeholder="Max 5 chips" />
+    <CChipInput v-model="tags" :max-chips="5" placeholder="Max 5 chips" />
     <p class="mt-2 text-muted">
       <small>{{ tags.length }}/5 chips - {{ 5 - tags.length }} remaining</small>
     </p>

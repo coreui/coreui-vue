@@ -16,7 +16,4 @@
 
 <script setup>
 import { CAlert, CAlertHeading } from '@coreui/vue'
-const message = () => {
-  alert('👋 Well, hi there! Thanks for dismissing me.')
-}
 </script>

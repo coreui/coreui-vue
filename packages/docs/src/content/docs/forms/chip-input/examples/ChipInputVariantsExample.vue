@@ -2,7 +2,7 @@
   <div>
     <CChipInput
       v-model="colorTags"
-      :chipClassName="(value) => `chip-${value}`"
+      :chip-class-name="(value) => `chip-${value}`"
       placeholder="Add color name (primary, secondary, etc.)"
     />
     <p class="mt-2 text-muted">

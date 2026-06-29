@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex gap-2 flex-wrap">
     <CChip color="primary">
-      <CAvatar color="primary" textColor="white">J</CAvatar>
+      <CAvatar color="primary" text-color="white">J</CAvatar>
       John Doe
     </CChip>
     <CChip color="secondary">
@@ -9,7 +9,7 @@
       Jane Smith
     </CChip>
     <CChip color="success">
-      <CAvatar color="success" textColor="white">A</CAvatar>
+      <CAvatar color="success" text-color="white">A</CAvatar>
       Alice Brown
     </CChip>
   </div>

@@ -1,8 +1,8 @@
 <template>
-  <CFormCheck reverse id="reverseCheckbox1" value="option1" label="Reverse checkbox" />
+  <CFormCheck id="reverseCheckbox1" reverse value="option1" label="Reverse checkbox" />
   <CFormCheck
-    reverse
     id="reverseCheckbox2"
+    reverse
     value="option2"
     label="Disabled reverse checkbox"
     disabled

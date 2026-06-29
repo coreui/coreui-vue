@@ -5,6 +5,5 @@
 
 <script setup>
 import { CIcon } from '@coreui/icons-vue'
-import { cilList } from '@coreui/icons'
 import * as icon from '@coreui/icons'
 </script>

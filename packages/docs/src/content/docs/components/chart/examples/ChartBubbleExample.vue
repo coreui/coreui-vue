@@ -1,7 +1,7 @@
 <template>
   <CChart
-    type="bubble"
     ref="chartBubbleRef"
+    type="bubble"
     :data="{
       datasets: [
         {

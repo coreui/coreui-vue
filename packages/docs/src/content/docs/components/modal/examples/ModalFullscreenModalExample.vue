@@ -56,12 +56,12 @@
   <CModal
     fullscreen
     :visible="fullscreenDemo"
+    aria-labelledby="FullscreenExample1"
     @close="
       () => {
         fullscreenDemo = false
       }
     "
-    aria-labelledby="FullscreenExample1"
   >
     <CModalHeader>
       <CModalTitle id="FullscreenExample1">Full screen</CModalTitle>
@@ -71,12 +71,12 @@
   <CModal
     fullscreen="sm"
     :visible="fullscreenSmDemo"
+    aria-labelledby="FullscreenExample2"
     @close="
       () => {
         fullscreenSmDemo = false
       }
     "
-    aria-labelledby="FullscreenExample2"
   >
     <CModalHeader>
       <CModalTitle id="FullscreenExample2">Full screen below sm</CModalTitle>
@@ -86,12 +86,12 @@
   <CModal
     fullscreen="md"
     :visible="fullscreenMdDemo"
+    aria-labelledby="FullscreenExample3"
     @close="
       () => {
         fullscreenMdDemo = false
       }
     "
-    aria-labelledby="FullscreenExample3"
   >
     <CModalHeader>
       <CModalTitle id="FullscreenExample3">Full screen below md</CModalTitle>
@@ -101,12 +101,12 @@
   <CModal
     fullscreen="lg"
     :visible="fullscreenLgDemo"
+    aria-labelledby="FullscreenExample4"
     @close="
       () => {
         fullscreenLgDemo = false
       }
     "
-    aria-labelledby="FullscreenExample4"
   >
     <CModalHeader>
       <CModalTitle id="FullscreenExample4">Full screen below lg</CModalTitle>
@@ -116,12 +116,12 @@
   <CModal
     fullscreen="xl"
     :visible="fullscreenXlDemo"
+    aria-labelledby="FullscreenExample5"
     @close="
       () => {
         fullscreenXlDemo = false
       }
     "
-    aria-labelledby="FullscreenExample5"
   >
     <CModalHeader>
       <CModalTitle id="FullscreenExample5">Full screen below xl</CModalTitle>
@@ -131,12 +131,12 @@
   <CModal
     fullscreen="xxl"
     :visible="fullscreenXxlDemo"
+    aria-labelledby="FullscreenExample6"
     @close="
       () => {
         fullscreenXxlDemo = false
       }
     "
-    aria-labelledby="FullscreenExample6"
   >
     <CModalHeader>
       <CModalTitle id="FullscreenExample6">Full screen below xxl</CModalTitle>

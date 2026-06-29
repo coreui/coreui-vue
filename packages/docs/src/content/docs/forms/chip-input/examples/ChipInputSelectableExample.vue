@@ -1,16 +1,16 @@
 <template>
   <div>
     <CChipInput
-      selectable
       v-model="items"
-      @select="handleSelect"
+      selectable
       placeholder="Click chips to select them..."
+      @select="handleSelect"
     />
 
-    <p class="mt-3 text-muted small" v-if="selectedItems.length">
+    <p v-if="selectedItems.length" class="mt-3 text-muted small">
       Selected: {{ selectedItems.join(', ') }}
     </p>
-    <p class="mt-3 text-muted small" v-else>No chips selected</p>
+    <p v-else class="mt-3 text-muted small">No chips selected</p>
   </div>
 </template>
 

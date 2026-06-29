@@ -1,10 +1,10 @@
 <template>
-  <CFormSwitch label="Default switch checkbox input" id="formSwitchCheckDefault" />
-  <CFormSwitch label="Checked switch checkbox input" id="formSwitchCheckChecked" checked />
-  <CFormSwitch label="Disabled switch checkbox input" id="formSwitchCheckDisabled" disabled />
+  <CFormSwitch id="formSwitchCheckDefault" label="Default switch checkbox input" />
+  <CFormSwitch id="formSwitchCheckChecked" label="Checked switch checkbox input" checked />
+  <CFormSwitch id="formSwitchCheckDisabled" label="Disabled switch checkbox input" disabled />
   <CFormSwitch
-    label="Disabled checked switch checkbox input"
     id="formSwitchCheckCheckedDisabled"
+    label="Disabled checked switch checkbox input"
     checked
     disabled
   />

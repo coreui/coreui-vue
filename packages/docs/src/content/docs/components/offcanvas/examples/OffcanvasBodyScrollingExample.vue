@@ -46,6 +46,5 @@ import {
   COffcanvasBody,
 } from '@coreui/vue'
 import { ref } from 'vue'
-const visible = ref(false)
 const visibleScrolling = ref(false)
 </script>

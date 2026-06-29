@@ -9,7 +9,7 @@
       <span class="text-body-secondary">Toggleable via the navbar brand.</span>
     </div>
   </CCollapse>
-  <CNavbar colorScheme="dark" class="bg-dark">
+  <CNavbar color-scheme="dark" class="bg-dark">
     <CContainer fluid>
       <CNavbarToggler
         aria-controls="navbarToggleExternalContent"
@@ -23,6 +23,5 @@
 <script setup>
 import { CCollapse, CNavbar, CContainer, CNavbarToggler } from '@coreui/vue'
 import { ref } from 'vue'
-const visible = ref(true)
 const visibleExternalContent = ref(false)
 </script>

@@ -45,6 +45,5 @@ import {
   COffcanvasBody,
 } from '@coreui/vue'
 import { ref } from 'vue'
-const visible = ref(false)
 const visibleWithBothOptions = ref(false)
 </script>

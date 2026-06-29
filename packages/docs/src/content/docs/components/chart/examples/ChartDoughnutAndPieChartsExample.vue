@@ -1,7 +1,7 @@
 <template>
   <CChart
-    type="pie"
     ref="chartPieRef"
+    type="pie"
     :data="{
       labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
       datasets: [

@@ -11,7 +11,7 @@
   </CDropdown>
   <CButtonGroup>
     <CDropdown color="secondary" direction="dropstart">
-      <CDropdownToggle color="secondary" split splitLabel="Toggle Dropstart" />
+      <CDropdownToggle color="secondary" split split-label="Toggle Dropstart" />
       <CDropdownMenu>
         <CDropdownItem href="#">Action</CDropdownItem>
         <CDropdownItem href="#">Another action</CDropdownItem>

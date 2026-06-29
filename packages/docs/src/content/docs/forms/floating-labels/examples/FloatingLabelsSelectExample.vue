@@ -2,7 +2,7 @@
   <CFormFloating>
     <CFormSelect
       id="floatingSelect"
-      floatingLabel="Works with selects"
+      floating-label="Works with selects"
       aria-label="Floating label select example"
     >
       <option>Open this select menu</option>

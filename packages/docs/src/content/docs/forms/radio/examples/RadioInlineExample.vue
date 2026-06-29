@@ -1,15 +1,15 @@
 <template>
   <CFormCheck
+    id="flexRadioDisabled"
     type="radio"
     name="flexRadioDisabled"
-    id="flexRadioDisabled"
     label="Disabled radio"
     disabled
   />
   <CFormCheck
+    id="flexRadioCheckedDisabled"
     type="radio"
     name="flexRadioDisabled"
-    id="flexRadioCheckedDisabled"
     label="Disabled checked radio"
     checked
     disabled

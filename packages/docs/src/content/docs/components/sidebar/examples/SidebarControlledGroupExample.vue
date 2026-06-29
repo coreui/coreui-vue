@@ -2,18 +2,18 @@
   <CSidebar class="border-end">
     <CSidebarNav>
       <CNavItem href="#">
-        <CIcon customClassName="nav-icon" :icon="cilSpeedometer" /> Dashboard
+        <CIcon custom-class-name="nav-icon" :icon="cilSpeedometer" /> Dashboard
       </CNavItem>
       <CNavGroup :visible="visible" @update:visible="handleVisibleChange">
         <template #togglerContent>
-          <CIcon customClassName="nav-icon" :icon="cilPuzzle" /> Active section
+          <CIcon custom-class-name="nav-icon" :icon="cilPuzzle" /> Active section
         </template>
         <CNavItem href="#">Overview</CNavItem>
         <CNavItem href="#">Settings</CNavItem>
       </CNavGroup>
       <CNavGroup>
         <template #togglerContent>
-          <CIcon customClassName="nav-icon" :icon="cilLayers" /> Components
+          <CIcon custom-class-name="nav-icon" :icon="cilLayers" /> Components
         </template>
         <CNavItem href="#">Base</CNavItem>
         <CNavItem href="#">Buttons</CNavItem>
@@ -27,13 +27,13 @@
       </CNavGroup>
       <CNavGroup>
         <template #togglerContent>
-          <CIcon customClassName="nav-icon" :icon="cilSettings" /> Settings
+          <CIcon custom-class-name="nav-icon" :icon="cilSettings" /> Settings
         </template>
         <CNavItem href="#">Profile</CNavItem>
         <CNavItem href="#">Security</CNavItem>
       </CNavGroup>
       <CNavItem href="https://coreui.io">
-        <CIcon customClassName="nav-icon" :icon="cilCloudDownload" /> Download CoreUI
+        <CIcon custom-class-name="nav-icon" :icon="cilCloudDownload" /> Download CoreUI
       </CNavItem>
     </CSidebarNav>
     <CSidebarFooter class="border-top">

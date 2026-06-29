@@ -3,7 +3,7 @@
     <CSidebarNav>
       <CNavGroup visible>
         <template #togglerContent>
-          <CIcon customClassName="nav-icon" :icon="cilPuzzle" /> Items group
+          <CIcon custom-class-name="nav-icon" :icon="cilPuzzle" /> Items group
         </template>
         <CNavItem href="#">Items group item</CNavItem>
         <CNavItem href="#">Items group item</CNavItem>

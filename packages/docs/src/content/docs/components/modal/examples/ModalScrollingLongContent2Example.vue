@@ -11,12 +11,12 @@
   <CModal
     scrollable
     :visible="visibleScrollableDemo"
+    aria-labelledby="ScrollingLongContentExampleLabel2"
     @close="
       () => {
         visibleScrollableDemo = false
       }
     "
-    aria-labelledby="ScrollingLongContentExampleLabel2"
   >
     <CModalHeader>
       <CModalTitle id="ScrollingLongContentExampleLabel2">Modal title</CModalTitle>

@@ -10,12 +10,12 @@
   >
   <CModal
     :visible="visibleToggleBetweenModalsDemo1"
+    aria-labelledby="ToggleBetweenModalsExample1"
     @close="
       () => {
         visibleToggleBetweenModalsDemo1 = false
       }
     "
-    aria-labelledby="ToggleBetweenModalsExample1"
   >
     <CModalHeader>
       <CModalTitle id="ToggleBetweenModalsExample1">Modal 1 title</CModalTitle>
@@ -38,13 +38,13 @@
   </CModal>
   <CModal
     :visible="visibleToggleBetweenModalsDemo2"
+    aria-labelledby="ToggleBetweenModalsExample2"
     @close="
       () => {
         visibleToggleBetweenModalsDemo1 = true
         visibleToggleBetweenModalsDemo2 = false
       }
     "
-    aria-labelledby="ToggleBetweenModalsExample2"
   >
     <CModalHeader>
       <CModalTitle id="ToggleBetweenModalsExample2">Modal 2 title</CModalTitle>

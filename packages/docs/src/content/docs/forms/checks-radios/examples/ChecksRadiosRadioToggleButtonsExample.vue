@@ -1,35 +1,35 @@
 <template>
   <CFormCheck
+    id="option1"
     :button="{ color: 'secondary' }"
     type="radio"
     name="options"
-    id="option1"
     autocomplete="off"
     label="Checked"
     checked
   />
   <CFormCheck
+    id="option2"
     :button="{ color: 'secondary' }"
     type="radio"
     name="options"
-    id="option2"
     autocomplete="off"
     label="Radio"
   />
   <CFormCheck
+    id="option3"
     :button="{ color: 'secondary' }"
     type="radio"
     name="options"
-    id="option3"
     autocomplete="off"
     label="Radio"
     disabled
   />
   <CFormCheck
+    id="option4"
     :button="{ color: 'secondary' }"
     type="radio"
     name="options"
-    id="option4"
     autocomplete="off"
     label="Radio"
   />

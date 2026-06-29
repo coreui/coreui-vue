@@ -1,18 +1,18 @@
 <template>
   <CFormInput
+    id="floatingInputInvalid"
     class="mb-3"
     type="email"
-    id="floatingInputInvalid"
-    floatingLabel="Email addresss"
+    floating-label="Email addresss"
     placeholder="name@example.com"
     valid
     value="test@example.com"
   />
   <CFormInput
-    type="email"
     id="floatingInputInvalid"
+    type="email"
     invalid
-    floatingLabel="Email addresss"
+    floating-label="Email addresss"
     placeholder="name@example.com"
     value="test@example.com"
   />

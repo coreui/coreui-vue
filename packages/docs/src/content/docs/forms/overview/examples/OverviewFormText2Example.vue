@@ -4,10 +4,10 @@
       <CFormLabel for="inputPassword6" class="col-form-label"> Password </CFormLabel>
     </CCol>
     <CCol xs="auto">
-      <CFormInput type="password" id="inputPassword6" aria-describedby="passwordHelpInline" />
+      <CFormInput id="inputPassword6" type="password" aria-describedby="passwordHelpInline" />
     </CCol>
     <CCol xs="auto">
-      <CFormText as="span" id="passwordHelpInline"> Must be 8-20 characters long. </CFormText>
+      <CFormText id="passwordHelpInline" as="span"> Must be 8-20 characters long. </CFormText>
     </CCol>
   </CRow>
 </template>

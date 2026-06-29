@@ -3,14 +3,14 @@
     <CSidebarNav compact>
       <CNavTitle>Compact nav</CNavTitle>
       <CNavItem href="#">
-        <CIcon customClassName="nav-icon" :icon="cilSpeedometer" /> Dashboard
+        <CIcon custom-class-name="nav-icon" :icon="cilSpeedometer" /> Dashboard
       </CNavItem>
       <CNavItem href="#">
-        <CIcon customClassName="nav-icon" :icon="cilLayers" /> Components
+        <CIcon custom-class-name="nav-icon" :icon="cilLayers" /> Components
       </CNavItem>
       <CNavGroup visible>
         <template #togglerContent>
-          <CIcon customClassName="nav-icon" :icon="cilPuzzle" /> Nested group
+          <CIcon custom-class-name="nav-icon" :icon="cilPuzzle" /> Nested group
         </template>
         <CNavItem href="#">Compact item</CNavItem>
         <CNavItem href="#">Compact item</CNavItem>

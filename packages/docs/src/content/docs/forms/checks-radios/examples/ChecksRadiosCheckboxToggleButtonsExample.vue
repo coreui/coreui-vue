@@ -1,7 +1,7 @@
 <template>
   <CFormCheck
-    :button="{ color: 'primary' }"
     id="btn-check"
+    :button="{ color: 'primary' }"
     autocomplete="off"
     label="Single toggle"
   />

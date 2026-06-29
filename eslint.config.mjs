@@ -1,12 +1,14 @@
 import eslint from '@eslint/js'
 import eslintPluginUnicorn from 'eslint-plugin-unicorn'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
+import eslintPluginUnusedImports from 'eslint-plugin-unused-imports'
 import eslintPluginVue from 'eslint-plugin-vue'
+import vueParser from 'vue-eslint-parser'
 import globals from 'globals'
 import typescriptEslint from 'typescript-eslint'
 
 export default typescriptEslint.config(
-  { ignores: ['**/*.d.ts', '**/coverage', '**/dist', '**/docs'] },
+  { ignores: ['**/*.d.ts', '**/coverage', '**/dist', '**/.astro', 'packages/docs/**/*.mjs'] },
   {
     extends: [
       eslint.configs.recommended,
@@ -15,6 +17,7 @@ export default typescriptEslint.config(
       eslintPluginUnicorn.configs['flat/recommended'],
     ],
     files: ['packages/**/src/**/*.{js,ts,tsx}'],
+    ignores: ['packages/docs/**'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -42,6 +45,7 @@ export default typescriptEslint.config(
   },
   {
     files: ['**/*.mjs'],
+    ignores: ['packages/docs/**'],
     languageOptions: {
       globals: {
         ...Object.fromEntries(Object.entries(globals.browser).map(([key]) => [key, 'off'])),
@@ -74,6 +78,30 @@ export default typescriptEslint.config(
     rules: {
       'no-console': 'off',
       strict: 'error',
+    },
+  },
+  {
+    files: ['packages/docs/src/content/**/examples/**/*.vue'],
+    extends: [...eslintPluginVue.configs['flat/recommended']],
+    plugins: {
+      'unused-imports': eslintPluginUnusedImports,
+    },
+    languageOptions: {
+      parser: vueParser,
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: globals.browser,
+      parserOptions: {
+        parser: typescriptEslint.parser,
+      },
+    },
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'off',
+      'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-vars': [
+        'error',
+        { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
+      ],
     },
   },
   eslintPluginPrettierRecommended

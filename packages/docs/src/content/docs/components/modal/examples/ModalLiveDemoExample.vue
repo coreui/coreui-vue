@@ -10,12 +10,12 @@
   >
   <CModal
     :visible="visibleLiveDemo"
+    aria-labelledby="LiveDemoExampleLabel"
     @close="
       () => {
         visibleLiveDemo = false
       }
     "
-    aria-labelledby="LiveDemoExampleLabel"
   >
     <CModalHeader>
       <CModalTitle id="LiveDemoExampleLabel">Modal title</CModalTitle>

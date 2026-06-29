@@ -2,7 +2,7 @@
   <CTabContent class="pt-4" style="--cui-light: #f0f4f7">
     <CTabPane role="tabpanel" aria-labelledby="linear-tab" :visible="tabPaneActiveKey === 1">
       <CRow v-if="tabPaneActiveKey === 1" :xs="{ cols: 3 }" :sm="{ cols: 4 }" :lg="{ cols: 5 }">
-        <CCol class="mb-4" v-for="i in linearIcons">
+        <CCol v-for="i in linearIcons" :key="i" class="mb-4">
           <div class="p-3 py-4 mb-2 bg-body-tertiary text-center rounded">
             <CIcon :icon="icon[i]" size="xxl" />
           </div>
@@ -12,7 +12,7 @@
     </CTabPane>
     <CTabPane role="tabpanel" aria-labelledby="brand-tab" :visible="tabPaneActiveKey === 2">
       <CRow v-if="tabPaneActiveKey === 2" :xs="{ cols: 3 }" :sm="{ cols: 4 }" :lg="{ cols: 5 }">
-        <CCol class="mb-4" v-for="i in brandIcons">
+        <CCol v-for="i in brandIcons" :key="i" class="mb-4">
           <div class="p-3 py-4 mb-2 bg-body-tertiary text-center rounded">
             <CIcon :icon="icon[i]" size="xxl" />
           </div>
@@ -22,7 +22,7 @@
     </CTabPane>
     <CTabPane role="tabpanel" aria-labelledby="flags-tab" :visible="tabPaneActiveKey === 3">
       <CRow v-if="tabPaneActiveKey === 3" :xs="{ cols: 3 }" :sm="{ cols: 4 }" :lg="{ cols: 5 }">
-        <CCol class="mb-4" v-for="i in flagIcons">
+        <CCol v-for="i in flagIcons" :key="i" class="mb-4">
           <div class="p-3 py-4 mb-2 bg-body-tertiary text-center rounded">
             <CIcon :icon="icon[i]" size="xxl" />
           </div>

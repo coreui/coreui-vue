@@ -4,7 +4,7 @@
   <CBadge color="danger">danger</CBadge>
   <CBadge color="warning">warning</CBadge>
   <CBadge color="info">info</CBadge>
-  <CBadge textBgColor="light">light</CBadge>
+  <CBadge text-bg-color="light">light</CBadge>
   <CBadge color="dark">dark</CBadge>
 </template>
 

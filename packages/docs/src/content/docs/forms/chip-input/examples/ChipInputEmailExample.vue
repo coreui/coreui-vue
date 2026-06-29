@@ -1,5 +1,5 @@
 <template>
-  <CChipInput label="To:" placeholder="Add recipients..." v-model="recipients" separator=";" />
+  <CChipInput v-model="recipients" label="To:" placeholder="Add recipients..." separator=";" />
 </template>
 
 <script setup>

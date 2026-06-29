@@ -17,7 +17,7 @@
       </CFormSelect>
     </CCol>
     <CCol xs="12">
-      <CFormCheck type="checkbox" id="inlineFormCheck" label="Remember me" />
+      <CFormCheck id="inlineFormCheck" type="checkbox" label="Remember me" />
     </CCol>
     <CCol xs="12">
       <CButton color="primary" type="submit">Submit</CButton>

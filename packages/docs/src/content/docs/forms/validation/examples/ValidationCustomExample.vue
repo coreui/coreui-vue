@@ -2,8 +2,8 @@
   <CForm class="row g-3 needs-validation">
     <CCol md="4">
       <CFormInput
-        feedback="Looks good!"
         id="validationServer01"
+        feedback="Looks good!"
         label="Email"
         required
         valid
@@ -12,8 +12,8 @@
     </CCol>
     <CCol md="4">
       <CFormInput
-        feedback="Looks good!"
         id="validationServer02"
+        feedback="Looks good!"
         label="Repeat email"
         required
         valid
@@ -25,9 +25,9 @@
       <CInputGroup class="has-validation">
         <CInputGroupText id="inputGroupPrepend03">@</CInputGroupText>
         <CFormInput
+          id="validationServerUsername"
           aria-describedby="inputGroupPrepend03"
           feedback="Please choose a username."
-          id="validationServerUsername"
           invalid
           required
         />
@@ -35,8 +35,8 @@
     </CCol>
     <CCol md="6">
       <CFormInput
-        feedback="Please provide a valid city."
         id="validationServer03"
+        feedback="Please provide a valid city."
         invalid
         label="City"
         required
@@ -44,8 +44,8 @@
     </CCol>
     <CCol md="3">
       <CFormSelect
-        feedback="Please provide a valid city."
         id="validationServer04"
+        feedback="Please provide a valid city."
         invalid
         label="State"
       >
@@ -55,8 +55,8 @@
     </CCol>
     <CCol md="3">
       <CFormInput
-        feedback="Please provide a valid zip."
         id="validationServer05"
+        feedback="Please provide a valid zip."
         invalid
         label="zip"
         required
@@ -64,8 +64,8 @@
     </CCol>
     <CCol xs="12">
       <CFormCheck
-        feedbackInvalid="You must agree before submitting."
         id="invalidCheck"
+        feedback-invalid="You must agree before submitting."
         invalid
         label="Agree to terms and conditions"
         required

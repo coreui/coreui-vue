@@ -1,5 +1,5 @@
 <template>
-  <CChipInput id="skills-input" label="Skills" v-model="skills" placeholder="Add skill..." />
+  <CChipInput id="skills-input" v-model="skills" label="Skills" placeholder="Add skill..." />
 </template>
 
 <script setup>

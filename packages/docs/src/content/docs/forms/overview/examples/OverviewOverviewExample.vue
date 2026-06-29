@@ -2,12 +2,12 @@
   <CForm>
     <div class="mb-3">
       <CFormLabel for="exampleInputEmail1">Email address</CFormLabel>
-      <CFormInput type="email" id="exampleInputEmail1" aria-describedby="emailHelp" />
+      <CFormInput id="exampleInputEmail1" type="email" aria-describedby="emailHelp" />
       <CFormText id="emailHelp">We'll never share your email with anyone else.</CFormText>
     </div>
     <div class="mb-3">
       <CFormLabel for="exampleInputPassword1">Email Password</CFormLabel>
-      <CFormInput type="password" id="exampleInputPassword1" />
+      <CFormInput id="exampleInputPassword1" type="password" />
     </div>
     <CFormCheck class="mb-3" label="Check me out" />
     <CButton type="submit" color="primary"> Submit </CButton>

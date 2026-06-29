@@ -1,7 +1,7 @@
 <template>
   <CFormCheck
-    :button="{ color: 'primary' }"
     id="btn-check-2"
+    :button="{ color: 'primary' }"
     autocomplete="off"
     label="Checked"
     checked

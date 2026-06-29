@@ -11,12 +11,12 @@
   <CModal
     alignment="center"
     :visible="visibleVerticallyCenteredDemo"
+    aria-labelledby="VerticallyCenteredExample"
     @close="
       () => {
         visibleVerticallyCenteredDemo = false
       }
     "
-    aria-labelledby="VerticallyCenteredExample"
   >
     <CModalHeader>
       <CModalTitle id="VerticallyCenteredExample">Modal title</CModalTitle>

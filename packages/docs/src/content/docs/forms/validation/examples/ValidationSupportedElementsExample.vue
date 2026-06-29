@@ -2,39 +2,39 @@
   <CForm :validated="true">
     <div class="mb-3">
       <CFormTextarea
-        feedbackInvalid="Please enter a message in the textarea."
         id="validationTextarea"
+        feedback-invalid="Please enter a message in the textarea."
         label="Textarea"
         placeholder="Required example textarea"
         required
       />
     </div>
     <CFormCheck
-      class="mb-3"
       id="validationFormCheck1"
+      class="mb-3"
       label="Check this checkbox"
-      feedbackInvalid="Example invalid feedback text"
+      feedback-invalid="Example invalid feedback text"
       required
     />
     <CFormCheck
+      id="validationFormCheck2"
       type="radio"
       name="radio-stacked"
-      id="validationFormCheck2"
       label="Check this checkbox"
       required
     />
     <CFormCheck
+      id="validationFormCheck3"
       class="mb-3"
       type="radio"
       name="radio-stacked"
-      id="validationFormCheck3"
       label="Or toggle this other radio"
-      feedbackInvalid="More example invalid feedback text"
+      feedback-invalid="More example invalid feedback text"
       required
     />
     <div class="mb-3">
       <CFormSelect
-        feedbackInvalid="Example invalid select feedback"
+        feedback-invalid="Example invalid select feedback"
         aria-label="select example"
         required
       >
@@ -46,9 +46,9 @@
     </div>
     <div class="mb-3">
       <CFormInput
-        type="file"
         id="validationTextarea"
-        feedbackInvalid="Example invalid form file feedback"
+        type="file"
+        feedback-invalid="Example invalid form file feedback"
         aria-label="file example"
         required
       />

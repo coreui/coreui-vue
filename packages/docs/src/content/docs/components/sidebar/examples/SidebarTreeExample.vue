@@ -3,7 +3,7 @@
     <CSidebarNav variant="tree">
       <CNavGroup visible>
         <template #togglerContent>
-          <CIcon customClassName="nav-icon" :icon="cilFolder" /> Parent item
+          <CIcon custom-class-name="nav-icon" :icon="cilFolder" /> Parent item
         </template>
         <CNavItem href="#">
           <span class="nav-icon"><span class="nav-icon-bullet"></span></span> Child item

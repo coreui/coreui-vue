@@ -1,29 +1,29 @@
 <template>
-  <CFormCheck type="radio" id="flexRadioVModel1" inline label="One" value="One" v-model="picked" />
-  <CFormCheck type="radio" id="flexRadioVModel2" inline label="Two" value="Two" v-model="picked" />
+  <CFormCheck id="flexRadioVModel1" v-model="picked" type="radio" inline label="One" value="One" />
+  <CFormCheck id="flexRadioVModel2" v-model="picked" type="radio" inline label="Two" value="Two" />
   <CFormCheck
-    type="radio"
     id="flexRadioVModel3"
+    v-model="picked"
+    type="radio"
     inline
     label="Three"
     value="Three"
-    v-model="picked"
   />
   <CFormCheck
-    type="radio"
     id="flexRadioVModel4"
+    v-model="picked"
+    type="radio"
     inline
     label="Four"
     value="Four"
-    v-model="picked"
   />
   <CFormCheck
-    type="radio"
     id="flexRadioVModel5"
+    v-model="picked"
+    type="radio"
     inline
     label="Five"
     value="Five"
-    v-model="picked"
   />
   <div>Picked: {{ picked }}</div>
 </template>
