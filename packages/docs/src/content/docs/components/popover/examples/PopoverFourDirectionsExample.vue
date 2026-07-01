@@ -12,5 +12,5 @@
 </template>
 
 <script setup>
-import { CButton } from '@coreui/vue'
+import { CButton, vcpopover as vCPopover } from '@coreui/vue'
 </script>
