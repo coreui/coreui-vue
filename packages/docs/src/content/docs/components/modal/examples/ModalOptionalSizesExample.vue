@@ -65,6 +65,8 @@ import {
   CModalBody,
   CLink,
   CModalFooter,
+  vcpopover as vCPopover,
+  vctooltip as vCTooltip,
 } from '@coreui/vue'
 import { ref } from 'vue'
 const visibleTooltipsAndPopoversDemo = ref(false)

@@ -16,5 +16,5 @@
 </template>
 
 <script setup>
-import { CLink } from '@coreui/vue'
+import { CLink, vctooltip as vCTooltip } from '@coreui/vue'
 </script>

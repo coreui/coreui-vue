@@ -34,5 +34,5 @@
 </template>
 
 <script setup>
-import { CButton } from '@coreui/vue'
+import { CButton, vctooltip as vCTooltip } from '@coreui/vue'
 </script>
