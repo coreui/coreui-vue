@@ -6,6 +6,7 @@ import { Color } from '../../props'
 
 export const CAlert = defineComponent({
   name: 'CAlert',
+  inheritAttrs: false,
   props: {
     /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
@@ -42,7 +43,7 @@ export const CAlert = defineComponent({
      */
     'close',
   ],
-  setup(props, { slots, emit }) {
+  setup(props, { attrs, slots, emit }) {
     const visible = ref(props.visible)
 
     watch(
@@ -72,6 +73,7 @@ export const CAlert = defineComponent({
             h(
               'div',
               {
+                ...attrs,
                 class: [
                   'alert',
                   props.variant === 'solid'
@@ -81,6 +83,7 @@ export const CAlert = defineComponent({
                     [`alert-${props.color}`]: props.color,
                     'alert-dismissible': props.dismissible,
                   },
+                  attrs.class,
                 ],
               },
               [
