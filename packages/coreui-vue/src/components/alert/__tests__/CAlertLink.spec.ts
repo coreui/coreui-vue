@@ -1,24 +1,20 @@
 import { mount } from '@vue/test-utils'
-import { CAlertLink as Component } from '../../../index'
+import { CAlertLink } from '../../'
 
-const ComponentName = 'CAlertLink'
-
-const defaultWrapper = mount(Component, {
-  propsData: {},
-  slots: {
-    default: 'Default slot',
-  },
-})
-
-describe(`Loads and display ${ComponentName} component`, () => {
-  it('has a name', () => {
-    expect(Component.name).toMatch(ComponentName)
+describe('CAlertLink', () => {
+  it('should render an alert link', () => {
+    const wrapper = mount(CAlertLink)
+    expect(wrapper.find('.alert-link').exists()).toBe(true)
+    expect(wrapper.element.tagName).toBe('A')
   })
-  it('renders correctly', () => {
-    expect(defaultWrapper.html()).toMatchSnapshot()
+
+  it('should render its content', () => {
+    const wrapper = mount(CAlertLink, { slots: { default: 'Hello World!' } })
+    expect(wrapper.text()).toContain('Hello World!')
   })
-  it('contain slots and classes', () => {
-    expect(defaultWrapper.text()).toContain('Default slot')
-    expect(defaultWrapper.classes('alert-link')).toBe(true)
+
+  it('should apply a custom class name', () => {
+    const wrapper = mount(CAlertLink, { attrs: { class: 'bazinga' } })
+    expect(wrapper.find('.alert-link').classes()).toContain('bazinga')
   })
 })
