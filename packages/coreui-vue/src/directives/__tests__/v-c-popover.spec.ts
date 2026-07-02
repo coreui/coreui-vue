@@ -1,11 +1,12 @@
+import type { Mock } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { h, withDirectives } from 'vue'
 import { createPopper } from '@popperjs/core'
 import vCPopover from '../v-c-popover'
 
-jest.mock('@popperjs/core', () => ({ createPopper: jest.fn() }))
+vi.mock('@popperjs/core', () => ({ createPopper: vi.fn() }))
 
-const mockedCreatePopper = createPopper as jest.Mock
+const mockedCreatePopper = createPopper as Mock
 
 const renderWithDirective = (value: unknown) =>
   mount(

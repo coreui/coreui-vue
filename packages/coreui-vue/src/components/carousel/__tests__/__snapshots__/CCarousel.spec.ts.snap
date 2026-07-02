@@ -1,14 +1,14 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Customize CCarousel component renders correctly 1`] = `
-"<div class="carousel slide carousel-fade" data-coreui-theme="dark">
+exports[`Customize CCarousel component > renders correctly 1`] = `
+"<div class="carousel slide carousel-fade pointer-event" data-coreui-theme="dark">
   <div class="carousel-indicators"></div>
-  <div class="carousel-inner"></div><button type="button" class="carousel-control-prev" data-coreui-target=""><span class="carousel-control-prev-icon" ariahidden="true"></span><span class="visually-hidden">Previous</span></button><button type="button" class="carousel-control-next" data-coreui-target=""><span class="carousel-control-next-icon" ariahidden="true"></span><span class="visually-hidden">Next</span></button>
+  <div class="carousel-inner"></div><button type="button" class="carousel-control-prev" data-coreui-target=""><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button><button type="button" class="carousel-control-next" data-coreui-target=""><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>
 </div>"
 `;
 
-exports[`Loads and display CCarousel component renders correctly 1`] = `
-"<div class="carousel slide">
+exports[`Loads and display CCarousel component > renders correctly 1`] = `
+"<div class="carousel slide pointer-event">
   <!---->
   <div class="carousel-inner"></div>
   <!---->

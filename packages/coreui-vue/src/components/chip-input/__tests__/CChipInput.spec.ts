@@ -313,7 +313,7 @@ describe('CChipInput', () => {
 
     // Create a mock clipboard data
     const clipboardData = {
-      getData: jest.fn().mockReturnValue('one,two,three'),
+      getData: vi.fn().mockReturnValue('one,two,three'),
     }
 
     await input.trigger('paste', {

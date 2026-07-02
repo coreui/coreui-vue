@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Loads and display CWidgetStatsC component renders correctly 1`] = `
+exports[`Loads and display CWidgetStatsC component > renders correctly 1`] = `
 "<div class="card bg-warning text-white">
   <div class="card-body">
     <div class="text-end mb-4 text-white text-opacity-75">icon</div>

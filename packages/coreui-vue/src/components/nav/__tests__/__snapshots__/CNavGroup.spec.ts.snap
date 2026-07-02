@@ -1,12 +1,12 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Customize CNavGroup component renders correctly 1`] = `
+exports[`Customize CNavGroup component > renders correctly 1`] = `
 "<li class="nav-group show"><a aria-expanded="true" class="nav-link nav-group-toggle" href="#">togglerContent</a>
   <ul class="nav-group-items compact"></ul>
 </li>"
 `;
 
-exports[`Loads and display CNavGroup component renders correctly 1`] = `
+exports[`Loads and display CNavGroup component > renders correctly 1`] = `
 "<li class="nav-group">
   <!---->
   <ul class="nav-group-items"></ul>

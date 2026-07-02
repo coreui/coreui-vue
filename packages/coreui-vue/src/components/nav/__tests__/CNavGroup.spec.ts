@@ -201,7 +201,7 @@ describe(`${ComponentName} nested groups`, () => {
 
 describe(`${ComponentName} controlled mode`, () => {
   it('stays open when the parent rejects the collapse (#313)', async () => {
-    const onUpdate = jest.fn()
+    const onUpdate = vi.fn()
     const wrapper = mount(Component, {
       props: { visible: true, 'onUpdate:visible': onUpdate },
       slots: { togglerContent: 'togglerContent' },
@@ -216,7 +216,7 @@ describe(`${ComponentName} controlled mode`, () => {
   })
 
   it('follows the prop when the parent accepts (v-model)', async () => {
-    const onUpdate = jest.fn()
+    const onUpdate = vi.fn()
     const wrapper = mount(Component, {
       props: { visible: true, 'onUpdate:visible': onUpdate },
       slots: { togglerContent: 'togglerContent' },

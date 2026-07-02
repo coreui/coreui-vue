@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Loads and display CBackdrop component renders correctly 1`] = `
+exports[`Loads and display CBackdrop component > renders correctly 1`] = `
 "<transition-stub appear="false" persisted="false" css="true">
   <div class="fade"></div>
 </transition-stub>"

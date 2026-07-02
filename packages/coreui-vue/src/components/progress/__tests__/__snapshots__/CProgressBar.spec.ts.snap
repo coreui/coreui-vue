@@ -1,5 +1,5 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Customize CProgressBar component renders correctly 1`] = `"<div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width: 75%;">Default slot</div>"`;
+exports[`Customize CProgressBar component > renders correctly 1`] = `"<div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width: 75%;">Default slot</div>"`;
 
-exports[`Loads and display CProgressBar component renders correctly 1`] = `"<div class="progress-bar bg-undefined" style="width: 0%;">Default slot</div>"`;
+exports[`Loads and display CProgressBar component > renders correctly 1`] = `"<div class="progress-bar bg-undefined" style="width: 0%;">Default slot</div>"`;

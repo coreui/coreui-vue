@@ -1,5 +1,5 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Customize CNavItem component renders correctly 1`] = `"<div class="nav-item"><a class="active disabled nav-link" aria-current="page" aria-disabled="true" tabindex="-1" href="/bazinga">Default slot</a></div>"`;
+exports[`Customize CNavItem component > renders correctly 1`] = `"<div class="nav-item"><a class="active disabled nav-link" aria-current="page" aria-disabled="true" tabindex="-1" href="/bazinga">Default slot</a></div>"`;
 
-exports[`Loads and display CNavItem component renders correctly 1`] = `"<li class="nav-item">Default slot</li>"`;
+exports[`Loads and display CNavItem component > renders correctly 1`] = `"<li class="nav-item">Default slot</li>"`;

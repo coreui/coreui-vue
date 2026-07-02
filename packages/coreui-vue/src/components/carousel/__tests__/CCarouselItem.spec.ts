@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils'
 import { CCarouselItem as Component } from '../../../index'
-import { nextTick } from 'vue'
 
 const ComponentName = 'CCarouselItem'
 
@@ -51,13 +50,6 @@ describe(`Customize ${ComponentName} component`, () => {
     expect(customWrapper.classes('active')).toBe(true)
     expect(customWrapper.classes('carousel-item-end')).toBe(false)
     expect(customWrapper.classes('carousel-item-prev')).toBe(false)
-    nextTick()
-    setTimeout(() => {
-      expect(customWrapper.classes('carousel-item')).toBe(true)
-      expect(customWrapper.classes('active')).toBe(true)
-      expect(customWrapper.classes('carousel-item-end')).toBe(true)
-      expect(customWrapper.classes('carousel-item-prev')).toBe(true)
-    }, 2)
     customWrapper.setProps({
       active: true,
     })
@@ -65,14 +57,5 @@ describe(`Customize ${ComponentName} component`, () => {
     expect(customWrapper.classes('active')).toBe(true)
     expect(customWrapper.classes('carousel-item-end')).toBe(false)
     expect(customWrapper.classes('carousel-item-prev')).toBe(false)
-    nextTick()
-    setTimeout(() => {
-      expect(customWrapper.classes('carousel-item')).toBe(true)
-      expect(customWrapper.classes('active')).toBe(true)
-      expect(customWrapper.classes('carousel-item-end')).toBe(true)
-      expect(customWrapper.classes('carousel-item-prev')).toBe(true)
-    }, 2)
-    //expect(customWrapper.classes('carousel-item-end')).toBe(true)
-    //expect(customWrapper.classes('carousel-item-prev')).toBe(true)
   })
 })

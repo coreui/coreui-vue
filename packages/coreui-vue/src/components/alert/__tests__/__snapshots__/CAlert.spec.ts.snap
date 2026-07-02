@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Loads and display CAlert component renders correctly 1`] = `
+exports[`Loads and display CAlert component > renders correctly 1`] = `
 <transition-stub
   appear="false"
   css="true"
@@ -19,7 +19,7 @@ exports[`Loads and display CAlert component renders correctly 1`] = `
 </transition-stub>
 `;
 
-exports[`Loads and display CAlert component renders correctly with slot 1`] = `
+exports[`Loads and display CAlert component > renders correctly with slot 1`] = `
 <transition-stub
   appear="false"
   class="bazinga"

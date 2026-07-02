@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Loads and display CBreadcrumb component renders correctly 1`] = `
+exports[`Loads and display CBreadcrumb component > renders correctly 1`] = `
 "<nav aria-label="breadcrumb">
   <ol class="breadcrumb bazinga">Default slot</ol>
 </nav>"

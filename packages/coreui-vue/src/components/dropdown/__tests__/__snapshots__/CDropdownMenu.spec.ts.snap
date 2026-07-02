@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Customize CDropdownMenu component renders correctly 1`] = `
+exports[`Customize CDropdownMenu component > renders correctly 1`] = `
 "<!--teleport start-->
 <ul class="dropdown-menu show dropdown-menu-lg-end" data-coreui-popper="static" data-coreui-theme="dark">
   <li>Default slot</li>
@@ -8,7 +8,7 @@ exports[`Customize CDropdownMenu component renders correctly 1`] = `
 <!--teleport end-->"
 `;
 
-exports[`Loads and display CDropdownMenu component renders correctly 1`] = `
+exports[`Loads and display CDropdownMenu component > renders correctly 1`] = `
 "<!--teleport start-->
 <div class="dropdown-menu dropdown-menu-lg-end" data-coreui-popper="static">Default slot</div>
 <!--teleport end-->"
