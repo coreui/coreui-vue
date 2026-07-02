@@ -54,12 +54,10 @@ describe('CAlert', () => {
     it('should emit closed after the transition', async () => {
       // <Transition> JS hooks are stubbed out by default and Vue schedules them
       // on an animation frame — disable the stub and run rAF synchronously.
-      const raf = vi
-        .spyOn(window, 'requestAnimationFrame')
-        .mockImplementation((cb) => {
-          cb(0)
-          return 0
-        })
+      const raf = vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => {
+        cb(0)
+        return 0
+      })
       const wrapper = mount(CAlert, {
         props: { color: 'primary', dismissible: true },
         global: { stubs: { transition: false } },

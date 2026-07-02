@@ -5,6 +5,18 @@ import { CCloseButton } from '../close-button'
 import { Color } from '../../props'
 import { executeAfterTransition } from '../../utils/transition'
 
+const handleEnter = (el: RendererElement, done: () => void) => {
+  executeAfterTransition(() => done(), el as HTMLElement)
+  setTimeout(() => {
+    el.classList.add('show')
+  }, 1)
+}
+
+const handleLeave = (el: RendererElement, done: () => void) => {
+  el.classList.remove('show')
+  executeAfterTransition(() => done(), el as HTMLElement)
+}
+
 export const CAlert = defineComponent({
   name: 'CAlert',
   inheritAttrs: false,
@@ -78,18 +90,6 @@ export const CAlert = defineComponent({
         visible.value = props.visible
       }
     )
-
-    const handleEnter = (el: RendererElement, done: () => void) => {
-      executeAfterTransition(() => done(), el as HTMLElement)
-      setTimeout(() => {
-        el.classList.add('show')
-      }, 1)
-    }
-
-    const handleLeave = (el: RendererElement, done: () => void) => {
-      el.classList.remove('show')
-      executeAfterTransition(() => done(), el as HTMLElement)
-    }
 
     const handleAfterLeave = () => {
       emit('closed')
