@@ -38,6 +38,13 @@ describe('CAlert', () => {
       expect(wrapper.find('.btn-close').exists()).toBe(true)
     })
 
+    it('should set a custom close button label', () => {
+      const wrapper = mount(CAlert, {
+        props: { color: 'primary', dismissible: true, ariaCloseLabel: 'Zamknij' },
+      })
+      expect(wrapper.find('.btn-close').attributes('aria-label')).toBe('Zamknij')
+    })
+
     it('should close an alert', async () => {
       const wrapper = mount(CAlert, { props: { color: 'primary', dismissible: true } })
       await wrapper.find('.btn-close').trigger('click')

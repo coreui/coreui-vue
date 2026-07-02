@@ -10,6 +10,15 @@ export const CAlert = defineComponent({
   inheritAttrs: false,
   props: {
     /**
+     * Sets the `aria-label` of the dismissible close button.
+     *
+     * @since 5.10.0
+     */
+    ariaCloseLabel: {
+      type: String,
+      default: 'Close',
+    },
+    /**
      * Sets the color context of the component to one of CoreUI’s themed colors.
      *
      * @values 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'
@@ -126,6 +135,7 @@ export const CAlert = defineComponent({
                 slots.default && slots.default(),
                 props.dismissible &&
                   h(CCloseButton, {
+                    'aria-label': props.ariaCloseLabel,
                     onClick: () => {
                       handleDismiss()
                     },
