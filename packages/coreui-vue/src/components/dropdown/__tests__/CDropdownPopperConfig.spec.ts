@@ -1,3 +1,4 @@
+import type { Mock } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { h, nextTick } from 'vue'
 import { createPopper } from '@popperjs/core'
@@ -6,15 +7,15 @@ import { CDropdown, CDropdownMenu, CDropdownToggle } from '../../../index'
 
 type PopperConfig = Partial<Options> | ((defaultPopperConfig: Partial<Options>) => Partial<Options>)
 
-jest.mock('@popperjs/core', () => ({
-  createPopper: jest.fn(() => ({
-    destroy: jest.fn(),
-    setOptions: jest.fn(),
-    update: jest.fn(),
+vi.mock('@popperjs/core', () => ({
+  createPopper: vi.fn(() => ({
+    destroy: vi.fn(),
+    setOptions: vi.fn(),
+    update: vi.fn(),
   })),
 }))
 
-const mockedCreatePopper = createPopper as jest.Mock
+const mockedCreatePopper = createPopper as Mock
 
 const mountOpenDropdown = async (popperConfig: PopperConfig) => {
   const wrapper = mount(CDropdown, {
@@ -45,7 +46,7 @@ describe('CDropdown popperConfig', () => {
   })
 
   it('passes the default config to a function popperConfig and uses its result', async () => {
-    const popperConfig = jest.fn((defaultConfig: Partial<Options>) => ({
+    const popperConfig = vi.fn((defaultConfig: Partial<Options>) => ({
       ...defaultConfig,
       strategy: 'fixed' as const,
     }))

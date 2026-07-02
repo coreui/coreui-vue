@@ -1,7 +1,7 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Customize (number two) CButton component renders correctly 1`] = `"<a class="btn btn-warning disabled" aria-disabled="true" tabindex="-1">Default slot</a>"`;
+exports[`Customize (number two) CButton component > renders correctly 1`] = `"<a class="btn btn-warning disabled" aria-disabled="true" tabindex="-1">Default slot</a>"`;
 
-exports[`Customize CButton component renders correctly 1`] = `"<a class="btn btn-outline-warning btn-lg active disabled rounded-pill" aria-disabled="true" tabindex="-1" href="/bazinga">Default slot</a>"`;
+exports[`Customize CButton component > renders correctly 1`] = `"<a class="btn btn-outline-warning btn-lg active disabled rounded-pill" aria-disabled="true" tabindex="-1" href="/bazinga">Default slot</a>"`;
 
-exports[`Loads and display CButton component renders correctly 1`] = `"<button class="btn" type="button">Default slot</button>"`;
+exports[`Loads and display CButton component > renders correctly 1`] = `"<button class="btn" type="button">Default slot</button>"`;

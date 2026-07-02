@@ -1,12 +1,12 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Customize CToast component renders correctly 1`] = `
+exports[`Customize CToast component > renders correctly 1`] = `
 "<transition-stub enterfromclass="" enteractiveclass="show showing" entertoclass="show" leavefromclass="show" leaveactiveclass="show showing" leavetoclass="show" appear="true" persisted="false" css="true">
   <div class="toast fade bg-warning" aria-live="assertive" aria-atomic="true" role="alert">Default slot</div>
 </transition-stub>"
 `;
 
-exports[`Loads and display CToast component renders correctly 1`] = `
+exports[`Loads and display CToast component > renders correctly 1`] = `
 "<transition-stub enterfromclass="" enteractiveclass="show showing" entertoclass="show" leavefromclass="show" leaveactiveclass="show showing" leavetoclass="show" appear="true" persisted="false" css="true">
   <div class="toast fade" aria-live="assertive" aria-atomic="true" role="alert">Default slot</div>
 </transition-stub>"

@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Customize CToastHeader component renders correctly 1`] = `"<div class="toast-header">Default slot<button type="button" class="btn btn-close" aria-label="Close"></button></div>"`;
+exports[`Customize CToastHeader component > renders correctly 1`] = `"<div class="toast-header">Default slot<button type="button" class="btn btn-close" aria-label="Close"></button></div>"`;
 
-exports[`Loads and display CToastHeader component renders correctly 1`] = `
+exports[`Loads and display CToastHeader component > renders correctly 1`] = `
 "<div class="toast-header">Default slot
   <!---->
 </div>"

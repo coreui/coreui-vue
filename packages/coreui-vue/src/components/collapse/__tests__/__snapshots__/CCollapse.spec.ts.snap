@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Loads and display CCollapse component renders correctly 1`] = `
+exports[`Loads and display CCollapse component > renders correctly 1`] = `
 "<transition-stub appear="false" persisted="false" css="false">
   <div class="collapse">Collapsed content</div>
 </transition-stub>"

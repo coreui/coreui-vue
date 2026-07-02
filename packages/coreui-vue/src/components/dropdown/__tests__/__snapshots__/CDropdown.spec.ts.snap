@@ -1,7 +1,7 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Customize (variant number two) CDropdown component renders correctly 1`] = `"Default slot"`;
+exports[`Customize (variant number two) CDropdown component > renders correctly 1`] = `"Default slot"`;
 
-exports[`Customize CDropdown component renders correctly 1`] = `"<div class="nav-item dropdown dropend">Default slot</div>"`;
+exports[`Customize CDropdown component > renders correctly 1`] = `"<div class="nav-item dropdown dropend">Default slot</div>"`;
 
-exports[`Loads and display CDropdown component renders correctly 1`] = `"<div class="dropdown">Default slot</div>"`;
+exports[`Loads and display CDropdown component > renders correctly 1`] = `"<div class="dropdown">Default slot</div>"`;

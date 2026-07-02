@@ -1,5 +1,5 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Customize CToastClose component renders correctly 1`] = `"<button class="btn" type="button">Default slot</button>"`;
+exports[`Customize CToastClose component > renders correctly 1`] = `"<button class="btn" type="button">Default slot</button>"`;
 
-exports[`Loads and display CToastClose component renders correctly 1`] = `"<button type="button" class="btn btn-close" aria-label="Close"></button>"`;
+exports[`Loads and display CToastClose component > renders correctly 1`] = `"<button type="button" class="btn btn-close" aria-label="Close"></button>"`;

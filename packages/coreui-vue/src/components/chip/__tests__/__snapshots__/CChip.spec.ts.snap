@@ -1,5 +1,5 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`CChip renders with custom props 1`] = `"<span class="chip active disabled chip-primary chip-lg chip-clickable chip-outline" aria-disabled="true">Test</span>"`;
+exports[`CChip > renders with custom props 1`] = `"<span class="chip active disabled chip-primary chip-lg chip-clickable chip-outline" aria-disabled="true">Test</span>"`;
 
-exports[`CChip renders with default props 1`] = `"<span class="chip">Test</span>"`;
+exports[`CChip > renders with default props 1`] = `"<span class="chip">Test</span>"`;

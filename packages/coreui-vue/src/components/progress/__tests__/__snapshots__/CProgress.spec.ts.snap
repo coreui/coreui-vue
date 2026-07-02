@@ -1,12 +1,12 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Customize CProgress component renders correctly 1`] = `
+exports[`Customize CProgress component > renders correctly 1`] = `
 "<div class="progress progress-thin progress-white" style="height: 100px;" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
   <div class="progress-bar bg-undefined" style="width: 0%;">Default slot</div>
 </div>"
 `;
 
-exports[`Loads and display CProgress component renders correctly 1`] = `
+exports[`Loads and display CProgress component > renders correctly 1`] = `
 "<div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
   <div class="progress-bar bg-undefined" style="width: 0%;">Default slot</div>
 </div>"

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Customize CModal component renders correctly 1`] = `
+exports[`Customize CModal component > renders correctly 1`] = `
 "<!--teleport start-->
 <transition-stub appear="false" persisted="false" css="false">
   <div class="modal" aria-modal="true" role="dialog">
@@ -13,7 +13,7 @@ exports[`Customize CModal component renders correctly 1`] = `
 <!--teleport end-->"
 `;
 
-exports[`Loads and display CModal component renders correctly 1`] = `
+exports[`Loads and display CModal component > renders correctly 1`] = `
 "<!--teleport start-->
 <transition-stub appear="false" persisted="false" css="false">
   <div class="modal fade" aria-modal="true" role="dialog">
