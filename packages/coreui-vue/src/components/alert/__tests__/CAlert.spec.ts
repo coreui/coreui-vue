@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils'
+import { flushPromises, mount } from '@vue/test-utils'
 import { CAlert } from '../../'
 
 describe('CAlert', () => {
@@ -42,6 +42,43 @@ describe('CAlert', () => {
       const wrapper = mount(CAlert, { props: { color: 'primary', dismissible: true } })
       await wrapper.find('.btn-close').trigger('click')
       expect(wrapper.emitted('close')).toHaveLength(1)
+    })
+
+    it('should emit closed after the transition', async () => {
+      // <Transition> JS hooks are stubbed out by default and Vue schedules them
+      // on an animation frame — disable the stub and run rAF synchronously.
+      const raf = vi
+        .spyOn(window, 'requestAnimationFrame')
+        .mockImplementation((cb) => {
+          cb(0)
+          return 0
+        })
+      const wrapper = mount(CAlert, {
+        props: { color: 'primary', dismissible: true },
+        global: { stubs: { transition: false } },
+      })
+      // let the appear transition finish before dismissing
+      await new Promise((resolve) => setTimeout(resolve, 20))
+      await flushPromises()
+
+      await wrapper.find('.btn-close').trigger('click')
+      await new Promise((resolve) => setTimeout(resolve, 20))
+      await flushPromises()
+
+      expect(wrapper.emitted('closed')).toHaveLength(1)
+      raf.mockRestore()
+    })
+  })
+
+  describe('transition', () => {
+    it('should apply the fade class', () => {
+      const wrapper = mount(CAlert, { props: { color: 'primary' } })
+      expect(wrapper.find('.alert').classes()).toContain('fade')
+    })
+
+    it('should not apply the fade class when transition is disabled', () => {
+      const wrapper = mount(CAlert, { props: { color: 'primary', transition: false } })
+      expect(wrapper.find('.alert').classes()).not.toContain('fade')
     })
   })
 
