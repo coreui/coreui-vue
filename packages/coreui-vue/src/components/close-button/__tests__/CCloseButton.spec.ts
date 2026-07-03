@@ -46,3 +46,12 @@ describe(`Customize ${ComponentName} component`, () => {
     expect(customWrapper.attributes('disabled')).toBe('')
   })
 })
+
+it('CCloseButton allows overriding the default aria-label', () => {
+  const wrapper = mount(Component, {
+    propsData: {
+      ariaLabel: 'Dismiss',
+    },
+  })
+  expect(wrapper.attributes('aria-label')).toBe('Dismiss')
+})

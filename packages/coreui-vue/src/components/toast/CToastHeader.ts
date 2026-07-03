@@ -5,6 +5,12 @@ const CToastHeader = defineComponent({
   name: 'CToastHeader',
   props: {
     /**
+     * Sets the `aria-label` of the close button.
+     *
+     * @since 5.10.0
+     */
+    ariaCloseLabel: String,
+    /**
      * Automatically add a close button to the header.
      */
     closeButton: Boolean,
@@ -13,7 +19,7 @@ const CToastHeader = defineComponent({
     return () =>
       h('div', { class: 'toast-header' }, [
         slots.default && slots.default(),
-        props.closeButton && h(CToastClose),
+        props.closeButton && h(CToastClose, { ariaLabel: props.ariaCloseLabel }),
       ])
   },
 })

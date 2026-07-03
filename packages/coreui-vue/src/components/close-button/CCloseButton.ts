@@ -4,6 +4,15 @@ export const CCloseButton = defineComponent({
   name: 'CCloseButton',
   props: {
     /**
+     * Sets the `aria-label` attribute of the close button.
+     *
+     * @since 5.10.0
+     */
+    ariaLabel: {
+      type: String,
+      default: 'Close',
+    },
+    /**
      * Invert the default color.
      */
     dark: Boolean,
@@ -41,7 +50,7 @@ export const CCloseButton = defineComponent({
           },
           props.disabled,
         ],
-        'aria-label': 'Close',
+        'aria-label': props.ariaLabel,
         disabled: props.disabled,
         ...(props.dark && { 'data-coreui-theme': 'dark' }),
         onClick: handleClick,

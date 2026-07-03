@@ -52,3 +52,18 @@ describe(`Customize ${ComponentName} component`, () => {
     expect(customWrapper.find('button').classes('btn-close')).toBe(true)
   })
 })
+
+it('CToastHeader sets the aria-label of the close button via ariaCloseLabel', () => {
+  const wrapper = mount(Component, {
+    global: {
+      provide: {
+        updateVisible: updateVisible,
+      },
+    },
+    propsData: {
+      ariaCloseLabel: 'Dismiss',
+      closeButton: true,
+    },
+  })
+  expect(wrapper.find('button').attributes('aria-label')).toBe('Dismiss')
+})
