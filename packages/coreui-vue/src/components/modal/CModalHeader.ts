@@ -22,7 +22,7 @@ const CModalHeader = defineComponent({
   setup(props, { slots }) {
     const visible = inject<Ref<boolean>>('visible')!
     return () =>
-      h('span', { class: 'modal-header' }, [
+      h('div', { class: 'modal-header' }, [
         slots.default && slots.default(),
         props.closeButton &&
           h(
