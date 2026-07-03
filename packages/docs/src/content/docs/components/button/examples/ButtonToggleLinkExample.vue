@@ -6,7 +6,9 @@
   </div>
   <div class="d-flex gap-1">
     <CButton color="primary" as="a" href="#" role="button" toggle>Toggle link</CButton>
-    <CButton color="primary" as="a" href="#" role="button" toggle active>Active toggle link</CButton>
+    <CButton color="primary" as="a" href="#" role="button" toggle active
+      >Active toggle link</CButton
+    >
     <CButton color="primary" as="a" role="button" toggle disabled>Disabled toggle link</CButton>
   </div>
 </template>
