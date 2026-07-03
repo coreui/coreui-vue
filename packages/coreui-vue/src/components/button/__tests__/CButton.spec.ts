@@ -46,6 +46,40 @@ describe('CButton', () => {
       expect(wrapper.classes()).toContain('active')
     })
 
+    it('should forward the aria-pressed attribute', () => {
+      // toggle buttons opt in to aria-pressed themselves (it is not implied by active)
+      const wrapper = mount(CButton, {
+        props: { active: true },
+        attrs: { 'aria-pressed': 'true' },
+      })
+      expect(wrapper.attributes('aria-pressed')).toBe('true')
+    })
+
+    it('should toggle the active state on click', async () => {
+      const wrapper = mount(CButton, { props: { toggle: true } })
+      expect(wrapper.classes()).not.toContain('active')
+      expect(wrapper.attributes('aria-pressed')).toBe('false')
+      await wrapper.trigger('click')
+      expect(wrapper.classes()).toContain('active')
+      expect(wrapper.attributes('aria-pressed')).toBe('true')
+      await wrapper.trigger('click')
+      expect(wrapper.classes()).not.toContain('active')
+      expect(wrapper.attributes('aria-pressed')).toBe('false')
+    })
+
+    it('should seed the toggle state from the active prop', () => {
+      const wrapper = mount(CButton, { props: { toggle: true, active: true } })
+      expect(wrapper.classes()).toContain('active')
+      expect(wrapper.attributes('aria-pressed')).toBe('true')
+    })
+
+    it('should prevent the default action on a toggle click', () => {
+      const wrapper = mount(CButton, { props: { as: 'a', href: '#', toggle: true } })
+      const event = new Event('click', { cancelable: true })
+      wrapper.element.dispatchEvent(event)
+      expect(event.defaultPrevented).toBe(true)
+    })
+
     it('should be disabled', () => {
       const wrapper = mount(CButton, { props: { disabled: true } })
       expect(wrapper.attributes('disabled')).toBeDefined()
@@ -73,6 +107,15 @@ describe('CButton', () => {
     it('should render as a custom element', () => {
       const wrapper = mount(CButton, { props: { as: 'span' } })
       expect(wrapper.element.tagName).toBe('SPAN')
+    })
+
+    it('should render as an input with the button type', () => {
+      const wrapper = mount(CButton, {
+        props: { as: 'input', type: 'submit' },
+        attrs: { value: 'Submit' },
+      })
+      expect(wrapper.element.tagName).toBe('INPUT')
+      expect(wrapper.attributes('type')).toBe('submit')
     })
 
     it('should render as a link when href is set', () => {

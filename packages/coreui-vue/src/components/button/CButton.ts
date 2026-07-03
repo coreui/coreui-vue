@@ -1,4 +1,4 @@
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, ref, watch } from 'vue'
 
 import { Color, Shape } from '../../props'
 
@@ -48,6 +48,12 @@ export const CButton = defineComponent({
       },
     },
     /**
+     * Make the button behave as a toggle button. It manages its own active/pressed state, toggling it on click and reflecting it via the `aria-pressed` attribute.
+     *
+     * @since 5.10.0
+     */
+    toggle: Boolean,
+    /**
      * Specifies the type of button. Always specify the type attribute for the `<button>` element.
      * Different browsers may use different default types for the `<button>` element.
      *
@@ -80,9 +86,23 @@ export const CButton = defineComponent({
   ],
   setup(props, { emit, slots }) {
     const component = props.href ? 'a' : props.as
+    const active = ref(props.active)
+
+    watch(
+      () => props.active,
+      () => {
+        active.value = props.active
+      }
+    )
+
     const handleClick = (event: Event) => {
       if (props.disabled) {
         return
+      }
+
+      if (props.toggle) {
+        event.preventDefault()
+        active.value = !active.value
       }
 
       emit('click', event)
@@ -98,14 +118,18 @@ export const CButton = defineComponent({
               [`btn-${props.variant}`]: !props.color && props.variant,
               [`btn-${props.color}`]: props.color && !props.variant,
               [`btn-${props.size}`]: props.size,
-              active: props.active,
+              active: active.value,
               disabled: props.disabled,
             },
             props.shape,
           ],
+          ...(props.toggle && { 'aria-pressed': active.value }),
           ...(component === 'a' && props.disabled && { 'aria-disabled': true, tabIndex: -1 }),
           ...(component === 'a' && props.href && { href: props.href }),
-          ...(component === 'button' && { type: props.type, disabled: props.disabled }),
+          ...((component === 'button' || component === 'input') && {
+            type: props.type,
+            disabled: props.disabled,
+          }),
           onClick: handleClick,
         },
         slots.default && slots.default()

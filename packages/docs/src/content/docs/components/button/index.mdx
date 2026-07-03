@@ -36,6 +36,10 @@ import ButtonBlock3Example from './examples/ButtonBlock3Example.vue'
 import ButtonBlock3ExampleRaw from './examples/ButtonBlock3Example.vue?raw'
 import ButtonBlock4Example from './examples/ButtonBlock4Example.vue'
 import ButtonBlock4ExampleRaw from './examples/ButtonBlock4Example.vue?raw'
+import ButtonToggleExample from './examples/ButtonToggleExample.vue'
+import ButtonToggleExampleRaw from './examples/ButtonToggleExample.vue?raw'
+import ButtonToggleLinkExample from './examples/ButtonToggleLinkExample.vue'
+import ButtonToggleLinkExampleRaw from './examples/ButtonToggleLinkExample.vue?raw'
 
 ## Examples
 
@@ -171,6 +175,24 @@ Additional utilities can be used to adjust the alignment of buttons when horizon
 
 <Example code={ButtonBlock4ExampleRaw} name="ButtonBlock4Example">
   <ButtonBlock4Example client:only="vue" />
+</Example>
+
+## Toggle states
+
+Add the `toggle` boolean prop to create simple on/off toggle buttons. A toggle button manages its own state: on click it flips the `.active` class and the `aria-pressed` attribute. Seed the initial state with the `active` prop.
+
+<Callout color="info">
+Visually, these toggle buttons are identical to the [checkbox toggle buttons](/forms/checks-radios/#checkbox-toggle-buttons). However, they are conveyed differently by assistive technologies: the checkbox toggles will be announced by screen readers as "checked"/"not checked" (since, despite their appearance, they are fundamentally still checkboxes), whereas these toggle buttons will be announced as "button"/"button pressed". The choice between these two approaches will depend on the type of toggle you are creating, and whether or not the toggle will make sense to users when announced as a checkbox or as an actual button.
+</Callout>
+
+<Example code={ButtonToggleExampleRaw} name="ButtonToggleExample">
+  <ButtonToggleExample client:only="vue" />
+</Example>
+
+Toggle links behave the same way:
+
+<Example code={ButtonToggleLinkExampleRaw} name="ButtonToggleLinkExample">
+  <ButtonToggleLinkExample client:only="vue" />
 </Example>
 
 ## API
