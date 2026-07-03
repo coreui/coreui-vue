@@ -6,6 +6,12 @@ const CModalHeader = defineComponent({
   name: 'CModalHeader',
   props: {
     /**
+     * Sets the `aria-label` of the close button.
+     *
+     * @since 5.10.0
+     */
+    ariaCloseLabel: String,
+    /**
      * Add a close button component to the header.
      */
     closeButton: {
@@ -22,6 +28,7 @@ const CModalHeader = defineComponent({
           h(
             CCloseButton,
             {
+              ariaLabel: props.ariaCloseLabel,
               onClick: () => {
                 visible.value = false
               },

@@ -2,6 +2,14 @@
   "name": "CModalHeader",
   "props": [
     {
+      "name": "ariaCloseLabel",
+      "type": "string",
+      "default": null,
+      "description": "Sets the `aria-label` of the close button.",
+      "since": "5.10.0",
+      "deprecated": null
+    },
+    {
       "name": "closeButton",
       "type": "boolean",
       "default": "true",
