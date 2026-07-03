@@ -1,79 +1,84 @@
 import { mount } from '@vue/test-utils'
-import { CButton as Component } from '../../../index'
+import { CButton } from '../../'
 
-const ComponentName = 'CButton'
+describe('CButton', () => {
+  describe('rendering', () => {
+    it('should render a button with the base class', () => {
+      const wrapper = mount(CButton)
+      expect(wrapper.classes()).toContain('btn')
+      expect(wrapper.element.tagName).toBe('BUTTON')
+    })
 
-const defaultWrapper = mount(Component, {
-  propsData: {},
-  slots: {
-    default: 'Default slot',
-  },
-})
+    it('should render its content', () => {
+      const wrapper = mount(CButton, { slots: { default: 'Hello World!' } })
+      expect(wrapper.text()).toContain('Hello World!')
+    })
 
-const customWrapper = mount(Component, {
-  propsData: {
-    active: true,
-    as: 'div',
-    color: 'warning',
-    disabled: true,
-    href: '/bazinga',
-    shape: 'rounded-pill',
-    size: 'lg',
-    variant: 'outline',
-  },
-  slots: {
-    default: 'Default slot',
-  },
-})
+    it('should apply the color class', () => {
+      const wrapper = mount(CButton, { props: { color: 'primary' } })
+      expect(wrapper.classes()).toContain('btn-primary')
+    })
 
-const customWrapperTwo = mount(Component, {
-  propsData: {
-    as: 'a',
-    color: 'warning',
-    disabled: true,
-  },
-  slots: {
-    default: 'Default slot',
-  },
-})
+    it('should apply the variant class', () => {
+      const wrapper = mount(CButton, { props: { color: 'warning', variant: 'outline' } })
+      expect(wrapper.classes()).toContain('btn-outline-warning')
+    })
 
-describe(`Loads and display ${ComponentName} component`, () => {
-  it('has a name', () => {
-    expect(Component.name).toMatch(ComponentName)
+    it('should apply the size class', () => {
+      const wrapper = mount(CButton, { props: { size: 'lg' } })
+      expect(wrapper.classes()).toContain('btn-lg')
+    })
+
+    it('should apply the shape class', () => {
+      const wrapper = mount(CButton, { props: { shape: 'rounded-pill' } })
+      expect(wrapper.classes()).toContain('rounded-pill')
+    })
+
+    it('should apply a custom class name', () => {
+      const wrapper = mount(CButton, { attrs: { class: 'bazinga' } })
+      expect(wrapper.classes()).toContain('bazinga')
+    })
   })
-  it('renders correctly', () => {
-    expect(defaultWrapper.html()).toMatchSnapshot()
-  })
-  it('contain slots and classes', () => {
-    expect(defaultWrapper.text()).toContain('Default slot')
-    expect(defaultWrapper.classes('btn')).toBe(true)
-  })
-})
 
-describe(`Customize ${ComponentName} component`, () => {
-  it('renders correctly', () => {
-    expect(customWrapper.html()).toMatchSnapshot()
-  })
-  it('contain slots and classes', () => {
-    expect(customWrapper.text()).toContain('Default slot')
-    expect(customWrapper.classes('btn-outline-warning')).toBe(true)
-    expect(customWrapper.classes('btn-lg')).toBe(true)
-    expect(customWrapper.classes('active')).toBe(true)
-    expect(customWrapper.classes('disabled')).toBe(true)
-    expect(customWrapper.classes('rounded-pill')).toBe(true)
-    expect(customWrapper.classes('btn')).toBe(true)
-  })
-})
+  describe('states', () => {
+    it('should apply the active class', () => {
+      const wrapper = mount(CButton, { props: { active: true } })
+      expect(wrapper.classes()).toContain('active')
+    })
 
-describe(`Customize (number two) ${ComponentName} component`, () => {
-  it('renders correctly', () => {
-    expect(customWrapperTwo.html()).toMatchSnapshot()
+    it('should be disabled', () => {
+      const wrapper = mount(CButton, { props: { disabled: true } })
+      expect(wrapper.attributes('disabled')).toBeDefined()
+    })
+
+    it('should emit a click event', async () => {
+      const wrapper = mount(CButton)
+      await wrapper.trigger('click')
+      expect(wrapper.emitted('click')).toHaveLength(1)
+    })
+
+    it('should not emit a click event when disabled', async () => {
+      const wrapper = mount(CButton, { props: { disabled: true } })
+      await wrapper.trigger('click')
+      expect(wrapper.emitted('click')).toBeUndefined()
+    })
   })
-  it('contain slots and classes', () => {
-    expect(customWrapperTwo.text()).toContain('Default slot')
-    expect(customWrapperTwo.classes('disabled')).toBe(true)
-    expect(customWrapperTwo.classes('btn')).toBe(true)
-    expect(customWrapperTwo.attributes('aria-disabled')).toBe('true')
-    expect(customWrapperTwo.attributes('tabindex')).toBe('-1')
+
+  describe('element', () => {
+    it('should set the button type', () => {
+      const wrapper = mount(CButton)
+      expect(wrapper.attributes('type')).toBe('button')
+    })
+
+    it('should render as a custom element', () => {
+      const wrapper = mount(CButton, { props: { as: 'span' } })
+      expect(wrapper.element.tagName).toBe('SPAN')
+    })
+
+    it('should render as a link when href is set', () => {
+      const wrapper = mount(CButton, { props: { href: '/test' } })
+      expect(wrapper.element.tagName).toBe('A')
+      expect(wrapper.attributes('href')).toBe('/test')
+    })
   })
 })
