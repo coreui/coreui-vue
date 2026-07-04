@@ -20,6 +20,7 @@
     "test": "npm-run-all charts:test icons:test lib:test",
     "test:update": "npm-run-all charts:test:update icons:test:update lib:test:update"
   },
+  "packageManager": "npm@11.6.4",
   "devDependencies": {
     "@vue/vue3-jest": "29.2.6",
     "eslint": "^9.39.4",
