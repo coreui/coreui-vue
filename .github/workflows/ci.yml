@@ -24,9 +24,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      - run: yarn install
-      - run: yarn lib:build
-      - run: yarn lib:test
+          cache: npm
+      - run: npm ci
+      - run: npm run lib:build
+      - run: npm run lib:test
 
   lint:
     name: Lint
@@ -36,5 +37,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22.x
-      - run: yarn install
-      - run: yarn lint
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
