@@ -9,9 +9,20 @@ const createPopoverElement = (id: string, header: string, content: string): HTML
   popover.id = id
   popover.classList.add('popover', 'bs-popover-auto', 'fade')
   popover.setAttribute('role', 'popover')
-  popover.innerHTML = `<div class="popover-arrow" data-popper-arrow></div>
-     <div class="popover-header">${header}</div>
-     <div class="popover-body" id="">${content}</div>`
+
+  const arrow = document.createElement('div')
+  arrow.classList.add('popover-arrow')
+  arrow.dataset.popperArrow = ''
+
+  const headerElement = document.createElement('div')
+  headerElement.classList.add('popover-header')
+  headerElement.textContent = header
+
+  const body = document.createElement('div')
+  body.classList.add('popover-body')
+  body.textContent = content
+
+  popover.append(arrow, headerElement, body)
   return popover
 }
 

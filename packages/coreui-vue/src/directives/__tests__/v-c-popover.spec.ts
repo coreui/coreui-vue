@@ -65,4 +65,23 @@ describe('v-c-popover directive', () => {
     wrapper.unmount()
     expect(document.body.querySelector('.popover')).toBeNull()
   })
+
+  it('does not inject markup from header or content (XSS)', async () => {
+    const wrapper = renderWithDirective({
+      header: '<img src=x onerror="window.__xss=1">',
+      content: '<script>window.__xss=1</script>',
+      trigger: 'click',
+    })
+    await wrapper.find('button').trigger('click')
+
+    const popover = document.body.querySelector('.popover')
+    expect(popover?.querySelector('img')).toBeNull()
+    expect(popover?.querySelector('script')).toBeNull()
+    expect(popover?.querySelector('.popover-header')?.textContent).toBe(
+      '<img src=x onerror="window.__xss=1">'
+    )
+    expect(popover?.querySelector('.popover-body')?.textContent).toBe(
+      '<script>window.__xss=1</script>'
+    )
+  })
 })

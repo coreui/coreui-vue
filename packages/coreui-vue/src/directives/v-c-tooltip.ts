@@ -9,8 +9,16 @@ const createTooltipElement = (id: string, content: string): HTMLDivElement => {
   tooltip.id = id
   tooltip.classList.add('tooltip', 'bs-tooltip-auto', 'fade')
   tooltip.setAttribute('role', 'tooltip')
-  tooltip.innerHTML = `<div class="tooltip-arrow" data-popper-arrow></div>
-     <div class="tooltip-inner" id="">${content}</div>`
+
+  const arrow = document.createElement('div')
+  arrow.classList.add('tooltip-arrow')
+  arrow.dataset.popperArrow = ''
+
+  const inner = document.createElement('div')
+  inner.classList.add('tooltip-inner')
+  inner.textContent = content
+
+  tooltip.append(arrow, inner)
   return tooltip
 }
 
