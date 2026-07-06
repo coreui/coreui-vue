@@ -64,4 +64,18 @@ describe('v-c-tooltip directive', () => {
     wrapper.unmount()
     expect(document.body.querySelector('.tooltip')).toBeNull()
   })
+
+  it('does not inject markup from content (XSS)', async () => {
+    const wrapper = renderWithDirective({
+      content: '<img src=x onerror="window.__xss=1">',
+      trigger: 'click',
+    })
+    await wrapper.find('button').trigger('click')
+
+    const tooltip = document.body.querySelector('.tooltip')
+    expect(tooltip?.querySelector('img')).toBeNull()
+    expect(tooltip?.querySelector('.tooltip-inner')?.textContent).toBe(
+      '<img src=x onerror="window.__xss=1">'
+    )
+  })
 })
