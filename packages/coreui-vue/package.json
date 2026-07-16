@@ -29,8 +29,10 @@
   "types": "dist/esm/index.d.ts",
   "files": [
     "dist/",
-    "src/"
+    "src/",
+    "!src/**/__tests__"
   ],
+  "sideEffects": false,
   "scripts": {
     "build": "npm-run-all clean build-*",
     "build-cjs": "rollup --environment ESM:false --config",
