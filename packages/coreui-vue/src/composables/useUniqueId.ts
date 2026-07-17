@@ -4,12 +4,13 @@ export const useUniqueId = (prefix: string = '') => {
   const ids = ref<string[]>([])
 
   const getUID = () => {
+    let uid: string
     do {
-      prefix += Math.floor(Math.random() * 1_000_000)
-    } while (ids.value.includes(prefix))
+      uid = `${prefix}${Math.floor(Math.random() * 1_000_000)}`
+    } while (ids.value.includes(uid))
 
-    ids.value.push(prefix)
-    return prefix
+    ids.value.push(uid)
+    return uid
   }
 
   return {
