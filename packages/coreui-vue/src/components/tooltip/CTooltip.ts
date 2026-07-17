@@ -1,4 +1,14 @@
-import { defineComponent, h, PropType, ref, RendererElement, Transition, useId } from 'vue'
+import {
+  defineComponent,
+  h,
+  onScopeDispose,
+  PropType,
+  ref,
+  RendererElement,
+  Transition,
+  useId,
+  watch,
+} from 'vue'
 import type { Options, Placement } from '@popperjs/core'
 
 import { CConditionalTeleport } from '../conditional-teleport'
@@ -165,6 +175,18 @@ const CTooltip = defineComponent({
         : props.popperConfig),
     }
 
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') {
+        return
+      }
+
+      event.preventDefault()
+      event.stopPropagation()
+      setTimeout(() => {
+        visible.value = false
+      }, delay.hide)
+    }
+
     const handleEnter = (el: RendererElement, done: () => void) => {
       emit('show')
       initPopper(togglerRef.value, tooltipRef.value, popperConfig)
@@ -180,6 +202,18 @@ const CTooltip = defineComponent({
         destroyPopper()
       }, el as HTMLElement)
     }
+
+    watch(visible, (value) => {
+      if (value) {
+        document.addEventListener('keydown', handleKeyDown, true)
+      } else {
+        document.removeEventListener('keydown', handleKeyDown, true)
+      }
+    })
+
+    onScopeDispose(() => {
+      document.removeEventListener('keydown', handleKeyDown, true)
+    })
 
     const toggleVisible = (event: Event, _visible: boolean) => {
       togglerRef.value = event.target
