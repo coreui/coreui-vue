@@ -1,4 +1,4 @@
-import { onBeforeMount, ref, watch } from 'vue'
+import { onBeforeMount, onScopeDispose, ref, watch } from 'vue'
 
 const getStoredTheme = (localStorageItemName: string) =>
   typeof window !== 'undefined' && localStorage.getItem(localStorageItemName)
@@ -40,17 +40,25 @@ export const useColorModes = (localStorageItemName = 'coreui-vue-color-scheme') 
     }
   })
 
+  let mql: MediaQueryList | undefined
+  const handleColorSchemeChange = () => {
+    const storedTheme = getStoredTheme(localStorageItemName)
+    if (storedTheme !== 'light' && storedTheme !== 'dark' && colorMode.value) {
+      setTheme(colorMode.value)
+    }
+  }
+
   onBeforeMount(() => {
     if (typeof getStoredTheme(localStorageItemName) === 'string' && colorMode.value) {
       setTheme(colorMode.value)
     }
 
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-      const storedTheme = getStoredTheme(localStorageItemName)
-      if (storedTheme !== 'light' && storedTheme !== 'dark' && colorMode.value) {
-        setTheme(colorMode.value)
-      }
-    })
+    mql = window.matchMedia('(prefers-color-scheme: dark)')
+    mql.addEventListener('change', handleColorSchemeChange)
+  })
+
+  onScopeDispose(() => {
+    mql?.removeEventListener('change', handleColorSchemeChange)
   })
 
   return {
