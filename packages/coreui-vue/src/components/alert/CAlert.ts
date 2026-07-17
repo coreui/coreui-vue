@@ -116,6 +116,7 @@ export const CAlert = defineComponent({
             h(
               'div',
               {
+                role: 'alert',
                 ...attrs,
                 class: [
                   'alert',
