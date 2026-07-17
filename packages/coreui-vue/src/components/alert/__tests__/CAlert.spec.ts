@@ -8,6 +8,11 @@ describe('CAlert', () => {
       expect(wrapper.find('.alert').classes()).toContain('alert-primary')
     })
 
+    it('should expose role="alert" for assistive technology', () => {
+      const wrapper = mount(CAlert, { props: { color: 'primary' } })
+      expect(wrapper.find('.alert').attributes('role')).toBe('alert')
+    })
+
     it('should render its content', () => {
       const wrapper = mount(CAlert, {
         props: { color: 'primary' },
