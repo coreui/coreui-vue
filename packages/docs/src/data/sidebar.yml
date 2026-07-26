@@ -44,6 +44,8 @@
       badge:
         color: success
         text: New
+    - title: Floating labels
+      to: /forms/floating-labels/
     - title: Input
       to: /forms/input/
     - title: Input group
@@ -58,8 +60,6 @@
       to: /forms/switch/
     - title: Textarea
       to: /forms/textarea/
-    - title: Floating labels
-      to: /forms/floating-labels/
     - title: Layout
       to: /forms/layout/
     - title: Validation
@@ -143,6 +143,9 @@
       to: /components/table/
     - title: Tabs
       to: /components/tabs/
+      badge:
+        color: success
+        text: New
     - title: Toast
       to: /components/toast/
     - title: Tooltip
