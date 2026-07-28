@@ -13,7 +13,7 @@
   "dependencies": {
     "@astrojs/mdx": "^7.0.3",
     "@astrojs/vue": "^7.0.1",
-    "@coreui/astro-docs": "0.1.1",
+    "@coreui/astro-docs": "0.1.2",
     "@coreui/chartjs": "^4.2.0",
     "@coreui/coreui": "^5.9.0",
     "@coreui/icons": "^3.1.0",
@@ -26,7 +26,7 @@
     "vue": "^3.5.40"
   },
   "devDependencies": {
-    "@coreui/astro-docs-api-generator": "0.1.0",
+    "@coreui/astro-docs-api-generator": "0.2.0",
     "typescript": "^5.9.3"
   }
 }
