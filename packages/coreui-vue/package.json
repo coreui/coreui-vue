@@ -53,7 +53,7 @@
     "@vitest/coverage-v8": "^4.1.10",
     "@vue/test-utils": "^2.4.11",
     "cross-env": "^10.1.0",
-    "jsdom": "^29.1.1",
+    "jsdom": "^30.0.0",
     "rollup": "^4.62.2",
     "rollup-plugin-vue": "^6.0.0",
     "typescript": "^5.9.3",
