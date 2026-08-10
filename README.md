@@ -33,6 +33,7 @@
 - [Documentation](#documentation)
 - [Frameworks](#frameworks)
 - [Templates](#templates)
+- [Data Grid](#data-grid)
 - [Contributing](#contributing)
 - [Community](#community)
 - [Versioning](#versioning)
@@ -190,6 +191,19 @@ Fully featured, out-of-the-box, templates for your application based on CoreUI.
 - [Next.js Admin Templates](https://coreui.io/themes-templates/admin-dashboard/next-js/)
 - [React Admin Templates](https://coreui.io/themes-templates/admin-dashboard/react/)
 - [Vue Admin Templates](https://coreui.io/themes-templates/admin-dashboard/vue/)
+
+## Data Grid
+
+CoreUI Vue Data Grid handles 100,000+ rows with sorting, filtering, virtualization, column pinning, inline editing and CSV export — using the same markup and stylesheet you already use.
+
+```bash
+npm install @coreui/vue-data-grid
+```
+
+One license also covers JavaScript, React and Angular. It's a separate add-on, not part of CoreUI PRO.
+
+- [Vue Data Grid](https://coreui.io/data-grid/vue/?src=readme-vue-github)
+- [Documentation](https://coreui.io/data-grid/vue/docs/getting-started/introduction/?src=readme-vue-github)
 
 ## Contributing
 
