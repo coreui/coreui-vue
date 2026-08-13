@@ -34,6 +34,7 @@
 - [Frameworks](#frameworks)
 - [Templates](#templates)
 - [Data Grid](#data-grid)
+- [Scheduler](#scheduler)
 - [Contributing](#contributing)
 - [Community](#community)
 - [Versioning](#versioning)
@@ -204,6 +205,19 @@ One license also covers JavaScript, React and Angular. It's a separate add-on, n
 
 - [Vue Data Grid](https://coreui.io/data-grid/vue/?src=readme-vue-github)
 - [Documentation](https://coreui.io/data-grid/vue/docs/getting-started/introduction/?src=readme-vue-github)
+
+## Scheduler
+
+CoreUI Vue Scheduler ships six views — day, week, month, agenda, resources, and timeline — with drag & drop, RFC 5545 recurrence, and DST-safe time handling, using the same markup and stylesheet you already use.
+
+```bash
+npm install @coreui/vue-scheduler
+```
+
+One license also covers JavaScript, React and Angular. It's a separate add-on, not part of CoreUI PRO.
+
+- [Vue Scheduler](https://coreui.io/scheduler/vue/?src=readme-vue-github)
+- [Documentation](https://coreui.io/scheduler/vue/docs/getting-started/introduction/?src=readme-vue-github)
 
 ## Contributing
 
