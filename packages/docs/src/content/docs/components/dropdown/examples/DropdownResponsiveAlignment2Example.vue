@@ -1,5 +1,5 @@
 <template>
-  <CDropdown color="secondary" :alignment="{ xs: 'end', lg: 'start' }">
+  <CDropdown :alignment="{ xs: 'end', lg: 'start' }" variant="btn-group">
     <CDropdownToggle color="secondary"
       >Right-aligned but left aligned when large screen</CDropdownToggle
     >
