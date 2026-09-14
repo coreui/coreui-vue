@@ -1,4 +1,13 @@
-import { defineComponent, h, ref, RendererElement, Transition, watch, withDirectives } from 'vue'
+import {
+  defineComponent,
+  h,
+  onUnmounted,
+  ref,
+  RendererElement,
+  Transition,
+  watch,
+  withDirectives,
+} from 'vue'
 
 import { CBackdrop } from '../backdrop'
 import { CFocusTrap } from '../focus-trap'
@@ -116,6 +125,13 @@ const COffcanvas = defineComponent({
       }
 
       if (!props.scroll) {
+        document.body.style.removeProperty('overflow')
+        document.body.style.removeProperty('padding-right')
+      }
+    })
+
+    onUnmounted(() => {
+      if (visible.value && !props.scroll) {
         document.body.style.removeProperty('overflow')
         document.body.style.removeProperty('padding-right')
       }

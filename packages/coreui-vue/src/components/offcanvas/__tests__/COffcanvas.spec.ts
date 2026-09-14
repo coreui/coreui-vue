@@ -49,4 +49,15 @@ describe(`Customize ${ComponentName} component`, () => {
     expect(customWrapper.find('div').classes('offcanvas-bottom')).toBe(true)
     expect(customWrapper.find('.offcanvas-backdrop').classes('offcanvas-backdrop')).toBe(true)
   })
+  it('restores body scroll when unmounted while visible', async () => {
+    const wrapper = mount(Component, { propsData: { visible: false } })
+    await wrapper.setProps({ visible: true })
+
+    expect(document.body.style.overflow).toBe('hidden')
+
+    wrapper.unmount()
+
+    expect(document.body.style.overflow).toBe('')
+    expect(document.body.style.paddingRight).toBe('')
+  })
 })
