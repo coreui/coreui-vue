@@ -46,7 +46,7 @@ const COffcanvas = defineComponent({
      */
     placement: {
       type: String,
-      require: true,
+      required: true,
       validator: (value: string) => {
         return ['start', 'end', 'top', 'bottom'].includes(value)
       },
