@@ -1,6 +1,7 @@
 import {
   defineComponent,
   h,
+  onUnmounted,
   PropType,
   provide,
   ref,
@@ -166,6 +167,14 @@ const CModal = defineComponent({
       }
     )
 
+    onUnmounted(() => {
+      if (visible.value) {
+        document.body.classList.remove('modal-open')
+        document.body.style.removeProperty('overflow')
+        document.body.style.removeProperty('padding-right')
+      }
+    })
+
     const handleEnter = (el: RendererElement, done: () => void) => {
       activeElementRef.value = document.activeElement as HTMLElement | null
       executeAfterTransition(() => done(), el as HTMLElement)
@@ -202,7 +211,7 @@ const CModal = defineComponent({
     }
 
     const handleAfterLeave = (el: RendererElement) => {
-      activeElementRef.value?.focus()
+      activeElementRef.value?.focus({ preventScroll: true })
       window.removeEventListener('mousedown', handleMouseDown)
       window.removeEventListener('keydown', handleKeyDown)
       el.style.display = 'none'

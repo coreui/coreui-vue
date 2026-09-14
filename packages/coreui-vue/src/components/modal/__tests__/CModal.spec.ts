@@ -83,4 +83,19 @@ describe(`Customize ${ComponentName} component`, () => {
     expect(incrementEvent).toHaveLength(1)
   })
   */
+  it('restores body scroll when unmounted while visible', async () => {
+    const wrapper = mount(Component, {
+      propsData: { visible: false },
+      global: { stubs: { transition: false } },
+    })
+    await wrapper.setProps({ visible: true })
+
+    expect(document.body.style.overflow).toBe('hidden')
+
+    wrapper.unmount()
+
+    expect(document.body.style.overflow).toBe('')
+    expect(document.body.style.paddingRight).toBe('')
+    expect(document.body.classList.contains('modal-open')).toBe(false)
+  })
 })
