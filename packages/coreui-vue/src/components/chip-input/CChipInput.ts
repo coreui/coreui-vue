@@ -489,8 +489,6 @@ const CChipInput = defineComponent({
             },
             attrs.class,
           ],
-          'aria-disabled': props.disabled ? true : undefined,
-          'aria-readonly': props.readOnly ? true : undefined,
           onClick: handleContainerClick,
           onKeydown: handleContainerKeydown,
         },
