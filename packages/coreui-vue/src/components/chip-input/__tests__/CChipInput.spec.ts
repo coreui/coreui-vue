@@ -223,7 +223,7 @@ describe('CChipInput', () => {
     const input = wrapper.find('input[type="text"]')
     expect(wrapper.classes()).toContain('disabled')
     expect(input.attributes('disabled')).toBeDefined()
-    expect(wrapper.attributes('aria-disabled')).toBe('true')
+    expect(wrapper.attributes('aria-disabled')).toBeUndefined()
   })
 
   it('handles readonly state', () => {
@@ -234,7 +234,7 @@ describe('CChipInput', () => {
     })
     const input = wrapper.find('input[type="text"]')
     expect(input.attributes('readonly')).toBeDefined()
-    expect(wrapper.attributes('aria-readonly')).toBe('true')
+    expect(wrapper.attributes('aria-readonly')).toBeUndefined()
   })
 
   it('does not add chips when disabled', async () => {
