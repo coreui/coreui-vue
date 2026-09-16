@@ -223,7 +223,17 @@ describe('CChipInput', () => {
     const input = wrapper.find('input[type="text"]')
     expect(wrapper.classes()).toContain('disabled')
     expect(input.attributes('disabled')).toBeDefined()
+  })
+
+  it('leaves the disabled semantics to the input', () => {
+    const wrapper = mount(CChipInput, {
+      props: {
+        disabled: true,
+      },
+    })
+
     expect(wrapper.attributes('aria-disabled')).toBeUndefined()
+    expect(wrapper.find('input[type="text"]').attributes('disabled')).toBeDefined()
   })
 
   it('handles readonly state', () => {
@@ -234,7 +244,17 @@ describe('CChipInput', () => {
     })
     const input = wrapper.find('input[type="text"]')
     expect(input.attributes('readonly')).toBeDefined()
+  })
+
+  it('leaves the readonly semantics to the input', () => {
+    const wrapper = mount(CChipInput, {
+      props: {
+        readOnly: true,
+      },
+    })
+
     expect(wrapper.attributes('aria-readonly')).toBeUndefined()
+    expect(wrapper.find('input[type="text"]').attributes('readonly')).toBeDefined()
   })
 
   it('does not add chips when disabled', async () => {
