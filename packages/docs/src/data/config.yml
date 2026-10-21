@@ -35,5 +35,5 @@ ads:
 # DocSearch (Algolia) — the live Vue docs keys.
 search:
   appId: RG8RW9GEH3
-  apiKey: 4926b633296d71c6d727f7766170f82b
+  apiKey: 3c2c3afad81969fd957af04b49e1a78d
   indexName: coreuivue
