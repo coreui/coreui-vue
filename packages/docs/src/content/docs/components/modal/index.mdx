@@ -6,8 +6,8 @@ otherFrameworks:
   - modal
 ---
 
-import ModalVerticallyCenteredExample from './examples/ModalVerticallyCenteredExample.vue'
-import ModalVerticallyCenteredExampleRaw from './examples/ModalVerticallyCenteredExample.vue?raw'
+import ModalComponentsExample from './examples/ModalComponentsExample.vue'
+import ModalComponentsExampleRaw from './examples/ModalComponentsExample.vue?raw'
 import ModalLiveDemoExample from './examples/ModalLiveDemoExample.vue'
 import ModalLiveDemoExampleRaw from './examples/ModalLiveDemoExample.vue?raw'
 import ModalStaticBackdropExample from './examples/ModalStaticBackdropExample.vue'
@@ -16,18 +16,18 @@ import ModalScrollingLongContentExample from './examples/ModalScrollingLongConte
 import ModalScrollingLongContentExampleRaw from './examples/ModalScrollingLongContentExample.vue?raw'
 import ModalScrollingLongContent2Example from './examples/ModalScrollingLongContent2Example.vue'
 import ModalScrollingLongContent2ExampleRaw from './examples/ModalScrollingLongContent2Example.vue?raw'
+import ModalVerticallyCenteredExample from './examples/ModalVerticallyCenteredExample.vue'
+import ModalVerticallyCenteredExampleRaw from './examples/ModalVerticallyCenteredExample.vue?raw'
 import ModalVerticallyCenteredScrollableExample from './examples/ModalVerticallyCenteredScrollableExample.vue'
 import ModalVerticallyCenteredScrollableExampleRaw from './examples/ModalVerticallyCenteredScrollableExample.vue?raw'
 import ModalTooltipsAndPopoversExample from './examples/ModalTooltipsAndPopoversExample.vue'
 import ModalTooltipsAndPopoversExampleRaw from './examples/ModalTooltipsAndPopoversExample.vue?raw'
-import ModalOptionalSizesExample from './examples/ModalOptionalSizesExample.vue'
-import ModalOptionalSizesExampleRaw from './examples/ModalOptionalSizesExample.vue?raw'
 import ModalToggleBetweenModalsExample from './examples/ModalToggleBetweenModalsExample.vue'
 import ModalToggleBetweenModalsExampleRaw from './examples/ModalToggleBetweenModalsExample.vue?raw'
+import ModalOptionalSizesExample from './examples/ModalOptionalSizesExample.vue'
+import ModalOptionalSizesExampleRaw from './examples/ModalOptionalSizesExample.vue?raw'
 import ModalFullscreenExample from './examples/ModalFullscreenExample.vue'
 import ModalFullscreenExampleRaw from './examples/ModalFullscreenExample.vue?raw'
-import ModalFullscreenModalExample from './examples/ModalFullscreenModalExample.vue'
-import ModalFullscreenModalExampleRaw from './examples/ModalFullscreenModalExample.vue?raw'
 
 ## Examples
 
@@ -35,8 +35,8 @@ import ModalFullscreenModalExampleRaw from './examples/ModalFullscreenModalExamp
 
 Below is a static modal example (meaning its `position` and `display` have been overridden). Included are the modal header, modal body (required for `padding`), and modal footer (optional). We ask that you include modal headers with actions whenever possible, or provide another explicit action.
 
-<Example code={ModalVerticallyCenteredExampleRaw} name="ModalVerticallyCenteredExample">
-  <ModalVerticallyCenteredExample client:only="vue" />
+<Example code={ModalComponentsExampleRaw} name="ModalComponentsExample">
+  <ModalComponentsExample client:only="vue" />
 </Example>
 
 ### Live demo
@@ -73,20 +73,20 @@ You can also create a scrollable modal that allows scroll the modal body by addi
 
 Add `alignment="center` to `<CModal>` to vertically center the modal.
 
-<Example code={ModalVerticallyCenteredScrollableExampleRaw} name="ModalVerticallyCenteredScrollableExample">
-  <ModalVerticallyCenteredScrollableExample client:only="vue" />
+<Example code={ModalVerticallyCenteredExampleRaw} name="ModalVerticallyCenteredExample">
+  <ModalVerticallyCenteredExample client:only="vue" />
 </Example>
 
-<Example code={ModalTooltipsAndPopoversExampleRaw} name="ModalTooltipsAndPopoversExample">
-  <ModalTooltipsAndPopoversExample client:only="vue" />
+<Example code={ModalVerticallyCenteredScrollableExampleRaw} name="ModalVerticallyCenteredScrollableExample">
+  <ModalVerticallyCenteredScrollableExample client:only="vue" />
 </Example>
 
 ### Tooltips and popovers
 
 `<CTooltips>` and `<CPopovers>` can be placed within modals as needed. When modals are closed, any tooltips and popovers within are also automaticallyed.
 
-<Example code={ModalOptionalSizesExampleRaw} name="ModalOptionalSizesExample">
-  <ModalOptionalSizesExample client:only="vue" />
+<Example code={ModalTooltipsAndPopoversExampleRaw} name="ModalTooltipsAndPopoversExample">
+  <ModalTooltipsAndPopoversExample client:only="vue" />
 </Example>
 
 ### Toggle between modals
@@ -155,8 +155,8 @@ Modals have four optional sizes, available via modifier classes to be placed on 
   </tbody>
 </table>
 
-<Example code={ModalFullscreenExampleRaw} name="ModalFullscreenExample">
-  <ModalFullscreenExample client:only="vue" />
+<Example code={ModalOptionalSizesExampleRaw} name="ModalOptionalSizesExample">
+  <ModalOptionalSizesExample client:only="vue" />
 </Example>
 
 ## Fullscreen Modal
@@ -198,8 +198,8 @@ Another override is the option to pop up a modal that covers the user viewport, 
   </tbody>
 </table>
 
-<Example code={ModalFullscreenModalExampleRaw} name="ModalFullscreenModalExample">
-  <ModalFullscreenModalExample client:only="vue" />
+<Example code={ModalFullscreenExampleRaw} name="ModalFullscreenExample">
+  <ModalFullscreenExample client:only="vue" />
 </Example>
 
 ## API

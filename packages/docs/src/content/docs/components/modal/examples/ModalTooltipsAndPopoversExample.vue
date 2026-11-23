@@ -3,35 +3,49 @@
     color="primary"
     @click="
       () => {
-        visibleVerticallyCenteredScrollableDemo = true
+        visibleTooltipsAndPopoversDemo = true
       }
     "
-    >Vertically centered scrollable modal</CButton
+    >Launch demo modal</CButton
   >
   <CModal
-    alignment="center"
-    scrollable
-    :visible="visibleVerticallyCenteredScrollableDemo"
-    aria-labelledby="VerticallyCenteredExample2"
+    :visible="visibleTooltipsAndPopoversDemo"
+    aria-labelledby="TooltipsAndPopoverExample"
     @close="
       () => {
-        visibleVerticallyCenteredScrollableDemo = false
+        visibleTooltipsAndPopoversDemo = false
       }
     "
   >
     <CModalHeader>
-      <CModalTitle id="VerticallyCenteredExample2">Modal title</CModalTitle>
+      <CModalTitle id="TooltipsAndPopoverExample">Modal title</CModalTitle>
     </CModalHeader>
     <CModalBody>
-      Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
-      egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+      <h5>Popover in a modal</h5>
+      <p>
+        This
+        <CButton
+          v-c-popover="{
+            header: 'Popover title',
+            content: 'Popover body content is set in this property.',
+          }"
+          color="secondary"
+          >button</CButton
+        >
+      </p>
+      <hr />
+      <h5>Tooltips in a modal</h5>
+      <p>
+        <CLink v-c-tooltip="'Tooltip'">This link</CLink> and
+        <CLink v-c-tooltip="'Tooltip'">that link</CLink> have tooltips on hover.
+      </p>
     </CModalBody>
     <CModalFooter>
       <CButton
         color="secondary"
         @click="
           () => {
-            visibleVerticallyCenteredScrollableDemo = false
+            visibleTooltipsAndPopoversDemo = false
           }
         "
       >
@@ -43,7 +57,17 @@
 </template>
 
 <script setup>
-import { CButton, CModal, CModalHeader, CModalTitle, CModalBody, CModalFooter } from '@coreui/vue'
+import {
+  CButton,
+  CModal,
+  CModalHeader,
+  CModalTitle,
+  CModalBody,
+  CLink,
+  CModalFooter,
+  vcpopover as vCPopover,
+  vctooltip as vCTooltip,
+} from '@coreui/vue'
 import { ref } from 'vue'
-const visibleVerticallyCenteredScrollableDemo = ref(false)
+const visibleTooltipsAndPopoversDemo = ref(false)
 </script>
