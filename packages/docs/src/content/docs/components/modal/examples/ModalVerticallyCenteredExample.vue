@@ -1,16 +1,48 @@
 <template>
-  <CModal class="show d-block position-static" :backdrop="false" :keyboard="false" visible>
+  <CButton
+    color="primary"
+    @click="
+      () => {
+        visibleVerticallyCenteredDemo = true
+      }
+    "
+    >Vertically centered modal</CButton
+  >
+  <CModal
+    alignment="center"
+    :visible="visibleVerticallyCenteredDemo"
+    aria-labelledby="VerticallyCenteredExample"
+    @close="
+      () => {
+        visibleVerticallyCenteredDemo = false
+      }
+    "
+  >
     <CModalHeader>
-      <CModalTitle>Modal title</CModalTitle>
+      <CModalTitle id="VerticallyCenteredExample">Modal title</CModalTitle>
     </CModalHeader>
-    <CModalBody>Modal body text goes here.</CModalBody>
+    <CModalBody>
+      Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+      egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+    </CModalBody>
     <CModalFooter>
-      <CButton color="secondary">Close</CButton>
+      <CButton
+        color="secondary"
+        @click="
+          () => {
+            visibleVerticallyCenteredDemo = false
+          }
+        "
+      >
+        Close
+      </CButton>
       <CButton color="primary">Save changes</CButton>
     </CModalFooter>
   </CModal>
 </template>
 
 <script setup>
-import { CModal, CModalHeader, CModalTitle, CModalBody, CModalFooter, CButton } from '@coreui/vue'
+import { CButton, CModal, CModalHeader, CModalTitle, CModalBody, CModalFooter } from '@coreui/vue'
+import { ref } from 'vue'
+const visibleVerticallyCenteredDemo = ref(false)
 </script>

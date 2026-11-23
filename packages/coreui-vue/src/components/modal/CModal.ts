@@ -102,14 +102,14 @@ const CModal = defineComponent({
      */
     scrollable: Boolean,
     /**
-     * Size the component small, large, or extra large.
+     * Size the component small, large, extra large, or extra extra large. The `xxl` size is available since 5.11.0.
      *
-     * @values 'sm', 'lg', 'xl'
+     * @values 'sm', 'lg', 'xl', 'xxl'
      */
     size: {
       type: String,
       validator: (value: string) => {
-        return ['sm', 'lg', 'xl'].includes(value)
+        return ['sm', 'lg', 'xl', 'xxl'].includes(value)
       },
     },
     /**

@@ -3,71 +3,143 @@
     color="primary"
     @click="
       () => {
-        xlDemo = true
+        fullscreenDemo = true
       }
     "
-    >Extra large modal</CButton
+    >Full screen</CButton
   >
   <CButton
     color="primary"
     @click="
       () => {
-        lgDemo = true
+        fullscreenSmDemo = true
       }
     "
-    >Large modal</CButton
+    >Full screen below sm</CButton
   >
   <CButton
     color="primary"
     @click="
       () => {
-        smDemo = true
+        fullscreenMdDemo = true
       }
     "
-    >Small modal</CButton
+    >Full screen below md</CButton
+  >
+  <CButton
+    color="primary"
+    @click="
+      () => {
+        fullscreenLgDemo = true
+      }
+    "
+    >Full screen below lg</CButton
+  >
+  <CButton
+    color="primary"
+    @click="
+      () => {
+        fullscreenXlDemo = true
+      }
+    "
+    >Full screen below xl</CButton
+  >
+  <CButton
+    color="primary"
+    @click="
+      () => {
+        fullscreenXxlDemo = true
+      }
+    "
+    >Full screen below xxl</CButton
   >
   <CModal
-    size="xl"
-    :visible="xlDemo"
-    aria-labelledby="OptionalSizesExample1"
+    fullscreen
+    :visible="fullscreenDemo"
+    aria-labelledby="FullscreenExample1"
     @close="
       () => {
-        xlDemo = false
+        fullscreenDemo = false
       }
     "
   >
     <CModalHeader>
-      <CModalTitle id="OptionalSizesExample1">Extra large modal</CModalTitle>
+      <CModalTitle id="FullscreenExample1">Full screen</CModalTitle>
     </CModalHeader>
     <CModalBody> ... </CModalBody>
   </CModal>
   <CModal
-    size="lg"
-    :visible="lgDemo"
-    aria-labelledby="OptionalSizesExample2"
+    fullscreen="sm"
+    :visible="fullscreenSmDemo"
+    aria-labelledby="FullscreenExample2"
     @close="
       () => {
-        lgDemo = false
+        fullscreenSmDemo = false
       }
     "
   >
     <CModalHeader>
-      <CModalTitle id="OptionalSizesExample2">Large modal</CModalTitle>
+      <CModalTitle id="FullscreenExample2">Full screen below sm</CModalTitle>
     </CModalHeader>
     <CModalBody> ... </CModalBody>
   </CModal>
   <CModal
-    size="sm"
-    :visible="smDemo"
-    aria-labelledby="OptionalSizesExample3"
+    fullscreen="md"
+    :visible="fullscreenMdDemo"
+    aria-labelledby="FullscreenExample3"
     @close="
       () => {
-        smDemo = false
+        fullscreenMdDemo = false
       }
     "
   >
     <CModalHeader>
-      <CModalTitle id="OptionalSizesExample3">Small modal</CModalTitle>
+      <CModalTitle id="FullscreenExample3">Full screen below md</CModalTitle>
+    </CModalHeader>
+    <CModalBody> ... </CModalBody>
+  </CModal>
+  <CModal
+    fullscreen="lg"
+    :visible="fullscreenLgDemo"
+    aria-labelledby="FullscreenExample4"
+    @close="
+      () => {
+        fullscreenLgDemo = false
+      }
+    "
+  >
+    <CModalHeader>
+      <CModalTitle id="FullscreenExample4">Full screen below lg</CModalTitle>
+    </CModalHeader>
+    <CModalBody> ... </CModalBody>
+  </CModal>
+  <CModal
+    fullscreen="xl"
+    :visible="fullscreenXlDemo"
+    aria-labelledby="FullscreenExample5"
+    @close="
+      () => {
+        fullscreenXlDemo = false
+      }
+    "
+  >
+    <CModalHeader>
+      <CModalTitle id="FullscreenExample5">Full screen below xl</CModalTitle>
+    </CModalHeader>
+    <CModalBody> ... </CModalBody>
+  </CModal>
+  <CModal
+    fullscreen="xxl"
+    :visible="fullscreenXxlDemo"
+    aria-labelledby="FullscreenExample6"
+    @close="
+      () => {
+        fullscreenXxlDemo = false
+      }
+    "
+  >
+    <CModalHeader>
+      <CModalTitle id="FullscreenExample6">Full screen below xxl</CModalTitle>
     </CModalHeader>
     <CModalBody> ... </CModalBody>
   </CModal>
@@ -76,7 +148,10 @@
 <script setup>
 import { CButton, CModal, CModalHeader, CModalTitle, CModalBody } from '@coreui/vue'
 import { ref } from 'vue'
-const xlDemo = ref(false)
-const lgDemo = ref(false)
-const smDemo = ref(false)
+const fullscreenDemo = ref(false)
+const fullscreenSmDemo = ref(false)
+const fullscreenMdDemo = ref(false)
+const fullscreenLgDemo = ref(false)
+const fullscreenXlDemo = ref(false)
+const fullscreenXxlDemo = ref(false)
 </script>

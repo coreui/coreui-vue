@@ -3,23 +3,24 @@
     color="primary"
     @click="
       () => {
-        visibleVerticallyCenteredDemo = true
+        visibleVerticallyCenteredScrollableDemo = true
       }
     "
-    >Vertically centered modal</CButton
+    >Vertically centered scrollable modal</CButton
   >
   <CModal
     alignment="center"
-    :visible="visibleVerticallyCenteredDemo"
-    aria-labelledby="VerticallyCenteredExample"
+    scrollable
+    :visible="visibleVerticallyCenteredScrollableDemo"
+    aria-labelledby="VerticallyCenteredExample2"
     @close="
       () => {
-        visibleVerticallyCenteredDemo = false
+        visibleVerticallyCenteredScrollableDemo = false
       }
     "
   >
     <CModalHeader>
-      <CModalTitle id="VerticallyCenteredExample">Modal title</CModalTitle>
+      <CModalTitle id="VerticallyCenteredExample2">Modal title</CModalTitle>
     </CModalHeader>
     <CModalBody>
       Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
@@ -30,7 +31,7 @@
         color="secondary"
         @click="
           () => {
-            visibleVerticallyCenteredDemo = false
+            visibleVerticallyCenteredScrollableDemo = false
           }
         "
       >
@@ -44,5 +45,5 @@
 <script setup>
 import { CButton, CModal, CModalHeader, CModalTitle, CModalBody, CModalFooter } from '@coreui/vue'
 import { ref } from 'vue'
-const visibleVerticallyCenteredDemo = ref(false)
+const visibleVerticallyCenteredScrollableDemo = ref(false)
 </script>
