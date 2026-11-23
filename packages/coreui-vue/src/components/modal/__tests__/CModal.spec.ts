@@ -55,6 +55,18 @@ describe(`Loads and display ${ComponentName} component`, () => {
   */
 })
 
+describe(`${ComponentName} sizes`, () => {
+  it('accepts the xxl size', () => {
+    const validator = (Component.props as Record<string, { validator: (value: string) => boolean }>)
+      .size.validator
+    expect(validator('xxl')).toBe(true)
+    const wrapper = mount(Component, {
+      propsData: { size: 'xxl', visible: true },
+    })
+    expect(wrapper.find('.modal-dialog').classes('modal-xxl')).toBe(true)
+  })
+})
+
 describe(`Customize ${ComponentName} component`, () => {
   it('renders correctly', () => {
     expect(customWrapper.html()).toMatchSnapshot()

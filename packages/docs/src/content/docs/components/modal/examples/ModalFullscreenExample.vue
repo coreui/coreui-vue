@@ -3,6 +3,15 @@
     color="primary"
     @click="
       () => {
+        xxlDemo = true
+      }
+    "
+    >Extra extra large modal</CButton
+  >
+  <CButton
+    color="primary"
+    @click="
+      () => {
         xlDemo = true
       }
     "
@@ -26,6 +35,21 @@
     "
     >Small modal</CButton
   >
+  <CModal
+    size="xxl"
+    :visible="xxlDemo"
+    aria-labelledby="OptionalSizesExample4"
+    @close="
+      () => {
+        xxlDemo = false
+      }
+    "
+  >
+    <CModalHeader>
+      <CModalTitle id="OptionalSizesExample4">Extra extra large modal</CModalTitle>
+    </CModalHeader>
+    <CModalBody> ... </CModalBody>
+  </CModal>
   <CModal
     size="xl"
     :visible="xlDemo"
@@ -76,6 +100,7 @@
 <script setup>
 import { CButton, CModal, CModalHeader, CModalTitle, CModalBody } from '@coreui/vue'
 import { ref } from 'vue'
+const xxlDemo = ref(false)
 const xlDemo = ref(false)
 const lgDemo = ref(false)
 const smDemo = ref(false)
